@@ -50,6 +50,9 @@
 		<Compile Include="App.xaml.cs">
 			<DependentUpon>App.xaml</DependentUpon>
 		</Compile>
+		<Compile Include="Controls\RootControl.xaml.cs">
+			<DependentUpon>RootControl.xaml</DependentUpon>
+		</Compile>
 		<Compile Include="Properties\AssemblyInfo.cs" />
 	</ItemGroup>
 	<ItemGroup>
@@ -127,6 +130,16 @@
 			<Version>2.8.1</Version>
 		</PackageReference>
 	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Pages\" />
+		<Folder Include="ViewModels\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Page Include="Controls\RootControl.xaml">
+			<SubType>Designer</SubType>
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 	<PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
 		<VisualStudioVersion>14.0</VisualStudioVersion>
 	</PropertyGroup>
@@ -157,11 +170,9 @@
 		<Prefer32Bit>true</Prefer32Bit>
 	</PropertyGroup>
 	<Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-	<!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+	<Target Name="_RemoveWinMDFromAppxManifest" BeforeTargets="_GenerateCurrentProjectAppxManifest">
+		<ItemGroup>
+			<_AppxWinmdFilesToHarvest Remove="@(_AppxWinmdFilesToHarvest)" />
+		</ItemGroup>
+	</Target>
 </Project>
