@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-
-    <Grid>
-        <TextBlock>根控件</TextBlock>
-    </Grid>
+    <StackPanel Padding="8" Spacing="8">
+        <TextBlock>Hello World!</TextBlock>
+        <Button>Button</Button>
+    </StackPanel>
 </UserControl>

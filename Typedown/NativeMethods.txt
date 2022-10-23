@@ -1,0 +1,6 @@
+﻿DwmApi.*
+User32.*
+WM_*
+HT*
+SC_*
+NCCALCSIZE_PARAMS

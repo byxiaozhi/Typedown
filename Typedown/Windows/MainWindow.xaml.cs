@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace Typedown.Windows
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : AppWindow
     {
         public MainWindow()
         {
