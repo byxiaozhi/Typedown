@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Typedown.Services;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Services;
 using Typedown.Universal.ViewModels;
 
@@ -28,6 +29,7 @@ namespace Typedown
         private static void RegisterService(ServiceCollection builder)
         {
             builder.AddScoped<IWindowService, WindowService>();
+            builder.AddScoped<EventCenter>();
         }
     }
 }

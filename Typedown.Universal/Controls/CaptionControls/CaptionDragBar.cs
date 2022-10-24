@@ -1,5 +1,5 @@
 ﻿using System;
-using Typedown.Universal.Services;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.UI;
 using Windows.UI.Core;

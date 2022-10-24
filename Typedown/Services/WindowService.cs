@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Windows.Xps.Serialization;
 using Typedown.Controls;
-using Typedown.Universal.Services;
+using Typedown.Universal.Interfaces;
 using Windows.UI.Xaml;
 using Windows.Win32;
 

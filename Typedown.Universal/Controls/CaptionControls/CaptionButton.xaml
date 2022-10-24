@@ -11,18 +11,6 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <Style x:Key="CaptionButtonStyle" BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button">
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="Width" Value="46"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="CornerRadius" Value="0"/>
-        </Style>
-        <Style x:Key="CaptionCloseButtonStyle" BasedOn="{StaticResource AccentButtonStyle}" TargetType="Button">
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="Width" Value="46"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="CornerRadius" Value="0"/>
-        </Style>
         <SolidColorBrush x:Key="ButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>
         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}"/>
         <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}"/>
@@ -32,20 +20,33 @@
         <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource TextFillColorSecondary}"/>
         <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="{ThemeResource TextFillColorDisabled}"/>
         <SolidColorBrush x:Key="AccentButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>
-        <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="{ThemeResource SystemFillColorCritical}"/>
-        <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="{ThemeResource SystemFillColorCritical}" Opacity="0.9"/>
+        <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="#c42b1c"/>
+        <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="#c42b1c" Opacity="0.9"/>
         <SolidColorBrush x:Key="AccentButtonBackgroundDisabled" Color="{ThemeResource SubtleFillColorDisabled}"/>
         <SolidColorBrush x:Key="AccentButtonForeground" Color="{ThemeResource TextFillColorPrimary}"/>
-        <SolidColorBrush x:Key="AccentButtonForegroundPointerOver" Color="#EEFFFFFF"/>
-        <SolidColorBrush x:Key="AccentButtonForegroundPressed" Color="#EEFFFFFF" Opacity="0.9"/>
+        <SolidColorBrush x:Key="AccentButtonForegroundPointerOver" Color="White"/>
+        <SolidColorBrush x:Key="AccentButtonForegroundPressed" Color="White" Opacity="0.9"/>
         <SolidColorBrush x:Key="AccentButtonBorderBrushDisabled" Color="{ThemeResource TextFillColorDisabled}"/>
+        <x:Double x:Key="CaptionButtonWidth">46</x:Double>
+        <Style x:Key="CaptionButtonStyle" BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Width" Value="{StaticResource CaptionButtonWidth}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+        <Style x:Key="CaptionCloseButtonStyle" BasedOn="{StaticResource AccentButtonStyle}" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Width" Value="{StaticResource CaptionButtonWidth}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal">
         <Button x:Name="Button_Minimize" Style="{StaticResource CaptionButtonStyle}" Click="Button_Minimize_Click">
             <FontIcon FontSize="10" Glyph="&#xe921;"/>
         </Button>
-        <Button x:Name="Button_Maximize" Style="{StaticResource CaptionButtonStyle}" Click="Button_Maximize_Click">
-            <FontIcon x:Name="Icon_Maximize" FontSize="10" Glyph="&#xe922;"/>
+        <Button x:Name="Button_MaximizeOrRestore" Style="{StaticResource CaptionButtonStyle}" Click="Button_MaximizeOrRestore_Click">
+            <FontIcon x:Name="Icon_MaximizeOrRestore" FontSize="10" Glyph="&#xe922;"/>
         </Button>
         <Button x:Name="Button_Close" Style="{StaticResource CaptionCloseButtonStyle}" Click="Button_Close_Click">
             <FontIcon FontSize="10" Glyph="&#xe8bb;"/>

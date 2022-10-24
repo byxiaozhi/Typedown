@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using Typedown.Services;
-using Typedown.Universal.Services;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.ViewModels;
 
 namespace Typedown.Windows

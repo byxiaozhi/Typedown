@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Typedown.Universal.Pages;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -14,14 +13,15 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+//https://go.microsoft.com/fwlink/?LinkId=234236 上介绍了“用户控件”项模板
+
 namespace Typedown.Universal.Controls
 {
-    public sealed partial class RootControl : UserControl
+    public sealed partial class StatusBar : UserControl
     {
-        public RootControl()
+        public StatusBar()
         {
-            InitializeComponent();
-            Frame.Navigate(typeof(MainPage));
+            this.InitializeComponent();
         }
     }
 }

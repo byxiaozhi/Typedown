@@ -1,19 +1,20 @@
 ﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Documents;
-using Windows.Win32;
-using Windows.Win32.Foundation;
+using Typedown.Utilities;
 
 namespace Typedown.Controls
 {
     public class AppXamlHost : WindowsXamlHost
     {
         private static readonly ConditionalWeakTable<global::Windows.UI.Xaml.UIElement, AppXamlHost> appXamlHostTable = new();
+
+        protected override HandleRef BuildWindowCore(HandleRef hwndParent)
+        {
+            var res = base.BuildWindowCore(hwndParent);
+            CoreWindow.DetachCoreWindow();
+            return res;
+        }
 
         protected override void OnChildChanged()
         {

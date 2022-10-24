@@ -1,6 +1,8 @@
 ﻿DwmApi.*
 User32.*
+Kernel32.*
 WM_*
 HT*
 SC_*
+HCBT_*
 NCCALCSIZE_PARAMS

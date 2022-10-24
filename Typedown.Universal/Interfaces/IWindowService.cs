@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml;
 
-namespace Typedown.Universal.Services
+namespace Typedown.Universal.Interfaces
 {
     public interface IWindowService
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using Typedown.Universal.Services;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -29,7 +29,7 @@ namespace Typedown.Universal.Controls
             SendCommand(SC_MINIMIZE);
         }
 
-        private void Button_Maximize_Click(object sender, RoutedEventArgs e)
+        private void Button_MaximizeOrRestore_Click(object sender, RoutedEventArgs e)
         {
             SendCommand(WindowService.IsZoomed(ParentHandle) ? SC_RESTORE : SC_MAXIMIZE);
         }
@@ -62,7 +62,7 @@ namespace Typedown.Universal.Controls
 
         private void UpdateMaximizeButtonIcon()
         {
-            Icon_Maximize.Glyph = WebUtility.HtmlDecode(WindowService.IsZoomed(ParentHandle) ? "&#xe923;" : "&#xe922;");
+            Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(WindowService.IsZoomed(ParentHandle) ? "&#xe923;" : "&#xe922;");
         }
     }
 }
