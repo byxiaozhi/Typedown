@@ -24,25 +24,13 @@ namespace Typedown.Universal.Controls
             InitializeComponent();
         }
 
-        private void Button_Minimize_Click(object sender, RoutedEventArgs e)
-        {
-            SendCommand(SC_MINIMIZE);
-        }
+        private void Button_Minimize_Click(object sender, RoutedEventArgs e) => SendCommand(SC_MINIMIZE);
 
-        private void Button_MaximizeOrRestore_Click(object sender, RoutedEventArgs e)
-        {
-            SendCommand(WindowService.IsZoomed(ParentHandle) ? SC_RESTORE : SC_MAXIMIZE);
-        }
+        private void Button_MaximizeOrRestore_Click(object sender, RoutedEventArgs e) => SendCommand(WindowService.IsZoomed(ParentHandle) ? SC_RESTORE : SC_MAXIMIZE);
 
-        private void Button_Close_Click(object sender, RoutedEventArgs e)
-        {
-            SendCommand(SC_CLOSE);
-        }
+        private void Button_Close_Click(object sender, RoutedEventArgs e) => SendCommand(SC_CLOSE);
 
-        private void SendCommand(uint command)
-        {
-            WindowService.PostMessage(ParentHandle, WM_SYSCOMMAND, command, IntPtr.Zero);
-        }
+        private void SendCommand(uint command) => WindowService.PostMessage(ParentHandle, WM_SYSCOMMAND, command, IntPtr.Zero);
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -50,19 +38,10 @@ namespace Typedown.Universal.Controls
             UpdateMaximizeButtonIcon();
         }
 
-        private void OnUnloaded(object sender, RoutedEventArgs e)
-        {
-            WindowService.WindowStateChanged -= OnWindowStateChanged;
-        }
+        private void OnUnloaded(object sender, RoutedEventArgs e) => WindowService.WindowStateChanged -= OnWindowStateChanged;
 
-        private void OnWindowStateChanged(nint hWnd)
-        {
-            UpdateMaximizeButtonIcon();
-        }
+        private void OnWindowStateChanged(object sender, nint hWnd) => UpdateMaximizeButtonIcon();
 
-        private void UpdateMaximizeButtonIcon()
-        {
-            Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(WindowService.IsZoomed(ParentHandle) ? "&#xe923;" : "&#xe922;");
-        }
+        private void UpdateMaximizeButtonIcon() => Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(WindowService.IsZoomed(ParentHandle) ? "&#xe923;" : "&#xe922;");
     }
 }

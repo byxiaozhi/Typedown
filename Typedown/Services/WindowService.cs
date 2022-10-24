@@ -8,9 +8,9 @@ namespace Typedown.Services
 {
     public class WindowService : IWindowService
     {
-        public event IWindowService.WindowStateChangedHandler WindowStateChanged;
+        public event EventHandler<nint> WindowStateChanged;
 
-        public void RaiseWindowStateChanged(nint hWnd) => WindowStateChanged?.Invoke(hWnd);
+        public void RaiseWindowStateChanged(nint hWnd) => WindowStateChanged?.Invoke(this, hWnd);
 
         public nint GetWindow(UIElement element) => AppXamlHost.GetAppXamlHost(element)?.Handle ?? default;
 

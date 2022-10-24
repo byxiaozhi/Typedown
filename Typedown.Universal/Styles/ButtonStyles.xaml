@@ -12,6 +12,8 @@
                         Style="{ThemeResource DefaultButtonStyle}"
                         Background="{TemplateBinding Background}"
                         Content="{TemplateBinding Content}"
+                        Command="{TemplateBinding Command}"
+                        CommandParameter="{TemplateBinding CommandParameter}"
                         Padding="{TemplateBinding Padding}">
                         <Button.Resources>
                             <Thickness x:Key="ButtonBorderThemeThickness">0</Thickness>

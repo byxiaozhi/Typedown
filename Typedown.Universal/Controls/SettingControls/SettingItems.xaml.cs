@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Typedown.Universal.Utilities;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,11 +15,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Controls
 {
-    public sealed partial class MenuBar : UserControl
+    public sealed partial class SettingItems : UserControl
     {
-        private RootControl RootControl => this.GetAncestor<RootControl>();
-
-        public MenuBar()
+        public SettingItems()
         {
             InitializeComponent();
         }

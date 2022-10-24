@@ -26,9 +26,9 @@
             Margin="4,0,0,0" 
             Padding="6" 
             x:Name="BackButton"
-            Click="BackButton_Click"
             Style="{ThemeResource EllipsisIconButtonStyle}" 
-            Visibility="{x:Bind IsBackButtonVisible, Mode=OneWay}">
+            Command="{x:Bind BackCommand, Mode=OneWay}"
+            x:Load="{x:Bind BackCommand.IsExecutable, Mode=OneWay}">
             <Viewbox Width="16" Height="16">
                 <muxc:AnimatedIcon x:Name="Icon_Setting">
                     <muxc:AnimatedIcon.Source>

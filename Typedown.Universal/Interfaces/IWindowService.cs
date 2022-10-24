@@ -5,9 +5,7 @@ namespace Typedown.Universal.Interfaces
 {
     public interface IWindowService
     {
-        delegate void WindowStateChangedHandler(nint hWnd);
-
-        event WindowStateChangedHandler WindowStateChanged;
+        event EventHandler<nint> WindowStateChanged;
 
         nint GetWindow(UIElement element);
 

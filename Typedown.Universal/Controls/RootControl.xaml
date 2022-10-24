@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:Caption/>
+        <local:Caption BackCommand="{x:Bind BackCommand}"/>
         <Frame x:Name="Frame" Grid.Row="1"/>
     </Grid>
 </UserControl>
