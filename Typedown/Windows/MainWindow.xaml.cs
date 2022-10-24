@@ -1,25 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using Typedown.Services;
+using Typedown.Universal.Services;
+using Typedown.Universal.ViewModels;
 
 namespace Typedown.Windows
 {
     public partial class MainWindow : AppWindow
     {
+        public IServiceScope ServiceScope { get; } = Injection.ServiceProvider.CreateScope();
+
+        public IServiceProvider ServiceProvider => ServiceScope.ServiceProvider;
+
+        public AppViewModel AppViewModel { get; }
+
         public MainWindow()
         {
+            AppViewModel = ServiceProvider.GetService<AppViewModel>();
+            DataContext = AppViewModel;
             InitializeComponent();
+        }
+
+        protected override void OnStateChanged(EventArgs e)
+        {
+            base.OnStateChanged(e);
+            (ServiceProvider.GetService<IWindowService>() as WindowService).RaiseWindowStateChanged(Handle);
         }
     }
 }

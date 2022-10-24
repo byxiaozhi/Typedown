@@ -50,10 +50,20 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CaptionControls\CaptionButton.xaml.cs">
+      <DependentUpon>CaptionButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CaptionControls\CaptionDragBar.cs" />
     <Compile Include="Controls\RootControl.xaml.cs">
       <DependentUpon>RootControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CaptionControls\Caption.xaml.cs">
+      <DependentUpon>Caption.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IWindowService.cs" />
+    <Compile Include="Utilities\InjectionExtensions.cs" />
+    <Compile Include="ViewModels\AppViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -120,6 +130,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>6.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
     </PackageReference>
@@ -133,10 +146,17 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Pages\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\CaptionControls\CaptionButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\RootControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CaptionControls\Caption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

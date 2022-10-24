@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.Caption"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="12,0,0,0">
+            <TextBlock Text="Typedown" Style="{ThemeResource CaptionTextBlockStyle}"/>
+        </StackPanel>
+        <local:CaptionDragBar Grid.ColumnSpan="2"/>
+        <local:CaptionButton Grid.Column="1"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,54 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.CaptionButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style x:Key="CaptionButtonStyle" BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Width" Value="46"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+        <Style x:Key="CaptionCloseButtonStyle" BasedOn="{StaticResource AccentButtonStyle}" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Width" Value="46"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+        <SolidColorBrush x:Key="ButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}"/>
+        <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="{ThemeResource SubtleFillColorDisabled}"/>
+        <SolidColorBrush x:Key="ButtonForeground" Color="{ThemeResource TextFillColorPrimary}"/>
+        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource TextFillColorPrimary}"/>
+        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource TextFillColorSecondary}"/>
+        <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="{ThemeResource TextFillColorDisabled}"/>
+        <SolidColorBrush x:Key="AccentButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>
+        <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="{ThemeResource SystemFillColorCritical}"/>
+        <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="{ThemeResource SystemFillColorCritical}" Opacity="0.9"/>
+        <SolidColorBrush x:Key="AccentButtonBackgroundDisabled" Color="{ThemeResource SubtleFillColorDisabled}"/>
+        <SolidColorBrush x:Key="AccentButtonForeground" Color="{ThemeResource TextFillColorPrimary}"/>
+        <SolidColorBrush x:Key="AccentButtonForegroundPointerOver" Color="#EEFFFFFF"/>
+        <SolidColorBrush x:Key="AccentButtonForegroundPressed" Color="#EEFFFFFF" Opacity="0.9"/>
+        <SolidColorBrush x:Key="AccentButtonBorderBrushDisabled" Color="{ThemeResource TextFillColorDisabled}"/>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal">
+        <Button x:Name="Button_Minimize" Style="{StaticResource CaptionButtonStyle}" Click="Button_Minimize_Click">
+            <FontIcon FontSize="10" Glyph="&#xe921;"/>
+        </Button>
+        <Button x:Name="Button_Maximize" Style="{StaticResource CaptionButtonStyle}" Click="Button_Maximize_Click">
+            <FontIcon x:Name="Icon_Maximize" FontSize="10" Glyph="&#xe922;"/>
+        </Button>
+        <Button x:Name="Button_Close" Style="{StaticResource CaptionCloseButtonStyle}" Click="Button_Close_Click">
+            <FontIcon FontSize="10" Glyph="&#xe8bb;"/>
+        </Button>
+    </StackPanel>
+</UserControl>

@@ -9,9 +9,5 @@
     mc:Ignorable="d"
     WindowStartupLocation="CenterScreen"
     Title="MainWindow" Height="900" Width="1500">
-    <Border>
-        <Grid Margin="0,32,0,0">
-            <controls:AppXamlHost InitialTypeName="Typedown.Universal.Controls.RootControl"/>
-        </Grid>
-    </Border>
+    <controls:AppXamlHost x:Name="AppXamlHost" InitialTypeName="Typedown.Universal.Controls.RootControl"/>
 </local:AppWindow>

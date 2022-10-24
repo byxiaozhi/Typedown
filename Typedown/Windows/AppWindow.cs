@@ -29,6 +29,8 @@ namespace Typedown.Windows
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
+            var style = PInvoke.GetWindowLong(new(Handle), WINDOW_LONG_PTR_INDEX.GWL_STYLE);
+            PInvoke.SetWindowLong(new(Handle), WINDOW_LONG_PTR_INDEX.GWL_STYLE, style & ~(int)WINDOW_STYLE.WS_CLIPCHILDREN);
             PInvoke.DwmExtendFrameIntoClientArea(new(Handle), new MARGINS());
             PInvoke.SetWindowPos(new(Handle), HWND.Null, 0, 0, 0, 0, SET_WINDOW_POS_FLAGS.SWP_FRAMECHANGED | SET_WINDOW_POS_FLAGS.SWP_NOMOVE | SET_WINDOW_POS_FLAGS.SWP_NOSIZE);
             HwndSource.FromHwnd(Handle).AddHook(WndProc);
@@ -41,7 +43,7 @@ namespace Typedown.Windows
             UpdateRootElement();
         }
 
-        public unsafe void OpenSystemMenu(int? x = null, int? y = null)
+        public unsafe void OpenSystemMenu(Point screenPos)
         {
             var hMenu = PInvoke.GetSystemMenu(new(Handle), false);
             var toEnable = (bool b) => b ? MENU_ITEM_FLAGS.MF_ENABLED : MENU_ITEM_FLAGS.MF_DISABLED;
@@ -51,8 +53,7 @@ namespace Typedown.Windows
             PInvoke.EnableMenuItem(hMenu, PInvoke.SC_MOVE, toEnable(WindowState == WindowState.Normal));
             PInvoke.EnableMenuItem(hMenu, PInvoke.SC_SIZE, toEnable(WindowState == WindowState.Normal && canResize));
             PInvoke.EnableMenuItem(hMenu, PInvoke.SC_MINIMIZE, toEnable(ResizeMode != ResizeMode.NoResize));
-            PInvoke.GetCursorPos(out var point);
-            var retvalue = PInvoke.TrackPopupMenu(hMenu, TRACK_POPUP_MENU_FLAGS.TPM_RETURNCMD, x ?? point.X, y ?? point.Y, 0, new(Handle), (RECT*)IntPtr.Zero);
+            var retvalue = PInvoke.TrackPopupMenu(hMenu, TRACK_POPUP_MENU_FLAGS.TPM_RETURNCMD, (int)screenPos.X, (int)screenPos.Y, 0, new(Handle), (RECT*)IntPtr.Zero);
             PInvoke.PostMessage(new HWND(Handle), PInvoke.WM_SYSCOMMAND, new WPARAM((nuint)retvalue.Value), IntPtr.Zero);
         }
 
@@ -101,14 +102,14 @@ namespace Typedown.Windows
                     break;
                 case PInvoke.WM_NCHITTEST:
                     handled = true;
-                    if (PInvoke.DwmDefWindowProc(new(hWnd), (uint)msg, new((uint)wParam), new(lParam), out var dwmHitTest))
+                    if (PInvoke.DwmDefWindowProc(new(hWnd), (uint)msg, (uint)wParam, lParam, out var dwmHitTest))
                         return dwmHitTest;
                     return new(HitTest(PointFromScreen(MakePoint(lParam))));
                 case PInvoke.WM_NCRBUTTONUP:
                     if (wParam.ToInt32() == PInvoke.HTCAPTION)
                     {
                         handled = true;
-                        OpenSystemMenu();
+                        OpenSystemMenu(MakePoint(lParam));
                     }
                     break;
             }
@@ -118,16 +119,7 @@ namespace Typedown.Windows
         private void UpdateRootElement()
         {
             if (GetTemplateChild("PART_RootElement") is FrameworkElement ele)
-            {
-                if (WindowState == WindowState.Maximized)
-                {
-                    ele.Margin = new(0, BorderWidth, 0, 0);
-                }
-                else
-                {
-                    ele.Margin = new(0, 1, 0, 0);
-                }
-            }
+                ele.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
         }
 
         private static Point MakePoint(IntPtr p) => new(p.ToInt32() & 0xFFFF, p.ToInt32() >> 16);
