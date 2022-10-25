@@ -1,284 +1,317 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-		<ProjectGuid>{3C12ED84-89D0-40A1-BA62-9477C360529B}</ProjectGuid>
-		<OutputType>AppContainerExe</OutputType>
-		<AppDesignerFolder>Properties</AppDesignerFolder>
-		<RootNamespace>Typedown.Universal</RootNamespace>
-		<AssemblyName>Typedown.Universal</AssemblyName>
-		<DefaultLanguage>zh-CN</DefaultLanguage>
-		<TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-		<TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22000.0</TargetPlatformVersion>
-		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
-		<MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
-		<FileAlignment>512</FileAlignment>
-		<ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-		<WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-		<AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-		<DebugSymbols>true</DebugSymbols>
-		<OutputPath>bin\x64\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-		<NoWarn>;2008</NoWarn>
-		<DebugType>full</DebugType>
-		<PlatformTarget>x64</PlatformTarget>
-		<UseVSHostingProcess>false</UseVSHostingProcess>
-		<ErrorReport>prompt</ErrorReport>
-		<Prefer32Bit>true</Prefer32Bit>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-		<OutputPath>bin\x64\Release\</OutputPath>
-		<DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-		<Optimize>true</Optimize>
-		<NoWarn>;2008</NoWarn>
-		<DebugType>pdbonly</DebugType>
-		<PlatformTarget>x64</PlatformTarget>
-		<UseVSHostingProcess>false</UseVSHostingProcess>
-		<ErrorReport>prompt</ErrorReport>
-		<Prefer32Bit>true</Prefer32Bit>
-		<UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-	</PropertyGroup>
-	<PropertyGroup>
-		<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-	</PropertyGroup>
-	<ItemGroup>
-		<Compile Include="App.xaml.cs">
-			<DependentUpon>App.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\CaptionControls\CaptionButton.xaml.cs">
-			<DependentUpon>CaptionButton.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\CaptionControls\CaptionDragBar.cs" />
-		<Compile Include="Controls\MainContent.xaml.cs">
-			<DependentUpon>MainContent.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\MenuBar.xaml.cs">
-			<DependentUpon>MenuBar.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\RootControl.xaml.cs">
-			<DependentUpon>RootControl.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\CaptionControls\Caption.xaml.cs">
-			<DependentUpon>Caption.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\SettingControls\AboutApp.xaml.cs">
-			<DependentUpon>AboutApp.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\SettingControls\ExpanderSettingItem.xaml.cs">
-			<DependentUpon>ExpanderSettingItem.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\SettingControls\NormalSettingItem.xaml.cs">
-			<DependentUpon>NormalSettingItem.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\SettingControls\ResponsiveContainer.xaml.cs">
-			<DependentUpon>ResponsiveContainer.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\SettingControls\SettingItems.xaml.cs">
-			<DependentUpon>SettingItems.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Controls\StatusBar.xaml.cs">
-			<DependentUpon>StatusBar.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Pages\MainPage.xaml.cs">
-			<DependentUpon>MainPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Pages\SettingsPage.xaml.cs">
-			<DependentUpon>SettingsPage.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Properties\AssemblyInfo.cs" />
-		<Compile Include="Interfaces\IWindowService.cs" />
-		<Compile Include="Services\EventCenter.cs" />
-		<Compile Include="Utilities\Command.cs" />
-		<Compile Include="Utilities\InjectionExtensions.cs" />
-		<Compile Include="Utilities\ReactiveExtensions.cs" />
-		<Compile Include="ViewModels\AppViewModel.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<AppxManifest Include="Package.appxmanifest">
-			<SubType>Designer</SubType>
-		</AppxManifest>
-	</ItemGroup>
-	<ItemGroup>
-		<Content Include="Assets\LargeTile.scale-100.png" />
-		<Content Include="Assets\LargeTile.scale-125.png" />
-		<Content Include="Assets\LargeTile.scale-150.png" />
-		<Content Include="Assets\LargeTile.scale-200.png" />
-		<Content Include="Assets\LargeTile.scale-400.png" />
-		<Content Include="Assets\SmallTile.scale-100.png" />
-		<Content Include="Assets\SmallTile.scale-125.png" />
-		<Content Include="Assets\SmallTile.scale-150.png" />
-		<Content Include="Assets\SmallTile.scale-200.png" />
-		<Content Include="Assets\SmallTile.scale-400.png" />
-		<Content Include="Assets\SplashScreen.scale-100.png" />
-		<Content Include="Assets\SplashScreen.scale-125.png" />
-		<Content Include="Assets\SplashScreen.scale-150.png" />
-		<Content Include="Assets\SplashScreen.scale-400.png" />
-		<Content Include="Assets\Square150x150Logo.scale-100.png" />
-		<Content Include="Assets\Square150x150Logo.scale-125.png" />
-		<Content Include="Assets\Square150x150Logo.scale-150.png" />
-		<Content Include="Assets\Square150x150Logo.scale-400.png" />
-		<Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
-		<Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
-		<Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
-		<Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
-		<Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
-		<Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
-		<Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
-		<Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
-		<Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
-		<Content Include="Assets\Square44x44Logo.scale-100.png" />
-		<Content Include="Assets\Square44x44Logo.scale-125.png" />
-		<Content Include="Assets\Square44x44Logo.scale-150.png" />
-		<Content Include="Assets\Square44x44Logo.scale-400.png" />
-		<Content Include="Assets\Square44x44Logo.targetsize-16.png" />
-		<Content Include="Assets\Square44x44Logo.targetsize-24.png" />
-		<Content Include="Assets\Square44x44Logo.targetsize-256.png" />
-		<Content Include="Assets\Square44x44Logo.targetsize-32.png" />
-		<Content Include="Assets\Square44x44Logo.targetsize-48.png" />
-		<Content Include="Assets\StoreLogo.scale-100.png" />
-		<Content Include="Assets\StoreLogo.scale-125.png" />
-		<Content Include="Assets\StoreLogo.scale-150.png" />
-		<Content Include="Assets\StoreLogo.scale-200.png" />
-		<Content Include="Assets\StoreLogo.scale-400.png" />
-		<Content Include="Assets\Wide310x150Logo.scale-100.png" />
-		<Content Include="Assets\Wide310x150Logo.scale-125.png" />
-		<Content Include="Assets\Wide310x150Logo.scale-150.png" />
-		<Content Include="Assets\Wide310x150Logo.scale-400.png" />
-		<Content Include="Properties\Default.rd.xml" />
-		<Content Include="Assets\SplashScreen.scale-200.png" />
-		<Content Include="Assets\Square150x150Logo.scale-200.png" />
-		<Content Include="Assets\Square44x44Logo.scale-200.png" />
-		<Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-		<Content Include="Assets\Wide310x150Logo.scale-200.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<ApplicationDefinition Include="App.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</ApplicationDefinition>
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection">
-			<Version>6.0.1</Version>
-		</PackageReference>
-		<PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-			<Version>6.2.14</Version>
-		</PackageReference>
-		<PackageReference Include="Microsoft.Toolkit.Win32.UI.XamlApplication">
-			<Version>6.1.3</Version>
-		</PackageReference>
-		<PackageReference Include="Microsoft.UI.Xaml">
-			<Version>2.8.1</Version>
-		</PackageReference>
-		<PackageReference Include="PropertyChanged.Fody">
-			<Version>4.0.5</Version>
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="System.Reactive">
-			<Version>5.0.0</Version>
-		</PackageReference>
-	</ItemGroup>
-	<ItemGroup />
-	<ItemGroup>
-		<Page Include="Controls\CaptionControls\CaptionButton.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\MainContent.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\MenuBar.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\RootControl.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\CaptionControls\Caption.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\SettingControls\AboutApp.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\SettingControls\ExpanderSettingItem.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\SettingControls\NormalSettingItem.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\SettingControls\ResponsiveContainer.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\SettingControls\SettingItems.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Controls\StatusBar.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Pages\MainPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Pages\SettingsPage.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\ButtonStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Styles\ToggleSwitchStyles.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-	</ItemGroup>
-	<PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
-		<VisualStudioVersion>14.0</VisualStudioVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-		<DebugSymbols>true</DebugSymbols>
-		<OutputPath>bin\x86\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
-		<NoWarn>;2008</NoWarn>
-		<NoStdLib>true</NoStdLib>
-		<DebugType>full</DebugType>
-		<PlatformTarget>x86</PlatformTarget>
-		<UseVSHostingProcess>false</UseVSHostingProcess>
-		<LangVersion>7.3</LangVersion>
-		<ErrorReport>prompt</ErrorReport>
-		<Prefer32Bit>true</Prefer32Bit>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-		<OutputPath>bin\x86\Release\</OutputPath>
-		<DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
-		<Optimize>true</Optimize>
-		<NoWarn>;2008</NoWarn>
-		<NoStdLib>true</NoStdLib>
-		<DebugType>pdbonly</DebugType>
-		<PlatformTarget>x86</PlatformTarget>
-		<UseVSHostingProcess>false</UseVSHostingProcess>
-		<LangVersion>7.3</LangVersion>
-		<ErrorReport>prompt</ErrorReport>
-		<Prefer32Bit>true</Prefer32Bit>
-	</PropertyGroup>
-	<Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-	<Target Name="_RemoveWinMDFromAppxManifest" BeforeTargets="_GenerateCurrentProjectAppxManifest">
-		<ItemGroup>
-			<_AppxWinmdFilesToHarvest Remove="@(_AppxWinmdFilesToHarvest)" />
-		</ItemGroup>
-	</Target>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{3C12ED84-89D0-40A1-BA62-9477C360529B}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Typedown.Universal</RootNamespace>
+    <AssemblyName>Typedown.Universal</AssemblyName>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22000.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CaptionControls\CaptionButtons.xaml.cs">
+      <DependentUpon>CaptionButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CaptionControls\CaptionDragBar.cs" />
+    <Compile Include="Controls\EditorControls\MainContent.xaml.cs">
+      <DependentUpon>MainContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\MarkdownEditor.xaml.cs">
+      <DependentUpon>MarkdownEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\MenuBar.xaml.cs">
+      <DependentUpon>MenuBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SidePaneControls\LeftPane.xaml.cs">
+      <DependentUpon>LeftPane.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RootControl.xaml.cs">
+      <DependentUpon>RootControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CaptionControls\Caption.xaml.cs">
+      <DependentUpon>Caption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\AboutApp.xaml.cs">
+      <DependentUpon>AboutApp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\ExpanderSettingItem.xaml.cs">
+      <DependentUpon>ExpanderSettingItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\NormalSettingItem.xaml.cs">
+      <DependentUpon>NormalSettingItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\ResponsiveContainer.xaml.cs">
+      <DependentUpon>ResponsiveContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems.xaml.cs">
+      <DependentUpon>SettingItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SidePaneControls\Pages\FolderPage.xaml.cs">
+      <DependentUpon>FolderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SidePaneControls\Pages\TocPage.xaml.cs">
+      <DependentUpon>TocPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\StatusBar.xaml.cs">
+      <DependentUpon>StatusBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WebView.cs" />
+    <Compile Include="Interfaces\IWebViewController.cs" />
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\IWindowService.cs" />
+    <Compile Include="Services\EventCenter.cs" />
+    <Compile Include="Utilities\Command.cs" />
+    <Compile Include="Utilities\InjectionExtensions.cs" />
+    <Compile Include="Utilities\ReactiveExtensions.cs" />
+    <Compile Include="ViewModels\AppViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>6.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Win32.UI.XamlApplication">
+      <Version>6.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.8.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Web.WebView2">
+      <Version>1.0.1370.28</Version>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody">
+      <Version>4.0.5</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.Reactive">
+      <Version>5.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Controls\CaptionControls\CaptionButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditorControls\MainContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditorControls\MarkdownEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditorControls\MenuBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SidePaneControls\LeftPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RootControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CaptionControls\Caption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\AboutApp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\ExpanderSettingItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\NormalSettingItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\ResponsiveContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SidePaneControls\Pages\FolderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SidePaneControls\Pages\TocPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditorControls\StatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ToggleSwitchStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Target Name="_RemoveWinMDFromAppxManifest" BeforeTargets="_GenerateCurrentProjectAppxManifest">
+    <ItemGroup>
+      <_AppxWinmdFilesToHarvest Remove="@(_AppxWinmdFilesToHarvest)" />
+    </ItemGroup>
+  </Target>
 </Project>

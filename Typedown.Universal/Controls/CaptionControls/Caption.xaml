@@ -40,6 +40,6 @@
                 </muxc:AnimatedIcon>
             </Viewbox>
         </Button>
-        <local:CaptionButton Grid.Column="2"/>
+        <local:CaptionButtons Grid.Column="2"/>
     </Grid>
 </UserControl>

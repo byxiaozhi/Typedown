@@ -5,4 +5,7 @@ WM_*
 HT*
 SC_*
 HCBT_*
+IDC_*
+PEN_*
+TOUCH_*
 NCCALCSIZE_PARAMS

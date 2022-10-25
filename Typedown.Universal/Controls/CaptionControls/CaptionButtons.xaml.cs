@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.Controls
 {
-    public sealed partial class CaptionButton : UserControl
+    public sealed partial class CaptionButtons : UserControl
     {
         private IWindowService WindowService => this.GetService<IWindowService>();
 
@@ -19,7 +19,7 @@ namespace Typedown.Universal.Controls
         private const uint SC_RESTORE = 0xF120;
         private const uint SC_CLOSE = 0xF060;
 
-        public CaptionButton()
+        public CaptionButtons()
         {
             InitializeComponent();
         }
