@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
+using Windows.UI.Composition;
+using Windows.UI.Xaml;
 using Windows.Devices.Input;
 using Windows.System;
 using Windows.UI.Input;
@@ -19,13 +21,13 @@ using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace Typedown.Utilities
 {
-    public class WebViewController: IWebViewController
+    public class WebViewController : IWebViewController
     {
-        public global::Windows.UI.Xaml.FrameworkElement Container { get; }
+        public FrameworkElement Container { get; private set; }
 
-        private IntPtr ParentHWnd { get; }
+        public IntPtr ParentHWnd { get; private set; }
 
-        private float Scale { get; set; }
+        private float WindowScale => PInvoke.GetDpiForWindow(new(ParentHWnd)) / 96f;
 
         private static Task<CoreWebView2Environment> coreWebView2EnvironmentTask;
         private static CoreWebView2Environment CoreWebView2Environment => coreWebView2EnvironmentTask.IsCompleted ? coreWebView2EnvironmentTask.Result : null;
@@ -37,25 +39,21 @@ namespace Typedown.Utilities
 
         public CoreWebView2 CoreWebView2 => CoreWebView2Controller?.CoreWebView2;
 
-        private global::Windows.UI.Composition.ContainerVisual WebViewVisual { get; set; }
+        private ContainerVisual webViewVisual;
 
-        public event EventHandler CoreInitialized;
-
-        public WebViewController(global::Windows.UI.Xaml.FrameworkElement container, IntPtr parentHWnd)
+        public async Task InitializeAsync(FrameworkElement container, nint parentHWnd)
         {
-            Container = container;
-            ParentHWnd = parentHWnd;
-            Initialize();
-        }
-
-        private async void Initialize()
-        {
-            await EnsureCreateCompositionController();
-            await EnsureCreateController();
-            InitializeEventHandler();
-            UpdataScale();
-            Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).SubscribeWeak(_ => OnContainerSizeChanged());
-            Observable.FromEventPattern(CoreWebView2CompositionController, nameof(CoreWebView2CompositionController.CursorChanged)).SubscribeWeak(_ => OnCursorChanged());
+            if (Container == null)
+            {
+                Container = container;
+                ParentHWnd = parentHWnd;
+                await EnsureCreateCompositionController();
+                await EnsureCreateController();
+                InitializeEventHandler();
+                UpdataWindowScale();
+                Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).SubscribeWeak(_ => OnContainerSizeChanged());
+                Observable.FromEventPattern(CoreWebView2CompositionController, nameof(CoreWebView2CompositionController.CursorChanged)).SubscribeWeak(_ => OnCursorChanged());
+            }
         }
 
         private static async Task EnsureCreateEnvironment()
@@ -81,13 +79,12 @@ namespace Typedown.Utilities
             if (coreWebView2CompositionControllerTask == null)
             {
                 var compositor = ElementCompositionPreview.GetElementVisual(Container).Compositor;
-                WebViewVisual = compositor.CreateContainerVisual();
-                WebViewVisual.RelativeSizeAdjustment = new(1, 1);
-                ElementCompositionPreview.SetElementChildVisual(Container, WebViewVisual);
+                webViewVisual = compositor.CreateContainerVisual();
+                ElementCompositionPreview.SetElementChildVisual(Container, webViewVisual);
                 await EnsureCreateEnvironment();
                 coreWebView2CompositionControllerTask = CoreWebView2Environment.CreateCoreWebView2CompositionControllerAsync(ParentHWnd);
                 await coreWebView2CompositionControllerTask;
-                CoreWebView2CompositionController.RootVisualTarget = WebViewVisual;
+                CoreWebView2CompositionController.RootVisualTarget = webViewVisual;
             }
             else
             {
@@ -103,7 +100,6 @@ namespace Typedown.Utilities
                 var raw = typeof(CoreWebView2CompositionController).GetField("_rawNative", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(CoreWebView2CompositionController);
                 CoreWebView2Controller = typeof(CoreWebView2Controller).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(object) }, null).Invoke(new object[] { raw }) as CoreWebView2Controller;
                 CoreWebView2Controller.DefaultBackgroundColor = System.Drawing.Color.Transparent;
-                CoreInitialized?.Invoke(this, EventArgs.Empty);
             }
             return CoreWebView2Controller != null;
         }
@@ -125,7 +121,7 @@ namespace Typedown.Utilities
         private void OnPointerMoved(PointerRoutedEventArgs args)
         {
             var deviceType = args.Pointer.PointerDeviceType;
-            var message = deviceType == PointerDeviceType.Mouse ? 0x0200u : 0x0245u;
+            var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WM_MOUSEMOVE : PInvoke.WM_POINTERUPDATE;
             OnXamlPointerMessage(message, args);
         }
 
@@ -181,7 +177,7 @@ namespace Typedown.Utilities
             }
             else if (deviceType == PointerDeviceType.Pen)
             {
-                message = PInvoke.WM_POINTERDOWN; // WM_POINTERDOWN
+                message = PInvoke.WM_POINTERDOWN;
                 hasPenCapture = Container.CapturePointer(args.Pointer);
             }
             if (message != 0)
@@ -238,7 +234,7 @@ namespace Typedown.Utilities
                     Container.ReleasePointerCapture(args.Pointer);
                     hasPenCapture = false;
                 }
-                message = PInvoke.WM_POINTERUP; // WM_POINTERUP
+                message = PInvoke.WM_POINTERUP;
             }
             if (message != 0)
                 OnXamlPointerMessage(message, args);
@@ -247,7 +243,7 @@ namespace Typedown.Utilities
         protected virtual void OnPointerWheelChanged(PointerRoutedEventArgs args)
         {
             var deviceType = args.Pointer.PointerDeviceType;
-            var message = deviceType == PointerDeviceType.Mouse ? 0x020Au : 0x024Eu;
+            var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WM_MOUSEWHEEL : PInvoke.WM_POINTERWHEEL;
             OnXamlPointerMessage(message, args);
         }
 
@@ -261,22 +257,27 @@ namespace Typedown.Utilities
             }
             else
             {
-                OnXamlPointerMessage(PInvoke.WM_POINTERLEAVE, args); // WM_POINTERLEAVE
+                OnXamlPointerMessage(PInvoke.WM_POINTERLEAVE, args);
             }
         }
 
         public void UpdateBounds()
         {
             if (CoreWebView2Controller != null)
-                CoreWebView2Controller.Bounds = new(new(0, 0), new((int)(Container.ActualWidth * Scale), (int)(Container.ActualHeight * Scale)));
+            {
+                var p = Container.TransformToVisual(Container.XamlRoot.Content).TransformPoint(new());
+                var s = Container.ActualSize;
+                CoreWebView2Controller.Bounds = new(new((int)(p.X * WindowScale), (int)(p.Y * WindowScale)), new((int)(s.X * WindowScale), (int)(s.Y * WindowScale)));
+            }
         }
 
-        public void UpdataScale()
+        public void UpdataWindowScale()
         {
-            Scale = PInvoke.GetDpiForWindow(new(ParentHWnd)) / 96f;
-            if (WebViewVisual != null)
-                WebViewVisual.Scale = new(new(1 / Scale), 1);
-            UpdateBounds();
+            if (webViewVisual != null)
+            {
+                webViewVisual.Scale = new(new(1 / WindowScale), 1);
+                UpdateBounds();
+            }
         }
 
         private void ResetMouseInputState()
@@ -295,7 +296,7 @@ namespace Typedown.Utilities
             args.Handled = true;
             var logicalPointerPoint = args.GetCurrentPoint(Container);
             var logicalPoint = logicalPointerPoint.Position;
-            var physicalPoint = new System.Drawing.Point((int)(logicalPoint.X * Scale), (int)(logicalPoint.Y * Scale));
+            var physicalPoint = new System.Drawing.Point((int)(logicalPoint.X * WindowScale), (int)(logicalPoint.Y * WindowScale));
             var deviceType = args.Pointer.PointerDeviceType;
             if (deviceType == PointerDeviceType.Mouse)
             {
@@ -380,7 +381,7 @@ namespace Typedown.Utilities
 
         private void FillPointerPenInfo(PointerPoint inputPt, CoreWebView2PointerInfo outputPt)
         {
-            
+
             var inputProperties = inputPt.Properties;
             var outputPt_penFlags = PInvoke.PEN_FLAG_NONE;
             if (inputProperties.IsBarrelButtonPressed)
@@ -402,15 +403,15 @@ namespace Typedown.Utilities
             var inputProperties = inputPt.Properties;
             outputPt.TouchFlags = 0;
             outputPt.TouchMask = (uint)(PInvoke.TOUCH_MASK_CONTACTAREA | PInvoke.TOUCH_MASK_ORIENTATION | PInvoke.TOUCH_MASK_PRESSURE);
-            var width = inputProperties.ContactRect.Width * Scale;
-            var height = inputProperties.ContactRect.Height * Scale;
-            var leftVal = inputProperties.ContactRect.X * Scale;
-            var topVal = inputProperties.ContactRect.Y * Scale;
+            var width = inputProperties.ContactRect.Width * WindowScale;
+            var height = inputProperties.ContactRect.Height * WindowScale;
+            var leftVal = inputProperties.ContactRect.X * WindowScale;
+            var topVal = inputProperties.ContactRect.Y * WindowScale;
             outputPt.TouchContact = new System.Drawing.Rectangle((int)leftVal, (int)topVal, (int)width, (int)height);
-            var widthRaw = inputProperties.ContactRectRaw.Width * Scale;
-            var heightRaw = inputProperties.ContactRectRaw.Height * Scale;
-            var leftValRaw = inputProperties.ContactRectRaw.X * Scale;
-            var topValRaw = inputProperties.ContactRectRaw.Y * Scale;
+            var widthRaw = inputProperties.ContactRectRaw.Width * WindowScale;
+            var heightRaw = inputProperties.ContactRectRaw.Height * WindowScale;
+            var leftValRaw = inputProperties.ContactRectRaw.X * WindowScale;
+            var topValRaw = inputProperties.ContactRectRaw.Y * WindowScale;
             outputPt.TouchContactRaw = new System.Drawing.Rectangle((int)leftValRaw, (int)topValRaw, (int)widthRaw, (int)heightRaw);
             outputPt.TouchOrientation = (uint)inputProperties.Orientation;
             outputPt.TouchPressure = (uint)(inputProperties.Pressure * 1024);
@@ -454,7 +455,7 @@ namespace Typedown.Utilities
                         outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_SECONDBUTTON;
                 }
             }
-            
+
             if (inputProperties.IsPrimary)
                 outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_PRIMARY;
             if (inputProperties.TouchConfidence)
@@ -468,9 +469,9 @@ namespace Typedown.Utilities
             if (inputProperties.PointerUpdateKind == PointerUpdateKind.LeftButtonReleased)
                 outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_UP;
             outputPt.PointerFlags = (uint)outputPt_pointerFlags;
-            var outputPt_pointerPixelLocation = new System.Drawing.Point((int)(inputPt.Position.X * Scale), (int)(inputPt.Position.Y * Scale));
+            var outputPt_pointerPixelLocation = new System.Drawing.Point((int)(inputPt.Position.X * WindowScale), (int)(inputPt.Position.Y * WindowScale));
             outputPt.PixelLocation = outputPt_pointerPixelLocation;
-            var outputPt_pointerRawPixelLocation = new System.Drawing.Point((int)(inputPt.RawPosition.X * Scale), (int)(inputPt.RawPosition.Y * Scale));
+            var outputPt_pointerRawPixelLocation = new System.Drawing.Point((int)(inputPt.RawPosition.X * WindowScale), (int)(inputPt.RawPosition.Y * WindowScale));
             outputPt.PixelLocationRaw = outputPt_pointerRawPixelLocation;
             var outputPoint_pointerTime = inputPt.Timestamp / 1000;
             outputPt.Time = (uint)outputPoint_pointerTime;
@@ -485,5 +486,7 @@ namespace Typedown.Utilities
             }
             outputPt.ButtonChangeKind = (int)inputProperties.PointerUpdateKind;
         }
+
+        public void Navigate(string url) => CoreWebView2.Navigate(url);
     }
 }

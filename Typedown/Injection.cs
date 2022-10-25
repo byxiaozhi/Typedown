@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Typedown.Services;
+using Typedown.Utilities;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Services;
 using Typedown.Universal.ViewModels;
@@ -17,6 +18,7 @@ namespace Typedown
                 var builder = new ServiceCollection();
                 RegisterViewModel(builder);
                 RegisterService(builder);
+                RegisterComponent(builder);
                 ServiceProvider = builder.BuildServiceProvider();
             }
         }
@@ -30,6 +32,11 @@ namespace Typedown
         {
             builder.AddScoped<IWindowService, WindowService>();
             builder.AddScoped<EventCenter>();
+        }
+
+        private static void RegisterComponent(ServiceCollection builder)
+        {
+            builder.AddTransient<IWebViewController, WebViewController>();
         }
     }
 }

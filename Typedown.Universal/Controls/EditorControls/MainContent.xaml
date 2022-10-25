@@ -9,13 +9,13 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid Background="{ThemeResource SolidBackgroundFillColorTertiary}">
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <local:LeftPane/>
-        <Border Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>
-        <local:MarkdownEditor Grid.Column="2"/>
+        <Border Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>-->
+        <local:MarkdownEditor/>
     </Grid>
 </UserControl>
