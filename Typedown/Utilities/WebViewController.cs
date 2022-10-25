@@ -302,7 +302,8 @@ namespace Typedown.Utilities
             {
                 if (message == PInvoke.WM_MOUSELEAVE)
                 {
-                    CoreWebView2CompositionController.SendMouseInput((CoreWebView2MouseEventKind)message, 0, 0, new(0, 0));
+                    if (!hasMouseCapture)
+                        CoreWebView2CompositionController.SendMouseInput((CoreWebView2MouseEventKind)message, 0, 0, new(0, 0));
                 }
                 else
                 {
