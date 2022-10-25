@@ -6,7 +6,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="windows:AppWindow">
-                    <Border x:Name="PART_RootElement" Background="{TemplateBinding Background}">
+                    <Border x:Name="PART_RootElement">
                         <ContentPresenter Content="{TemplateBinding Content}"/>
                     </Border>
                 </ControlTemplate>

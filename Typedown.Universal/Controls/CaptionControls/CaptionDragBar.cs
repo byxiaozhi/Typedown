@@ -67,12 +67,12 @@ namespace Typedown.Universal.Controls
 
         private bool PostPointerMessage(uint msg)
         {
-            return WindowService.PostMessage(ParentHandle, msg, (nuint)HitTestResult, PackPoint(WindowService.GetCursorPos()));
+            return WindowService.PostMessage(ParentHandle, msg, (nuint)HitTestResult, WindowService.GetCursorPos().PackPoint());
         }
 
         private void HitTest()
         {
-            HitTestResult = WindowService.SendMessage(ParentHandle, WM_NCHITTEST, (nuint)HitTestResult, PackPoint(WindowService.GetCursorPos()));
+            HitTestResult = WindowService.SendMessage(ParentHandle, WM_NCHITTEST, (nuint)HitTestResult, WindowService.GetCursorPos().PackPoint());
             UpdateCursor();
         }
 
@@ -86,7 +86,5 @@ namespace Typedown.Universal.Controls
                 _ => CoreCursorType.Arrow
             }, 0);
         }
-
-        private static nint PackPoint(System.Drawing.Point point) => point.X | (point.Y << 16);
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Toolkit.Win32.UI.XamlHost;
+using Typedown.Universal.Interfaces;
+using Windows.UI.Xaml;
 
 namespace System.Runtime.CompilerServices
 {
@@ -12,6 +14,7 @@ namespace Typedown.Universal
         public App()
         {
             Initialize();
+            ((Window.Current as object) as IWindowPrivate).TransparentBackground = true;
         }
     }
 }

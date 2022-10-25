@@ -1,5 +1,6 @@
-﻿using System.Reactive;
-using System.Windows.Input;
+﻿using System;
+using System.Linq;
+using System.Reactive;
 using Typedown.Universal.Utilities;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -15,6 +16,8 @@ namespace Typedown.Universal.Controls
         public Caption()
         {
             InitializeComponent();
+            if (Environment.OSVersion.Version.Build >= 22000)
+                CaptionWrapper.Children.Remove(CaptionWrapper.Children.OfType<CaptionButtons>().First());
         }
     }
 }

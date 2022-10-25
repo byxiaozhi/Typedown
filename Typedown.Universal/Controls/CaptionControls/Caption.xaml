@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <Grid Height="32" ColumnSpacing="8">
+    <Grid Height="32" ColumnSpacing="8" x:Name="CaptionWrapper">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" MinWidth="4"/>
             <ColumnDefinition Width="*"/>

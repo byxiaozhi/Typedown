@@ -2,8 +2,11 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Media;
+using Windows.UI.ViewManagement;
 using Windows.Win32;
 using Windows.Win32.Foundation;
+using Windows.Win32.Graphics.Dwm;
 using Windows.Win32.UI.Controls;
 using Windows.Win32.UI.WindowsAndMessaging;
 
@@ -11,7 +14,11 @@ namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
-        public nint Handle => new WindowInteropHelper(this).Handle;
+        public static DependencyProperty ThemeProperty = DependencyProperty.Register("Theme", typeof(string), typeof(AppWindow));
+
+        public string Theme { get => (string)GetValue(ThemeProperty); set => SetValue(ThemeProperty, value); }
+
+        public nint Handle { get; private set; }
 
         public double WindowScale => PInvoke.GetDpiForWindow(new(Handle)) / 96.0;
 
@@ -21,20 +28,27 @@ namespace Typedown.Windows
 
         public double CaptionHeight { get; set; } = 32;
 
+        public static bool IsMicaSupported { get; } = Environment.OSVersion.Version.Build >= 22000;
+
+        public UISettings uiSettings = new();
+
         public AppWindow()
         {
             Style = Application.Current.Resources["DefaultAppWindowStyle"] as Style;
+            uiSettings.ColorValuesChanged += OnColorValuesChanged;
         }
 
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
+            Handle = new WindowInteropHelper(this).Handle;
             var style = PInvoke.GetWindowLong(new(Handle), WINDOW_LONG_PTR_INDEX.GWL_STYLE);
             PInvoke.SetWindowLong(new(Handle), WINDOW_LONG_PTR_INDEX.GWL_STYLE, style & ~(int)WINDOW_STYLE.WS_CLIPCHILDREN);
-            PInvoke.DwmExtendFrameIntoClientArea(new(Handle), new MARGINS());
+            PInvoke.DwmExtendFrameIntoClientArea(new(Handle), new MARGINS() { cyTopHeight = IsMicaSupported ? -1 : 0 });
             PInvoke.SetWindowPos(new(Handle), HWND.Null, 0, 0, 0, 0, SET_WINDOW_POS_FLAGS.SWP_FRAMECHANGED | SET_WINDOW_POS_FLAGS.SWP_NOMOVE | SET_WINDOW_POS_FLAGS.SWP_NOSIZE);
             HwndSource.FromHwnd(Handle).AddHook(WndProc);
             UpdateRootElement();
+            UpdateSystemBackdrop();
         }
 
         protected override void OnStateChanged(EventArgs e)
@@ -116,10 +130,58 @@ namespace Typedown.Windows
             return IntPtr.Zero;
         }
 
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+            switch (e.Property.Name)
+            {
+                case nameof(Theme):
+                    UpdateSystemBackdrop();
+                    break;
+            }
+        }
+
+        private void OnColorValuesChanged(UISettings sender, object args)
+        {
+            Dispatcher.BeginInvoke(UpdateSystemBackdrop);
+        }
+
         private void UpdateRootElement()
         {
             if (GetTemplateChild("PART_RootElement") is FrameworkElement ele)
                 ele.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
+        }
+
+        private unsafe void UpdateSystemBackdrop()
+        {
+            var compositionTarget = HwndSource.FromHwnd(Handle).CompositionTarget;
+            var theme = Theme switch
+            {
+                "Light" => global::Windows.UI.Xaml.ApplicationTheme.Light,
+                "Dark" => global::Windows.UI.Xaml.ApplicationTheme.Dark,
+                _ => global::Windows.UI.Xaml.Application.Current.RequestedTheme
+            };
+            var isDarkMode = theme == global::Windows.UI.Xaml.ApplicationTheme.Dark;
+            if (IsMicaSupported)
+            {
+                compositionTarget.BackgroundColor = Colors.Transparent;
+                if (Environment.OSVersion.Version.Build >= 22523)
+                {
+                    uint micaValue = 0x02;
+                    PInvoke.DwmSetWindowAttribute(new(Handle), (DWMWINDOWATTRIBUTE)38, &micaValue, (uint)Marshal.SizeOf(typeof(uint)));
+                }
+                else
+                {
+                    uint trueValue = 0x01;
+                    PInvoke.DwmSetWindowAttribute(new(Handle), (DWMWINDOWATTRIBUTE)1029, &trueValue, (uint)Marshal.SizeOf(typeof(uint)));
+                }
+                var darkModeValue = isDarkMode ? 1u : 0u;
+                PInvoke.DwmSetWindowAttribute(new(Handle), DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE, &darkModeValue, (uint)Marshal.SizeOf(typeof(uint)));
+            }
+            else
+            {
+                compositionTarget.BackgroundColor = isDarkMode ? Color.FromRgb(0x20, 0x20, 0x20) : Color.FromRgb(0xf3, 0xf3, 0xf3);
+            }
         }
 
         private static Point MakePoint(IntPtr p) => new(p.ToInt32() & 0xFFFF, p.ToInt32() >> 16);

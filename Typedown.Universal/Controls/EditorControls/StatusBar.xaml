@@ -10,6 +10,9 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid BorderThickness="0,1,0,0" Padding="4,2,4,3" BorderBrush="{ThemeResource CardStrokeColorDefault}">
+        <Grid.Background>
+            <SolidColorBrush Color="{ThemeResource SolidBackgroundFillColorBase}" Opacity="0.5"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
@@ -24,15 +27,27 @@
                 <FontIcon Glyph="&#xec8f;" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="{ThemeResource ComboBoxDropDownGlyphForeground}" Margin="0,0,8,0"/>
                 <ComboBox SelectedIndex="0" MinWidth="80" VerticalAlignment="Stretch">
                     <ComboBox.Resources>
-                        <Thickness x:Key="ComboBoxPadding">8,0,0,0</Thickness>
-                        <Thickness x:Key="ComboBoxBorderThemeThickness">0</Thickness>
-                        <x:Double x:Key="ControlContentThemeFontSize">12</x:Double>
-                        <x:Double x:Key="ComboBoxMinHeight">26</x:Double>
-                        <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground" Color="Transparent"/>
-                        <SolidColorBrush x:Key="ComboBoxBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>
-                        <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="{ThemeResource SubtleFillColorSecondary}"/>
-                        <SolidColorBrush x:Key="ComboBoxBorderBrushPressed" Color="{ThemeResource SubtleFillColorTertiary}"/>
-                        <SolidColorBrush x:Key="ComboBoxBorderBrushDisabled" Color="{ThemeResource SubtleFillColorDisabled}"/>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Default">
+                                    <StaticResource x:Key="ComboBoxBackground" ResourceKey="SubtleFillColorTransparentBrush"/>
+                                    <StaticResource x:Key="ComboBoxBackgroundPointerOver" ResourceKey="SubtleFillColorSecondaryBrush"/>
+                                    <StaticResource x:Key="ComboBoxBackgroundPressed" ResourceKey="SubtleFillColorTertiaryBrush"/>
+                                    <StaticResource x:Key="ComboBoxBackgroundDisabled" ResourceKey="SubtleFillColorDisabledBrush"/>
+                                </ResourceDictionary>
+                                <ResourceDictionary x:Key="Light">
+                                    <StaticResource x:Key="ComboBoxBackground" ResourceKey="SubtleFillColorTransparentBrush"/>
+                                    <StaticResource x:Key="ComboBoxBackgroundPointerOver" ResourceKey="SubtleFillColorSecondaryBrush"/>
+                                    <StaticResource x:Key="ComboBoxBackgroundPressed" ResourceKey="SubtleFillColorTertiaryBrush"/>
+                                    <StaticResource x:Key="ComboBoxBackgroundDisabled" ResourceKey="SubtleFillColorDisabledBrush"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                            <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground" Color="Transparent"/>
+                            <Thickness x:Key="ComboBoxPadding">8,0,0,0</Thickness>
+                            <Thickness x:Key="ComboBoxBorderThemeThickness">0</Thickness>
+                            <x:Double x:Key="ControlContentThemeFontSize">12</x:Double>
+                            <x:Double x:Key="ComboBoxMinHeight">26</x:Double>
+                        </ResourceDictionary>
                     </ComboBox.Resources>
                     <ComboBoxItem Content="400 字"/>
                     <ComboBoxItem Content="100 词"/>

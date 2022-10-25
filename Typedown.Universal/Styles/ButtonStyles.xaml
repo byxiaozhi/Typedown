@@ -11,20 +11,47 @@
                     <Button 
                         Style="{ThemeResource DefaultButtonStyle}"
                         Background="{TemplateBinding Background}"
+                        Foreground="{TemplateBinding Foreground}"
                         Content="{TemplateBinding Content}"
                         Command="{TemplateBinding Command}"
                         CommandParameter="{TemplateBinding CommandParameter}"
                         Padding="{TemplateBinding Padding}">
                         <Button.Resources>
-                            <Thickness x:Key="ButtonBorderThemeThickness">0</Thickness>
-                            <SolidColorBrush x:Key="ButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
-                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}" />
-                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}" />
-                            <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="{ThemeResource SubtleFillColorDisabled}" />
-                            <SolidColorBrush x:Key="ButtonForeground" Color="{ThemeResource TextFillColorPrimary}" />
-                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource TextFillColorPrimary}" />
-                            <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource TextFillColorSecondary}" />
-                            <SolidColorBrush x:Key="ButtonForegroundDisabled" Color="{ThemeResource TextFillColorDisabled}" />
+                            <ResourceDictionary>
+                                <ResourceDictionary.ThemeDictionaries>
+                                    <ResourceDictionary x:Key="Default">
+                                        <StaticResource x:Key="ButtonBackground" ResourceKey="SubtleFillColorTransparentBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="SubtleFillColorTertiaryBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="SubtleFillColorDisabledBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundDisabled" ResourceKey="SubtleFillColorDisabledBrush"/>
+                                        <StaticResource x:Key="ButtonForeground" ResourceKey="TextFillColorPrimaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundPressed" ResourceKey="TextFillColorSecondaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundDisabled" ResourceKey="TextFillColorDisabledBrush"/>
+                                    </ResourceDictionary>
+                                    <ResourceDictionary x:Key="Light">
+                                        <StaticResource x:Key="ButtonBackground" ResourceKey="SubtleFillColorTransparentBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="SubtleFillColorTertiaryBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="SubtleFillColorDisabledBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundDisabled" ResourceKey="SubtleFillColorDisabledBrush"/>
+                                        <StaticResource x:Key="ButtonForeground" ResourceKey="TextFillColorPrimaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundPressed" ResourceKey="TextFillColorSecondaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundDisabled" ResourceKey="TextFillColorDisabledBrush"/>
+                                    </ResourceDictionary>
+                                    <ResourceDictionary x:Key="HighContrast">
+                                        <StaticResource x:Key="ButtonBackground" ResourceKey="SubtleFillColorTransparentBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="SubtleFillColorTertiaryBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="SubtleFillColorDisabledBrush"/>
+                                        <StaticResource x:Key="ButtonBackgroundDisabled" ResourceKey="SubtleFillColorDisabledBrush"/>
+                                        <StaticResource x:Key="ButtonForeground" ResourceKey="TextFillColorPrimaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundPressed" ResourceKey="TextFillColorSecondaryBrush"/>
+                                        <StaticResource x:Key="ButtonForegroundDisabled" ResourceKey="TextFillColorDisabledBrush"/>
+                                    </ResourceDictionary>
+                                </ResourceDictionary.ThemeDictionaries>
+                                <Thickness x:Key="ButtonBorderThemeThickness">0</Thickness>
+                            </ResourceDictionary>
                         </Button.Resources>
                     </Button>
                 </ControlTemplate>

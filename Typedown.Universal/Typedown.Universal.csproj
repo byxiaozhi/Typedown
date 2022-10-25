@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="Controls\WebView.cs" />
     <Compile Include="Interfaces\IWebViewController.cs" />
+    <Compile Include="Interfaces\IWindowPrivate.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -108,6 +109,7 @@
     <Compile Include="Interfaces\IWindowService.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Utilities\Command.cs" />
+    <Compile Include="Utilities\Common.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
@@ -271,8 +273,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\ButtonStyles.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ToggleSwitchStyles.xaml">
       <SubType>Designer</SubType>
