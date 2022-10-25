@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Media;
 
 namespace Typedown.Universal.Controls
 {
-    public class WebView : Grid
+    public class WebView : Canvas
     {
         public IWebViewController WebViewController { get; private set; }
 
@@ -22,7 +22,15 @@ namespace Typedown.Universal.Controls
         public WebView()
         {
             Loaded += WebView_Loaded;
+            Unloaded += WebView_Unloaded;
             Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+        private void WebView_Unloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            WebViewController = null;
+            GC.Collect();
+            GC.Collect();
         }
 
         private void WebView_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -32,12 +40,9 @@ namespace Typedown.Universal.Controls
 
         private async void EnsureWebViewController()
         {
-            if (WebViewController == null)
-            {
-                WebViewController = this.GetService<IWebViewController>();
-                await WebViewController.InitializeAsync(this, ParentHandle);
-                WebViewController.Navigate("https://www.microsoft.com");
-            }
+            WebViewController = this.GetService<IWebViewController>();
+            await WebViewController.InitializeAsync(this, ParentHandle);
+            WebViewController.Navigate("https://www.baidu.com");
         }
     }
 }

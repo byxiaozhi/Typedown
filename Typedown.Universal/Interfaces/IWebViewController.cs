@@ -8,7 +8,7 @@ using Windows.UI.Xaml;
 
 namespace Typedown.Universal.Interfaces
 {
-    public interface IWebViewController
+    public interface IWebViewController : IDisposable
     {
         Task InitializeAsync(FrameworkElement container, nint parentHWnd);
 

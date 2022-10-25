@@ -18,10 +18,11 @@ using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.UI.Input.Pointer;
 using Windows.Win32.UI.WindowsAndMessaging;
+using Typedown.Controls;
 
 namespace Typedown.Utilities
 {
-    public class WebViewController : IWebViewController
+    public class WebViewController : IWebViewController, IDisposable
     {
         public FrameworkElement Container { get; private set; }
 
@@ -41,6 +42,8 @@ namespace Typedown.Utilities
 
         private ContainerVisual webViewVisual;
 
+        private bool isDisposed = false;
+
         public async Task InitializeAsync(FrameworkElement container, nint parentHWnd)
         {
             if (Container == null)
@@ -51,8 +54,11 @@ namespace Typedown.Utilities
                 await EnsureCreateController();
                 InitializeEventHandler();
                 UpdataWindowScale();
-                Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).SubscribeWeak(_ => OnContainerSizeChanged());
+                Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).SubscribeWeak(_ => UpdateBounds());
                 Observable.FromEventPattern(CoreWebView2CompositionController, nameof(CoreWebView2CompositionController.CursorChanged)).SubscribeWeak(_ => OnCursorChanged());
+                var window = System.Windows.Window.GetWindow(AppXamlHost.GetAppXamlHost(container));
+                Observable.FromEventPattern(window, nameof(System.Windows.Window.LocationChanged)).SubscribeWeak(_ => UpdateBounds());
+                Observable.FromEventPattern(window, nameof(System.Windows.Window.DpiChanged)).SubscribeWeak(_ => UpdataWindowScale());
             }
         }
 
@@ -102,11 +108,6 @@ namespace Typedown.Utilities
                 CoreWebView2Controller.DefaultBackgroundColor = System.Drawing.Color.Transparent;
             }
             return CoreWebView2Controller != null;
-        }
-
-        private void OnContainerSizeChanged()
-        {
-            UpdateBounds();
         }
 
         private void InitializeEventHandler()
@@ -489,5 +490,19 @@ namespace Typedown.Utilities
         }
 
         public void Navigate(string url) => CoreWebView2.Navigate(url);
+
+        public void Dispose()
+        {
+            if (!isDisposed)
+            {
+                isDisposed = true;
+                CoreWebView2Controller.Close();
+            }
+        }
+
+        ~WebViewController()
+        {
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ApplicationIdle, Dispose);
+        }
     }
 }
