@@ -10,10 +10,12 @@ namespace Typedown
     {
         private static readonly HOOKPROC hookProc = new(HookProc);
 
+        private static HHOOK hHook;
+
         [STAThread]
         public static void Main()
         {
-            PInvoke.SetWindowsHookEx(WINDOWS_HOOK_ID.WH_CBT, hookProc, HINSTANCE.Null, PInvoke.GetCurrentThreadId());
+            hHook = PInvoke.SetWindowsHookEx(WINDOWS_HOOK_ID.WH_CBT, hookProc, HINSTANCE.Null, PInvoke.GetCurrentThreadId());
             using (new Universal.App())
             {
                 var app = new App();
@@ -26,7 +28,7 @@ namespace Typedown
         {
             if (code == PInvoke.HCBT_CREATEWND)
                 CoreWindow.TrySetCoreWindow((nint)wParam.Value);
-            return PInvoke.CallNextHookEx(default(HHOOK), code, wParam, lParam);
+            return PInvoke.CallNextHookEx(hHook, code, wParam, lParam);
         }
     }
 }

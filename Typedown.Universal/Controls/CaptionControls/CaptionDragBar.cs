@@ -42,9 +42,9 @@ namespace Typedown.Universal.Controls
             if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
             {
                 var doubleClick = DateTime.Now - lastClickTime <= WindowService.GetDoubleClickTime();
+                lastClickTime = DateTime.Now;
                 await Dispatcher.RunIdleAsync(_ => { });
                 PostPointerMessage(doubleClick ? WM_NCLBUTTONDBLCLK : WM_NCLBUTTONDOWN);
-                lastClickTime = DateTime.Now;
             }
         }
 
@@ -72,7 +72,7 @@ namespace Typedown.Universal.Controls
 
         private void HitTest()
         {
-            HitTestResult = WindowService.SendMessage(ParentHandle, WM_NCHITTEST, (nuint)HitTestResult, WindowService.GetCursorPos().PackPoint());
+            HitTestResult = WindowService.SendMessage(ParentHandle, WM_NCHITTEST, 0, WindowService.GetCursorPos().PackPoint());
             UpdateCursor();
         }
 
