@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.UI;
@@ -11,7 +7,7 @@ using Windows.UI.Xaml.Media;
 
 namespace Typedown.Universal.Controls
 {
-    public class WebView : Canvas
+    public class WebView : UserControl
     {
         public IWebViewController WebViewController { get; private set; }
 
@@ -23,7 +19,8 @@ namespace Typedown.Universal.Controls
         {
             Loaded += WebView_Loaded;
             Unloaded += WebView_Unloaded;
-            Background = new SolidColorBrush(Colors.Transparent);
+            Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent) };
+            IsTabStop = true;
         }
 
         private void WebView_Unloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)

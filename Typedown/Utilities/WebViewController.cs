@@ -15,6 +15,8 @@ using Windows.UI.Input;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Typedown.Controls;
+using System.ComponentModel;
+using System.Xaml;
 
 namespace Typedown.Utilities
 {
@@ -51,7 +53,6 @@ namespace Typedown.Utilities
                 InitializeEventHandler();
                 UpdataWindowScale();
                 Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).SubscribeWeak(_ => UpdateBounds());
-                Observable.FromEventPattern(CoreWebView2CompositionController, nameof(CoreWebView2CompositionController.CursorChanged)).SubscribeWeak(_ => OnCursorChanged());
                 var window = System.Windows.Window.GetWindow(AppXamlHost.GetAppXamlHost(container));
                 Observable.FromEventPattern(window, nameof(System.Windows.Window.LocationChanged)).SubscribeWeak(_ => UpdateBounds());
                 Observable.FromEventPattern(window, nameof(System.Windows.Window.DpiChanged)).SubscribeWeak(_ => UpdataWindowScale());
@@ -102,6 +103,7 @@ namespace Typedown.Utilities
                 var raw = typeof(CoreWebView2CompositionController).GetField("_rawNative", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(CoreWebView2CompositionController);
                 CoreWebView2Controller = typeof(CoreWebView2Controller).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(object) }, null).Invoke(new object[] { raw }) as CoreWebView2Controller;
                 CoreWebView2Controller.DefaultBackgroundColor = System.Drawing.Color.Transparent;
+
             }
             return CoreWebView2Controller != null;
         }
@@ -113,15 +115,21 @@ namespace Typedown.Utilities
             Observable.FromEventPattern(Container, nameof(Container.PointerReleased)).SubscribeWeak(x => OnPointerReleased(x.EventArgs as PointerRoutedEventArgs));
             Observable.FromEventPattern(Container, nameof(Container.PointerWheelChanged)).SubscribeWeak(x => OnPointerWheelChanged(x.EventArgs as PointerRoutedEventArgs));
             Observable.FromEventPattern(Container, nameof(Container.PointerExited)).SubscribeWeak(x => OnPointerExited(x.EventArgs as PointerRoutedEventArgs));
+            Observable.FromEventPattern(Container, nameof(Container.GotFocus)).SubscribeWeak(x => OnContainerGotFocus(x.EventArgs as RoutedEventArgs));
+            Observable.FromEventPattern(Container, nameof(Container.GettingFocus)).SubscribeWeak(x => OnContainerGettingFocus(x.EventArgs as GettingFocusEventArgs));
+            CoreWebView2Controller.LostFocus += OnCoreWebView2LostFocus;
+            CoreWebView2Controller.MoveFocusRequested += OnCoreWebView2MoveFocusRequested;
+            CoreWebView2CompositionController.CursorChanged += OnCoreWebView2CursorChanged;
         }
 
-        private void OnPointerMoved(PointerRoutedEventArgs args)
+        private struct XamlFocusChangeInfo
         {
-            var deviceType = args.Pointer.PointerDeviceType;
-            var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WindowMessage.WM_MOUSEMOVE : PInvoke.WindowMessage.WM_POINTERUPDATE;
-            OnXamlPointerMessage(message, args);
-        }
+            public CoreWebView2MoveFocusReason storedMoveFocusReason;
+            public bool isPending;
+        };
 
+        private XamlFocusChangeInfo xamlFocusChangeInfo;
+        private bool webHasFocus;
         private bool hasMouseCapture;
         private bool hasPenCapture;
         private Dictionary<uint, bool> hasTouchCapture = new();
@@ -131,9 +139,17 @@ namespace Typedown.Utilities
         private bool isXButton1Pressed;
         private bool isXButton2Pressed;
 
+        private void OnPointerMoved(PointerRoutedEventArgs args)
+        {
+            var deviceType = args.Pointer.PointerDeviceType;
+            var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WindowMessage.WM_MOUSEMOVE : PInvoke.WindowMessage.WM_POINTERUPDATE;
+            OnXamlPointerMessage(message, args);
+        }
+
         protected virtual void OnPointerPressed(PointerRoutedEventArgs args)
         {
             UpdateBounds();
+            MoveFocusIntoCoreWebView(CoreWebView2MoveFocusReason.Programmatic);
             var deviceType = args.Pointer.PointerDeviceType;
             var pointerPoint = args.GetCurrentPoint(Container);
             PInvoke.WindowMessage message = 0;
@@ -258,6 +274,35 @@ namespace Typedown.Utilities
             }
         }
 
+        private void OnContainerGettingFocus(GettingFocusEventArgs args)
+        {
+            if (CoreWebView2 != null)
+            {
+                xamlFocusChangeInfo.storedMoveFocusReason = CoreWebView2MoveFocusReason.Programmatic;
+                xamlFocusChangeInfo.isPending = true;
+                if (args.InputDevice == FocusInputDeviceKind.Keyboard)
+                {
+                    if (args.Direction == FocusNavigationDirection.Next)
+                    {
+                        xamlFocusChangeInfo.storedMoveFocusReason = CoreWebView2MoveFocusReason.Next;
+                    }
+                    else if (args.Direction == FocusNavigationDirection.Previous)
+                    {
+                        xamlFocusChangeInfo.storedMoveFocusReason = CoreWebView2MoveFocusReason.Previous;
+                    }
+                }
+            }
+        }
+
+        private void OnContainerGotFocus(RoutedEventArgs e)
+        {
+            if (CoreWebView2 != null && xamlFocusChangeInfo.isPending)
+            {
+                MoveFocusIntoCoreWebView(xamlFocusChangeInfo.storedMoveFocusReason);
+                xamlFocusChangeInfo.isPending = false;
+            }
+        }
+
         public void UpdateBounds()
         {
             if (CoreWebView2Controller != null)
@@ -329,7 +374,7 @@ namespace Typedown.Utilities
             }
         }
 
-        private static readonly Dictionary<IntPtr, global::Windows.UI.Core.CoreCursorType> coreCursorTypeDic = new()
+        private static readonly IReadOnlyDictionary<IntPtr, global::Windows.UI.Core.CoreCursorType> coreCursorTypeDic = new Dictionary<IntPtr, global::Windows.UI.Core.CoreCursorType>()
         {
             {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_ARROW),  global::Windows.UI.Core.CoreCursorType.Arrow},
             {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_CROSS),  global::Windows.UI.Core.CoreCursorType.Cross},
@@ -345,14 +390,6 @@ namespace Typedown.Utilities
             {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_UPARROW),  global::Windows.UI.Core.CoreCursorType.UpArrow},
             {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_WAIT),  global::Windows.UI.Core.CoreCursorType.Wait}
         };
-
-        private void OnCursorChanged()
-        {
-            if (coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor))
-                global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(cursor, 0);
-            else
-                global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
-        }
 
         private CoreWebView2MouseEventVirtualKeys GetKeyModifiers(PointerRoutedEventArgs args)
         {
@@ -484,6 +521,40 @@ namespace Typedown.Utilities
         }
 
         public void Navigate(string url) => CoreWebView2.Navigate(url);
+
+        private void OnCoreWebView2LostFocus(object sender, object e)
+        {
+            webHasFocus = false;
+        }
+
+        public void MoveFocusIntoCoreWebView(CoreWebView2MoveFocusReason reason)
+        {
+            CoreWebView2Controller.MoveFocus(reason);
+            webHasFocus = true;
+        }
+
+        private void OnCoreWebView2MoveFocusRequested(object sender, CoreWebView2MoveFocusRequestedEventArgs e)
+        {
+            if (webHasFocus && e.Reason == CoreWebView2MoveFocusReason.Next || e.Reason == CoreWebView2MoveFocusReason.Previous)
+            {
+                var direction = e.Reason == CoreWebView2MoveFocusReason.Next ? FocusNavigationDirection.Next : FocusNavigationDirection.Previous;
+                var findNextElementOptions = new FindNextElementOptions() { SearchRoot = Container.XamlRoot.Content };
+                FocusManager.TryMoveFocus(direction, findNextElementOptions);
+            }
+        }
+
+        private void OnCoreWebView2CursorChanged(object sender, object e)
+        {
+            OnCursorChanged();
+        }
+
+        private void OnCursorChanged()
+        {
+            if (coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor))
+                global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(cursor, 0);
+            else
+                global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
+        }
 
         public void Dispose()
         {
