@@ -159,6 +159,8 @@ namespace Typedown.Windows
 
         private void UpdateSystemBackdrop()
         {
+            if (Handle == IntPtr.Zero)
+                return;
             var compositionTarget = HwndSource.FromHwnd(Handle).CompositionTarget;
             var theme = Theme switch
             {

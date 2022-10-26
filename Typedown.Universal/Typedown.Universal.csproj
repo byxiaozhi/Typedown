@@ -63,6 +63,9 @@
     <Compile Include="Controls\EditorControls\MenuBar.xaml.cs">
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\ThemeSetting.xaml.cs">
+      <DependentUpon>ThemeSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SidePaneControls\LeftPane.xaml.cs">
       <DependentUpon>LeftPane.xaml</DependentUpon>
     </Compile>
@@ -83,9 +86,6 @@
     </Compile>
     <Compile Include="Controls\SettingControls\ResponsiveContainer.xaml.cs">
       <DependentUpon>ResponsiveContainer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SettingControls\SettingItems.xaml.cs">
-      <DependentUpon>SettingItems.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SidePaneControls\Pages\FolderPage.xaml.cs">
       <DependentUpon>FolderPage.xaml</DependentUpon>
@@ -111,8 +111,15 @@
     <Compile Include="Utilities\Command.cs" />
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
+    <Compile Include="Utilities\ObservableObject.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
+    <Compile Include="ViewModels\EditorViewModel.cs" />
+    <Compile Include="ViewModels\FileViewModel.cs" />
+    <Compile Include="ViewModels\FloatViewModel.cs" />
+    <Compile Include="ViewModels\FormatViewModel.cs" />
+    <Compile Include="ViewModels\ParagraphViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -219,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SettingControls\SettingItems\ThemeSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SidePaneControls\LeftPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,10 +255,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SettingControls\ResponsiveContainer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\SettingControls\SettingItems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

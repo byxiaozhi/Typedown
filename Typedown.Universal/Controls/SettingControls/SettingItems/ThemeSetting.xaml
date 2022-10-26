@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.SettingControls.SettingItems.ThemeSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.SettingControls.SettingItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Universal.Controls" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <controls:ExpanderSettingItem Title="主题" Description="选择要显示的应用主题" State="{x:Bind AppViewModel.SettingsViewModel.AppTheme, Mode=OneWay}">
+        <controls:ExpanderSettingItem.Icon>
+            <FontIcon Glyph="&#xe790;"/>
+        </controls:ExpanderSettingItem.Icon>
+        <StackPanel Padding="48,16,16,16">
+            <muxc:RadioButtons ItemsSource="{x:Bind Options}" SelectedItem="{x:Bind AppViewModel.SettingsViewModel.AppTheme, Mode=TwoWay}">
+                <muxc:RadioButtons.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Text="{x:Bind}"/>
+                    </DataTemplate>
+                </muxc:RadioButtons.ItemTemplate>
+            </muxc:RadioButtons>
+        </StackPanel>
+    </controls:ExpanderSettingItem>
+</UserControl>

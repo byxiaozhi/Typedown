@@ -7,6 +7,7 @@ using System.Reactive.Linq;
 using Typedown.Universal.Pages;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
@@ -47,13 +48,20 @@ namespace Typedown.Universal.Controls
             _ => typeof(MainPage)
         };
 
-        public SlideNavigationTransitionInfo GetTransition(NotifyCollectionChangedAction action) => new SlideNavigationTransitionInfo()
+        public SlideNavigationTransitionInfo GetTransition(NotifyCollectionChangedAction action) => new()
         {
             Effect = action switch
             {
                 NotifyCollectionChangedAction.Add => SlideNavigationTransitionEffect.FromRight,
                 _ => SlideNavigationTransitionEffect.FromLeft
             }
+        };
+
+        public static ElementTheme GetTheme(string theme) => theme switch
+        {
+            "Light" => ElementTheme.Light,
+            "Dark" => ElementTheme.Dark,
+            _ => App.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark
         };
     }
 }

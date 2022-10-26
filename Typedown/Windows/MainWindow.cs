@@ -2,6 +2,7 @@
 using System;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Windows.Data;
 using Typedown.Controls;
 using Typedown.Services;
 using Typedown.Universal.Interfaces;
@@ -35,6 +36,7 @@ namespace Typedown.Windows
             Height = 900;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Content = new AppXamlHost() { InitialTypeName = "Typedown.Universal.Controls.RootControl" };
+            SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
         }
 
         protected override void OnStateChanged(EventArgs e)

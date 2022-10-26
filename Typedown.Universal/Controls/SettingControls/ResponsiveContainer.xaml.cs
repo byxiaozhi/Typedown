@@ -27,12 +27,12 @@ namespace Typedown.Universal.Controls
         {
             var largeWidth = 1008;
             var mediumWidth = 641;
-
-            Grid_Wrapper.Margin = new(ActualWidth >= mediumWidth ? 48 : 16);
+            var marginX = ActualWidth >= mediumWidth ? 48 : 16;
+            var marginY = ActualWidth >= mediumWidth ? 32 : 16;
+            Grid_Wrapper.Margin = new(marginX, marginY, marginX, marginY);
             Grid_Wrapper.ColumnSpacing = ActualWidth >= largeWidth ? 48 : 0;
             Grid_Wrapper.RowSpacing = ActualWidth >= mediumWidth ? 20 : 16;
             TextBlock_Title.FontSize = (double)(ActualWidth >= mediumWidth ? App.Current.Resources["TitleLargeTextBlockFontSize"] : App.Current.Resources["TitleTextBlockFontSize"]);
-
             if (ActualWidth >= largeWidth)
             {
                 Grid.SetRow(ContentPresenter_Primary, 1);
