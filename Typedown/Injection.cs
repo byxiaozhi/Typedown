@@ -9,7 +9,7 @@ namespace Typedown
 {
     public static class Injection
     {
-        public static ServiceProvider ServiceProvider { get; private set; }
+        public static ServiceProvider ServiceProvider { get; }
 
         static Injection()
         {

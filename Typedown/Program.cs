@@ -16,11 +16,7 @@ namespace Typedown
         {
             hHook = PInvoke.SetWindowsHookEx(PInvoke.HookType.WH_CBT, hookProc, IntPtr.Zero, PInvoke.GetCurrentThreadId());
             using (new Universal.App())
-            {
-                var app = new Application();
-                app.Dispatcher.BeginInvoke(() => { new MainWindow().Show(); });
-                app.Run();
-            }
+                new App().Run();
         }
 
         private static IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam)

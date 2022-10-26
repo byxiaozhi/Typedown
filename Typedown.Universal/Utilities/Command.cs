@@ -1,5 +1,4 @@
-﻿using PropertyChanged;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -33,7 +32,6 @@ namespace Typedown.Universal.Utilities
 
         public bool CanExecute(object parameter = null) => canExecuteSubject.Value(parameter);
 
-        [DoNotNotify]
         public bool IsExecutable { get => CanExecute(); set => SetCanExecute.OnNext(value); }
 
         public IObservable<T> OnExecute => executeSubject.AsObservable();
