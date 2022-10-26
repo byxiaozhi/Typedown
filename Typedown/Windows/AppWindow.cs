@@ -192,17 +192,12 @@ namespace Typedown.Windows
             var template = new ControlTemplate(typeof(AppWindow));
             var container = new FrameworkElementFactory(typeof(Grid)) { Name = "PART_RootContainer" };
             var content = new FrameworkElementFactory(typeof(ContentPresenter)) { Name = "PART_Content" };
+            var dragBar = new FrameworkElementFactory(typeof(DragBar)) { Name = "PART_DragBar" };
             content.SetValue(ContentPresenter.ContentProperty, new TemplateBindingExtension(ContentProperty));
+            dragBar.SetValue(HeightProperty, new TemplateBindingExtension(CaptionHeightProperty));
+            dragBar.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
             container.AppendChild(content);
-            if (Universal.Config.IsMicaEnable)
-            {
-                var dragBar = new FrameworkElementFactory(typeof(DragBar)) { Name = "PART_DragBar" };
-                dragBar.SetValue(DragBar.HeightProperty, 32d);
-                dragBar.SetValue(DragBar.WidthProperty, 46 * 3d);
-                dragBar.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
-                dragBar.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Right);
-                container.AppendChild(dragBar);
-            }
+            container.AppendChild(dragBar);
             template.VisualTree = container;
             return template;
         }
