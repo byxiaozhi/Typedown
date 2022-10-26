@@ -22,6 +22,8 @@ namespace Typedown.Windows
 
         public double WindowScale => PInvoke.GetDpiForWindow(new(Handle)) / 96.0;
 
+        protected DragBar DragBar => GetTemplateChild("PART_DragBar") as DragBar;
+
         private int RawBorderWidth => PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXFRAME) + PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXPADDEDBORDER);
 
         private double BorderWidth => RawBorderWidth / WindowScale;

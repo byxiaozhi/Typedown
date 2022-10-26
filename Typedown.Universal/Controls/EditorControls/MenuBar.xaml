@@ -35,7 +35,7 @@
                 <MenuFlyoutItem Text="About"/>
             </muxc:MenuBarItem>
         </muxc:MenuBar>
-        <Button Grid.Column="1" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind RootControl.NavigateCommand}" CommandParameter="Settings">
+        <Button Grid.Column="1" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind AppViewModel.NavigateCommand}" CommandParameter="Settings">
             <Viewbox Width="16" Height="16">
                 <muxc:AnimatedIcon x:Name="Icon_Setting">
                     <muxc:AnimatedIcon.Source>

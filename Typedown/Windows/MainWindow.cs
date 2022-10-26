@@ -1,8 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using Typedown.Controls;
 using Typedown.Services;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 
 namespace Typedown.Windows
@@ -15,10 +18,14 @@ namespace Typedown.Windows
 
         public AppViewModel AppViewModel { get; }
 
+        private readonly CompositeDisposable disposables = new();
+
         public MainWindow()
         {
             AppViewModel = ServiceProvider.GetService<AppViewModel>();
             DataContext = AppViewModel;
+            Loaded += OnLoaded;
+            Unloaded += OnUnloaded;
             InitializeComponent();
         }
 
@@ -34,6 +41,27 @@ namespace Typedown.Windows
         {
             base.OnStateChanged(e);
             (ServiceProvider.GetService<IWindowService>() as WindowService).RaiseWindowStateChanged(Handle);
+        }
+
+        private void OnLoaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            CanGoBackChanged();
+            disposables.Add(Observable.FromEventPattern(AppViewModel.GoBackCommand, nameof(AppViewModel.GoBackCommand.CanExecuteChanged)).Subscribe(_ => CanGoBackChanged()));
+        }
+
+        private void OnUnloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            disposables.Clear();
+        }
+
+        private void CanGoBackChanged()
+        {
+            if (DragBar != null)
+            {
+                var leftSpace = AppViewModel.GoBackCommand.IsExecutable ? 32 : 0;
+                var rightSpace = Universal.Config.IsMicaEnable ? 0 : 46 * 3;
+                DragBar.Margin = new(leftSpace, 0, rightSpace, 0);
+            }
         }
     }
 }

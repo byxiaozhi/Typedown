@@ -2,10 +2,11 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Reactive;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using Typedown.Universal.Pages;
 using Typedown.Universal.Utilities;
+using Typedown.Universal.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
@@ -13,21 +14,31 @@ namespace Typedown.Universal.Controls
 {
     public sealed partial class RootControl : UserControl
     {
-        public Command<string> NavigateCommand { get; } = new();
-
-        public Command<Unit> BackCommand { get; } = new(false);
+        public AppViewModel AppViewModel => DataContext as AppViewModel;
 
         private readonly ObservableCollection<Type> history = new();
+
+        private readonly CompositeDisposable disposables = new();
 
         public RootControl()
         {
             InitializeComponent();
-            NavigateCommand.OnExecute.Select(GetPageType).Subscribe(history.Add);
-            BackCommand.OnExecute.Select(_ => history.Count - 1).Subscribe(history.RemoveAt);
+        }
+
+        private void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            disposables.Add(AppViewModel.NavigateCommand.OnExecute.Select(GetPageType).Subscribe(history.Add));
+            disposables.Add(AppViewModel.GoBackCommand.OnExecute.Select(_ => history.Count - 1).Subscribe(history.RemoveAt));
             var historyObservable = history.GetCollectionObservable();
-            historyObservable.Subscribe(_ => BackCommand.IsExecutable = history.Count > 1);
-            historyObservable.Select(x => x.EventArgs.Action).Select(GetTransition).Subscribe(t => Frame.Navigate(history.Last(), null, t));
+            disposables.Add(historyObservable.Subscribe(_ => AppViewModel.GoBackCommand.IsExecutable = history.Count > 1));
+            disposables.Add(historyObservable.Select(x => x.EventArgs.Action).Select(GetTransition).Subscribe(t => Frame.Navigate(history.Last(), null, t)));
             history.Add(typeof(MainPage));
+        }
+
+        private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            disposables.Clear();
+            history.Clear();
         }
 
         public Type GetPageType(string pageName) => pageName switch

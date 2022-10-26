@@ -19,7 +19,6 @@
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
             <TextBlock Text="Typedown" Style="{ThemeResource CaptionTextBlockStyle}"/>
         </StackPanel>
-        <local:CaptionDragBar Grid.ColumnSpan="2"/>
         <Button 
             VerticalAlignment="Center" 
             Grid.Column="0" 
@@ -27,8 +26,8 @@
             Padding="6" 
             x:Name="BackButton"
             Style="{ThemeResource EllipsisIconButtonStyle}" 
-            Command="{x:Bind BackCommand, Mode=OneWay}"
-            x:Load="{x:Bind BackCommand.IsExecutable, Mode=OneWay}">
+            Command="{x:Bind AppViewModel.GoBackCommand}"
+            x:Load="{x:Bind AppViewModel.GoBackCommand.IsExecutable, Mode=OneWay}">
             <Viewbox Width="16" Height="16">
                 <muxc:AnimatedIcon x:Name="Icon_Setting">
                     <muxc:AnimatedIcon.Source>

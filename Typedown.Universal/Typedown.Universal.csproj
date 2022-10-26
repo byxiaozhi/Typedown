@@ -54,7 +54,6 @@
     <Compile Include="Controls\CaptionControls\CaptionButtons.xaml.cs">
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CaptionControls\CaptionDragBar.cs" />
     <Compile Include="Controls\EditorControls\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
     </Compile>
