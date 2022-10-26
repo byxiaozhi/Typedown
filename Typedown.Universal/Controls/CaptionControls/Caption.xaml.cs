@@ -16,7 +16,7 @@ namespace Typedown.Universal.Controls
         public Caption()
         {
             InitializeComponent();
-            if (Environment.OSVersion.Version.Build >= 22000)
+            if (Config.IsMicaEnable)
                 CaptionWrapper.Children.Remove(CaptionWrapper.Children.OfType<CaptionButtons>().First());
         }
     }

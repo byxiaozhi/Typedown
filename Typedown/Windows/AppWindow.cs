@@ -6,14 +6,17 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using Windows.UI.ViewManagement;
 using Typedown.Utilities;
+using Typedown.Controls;
 
 namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
         public static DependencyProperty ThemeProperty = DependencyProperty.Register("Theme", typeof(string), typeof(AppWindow));
-
         public string Theme { get => (string)GetValue(ThemeProperty); set => SetValue(ThemeProperty, value); }
+
+        public static DependencyProperty CaptionHeightProperty = DependencyProperty.Register("CaptionHeight", typeof(double), typeof(AppWindow), new(32d));
+        public double CaptionHeight { get => (double)GetValue(CaptionHeightProperty); set => SetValue(CaptionHeightProperty, value); }
 
         public nint Handle { get; private set; }
 
@@ -22,10 +25,6 @@ namespace Typedown.Windows
         private int RawBorderWidth => PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXFRAME) + PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXPADDEDBORDER);
 
         private double BorderWidth => RawBorderWidth / WindowScale;
-
-        public double CaptionHeight { get; set; } = 32;
-
-        public static bool IsMicaSupported { get; } = Environment.OSVersion.Version.Build >= 22000;
 
         public UISettings uiSettings = new();
 
@@ -41,7 +40,7 @@ namespace Typedown.Windows
             Handle = new WindowInteropHelper(this).Handle;
             var style = PInvoke.GetWindowLong(Handle, PInvoke.WindowLongFlags.GWL_STYLE);
             PInvoke.SetWindowLong(Handle, PInvoke.WindowLongFlags.GWL_STYLE, style & ~(int)PInvoke.WindowStyles.WS_CLIPCHILDREN);
-            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = IsMicaSupported ? -1 : 0 });
+            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = Universal.Config.IsMicaEnable ? -1 : 0 });
             PInvoke.SetWindowPos(Handle, IntPtr.Zero, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
             HwndSource.FromHwnd(Handle).AddHook(WndProc);
             UpdateRootContainer();
@@ -68,7 +67,7 @@ namespace Typedown.Windows
             PInvoke.PostMessage(Handle, (uint)PInvoke.WindowMessage.WM_SYSCOMMAND, new(retvalue), IntPtr.Zero);
         }
 
-        private PInvoke.HitTestFlags HitTest(Point pointerPos)
+        protected virtual PInvoke.HitTestFlags HitTest(Point pointerPos)
         {
             if (WindowState == WindowState.Normal && (ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip))
             {
@@ -96,7 +95,7 @@ namespace Typedown.Windows
             return PInvoke.HitTestFlags.CLIENT;
         }
 
-        private IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        protected virtual IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch ((PInvoke.WindowMessage)msg)
             {
@@ -121,6 +120,13 @@ namespace Typedown.Windows
                     {
                         handled = true;
                         OpenSystemMenu(Common.MakePoint(lParam));
+                    }
+                    break;
+                case PInvoke.WindowMessage.WM_NCMOUSELEAVE:
+                    if (PInvoke.DwmDefWindowProc(hWnd, msg, wParam, lParam, out var dwmRet))
+                    {
+                        handled = true;
+                        return dwmRet;
                     }
                     break;
             }
@@ -159,7 +165,7 @@ namespace Typedown.Windows
                 _ => global::Windows.UI.Xaml.Application.Current.RequestedTheme
             };
             var isDarkMode = theme == global::Windows.UI.Xaml.ApplicationTheme.Dark;
-            if (IsMicaSupported)
+            if (Universal.Config.IsMicaEnable)
             {
                 compositionTarget.BackgroundColor = Colors.Transparent;
                 if (Environment.OSVersion.Version.Build >= 22523)
@@ -184,9 +190,20 @@ namespace Typedown.Windows
         private static ControlTemplate CreateTemplate()
         {
             var template = new ControlTemplate(typeof(AppWindow));
-            var content = new FrameworkElementFactory(typeof(ContentPresenter)) { Name = "PART_RootContainer" };
+            var container = new FrameworkElementFactory(typeof(Grid)) { Name = "PART_RootContainer" };
+            var content = new FrameworkElementFactory(typeof(ContentPresenter)) { Name = "PART_Content" };
             content.SetValue(ContentPresenter.ContentProperty, new TemplateBindingExtension(ContentProperty));
-            template.VisualTree = content;
+            container.AppendChild(content);
+            if (Universal.Config.IsMicaEnable)
+            {
+                var dragBar = new FrameworkElementFactory(typeof(DragBar)) { Name = "PART_DragBar" };
+                dragBar.SetValue(DragBar.HeightProperty, 32d);
+                dragBar.SetValue(DragBar.WidthProperty, 46 * 3d);
+                dragBar.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
+                dragBar.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Right);
+                container.AppendChild(dragBar);
+            }
+            template.VisualTree = container;
             return template;
         }
     }
