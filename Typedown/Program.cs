@@ -1,33 +1,36 @@
 ﻿using System;
-using Windows.Win32;
-using Windows.Win32.UI.WindowsAndMessaging;
-using Windows.Win32.Foundation;
 using Typedown.Utilities;
+using System.Windows;
+using Typedown.Windows;
 
 namespace Typedown
 {
     public class Program
     {
-        private static readonly HOOKPROC hookProc = new(HookProc);
+        private static readonly PInvoke.HookProc hookProc = new(HookProc);
 
-        private static HHOOK hHook;
+        private static IntPtr hHook;
 
         [STAThread]
         public static void Main()
         {
-            hHook = PInvoke.SetWindowsHookEx(WINDOWS_HOOK_ID.WH_CBT, hookProc, HINSTANCE.Null, PInvoke.GetCurrentThreadId());
+            hHook = PInvoke.SetWindowsHookEx(PInvoke.HookType.WH_CBT, hookProc, IntPtr.Zero, PInvoke.GetCurrentThreadId());
             using (new Universal.App())
             {
-                var app = new App();
-                app.InitializeComponent();
+                var app = new Application();
+                app.Dispatcher.BeginInvoke(() => { new MainWindow().Show(); });
                 app.Run();
             }
         }
 
-        private static unsafe LRESULT HookProc(int code, WPARAM wParam, LPARAM lParam)
+        private static IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam)
         {
-            if (code == PInvoke.HCBT_CREATEWND)
-                CoreWindow.TrySetCoreWindow((nint)wParam.Value);
+            if (code == 3) // HCBT_CREATEWND 
+            {
+                var className = PInvoke.GetClassName(wParam);
+                if (className == "Windows.UI.Core.CoreWindow")
+                    CoreWindow.SetCoreWindow(wParam);
+            }
             return PInvoke.CallNextHookEx(hHook, code, wParam, lParam);
         }
     }

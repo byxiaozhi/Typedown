@@ -7,7 +7,7 @@ namespace Typedown.Controls
 {
     public class AppXamlHost : WindowsXamlHost
     {
-        private static readonly ConditionalWeakTable<global::Windows.UI.Xaml.UIElement, AppXamlHost> appXamlHostTable = new();
+        private static readonly ConditionalWeakTable<global::Windows.UI.Xaml.UIElement, AppXamlHost> instanceTable = new();
 
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
         {
@@ -20,12 +20,12 @@ namespace Typedown.Controls
         {
             base.OnChildChanged();
             if (GetUwpInternalObject() is global::Windows.UI.Xaml.UIElement element)
-                appXamlHostTable.Add(element, this);
+                instanceTable.Add(element, this);
         }
 
         public static AppXamlHost GetAppXamlHost(global::Windows.UI.Xaml.UIElement element)
         {
-            return appXamlHostTable.TryGetValue(element.XamlRoot.Content, out var val) ? val : null;
+            return instanceTable.TryGetValue(element.XamlRoot.Content, out var val) ? val : null;
         }
     }
 }

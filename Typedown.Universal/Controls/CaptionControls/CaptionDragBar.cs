@@ -67,7 +67,7 @@ namespace Typedown.Universal.Controls
 
         private bool PostPointerMessage(uint msg)
         {
-            return WindowService.PostMessage(ParentHandle, msg, (nuint)HitTestResult, WindowService.GetCursorPos().PackPoint());
+            return WindowService.PostMessage(ParentHandle, msg, HitTestResult, WindowService.GetCursorPos().PackPoint());
         }
 
         private void HitTest()

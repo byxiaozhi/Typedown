@@ -11,9 +11,9 @@ namespace Typedown.Universal.Interfaces
 
         nint GetParent(nint hWnd);
 
-        bool PostMessage(nint hWnd, uint msg, nuint wParam, nint lParam);
+        bool PostMessage(nint hWnd, uint msg, nint wParam, nint lParam);
 
-        nint SendMessage(nint hWnd, uint msg, nuint wParam, nint lParam);
+        nint SendMessage(nint hWnd, uint msg, nint wParam, nint lParam);
 
         System.Drawing.Point GetCursorPos();
 

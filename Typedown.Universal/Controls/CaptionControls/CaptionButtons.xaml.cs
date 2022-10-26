@@ -30,7 +30,7 @@ namespace Typedown.Universal.Controls
 
         private void Button_Close_Click(object sender, RoutedEventArgs e) => SendCommand(SC_CLOSE);
 
-        private void SendCommand(uint command) => WindowService.PostMessage(ParentHandle, WM_SYSCOMMAND, command, IntPtr.Zero);
+        private void SendCommand(uint command) => WindowService.PostMessage(ParentHandle, WM_SYSCOMMAND, (nint)command, IntPtr.Zero);
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {

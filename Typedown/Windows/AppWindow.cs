@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using Windows.UI.ViewManagement;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.Graphics.Dwm;
-using Windows.Win32.UI.Controls;
-using Windows.Win32.UI.WindowsAndMessaging;
+using Typedown.Utilities;
 
 namespace Typedown.Windows
 {
@@ -22,9 +19,9 @@ namespace Typedown.Windows
 
         public double WindowScale => PInvoke.GetDpiForWindow(new(Handle)) / 96.0;
 
-        public int RawBorderWidth => PInvoke.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CXFRAME) + PInvoke.GetSystemMetrics(SYSTEM_METRICS_INDEX.SM_CXPADDEDBORDER);
+        private int RawBorderWidth => PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXFRAME) + PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXPADDEDBORDER);
 
-        public double BorderWidth => RawBorderWidth / WindowScale;
+        private double BorderWidth => RawBorderWidth / WindowScale;
 
         public double CaptionHeight { get; set; } = 32;
 
@@ -34,7 +31,7 @@ namespace Typedown.Windows
 
         public AppWindow()
         {
-            Style = Application.Current.Resources["DefaultAppWindowStyle"] as Style;
+            Template = CreateTemplate();
             uiSettings.ColorValuesChanged += OnColorValuesChanged;
         }
 
@@ -42,36 +39,36 @@ namespace Typedown.Windows
         {
             base.OnSourceInitialized(e);
             Handle = new WindowInteropHelper(this).Handle;
-            var style = PInvoke.GetWindowLong(new(Handle), WINDOW_LONG_PTR_INDEX.GWL_STYLE);
-            PInvoke.SetWindowLong(new(Handle), WINDOW_LONG_PTR_INDEX.GWL_STYLE, style & ~(int)WINDOW_STYLE.WS_CLIPCHILDREN);
-            PInvoke.DwmExtendFrameIntoClientArea(new(Handle), new MARGINS() { cyTopHeight = IsMicaSupported ? -1 : 0 });
-            PInvoke.SetWindowPos(new(Handle), HWND.Null, 0, 0, 0, 0, SET_WINDOW_POS_FLAGS.SWP_FRAMECHANGED | SET_WINDOW_POS_FLAGS.SWP_NOMOVE | SET_WINDOW_POS_FLAGS.SWP_NOSIZE);
+            var style = PInvoke.GetWindowLong(Handle, PInvoke.WindowLongFlags.GWL_STYLE);
+            PInvoke.SetWindowLong(Handle, PInvoke.WindowLongFlags.GWL_STYLE, style & ~(int)PInvoke.WindowStyles.WS_CLIPCHILDREN);
+            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = IsMicaSupported ? -1 : 0 });
+            PInvoke.SetWindowPos(Handle, IntPtr.Zero, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
             HwndSource.FromHwnd(Handle).AddHook(WndProc);
-            UpdateRootElement();
+            UpdateRootContainer();
             UpdateSystemBackdrop();
         }
 
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
-            UpdateRootElement();
+            UpdateRootContainer();
         }
 
-        public unsafe void OpenSystemMenu(Point screenPos)
+        public void OpenSystemMenu(Point screenPos)
         {
-            var hMenu = PInvoke.GetSystemMenu(new(Handle), false);
-            var toEnable = (bool b) => b ? MENU_ITEM_FLAGS.MF_ENABLED : MENU_ITEM_FLAGS.MF_DISABLED;
+            var hMenu = PInvoke.GetSystemMenu(Handle, false);
+            var toEnable = (bool b) => b ? 0u : 2u; // MF_ENABLED:0, MF_DISABLED:2
             var canResize = ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip;
-            PInvoke.EnableMenuItem(hMenu, PInvoke.SC_MAXIMIZE, toEnable(WindowState == WindowState.Normal && canResize));
-            PInvoke.EnableMenuItem(hMenu, PInvoke.SC_RESTORE, toEnable(WindowState == WindowState.Maximized && canResize));
-            PInvoke.EnableMenuItem(hMenu, PInvoke.SC_MOVE, toEnable(WindowState == WindowState.Normal));
-            PInvoke.EnableMenuItem(hMenu, PInvoke.SC_SIZE, toEnable(WindowState == WindowState.Normal && canResize));
-            PInvoke.EnableMenuItem(hMenu, PInvoke.SC_MINIMIZE, toEnable(ResizeMode != ResizeMode.NoResize));
-            var retvalue = PInvoke.TrackPopupMenu(hMenu, TRACK_POPUP_MENU_FLAGS.TPM_RETURNCMD, (int)screenPos.X, (int)screenPos.Y, 0, new(Handle), (RECT*)IntPtr.Zero);
-            PInvoke.PostMessage(new HWND(Handle), PInvoke.WM_SYSCOMMAND, new WPARAM((nuint)retvalue.Value), IntPtr.Zero);
+            PInvoke.EnableMenuItem(hMenu, 0xF030, toEnable(WindowState == WindowState.Normal && canResize)); // SC_MAXIMIZE
+            PInvoke.EnableMenuItem(hMenu, 0xF120, toEnable(WindowState == WindowState.Maximized && canResize)); // SC_RESTORE
+            PInvoke.EnableMenuItem(hMenu, 0xF010, toEnable(WindowState == WindowState.Normal)); // SC_MOVE
+            PInvoke.EnableMenuItem(hMenu, 0xF000, toEnable(WindowState == WindowState.Normal && canResize));// SC_SIZE
+            PInvoke.EnableMenuItem(hMenu, 0xF020, toEnable(ResizeMode != ResizeMode.NoResize)); // SC_MINIMIZE
+            var retvalue = PInvoke.TrackPopupMenu(hMenu, 0x0100, (int)screenPos.X, (int)screenPos.Y, 0, Handle, IntPtr.Zero);
+            PInvoke.PostMessage(Handle, (uint)PInvoke.WindowMessage.WM_SYSCOMMAND, new(retvalue), IntPtr.Zero);
         }
 
-        private uint HitTest(Point pointerPos)
+        private PInvoke.HitTestFlags HitTest(Point pointerPos)
         {
             if (WindowState == WindowState.Normal && (ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip))
             {
@@ -81,49 +78,49 @@ namespace Typedown.Windows
                 var isRight = pointerPos.X > ActualWidth - 2 * BorderWidth;
                 if (isTop)
                 {
-                    if (isLeft) return PInvoke.HTTOPLEFT;
-                    else if (isRight) return PInvoke.HTTOPRIGHT;
-                    else return PInvoke.HTTOP;
+                    if (isLeft) return PInvoke.HitTestFlags.TOPLEFT;
+                    else if (isRight) return PInvoke.HitTestFlags.TOPRIGHT;
+                    else return PInvoke.HitTestFlags.TOP;
                 }
                 else if (isBottom)
                 {
-                    if (isLeft) return PInvoke.HTBOTTOMLEFT;
-                    else if (isRight) return PInvoke.HTBOTTOMRIGHT;
-                    else return PInvoke.HTBOTTOM;
+                    if (isLeft) return PInvoke.HitTestFlags.BOTTOMLEFT;
+                    else if (isRight) return PInvoke.HitTestFlags.BOTTOMRIGHT;
+                    else return PInvoke.HitTestFlags.BOTTOM;
                 }
-                else if (isLeft) return PInvoke.HTLEFT;
-                else if (isRight) return PInvoke.HTRIGHT;
+                else if (isLeft) return PInvoke.HitTestFlags.LEFT;
+                else if (isRight) return PInvoke.HitTestFlags.RIGHT;
             }
             if ((WindowState == WindowState.Maximized && pointerPos.Y < CaptionHeight + BorderWidth) || pointerPos.Y < CaptionHeight)
-                return PInvoke.HTCAPTION;
-            return PInvoke.HTCLIENT;
+                return PInvoke.HitTestFlags.CAPTION;
+            return PInvoke.HitTestFlags.CLIENT;
         }
 
-        private unsafe IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        private IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            switch ((uint)msg)
+            switch ((PInvoke.WindowMessage)msg)
             {
-                case PInvoke.WM_NCCALCSIZE:
+                case PInvoke.WindowMessage.WM_NCCALCSIZE:
                     if (wParam != IntPtr.Zero)
                     {
                         handled = true;
-                        var p = (NCCALCSIZE_PARAMS)Marshal.PtrToStructure(lParam, typeof(NCCALCSIZE_PARAMS));
-                        p.rgrc[0].left += RawBorderWidth;
-                        p.rgrc[0].right -= RawBorderWidth;
-                        p.rgrc[0].bottom -= RawBorderWidth;
+                        var p = (PInvoke.NCCALCSIZE_PARAMS)Marshal.PtrToStructure(lParam, typeof(PInvoke.NCCALCSIZE_PARAMS));
+                        p.rcNewWindow.left += RawBorderWidth;
+                        p.rcNewWindow.right -= RawBorderWidth;
+                        p.rcNewWindow.bottom -= RawBorderWidth;
                         Marshal.StructureToPtr(p, lParam, true);
                     }
                     break;
-                case PInvoke.WM_NCHITTEST:
+                case PInvoke.WindowMessage.WM_NCHITTEST:
                     handled = true;
-                    if (PInvoke.DwmDefWindowProc(new(hWnd), (uint)msg, (uint)wParam, lParam, out var dwmHitTest))
+                    if (PInvoke.DwmDefWindowProc(hWnd, msg, wParam, lParam, out var dwmHitTest))
                         return dwmHitTest;
-                    return new(HitTest(PointFromScreen(MakePoint(lParam))));
-                case PInvoke.WM_NCRBUTTONUP:
-                    if (wParam.ToInt32() == PInvoke.HTCAPTION)
+                    return (IntPtr)HitTest(PointFromScreen(Common.MakePoint(lParam)));
+                case PInvoke.WindowMessage.WM_NCRBUTTONUP:
+                    if (wParam.ToInt32() == (int)PInvoke.HitTestFlags.CAPTION)
                     {
                         handled = true;
-                        OpenSystemMenu(MakePoint(lParam));
+                        OpenSystemMenu(Common.MakePoint(lParam));
                     }
                     break;
             }
@@ -146,13 +143,13 @@ namespace Typedown.Windows
             Dispatcher.BeginInvoke(UpdateSystemBackdrop);
         }
 
-        private void UpdateRootElement()
+        private void UpdateRootContainer()
         {
-            if (GetTemplateChild("PART_RootElement") is FrameworkElement ele)
+            if (GetTemplateChild("PART_RootContainer") is FrameworkElement ele)
                 ele.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
         }
 
-        private unsafe void UpdateSystemBackdrop()
+        private void UpdateSystemBackdrop()
         {
             var compositionTarget = HwndSource.FromHwnd(Handle).CompositionTarget;
             var theme = Theme switch
@@ -168,15 +165,15 @@ namespace Typedown.Windows
                 if (Environment.OSVersion.Version.Build >= 22523)
                 {
                     uint micaValue = 0x02;
-                    PInvoke.DwmSetWindowAttribute(new(Handle), (DWMWINDOWATTRIBUTE)38, &micaValue, (uint)Marshal.SizeOf(typeof(uint)));
+                    PInvoke.DwmSetWindowAttribute(Handle, PInvoke.DwmWindowAttribute.DWMWA_SYSTEMBACKDROP_TYPE, ref micaValue, Marshal.SizeOf(typeof(uint)));
                 }
                 else
                 {
                     uint trueValue = 0x01;
-                    PInvoke.DwmSetWindowAttribute(new(Handle), (DWMWINDOWATTRIBUTE)1029, &trueValue, (uint)Marshal.SizeOf(typeof(uint)));
+                    PInvoke.DwmSetWindowAttribute(Handle, PInvoke.DwmWindowAttribute.DWMWA_MICA_EFFECT, ref trueValue, Marshal.SizeOf(typeof(uint)));
                 }
                 var darkModeValue = isDarkMode ? 1u : 0u;
-                PInvoke.DwmSetWindowAttribute(new(Handle), DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE, &darkModeValue, (uint)Marshal.SizeOf(typeof(uint)));
+                PInvoke.DwmSetWindowAttribute(Handle, PInvoke.DwmWindowAttribute.DWMWA_USE_IMMERSIVE_DARK_MODE, ref darkModeValue, Marshal.SizeOf(typeof(uint)));
             }
             else
             {
@@ -184,6 +181,13 @@ namespace Typedown.Windows
             }
         }
 
-        private static Point MakePoint(IntPtr p) => new(p.ToInt32() & 0xFFFF, p.ToInt32() >> 16);
+        private static ControlTemplate CreateTemplate()
+        {
+            var template = new ControlTemplate(typeof(AppWindow));
+            var content = new FrameworkElementFactory(typeof(ContentPresenter)) { Name = "PART_RootContainer" };
+            content.SetValue(ContentPresenter.ContentProperty, new TemplateBindingExtension(ContentProperty));
+            template.VisualTree = content;
+            return template;
+        }
     }
 }

@@ -14,10 +14,6 @@ using Windows.System;
 using Windows.UI.Input;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.UI.Input.Pointer;
-using Windows.Win32.UI.WindowsAndMessaging;
 using Typedown.Controls;
 
 namespace Typedown.Utilities
@@ -28,7 +24,7 @@ namespace Typedown.Utilities
 
         public IntPtr ParentHWnd { get; private set; }
 
-        private float WindowScale => PInvoke.GetDpiForWindow(new(ParentHWnd)) / 96f;
+        private float WindowScale => PInvoke.GetDpiForWindow(ParentHWnd) / 96f;
 
         private static Task<CoreWebView2Environment> coreWebView2EnvironmentTask;
         private static CoreWebView2Environment CoreWebView2Environment => coreWebView2EnvironmentTask.IsCompleted ? coreWebView2EnvironmentTask.Result : null;
@@ -122,7 +118,7 @@ namespace Typedown.Utilities
         private void OnPointerMoved(PointerRoutedEventArgs args)
         {
             var deviceType = args.Pointer.PointerDeviceType;
-            var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WM_MOUSEMOVE : PInvoke.WM_POINTERUPDATE;
+            var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WindowMessage.WM_MOUSEMOVE : PInvoke.WindowMessage.WM_POINTERUPDATE;
             OnXamlPointerMessage(message, args);
         }
 
@@ -140,45 +136,45 @@ namespace Typedown.Utilities
             UpdateBounds();
             var deviceType = args.Pointer.PointerDeviceType;
             var pointerPoint = args.GetCurrentPoint(Container);
-            uint message = 0;
+            PInvoke.WindowMessage message = 0;
             if (deviceType == PointerDeviceType.Mouse)
             {
                 var properties = pointerPoint.Properties;
                 hasMouseCapture = Container.CapturePointer(args.Pointer);
                 if (properties.IsLeftButtonPressed)
                 {
-                    message = PInvoke.WM_LBUTTONDOWN;
+                    message = PInvoke.WindowMessage.WM_LBUTTONDOWN;
                     isLeftMouseButtonPressed = true;
                 }
                 else if (properties.IsMiddleButtonPressed)
                 {
-                    message = PInvoke.WM_MBUTTONDOWN;
+                    message = PInvoke.WindowMessage.WM_MBUTTONDOWN;
                     isMiddleMouseButtonPressed = true;
                 }
                 else if (properties.IsRightButtonPressed)
                 {
-                    message = PInvoke.WM_RBUTTONDOWN;
+                    message = PInvoke.WindowMessage.WM_RBUTTONDOWN;
                     isRightMouseButtonPressed = true;
                 }
                 else if (properties.IsXButton1Pressed)
                 {
-                    message = PInvoke.WM_XBUTTONDOWN;
+                    message = PInvoke.WindowMessage.WM_XBUTTONDOWN;
                     isXButton1Pressed = true;
                 }
                 else if (properties.IsXButton2Pressed)
                 {
-                    message = PInvoke.WM_XBUTTONDOWN;
+                    message = PInvoke.WindowMessage.WM_XBUTTONDOWN;
                     isXButton2Pressed = true;
                 }
             }
             else if (deviceType == PointerDeviceType.Touch)
             {
-                message = PInvoke.WM_POINTERDOWN;
+                message = PInvoke.WindowMessage.WM_POINTERDOWN;
                 hasTouchCapture.Add(pointerPoint.PointerId, Container.CapturePointer(args.Pointer));
             }
             else if (deviceType == PointerDeviceType.Pen)
             {
-                message = PInvoke.WM_POINTERDOWN;
+                message = PInvoke.WindowMessage.WM_POINTERDOWN;
                 hasPenCapture = Container.CapturePointer(args.Pointer);
             }
             if (message != 0)
@@ -189,32 +185,32 @@ namespace Typedown.Utilities
         {
             var deviceType = args.Pointer.PointerDeviceType;
             var pointerPoint = args.GetCurrentPoint(Container);
-            uint message = 0;
+            PInvoke.WindowMessage message = 0;
             if (deviceType == PointerDeviceType.Mouse)
             {
                 if (isLeftMouseButtonPressed)
                 {
-                    message = PInvoke.WM_LBUTTONUP;
+                    message = PInvoke.WindowMessage.WM_LBUTTONUP;
                     isLeftMouseButtonPressed = false;
                 }
                 else if (isMiddleMouseButtonPressed)
                 {
-                    message = PInvoke.WM_MBUTTONUP;
+                    message = PInvoke.WindowMessage.WM_MBUTTONUP;
                     isMiddleMouseButtonPressed = false;
                 }
                 else if (isRightMouseButtonPressed)
                 {
-                    message = PInvoke.WM_RBUTTONUP;
+                    message = PInvoke.WindowMessage.WM_RBUTTONUP;
                     isRightMouseButtonPressed = false;
                 }
                 else if (isXButton1Pressed)
                 {
-                    message = PInvoke.WM_XBUTTONUP;
+                    message = PInvoke.WindowMessage.WM_XBUTTONUP;
                     isXButton1Pressed = false;
                 }
                 else if (isXButton2Pressed)
                 {
-                    message = PInvoke.WM_XBUTTONUP;
+                    message = PInvoke.WindowMessage.WM_XBUTTONUP;
                     isXButton2Pressed = false;
                 }
                 if (hasMouseCapture)
@@ -235,7 +231,7 @@ namespace Typedown.Utilities
                     Container.ReleasePointerCapture(args.Pointer);
                     hasPenCapture = false;
                 }
-                message = PInvoke.WM_POINTERUP;
+                message = PInvoke.WindowMessage.WM_POINTERUP;
             }
             if (message != 0)
                 OnXamlPointerMessage(message, args);
@@ -244,7 +240,7 @@ namespace Typedown.Utilities
         protected virtual void OnPointerWheelChanged(PointerRoutedEventArgs args)
         {
             var deviceType = args.Pointer.PointerDeviceType;
-            var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WM_MOUSEWHEEL : PInvoke.WM_POINTERWHEEL;
+            var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WindowMessage.WM_MOUSEWHEEL : PInvoke.WindowMessage.WM_POINTERWHEEL;
             OnXamlPointerMessage(message, args);
         }
 
@@ -253,12 +249,12 @@ namespace Typedown.Utilities
             global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
             if (args.Pointer.PointerDeviceType == PointerDeviceType.Mouse)
             {
-                OnXamlPointerMessage(PInvoke.WM_MOUSELEAVE, args);
+                OnXamlPointerMessage(PInvoke.WindowMessage.WM_MOUSELEAVE, args);
                 if (!hasMouseCapture) ResetMouseInputState();
             }
             else
             {
-                OnXamlPointerMessage(PInvoke.WM_POINTERLEAVE, args);
+                OnXamlPointerMessage(PInvoke.WindowMessage.WM_POINTERLEAVE, args);
             }
         }
 
@@ -290,7 +286,7 @@ namespace Typedown.Utilities
             isXButton2Pressed = false;
         }
 
-        private void OnXamlPointerMessage(uint message, PointerRoutedEventArgs args)
+        private void OnXamlPointerMessage(PInvoke.WindowMessage message, PointerRoutedEventArgs args)
         {
             if (CoreWebView2Controller == null)
                 return;
@@ -301,7 +297,7 @@ namespace Typedown.Utilities
             var deviceType = args.Pointer.PointerDeviceType;
             if (deviceType == PointerDeviceType.Mouse)
             {
-                if (message == PInvoke.WM_MOUSELEAVE)
+                if (message == PInvoke.WindowMessage.WM_MOUSELEAVE)
                 {
                     if (!hasMouseCapture)
                         CoreWebView2CompositionController.SendMouseInput((CoreWebView2MouseEventKind)message, 0, 0, new(0, 0));
@@ -309,11 +305,11 @@ namespace Typedown.Utilities
                 else
                 {
                     uint mouse_data = 0;
-                    if (message == PInvoke.WM_MOUSEWHEEL || message == PInvoke.WM_MOUSEHWHEEL)
+                    if (message == PInvoke.WindowMessage.WM_MOUSEWHEEL || message == PInvoke.WindowMessage.WM_MOUSEHWHEEL)
                     {
                         mouse_data = (uint)logicalPointerPoint.Properties.MouseWheelDelta;
                     }
-                    if (message == PInvoke.WM_XBUTTONDOWN || message == PInvoke.WM_XBUTTONUP || message == PInvoke.WM_XBUTTONDBLCLK)
+                    if (message == PInvoke.WindowMessage.WM_XBUTTONDOWN || message == PInvoke.WindowMessage.WM_XBUTTONUP || message == PInvoke.WindowMessage.WM_XBUTTONDBLCLK)
                     {
                         var pointerUpdateKind = logicalPointerPoint.Properties.PointerUpdateKind;
                         if (pointerUpdateKind == PointerUpdateKind.XButton1Pressed || pointerUpdateKind == PointerUpdateKind.XButton1Released)
@@ -333,28 +329,26 @@ namespace Typedown.Utilities
             }
         }
 
-        private static readonly Dictionary<HCURSOR, global::Windows.UI.Core.CoreCursorType> coreCursorTypeDic = new()
+        private static readonly Dictionary<IntPtr, global::Windows.UI.Core.CoreCursorType> coreCursorTypeDic = new()
         {
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_ARROW),  global::Windows.UI.Core.CoreCursorType.Arrow},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_CROSS),  global::Windows.UI.Core.CoreCursorType.Cross},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_HAND),  global::Windows.UI.Core.CoreCursorType.Hand},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_HELP),  global::Windows.UI.Core.CoreCursorType.Help},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_IBEAM),  global::Windows.UI.Core.CoreCursorType.IBeam},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_SIZEALL),  global::Windows.UI.Core.CoreCursorType.SizeAll},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_SIZENESW),  global::Windows.UI.Core.CoreCursorType.SizeNortheastSouthwest},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_SIZENS),  global::Windows.UI.Core.CoreCursorType.SizeNorthSouth},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_SIZENWSE),  global::Windows.UI.Core.CoreCursorType.SizeNorthwestSoutheast},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_SIZEWE),  global::Windows.UI.Core.CoreCursorType.SizeWestEast},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_NO),  global::Windows.UI.Core.CoreCursorType.UniversalNo},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_UPARROW),  global::Windows.UI.Core.CoreCursorType.UpArrow},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_WAIT),  global::Windows.UI.Core.CoreCursorType.Wait},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_PIN),  global::Windows.UI.Core.CoreCursorType.Pin},
-            {PInvoke.LoadCursor(HINSTANCE.Null, PInvoke.IDC_PERSON),  global::Windows.UI.Core.CoreCursorType.Person},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_ARROW),  global::Windows.UI.Core.CoreCursorType.Arrow},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_CROSS),  global::Windows.UI.Core.CoreCursorType.Cross},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_HAND),  global::Windows.UI.Core.CoreCursorType.Hand},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_HELP),  global::Windows.UI.Core.CoreCursorType.Help},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_IBEAM),  global::Windows.UI.Core.CoreCursorType.IBeam},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZEALL),  global::Windows.UI.Core.CoreCursorType.SizeAll},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENESW),  global::Windows.UI.Core.CoreCursorType.SizeNortheastSouthwest},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENS),  global::Windows.UI.Core.CoreCursorType.SizeNorthSouth},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENWSE),  global::Windows.UI.Core.CoreCursorType.SizeNorthwestSoutheast},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZEWE),  global::Windows.UI.Core.CoreCursorType.SizeWestEast},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_NO),  global::Windows.UI.Core.CoreCursorType.UniversalNo},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_UPARROW),  global::Windows.UI.Core.CoreCursorType.UpArrow},
+            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_WAIT),  global::Windows.UI.Core.CoreCursorType.Wait}
         };
 
         private void OnCursorChanged()
         {
-            if (coreCursorTypeDic.TryGetValue(new(CoreWebView2CompositionController.Cursor), out var cursor))
+            if (coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor))
                 global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(cursor, 0);
             else
                 global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
@@ -385,15 +379,15 @@ namespace Typedown.Utilities
         {
 
             var inputProperties = inputPt.Properties;
-            var outputPt_penFlags = PInvoke.PEN_FLAG_NONE;
+            var outputPt_penFlags = PInvoke.PEN_FLAGS.PEN_FLAG_NONE;
             if (inputProperties.IsBarrelButtonPressed)
-                outputPt_penFlags |= PInvoke.PEN_FLAG_BARREL;
+                outputPt_penFlags |= PInvoke.PEN_FLAGS.PEN_FLAG_BARREL;
             if (inputProperties.IsInverted)
-                outputPt_penFlags |= PInvoke.PEN_FLAG_INVERTED;
+                outputPt_penFlags |= PInvoke.PEN_FLAGS.PEN_FLAG_INVERTED;
             if (inputProperties.IsEraser)
-                outputPt_penFlags |= PInvoke.PEN_FLAG_ERASER;
+                outputPt_penFlags |= PInvoke.PEN_FLAGS.PEN_FLAG_ERASER;
             outputPt.PenFlags = (uint)outputPt_penFlags;
-            outputPt.PenMask = (uint)(PInvoke.PEN_MASK_PRESSURE | PInvoke.PEN_MASK_ROTATION | PInvoke.PEN_MASK_TILT_X | PInvoke.PEN_MASK_TILT_Y);
+            outputPt.PenMask = (uint)(PInvoke.PEN_MASK.PEN_MASK_PRESSURE | PInvoke.PEN_MASK.PEN_MASK_ROTATION | PInvoke.PEN_MASK.PEN_MASK_TILT_X | PInvoke.PEN_MASK.PEN_MASK_TILT_Y);
             outputPt.PenPressure = (uint)(inputProperties.Pressure * 1024);
             outputPt.PenRotation = (uint)inputProperties.Twist;
             outputPt.PenTiltX = (int)inputProperties.XTilt;
@@ -404,7 +398,7 @@ namespace Typedown.Utilities
         {
             var inputProperties = inputPt.Properties;
             outputPt.TouchFlags = 0;
-            outputPt.TouchMask = (uint)(PInvoke.TOUCH_MASK_CONTACTAREA | PInvoke.TOUCH_MASK_ORIENTATION | PInvoke.TOUCH_MASK_PRESSURE);
+            outputPt.TouchMask = (uint)(PInvoke.TOUCH_MASK.TOUCH_MASK_CONTACTAREA | PInvoke.TOUCH_MASK.TOUCH_MASK_ORIENTATION | PInvoke.TOUCH_MASK.TOUCH_MASK_PRESSURE);
             var width = inputProperties.ContactRect.Width * WindowScale;
             var height = inputProperties.ContactRect.Height * WindowScale;
             var leftVal = inputProperties.ContactRect.X * WindowScale;
@@ -424,25 +418,25 @@ namespace Typedown.Utilities
             PointerPointProperties inputProperties = inputPt.Properties;
             var deviceType = inputPt.PointerDevice.PointerDeviceType;
             if (deviceType == PointerDeviceType.Pen)
-                outputPt.PointerKind = (uint)POINTER_INPUT_TYPE.PT_MOUSE;
+                outputPt.PointerKind = (uint)PInvoke.POINTER_INPUT_TYPE.PT_MOUSE;
             else if (deviceType == PointerDeviceType.Touch)
-                outputPt.PointerKind = (uint)POINTER_INPUT_TYPE.PT_MOUSE;
+                outputPt.PointerKind = (uint)PInvoke.POINTER_INPUT_TYPE.PT_MOUSE;
             outputPt.PointerId = args.Pointer.PointerId;
             outputPt.FrameId = inputPt.FrameId;
-            var outputPt_pointerFlags = POINTER_FLAGS.POINTER_FLAG_NONE;
+            var outputPt_pointerFlags = PInvoke.POINTER_FLAGS.POINTER_FLAG_NONE;
             if (inputProperties.IsInRange)
-                outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_INRANGE;
+                outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_INRANGE;
             if (deviceType == PointerDeviceType.Touch)
             {
                 FillPointerTouchInfo(inputPt, outputPt);
                 if (inputPt.IsInContact)
                 {
-                    outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_INCONTACT;
-                    outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_FIRSTBUTTON;
+                    outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_INCONTACT;
+                    outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_FIRSTBUTTON;
                 }
                 if (inputProperties.PointerUpdateKind == PointerUpdateKind.LeftButtonPressed)
                 {
-                    outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_NEW;
+                    outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_NEW;
                 }
             }
             if (deviceType == PointerDeviceType.Pen)
@@ -450,26 +444,26 @@ namespace Typedown.Utilities
                 FillPointerPenInfo(inputPt, outputPt);
                 if (inputPt.IsInContact)
                 {
-                    outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_INCONTACT;
+                    outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_INCONTACT;
                     if (!inputProperties.IsBarrelButtonPressed)
-                        outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_FIRSTBUTTON;
+                        outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_FIRSTBUTTON;
                     else
-                        outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_SECONDBUTTON;
+                        outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_SECONDBUTTON;
                 }
             }
 
             if (inputProperties.IsPrimary)
-                outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_PRIMARY;
+                outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_PRIMARY;
             if (inputProperties.TouchConfidence)
-                outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_CONFIDENCE;
+                outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_CONFIDENCE;
             if (inputProperties.IsCanceled)
-                outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_CANCELED;
+                outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_CANCELED;
             if (inputProperties.PointerUpdateKind == PointerUpdateKind.LeftButtonPressed)
-                outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_DOWN;
+                outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_DOWN;
             if (inputProperties.PointerUpdateKind == PointerUpdateKind.Other)
-                outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_UPDATE;
+                outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_UPDATE;
             if (inputProperties.PointerUpdateKind == PointerUpdateKind.LeftButtonReleased)
-                outputPt_pointerFlags |= POINTER_FLAGS.POINTER_FLAG_UP;
+                outputPt_pointerFlags |= PInvoke.POINTER_FLAGS.POINTER_FLAG_UP;
             outputPt.PointerFlags = (uint)outputPt_pointerFlags;
             var outputPt_pointerPixelLocation = new System.Drawing.Point((int)(inputPt.Position.X * WindowScale), (int)(inputPt.Position.Y * WindowScale));
             outputPt.PixelLocation = outputPt_pointerPixelLocation;

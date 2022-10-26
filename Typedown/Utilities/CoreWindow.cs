@@ -1,7 +1,4 @@
 ﻿using System;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace Typedown.Utilities
 {
@@ -13,21 +10,16 @@ namespace Typedown.Utilities
         {
             if (CoreWindowHandle != IntPtr.Zero)
             {
-                PInvoke.SetParent(new(CoreWindowHandle), HWND.Null);
-                PInvoke.ShowWindow(new(CoreWindowHandle), SHOW_WINDOW_CMD.SW_HIDE);
+                PInvoke.SetParent(CoreWindowHandle, IntPtr.Zero);
+                PInvoke.ShowWindow(CoreWindowHandle, PInvoke.ShowWindowCommand.Hide);
             }
         }
 
-        public static bool TrySetCoreWindow(IntPtr handle)
+        public static void SetCoreWindow(IntPtr handle)
         {
-            if (NativeMethods.GetClassName(handle) == "Windows.UI.Core.CoreWindow")
-            {
-                CoreWindowHandle = handle;
-                var exStyle = PInvoke.GetWindowLong(new(CoreWindowHandle), WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE);
-                PInvoke.SetWindowLong(new(CoreWindowHandle), WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE, exStyle | (int)WINDOW_EX_STYLE.WS_EX_TOOLWINDOW);
-                return true;
-            }
-            return false;
+            CoreWindowHandle = handle;
+            var exStyle = PInvoke.GetWindowLong(CoreWindowHandle, PInvoke.WindowLongFlags.GWL_EXSTYLE);
+            PInvoke.SetWindowLong(CoreWindowHandle, PInvoke.WindowLongFlags.GWL_EXSTYLE, exStyle | (int)PInvoke.WindowStylesEx.WS_EX_TOOLWINDOW);
         }
     }
 }
