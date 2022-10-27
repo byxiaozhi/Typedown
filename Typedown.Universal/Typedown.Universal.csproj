@@ -278,14 +278,506 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\ButtonStyles.xaml">
+    <Page Include="Resources\Styles\ButtonStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles\ToggleSwitchStyles.xaml">
+    <Page Include="Resources\Styles\ToggleSwitchStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\af\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\af\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\am\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\am\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ar\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ar\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\as\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\as\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\az-arab\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\az-arab\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bg\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bg\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bn\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bn\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bs\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bs\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ca\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ca\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cs\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cs\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cy\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cy\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\da\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\da\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\de\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\de\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\el\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\el\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\en\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\en\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\es\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\es\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\et\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\et\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fa\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fa\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fi\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fil\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fil\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr-CA\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr-CA\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ga\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ga\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gu\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gu\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\he\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\he\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hi\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hr\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hu\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hu\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hy\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hy\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\id\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\id\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\is\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\is\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\it\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\it\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\iu-cans\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\iu-cans\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\iu-Latn\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\iu-Latn\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ja\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ja\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kk\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\km\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\km\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kn\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kn\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ko\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ko\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ku-arab\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ku-arab\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ky-kg\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ky-kg\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lo\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lo\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lt\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lt\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lv\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lv\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mg\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mg\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mi\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mk\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ml\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ml\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mn-Cyrl\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mn-Cyrl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mn-Mong\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mn-Mong\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mr\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ms\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ms\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mt\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mt\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nb\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nb\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ne\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ne\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nl\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\or\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\or\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pa\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pa\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pl\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\prs\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\prs\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt-PT\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt-PT\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ro\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ro\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ru\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ru\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sk\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sl\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sq\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sq\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sv\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sv\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sw\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sw\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ta\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ta\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\te\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\te\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\th\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\th\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ti\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ti\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tk-cyrl\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tk-cyrl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tr\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tt-arab\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tt-arab\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ug-arab\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ug-arab\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uk\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ur\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ur\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\vi\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\vi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hans\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hans\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hant\DialogMessages.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hant\Resources.resw" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AsKToSaveContent" xml:space="preserve">
+    <value>మీరు మార్పులను సేవ్ చేయాలని అనుకుంటున్నారా?</value>
+    <comment>您有未保存的更改</comment>
+  </data>
+  <data name="AsKToSaveTitle" xml:space="preserve">
+    <value>మార్పులను సేవ్ చేయండి</value>
+    <comment>是否要保存更改？</comment>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>రద్దు</value>
+    <comment>取消</comment>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>ధ్రువపరచు</value>
+    <comment>确定</comment>
+  </data>
+  <data name="ContentCanNotBeBlank" xml:space="preserve">
+    <value>కంటెంట్ ఖాళీగా ఉండరాదు</value>
+    <comment>内容不能为空</comment>
+  </data>
+  <data name="CreateDocErrorTitle" xml:space="preserve">
+    <value>ఫైలు ను రూపొందించడంలో విఫలమైంది</value>
+    <comment>新建文档失败</comment>
+  </data>
+  <data name="CreateFolderErrorTitle" xml:space="preserve">
+    <value>సంచికను రూపొందించడంలో విఫలమైంది</value>
+    <comment>新建文件夹失败</comment>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>పరిహరించు</value>
+    <comment>删除</comment>
+  </data>
+  <data name="Don'tSave" xml:space="preserve">
+    <value>సేవ్ చేయవద్దు</value>
+    <comment>不保存</comment>
+  </data>
+  <data name="ExportErrorTitle" xml:space="preserve">
+    <value>ఎగుమతి విఫలమైంది</value>
+    <comment>导出失败</comment>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>ఫీడ్ బ్యాక్</value>
+    <comment>反馈</comment>
+  </data>
+  <data name="ImportErrorTitle" xml:space="preserve">
+    <value>దిగుమతి విఫలమైంది</value>
+    <comment>导入失败</comment>
+  </data>
+  <data name="InsertTableTitle" xml:space="preserve">
+    <value>టేబుల్ చొప్పించు</value>
+    <comment>插入表格</comment>
+  </data>
+  <data name="InstallNow" xml:space="preserve">
+    <value>ఇప్పుడు వ్యవస్థాపించు</value>
+    <comment>立即安装</comment>
+  </data>
+  <data name="LackOfRuntimeContent" xml:space="preserve">
+    <value>మీ సిస్టమ్ లో Mama</value>
+    <comment>您的系统尚未安装 Microsoft Edge Webview2 运行时，缺少该运行时将无法运行应用，是否立即安装？</comment>
+  </data>
+  <data name="LackOfRuntimeTitle" xml:space="preserve">
+    <value>రన్ టైమ్ ఇన్ స్టాల్ చేయబడలేదు</value>
+    <comment>缺少运行时</comment>
+  </data>
+  <data name="ReadErrorTitle" xml:space="preserve">
+    <value>ఫైల్ లోడ్ చేయడం విఫలమైంది</value>
+    <comment>读取失败</comment>
+  </data>
+  <data name="Recover" xml:space="preserve">
+    <value>కోలుకో</value>
+    <comment>恢复</comment>
+  </data>
+  <data name="RecoverContent" xml:space="preserve">
+    <value>సేవ్ చేయని డ్రాఫ్ట్ లను పునరుద్ధరించాలని మీరు అనుకుంటున్నారా?</value>
+    <comment>您尚未保存此文件</comment>
+  </data>
+  <data name="RecoverTitle" xml:space="preserve">
+    <value>సేవ్ చేయని డ్రాఫ్ట్ లను రికవరీ</value>
+    <comment>是否要恢复文件？</comment>
+  </data>
+  <data name="ResizeTableTitle" xml:space="preserve">
+    <value>పరిమాణ పట్టిక</value>
+    <comment>调整表格</comment>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>కాపాడు</value>
+    <comment>保存</comment>
+  </data>
+  <data name="SaveErrorTitle" xml:space="preserve">
+    <value>ఫైలు సేవ్ విఫలమైంది</value>
+    <comment>保存失败</comment>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>సమర్పించు</value>
+    <comment>提交</comment>
+  </data>
+  <data name="SubmittedSuccessfully" xml:space="preserve">
+    <value>విజయవంతంగా సబ్మిట్ చేయబడింది</value>
+    <comment>提交成功</comment>
+  </data>
+</root>

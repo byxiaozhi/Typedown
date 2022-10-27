@@ -1,0 +1,836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Text" xml:space="preserve">
+    <value>Um</value>
+    <comment>关于</comment>
+  </data>
+  <data name="AboutApp.Text" xml:space="preserve">
+    <value>Um forritið</value>
+    <comment>关于应用</comment>
+  </data>
+  <data name="AboutIntroduction.Text" xml:space="preserve">
+    <value>WYSIWYG Markdown ritstjóri</value>
+    <comment>一款所见即所得 Markdown 编辑器</comment>
+  </data>
+  <data name="AlignCenter" xml:space="preserve">
+    <value>Samræma miðstöð</value>
+    <comment>居中对齐</comment>
+  </data>
+  <data name="AlignLeft" xml:space="preserve">
+    <value>Stilla til vinstri</value>
+    <comment>左对齐</comment>
+  </data>
+  <data name="AlignRight" xml:space="preserve">
+    <value>Stilla til hægri</value>
+    <comment>右对齐</comment>
+  </data>
+  <data name="AppStorePage.Content" xml:space="preserve">
+    <value>App Store síða</value>
+    <comment>应用商店页面</comment>
+  </data>
+  <data name="AppTheme.Text" xml:space="preserve">
+    <value>Þema forrits</value>
+    <comment>主题</comment>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>Bifreið</value>
+    <comment>自动</comment>
+  </data>
+  <data name="AutoPairBracket.Text" xml:space="preserve">
+    <value>Sjálfvirk par sviga</value>
+    <comment>自动补全括号</comment>
+  </data>
+  <data name="AutoPairMarkdownSyntax.Text" xml:space="preserve">
+    <value>Málskipan sjálfvirkrar pörunarmerkingar</value>
+    <comment>自动补全 Markdown 标记</comment>
+  </data>
+  <data name="AutoPairQuote.Text" xml:space="preserve">
+    <value>Sjálfvirk par tilvitnanir</value>
+    <comment>自动补全引号</comment>
+  </data>
+  <data name="AutoSave.Text" xml:space="preserve">
+    <value>Sjálfvirk vistun</value>
+    <comment>自动保存</comment>
+  </data>
+  <data name="Back.Text" xml:space="preserve">
+    <value>Bak</value>
+    <comment>返回</comment>
+  </data>
+  <data name="BasedOn.Text" xml:space="preserve">
+    <value>Grunnur á</value>
+    <comment>基于</comment>
+  </data>
+  <data name="BasedOnOpenSourceSoftware.Content" xml:space="preserve">
+    <value>Byggt á opnum hugbúnaði</value>
+    <comment>基于开源软件</comment>
+  </data>
+  <data name="BrowseLocalFiles.Content" xml:space="preserve">
+    <value>Fletta í staðbundnum skrám</value>
+    <comment>浏览本地文件</comment>
+  </data>
+  <data name="BtnReplace.Content" xml:space="preserve">
+    <value>Skipta</value>
+    <comment>替换</comment>
+  </data>
+  <data name="BtnReplaceAll.Content" xml:space="preserve">
+    <value>Skipta út öllu</value>
+    <comment>替换全部</comment>
+  </data>
+  <data name="BtnSave.Content" xml:space="preserve">
+    <value>Spara</value>
+    <comment>保存</comment>
+  </data>
+  <data name="CaseSensitive.Text" xml:space="preserve">
+    <value>Stafrétt mál</value>
+    <comment>区分大小写</comment>
+  </data>
+  <data name="ChangesTakeEffectAfterRestartingTheApp.Text" xml:space="preserve">
+    <value>Breytingar taka gildi eftir að forritið hefur verið endurræst</value>
+    <comment>重启应用后生效</comment>
+  </data>
+  <data name="Character.Text" xml:space="preserve">
+    <value>Skaplyndi</value>
+    <comment>字</comment>
+  </data>
+  <data name="Characters.Text" xml:space="preserve">
+    <value>Stafir</value>
+    <comment>字</comment>
+  </data>
+  <data name="Chart.Text" xml:space="preserve">
+    <value>Graf</value>
+    <comment>图表</comment>
+  </data>
+  <data name="ChooseLocalImage.Text" xml:space="preserve">
+    <value>Setja inn staðbundnar myndir</value>
+    <comment>从本地选择一张图片</comment>
+  </data>
+  <data name="ClearFormat.Text" xml:space="preserve">
+    <value>Hreinsa snið</value>
+    <comment>清除样式</comment>
+  </data>
+  <data name="ClearRecentFiles.Text" xml:space="preserve">
+    <value>Hreinsa atriði</value>
+    <comment>清除最近文件</comment>
+  </data>
+  <data name="ClickToAddAnImage" xml:space="preserve">
+    <value>Smelltu til að bæta við mynd</value>
+    <comment>点击添加一张图片</comment>
+  </data>
+  <data name="Close.Text" xml:space="preserve">
+    <value>Hætta</value>
+    <comment>退出</comment>
+  </data>
+  <data name="CodeFences.Text" xml:space="preserve">
+    <value>Kóðagirðingar</value>
+    <comment>代码块</comment>
+  </data>
+  <data name="Copy.Text" xml:space="preserve">
+    <value>Afrit</value>
+    <comment>复制</comment>
+  </data>
+  <data name="CopyAsHTMLCode.Text" xml:space="preserve">
+    <value>Afrita sem HTML-kóða</value>
+    <comment>复制为 HTML 代码</comment>
+  </data>
+  <data name="CopyAsMarkdown.Text" xml:space="preserve">
+    <value>Afrita sem markdown</value>
+    <comment>复制为 Markdown</comment>
+  </data>
+  <data name="CopyAsPath.Text" xml:space="preserve">
+    <value>Afrita skráarslóð</value>
+    <comment>复制文件地址</comment>
+  </data>
+  <data name="CopyAsPlainText.Text" xml:space="preserve">
+    <value>Afrita sem venjulegan texta</value>
+    <comment>复制为纯文本</comment>
+  </data>
+  <data name="CopyContent" xml:space="preserve">
+    <value>Afrita efni</value>
+    <comment>复制内容</comment>
+  </data>
+  <data name="CopyPasteAs.Text" xml:space="preserve">
+    <value>Afrita / líma sem...</value>
+    <comment>复制/粘贴为</comment>
+  </data>
+  <data name="CtrlAndClickOpenLink" xml:space="preserve">
+    <value>Ctrl+Smella Opna tengil</value>
+    <comment>Ctrl+单击 打开链接</comment>
+  </data>
+  <data name="Cut.Text" xml:space="preserve">
+    <value>Skera</value>
+    <comment>剪切</comment>
+  </data>
+  <data name="DecreaseHeadingLevel.Text" xml:space="preserve">
+    <value>Minnka fyrirsagnarstig</value>
+    <comment>降低标题级别</comment>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Eyða</value>
+    <comment>删除</comment>
+  </data>
+  <data name="DeleteTable" xml:space="preserve">
+    <value>Eyða töflu</value>
+    <comment>删除表格</comment>
+  </data>
+  <data name="Duplicate.Text" xml:space="preserve">
+    <value>Afrit</value>
+    <comment>重复</comment>
+  </data>
+  <data name="Edit.Title" xml:space="preserve">
+    <value>Klippa</value>
+    <comment>编辑</comment>
+  </data>
+  <data name="Editor.Text" xml:space="preserve">
+    <value>Ritstjóri</value>
+    <comment>编辑器</comment>
+  </data>
+  <data name="EditorAreaMaxWidth.Text" xml:space="preserve">
+    <value>Hámarksbreidd ritilssvæðis</value>
+    <comment>编辑区域最大宽度</comment>
+  </data>
+  <data name="EmbedLink.Content" xml:space="preserve">
+    <value>Ívafstengill</value>
+    <comment>嵌入链接</comment>
+  </data>
+  <data name="Emphasis.Text" xml:space="preserve">
+    <value>Skáletrun</value>
+    <comment>斜体</comment>
+  </data>
+  <data name="EnterImgLinkOrLocalPath.PlaceholderText" xml:space="preserve">
+    <value>Vefslóð inntaksmyndar</value>
+    <comment>请输入图像链接或本地路径</comment>
+  </data>
+  <data name="Export.Text" xml:space="preserve">
+    <value>Útflutningur</value>
+    <comment>导出</comment>
+  </data>
+  <data name="ExportToPDF" xml:space="preserve">
+    <value>Flytja út í PDF</value>
+    <comment>导出到 PDF</comment>
+  </data>
+  <data name="Feedback.Text" xml:space="preserve">
+    <value>Afturverkun</value>
+    <comment>反馈</comment>
+  </data>
+  <data name="FeedbackContact.Text" xml:space="preserve">
+    <value>Upplýsingar um tengilið</value>
+    <comment>联系方式</comment>
+  </data>
+  <data name="FeedbackContentTitle.Text" xml:space="preserve">
+    <value>Spurning &amp; Tillaga</value>
+    <comment>使用中遇到的问题或改进建议</comment>
+  </data>
+  <data name="FeedbackRating.Text" xml:space="preserve">
+    <value>Einkunn</value>
+    <comment>使用感受</comment>
+  </data>
+  <data name="File.Title" xml:space="preserve">
+    <value>Skrá</value>
+    <comment>文件</comment>
+  </data>
+  <data name="Find.Text" xml:space="preserve">
+    <value>Finna</value>
+    <comment>查找</comment>
+  </data>
+  <data name="FindAndReplace.Text" xml:space="preserve">
+    <value>Finna og skipta út</value>
+    <comment>查找和替换</comment>
+  </data>
+  <data name="FindNext.Text" xml:space="preserve">
+    <value>Finna næsta</value>
+    <comment>查找下一个</comment>
+  </data>
+  <data name="FindPrevious.Text" xml:space="preserve">
+    <value>Finna fyrra</value>
+    <comment>查找上一个</comment>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Búinn</value>
+    <comment>已完成</comment>
+  </data>
+  <data name="FlowChart.Text" xml:space="preserve">
+    <value>Flow Chart</value>
+    <comment>流程图</comment>
+  </data>
+  <data name="FocusMode.Text" xml:space="preserve">
+    <value>Fókushamur</value>
+    <comment>专注模式</comment>
+  </data>
+  <data name="Font.Text" xml:space="preserve">
+    <value>Leturgerð</value>
+    <comment>字体</comment>
+  </data>
+  <data name="FontSize.Text" xml:space="preserve">
+    <value>Leturstærð</value>
+    <comment>字体大小</comment>
+  </data>
+  <data name="Format.Title" xml:space="preserve">
+    <value>Snið</value>
+    <comment>格式</comment>
+  </data>
+  <data name="General.Text" xml:space="preserve">
+    <value>Almennur</value>
+    <comment>通用</comment>
+  </data>
+  <data name="Heading.Text" xml:space="preserve">
+    <value>Fyrirsögn</value>
+    <comment>标题</comment>
+  </data>
+  <data name="Heading1.Text" xml:space="preserve">
+    <value>Fyrirsögn 1</value>
+    <comment>一级标题</comment>
+  </data>
+  <data name="Heading2.Text" xml:space="preserve">
+    <value>Fyrirsögn 2</value>
+    <comment>二级标题</comment>
+  </data>
+  <data name="Heading3.Text" xml:space="preserve">
+    <value>Fyrirsögn 3</value>
+    <comment>三级标题</comment>
+  </data>
+  <data name="Heading4.Text" xml:space="preserve">
+    <value>Fyrirsögn 4</value>
+    <comment>四级标题</comment>
+  </data>
+  <data name="Heading5.Text" xml:space="preserve">
+    <value>Fyrirsögn 5</value>
+    <comment>五级标题</comment>
+  </data>
+  <data name="Heading6.Text" xml:space="preserve">
+    <value>Fyrirsögn 6</value>
+    <comment>六级标题</comment>
+  </data>
+  <data name="Help.Title" xml:space="preserve">
+    <value>Hjálpa</value>
+    <comment>帮助</comment>
+  </data>
+  <data name="Highlight.Text" xml:space="preserve">
+    <value>Hápunktur</value>
+    <comment>高亮</comment>
+  </data>
+  <data name="HorizontalLine.Text" xml:space="preserve">
+    <value>Lárétt lína</value>
+    <comment>水平分割线</comment>
+  </data>
+  <data name="Hyperlink.Text" xml:space="preserve">
+    <value>Tengill</value>
+    <comment>超链接</comment>
+  </data>
+  <data name="Image.Text" xml:space="preserve">
+    <value>Ímynd</value>
+    <comment>图像</comment>
+  </data>
+  <data name="Import.Text" xml:space="preserve">
+    <value>Innflutningur</value>
+    <comment>导入</comment>
+  </data>
+  <data name="IncreaseHeadingLevel.Text" xml:space="preserve">
+    <value>Auka fyrirsagnarstig</value>
+    <comment>提升标题级别</comment>
+  </data>
+  <data name="InlineCode.Text" xml:space="preserve">
+    <value>Kóða</value>
+    <comment>代码</comment>
+  </data>
+  <data name="InlineMath.Text" xml:space="preserve">
+    <value>Innfelld stærðfræði</value>
+    <comment>公式</comment>
+  </data>
+  <data name="InputFootnoteDefine" xml:space="preserve">
+    <value>Sláðu inn neðanmálsgreinarskilgreininguna...</value>
+    <comment>输入脚注定义...</comment>
+  </data>
+  <data name="InputLanguageIdentifier" xml:space="preserve">
+    <value>Kenni inntakstungumáls...</value>
+    <comment>输入语言标识符...</comment>
+  </data>
+  <data name="InputMathFormula" xml:space="preserve">
+    <value>Inntak stærðfræðiformúlu...</value>
+    <comment>输入数学公式...</comment>
+  </data>
+  <data name="InputYAMLFrontMatter" xml:space="preserve">
+    <value>Ílag YAML Front Matter...</value>
+    <comment>输入 YAML Front Matter...</comment>
+  </data>
+  <data name="InsertColumnLeft.Text" xml:space="preserve">
+    <value>Bæta við dálki fyrir</value>
+    <comment>在左边插入列</comment>
+  </data>
+  <data name="InsertColumnRight.Text" xml:space="preserve">
+    <value>Bæta við dálki eftir</value>
+    <comment>在右边插入列</comment>
+  </data>
+  <data name="InsertParagraphAfter.Text" xml:space="preserve">
+    <value>Setja inn málsgrein eftir</value>
+    <comment>在下方插入段落</comment>
+  </data>
+  <data name="InsertParagraphBefore.Text" xml:space="preserve">
+    <value>Setja inn málsgrein fyrir</value>
+    <comment>在上方插入段落</comment>
+  </data>
+  <data name="InsertRowAbove.Text" xml:space="preserve">
+    <value>Bæta við röð fyrir ofan</value>
+    <comment>在上方插入行</comment>
+  </data>
+  <data name="InsertRowBelow.Text" xml:space="preserve">
+    <value>Bæta við röð hér að neðan</value>
+    <comment>在下方插入行</comment>
+  </data>
+  <data name="ItemParagraph.Text" xml:space="preserve">
+    <value>Málsgrein</value>
+    <comment>段落</comment>
+  </data>
+  <data name="KeepRun.Text" xml:space="preserve">
+    <value>Haltu áfram að keyra</value>
+    <comment>后台运行</comment>
+  </data>
+  <data name="KeepRunDesc.Text" xml:space="preserve">
+    <value>Bæta gangsetning hraða, en mun taka upp smá minni</value>
+    <comment>大幅提升启动速度，但是会占用一部分内存</comment>
+  </data>
+  <data name="Language.Text" xml:space="preserve">
+    <value>Tungumál</value>
+    <comment>语言</comment>
+  </data>
+  <data name="LanguageSystemSetting" xml:space="preserve">
+    <value>Nota kerfisstillingu</value>
+    <comment>使用系统设置</comment>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Lína</value>
+    <comment>行</comment>
+  </data>
+  <data name="LineHeight.Text" xml:space="preserve">
+    <value>Línuhæð</value>
+    <comment>行高</comment>
+  </data>
+  <data name="Lines" xml:space="preserve">
+    <value>Línur</value>
+    <comment>行</comment>
+  </data>
+  <data name="LoadImageFail" xml:space="preserve">
+    <value>Ekki tókst að hlaða inn mynd</value>
+    <comment>加载图片失败</comment>
+  </data>
+  <data name="MathBlock.Text" xml:space="preserve">
+    <value>Stærðfræðiblokk</value>
+    <comment>公式块</comment>
+  </data>
+  <data name="Mermaid.Text" xml:space="preserve">
+    <value>Mermaid</value>
+    <comment>Mermaid</comment>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Fundargerð</value>
+    <comment>分钟</comment>
+  </data>
+  <data name="New.Text" xml:space="preserve">
+    <value>Nýtt</value>
+    <comment>新建</comment>
+  </data>
+  <data name="NewFile.Text" xml:space="preserve">
+    <value>Ný skrá</value>
+    <comment>新建文件</comment>
+  </data>
+  <data name="NewFolder.Text" xml:space="preserve">
+    <value>Ný mappa</value>
+    <comment>新建文件夹</comment>
+  </data>
+  <data name="NewWindow.Text" xml:space="preserve">
+    <value>Nýr gluggi</value>
+    <comment>新建窗口</comment>
+  </data>
+  <data name="NoOpenFolders.Text" xml:space="preserve">
+    <value>Engar opnar möppur</value>
+    <comment>没有打开的文件夹</comment>
+  </data>
+  <data name="NoRecentFiles.Text" xml:space="preserve">
+    <value>Engar nýlegar skrár</value>
+    <comment>无最近文件</comment>
+  </data>
+  <data name="NumberBoxColumns.Header" xml:space="preserve">
+    <value>Dálka</value>
+    <comment>列</comment>
+  </data>
+  <data name="NumberBoxRows.Header" xml:space="preserve">
+    <value>Línur</value>
+    <comment>行</comment>
+  </data>
+  <data name="Open.Text" xml:space="preserve">
+    <value>Opinn</value>
+    <comment>打开</comment>
+  </data>
+  <data name="OpenFileLocation.Text" xml:space="preserve">
+    <value>Opna staðsetningu skrár</value>
+    <comment>打开所在文件夹</comment>
+  </data>
+  <data name="OpenFolder.Text" xml:space="preserve">
+    <value>Opna möppu</value>
+    <comment>打开文件夹</comment>
+  </data>
+  <data name="OpenInNewWindow.Text" xml:space="preserve">
+    <value>Opna í nýjum glugga</value>
+    <comment>在新窗口中打开</comment>
+  </data>
+  <data name="OpenRecent.Text" xml:space="preserve">
+    <value>Opna nýlegt</value>
+    <comment>打开最近文件</comment>
+  </data>
+  <data name="OpenSourceSoftware.Content" xml:space="preserve">
+    <value>Opinn hugbúnaður</value>
+    <comment>开源软件</comment>
+  </data>
+  <data name="OrderedList.Text" xml:space="preserve">
+    <value>Pantaður listi</value>
+    <comment>有序列表</comment>
+  </data>
+  <data name="Paragraph.Title" xml:space="preserve">
+    <value>Málsgrein</value>
+    <comment>段落</comment>
+  </data>
+  <data name="Paste.Text" xml:space="preserve">
+    <value>Klístur</value>
+    <comment>粘贴</comment>
+  </data>
+  <data name="PasteAsPlainText.Text" xml:space="preserve">
+    <value>Líma sem venjulegur texti</value>
+    <comment>粘贴为纯文本</comment>
+  </data>
+  <data name="PlantUMLDiagram.Text" xml:space="preserve">
+    <value>PlantUML Diagram</value>
+    <comment>PlantUML 图</comment>
+  </data>
+  <data name="Print.Text" xml:space="preserve">
+    <value>Prenta</value>
+    <comment>打印</comment>
+  </data>
+  <data name="Quote.Text" xml:space="preserve">
+    <value>Tilvitnun</value>
+    <comment>引用</comment>
+  </data>
+  <data name="Redo.Text" xml:space="preserve">
+    <value>Endurgera</value>
+    <comment>重做</comment>
+  </data>
+  <data name="RemoveColumn.Text" xml:space="preserve">
+    <value>Eyða dálki</value>
+    <comment>删除列</comment>
+  </data>
+  <data name="RemoveRow.Text" xml:space="preserve">
+    <value>Eyða línu</value>
+    <comment>删除行</comment>
+  </data>
+  <data name="Rename.Text" xml:space="preserve">
+    <value>Endurnefna</value>
+    <comment>重命名</comment>
+  </data>
+  <data name="Replace.Text" xml:space="preserve">
+    <value>Skipta</value>
+    <comment>替换</comment>
+  </data>
+  <data name="ResizeTable" xml:space="preserve">
+    <value>Breyta stærð töflu</value>
+    <comment>调整表格</comment>
+  </data>
+  <data name="RestoreDefaultSettings.Text" xml:space="preserve">
+    <value>Endurstilla á sjálfgildi</value>
+    <comment>恢复默认</comment>
+  </data>
+  <data name="Save.Text" xml:space="preserve">
+    <value>Spara</value>
+    <comment>保存</comment>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>Vista sem</value>
+    <comment>另存为</comment>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Vistuð</value>
+    <comment>已保存</comment>
+  </data>
+  <data name="SelectAll.Text" xml:space="preserve">
+    <value>Velja allt</value>
+    <comment>全选</comment>
+  </data>
+  <data name="SelectFile.Content" xml:space="preserve">
+    <value>Fletta í skrám</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="SendFeedback.Content" xml:space="preserve">
+    <value>Senda ábendingu</value>
+    <comment>发送反馈</comment>
+  </data>
+  <data name="SequenceDiagram.Text" xml:space="preserve">
+    <value>Sequence Diagram</value>
+    <comment>时序图</comment>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>Kjörstillingar</value>
+    <comment>设置</comment>
+  </data>
+  <data name="Sidebar.Text" xml:space="preserve">
+    <value>Vinstri spjaldið</value>
+    <comment>侧栏</comment>
+  </data>
+  <data name="SidebarFilesTab.Content" xml:space="preserve">
+    <value>Skráartré</value>
+    <comment>文件</comment>
+  </data>
+  <data name="SidebarOutlineTab.Content" xml:space="preserve">
+    <value>Ágrip</value>
+    <comment>大纲</comment>
+  </data>
+  <data name="SourceCodeMode.Text" xml:space="preserve">
+    <value>Upprunakótahamur</value>
+    <comment>源代码模式</comment>
+  </data>
+  <data name="StatusBar.Text" xml:space="preserve">
+    <value>Stöðulína</value>
+    <comment>状态栏</comment>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stoppa</value>
+    <comment>停止</comment>
+  </data>
+  <data name="Strikethrough.Text" xml:space="preserve">
+    <value>Strikethrough</value>
+    <comment>删除线</comment>
+  </data>
+  <data name="Strong.Text" xml:space="preserve">
+    <value>Djarfur</value>
+    <comment>加粗</comment>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>Kerfistungumál</value>
+    <comment>系统语言</comment>
+  </data>
+  <data name="Table.Text" xml:space="preserve">
+    <value>Borð</value>
+    <comment>表格</comment>
+  </data>
+  <data name="TaskList.Text" xml:space="preserve">
+    <value>Verkefnalisti</value>
+    <comment>任务列表</comment>
+  </data>
+  <data name="TextBlockFile.Text" xml:space="preserve">
+    <value>Skrá</value>
+    <comment>文件</comment>
+  </data>
+  <data name="TextboxFeedbackContact.PlaceholderText" xml:space="preserve">
+    <value>Email</value>
+    <comment>电话/QQ/Email</comment>
+  </data>
+  <data name="TextboxFeedbackContent.PlaceholderText" xml:space="preserve">
+    <value>Við munum leggja mikla áherslu á efnið sem þú fyllir út</value>
+    <comment>我们会非常重视您填写的内容</comment>
+  </data>
+  <data name="TextBoxReplace.PlaceholderText" xml:space="preserve">
+    <value>Skipta</value>
+    <comment>替换</comment>
+  </data>
+  <data name="TextBoxSearch.PlaceholderText" xml:space="preserve">
+    <value>Finna</value>
+    <comment>查找</comment>
+  </data>
+  <data name="ThemeDark.Content" xml:space="preserve">
+    <value>Dökkt þema</value>
+    <comment>深色</comment>
+  </data>
+  <data name="ThemeLight.Content" xml:space="preserve">
+    <value>Ljós þema</value>
+    <comment>浅色</comment>
+  </data>
+  <data name="ThemeSystem.Content" xml:space="preserve">
+    <value>Nota kerfisstillingu</value>
+    <comment>使用系统设置</comment>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Samtala</value>
+    <comment>总计</comment>
+  </data>
+  <data name="TurnInto.Text" xml:space="preserve">
+    <value>Breyttu í</value>
+    <comment>转换为</comment>
+  </data>
+  <data name="TypewriterMode.Text" xml:space="preserve">
+    <value>Ritvélarhamur</value>
+    <comment>打字机模式</comment>
+  </data>
+  <data name="Underline.Text" xml:space="preserve">
+    <value>Undirstrika</value>
+    <comment>下划线</comment>
+  </data>
+  <data name="Undo.Text" xml:space="preserve">
+    <value>Afturkalla</value>
+    <comment>撤销</comment>
+  </data>
+  <data name="Unordered.Text" xml:space="preserve">
+    <value>Óskiptur listi</value>
+    <comment>无序列表</comment>
+  </data>
+  <data name="UntitledDocument" xml:space="preserve">
+    <value>Ný skrá</value>
+    <comment>新建文档</comment>
+  </data>
+  <data name="UntitledFolder" xml:space="preserve">
+    <value>Ný mappa</value>
+    <comment>新建文件夹</comment>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Uppfæra</value>
+    <comment>更新</comment>
+  </data>
+  <data name="UseRegexp.Text" xml:space="preserve">
+    <value>Nota RegEx</value>
+    <comment>正则匹配</comment>
+  </data>
+  <data name="VegaChart.Text" xml:space="preserve">
+    <value>Vega Chart</value>
+    <comment>Vega 图</comment>
+  </data>
+  <data name="View.Title" xml:space="preserve">
+    <value>Útsýni</value>
+    <comment>查看</comment>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Vefsetur</value>
+    <comment>网站</comment>
+  </data>
+  <data name="WholeWord.Text" xml:space="preserve">
+    <value>Allt orðið</value>
+    <comment>全字匹配</comment>
+  </data>
+  <data name="Word Count" xml:space="preserve">
+    <value>Orðafjöldi</value>
+    <comment>字数统计</comment>
+  </data>
+  <data name="Word.Text" xml:space="preserve">
+    <value>Orð</value>
+    <comment>词</comment>
+  </data>
+  <data name="Words.Text" xml:space="preserve">
+    <value>Orð</value>
+    <comment>词</comment>
+  </data>
+  <data name="YAMLFrontMatter.Text" xml:space="preserve">
+    <value>YAML Front Matter</value>
+    <comment>YAML Front Matter</comment>
+  </data>
+</root>

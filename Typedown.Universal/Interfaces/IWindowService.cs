@@ -13,12 +13,6 @@ namespace Typedown.Universal.Interfaces
 
         bool PostMessage(nint hWnd, uint msg, nint wParam, nint lParam);
 
-        nint SendMessage(nint hWnd, uint msg, nint wParam, nint lParam);
-
-        System.Drawing.Point GetCursorPos();
-
         bool IsZoomed(nint hWnd);
-
-        TimeSpan GetDoubleClickTime();
     }
 }

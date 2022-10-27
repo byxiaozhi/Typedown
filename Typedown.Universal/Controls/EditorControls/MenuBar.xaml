@@ -11,29 +11,133 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <Grid BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CardStrokeColorDefault}">
+    <Grid BorderThickness="0,0,0,1" Margin="0,-4,0,0" BorderBrush="{ThemeResource CardStrokeColorDefault}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <muxc:MenuBar>
-            <muxc:MenuBarItem Title="File">
-                <MenuFlyoutItem Text="New"/>
-                <MenuFlyoutItem Text="Open..."/>
-                <MenuFlyoutItem Text="Save"/>
-                <MenuFlyoutItem Text="Exit"/>
+            
+            <muxc:MenuBarItem x:Uid="File">
+                <MenuFlyoutItem x:Uid="New" KeyboardAcceleratorTextOverride="Ctrl+N"/>
+                <MenuFlyoutItem x:Uid="NewWindow" KeyboardAcceleratorTextOverride="Ctrl+Shift+N"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="Open" KeyboardAcceleratorTextOverride="Ctrl+O"/>
+                <MenuFlyoutItem x:Uid="OpenFolder"/>
+                <MenuFlyoutSubItem  x:Uid="OpenRecent">
+                    <MenuFlyoutItem x:Uid="NoRecentFiles" IsEnabled="False"/>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem x:Uid="ClearRecentFiles"/>
+                </MenuFlyoutSubItem>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="Save" KeyboardAcceleratorTextOverride="Ctrl+S"/>
+                <MenuFlyoutItem x:Uid="SaveAs" KeyboardAcceleratorTextOverride="Ctrl+Shift+S"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="Import"/>
+                <MenuFlyoutSubItem  x:Uid="Export">
+                    <MenuFlyoutItem Text="PDF"/>
+                    <MenuFlyoutItem Text="HTML"/>
+                    <MenuFlyoutItem Text="TEXT"/>
+                </MenuFlyoutSubItem>
+                <MenuFlyoutItem x:Uid="Print" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="Close" KeyboardAcceleratorTextOverride="Ctrl+W"/>
+            </muxc:MenuBarItem>
+            
+            <muxc:MenuBarItem x:Uid="Edit">
+                <MenuFlyoutItem x:Uid="Undo" KeyboardAcceleratorTextOverride="Ctrl+Z"/>
+                <MenuFlyoutItem x:Uid="Redo" KeyboardAcceleratorTextOverride="Ctrl+Y"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="Cut" KeyboardAcceleratorTextOverride="Ctrl+X"/>
+                <MenuFlyoutItem x:Uid="Copy" KeyboardAcceleratorTextOverride="Ctrl+C"/>
+                <MenuFlyoutItem x:Uid="Paste" KeyboardAcceleratorTextOverride="Ctrl+V"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="CopyAsPlainText"/>
+                <MenuFlyoutItem x:Uid="CopyAsMarkdown"  KeyboardAcceleratorTextOverride="Ctrl+Shift+C"/>
+                <MenuFlyoutItem x:Uid="CopyAsHTMLCode"/>
+                <MenuFlyoutItem x:Uid="PasteAsPlainText" KeyboardAcceleratorTextOverride="Ctrl+Shift+V"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="Delete" KeyboardAcceleratorTextOverride="Delete"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="SelectAll" KeyboardAcceleratorTextOverride="Ctrl+A"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutSubItem  x:Uid="FindAndReplace">
+                    <MenuFlyoutItem x:Uid="Find" KeyboardAcceleratorTextOverride="Ctrl+F"/>
+                    <MenuFlyoutItem x:Uid="FindNext" KeyboardAcceleratorTextOverride="F3"/>
+                    <MenuFlyoutItem x:Uid="FindPrevious" KeyboardAcceleratorTextOverride="Shift+F3"/>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem x:Uid="Replace" KeyboardAcceleratorTextOverride="Ctrl+H"/>
+                </MenuFlyoutSubItem>
             </muxc:MenuBarItem>
 
-            <muxc:MenuBarItem Title="Edit">
-                <MenuFlyoutItem Text="Undo"/>
-                <MenuFlyoutItem Text="Cut"/>
-                <MenuFlyoutItem Text="Copy"/>
-                <MenuFlyoutItem Text="Paste"/>
+            <muxc:MenuBarItem x:Uid="Paragraph">
+                <MenuFlyoutSubItem x:Uid="Heading">
+                    <MenuFlyoutSubItem.Items>
+                        <ToggleMenuFlyoutItem x:Uid="Heading1" KeyboardAcceleratorTextOverride="Ctrl+1"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading2" KeyboardAcceleratorTextOverride="Ctrl+2"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading3" KeyboardAcceleratorTextOverride="Ctrl+3"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading4" KeyboardAcceleratorTextOverride="Ctrl+4"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading5" KeyboardAcceleratorTextOverride="Ctrl+5"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading6" KeyboardAcceleratorTextOverride="Ctrl+6"/>
+                    </MenuFlyoutSubItem.Items>
+                </MenuFlyoutSubItem>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="ItemParagraph" KeyboardAcceleratorTextOverride="Ctrl+0"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="IncreaseHeadingLevel" KeyboardAcceleratorTextOverride="Ctrl+="/>
+                <MenuFlyoutItem x:Uid="DecreaseHeadingLevel" KeyboardAcceleratorTextOverride="Ctrl+-"/>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="Table" KeyboardAcceleratorTextOverride="Ctrl+Shift+T"/>
+                <ToggleMenuFlyoutItem x:Uid="CodeFences" KeyboardAcceleratorTextOverride="Ctrl+Shift+K"/>
+                <ToggleMenuFlyoutItem x:Uid="MathBlock" KeyboardAcceleratorTextOverride="Ctrl+Shift+M"/>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="Quote" KeyboardAcceleratorTextOverride="Ctrl+Shift+Q"/>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="OrderedList" KeyboardAcceleratorTextOverride="Ctrl+Shift+["/>
+                <ToggleMenuFlyoutItem x:Uid="Unordered" KeyboardAcceleratorTextOverride="Ctrl+Shift+]"/>
+                <ToggleMenuFlyoutItem x:Uid="TaskList"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="InsertParagraphBefore"/>
+                <MenuFlyoutItem x:Uid="InsertParagraphAfter"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutSubItem x:Uid="Chart">
+                    <MenuFlyoutItem x:Uid="VegaChart"/>
+                    <MenuFlyoutItem x:Uid="FlowChart" />
+                    <MenuFlyoutItem x:Uid="SequenceDiagram"/>
+                    <MenuFlyoutItem x:Uid="PlantUMLDiagram"/>
+                    <MenuFlyoutItem x:Uid="Mermaid"/>
+                </MenuFlyoutSubItem>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="HorizontalLine"/>
+                <ToggleMenuFlyoutItem x:Uid="YAMLFrontMatter"/>
             </muxc:MenuBarItem>
 
-            <muxc:MenuBarItem Title="Help">
-                <MenuFlyoutItem Text="About"/>
+            <muxc:MenuBarItem x:Uid="Format">
+                <ToggleMenuFlyoutItem x:Uid="Strong" KeyboardAcceleratorTextOverride="Ctrl+B"/>
+                <ToggleMenuFlyoutItem x:Uid="Emphasis" KeyboardAcceleratorTextOverride="Ctrl+I"/>
+                <ToggleMenuFlyoutItem x:Uid="Underline" KeyboardAcceleratorTextOverride="Ctrl+U"/>
+                <ToggleMenuFlyoutItem x:Uid="InlineCode" KeyboardAcceleratorTextOverride="Ctrl+Shift+`"/>
+                <ToggleMenuFlyoutItem x:Uid="InlineMath" CommandParameter="inline_math"/>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="Strikethrough" KeyboardAcceleratorTextOverride="Alt+Shift+5"/>
+                <ToggleMenuFlyoutItem x:Uid="Highlight"/>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="Hyperlink" KeyboardAcceleratorTextOverride="Ctrl+K"/>
+                <ToggleMenuFlyoutItem x:Uid="Image" KeyboardAcceleratorTextOverride="Ctrl+Shift+I"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Uid="ClearFormat" KeyboardAcceleratorTextOverride="Ctrl+\"/>
             </muxc:MenuBarItem>
+
+            <muxc:MenuBarItem x:Uid="View">
+                <ToggleMenuFlyoutItem x:Uid="Sidebar" KeyboardAcceleratorTextOverride="Ctrl+Shift+L"/>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="SourceCodeMode" KeyboardAcceleratorTextOverride="Ctrl+/"/>
+                <ToggleMenuFlyoutItem x:Uid="FocusMode" KeyboardAcceleratorTextOverride="F8"/>
+                <ToggleMenuFlyoutItem x:Uid="TypewriterMode" KeyboardAcceleratorTextOverride="F9"/>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem x:Uid="StatusBar"/>
+            </muxc:MenuBarItem>
+            
         </muxc:MenuBar>
         <Button Grid.Column="1" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind AppViewModel.NavigateCommand}" CommandParameter="Settings">
             <Viewbox Width="16" Height="16">

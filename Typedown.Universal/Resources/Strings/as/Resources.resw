@@ -1,0 +1,836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Text" xml:space="preserve">
+    <value>সম্পৰ্কে</value>
+    <comment>关于</comment>
+  </data>
+  <data name="AboutApp.Text" xml:space="preserve">
+    <value>এপ্লিকেচনৰ বিষয়ে</value>
+    <comment>关于应用</comment>
+  </data>
+  <data name="AboutIntroduction.Text" xml:space="preserve">
+    <value>এজন ৱাইএছআইৱাইজি মাৰ্কডাউন সম্পাদক</value>
+    <comment>一款所见即所得 Markdown 编辑器</comment>
+  </data>
+  <data name="AlignCenter" xml:space="preserve">
+    <value>কেন্দ্ৰ সংৰেখিত কৰক</value>
+    <comment>居中对齐</comment>
+  </data>
+  <data name="AlignLeft" xml:space="preserve">
+    <value>বাওঁফালৰ পৰা সংৰেখিত কৰক</value>
+    <comment>左对齐</comment>
+  </data>
+  <data name="AlignRight" xml:space="preserve">
+    <value>সোঁফালৰ সংৰেখিত কৰক</value>
+    <comment>右对齐</comment>
+  </data>
+  <data name="AppStorePage.Content" xml:space="preserve">
+    <value>এপ্প ষ্টোৰ পৃষ্ঠা</value>
+    <comment>应用商店页面</comment>
+  </data>
+  <data name="AppTheme.Text" xml:space="preserve">
+    <value>এপ্প থীম</value>
+    <comment>主题</comment>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>স্বয়ংক্ৰিয়</value>
+    <comment>自动</comment>
+  </data>
+  <data name="AutoPairBracket.Text" xml:space="preserve">
+    <value>স্বয়ং যোৰ বন্ধনী</value>
+    <comment>自动补全括号</comment>
+  </data>
+  <data name="AutoPairMarkdownSyntax.Text" xml:space="preserve">
+    <value>অটো পেয়াৰ মাৰ্কডাউন চিনটেক্স</value>
+    <comment>自动补全 Markdown 标记</comment>
+  </data>
+  <data name="AutoPairQuote.Text" xml:space="preserve">
+    <value>স্বয়ং যোৰ উদ্ধৃতি</value>
+    <comment>自动补全引号</comment>
+  </data>
+  <data name="AutoSave.Text" xml:space="preserve">
+    <value>স্বয়ং সংৰক্ষণ</value>
+    <comment>自动保存</comment>
+  </data>
+  <data name="Back.Text" xml:space="preserve">
+    <value>পিছলৈ</value>
+    <comment>返回</comment>
+  </data>
+  <data name="BasedOn.Text" xml:space="preserve">
+    <value>আধাৰ অন</value>
+    <comment>基于</comment>
+  </data>
+  <data name="BasedOnOpenSourceSoftware.Content" xml:space="preserve">
+    <value>মুক্ত উৎস ছফ্টৱেৰৰ ওপৰত আধাৰিত</value>
+    <comment>基于开源软件</comment>
+  </data>
+  <data name="BrowseLocalFiles.Content" xml:space="preserve">
+    <value>স্থানীয় ফাইলসমূহ ব্ৰাউজ কৰক</value>
+    <comment>浏览本地文件</comment>
+  </data>
+  <data name="BtnReplace.Content" xml:space="preserve">
+    <value>প্ৰতিস্থাপন কৰক</value>
+    <comment>替换</comment>
+  </data>
+  <data name="BtnReplaceAll.Content" xml:space="preserve">
+    <value>সকলোবোৰ সলনি কৰক</value>
+    <comment>替换全部</comment>
+  </data>
+  <data name="BtnSave.Content" xml:space="preserve">
+    <value>সংৰক্ষণ কৰক</value>
+    <comment>保存</comment>
+  </data>
+  <data name="CaseSensitive.Text" xml:space="preserve">
+    <value>কেছ সংবেদনশীল</value>
+    <comment>区分大小写</comment>
+  </data>
+  <data name="ChangesTakeEffectAfterRestartingTheApp.Text" xml:space="preserve">
+    <value>এপ্পটো পুনৰ আৰম্ভ কৰাৰ পিছত পৰিৱৰ্তনবোৰ কাৰ্যকৰী হয়</value>
+    <comment>重启应用后生效</comment>
+  </data>
+  <data name="Character.Text" xml:space="preserve">
+    <value>আখৰ</value>
+    <comment>字</comment>
+  </data>
+  <data name="Characters.Text" xml:space="preserve">
+    <value>বৰ্ণসমূহ</value>
+    <comment>字</comment>
+  </data>
+  <data name="Chart.Text" xml:space="preserve">
+    <value>চাৰ্ট</value>
+    <comment>图表</comment>
+  </data>
+  <data name="ChooseLocalImage.Text" xml:space="preserve">
+    <value>স্থানীয় ছবি সমূহ অন্তৰ্ভুক্ত কৰক</value>
+    <comment>从本地选择一张图片</comment>
+  </data>
+  <data name="ClearFormat.Text" xml:space="preserve">
+    <value>বিন্যাস পৰিষ্কাৰ কৰক</value>
+    <comment>清除样式</comment>
+  </data>
+  <data name="ClearRecentFiles.Text" xml:space="preserve">
+    <value>বস্তুসমূহ পৰিষ্কাৰ কৰক</value>
+    <comment>清除最近文件</comment>
+  </data>
+  <data name="ClickToAddAnImage" xml:space="preserve">
+    <value>ছবি এটা যোগ কৰিবলৈ ক্লিক কৰক</value>
+    <comment>点击添加一张图片</comment>
+  </data>
+  <data name="Close.Text" xml:space="preserve">
+    <value>প্ৰস্থান কৰক</value>
+    <comment>退出</comment>
+  </data>
+  <data name="CodeFences.Text" xml:space="preserve">
+    <value>কোড ফেঞ্চ</value>
+    <comment>代码块</comment>
+  </data>
+  <data name="Copy.Text" xml:space="preserve">
+    <value>নকল</value>
+    <comment>复制</comment>
+  </data>
+  <data name="CopyAsHTMLCode.Text" xml:space="preserve">
+    <value>এইচটিএমএল কোড হিচাপে প্ৰতিলিপি কৰক</value>
+    <comment>复制为 HTML 代码</comment>
+  </data>
+  <data name="CopyAsMarkdown.Text" xml:space="preserve">
+    <value>মাৰ্কডাউন হিচাপে প্ৰতিলিপি কৰক</value>
+    <comment>复制为 Markdown</comment>
+  </data>
+  <data name="CopyAsPath.Text" xml:space="preserve">
+    <value>ফাইল পথ কপি কৰক</value>
+    <comment>复制文件地址</comment>
+  </data>
+  <data name="CopyAsPlainText.Text" xml:space="preserve">
+    <value>প্লেইন টেক্সট হিচাপে প্ৰতিলিপি কৰক</value>
+    <comment>复制为纯文本</comment>
+  </data>
+  <data name="CopyContent" xml:space="preserve">
+    <value>সমল প্ৰতিলিপি কৰক</value>
+    <comment>复制内容</comment>
+  </data>
+  <data name="CopyPasteAs.Text" xml:space="preserve">
+    <value>প্ৰতিলিপি / পেষ্ট এজ...</value>
+    <comment>复制/粘贴为</comment>
+  </data>
+  <data name="CtrlAndClickOpenLink" xml:space="preserve">
+    <value>Ctrl+ক্লিক কৰক লিংক খোলক</value>
+    <comment>Ctrl+单击 打开链接</comment>
+  </data>
+  <data name="Cut.Text" xml:space="preserve">
+    <value>কাট</value>
+    <comment>剪切</comment>
+  </data>
+  <data name="DecreaseHeadingLevel.Text" xml:space="preserve">
+    <value>শিৰোনামৰ স্তৰ হ্ৰাস কৰক</value>
+    <comment>降低标题级别</comment>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>মচি পেলাওক</value>
+    <comment>删除</comment>
+  </data>
+  <data name="DeleteTable" xml:space="preserve">
+    <value>তালিকা মচি পেলাওক</value>
+    <comment>删除表格</comment>
+  </data>
+  <data name="Duplicate.Text" xml:space="preserve">
+    <value>নকল</value>
+    <comment>重复</comment>
+  </data>
+  <data name="Edit.Title" xml:space="preserve">
+    <value>সম্পাদনা কৰক</value>
+    <comment>编辑</comment>
+  </data>
+  <data name="Editor.Text" xml:space="preserve">
+    <value>সম্পাদক</value>
+    <comment>编辑器</comment>
+  </data>
+  <data name="EditorAreaMaxWidth.Text" xml:space="preserve">
+    <value>সম্পাদক ক্ষেত্ৰসৰ্বাধিক প্ৰস্থ</value>
+    <comment>编辑区域最大宽度</comment>
+  </data>
+  <data name="EmbedLink.Content" xml:space="preserve">
+    <value>লিংক এম্বেড কৰক</value>
+    <comment>嵌入链接</comment>
+  </data>
+  <data name="Emphasis.Text" xml:space="preserve">
+    <value>ইটালিক</value>
+    <comment>斜体</comment>
+  </data>
+  <data name="EnterImgLinkOrLocalPath.PlaceholderText" xml:space="preserve">
+    <value>ইনপুট ছবি ইউআৰএল</value>
+    <comment>请输入图像链接或本地路径</comment>
+  </data>
+  <data name="Export.Text" xml:space="preserve">
+    <value>ৰপ্তানি</value>
+    <comment>导出</comment>
+  </data>
+  <data name="ExportToPDF" xml:space="preserve">
+    <value>পিডিএফলৈ ৰপ্তানি কৰক</value>
+    <comment>导出到 PDF</comment>
+  </data>
+  <data name="Feedback.Text" xml:space="preserve">
+    <value>প্ৰতিক্ৰিয়া</value>
+    <comment>反馈</comment>
+  </data>
+  <data name="FeedbackContact.Text" xml:space="preserve">
+    <value>পৰিচয় তথ্য</value>
+    <comment>联系方式</comment>
+  </data>
+  <data name="FeedbackContentTitle.Text" xml:space="preserve">
+    <value>প্ৰশ্ন আৰু পৰামৰ্শ</value>
+    <comment>使用中遇到的问题或改进建议</comment>
+  </data>
+  <data name="FeedbackRating.Text" xml:space="preserve">
+    <value>ৰেটিং</value>
+    <comment>使用感受</comment>
+  </data>
+  <data name="File.Title" xml:space="preserve">
+    <value>ফাইল</value>
+    <comment>文件</comment>
+  </data>
+  <data name="Find.Text" xml:space="preserve">
+    <value>বিচাৰ</value>
+    <comment>查找</comment>
+  </data>
+  <data name="FindAndReplace.Text" xml:space="preserve">
+    <value>সন্ধান কৰক আৰু সলনি কৰক</value>
+    <comment>查找和替换</comment>
+  </data>
+  <data name="FindNext.Text" xml:space="preserve">
+    <value>পৰৱৰ্তী সন্ধান কৰক</value>
+    <comment>查找下一个</comment>
+  </data>
+  <data name="FindPrevious.Text" xml:space="preserve">
+    <value>পূৰ্ববৰ্তী সন্ধান কৰক</value>
+    <comment>查找上一个</comment>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>সমাপ্ত</value>
+    <comment>已完成</comment>
+  </data>
+  <data name="FlowChart.Text" xml:space="preserve">
+    <value>Flow Chart</value>
+    <comment>流程图</comment>
+  </data>
+  <data name="FocusMode.Text" xml:space="preserve">
+    <value>ফোকাস মোড</value>
+    <comment>专注模式</comment>
+  </data>
+  <data name="Font.Text" xml:space="preserve">
+    <value>ফন্ট</value>
+    <comment>字体</comment>
+  </data>
+  <data name="FontSize.Text" xml:space="preserve">
+    <value>ফন্টৰ আকাৰ</value>
+    <comment>字体大小</comment>
+  </data>
+  <data name="Format.Title" xml:space="preserve">
+    <value>বিন্যাস</value>
+    <comment>格式</comment>
+  </data>
+  <data name="General.Text" xml:space="preserve">
+    <value>সাধাৰণ</value>
+    <comment>通用</comment>
+  </data>
+  <data name="Heading.Text" xml:space="preserve">
+    <value>শীৰ্ষক</value>
+    <comment>标题</comment>
+  </data>
+  <data name="Heading1.Text" xml:space="preserve">
+    <value>শীৰ্ষক ১</value>
+    <comment>一级标题</comment>
+  </data>
+  <data name="Heading2.Text" xml:space="preserve">
+    <value>শীৰ্ষক ২</value>
+    <comment>二级标题</comment>
+  </data>
+  <data name="Heading3.Text" xml:space="preserve">
+    <value>শিৰোনাম ৩</value>
+    <comment>三级标题</comment>
+  </data>
+  <data name="Heading4.Text" xml:space="preserve">
+    <value>শীৰ্ষক ৪</value>
+    <comment>四级标题</comment>
+  </data>
+  <data name="Heading5.Text" xml:space="preserve">
+    <value>হেডিং ৫</value>
+    <comment>五级标题</comment>
+  </data>
+  <data name="Heading6.Text" xml:space="preserve">
+    <value>হেডিং ৬</value>
+    <comment>六级标题</comment>
+  </data>
+  <data name="Help.Title" xml:space="preserve">
+    <value>সহায়</value>
+    <comment>帮助</comment>
+  </data>
+  <data name="Highlight.Text" xml:space="preserve">
+    <value>হাইলাইট কৰক</value>
+    <comment>高亮</comment>
+  </data>
+  <data name="HorizontalLine.Text" xml:space="preserve">
+    <value>পথালি ৰেখা</value>
+    <comment>水平分割线</comment>
+  </data>
+  <data name="Hyperlink.Text" xml:space="preserve">
+    <value>হাইপাৰলিংক</value>
+    <comment>超链接</comment>
+  </data>
+  <data name="Image.Text" xml:space="preserve">
+    <value>ছবি</value>
+    <comment>图像</comment>
+  </data>
+  <data name="Import.Text" xml:space="preserve">
+    <value>আমদানি</value>
+    <comment>导入</comment>
+  </data>
+  <data name="IncreaseHeadingLevel.Text" xml:space="preserve">
+    <value>শীৰ্ষক স্তৰ বৃদ্ধি কৰক</value>
+    <comment>提升标题级别</comment>
+  </data>
+  <data name="InlineCode.Text" xml:space="preserve">
+    <value>কোড</value>
+    <comment>代码</comment>
+  </data>
+  <data name="InlineMath.Text" xml:space="preserve">
+    <value>ইনলাইন গণিত</value>
+    <comment>公式</comment>
+  </data>
+  <data name="InputFootnoteDefine" xml:space="preserve">
+    <value>ফুটনোট সংজ্ঞা ইনপুট কৰক...</value>
+    <comment>输入脚注定义...</comment>
+  </data>
+  <data name="InputLanguageIdentifier" xml:space="preserve">
+    <value>ইনপুট ভাষা চিনাক্তকৰ্তা...</value>
+    <comment>输入语言标识符...</comment>
+  </data>
+  <data name="InputMathFormula" xml:space="preserve">
+    <value>ইনপুট গাণিতিক সূত্ৰ...</value>
+    <comment>输入数学公式...</comment>
+  </data>
+  <data name="InputYAMLFrontMatter" xml:space="preserve">
+    <value>ইনপুট YAML Front Matter...</value>
+    <comment>输入 YAML Front Matter...</comment>
+  </data>
+  <data name="InsertColumnLeft.Text" xml:space="preserve">
+    <value>আগতে স্তম্ভ যোগ কৰক</value>
+    <comment>在左边插入列</comment>
+  </data>
+  <data name="InsertColumnRight.Text" xml:space="preserve">
+    <value>পিছত স্তম্ভ যোগ কৰক</value>
+    <comment>在右边插入列</comment>
+  </data>
+  <data name="InsertParagraphAfter.Text" xml:space="preserve">
+    <value>পিছত অনুচ্ছেদ অন্তৰ্ভুক্ত কৰক</value>
+    <comment>在下方插入段落</comment>
+  </data>
+  <data name="InsertParagraphBefore.Text" xml:space="preserve">
+    <value>আগতে অনুচ্ছেদ অন্তৰ্ভুক্ত কৰক</value>
+    <comment>在上方插入段落</comment>
+  </data>
+  <data name="InsertRowAbove.Text" xml:space="preserve">
+    <value>ওপৰত শাৰী যোগ কৰক</value>
+    <comment>在上方插入行</comment>
+  </data>
+  <data name="InsertRowBelow.Text" xml:space="preserve">
+    <value>তলত শাৰী যোগ কৰক</value>
+    <comment>在下方插入行</comment>
+  </data>
+  <data name="ItemParagraph.Text" xml:space="preserve">
+    <value>অনুচ্ছেদ</value>
+    <comment>段落</comment>
+  </data>
+  <data name="KeepRun.Text" xml:space="preserve">
+    <value>চলি থাকক</value>
+    <comment>后台运行</comment>
+  </data>
+  <data name="KeepRunDesc.Text" xml:space="preserve">
+    <value>ষ্টাৰ্টআপৰ গতি উন্নত কৰক, কিন্তু কিছু মেম'ৰী ল'ব</value>
+    <comment>大幅提升启动速度，但是会占用一部分内存</comment>
+  </data>
+  <data name="Language.Text" xml:space="preserve">
+    <value>ভাষা</value>
+    <comment>语言</comment>
+  </data>
+  <data name="LanguageSystemSetting" xml:space="preserve">
+    <value>চিস্টেম ছেটিং ব্যৱহাৰ কৰক</value>
+    <comment>使用系统设置</comment>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>ৰেখা</value>
+    <comment>行</comment>
+  </data>
+  <data name="LineHeight.Text" xml:space="preserve">
+    <value>ৰেখাৰ উচ্চতা</value>
+    <comment>行高</comment>
+  </data>
+  <data name="Lines" xml:space="preserve">
+    <value>শাৰীসমূহ</value>
+    <comment>行</comment>
+  </data>
+  <data name="LoadImageFail" xml:space="preserve">
+    <value>ছবি লোড কৰা ব্যৰ্থ</value>
+    <comment>加载图片失败</comment>
+  </data>
+  <data name="MathBlock.Text" xml:space="preserve">
+    <value>গণিত খণ্ড</value>
+    <comment>公式块</comment>
+  </data>
+  <data name="Mermaid.Text" xml:space="preserve">
+    <value>Mermaid</value>
+    <comment>Mermaid</comment>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>মিনিট</value>
+    <comment>分钟</comment>
+  </data>
+  <data name="New.Text" xml:space="preserve">
+    <value>নতুন</value>
+    <comment>新建</comment>
+  </data>
+  <data name="NewFile.Text" xml:space="preserve">
+    <value>নতুন ফাইল</value>
+    <comment>新建文件</comment>
+  </data>
+  <data name="NewFolder.Text" xml:space="preserve">
+    <value>নতুন ফোল্ডাৰ</value>
+    <comment>新建文件夹</comment>
+  </data>
+  <data name="NewWindow.Text" xml:space="preserve">
+    <value>নতুন উইন্ডো</value>
+    <comment>新建窗口</comment>
+  </data>
+  <data name="NoOpenFolders.Text" xml:space="preserve">
+    <value>কোনো খোলা ফোল্ডাৰ নাই</value>
+    <comment>没有打开的文件夹</comment>
+  </data>
+  <data name="NoRecentFiles.Text" xml:space="preserve">
+    <value>শেহতীয়া ফাইল নাই</value>
+    <comment>无最近文件</comment>
+  </data>
+  <data name="NumberBoxColumns.Header" xml:space="preserve">
+    <value>স্তম্ভসমূহ</value>
+    <comment>列</comment>
+  </data>
+  <data name="NumberBoxRows.Header" xml:space="preserve">
+    <value>শাৰী</value>
+    <comment>行</comment>
+  </data>
+  <data name="Open.Text" xml:space="preserve">
+    <value>খুল</value>
+    <comment>打开</comment>
+  </data>
+  <data name="OpenFileLocation.Text" xml:space="preserve">
+    <value>ফাইলৰ অৱস্থান খোলক</value>
+    <comment>打开所在文件夹</comment>
+  </data>
+  <data name="OpenFolder.Text" xml:space="preserve">
+    <value>ফোল্ডাৰ খোলক</value>
+    <comment>打开文件夹</comment>
+  </data>
+  <data name="OpenInNewWindow.Text" xml:space="preserve">
+    <value>নতুন উইন্ডোত খোলক</value>
+    <comment>在新窗口中打开</comment>
+  </data>
+  <data name="OpenRecent.Text" xml:space="preserve">
+    <value>শেহতীয়া খোলক</value>
+    <comment>打开最近文件</comment>
+  </data>
+  <data name="OpenSourceSoftware.Content" xml:space="preserve">
+    <value>উৎস চফ্টৱেৰ খোলক</value>
+    <comment>开源软件</comment>
+  </data>
+  <data name="OrderedList.Text" xml:space="preserve">
+    <value>অৰ্ডাৰ কৰা তালিকা</value>
+    <comment>有序列表</comment>
+  </data>
+  <data name="Paragraph.Title" xml:space="preserve">
+    <value>অনুচ্ছেদ</value>
+    <comment>段落</comment>
+  </data>
+  <data name="Paste.Text" xml:space="preserve">
+    <value>লুথুৰী</value>
+    <comment>粘贴</comment>
+  </data>
+  <data name="PasteAsPlainText.Text" xml:space="preserve">
+    <value>প্লেইন টেক্সট হিচাপে পেষ্ট কৰক</value>
+    <comment>粘贴为纯文本</comment>
+  </data>
+  <data name="PlantUMLDiagram.Text" xml:space="preserve">
+    <value>PlantUML Diagram</value>
+    <comment>PlantUML 图</comment>
+  </data>
+  <data name="Print.Text" xml:space="preserve">
+    <value>প্ৰিন্ট কৰক</value>
+    <comment>打印</comment>
+  </data>
+  <data name="Quote.Text" xml:space="preserve">
+    <value>উদ্ধৃতি</value>
+    <comment>引用</comment>
+  </data>
+  <data name="Redo.Text" xml:space="preserve">
+    <value>পুনৰ কৰক</value>
+    <comment>重做</comment>
+  </data>
+  <data name="RemoveColumn.Text" xml:space="preserve">
+    <value>স্তম্ভ বিলোপ কৰক</value>
+    <comment>删除列</comment>
+  </data>
+  <data name="RemoveRow.Text" xml:space="preserve">
+    <value>শাৰী মচি পেলাওক</value>
+    <comment>删除行</comment>
+  </data>
+  <data name="Rename.Text" xml:space="preserve">
+    <value>পুনৰ নামকৰণ কৰক</value>
+    <comment>重命名</comment>
+  </data>
+  <data name="Replace.Text" xml:space="preserve">
+    <value>প্ৰতিস্থাপন কৰক</value>
+    <comment>替换</comment>
+  </data>
+  <data name="ResizeTable" xml:space="preserve">
+    <value>তালিকাৰ আকাৰ সলনি কৰক</value>
+    <comment>调整表格</comment>
+  </data>
+  <data name="RestoreDefaultSettings.Text" xml:space="preserve">
+    <value>ডিফল্টলৈ ৰিছেট কৰক</value>
+    <comment>恢复默认</comment>
+  </data>
+  <data name="Save.Text" xml:space="preserve">
+    <value>সংৰক্ষণ কৰক</value>
+    <comment>保存</comment>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>সংৰক্ষণ কৰক</value>
+    <comment>另存为</comment>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>সংৰক্ষিত</value>
+    <comment>已保存</comment>
+  </data>
+  <data name="SelectAll.Text" xml:space="preserve">
+    <value>সকলো বাছক</value>
+    <comment>全选</comment>
+  </data>
+  <data name="SelectFile.Content" xml:space="preserve">
+    <value>ফাইলসমূহ ব্ৰাউজ কৰক</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="SendFeedback.Content" xml:space="preserve">
+    <value>মতামত প্ৰেৰণ কৰক</value>
+    <comment>发送反馈</comment>
+  </data>
+  <data name="SequenceDiagram.Text" xml:space="preserve">
+    <value>Sequence Diagram</value>
+    <comment>时序图</comment>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>পছন্দসমূহ</value>
+    <comment>设置</comment>
+  </data>
+  <data name="Sidebar.Text" xml:space="preserve">
+    <value>বাওঁ পেনেল</value>
+    <comment>侧栏</comment>
+  </data>
+  <data name="SidebarFilesTab.Content" xml:space="preserve">
+    <value>ফাইল গছ</value>
+    <comment>文件</comment>
+  </data>
+  <data name="SidebarOutlineTab.Content" xml:space="preserve">
+    <value>আউটলাইন</value>
+    <comment>大纲</comment>
+  </data>
+  <data name="SourceCodeMode.Text" xml:space="preserve">
+    <value>উৎস কোড মোড</value>
+    <comment>源代码模式</comment>
+  </data>
+  <data name="StatusBar.Text" xml:space="preserve">
+    <value>স্থিতি দণ্ডিকা</value>
+    <comment>状态栏</comment>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>বন্ধ কৰক</value>
+    <comment>停止</comment>
+  </data>
+  <data name="Strikethrough.Text" xml:space="preserve">
+    <value>ষ্ট্ৰাইকথ্ৰু</value>
+    <comment>删除线</comment>
+  </data>
+  <data name="Strong.Text" xml:space="preserve">
+    <value>বোল্ড</value>
+    <comment>加粗</comment>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>চিস্টেম ভাষা</value>
+    <comment>系统语言</comment>
+  </data>
+  <data name="Table.Text" xml:space="preserve">
+    <value>টেবুল</value>
+    <comment>表格</comment>
+  </data>
+  <data name="TaskList.Text" xml:space="preserve">
+    <value>কাৰ্য্য তালিকা</value>
+    <comment>任务列表</comment>
+  </data>
+  <data name="TextBlockFile.Text" xml:space="preserve">
+    <value>ফাইল</value>
+    <comment>文件</comment>
+  </data>
+  <data name="TextboxFeedbackContact.PlaceholderText" xml:space="preserve">
+    <value>Email</value>
+    <comment>电话/QQ/Email</comment>
+  </data>
+  <data name="TextboxFeedbackContent.PlaceholderText" xml:space="preserve">
+    <value>আপুনি পূৰণ কৰা সমলৰ ওপৰত আমি যথেষ্ট গুৰুত্ব দিম</value>
+    <comment>我们会非常重视您填写的内容</comment>
+  </data>
+  <data name="TextBoxReplace.PlaceholderText" xml:space="preserve">
+    <value>প্ৰতিস্থাপন কৰক</value>
+    <comment>替换</comment>
+  </data>
+  <data name="TextBoxSearch.PlaceholderText" xml:space="preserve">
+    <value>বিচাৰ</value>
+    <comment>查找</comment>
+  </data>
+  <data name="ThemeDark.Content" xml:space="preserve">
+    <value>ডাৰ্ক থীম</value>
+    <comment>深色</comment>
+  </data>
+  <data name="ThemeLight.Content" xml:space="preserve">
+    <value>লাইট থীম</value>
+    <comment>浅色</comment>
+  </data>
+  <data name="ThemeSystem.Content" xml:space="preserve">
+    <value>চিস্টেম ছেটিং ব্যৱহাৰ কৰক</value>
+    <comment>使用系统设置</comment>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>মুঠ</value>
+    <comment>总计</comment>
+  </data>
+  <data name="TurnInto.Text" xml:space="preserve">
+    <value>ইনটু কৰক</value>
+    <comment>转换为</comment>
+  </data>
+  <data name="TypewriterMode.Text" xml:space="preserve">
+    <value>টাইপৰাইটাৰ মোড</value>
+    <comment>打字机模式</comment>
+  </data>
+  <data name="Underline.Text" xml:space="preserve">
+    <value>ৰেখাঙ্কন কৰক</value>
+    <comment>下划线</comment>
+  </data>
+  <data name="Undo.Text" xml:space="preserve">
+    <value>বাতিল কৰক</value>
+    <comment>撤销</comment>
+  </data>
+  <data name="Unordered.Text" xml:space="preserve">
+    <value>অনিৰ্দেশিত তালিকা</value>
+    <comment>无序列表</comment>
+  </data>
+  <data name="UntitledDocument" xml:space="preserve">
+    <value>নতুন ফাইল</value>
+    <comment>新建文档</comment>
+  </data>
+  <data name="UntitledFolder" xml:space="preserve">
+    <value>নতুন ফোল্ডাৰ</value>
+    <comment>新建文件夹</comment>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>আপডেট কৰক</value>
+    <comment>更新</comment>
+  </data>
+  <data name="UseRegexp.Text" xml:space="preserve">
+    <value>ৰেগএক্স ব্যৱহাৰ কৰক</value>
+    <comment>正则匹配</comment>
+  </data>
+  <data name="VegaChart.Text" xml:space="preserve">
+    <value>Vega Chart</value>
+    <comment>Vega 图</comment>
+  </data>
+  <data name="View.Title" xml:space="preserve">
+    <value>দৰ্শন</value>
+    <comment>查看</comment>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>ৱেবছাইট</value>
+    <comment>网站</comment>
+  </data>
+  <data name="WholeWord.Text" xml:space="preserve">
+    <value>সম্পূৰ্ণ শব্দ</value>
+    <comment>全字匹配</comment>
+  </data>
+  <data name="Word Count" xml:space="preserve">
+    <value>শব্দ গণনা</value>
+    <comment>字数统计</comment>
+  </data>
+  <data name="Word.Text" xml:space="preserve">
+    <value>শব্দ</value>
+    <comment>词</comment>
+  </data>
+  <data name="Words.Text" xml:space="preserve">
+    <value>শব্দসমূহ</value>
+    <comment>词</comment>
+  </data>
+  <data name="YAMLFrontMatter.Text" xml:space="preserve">
+    <value>YAML Front Matter</value>
+    <comment>YAML Front Matter</comment>
+  </data>
+</root>

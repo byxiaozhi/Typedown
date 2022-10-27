@@ -18,12 +18,6 @@ namespace Typedown.Services
 
         public bool PostMessage(nint hWnd, uint msg, nint wParam, nint lParam) => PInvoke.PostMessage(hWnd, msg, wParam, lParam);
 
-        public nint SendMessage(nint hWnd, uint msg, nint wParam, nint lParam) => PInvoke.SendMessage(hWnd, msg, wParam, lParam);
-
-        public System.Drawing.Point GetCursorPos() => PInvoke.GetCursorPos();
-
         public bool IsZoomed(nint hWnd) => PInvoke.IsZoomed(hWnd);
-
-        public TimeSpan GetDoubleClickTime() => TimeSpan.FromMilliseconds(PInvoke.GetDoubleClickTime());
     }
 }
