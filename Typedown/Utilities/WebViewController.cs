@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
@@ -15,12 +14,10 @@ using Windows.UI.Input;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Typedown.Controls;
-using System.ComponentModel;
-using System.Xaml;
 
 namespace Typedown.Utilities
 {
-    public class WebViewController : IWebViewController, IDisposable
+    public class WebViewController : IDisposable
     {
         public FrameworkElement Container { get; private set; }
 
@@ -519,8 +516,6 @@ namespace Typedown.Utilities
             }
             outputPt.ButtonChangeKind = (int)inputProperties.PointerUpdateKind;
         }
-
-        public void Navigate(string url) => CoreWebView2.Navigate(url);
 
         private void OnCoreWebView2LostFocus(object sender, object e)
         {

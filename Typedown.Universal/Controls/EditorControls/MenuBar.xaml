@@ -135,7 +135,7 @@
                 <ToggleMenuFlyoutItem x:Uid="FocusMode" KeyboardAcceleratorTextOverride="F8"/>
                 <ToggleMenuFlyoutItem x:Uid="TypewriterMode" KeyboardAcceleratorTextOverride="F9"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="StatusBar"/>
+                <ToggleMenuFlyoutItem x:Uid="StatusBar" IsChecked="{x:Bind AppViewModel.SettingsViewModel.IsStatusBarOpen, Mode=TwoWay}"/>
             </muxc:MenuBarItem>
             
         </muxc:MenuBar>

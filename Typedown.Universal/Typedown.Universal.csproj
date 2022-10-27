@@ -57,9 +57,6 @@
     <Compile Include="Controls\EditorControls\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EditorControls\MarkdownEditor.xaml.cs">
-      <DependentUpon>MarkdownEditor.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\EditorControls\MenuBar.xaml.cs">
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
@@ -96,8 +93,7 @@
     <Compile Include="Controls\EditorControls\StatusBar.xaml.cs">
       <DependentUpon>StatusBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WebView.cs" />
-    <Compile Include="Interfaces\IWebViewController.cs" />
+    <Compile Include="Interfaces\IMarkdownEditor.cs" />
     <Compile Include="Interfaces\IWindowPrivate.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -215,10 +211,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\EditorControls\MainContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\EditorControls\MarkdownEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

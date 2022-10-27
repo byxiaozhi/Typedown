@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.Interfaces;
+using Typedown.Universal.Utilities;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -20,6 +22,11 @@ namespace Typedown.Universal.Controls
         public MainContent()
         {
             this.InitializeComponent();
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            MarkdownEditorPresenter.Content = this.GetService<IMarkdownEditor>();
         }
     }
 }

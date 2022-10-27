@@ -29,4 +29,12 @@
 	  <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.7" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Resources\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Resources\Statics\**" CopyToOutputDirectory="PreserveNewest" Link="Resources\Statics\%(RecursiveDir)\%(Filename)%(Extension)" />
+	</ItemGroup>
+
 </Project>

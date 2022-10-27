@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Typedown.Services;
-using Typedown.Utilities;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Services;
 using Typedown.Universal.ViewModels;
+using Typedown.Controls;
 
 namespace Typedown
 {
@@ -42,7 +42,7 @@ namespace Typedown
 
         private static void RegisterComponent(ServiceCollection builder)
         {
-            builder.AddTransient<IWebViewController, WebViewController>();
+            builder.AddSingleton<IMarkdownEditor, MarkdownEditor>();
         }
     }
 }

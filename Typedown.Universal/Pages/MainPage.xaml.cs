@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -17,6 +18,8 @@ namespace Typedown.Universal.Pages
 {
     public sealed partial class MainPage : Page
     {
+        public AppViewModel AppViewModel => DataContext as AppViewModel;
+
         public MainPage()
         {
             InitializeComponent();
