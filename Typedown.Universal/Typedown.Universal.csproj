@@ -94,6 +94,9 @@
     <Compile Include="Controls\EditorControls\StatusBar.xaml.cs">
       <DependentUpon>StatusBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IClipboard.cs" />
+    <Compile Include="Interfaces\IFileExport.cs" />
+    <Compile Include="Interfaces\IFileOperation.cs" />
     <Compile Include="Interfaces\IMarkdownEditor.cs" />
     <Compile Include="Interfaces\IWindowPrivate.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
@@ -107,7 +110,9 @@
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Utilities\Command.cs" />
     <Compile Include="Utilities\Common.cs" />
+    <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
+    <Compile Include="Utilities\Language.cs" />
     <Compile Include="Utilities\ObservableObject.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />

@@ -36,7 +36,11 @@ namespace Typedown
 
         private static void RegisterService(ServiceCollection builder)
         {
+            builder.AddScoped<IClipboard, Clipboard>();
+            builder.AddScoped<IFileExport, FileExport>();
+            builder.AddScoped<IFileOperation, FileOperation>();
             builder.AddScoped<IWindowService, WindowService>();
+            builder.AddScoped<Transport>();
             builder.AddScoped<EventCenter>();
         }
 

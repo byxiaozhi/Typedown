@@ -8,6 +8,6 @@ namespace Typedown.Universal.Utilities
 {
     public static class Common
     {
-        public static nint PackPoint(this System.Drawing.Point point) => point.X | (point.Y << 16);
+
     }
 }

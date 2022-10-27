@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Services;
+using Typedown.Universal.Utilities;
 using Typedown.Utilities;
 using Typedown.Windows;
 using Windows.UI;
@@ -21,6 +23,8 @@ namespace Typedown.Controls
 
         public CoreWebView2 CoreWebView2 => WebViewController.CoreWebView2;
 
+        public EventCenter EventCenter => this.GetService<EventCenter>();
+
         public MarkdownEditor()
         {
             Loaded += OnLoaded;
@@ -30,7 +34,7 @@ namespace Typedown.Controls
 
         private async void OnLoaded(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
         {
-            if(WebViewController == null)
+            if (WebViewController == null)
             {
                 WebViewController = new();
                 await WebViewController.InitializeAsync(this, (Window.GetWindow(AppXamlHost.GetAppXamlHost(this)) as AppWindow).Handle);
