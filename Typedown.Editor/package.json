@@ -1,0 +1,77 @@
+{
+  "name": "markdown",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "set BROWSER=none&&react-app-rewired start",
+    "build": "set GENERATE_SOURCEMAP=false&&react-app-rewired build",
+    "test": "react-app-rewired test"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@marktext/file-icons": "^1.0.6",
+    "classnames": "^2.3.1",
+    "codemirror": "^5.65.1",
+    "domino": "^2.1.6",
+    "dompurify": "^2.3.5",
+    "element-resize-detector": "^1.2.4",
+    "events": "^3.3.0",
+    "execall": "^3.0.0",
+    "flowchart.js": "^1.17.0",
+    "fuzzaldrin-plus": "^0.6.0",
+    "github-markdown-css": "^3.0.1",
+    "html-tags": "^3.1.0",
+    "imports-loader": "^0.8.0",
+    "joplin-turndown-plugin-gfm": "^1.0.12",
+    "katex": "^0.15.2",
+    "mermaid": "^8.13.10",
+    "minizlib": "^2.1.2",
+    "prismjs": "^1.26.0",
+    "react": "^17.0.2",
+    "react-codemirror2": "^7.2.1",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0",
+    "sass": "^1.49.7",
+    "snabbdom": "^3.3.1",
+    "snabbdom-to-html": "^7.0.0",
+    "snapsvg-cjs": "^0.0.6",
+    "turndown": "^7.1.1",
+    "turndown-plugin-gfm": "^1.0.2",
+    "underscore": "^1.13.2",
+    "unsplash-js": "^7.0.15",
+    "vega": "^5.21.0",
+    "vega-embed": "^6.20.5",
+    "vega-lite": "^5.2.0",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^16.11.24",
+    "@types/react": "^17.0.39",
+    "@types/react-custom-scrollbars": "^4.0.10",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "eslint": "^8.8.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "popper.js": "^1.16.1",
+    "raw-loader": "^4.0.2",
+    "react-app-rewired": "^2.1.11",
+    "typescript": "^4.5.5"
+  }
+}

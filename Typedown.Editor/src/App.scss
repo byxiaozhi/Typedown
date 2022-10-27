@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#root {
+    height: 100%;
+}
+
+.root-scrollbar>div:first-child {
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+}

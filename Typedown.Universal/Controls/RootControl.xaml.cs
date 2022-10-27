@@ -28,6 +28,7 @@ namespace Typedown.Universal.Controls
 
         private void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            AppViewModel.XamlRoot = XamlRoot;
             disposables.Add(AppViewModel.NavigateCommand.OnExecute.Select(GetPageType).Subscribe(history.Add));
             disposables.Add(AppViewModel.GoBackCommand.OnExecute.Select(_ => history.Count - 1).Subscribe(history.RemoveAt));
             var historyObservable = history.GetCollectionObservable();

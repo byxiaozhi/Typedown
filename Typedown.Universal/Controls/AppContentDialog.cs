@@ -221,6 +221,49 @@ namespace Typedown.Universal.Controls
             grid.Children.Add(this);
             return await result.Task;
         }
+
+        public async Task<ContentDialogResult> ShowAsync(XamlRoot xamlRoot)
+        {
+            XamlRoot = xamlRoot;
+            return await ShowAsync();
+        }
+
+        public static AppContentDialog Create()
+        {
+            return new AppContentDialog();
+        }
+
+        public static AppContentDialog Create(object content, string closeButtonText)
+        {
+            var dialog = Create();
+            dialog.Content = content;
+            dialog.CloseButtonText = closeButtonText;
+            dialog.DefaultButton = ContentDialogButton.Close;
+            return dialog;
+        }
+
+        public static AppContentDialog Create(string title, object content, string closeButtonText)
+        {
+            var dialog = Create(content, closeButtonText);
+            dialog.Title = title;
+            return dialog;
+        }
+
+        public static AppContentDialog Create(string title, object content, string closeButtonText, string primaryButtonText)
+        {
+            var dialog = Create(title, content, closeButtonText);
+            dialog.PrimaryButtonText = primaryButtonText;
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            return dialog;
+        }
+
+        public static AppContentDialog Create(string title, object content, string closeButtonText, string primaryButtonText, string secondaryButtonText)
+        {
+            var dialog = Create(title, content, closeButtonText, primaryButtonText);
+            dialog.SecondaryButtonText = secondaryButtonText;
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            return dialog;
+        }
     }
 
     public class AppContentDialogClosedEventArgs

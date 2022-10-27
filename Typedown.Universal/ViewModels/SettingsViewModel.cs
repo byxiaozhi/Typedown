@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -12,6 +13,7 @@ namespace Typedown.Universal.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
+        public IList<string> History { get => JObject.Parse(GetSettingValue("[]")).ToObject<List<string>>(); set => SetSettingValue(JsonConvert.SerializeObject(value)); }
         public bool IsSideBarOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool IsStatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool SourceCode { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -35,6 +37,15 @@ namespace Typedown.Universal.ViewModels
         public string Language { get => GetSettingValue(""); set => SetSettingValue(value); }
         public int WordCountMethod { get => GetSettingValue(0); set => SetSettingValue(value); }
         public bool KeepRun { get => GetSettingValue(false); set => SetSettingValue(value); }
+
+        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
+
+        public IServiceProvider ServiceProvider { get; }
+
+        public SettingsViewModel(IServiceProvider serviceProvider)
+        {
+            ServiceProvider = serviceProvider;
+        }
 
         private readonly HashSet<string> notifySet = new()
         {
@@ -65,7 +76,14 @@ namespace Typedown.Universal.ViewModels
         public void SetSettingValue<T>(T value, [CallerMemberName] string propertyName = null)
         {
             Store[propertyName] = value;
-            RaisePropertyChanged(propertyName);
+            if (notifySet.Contains(propertyName))
+            {
+                Transport.PostMessage("SettingsChanged", new
+                {
+                    name = string.Concat(propertyName[0].ToString().ToLower(), propertyName.Substring(1)),
+                    value
+                });
+            }
         }
     }
 }

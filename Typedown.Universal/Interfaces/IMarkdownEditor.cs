@@ -8,5 +8,6 @@ namespace Typedown.Universal.Interfaces
 {
     public interface IMarkdownEditor
     {
+        void PostMessage(string name, object arg);
     }
 }

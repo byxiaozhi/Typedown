@@ -1,0 +1,71 @@
+.ag-list-picker {
+  width: 140px;
+  max-height: 200px;
+  padding: 0;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.ag-list-picker ul,
+.ag-list-picker li {
+  margin: 0;
+  padding: 0;
+}
+
+.ag-list-picker .item {
+  margin: 4px;
+  height: 28px;
+  display: flex;
+  list-style: none;
+  border-radius: 6px;
+  cursor: default;
+}
+
+.ag-list-picker:hover .active {
+  background: transparent;
+}
+
+.ag-list-picker .item .language {
+  color: var(--editorColor);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ag-list-picker .item:hover,
+.ag-list-picker .item.active {
+  background-color: var(--floatHoverColor);
+}
+
+.ag-list-picker .item .icon-wrapper {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.ag-list-picker .item .icon-wrapper span:before {
+  font-size: 14px;
+}
+
+.ag-list-picker .icon-wrapper>svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--iconColor);
+}
+
+.ag-list-picker .item .icon-wrapper img {
+  width: 14px;
+  height: 14px;
+}
+
+.ag-list-picker .item .language {
+  color: var(--editorColor);
+  font-size: 14px;
+  line-height: 28px;
+  margin-left: 5px;
+}

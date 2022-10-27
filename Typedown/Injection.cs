@@ -41,12 +41,15 @@ namespace Typedown
             builder.AddScoped<IFileOperation, FileOperation>();
             builder.AddScoped<IWindowService, WindowService>();
             builder.AddScoped<Transport>();
+            builder.AddScoped<RemoteInvoke>();
             builder.AddScoped<EventCenter>();
+            builder.AddScoped<AutoBackup>();
+            builder.AddScoped<WorkFolder>();
         }
 
         private static void RegisterComponent(ServiceCollection builder)
         {
-            builder.AddSingleton<IMarkdownEditor, MarkdownEditor>();
+            builder.AddScoped<IMarkdownEditor, MarkdownEditor>();
         }
     }
 }

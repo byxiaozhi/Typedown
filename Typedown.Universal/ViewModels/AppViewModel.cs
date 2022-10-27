@@ -3,9 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
+using Windows.UI.Xaml;
 
 namespace Typedown.Universal.ViewModels
 {
@@ -13,25 +16,44 @@ namespace Typedown.Universal.ViewModels
     {
         public IServiceProvider ServiceProvider { get; }
 
-        public EditorViewModel EditorViewModel => ServiceProvider.GetService<EditorViewModel>();
+        public EditorViewModel EditorViewModel { get; }
 
-        public FileViewModel FileViewModel => ServiceProvider.GetService<FileViewModel>();
+        public FileViewModel FileViewModel { get; }
 
-        public FloatViewModel FloatViewModel => ServiceProvider.GetService<FloatViewModel>();
+        public FloatViewModel FloatViewModel { get; }
 
-        public FormatViewModel FormatViewModel => ServiceProvider.GetService<FormatViewModel>();
+        public FormatViewModel FormatViewModel { get; }
 
-        public ParagraphViewModel ParagraphViewModel => ServiceProvider.GetService<ParagraphViewModel>();
+        public ParagraphViewModel ParagraphViewModel { get; }
 
-        public SettingsViewModel SettingsViewModel => ServiceProvider.GetService<SettingsViewModel>();
-        
+        public SettingsViewModel SettingsViewModel { get; }
+
         public Command<Unit> GoBackCommand { get; } = new(false);
 
         public Command<string> NavigateCommand { get; } = new();
 
-        public AppViewModel(IServiceProvider serviceProvider)
+        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
+
+        public IntPtr MainWindow { get; set; }
+
+        public XamlRoot XamlRoot { get; set; }
+
+        public AppViewModel(
+            IServiceProvider serviceProvider,
+            EditorViewModel editorViewModel,
+            FileViewModel fileViewModel,
+            FloatViewModel floatViewModel,
+            FormatViewModel formatViewModel,
+            ParagraphViewModel paragraphViewModel,
+            SettingsViewModel settingsViewModel)
         {
             ServiceProvider = serviceProvider;
+            EditorViewModel = editorViewModel;
+            FileViewModel = fileViewModel;
+            FloatViewModel = floatViewModel;
+            FormatViewModel = formatViewModel;
+            ParagraphViewModel = paragraphViewModel;
+            SettingsViewModel = settingsViewModel;
         }
     }
 }

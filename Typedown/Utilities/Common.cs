@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,7 @@ namespace Typedown.Utilities
 {
     public static class Common
     {
-        public static Point MakePoint(this IntPtr p) => new(p.ToInt32() & 0xFFFF, p.ToInt32() >> 16);
+        public static System.Windows.Point MakePoint(this IntPtr p) => new(p.ToInt32() & 0xFFFF, p.ToInt32() >> 16);
 
         public static nint PackPoint(this System.Drawing.Point point) => point.X | (point.Y << 16);
 
@@ -40,6 +42,21 @@ namespace Typedown.Utilities
         public static IntPtr OpenNewWindow(string path)
         {
             throw new NotImplementedException();
+        }
+
+        public static object GetCurrentTheme(this IServiceProvider provider)
+        {
+            var settings = provider.GetService<SettingsViewModel>();
+            var themeSetting = settings.AppTheme;
+            var theme = themeSetting switch
+            {
+                "Light" => "Light",
+                "Dark" => "Dark",
+                _ => Universal.App.Current.RequestedTheme == global::Windows.UI.Xaml.ApplicationTheme.Dark ? "Dark" : "Light"
+            };
+            var color = Universal.App.Current.Resources["SystemAccentColor"];
+            var background = theme == "Light" ? Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9) : Color.FromArgb(0xFF, 0x28, 0x28, 0x28);
+            return new { theme, color, background };
         }
     }
 }

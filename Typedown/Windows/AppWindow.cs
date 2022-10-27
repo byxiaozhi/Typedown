@@ -205,5 +205,7 @@ namespace Typedown.Windows
             template.VisualTree = container;
             return template;
         }
+
+        public static new AppWindow GetWindow(DependencyObject dependencyObject) => Window.GetWindow(dependencyObject) as AppWindow;
     }
 }

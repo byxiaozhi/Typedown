@@ -56,6 +56,7 @@ namespace Typedown.Windows
         private void OnLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
             CanGoBackChanged();
+            AppViewModel.MainWindow = Handle;
             disposables.Add(Observable.FromEventPattern(AppViewModel.GoBackCommand, nameof(AppViewModel.GoBackCommand.CanExecuteChanged)).Subscribe(_ => CanGoBackChanged()));
         }
 
