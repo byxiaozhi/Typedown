@@ -13,7 +13,7 @@ namespace Typedown.Universal.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
-        public IList<string> History { get => JObject.Parse(GetSettingValue("[]")).ToObject<List<string>>(); set => SetSettingValue(JsonConvert.SerializeObject(value)); }
+        public List<string> History { get => JObject.Parse(GetSettingValue("[]")).ToObject<List<string>>(); set => SetSettingValue(JsonConvert.SerializeObject(value)); }
         public bool IsSideBarOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool IsStatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool SourceCode { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -38,7 +38,7 @@ namespace Typedown.Universal.ViewModels
         public int WordCountMethod { get => GetSettingValue(0); set => SetSettingValue(value); }
         public bool KeepRun { get => GetSettingValue(false); set => SetSettingValue(value); }
 
-        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
+        public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
 
         public IServiceProvider ServiceProvider { get; }
 
@@ -67,21 +67,48 @@ namespace Typedown.Universal.ViewModels
 
         private IPropertySet Store => ApplicationData.Current.LocalSettings.Values;
 
+        private readonly Dictionary<string, object> cache = new();
+
         public T GetSettingValue<T>(T defaultValue = default, [CallerMemberName] string propertyName = null)
         {
-            if (Store[propertyName] is object obj) return (T)obj;
-            else return defaultValue;
+            if (cache.TryGetValue(propertyName, out var obj) && obj is T cacheResult)
+                return cacheResult;
+            try
+            {
+                if (Store[propertyName] is string str)
+                {
+                    var result = JsonConvert.DeserializeObject<T>(str);
+                    cache[propertyName] = result;
+                    return result;
+                }
+                else
+                {
+                    cache[propertyName] = defaultValue;
+                    return defaultValue;
+                }
+            }
+            catch
+            {
+                cache[propertyName] = defaultValue;
+                return defaultValue;
+            }
         }
 
         public void SetSettingValue<T>(T value, [CallerMemberName] string propertyName = null)
         {
-            Store[propertyName] = value;
+            cache[propertyName] = value;
+            Store[propertyName] = JsonConvert.SerializeObject(value);
+            OnSettingChanged(propertyName, value);
+        }
+
+        public void OnSettingChanged(string propertyName, object newValue)
+        {
             if (notifySet.Contains(propertyName))
             {
-                Transport.PostMessage("SettingsChanged", new
+                MarkdownEditor.PostMessage("SettingsChanged", new
                 {
                     name = string.Concat(propertyName[0].ToString().ToLower(), propertyName.Substring(1)),
-                    value
+                    value = newValue
                 });
             }
         }

@@ -2,7 +2,7 @@
 
 namespace Typedown.Utilities
 {
-    public class CoreWindow
+    public static class CoreWindow
     {
         public static nint CoreWindowHandle { get; private set; }
 

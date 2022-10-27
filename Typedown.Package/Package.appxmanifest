@@ -9,7 +9,7 @@
   <Identity
     Name="2ac0ba15-4bd7-4bc7-bf99-578783c9f5c7"
     Publisher="CN=12283"
-    Version="1.0.3.0" />
+    Version="1.0.5.0" />
 
   <Properties>
     <DisplayName>Typedown.Package</DisplayName>

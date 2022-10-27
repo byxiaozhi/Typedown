@@ -2,10 +2,13 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Models;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 
@@ -29,20 +32,28 @@ namespace Typedown.Universal.ViewModels
         public int SearchOpen { get; set; }
         public bool ToolTipOpen { get; set; }
         public JToken ToolTipArg { get; set; }
+
         public AppViewModel ViewModel => ServiceProvider.GetService<AppViewModel>();
 
         public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
 
-        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
+        public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
 
         public FloatViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
+            EventCenter.GetObservable<EditorEventArgs>("OpenFrontMenu").Subscribe(x => OnOpenFrontMenu(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("OpenFormatPicker").Subscribe(x => OnOpenFormatPicker(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("OpenImageSelector").Subscribe(x => OnOpenImageSelector(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("OpenTableTools").Subscribe(x => OnOpenTableTools(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("OpenImageToolbar").Subscribe(x => OnOpenImageToolbar(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("OpenToolTip").Subscribe(x => OnOpenToolTip(x.Args));
+            this.WhenPropertyChanged(nameof(SearchOpen)).Subscribe(_ => OnSearchOpenChange(SearchOpen));
         }
 
         public void OnSearchOpenChange(int open)
         {
-            Transport?.PostMessage("SearchOpenChange", new { open });
+            MarkdownEditor?.PostMessage("SearchOpenChange", new { open });
         }
 
         public void OnOpenImageToolbar(JToken arg)

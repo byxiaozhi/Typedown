@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Typedown.Universal.Interfaces
 {
-    public interface IMarkdownEditor
+    public interface IMarkdownEditor: IDisposable
     {
         void PostMessage(string name, object arg);
     }

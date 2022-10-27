@@ -1,16 +1,12 @@
 ﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Typedown.Utilities;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
 
 namespace Typedown.Controls
 {

@@ -1,14 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using Typedown.Universal.ViewModels;
-using Typedown.Windows;
+using Windows.UI.Xaml;
 
 namespace Typedown.Utilities
 {
@@ -52,7 +48,7 @@ namespace Typedown.Utilities
             {
                 "Light" => "Light",
                 "Dark" => "Dark",
-                _ => Universal.App.Current.RequestedTheme == global::Windows.UI.Xaml.ApplicationTheme.Dark ? "Dark" : "Light"
+                _ => Universal.App.Current.RequestedTheme == ApplicationTheme.Dark ? "Dark" : "Light"
             };
             var color = Universal.App.Current.Resources["SystemAccentColor"];
             var background = theme == "Light" ? Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9) : Color.FromArgb(0xFF, 0x28, 0x28, 0x28);

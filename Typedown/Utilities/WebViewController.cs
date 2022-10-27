@@ -145,8 +145,6 @@ namespace Typedown.Utilities
 
         protected virtual void OnPointerPressed(PointerRoutedEventArgs args)
         {
-            UpdateBounds();
-            MoveFocusIntoCoreWebView(CoreWebView2MoveFocusReason.Programmatic);
             var deviceType = args.Pointer.PointerDeviceType;
             var pointerPoint = args.GetCurrentPoint(Container);
             PInvoke.WindowMessage message = 0;

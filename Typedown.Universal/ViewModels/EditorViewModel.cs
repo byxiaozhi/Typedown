@@ -1,13 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml.Controls;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
-using System.Text;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
@@ -21,11 +19,11 @@ namespace Typedown.Universal.ViewModels
     {
         public IServiceProvider ServiceProvider { get; }
 
+        public AppViewModel AppViewModel => ServiceProvider.GetService<AppViewModel>();
         public FileViewModel FileViewModel => ServiceProvider.GetService<FileViewModel>();
         public FloatViewModel FloatViewModel => ServiceProvider.GetService<FloatViewModel>();
         public FormatViewModel FormatViewModel => ServiceProvider.GetService<FormatViewModel>();
         public SettingsViewModel Settings => ServiceProvider.GetService<SettingsViewModel>();
-        public AppViewModel ViewModel => ServiceProvider.GetService<AppViewModel>();
         public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
         public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
 
@@ -53,19 +51,42 @@ namespace Typedown.Universal.ViewModels
         public bool FirstStart { get; set; } = true;
         public bool FileLoaded { get; set; }
 
-        public Command<Unit> Undo { get; } = new();
-        public Command<Unit> Redo { get; } = new();
+        public Command<Unit> UndoCommand { get; } = new();
+        public Command<Unit> RedoCommand { get; } = new();
+        public Command<string> CutCommand { get; } = new();
+        public Command<string> PasteCommand { get; } = new();
+        public Command<string> CopyCommand { get; } = new();
+        public Command<Unit> DeleteSelectionCommand { get; } = new();
+        public Command<Unit> SelectAllCommand { get; } = new();
+        public Command<string> FindCommand { get; } = new();
 
-        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
-
+        public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
         public IClipboard Clipboard => ServiceProvider.GetService<IClipboard>();
-
         public AutoBackup AutoBackup => ServiceProvider.GetService<AutoBackup>();
 
         public EditorViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
+            EventCenter.GetObservable<EditorEventArgs>("MarkdownChange").Subscribe(x => OnMarkdownChange(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("FileLoaded").Subscribe(x => OnFileLoaded(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("CursorChange").Subscribe(x => OnCursorChange(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("SelectionChange").Subscribe(x => OnSelectionChange(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("CodeMirrorSelectionChange").Subscribe(x => OnCodeMirrorSelectionChange(x.Args));
+            EventCenter.GetObservable<EditorEventArgs>("StateChange").Subscribe(x => OnStateChange(x.Args));
             RemoteInvoke.Handle("GetSettings", OnGetSettings);
+            RemoteInvoke.Handle("SetClipboard", OnSetClipboard);
+            Settings.WhenPropertyChanged(nameof(Settings.AutoSave)).Subscribe(_ => Settings_AutoSaveChanged(Settings.AutoSave));
+            this.WhenPropertyChanged(nameof(SearchValue)).Subscribe(_ => SearchValueChanged());
+            this.WhenPropertyChanged(nameof(Saved)).Subscribe(_ => SavedOrAutoSavedSuccChanged());
+            this.WhenPropertyChanged(nameof(AutoSavedSucc)).Subscribe(_ => SavedOrAutoSavedSuccChanged());
+            UndoCommand.OnExecute.Subscribe(_ => Undo());
+            RedoCommand.OnExecute.Subscribe(_ => Redo());
+            FindCommand.OnExecute.Subscribe(x => Find(x));
+            PasteCommand.OnExecute.Subscribe(x => Paste(x));
+            CutCommand.OnExecute.Subscribe(x => Cut(x));
+            CopyCommand.OnExecute.Subscribe(x => Copy(x));
+            DeleteSelectionCommand.OnExecute.Subscribe(_ => DeleteSelection());
+            SelectAllCommand.OnExecute.Subscribe(_ => SelectAll());
         }
 
         public object OnGetSettings(JToken arg)
@@ -177,7 +198,7 @@ namespace Typedown.Universal.ViewModels
         {
             if (string.IsNullOrEmpty(SearchValue))
                 SearchValue = null;
-            Transport?.PostMessage("Search", new
+            MarkdownEditor?.PostMessage("Search", new
             {
                 value = SearchValue,
                 opt = new
@@ -190,7 +211,7 @@ namespace Typedown.Universal.ViewModels
             });
         }
 
-        public void UndoFun()
+        public void Undo()
         {
             var state = History.Undo();
             if (state == null)
@@ -198,14 +219,14 @@ namespace Typedown.Universal.ViewModels
                 return;
             }
             OnMarkdownChange(state.Text);
-            Transport?.PostMessage("SetMarkdown", new
+            MarkdownEditor?.PostMessage("SetMarkdown", new
             {
                 text = state.Text,
                 cursor = state.Cursor
             });
         }
 
-        public void RedoFun()
+        public void Redo()
         {
             var state = History.Redo();
             if (state == null)
@@ -213,24 +234,19 @@ namespace Typedown.Universal.ViewModels
                 return;
             }
             OnMarkdownChange(state.Text);
-            Transport?.PostMessage("SetMarkdown", new
+            MarkdownEditor?.PostMessage("SetMarkdown", new
             {
                 text = state.Text,
                 cursor = state.Cursor
             });
         }
 
-
-        public Command<string> Cut { get; } = new();
-
-        private void CutFun(string type)
+        public void Cut(string type)
         {
-            Transport?.PostMessage("Cut", new { type });
+            MarkdownEditor?.PostMessage("Cut", new { type });
         }
 
-        public Command<string> Paste { get; } = new();
-
-        private void PasteFun(string type)
+        public void Paste(string type)
         {
             string text = null;
             string html = null;
@@ -244,7 +260,7 @@ namespace Typedown.Universal.ViewModels
             }
             if (text != null || html != null)
             {
-                Transport?.PostMessage("Paste", new { type, text, html });
+                MarkdownEditor?.PostMessage("Paste", new { type, text, html });
                 return;
             }
             var files = Clipboard.GetFileDropList();
@@ -252,18 +268,15 @@ namespace Typedown.Universal.ViewModels
             {
                 if (FileExtension.Image.Where(files[0].ToLower().EndsWith).Any())
                 {
-                    Transport?.PostMessage("InsertImage", new { src = files[0] });
+                    MarkdownEditor?.PostMessage("InsertImage", new { src = files[0] });
                 }
                 return;
             }
         }
 
-        public Command<string> Copy { get; } = new();
-
-        private void CopyFun(string type)
+        public void Copy(string type)
         {
-            var settings = ServiceProvider.GetService<SettingsViewModel>();
-            Transport?.PostMessage("Copy", new { type });
+            MarkdownEditor?.PostMessage("Copy", new { type });
         }
 
         public object OnSetClipboard(JToken arg)
@@ -282,23 +295,17 @@ namespace Typedown.Universal.ViewModels
             return true;
         }
 
-        public Command<Unit> DeleteSelection { get; } = new();
-
-        private void DeleteSelectionFun()
+        public void DeleteSelection()
         {
-            Transport?.PostMessage("DeleteSelection", null);
+            MarkdownEditor?.PostMessage("DeleteSelection", null);
         }
 
-        public Command<Unit> SelectAll { get; } = new();
-
-        private void SelectAllFun()
+        public void SelectAll()
         {
-            Transport?.PostMessage("SelectAll", null);
+            MarkdownEditor?.PostMessage("SelectAll", null);
         }
 
-        public Command<string> Find { get; } = new();
-
-        public void FindFun(string action)
+        public void Find(string action)
         {
             var appViewModel = ServiceProvider.GetService<AppViewModel>();
             if (appViewModel.FloatViewModel.SearchOpen == 0)
@@ -308,18 +315,18 @@ namespace Typedown.Universal.ViewModels
             }
             else
             {
-                Transport?.PostMessage("Find", new { action });
+                MarkdownEditor?.PostMessage("Find", new { action });
             }
         }
 
-        private void SearchValueChanged(string searchValue)
+        public void SearchValueChanged()
         {
             var floatViewModel = ServiceProvider.GetService<FloatViewModel>();
             if (floatViewModel.SearchOpen > 0)
                 OnSearch();
         }
 
-        private void SavedOrAutoSavedSuccChanged(Tuple<bool, bool> _)
+        public void SavedOrAutoSavedSuccChanged()
         {
             var fileViewModel = ServiceProvider.GetService<FileViewModel>();
             DisplaySaved = Saved || (Settings.AutoSave && fileViewModel.FilePath != null && AutoSavedSucc);
@@ -327,7 +334,7 @@ namespace Typedown.Universal.ViewModels
                 AutoBackup.DeleteBackup(fileViewModel.FilePath);
         }
 
-        private void Settings_AutoSaveChanged(bool autoSave)
+        public void Settings_AutoSaveChanged(bool autoSave)
         {
             DisplaySaved = Saved || autoSave;
         }
@@ -338,7 +345,7 @@ namespace Typedown.Universal.ViewModels
             {
                 if (ContentState["toc"] != null)
                 {
-                    Transport?.PostMessage("ScrollTo", new { slug = ContentState["toc"][index]["slug"].ToString() });
+                    MarkdownEditor?.PostMessage("ScrollTo", new { slug = ContentState["toc"][index]["slug"].ToString() });
                 }
             }
             catch (Exception e)

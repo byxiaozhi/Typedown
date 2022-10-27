@@ -2,10 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reactive.Disposables;
-using System.Windows;
 using Typedown.Services;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
@@ -18,6 +15,7 @@ using Windows.UI.Xaml;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Typedown.Controls
 {
@@ -27,28 +25,29 @@ namespace Typedown.Controls
 
         public CoreWebView2 CoreWebView2 => WebViewController.CoreWebView2;
 
-        public EventCenter EventCenter => this.GetService<EventCenter>();
+        public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
 
-        public RemoteInvoke RemoteInvoke => this.GetService<RemoteInvoke>();
+        public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
 
-        public Transport Transport => this.GetService<Transport>();
+        public Transport Transport => ServiceProvider.GetService<Transport>();
 
-        private readonly CompositeDisposable disposables = new();
+        public IServiceProvider ServiceProvider { get; }
+
 
         private readonly ResourceLoader stringResources = ResourceLoader.GetForViewIndependentUse("Resources");
 
-        public MarkdownEditor()
+        public MarkdownEditor(IServiceProvider serviceProvider)
         {
+            ServiceProvider = serviceProvider;
             Loaded += OnLoaded;
-            Unloaded += OnUnloaded;
             Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent) };
             IsTabStop = true;
+            RemoteInvoke.Handle("GetCurrentTheme", arg => ServiceProvider.GetCurrentTheme());
+            RemoteInvoke.Handle("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString));
         }
 
-        private async void OnLoaded(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
+        private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            disposables.Add(RemoteInvoke.Handle("GetCurrentTheme", arg => Utilities.Common.GetCurrentTheme(this.GetService<IServiceProvider>())));
-            disposables.Add(RemoteInvoke.Handle("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString)));
             if (WebViewController == null)
             {
                 WebViewController = new();
@@ -80,32 +79,24 @@ namespace Typedown.Controls
             WebViewController.CoreWebView2.Navigate("http://localhost:3000/");
         }
 
-        private void OnUnloaded(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
+        private async void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)
         {
-            disposables.Clear();
-        }
-
-        private void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)
-        {
-            AppContentDialog dialog = new()
-            {
-                Title = "Message",
-                Content = args.Message,
-                CloseButtonText = "Ok",
-                XamlRoot = XamlRoot
-            };
-            _ = dialog.ShowAsync();
+            await AppContentDialog.Create("Message", args.Message, "Ok").ShowAsync();
         }
 
         public void PostMessage(string name, object args)
         {
-            var data = JsonConvert.SerializeObject(new { name, args });
-            CoreWebView2?.PostWebMessageAsJson(data);
+            CoreWebView2?.PostWebMessageAsJson(JsonConvert.SerializeObject(new { name, args }));
         }
 
         private void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
         {
             Transport.EmitWebViewMessage(this, e.WebMessageAsJson);
+        }
+
+        public void Dispose()
+        {
+            WebViewController?.CoreWebView2Controller?.Close();
         }
     }
 }

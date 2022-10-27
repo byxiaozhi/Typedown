@@ -25,44 +25,52 @@ namespace Typedown.Universal.ViewModels
 
         public AppViewModel ViewModel => ServiceProvider.GetService<AppViewModel>();
 
-        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
+        public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
+
+        public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
+
+        public Command<string> UpdateParagraphCommand { get; } = new();
+
+        public Command<string> InsertParagraphCommand { get; } = new();
+
+        public Command<Unit> DeleteParagraphCommand { get; } = new();
+
+        public Command<Unit> DuplicateCommand { get; } = new();
+
+        public Command<Unit> InsertTableCommand { get; } = new();
 
         public ParagraphViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
+            RemoteInvoke.Handle("ResizeTable", OnResizeTable);
+            UpdateParagraphCommand.OnExecute.Subscribe(x => UpdateParagraph(x));
+            InsertParagraphCommand.OnExecute.Subscribe(x => InsertParagraph(x));
+            DeleteParagraphCommand.OnExecute.Subscribe(_ => DeleteParagraph());
+            DuplicateCommand.OnExecute.Subscribe(_ => Duplicate());
+            InsertTableCommand.OnExecute.Subscribe(_ => InsertTable());
         }
 
-        public Command<string> UpdateParagraph { get; }
-
-        private void UpdateParagraphFun(string type)
+        private void UpdateParagraph(string type)
         {
-            Transport?.PostMessage("UpdateParagraph", type);
+            MarkdownEditor?.PostMessage("UpdateParagraph", type);
         }
 
-        public Command<string> InsertParagraph { get; }
-
-        private void InsertParagraphFun(string type)
+        private void InsertParagraph(string type)
         {
-            Transport?.PostMessage("InsertParagraph", type);
+            MarkdownEditor?.PostMessage("InsertParagraph", type);
         }
 
-        public Command<Unit> DeleteParagraph { get; }
-
-        private void DeleteParagraphFun()
+        private void DeleteParagraph()
         {
-            Transport?.PostMessage("DeleteParagraph", null);
+            MarkdownEditor?.PostMessage("DeleteParagraph", null);
         }
 
-        public Command<Unit> Duplicate { get; }
-
-        private void DuplicateFun()
+        private void Duplicate()
         {
-            Transport?.PostMessage("Duplicate", null);
+            MarkdownEditor?.PostMessage("Duplicate", null);
         }
 
-        public Command<Unit> InsertTable { get; }
-
-        private async void InsertTableFun()
+        private async void InsertTable()
         {
             throw new NotImplementedException();
             //var content = new InsertTableDialog();

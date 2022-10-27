@@ -1,18 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.UI.Xaml;
 
 namespace Typedown.Universal.ViewModels
 {
-    public class AppViewModel
+    public class AppViewModel : ObservableObject
     {
         public IServiceProvider ServiceProvider { get; }
 
@@ -32,7 +27,7 @@ namespace Typedown.Universal.ViewModels
 
         public Command<string> NavigateCommand { get; } = new();
 
-        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
+        public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
 
         public IntPtr MainWindow { get; set; }
 

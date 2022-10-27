@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
-using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Windows.Data;
 using Typedown.Controls;
@@ -11,7 +10,6 @@ using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Typedown.Utilities;
-using Windows.Media.Devices;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
@@ -27,14 +25,12 @@ namespace Typedown.Windows
 
         public AppXamlHost AppXamlHost { get; private set; }
 
-        private readonly CompositeDisposable disposables = new();
-
         public MainWindow()
         {
             AppViewModel = ServiceProvider.GetService<AppViewModel>();
             DataContext = AppViewModel;
             Loaded += OnLoaded;
-            Unloaded += OnUnloaded;
+            Closed += OnClosed;
             InitializeComponent();
         }
 
@@ -45,6 +41,7 @@ namespace Typedown.Windows
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Content = AppXamlHost = new AppXamlHost(new RootControl());
             SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
+            AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => CanGoBackChanged();
         }
 
         protected override void OnStateChanged(EventArgs e)
@@ -57,12 +54,6 @@ namespace Typedown.Windows
         {
             CanGoBackChanged();
             AppViewModel.MainWindow = Handle;
-            disposables.Add(Observable.FromEventPattern(AppViewModel.GoBackCommand, nameof(AppViewModel.GoBackCommand.CanExecuteChanged)).Subscribe(_ => CanGoBackChanged()));
-        }
-
-        private void OnUnloaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            disposables.Clear();
         }
 
         private void CanGoBackChanged()
@@ -77,9 +68,9 @@ namespace Typedown.Windows
 
         private void CloseMenuFlyout()
         {
-            if (AppXamlHost.GetUwpInternalObject() is RootControl rootControl)
+            if (AppXamlHost.GetUwpInternalObject() is AppXamlHostRootLayout rootLayout)
             {
-                VisualTreeHelper.GetOpenPopupsForXamlRoot(rootControl.XamlRoot)
+                VisualTreeHelper.GetOpenPopupsForXamlRoot(rootLayout.XamlRoot)
                     .Where(x => x.Child is MenuFlyoutPresenter)
                     .ToList()
                     .ForEach(x => x.IsOpen = false);
@@ -88,9 +79,9 @@ namespace Typedown.Windows
 
         private void UpdatePopupPos()
         {
-            if (AppXamlHost.GetUwpInternalObject() is RootControl rootControl)
+            if (AppXamlHost.GetUwpInternalObject() is AppXamlHostRootLayout rootLayout)
             {
-                VisualTreeHelper.GetOpenPopupsForXamlRoot(rootControl.XamlRoot)
+                VisualTreeHelper.GetOpenPopupsForXamlRoot(rootLayout.XamlRoot)
                     .ToList()
                     .ForEach(x => x.InvalidateMeasure());
             }
@@ -108,6 +99,12 @@ namespace Typedown.Windows
                     break;
             }
             return base.WndProc(hWnd, msg, wParam, lParam, ref handled);
+        }
+
+        private void OnClosed(object sender, EventArgs e)
+        {
+            ServiceScope.Dispose();
+            GC.Collect();
         }
     }
 }

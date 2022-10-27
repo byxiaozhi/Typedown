@@ -23,32 +23,34 @@ namespace Typedown.Universal.ViewModels
     {
         public IServiceProvider ServiceProvider { get; }
 
-        public AppViewModel ViewModel => ServiceProvider.GetService<AppViewModel>();
+        public AppViewModel AppViewModel => ServiceProvider.GetService<AppViewModel>();
 
-        public SettingsViewModel Settings => ServiceProvider.GetService<SettingsViewModel>();
+        public SettingsViewModel SettingsViewModel => ServiceProvider.GetService<SettingsViewModel>();
 
-        public EditorViewModel Editor => ServiceProvider.GetService<EditorViewModel>();
+        public EditorViewModel EditorViewModel => ServiceProvider.GetService<EditorViewModel>();
 
         public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
 
         public WorkFolder WorkFolder => ServiceProvider.GetService<WorkFolder>();
 
+        public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
+
         public string FilePath { get; set; } = null;
 
         public string FileName => Path.GetFileName(FilePath);
 
-        public Command<Unit> NewFile { get; } = new();
-        public Command<string> NewWindow { get; } = new();
-        public Command<Unit> OpenFile { get; } = new();
-        public Command<Unit> OpenFolder { get; } = new();
-        public Command<Unit> NewFolder { get; } = new();
-        public Command<Unit> ClearHistory { get; } = new();
-        public Command<Unit> Save { get; } = new();
-        public Command<Unit> SaveAs { get; } = new();
-        public Command<Unit> Import { get; } = new();
-        public Command<string> Export { get; } = new();
-        public Command<Unit> Print { get; } = new();
-        public Command<Unit> Exit { get; } = new();
+        public Command<Unit> NewFileCommand { get; } = new();
+        public Command<string> NewWindowCommand { get; } = new();
+        public Command<Unit> OpenFileCommand { get; } = new();
+        public Command<Unit> OpenFolderCommand { get; } = new();
+        public Command<Unit> NewFolderCommand { get; } = new();
+        public Command<Unit> ClearHistoryCommand { get; } = new();
+        public Command<Unit> SaveCommand { get; } = new();
+        public Command<Unit> SaveAsCommand { get; } = new();
+        public Command<Unit> ImportCommand { get; } = new();
+        public Command<string> ExportCommand { get; } = new();
+        public Command<Unit> PrintCommand { get; } = new();
+        public Command<Unit> ExitCommand { get; } = new();
 
         private readonly ResourceLoader dialogMessages = ResourceLoader.GetForViewIndependentUse("DialogMessages");
 
@@ -56,19 +58,35 @@ namespace Typedown.Universal.ViewModels
 
         public AutoBackup AutoBackup => ServiceProvider.GetService<AutoBackup>();
 
-        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
+        public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
 
         public FileViewModel(IServiceProvider serviceProvider)
         {
-            
+            ServiceProvider = serviceProvider;
+            NewFileCommand.OnExecute.Subscribe(async _ => await NewFileFun());
+            OpenFileCommand.OnExecute.Subscribe(_ => OpenFile());
+            OpenFolderCommand.OnExecute.Subscribe(_ => OpenFolder());
+            SaveAsCommand.OnExecute.Subscribe(async _ => await SaveAs());
+            SaveCommand.OnExecute.Subscribe(async _ => await Save());
+            ExitCommand.OnExecute.Subscribe(_ => Exit());
+            ClearHistoryCommand.OnExecute.Subscribe(_ => ClearHistory());
+            ExportCommand.OnExecute.Subscribe(x => Export(x));
+            PrintCommand.OnExecute.Subscribe(_ => Print());
+            ImportCommand.OnExecute.Subscribe(_ => Import());
+            RemoteInvoke.Handle("WriteAllText", WriteAllText);
+            RemoteInvoke.Handle("ConvertHTML", ConvertHTML);
+            RemoteInvoke.Handle("PrintHTML", PrintHTML);
+            saveFileTimer.Interval = TimeSpan.FromSeconds(5);
+            saveFileTimer.Tick += SaveFileTimerTick;
+            saveFileTimer.Start();
         }
 
-        public async void SaveFileTimer_Tick(object sender, object e)
+        public async void SaveFileTimerTick(object sender, object e)
         {
-            if (Settings.AutoSave)
+            if (SettingsViewModel.AutoSave)
             {
-                Editor.AutoSavedSucc = await AutoSaveFile();
-                if (!Editor.AutoSavedSucc)
+                EditorViewModel.AutoSavedSucc = await AutoSaveFile();
+                if (!EditorViewModel.AutoSavedSucc)
                     await AutoBackupFile();
             }
             else
@@ -79,15 +97,15 @@ namespace Typedown.Universal.ViewModels
 
         public async Task<bool> AutoSaveFile()
         {
-            if (Settings.AutoSave && (Editor.FileHash != Editor.CurrentHash) && FilePath != null)
-                return await SaveFun(false);
+            if (SettingsViewModel.AutoSave && (EditorViewModel.FileHash != EditorViewModel.CurrentHash) && FilePath != null)
+                return await Save(false);
             return FilePath != null;
         }
 
         public async Task<bool> AutoBackupFile()
         {
-            if ((Editor.FileHash != Editor.CurrentHash))
-                return await AutoBackup.Backup(FilePath, Editor.Markdown);
+            if ((EditorViewModel.FileHash != EditorViewModel.CurrentHash))
+                return await AutoBackup.Backup(FilePath, EditorViewModel.Markdown);
             return true;
         }
 
@@ -95,28 +113,28 @@ namespace Typedown.Universal.ViewModels
         {
             if (!await AskToSave()) return;
             FilePath = null;
-            Editor.FileHash = Common.SimpleHash(Common.DefaultMarkdwn);
-            var backup = await CheckBackup(FilePath, Editor.FileHash);
+            EditorViewModel.FileHash = Common.SimpleHash(Common.DefaultMarkdwn);
+            var backup = await CheckBackup(FilePath, EditorViewModel.FileHash);
             if (backup == null)
             {
-                Editor.Markdown = Common.DefaultMarkdwn;
-                Editor.CurrentHash = Editor.FileHash;
-                Editor.Saved = true;
-                Editor.AutoSavedSucc = true;
-                Editor.FileLoaded = false;
+                EditorViewModel.Markdown = Common.DefaultMarkdwn;
+                EditorViewModel.CurrentHash = EditorViewModel.FileHash;
+                EditorViewModel.Saved = true;
+                EditorViewModel.AutoSavedSucc = true;
+                EditorViewModel.FileLoaded = false;
             }
             else
             {
-                Editor.Markdown = backup;
-                Editor.CurrentHash = Common.SimpleHash(backup);
-                Editor.Saved = false;
-                Editor.AutoSavedSucc = false;
-                Editor.FileLoaded = true;
+                EditorViewModel.Markdown = backup;
+                EditorViewModel.CurrentHash = Common.SimpleHash(backup);
+                EditorViewModel.Saved = false;
+                EditorViewModel.AutoSavedSucc = false;
+                EditorViewModel.FileLoaded = true;
             }
-            Editor.History.InitHistory(Common.DefaultMarkdwn);
+            EditorViewModel.History.InitHistory(Common.DefaultMarkdwn);
             if (postMessage)
             {
-                Transport?.PostMessage("LoadFile", Editor.Markdown);
+                MarkdownEditor?.PostMessage("LoadFile", EditorViewModel.Markdown);
             }
         }
 
@@ -126,12 +144,12 @@ namespace Typedown.Universal.ViewModels
             await LoadFile(filepath, true);
         }
 
-        private async void OpenFileFun()
+        private async void OpenFile()
         {
             if (!await AskToSave()) return;
             var filePicker = new FileOpenPicker();
             FileExtension.Markdown.ForEach(filePicker.FileTypeFilter.Add);
-            filePicker.SetOwnerWindow(ViewModel.MainWindow);
+            filePicker.SetOwnerWindow(AppViewModel.MainWindow);
             var file = await filePicker.PickSingleFileAsync();
             if (file != null)
             {
@@ -139,22 +157,22 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        private async void OpenFolderFun()
+        private async void OpenFolder()
         {
             var folderPicker = new FolderPicker();
-            folderPicker.SetOwnerWindow(ViewModel.MainWindow);
+            folderPicker.SetOwnerWindow(AppViewModel.MainWindow);
             FileExtension.Markdown.ForEach(folderPicker.FileTypeFilter.Add);
             var folder = await folderPicker.PickSingleFolderAsync();
             if (folder != null)
             {
-                Settings.WorkFolder = folder.Path;
-                if (!Settings.IsSideBarOpen)
+                SettingsViewModel.WorkFolder = folder.Path;
+                if (!SettingsViewModel.IsSideBarOpen)
                 {
-                    Settings.IsSideBarOpen = true;
+                    SettingsViewModel.IsSideBarOpen = true;
                 }
-                if (Settings.SideBarIndex != 0)
+                if (SettingsViewModel.SideBarIndex != 0)
                 {
-                    Settings.SideBarIndex = 0;
+                    SettingsViewModel.SideBarIndex = 0;
                 }
             }
         }
@@ -169,7 +187,7 @@ namespace Typedown.Universal.ViewModels
             dialog.PrimaryButtonText = dialogMessages.GetString("Recover");
             dialog.SecondaryButtonText = dialogMessages.GetString("Delete");
             dialog.DefaultButton = ContentDialogButton.Primary;
-            var result = await dialog.ShowAsync(ViewModel.XamlRoot);
+            var result = await dialog.ShowAsync(AppViewModel.XamlRoot);
             if (result == ContentDialogResult.Primary)
             {
                 return text;
@@ -243,47 +261,47 @@ namespace Typedown.Universal.ViewModels
 
         public void RecordHistory(string path)
         {
-            var history = Settings.History;
+            var history = SettingsViewModel.History;
             history.Remove(path);
             history.Insert(0, path);
-            Settings.History = history.Take(10).ToList();
+            SettingsViewModel.History = history.Take(10).ToList();
         }
 
-        private void ClearHistoryFun()
+        private void ClearHistory()
         {
-            Settings.History = new List<string>();
+            SettingsViewModel.History = new List<string>();
         }
 
-        public async Task<bool> SaveFun(bool alert = true)
+        public async Task<bool> Save(bool alert = true)
         {
             if (FilePath == null)
             {
-                var result = await SaveAsFun();
+                var result = await SaveAs();
                 return result != null;
             }
             else
             {
-                var result = (bool)await WriteAllText(JObject.FromObject(new { path = FilePath, text = Editor.Markdown, alert }));
+                var result = (bool)await WriteAllText(JObject.FromObject(new { path = FilePath, text = EditorViewModel.Markdown, alert }));
                 if (result)
                 {
-                    Editor.FileHash = Editor.CurrentHash;
-                    Editor.Saved = true;
+                    EditorViewModel.FileHash = EditorViewModel.CurrentHash;
+                    EditorViewModel.Saved = true;
                     RecordHistory(FilePath);
                 }
                 return result;
             }
         }
 
-        private async Task<string> SaveAsFun()
+        private async Task<string> SaveAs()
         {
             var filePicker = new FileSavePicker();
-            filePicker.SetOwnerWindow(ViewModel.MainWindow);
+            filePicker.SetOwnerWindow(AppViewModel.MainWindow);
             filePicker.FileTypeChoices.Add("Markdown Files", FileExtension.Markdown);
             filePicker.SuggestedFileName = FileName ?? "untitled";
             var file = await filePicker.PickSaveFileAsync();
             if (file != null)
             {
-                var result = (bool)await WriteAllText(JObject.FromObject(new { path = file.Path, text = Editor.Markdown }));
+                var result = (bool)await WriteAllText(JObject.FromObject(new { path = file.Path, text = EditorViewModel.Markdown }));
                 if (result)
                 {
                     if (FilePath == null)
@@ -291,8 +309,8 @@ namespace Typedown.Universal.ViewModels
                         FilePath = file.Path;
                         AutoBackup.DeleteBackup(null);
                     }
-                    Editor.FileHash = Editor.CurrentHash;
-                    Editor.Saved = true;
+                    EditorViewModel.FileHash = EditorViewModel.CurrentHash;
+                    EditorViewModel.Saved = true;
                     RecordHistory(FilePath);
                     return file.Path;
                 }
@@ -316,7 +334,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(dialogMessages.GetString("ExportErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(ViewModel.XamlRoot);
+                await AppContentDialog.Create(dialogMessages.GetString("ExportErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(AppViewModel.XamlRoot);
                 return false;
             }
         }
@@ -340,7 +358,7 @@ namespace Typedown.Universal.ViewModels
             {
                 if (arg["alert"] == null || arg["alert"].ToObject<bool>())
                 {
-                    await AppContentDialog.Create(dialogMessages.GetString("SaveErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(ViewModel.XamlRoot);
+                    await AppContentDialog.Create(dialogMessages.GetString("SaveErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(AppViewModel.XamlRoot);
                 }
                 return false;
             }
@@ -350,7 +368,7 @@ namespace Typedown.Universal.ViewModels
 
         public async Task<bool> AskToSave()
         {
-            if (Editor.Saved || (Settings.AutoSave && await AutoSaveFile()))
+            if (EditorViewModel.Saved || (SettingsViewModel.AutoSave && await AutoSaveFile()))
             {
                 return true;
             }
@@ -364,12 +382,12 @@ namespace Typedown.Universal.ViewModels
                 dialogMessages.GetString("AsKToSaveContent"),
                 dialogMessages.GetString("Cancel"),
                 dialogMessages.GetString("Save"),
-                dialogMessages.GetString("Don'tSave")).ShowAsync(ViewModel.XamlRoot);
+                dialogMessages.GetString("Don'tSave")).ShowAsync(AppViewModel.XamlRoot);
             askToSaveOpened = false;
             switch (result)
             {
                 case ContentDialogResult.Primary:
-                    var saveResult = await SaveFun();
+                    var saveResult = await Save();
                     return saveResult;
                 case ContentDialogResult.Secondary:
                     AutoBackup.DeleteBackup(FilePath);
@@ -401,22 +419,22 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        private async void ExportFun(string type)
+        private async void Export(string type)
         {
             var filePicker = new FileSavePicker();
-            filePicker.SetOwnerWindow(ViewModel.MainWindow);
+            filePicker.SetOwnerWindow(AppViewModel.MainWindow);
             filePicker.FileTypeChoices.Add(type, new List<string> { "." + type });
             var file = await filePicker.PickSaveFileAsync();
             if (file == null) return;
-            Transport?.PostMessage("Export", new { type, path = file.Path, title = file.DisplayName });
+            MarkdownEditor?.PostMessage("Export", new { type, path = file.Path, title = file.DisplayName });
         }
 
-        private void PrintFun()
+        private void Print()
         {
-            Transport?.PostMessage("Export", new { type = "print", title = FileName ?? "untitled" });
+            MarkdownEditor?.PostMessage("Export", new { type = "print", title = FileName ?? "untitled" });
         }
 
-        private async void ImportFun()
+        private async void Import()
         {
             try
             {
@@ -426,12 +444,12 @@ namespace Typedown.Universal.ViewModels
                 if (file != null)
                 {
                     var text = await File.ReadAllTextAsync(file.Path);
-                    Transport?.PostMessage("ImportFile", new { type = Path.GetExtension(file.Path).Substring(1), text });
+                    MarkdownEditor?.PostMessage("ImportFile", new { type = Path.GetExtension(file.Path).Substring(1), text });
                 }
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(dialogMessages.GetString("ImportErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(ViewModel.XamlRoot);
+                await AppContentDialog.Create(dialogMessages.GetString("ImportErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(AppViewModel.XamlRoot);
             }
         }
 
@@ -440,7 +458,7 @@ namespace Typedown.Universal.ViewModels
             saveFileTimer.Stop();
         }
 
-        private void ExitFun()
+        private void Exit()
         {
             throw new NotImplementedException();
         }

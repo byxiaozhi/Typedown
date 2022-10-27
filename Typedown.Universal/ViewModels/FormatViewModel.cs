@@ -2,9 +2,8 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Services;
@@ -26,11 +25,15 @@ namespace Typedown.Universal.ViewModels
 
         public FormatState FormatState { get; set; } = new FormatState();
 
-        public IMarkdownEditor Transport => ServiceProvider.GetService<IMarkdownEditor>();
+        public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
+
+        public Command<string> SetFormatCommand { get; } = new();
 
         public FormatViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
+            EventCenter.GetObservable<EditorEventArgs>("SelectionFormats").Subscribe(x => OnSelectionFormats(x.Args));
+            SetFormatCommand.OnExecute.Subscribe(x => SetFormatFun(x));
         }
 
         public void OnSelectionFormats(JToken arg)
@@ -45,11 +48,9 @@ namespace Typedown.Universal.ViewModels
             EditorViewModel.UpdateMuyaSelected();
         }
 
-        public Command<string> SetFormat { get; } = new();
-
         private void SetFormatFun(string type)
         {
-            Transport?.PostMessage("Format", type);
+            MarkdownEditor?.PostMessage("Format", type);
         }
     }
 }
