@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Web.WebView2.Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Policy;
@@ -15,7 +16,9 @@ namespace Typedown.Controls
 {
     public class MarkdownEditor : UserControl, IMarkdownEditor
     {
-        public WebViewController WebViewController { get; } = new();
+        public WebViewController WebViewController { get; private set; }
+
+        public CoreWebView2 CoreWebView2 => WebViewController.CoreWebView2;
 
         public MarkdownEditor()
         {
@@ -26,9 +29,41 @@ namespace Typedown.Controls
 
         private async void OnLoaded(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await WebViewController.InitializeAsync(this, (Window.GetWindow(AppXamlHost.GetAppXamlHost(this)) as AppWindow).Handle);
+            if(WebViewController == null)
+            {
+                WebViewController = new();
+                await WebViewController.InitializeAsync(this, (Window.GetWindow(AppXamlHost.GetAppXamlHost(this)) as AppWindow).Handle);
+                OnCoreWebView2Initialized();
+            }
+        }
+
+        private void OnCoreWebView2Initialized()
+        {
+            CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+            CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
+            CoreWebView2.Settings.AreDevToolsEnabled = false;
+            CoreWebView2.Settings.IsBuiltInErrorPageEnabled = false;
+            CoreWebView2.Settings.IsGeneralAutofillEnabled = false;
+            CoreWebView2.Settings.IsPinchZoomEnabled = true;
+            CoreWebView2.Settings.IsStatusBarEnabled = false;
+            CoreWebView2.Settings.IsSwipeNavigationEnabled = false;
+            CoreWebView2.Settings.IsZoomControlEnabled = false;
+            CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics", "index.html");
             WebViewController.CoreWebView2.Navigate(path);
+        }
+
+        private void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)
+        {
+            ContentDialog dialog = new()
+            {
+                Title = "消息",
+                Content = args.Message,
+                CloseButtonText = "确定",
+                XamlRoot = this.XamlRoot
+            };
+            _ = dialog.ShowAsync();
         }
     }
 }

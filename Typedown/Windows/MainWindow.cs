@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Windows.Data;
@@ -10,6 +11,8 @@ using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Typedown.Utilities;
+using Windows.Media.Devices;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 namespace Typedown.Windows
@@ -71,13 +74,24 @@ namespace Typedown.Windows
             }
         }
 
-        private void CloseAllPopup()
+        private void CloseMenuFlyout()
         {
             if (AppXamlHost.GetUwpInternalObject() is RootControl rootControl)
             {
-                var popups = VisualTreeHelper.GetOpenPopupsForXamlRoot(rootControl.XamlRoot);
-                foreach (var popup in popups)
-                    popup.IsOpen = false;
+                VisualTreeHelper.GetOpenPopupsForXamlRoot(rootControl.XamlRoot)
+                    .Where(x => x.Child is MenuFlyoutPresenter)
+                    .ToList()
+                    .ForEach(x => x.IsOpen = false);
+            }
+        }
+
+        private void UpdatePopupPos()
+        {
+            if (AppXamlHost.GetUwpInternalObject() is RootControl rootControl)
+            {
+                VisualTreeHelper.GetOpenPopupsForXamlRoot(rootControl.XamlRoot)
+                    .ToList()
+                    .ForEach(x => x.InvalidateMeasure());
             }
         }
 
@@ -86,7 +100,10 @@ namespace Typedown.Windows
             switch ((PInvoke.WindowMessage)msg)
             {
                 case PInvoke.WindowMessage.WM_NCLBUTTONDOWN:
-                    CloseAllPopup();
+                    CloseMenuFlyout();
+                    break;
+                case PInvoke.WindowMessage.WM_WINDOWPOSCHANGED:
+                    UpdatePopupPos();
                     break;
             }
             return base.WndProc(hWnd, msg, wParam, lParam, ref handled);
