@@ -10,6 +10,9 @@ using Windows.Foundation.Metadata;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using System.Numerics;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Shapes;
 
 namespace Typedown.Universal.Controls
 {
@@ -87,6 +90,12 @@ namespace Typedown.Universal.Controls
 
         private Button CloseButton => GetTemplateChild("CloseButton") as Button;
 
+        private Grid LayoutRoot => GetTemplateChild("LayoutRoot") as Grid;
+
+        private Rectangle SmokeLayerBackground => GetTemplateChild("SmokeLayerBackground") as Rectangle;
+
+        private Border BackgroundElement => GetTemplateChild("BackgroundElement") as Border;
+
         private TaskCompletionSource<ContentDialogResult> result;
 
         public AppContentDialog()
@@ -133,9 +142,18 @@ namespace Typedown.Universal.Controls
             }
         }
 
+        public void SetShadow()
+        {
+            var sharedShadow = new ThemeShadow();
+            BackgroundElement.Shadow = sharedShadow;
+            sharedShadow.Receivers.Add(SmokeLayerBackground);
+            BackgroundElement.Translation = new Vector3(0, 0, 128);
+        }
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             SetButtonState();
+            SetShadow();
             VisualStateManager.GoToState(this, "DialogShowing", true);
             PrimaryButton.Click += OnPrimaryButtonClick;
             SecondaryButton.Click += OnSecondaryButtonClick;
