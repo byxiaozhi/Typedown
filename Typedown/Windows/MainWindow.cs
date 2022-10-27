@@ -43,7 +43,7 @@ namespace Typedown.Windows
             Width = 1500;
             Height = 900;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            Content = AppXamlHost = new AppXamlHost() { InitialTypeName = "Typedown.Universal.Controls.RootControl" };
+            Content = AppXamlHost = new AppXamlHost(new RootControl());
             SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
         }
 

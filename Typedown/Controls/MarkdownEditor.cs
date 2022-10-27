@@ -5,6 +5,7 @@ using System.IO;
 using System.Security.Policy;
 using System.Text;
 using System.Windows;
+using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
 using Typedown.Utilities;
 using Typedown.Windows;
@@ -56,12 +57,12 @@ namespace Typedown.Controls
 
         private void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)
         {
-            ContentDialog dialog = new()
+            AppContentDialog dialog = new()
             {
-                Title = "消息",
+                Title = "Message",
                 Content = args.Message,
-                CloseButtonText = "确定",
-                XamlRoot = this.XamlRoot
+                CloseButtonText = "Ok",
+                XamlRoot = XamlRoot
             };
             _ = dialog.ShowAsync();
         }
