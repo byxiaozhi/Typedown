@@ -38,6 +38,8 @@ namespace Typedown.Windows
         {
             Width = 1500;
             Height = 900;
+            MinWidth = 480;
+            MinHeight = 300;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Content = AppXamlHost = new AppXamlHost(new RootControl());
             SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });

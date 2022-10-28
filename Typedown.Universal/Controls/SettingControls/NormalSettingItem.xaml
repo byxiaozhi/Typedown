@@ -31,10 +31,13 @@
         </Viewbox>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <ContentPresenter Content="{x:Bind Title, Mode=OneWay}"/>
+            <ContentPresenter 
+                TextWrapping="Wrap" 
+                Content="{x:Bind Title, Mode=OneWay}"/>
             <ContentPresenter 
                 x:Name="ContentPresenter_Action" 
                 FontSize="12" 
+                TextWrapping="Wrap"
                 Foreground="{ThemeResource TextFillColorSecondary}" 
                 Content="{x:Bind Description, Mode=OneWay}"/>
         </StackPanel>

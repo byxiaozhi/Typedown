@@ -110,7 +110,11 @@
                     <MenuFlyoutItem x:Uid="Mermaid"/>
                 </MenuFlyoutSubItem>
                 <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem Text="链接引用"/>
+                <ToggleMenuFlyoutItem Text="脚注"/>
+                <MenuFlyoutSeparator/>
                 <ToggleMenuFlyoutItem x:Uid="HorizontalLine"/>
+                <ToggleMenuFlyoutItem Text="内容目录"/>
                 <ToggleMenuFlyoutItem x:Uid="YAMLFrontMatter"/>
             </muxc:MenuBarItem>
 
