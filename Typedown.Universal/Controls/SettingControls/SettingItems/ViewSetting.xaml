@@ -1,0 +1,72 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.SettingControls.SettingItems.ViewSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.SettingControls.SettingItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Universal.Controls" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <StackPanel Spacing="4">
+        <TextBlock Text="窗口" Margin="0,0,0,4"/>
+        <controls:ExpanderSettingItem Title="主题" Description="选择要显示的应用主题" State="{x:Bind AppViewModel.SettingsViewModel.AppTheme, Mode=OneWay}">
+            <controls:ExpanderSettingItem.Icon>
+                <FontIcon Glyph="&#xe790;"/>
+            </controls:ExpanderSettingItem.Icon>
+            <StackPanel Padding="48,16,16,16">
+                <muxc:RadioButtons ItemsSource="{x:Bind Options}" SelectedItem="{x:Bind AppViewModel.SettingsViewModel.AppTheme, Mode=TwoWay}">
+                    <muxc:RadioButtons.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <TextBlock Text="{x:Bind}"/>
+                        </DataTemplate>
+                    </muxc:RadioButtons.ItemTemplate>
+                </muxc:RadioButtons>
+            </StackPanel>
+        </controls:ExpanderSettingItem>
+        <controls:NormalSettingItem Title="使用云母材料" Description="开启后窗口背景具有云母背景效果">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xf4a5;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="True"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="窗格动画" Description="关闭可获得更快的响应速度">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8be;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="置于顶层" Description="使窗口始终在顶部">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xee40;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch/>
+        </controls:NormalSettingItem>
+        <TextBlock Text="布局" Margin="0,16,0,4"/>
+        <controls:NormalSettingItem Title="紧凑模式" Description="菜单栏与标题在同一行显示">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xf246;"/>
+            </controls:NormalSettingItem.Icon>
+            <ComboBox Width="200" SelectedIndex="0">
+                <x:String>关闭</x:String>
+                <x:String>仅合并标题栏</x:String>
+                <x:String>合并标题栏与菜单项</x:String>
+            </ComboBox>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="隐藏状态栏" Description="选择是否隐藏底部状态栏">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe90e;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="隐藏侧边栏" Description="选择是否隐藏侧边栏">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xea4b;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch/>
+        </controls:NormalSettingItem>
+
+    </StackPanel>
+</UserControl>

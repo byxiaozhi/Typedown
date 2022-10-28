@@ -1,12 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive.Disposables;
-using System.Text;
-using System.Threading.Tasks;
-using Typedown.Universal.Interfaces;
-using Typedown.Universal.Utilities;
+﻿using Typedown.Universal.Interfaces;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -22,8 +14,6 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private readonly IMarkdownEditor markdownEditor;
 
-        private readonly CompositeDisposable disposables = new();
-
         public FrontMenu(IMarkdownEditor markdownEditor)
         {
             this.markdownEditor = markdownEditor;
@@ -33,12 +23,12 @@ namespace Typedown.Universal.Controls.FloatControls
         private void OnClosed(object sender, object e)
         {
             markdownEditor.PostMessage("FrontMenuClosed", null);
-            disposables.Clear();
         }
 
         public void Open(Rect rect)
         {
             var options = new FlyoutShowOptions() { Placement = FlyoutPlacementMode.Bottom };
+            Flyout.OverlayInputPassThroughElement = (markdownEditor as UIElement).XamlRoot.Content;
             Flyout.ShowAt(markdownEditor.GetDummyRectangle(rect), options);
         }
     }

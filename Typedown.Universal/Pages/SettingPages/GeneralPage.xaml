@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="Typedown.Universal.Pages.SettingPages.GeneralPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Pages.SettingPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:settingitems="using:Typedown.Universal.Controls.SettingControls.SettingItems"
+    mc:Ignorable="d">
+    <StackPanel Spacing="4">
+        <settingitems:GeneralSetting/>
+        <StackPanel Spacing="4" Margin="-8,8,0,0">
+            <HyperlinkButton Content="帮助我们完善翻译"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

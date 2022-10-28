@@ -1,0 +1,75 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.SettingControls.SettingItems.GeneralSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.SettingControls.SettingItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Universal.Controls"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <StackPanel Spacing="4">
+        <controls:ExpanderSettingItem Title="启动选项" Description="当应用启动时进行的操作">
+            <controls:ExpanderSettingItem.Icon>
+                <FontIcon Glyph="&#xe7b5;"/>
+            </controls:ExpanderSettingItem.Icon>
+            <StackPanel>
+                <controls:NormalSettingItem Title="文件">
+                    <ComboBox Width="200" SelectedIndex="0">
+                        <x:String>新建文件</x:String>
+                        <x:String>打开上次使用的文件</x:String>
+                    </ComboBox>
+                </controls:NormalSettingItem>
+                <Border Height="1" Background="{ThemeResource CardStrokeColorDefault}"/>
+                <controls:NormalSettingItem Title="目录">
+                    <ComboBox Width="200" SelectedIndex="0">
+                        <x:String>不打开目录</x:String>
+                        <x:String>打开上次使用的目录</x:String>
+                        <x:String>打开指定目录</x:String>
+                    </ComboBox>
+                </controls:NormalSettingItem>
+            </StackPanel>
+        </controls:ExpanderSettingItem>
+        <controls:NormalSettingItem Title="快速启动" Description="关闭窗口后是否保留进程加速下次启动">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe945;"/>
+            </controls:NormalSettingItem.Icon>
+            <ComboBox Width="200" SelectedIndex="1">
+                <x:String>关闭</x:String>
+                <x:String>第一次启动后</x:String>
+                <x:String>开机自动运行</x:String>
+            </ComboBox>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="自动保存" Description="打开后应用会在文件发生修改时自动保存">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe74e;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="语言" Description="应用显示的语言">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xf2b7;"/>
+            </controls:NormalSettingItem.Icon>
+            <ComboBox Width="200" SelectedIndex="0">
+                <x:String>简体中文</x:String>
+            </ComboBox>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="文件访问历史" Description="文件访问历史默认在设备上保留 90 天">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xf738;"/>
+            </controls:NormalSettingItem.Icon>
+            <Button MinWidth="120">
+                查看
+            </Button>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="恢复默认设置" Description="还原应用默认设置">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xebc4;"/>
+            </controls:NormalSettingItem.Icon>
+            <Button MinWidth="120">
+                重置
+            </Button>
+        </controls:NormalSettingItem>
+    </StackPanel>
+</UserControl>

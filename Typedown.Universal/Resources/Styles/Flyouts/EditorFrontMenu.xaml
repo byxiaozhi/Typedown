@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <MenuFlyout x:Key="EditorFrontMenu" Placement="Bottom" OverlayInputPassThroughElement="{Binding XamlRoot.Content}">
+    <MenuFlyout x:Key="EditorFrontMenu" Placement="Bottom">
         <MenuFlyoutItem x:Uid="Duplicate"/>
         <MenuFlyoutSubItem x:Uid="TurnInto">
             <ToggleMenuFlyoutItem  x:Uid="ItemParagraph" KeyboardAcceleratorTextOverride="Ctrl+0"/>

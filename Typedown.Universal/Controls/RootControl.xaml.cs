@@ -15,9 +15,11 @@ namespace Typedown.Universal.Controls
 {
     public sealed partial class RootControl : UserControl
     {
+        public record PageData(Type Page, string Param);
+
         public AppViewModel AppViewModel => DataContext as AppViewModel;
 
-        private readonly ObservableCollection<Type> history = new();
+        private readonly ObservableCollection<PageData> history = new();
 
         private readonly CompositeDisposable disposables = new();
 
@@ -33,8 +35,8 @@ namespace Typedown.Universal.Controls
             disposables.Add(AppViewModel.GoBackCommand.OnExecute.Select(_ => history.Count - 1).Subscribe(history.RemoveAt));
             var historyObservable = history.GetCollectionObservable();
             disposables.Add(historyObservable.Subscribe(_ => AppViewModel.GoBackCommand.IsExecutable = history.Count > 1));
-            disposables.Add(historyObservable.Select(x => x.EventArgs.Action).Select(GetTransition).Subscribe(t => Frame.Navigate(history.Last(), null, t)));
-            history.Add(typeof(MainPage));
+            disposables.Add(historyObservable.Select(x => x.EventArgs.Action).Select(GetTransition).Subscribe(t => Frame.Navigate(history.Last().Page, history.Last().Param, t)));
+            history.Add(new(typeof(MainPage), null));
         }
 
         private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -43,11 +45,16 @@ namespace Typedown.Universal.Controls
             history.Clear();
         }
 
-        public Type GetPageType(string pageName) => pageName switch
+        public PageData GetPageType(string args)
         {
-            "Settings" => typeof(SettingsPage),
-            _ => typeof(MainPage)
-        };
+            var arr = args.Split("/");
+            var page = arr[0] switch
+            {
+                "Settings" => typeof(SettingsPage),
+                _ => typeof(MainPage)
+            };
+            return new(page, string.Join("/", arr.Skip(1)));
+        }
 
         public SlideNavigationTransitionInfo GetTransition(NotifyCollectionChangedAction action) => new()
         {

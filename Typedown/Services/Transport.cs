@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -25,42 +26,42 @@ namespace Typedown.Services
 
         public async void EmitWebViewMessage(MarkdownEditor sender, string json)
         {
-            var jObject = JObject.Parse(json);
-            var name = jObject["name"].ToString();
-            var args = jObject["args"];
-            var type = jObject["type"].ToString();
-            switch (type)
+            var msg = JsonConvert.DeserializeObject<EditorMessage>(json);
+            switch (msg.Type)
             {
                 case "invoke":
-                    var id = jObject["id"].ToString();
                     try
                     {
-                        var ret = await RemoteInvoke.Invoke(name, args);
-                        sender.PostMessage(id, new { code = 0, data = ret });
+                        var ret = await RemoteInvoke.Invoke(msg.Name, msg.Args);
+                        sender.PostMessage(msg.Id, new { code = 0, data = ret });
                     }
                     catch (Exception ex)
                     {
-                        sender.PostMessage(id, new { code = 1, msg = ex.Message });
+                        sender.PostMessage(msg.Id, new { code = 1, msg = ex.Message });
                     }
                     break;
                 case "message":
-                    EventCenter.EmitEvent(name, new EditorEventArgs(name, args));
+                    EventCenter.EmitEvent(msg.Name, new EditorEventArgs(msg.Name, msg.Args));
                     break;
                 case "diffmsg":
-                    var diff = jObject["diff"].ToObject<bool>();
-                    if (diff)
-                    {
-                        var start = jObject["start"].ToObject<int>();
-                        var end = jObject["end"].ToObject<int>();
-                        prevDic[name] = prevDic[name][..start] + args + prevDic[name][end..];
-                    }
+                    if (msg.Diff)
+                        prevDic[msg.Name] = prevDic[msg.Name][..msg.Start] + msg.Args + prevDic[msg.Name][msg.End..];
                     else
-                    {
-                        prevDic[name] = args.ToString();
-                    }
-                    EventCenter.EmitEvent(name, new EditorEventArgs(name, JToken.Parse(prevDic[name])));
+                        prevDic[msg.Name] = msg.Args.ToString();
+                    EventCenter.EmitEvent(msg.Name, new EditorEventArgs(msg.Name, JToken.Parse(prevDic[msg.Name])));
                     break;
             }
+        }
+
+        public class EditorMessage
+        {
+            public string Id { get; set; }
+            public string Name { get; set; }
+            public JToken Args { get; set; }
+            public string Type { get; set; }
+            public bool Diff { get; set; }
+            public int Start { get; set; }
+            public int End { get; set; }
         }
     }
 }

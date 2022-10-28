@@ -38,6 +38,8 @@
                     <MenuFlyoutItem Text="PDF"/>
                     <MenuFlyoutItem Text="HTML"/>
                     <MenuFlyoutItem Text="TEXT"/>
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem Text="导出设置" Command="{x:Bind AppViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
                 </MenuFlyoutSubItem>
                 <MenuFlyoutItem x:Uid="Print" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
                 <MenuFlyoutSeparator/>

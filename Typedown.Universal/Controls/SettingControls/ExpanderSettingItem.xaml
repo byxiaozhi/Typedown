@@ -43,7 +43,12 @@
         </muxc:Expander.Header>
 
         <muxc:Expander.Content>
-            <ContentPresenter Name="ContentPresenter_Expander" Content="{x:Bind Action, Mode=OneWay}"/>
+            <ContentPresenter Name="ContentPresenter_Expander" Content="{x:Bind Action, Mode=OneWay}">
+                <ContentPresenter.Resources>
+                    <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="Transparent"/>
+                    <Thickness x:Key="ExpanderHeaderBorderThickness">0</Thickness>
+                </ContentPresenter.Resources>
+            </ContentPresenter>
         </muxc:Expander.Content>
 
     </muxc:Expander>

@@ -6,16 +6,69 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Universal.Controls" 
-    xmlns:settingItems="using:Typedown.Universal.Controls.SettingControls.SettingItems"
+    xmlns:settingItems="using:Typedown.Universal.Controls.SettingControls.SettingItems" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    SizeChanged="OnSizeChanged"
     mc:Ignorable="d">
-    <controls:ResponsiveContainer Title="设置">
-        <controls:ResponsiveContainer.PrimaryContent>
-            <StackPanel Spacing="4">
-                <settingItems:ThemeSetting/>
-            </StackPanel>
-        </controls:ResponsiveContainer.PrimaryContent>
-        <controls:ResponsiveContainer.SecondaryContent>
-            <controls:AboutApp/>
-        </controls:ResponsiveContainer.SecondaryContent>
-    </controls:ResponsiveContainer>
+    <muxc:NavigationView x:Name="NavigationView" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" SelectionChanged="OnNavigationViewSelectionChanged">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="LayoutStates">
+                <VisualState x:Name="Small">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="16,8,16,16"/>
+                        <Setter Target="FrameTitle.Margin" Value="48,0,0,0"/>
+                        <Setter Target="ContentFrameWrapper.RowSpacing" Value="8"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Medium">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="16,8,16,16"/>
+                        <Setter Target="FrameTitle.Margin" Value="16,0,0,0"/>
+                        <Setter Target="ContentFrameWrapper.RowSpacing" Value="8"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Large">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="48,8,48,48"/>
+                        <Setter Target="FrameTitle.Margin" Value="48,0,0,0"/>
+                        <Setter Target="ContentFrameWrapper.RowSpacing" Value="16"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <muxc:NavigationView.Resources>
+            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
+            <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>
+        </muxc:NavigationView.Resources>
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem Icon="Globe" Content="通用" Tag="General"/>
+            <muxc:NavigationViewItem Icon="View" Content="外观" Tag="View"/>
+            <muxc:NavigationViewItem Icon="Edit" Content="编辑器" Tag="Editor"/>
+            <muxc:NavigationViewItem Content="图像" Tag="Image">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xe91b;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem Content="导出" Tag="Export">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xf000;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem Content="关于" Tag="About">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xe946;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+        </muxc:NavigationView.MenuItems>
+        <Grid x:Name="ContentFrameWrapper" RowSpacing="16" MaxWidth="1200">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="FrameTitle" Text="{x:Bind NavigationView.SelectedItem.(muxc:NavigationViewItem.Content), Mode=OneWay}" FontSize="{ThemeResource TitleTextBlockFontSize}" Margin="48,0,48,0"/>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <Frame x:Name="ContentFrame" Margin="48,8,48,48"/>
+            </ScrollViewer>
+        </Grid>
+    </muxc:NavigationView>
 </Page>

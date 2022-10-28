@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.Pages.SettingPages;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -19,7 +20,52 @@ namespace Typedown.Universal.Pages
     {
         public SettingsPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+        }
+
+        private void OnNavigationViewSelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+        {
+            var item = (sender.SelectedItem as Microsoft.UI.Xaml.Controls.NavigationViewItem);
+            ContentFrame.Navigate(GetPageType(item?.Tag as string), args.RecommendedNavigationTransitionInfo);
+        }
+
+        public Type GetPageType(string pageName) => pageName switch
+        {
+            "View" => typeof(ViewPage),
+            "Editor" => typeof(EditorPage),
+            "Image" => typeof(ImagePage),
+            "Export" => typeof(ExportPage),
+            "About" => typeof(AboutPage),
+            _ => typeof(GeneralPage),
+        };
+
+        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (ActualWidth >= 1008)
+            {
+                VisualStateManager.GoToState(this, "Large", false);
+            }
+            else if (ActualWidth >= 641)
+            {
+                VisualStateManager.GoToState(this, "Medium", false);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, "Small", false);
+            }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            object navigateItem = NavigationView.MenuItems.First();
+            if (e.Parameter is string str)
+            {
+                var item = NavigationView.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().Where(x => x.Tag is string tag && tag == str);
+                if (item.Any())
+                    navigateItem = item.First();
+            }
+            NavigationView.SelectedItem = navigateItem;
+            base.OnNavigatedTo(e);
         }
     }
 }
