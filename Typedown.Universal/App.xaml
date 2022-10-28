@@ -8,9 +8,10 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <ResourceDictionary Source="/Resources/Styles/ButtonStyles.xaml"/>
-                <ResourceDictionary Source="/Resources/Styles/ContentDialogStyles.xaml"/>
-                <ResourceDictionary Source="/Resources/Styles/ToggleSwitchStyles.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Resources/Styles/Button.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Resources/Styles/ContentDialog.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Resources/Styles/ToggleSwitch.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Resources/Styles/Flyouts/EditorContextMenu.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </xaml:XamlApplication.Resources>

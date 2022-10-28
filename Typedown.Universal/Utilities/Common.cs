@@ -12,17 +12,6 @@ namespace Typedown.Universal.Utilities
 {
     public static class Common
     {
-        public static Rect BoundingClientRectToRectangle(JToken rect, Point relativeTo)
-        {
-            return new Rect()
-            {
-                X = rect["x"].ToObject<float>() + relativeTo.X,
-                Y = rect["y"].ToObject<float>() + relativeTo.Y,
-                Width = rect["width"].ToObject<float>(),
-                Height = rect["height"].ToObject<float>(),
-            };
-        }
-
         public static void OpenUrl(string url)
         {
             try

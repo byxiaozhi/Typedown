@@ -17,6 +17,6 @@
         </Grid.ColumnDefinitions>
         <local:LeftPane/>
         <Border Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>-->
-        <ContentPresenter x:Name="MarkdownEditorPresenter"/>
+        <ContentPresenter x:Name="MarkdownEditorPresenter" ContextFlyout="{StaticResource EditorContextMenu}"/>
     </Grid>
 </UserControl>

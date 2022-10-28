@@ -16,6 +16,8 @@ using Windows.UI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Microsoft.Extensions.DependencyInjection;
+using Windows.Foundation;
+using Windows.UI.Xaml.Shapes;
 
 namespace Typedown.Controls
 {
@@ -33,6 +35,7 @@ namespace Typedown.Controls
 
         public IServiceProvider ServiceProvider { get; }
 
+        private readonly Rectangle dummyRectangle = new();
 
         private readonly ResourceLoader stringResources = ResourceLoader.GetForViewIndependentUse("Resources");
 
@@ -40,7 +43,7 @@ namespace Typedown.Controls
         {
             ServiceProvider = serviceProvider;
             Loaded += OnLoaded;
-            Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent) };
+            Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent), Children = { dummyRectangle } };
             IsTabStop = true;
             RemoteInvoke.Handle("GetCurrentTheme", arg => ServiceProvider.GetCurrentTheme());
             RemoteInvoke.Handle("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString));
@@ -97,6 +100,15 @@ namespace Typedown.Controls
         public void Dispose()
         {
             WebViewController?.CoreWebView2Controller?.Close();
+        }
+
+        public Rectangle GetDummyRectangle(Rect rect)
+        {
+            dummyRectangle.Width = rect.Width;
+            dummyRectangle.Height = rect.Height;
+            Canvas.SetLeft(dummyRectangle, rect.Left);
+            Canvas.SetTop(dummyRectangle, rect.Top);
+            return dummyRectangle;
         }
     }
 }

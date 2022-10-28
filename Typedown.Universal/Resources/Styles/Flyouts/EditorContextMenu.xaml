@@ -1,0 +1,46 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+    <MenuFlyout x:Key="EditorContextMenu" OverlayInputPassThroughElement="{Binding XamlRoot.Content}">
+        <MenuFlyoutItem x:Name="HeaderButtons">
+            <MenuFlyoutItem.Template>
+                <ControlTemplate TargetType="MenuFlyoutItem">
+                    <StackPanel Orientation="Horizontal" Spacing="4" Padding="4">
+                        <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="strong">
+                            <FontIcon FontSize="16" Glyph="&#xE8DD;"/>
+                        </Button>
+                        <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="em">
+                            <FontIcon FontSize="16" Glyph="&#xE8DB;"/>
+                        </Button>
+                        <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="u">
+                            <FontIcon FontSize="16" Glyph="&#xE8DC;"/>
+                        </Button>
+                        <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="del">
+                            <FontIcon FontSize="16" Glyph="&#xEDE0;"/>
+                        </Button>
+                        <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="clear">
+                            <FontIcon FontSize="16" Glyph="&#xe75c;"/>
+                        </Button>
+                    </StackPanel>
+                </ControlTemplate>
+            </MenuFlyoutItem.Template>
+        </MenuFlyoutItem>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem x:Uid="Undo" KeyboardAcceleratorTextOverride="Ctrl+Z" Icon="Undo" Command="{Binding FormatViewModel.UndoCommand}"/>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem x:Uid="Cut" KeyboardAcceleratorTextOverride="Ctrl+X" Icon="Cut" Command="{Binding FormatViewModel.CutCommand}" CommandParameter="normal"/>
+        <MenuFlyoutItem x:Uid="Copy" KeyboardAcceleratorTextOverride="Ctrl+C" Icon="Copy" Command="{Binding FormatViewModel.CopyCommand}" CommandParameter="normal"/>
+        <MenuFlyoutItem x:Uid="Paste" KeyboardAcceleratorTextOverride="Ctrl+V" Icon="Paste" Command="{Binding FormatViewModel.PasteCommand}" CommandParameter="normal"/>
+        <MenuFlyoutSubItem x:Uid="CopyPasteAs">
+            <MenuFlyoutItem x:Uid="CopyAsPlainText" Command="{Binding FormatViewModel.CopyCommand}" CommandParameter="copyAsPlainText"/>
+            <MenuFlyoutItem x:Uid="CopyAsMarkdown" KeyboardAcceleratorTextOverride="Ctrl+Shift+C" Command="{Binding FormatViewModel.CopyCommand}" CommandParameter="copyAsMarkdown"/>
+            <MenuFlyoutItem x:Uid="CopyAsHTMLCode" Command="{Binding FormatViewModel.CopyCommand}" CommandParameter="copyAsHtml"/>
+            <MenuFlyoutItem x:Uid="PasteAsPlainText" Command="{Binding FormatViewModel.PasteCommand}" CommandParameter="pasteAsPlainText"/>
+        </MenuFlyoutSubItem>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem x:Uid="Delete" Icon="Delete" KeyboardAcceleratorTextOverride="Delete" Command="{Binding FormatViewModel.DeleteSelectionCommand}"/>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem x:Uid="SelectAll" Icon="SelectAll" KeyboardAcceleratorTextOverride="Ctrl+A" Command="{Binding FormatViewModel.SelectAllCommand}"/>
+    </MenuFlyout>
+</ResourceDictionary>

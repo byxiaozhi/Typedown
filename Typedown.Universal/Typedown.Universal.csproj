@@ -61,6 +61,7 @@
     <Compile Include="Controls\EditorControls\MenuBar.xaml.cs">
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FloatControls\FrontMenu.cs" />
     <Compile Include="Controls\SettingControls\SettingItems\ThemeSetting.xaml.cs">
       <DependentUpon>ThemeSetting.xaml</DependentUpon>
     </Compile>
@@ -299,15 +300,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Styles\ButtonStyles.xaml">
+    <Page Include="Resources\Styles\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Styles\ContentDialogStyles.xaml">
+    <Page Include="Resources\Styles\ContentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Styles\ToggleSwitchStyles.xaml">
+    <Page Include="Resources\Styles\Flyouts\EditorContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Flyouts\EditorFrontMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\ToggleSwitch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

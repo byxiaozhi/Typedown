@@ -4,6 +4,7 @@ using Typedown.Universal.Interfaces;
 using Typedown.Universal.Services;
 using Typedown.Universal.ViewModels;
 using Typedown.Controls;
+using Typedown.Universal.Controls.FloatControls;
 
 namespace Typedown
 {
@@ -50,6 +51,7 @@ namespace Typedown
         private static void RegisterComponent(ServiceCollection builder)
         {
             builder.AddScoped<IMarkdownEditor, MarkdownEditor>();
+            builder.AddScoped<FrontMenu>();
         }
     }
 }
