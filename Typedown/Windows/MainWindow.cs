@@ -63,7 +63,7 @@ namespace Typedown.Windows
             if (DragBar != null)
             {
                 var leftSpace = AppViewModel.GoBackCommand.IsExecutable ? 32 : 0;
-                var rightSpace = Universal.Config.IsMicaEnable ? 0 : 46 * 3;
+                var rightSpace = Universal.Config.IsMicaSupported ? 0 : 46 * 3;
                 DragBar.Margin = new(leftSpace, 0, rightSpace, 0);
             }
         }

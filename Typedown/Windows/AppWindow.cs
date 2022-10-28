@@ -7,13 +7,14 @@ using System.Windows.Media;
 using Windows.UI.ViewManagement;
 using Typedown.Utilities;
 using Typedown.Controls;
+using Typedown.Universal.Enums;
 
 namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
-        public static DependencyProperty ThemeProperty = DependencyProperty.Register("Theme", typeof(string), typeof(AppWindow));
-        public string Theme { get => (string)GetValue(ThemeProperty); set => SetValue(ThemeProperty, value); }
+        public static DependencyProperty ThemeProperty = DependencyProperty.Register("Theme", typeof(AppTheme), typeof(AppWindow));
+        public AppTheme Theme { get => (AppTheme)GetValue(ThemeProperty); set => SetValue(ThemeProperty, value); }
 
         public static DependencyProperty CaptionHeightProperty = DependencyProperty.Register("CaptionHeight", typeof(double), typeof(AppWindow), new(32d));
         public double CaptionHeight { get => (double)GetValue(CaptionHeightProperty); set => SetValue(CaptionHeightProperty, value); }
@@ -42,7 +43,7 @@ namespace Typedown.Windows
             Handle = new WindowInteropHelper(this).Handle;
             var style = PInvoke.GetWindowLong(Handle, PInvoke.WindowLongFlags.GWL_STYLE);
             PInvoke.SetWindowLong(Handle, PInvoke.WindowLongFlags.GWL_STYLE, style & ~(int)PInvoke.WindowStyles.WS_CLIPCHILDREN);
-            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = Universal.Config.IsMicaEnable ? -1 : 0 });
+            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = Universal.Config.IsMicaSupported ? -1 : 0 });
             PInvoke.SetWindowPos(Handle, IntPtr.Zero, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
             HwndSource.FromHwnd(Handle).AddHook(WndProc);
             UpdateRootContainer();
@@ -164,12 +165,12 @@ namespace Typedown.Windows
             var compositionTarget = HwndSource.FromHwnd(Handle).CompositionTarget;
             var theme = Theme switch
             {
-                "Light" => global::Windows.UI.Xaml.ApplicationTheme.Light,
-                "Dark" => global::Windows.UI.Xaml.ApplicationTheme.Dark,
+                AppTheme.Light => global::Windows.UI.Xaml.ApplicationTheme.Light,
+                AppTheme.Dark => global::Windows.UI.Xaml.ApplicationTheme.Dark,
                 _ => global::Windows.UI.Xaml.Application.Current.RequestedTheme
             };
             var isDarkMode = theme == global::Windows.UI.Xaml.ApplicationTheme.Dark;
-            if (Universal.Config.IsMicaEnable)
+            if (Universal.Config.IsMicaSupported)
             {
                 compositionTarget.BackgroundColor = Colors.Transparent;
                 if (Environment.OSVersion.Version.Build >= 22523)

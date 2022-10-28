@@ -6,21 +6,29 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Universal.Controls" 
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:enums="using:Typedown.Universal.Enums" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:converters="using:Typedown.Universal.Resources.Converters" 
+    xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
+    xmlns:app="using:Typedown.Universal"
+    d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="4">
         <TextBlock Text="窗口" Margin="0,0,0,4"/>
-        <controls:ExpanderSettingItem Title="主题" Description="选择要显示的应用主题" State="{x:Bind AppViewModel.SettingsViewModel.AppTheme, Mode=OneWay}">
+        <controls:ExpanderSettingItem Title="主题" Description="选择要显示的应用主题">
             <controls:ExpanderSettingItem.Icon>
                 <FontIcon Glyph="&#xe790;"/>
             </controls:ExpanderSettingItem.Icon>
+            <controls:ExpanderSettingItem.State>
+                <controls:EnumNameBlock Value="{x:Bind SettingsViewModel.AppTheme, Mode=OneWay}"/>
+            </controls:ExpanderSettingItem.State>
             <StackPanel Padding="48,16,16,16">
-                <muxc:RadioButtons ItemsSource="{x:Bind Options}" SelectedItem="{x:Bind AppViewModel.SettingsViewModel.AppTheme, Mode=TwoWay}">
+                <muxc:RadioButtons ItemsSource="{x:Bind enums:Enumerable.AppThemes}" SelectedItem="{Binding SettingsViewModel.AppTheme, Mode=TwoWay}">
                     <muxc:RadioButtons.ItemTemplate>
-                        <DataTemplate x:DataType="x:String">
-                            <TextBlock Text="{x:Bind}"/>
+                        <DataTemplate>
+                            <controls:EnumNameBlock Value="{Binding}"/>
                         </DataTemplate>
                     </muxc:RadioButtons.ItemTemplate>
                 </muxc:RadioButtons>
@@ -30,42 +38,44 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf4a5;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="True"/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="窗格动画" Description="关闭可获得更快的响应速度">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8be;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.IsAnimationEnable, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="置于顶层" Description="使窗口始终在顶部">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xee40;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.IsTopWindow, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <TextBlock Text="布局" Margin="0,16,0,4"/>
         <controls:NormalSettingItem Title="紧凑模式" Description="菜单栏与标题在同一行显示">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf246;"/>
             </controls:NormalSettingItem.Icon>
-            <ComboBox Width="200" SelectedIndex="0">
-                <x:String>关闭</x:String>
-                <x:String>仅合并标题栏</x:String>
-                <x:String>合并标题栏与菜单项</x:String>
+            <ComboBox ItemsSource="{x:Bind enums:Enumerable.AppCompactModes}" MinWidth="200" SelectedItem="{Binding SettingsViewModel.AppCompactMode, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <controls:EnumNameBlock Value="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="隐藏状态栏" Description="选择是否隐藏底部状态栏">
+        <controls:NormalSettingItem Title="显示状态栏" Description="选择是否显示底部状态栏">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe90e;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.IsStatusBarOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="隐藏侧边栏" Description="选择是否隐藏侧边栏">
+        <controls:NormalSettingItem Title="显示侧边栏" Description="选择是否显示侧边栏">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xea4b;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.IsSideBarOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
 
     </StackPanel>

@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using Typedown.Universal.Enums;
 using Typedown.Universal.ViewModels;
 using Windows.UI.Xaml;
 
@@ -44,15 +45,15 @@ namespace Typedown.Utilities
         {
             var settings = provider.GetService<SettingsViewModel>();
             var themeSetting = settings.AppTheme;
-            var theme = themeSetting switch
+            var isDarkMode = themeSetting switch
             {
-                "Light" => "Light",
-                "Dark" => "Dark",
-                _ => Universal.App.Current.RequestedTheme == ApplicationTheme.Dark ? "Dark" : "Light"
+                AppTheme.Light => false,
+                AppTheme.Dark => true,
+                _ => Universal.App.Current.RequestedTheme == ApplicationTheme.Dark ? true : false
             };
             var color = Universal.App.Current.Resources["SystemAccentColor"];
-            var background = theme == "Light" ? Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9) : Color.FromArgb(0xFF, 0x28, 0x28, 0x28);
-            return new { theme, color, background };
+            var background = isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
+            return new { theme = isDarkMode ? "Dark" : "Light", color, background };
         }
     }
 }

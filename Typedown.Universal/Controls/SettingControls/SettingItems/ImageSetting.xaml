@@ -16,7 +16,7 @@
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
                 <controls:NormalSettingItem Title="本地图片">
-                    <ComboBox Width="200" SelectedIndex="0">
+                    <ComboBox MinWidth="200" SelectedIndex="0">
                         <x:String>不操作</x:String>
                         <x:String>复制到指定路径</x:String>
                         <x:String>上传图片</x:String>
@@ -24,7 +24,7 @@
                 </controls:NormalSettingItem>
                 <Border Height="1" Background="{ThemeResource CardStrokeColorDefault}"/>
                 <controls:NormalSettingItem Title="网络图片">
-                    <ComboBox Width="200" SelectedIndex="0">
+                    <ComboBox MinWidth="200" SelectedIndex="0">
                         <x:String>不操作</x:String>
                         <x:String>复制到指定路径</x:String>
                         <x:String>上传图片</x:String>
@@ -51,7 +51,7 @@
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
                 <controls:NormalSettingItem Title="上传服务">
-                    <ComboBox Width="200" SelectedIndex="0">
+                    <ComboBox MinWidth="200" SelectedIndex="0">
                         <x:String>无</x:String>
                         <x:String>PicGo-Core</x:String>
                         <x:String>PicGo App</x:String>

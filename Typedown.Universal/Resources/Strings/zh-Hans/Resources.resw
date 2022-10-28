@@ -141,9 +141,29 @@
     <value>右对齐</value>
     <comment>右对齐</comment>
   </data>
+  <data name="AppCompactMode.MergeTitleBar" xml:space="preserve">
+    <value>仅合并标题栏</value>
+    <comment>仅合并标题栏</comment>
+  </data>
+  <data name="AppCompactMode.MergeTitleBarAndMenuBar" xml:space="preserve">
+    <value>合并标题栏与菜单</value>
+    <comment>合并标题栏与菜单</comment>
+  </data>
   <data name="AppStorePage.Content" xml:space="preserve">
     <value>应用商店页面</value>
     <comment>应用商店页面</comment>
+  </data>
+  <data name="AppTheme.Dark" xml:space="preserve">
+    <value>深色</value>
+    <comment>深色</comment>
+  </data>
+  <data name="AppTheme.Default" xml:space="preserve">
+    <value>使用系统设置</value>
+    <comment>使用系统设置</comment>
+  </data>
+  <data name="AppTheme.Light" xml:space="preserve">
+    <value>浅色</value>
+    <comment>浅色</comment>
   </data>
   <data name="AppTheme.Text" xml:space="preserve">
     <value>主题</value>
@@ -345,6 +365,10 @@
     <value>文件</value>
     <comment>文件</comment>
   </data>
+  <data name="FileStartupAction.OpenLast" xml:space="preserve">
+    <value>打开上次使用的文件</value>
+    <comment>打开上次使用的文件</comment>
+  </data>
   <data name="Find.Text" xml:space="preserve">
     <value>查找</value>
     <comment>查找</comment>
@@ -372,6 +396,14 @@
   <data name="FocusMode.Text" xml:space="preserve">
     <value>专注模式</value>
     <comment>专注模式</comment>
+  </data>
+  <data name="FolderStartupAction.OpenFolder" xml:space="preserve">
+    <value>打开指定目录</value>
+    <comment>打开指定目录</comment>
+  </data>
+  <data name="FolderStartupAction.OpenLast" xml:space="preserve">
+    <value>打开上次使用的目录</value>
+    <comment>打开最后使用的目录</comment>
   </data>
   <data name="Font.Text" xml:space="preserve">
     <value>字体</value>
@@ -557,6 +589,10 @@
     <value>新建窗口</value>
     <comment>新建窗口</comment>
   </data>
+  <data name="NoAction" xml:space="preserve">
+    <value>无操作</value>
+    <comment>无操作</comment>
+  </data>
   <data name="NoOpenFolders.Text" xml:space="preserve">
     <value>没有打开的文件夹</value>
     <comment>没有打开的文件夹</comment>
@@ -572,6 +608,14 @@
   <data name="NumberBoxRows.Header" xml:space="preserve">
     <value>行</value>
     <comment>行</comment>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>关</value>
+    <comment>关</comment>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>开</value>
+    <comment>开</comment>
   </data>
   <data name="Open.Text" xml:space="preserve">
     <value>打开</value>
@@ -748,18 +792,6 @@
   <data name="TextBoxSearch.PlaceholderText" xml:space="preserve">
     <value>查找</value>
     <comment>查找</comment>
-  </data>
-  <data name="ThemeDark.Content" xml:space="preserve">
-    <value>深色</value>
-    <comment>深色</comment>
-  </data>
-  <data name="ThemeLight.Content" xml:space="preserve">
-    <value>浅色</value>
-    <comment>浅色</comment>
-  </data>
-  <data name="ThemeSystem.Content" xml:space="preserve">
-    <value>使用系统设置</value>
-    <comment>使用系统设置</comment>
   </data>
   <data name="Total" xml:space="preserve">
     <value>总计</value>

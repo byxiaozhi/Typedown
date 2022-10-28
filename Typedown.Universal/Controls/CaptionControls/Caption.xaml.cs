@@ -15,7 +15,7 @@ namespace Typedown.Universal.Controls
         public Caption()
         {
             InitializeComponent();
-            if (Config.IsMicaEnable)
+            if (Config.IsMicaSupported)
                 CaptionWrapper.Children.Remove(CaptionWrapper.Children.OfType<CaptionButtons>().First());
         }
     }

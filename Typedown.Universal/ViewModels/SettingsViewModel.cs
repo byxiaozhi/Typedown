@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.Foundation.Collections;
@@ -13,7 +14,7 @@ namespace Typedown.Universal.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
-        public List<string> History { get => JObject.Parse(GetSettingValue("[]")).ToObject<List<string>>(); set => SetSettingValue(JsonConvert.SerializeObject(value)); }
+        public IReadOnlyList<string> History { get => GetSettingValue(new List<string>()); set => SetSettingValue(value); }
         public bool IsSideBarOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool IsStatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool SourceCode { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -32,12 +33,17 @@ namespace Typedown.Universal.ViewModels
         public bool AutoPairMarkdownSyntax { get => GetSettingValue(true); set => SetSettingValue(value); }
         public string EditorAreaWidth { get => GetSettingValue("1000px"); set => SetSettingValue(value); }
         public bool AutoSave { get => GetSettingValue(false); set => SetSettingValue(value); }
-        public string AppTheme { get => GetSettingValue("Default"); set => SetSettingValue(value); }
+        public AppTheme AppTheme { get => GetSettingValue(AppTheme.Default); set => SetSettingValue(value); }
         public string WorkFolder { get => GetSettingValue(""); set => SetSettingValue(value); }
         public string Language { get => GetSettingValue(""); set => SetSettingValue(value); }
         public int WordCountMethod { get => GetSettingValue(0); set => SetSettingValue(value); }
         public bool KeepRun { get => GetSettingValue(false); set => SetSettingValue(value); }
-
+        public bool IsAnimationEnable { get => GetSettingValue(true); set => SetSettingValue(value); }
+        public bool UseMicaEffect { get => GetSettingValue(true); set => SetSettingValue(value); }
+        public bool IsTopWindow { get => GetSettingValue(false); set => SetSettingValue(value); }
+        public FileStartupAction FileStartupAction { get => GetSettingValue(FileStartupAction.None); set => SetSettingValue(value); }
+        public FolderStartupAction FolderStartupAction { get => GetSettingValue(FolderStartupAction.None); set => SetSettingValue(value); }
+        public AppCompactMode AppCompactMode { get => GetSettingValue(AppCompactMode.None); set => SetSettingValue(value); }
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
 
         public IServiceProvider ServiceProvider { get; }

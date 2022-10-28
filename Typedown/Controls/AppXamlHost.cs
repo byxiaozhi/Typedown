@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Wpf.UI.XamlHost;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Typedown.Universal.Resources.Converters;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Typedown.Utilities;
@@ -59,7 +60,8 @@ namespace Typedown.Controls
             SetBinding(RequestedThemeProperty, new Binding()
             {
                 Source = this.GetService<SettingsViewModel>(),
-                Path = new(nameof(SettingsViewModel.AppTheme))
+                Path = new(nameof(SettingsViewModel.AppTheme)),
+                Converter = new ElementThemeConverter()
             });
         }
     }

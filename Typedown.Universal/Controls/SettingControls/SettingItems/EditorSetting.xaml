@@ -16,50 +16,50 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8e9;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox Width="200" SpinButtonPlacementMode="Inline" Value="14"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" Value="{x:Bind SettingsViewModel.FontSize, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="行高" Description="编辑器行高倍数">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe94e;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox Width="200" SpinButtonPlacementMode="Inline" Value="1.6"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" Value="{x:Bind SettingsViewModel.LineHeight, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="内容宽度" Description="编辑器内容最大宽度">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe9a6;"/>
             </controls:NormalSettingItem.Icon>
-            <TextBox Width="200" Text="1200px"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" Value="{x:Bind SettingsViewModel.EditorAreaWidth, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <TextBlock Text="Markdown" Margin="0,16,0,4"/>
         <controls:NormalSettingItem Title="默认缩进" Description="调整引用和列表的默认缩进空格">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xede1;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox Width="200" SpinButtonPlacementMode="Inline" Value="4"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" Value="4"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="自动补全引号" Description="输入左引号时自动补全右引号">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe9b1;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AutoPairQuote, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="自动括号" Description="输入左括号时自动补全右引号">
+        <controls:NormalSettingItem Title="自动补全括号" Description="输入左括号时自动补全右引号">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph=""/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AutoPairBracket, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="自动补全 Markdown 标记" Description="自动补全匹配的 Markdown 标记">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe943;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AutoPairMarkdownSyntax, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="默认复制/剪切内容" Description="选择默认的复制/剪切内容">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8c8;"/>
             </controls:NormalSettingItem.Icon>
-            <ComboBox Width="200" SelectedIndex="0">
+            <ComboBox MinWidth="200" SelectedIndex="0">
                 <x:String>纯文本</x:String>
                 <x:String>Markdown</x:String>
                 <x:String>HTML</x:String>
@@ -76,7 +76,7 @@
                 </controls:NormalSettingItem>
                 <Border Height="1" Background="{ThemeResource CardStrokeColorDefault}"/>
                 <controls:NormalSettingItem Title="语言">
-                    <ComboBox Width="200" SelectedIndex="0">
+                    <ComboBox MinWidth="200" SelectedIndex="0">
                         <x:String>自动检测语言</x:String>
                     </ComboBox>
                 </controls:NormalSettingItem>

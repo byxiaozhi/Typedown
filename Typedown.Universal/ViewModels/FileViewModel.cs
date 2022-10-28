@@ -261,7 +261,7 @@ namespace Typedown.Universal.ViewModels
 
         public void RecordHistory(string path)
         {
-            var history = SettingsViewModel.History;
+            var history = SettingsViewModel.History.ToList();
             history.Remove(path);
             history.Insert(0, path);
             SettingsViewModel.History = history.Take(10).ToList();

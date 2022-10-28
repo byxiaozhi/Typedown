@@ -8,6 +8,6 @@ namespace Typedown.Universal
 {
     public static class Config
     {
-        public static bool IsMicaEnable { get; } = Environment.OSVersion.Version.Build >= 22000;
+        public static bool IsMicaSupported { get; } = Environment.OSVersion.Version.Build >= 22000;
     }
 }
