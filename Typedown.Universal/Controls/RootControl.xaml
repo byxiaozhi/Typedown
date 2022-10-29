@@ -30,7 +30,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:Caption x:Name="Caption" x:Load="{x:Bind AppViewModel.SettingsViewModel.AppCompactMode.Equals(x:False), Mode=OneWay}"/>
+        <local:Caption x:Name="Caption" x:Load="{x:Bind Settings.AppCompactMode.Equals(x:False), Mode=OneWay}"/>
         <Frame x:Name="Frame" Background="{ThemeResource ContentFrameBackgroundBrush}" Grid.Row="1"/>
     </Grid>
 </UserControl>

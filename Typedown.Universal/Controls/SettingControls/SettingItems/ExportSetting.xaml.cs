@@ -19,9 +19,9 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 {
     public sealed partial class ExportSetting : UserControl
     {
-        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
+        public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
+        public SettingsViewModel SettingsViewModel => ViewModel?.SettingsViewModel;
 
         public ExportSetting()
         {

@@ -22,7 +22,7 @@
                 <FontIcon Glyph="&#xe790;"/>
             </controls:ExpanderSettingItem.Icon>
             <controls:ExpanderSettingItem.State>
-                <controls:EnumNameBlock Value="{x:Bind SettingsViewModel.AppTheme, Mode=OneWay}"/>
+                <controls:EnumNameBlock Value="{x:Bind Settings.AppTheme, Mode=OneWay}"/>
             </controls:ExpanderSettingItem.State>
             <StackPanel Padding="48,16,16,16">
                 <muxc:RadioButtons ItemsSource="{x:Bind enums:Enumerable.AppThemes}" SelectedItem="{Binding SettingsViewModel.AppTheme, Mode=TwoWay}">
@@ -38,38 +38,38 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf4a5;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="窗口动画" Description="关闭可获得更快的响应速度">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8be;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AnimationEnable, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.AnimationEnable, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="置于顶层" Description="使窗口始终在顶部">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xee40;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.Topmost, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.Topmost, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <TextBlock Text="布局" Margin="0,16,0,4"/>
         <controls:NormalSettingItem Title="紧凑模式" Description="菜单栏与标题在同一行显示">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf246;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AppCompactMode, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.AppCompactMode, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="显示状态栏" Description="选择是否显示底部状态栏">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe90e;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.StatusBarOpen, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.StatusBarOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="显示侧边栏" Description="选择是否显示侧边栏">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xea4b;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.SidePaneOpen, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
 
     </StackPanel>

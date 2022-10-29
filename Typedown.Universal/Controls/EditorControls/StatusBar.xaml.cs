@@ -19,9 +19,9 @@ namespace Typedown.Universal.Controls
 {
     public sealed partial class StatusBar : UserControl
     {
-        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
+        public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
+        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
         public StatusBar()
         {

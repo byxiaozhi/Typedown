@@ -22,7 +22,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Spacing="4">
-            <ToggleButton Padding="6" BorderThickness="0" IsChecked="{x:Bind SettingsViewModel.SidePaneOpen, Mode=TwoWay}">
+            <ToggleButton Padding="6" BorderThickness="0" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}">
                 <ToggleButton.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ToggleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
@@ -39,7 +39,7 @@
                         <SolidColorBrush x:Key="ToggleButtonForegroundCheckedPressed" Color="{ThemeResource TextFillColorSecondary}" />
                     </ResourceDictionary>
                 </ToggleButton.Resources>
-                <FontIcon Glyph="{x:Bind SettingsViewModel.SidePaneOpen, Converter={StaticResource SidePaneIconConverter}, Mode=OneWay}" FontSize="14"/>
+                <FontIcon Glyph="{x:Bind Settings.SidePaneOpen, Converter={StaticResource SidePaneIconConverter}, Mode=OneWay}" FontSize="14"/>
             </ToggleButton>
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">

@@ -21,9 +21,9 @@ namespace Typedown.Universal.Controls
 {
     public sealed partial class MainContent : UserControl
     {
-        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
+        public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
+        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
         private readonly CompositeDisposable disposables = new();
 
@@ -35,8 +35,8 @@ namespace Typedown.Universal.Controls
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             MarkdownEditorPresenter.Content = this.GetService<IMarkdownEditor>();
-            disposables.Add(AppViewModel.SettingsViewModel.GetPropertyObservable().Subscribe(x => OnSettingsViewModelPropertyChanged(x.Sender as SettingsViewModel, x.EventArgs)));
-            VisualStateManager.GoToState(this, SettingsViewModel.SidePaneOpen ? "SidePaneOpen" : "SidePaneHide", false);
+            disposables.Add(ViewModel.SettingsViewModel.GetPropertyObservable().Subscribe(x => OnSettingsViewModelPropertyChanged(x.Sender as SettingsViewModel, x.EventArgs)));
+            VisualStateManager.GoToState(this, Settings.SidePaneOpen ? "SidePaneOpen" : "SidePaneHide", false);
         }
 
         private void OnSettingsViewModelPropertyChanged(SettingsViewModel sender, System.ComponentModel.PropertyChangedEventArgs e)

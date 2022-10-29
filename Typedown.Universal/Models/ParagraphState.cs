@@ -119,7 +119,6 @@ namespace Typedown.Universal.Models
             Chart.IsEnable = IsEnable;
         }
 
-        // 段落菜单部分，负责开关与选中 ↓↓↓
         public MenuItemModel Heading1 { get; set; } = new();
         public MenuItemModel Heading2 { get; set; } = new();
         public MenuItemModel Heading3 { get; set; } = new();
@@ -141,7 +140,6 @@ namespace Typedown.Universal.Models
         public MenuItemModel FrontMatter { get; set; } = new();
         public MenuItemModel Chart { get; set; } = new();
 
-        // 格式菜单部分，这里只负责开关，是否选中由FormatState负责 ↓↓↓
         public bool FormatIsEnable { get; set; }
         public bool HyperlinkIsEnable { get; set; }
         public bool ImageIsEnable { get; set; }

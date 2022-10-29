@@ -20,9 +20,9 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 {
     public sealed partial class EditorSetting : UserControl
     {
-        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
+        public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
+        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
         public DecimalFormatter FontSizeFormatter { get; } = new() { FractionDigits = 0, NumberRounder = new IncrementNumberRounder { Increment = 0.1, RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp } };
 

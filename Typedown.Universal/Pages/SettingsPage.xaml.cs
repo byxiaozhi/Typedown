@@ -21,9 +21,9 @@ namespace Typedown.Universal.Pages
 {
     public sealed partial class SettingsPage : Page
     {
-        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
+        public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
+        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
         public SettingsPage()
         {
@@ -34,7 +34,7 @@ namespace Typedown.Universal.Pages
         {
             var item = (sender.SelectedItem as Microsoft.UI.Xaml.Controls.NavigationViewItem);
             var first = ContentFrame.SourcePageType == null;
-            var enable = (SettingsViewModel?.AnimationEnable ?? false) && !first;
+            var enable = (Settings?.AnimationEnable ?? false) && !first;
             var transition = enable ? args.RecommendedNavigationTransitionInfo : new SuppressNavigationTransitionInfo();
             ContentFrame.Navigate(GetPageType(item?.Tag as string), null, transition);
         }

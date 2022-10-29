@@ -16,44 +16,44 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8e9;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="1" NumberFormatter="{x:Bind FontSizeFormatter}" Value="{x:Bind SettingsViewModel.FontSize, Mode=TwoWay}"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="1" NumberFormatter="{x:Bind FontSizeFormatter}" Value="{x:Bind Settings.FontSize, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="行高" Description="编辑器行高倍数">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe94e;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="0.1" NumberFormatter="{x:Bind LineHeightFormatter}" Value="{x:Bind SettingsViewModel.LineHeight, Mode=TwoWay}"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="0.1" NumberFormatter="{x:Bind LineHeightFormatter}" Value="{x:Bind Settings.LineHeight, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="内容宽度" Description="编辑器内容最大宽度">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe9a6;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="100" NumberFormatter="{x:Bind IntegerFormatter}" Value="{x:Bind SettingsViewModel.EditorAreaWidth, Mode=TwoWay}"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="100" NumberFormatter="{x:Bind IntegerFormatter}" Value="{x:Bind Settings.EditorAreaWidth, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <TextBlock Text="Markdown" Margin="0,16,0,4"/>
         <controls:NormalSettingItem Title="默认缩进" Description="调整引用和列表的默认缩进空格">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xede1;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" NumberFormatter="{x:Bind IntegerFormatter}" Value="{x:Bind SettingsViewModel.TabSize, Mode=TwoWay}"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" NumberFormatter="{x:Bind IntegerFormatter}" Value="{x:Bind Settings.TabSize, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="自动补全引号" Description="输入左引号时自动补全右引号">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe9b1;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AutoPairQuote, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.AutoPairQuote, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="自动补全括号" Description="输入左括号时自动补全右引号">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph=""/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AutoPairBracket, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.AutoPairBracket, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="自动补全 Markdown 标记" Description="自动补全匹配的 Markdown 标记">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe943;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AutoPairMarkdownSyntax, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.AutoPairMarkdownSyntax, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="默认复制/剪切内容" Description="选择默认的复制/剪切内容">
             <controls:NormalSettingItem.Icon>
@@ -72,7 +72,7 @@
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
                 <controls:NormalSettingItem Title="启用">
-                    <ToggleSwitch IsOn="{x:Bind SettingsViewModel.SpellcheckEnabled, Mode=TwoWay}"/>
+                    <ToggleSwitch IsOn="{x:Bind Settings.SpellcheckEnabled, Mode=TwoWay}"/>
                 </controls:NormalSettingItem>
                 <Border Height="1" Background="{ThemeResource CardStrokeColorDefault}"/>
                 <controls:NormalSettingItem Title="语言">

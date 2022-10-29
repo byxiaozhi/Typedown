@@ -20,9 +20,9 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 {
     public sealed partial class ImageSetting : UserControl
     {
-        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
+        public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
+        public SettingsViewModel Settings => this.GetService<SettingsViewModel>();
 
         public ImageSetting()
         {

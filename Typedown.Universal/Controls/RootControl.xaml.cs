@@ -18,9 +18,9 @@ namespace Typedown.Universal.Controls
     {
         public record PageData(Type Page, string Param);
 
-        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
+        public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
+        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
         private readonly ObservableCollection<PageData> history = new();
 
@@ -33,11 +33,11 @@ namespace Typedown.Universal.Controls
 
         private void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            AppViewModel.XamlRoot = XamlRoot;
-            disposables.Add(AppViewModel.NavigateCommand.OnExecute.Select(GetPageType).Subscribe(history.Add));
-            disposables.Add(AppViewModel.GoBackCommand.OnExecute.Select(_ => history.Count - 1).Subscribe(history.RemoveAt));
+            ViewModel.XamlRoot = XamlRoot;
+            disposables.Add(ViewModel.NavigateCommand.OnExecute.Select(GetPageType).Subscribe(history.Add));
+            disposables.Add(ViewModel.GoBackCommand.OnExecute.Select(_ => history.Count - 1).Subscribe(history.RemoveAt));
             var historyObservable = history.GetCollectionObservable();
-            disposables.Add(historyObservable.Subscribe(_ => AppViewModel.GoBackCommand.IsExecutable = history.Count > 1));
+            disposables.Add(historyObservable.Subscribe(_ => ViewModel.GoBackCommand.IsExecutable = history.Count > 1));
             disposables.Add(historyObservable.Select(x => x.EventArgs.Action).Select(GetTransition).Subscribe(t => Frame.Navigate(history.Last().Page, history.Last().Param, t)));
             history.Add(new(typeof(MainPage), null));
         }
@@ -59,7 +59,7 @@ namespace Typedown.Universal.Controls
             return new(page, string.Join("/", arr.Skip(1)));
         }
 
-        public NavigationTransitionInfo GetTransition(NotifyCollectionChangedAction action) => SettingsViewModel?.AnimationEnable ?? false ? new SlideNavigationTransitionInfo()
+        public NavigationTransitionInfo GetTransition(NotifyCollectionChangedAction action) => Settings?.AnimationEnable ?? false ? new SlideNavigationTransitionInfo()
         {
             Effect = action switch
             {

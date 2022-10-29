@@ -26,8 +26,8 @@
             Padding="6" 
             x:Name="BackButton"
             Style="{ThemeResource EllipsisIconButtonStyle}" 
-            Command="{x:Bind AppViewModel.GoBackCommand}"
-            x:Load="{x:Bind AppViewModel.GoBackCommand.IsExecutable, Mode=OneWay}">
+            Command="{x:Bind ViewModel.GoBackCommand}"
+            x:Load="{x:Bind ViewModel.GoBackCommand.IsExecutable, Mode=OneWay}">
             <Viewbox Width="16" Height="16">
                 <muxc:AnimatedIcon x:Name="Icon_Setting">
                     <muxc:AnimatedIcon.Source>

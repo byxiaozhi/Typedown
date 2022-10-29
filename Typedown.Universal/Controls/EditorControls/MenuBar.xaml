@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    Loaded="OnLoaded"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     mc:Ignorable="d"
     d:DesignHeight="300"
@@ -19,54 +20,54 @@
         <muxc:MenuBar>
             
             <muxc:MenuBarItem x:Uid="File">
-                <MenuFlyoutItem x:Uid="New" KeyboardAcceleratorTextOverride="Ctrl+N"/>
-                <MenuFlyoutItem x:Uid="NewWindow" KeyboardAcceleratorTextOverride="Ctrl+Shift+N"/>
+                <MenuFlyoutItem x:Uid="New" KeyboardAcceleratorTextOverride="Ctrl+N" Command="{x:Bind File.NewFileCommand}"/>
+                <MenuFlyoutItem x:Uid="NewWindow" KeyboardAcceleratorTextOverride="Ctrl+Shift+N" Command="{x:Bind File.NewWindowCommand}"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="Open" KeyboardAcceleratorTextOverride="Ctrl+O"/>
-                <MenuFlyoutItem x:Uid="OpenFolder"/>
+                <MenuFlyoutItem x:Uid="Open" KeyboardAcceleratorTextOverride="Ctrl+O" Command="{x:Bind File.OpenFileCommand}"/>
+                <MenuFlyoutItem x:Uid="OpenFolder" Command="{x:Bind File.OpenFolderCommand}"/>
                 <MenuFlyoutSubItem  x:Uid="OpenRecent">
                     <MenuFlyoutItem x:Uid="NoRecentFiles" IsEnabled="False"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Uid="ClearRecentFiles"/>
+                    <MenuFlyoutItem x:Uid="ClearRecentFiles" Command="{x:Bind File.ClearHistoryCommand}"/>
                 </MenuFlyoutSubItem>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="Save" KeyboardAcceleratorTextOverride="Ctrl+S"/>
-                <MenuFlyoutItem x:Uid="SaveAs" KeyboardAcceleratorTextOverride="Ctrl+Shift+S"/>
+                <MenuFlyoutItem x:Uid="Save" KeyboardAcceleratorTextOverride="Ctrl+S" Command="{x:Bind File.SaveCommand}"/>
+                <MenuFlyoutItem x:Uid="SaveAs" KeyboardAcceleratorTextOverride="Ctrl+Shift+S" Command="{x:Bind File.SaveAsCommand}"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem x:Uid="Import"/>
                 <MenuFlyoutSubItem  x:Uid="Export">
-                    <MenuFlyoutItem Text="PDF"/>
-                    <MenuFlyoutItem Text="HTML"/>
-                    <MenuFlyoutItem Text="TEXT"/>
+                    <MenuFlyoutItem Text="PDF" Command="{x:Bind File.ExportCommand}" CommandParameter="pdf"/>
+                    <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
+                    <MenuFlyoutItem Text="TEXT" Command="{x:Bind File.ExportCommand}" CommandParameter="text"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem Text="导出设置" Command="{x:Bind AppViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
+                    <MenuFlyoutItem Text="导出设置" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
                 </MenuFlyoutSubItem>
-                <MenuFlyoutItem x:Uid="Print" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
+                <MenuFlyoutItem x:Uid="Print" Command="{x:Bind File.PrintCommand}" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="Close" KeyboardAcceleratorTextOverride="Ctrl+W"/>
+                <MenuFlyoutItem x:Uid="Close" Command="{x:Bind File.ExitCommand}" KeyboardAcceleratorTextOverride="Ctrl+W"/>
             </muxc:MenuBarItem>
             
             <muxc:MenuBarItem x:Uid="Edit">
-                <MenuFlyoutItem x:Uid="Undo" KeyboardAcceleratorTextOverride="Ctrl+Z"/>
-                <MenuFlyoutItem x:Uid="Redo" KeyboardAcceleratorTextOverride="Ctrl+Y"/>
+                <MenuFlyoutItem x:Uid="Undo" Command="{x:Bind Editor.UndoCommand}" KeyboardAcceleratorTextOverride="Ctrl+Z"/>
+                <MenuFlyoutItem x:Uid="Redo" Command="{x:Bind Editor.RedoCommand}" KeyboardAcceleratorTextOverride="Ctrl+Y"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="Cut" KeyboardAcceleratorTextOverride="Ctrl+X"/>
-                <MenuFlyoutItem x:Uid="Copy" KeyboardAcceleratorTextOverride="Ctrl+C"/>
-                <MenuFlyoutItem x:Uid="Paste" KeyboardAcceleratorTextOverride="Ctrl+V"/>
+                <MenuFlyoutItem x:Uid="Cut" Command="{x:Bind Editor.CutCommand}" KeyboardAcceleratorTextOverride="Ctrl+X" CommandParameter="normal"/>
+                <MenuFlyoutItem x:Uid="Copy" Command="{x:Bind Editor.CopyCommand}" KeyboardAcceleratorTextOverride="Ctrl+C" CommandParameter="normal"/>
+                <MenuFlyoutItem x:Uid="Paste" Command="{x:Bind Editor.PasteCommand}" KeyboardAcceleratorTextOverride="Ctrl+V" CommandParameter="normal"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="CopyAsPlainText"/>
-                <MenuFlyoutItem x:Uid="CopyAsMarkdown"  KeyboardAcceleratorTextOverride="Ctrl+Shift+C"/>
-                <MenuFlyoutItem x:Uid="CopyAsHTMLCode"/>
-                <MenuFlyoutItem x:Uid="PasteAsPlainText" KeyboardAcceleratorTextOverride="Ctrl+Shift+V"/>
+                <MenuFlyoutItem x:Uid="CopyAsPlainText" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsPlainText"/>
+                <MenuFlyoutItem x:Uid="CopyAsMarkdown" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsMarkdown" KeyboardAcceleratorTextOverride="Ctrl+Shift+C"/>
+                <MenuFlyoutItem x:Uid="CopyAsHTMLCode" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsHtml"/>
+                <MenuFlyoutItem x:Uid="PasteAsPlainText" Command="{x:Bind Editor.PasteCommand}" CommandParameter="pasteAsPlainText" KeyboardAcceleratorTextOverride="Ctrl+Shift+V"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="Delete" KeyboardAcceleratorTextOverride="Delete"/>
+                <MenuFlyoutItem x:Uid="Delete" Command="{x:Bind Editor.DeleteSelectionCommand}" KeyboardAcceleratorTextOverride="Delete"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="SelectAll" KeyboardAcceleratorTextOverride="Ctrl+A"/>
+                <MenuFlyoutItem x:Uid="SelectAll" Command="{x:Bind Editor.SelectAllCommand}" KeyboardAcceleratorTextOverride="Ctrl+A"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutSubItem  x:Uid="FindAndReplace">
                     <MenuFlyoutItem x:Uid="Find" KeyboardAcceleratorTextOverride="Ctrl+F"/>
-                    <MenuFlyoutItem x:Uid="FindNext" KeyboardAcceleratorTextOverride="F3"/>
-                    <MenuFlyoutItem x:Uid="FindPrevious" KeyboardAcceleratorTextOverride="Shift+F3"/>
+                    <MenuFlyoutItem x:Uid="FindNext" Command="{x:Bind Editor.FindCommand}" CommandParameter="next" KeyboardAcceleratorTextOverride="F3"/>
+                    <MenuFlyoutItem x:Uid="FindPrevious" Command="{x:Bind Editor.FindCommand}" CommandParameter="prev" KeyboardAcceleratorTextOverride="Shift+F3"/>
                     <MenuFlyoutSeparator/>
                     <MenuFlyoutItem x:Uid="Replace" KeyboardAcceleratorTextOverride="Ctrl+H"/>
                 </MenuFlyoutSubItem>
@@ -75,77 +76,77 @@
             <muxc:MenuBarItem x:Uid="Paragraph">
                 <MenuFlyoutSubItem x:Uid="Heading">
                     <MenuFlyoutSubItem.Items>
-                        <ToggleMenuFlyoutItem x:Uid="Heading1" KeyboardAcceleratorTextOverride="Ctrl+1"/>
-                        <ToggleMenuFlyoutItem x:Uid="Heading2" KeyboardAcceleratorTextOverride="Ctrl+2"/>
-                        <ToggleMenuFlyoutItem x:Uid="Heading3" KeyboardAcceleratorTextOverride="Ctrl+3"/>
-                        <ToggleMenuFlyoutItem x:Uid="Heading4" KeyboardAcceleratorTextOverride="Ctrl+4"/>
-                        <ToggleMenuFlyoutItem x:Uid="Heading5" KeyboardAcceleratorTextOverride="Ctrl+5"/>
-                        <ToggleMenuFlyoutItem x:Uid="Heading6" KeyboardAcceleratorTextOverride="Ctrl+6"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading1" KeyboardAcceleratorTextOverride="Ctrl+1" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 1"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading2" KeyboardAcceleratorTextOverride="Ctrl+2" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 2"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading3" KeyboardAcceleratorTextOverride="Ctrl+3" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 3"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading4" KeyboardAcceleratorTextOverride="Ctrl+4" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 4"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading5" KeyboardAcceleratorTextOverride="Ctrl+5" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 5"/>
+                        <ToggleMenuFlyoutItem x:Uid="Heading6" KeyboardAcceleratorTextOverride="Ctrl+6" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 6"/>
                     </MenuFlyoutSubItem.Items>
                 </MenuFlyoutSubItem>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="ItemParagraph" KeyboardAcceleratorTextOverride="Ctrl+0"/>
+                <ToggleMenuFlyoutItem x:Uid="ItemParagraph" KeyboardAcceleratorTextOverride="Ctrl+0" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="paragraph"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="IncreaseHeadingLevel" KeyboardAcceleratorTextOverride="Ctrl+="/>
-                <MenuFlyoutItem x:Uid="DecreaseHeadingLevel" KeyboardAcceleratorTextOverride="Ctrl+-"/>
+                <MenuFlyoutItem x:Uid="IncreaseHeadingLevel" KeyboardAcceleratorTextOverride="Ctrl+=" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="upgrade heading"/>
+                <MenuFlyoutItem x:Uid="DecreaseHeadingLevel" KeyboardAcceleratorTextOverride="Ctrl+-" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="degrade heading"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="Table" KeyboardAcceleratorTextOverride="Ctrl+Shift+T"/>
-                <ToggleMenuFlyoutItem x:Uid="CodeFences" KeyboardAcceleratorTextOverride="Ctrl+Shift+K"/>
-                <ToggleMenuFlyoutItem x:Uid="MathBlock" KeyboardAcceleratorTextOverride="Ctrl+Shift+M"/>
+                <ToggleMenuFlyoutItem x:Uid="Table" KeyboardAcceleratorTextOverride="Ctrl+Shift+T" Command="{x:Bind Paragraph.InsertTableCommand}"/>
+                <ToggleMenuFlyoutItem x:Uid="CodeFences" KeyboardAcceleratorTextOverride="Ctrl+Shift+K" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="pre"/>
+                <ToggleMenuFlyoutItem x:Uid="MathBlock" KeyboardAcceleratorTextOverride="Ctrl+Shift+M" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="mathblock"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="Quote" KeyboardAcceleratorTextOverride="Ctrl+Shift+Q"/>
+                <ToggleMenuFlyoutItem x:Uid="Quote" KeyboardAcceleratorTextOverride="Ctrl+Shift+Q" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="blockquote"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="OrderedList" KeyboardAcceleratorTextOverride="Ctrl+Shift+["/>
-                <ToggleMenuFlyoutItem x:Uid="Unordered" KeyboardAcceleratorTextOverride="Ctrl+Shift+]"/>
-                <ToggleMenuFlyoutItem x:Uid="TaskList"/>
+                <ToggleMenuFlyoutItem x:Uid="OrderedList" KeyboardAcceleratorTextOverride="Ctrl+Shift+[" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ol-order"/>
+                <ToggleMenuFlyoutItem x:Uid="Unordered" KeyboardAcceleratorTextOverride="Ctrl+Shift+]" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ul-bullet"/>
+                <ToggleMenuFlyoutItem x:Uid="TaskList" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ul-task"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="InsertParagraphBefore"/>
-                <MenuFlyoutItem x:Uid="InsertParagraphAfter"/>
+                <MenuFlyoutItem x:Uid="InsertParagraphBefore" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="before"/>
+                <MenuFlyoutItem x:Uid="InsertParagraphAfter" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="after"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutSubItem x:Uid="Chart">
-                    <MenuFlyoutItem x:Uid="VegaChart"/>
-                    <MenuFlyoutItem x:Uid="FlowChart" />
-                    <MenuFlyoutItem x:Uid="SequenceDiagram"/>
-                    <MenuFlyoutItem x:Uid="PlantUMLDiagram"/>
-                    <MenuFlyoutItem x:Uid="Mermaid"/>
+                    <MenuFlyoutItem x:Uid="VegaChart" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="vega-lite"/>
+                    <MenuFlyoutItem x:Uid="FlowChart" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="flowchart"/>
+                    <MenuFlyoutItem x:Uid="SequenceDiagram" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="sequence"/>
+                    <MenuFlyoutItem x:Uid="PlantUMLDiagram" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="plantuml"/>
+                    <MenuFlyoutItem x:Uid="Mermaid" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="mermaid"/>
                 </MenuFlyoutSubItem>
                 <MenuFlyoutSeparator/>
                 <ToggleMenuFlyoutItem Text="链接引用"/>
                 <ToggleMenuFlyoutItem Text="脚注"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="HorizontalLine"/>
+                <ToggleMenuFlyoutItem x:Uid="HorizontalLine" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="hr"/>
                 <ToggleMenuFlyoutItem Text="内容目录"/>
-                <ToggleMenuFlyoutItem x:Uid="YAMLFrontMatter"/>
+                <ToggleMenuFlyoutItem x:Uid="YAMLFrontMatter" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="front-matter"/>
             </muxc:MenuBarItem>
 
             <muxc:MenuBarItem x:Uid="Format">
-                <ToggleMenuFlyoutItem x:Uid="Strong" KeyboardAcceleratorTextOverride="Ctrl+B"/>
-                <ToggleMenuFlyoutItem x:Uid="Emphasis" KeyboardAcceleratorTextOverride="Ctrl+I"/>
-                <ToggleMenuFlyoutItem x:Uid="Underline" KeyboardAcceleratorTextOverride="Ctrl+U"/>
-                <ToggleMenuFlyoutItem x:Uid="InlineCode" KeyboardAcceleratorTextOverride="Ctrl+Shift+`"/>
-                <ToggleMenuFlyoutItem x:Uid="InlineMath" CommandParameter="inline_math"/>
+                <ToggleMenuFlyoutItem x:Uid="Strong" KeyboardAcceleratorTextOverride="Ctrl+B" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="strong"/>
+                <ToggleMenuFlyoutItem x:Uid="Emphasis" KeyboardAcceleratorTextOverride="Ctrl+I" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="em"/>
+                <ToggleMenuFlyoutItem x:Uid="Underline" KeyboardAcceleratorTextOverride="Ctrl+U" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="u"/>
+                <ToggleMenuFlyoutItem x:Uid="InlineCode" KeyboardAcceleratorTextOverride="Ctrl+Shift+`" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="inline_code"/>
+                <ToggleMenuFlyoutItem x:Uid="InlineMath" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="inline_math"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="Strikethrough" KeyboardAcceleratorTextOverride="Alt+Shift+5"/>
-                <ToggleMenuFlyoutItem x:Uid="Highlight"/>
+                <ToggleMenuFlyoutItem x:Uid="Strikethrough" KeyboardAcceleratorTextOverride="Alt+Shift+5" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="del"/>
+                <ToggleMenuFlyoutItem x:Uid="Highlight" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="mark"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="Hyperlink" KeyboardAcceleratorTextOverride="Ctrl+K"/>
-                <ToggleMenuFlyoutItem x:Uid="Image" KeyboardAcceleratorTextOverride="Ctrl+Shift+I"/>
+                <ToggleMenuFlyoutItem x:Uid="Hyperlink" KeyboardAcceleratorTextOverride="Ctrl+K" Command="{x:Bind Format.SetFormatCommand}" CommandParameter=""/>
+                <ToggleMenuFlyoutItem x:Uid="Image" KeyboardAcceleratorTextOverride="Ctrl+Shift+I" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="link"/>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="ClearFormat" KeyboardAcceleratorTextOverride="Ctrl+\"/>
+                <MenuFlyoutItem x:Uid="ClearFormat" KeyboardAcceleratorTextOverride="Ctrl+\" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="image"/>
             </muxc:MenuBarItem>
 
             <muxc:MenuBarItem x:Uid="View">
-                <ToggleMenuFlyoutItem x:Uid="SidePane" KeyboardAcceleratorTextOverride="Ctrl+Shift+L" IsChecked="{x:Bind AppViewModel.SettingsViewModel.SidePaneOpen, Mode=TwoWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="SidePane" KeyboardAcceleratorTextOverride="Ctrl+Shift+L" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}"/>
                 <MenuFlyoutSeparator/>
                 <ToggleMenuFlyoutItem x:Uid="SourceCodeMode" KeyboardAcceleratorTextOverride="Ctrl+/"/>
                 <ToggleMenuFlyoutItem x:Uid="FocusMode" KeyboardAcceleratorTextOverride="F8"/>
                 <ToggleMenuFlyoutItem x:Uid="TypewriterMode" KeyboardAcceleratorTextOverride="F9"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="StatusBar" IsChecked="{x:Bind AppViewModel.SettingsViewModel.StatusBarOpen, Mode=TwoWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="StatusBar" IsChecked="{x:Bind Settings.StatusBarOpen, Mode=TwoWay}"/>
             </muxc:MenuBarItem>
             
         </muxc:MenuBar>
-        <Button Grid.Column="1" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind AppViewModel.NavigateCommand}" CommandParameter="Settings">
+        <Button Grid.Column="1" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings">
             <Viewbox Width="16" Height="16">
                 <muxc:AnimatedIcon x:Name="Icon_Setting">
                     <muxc:AnimatedIcon.Source>

@@ -39,7 +39,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="StartOpenFolderItem" 
-                    x:Load="{x:Bind local:GeneralSetting.IsStartupOpenFolderItemLoad(SettingsViewModel.FolderStartupAction), Mode=OneWay}"
+                    x:Load="{x:Bind local:GeneralSetting.IsStartupOpenFolderItemLoad(Settings.FolderStartupAction), Mode=OneWay}"
                     Title="打开文件夹" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -50,8 +50,8 @@
                             <ColumnDefinition Width="1e10*" MaxWidth="300"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column="1" Text="{x:Bind SettingsViewModel.StartupOpenFolder, Mode=TwoWay}" PlaceholderText="请选择文件夹"/>
-                        <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind SettingsViewModel.StartupOpenFolder, Mode=TwoWay}"/>
+                        <TextBox Grid.Column="1" Text="{x:Bind Settings.StartupOpenFolder, Mode=TwoWay}" PlaceholderText="请选择文件夹"/>
+                        <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind Settings.StartupOpenFolder, Mode=TwoWay}"/>
                     </Grid>
                 </controls:NormalSettingItem>
             </StackPanel>
@@ -60,13 +60,13 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe74e;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AutoSave, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.AutoSave, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="快速启动" Description="关闭窗口后是否保留进程加速下次启动">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe945;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.KeepRun, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind Settings.KeepRun, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="语言" Description="应用显示的语言">
             <controls:NormalSettingItem.Icon>
@@ -92,7 +92,7 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xebc4;"/>
             </controls:NormalSettingItem.Icon>
-            <Button MinWidth="120" Command="{x:Bind SettingsViewModel.ResetSettingsCommand}">
+            <Button MinWidth="120" Command="{x:Bind Settings.ResetSettingsCommand}">
                 重置
             </Button>
         </controls:NormalSettingItem>
