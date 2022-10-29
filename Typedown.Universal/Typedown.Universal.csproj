@@ -64,6 +64,7 @@
     <Compile Include="Controls\CommonControls\EnumNameBlock.cs" />
     <Compile Include="Controls\FloatControls\FrontMenu.cs" />
     <Compile Include="Controls\CommonControls\PathPickerButton.cs" />
+    <Compile Include="Controls\GridSplitter.cs" />
     <Compile Include="Controls\SettingControls\SettingItems\EditorSetting.xaml.cs">
       <DependentUpon>EditorSetting.xaml</DependentUpon>
     </Compile>

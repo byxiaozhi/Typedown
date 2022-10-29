@@ -28,5 +28,10 @@ namespace Typedown.Universal.Controls
         {
             MarkdownEditorPresenter.Content = this.GetService<IMarkdownEditor>();
         }
+
+        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Splitter.ColumnMaxWidth = ActualWidth - 40;
+        }
     }
 }

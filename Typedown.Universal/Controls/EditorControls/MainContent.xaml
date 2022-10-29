@@ -7,16 +7,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Loaded="OnLoaded"
+    SizeChanged="OnSizeChanged"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid Background="{ThemeResource SolidBackgroundFillColorTertiary}">
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="LeftPaneColumn"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <local:LeftPane/>
-        <Border Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>-->
-        <ContentPresenter x:Name="MarkdownEditorPresenter" ContextFlyout="{StaticResource EditorContextMenu}"/>
+        <ContentPresenter Grid.Column="2" x:Name="MarkdownEditorPresenter" ContextFlyout="{StaticResource EditorContextMenu}"/>
+        <Border Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>
+        <local:GridSplitter x:Name="Splitter" Grid.Column="1" MinWidth="40" ColumnExpectWidth="300" ColumnWidth="{x:Bind LeftPaneColumn.Width, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

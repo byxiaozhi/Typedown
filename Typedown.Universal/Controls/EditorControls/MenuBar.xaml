@@ -135,7 +135,7 @@
             </muxc:MenuBarItem>
 
             <muxc:MenuBarItem x:Uid="View">
-                <ToggleMenuFlyoutItem x:Uid="Sidebar" KeyboardAcceleratorTextOverride="Ctrl+Shift+L" IsChecked="{x:Bind AppViewModel.SettingsViewModel.SidePaneOpen, Mode=TwoWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="SidePane" KeyboardAcceleratorTextOverride="Ctrl+Shift+L" IsChecked="{x:Bind AppViewModel.SettingsViewModel.SidePaneOpen, Mode=TwoWay}"/>
                 <MenuFlyoutSeparator/>
                 <ToggleMenuFlyoutItem x:Uid="SourceCodeMode" KeyboardAcceleratorTextOverride="Ctrl+/"/>
                 <ToggleMenuFlyoutItem x:Uid="FocusMode" KeyboardAcceleratorTextOverride="F8"/>
