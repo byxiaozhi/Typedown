@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Typedown.Universal.Enums;
+using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -19,9 +20,9 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 {
     public sealed partial class ImageSetting : UserControl
     {
-        public AppViewModel AppViewModel => DataContext as AppViewModel;
+        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
 
-        public SettingsViewModel SettingsViewModel => AppViewModel?.SettingsViewModel;
+        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
 
         public ImageSetting()
         {

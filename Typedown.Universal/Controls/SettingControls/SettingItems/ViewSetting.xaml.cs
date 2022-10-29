@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -18,9 +19,9 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 {
     public sealed partial class ViewSetting : UserControl
     {
-        public AppViewModel AppViewModel => DataContext as AppViewModel;
+        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
 
-        public SettingsViewModel SettingsViewModel => AppViewModel?.SettingsViewModel;
+        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
 
         public ViewSetting()
         {

@@ -4,21 +4,42 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Typedown.Universal.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
+    d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
     Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     SizeChanged="OnSizeChanged"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid Background="{ThemeResource SolidBackgroundFillColorTertiary}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="SidePaneStates">
+                <VisualState x:Name="SidePaneOpen">
+                    <VisualState.Setters>
+                        <Setter Target="Splitter.Visibility" Value="Visible"/>
+                        <Setter Target="SplitterLine.Visibility" Value="Visible"/>
+                        <Setter Target="LeftPaneColumn.MaxWidth" Value="65535"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="SidePaneHide">
+                    <VisualState.Setters>
+                        <Setter Target="Splitter.Visibility" Value="Collapsed"/>
+                        <Setter Target="SplitterLine.Visibility" Value="Collapsed"/>
+                        <Setter Target="LeftPaneColumn.MaxWidth" Value="0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="LeftPaneColumn"/>
+            <ColumnDefinition x:Name="LeftPaneColumn" Width="*"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:LeftPane/>
+        <local:LeftPane x:Name="LeftPane" x:Load="{x:Bind SettingsViewModel.SidePaneOpen, Mode=OneWay}"/>
         <ContentPresenter Grid.Column="2" x:Name="MarkdownEditorPresenter" ContextFlyout="{StaticResource EditorContextMenu}"/>
-        <Border Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>
-        <local:GridSplitter x:Name="Splitter" Grid.Column="1" MinWidth="40" ColumnExpectWidth="300" ColumnWidth="{x:Bind LeftPaneColumn.Width, Mode=TwoWay}"/>
+        <Border x:Name="SplitterLine" Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>
+        <local:GridSplitter x:Name="Splitter" Grid.Column="1" ColumnMinWidth="40" ColumnExpectWidth="{Binding SettingsViewModel.SidePaneWidth, Mode=TwoWay}" ColumnWidth="{x:Bind LeftPaneColumn.Width, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

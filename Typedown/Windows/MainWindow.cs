@@ -31,21 +31,34 @@ namespace Typedown.Windows
             DataContext = AppViewModel;
             Loaded += OnLoaded;
             Closed += OnClosed;
+            Closing += OnClosing;
             InitializeComponent();
         }
 
         private void InitializeComponent()
         {
-            Width = 1500;
-            Height = 900;
-            MinWidth = 480;
-            MinHeight = 300;
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            SetWindowPlacement();
             Content = AppXamlHost = new AppXamlHost(new RootControl());
             SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
             SetBinding(TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             SetBinding(IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => CanGoBackChanged();
+        }
+
+        private void SetWindowPlacement()
+        {
+            MinWidth = 480;
+            MinHeight = 300;
+            if (AppViewModel.SettingsViewModel.WindowPlacement != null)
+            {
+                this.RestoreWindowPlacement(AppViewModel.SettingsViewModel.WindowPlacement);
+            }
+            else
+            {
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                Width = 1100;
+                Height = 680;
+            }
         }
 
         protected override void OnStateChanged(EventArgs e)
@@ -103,6 +116,11 @@ namespace Typedown.Windows
                     break;
             }
             return base.WndProc(hWnd, msg, wParam, lParam, ref handled);
+        }
+
+        private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            AppViewModel.SettingsViewModel.WindowPlacement = this.GetWindowPlacement();
         }
 
         private void OnClosed(object sender, EventArgs e)

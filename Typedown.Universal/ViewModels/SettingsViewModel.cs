@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -14,8 +15,10 @@ namespace Typedown.Universal.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
+        public WindowPlacement WindowPlacement { get => GetSettingValue<WindowPlacement>(null); set => SetSettingValue(value); }
         public IReadOnlyList<string> History { get => GetSettingValue(new List<string>()); set => SetSettingValue(value); }
         public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
+        public double SidePaneWidth { get => GetSettingValue(300d); set => SetSettingValue(value); }
         public bool StatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool SourceCode { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool Typewriter { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -23,7 +26,7 @@ namespace Typedown.Universal.ViewModels
         public bool SearchIsCaseSensitive { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool SearchIsRegexp { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool SearchIsWholeWord { get => GetSettingValue(false); set => SetSettingValue(value); }
-        public int SideBarIndex { get => GetSettingValue(0); set => SetSettingValue(value); }
+        public int SidePaneIndex { get => GetSettingValue(0); set => SetSettingValue(value); }
         public float FontSize { get => GetSettingValue(16f); set => SetSettingValue(value); }
         public float LineHeight { get => GetSettingValue(1.6f); set => SetSettingValue(value); }
         public bool AutoPairBracket { get => GetSettingValue(true); set => SetSettingValue(value); }

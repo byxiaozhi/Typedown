@@ -3,8 +3,11 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Windows;
 using Typedown.Universal.Enums;
 using Typedown.Universal.ViewModels;
+using Typedown.Windows;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 
 namespace Typedown.Utilities
@@ -54,6 +57,29 @@ namespace Typedown.Utilities
             var color = Universal.App.Current.Resources["SystemAccentColor"];
             var background = isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
             return new { theme = isDarkMode ? "Dark" : "Light", color, background };
+        }
+
+        public static Universal.Models.WindowPlacement GetWindowPlacement(this AppWindow window)
+        {
+            PInvoke.WINDOWPLACEMENT placement = new();
+            PInvoke.GetWindowPlacement(window.Handle, ref placement);
+            var scale = PInvoke.GetDpiForWindow(window.Handle) / 96.0;
+            var max = placement.showCmd == PInvoke.ShowWindowCommand.Maximize;
+            var x = placement.rcNormalPosition.left / scale;
+            var y = placement.rcNormalPosition.top / scale;
+            var w = (placement.rcNormalPosition.right - placement.rcNormalPosition.left) / scale;
+            var h = (placement.rcNormalPosition.bottom - placement.rcNormalPosition.top) / scale;
+            return new(max, new(x, y, w, h));
+        }
+
+        public static void RestoreWindowPlacement(this AppWindow window, Universal.Models.WindowPlacement placement)
+        {
+            window.WindowStartupLocation = WindowStartupLocation.Manual;
+            window.Left = placement.NormalPosition.Left;
+            window.Top = placement.NormalPosition.Top;
+            window.Width = placement.NormalPosition.Width;
+            window.Height = placement.NormalPosition.Height;
+            window.WindowState = placement.IsMaximized ? WindowState.Maximized : WindowState.Normal;
         }
     }
 }

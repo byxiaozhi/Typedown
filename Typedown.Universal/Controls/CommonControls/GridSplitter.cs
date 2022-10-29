@@ -39,7 +39,7 @@ namespace Typedown.Universal.Controls
         {
             border.Background = new SolidColorBrush(Colors.Transparent);
             border.Width = 9;
-            border.Margin = new Thickness(-4, 0, -4, 0);
+            Margin = new Thickness(-4, 0, -4, 0);
             Content = border;
             ManipulationMode = ManipulationModes.TranslateX;
         }

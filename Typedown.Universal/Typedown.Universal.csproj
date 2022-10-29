@@ -64,7 +64,7 @@
     <Compile Include="Controls\CommonControls\EnumNameBlock.cs" />
     <Compile Include="Controls\FloatControls\FrontMenu.cs" />
     <Compile Include="Controls\CommonControls\PathPickerButton.cs" />
-    <Compile Include="Controls\GridSplitter.cs" />
+    <Compile Include="Controls\CommonControls\GridSplitter.cs" />
     <Compile Include="Controls\SettingControls\SettingItems\EditorSetting.xaml.cs">
       <DependentUpon>EditorSetting.xaml</DependentUpon>
     </Compile>
@@ -128,6 +128,7 @@
     <Compile Include="Models\ParagraphState.cs" />
     <Compile Include="Models\ReactiveEventArgs.cs" />
     <Compile Include="Models\RectangleModel.cs" />
+    <Compile Include="Models\WindowPlacement.cs" />
     <Compile Include="Models\WndEventArgs.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

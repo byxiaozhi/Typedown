@@ -10,7 +10,7 @@ namespace Typedown.Universal.Controls
 {
     public sealed partial class Caption : UserControl
     {
-        public AppViewModel AppViewModel => DataContext as AppViewModel;
+        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
 
         public Caption()
         {

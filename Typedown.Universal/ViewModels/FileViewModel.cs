@@ -170,9 +170,9 @@ namespace Typedown.Universal.ViewModels
                 {
                     SettingsViewModel.SidePaneOpen = true;
                 }
-                if (SettingsViewModel.SideBarIndex != 0)
+                if (SettingsViewModel.SidePaneIndex != 0)
                 {
-                    SettingsViewModel.SideBarIndex = 0;
+                    SettingsViewModel.SidePaneIndex = 0;
                 }
             }
         }

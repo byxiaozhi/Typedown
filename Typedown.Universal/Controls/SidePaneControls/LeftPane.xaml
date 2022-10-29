@@ -10,6 +10,6 @@
     d:DesignWidth="400">
 
     <Grid>
-
+        <TextBlock>侧栏</TextBlock>
     </Grid>
 </UserControl>

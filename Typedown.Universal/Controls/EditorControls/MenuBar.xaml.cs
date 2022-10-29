@@ -19,7 +19,7 @@ namespace Typedown.Universal.Controls
 {
     public sealed partial class MenuBar : UserControl
     {
-        public AppViewModel AppViewModel => DataContext as AppViewModel;
+        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
 
         public MenuBar()
         {

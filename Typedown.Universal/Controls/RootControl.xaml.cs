@@ -18,9 +18,9 @@ namespace Typedown.Universal.Controls
     {
         public record PageData(Type Page, string Param);
 
-        public AppViewModel AppViewModel => DataContext as AppViewModel;
+        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
 
-        public SettingsViewModel SettingsViewModel => AppViewModel?.SettingsViewModel;
+        public SettingsViewModel SettingsViewModel => this.GetService<SettingsViewModel>();
 
         private readonly ObservableCollection<PageData> history = new();
 
