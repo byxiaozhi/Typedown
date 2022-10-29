@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using Typedown.Universal.Enums;
 using Typedown.Universal.Pages;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
@@ -71,5 +72,11 @@ namespace Typedown.Universal.Controls
             "Dark" => ElementTheme.Dark,
             _ => App.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark
         };
+
+        public static bool IsCaptionLoad(AppCompactMode compactMode)
+        {
+            return true;
+            // return compactMode == AppCompactMode.None;
+        }
     }
 }

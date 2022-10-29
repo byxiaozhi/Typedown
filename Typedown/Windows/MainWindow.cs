@@ -43,6 +43,8 @@ namespace Typedown.Windows
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Content = AppXamlHost = new AppXamlHost(new RootControl());
             SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
+            SetBinding(TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
+            SetBinding(IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => CanGoBackChanged();
         }
 

@@ -13,11 +13,14 @@ namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
-        public static DependencyProperty ThemeProperty = DependencyProperty.Register("Theme", typeof(AppTheme), typeof(AppWindow));
+        public static DependencyProperty ThemeProperty = DependencyProperty.Register(nameof(Theme), typeof(AppTheme), typeof(AppWindow));
         public AppTheme Theme { get => (AppTheme)GetValue(ThemeProperty); set => SetValue(ThemeProperty, value); }
 
-        public static DependencyProperty CaptionHeightProperty = DependencyProperty.Register("CaptionHeight", typeof(double), typeof(AppWindow), new(32d));
+        public static DependencyProperty CaptionHeightProperty = DependencyProperty.Register(nameof(CaptionHeight), typeof(double), typeof(AppWindow), new(32d));
         public double CaptionHeight { get => (double)GetValue(CaptionHeightProperty); set => SetValue(CaptionHeightProperty, value); }
+
+        public static DependencyProperty IsMicaEnableProperty = DependencyProperty.Register(nameof(IsMicaEnable), typeof(bool), typeof(AppWindow), new(true));
+        public bool IsMicaEnable { get => (bool)GetValue(IsMicaEnableProperty); set => SetValue(IsMicaEnableProperty, value); }
 
         public nint Handle { get; private set; }
 
@@ -141,6 +144,7 @@ namespace Typedown.Windows
             base.OnPropertyChanged(e);
             switch (e.Property.Name)
             {
+                case nameof(IsMicaEnable):
                 case nameof(Theme):
                     UpdateSystemBackdrop();
                     break;
@@ -173,18 +177,9 @@ namespace Typedown.Windows
             if (Universal.Config.IsMicaSupported)
             {
                 compositionTarget.BackgroundColor = Colors.Transparent;
-                if (Environment.OSVersion.Version.Build >= 22523)
-                {
-                    uint micaValue = 0x02;
-                    PInvoke.DwmSetWindowAttribute(Handle, PInvoke.DwmWindowAttribute.DWMWA_SYSTEMBACKDROP_TYPE, ref micaValue, Marshal.SizeOf(typeof(uint)));
-                }
-                else
-                {
-                    uint trueValue = 0x01;
-                    PInvoke.DwmSetWindowAttribute(Handle, PInvoke.DwmWindowAttribute.DWMWA_MICA_EFFECT, ref trueValue, Marshal.SizeOf(typeof(uint)));
-                }
-                var darkModeValue = isDarkMode ? 1u : 0u;
-                PInvoke.DwmSetWindowAttribute(Handle, PInvoke.DwmWindowAttribute.DWMWA_USE_IMMERSIVE_DARK_MODE, ref darkModeValue, Marshal.SizeOf(typeof(uint)));
+                this.SetMicaBackdrop(IsMicaEnable);
+                this.SetCaptionColor(IsMicaEnable ? 0xffffffffu : isDarkMode ? 0x00202020u : 0x00f3f3f3u);
+                this.SetDarkMode(isDarkMode);
             }
             else
             {

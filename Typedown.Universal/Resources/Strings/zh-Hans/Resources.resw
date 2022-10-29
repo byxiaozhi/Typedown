@@ -402,12 +402,12 @@
     <comment>专注模式</comment>
   </data>
   <data name="FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>打开指定目录</value>
-    <comment>打开指定目录</comment>
+    <value>打开指定文件夹</value>
+    <comment>打开指定文件夹</comment>
   </data>
   <data name="FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>打开上次使用的目录</value>
-    <comment>打开最后使用的目录</comment>
+    <value>打开上次使用的文件夹</value>
+    <comment>打开上次使用的文件夹</comment>
   </data>
   <data name="Font.Text" xml:space="preserve">
     <value>字体</value>
