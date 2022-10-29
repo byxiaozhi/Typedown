@@ -15,8 +15,8 @@ namespace Typedown.Universal.ViewModels
     public class SettingsViewModel : ObservableObject
     {
         public IReadOnlyList<string> History { get => GetSettingValue(new List<string>()); set => SetSettingValue(value); }
-        public bool IsSideBarOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
-        public bool IsStatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }
+        public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
+        public bool StatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool SourceCode { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool Typewriter { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool FocusMode { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -37,14 +37,26 @@ namespace Typedown.Universal.ViewModels
         public string WorkFolder { get => GetSettingValue(""); set => SetSettingValue(value); }
         public string Language { get => GetSettingValue(""); set => SetSettingValue(value); }
         public int WordCountMethod { get => GetSettingValue(0); set => SetSettingValue(value); }
+        public int TabSize { get => GetSettingValue(4); set => SetSettingValue(value); }
+        public bool SpellcheckEnabled { get => GetSettingValue(false); set => SetSettingValue(value); }
+        public string SpellcheckLang { get => GetSettingValue(""); set => SetSettingValue(value); }
         public bool KeepRun { get => GetSettingValue(false); set => SetSettingValue(value); }
-        public bool IsAnimationEnable { get => GetSettingValue(true); set => SetSettingValue(value); }
+        public bool AnimationEnable { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool UseMicaEffect { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool IsTopWindow { get => GetSettingValue(false); set => SetSettingValue(value); }
         public FileStartupAction FileStartupAction { get => GetSettingValue(FileStartupAction.None); set => SetSettingValue(value); }
-        public FolderStartupAction FolderStartupAction { get => GetSettingValue(FolderStartupAction.None); set => SetSettingValue(value); }
+        public FolderStartupAction FolderStartupAction { get => GetSettingValue(FolderStartupAction.OpenLast); set => SetSettingValue(value); }
+        public string StartupOpenFolder { get => GetSettingValue(KnownFolders.DocumentsLibrary.Path); set => SetSettingValue(value); }
         public AppCompactMode AppCompactMode { get => GetSettingValue(AppCompactMode.None); set => SetSettingValue(value); }
+        public InsertImageAction InsertLocalImageAction { get => GetSettingValue(InsertImageAction.None); set => SetSettingValue(value); }
+        public string InsertLocalImageCopyPath { get => GetSettingValue("./images"); set => SetSettingValue(value); }
+        public InsertImageAction InsertWebImageAction { get => GetSettingValue(InsertImageAction.None); set => SetSettingValue(value); }
+        public string InsertWebImageCopyPath { get => GetSettingValue("./images"); set => SetSettingValue(value); }
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
+        public bool PreferRelativeImagePaths { get => GetSettingValue(false); set => SetSettingValue(value); }
+        public bool AutoEncodeImageURL { get => GetSettingValue(true); set => SetSettingValue(value); }
+        public ImageUploadMethod ImageUploadMethod { get => GetSettingValue(ImageUploadMethod.None); set => SetSettingValue(value); }
+        public string ImageUploadConfig { get => GetSettingValue(""); set => SetSettingValue(value); }
 
         public IServiceProvider ServiceProvider { get; }
 

@@ -35,7 +35,7 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xede1;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" Value="4"/>
+            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" Value="{x:Bind SettingsViewModel.TabSize, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="自动补全引号" Description="输入左引号时自动补全右引号">
             <controls:NormalSettingItem.Icon>

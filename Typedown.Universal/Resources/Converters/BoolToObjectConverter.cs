@@ -7,16 +7,20 @@ using Windows.UI.Xaml.Data;
 
 namespace Typedown.Universal.Resources.Converters
 {
-    public class BoolReverseConverter : IValueConverter
+    public class BoolToObjectConverter : IValueConverter
     {
+        public object TrueValue { get; set; }
+
+        public object FalseValue { get; set; }
+
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return value is not bool val || !val;
+            return (bool)value ? TrueValue : FalseValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return value is not bool val || !val;
+            throw new NotImplementedException();
         }
     }
 }

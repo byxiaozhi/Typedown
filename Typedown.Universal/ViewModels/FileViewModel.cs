@@ -166,9 +166,9 @@ namespace Typedown.Universal.ViewModels
             if (folder != null)
             {
                 SettingsViewModel.WorkFolder = folder.Path;
-                if (!SettingsViewModel.IsSideBarOpen)
+                if (!SettingsViewModel.SidePaneOpen)
                 {
-                    SettingsViewModel.IsSideBarOpen = true;
+                    SettingsViewModel.SidePaneOpen = true;
                 }
                 if (SettingsViewModel.SideBarIndex != 0)
                 {

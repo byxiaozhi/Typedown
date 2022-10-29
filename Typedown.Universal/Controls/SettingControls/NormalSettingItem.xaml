@@ -22,8 +22,8 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Viewbox Width="16" Height="16" VerticalAlignment="Center">
@@ -42,7 +42,12 @@
                 Content="{x:Bind Description, Mode=OneWay}"/>
         </StackPanel>
 
-        <ContentPresenter Grid.Column="2" VerticalAlignment="Center" Content="{x:Bind Action, Mode=OneWay}"/>
+        <ContentPresenter 
+            Grid.Column="2" 
+            VerticalAlignment="Center" 
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="{x:Bind HorizontalActionAlignment, Mode=OneWay}" 
+            Content="{x:Bind Action, Mode=OneWay}"/>
 
     </Grid>
 </UserControl>

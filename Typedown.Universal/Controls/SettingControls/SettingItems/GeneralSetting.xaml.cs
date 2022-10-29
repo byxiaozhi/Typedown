@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.Enums;
 using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -24,7 +25,12 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 
         public GeneralSetting()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+        }
+
+        public static bool IsStartupOpenFolderItemLoad(FolderStartupAction action)
+        {
+            return action == FolderStartupAction.OpenFolder;
         }
     }
 }

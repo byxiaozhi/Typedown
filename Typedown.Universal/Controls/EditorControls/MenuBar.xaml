@@ -135,13 +135,13 @@
             </muxc:MenuBarItem>
 
             <muxc:MenuBarItem x:Uid="View">
-                <ToggleMenuFlyoutItem x:Uid="Sidebar" KeyboardAcceleratorTextOverride="Ctrl+Shift+L"/>
+                <ToggleMenuFlyoutItem x:Uid="Sidebar" KeyboardAcceleratorTextOverride="Ctrl+Shift+L" IsChecked="{x:Bind AppViewModel.SettingsViewModel.SidePaneOpen, Mode=TwoWay}"/>
                 <MenuFlyoutSeparator/>
                 <ToggleMenuFlyoutItem x:Uid="SourceCodeMode" KeyboardAcceleratorTextOverride="Ctrl+/"/>
                 <ToggleMenuFlyoutItem x:Uid="FocusMode" KeyboardAcceleratorTextOverride="F8"/>
                 <ToggleMenuFlyoutItem x:Uid="TypewriterMode" KeyboardAcceleratorTextOverride="F9"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="StatusBar" IsChecked="{x:Bind AppViewModel.SettingsViewModel.IsStatusBarOpen, Mode=TwoWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="StatusBar" IsChecked="{x:Bind AppViewModel.SettingsViewModel.StatusBarOpen, Mode=TwoWay}"/>
             </muxc:MenuBarItem>
             
         </muxc:MenuBar>

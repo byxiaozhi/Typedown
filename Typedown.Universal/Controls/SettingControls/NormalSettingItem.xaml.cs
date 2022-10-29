@@ -19,6 +19,9 @@ namespace Typedown.Universal.Controls
         public static readonly DependencyProperty IconProperty = DependencyProperty.Register(nameof(Icon), typeof(object), typeof(IconElement), null);
         public IconElement Icon { get => (IconElement)GetValue(IconProperty); set => SetValue(IconProperty, value); }
 
+        public static readonly DependencyProperty HorizontalActionAlignmentProperty = DependencyProperty.Register(nameof(HorizontalActionAlignment), typeof(HorizontalAlignment), typeof(IconElement), new(HorizontalAlignment.Right));
+        public HorizontalAlignment HorizontalActionAlignment { get => (HorizontalAlignment)GetValue(HorizontalActionAlignmentProperty); set => SetValue(HorizontalActionAlignmentProperty, value); }
+
         public NormalSettingItem()
         {
             InitializeComponent();

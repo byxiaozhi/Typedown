@@ -16,8 +16,8 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Viewbox Width="16" Height="16" VerticalAlignment="Center">
@@ -39,6 +39,8 @@
                 <ContentPresenter 
                     Grid.Column="2" 
                     VerticalAlignment="Center" 
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Right"
                     Foreground="{ThemeResource TextFillColorSecondary}" 
                     Content="{x:Bind State, Mode=OneWay}"/>
 

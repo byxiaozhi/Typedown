@@ -44,7 +44,7 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8be;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.IsAnimationEnable, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AnimationEnable, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="置于顶层" Description="使窗口始终在顶部">
             <controls:NormalSettingItem.Icon>
@@ -69,13 +69,13 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe90e;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.IsStatusBarOpen, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.StatusBarOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="显示侧边栏" Description="选择是否显示侧边栏">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xea4b;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.IsSideBarOpen, Mode=TwoWay}"/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.SidePaneOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
 
     </StackPanel>

@@ -24,7 +24,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 
         public EditorSetting()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

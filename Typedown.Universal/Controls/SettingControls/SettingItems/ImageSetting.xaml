@@ -5,7 +5,10 @@
     xmlns:local="using:Typedown.Universal.Controls.SettingControls.SettingItems"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:controls="using:Typedown.Universal.Controls"
+    xmlns:controls="using:Typedown.Universal.Controls" 
+    xmlns:enums="using:Typedown.Universal.Enums" 
+    xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
+    d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -16,33 +19,72 @@
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
                 <controls:NormalSettingItem Title="本地图片">
-                    <ComboBox MinWidth="200" SelectedIndex="0">
-                        <x:String>不操作</x:String>
-                        <x:String>复制到指定路径</x:String>
-                        <x:String>上传图片</x:String>
+                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.InsertImageActions}" SelectedItem="{Binding SettingsViewModel.InsertLocalImageAction, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <controls:EnumNameBlock Value="{Binding}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
                     </ComboBox>
                 </controls:NormalSettingItem>
-                <Border Height="1" Background="{ThemeResource CardStrokeColorDefault}"/>
-                <controls:NormalSettingItem Title="网络图片">
-                    <ComboBox MinWidth="200" SelectedIndex="0">
-                        <x:String>不操作</x:String>
-                        <x:String>复制到指定路径</x:String>
-                        <x:String>上传图片</x:String>
+                <controls:NormalSettingItem 
+                    x:Name="CopyLocalImageItem" 
+                    x:Load="{x:Bind local:ImageSetting.IsCopyImageItemLoad(SettingsViewModel.InsertLocalImageAction), Mode=OneWay}"
+                    Title="复制本地图片到" 
+                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
+                    BorderThickness="0,1,0,0"
+                    HorizontalActionAlignment="Stretch">
+                    <Grid ColumnSpacing="4" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Text="{x:Bind SettingsViewModel.InsertLocalImageCopyPath, Mode=TwoWay}" PlaceholderText="请选择文件夹"/>
+                        <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind SettingsViewModel.InsertLocalImageCopyPath, Mode=TwoWay}"/>
+                    </Grid>
+                </controls:NormalSettingItem>
+                <controls:NormalSettingItem Title="网络图片" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
+                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.InsertImageActions}" SelectedItem="{Binding SettingsViewModel.InsertWebImageAction, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <controls:EnumNameBlock Value="{Binding}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
                     </ComboBox>
+                </controls:NormalSettingItem>
+                <controls:NormalSettingItem 
+                    x:Name="CopyWebImageItem" 
+                    x:Load="{x:Bind local:ImageSetting.IsCopyImageItemLoad(SettingsViewModel.InsertWebImageAction), Mode=OneWay}"
+                    Title="复制网络图片到"
+                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
+                    BorderThickness="0,1,0,0"
+                    HorizontalActionAlignment="Stretch">
+                    <Grid ColumnSpacing="4" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Text="{x:Bind SettingsViewModel.InsertWebImageCopyPath, Mode=TwoWay}" PlaceholderText="请选择文件夹"/>
+                        <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind SettingsViewModel.InsertWebImageCopyPath, Mode=TwoWay}"/>
+                    </Grid>
                 </controls:NormalSettingItem>
             </StackPanel>
         </controls:ExpanderSettingItem>
+        
         <controls:NormalSettingItem Title="优先使用相对路径" Description="插入图片时优先采用相对路径">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf003;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.PreferRelativeImagePaths, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="插入时自动转义图片URL" Description="更好的兼容性">
+        
+        <controls:NormalSettingItem Title="插入时自动转义图片URL" Description="自动对URL中的特殊字符进行编码">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe7c5;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AutoEncodeImageURL, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
 
         <controls:ExpanderSettingItem Title="上传设置" Description="设置图片上传方式">
@@ -51,12 +93,15 @@
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
                 <controls:NormalSettingItem Title="上传服务">
-                    <ComboBox MinWidth="200" SelectedIndex="0">
-                        <x:String>无</x:String>
-                        <x:String>PicGo-Core</x:String>
-                        <x:String>PicGo App</x:String>
-                        <x:String>自定义命令行</x:String>
+                    
+                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.ImageUploadMethods}" SelectedItem="{Binding SettingsViewModel.ImageUploadMethod, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <controls:EnumNameBlock Value="{Binding}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
                     </ComboBox>
+                    
                 </controls:NormalSettingItem>
             </StackPanel>
         </controls:ExpanderSettingItem>

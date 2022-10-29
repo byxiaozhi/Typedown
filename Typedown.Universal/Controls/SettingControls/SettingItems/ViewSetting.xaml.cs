@@ -22,8 +22,6 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 
         public SettingsViewModel SettingsViewModel => AppViewModel?.SettingsViewModel;
 
-        public List<string> Options { get; } = new() { "Light", "Dark", "Default" };
-
         public ViewSetting()
         {
             InitializeComponent();

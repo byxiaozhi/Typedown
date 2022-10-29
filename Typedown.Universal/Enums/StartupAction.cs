@@ -9,7 +9,7 @@ namespace Typedown.Universal.Enums
 {
     public enum FileStartupAction
     {
-        [Localize("NoAction")]
+        [Localize("FileStartupAction/NewFile")]
         None,
 
         [Localize("FileStartupAction/OpenLast")]

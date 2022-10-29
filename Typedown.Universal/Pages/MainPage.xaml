@@ -15,6 +15,6 @@
         </Grid.RowDefinitions>
         <controls:MenuBar/>
         <controls:MainContent Grid.Row="1"/>
-        <controls:StatusBar x:Name="StatusBar" Grid.Row="2" x:Load="{x:Bind AppViewModel.SettingsViewModel.IsStatusBarOpen, Mode=OneWay}"/>
+        <controls:StatusBar x:Name="StatusBar" Grid.Row="2" x:Load="{x:Bind AppViewModel.SettingsViewModel.StatusBarOpen, Mode=OneWay}"/>
     </Grid>
 </Page>

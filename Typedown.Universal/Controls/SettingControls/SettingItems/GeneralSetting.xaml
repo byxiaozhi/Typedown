@@ -20,7 +20,7 @@
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
                 <controls:NormalSettingItem Title="文件">
-                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.FileStartupActions}" SelectedIndex="0">
+                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.FileStartupActions}" SelectedItem="{Binding SettingsViewModel.FileStartupAction, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <controls:EnumNameBlock Value="{Binding}"/>
@@ -28,15 +28,31 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </controls:NormalSettingItem>
-                <Border Height="1" Background="{ThemeResource CardStrokeColorDefault}"/>
-                <controls:NormalSettingItem Title="目录">
-                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.FolderStartupActions}" SelectedIndex="0">
+                <controls:NormalSettingItem Title="文件夹" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
+                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.FolderStartupActions}" SelectedItem="{Binding SettingsViewModel.FolderStartupAction, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <controls:EnumNameBlock Value="{Binding}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                </controls:NormalSettingItem>
+                <controls:NormalSettingItem 
+                    x:Name="StartOpenFolderItem" 
+                    x:Load="{x:Bind local:GeneralSetting.IsStartupOpenFolderItemLoad(SettingsViewModel.FolderStartupAction), Mode=OneWay}"
+                    Title="打开文件夹" 
+                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
+                    BorderThickness="0,1,0,0"
+                    HorizontalActionAlignment="Stretch">
+                    <Grid ColumnSpacing="4" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Text="{x:Bind SettingsViewModel.StartupOpenFolder, Mode=TwoWay}" PlaceholderText="请选择文件夹"/>
+                        <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind SettingsViewModel.StartupOpenFolder, Mode=TwoWay}"/>
+                    </Grid>
                 </controls:NormalSettingItem>
             </StackPanel>
         </controls:ExpanderSettingItem>

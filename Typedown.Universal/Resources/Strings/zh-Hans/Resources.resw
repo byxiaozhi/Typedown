@@ -369,6 +369,10 @@
     <value>打开上次使用的文件</value>
     <comment>打开上次使用的文件</comment>
   </data>
+  <data name="FileStartupAction/NewFile" xml:space="preserve">
+    <value>新建文件</value>
+    <comment>新建文件</comment>
+  </data>
   <data name="Find.Text" xml:space="preserve">
     <value>查找</value>
     <comment>查找</comment>
@@ -469,6 +473,26 @@
     <value>图像</value>
     <comment>图像</comment>
   </data>
+  <data name="ImageUploadMethod.CMD" xml:space="preserve">
+    <value>命令行</value>
+    <comment>命令行</comment>
+  </data>
+  <data name="ImageUploadMethod.FTP" xml:space="preserve">
+    <value>FTP</value>
+    <comment>FTP</comment>
+  </data>
+  <data name="ImageUploadMethod.Git" xml:space="preserve">
+    <value>Git</value>
+    <comment>Git</comment>
+  </data>
+  <data name="ImageUploadMethod.OSS" xml:space="preserve">
+    <value>OSS</value>
+    <comment>对象存储OSS</comment>
+  </data>
+  <data name="ImageUploadMethod.SSH" xml:space="preserve">
+    <value>SSH</value>
+    <comment>SSH</comment>
+  </data>
   <data name="Import.Text" xml:space="preserve">
     <value>导入</value>
     <comment>导入</comment>
@@ -508,6 +532,14 @@
   <data name="InsertColumnRight.Text" xml:space="preserve">
     <value>在右边插入列</value>
     <comment>在右边插入列</comment>
+  </data>
+  <data name="InsertImageAction.CopyToPath" xml:space="preserve">
+    <value>复制到指定路径</value>
+    <comment>复制到指定路径</comment>
+  </data>
+  <data name="InsertImageAction.Upload" xml:space="preserve">
+    <value>上传图片</value>
+    <comment>上传图片</comment>
   </data>
   <data name="InsertParagraphAfter.Text" xml:space="preserve">
     <value>在下方插入段落</value>
@@ -592,6 +624,10 @@
   <data name="NoAction" xml:space="preserve">
     <value>无操作</value>
     <comment>无操作</comment>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>无</value>
+    <comment>无</comment>
   </data>
   <data name="NoOpenFolders.Text" xml:space="preserve">
     <value>没有打开的文件夹</value>
@@ -729,15 +765,15 @@
     <value>设置</value>
     <comment>设置</comment>
   </data>
-  <data name="Sidebar.Text" xml:space="preserve">
+  <data name="SidePane.Text" xml:space="preserve">
     <value>侧栏</value>
     <comment>侧栏</comment>
   </data>
-  <data name="SidebarFilesTab.Content" xml:space="preserve">
+  <data name="SidePaneFilesTab.Content" xml:space="preserve">
     <value>文件</value>
     <comment>文件</comment>
   </data>
-  <data name="SidebarOutlineTab.Content" xml:space="preserve">
+  <data name="SidePaneOutlineTab.Content" xml:space="preserve">
     <value>大纲</value>
     <comment>大纲</comment>
   </data>
