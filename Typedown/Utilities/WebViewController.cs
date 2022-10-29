@@ -143,9 +143,8 @@ namespace Typedown.Utilities
             OnXamlPointerMessage(message, args);
         }
 
-        protected virtual void OnPointerPressed(PointerRoutedEventArgs args)
+        private void OnPointerPressed(PointerRoutedEventArgs args)
         {
-            
             var deviceType = args.Pointer.PointerDeviceType;
             var pointerPoint = args.GetCurrentPoint(Container);
             PInvoke.WindowMessage message = 0;
@@ -193,7 +192,7 @@ namespace Typedown.Utilities
                 OnXamlPointerMessage(message, args);
         }
 
-        protected virtual void OnPointerReleased(PointerRoutedEventArgs args)
+        private void OnPointerReleased(PointerRoutedEventArgs args)
         {
             var deviceType = args.Pointer.PointerDeviceType;
             var pointerPoint = args.GetCurrentPoint(Container);
@@ -249,14 +248,14 @@ namespace Typedown.Utilities
                 OnXamlPointerMessage(message, args);
         }
 
-        protected virtual void OnPointerWheelChanged(PointerRoutedEventArgs args)
+        private void OnPointerWheelChanged(PointerRoutedEventArgs args)
         {
             var deviceType = args.Pointer.PointerDeviceType;
             var message = deviceType == PointerDeviceType.Mouse ? PInvoke.WindowMessage.WM_MOUSEWHEEL : PInvoke.WindowMessage.WM_POINTERWHEEL;
             OnXamlPointerMessage(message, args);
         }
 
-        protected virtual void OnPointerExited(PointerRoutedEventArgs args)
+        private void OnPointerExited(PointerRoutedEventArgs args)
         {
             global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
             if (args.Pointer.PointerDeviceType == PointerDeviceType.Mouse)

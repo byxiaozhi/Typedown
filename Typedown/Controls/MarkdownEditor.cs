@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Media;
 using Microsoft.Extensions.DependencyInjection;
 using Windows.Foundation;
 using Windows.UI.Xaml.Shapes;
+using Windows.UI.Xaml.Input;
 
 namespace Typedown.Controls
 {
@@ -47,6 +48,12 @@ namespace Typedown.Controls
             IsTabStop = true;
             RemoteInvoke.Handle("GetCurrentTheme", arg => ServiceProvider.GetCurrentTheme());
             RemoteInvoke.Handle("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString));
+        }
+
+        protected override void OnPointerPressed(PointerRoutedEventArgs e)
+        {
+            base.OnPointerPressed(e);
+            Focus(FocusState.Pointer);
         }
 
         private async void OnLoaded(object sender, RoutedEventArgs e)

@@ -56,6 +56,7 @@ namespace Typedown.Universal.Controls
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
+            MarkdownEditorPresenter.Content = null;
             disposables.Clear();
         }
     }
