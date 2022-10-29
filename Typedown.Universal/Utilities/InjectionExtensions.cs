@@ -9,7 +9,7 @@ namespace Typedown.Universal.Utilities
     {
         public static T GetService<T>(this FrameworkElement element)
         {
-            if ((element.XamlRoot.Content as FrameworkElement).DataContext is AppViewModel model)
+            if ((element.DataContext ?? (element.XamlRoot?.Content as FrameworkElement)?.DataContext) is AppViewModel model)
                 return model.ServiceProvider.GetService<T>();
             return default;
         }
