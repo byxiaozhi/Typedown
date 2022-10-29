@@ -18,7 +18,35 @@
                 <FontIcon Glyph="&#xe91b;"/>
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
-                <controls:NormalSettingItem Title="本地图片">
+                
+                <controls:NormalSettingItem Title="剪贴板图片" Description="不包括剪贴板图片文件">
+                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.InsertImageActions}" SelectedItem="{Binding SettingsViewModel.InsertClipboardImageAction, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <controls:EnumNameBlock Value="{Binding}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </controls:NormalSettingItem>
+                <controls:NormalSettingItem 
+                    x:Name="CopyClipboardImageItem" 
+                    x:Load="{x:Bind local:ImageSetting.IsCopyImageItemLoad(SettingsViewModel.InsertClipboardImageAction), Mode=OneWay}"
+                    Title="复制剪贴板图片到" 
+                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
+                    BorderThickness="0,1,0,0"
+                    HorizontalActionAlignment="Stretch">
+                    <Grid ColumnSpacing="4" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Text="{x:Bind SettingsViewModel.InsertClipboardImageCopyPath, Mode=TwoWay}" PlaceholderText="请选择文件夹"/>
+                        <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind SettingsViewModel.InsertClipboardImageCopyPath, Mode=TwoWay}"/>
+                    </Grid>
+                </controls:NormalSettingItem>
+
+                <controls:NormalSettingItem Title="本地图片" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
                     <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.InsertImageActions}" SelectedItem="{Binding SettingsViewModel.InsertLocalImageAction, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
