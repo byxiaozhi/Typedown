@@ -40,7 +40,7 @@
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind SettingsViewModel.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="窗格动画" Description="关闭可获得更快的响应速度">
+        <controls:NormalSettingItem Title="窗口动画" Description="关闭可获得更快的响应速度">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8be;"/>
             </controls:NormalSettingItem.Icon>
@@ -57,13 +57,7 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf246;"/>
             </controls:NormalSettingItem.Icon>
-            <ComboBox ItemsSource="{x:Bind enums:Enumerable.AppCompactModes}" MinWidth="200" SelectedItem="{Binding SettingsViewModel.AppCompactMode, Mode=TwoWay}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <controls:EnumNameBlock Value="{Binding}"/>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <ToggleSwitch IsOn="{x:Bind SettingsViewModel.AppCompactMode, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="显示状态栏" Description="选择是否显示底部状态栏">
             <controls:NormalSettingItem.Icon>

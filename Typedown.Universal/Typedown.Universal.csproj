@@ -107,7 +107,6 @@
       <DependentUpon>StatusBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\AppTheme.cs" />
-    <Compile Include="Enums\CompactMode.cs" />
     <Compile Include="Enums\ImageUploadMethod.cs" />
     <Compile Include="Enums\InsertImageAction.cs" />
     <Compile Include="Enums\StartupAction.cs" />

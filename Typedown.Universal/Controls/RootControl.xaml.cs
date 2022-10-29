@@ -20,6 +20,8 @@ namespace Typedown.Universal.Controls
 
         public AppViewModel AppViewModel => DataContext as AppViewModel;
 
+        public SettingsViewModel SettingsViewModel => AppViewModel?.SettingsViewModel;
+
         private readonly ObservableCollection<PageData> history = new();
 
         private readonly CompositeDisposable disposables = new();
@@ -57,14 +59,14 @@ namespace Typedown.Universal.Controls
             return new(page, string.Join("/", arr.Skip(1)));
         }
 
-        public SlideNavigationTransitionInfo GetTransition(NotifyCollectionChangedAction action) => new()
+        public NavigationTransitionInfo GetTransition(NotifyCollectionChangedAction action) => SettingsViewModel?.AnimationEnable ?? false ? new SlideNavigationTransitionInfo()
         {
             Effect = action switch
             {
                 NotifyCollectionChangedAction.Add => SlideNavigationTransitionEffect.FromRight,
                 _ => SlideNavigationTransitionEffect.FromLeft
             }
-        };
+        } : new SuppressNavigationTransitionInfo();
 
         public static ElementTheme GetTheme(string theme) => theme switch
         {
@@ -72,11 +74,5 @@ namespace Typedown.Universal.Controls
             "Dark" => ElementTheme.Dark,
             _ => App.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark
         };
-
-        public static bool IsCaptionLoad(AppCompactMode compactMode)
-        {
-            return true;
-            // return compactMode == AppCompactMode.None;
-        }
     }
 }

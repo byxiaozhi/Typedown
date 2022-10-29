@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Typedown.Universal.Pages.SettingPages;
+using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -12,12 +13,17 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages
 {
     public sealed partial class SettingsPage : Page
     {
+        public AppViewModel AppViewModel => DataContext as AppViewModel;
+
+        public SettingsViewModel SettingsViewModel => AppViewModel?.SettingsViewModel;
+
         public SettingsPage()
         {
             InitializeComponent();
@@ -26,7 +32,10 @@ namespace Typedown.Universal.Pages
         private void OnNavigationViewSelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             var item = (sender.SelectedItem as Microsoft.UI.Xaml.Controls.NavigationViewItem);
-            ContentFrame.Navigate(GetPageType(item?.Tag as string), args.RecommendedNavigationTransitionInfo);
+            var first = ContentFrame.SourcePageType == null;
+            var enable = (SettingsViewModel?.AnimationEnable ?? false) && !first;
+            var transition = enable ? args.RecommendedNavigationTransitionInfo : new SuppressNavigationTransitionInfo();
+            ContentFrame.Navigate(GetPageType(item?.Tag as string), null, transition);
         }
 
         public Type GetPageType(string pageName) => pageName switch

@@ -35,7 +35,7 @@ namespace Typedown.Universal.ViewModels
         public bool AutoSave { get => GetSettingValue(false); set => SetSettingValue(value); }
         public AppTheme AppTheme { get => GetSettingValue(AppTheme.Default); set => SetSettingValue(value); }
         public string WorkFolder { get => GetSettingValue(""); set => SetSettingValue(value); }
-        public string Language { get => GetSettingValue(""); set => SetSettingValue(value); }
+        public string Language { get => GetSettingValue("default"); set => SetSettingValue(value); }
         public int WordCountMethod { get => GetSettingValue(0); set => SetSettingValue(value); }
         public int TabSize { get => GetSettingValue(4); set => SetSettingValue(value); }
         public bool SpellcheckEnabled { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -47,7 +47,7 @@ namespace Typedown.Universal.ViewModels
         public FileStartupAction FileStartupAction { get => GetSettingValue(FileStartupAction.None); set => SetSettingValue(value); }
         public FolderStartupAction FolderStartupAction { get => GetSettingValue(FolderStartupAction.OpenLast); set => SetSettingValue(value); }
         public string StartupOpenFolder { get => GetSettingValue(KnownFolders.DocumentsLibrary.Path); set => SetSettingValue(value); }
-        public AppCompactMode AppCompactMode { get => GetSettingValue(AppCompactMode.None); set => SetSettingValue(value); }
+        public bool AppCompactMode { get => GetSettingValue(false); set => SetSettingValue(value); }
         public InsertImageAction InsertLocalImageAction { get => GetSettingValue(InsertImageAction.None); set => SetSettingValue(value); }
         public string InsertLocalImageCopyPath { get => GetSettingValue("./images"); set => SetSettingValue(value); }
         public InsertImageAction InsertWebImageAction { get => GetSettingValue(InsertImageAction.None); set => SetSettingValue(value); }
