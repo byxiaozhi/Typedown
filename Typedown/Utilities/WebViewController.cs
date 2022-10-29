@@ -60,7 +60,7 @@ namespace Typedown.Utilities
         {
             if (coreWebView2EnvironmentTask == null)
             {
-                var commandLineArgs = new List<string>() { "--disable-web-security", "--single-process" };
+                var commandLineArgs = Universal.Config.WebView2Args.ToList();
 #if DEBUG
                 commandLineArgs.Add("--remote-debugging-port=9222");
 #endif
