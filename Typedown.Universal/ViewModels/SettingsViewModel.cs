@@ -3,13 +3,18 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reactive;
+using System.Reflection;
 using System.Runtime.CompilerServices;
+using Typedown.Universal.Controls;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
@@ -34,7 +39,7 @@ namespace Typedown.Universal.ViewModels
         public bool TrimUnnecessaryCodeBlockEmptyLines { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool PreferLooseListItem { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool AutoPairMarkdownSyntax { get => GetSettingValue(true); set => SetSettingValue(value); }
-        public string EditorAreaWidth { get => GetSettingValue("1000px"); set => SetSettingValue(value); }
+        public double EditorAreaWidth { get => GetSettingValue(1200d); set => SetSettingValue(value); }
         public bool AutoSave { get => GetSettingValue(false); set => SetSettingValue(value); }
         public AppTheme AppTheme { get => GetSettingValue(AppTheme.Default); set => SetSettingValue(value); }
         public string WorkFolder { get => GetSettingValue(""); set => SetSettingValue(value); }
@@ -65,9 +70,12 @@ namespace Typedown.Universal.ViewModels
 
         public IServiceProvider ServiceProvider { get; }
 
+        public Command<Unit> ResetSettingsCommand { get; } = new();
+
         public SettingsViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
+            ResetSettingsCommand.OnExecute.Subscribe(_ => ResetSetting());
         }
 
         private readonly HashSet<string> notifySet = new()
@@ -134,6 +142,19 @@ namespace Typedown.Universal.ViewModels
                     value = newValue
                 });
             }
+        }
+
+        public async void ResetSetting()
+        {
+            var dialog = AppContentDialog.Create("重置应用", "确定恢复应用默认设置？", "取消", "确定");
+            dialog.DefaultButton = ContentDialogButton.Close;
+            var result = await dialog.ShowAsync(ServiceProvider.GetService<AppViewModel>().XamlRoot);
+            if (result != ContentDialogResult.Primary)
+                return;
+            Store.Clear();
+            cache.Clear();
+            foreach (var item in GetType().GetProperties().Where(x => x.GetSetMethod() != null).Select(x => x.Name))
+                RaisePropertyChanged(item);
         }
     }
 }

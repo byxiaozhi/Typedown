@@ -47,6 +47,7 @@ namespace Typedown.Windows
 
         private void SetWindowPlacement()
         {
+            Title = "Typedown";
             MinWidth = 480;
             MinHeight = 300;
             if (AppViewModel.SettingsViewModel.WindowPlacement != null)

@@ -92,7 +92,7 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xebc4;"/>
             </controls:NormalSettingItem.Icon>
-            <Button MinWidth="120">
+            <Button MinWidth="120" Command="{x:Bind SettingsViewModel.ResetSettingsCommand}">
                 重置
             </Button>
         </controls:NormalSettingItem>

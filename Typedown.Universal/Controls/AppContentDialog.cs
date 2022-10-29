@@ -86,7 +86,7 @@ namespace Typedown.Universal.Controls
 
         private Button PrimaryButton => GetTemplateChild("PrimaryButton") as Button;
 
-        private Button SecondaryButton => GetTemplateChild("PrimaryButton") as Button;
+        private Button SecondaryButton => GetTemplateChild("SecondaryButton") as Button;
 
         private Button CloseButton => GetTemplateChild("CloseButton") as Button;
 
