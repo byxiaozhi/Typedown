@@ -23,6 +23,8 @@ namespace Typedown.Universal.Controls
 
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
+        public EditorViewModel Editor => ViewModel?.EditorViewModel;
+
         public StatusBar()
         {
             this.InitializeComponent();

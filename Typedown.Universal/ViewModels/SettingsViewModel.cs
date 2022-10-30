@@ -14,6 +14,7 @@ using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
@@ -39,7 +40,7 @@ namespace Typedown.Universal.ViewModels
         public bool TrimUnnecessaryCodeBlockEmptyLines { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool PreferLooseListItem { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool AutoPairMarkdownSyntax { get => GetSettingValue(true); set => SetSettingValue(value); }
-        public double EditorAreaWidth { get => GetSettingValue(1200d); set => SetSettingValue(value); }
+        public string EditorAreaWidth { get => GetSettingValue("1200px"); set => SetSettingValue(value); }
         public bool AutoSave { get => GetSettingValue(false); set => SetSettingValue(value); }
         public AppTheme AppTheme { get => GetSettingValue(AppTheme.Default); set => SetSettingValue(value); }
         public string WorkFolder { get => GetSettingValue(""); set => SetSettingValue(value); }

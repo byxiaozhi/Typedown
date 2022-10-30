@@ -44,7 +44,7 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
             <Grid>
-                <ComboBox SelectedIndex="0" MinWidth="80" VerticalAlignment="Stretch" Foreground="{ThemeResource TextFillColorSecondary}">
+                <ComboBox SelectedIndex="{x:Bind Settings.WordCountMethod}" MinWidth="80" VerticalAlignment="Stretch" Foreground="{ThemeResource TextFillColorSecondary}">
                     <ComboBox.Resources>
                         <ResourceDictionary>
                             <SolidColorBrush x:Key="ComboBoxBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>
@@ -60,9 +60,18 @@
                             <x:Double x:Key="ComboBoxMinHeight">0</x:Double>
                         </ResourceDictionary>
                     </ComboBox.Resources>
-                    <ComboBoxItem Content="400 字"/>
-                    <ComboBoxItem Content="100 词"/>
-                    <ComboBoxItem Content="10 行"/>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind Editor.CharacterCount, Mode=OneWay}" />
+                            <TextBlock Margin="4,0,0,0" x:Uid="Characters"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind Editor.WordCount, Mode=OneWay}" />
+                            <TextBlock Margin="4,0,0,0" x:Uid="Words"/>
+                        </StackPanel>
+                    </ComboBoxItem>
                 </ComboBox>
                 <FontIcon Glyph="&#xec8f;" FontSize="10" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="{ThemeResource ComboBoxDropDownGlyphForeground}" Margin="0,0,8,0"/>
             </Grid>

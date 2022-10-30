@@ -28,7 +28,7 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe9a6;"/>
             </controls:NormalSettingItem.Icon>
-            <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="100" NumberFormatter="{x:Bind IntegerFormatter}" Value="{x:Bind Settings.EditorAreaWidth, Mode=TwoWay}"/>
+            <TextBox MinWidth="200" Text="{x:Bind Settings.EditorAreaWidth, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <TextBlock Text="Markdown" Margin="0,16,0,4"/>
         <controls:NormalSettingItem Title="默认缩进" Description="调整引用和列表的默认缩进空格">
