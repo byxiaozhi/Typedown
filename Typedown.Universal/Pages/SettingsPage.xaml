@@ -16,21 +16,21 @@
                 <VisualState x:Name="Small">
                     <VisualState.Setters>
                         <Setter Target="ContentFrame.Margin" Value="16,8,16,16"/>
-                        <Setter Target="FrameTitle.Margin" Value="48,0,0,0"/>
+                        <Setter Target="FrameHeader.Margin" Value="48,0,16,0"/>
                         <Setter Target="ContentFrameWrapper.RowSpacing" Value="8"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Medium">
                     <VisualState.Setters>
                         <Setter Target="ContentFrame.Margin" Value="16,8,16,16"/>
-                        <Setter Target="FrameTitle.Margin" Value="16,0,0,0"/>
+                        <Setter Target="FrameHeader.Margin" Value="16,0,16,0"/>
                         <Setter Target="ContentFrameWrapper.RowSpacing" Value="8"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Large">
                     <VisualState.Setters>
                         <Setter Target="ContentFrame.Margin" Value="48,8,48,48"/>
-                        <Setter Target="FrameTitle.Margin" Value="48,0,0,0"/>
+                        <Setter Target="FrameHeader.Margin" Value="48,0,48,0"/>
                         <Setter Target="ContentFrameWrapper.RowSpacing" Value="16"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -60,14 +60,18 @@
                 </muxc:NavigationViewItem.Icon>
             </muxc:NavigationViewItem>
         </muxc:NavigationView.MenuItems>
-        <Grid x:Name="ContentFrameWrapper" RowSpacing="16" MaxWidth="1200">
+        <Grid x:Name="ContentFrameWrapper">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="FrameTitle" Text="{x:Bind NavigationView.SelectedItem.(muxc:NavigationViewItem.Content), Mode=OneWay}" FontSize="{ThemeResource TitleTextBlockFontSize}" Margin="48,0,48,0"/>
+            <Grid x:Name="FrameHeader" MaxWidth="1200">
+                <TextBlock Text="{x:Bind NavigationView.SelectedItem.(muxc:NavigationViewItem.Content), Mode=OneWay}" FontSize="{ThemeResource TitleTextBlockFontSize}" />
+            </Grid>
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <Frame x:Name="ContentFrame" Margin="48,8,48,48"/>
+                <Grid>
+                    <Frame x:Name="ContentFrame" MaxWidth="1200"/>
+                </Grid>
             </ScrollViewer>
         </Grid>
     </muxc:NavigationView>
