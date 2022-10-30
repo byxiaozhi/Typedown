@@ -46,7 +46,7 @@ namespace Typedown.Universal.Controls
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnClick(object sender, RoutedEventArgs e)
         {
             Click?.Invoke(this, EventArgs.Empty);
         }

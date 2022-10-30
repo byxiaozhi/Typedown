@@ -8,6 +8,8 @@
     xmlns:controls="using:Typedown.Universal.Controls" 
     xmlns:settingItems="using:Typedown.Universal.Controls.SettingControls.SettingItems" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Loaded="OnLoaded"
+    Unloaded="OnUnLoaded"
     SizeChanged="OnSizeChanged"
     mc:Ignorable="d">
     <muxc:NavigationView x:Name="NavigationView" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" SelectionChanged="OnNavigationViewSelectionChanged">
