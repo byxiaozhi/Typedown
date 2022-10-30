@@ -23,6 +23,8 @@ namespace Typedown.Universal.Pages
 
         public ObservableCollection<string> BreadcrumbBarItems { get; } = new();
 
+        private readonly CompositeDisposable disposables = new();
+
         public SettingsPage()
         {
             InitializeComponent();
@@ -57,9 +59,49 @@ namespace Typedown.Universal.Pages
         private void OnNavigated(object sender, NavigationEventArgs e)
         {
             var item = NavigationView.MenuItems.OfType<muxc.NavigationViewItem>().Where(x => Route.GetSettingsPageType(x.Tag as string) == ContentFrame.SourcePageType).FirstOrDefault();
-            if (item != null)
-                NavigationView.SelectedItem = item;
-            BreadcrumbBarItems.Add(Localize.GetTypeString(ContentFrame.SourcePageType));
+            if (item != null) NavigationView.SelectedItem = item;
+            switch (e.NavigationMode)
+            {
+                case NavigationMode.Forward:
+                case NavigationMode.New:
+                    BreadcrumbBarItems.Add(Localize.GetTypeString(ContentFrame.SourcePageType));
+                    break;
+                case NavigationMode.Back:
+                    BreadcrumbBarItems.RemoveAt(BreadcrumbBarItems.Count - 1);
+                    break;
+            }
+        }
+
+        private void Navigate(string args)
+        {
+            var path = args?.TrimStart('/').Split('/');
+            if (path != null && path.Length > 1)
+            {
+                var type = Route.GetSettingsPageType(path[1]);
+                if (type != Frame.SourcePageType)
+                    ContentFrame.Navigate(type, null, GetTransition());
+            }
+        }
+
+        public NavigationTransitionInfo GetTransition() => Settings?.AnimationEnable ?? false ? new SlideNavigationTransitionInfo()
+        {
+            Effect = SlideNavigationTransitionEffect.FromRight
+        } : new SuppressNavigationTransitionInfo();
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            disposables.Add(ViewModel.NavigateCommand.OnExecute.Subscribe(args => Navigate(args)));
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            disposables.Clear();
+        }
+
+        private void OnBreadcrumbBarItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
+        {
+            for (int i = args.Index + 1; i < BreadcrumbBarItems.Count; i++)
+                ContentFrame.GoBack();
         }
     }
 }

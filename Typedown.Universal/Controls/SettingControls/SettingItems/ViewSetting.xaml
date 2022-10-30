@@ -75,17 +75,17 @@
         </controls:NormalSettingItem>
 
         <TextBlock Text="自定义" Margin="0,16,0,4"/>
-        <controls:ButtonSettingItem Title="菜单" Description="自定义菜单显示内容">
+        <controls:ButtonSettingItem Title="菜单栏" Description="自定义菜单栏显示内容" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/MenuBar">
             <controls:ButtonSettingItem.Icon>
                 <FontIcon Glyph="&#xea4b;"/>
             </controls:ButtonSettingItem.Icon>
         </controls:ButtonSettingItem>
-        <controls:ButtonSettingItem Title="侧边栏" Description="自定义侧边栏显示内容">
+        <controls:ButtonSettingItem Title="侧栏" Description="自定义侧栏显示内容" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/SidePane">
             <controls:ButtonSettingItem.Icon>
                 <FontIcon Glyph="&#xea4b;"/>
             </controls:ButtonSettingItem.Icon>
         </controls:ButtonSettingItem>
-        <controls:ButtonSettingItem Title="状态栏" Description="自定义状态栏显示内容">
+        <controls:ButtonSettingItem Title="状态栏" Description="自定义状态栏显示内容" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/StatusBar">
             <controls:ButtonSettingItem.Icon>
                 <FontIcon Glyph="&#xea4b;"/>
             </controls:ButtonSettingItem.Icon>

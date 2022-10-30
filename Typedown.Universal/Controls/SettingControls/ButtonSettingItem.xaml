@@ -16,6 +16,7 @@
         Padding="16,12,16,12" 
         Click="OnClick"
         Command="{x:Bind Command, Mode=OneWay}"
+        CommandParameter="{x:Bind CommandParameter, Mode=OneWay}"
         HorizontalAlignment="Stretch"
         HorizontalContentAlignment="Stretch"
         CornerRadius="{x:Bind CornerRadius, Mode=OneWay}" 

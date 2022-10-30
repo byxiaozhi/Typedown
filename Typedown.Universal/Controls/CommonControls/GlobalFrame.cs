@@ -11,7 +11,7 @@ namespace Typedown.Universal.Controls
 {
     public class GlobalFrame : Frame
     {
-        public AppViewModel AppViewModel => this.GetService<AppViewModel>();
+        public AppViewModel ViewModel => DataContext as AppViewModel;
 
         public GlobalFrame()
         {
@@ -22,17 +22,17 @@ namespace Typedown.Universal.Controls
 
         private void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            AppViewModel.FrameStack = AppViewModel.FrameStack.Append(this).ToList();
+            ViewModel.FrameStack = ViewModel.FrameStack.Append(this).ToList();
         }
 
         private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            AppViewModel.FrameStack = AppViewModel.FrameStack.Take(AppViewModel.FrameStack.Count - 1).ToList();
+            ViewModel.FrameStack = ViewModel.FrameStack.Take(ViewModel.FrameStack.Count - 1).ToList();
         }
 
         private void OnNavigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
-            AppViewModel.GoBackCommand.IsExecutable = AppViewModel.FrameStack.Any(x => x.CanGoBack);
+            ViewModel.GoBackCommand.IsExecutable = ViewModel.FrameStack.Any(x => x.CanGoBack);
         }
     }
 }

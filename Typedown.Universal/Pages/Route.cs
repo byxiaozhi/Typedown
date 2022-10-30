@@ -22,6 +22,10 @@ namespace Typedown.Universal.Pages
             "Editor" => typeof(EditorPage),
             "Export" => typeof(ExportPage),
             "General" => typeof(GeneralPage),
+            "HotKey" => typeof(HotKeyPage),
+            "MenuBar" => typeof(MenuBarPage),
+            "SidePane" => typeof(SidePanePage),
+            "StatusBar" => typeof(StatusBarPage),
             "Image" => typeof(ImagePage),
             "View" => typeof(ViewPage),
             _ => null

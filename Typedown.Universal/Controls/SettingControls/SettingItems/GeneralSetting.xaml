@@ -84,7 +84,7 @@
         </controls:NormalSettingItem>
 
         <TextBlock Text="自定义" Margin="0,16,0,4"/>
-        <controls:ButtonSettingItem Title="快捷键" Description="自定义快捷键">
+        <controls:ButtonSettingItem Title="快捷键" Description="自定义快捷键" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/HotKey">
             <controls:ButtonSettingItem.Icon>
                 <FontIcon Glyph="&#xe92e;"/>
             </controls:ButtonSettingItem.Icon>

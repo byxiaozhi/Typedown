@@ -147,6 +147,18 @@
     <Compile Include="Pages\SettingPages\ImagePage.xaml.cs">
       <DependentUpon>ImagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SettingPages\HotKeyPage.xaml.cs">
+      <DependentUpon>HotKeyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingPages\MenuBarPage.xaml.cs">
+      <DependentUpon>MenuBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingPages\SidePanePage.xaml.cs">
+      <DependentUpon>SidePanePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingPages\StatusBarPage.xaml.cs">
+      <DependentUpon>StatusBarPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingPages\ViewPage.xaml.cs">
       <DependentUpon>ViewPage.xaml</DependentUpon>
     </Compile>
@@ -364,6 +376,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingPages\ImagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPages\HotKeyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPages\MenuBarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPages\SidePanePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPages\StatusBarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

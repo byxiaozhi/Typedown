@@ -481,6 +481,10 @@
     <value>水平分割线</value>
     <comment>水平分割线</comment>
   </data>
+  <data name="HotKeyPage.Content" xml:space="preserve">
+    <value>快捷键</value>
+    <comment>快捷键</comment>
+  </data>
   <data name="Hyperlink.Text" xml:space="preserve">
     <value>超链接</value>
     <comment>超链接</comment>
@@ -616,6 +620,10 @@
   <data name="MathBlock.Text" xml:space="preserve">
     <value>公式块</value>
     <comment>公式块</comment>
+  </data>
+  <data name="MenuBarPage.Content" xml:space="preserve">
+    <value>菜单栏</value>
+    <comment>菜单栏</comment>
   </data>
   <data name="Mermaid.Text" xml:space="preserve">
     <value>Mermaid</value>
@@ -797,11 +805,19 @@
     <value>大纲</value>
     <comment>大纲</comment>
   </data>
+  <data name="SidePanePage.Content" xml:space="preserve">
+    <value>侧栏</value>
+    <comment>侧栏</comment>
+  </data>
   <data name="SourceCodeMode.Text" xml:space="preserve">
     <value>源代码模式</value>
     <comment>源代码模式</comment>
   </data>
   <data name="StatusBar.Text" xml:space="preserve">
+    <value>状态栏</value>
+    <comment>状态栏</comment>
+  </data>
+  <data name="StatusBarPage.Content" xml:space="preserve">
     <value>状态栏</value>
     <comment>状态栏</comment>
   </data>

@@ -43,7 +43,7 @@
                     <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
                     <MenuFlyoutItem Text="TEXT" Command="{x:Bind File.ExportCommand}" CommandParameter="text"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem Text="导出设置" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="/Settings/Export"/>
+                    <MenuFlyoutItem Text="导出设置" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
                 </MenuFlyoutSubItem>
                 <MenuFlyoutItem x:Uid="Print" Command="{x:Bind File.PrintCommand}" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
                 <MenuFlyoutSeparator/>
@@ -149,7 +149,7 @@
             </muxc:MenuBarItem>
             
         </muxc:MenuBar>
-        <Button Grid.Column="1" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="/Settings/General">
+        <Button Grid.Column="1" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/General">
             <Viewbox Width="16" Height="16">
                 <muxc:AnimatedIcon x:Name="Icon_Setting">
                     <muxc:AnimatedIcon.Source>

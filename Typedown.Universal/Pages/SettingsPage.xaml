@@ -10,6 +10,8 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
     xmlns:converters="using:Typedown.Universal.Resources.Converters"
     SizeChanged="OnSizeChanged"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d">
     <muxc:NavigationView x:Name="NavigationView" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" SelectionChanged="OnNavigationViewSelectionChanged">
         <VisualStateManager.VisualStateGroups>
@@ -67,12 +69,13 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid x:Name="FrameHeader" MaxWidth="1200">
-                <muxc:BreadcrumbBar x:Name="BreadcrumbBar" ItemsSource="{x:Bind BreadcrumbBarItems}">
+                <muxc:BreadcrumbBar x:Name="BreadcrumbBar" ItemsSource="{x:Bind BreadcrumbBarItems}" ItemClicked="OnBreadcrumbBarItemClicked">
                     <muxc:BreadcrumbBar.Resources>
                         <SolidColorBrush x:Key="BreadcrumbBarNormalForegroundBrush" Color="{ThemeResource TextFillColorSecondary}"/>
                         <SolidColorBrush x:Key="BreadcrumbBarHoverForegroundBrush" Color="{ThemeResource TextFillColorPrimary}"/>
                         <SolidColorBrush x:Key="BreadcrumbBarPressedForegroundBrush" Color="{ThemeResource TextFillColorTertiary}"/>
-                        <x:Double x:Key="BreadcrumbBarItemThemeFontSize">28</x:Double>
+                        <StaticResource x:Key="BreadcrumbBarItemThemeFontSize" ResourceKey="TitleTextBlockFontSize"/>
+                        <Thickness x:Key="BreadcrumbBarChevronPadding">12,4,12,0</Thickness>
                     </muxc:BreadcrumbBar.Resources>
                 </muxc:BreadcrumbBar>
             </Grid>
