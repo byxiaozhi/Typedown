@@ -6,7 +6,7 @@ using Typedown.Universal.ViewModels;
 
 namespace Typedown.Universal.Models
 {
-    public class FolderItemModel : TreeViewNode, INotifyPropertyChanged, IDisposable
+    public class FolderItem : TreeViewNode, INotifyPropertyChanged, IDisposable
     {
         public enum ItemType
         {
@@ -30,7 +30,7 @@ namespace Typedown.Universal.Models
                 FileSystemWatcher.Dispose();
                 FileSystemWatcher = null;
                 foreach (var item in Children)
-                    (item as FolderItemModel).Clear();
+                    (item as FolderItem).Clear();
                 Children.Clear();
             }
         }
@@ -40,18 +40,18 @@ namespace Typedown.Universal.Models
             UpdateSelectedItem(fileViewModel, fileViewModel.WorkFolder.RootItem);
         }
 
-        static public void UpdateSelectedItem(FileViewModel fileViewModel, FolderItemModel item)
+        static public void UpdateSelectedItem(FileViewModel fileViewModel, FolderItem item)
         {
-            if (item.Type == FolderItemModel.ItemType.file)
+            if (item.Type == FolderItem.ItemType.file)
             {
                 var opened = item.Path == fileViewModel.FilePath;
                 if (item.Opened != opened)
                     item.Opened = opened;
             }
-            else if (item.Type == FolderItemModel.ItemType.folder)
+            else if (item.Type == FolderItem.ItemType.folder)
             {
                 foreach (var child in item.Children)
-                    UpdateSelectedItem(fileViewModel, child as FolderItemModel);
+                    UpdateSelectedItem(fileViewModel, child as FolderItem);
             }
         }
 

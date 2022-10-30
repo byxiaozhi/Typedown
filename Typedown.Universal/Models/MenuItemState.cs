@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Typedown.Universal.Models
 {
-    public class MenuItemModel
+    public class MenuItemState
     {
         public bool IsEnable { get; set; }
         public bool IsChecked { get; set; }

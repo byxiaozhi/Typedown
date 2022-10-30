@@ -119,20 +119,14 @@
     <Compile Include="Interfaces\IFileOperation.cs" />
     <Compile Include="Interfaces\IMarkdownEditor.cs" />
     <Compile Include="Interfaces\IWindowPrivate.cs" />
-    <Compile Include="Models\BoolEventArgs.cs" />
     <Compile Include="Models\ContentHistory.cs" />
-    <Compile Include="Models\DataEventArgs.cs" />
     <Compile Include="Models\EditorEventArgs.cs" />
-    <Compile Include="Models\FolderItemModel.cs" />
+    <Compile Include="Models\FolderItem.cs" />
     <Compile Include="Models\FormatState.cs" />
-    <Compile Include="Models\InvokeEventArgs.cs" />
-    <Compile Include="Models\MenuItemModel.cs" />
+    <Compile Include="Models\MenuItemState.cs" />
     <Compile Include="Models\MenuState.cs" />
     <Compile Include="Models\ParagraphState.cs" />
-    <Compile Include="Models\ReactiveEventArgs.cs" />
-    <Compile Include="Models\RectangleModel.cs" />
     <Compile Include="Models\WindowPlacement.cs" />
-    <Compile Include="Models\WndEventArgs.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

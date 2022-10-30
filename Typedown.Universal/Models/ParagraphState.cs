@@ -119,26 +119,26 @@ namespace Typedown.Universal.Models
             Chart.IsEnable = IsEnable;
         }
 
-        public MenuItemModel Heading1 { get; set; } = new();
-        public MenuItemModel Heading2 { get; set; } = new();
-        public MenuItemModel Heading3 { get; set; } = new();
-        public MenuItemModel Heading4 { get; set; } = new();
-        public MenuItemModel Heading5 { get; set; } = new();
-        public MenuItemModel Heading6 { get; set; } = new();
-        public MenuItemModel UpgradeHeading { get; set; } = new();
-        public MenuItemModel DegradeHeading { get; set; } = new();
-        public MenuItemModel Paragraph { get; set; } = new();
-        public MenuItemModel Table { get; set; } = new();
-        public MenuItemModel CodeFences { get; set; } = new();
-        public MenuItemModel HtmlBlock { get; set; } = new();
-        public MenuItemModel MathBlock { get; set; } = new();
-        public MenuItemModel QuoteBlock { get; set; } = new();
-        public MenuItemModel OrderList { get; set; } = new();
-        public MenuItemModel BulletList { get; set; } = new();
-        public MenuItemModel TaskList { get; set; } = new();
-        public MenuItemModel HorizontalLine { get; set; } = new();
-        public MenuItemModel FrontMatter { get; set; } = new();
-        public MenuItemModel Chart { get; set; } = new();
+        public MenuItemState Heading1 { get; set; } = new();
+        public MenuItemState Heading2 { get; set; } = new();
+        public MenuItemState Heading3 { get; set; } = new();
+        public MenuItemState Heading4 { get; set; } = new();
+        public MenuItemState Heading5 { get; set; } = new();
+        public MenuItemState Heading6 { get; set; } = new();
+        public MenuItemState UpgradeHeading { get; set; } = new();
+        public MenuItemState DegradeHeading { get; set; } = new();
+        public MenuItemState Paragraph { get; set; } = new();
+        public MenuItemState Table { get; set; } = new();
+        public MenuItemState CodeFences { get; set; } = new();
+        public MenuItemState HtmlBlock { get; set; } = new();
+        public MenuItemState MathBlock { get; set; } = new();
+        public MenuItemState QuoteBlock { get; set; } = new();
+        public MenuItemState OrderList { get; set; } = new();
+        public MenuItemState BulletList { get; set; } = new();
+        public MenuItemState TaskList { get; set; } = new();
+        public MenuItemState HorizontalLine { get; set; } = new();
+        public MenuItemState FrontMatter { get; set; } = new();
+        public MenuItemState Chart { get; set; } = new();
 
         public bool FormatIsEnable { get; set; }
         public bool HyperlinkIsEnable { get; set; }

@@ -19,8 +19,8 @@ namespace Typedown.Universal.Services
 
         private AppViewModel ViewModel { get; }
 
-        public ObservableCollection<FolderItemModel> TreeViewItems { get; }
-        public FolderItemModel RootItem { get; }
+        public ObservableCollection<FolderItem> TreeViewItems { get; }
+        public FolderItem RootItem { get; }
 
         private readonly string folderGlyph = ((char)short.Parse("f12b", NumberStyles.AllowHexSpecifier)).ToString();
 
@@ -30,9 +30,9 @@ namespace Typedown.Universal.Services
         {
             Settings = settings;
             ViewModel = viewModel;
-            TreeViewItems = new ObservableCollection<FolderItemModel>();
+            TreeViewItems = new ObservableCollection<FolderItem>();
             Settings.PropertyChanged += Settings_PropertyChanged;
-            RootItem = new FolderItemModel();
+            RootItem = new FolderItem();
             InitWorkFolder();
         }
 
@@ -44,13 +44,13 @@ namespace Typedown.Universal.Services
             }
         }
 
-        private void AddChild(FolderItemModel folder, FolderItemModel child)
+        private void AddChild(FolderItem folder, FolderItem child)
         {
             var count = folder.Children.Count;
             for (var i = 0; i < count; i++)
             {
-                var oldItem = (folder.Children[i] as FolderItemModel);
-                if ((child.Type == oldItem.Type && string.Compare(oldItem.Name, child.Name) > 0) || (child.Type == FolderItemModel.ItemType.folder && oldItem.Type == FolderItemModel.ItemType.file))
+                var oldItem = (folder.Children[i] as FolderItem);
+                if ((child.Type == oldItem.Type && string.Compare(oldItem.Name, child.Name) > 0) || (child.Type == FolderItem.ItemType.folder && oldItem.Type == FolderItem.ItemType.file))
                 {
                     folder.Children.Insert(i, child);
                     if (folder == RootItem) TreeViewItems.Insert(i, child);
@@ -61,13 +61,13 @@ namespace Typedown.Universal.Services
             if (folder == RootItem) TreeViewItems.Add(child);
         }
 
-        private void OnFileCreated(FolderItemModel folder, FileSystemEventArgs e, FileAttributes attr)
+        private void OnFileCreated(FolderItem folder, FileSystemEventArgs e, FileAttributes attr)
         {
             if (FileFilter(attr, e.Name))
             {
                 if (folder.IsExpanded || folder == RootItem)
                 {
-                    if (!folder.Children.Where(x => (x as FolderItemModel).Path == e.FullPath).Any())
+                    if (!folder.Children.Where(x => (x as FolderItem).Path == e.FullPath).Any())
                     {
                         AddChild(folder, CreateFolderItem(e.FullPath));
                     }
@@ -79,17 +79,17 @@ namespace Typedown.Universal.Services
             }
         }
 
-        private void OnFileDeleted(FolderItemModel folder, FileSystemEventArgs e)
+        private void OnFileDeleted(FolderItem folder, FileSystemEventArgs e)
         {
             if (folder.IsExpanded || folder == RootItem)
             {
-                foreach (var item in folder.Children.Where(x => (x as FolderItemModel).Path == e.FullPath).ToList())
+                foreach (var item in folder.Children.Where(x => (x as FolderItem).Path == e.FullPath).ToList())
                 {
-                    (item as FolderItemModel).Dispose();
+                    (item as FolderItem).Dispose();
                     folder.Children.Remove(item);
                     if (folder == RootItem)
                     {
-                        TreeViewItems.Remove(item as FolderItemModel);
+                        TreeViewItems.Remove(item as FolderItem);
                     }
                 }
             }
@@ -99,11 +99,11 @@ namespace Typedown.Universal.Services
             }
         }
 
-        private void OnFileRenamed(FolderItemModel folder, RenamedEventArgs e, FileAttributes attr)
+        private void OnFileRenamed(FolderItem folder, RenamedEventArgs e, FileAttributes attr)
         {
             if (folder.IsExpanded || folder == RootItem)
             {
-                var items = folder.Children.Where(x => (x as FolderItemModel).Path == e.OldFullPath).Select(x => x as FolderItemModel).ToList();
+                var items = folder.Children.Where(x => (x as FolderItem).Path == e.OldFullPath).Select(x => x as FolderItem).ToList();
                 if (items.Count > 0)
                 {
                     for (var i = 1; i < items.Count; i++)
@@ -126,7 +126,7 @@ namespace Typedown.Universal.Services
                         item.Path = e.FullPath;
                         item.Name = e.Name;
                         AddChild(folder, item);
-                        if (folder.Children.Count == 1 || (folder.Children[0] as FolderItemModel).Type != FolderItemModel.ItemType.loading)
+                        if (folder.Children.Count == 1 || (folder.Children[0] as FolderItem).Type != FolderItem.ItemType.loading)
                         {
                             folder.IsExpanded = true;
                         }
@@ -147,12 +147,12 @@ namespace Typedown.Universal.Services
             }
         }
 
-        private void OnFileChanged(FolderItemModel folder, FileSystemEventArgs e, FileAttributes attr)
+        private void OnFileChanged(FolderItem folder, FileSystemEventArgs e, FileAttributes attr)
         {
             if (folder.IsExpanded || folder == RootItem)
             {
                 var filter = FileFilter(attr, e.Name);
-                var contains = folder.Children.Where(x => (x as FolderItemModel).Path == e.FullPath).Any();
+                var contains = folder.Children.Where(x => (x as FolderItem).Path == e.FullPath).Any();
                 if (filter && !contains)
                 {
                     OnFileCreated(folder, e, attr);
@@ -190,7 +190,7 @@ namespace Typedown.Universal.Services
             return null;
         }
 
-        private void StartWatchFolder(FolderItemModel folder)
+        private void StartWatchFolder(FolderItem folder)
         {
             var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
             if (folder.FileSystemWatcher != null) folder.FileSystemWatcher.Dispose();
@@ -224,19 +224,19 @@ namespace Typedown.Universal.Services
             return File.GetAttributes(path).HasFlag(FileAttributes.Directory);
         }
 
-        private FolderItemModel CreateFolderItem(String path)
+        private FolderItem CreateFolderItem(String path)
         {
             return IsDirectory(path) ? CreateFolderItem(new DirectoryInfo(path)) : CreateFolderItem(new FileInfo(path));
         }
 
-        private FolderItemModel CreateFolderItem(FileSystemInfo item)
+        private FolderItem CreateFolderItem(FileSystemInfo item)
         {
             var isFolder = item.Attributes.HasFlag(FileAttributes.Directory);
-            FolderItemModel fileItem = new();
+            FolderItem fileItem = new();
             fileItem.Name = item.Name;
             fileItem.Path = item.FullName;
             fileItem.Glyph = isFolder ? folderGlyph : fileGlyph;
-            fileItem.Type = isFolder ? FolderItemModel.ItemType.folder : FolderItemModel.ItemType.file;
+            fileItem.Type = isFolder ? FolderItem.ItemType.folder : FolderItem.ItemType.file;
             fileItem.Opened = item.FullName == ViewModel.FileViewModel.FilePath;
             ScanWorkFolder(fileItem, false);
             return fileItem;
@@ -255,7 +255,7 @@ namespace Typedown.Universal.Services
             return attrTest && (typeTest || dirTest);
         }
 
-        public void ScanWorkFolder(FolderItemModel parent, bool full = true)
+        public void ScanWorkFolder(FolderItem parent, bool full = true)
         {
             try
             {
@@ -271,9 +271,9 @@ namespace Typedown.Universal.Services
                 }
                 else if (directories.Any() || files.Any())
                 {
-                    parent.Children.Add(new FolderItemModel()
+                    parent.Children.Add(new FolderItem()
                     {
-                        Type = FolderItemModel.ItemType.loading
+                        Type = FolderItem.ItemType.loading
                     });
                 }
                 StartWatchFolder(parent);
@@ -286,7 +286,7 @@ namespace Typedown.Universal.Services
             RootItem.Path = Settings.WorkFolder;
             ScanWorkFolder(RootItem);
             TreeViewItems.Clear();
-            RootItem.Children.ToList().ForEach(x => TreeViewItems.Add(x as FolderItemModel));
+            RootItem.Children.ToList().ForEach(x => TreeViewItems.Add(x as FolderItem));
         }
 
         public void Dispose()
