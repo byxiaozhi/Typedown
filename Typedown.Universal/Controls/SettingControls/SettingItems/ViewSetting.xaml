@@ -16,6 +16,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="4">
+        
         <TextBlock Text="窗口" Margin="0,0,0,4"/>
         <controls:ExpanderSettingItem Title="主题" Description="选择要显示的应用主题">
             <controls:ExpanderSettingItem.Icon>
@@ -52,6 +53,7 @@
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.Topmost, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
+        
         <TextBlock Text="布局" Margin="0,16,0,4"/>
         <controls:NormalSettingItem Title="紧凑模式" Description="菜单栏与标题在同一行显示">
             <controls:NormalSettingItem.Icon>
@@ -72,5 +74,21 @@
             <ToggleSwitch IsOn="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
 
+        <TextBlock Text="自定义" Margin="0,16,0,4"/>
+        <controls:ButtonSettingItem Title="菜单" Description="自定义菜单显示内容">
+            <controls:ButtonSettingItem.Icon>
+                <FontIcon Glyph="&#xea4b;"/>
+            </controls:ButtonSettingItem.Icon>
+        </controls:ButtonSettingItem>
+        <controls:ButtonSettingItem Title="侧边栏" Description="自定义侧边栏显示内容">
+            <controls:ButtonSettingItem.Icon>
+                <FontIcon Glyph="&#xea4b;"/>
+            </controls:ButtonSettingItem.Icon>
+        </controls:ButtonSettingItem>
+        <controls:ButtonSettingItem Title="状态栏" Description="自定义状态栏显示内容">
+            <controls:ButtonSettingItem.Icon>
+                <FontIcon Glyph="&#xea4b;"/>
+            </controls:ButtonSettingItem.Icon>
+        </controls:ButtonSettingItem>
     </StackPanel>
 </UserControl>

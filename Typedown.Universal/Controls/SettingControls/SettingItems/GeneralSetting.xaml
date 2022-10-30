@@ -14,6 +14,8 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="4">
+
+        <TextBlock Text="应用" Margin="0,0,0,4"/>
         <controls:ExpanderSettingItem Title="启动选项" Description="当应用启动时进行的操作">
             <controls:ExpanderSettingItem.Icon>
                 <FontIcon Glyph="&#xe7b5;"/>
@@ -80,14 +82,20 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="文件访问历史" Description="文件访问历史默认在设备上保留 90 天">
-            <controls:NormalSettingItem.Icon>
+
+        <TextBlock Text="自定义" Margin="0,16,0,4"/>
+        <controls:ButtonSettingItem Title="快捷键" Description="自定义快捷键">
+            <controls:ButtonSettingItem.Icon>
+                <FontIcon Glyph="&#xe92e;"/>
+            </controls:ButtonSettingItem.Icon>
+        </controls:ButtonSettingItem>
+        
+        <TextBlock Text="数据" Margin="0,16,0,4"/>
+        <controls:ButtonSettingItem Title="文件访问历史" Description="文件访问历史默认在设备上保留 90 天">
+            <controls:ButtonSettingItem.Icon>
                 <FontIcon Glyph="&#xf738;"/>
-            </controls:NormalSettingItem.Icon>
-            <Button MinWidth="120">
-                查看
-            </Button>
-        </controls:NormalSettingItem>
+            </controls:ButtonSettingItem.Icon>
+        </controls:ButtonSettingItem>
         <controls:NormalSettingItem Title="恢复默认设置" Description="还原应用默认设置">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xebc4;"/>
