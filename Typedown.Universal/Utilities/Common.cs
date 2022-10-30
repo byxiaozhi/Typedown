@@ -7,11 +7,21 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.UI.Xaml;
 
 namespace Typedown.Universal.Utilities
 {
     public static class Common
     {
+        public static T GetBreakPointValue<T>(this double width, T largeValue, T mediumValue, T smallValue)
+        {
+            if (width >= 1008)
+                return largeValue;
+            if (width >= 641)
+                return mediumValue;
+            return smallValue;
+        }
+
         public static void OpenUrl(string url)
         {
             try

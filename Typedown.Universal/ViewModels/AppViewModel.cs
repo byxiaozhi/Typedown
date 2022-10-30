@@ -6,6 +6,7 @@ using System.Reactive;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
@@ -25,7 +26,7 @@ namespace Typedown.Universal.ViewModels
 
         public SettingsViewModel SettingsViewModel { get; }
 
-        public IReadOnlyList<string> NavPagePath { get; set; } = new List<string>();
+        public IReadOnlyList<Frame> FrameStack { get; set; } = new List<Frame>();
 
         public Command<Unit> GoBackCommand { get; } = new(false);
 
@@ -53,25 +54,12 @@ namespace Typedown.Universal.ViewModels
             FormatViewModel = formatViewModel;
             ParagraphViewModel = paragraphViewModel;
             SettingsViewModel = settingsViewModel;
-
-            NavigateCommand.OnExecute.Subscribe(Navigate);
             GoBackCommand.OnExecute.Subscribe(_ => GoBack());
-            this.WhenPropertyChanged(nameof(NavPagePath)).Subscribe(_ => UpdateCanGoBack());
-        }
-
-        public void Navigate(string path)
-        {
-            NavPagePath = path.Trim('/').Split("/").ToList();
         }
 
         public void GoBack()
         {
-            NavPagePath = NavPagePath.Take(Math.Max(0, NavPagePath.Count - 1)).ToList();
-        }
-
-        public void UpdateCanGoBack()
-        {
-            GoBackCommand.IsExecutable = NavPagePath.Any();
+            FrameStack.Where(x => x.CanGoBack).Last().GoBack();
         }
     }
 }

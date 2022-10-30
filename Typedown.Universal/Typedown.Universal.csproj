@@ -55,6 +55,7 @@
     <Compile Include="Controls\CaptionControls\CaptionButtons.xaml.cs">
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CommonControls\GlobalFrame.cs" />
     <Compile Include="Controls\EditorControls\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
     </Compile>
@@ -130,6 +131,7 @@
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Route.cs" />
     <Compile Include="Pages\SettingPages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -165,7 +167,7 @@
     <Compile Include="Utilities\FileExtension.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
-    <Compile Include="Utilities\Localized.cs" />
+    <Compile Include="Utilities\Localize.cs" />
     <Compile Include="Utilities\ObservableObject.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
     <Compile Include="Utilities\Toc2ListViewItems.cs" />

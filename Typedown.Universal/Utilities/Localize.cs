@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
@@ -106,6 +107,8 @@ namespace Typedown.Universal.Utilities
         public static string GetLangOptionDisplayName(string key) => LangsOptions[key];
 
         public static string GetString(string key) => Resources.GetString(key) ?? DialogMessages.GetString(key);
+
+        public static string GetTypeString(Type type) => (type.GetCustomAttribute(typeof(LocalizeAttribute)) as LocalizeAttribute)?.Text;
     }
 
     public class LocalizeAttribute : Attribute

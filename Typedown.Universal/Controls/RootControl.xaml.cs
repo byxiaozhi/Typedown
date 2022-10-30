@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using Typedown.Universal.Pages;
@@ -25,8 +26,8 @@ namespace Typedown.Universal.Controls
         private void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ViewModel.XamlRoot = XamlRoot;
-            disposables.Add(ViewModel.WhenPropertyChanged(nameof(ViewModel.NavPagePath)).Subscribe(_ => Navigate()));
-            Navigate();
+            disposables.Add(ViewModel.NavigateCommand.OnExecute.Subscribe(args => Navigate(args)));
+            Frame.Navigate(typeof(MainPage), null);
         }
 
         private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -34,29 +35,20 @@ namespace Typedown.Universal.Controls
             disposables.Clear();
         }
 
-        private void Navigate()
+        private void Navigate(string args)
         {
-            if (ViewModel.NavPagePath.Count > 0)
+            var path = args?.TrimStart('/').Split('/');
+            if (path != null && path.Any())
             {
-                var type = GetPageType(ViewModel.NavPagePath[0]);
+                var type = Route.GetRootPageType(path.First());
                 if (type != Frame.SourcePageType)
-                    Frame.Navigate(type, null, GetTransition(true));
-            }
-            else
-            {
-                Frame.Navigate(typeof(MainPage), null, GetTransition(false));
+                    Frame.Navigate(type, string.Join('/', path.Skip(1)), GetTransition());
             }
         }
 
-        public Type GetPageType(string pageName) => pageName switch
+        public NavigationTransitionInfo GetTransition() => Settings?.AnimationEnable ?? false ? new SlideNavigationTransitionInfo()
         {
-            "Settings" => typeof(SettingsPage),
-            _ => typeof(MainPage)
-        };
-
-        public NavigationTransitionInfo GetTransition(bool fromRight) => Settings?.AnimationEnable ?? false ? new SlideNavigationTransitionInfo()
-        {
-            Effect = fromRight ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft
+            Effect = SlideNavigationTransitionEffect.FromRight
         } : new SuppressNavigationTransitionInfo();
     }
 }

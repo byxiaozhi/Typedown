@@ -129,6 +129,10 @@
     <value>一款所见即所得 Markdown 编辑器</value>
     <comment>一款所见即所得 Markdown 编辑器</comment>
   </data>
+  <data name="AboutPage.Content" xml:space="preserve">
+    <value>关于</value>
+    <comment>关于</comment>
+  </data>
   <data name="AlignCenter" xml:space="preserve">
     <value>居中对齐</value>
     <comment>居中对齐</comment>
@@ -325,6 +329,10 @@
     <value>编辑区域最大宽度</value>
     <comment>编辑区域最大宽度</comment>
   </data>
+  <data name="EditorPage.Content" xml:space="preserve">
+    <value>编辑器</value>
+    <comment>编辑器</comment>
+  </data>
   <data name="EmbedLink.Content" xml:space="preserve">
     <value>嵌入链接</value>
     <comment>嵌入链接</comment>
@@ -338,6 +346,10 @@
     <comment>请输入图像链接或本地路径</comment>
   </data>
   <data name="Export.Text" xml:space="preserve">
+    <value>导出</value>
+    <comment>导出</comment>
+  </data>
+  <data name="ExportPage.Content" xml:space="preserve">
     <value>导出</value>
     <comment>导出</comment>
   </data>
@@ -425,6 +437,10 @@
     <value>通用</value>
     <comment>通用</comment>
   </data>
+  <data name="GeneralPage.Content" xml:space="preserve">
+    <value>通用</value>
+    <comment>通用</comment>
+  </data>
   <data name="Heading.Text" xml:space="preserve">
     <value>标题</value>
     <comment>标题</comment>
@@ -470,6 +486,10 @@
     <comment>超链接</comment>
   </data>
   <data name="Image.Text" xml:space="preserve">
+    <value>图像</value>
+    <comment>图像</comment>
+  </data>
+  <data name="ImagePage.Content" xml:space="preserve">
     <value>图像</value>
     <comment>图像</comment>
   </data>
@@ -876,6 +896,10 @@
   <data name="View.Title" xml:space="preserve">
     <value>查看</value>
     <comment>查看</comment>
+  </data>
+  <data name="ViewPage.Content" xml:space="preserve">
+    <value>外观</value>
+    <comment>外观</comment>
   </data>
   <data name="Website" xml:space="preserve">
     <value>网站</value>
