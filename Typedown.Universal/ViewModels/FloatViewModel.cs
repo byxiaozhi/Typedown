@@ -58,7 +58,7 @@ namespace Typedown.Universal.ViewModels
             MarkdownEditor?.PostMessage("SearchOpenChange", new { open });
         }
 
-        public void OnOpenImageToolbar(JToken arg)
+        public void OnOpenImageToolbar(JToken args)
         {
             //if (!ImageToolbarOpen)
             //{
@@ -74,10 +74,9 @@ namespace Typedown.Universal.ViewModels
             frontMenu.Open(rect);
         }
 
-        public void OnOpenFormatPicker(JToken arg)
+        public void OnOpenFormatPicker(JToken args)
         {
-            //FormatPickerArg = arg;
-            //FormatPickerOpen = true;
+            throw new NotImplementedException();
         }
 
         public void OnOpenImageSelector(JToken args)
@@ -96,10 +95,20 @@ namespace Typedown.Universal.ViewModels
             tableTools.Open(rect, type);
         }
 
-        public void OnOpenToolTip(JToken arg)
+        private ToolTip openedToolTip;
+
+        public void OnOpenToolTip(JToken args)
         {
-            //ToolTipArg = arg;
-            //ToolTipOpen = arg["open"].ToObject<bool>();
+            openedToolTip?.Hide();
+            openedToolTip = null;
+            if (args["open"].ToObject<bool>())
+            {
+                openedToolTip = ServiceProvider.GetService<ToolTip>();
+                var rect = args["boundingClientRect"].ToObject<Rect>();
+                var name = args["tooltip"].ToString();
+                var text = Localize.GetString(name) ?? name;
+                openedToolTip.Open(rect, text);
+            }
         }
     }
 }

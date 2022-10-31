@@ -54,6 +54,7 @@ namespace Typedown
             builder.AddTransient<FrontMenu>();
             builder.AddTransient<TableTools>();
             builder.AddTransient<ImageSelector>();
+            builder.AddTransient<ToolTip>();
         }
     }
 }

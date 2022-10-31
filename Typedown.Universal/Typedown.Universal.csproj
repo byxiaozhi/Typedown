@@ -82,6 +82,9 @@
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FloatControls\TableTools.cs" />
+    <Compile Include="Controls\FloatControls\ToolTip.xaml.cs">
+      <DependentUpon>ToolTip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SettingControls\ButtonSettingItem.xaml.cs">
       <DependentUpon>ButtonSettingItem.xaml</DependentUpon>
     </Compile>
@@ -333,6 +336,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FloatControls\Search.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FloatControls\ToolTip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

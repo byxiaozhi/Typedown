@@ -32,10 +32,9 @@ namespace Typedown.Universal.Controls.FloatControls
         {
             TextBoxSrc.Text = HttpUtility.UrlDecode(imageInfo?["src"]?.ToString() ?? "");
             TextBoxAlt.Text = imageInfo?["alt"]?.ToString() ?? "";
-            TextBoxTitle.Text = imageInfo?["title"]?.ToString() ?? "";
-            var options = new FlyoutShowOptions() { Placement = FlyoutPlacementMode.Bottom };
-            flyout.ShowAt(markdownEditor.GetDummyRectangle(rect), options);
+            TextBoxTitle.Text = imageInfo?["title"]?.ToString() ?? "";            
             flyout.Content = this;
+            flyout.ShowAt(markdownEditor.GetDummyRectangle(rect));
         }
 
         private void OnFlyoutClosing(FlyoutBase sender, FlyoutBaseClosingEventArgs args)

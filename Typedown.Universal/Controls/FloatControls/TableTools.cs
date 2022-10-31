@@ -32,9 +32,9 @@ namespace Typedown.Universal.Controls.FloatControls
 
         public void Open(Rect rect, string type)
         {
+            IsRow = type != "bottom";
             Flyout.OverlayInputPassThroughElement = (markdownEditor as UIElement).XamlRoot.Content;
             Flyout.ShowAt(markdownEditor.GetDummyRectangle(rect));
-            IsRow = type != "bottom";
         }
 
         private void InitializeBinding()
