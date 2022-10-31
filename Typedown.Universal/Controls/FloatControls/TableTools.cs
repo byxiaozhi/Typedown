@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
+using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -22,9 +23,10 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private readonly IMarkdownEditor markdownEditor;
 
-        public TableTools(IMarkdownEditor markdownEditor)
+        public TableTools(SettingsViewModel settings, IMarkdownEditor markdownEditor)
         {
             this.markdownEditor = markdownEditor;
+            Flyout.AreOpenCloseAnimationsEnabled = settings.AnimationEnable;
             InitializeBinding();
         }
 

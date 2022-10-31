@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.Storage.Pickers;
@@ -12,7 +13,7 @@ namespace Typedown.Universal.Controls
     public class PathPickerButton : Button
     {
         public static DependencyProperty PathProperty = DependencyProperty.Register(nameof(Path), typeof(string), typeof(EnumNameBlock), new(""));
-        public string Path { get => (string)GetValue(PathProperty); set => SetValue(PathProperty, value.Replace("\\","/")); }
+        public string Path { get => (string)GetValue(PathProperty); set => SetValue(PathProperty, value.Replace("\\", "/")); }
 
         public static DependencyProperty ModeProperty = DependencyProperty.Register(nameof(Mode), typeof(PathPickMode), typeof(EnumNameBlock), new(PathPickMode.File));
         public PathPickMode Mode { get => (PathPickMode)GetValue(ModeProperty); set => SetValue(ModeProperty, value); }
@@ -22,27 +23,37 @@ namespace Typedown.Universal.Controls
 
         private nint Window => this.GetService<IWindowService>().GetWindow(this);
 
+        public bool IsPicking { get; private set; }
+
         public PathPickerButton()
         {
             Style = Application.Current.Resources["DefaultButtonStyle"] as Style;
             FileTypeFilter = new List<string>();
-            Click += PathPickerButton_Click;
+            Click += OnPathPickerButtonClick;
         }
 
-        private void PathPickerButton_Click(object sender, RoutedEventArgs e)
+        private async void OnPathPickerButtonClick(object sender, RoutedEventArgs e)
         {
-            switch (Mode)
+            try
             {
-                case PathPickMode.File:
-                    PickFile();
-                    break;
-                case PathPickMode.Folder:
-                    PickFolder();
-                    break;
+                IsPicking = true;
+                switch (Mode)
+                {
+                    case PathPickMode.File:
+                        await PickFile();
+                        break;
+                    case PathPickMode.Folder:
+                        await PickFolder();
+                        break;
+                }
+            }
+            finally
+            {
+                IsPicking = false;
             }
         }
 
-        private async void PickFile()
+        private async Task PickFile()
         {
             var filePicker = new FileOpenPicker();
             FileTypeFilter.ToList().ForEach(filePicker.FileTypeFilter.Add);
@@ -52,7 +63,7 @@ namespace Typedown.Universal.Controls
                 Path = file.Path;
         }
 
-        private async void PickFolder()
+        private async Task PickFolder()
         {
             var folderPicker = new FolderPicker();
             folderPicker.SetOwnerWindow(Window);

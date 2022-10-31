@@ -69,15 +69,15 @@
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommonControls\EnumNameBlock.cs" />
-    <Compile Include="Controls\FloatControls\FormatPicker.cs" />
     <Compile Include="Controls\FloatControls\FrontMenu.cs" />
     <Compile Include="Controls\CommonControls\PathPickerButton.cs" />
     <Compile Include="Controls\CommonControls\GridSplitter.cs" />
     <Compile Include="Controls\DialogControls\InsertTableDialog.xaml.cs">
       <DependentUpon>InsertTableDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FloatControls\ImageSelector.cs" />
-    <Compile Include="Controls\FloatControls\ImageToolbar.cs" />
+    <Compile Include="Controls\FloatControls\ImageSelector.xaml.cs">
+      <DependentUpon>ImageSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FloatControls\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
@@ -325,6 +325,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\DialogControls\InsertTableDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FloatControls\ImageSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

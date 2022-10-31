@@ -1,4 +1,5 @@
 ﻿using Typedown.Universal.Interfaces;
+using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -14,10 +15,11 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private readonly IMarkdownEditor markdownEditor;
 
-        public FrontMenu(IMarkdownEditor markdownEditor)
+        public FrontMenu(SettingsViewModel settings, IMarkdownEditor markdownEditor)
         {
             this.markdownEditor = markdownEditor;
             Flyout.Closed += OnClosed;
+            Flyout.AreOpenCloseAnimationsEnabled = settings.AnimationEnable;
         }
 
         private void OnClosed(object sender, object e)

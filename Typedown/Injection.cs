@@ -51,8 +51,9 @@ namespace Typedown
         private static void RegisterComponent(ServiceCollection builder)
         {
             builder.AddScoped<IMarkdownEditor, MarkdownEditor>();
-            builder.AddScoped<FrontMenu>();
-            builder.AddScoped<TableTools>();
+            builder.AddTransient<FrontMenu>();
+            builder.AddTransient<TableTools>();
+            builder.AddTransient<ImageSelector>();
         }
     }
 }

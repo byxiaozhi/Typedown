@@ -80,10 +80,12 @@ namespace Typedown.Universal.ViewModels
             //FormatPickerOpen = true;
         }
 
-        public void OnOpenImageSelector(JToken arg)
+        public void OnOpenImageSelector(JToken args)
         {
-            //ImageSelectorOpenArg = arg;
-            //ImageSelectorOpen = true;
+            var selector = ServiceProvider.GetService<ImageSelector>();
+            var rect = args["boundingClientRect"].ToObject<Rect>();
+            var info = args["imageInfo"];
+            selector.Open(rect, info);
         }
 
         public void OnOpenTableTools(JToken args)
@@ -98,20 +100,6 @@ namespace Typedown.Universal.ViewModels
         {
             //ToolTipArg = arg;
             //ToolTipOpen = arg["open"].ToObject<bool>();
-        }
-
-        public void CloseAll()
-        {
-            //if (FormatPickerOpen)
-            //    FormatPickerOpen = false;
-            //if (ImageToolbarOpen)
-            //    ImageToolbarOpen = false;
-            //if (FrontMenuOpen)
-            //    FrontMenuOpen = false;
-            //if (ImageSelectorOpen)
-            //    ImageSelectorOpen = false;
-            //if (TableToolsOpen)
-            //    TableToolsOpen = false;
         }
     }
 }
