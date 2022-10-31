@@ -13,6 +13,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid 
+        MinHeight="68"
         Padding="16,12,16,12"
         ColumnSpacing="16"
         CornerRadius="{x:Bind CornerRadius, Mode=OneWay}" 

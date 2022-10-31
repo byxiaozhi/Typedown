@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using Typedown.Universal.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
@@ -9,7 +10,7 @@ namespace Typedown.Universal.Utilities
     {
         public static T GetService<T>(this FrameworkElement element)
         {
-            if ((element.DataContext ?? (element.XamlRoot?.Content as FrameworkElement)?.DataContext) is AppViewModel model)
+            if ((element?.XamlRoot?.Content as FrameworkElement)?.DataContext is AppViewModel model)
                 return model.ServiceProvider.GetService<T>();
             return default;
         }

@@ -106,7 +106,9 @@ namespace Typedown.Universal.Utilities
 
         public static string GetLangOptionDisplayName(string key) => LangsOptions[key];
 
-        public static string GetString(string key) => Resources.GetString(key) ?? DialogMessages.GetString(key);
+        public static string GetString(string key) => Resources.GetString(key);
+
+        public static string GetDialogString(string key) => DialogMessages.GetString(key);
 
         public static string GetTypeString(Type type) => (type.GetCustomAttribute(typeof(LocalizeAttribute)) as LocalizeAttribute)?.Text;
     }

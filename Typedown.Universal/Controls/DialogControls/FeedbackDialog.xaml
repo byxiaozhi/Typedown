@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.FeedbackDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <StackPanel Spacing="16">
+        <StackPanel Spacing="8">
+            <TextBlock x:Uid="FeedbackRating"/>
+            <RatingControl Value="{x:Bind Ranting, Mode=TwoWay}"  IsReadOnly="False" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <StackPanel Spacing="8">
+            <TextBlock x:Uid="FeedbackContentTitle"/>
+            <TextBox 
+                TextWrapping="Wrap" 
+                MinWidth="400"
+                Height="200" 
+                Text="{x:Bind Feedback, Mode=TwoWay}"
+                x:Uid="TextboxFeedbackContent"
+            />
+        </StackPanel>
+        <StackPanel Spacing="8">
+            <TextBlock x:Uid="FeedbackContact"/>
+            <TextBox 
+                MinWidth="400" 
+                Text="{x:Bind Contact, Mode=TwoWay}"
+                x:Uid="TextboxFeedbackContact"
+                />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

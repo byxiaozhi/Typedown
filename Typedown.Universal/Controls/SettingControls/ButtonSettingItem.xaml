@@ -13,6 +13,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Button 
+        MinHeight="68"
         Padding="16,12,16,12" 
         Click="OnClick"
         Command="{x:Bind Command, Mode=OneWay}"

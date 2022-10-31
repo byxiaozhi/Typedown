@@ -11,21 +11,23 @@
 
     <StackPanel Spacing="8">
 
-        <TextBlock FontWeight="Bold">关于此应用</TextBlock>
+        <TextBlock FontWeight="SemiBold" x:Uid="AboutApp"/>
 
         <StackPanel>
-            <TextBlock>Typedown 1.0.0</TextBlock>
-            <TextBlock>© 2022 XXXXXXXXX。保留所有权利。</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,0,4,0">Typedown</TextBlock>
+                <TextBlock Text="{x:Bind local:AboutApp.GetAppVersion()}"/>
+            </StackPanel>
+            <TextBlock x:Uid="AboutIntroduction"/>
         </StackPanel>
 
         <StackPanel Margin="-12,8,0,0">
-            <HyperlinkButton>XXXXXXXXX 软件许可条款</HyperlinkButton>
-            <HyperlinkButton>XXXXXXXXX 服务协议</HyperlinkButton>
-            <HyperlinkButton>XXXXXXXXX 隐私声明</HyperlinkButton>
+            <HyperlinkButton x:Uid="BasedOnOpenSourceSoftware" NavigateUri="https://typedown.ownbox.cn/credits" />
+            <HyperlinkButton x:Uid="AppStorePage" NavigateUri="https://www.microsoft.com/store/apps/9P8TCW4H2HB4" />
         </StackPanel>
 
         <StackPanel Margin="0,8,0,0" Spacing="16">
-            <Button MinWidth="120">发送反馈</Button>
+            <Button MinWidth="100" Name="FeedBackButton" x:Uid="SendFeedback" Click="FeedBackButton_Click"/>
         </StackPanel>
 
     </StackPanel>

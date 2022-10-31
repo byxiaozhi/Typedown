@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Text;
 using System.Threading.Tasks;
 using Typedown.Universal.Utilities;
@@ -11,7 +12,7 @@ namespace Typedown.Universal.Controls
 {
     public class GlobalFrame : Frame
     {
-        public AppViewModel ViewModel => DataContext as AppViewModel;
+        private readonly CompositeDisposable disposables = new();
 
         public GlobalFrame()
         {
@@ -22,17 +23,21 @@ namespace Typedown.Universal.Controls
 
         private void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ViewModel.FrameStack = ViewModel.FrameStack.Append(this).ToList();
+            var viewModel = this.GetService<AppViewModel>();
+            viewModel.FrameStack = viewModel.FrameStack.Append(this).ToList();
+            disposables.Add(Disposable.Create(() => viewModel.FrameStack = viewModel.FrameStack.Where(x => x != this).ToList()));
         }
 
         private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ViewModel.FrameStack = ViewModel.FrameStack.Take(ViewModel.FrameStack.Count - 1).ToList();
+            disposables.Dispose();
         }
 
         private void OnNavigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
-            ViewModel.GoBackCommand.IsExecutable = ViewModel.FrameStack.Any(x => x.CanGoBack);
+            var viewModel = this.GetService<AppViewModel>();
+            if (viewModel != null)
+                viewModel.GoBackCommand.IsExecutable = viewModel.FrameStack.Any(x => x.CanGoBack);
         }
     }
 }

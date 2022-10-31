@@ -56,6 +56,9 @@
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommonControls\GlobalFrame.cs" />
+    <Compile Include="Controls\DialogControls\FeedbackDialog.xaml.cs">
+      <DependentUpon>FeedbackDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\EditorControls\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
     </Compile>
@@ -284,6 +287,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\CaptionControls\CaptionButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DialogControls\FeedbackDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
