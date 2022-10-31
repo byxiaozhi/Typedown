@@ -58,10 +58,10 @@ namespace Typedown.Universal.Controls.FloatControls
             switch (state)
             {
                 case 1:
-                    VisualStateManager.GoToState(this, "SearchMode", useTransitions);
+                    VisualStateManager.GoToState(this, "SearchMode", useTransitions && Settings.AnimationEnable);
                     break;
                 case 2:
-                    VisualStateManager.GoToState(this, "ReplaceMode", useTransitions);
+                    VisualStateManager.GoToState(this, "ReplaceMode", useTransitions && Settings.AnimationEnable);
                     break;
             }
         }

@@ -29,7 +29,12 @@ namespace Typedown.Universal.Utilities
         public void Execute(object parameter)
         {
             if (canExecuteSubject.Value(parameter))
-                executeSubject.OnNext((T)XamlBindingHelper.ConvertValue(typeof(T), parameter));
+            {
+                if (parameter == null)
+                    executeSubject.OnNext(default);
+                else
+                    executeSubject.OnNext((T)XamlBindingHelper.ConvertValue(typeof(T), parameter));
+            }
         }
 
         public bool CanExecute(object parameter = null) => canExecuteSubject.Value(parameter);
