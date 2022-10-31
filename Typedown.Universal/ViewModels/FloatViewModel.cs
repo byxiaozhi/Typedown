@@ -69,10 +69,9 @@ namespace Typedown.Universal.ViewModels
 
         public void OnOpenFrontMenu(JToken args)
         {
-            //FrontMenuArg = arg;
-            //FrontMenuOpen = true;
             var frontMenu = ServiceProvider.GetService<FrontMenu>();
-            frontMenu.Open(args["boundingClientRect"].ToObject<Rect>());
+            var rect = args["boundingClientRect"].ToObject<Rect>();
+            frontMenu.Open(rect);
         }
 
         public void OnOpenFormatPicker(JToken arg)
@@ -87,11 +86,12 @@ namespace Typedown.Universal.ViewModels
             //ImageSelectorOpen = true;
         }
 
-        public void OnOpenTableTools(JToken arg)
+        public void OnOpenTableTools(JToken args)
         {
-            //TableToolsArg = arg;
-            //TableToolsOpen = true;
-            //TableToolsBarType = arg["tableInfo"]["barType"].ToString();
+            var tableTools = ServiceProvider.GetService<TableTools>();
+            var rect = args["boundingClientRect"].ToObject<Rect>();
+            var type = args["tableInfo"]["barType"].ToString();
+            tableTools.Open(rect, type);
         }
 
         public void OnOpenToolTip(JToken arg)

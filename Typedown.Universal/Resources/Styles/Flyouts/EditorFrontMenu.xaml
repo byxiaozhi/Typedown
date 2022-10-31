@@ -2,23 +2,23 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <MenuFlyout x:Key="EditorFrontMenu" Placement="Bottom">
-        <MenuFlyoutItem x:Uid="Duplicate"/>
+        <MenuFlyoutItem x:Uid="Duplicate" Command="{Binding ParagraphViewModel.DuplicateCommand}"/>
         <MenuFlyoutSubItem x:Uid="TurnInto">
-            <ToggleMenuFlyoutItem  x:Uid="ItemParagraph" KeyboardAcceleratorTextOverride="Ctrl+0"/>
+            <ToggleMenuFlyoutItem  x:Uid="ItemParagraph" KeyboardAcceleratorTextOverride="Ctrl+0" IsEnabled="{Binding EditorViewModel.ParagraphState.Paragraph.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.Paragraph.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" CommandParameter="paragraph"/>
             <MenuFlyoutSeparator />
-            <ToggleMenuFlyoutItem  x:Uid="Heading1" KeyboardAcceleratorTextOverride="Ctrl+1"/>
-            <ToggleMenuFlyoutItem  x:Uid="Heading2" KeyboardAcceleratorTextOverride="Ctrl+2"/>
-            <ToggleMenuFlyoutItem  x:Uid="Heading3" KeyboardAcceleratorTextOverride="Ctrl+3"/>
-            <ToggleMenuFlyoutItem  x:Uid="Heading4" KeyboardAcceleratorTextOverride="Ctrl+4"/>
-            <ToggleMenuFlyoutItem  x:Uid="Heading5" KeyboardAcceleratorTextOverride="Ctrl+5"/>
-            <ToggleMenuFlyoutItem  x:Uid="Heading6" KeyboardAcceleratorTextOverride="Ctrl+6"/>
+            <ToggleMenuFlyoutItem  x:Uid="Heading1" KeyboardAcceleratorTextOverride="Ctrl+1" IsEnabled="{Binding EditorViewModel.ParagraphState.Heading1.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.Heading1.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" CommandParameter="heading 1"/>
+            <ToggleMenuFlyoutItem  x:Uid="Heading2" KeyboardAcceleratorTextOverride="Ctrl+2" IsEnabled="{Binding EditorViewModel.ParagraphState.Heading2.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.Heading2.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}"  CommandParameter="heading 2"/>
+            <ToggleMenuFlyoutItem  x:Uid="Heading3" KeyboardAcceleratorTextOverride="Ctrl+3" IsEnabled="{Binding EditorViewModel.ParagraphState.Heading3.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.Heading3.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}"  CommandParameter="heading 3"/>
+            <ToggleMenuFlyoutItem  x:Uid="Heading4" KeyboardAcceleratorTextOverride="Ctrl+4" IsEnabled="{Binding EditorViewModel.ParagraphState.Heading4.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.Heading4.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}"  CommandParameter="heading 4"/>
+            <ToggleMenuFlyoutItem  x:Uid="Heading5" KeyboardAcceleratorTextOverride="Ctrl+5" IsEnabled="{Binding EditorViewModel.ParagraphState.Heading5.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.Heading5.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}"  CommandParameter="heading 5"/>
+            <ToggleMenuFlyoutItem  x:Uid="Heading6" KeyboardAcceleratorTextOverride="Ctrl+6" IsEnabled="{Binding EditorViewModel.ParagraphState.Heading6.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.Heading6.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" CommandParameter="heading 6" />
             <MenuFlyoutSeparator />
-            <ToggleMenuFlyoutItem x:Uid="OrderedList"/>
-            <ToggleMenuFlyoutItem x:Uid="Unordered"/>
-            <ToggleMenuFlyoutItem x:Uid="TaskList"/>
+            <ToggleMenuFlyoutItem x:Uid="OrderedList" IsEnabled="{Binding EditorViewModel.ParagraphState.OrderList.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.OrderList.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" CommandParameter="ol-order"/>
+            <ToggleMenuFlyoutItem x:Uid="Unordered" IsEnabled="{Binding EditorViewModel.ParagraphState.BulletList.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.BulletList.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" CommandParameter="ul-bullet"/>
+            <ToggleMenuFlyoutItem x:Uid="TaskList" IsEnabled="{Binding EditorViewModel.ParagraphState.TaskList.IsEnable, Mode=OneWay}" IsChecked="{Binding EditorViewModel.ParagraphState.TaskList.IsChecked, Mode=TwoWay}" Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" CommandParameter="ul-task"/>
         </MenuFlyoutSubItem>
-        <MenuFlyoutItem x:Uid="InsertParagraphBefore"/>
-        <MenuFlyoutItem x:Uid="InsertParagraphAfter"/>
-        <MenuFlyoutItem x:Uid="Delete"/>
+        <MenuFlyoutItem x:Uid="InsertParagraphBefore" Command="{Binding ParagraphViewModel.InsertParagraphCommand}" CommandParameter="before"/>
+        <MenuFlyoutItem x:Uid="InsertParagraphAfter" Command="{Binding ParagraphViewModel.InsertParagraphCommand}" CommandParameter="after"/>
+        <MenuFlyoutItem x:Uid="Delete" Command="{Binding ParagraphViewModel.DeleteParagraphCommand}"/>
     </MenuFlyout>
 </ResourceDictionary>

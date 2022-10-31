@@ -52,6 +52,7 @@ namespace Typedown
         {
             builder.AddScoped<IMarkdownEditor, MarkdownEditor>();
             builder.AddScoped<FrontMenu>();
+            builder.AddScoped<TableTools>();
         }
     }
 }

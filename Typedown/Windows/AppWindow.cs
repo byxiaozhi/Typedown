@@ -13,6 +13,7 @@ namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
+
         public static DependencyProperty ThemeProperty = DependencyProperty.Register(nameof(Theme), typeof(AppTheme), typeof(AppWindow));
         public AppTheme Theme { get => (AppTheme)GetValue(ThemeProperty); set => SetValue(ThemeProperty, value); }
 
@@ -26,13 +27,17 @@ namespace Typedown.Windows
 
         public double WindowScale => PInvoke.GetDpiForWindow(new(Handle)) / 96.0;
 
-        protected DragBar DragBar => GetTemplateChild("PART_DragBar") as DragBar;
+        protected DragBar DragBar => GetTemplateChild(PART_DragBar) as DragBar;
 
         private int RawBorderWidth => PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXFRAME) + PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXPADDEDBORDER);
 
         private double BorderWidth => RawBorderWidth / WindowScale;
 
-        public UISettings uiSettings = new();
+        private const string PART_DragBar = "PART_DragBar";
+
+        private const string PART_RootContainer = "PART_RootContainer";
+
+        private readonly UISettings uiSettings = new();
 
         public AppWindow()
         {
@@ -158,7 +163,7 @@ namespace Typedown.Windows
 
         private void UpdateRootContainer()
         {
-            if (GetTemplateChild("PART_RootContainer") is FrameworkElement ele)
+            if (GetTemplateChild(PART_RootContainer) is FrameworkElement ele)
                 ele.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
         }
 
@@ -190,9 +195,9 @@ namespace Typedown.Windows
         private static ControlTemplate CreateTemplate()
         {
             var template = new ControlTemplate(typeof(AppWindow));
-            var container = new FrameworkElementFactory(typeof(Grid)) { Name = "PART_RootContainer" };
-            var content = new FrameworkElementFactory(typeof(ContentPresenter)) { Name = "PART_Content" };
-            var dragBar = new FrameworkElementFactory(typeof(DragBar)) { Name = "PART_DragBar" };
+            var container = new FrameworkElementFactory(typeof(Grid)) { Name = PART_RootContainer };
+            var content = new FrameworkElementFactory(typeof(ContentPresenter));
+            var dragBar = new FrameworkElementFactory(typeof(DragBar)) { Name = PART_DragBar };
             content.SetValue(ContentPresenter.ContentProperty, new TemplateBindingExtension(ContentProperty));
             dragBar.SetValue(HeightProperty, new TemplateBindingExtension(CaptionHeightProperty));
             dragBar.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
