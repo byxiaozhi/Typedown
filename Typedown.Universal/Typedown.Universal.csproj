@@ -69,6 +69,9 @@
     <Compile Include="Controls\FloatControls\FrontMenu.cs" />
     <Compile Include="Controls\CommonControls\PathPickerButton.cs" />
     <Compile Include="Controls\CommonControls\GridSplitter.cs" />
+    <Compile Include="Controls\DialogControls\InsertTableDialog.xaml.cs">
+      <DependentUpon>InsertTableDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SettingControls\ButtonSettingItem.xaml.cs">
       <DependentUpon>ButtonSettingItem.xaml</DependentUpon>
     </Compile>
@@ -299,6 +302,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\EditorControls\MenuBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DialogControls\InsertTableDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
