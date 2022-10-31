@@ -39,6 +39,23 @@
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="typedown">
+            <uap:SupportedFileTypes>
+              <uap:FileType ContentType="text/markdown">.md</uap:FileType>
+              <uap:FileType ContentType="text/markdown">.markdown</uap:FileType>
+              <uap:FileType ContentType="text/markdown">.mdown</uap:FileType>
+              <uap:FileType ContentType="text/markdown">.mkdn</uap:FileType>
+              <uap:FileType ContentType="text/markdown">.mdtext</uap:FileType>
+              <uap:FileType ContentType="text/markdown">.rmd</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>Typedown</uap:DisplayName>
+            <uap:Logo>Markdown.png</uap:Logo>
+            <uap:InfoTip>Markdown</uap:InfoTip>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
 
