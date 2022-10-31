@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.ComponentModel;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Windows.Input;
+using Windows.UI.Xaml.Markup;
 
 namespace Typedown.Universal.Utilities
 {
@@ -27,7 +29,7 @@ namespace Typedown.Universal.Utilities
         public void Execute(object parameter)
         {
             if (canExecuteSubject.Value(parameter))
-                executeSubject.OnNext((T)(parameter ?? default(T)));
+                executeSubject.OnNext((T)XamlBindingHelper.ConvertValue(typeof(T), parameter));
         }
 
         public bool CanExecute(object parameter = null) => canExecuteSubject.Value(parameter);

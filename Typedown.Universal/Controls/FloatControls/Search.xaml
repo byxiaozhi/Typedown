@@ -1,0 +1,141 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.FloatControls.Search"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.FloatControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Universal.Controls" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    SizeChanged="OnSizeChanged"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    KeyDown="OnKeyDown"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <ThemeShadow x:Name="SharedShadow"/>
+    </UserControl.Resources>
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Mode">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition To="SearchMode" GeneratedDuration="0:0:0.1">
+                        <VisualTransition.Storyboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ReplaceRow" Storyboard.TargetProperty="MaxHeight" EnableDependentAnimation="True">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualTransition.Storyboard>
+                    </VisualTransition>
+                    <VisualTransition To="ReplaceMode" GeneratedDuration="0:0:0.1">
+                        <VisualTransition.Storyboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ReplaceRow" Storyboard.TargetProperty="Visibility">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ReplaceRow" Storyboard.TargetProperty="MaxHeight" EnableDependentAnimation="True">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="40"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualTransition.Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="SearchMode">
+                    <VisualState.Setters>
+                        <Setter Target="ChevronRotateTransform.Angle" Value="180"/>
+                        <Setter Target="ReplaceRow.MaxHeight" Value="0"/>
+                        <Setter Target="ReplaceRow.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="ReplaceMode">
+                    <VisualState.Setters>
+                        <Setter Target="ChevronRotateTransform.Angle" Value="0"/>
+                        <Setter Target="ReplaceRow.MaxHeight" Value="40"/>
+                        <Setter Target="ReplaceRow.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid x:Name="BackgroundGrid"/>
+        <Grid Padding="4,0,4,0" Margin="16" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Grid x:Name="DialogGrid" Width="600" Padding="8" ColumnSpacing="8"
+                  Shadow="{StaticResource SharedShadow}" CornerRadius="{ThemeResource OverlayCornerRadius}"
+                  Background="{ThemeResource TeachingTipBackgroundBrush}" BorderBrush="{ThemeResource TeachingTipBorderBrush}"
+                  BorderThickness="{ThemeResource TeachingTipContentBorderThicknessUntargeted}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Button Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="OnSwitchButtonClick">
+                    <FontIcon FontSize="14" Glyph="{StaticResource ExpanderChevronUpGlyph}">
+                        <FontIcon.RenderTransform>
+                            <RotateTransform x:Name="ChevronRotateTransform" CenterX="7" CenterY="7"/>
+                        </FontIcon.RenderTransform>
+                    </FontIcon>
+                </Button>
+                <Grid x:Name="SearchRow" Grid.Column="1" ColumnSpacing="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Uid="TextBoxSearch" x:Name="TextBoxSearch" KeyDown="OnTextBoxSearchKeyDown"/>
+                    <Button Grid.Column="1" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.EditorViewModel.FindCommand}" CommandParameter="next">
+                        <FontIcon FontSize="14" Glyph="&#xE74B;"/>
+                    </Button>
+                    <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.EditorViewModel.FindCommand}" CommandParameter="prev">
+                        <FontIcon FontSize="14" Glyph="&#xE74A;"/>
+                    </Button>
+                    <Button Grid.Column="3" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}">
+                        <FontIcon FontSize="14" Glyph="&#xE9E9;"/>
+                        <Button.Flyout>
+                            <MenuFlyout Placement="Top">
+                                <ToggleMenuFlyoutItem x:Uid="CaseSensitive" IsChecked="{x:Bind Settings.SearchIsCaseSensitive, Mode=TwoWay}"/>
+                                <ToggleMenuFlyoutItem x:Uid="WholeWord" IsChecked="{x:Bind Settings.SearchIsWholeWord, Mode=TwoWay}"/>
+                                <ToggleMenuFlyoutItem x:Uid="UseRegexp" IsChecked="{x:Bind Settings.SearchIsRegexp, Mode=TwoWay}"/>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Grid.Column="4" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="OnCloseButtonClick">
+                        <FontIcon FontSize="14" Glyph="&#xf78a;"/>
+                    </Button>
+                </Grid>
+                <Grid x:Name="ReplaceRow" Grid.Column="1" Grid.Row="1" Padding="0,8,0,0" ColumnSpacing="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Uid="TextBoxReplace" x:Name="TextBoxReplace" KeyDown="OnTextBoxReplaceKeyDown"/>
+                    <Button Grid.Column="1" MinWidth="100" x:Uid="BtnReplace" Click="OnReplaceButtonClick"/>
+                    <Button Grid.Column="2" MinWidth="100" x:Uid="BtnReplaceAll" Click="OnReplaceAllButtonClick"/>
+                </Grid>
+            </Grid>
+            <controls:GridSplitter 
+                x:Name="LeftSplitter" 
+                HorizontalAlignment="Left"
+                Width="8"
+                DeltaScale="-2"
+                ColumnMinWidth="400" 
+                ColumnExpectWidth="{x:Bind Settings.SearchDialogWidth, Mode=TwoWay}" 
+                ColumnWidth="{x:Bind DialogGrid.Width, Mode=TwoWay}"/>
+            <controls:GridSplitter 
+                x:Name="RightSplitter" 
+                HorizontalAlignment="Right"
+                DeltaScale="2"
+                ColumnMinWidth="400" 
+                ColumnExpectWidth="{x:Bind Settings.SearchDialogWidth, Mode=TwoWay}" 
+                ColumnWidth="{x:Bind DialogGrid.Width, Mode=TwoWay}"/>
+        </Grid>
+    </Grid>
+</UserControl>

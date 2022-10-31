@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Windows.Foundation;
@@ -17,24 +18,30 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Controls
 {
-    public sealed partial class MenuBar : UserControl
+    public sealed partial class EditorContainer : UserControl
     {
         public AppViewModel ViewModel => DataContext as AppViewModel;
-        public EditorViewModel Editor => ViewModel?.EditorViewModel;
-        public FileViewModel File => ViewModel?.FileViewModel;
-        public FloatViewModel Float => ViewModel?.FloatViewModel;
-        public FormatViewModel Format => ViewModel?.FormatViewModel;
-        public ParagraphViewModel Paragraph => ViewModel?.ParagraphViewModel;
-        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
-        public MenuBar()
+        public FloatViewModel Float => ViewModel?.FloatViewModel;
+
+        public EditorContainer()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            
+            MarkdownEditorPresenter.Content = this.GetService<IMarkdownEditor>();
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            MarkdownEditorPresenter.Content = null;
+        }
+
+        public static bool GetSearchFloatLoad(int searchBarOpen)
+        {
+            return searchBarOpen != 0;
         }
     }
 }

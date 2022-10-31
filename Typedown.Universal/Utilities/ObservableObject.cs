@@ -9,7 +9,7 @@ namespace Typedown.Universal.Utilities
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void RaisePropertyChanged(string propertyName)
+        protected void RaisePropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new(propertyName));
         }

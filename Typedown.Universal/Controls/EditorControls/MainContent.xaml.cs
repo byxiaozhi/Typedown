@@ -34,7 +34,6 @@ namespace Typedown.Universal.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            MarkdownEditorPresenter.Content = this.GetService<IMarkdownEditor>();
             disposables.Add(ViewModel.SettingsViewModel.GetPropertyObservable().Subscribe(x => OnSettingsViewModelPropertyChanged(x.Sender as SettingsViewModel, x.EventArgs)));
             VisualStateManager.GoToState(this, Settings.SidePaneOpen ? "SidePaneOpen" : "SidePaneHide", false);
         }
@@ -56,7 +55,6 @@ namespace Typedown.Universal.Controls
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            MarkdownEditorPresenter.Content = null;
             disposables.Clear();
         }
     }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace Typedown.Universal.ViewModels
 
         public int SearchOpen { get; set; }
 
+        public Command<int> SearchCommand { get; } = new();
+
         public AppViewModel ViewModel => ServiceProvider.GetService<AppViewModel>();
 
         public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
@@ -38,6 +41,16 @@ namespace Typedown.Universal.ViewModels
             EventCenter.GetObservable<EditorEventArgs>("OpenImageToolbar").Subscribe(x => OnOpenImageToolbar(x.Args));
             EventCenter.GetObservable<EditorEventArgs>("OpenToolTip").Subscribe(x => OnOpenToolTip(x.Args));
             this.WhenPropertyChanged(nameof(SearchOpen)).Subscribe(_ => OnSearchOpenChange(SearchOpen));
+            SearchCommand.OnExecute.Subscribe(Search);
+        }
+
+        public void Search(int open)
+        {
+            SearchOpen = open;
+            var text = ViewModel.EditorViewModel.SelectionText;
+            ViewModel.EditorViewModel.SearchValue = text;
+            if (!string.IsNullOrEmpty(text))
+                ViewModel.EditorViewModel.OnSearch();
         }
 
         public void OnSearchOpenChange(int open)

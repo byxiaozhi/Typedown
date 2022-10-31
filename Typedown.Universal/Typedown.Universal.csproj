@@ -59,6 +59,9 @@
     <Compile Include="Controls\DialogControls\FeedbackDialog.xaml.cs">
       <DependentUpon>FeedbackDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\EditorControls\EditorContainer.xaml.cs">
+      <DependentUpon>EditorContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\EditorControls\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,9 @@
     <Compile Include="Controls\CommonControls\GridSplitter.cs" />
     <Compile Include="Controls\DialogControls\InsertTableDialog.xaml.cs">
       <DependentUpon>InsertTableDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FloatControls\Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingControls\ButtonSettingItem.xaml.cs">
       <DependentUpon>ButtonSettingItem.xaml</DependentUpon>
@@ -180,6 +186,7 @@
     <Compile Include="Resources\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Resources\Converters\BoolToObjectConverter.cs" />
     <Compile Include="Resources\Converters\ElementThemeConverter.cs" />
+    <Compile Include="Resources\Converters\GridLengthToDoubleConverter.cs" />
     <Compile Include="Services\AutoBackup.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
@@ -301,6 +308,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\EditorControls\EditorContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\EditorControls\MainContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -310,6 +321,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\DialogControls\InsertTableDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FloatControls\Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

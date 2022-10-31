@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Markup;
 
 namespace Typedown.Universal.Resources.Converters
 {
-    public class BoolToObjectConverter : IValueConverter
+    public class GridLengthToDoubleConverter : IValueConverter
     {
-        public object TrueValue { get; set; }
-
-        public object FalseValue { get; set; }
-
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var res = (bool)value ? TrueValue : FalseValue;
-            return XamlBindingHelper.ConvertValue(targetType, res);
+            if (value is GridLength length)
+                return length.Value;
+            return 0d;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            throw new NotImplementedException();
+            if (value is double length)
+                return new GridLength(length);
+            return new GridLength(0);
         }
     }
 }

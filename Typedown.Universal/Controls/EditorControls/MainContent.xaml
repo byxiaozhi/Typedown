@@ -5,7 +5,7 @@
     xmlns:local="using:Typedown.Universal.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
+    xmlns:viewmodels="using:Typedown.Universal.ViewModels" xmlns:converters="using:Typedown.Universal.Resources.Converters"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
     Loaded="OnLoaded"
@@ -13,6 +13,9 @@
     SizeChanged="OnSizeChanged"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    <UserControl.Resources>
+        <converters:GridLengthToDoubleConverter x:Key="GridLengthToDoubleConverter"/>
+    </UserControl.Resources>
     <Grid Background="{ThemeResource SolidBackgroundFillColorTertiary}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SidePaneStates">
@@ -38,52 +41,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <local:LeftPane x:Name="LeftPane" x:Load="{x:Bind Settings.SidePaneOpen, Mode=OneWay}"/>
-        <ContentPresenter Grid.Column="2" x:Name="MarkdownEditorPresenter">
-            <ContentPresenter.ContextFlyout>
-                <MenuFlyout OverlayInputPassThroughElement="{Binding XamlRoot.Content}" AreOpenCloseAnimationsEnabled="{Binding SettingsViewModel.AnimationEnable}">
-                    <MenuFlyoutItem x:Name="HeaderButtons">
-                        <MenuFlyoutItem.Template>
-                            <ControlTemplate TargetType="MenuFlyoutItem">
-                                <StackPanel Orientation="Horizontal" Spacing="4" Padding="4">
-                                    <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="strong">
-                                        <FontIcon FontSize="16" Glyph="&#xE8DD;"/>
-                                    </Button>
-                                    <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="em">
-                                        <FontIcon FontSize="16" Glyph="&#xE8DB;"/>
-                                    </Button>
-                                    <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="u">
-                                        <FontIcon FontSize="16" Glyph="&#xE8DC;"/>
-                                    </Button>
-                                    <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="del">
-                                        <FontIcon FontSize="16" Glyph="&#xEDE0;"/>
-                                    </Button>
-                                    <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="clear">
-                                        <FontIcon FontSize="16" Glyph="&#xe75c;"/>
-                                    </Button>
-                                </StackPanel>
-                            </ControlTemplate>
-                        </MenuFlyoutItem.Template>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Uid="Undo" KeyboardAcceleratorTextOverride="Ctrl+Z" Icon="Undo" Command="{Binding EditorViewModel.UndoCommand}"/>
-                    <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Uid="Cut" KeyboardAcceleratorTextOverride="Ctrl+X" Icon="Cut" Command="{Binding EditorViewModel.CutCommand}" CommandParameter="normal"/>
-                    <MenuFlyoutItem x:Uid="Copy" KeyboardAcceleratorTextOverride="Ctrl+C" Icon="Copy" Command="{Binding EditorViewModel.CopyCommand}" CommandParameter="normal"/>
-                    <MenuFlyoutItem x:Uid="Paste" KeyboardAcceleratorTextOverride="Ctrl+V" Icon="Paste" Command="{Binding EditorViewModel.PasteCommand}" CommandParameter="normal"/>
-                    <MenuFlyoutSubItem x:Uid="CopyPasteAs">
-                        <MenuFlyoutItem x:Uid="CopyAsPlainText" Command="{Binding EditorViewModel.CopyCommand}" CommandParameter="copyAsPlainText"/>
-                        <MenuFlyoutItem x:Uid="CopyAsMarkdown" KeyboardAcceleratorTextOverride="Ctrl+Shift+C" Command="{Binding EditorViewModel.CopyCommand}" CommandParameter="copyAsMarkdown"/>
-                        <MenuFlyoutItem x:Uid="CopyAsHTMLCode" Command="{Binding EditorViewModel.CopyCommand}" CommandParameter="copyAsHtml"/>
-                        <MenuFlyoutItem x:Uid="PasteAsPlainText" Command="{Binding EditorViewModel.PasteCommand}" CommandParameter="pasteAsPlainText"/>
-                    </MenuFlyoutSubItem>
-                    <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Uid="Delete" Icon="Delete" KeyboardAcceleratorTextOverride="Delete" Command="{Binding EditorViewModel.DeleteSelectionCommand}"/>
-                    <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Uid="SelectAll" Icon="SelectAll" KeyboardAcceleratorTextOverride="Ctrl+A" Command="{Binding EditorViewModel.SelectAllCommand}"/>
-                </MenuFlyout>
-            </ContentPresenter.ContextFlyout>
-        </ContentPresenter>
+        <local:EditorContainer Grid.Column="2" />
         <Border x:Name="SplitterLine" Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>
-        <local:GridSplitter x:Name="Splitter" Grid.Column="1" ColumnMinWidth="40" ColumnExpectWidth="{Binding SettingsViewModel.SidePaneWidth, Mode=TwoWay}" ColumnWidth="{x:Bind LeftPaneColumn.Width, Mode=TwoWay}"/>
+        <local:GridSplitter x:Name="Splitter" Grid.Column="1" ColumnMinWidth="40" ColumnExpectWidth="{Binding SettingsViewModel.SidePaneWidth, Mode=TwoWay}" ColumnWidth="{x:Bind LeftPaneColumn.Width, Converter={StaticResource GridLengthToDoubleConverter}, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

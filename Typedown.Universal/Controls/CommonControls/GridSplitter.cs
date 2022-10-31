@@ -15,8 +15,8 @@ namespace Typedown.Universal.Controls
 {
     public class GridSplitter : UserControl
     {
-        public static DependencyProperty ColumnWidthProperty = DependencyProperty.Register(nameof(ColumnWidth), typeof(GridLength), typeof(GridSplitter), null);
-        public GridLength ColumnWidth { get => (GridLength)GetValue(ColumnWidthProperty); set => SetValue(ColumnWidthProperty, value); }
+        public static DependencyProperty ColumnWidthProperty = DependencyProperty.Register(nameof(ColumnWidth), typeof(double), typeof(GridSplitter), null);
+        public double ColumnWidth { get => (double)GetValue(ColumnWidthProperty); set => SetValue(ColumnWidthProperty, value); }
 
         public static DependencyProperty ColumnExpectWidthProperty = DependencyProperty.Register(nameof(ColumnExpectWidth), typeof(double), typeof(GridSplitter), new(0d, OnPropertyChanged));
         public double ColumnExpectWidth { get => (double)GetValue(ColumnExpectWidthProperty); set => SetValue(ColumnExpectWidthProperty, value); }
@@ -26,6 +26,9 @@ namespace Typedown.Universal.Controls
 
         public static DependencyProperty ColumnMaxWidthProperty = DependencyProperty.Register(nameof(ColumnMaxWidth), typeof(double), typeof(GridSplitter), new(double.PositiveInfinity, OnPropertyChanged));
         public double ColumnMaxWidth { get => (double)GetValue(ColumnMaxWidthProperty); set => SetValue(ColumnMaxWidthProperty, value); }
+
+        public static DependencyProperty DeltaScaleProperty = DependencyProperty.Register(nameof(DeltaScale), typeof(double), typeof(GridSplitter), new(1d));
+        public double DeltaScale { get => (double)GetValue(DeltaScaleProperty); set => SetValue(DeltaScaleProperty, value); }
 
         private readonly Border border = new();
 
@@ -63,7 +66,7 @@ namespace Typedown.Universal.Controls
         protected override void OnManipulationStarted(ManipulationStartedRoutedEventArgs e)
         {
             base.OnManipulationStarted(e);
-            columnWidth = ColumnWidth.Value;
+            columnWidth = ColumnWidth;
             manipulating = true;
         }
 
@@ -71,7 +74,7 @@ namespace Typedown.Universal.Controls
         {
             base.OnManipulationDelta(e);
             var scale = Windows.Graphics.Display.DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
-            columnWidth += e.Delta.Translation.X * scale;
+            columnWidth += DeltaScale * e.Delta.Translation.X * scale;
             ColumnExpectWidth = Math.Min(Math.Max(ColumnMinWidth, columnWidth), ColumnMaxWidth);
         }
 
@@ -87,8 +90,8 @@ namespace Typedown.Universal.Controls
         {
             var target = d as GridSplitter;
             var limitedWidth = Math.Min(Math.Max(target.ColumnMinWidth, target.ColumnExpectWidth), target.ColumnMaxWidth);
-            if (limitedWidth != target.ColumnWidth.Value)
-                target.ColumnWidth = new(limitedWidth);
+            if (limitedWidth != target.ColumnWidth)
+                target.ColumnWidth = limitedWidth;
         }
     }
 }

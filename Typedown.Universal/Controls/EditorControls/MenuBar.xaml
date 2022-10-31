@@ -68,11 +68,11 @@
                 <MenuFlyoutItem x:Uid="SelectAll" Command="{x:Bind Editor.SelectAllCommand}" KeyboardAcceleratorTextOverride="Ctrl+A"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutSubItem  x:Uid="FindAndReplace">
-                    <MenuFlyoutItem x:Uid="Find" KeyboardAcceleratorTextOverride="Ctrl+F"/>
+                    <MenuFlyoutItem x:Uid="Find" KeyboardAcceleratorTextOverride="Ctrl+F" Command="{x:Bind Float.SearchCommand}" CommandParameter="1"/>
                     <MenuFlyoutItem x:Uid="FindNext" Command="{x:Bind Editor.FindCommand}" CommandParameter="next" KeyboardAcceleratorTextOverride="F3"/>
                     <MenuFlyoutItem x:Uid="FindPrevious" Command="{x:Bind Editor.FindCommand}" CommandParameter="prev" KeyboardAcceleratorTextOverride="Shift+F3"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Uid="Replace" KeyboardAcceleratorTextOverride="Ctrl+H"/>
+                    <MenuFlyoutItem x:Uid="Replace" KeyboardAcceleratorTextOverride="Ctrl+H" Command="{x:Bind Float.SearchCommand}" CommandParameter="2"/>
                 </MenuFlyoutSubItem>
             </muxc:MenuBarItem>
 
