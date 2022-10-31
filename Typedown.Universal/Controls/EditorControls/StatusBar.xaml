@@ -27,10 +27,10 @@
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ToggleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
                         <SolidColorBrush x:Key="ToggleButtonBackgroundChecked" Color="{ThemeResource SubtleFillColorTransparent}" />
-                        <SolidColorBrush x:Key="ToggleButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorTertiary}" />
-                        <SolidColorBrush x:Key="ToggleButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorDisabled}" />
-                        <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPointerOver" Color="{ThemeResource SubtleFillColorTertiary}" />
-                        <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPressed" Color="{ThemeResource SubtleFillColorDisabled}" />
+                        <SolidColorBrush x:Key="ToggleButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}" />
+                        <SolidColorBrush x:Key="ToggleButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}" />
+                        <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPointerOver" Color="{ThemeResource SubtleFillColorSecondary}" />
+                        <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPressed" Color="{ThemeResource SubtleFillColorTertiary}" />
                         <SolidColorBrush x:Key="ToggleButtonForeground" Color="{ThemeResource TextFillColorSecondary}" />
                         <SolidColorBrush x:Key="ToggleButtonForegroundChecked" Color="{ThemeResource TextFillColorSecondary}" />
                         <SolidColorBrush x:Key="ToggleButtonForegroundPointerOver" Color="{ThemeResource TextFillColorPrimary}" />

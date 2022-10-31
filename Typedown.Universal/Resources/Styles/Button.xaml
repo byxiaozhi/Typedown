@@ -8,8 +8,8 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Default">
             <StaticResource x:Key="EllipsisIconButtonBackground" ResourceKey="SubtleFillColorTransparentBrush"/>
-            <StaticResource x:Key="EllipsisIconButtonBackgroundPointerOver" ResourceKey="SubtleFillColorTertiaryBrush"/>
-            <StaticResource x:Key="EllipsisIconButtonBackgroundPressed" ResourceKey="SubtleFillColorDisabledBrush"/>
+            <StaticResource x:Key="EllipsisIconButtonBackgroundPointerOver" ResourceKey="SubtleFillColorSecondaryBrush"/>
+            <StaticResource x:Key="EllipsisIconButtonBackgroundPressed" ResourceKey="SubtleFillColorTertiaryBrush"/>
             <StaticResource x:Key="EllipsisIconButtonBackgroundDisabled" ResourceKey="SubtleFillColorDisabledBrush"/>
             <StaticResource x:Key="EllipsisIconButtonForeground" ResourceKey="TextFillColorPrimaryBrush"/>
             <StaticResource x:Key="EllipsisIconButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush"/>
@@ -18,8 +18,8 @@
         </ResourceDictionary>
         <ResourceDictionary x:Key="Light">
             <StaticResource x:Key="EllipsisIconButtonBackground" ResourceKey="SubtleFillColorTransparentBrush"/>
-            <StaticResource x:Key="EllipsisIconButtonBackgroundPointerOver" ResourceKey="SubtleFillColorTertiaryBrush"/>
-            <StaticResource x:Key="EllipsisIconButtonBackgroundPressed" ResourceKey="SubtleFillColorDisabledBrush"/>
+            <StaticResource x:Key="EllipsisIconButtonBackgroundPointerOver" ResourceKey="SubtleFillColorSecondaryBrush"/>
+            <StaticResource x:Key="EllipsisIconButtonBackgroundPressed" ResourceKey="SubtleFillColorTertiaryBrush"/>
             <StaticResource x:Key="EllipsisIconButtonBackgroundDisabled" ResourceKey="SubtleFillColorDisabledBrush"/>
             <StaticResource x:Key="EllipsisIconButtonForeground" ResourceKey="TextFillColorPrimaryBrush"/>
             <StaticResource x:Key="EllipsisIconButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush"/>
@@ -28,8 +28,8 @@
         </ResourceDictionary>
         <ResourceDictionary x:Key="HighContrast">
             <StaticResource x:Key="EllipsisIconButtonBackground" ResourceKey="SubtleFillColorTransparentBrush"/>
-            <StaticResource x:Key="EllipsisIconButtonBackgroundPointerOver" ResourceKey="SubtleFillColorTertiaryBrush"/>
-            <StaticResource x:Key="EllipsisIconButtonBackgroundPressed" ResourceKey="SubtleFillColorDisabledBrush"/>
+            <StaticResource x:Key="EllipsisIconButtonBackgroundPointerOver" ResourceKey="SubtleFillColorSecondaryBrush"/>
+            <StaticResource x:Key="EllipsisIconButtonBackgroundPressed" ResourceKey="SubtleFillColorTertiaryBrush"/>
             <StaticResource x:Key="EllipsisIconButtonBackgroundDisabled" ResourceKey="SubtleFillColorDisabledBrush"/>
             <StaticResource x:Key="EllipsisIconButtonForeground" ResourceKey="TextFillColorPrimaryBrush"/>
             <StaticResource x:Key="EllipsisIconButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush"/>
