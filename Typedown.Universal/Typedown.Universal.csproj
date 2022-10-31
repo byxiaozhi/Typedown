@@ -111,11 +111,15 @@
     <Compile Include="Controls\SidePaneControls\Pages\FolderPage.xaml.cs">
       <DependentUpon>FolderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SidePaneControls\Pages\Route.cs" />
     <Compile Include="Controls\SidePaneControls\Pages\TocPage.xaml.cs">
       <DependentUpon>TocPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\EditorControls\StatusBar.xaml.cs">
       <DependentUpon>StatusBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SidePaneControls\SearchPane.xaml.cs">
+      <DependentUpon>SearchPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\AppTheme.cs" />
     <Compile Include="Enums\ImageUploadMethod.cs" />
@@ -366,6 +370,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\EditorControls\StatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SidePaneControls\SearchPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

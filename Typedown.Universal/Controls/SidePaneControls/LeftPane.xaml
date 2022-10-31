@@ -4,12 +4,40 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Typedown.Universal.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:converters="using:Typedown.Universal.Resources.Converters"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityReverseConverter" IsReverse="True"/>
+    </UserControl.Resources>
     <Grid>
-        <TextBlock>侧栏</TextBlock>
+        <muxc:NavigationView 
+            x:Name="NavigationView"
+            Visibility="{x:Bind IsSearchPaneOpen, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}"
+            IsBackButtonVisible="Collapsed" 
+            SelectionChanged="OnSelectionChanged"
+            IsSettingsVisible="False"
+            PaneDisplayMode="Top">
+            <muxc:NavigationView.Resources>
+                <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
+                <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="{ThemeResource CardStrokeColorDefault}"/>
+            </muxc:NavigationView.Resources>
+            <muxc:NavigationView.PaneFooter>
+                <Button Width="32" Height="32" x:Name="SeatchButton" Click="OnSearchButtonClick" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}">
+                    <FontIcon FontSize="14" Glyph="&#xe721;"/>
+                </Button>
+            </muxc:NavigationView.PaneFooter>
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem x:Uid="SidePaneFilesTab" Tag="Folder" Name="Folder"/>
+                <muxc:NavigationViewItem x:Uid="SidePaneOutlineTab" Tag="Toc" Name="Toc"/>
+            </muxc:NavigationView.MenuItems>
+            <Frame x:Name="Frame"/>
+        </muxc:NavigationView>
+        <local:SearchPane x:Name="SearchPane" x:Load="{x:Bind IsSearchPaneOpen, Mode=OneWay}" Close="OnSearchPaneClose"/>
     </Grid>
 </UserControl>

@@ -89,12 +89,12 @@ namespace Typedown.Universal.ViewModels
             SelectAllCommand.OnExecute.Subscribe(_ => SelectAll());
         }
 
-        public object OnGetSettings(JToken arg)
+        public async Task<object> OnGetSettings(JToken arg)
         {
             if (FirstStart)
             {
                 FirstStart = false;
-                // await FileViewModel.LoadStartUpMarkdown();
+                await FileViewModel.LoadStartUpMarkdown();
             }
             return new
             {

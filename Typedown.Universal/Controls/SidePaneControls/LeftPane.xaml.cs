@@ -1,25 +1,67 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
+using Typedown.Universal.Utilities;
+using Typedown.Universal.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Media.Animation;
+using muxc = Microsoft.UI.Xaml.Controls;
 
 namespace Typedown.Universal.Controls
 {
     public sealed partial class LeftPane : UserControl
     {
+        public static readonly DependencyProperty IsSearchPaneOpenProperty = DependencyProperty.Register(nameof(IsSearchPaneOpen), typeof(bool), typeof(LeftPane), new(false));
+        public bool IsSearchPaneOpen { get => (bool)GetValue(IsSearchPaneOpenProperty); set => SetValue(IsSearchPaneOpenProperty, value); }
+
+        public AppViewModel ViewModel => DataContext as AppViewModel;
+
+        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
+
+        private readonly CompositeDisposable disposables = new();
+
         public LeftPane()
         {
             InitializeComponent();
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            disposables.Add(Settings.WhenPropertyChanged(nameof(SettingsViewModel.SidePaneIndex))
+                .Cast<int>()
+                .StartWith(Settings.SidePaneIndex)
+                .Subscribe(UpdateSelectedItem));
+        }
+
+        private void UpdateSelectedItem(int index)
+        {
+            NavigationView.SelectedItem = NavigationView.MenuItems[index];
+        }
+
+        private void OnSelectionChanged(muxc.NavigationView sender, muxc.NavigationViewSelectionChangedEventArgs args)
+        {
+            var pageName = (args.SelectedItem as muxc.NavigationViewItem).Tag as string;
+            var pageType = SidePaneControls.Pages.Route.GetSidePanePageType(pageName);
+            var animation = Settings.AnimationEnable && Frame.SourcePageType != null;
+            var transition = animation ? args.RecommendedNavigationTransitionInfo : new SuppressNavigationTransitionInfo();
+            Frame.Navigate(pageType, null, transition);
+        }
+
+        private void OnSearchButtonClick(object sender, RoutedEventArgs e)
+        {
+            IsSearchPaneOpen = true;
+        }
+
+        private void OnSearchPaneClose(object sender, EventArgs e)
+        {
+            IsSearchPaneOpen = false;
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            disposables.Clear();
         }
     }
 }
