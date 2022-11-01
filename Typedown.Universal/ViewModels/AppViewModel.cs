@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
-    public sealed partial class AppViewModel : INotifyPropertyChanged
+    public sealed partial class AppViewModel : INotifyPropertyChanged, IDisposable
     {
         public IServiceProvider ServiceProvider { get; }
 
@@ -39,6 +39,8 @@ namespace Typedown.Universal.ViewModels
 
         public XamlRoot XamlRoot { get; set; }
 
+        private static readonly List<WeakReference<AppViewModel>> instances = new();
+
         public AppViewModel(
             IServiceProvider serviceProvider,
             EditorViewModel editorViewModel,
@@ -56,11 +58,28 @@ namespace Typedown.Universal.ViewModels
             ParagraphViewModel = paragraphViewModel;
             SettingsViewModel = settingsViewModel;
             GoBackCommand.OnExecute.Subscribe(_ => GoBack());
+            lock (instances) instances.Add(new(this));
         }
 
         public void GoBack()
         {
             FrameStack.Where(x => x.CanGoBack).Last().GoBack();
+        }
+
+        public void Dispose()
+        {
+            lock (instances) instances.RemoveAll(x => !x.TryGetTarget(out var target) || target == this);
+        }
+
+        ~AppViewModel()
+        {
+            Dispose();
+        }
+
+        public static List<AppViewModel> GetInstances()
+        {
+            lock (instances)
+                return instances.Select(x => x.TryGetTarget(out var val) ? val : null).Where(x => x != null).ToList();
         }
     }
 }

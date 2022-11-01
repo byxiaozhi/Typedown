@@ -3,11 +3,12 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using Typedown.Universal.Enums;
 using Typedown.Universal.ViewModels;
 using Typedown.Windows;
-using Windows.Foundation;
 using Windows.UI.Xaml;
 
 namespace Typedown.Utilities
@@ -37,11 +38,6 @@ namespace Typedown.Utilities
                 url = url.Replace("&", "^&");
                 Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
             }
-        }
-
-        public static IntPtr OpenNewWindow(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public static object GetCurrentTheme(this IServiceProvider provider)
@@ -80,6 +76,25 @@ namespace Typedown.Utilities
             window.Width = placement.NormalPosition.Width;
             window.Height = placement.NormalPosition.Height;
             window.WindowState = placement.IsMaximized ? WindowState.Maximized : WindowState.Normal;
+        }
+
+        public static IntPtr OpenNewWindow(string path)
+        {
+            var oldWindow = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath == path);
+            if (string.IsNullOrEmpty(path) || !oldWindow.Any())
+            {
+                var promise = new TaskCompletionSource<IntPtr>();
+                var newWindow = new MainWindow();
+                newWindow.AppViewModel.FileViewModel.FilePath = path;
+                newWindow.ShowActivated = true;
+                newWindow.Loaded += (s, e) => promise.SetResult((s as MainWindow).Handle);
+                newWindow.Show();
+                return newWindow.Handle;
+            }
+            else
+            {
+                return oldWindow.FirstOrDefault().MainWindow;
+            }
         }
     }
 }

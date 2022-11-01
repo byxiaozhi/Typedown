@@ -6,11 +6,9 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reactive;
-using System.Text;
 using System.Threading.Tasks;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
-using Typedown.Universal.Models;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Windows.ApplicationModel.Resources;
@@ -200,62 +198,58 @@ namespace Typedown.Universal.ViewModels
 
         public async Task LoadFile(string path, bool skipSavedCheck = false, bool postMessage = true)
         {
-            throw new NotImplementedException();
-            //try
-            //{
-            //    var openedWindow = AppViewModel.InstanceList.Where(x => x.FileViewModel.FilePath == path).FirstOrDefault();
-            //    if (openedWindow != default && openedWindow.FileViewModel != this)
-            //    {
-            //        FolderItemModel.UpdateSelectedItem(this);
-            //        openedWindow.MainWindow.Activate();
-            //        return;
-            //    }
-            //    if (!File.Exists(path))
-            //    {
-            //        if (Settings.History.Contains(path))
-            //        {
-            //            Settings.History = Settings.History.Where(x => x != path).ToList();
-            //        }
-            //        throw new FileNotFoundException("File Not Found");
-            //    }
-            //    else if (!skipSavedCheck && !await AskToSave())
-            //    {
-            //        FolderItemModel.UpdateSelectedItem(this);
-            //        return;
-            //    }
-            //    var text = await File.ReadAllTextAsync(path);
-            //    Editor.FirstStart = false;
-            //    Editor.FileHash = Common.SimpleHash(text);
-            //    FilePath = path;
-            //    RecordHistory(FilePath);
-            //    var backup = await CheckBackup(path, Editor.CurrentHash);
-            //    if (backup == null)
-            //    {
-            //        Editor.Markdown = text;
-            //        Editor.CurrentHash = Editor.FileHash;
-            //        Editor.Saved = true;
-            //        Editor.FileLoaded = false;
-            //    }
-            //    else
-            //    {
-            //        Editor.Markdown = backup;
-            //        Editor.CurrentHash = Common.SimpleHash(backup);
-            //        Editor.Saved = false;
-            //        Editor.FileLoaded = true;
-            //    }
-            //    Editor.AutoSavedSucc = true;
-            //    Editor.History.InitHistory(Editor.Markdown);
-            //    if (postMessage)
-            //    {
+            try
+            {
+                var openedWindow = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath == path).FirstOrDefault();
+                if (openedWindow != default && openedWindow.FileViewModel != this)
+                {
+                    AppViewModel.ServiceProvider.GetService<IWindowService>().SetForegroundWindow(openedWindow.MainWindow);
+                    return;
+                }
+                if (!File.Exists(path))
+                {
+                    if (SettingsViewModel.History.Contains(path))
+                    {
+                        SettingsViewModel.History = SettingsViewModel.History.Where(x => x != path).ToList();
+                    }
+                    throw new FileNotFoundException("File Not Found");
+                }
+                else if (!skipSavedCheck && !await AskToSave())
+                {
+                    return;
+                }
+                var text = await File.ReadAllTextAsync(path);
+                EditorViewModel.FirstStart = false;
+                EditorViewModel.FileHash = Common.SimpleHash(text);
+                FilePath = path;
+                RecordHistory(FilePath);
+                var backup = await CheckBackup(path, EditorViewModel.CurrentHash);
+                if (backup == null)
+                {
+                    EditorViewModel.Markdown = text;
+                    EditorViewModel.CurrentHash = EditorViewModel.FileHash;
+                    EditorViewModel.Saved = true;
+                    EditorViewModel.FileLoaded = false;
+                }
+                else
+                {
+                    EditorViewModel.Markdown = backup;
+                    EditorViewModel.CurrentHash = Common.SimpleHash(backup);
+                    EditorViewModel.Saved = false;
+                    EditorViewModel.FileLoaded = true;
+                }
+                EditorViewModel.AutoSavedSucc = true;
+                EditorViewModel.History.InitHistory(EditorViewModel.Markdown);
+                if (postMessage)
+                {
 
-            //        Transport?.PostMessage("LoadFile", Editor.Markdown);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    FolderItemModel.UpdateSelectedItem(this);
-            //    await AppContentDialog.Create(dialogMessages.GetString("ReadErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(ViewModel.XamlRoot);
-            //}
+                    MarkdownEditor?.PostMessage("LoadFile", EditorViewModel.Markdown);
+                }
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(dialogMessages.GetString("ReadErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(AppViewModel.XamlRoot);
+            }
         }
 
         public void RecordHistory(string path)
