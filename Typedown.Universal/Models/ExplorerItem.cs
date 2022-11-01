@@ -25,6 +25,8 @@ namespace Typedown.Universal.Models
 
         public Comparer<ExplorerItem> Comparer { get; set; } = new DefaultComparer();
 
+        public Func<FileAttributes, string, bool> Filter { get; set; } = DefaultFilter;
+
         public Exception Exception { get; private set; }
 
         public bool IsExpanded { get; set; } = false;
@@ -165,15 +167,6 @@ namespace Typedown.Universal.Models
             return Children.Any(x => x.Name == name);
         }
 
-        private static bool FileFilter(FileAttributes attr, string name)
-        {
-            if (attr.HasFlag(FileAttributes.Hidden) || attr.HasFlag(FileAttributes.System))
-                return false;
-            if (attr.HasFlag(FileAttributes.Directory))
-                return true;
-            return FileExtension.Markdown.Contains(Path.GetExtension(name));
-        }
-
         private static async Task<FileAttributes?> GetFileAttributes(string path, int timeout = 1000)
         {
             var interval = 100;
@@ -182,7 +175,7 @@ namespace Typedown.Universal.Models
             {
                 try
                 {
-                    return await Task.Run(() => File.GetAttributes(path));
+                    return File.GetAttributes(path);
                 }
                 catch (FileNotFoundException)
                 {
@@ -202,25 +195,25 @@ namespace Typedown.Universal.Models
             fileSystemWatcher?.Dispose();
             fileSystemWatcher = new() { NotifyFilter = NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Attributes };
             var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
-            fileSystemWatcher.Created += (s, e) => dispatcherQueue.TryEnqueue(async () =>
+            fileSystemWatcher.Created += async (s, e) =>
             {
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) OnFileCreated(e, attr.Value);
-            });
-            fileSystemWatcher.Renamed += (s, e) => dispatcherQueue.TryEnqueue(async () =>
+                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileCreated(e, attr.Value));
+            };
+            fileSystemWatcher.Renamed += async (s, e) =>
             {
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) OnFileRenamed(e, attr.Value);
-            });
-            fileSystemWatcher.Changed += (s, e) => dispatcherQueue.TryEnqueue(async () =>
+                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileRenamed(e, attr.Value));
+            };
+            fileSystemWatcher.Changed += async (s, e) =>
             {
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) OnFileChanged(e, attr.Value);
-            });
-            fileSystemWatcher.Deleted += (s, e) => dispatcherQueue.TryEnqueue(() =>
+                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileChanged(e, attr.Value));
+            };
+            fileSystemWatcher.Deleted += (s, e) =>
             {
-                OnFileDeleted(e);
-            });
+                dispatcherQueue.TryEnqueue(() => OnFileDeleted(e));
+            };
             fileSystemWatcher.Path = FullPath;
             fileSystemWatcher.EnableRaisingEvents = true;
         }
@@ -233,7 +226,7 @@ namespace Typedown.Universal.Models
 
         private void OnFileCreated(FileSystemEventArgs e, FileAttributes attr)
         {
-            if (FileFilter(attr, e.Name))
+            if (Filter(attr, e.Name))
                 AddChild(e.Name);
         }
 
@@ -245,7 +238,7 @@ namespace Typedown.Universal.Models
 
         private void OnFileChanged(FileSystemEventArgs e, FileAttributes attr)
         {
-            var test = FileFilter(attr, e.Name);
+            var test = Filter(attr, e.Name);
             var contains = ContainsChildren(e.Name);
             if (test && !contains)
                 AddChild(e.Name);
@@ -266,9 +259,25 @@ namespace Typedown.Universal.Models
 
         public IEnumerable<FileSystemInfo> EnumerateFilteredFileSystemInfos()
         {
-            if (Type == ExplorerItemType.Folder)
-                return new DirectoryInfo(FullPath).EnumerateFileSystemInfos().Where(info => FileFilter(info.Attributes, info.Name));
-            return null;
+            try
+            {
+                if (Type == ExplorerItemType.Folder)
+                    return new DirectoryInfo(FullPath).EnumerateFileSystemInfos().Where(info => Filter(info.Attributes, info.Name));
+                return new List<FileSystemInfo>();
+            }
+            catch
+            {
+                return new List<FileSystemInfo>();
+            }
+        }
+
+        private static bool DefaultFilter(FileAttributes attr, string name)
+        {
+            if (attr.HasFlag(FileAttributes.Hidden) || attr.HasFlag(FileAttributes.System))
+                return false;
+            if (attr.HasFlag(FileAttributes.Directory))
+                return true;
+            return FileExtension.Markdown.Contains(Path.GetExtension(name));
         }
 
         public class DefaultComparer : Comparer<ExplorerItem>

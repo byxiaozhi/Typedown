@@ -13,8 +13,16 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Page.Resources>
+        <Thickness x:Key="TreeViewItemPresenterPadding">0</Thickness>
+        
         <SolidColorBrush x:Key="FocusStrokeColorOuterBrush" Color="{ThemeResource FocusStrokeColorOuter}"/>
         <SolidColorBrush x:Key="NormalStrokeColorOuterBrush" Color="Transparent"/>
+
+        <Style x:Key="RenameTextBoxStyle" BasedOn="{StaticResource DefaultTextBoxStyle}" TargetType="TextBox">
+            <Setter Property="Margin" Value="-4,0,4,0"/>
+            <Setter Property="Padding" Value="3,3,4,4"/>
+            <Setter Property="MinHeight" Value="0"/>
+        </Style>
 
         <MenuFlyout x:Key="FolderContextFlyout" Opened="OnItemContextFlyoutOpened" Closed="OnItemContextFlyoutClosed">
             <MenuFlyoutItem x:Uid="NewFile" Click="OnNewFileClick"/>
@@ -32,8 +40,8 @@
         </MenuFlyout>
 
         <MenuFlyout x:Key="FileContextFlyout" Opened="OnItemContextFlyoutOpened" Closed="OnItemContextFlyoutClosed">
-            <MenuFlyoutItem x:Uid="Open" Click="OnNewFileClick"/>
-            <MenuFlyoutItem x:Uid="OpenInNewWindow" Click="OnNewFolderClick"/>
+            <MenuFlyoutItem x:Uid="Open" Click="OnOpenClick"/>
+            <MenuFlyoutItem x:Uid="OpenInNewWindow" Click="OnOpenInNewWindowClick"/>
             <MenuFlyoutItem x:Uid="OpenFileLocation" Click="OnOpenFileLocationClick"/>
             <MenuFlyoutSeparator/>
             <MenuFlyoutItem x:Uid="Cut" Click="OnCutClick"/>
@@ -56,27 +64,32 @@
         </MenuFlyout>
 
         <DataTemplate x:Key="FolderTemplate" x:DataType="models:ExplorerItem">
-            <muxc:TreeViewItem ItemsSource="{x:Bind Children}" IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}" ContextFlyout="{StaticResource FolderContextFlyout}" BorderThickness="1" Margin="-1">
-                <Grid ColumnSpacing="8">
+            <muxc:TreeViewItem ItemsSource="{x:Bind Children}" IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}" 
+                               ContextFlyout="{StaticResource FolderContextFlyout}" BorderThickness="1" Margin="-1" 
+                               Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded">
+                <Grid ColumnSpacing="8" Height="32">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <FontIcon FontSize="12" Glyph="&#xf12b;" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                    <FontIcon FontSize="14" Glyph="&#xf12b;" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="NameTextBlock" Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,0,1"/>
+                    <ContentPresenter Grid.Column="1" x:Name="TextBoxContainer" VerticalAlignment="Center"/>
                 </Grid>
             </muxc:TreeViewItem>
         </DataTemplate>
 
         <DataTemplate x:Key="FileTemplate" x:DataType="models:ExplorerItem">
-            <muxc:TreeViewItem ContextFlyout="{StaticResource FileContextFlyout}" BorderThickness="1" Margin="-1">
-                <Grid ColumnSpacing="8">
+            <muxc:TreeViewItem ContextFlyout="{StaticResource FileContextFlyout}" BorderThickness="1" Margin="-1" 
+                               Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded">
+                <Grid ColumnSpacing="8" Height="32">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <FontIcon FontSize="12" Glyph="&#xe8a5;" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                    <FontIcon FontSize="14" Glyph="&#xe8a5;" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="NameTextBlock" Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                    <ContentPresenter Grid.Column="1" x:Name="TextBoxContainer" VerticalAlignment="Center"/>
                 </Grid>
             </muxc:TreeViewItem>
         </DataTemplate>

@@ -14,6 +14,7 @@
     d:DesignWidth="400">
     <UserControl.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityReverseConverter" IsReverse="True"/>
+        <x:Double x:Key="TopNavigationViewPaneCustomContentMinWidth">0</x:Double>
     </UserControl.Resources>
     <Grid>
         <muxc:NavigationView 
@@ -36,8 +37,8 @@
                 <muxc:NavigationViewItem x:Uid="SidePaneFilesTab" Tag="Folder" Name="Folder"/>
                 <muxc:NavigationViewItem x:Uid="SidePaneOutlineTab" Tag="Toc" Name="Toc"/>
             </muxc:NavigationView.MenuItems>
-            <Frame x:Name="Frame"/>
         </muxc:NavigationView>
+        <Frame Margin="0,50,0,0" Visibility="{x:Bind NavigationView.Visibility,Mode=OneWay}" x:Name="Frame"/>
         <local:SearchPane x:Name="SearchPane" x:Load="{x:Bind IsSearchPaneOpen, Mode=OneWay}" Close="OnSearchPaneClose"/>
     </Grid>
 </UserControl>

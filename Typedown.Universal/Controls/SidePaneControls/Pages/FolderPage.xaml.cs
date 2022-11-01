@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
-using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -65,7 +68,8 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
         private void SetItemFocusState(object menuFlyout, bool isFocus)
         {
             var container = GetContainerFromMenuFlyout(menuFlyout);
-            container.BorderBrush = Resources[isFocus ? "FocusStrokeColorOuterBrush" : "NormalStrokeColorOuterBrush"] as Brush;
+            if (container != null)
+                container.BorderBrush = Resources[isFocus ? "FocusStrokeColorOuterBrush" : "NormalStrokeColorOuterBrush"] as Brush;
         }
 
         private muxc.TreeViewItem GetContainerFromMenuFlyout(object menuFlyout)
@@ -85,50 +89,215 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
             return (menuFlyoutItem as MenuFlyoutItem).DataContext as ExplorerItem;
         }
 
-        private void OnNewFileClick(object sender, RoutedEventArgs e)
+        private async void OnNewFileClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            try
+            {
+                var filename = Localize.GetString("UntitledDocument");
+                var extension = ".md";
+                var fullname = filename + extension;
+                if (FileOperation.IsFilenameValid(item.FullPath, fullname))
+                {
+                    File.Create(Path.Combine(item.FullPath, fullname)).Close();
+                }
+                else
+                {
+                    var flag = true;
+                    for (var i = 2; i < 10000; i++)
+                    {
+                        fullname = $"{filename} ({i}){extension}";
+                        if (FileOperation.IsFilenameValid(item.FullPath, fullname))
+                        {
+                            File.Create(Path.Combine(item.FullPath, fullname)).Close();
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag)
+                    {
+                        return;
+                    }
+                }
+                await Task.Yield();
+                item.IsExpanded = true;
+                await Task.Delay(100);
+                RenameFile(item.Children.Where(x => Path.GetFileName(x.FullPath) == fullname).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Localize.GetDialogString("CreateDocErrorTitle"), ex.Message, Localize.GetDialogString("Confirm")).ShowAsync(XamlRoot);
+            }
         }
 
-        private void OnNewFolderClick(object sender, RoutedEventArgs e)
+        private async void OnNewFolderClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            try
+            {
+                var foldername = Localize.GetString("UntitledFolder");
+                var fullname = foldername;
+                if (FileOperation.IsFilenameValid(item.FullPath, fullname))
+                {
+                    Directory.CreateDirectory(Path.Combine(item.FullPath, fullname));
+                }
+                else
+                {
+                    var flag = true;
+                    for (var i = 2; i < 10000; i++)
+                    {
+                        fullname = $"{foldername} ({i})";
+                        if (FileOperation.IsFilenameValid(item.FullPath, fullname))
+                        {
+                            try
+                            {
+                                Directory.CreateDirectory(Path.Combine(item.FullPath, fullname));
+                            }
+                            catch
+                            {
+                                return;
+                            }
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag)
+                    {
+                        return;
+                    }
+                }
+                await Task.Yield();
+                item.IsExpanded = true;
+                await Task.Delay(100);
+                RenameFile(item.Children.Where(x => Path.GetFileName(x.FullPath) == fullname).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Localize.GetDialogString("CreateFolderErrorTitle"), ex.Message, Localize.GetDialogString("Confirm")).ShowAsync(ViewModel.XamlRoot);
+            }
         }
 
         private void OnOpenFileLocationClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            string argument = "/select, \"" + item?.FullPath + "\"";
+            Process.Start("explorer.exe", argument);
         }
 
         private void OnCutClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            FileOperation.CutToClipboard(new StringCollection() { item?.FullPath });
         }
 
         private void OnCopyClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            FileOperation.CopyToClipboard(new StringCollection() { item?.FullPath });
         }
 
         private void OnPasteClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            FileOperation.PasteFromClipboard(item?.FullPath);
         }
 
         private void OnCopyAsPathClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            Clipboard.SetText(item.FullPath);
+            Clipboard.SetText(item?.FullPath);
         }
 
         private void OnRenameClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            RenameFile(item);
         }
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            FileOperation.Delete(new StringCollection() { item?.FullPath });
+        }
+
+        private async void RenameFile(ExplorerItem item)
+        {
+            if (item == null) return;
+            var treeViewItem = TreeView.ContainerFromItem(item) as muxc.TreeViewItem;
+            if (treeViewItem == null) return;
+            var container = treeViewItem.FindName("TextBoxContainer") as ContentPresenter;
+            var textblock = treeViewItem.FindName("NameTextBlock") as TextBlock;
+            var textBox = new TextBox()
+            {
+                Style = Resources["RenameTextBoxStyle"] as Style,
+                Text = Path.GetFileName(item.FullPath),
+            };
+            var source = new TaskCompletionSource<string>();
+            container.Content = textBox;
+            textBox.Loaded += (s, e) =>
+            {
+                textblock.Visibility = Visibility.Collapsed;
+                textBox.Focus(FocusState.Programmatic);
+                if (item.Type == ExplorerItem.ExplorerItemType.Folder || !textBox.Text.Contains(".")) textBox.SelectAll();
+                else textBox.Select(0, textBox.Text.LastIndexOf("."));
+            };
+            textBox.LostFocus += (s, e) =>
+            {
+                if (!source.Task.IsCompleted) source.SetResult(textBox.Text);
+                container.Content = null;
+            };
+            textBox.KeyDown += (s, e) =>
+            {
+                if (e.Key == Windows.System.VirtualKey.Enter)
+                {
+                    if (!source.Task.IsCompleted) source.SetResult(textBox.Text);
+                    container.Content = null;
+                }
+            };
+            await source.Task;
+            textblock.Visibility = Visibility.Visible;
+            if (source.Task.Result != Path.GetFileName(item.FullPath))
+                FileOperation.Rename(item.FullPath, Path.Combine(Path.GetDirectoryName(item.FullPath), source.Task.Result));
+        }
+
+        private readonly Windows.UI.Xaml.Input.PointerEventHandler TreeViewItemPointerPressedEventHandler = new(OnTreeViewItemPointerPressed);
+
+        private void OnTreeViewItemLoaded(object sender, RoutedEventArgs e)
+        {
+            var grid = VisualTreeHelper.GetChild(sender as DependencyObject, 0) as UIElement;
+            grid.AddHandler(PointerPressedEvent, TreeViewItemPointerPressedEventHandler, true);
+        }
+
+        private void OnTreeViewItemUnloaded(object sender, RoutedEventArgs e)
+        {
+            var grid = VisualTreeHelper.GetChild(sender as DependencyObject, 0) as UIElement;
+            grid.RemoveHandler(PointerPressedEvent, TreeViewItemPointerPressedEventHandler);
+        }
+
+        private static void OnTreeViewItemPointerPressed(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            if ((e.OriginalSource as FrameworkElement).Name != "ExpandCollapseChevron" && (e.OriginalSource as FrameworkElement).GetAncestor<TextBox>() == null)
+            {
+                var item = (sender as Grid).DataContext as ExplorerItem;
+                if (item.Type == ExplorerItem.ExplorerItemType.Folder)
+                {
+                    e.Handled = true;
+                    if (e.GetCurrentPoint(sender as Grid).Properties.IsLeftButtonPressed)
+                        item.IsExpanded = !item.IsExpanded;
+                }
+            }
+        }
+
+        private async void OnOpenClick(object sender, RoutedEventArgs e)
+        {
+            var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            await ViewModel.FileViewModel.LoadFile(item.FullPath);
+        }
+
+        private void OnOpenInNewWindowClick(object sender, RoutedEventArgs e)
+        {
+            var item = GetExplorerItemFromMenuFlyoutItem(sender);
+            ViewModel.FileViewModel.NewWindowCommand.Execute(item.FullPath);
         }
     }
 
