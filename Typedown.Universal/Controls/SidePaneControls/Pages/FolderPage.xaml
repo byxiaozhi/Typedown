@@ -4,14 +4,102 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Typedown.Universal.Controls.SidePanelControls.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:models="using:Typedown.Universal.Models" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    <Page.Resources>
+        <SolidColorBrush x:Key="FocusStrokeColorOuterBrush" Color="{ThemeResource FocusStrokeColorOuter}"/>
+        <SolidColorBrush x:Key="NormalStrokeColorOuterBrush" Color="Transparent"/>
+
+        <MenuFlyout x:Key="FolderContextFlyout" Opened="OnItemContextFlyoutOpened" Closed="OnItemContextFlyoutClosed">
+            <MenuFlyoutItem x:Uid="NewFile" Click="OnNewFileClick"/>
+            <MenuFlyoutItem x:Uid="NewFolder" Click="OnNewFolderClick"/>
+            <MenuFlyoutItem x:Uid="OpenFileLocation" Click="OnOpenFileLocationClick"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Uid="Cut" Click="OnCutClick"/>
+            <MenuFlyoutItem x:Uid="Copy" Click="OnCopyClick"/>
+            <MenuFlyoutItem x:Uid="Paste" Click="OnPasteClick"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Uid="CopyAsPath" Click="OnCopyAsPathClick"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Uid="Rename" Click="OnRenameClick"/>
+            <MenuFlyoutItem x:Uid="Delete" Click="OnDeleteClick"/>
+        </MenuFlyout>
+
+        <MenuFlyout x:Key="FileContextFlyout" Opened="OnItemContextFlyoutOpened" Closed="OnItemContextFlyoutClosed">
+            <MenuFlyoutItem x:Uid="Open" Click="OnNewFileClick"/>
+            <MenuFlyoutItem x:Uid="OpenInNewWindow" Click="OnNewFolderClick"/>
+            <MenuFlyoutItem x:Uid="OpenFileLocation" Click="OnOpenFileLocationClick"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Uid="Cut" Click="OnCutClick"/>
+            <MenuFlyoutItem x:Uid="Copy" Click="OnCopyClick"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Uid="CopyAsPath" Click="OnCopyAsPathClick"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Uid="Rename" Click="OnRenameClick"/>
+            <MenuFlyoutItem x:Uid="Delete" Click="OnDeleteClick"/>
+        </MenuFlyout>
+
+        <MenuFlyout x:Key="TreeViewContextFlyout">
+            <MenuFlyoutItem x:Uid="NewFile" Click="OnNewFileClick"/>
+            <MenuFlyoutItem x:Uid="NewFolder" Click="OnNewFolderClick"/>
+            <MenuFlyoutItem x:Uid="OpenFileLocation" Click="OnOpenFileLocationClick"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Uid="Paste" Click="OnPasteClick"/>
+            <MenuFlyoutSeparator/>
+            <MenuFlyoutItem x:Uid="CopyAsPath" Click="OnCopyAsPathClick"/>
+        </MenuFlyout>
+
+        <DataTemplate x:Key="FolderTemplate" x:DataType="models:ExplorerItem">
+            <muxc:TreeViewItem ItemsSource="{x:Bind Children}" IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}" ContextFlyout="{StaticResource FolderContextFlyout}" BorderThickness="1" Margin="-1">
+                <Grid ColumnSpacing="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon FontSize="12" Glyph="&#xf12b;" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                </Grid>
+            </muxc:TreeViewItem>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FileTemplate" x:DataType="models:ExplorerItem">
+            <muxc:TreeViewItem ContextFlyout="{StaticResource FileContextFlyout}" BorderThickness="1" Margin="-1">
+                <Grid ColumnSpacing="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon FontSize="12" Glyph="&#xe8a5;" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                </Grid>
+            </muxc:TreeViewItem>
+        </DataTemplate>
+
+        <local:ExplorerItemTemplateSelector 
+            x:Key="ExplorerItemTemplateSelector"
+            FolderTemplate="{StaticResource FolderTemplate}"
+            FileTemplate="{StaticResource FileTemplate}" />
+    </Page.Resources>
 
     <Grid>
-        <TextBlock>
-            文件夹
-        </TextBlock>
+        <muxc:TreeView 
+            x:Name="TreeView"
+            DataContext="{x:Bind WorkFolderExplorerItem, Mode=OneWay}"
+            ItemsSource="{x:Bind WorkFolderExplorerItem.Children, Mode=OneWay}" 
+            ItemTemplateSelector="{StaticResource ExplorerItemTemplateSelector}" 
+            ContextFlyout="{StaticResource TreeViewContextFlyout}">
+            <muxc:TreeView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <ContentThemeTransition/>
+                    <ReorderThemeTransition/>
+                </TransitionCollection>
+            </muxc:TreeView.ItemContainerTransitions>
+        </muxc:TreeView>
     </Grid>
 </Page>

@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
@@ -15,7 +16,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
-    public class EditorViewModel : ObservableObject
+    public sealed partial class EditorViewModel : INotifyPropertyChanged
     {
         public IServiceProvider ServiceProvider { get; }
 

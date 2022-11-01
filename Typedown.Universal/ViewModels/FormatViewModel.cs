@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using Typedown.Universal.Interfaces;
@@ -11,7 +12,7 @@ using Typedown.Universal.Utilities;
 
 namespace Typedown.Universal.ViewModels
 {
-    public class FormatViewModel : ObservableObject
+    public sealed partial class FormatViewModel : INotifyPropertyChanged
     {
         public IServiceProvider ServiceProvider { get; }
 

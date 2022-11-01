@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using Typedown.Universal.Interfaces;
@@ -10,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
-    public class AppViewModel : ObservableObject
+    public sealed partial class AppViewModel : INotifyPropertyChanged
     {
         public IServiceProvider ServiceProvider { get; }
 

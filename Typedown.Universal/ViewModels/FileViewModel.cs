@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -19,7 +20,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
-    public class FileViewModel : ObservableObject, IDisposable
+    public sealed partial class FileViewModel : INotifyPropertyChanged, IDisposable
     {
         public IServiceProvider ServiceProvider { get; }
 
@@ -30,8 +31,6 @@ namespace Typedown.Universal.ViewModels
         public EditorViewModel EditorViewModel => ServiceProvider.GetService<EditorViewModel>();
 
         public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
-
-        public WorkFolder WorkFolder => ServiceProvider.GetService<WorkFolder>();
 
         public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
 
@@ -148,7 +147,7 @@ namespace Typedown.Universal.ViewModels
         {
             if (!await AskToSave()) return;
             var filePicker = new FileOpenPicker();
-            FileExtension.Markdown.ForEach(filePicker.FileTypeFilter.Add);
+            FileExtension.Markdown.ToList().ForEach(filePicker.FileTypeFilter.Add);
             filePicker.SetOwnerWindow(AppViewModel.MainWindow);
             var file = await filePicker.PickSingleFileAsync();
             if (file != null)
@@ -161,7 +160,7 @@ namespace Typedown.Universal.ViewModels
         {
             var folderPicker = new FolderPicker();
             folderPicker.SetOwnerWindow(AppViewModel.MainWindow);
-            FileExtension.Markdown.ForEach(folderPicker.FileTypeFilter.Add);
+            FileExtension.Markdown.ToList().ForEach(folderPicker.FileTypeFilter.Add);
             var folder = await folderPicker.PickSingleFolderAsync();
             if (folder != null)
             {
@@ -296,7 +295,7 @@ namespace Typedown.Universal.ViewModels
         {
             var filePicker = new FileSavePicker();
             filePicker.SetOwnerWindow(AppViewModel.MainWindow);
-            filePicker.FileTypeChoices.Add("Markdown Files", FileExtension.Markdown);
+            filePicker.FileTypeChoices.Add("Markdown Files", FileExtension.Markdown.ToList());
             filePicker.SuggestedFileName = FileName ?? "untitled";
             var file = await filePicker.PickSaveFileAsync();
             if (file != null)

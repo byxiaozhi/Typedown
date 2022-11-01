@@ -5,6 +5,7 @@ using Typedown.Universal.Services;
 using Typedown.Universal.ViewModels;
 using Typedown.Controls;
 using Typedown.Universal.Controls.FloatControls;
+using Typedown.Universal.Models;
 
 namespace Typedown
 {
@@ -45,7 +46,6 @@ namespace Typedown
             builder.AddScoped<RemoteInvoke>();
             builder.AddScoped<EventCenter>();
             builder.AddScoped<AutoBackup>();
-            builder.AddScoped<WorkFolder>();
         }
 
         private static void RegisterComponent(ServiceCollection builder)

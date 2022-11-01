@@ -18,8 +18,8 @@ namespace Typedown.Universal.Controls
         public static DependencyProperty ModeProperty = DependencyProperty.Register(nameof(Mode), typeof(PathPickMode), typeof(EnumNameBlock), new(PathPickMode.File));
         public PathPickMode Mode { get => (PathPickMode)GetValue(ModeProperty); set => SetValue(ModeProperty, value); }
 
-        public static DependencyProperty FileTypeFilterProperty = DependencyProperty.Register(nameof(FileTypeFilter), typeof(IList<string>), typeof(EnumNameBlock), new(PathPickMode.File));
-        public IList<string> FileTypeFilter { get => (IList<string>)GetValue(FileTypeFilterProperty); set => SetValue(FileTypeFilterProperty, value); }
+        public static DependencyProperty FileTypeFilterProperty = DependencyProperty.Register(nameof(FileTypeFilter), typeof(IEnumerable<string>), typeof(EnumNameBlock), new(PathPickMode.File));
+        public IEnumerable<string> FileTypeFilter { get => (IEnumerable<string>)GetValue(FileTypeFilterProperty); set => SetValue(FileTypeFilterProperty, value); }
 
         private nint Window => this.GetService<IWindowService>().GetWindow(this);
 

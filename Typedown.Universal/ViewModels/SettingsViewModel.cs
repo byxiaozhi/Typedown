@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using System.Reflection;
@@ -19,7 +20,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
-    public class SettingsViewModel : ObservableObject
+    public sealed partial class SettingsViewModel : INotifyPropertyChanged
     {
         public WindowPlacement WindowPlacement { get => GetSettingValue<WindowPlacement>(null); set => SetSettingValue(value); }
         public IReadOnlyList<string> History { get => GetSettingValue(new List<string>()); set => SetSettingValue(value); }
@@ -156,7 +157,7 @@ namespace Typedown.Universal.ViewModels
             Store.Clear();
             cache.Clear();
             foreach (var item in GetType().GetProperties().Where(x => x.GetSetMethod() != null).Select(x => x.Name))
-                RaisePropertyChanged(item);
+                OnPropertyChanged(item);
         }
     }
 }

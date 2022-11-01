@@ -76,5 +76,13 @@ namespace Typedown.Universal.Utilities
                 throw new Exception(result.ReasonPhrase);
             return JObject.Parse(await result.Content.ReadAsStringAsync());
         }
+
+        public static void InsertByOrder<T>(this IList<T> list, T item, Func<T, T, int> cmp)
+        {
+            int i = 0;
+            while (i < list.Count && cmp(item, list[i]) >= 0)
+                i++;
+            list.Insert(i, item);
+        }
     }
 }

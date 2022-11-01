@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
@@ -9,7 +10,7 @@ using Windows.UI.Xaml.Data;
 
 namespace Typedown.Universal.Controls.FloatControls
 {
-    public class TableTools : ObservableObject
+    public partial class TableTools : INotifyPropertyChanged
     {
         private readonly ResourceDictionary resources = new() { Source = new("ms-appx:///Resources/Styles/Flyouts/EditorTableTools.xaml") };
 

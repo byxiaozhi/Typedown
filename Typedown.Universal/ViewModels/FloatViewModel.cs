@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Reactive;
@@ -17,7 +18,7 @@ using Windows.Foundation;
 
 namespace Typedown.Universal.ViewModels
 {
-    public class FloatViewModel : ObservableObject
+    public sealed partial class FloatViewModel : INotifyPropertyChanged
     {
         public IServiceProvider ServiceProvider { get; }
 

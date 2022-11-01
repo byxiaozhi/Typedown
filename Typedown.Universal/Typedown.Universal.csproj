@@ -145,7 +145,7 @@
     <Compile Include="Interfaces\IWindowPrivate.cs" />
     <Compile Include="Models\ContentHistory.cs" />
     <Compile Include="Models\EditorEventArgs.cs" />
-    <Compile Include="Models\FolderItem.cs" />
+    <Compile Include="Models\ExplorerItem.cs" />
     <Compile Include="Models\FormatState.cs" />
     <Compile Include="Models\MenuItemState.cs" />
     <Compile Include="Models\MenuState.cs" />
@@ -197,14 +197,12 @@
     <Compile Include="Services\AutoBackup.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
-    <Compile Include="Services\WorkFolder.cs" />
     <Compile Include="Utilities\Command.cs" />
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Utilities\FileExtension.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
     <Compile Include="Utilities\Localize.cs" />
-    <Compile Include="Utilities\ObservableObject.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
     <Compile Include="Utilities\Toc2ListViewItems.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />

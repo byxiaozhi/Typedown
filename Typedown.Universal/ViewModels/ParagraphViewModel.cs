@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
+using System.ComponentModel;
 using System.Reactive;
 using System.Threading.Tasks;
 using Typedown.Universal.Controls;
@@ -10,7 +11,7 @@ using Typedown.Universal.Utilities;
 
 namespace Typedown.Universal.ViewModels
 {
-    public class ParagraphViewModel : ObservableObject
+    public sealed partial class ParagraphViewModel : INotifyPropertyChanged
     {
         public IServiceProvider ServiceProvider { get; }
 
