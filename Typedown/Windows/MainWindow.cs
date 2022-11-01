@@ -2,6 +2,9 @@
 using System;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Data;
 using Typedown.Controls;
 using Typedown.Services;
@@ -38,11 +41,14 @@ namespace Typedown.Windows
         private void InitializeComponent()
         {
             SetWindowPlacement();
+            UpdateTitle();
             Content = AppXamlHost = new AppXamlHost(new RootControl());
             SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
             SetBinding(TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             SetBinding(IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => CanGoBackChanged();
+            AppViewModel.FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FileName)).Subscribe(_ => UpdateTitle());
+            AppViewModel.EditorViewModel.WhenPropertyChanged(nameof(EditorViewModel.DisplaySaved)).Subscribe(_ => UpdateTitle());
         }
 
         private void SetWindowPlacement()
@@ -105,6 +111,17 @@ namespace Typedown.Windows
             }
         }
 
+        private void UpdateTitle()
+        {
+            var title = new StringBuilder();
+            if (!AppViewModel.EditorViewModel.DisplaySaved)
+                title.Append('*');
+            if (AppViewModel.FileViewModel.FileName != null)
+                title.Append(AppViewModel.FileViewModel.FileName + " - ");
+            title.Append(Assembly.GetExecutingAssembly().GetName().Name);
+            Title = title.ToString();
+        }
+
         protected override IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch ((PInvoke.WindowMessage)msg)
@@ -119,9 +136,23 @@ namespace Typedown.Windows
             return base.WndProc(hWnd, msg, wParam, lParam, ref handled);
         }
 
-        private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private bool isForceClose = false;
+
+        private async void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             AppViewModel.SettingsViewModel.WindowPlacement = this.GetWindowPlacement();
+            if (isForceClose) return;
+            e.Cancel = true;
+            await AppViewModel.FileViewModel.AutoSaveFile();
+            if (AppViewModel.EditorViewModel.Saved || await AppViewModel.FileViewModel.AskToSave())
+                ForceClose();
+        }
+
+        public async void ForceClose()
+        {
+            await Task.Yield();
+            isForceClose = true;
+            Close();
         }
 
         private void OnClosed(object sender, EventArgs e)
