@@ -8,14 +8,6 @@ namespace Typedown.Universal.Services
 {
     public class RemoteInvoke : IDisposable
     {
-        public delegate object FunctionHandler(JToken args);
-
-        public delegate Task<object> FunctionHandlerAsync(JToken args);
-
-        public delegate void ActionHandler(JToken args);
-
-        public delegate Task ActionHandlerAsync(JToken args);
-
         private record Handler(object Source, Func<JToken, Task<object>> Func);
 
         private readonly Dictionary<string, Handler> handlerDic = new();

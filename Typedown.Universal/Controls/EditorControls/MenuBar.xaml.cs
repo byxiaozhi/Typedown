@@ -27,6 +27,10 @@ namespace Typedown.Universal.Controls
         public ParagraphViewModel Paragraph => ViewModel?.ParagraphViewModel;
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
+        public FloatViewModel.SearchOpenType OpenSearch => FloatViewModel.SearchOpenType.Search;
+
+        public FloatViewModel.SearchOpenType OpenReplace => FloatViewModel.SearchOpenType.Replace;
+
         public MenuBar()
         {
             InitializeComponent();

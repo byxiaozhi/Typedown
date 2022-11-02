@@ -309,7 +309,7 @@ namespace Typedown.Universal.ViewModels
             var appViewModel = ServiceProvider.GetService<AppViewModel>();
             if (appViewModel.FloatViewModel.SearchOpen == 0)
             {
-                appViewModel.FloatViewModel.SearchOpen = 1;
+                appViewModel.FloatViewModel.SearchOpen = FloatViewModel.SearchOpenType.Search;
                 appViewModel.EditorViewModel.OnSearch();
             }
             else

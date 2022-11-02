@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using static Typedown.Universal.ViewModels.FloatViewModel;
 
 namespace Typedown.Universal.Controls.FloatControls
 {
@@ -49,18 +50,18 @@ namespace Typedown.Universal.Controls.FloatControls
             TextBoxSearch.Focus(FocusState.Pointer);
             TextBoxSearch.SelectionStart = 0;
             TextBoxSearch.SelectionLength = TextBoxSearch.Text.Length;
-            disposables.Add(Float.WhenPropertyChanged(nameof(Float.SearchOpen)).Cast<int>().Subscribe(s => SearchOpenChanged(s, true)));
+            disposables.Add(Float.WhenPropertyChanged(nameof(Float.SearchOpen)).Cast<SearchOpenType>().Subscribe(s => SearchOpenChanged(s, true)));
             SearchOpenChanged(Float.SearchOpen, false);
         }
 
-        private void SearchOpenChanged(int state, bool useTransitions)
+        private void SearchOpenChanged(SearchOpenType state, bool useTransitions)
         {
             switch (state)
             {
-                case 1:
+                case SearchOpenType.Search:
                     VisualStateManager.GoToState(this, "SearchMode", useTransitions && Settings.AnimationEnable);
                     break;
-                case 2:
+                case SearchOpenType.Replace:
                     VisualStateManager.GoToState(this, "ReplaceMode", useTransitions && Settings.AnimationEnable);
                     break;
             }
@@ -122,7 +123,7 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private void OnSwitchButtonClick(object sender, RoutedEventArgs e)
         {
-            Float.SearchOpen = Float.SearchOpen == 1 ? 2 : 1;
+            Float.SearchOpen = Float.SearchOpen == SearchOpenType.Search ? SearchOpenType.Replace : SearchOpenType.Search;
         }
     }
 }

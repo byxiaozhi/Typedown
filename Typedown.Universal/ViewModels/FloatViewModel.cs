@@ -22,9 +22,11 @@ namespace Typedown.Universal.ViewModels
     {
         public IServiceProvider ServiceProvider { get; }
 
-        public int SearchOpen { get; set; }
+        public enum SearchOpenType { None, Search, Replace }
 
-        public Command<int> SearchCommand { get; } = new();
+        public SearchOpenType SearchOpen { get; set; }
+
+        public Command<SearchOpenType> SearchCommand { get; } = new();
 
         public AppViewModel ViewModel => ServiceProvider.GetService<AppViewModel>();
 
@@ -45,7 +47,7 @@ namespace Typedown.Universal.ViewModels
             SearchCommand.OnExecute.Subscribe(Search);
         }
 
-        public void Search(int open)
+        public void Search(SearchOpenType open)
         {
             SearchOpen = open;
             var text = ViewModel.EditorViewModel.SelectionText;
@@ -54,9 +56,9 @@ namespace Typedown.Universal.ViewModels
                 ViewModel.EditorViewModel.OnSearch();
         }
 
-        public void OnSearchOpenChange(int open)
+        public void OnSearchOpenChange(SearchOpenType open)
         {
-            MarkdownEditor?.PostMessage("SearchOpenChange", new { open });
+            MarkdownEditor?.PostMessage("SearchOpenChange", new { open = (int)open });
         }
 
         public void OnOpenImageToolbar(JToken args)

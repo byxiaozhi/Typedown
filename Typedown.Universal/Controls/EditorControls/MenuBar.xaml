@@ -7,8 +7,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:viewmodels="using:Typedown.Universal.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     Loaded="OnLoaded"
-    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" xmlns:converters="using:Typedown.Universal.Resources.Converters"
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" 
+    xmlns:converters="using:Typedown.Universal.Resources.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -68,11 +71,11 @@
                 <MenuFlyoutItem x:Uid="SelectAll" Command="{x:Bind Editor.SelectAllCommand}" KeyboardAcceleratorTextOverride="Ctrl+A"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutSubItem  x:Uid="FindAndReplace">
-                    <MenuFlyoutItem x:Uid="Find" KeyboardAcceleratorTextOverride="Ctrl+F" Command="{x:Bind Float.SearchCommand}" CommandParameter="1"/>
+                    <MenuFlyoutItem x:Uid="Find" KeyboardAcceleratorTextOverride="Ctrl+F" Command="{x:Bind Float.SearchCommand}" CommandParameter="{x:Bind OpenSearch}"/>
                     <MenuFlyoutItem x:Uid="FindNext" Command="{x:Bind Editor.FindCommand}" CommandParameter="next" KeyboardAcceleratorTextOverride="F3"/>
                     <MenuFlyoutItem x:Uid="FindPrevious" Command="{x:Bind Editor.FindCommand}" CommandParameter="prev" KeyboardAcceleratorTextOverride="Shift+F3"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Uid="Replace" KeyboardAcceleratorTextOverride="Ctrl+H" Command="{x:Bind Float.SearchCommand}" CommandParameter="2"/>
+                    <MenuFlyoutItem x:Uid="Replace" KeyboardAcceleratorTextOverride="Ctrl+H" Command="{x:Bind Float.SearchCommand}" CommandParameter="{x:Bind OpenReplace}"/>
                 </MenuFlyoutSubItem>
             </muxc:MenuBarItem>
 
@@ -123,17 +126,17 @@
             </muxc:MenuBarItem>
 
             <muxc:MenuBarItem x:Uid="Format">
-                <ToggleMenuFlyoutItem x:Uid="Strong" KeyboardAcceleratorTextOverride="Ctrl+B" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="strong" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Bold, Mode=TwoWay}"/>
-                <ToggleMenuFlyoutItem x:Uid="Emphasis" KeyboardAcceleratorTextOverride="Ctrl+I" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="em" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Italic, Mode=TwoWay}"/>
-                <ToggleMenuFlyoutItem x:Uid="Underline" KeyboardAcceleratorTextOverride="Ctrl+U" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="u" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Underline, Mode=TwoWay}"/>
-                <ToggleMenuFlyoutItem x:Uid="InlineCode" KeyboardAcceleratorTextOverride="Ctrl+Shift+`" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="inline_code" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.InlineCode, Mode=TwoWay}"/>
-                <ToggleMenuFlyoutItem x:Uid="InlineMath" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="inline_math" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.InlineMath, Mode=TwoWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="Strong" KeyboardAcceleratorTextOverride="Ctrl+B" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="strong" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Bold, Mode=OneWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="Emphasis" KeyboardAcceleratorTextOverride="Ctrl+I" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="em" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Italic, Mode=OneWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="Underline" KeyboardAcceleratorTextOverride="Ctrl+U" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="u" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Underline, Mode=OneWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="InlineCode" KeyboardAcceleratorTextOverride="Ctrl+Shift+`" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="inline_code" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.InlineCode, Mode=OneWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="InlineMath" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="inline_math" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.InlineMath, Mode=OneWay}"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="Strikethrough" KeyboardAcceleratorTextOverride="Alt+Shift+5" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="del" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Strikethrough, Mode=TwoWay}"/>
-                <ToggleMenuFlyoutItem x:Uid="Highlight" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="mark" IsChecked="{x:Bind Format.FormatState.Highlight, Mode=TwoWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="Strikethrough" KeyboardAcceleratorTextOverride="Alt+Shift+5" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="del" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Strikethrough, Mode=OneWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="Highlight" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="mark" IsChecked="{x:Bind Format.FormatState.Highlight, Mode=OneWay}"/>
                 <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Uid="Hyperlink" KeyboardAcceleratorTextOverride="Ctrl+K" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="link" IsEnabled="{x:Bind Editor.ParagraphState.HyperlinkIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Hyperlink, Mode=TwoWay}"/>
-                <ToggleMenuFlyoutItem x:Uid="Image" KeyboardAcceleratorTextOverride="Ctrl+Shift+I" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="image" IsEnabled="{x:Bind Editor.ParagraphState.ImageIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Image, Mode=TwoWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="Hyperlink" KeyboardAcceleratorTextOverride="Ctrl+K" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="link" IsEnabled="{x:Bind Editor.ParagraphState.HyperlinkIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Hyperlink, Mode=OneWay}"/>
+                <ToggleMenuFlyoutItem x:Uid="Image" KeyboardAcceleratorTextOverride="Ctrl+Shift+I" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="image" IsEnabled="{x:Bind Editor.ParagraphState.ImageIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Image, Mode=OneWay}"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem x:Uid="ClearFormat" KeyboardAcceleratorTextOverride="Ctrl+\" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="clear" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}"/>
             </muxc:MenuBarItem>

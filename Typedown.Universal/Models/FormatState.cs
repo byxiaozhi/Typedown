@@ -8,47 +8,41 @@ namespace Typedown.Universal.Models
 {
     public class FormatState
     {
+        public record SelectionFormat(string Type, string Tag);
 
-        public FormatState()
+        public FormatState(List<SelectionFormat> selectionFormats = null)
         {
-            Bold = false;
-            Italic = false;
-            Underline = false;
-            InlineCode = false;
-            InlineMath = false;
-            Highlight = false;
-            Strikethrough = false;
-            Hyperlink = false;
-            Image = false;
+            if (selectionFormats == null)
+                return;
+            var types = selectionFormats.Select(x => x.Type).ToHashSet();
+            var tags = selectionFormats.Select(x => x.Tag).ToHashSet();
+            Bold = types.Contains("strong");
+            Italic = types.Contains("em");
+            Underline = types.Contains("html_tag") && tags.Contains("u");
+            InlineCode = types.Contains("inline_code");
+            InlineMath = types.Contains("inline_math");
+            Highlight = types.Contains("html_tag") && tags.Contains("mark");
+            Strikethrough = types.Contains("del");
+            Hyperlink = types.Contains("link");
+            Image = types.Contains("image");
         }
-        public FormatState(HashSet<string> typeSet, HashSet<string> tagSet)
-        {
-            Bold = typeSet.Contains("strong");
-            Italic = typeSet.Contains("em");
-            Underline = typeSet.Contains("html_tag") && tagSet.Contains("u");
-            InlineCode = typeSet.Contains("inline_code");
-            InlineMath = typeSet.Contains("inline_math");
-            Highlight = typeSet.Contains("html_tag") && tagSet.Contains("mark");
-            Strikethrough = typeSet.Contains("del");
-            Hyperlink = typeSet.Contains("link");
-            Image = typeSet.Contains("image");
-        }
-        public bool Bold { get; set; }
 
-        public bool Italic { get; set; }
+        public bool Bold { get; }
 
-        public bool Underline { get; set; }
+        public bool Italic { get; }
 
-        public bool Strikethrough { get; set; }
+        public bool Underline { get; }
 
-        public bool Highlight { get; set; }
+        public bool Strikethrough { get; }
 
-        public bool InlineCode { get; set; }
+        public bool Highlight { get; }
 
-        public bool InlineMath { get; set; }
+        public bool InlineCode { get; }
 
-        public bool Hyperlink { get; set; }
+        public bool InlineMath { get; }
 
-        public bool Image { get; set; } = false;
+        public bool Hyperlink { get; }
+
+        public bool Image { get; }
     }
 }

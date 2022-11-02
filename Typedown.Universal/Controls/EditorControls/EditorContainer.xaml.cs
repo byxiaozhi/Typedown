@@ -41,9 +41,9 @@ namespace Typedown.Universal.Controls
             MarkdownEditorPresenter.Content = null;
         }
 
-        public static bool GetSearchFloatLoad(int searchBarOpen)
+        public static bool GetSearchFloatLoad(FloatViewModel.SearchOpenType type)
         {
-            return searchBarOpen != 0;
+            return type != FloatViewModel.SearchOpenType.None;
         }
 
         private void OnMenuFlyoutItemPointerReleased(object sender, PointerRoutedEventArgs e)
