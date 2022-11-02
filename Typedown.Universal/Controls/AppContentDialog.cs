@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Windows.Foundation.Metadata;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Numerics;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
+using System.Threading;
+using System.Runtime.CompilerServices;
 
 namespace Typedown.Universal.Controls
 {
@@ -213,13 +209,25 @@ namespace Typedown.Universal.Controls
                 grid.Children.Remove(this);
         }
 
+        private readonly ConditionalWeakTable<XamlRoot, SemaphoreSlim> showSemaphores = new();
+
         public async Task<ContentDialogResult> ShowAsync()
         {
             if (XamlRoot.Content is not Grid grid || IsLoaded)
                 throw new InvalidOperationException();
-            result = new();
-            grid.Children.Add(this);
-            return await result.Task;
+            if (!showSemaphores.TryGetValue(XamlRoot, out var semaphore))
+                showSemaphores.Add(XamlRoot, semaphore = new(1));
+            await semaphore.WaitAsync();
+            try
+            {
+                result = new();
+                grid.Children.Add(this);
+                return await result.Task;
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         }
 
         public async Task<ContentDialogResult> ShowAsync(XamlRoot xamlRoot)
