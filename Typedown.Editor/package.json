@@ -1,7 +1,8 @@
 {
-  "name": "markdown",
+  "name": "typedown-editor",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "scripts": {
     "start": "set BROWSER=none&&react-app-rewired start",
     "build": "set GENERATE_SOURCEMAP=false&&react-app-rewired build",

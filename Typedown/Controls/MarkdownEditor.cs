@@ -112,8 +112,8 @@ namespace Typedown.Controls
             CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
 
-            // var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics", "index.html");
-            WebViewController.CoreWebView2.Navigate("http://localhost:3000/");
+            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics", "index.html");
+            WebViewController.CoreWebView2.Navigate(path);
         }
 
         private async void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)
