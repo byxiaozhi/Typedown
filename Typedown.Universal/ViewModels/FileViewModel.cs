@@ -70,9 +70,9 @@ namespace Typedown.Universal.ViewModels
             ExportCommand.OnExecute.Subscribe(x => Export(x));
             PrintCommand.OnExecute.Subscribe(_ => Print());
             ImportCommand.OnExecute.Subscribe(_ => Import());
-            RemoteInvoke.Handle("WriteAllText", WriteAllText);
-            RemoteInvoke.Handle("ConvertHTML", ConvertHTML);
-            RemoteInvoke.Handle("PrintHTML", PrintHTML);
+            RemoteInvoke.Handle<JToken, Task<bool>>("WriteAllText", WriteAllText);
+            RemoteInvoke.Handle<JToken, Task<bool>>("ConvertHTML", ConvertHTML);
+            RemoteInvoke.Handle<JToken, bool>("PrintHTML", PrintHTML);
             saveFileTimer.Interval = TimeSpan.FromSeconds(5);
             saveFileTimer.Tick += SaveFileTimerTick;
             saveFileTimer.Start();
@@ -311,7 +311,7 @@ namespace Typedown.Universal.ViewModels
             return null;
         }
 
-        private async Task<object> ConvertHTML(JToken arg)
+        private async Task<bool> ConvertHTML(JToken arg)
         {
             var html = arg["html"].ToString();
             var format = arg["format"].ToString();
@@ -332,7 +332,7 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        private object PrintHTML(JToken arg)
+        private bool PrintHTML(JToken arg)
         {
             var html = arg["html"].ToString();
             var fileExport = ServiceProvider.GetService<IFileExport>();
@@ -340,7 +340,7 @@ namespace Typedown.Universal.ViewModels
             return true;
         }
 
-        private async Task<object> WriteAllText(JToken arg)
+        private async Task<bool> WriteAllText(JToken arg)
         {
             try
             {

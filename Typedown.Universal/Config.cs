@@ -13,6 +13,7 @@ namespace Typedown.Universal
         public static IReadOnlyList<string> WebView2Args { get; } = new List<string>()
         {
             "--disable-web-security",
+            "--allow-file-access-from-files",
             "--single-process",
             "--flag-switches-begin",
             "--enable-features=msOverlayScrollbarWinStyle",

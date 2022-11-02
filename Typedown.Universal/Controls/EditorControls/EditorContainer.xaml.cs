@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace Typedown.Universal.Controls
         public EditorContainer()
         {
             this.InitializeComponent();
+            HeaderButtons.AddHandler(Button.PointerReleasedEvent, new PointerEventHandler(OnMenuFlyoutItemPointerReleased), true);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -42,6 +44,11 @@ namespace Typedown.Universal.Controls
         public static bool GetSearchFloatLoad(int searchBarOpen)
         {
             return searchBarOpen != 0;
+        }
+
+        private void OnMenuFlyoutItemPointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            Flyout.Hide();
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reactive.Disposables;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Typedown.Universal.Services
@@ -18,51 +16,64 @@ namespace Typedown.Universal.Services
 
         public delegate Task ActionHandlerAsync(JToken args);
 
-        private readonly Dictionary<string, object> handlerDic = new();
+        private record Handler(object Source, Func<JToken, Task<object>> Func);
 
-        public IDisposable Handle(string name, FunctionHandler handler)
+        private readonly Dictionary<string, Handler> handlerDic = new();
+
+        public IDisposable Handle(string name, Action handler)
         {
-            handlerDic[name] = handler;
+            handlerDic[name] = new(handler, _ =>
+            {
+                handler();
+                return Task.FromResult<object>(null);
+            });
             return Disposable.Create(() => RemoveHandle(name, handler));
         }
 
-        public IDisposable Handle(string name, FunctionHandlerAsync handler)
+        public IDisposable Handle<T>(string name, Action<T> handler)
         {
-            handlerDic[name] = handler;
+            handlerDic[name] = new(handler, x =>
+            {
+                handler(x.ToObject<T>());
+                return Task.FromResult<object>(null);
+            });
             return Disposable.Create(() => RemoveHandle(name, handler));
         }
 
-        public IDisposable Handle(string name, ActionHandler handler)
+        public IDisposable Handle<T, TResult>(string name, Func<T, TResult> handler)
         {
-            handlerDic[name] = handler;
+            handlerDic[name] = new(handler, x => Task.FromResult<object>(handler(x.ToObject<T>())));
             return Disposable.Create(() => RemoveHandle(name, handler));
         }
 
-        public IDisposable Handle(string name, ActionHandlerAsync handler)
+        public IDisposable Handle<T, TResult>(string name, Func<T, Task<TResult>> handler)
         {
-            handlerDic[name] = handler;
+            handlerDic[name] = new(handler, async x => await handler(x.ToObject<T>()));
+            return Disposable.Create(() => RemoveHandle(name, handler));
+        }
+
+        public IDisposable Handle<TResult>(string name, Func<TResult> handler)
+        {
+            handlerDic[name] = new(handler, async x => await Task.FromResult(handler()));
+            return Disposable.Create(() => RemoveHandle(name, handler));
+        }
+
+        public IDisposable Handle<TResult>(string name, Func<Task<TResult>> handler)
+        {
+            handlerDic[name] = new(handler, async x => await handler());
             return Disposable.Create(() => RemoveHandle(name, handler));
         }
 
         public void RemoveHandle(string name, object handler)
         {
-            if (handlerDic.TryGetValue(name, out var val) && val == handler)
+            if (handlerDic.TryGetValue(name, out var val) && val.Source == handler)
                 handlerDic.Remove(name);
         }
 
         public async Task<object> Invoke(string name, JToken args)
         {
-            if (handlerDic.TryGetValue(name, out var func))
-            {
-                if (func is FunctionHandler functionHandler)
-                    return functionHandler(args);
-                else if (func is FunctionHandlerAsync functionHandlerAsync)
-                    return await functionHandlerAsync(args);
-                else if (func is ActionHandler actionHandler)
-                    actionHandler(args);
-                else if (func is ActionHandlerAsync actionHandlerAsync)
-                    await actionHandlerAsync(args);
-            }
+            if (handlerDic.TryGetValue(name, out var handler))
+                return await handler.Func(args);
             throw new Exception($"function [{name}] does not exist");
         }
 

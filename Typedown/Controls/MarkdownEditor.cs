@@ -19,6 +19,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Windows.Foundation;
 using Windows.UI.Xaml.Shapes;
 using Windows.UI.Xaml.Input;
+using Typedown.Universal.ViewModels;
+using System.Reactive.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace Typedown.Controls
 {
@@ -26,11 +29,13 @@ namespace Typedown.Controls
     {
         public WebViewController WebViewController { get; private set; }
 
-        public CoreWebView2 CoreWebView2 => WebViewController.CoreWebView2;
+        public CoreWebView2 CoreWebView2 => WebViewController?.CoreWebView2;
 
         public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
 
         public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
+
+        public AppViewModel AppViewModel => ServiceProvider.GetService<AppViewModel>();
 
         public Transport Transport => ServiceProvider.GetService<Transport>();
 
@@ -46,8 +51,30 @@ namespace Typedown.Controls
             Loaded += OnLoaded;
             Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent), Children = { dummyRectangle } };
             IsTabStop = true;
-            RemoteInvoke.Handle("GetCurrentTheme", arg => ServiceProvider.GetCurrentTheme());
-            RemoteInvoke.Handle("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString));
+            RemoteInvoke.Handle("ContentLoaded", OnContentLoaded);
+            RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme());
+            RemoteInvoke.Handle<JToken, object>("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString));
+            ActualThemeChanged += OnThemeChanged;
+            AppViewModel.FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FilePath)).Cast<string>().Subscribe(OnFilePathChanged);
+        }
+
+        private void OnThemeChanged(FrameworkElement sender, object args)
+        {
+            PostMessage("ThemeChanged", ServiceProvider.GetCurrentTheme());
+        }
+
+        private void OnContentLoaded()
+        {
+
+        }
+
+        private void OnFilePathChanged(string path)
+        {
+            if (CoreWebView2 != null)
+            {
+                var script = $"window.DIRNAME={JsonConvert.SerializeObject(System.IO.Path.GetDirectoryName(path).Replace("\\", "/") + "/")}";
+                CoreWebView2.ExecuteScriptAsync(script);
+            }
         }
 
         protected override void OnPointerPressed(PointerRoutedEventArgs e)

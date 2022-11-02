@@ -74,8 +74,8 @@ namespace Typedown.Universal.ViewModels
             EventCenter.GetObservable<EditorEventArgs>("SelectionChange").Subscribe(x => OnSelectionChange(x.Args));
             EventCenter.GetObservable<EditorEventArgs>("CodeMirrorSelectionChange").Subscribe(x => OnCodeMirrorSelectionChange(x.Args));
             EventCenter.GetObservable<EditorEventArgs>("StateChange").Subscribe(x => OnStateChange(x.Args));
-            RemoteInvoke.Handle("GetSettings", OnGetSettings);
-            RemoteInvoke.Handle("SetClipboard", OnSetClipboard);
+            RemoteInvoke.Handle("GetSettings", GetSettings);
+            RemoteInvoke.Handle<JToken>("SetClipboard", OnSetClipboard);
             Settings.WhenPropertyChanged(nameof(Settings.AutoSave)).Subscribe(_ => Settings_AutoSaveChanged(Settings.AutoSave));
             this.WhenPropertyChanged(nameof(SearchValue)).Subscribe(_ => SearchValueChanged());
             this.WhenPropertyChanged(nameof(Saved)).Subscribe(_ => SavedOrAutoSavedSuccChanged());
@@ -90,7 +90,7 @@ namespace Typedown.Universal.ViewModels
             SelectAllCommand.OnExecute.Subscribe(_ => SelectAll());
         }
 
-        public async Task<object> OnGetSettings(JToken arg)
+        public async Task<object> GetSettings()
         {
             if (FirstStart)
             {
@@ -280,11 +280,10 @@ namespace Typedown.Universal.ViewModels
             MarkdownEditor?.PostMessage("Copy", new { type });
         }
 
-        public object OnSetClipboard(JToken arg)
+        public void OnSetClipboard(JToken arg)
         {
             var type = arg["type"].ToString();
             var data = arg["data"].ToString();
-
             if (type == "text/plain")
             {
                 Clipboard.SetText(data, TextDataFormat.UnicodeText);
@@ -293,7 +292,6 @@ namespace Typedown.Universal.ViewModels
             {
                 Clipboard.SetText(data, TextDataFormat.Html);
             }
-            return true;
         }
 
         public void DeleteSelection()

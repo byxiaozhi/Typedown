@@ -9,7 +9,7 @@ interface IMessage {
   args: unknown;
 }
 
-window.chrome.webview?.addEventListener<IMessage>("message", ({ data }) => {
+window.chrome.webview.addEventListener<IMessage>("message", ({ data }) => {
   transport.emit(data.name, data.args);
 });
 
@@ -29,7 +29,7 @@ const remoteFunction =
         }
         transport.removeAllListeners(id);
       });
-      window.chrome.webview?.postMessage({ type: "invoke", id, name, args });
+      window.chrome.webview.postMessage({ type: "invoke", id, name, args });
     });
 
 const postMessageDiff = (name: string, arg: unknown) => {
