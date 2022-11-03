@@ -117,11 +117,9 @@ namespace Typedown.Controls
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
             // CoreWebView2.AddWebResourceRequestedFilter(proxyPrefix + "*", CoreWebView2WebResourceContext.All);
             // CoreWebView2.WebResourceRequested += OnWebResourceRequested;
-#if DEBUG
-            var path = "http://localhost:3000";
-#else
+
+            // var path = "http://localhost:3000";
             var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics", "index.html");
-#endif
             WebViewController.CoreWebView2.Navigate(path);
         }
 
