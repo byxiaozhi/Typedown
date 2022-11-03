@@ -16,6 +16,6 @@ namespace Typedown.Universal.Models
         public bool IsCodeFences { get; set; }
         public bool IsCodeContent { get; set; }
         public bool IsTable { get; set; }
-        public JToken Affiliation { get; set; }
+        public Dictionary<string, bool> Affiliation { get; set; }
     }
 }

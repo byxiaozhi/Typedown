@@ -112,7 +112,11 @@ namespace Typedown.Controls
             CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
 
+#if DEBUG
+            var path = "http://localhost:3000";
+#else
             var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics", "index.html");
+#endif
             WebViewController.CoreWebView2.Navigate(path);
         }
 
@@ -123,7 +127,7 @@ namespace Typedown.Controls
 
         public void PostMessage(string name, object args)
         {
-            CoreWebView2?.PostWebMessageAsJson(JsonConvert.SerializeObject(new { name, args }));
+            CoreWebView2?.PostWebMessageAsJson(JsonConvert.SerializeObject(new { name, args }, Universal.Config.EditorJsonSerializerSettings));
         }
 
         private void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)

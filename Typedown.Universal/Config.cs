@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +20,14 @@ namespace Typedown.Universal
             "--flag-switches-begin",
             "--enable-features=msOverlayScrollbarWinStyle",
             "--flag-switches-end"
+        };
+
+        public static JsonSerializerSettings EditorJsonSerializerSettings = new()
+        {
+            ContractResolver = new DefaultContractResolver()
+            {
+                NamingStrategy = new CamelCaseNamingStrategy(true, true)
+            }
         };
     }
 }

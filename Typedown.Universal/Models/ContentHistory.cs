@@ -14,7 +14,7 @@ namespace Typedown.Universal.Models
     public class HistoryModel
     {
         public string Text { get; set; } = null;
-        public JToken Cursor { get; set; } = null;
+        public CursorState Cursor { get; set; } = null;
     }
 
     public class ContentHistory : INotifyPropertyChanged
@@ -125,7 +125,7 @@ namespace Typedown.Universal.Models
             commitTimer.Start();
         }
 
-        public void CursorChange(JToken cursor)
+        public void CursorChange(CursorState cursor)
         {
             try
             {
@@ -138,7 +138,7 @@ namespace Typedown.Universal.Models
                 {
                     return;
                 }
-                if (IsPending && pending.Cursor["focus"]["line"].ToObject<int>() != cursor["focus"]["line"].ToObject<int>())
+                if (IsPending && pending.Cursor.Focus.Line != cursor.Focus.Line)
                 {
                     pending.Cursor = cursor;
                     CommitPending();
@@ -192,19 +192,7 @@ namespace Typedown.Universal.Models
         public void InitHistory(string content)
         {
             ClearHistory();
-            CursorChange(JToken.FromObject(new
-            {
-                focus = new
-                {
-                    line = 0,
-                    ch = 0
-                },
-                anchor = new
-                {
-                    line = 0,
-                    ch = 0
-                }
-            }));
+            CursorChange(new(Focus: new(Line: 0, Ch: 0), Anchor: new(Line: 0, Ch: 0)));
             ContentChange(content);
         }
 #pragma warning disable CS0067

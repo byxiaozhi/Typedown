@@ -20,25 +20,25 @@ namespace Typedown.Universal.Models
 
         private void UpdateCheckedMenuItem()
         {
-            var affiliation = new HashSet<string>(MenuState.Affiliation.ToObject<JObject>().Properties().Select(x => x.Name));
-            TaskList.IsChecked = affiliation.Contains("ul") && MenuState.IsTaskList;
+            var affiliation = MenuState.Affiliation;
+            TaskList.IsChecked = affiliation.ContainsKey("ul") && MenuState.IsTaskList;
             Table.IsChecked = MenuState.IsTable;
-            CodeFences.IsChecked = MenuState.IsCodeFences && affiliation.Where(x => x.Contains("code")).Any();
-            Heading1.IsChecked = affiliation.Contains("h1");
-            Heading2.IsChecked = affiliation.Contains("h2");
-            Heading3.IsChecked = affiliation.Contains("h3");
-            Heading4.IsChecked = affiliation.Contains("h4");
-            Heading5.IsChecked = affiliation.Contains("h5");
-            Heading6.IsChecked = affiliation.Contains("h6");
+            CodeFences.IsChecked = MenuState.IsCodeFences && affiliation.Keys.Where(x => x.Contains("code")).Any();
+            Heading1.IsChecked = affiliation.ContainsKey("h1");
+            Heading2.IsChecked = affiliation.ContainsKey("h2");
+            Heading3.IsChecked = affiliation.ContainsKey("h3");
+            Heading4.IsChecked = affiliation.ContainsKey("h4");
+            Heading5.IsChecked = affiliation.ContainsKey("h5");
+            Heading6.IsChecked = affiliation.ContainsKey("h6");
             Table.IsChecked = MenuState.IsTable;
-            HtmlBlock.IsChecked = affiliation.Contains("html");
-            MathBlock.IsChecked = affiliation.Contains("multiplemath");
-            QuoteBlock.IsChecked = affiliation.Contains("blockquote");
-            OrderList.IsChecked = affiliation.Contains("ol");
-            BulletList.IsChecked = affiliation.Contains("ul") && !MenuState.IsTaskList;
-            Paragraph.IsChecked = affiliation.Contains("p");
-            HorizontalLine.IsChecked = affiliation.Contains("hr");
-            FrontMatter.IsChecked = affiliation.Contains("frontmatter");
+            HtmlBlock.IsChecked = affiliation.ContainsKey("html");
+            MathBlock.IsChecked = affiliation.ContainsKey("multiplemath");
+            QuoteBlock.IsChecked = affiliation.ContainsKey("blockquote");
+            OrderList.IsChecked = affiliation.ContainsKey("ol");
+            BulletList.IsChecked = affiliation.ContainsKey("ul") && !MenuState.IsTaskList;
+            Paragraph.IsChecked = affiliation.ContainsKey("p");
+            HorizontalLine.IsChecked = affiliation.ContainsKey("hr");
+            FrontMatter.IsChecked = affiliation.ContainsKey("frontmatter");
             Chart.IsChecked = (MenuState.IsCodeContent || MenuState.IsCodeFences) && !CodeFences.IsChecked && !MathBlock.IsChecked && !HtmlBlock.IsChecked;
         }
 

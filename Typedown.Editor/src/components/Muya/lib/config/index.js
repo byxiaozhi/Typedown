@@ -304,9 +304,9 @@ export const DATA_URL_REG = /^data:image\/[\w+-]+(;[\w-]+=[\w-]+|;base64)*,[a-zA
 // export const SMALLEST_BASE64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 // export const isIOS = /(?:iPhone|iPad|iPod|iOS)/i.test(window.navigator.userAgent)
 export const defaultSearchOption = Object.freeze({
-  isCaseSensitive: false,
-  isWholeWord: false,
-  isRegexp: false,
+  searchIsCaseSensitive: false,
+  searchIsWholeWord: false,
+  searchIsRegexp: false,
   selectHighlight: false,
   highlightIndex: -1
 })

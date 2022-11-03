@@ -27,7 +27,7 @@ export const getTOC = (markdown: string) => {
 }
 
 export const matchString = (text: string, value: string, options: any) => {
-    const { isCaseSensitive, isWholeWord, isRegexp } = options
+    const { searchIsCaseSensitive, searchIsWholeWord, searchIsRegexp } = options
     /* eslint-disable no-useless-escape */
     const SPECIAL_CHAR_REG = /[\[\]\\^$.\|\?\*\+\(\)\/]{1}/g
     /* eslint-enable no-useless-escape */
@@ -35,17 +35,17 @@ export const matchString = (text: string, value: string, options: any) => {
     let regStr = value
     let flag = 'g'
 
-    if (!isCaseSensitive) {
+    if (!searchIsCaseSensitive) {
         flag += 'i'
     }
 
-    if (!isRegexp) {
+    if (!searchIsRegexp) {
         regStr = value.replace(SPECIAL_CHAR_REG, (p) => {
             return p === '\\' ? '\\\\' : `\\${p}`
         })
     }
 
-    if (isWholeWord) {
+    if (searchIsWholeWord) {
         regStr = `\\b${regStr}\\b`
     }
 

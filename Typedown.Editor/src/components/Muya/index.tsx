@@ -215,11 +215,14 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         }
     }), [editor, props, relativeScroll]);
 
-    useEffect(() => transport.addListener<{ name: string, value: unknown }>('SettingsChanged', ({ name, value }) => {
-        if (name == 'focusMode') {
-            editor?.setFocusMode(value)
-        } else if (name == 'typewriter') {
-            value && scrollToCursor()
+    useEffect(() => transport.addListener<Record<string, unknown>>('SettingsChanged', (newOptions) => {
+        for (const name in newOptions) {
+            const value = newOptions[name];
+            if (name == 'focusMode') {
+                editor?.setFocusMode(value)
+            } else if (name == 'typewriter') {
+                value && scrollToCursor()
+            }
         }
     }), [editor, scrollToCursor]);
 

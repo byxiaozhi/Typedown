@@ -97,18 +97,18 @@ namespace Typedown.Universal.ViewModels
             }
             return new
             {
-                focusMode = Settings.FocusMode,
-                typewriter = Settings.Typewriter,
-                sourceCode = Settings.SourceCode,
-                fontSize = Settings.FontSize,
-                lineHeight = Settings.LineHeight,
-                autoPairBracket = Settings.AutoPairBracket,
-                autoPairQuote = Settings.AutoPairQuote,
-                trimUnnecessaryCodeBlockEmptyLines = Settings.TrimUnnecessaryCodeBlockEmptyLines,
-                preferLooseListItem = Settings.PreferLooseListItem,
-                autoPairMarkdownSyntax = Settings.AutoPairMarkdownSyntax,
-                editorAreaWidth = Settings.EditorAreaWidth,
-                markdown = Markdown
+                FocusMode = Settings.FocusMode,
+                Typewriter = Settings.Typewriter,
+                SourceCode = Settings.SourceCode,
+                FontSize = Settings.FontSize,
+                LineHeight = Settings.LineHeight,
+                AutoPairBracket = Settings.AutoPairBracket,
+                AutoPairQuote = Settings.AutoPairQuote,
+                TrimUnnecessaryCodeBlockEmptyLines = Settings.TrimUnnecessaryCodeBlockEmptyLines,
+                PreferLooseListItem = Settings.PreferLooseListItem,
+                AutoPairMarkdownSyntax = Settings.AutoPairMarkdownSyntax,
+                EditorAreaWidth = Settings.EditorAreaWidth,
+                Markdown = Markdown
             };
         }
 
@@ -157,7 +157,7 @@ namespace Typedown.Universal.ViewModels
 
         public void OnCursorChange(JToken arg)
         {
-            History.CursorChange(arg["cursor"]);
+            History.CursorChange(arg["cursor"]?.ToObject<CursorState>());
         }
 
         public void OnCodeMirrorSelectionChange(JToken arg)

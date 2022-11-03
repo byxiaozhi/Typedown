@@ -75,18 +75,14 @@ const Editor: React.FC = () => {
         markdownRef.current = text
     }), []);
 
-    useEffect(() => transport.addListener<{ name: string, value: unknown }>('SettingsChanged', ({ name, value }) => {
-        if (name.startsWith('search')) {
-            setSearchArg(old => {
-                if (old) {
-                    const argName = name.slice(6, 7).toLowerCase() + name.slice(7)
-                    return { ...old, opt: { ...old.opt, [argName]: value } }
-                }
-                return old;
-            })
-        } else {
-            setOptions((old: any) => ({ ...old, [name]: value }))
+    useEffect(() => transport.addListener<Record<string, unknown>>('SettingsChanged', (newOptions) => {
+        console.log(newOptions)
+        for (const name in newOptions) {
+            const value = newOptions[name];
+            if (name.startsWith('search'))
+                setSearchArg(old => old ? { ...old, opt: { ...old.opt, [name]: value } } : old)
         }
+        setOptions((oldOptions: any) => ({ ...oldOptions, ...newOptions }))
     }), []);
 
     useEffect(() => transport.addListener<{ open: number }>('SearchOpenChange', ({ open }) => {

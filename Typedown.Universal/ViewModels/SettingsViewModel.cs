@@ -139,11 +139,7 @@ namespace Typedown.Universal.ViewModels
         {
             if (notifySet.Contains(propertyName))
             {
-                MarkdownEditor.PostMessage("SettingsChanged", new
-                {
-                    name = string.Concat(propertyName[0].ToString().ToLower(), propertyName.Substring(1)),
-                    value = newValue
-                });
+                MarkdownEditor.PostMessage("SettingsChanged", new Dictionary<string, object>() { { propertyName, newValue } });
             }
         }
 

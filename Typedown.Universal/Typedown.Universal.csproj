@@ -145,6 +145,7 @@
     <Compile Include="Interfaces\IWindowPrivate.cs" />
     <Compile Include="Models\ContentHistory.cs" />
     <Compile Include="Models\ContentState.cs" />
+    <Compile Include="Models\CursorState.cs" />
     <Compile Include="Models\EditorEventArgs.cs" />
     <Compile Include="Models\ExplorerItem.cs" />
     <Compile Include="Models\FormatState.cs" />
