@@ -52,7 +52,7 @@ namespace Typedown.Universal.Controls
         private static (AppContentDialog, InsertTableDialog) CreateContentDialog(string title)
         {
             var content = new InsertTableDialog();
-            var dialog = AppContentDialog.Create(title, content, Localize.GetDialogString("Cancel"), Localize.GetDialogString("Confirm"));
+            var dialog = AppContentDialog.Create(title, content, Localize.GetDialogString("Cancel"), Localize.GetDialogString("Ok"));
             return (dialog, content);
         }
     }

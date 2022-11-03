@@ -248,7 +248,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(dialogMessages.GetString("ReadErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(AppViewModel.XamlRoot);
+                await AppContentDialog.Create(dialogMessages.GetString("ReadErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
             }
         }
 
@@ -327,7 +327,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(dialogMessages.GetString("ExportErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(AppViewModel.XamlRoot);
+                await AppContentDialog.Create(dialogMessages.GetString("ExportErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 return false;
             }
         }
@@ -351,7 +351,7 @@ namespace Typedown.Universal.ViewModels
             {
                 if (arg["alert"] == null || arg["alert"].ToObject<bool>())
                 {
-                    await AppContentDialog.Create(dialogMessages.GetString("SaveErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(AppViewModel.XamlRoot);
+                    await AppContentDialog.Create(dialogMessages.GetString("SaveErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 }
                 return false;
             }
@@ -442,7 +442,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(dialogMessages.GetString("ImportErrorTitle"), ex.Message, dialogMessages.GetString("Confirm")).ShowAsync(AppViewModel.XamlRoot);
+                await AppContentDialog.Create(dialogMessages.GetString("ImportErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
             }
         }
 

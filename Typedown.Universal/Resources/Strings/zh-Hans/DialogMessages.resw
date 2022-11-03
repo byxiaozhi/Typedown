@@ -181,6 +181,10 @@
     <value>缺少运行时</value>
     <comment>缺少运行时</comment>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>确定</value>
+    <comment>确定</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
     <value>读取失败</value>
     <comment>读取失败</comment>

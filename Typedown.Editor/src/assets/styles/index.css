@@ -193,7 +193,7 @@ figure[data-role="FOOTNOTE"] {
 }
 
 figure[data-role="FOOTNOTE"] > p:first-of-type .ag-paragraph-content:empty::after {
-  content: var(--InputFootnoteDefine);
+  content: var(--inputFootnoteDefine);
   color: var(--editorColor30);
 }
 
@@ -981,11 +981,11 @@ span.ag-warn.ag-emoji-marked-text {
 }
 
 .ag-inline-image.ag-empty-image::before {
-  content: var(--ClickToAddAnImage);
+  content: var(--clickToAddAnImage);
 }
 
 .ag-inline-image.ag-image-fail::before {
-  content: var(--LoadImageFail);
+  content: var(--loadImageFail);
 }
 
 .ag-inline-image.ag-image-loading a.ag-image-icon-success,

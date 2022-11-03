@@ -60,7 +60,7 @@ namespace Typedown.Universal.Controls
                 {
                     msg = ex.Message;
                 }
-            await AppContentDialog.Create(Localize.GetDialogString("FeedbackTitle"), msg, Localize.GetDialogString("Confirm")).ShowAsync(xamlRoot);
+            await AppContentDialog.Create(Localize.GetDialogString("FeedbackTitle"), msg, Localize.GetDialogString("Ok")).ShowAsync(xamlRoot);
         }
     }
 }

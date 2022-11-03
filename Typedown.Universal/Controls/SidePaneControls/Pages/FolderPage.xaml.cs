@@ -126,7 +126,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Localize.GetDialogString("CreateDocErrorTitle"), ex.Message, Localize.GetDialogString("Confirm")).ShowAsync(XamlRoot);
+                await AppContentDialog.Create(Localize.GetDialogString("CreateDocErrorTitle"), ex.Message, Localize.GetDialogString("Ok")).ShowAsync(XamlRoot);
             }
         }
 
@@ -173,7 +173,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Localize.GetDialogString("CreateFolderErrorTitle"), ex.Message, Localize.GetDialogString("Confirm")).ShowAsync(ViewModel.XamlRoot);
+                await AppContentDialog.Create(Localize.GetDialogString("CreateFolderErrorTitle"), ex.Message, Localize.GetDialogString("Ok")).ShowAsync(ViewModel.XamlRoot);
             }
         }
 
