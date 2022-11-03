@@ -35,11 +35,11 @@ function onThemeChanged({ theme, color, background }: any) {
     }
 
     const themeColorAlphas = [10, 20, 30, 40, 50, 60, 70, 80, 90]
-    const { R, G, B, A } = color
+    const { r, g, b, a } = color
     const { R: bgR, G: bgG, B: bgB, A: bgA } = background
 
-    document.documentElement.style.setProperty('--themeColor', `rgba(${R}, ${G}, ${B}, ${A})`)
-    themeColorAlphas.forEach(e => document.body.style.setProperty(`--themeColor${e}`, `rgba(${R}, ${G}, ${B}, ${A * (e / 100)})`))
+    document.documentElement.style.setProperty('--themeColor', `rgba(${r}, ${g}, ${b}, ${a})`)
+    themeColorAlphas.forEach(e => document.body.style.setProperty(`--themeColor${e}`, `rgba(${r}, ${g}, ${b}, ${a * (e / 100)})`))
     document.documentElement.style.background = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`
 }
 

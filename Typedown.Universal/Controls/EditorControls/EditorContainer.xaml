@@ -20,7 +20,7 @@
                     <MenuFlyoutItem x:Name="HeaderButtons">
                         <MenuFlyoutItem.Template>
                             <ControlTemplate TargetType="MenuFlyoutItem">
-                                <StackPanel Orientation="Horizontal" Spacing="4" Padding="4">
+                                <StackPanel Orientation="Horizontal" Spacing="4" Padding="4,2,4,2">
                                     <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="strong">
                                         <FontIcon FontSize="16" Glyph="&#xE8DD;"/>
                                     </Button>
