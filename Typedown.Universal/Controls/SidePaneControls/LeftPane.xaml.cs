@@ -63,5 +63,10 @@ namespace Typedown.Universal.Controls
         {
             disposables.Clear();
         }
+
+        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Frame.Width = ActualWidth;
+        }
     }
 }
