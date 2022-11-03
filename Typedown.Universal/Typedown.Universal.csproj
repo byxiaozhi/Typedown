@@ -141,6 +141,7 @@
     <Compile Include="Interfaces\IClipboard.cs" />
     <Compile Include="Interfaces\IFileExport.cs" />
     <Compile Include="Interfaces\IFileOperation.cs" />
+    <Compile Include="Interfaces\IKeyboardAccelerator.cs" />
     <Compile Include="Interfaces\IMarkdownEditor.cs" />
     <Compile Include="Interfaces\IWindowPrivate.cs" />
     <Compile Include="Models\ContentHistory.cs" />
@@ -149,9 +150,11 @@
     <Compile Include="Models\EditorEventArgs.cs" />
     <Compile Include="Models\ExplorerItem.cs" />
     <Compile Include="Models\FormatState.cs" />
+    <Compile Include="Models\KeyEventArgs.cs" />
     <Compile Include="Models\MenuItemState.cs" />
     <Compile Include="Models\MenuState.cs" />
     <Compile Include="Models\ParagraphState.cs" />
+    <Compile Include="Models\ShortcutKey.cs" />
     <Compile Include="Models\TocItem.cs" />
     <Compile Include="Models\WindowPlacement.cs" />
     <Compile Include="Models\WordCount.cs" />
@@ -215,6 +218,7 @@
     <Compile Include="ViewModels\FormatViewModel.cs" />
     <Compile Include="ViewModels\ParagraphViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.HotKey.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

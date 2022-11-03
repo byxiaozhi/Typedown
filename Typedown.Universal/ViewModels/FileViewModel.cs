@@ -453,7 +453,10 @@ namespace Typedown.Universal.ViewModels
 
         private void Exit()
         {
-            throw new NotImplementedException();
+            var WM_SYSCOMMAND = 0x0112u;
+            var SC_CLOSE = 0xF060;
+            var windowService = ServiceProvider.GetService<IWindowService>();
+            windowService.PostMessage(AppViewModel.MainWindow, WM_SYSCOMMAND, SC_CLOSE, 0);
         }
     }
 }

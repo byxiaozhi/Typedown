@@ -4,7 +4,7 @@ using Windows.UI.Xaml;
 
 namespace System.Runtime.CompilerServices
 {
-    internal static class IsExternalInit { }
+    public static class IsExternalInit { }
 }
 
 namespace Typedown.Universal

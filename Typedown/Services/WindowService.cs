@@ -21,5 +21,7 @@ namespace Typedown.Services
         public bool IsZoomed(nint hWnd) => PInvoke.IsZoomed(hWnd);
 
         public void SetForegroundWindow(nint hWnd) => PInvoke.SetForegroundWindow(hWnd);
+
+        public nint GetForegroundWindow() => PInvoke.GetForegroundWindow();
     }
 }

@@ -42,6 +42,7 @@ namespace Typedown
             builder.AddScoped<IFileExport, FileExport>();
             builder.AddScoped<IFileOperation, FileOperation>();
             builder.AddScoped<IWindowService, WindowService>();
+            builder.AddScoped<IKeyboardAccelerator, KeyboardAccelerator>();
             builder.AddScoped<Transport>();
             builder.AddScoped<RemoteInvoke>();
             builder.AddScoped<EventCenter>();

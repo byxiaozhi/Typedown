@@ -16,5 +16,7 @@ namespace Typedown.Universal.Interfaces
         bool IsZoomed(nint hWnd);
 
         void SetForegroundWindow(nint hWnd);
+
+        nint GetForegroundWindow();
     }
 }

@@ -12,5 +12,8 @@ namespace Typedown.Utilities
 
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool QueryPerformanceFrequency(out long frequency);
+
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Ansi)]
+        public static extern IntPtr LoadLibrary([MarshalAs(UnmanagedType.LPStr)] string lpFileName);
     }
 }

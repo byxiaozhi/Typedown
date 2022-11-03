@@ -28,6 +28,8 @@ namespace Typedown.Windows
 
         public AppXamlHost AppXamlHost { get; private set; }
 
+        public KeyboardAccelerator KeyboardAccelerator => ServiceProvider.GetService<IKeyboardAccelerator>() as KeyboardAccelerator;
+
         public MainWindow()
         {
             AppViewModel = ServiceProvider.GetService<AppViewModel>();
@@ -35,6 +37,8 @@ namespace Typedown.Windows
             Loaded += OnLoaded;
             Closed += OnClosed;
             Closing += OnClosing;
+            Activated += OnActivated;
+            Deactivated += OnDeactivated;
             InitializeComponent();
         }
 
@@ -159,6 +163,16 @@ namespace Typedown.Windows
         {
             ServiceScope.Dispose();
             GC.Collect();
+        }
+
+        private void OnActivated(object sender, EventArgs e)
+        {
+            KeyboardAccelerator.Start();
+        }
+
+        private void OnDeactivated(object sender, EventArgs e)
+        {
+            KeyboardAccelerator.Stop();
         }
     }
 }

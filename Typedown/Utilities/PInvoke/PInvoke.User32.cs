@@ -772,10 +772,41 @@ namespace Typedown.Utilities
             public RECT rcDevice;
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        public class KBDLLHOOKSTRUCT
+        {
+            public uint vkCode;
+            public uint scanCode;
+            public KBDLLHOOKSTRUCTFlags flags;
+            public uint time;
+            public UIntPtr dwExtraInfo;
+        }
+
+        [Flags]
+        public enum KBDLLHOOKSTRUCTFlags : uint
+        {
+            LLKHF_EXTENDED = 0x01,
+            LLKHF_INJECTED = 0x10,
+            LLKHF_ALTDOWN = 0x20,
+            LLKHF_UP = 0x80,
+        }
+
+        public enum MapVirtualKeyMapTypes : uint
+        {
+            MAPVK_VK_TO_VSC = 0x00,
+            MAPVK_VSC_TO_VK = 0x01,
+            MAPVK_VK_TO_CHAR = 0x02,
+            MAPVK_VSC_TO_VK_EX = 0x03,
+            MAPVK_VK_TO_VSC_EX = 0x04
+        }
+
         public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern IntPtr SetWindowsHookEx(HookType hookType, HookProc lpfn, IntPtr hMod, uint dwThreadId);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool UnhookWindowsHookEx(IntPtr hhk);
 
         [DllImport("user32.dll")]
         public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
@@ -898,5 +929,14 @@ namespace Typedown.Utilities
         [DllImport("user32.dll", SetLastError = false, ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        public static extern int MapVirtualKey(uint uCode, MapVirtualKeyMapTypes uMapType);
+
+        [DllImport("user32.dll")]
+        public static extern int GetKeyNameText(int lParam, [Out] StringBuilder lpString, int nSize);
     }
 }
