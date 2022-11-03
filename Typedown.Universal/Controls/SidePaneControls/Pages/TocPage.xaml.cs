@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -17,6 +18,10 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
 {
     public sealed partial class TocPage : Page
     {
+        public AppViewModel ViewModel => DataContext as AppViewModel;
+
+        public EditorViewModel Editor => ViewModel.EditorViewModel;
+
         public TocPage()
         {
             InitializeComponent();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -30,19 +31,16 @@ namespace Typedown.Universal.ViewModels
 
         public JToken Selection { get; set; }
         public JToken CodeMirrorSelection { get; set; }
-        public JToken ContentState { get; set; }
+        public ContentState ContentState { get; set; }
         public MenuState MenuState { get; set; }
         public ParagraphState ParagraphState { get; set; }
-        public ObservableCollection<ListViewItem> TocListViewItems { get; } = new();
+        public TocTreeItem Toc { get; } = new();
         public ContentHistory History { get; } = new();
 
         public string Markdown { get; set; } = "";
-        public int TocListSelectIndex { get; set; }
         public bool Selected { get; set; }
         public string SelectionText { get; set; }
         public bool TextSelected { get; set; }
-        public int WordCount { get; set; }
-        public int CharacterCount { get; set; }
         public bool Saved { get; set; } = true;
         public bool AutoSavedSucc { get; set; } = true;
         public bool DisplaySaved { get; set; } = true;
@@ -175,24 +173,16 @@ namespace Typedown.Universal.ViewModels
 
         public void OnStateChange(JToken arg)
         {
-            ContentState = arg["state"];
-            WordCount = ContentState["wordCount"]["word"].ToObject<int>();
-            CharacterCount = ContentState["wordCount"]["character"].ToObject<int>();
-
-            var toc = ContentState["toc"];
-            var cur = ContentState["cur"];
-            Toc2ListViewItems.Convert(this, toc, TocListViewItems);
-            if (cur != null && cur.HasValues)
+            ContentState = arg["state"].ToObject<ContentState>();
+            if (ContentState.Cur != null)
             {
-                var arr = toc.Select(x => x["slug"].ToString()).ToList();
-                var curslug = cur["slug"].ToString();
-                TocListSelectIndex = arr.IndexOf(arr.Where(x => x == curslug).First());
+                ContentState.Toc.ForEach(x =>
+                {
+                    x.IsSelected = x.Slug == ContentState.Cur.Slug;
+                    x.SelectedChanged += (s, b) => { if (b) JumpBySlug(x.Slug); };
+                });
             }
-            else
-            {
-                TocListSelectIndex = -1;
-            }
-
+            Toc.UpdateChildren(ContentState.Toc);
         }
 
         public void OnSearch()
@@ -338,19 +328,9 @@ namespace Typedown.Universal.ViewModels
             DisplaySaved = Saved || autoSave;
         }
 
-        public void JumpByIndex(int index)
+        public void JumpBySlug(string slug)
         {
-            try
-            {
-                if (ContentState["toc"] != null)
-                {
-                    MarkdownEditor?.PostMessage("ScrollTo", new { slug = ContentState["toc"][index]["slug"].ToString() });
-                }
-            }
-            catch (Exception e)
-            {
-                Trace.WriteLine(e.Message);
-            }
+            MarkdownEditor?.PostMessage("ScrollTo", new { slug });
         }
     }
 }

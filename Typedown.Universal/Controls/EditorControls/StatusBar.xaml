@@ -62,13 +62,13 @@
                     </ComboBox.Resources>
                     <ComboBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{x:Bind Editor.CharacterCount, Mode=OneWay}" />
+                            <TextBlock Text="{x:Bind Editor.ContentState.WordCount.Character, Mode=OneWay}" />
                             <TextBlock Margin="4,0,0,0" x:Uid="Characters"/>
                         </StackPanel>
                     </ComboBoxItem>
                     <ComboBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{x:Bind Editor.WordCount, Mode=OneWay}" />
+                            <TextBlock Text="{x:Bind Editor.ContentState.WordCount.Word, Mode=OneWay}" />
                             <TextBlock Margin="4,0,0,0" x:Uid="Words"/>
                         </StackPanel>
                     </ComboBoxItem>
