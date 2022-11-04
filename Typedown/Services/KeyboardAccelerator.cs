@@ -16,11 +16,17 @@ namespace Typedown.Services
     {
         private PInvoke.HookProc hookProc;
 
-        private IntPtr hHook;
+        private IntPtr hHook = IntPtr.Zero;
 
         private readonly Dictionary<ShortcutKey, HashSet<EventHandler<Universal.Models.KeyEventArgs>>> registeredDictionary = new();
 
         private readonly HashSet<EventHandler<Universal.Models.KeyEventArgs>> globalRegistered = new();
+
+        public bool IsEnable
+        {
+            get { return hHook != IntPtr.Zero; }
+            set { if (value) Start(); else Stop(); }
+        }
 
         public void Start()
         {

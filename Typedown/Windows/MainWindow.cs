@@ -6,9 +6,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Threading;
 using Typedown.Controls;
 using Typedown.Services;
 using Typedown.Universal.Controls;
+using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
@@ -20,68 +22,90 @@ namespace Typedown.Windows
 {
     public class MainWindow : AppWindow
     {
-        public IServiceScope ServiceScope { get; } = Injection.ServiceProvider.CreateScope();
+        public IServiceScope ServiceScope { get; private set; }
 
-        public IServiceProvider ServiceProvider => ServiceScope.ServiceProvider;
-
-        public AppViewModel AppViewModel { get; }
+        public AppViewModel AppViewModel { get; private set; }
 
         public AppXamlHost AppXamlHost { get; private set; }
 
-        public KeyboardAccelerator KeyboardAccelerator => ServiceProvider.GetService<IKeyboardAccelerator>() as KeyboardAccelerator;
+        public System.Windows.Controls.Grid RootLayout { get; private set; }
+
+        public RootControl RootControl { get; private set; }
+
+        public IServiceProvider ServiceProvider => ServiceScope?.ServiceProvider;
+
+        public KeyboardAccelerator KeyboardAccelerator => ServiceProvider?.GetService<IKeyboardAccelerator>() as KeyboardAccelerator;
+
+        public WindowService WindowService => ServiceProvider?.GetService<IWindowService>() as WindowService;
 
         public MainWindow()
         {
-            AppViewModel = ServiceProvider.GetService<AppViewModel>();
-            DataContext = AppViewModel;
+            Theme = (AppTheme)Properties.Settings.Default.StartupTheme;
+            Title = "Typedown";
+            MinWidth = 480;
+            MinHeight = 300;
             Loaded += OnLoaded;
             Closed += OnClosed;
             Closing += OnClosing;
             Activated += OnActivated;
             Deactivated += OnDeactivated;
+            LocationChanged += OnLocationChanged;
+            this.RestoreWindowPlacement();
+        }
+
+        private async void OnLoaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            RootLayout ??= new() { Children = { new SplashScreen() } };
+            Content ??= RootLayout;
+            await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Background);
+            this.SaveWindowPlacement(new(8, 8));
+            Universal.App.InitializeXAMLIsland();
             InitializeComponent();
         }
 
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
-            SetWindowPlacement();
-            UpdateTitle();
-            Content = AppXamlHost = new AppXamlHost(new RootControl());
+            if (ServiceScope != null)
+                return;
+            ServiceScope = Injection.ServiceProvider.CreateScope();
+            DataContext = AppViewModel = ServiceProvider.GetService<AppViewModel>();
+            AppViewModel.MainWindow = Handle;
+            RootControl = new RootControl();
+            AppXamlHost = new AppXamlHost(RootControl);
+            RootControl.Loaded += OnRootControlLoaded;
+            RootLayout ??= new();
+            Content ??= RootLayout;
+            RootLayout.Children.Add(AppXamlHost);
+            InitializeBinding();
+        }
+
+        public void InitializeBinding()
+        {
             SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
             SetBinding(TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             SetBinding(IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => CanGoBackChanged();
             AppViewModel.FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FileName)).Subscribe(_ => UpdateTitle());
             AppViewModel.EditorViewModel.WhenPropertyChanged(nameof(EditorViewModel.DisplaySaved)).Subscribe(_ => UpdateTitle());
+            AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme)).Subscribe(_ => UpdateStartupTheme());
+            KeyboardAccelerator.IsEnable = IsActive;
+            UpdateTitle();
+            CanGoBackChanged();
         }
 
-        private void SetWindowPlacement()
+        private async void OnRootControlLoaded(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Title = "Typedown";
-            MinWidth = 480;
-            MinHeight = 300;
-            if (AppViewModel.SettingsViewModel.WindowPlacement != null)
+            if (RootLayout.Children.OfType<SplashScreen>().FirstOrDefault() is SplashScreen splashScreen)
             {
-                this.RestoreWindowPlacement(AppViewModel.SettingsViewModel.WindowPlacement);
-            }
-            else
-            {
-                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                Width = 1100;
-                Height = 680;
+                await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Render);
+                RootLayout.Children.Remove(splashScreen);
             }
         }
 
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
-            (ServiceProvider.GetService<IWindowService>() as WindowService).RaiseWindowStateChanged(Handle);
-        }
-
-        private void OnLoaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            CanGoBackChanged();
-            AppViewModel.MainWindow = Handle;
+            WindowService?.RaiseWindowStateChanged(Handle);
         }
 
         private void CanGoBackChanged()
@@ -96,7 +120,7 @@ namespace Typedown.Windows
 
         private void CloseMenuFlyout()
         {
-            if (AppXamlHost.GetUwpInternalObject() is AppXamlHostRootLayout rootLayout)
+            if (AppXamlHost?.GetUwpInternalObject() is AppXamlHostRootLayout rootLayout)
             {
                 VisualTreeHelper.GetOpenPopupsForXamlRoot(rootLayout.XamlRoot)
                     .Where(x => x.Child is MenuFlyoutPresenter)
@@ -107,7 +131,7 @@ namespace Typedown.Windows
 
         private void UpdatePopupPos()
         {
-            if (AppXamlHost.GetUwpInternalObject() is AppXamlHostRootLayout rootLayout)
+            if (AppXamlHost?.GetUwpInternalObject() is AppXamlHostRootLayout rootLayout)
             {
                 VisualTreeHelper.GetOpenPopupsForXamlRoot(rootLayout.XamlRoot)
                     .ToList()
@@ -126,6 +150,11 @@ namespace Typedown.Windows
             Title = title.ToString();
         }
 
+        private void UpdateStartupTheme()
+        {
+            Properties.Settings.Default.StartupTheme = (int)AppViewModel.SettingsViewModel.AppTheme;
+        }
+
         protected override IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch ((PInvoke.WindowMessage)msg)
@@ -140,12 +169,11 @@ namespace Typedown.Windows
             return base.WndProc(hWnd, msg, wParam, lParam, ref handled);
         }
 
-        private bool isForceClose = false;
+        private bool isCloseable = false;
 
         private async void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            AppViewModel.SettingsViewModel.WindowPlacement = this.GetWindowPlacement();
-            if (isForceClose) return;
+            if (isCloseable) return;
             e.Cancel = true;
             await AppViewModel.FileViewModel.AutoSaveFile();
             if (AppViewModel.EditorViewModel.Saved || await AppViewModel.FileViewModel.AskToSave())
@@ -154,25 +182,31 @@ namespace Typedown.Windows
 
         public async void ForceClose()
         {
+            this.SaveWindowPlacement();
             await Task.Yield();
-            isForceClose = true;
+            isCloseable = true;
             Close();
         }
 
         private void OnClosed(object sender, EventArgs e)
         {
-            ServiceScope.Dispose();
+            ServiceScope?.Dispose();
             GC.Collect();
         }
 
         private void OnActivated(object sender, EventArgs e)
         {
-            KeyboardAccelerator.Start();
+            KeyboardAccelerator?.Start();
         }
 
         private void OnDeactivated(object sender, EventArgs e)
         {
-            KeyboardAccelerator.Stop();
+            KeyboardAccelerator?.Stop();
+        }
+
+        private void OnLocationChanged(object sender, EventArgs e)
+        {
+            this.SaveWindowPlacement(new(8, 8));
         }
     }
 }

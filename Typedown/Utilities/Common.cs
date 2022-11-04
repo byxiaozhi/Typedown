@@ -10,7 +10,9 @@ using Typedown.Universal.Utilities;
 using Typedown.Universal.Enums;
 using Typedown.Universal.ViewModels;
 using Typedown.Windows;
-using Windows.UI.Xaml;
+using Microsoft.Win32;
+using Windows.UI.ViewManagement;
+using Typedown.Properties;
 
 namespace Typedown.Utilities
 {
@@ -22,8 +24,8 @@ namespace Typedown.Utilities
 
         public static string GetMimeType(string fileName)
         {
-            string ext = Path.GetExtension(fileName).ToLower();
-            Microsoft.Win32.RegistryKey regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+            var ext = Path.GetExtension(fileName).ToLower();
+            var regKey = Registry.ClassesRoot.OpenSubKey(ext);
             var mime = regKey?.GetValue("Content Type")?.ToString();
             return mime ?? "application/unknown";
         }
@@ -49,34 +51,50 @@ namespace Typedown.Utilities
             {
                 AppTheme.Light => false,
                 AppTheme.Dark => true,
-                _ => Universal.App.Current.RequestedTheme == ApplicationTheme.Dark ? true : false
+                _ => !GetUseLightTheme()
             };
-            var color = Universal.App.Current.Resources["SystemAccentColor"];
+            var color = new UISettings().GetColorValue(UIColorType.Accent);
             var background = isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
             return new { theme = isDarkMode ? "Dark" : "Light", color, background };
         }
 
-        public static Universal.Models.WindowPlacement GetWindowPlacement(this AppWindow window)
+        public static bool GetUseLightTheme()
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
+            var registryValueObject = key?.GetValue("AppsUseLightTheme");
+            return registryValueObject == null || (int)registryValueObject > 0;
+        }
+
+        public static void SaveWindowPlacement(this AppWindow window, System.Windows.Point offset = default)
         {
             PInvoke.WINDOWPLACEMENT placement = new();
             PInvoke.GetWindowPlacement(window.Handle, ref placement);
+            var settings = Settings.Default;
             var scale = PInvoke.GetDpiForWindow(window.Handle) / 96.0;
-            var max = placement.showCmd == PInvoke.ShowWindowCommand.Maximize;
-            var x = placement.rcNormalPosition.left / scale;
-            var y = placement.rcNormalPosition.top / scale;
-            var w = (placement.rcNormalPosition.right - placement.rcNormalPosition.left) / scale;
-            var h = (placement.rcNormalPosition.bottom - placement.rcNormalPosition.top) / scale;
-            return new(max, new(x, y, w, h));
+            settings.StartupIsMaximized = placement.showCmd == PInvoke.ShowWindowCommand.Maximize;
+            settings.StartupLeft = placement.rcNormalPosition.left / scale + offset.X;
+            settings.StartupTop = placement.rcNormalPosition.top / scale + offset.Y;
+            settings.StartupWidth = (placement.rcNormalPosition.right - placement.rcNormalPosition.left) / scale;
+            settings.StartupHeight = (placement.rcNormalPosition.bottom - placement.rcNormalPosition.top) / scale;
+            settings.Save();
         }
 
-        public static void RestoreWindowPlacement(this AppWindow window, Universal.Models.WindowPlacement placement)
+        public static void RestoreWindowPlacement(this AppWindow window)
         {
-            window.WindowStartupLocation = WindowStartupLocation.Manual;
-            window.Left = placement.NormalPosition.Left;
-            window.Top = placement.NormalPosition.Top;
-            window.Width = placement.NormalPosition.Width;
-            window.Height = placement.NormalPosition.Height;
-            window.WindowState = placement.IsMaximized ? WindowState.Maximized : WindowState.Normal;
+            var settings = Settings.Default;
+            if (settings.StartupLeft >= 0 && settings.StartupTop >= 0)
+            {
+                window.WindowStartupLocation = WindowStartupLocation.Manual;
+                window.Left = settings.StartupLeft;
+                window.Top = settings.StartupTop;
+            }
+            else
+            {
+                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
+            window.Width = settings.StartupWidth;
+            window.Height = settings.StartupHeight;
+            window.WindowState = settings.StartupIsMaximized ? WindowState.Maximized : WindowState.Normal;
         }
 
         public static IntPtr OpenNewWindow(string path)
@@ -86,6 +104,7 @@ namespace Typedown.Utilities
             {
                 var promise = new TaskCompletionSource<IntPtr>();
                 var newWindow = new MainWindow();
+                newWindow.InitializeComponent();
                 newWindow.AppViewModel.FileViewModel.FilePath = path;
                 newWindow.ShowActivated = true;
                 newWindow.Loaded += (s, e) => promise.SetResult((s as MainWindow).Handle);

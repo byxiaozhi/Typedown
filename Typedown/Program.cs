@@ -6,6 +6,7 @@ using System.IO;
 using Typedown.Universal.Utilities;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Typedown
 {
@@ -22,7 +23,7 @@ namespace Typedown
         {
             if (mutex.WaitOne(TimeSpan.Zero, true))
             {
-                ListenPipe();
+                Task.Run(ListenPipe);
                 Startup();
             }
             else
@@ -34,8 +35,7 @@ namespace Typedown
         private static void Startup()
         {
             hHook = PInvoke.SetWindowsHookEx(PInvoke.HookType.WH_CBT, hookProc, IntPtr.Zero, PInvoke.GetCurrentThreadId());
-            using (new Universal.App())
-                new App().Run();
+            new App().Run();
         }
 
         private static IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam)

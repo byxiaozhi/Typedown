@@ -14,7 +14,6 @@ namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
-
         public static DependencyProperty ThemeProperty = DependencyProperty.Register(nameof(Theme), typeof(AppTheme), typeof(AppWindow));
         public AppTheme Theme { get => (AppTheme)GetValue(ThemeProperty); set => SetValue(ThemeProperty, value); }
 
@@ -173,13 +172,12 @@ namespace Typedown.Windows
             if (Handle == IntPtr.Zero)
                 return;
             var compositionTarget = HwndSource.FromHwnd(Handle).CompositionTarget;
-            var theme = Theme switch
+            var isDarkMode = Theme switch
             {
-                AppTheme.Light => global::Windows.UI.Xaml.ApplicationTheme.Light,
-                AppTheme.Dark => global::Windows.UI.Xaml.ApplicationTheme.Dark,
-                _ => global::Windows.UI.Xaml.Application.Current.RequestedTheme
+                AppTheme.Light => false,
+                AppTheme.Dark => true,
+                _ => !Utilities.Common.GetUseLightTheme()
             };
-            var isDarkMode = theme == global::Windows.UI.Xaml.ApplicationTheme.Dark;
             if (Universal.Config.IsMicaSupported)
             {
                 compositionTarget.BackgroundColor = Colors.Transparent;

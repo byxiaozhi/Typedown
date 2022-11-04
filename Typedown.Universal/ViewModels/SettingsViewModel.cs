@@ -22,7 +22,6 @@ namespace Typedown.Universal.ViewModels
 {
     public sealed partial class SettingsViewModel : INotifyPropertyChanged
     {
-        public WindowPlacement WindowPlacement { get => GetSettingValue<WindowPlacement>(null); set => SetSettingValue(value); }
         public IReadOnlyList<string> History { get => GetSettingValue(new List<string>()); set => SetSettingValue(value); }
         public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public double SidePaneWidth { get => GetSettingValue(300d); set => SetSettingValue(value); }
