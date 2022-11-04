@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -14,19 +15,14 @@ namespace Typedown.Universal.Models
 
         public string Content { get; set; }
 
+        [OnChangedMethod(nameof(OnIsSelectedChanged))]
         public bool IsSelected { get; set; }
 
         public event EventHandler<bool> SelectedChanged;
 
-        public TocItem()
+        private void OnIsSelectedChanged()
         {
-            PropertyChanged += OnTocItemPropertyChanged;
-        }
-
-        private void OnTocItemPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(IsSelected))
-                SelectedChanged?.Invoke(this, IsSelected);
+            SelectedChanged?.Invoke(this, IsSelected);
         }
     }
 

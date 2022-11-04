@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,48 +18,43 @@ namespace Typedown.Universal.Models
 
         public string Name { get; private set; }
 
+        [OnChangedMethod(nameof(OnFullPathChanged))]
         public string FullPath { get; set; }
 
         public ExplorerItemType Type { get; private set; }
 
         public ObservableCollection<ExplorerItem> Children { get; } = new();
 
+        [OnChangedMethod(nameof(OnComparerChanged))]
         public Comparer<ExplorerItem> Comparer { get; set; } = new DefaultComparer();
 
         public Func<FileAttributes, string, bool> Filter { get; set; } = DefaultFilter;
 
         public Exception Exception { get; private set; }
 
+        [OnChangedMethod(nameof(OnIsExpandedChanged))]
         public bool IsExpanded { get; set; } = false;
 
+        [OnChangedMethod(nameof(OnIsWatchingChanged))]
         private bool IsWatching { get; set; } = false;
 
         private FileSystemWatcher fileSystemWatcher;
 
-        public ExplorerItem()
+        private void OnFullPathChanged()
         {
-            PropertyChanged += OnExplorerItemPropertyChanged;
+            UpdateName();
+            UpdateType();
+            UpdateChildren();
         }
 
-        private void OnExplorerItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnIsWatchingChanged()
         {
-            switch (e.PropertyName)
-            {
-                case nameof(FullPath):
-                    UpdateName();
-                    UpdateType();
-                    UpdateChildren();
-                    break;
-                case nameof(IsExpanded):
-                    OnIsExpandedChanged();
-                    break;
-                case nameof(IsWatching):
-                    UpdateChildren();
-                    break;
-                case nameof(Comparer):
-                    Reorder();
-                    break;
-            }
+            UpdateChildren();
+        }
+
+        private void OnComparerChanged()
+        {
+            Reorder();
         }
 
         private void UpdateType()
@@ -236,6 +232,7 @@ namespace Typedown.Universal.Models
             OnFileCreated(e, attr);
         }
 
+        [SuppressPropertyChangedWarnings]
         private void OnFileChanged(FileSystemEventArgs e, FileAttributes attr)
         {
             var test = Filter(attr, e.Name);

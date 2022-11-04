@@ -6,16 +6,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
-using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Windows.Foundation.Collections;
 using Windows.Storage;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
@@ -131,15 +128,13 @@ namespace Typedown.Universal.ViewModels
         {
             cache[propertyName] = value;
             Store[propertyName] = JsonConvert.SerializeObject(value);
-            OnSettingChanged(propertyName, value);
         }
 
-        public void OnSettingChanged(string propertyName, object newValue)
+        public void OnPropertyChanged(string propertyName, object before, object after)
         {
+            PropertyChanged?.Invoke(this, new(propertyName));
             if (notifySet.Contains(propertyName))
-            {
-                MarkdownEditor.PostMessage("SettingsChanged", new Dictionary<string, object>() { { propertyName, newValue } });
-            }
+                MarkdownEditor.PostMessage("SettingsChanged", new Dictionary<string, object>() { { propertyName, after } });
         }
 
         public async void ResetSetting()
