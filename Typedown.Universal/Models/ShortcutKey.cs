@@ -7,5 +7,11 @@ using Windows.System;
 
 namespace Typedown.Universal.Models
 {
-    public record ShortcutKey(VirtualKeyModifiers Modifiers, VirtualKey Key);
+    public record ShortcutKey(VirtualKeyModifiers Modifiers, VirtualKey Key)
+    {
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+    }
 }

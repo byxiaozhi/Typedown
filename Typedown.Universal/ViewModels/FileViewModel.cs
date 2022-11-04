@@ -203,7 +203,7 @@ namespace Typedown.Universal.ViewModels
                 var openedWindow = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath == path).FirstOrDefault();
                 if (openedWindow != default && openedWindow.FileViewModel != this)
                 {
-                    AppViewModel.ServiceProvider.GetService<IWindowService>().SetForegroundWindow(openedWindow.MainWindow);
+                    PInvoke.SetForegroundWindow(openedWindow.MainWindow);
                     return;
                 }
                 if (!File.Exists(path))
@@ -453,10 +453,8 @@ namespace Typedown.Universal.ViewModels
 
         private void Exit()
         {
-            var WM_SYSCOMMAND = 0x0112u;
             var SC_CLOSE = 0xF060;
-            var windowService = ServiceProvider.GetService<IWindowService>();
-            windowService.PostMessage(AppViewModel.MainWindow, WM_SYSCOMMAND, SC_CLOSE, 0);
+            PInvoke.PostMessage(AppViewModel.MainWindow, (uint)PInvoke.WindowMessage.WM_SYSCOMMAND, (nint)SC_CLOSE, IntPtr.Zero);
         }
     }
 }

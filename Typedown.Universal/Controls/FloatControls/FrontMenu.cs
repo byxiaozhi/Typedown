@@ -1,4 +1,5 @@
-﻿using Typedown.Universal.Interfaces;
+﻿using System.Collections.Generic;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.UI.Xaml;
@@ -15,11 +16,15 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private readonly IMarkdownEditor markdownEditor;
 
-        public FrontMenu(SettingsViewModel settings, IMarkdownEditor markdownEditor)
+        private readonly AppViewModel viewModel;
+
+        public FrontMenu(AppViewModel viewModel)
         {
-            this.markdownEditor = markdownEditor;
+            this.viewModel = viewModel;
+            this.markdownEditor = viewModel.MarkdownEditor;
             Flyout.Closed += OnClosed;
-            Flyout.AreOpenCloseAnimationsEnabled = settings.AnimationEnable;
+            Flyout.AreOpenCloseAnimationsEnabled = viewModel.SettingsViewModel.AnimationEnable;
+            BindingDataContext(Flyout.Items);
         }
 
         private void OnClosed(object sender, object e)
@@ -32,6 +37,16 @@ namespace Typedown.Universal.Controls.FloatControls
             var options = new FlyoutShowOptions() { Placement = FlyoutPlacementMode.Bottom };
             Flyout.OverlayInputPassThroughElement = (markdownEditor as UIElement).XamlRoot.Content;
             Flyout.ShowAt(markdownEditor.GetDummyRectangle(rect), options);
+        }
+
+        public void BindingDataContext(IList<MenuFlyoutItemBase> items)
+        {
+            foreach (var item in items)
+            {
+                item.DataContext = viewModel;
+                if (item is MenuFlyoutSubItem sub)
+                    BindingDataContext(sub.Items);
+            }
         }
     }
 }

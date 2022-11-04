@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Typedown.Universal.Utilities;
 using Typedown.Universal.Enums;
 using Typedown.Universal.ViewModels;
 using Typedown.Windows;

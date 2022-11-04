@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/Button.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/ContentDialog.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/ToggleSwitch.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Resources/Converters.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </xaml:XamlApplication.Resources>

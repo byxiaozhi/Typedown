@@ -4,7 +4,7 @@ using System.Drawing.Printing;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Typedown.Utilities
+namespace Typedown.Universal.Utilities
 {
     public static partial class PInvoke
     {

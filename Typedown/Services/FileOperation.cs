@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Text;
 using Typedown.Universal.Interfaces;
-using Typedown.Utilities;
+using Typedown.Universal.Utilities;
 
 namespace Typedown.Services
 {

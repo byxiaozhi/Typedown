@@ -123,8 +123,7 @@ namespace Typedown.Universal.Controls
 
         private bool OnWindowShortcutEvent(MenuFlyoutItem item)
         {
-            var windowService = this.GetService<IWindowService>();
-            var focused = windowService.GetForegroundWindow();
+            var focused = PInvoke.GetForegroundWindow();
             if (focused != ViewModel.MainWindow)
                 return false;
             TriggerMenuFlyoutItem(item);

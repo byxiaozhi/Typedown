@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace Typedown.Universal.Resources.Converters
+namespace Typedown.Universal.Converters
 {
     public class GridLengthToDoubleConverter : IValueConverter
     {

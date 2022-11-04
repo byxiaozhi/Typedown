@@ -5,7 +5,6 @@ using Typedown.Universal.Services;
 using Typedown.Universal.ViewModels;
 using Typedown.Controls;
 using Typedown.Universal.Controls.FloatControls;
-using Typedown.Universal.Models;
 
 namespace Typedown
 {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
 using Typedown.Universal.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;

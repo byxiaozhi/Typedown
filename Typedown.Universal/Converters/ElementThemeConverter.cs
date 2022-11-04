@@ -7,7 +7,7 @@ using Typedown.Universal.Enums;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace Typedown.Universal.Resources.Converters
+namespace Typedown.Universal.Converters
 {
     public class ElementThemeConverter : IValueConverter
     {

@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Typedown.Universal.Models;
+using Typedown.Universal.ViewModels;
+using Typedown.Universal.Utilities;
+using Windows.System;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Markup;
 
-namespace Typedown.Universal.Resources.Converters
+namespace Typedown.Universal.Converters
 {
-    public class BoolToObjectConverter : IValueConverter
+    public class ShortcutKeyToStringConverter: IValueConverter
     {
-        public object TrueValue { get; set; }
-
-        public object FalseValue { get; set; }
-
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var res = (bool)value ? TrueValue : FalseValue;
-            return XamlBindingHelper.ConvertValue(targetType, res);
+            if(value is ShortcutKey key)
+                return Common.GetShortcutKeyText(key);
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

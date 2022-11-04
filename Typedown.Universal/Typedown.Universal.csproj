@@ -197,19 +197,25 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IWindowService.cs" />
-    <Compile Include="Resources\Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="Resources\Converters\BoolToObjectConverter.cs" />
-    <Compile Include="Resources\Converters\ElementThemeConverter.cs" />
-    <Compile Include="Resources\Converters\GridLengthToDoubleConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\BoolToObjectConverter.cs" />
+    <Compile Include="Converters\ElementThemeConverter.cs" />
+    <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
+    <Compile Include="Converters\ShortcutKeyToStringConverter.cs" />
     <Compile Include="Services\AutoBackup.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
+    <Compile Include="Services\Transport.cs" />
     <Compile Include="Utilities\Command.cs" />
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Utilities\FileExtension.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
     <Compile Include="Utilities\Localize.cs" />
+    <Compile Include="Utilities\PInvoke\PInvoke.DwmApi.cs" />
+    <Compile Include="Utilities\PInvoke\PInvoke.Kernel32.cs" />
+    <Compile Include="Utilities\PInvoke\PInvoke.Shell32.cs" />
+    <Compile Include="Utilities\PInvoke\PInvoke.User32.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\EditorViewModel.cs" />
@@ -457,6 +463,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Text;
+using Typedown.Universal.Utilities;
 using Typedown.Windows;
 
 namespace Typedown.Utilities

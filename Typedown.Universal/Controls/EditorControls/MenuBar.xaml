@@ -12,7 +12,7 @@
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" 
-    xmlns:converters="using:Typedown.Universal.Resources.Converters"
+    xmlns:converters="using:Typedown.Universal.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">

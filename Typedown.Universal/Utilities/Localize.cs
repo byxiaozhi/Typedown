@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
-using Windows.ApplicationModel.Resources.Core;
 
 namespace Typedown.Universal.Utilities
 {

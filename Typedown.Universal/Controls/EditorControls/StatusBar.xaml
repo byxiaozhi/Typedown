@@ -5,7 +5,7 @@
     xmlns:local="using:Typedown.Universal.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:converters="using:Typedown.Universal.Resources.Converters"
+    xmlns:converters="using:Typedown.Universal.Converters"
     mc:Ignorable="d"
     FontSize="12"
     d:DesignHeight="300"

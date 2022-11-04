@@ -3,14 +3,13 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.UI.Xaml;
+using Typedown.Universal.Models;
+using Windows.System;
 
 namespace Typedown.Universal.Utilities
 {
@@ -83,6 +82,33 @@ namespace Typedown.Universal.Utilities
             while (i < list.Count && cmp(item, list[i]) >= 0)
                 i++;
             list.Insert(i, item);
+        }
+
+        public static string GetShortcutKeyText(this ShortcutKey key)
+        {
+            if (key == null)
+                return string.Empty;
+            var result = new List<string>();
+            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Control))
+                result.Add(GetVirtualKeyNameText(VirtualKey.Control));
+            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Menu))
+                result.Add(GetVirtualKeyNameText(VirtualKey.Menu));
+            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Shift))
+                result.Add(GetVirtualKeyNameText(VirtualKey.Shift));
+            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Windows))
+                result.Add("Win");
+            result.Add(GetVirtualKeyNameText(key.Key));
+            return string.Join('+', result);
+        }
+
+        public static string GetVirtualKeyNameText(this VirtualKey key)
+        {
+            if (key == VirtualKey.Delete) return "Delete";
+            var buffer = new StringBuilder(32);
+            var scanCode = PInvoke.MapVirtualKey((uint)key, PInvoke.MapVirtualKeyMapTypes.MAPVK_VK_TO_VSC);
+            var lParam = scanCode << 16;
+            PInvoke.GetKeyNameText(lParam, buffer, buffer.Capacity);
+            return buffer.ToString();
         }
     }
 }

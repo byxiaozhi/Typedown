@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using Windows.UI.ViewManagement;
+using Typedown.Universal.Utilities;
 using Typedown.Utilities;
 using Typedown.Controls;
 using Typedown.Universal.Enums;
@@ -125,12 +126,12 @@ namespace Typedown.Windows
                     handled = true;
                     if (PInvoke.DwmDefWindowProc(hWnd, msg, wParam, lParam, out var dwmHitTest))
                         return dwmHitTest;
-                    return (IntPtr)HitTest(PointFromScreen(Common.MakePoint(lParam)));
+                    return (IntPtr)HitTest(PointFromScreen(Typedown.Utilities.Common.MakePoint(lParam)));
                 case PInvoke.WindowMessage.WM_NCRBUTTONUP:
                     if (wParam.ToInt32() == (int)PInvoke.HitTestFlags.CAPTION)
                     {
                         handled = true;
-                        OpenSystemMenu(Common.MakePoint(lParam));
+                        OpenSystemMenu(Typedown.Utilities.Common.MakePoint(lParam));
                     }
                     break;
                 case PInvoke.WindowMessage.WM_NCMOUSELEAVE:

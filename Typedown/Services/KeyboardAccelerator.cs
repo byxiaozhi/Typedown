@@ -7,7 +7,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
-using Typedown.Utilities;
+using Typedown.Universal.Utilities;
 using Windows.System;
 
 namespace Typedown.Services

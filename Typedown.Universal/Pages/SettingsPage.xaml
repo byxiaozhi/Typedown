@@ -8,7 +8,7 @@
     xmlns:controls="using:Typedown.Universal.Controls" 
     xmlns:settingItems="using:Typedown.Universal.Controls.SettingControls.SettingItems" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
-    xmlns:converters="using:Typedown.Universal.Resources.Converters"
+    xmlns:converters="using:Typedown.Universal.Converters"
     SizeChanged="OnSizeChanged"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"

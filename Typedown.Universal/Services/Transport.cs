@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using Typedown.Controls;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Services;
 
@@ -24,7 +24,7 @@ namespace Typedown.Services
             ServiceProvider = serviceProvider;
         }
 
-        public async void EmitWebViewMessage(MarkdownEditor sender, string json)
+        public async void EmitWebViewMessage(IMarkdownEditor sender, string json)
         {
             var msg = JsonConvert.DeserializeObject<EditorMessage>(json);
             switch (msg.Type)
@@ -45,7 +45,7 @@ namespace Typedown.Services
                     break;
                 case "diffmsg":
                     if (msg.Diff)
-                        prevDic[msg.Name] = prevDic[msg.Name][..msg.Start] + msg.Args + prevDic[msg.Name][msg.End..];
+                        prevDic[msg.Name] = prevDic[msg.Name].Substring(0, msg.Start) + msg.Args + prevDic[msg.Name].Substring(msg.End);
                     else
                         prevDic[msg.Name] = msg.Args.ToString();
                     EventCenter.EmitEvent(msg.Name, new EditorEventArgs(msg.Name, JToken.Parse(prevDic[msg.Name])));

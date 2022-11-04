@@ -25,6 +25,12 @@ namespace Typedown.Universal.Controls
 
         public FloatViewModel Float => ViewModel?.FloatViewModel;
 
+        public EditorViewModel Editor => ViewModel?.EditorViewModel;
+
+        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
+
+        public FormatViewModel Format => ViewModel?.FormatViewModel;
+
         public EditorContainer()
         {
             this.InitializeComponent();

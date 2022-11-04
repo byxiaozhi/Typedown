@@ -5,7 +5,7 @@
     xmlns:local="using:Typedown.Universal.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:viewmodels="using:Typedown.Universal.ViewModels" xmlns:converters="using:Typedown.Universal.Resources.Converters"
+    xmlns:viewmodels="using:Typedown.Universal.ViewModels" xmlns:converters="using:Typedown.Universal.Converters"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
     Loaded="OnLoaded"

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-using Typedown.Utilities;
+using Typedown.Universal.Utilities;
 
 namespace Typedown.Controls
 {
