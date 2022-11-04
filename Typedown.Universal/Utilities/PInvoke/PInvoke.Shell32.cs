@@ -69,7 +69,7 @@ namespace Typedown.Universal.Utilities
             public string lpszProgressTitle;
         }
 
-        [DllImport("shell32.dll", CharSet = CharSet.Auto)]
+        [DllImport("shell32.dll", ExactSpelling = true)]
         public static extern int SHFileOperation(ref SHFILEOPSTRUCT lpFileOp);
     }
 }

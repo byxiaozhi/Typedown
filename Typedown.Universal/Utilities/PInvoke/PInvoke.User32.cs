@@ -800,18 +800,25 @@ namespace Typedown.Universal.Utilities
             MAPVK_VK_TO_VSC_EX = 0x04
         }
 
+        [Flags]
+        public enum LayeredWindowFlags
+        {
+            LWA_ALPHA = 0x00000002,
+            LWA_COLORKEY = 0x00000001,
+        }
+
         public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr SetWindowsHookEx(HookType hookType, HookProc lpfn, IntPtr hMod, uint dwThreadId);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern bool UnhookWindowsHookEx(IntPtr hhk);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int GetClassName(IntPtr hWnd, StringBuilder buf, int nMaxCount);
 
         public static string GetClassName(IntPtr hWnd, int capacity = 256)
@@ -821,17 +828,17 @@ namespace Typedown.Universal.Utilities
             return builder.ToString();
         }
 
-        [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr GetParent(IntPtr hWnd);
 
         [return: MarshalAs(UnmanagedType.Bool)]
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern bool PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetCursorPos(out POINT point);
 
@@ -841,22 +848,22 @@ namespace Typedown.Universal.Utilities
             return new(p.X, p.Y);
         }
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern bool IsZoomed(IntPtr hWnd);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern uint GetDoubleClickTime();
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommand nCmdShow);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr GetWindowLongPtr(IntPtr hWnd, WindowLongFlags nIndex);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int GetWindowLong(IntPtr hWnd, WindowLongFlags nIndex);
 
         public static IntPtr SetWindowLongPtr(HandleRef hWnd, WindowLongFlags nIndex, IntPtr dwNewLong)
@@ -867,76 +874,72 @@ namespace Typedown.Universal.Utilities
                 return new IntPtr(SetWindowLong32(hWnd, nIndex, dwNewLong.ToInt32()));
         }
 
-        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong", ExactSpelling = true)]
         public static extern int SetWindowLong32(HandleRef hWnd, WindowLongFlags nIndex, int dwNewLong);
 
-        [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr", ExactSpelling = true)]
         public static extern IntPtr SetWindowLongPtr64(HandleRef hWnd, WindowLongFlags nIndex, IntPtr dwNewLong);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int SetWindowLong(IntPtr hWnd, WindowLongFlags nIndex, int dwNewLong);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int GetDpiForWindow(IntPtr hWnd);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int GetSystemMetrics(SystemMetric smIndex);
 
-        [DllImport("user32.dll", SetLastError = true, ExactSpelling = true)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int TrackPopupMenu(IntPtr hMenu, uint uFlags, int x, int y, int nReserved, IntPtr hWnd, IntPtr prcRect);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern bool EnableMenuItem(IntPtr hMenu, uint uIDEnableItem, uint uEnable);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr LoadCursor(IntPtr hInstance, int lpCursorName);
 
         public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool EnumChildWindows(IntPtr hwndParent, EnumWindowsProc lpEnumFunc, IntPtr lParam);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.U2)]
         public static extern short RegisterClassEx([In] ref WNDCLASSEX lpwcx);
 
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr CreateWindowEx(WindowStylesEx dwExStyle, string lpClassName, string lpWindowName, WindowStyles dwStyle, int x, int y, int nWidth, int nHeight, IntPtr hWndParent, IntPtr hMenu, IntPtr hInstance, IntPtr lpParam);
 
-        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool DestroyWindow(IntPtr hwnd);
 
-        [Flags]
-        public enum LayeredWindowFlags
-        {
-            LWA_ALPHA = 0x00000002,
-            LWA_COLORKEY = 0x00000001,
-        }
-
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, LayeredWindowFlags dwFlags);
 
-        [DllImport("user32.dll", SetLastError = true, ExactSpelling = true)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
 
-        [DllImport("user32.dll", SetLastError = false, ExactSpelling = true)]
+        [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern IntPtr GetForegroundWindow();
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int MapVirtualKey(uint uCode, MapVirtualKeyMapTypes uMapType);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int GetKeyNameText(int lParam, [Out] StringBuilder lpString, int nSize);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern IntPtr GetSystemMenu(IntPtr hWnd, [MarshalAs(UnmanagedType.Bool)] bool bRevert);
     }
 }

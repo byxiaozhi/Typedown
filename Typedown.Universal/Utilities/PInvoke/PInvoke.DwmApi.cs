@@ -25,16 +25,13 @@ namespace Typedown.Universal.Utilities
             public int cyBottomHeight;
         };
 
-        [DllImport("dwmapi.dll")]
+        [DllImport("dwmapi.dll", ExactSpelling = true)]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute dwAttribute, ref uint pvAttribute, int cbAttribute);
 
-        [DllImport("dwmapi.dll")]
+        [DllImport("dwmapi.dll", ExactSpelling = true)]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hwnd, MARGINS pMarInset);
 
-        [DllImport("dwmapi.dll")]
+        [DllImport("dwmapi.dll", ExactSpelling = true)]
         public static extern bool DwmDefWindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, out IntPtr plResult);
-
-        [DllImport("user32.dll", SetLastError = false, ExactSpelling = true)]
-        public static extern IntPtr GetSystemMenu(IntPtr hWnd, [MarshalAs(UnmanagedType.Bool)] bool bRevert);
     }
 }
