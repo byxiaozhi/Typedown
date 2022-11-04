@@ -26,12 +26,12 @@ namespace Typedown.Universal.Utilities
         };
 
         [DllImport("dwmapi.dll", ExactSpelling = true)]
-        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute dwAttribute, ref uint pvAttribute, int cbAttribute);
+        public static extern int DwmSetWindowAttribute(nint hwnd, DwmWindowAttribute dwAttribute, ref uint pvAttribute, int cbAttribute);
 
         [DllImport("dwmapi.dll", ExactSpelling = true)]
-        public static extern int DwmExtendFrameIntoClientArea(IntPtr hwnd, MARGINS pMarInset);
+        public static extern int DwmExtendFrameIntoClientArea(nint hwnd, MARGINS pMarInset);
 
         [DllImport("dwmapi.dll", ExactSpelling = true)]
-        public static extern bool DwmDefWindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, out IntPtr plResult);
+        public static extern bool DwmDefWindowProc(nint hwnd, int msg, nint wParam, nint lParam, out nint plResult);
     }
 }

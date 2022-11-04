@@ -25,7 +25,7 @@ namespace Typedown.Windows
 
         public nint Handle { get; private set; }
 
-        public double WindowScale => PInvoke.GetDpiForWindow(new(Handle)) / 96.0;
+        public double WindowScale => PInvoke.GetDpiForWindow(Handle) / 96.0;
 
         protected DragBar DragBar => GetTemplateChild(PART_DragBar) as DragBar;
 
@@ -75,7 +75,7 @@ namespace Typedown.Windows
             PInvoke.EnableMenuItem(hMenu, 0xF000, toEnable(WindowState == WindowState.Normal && canResize));// SC_SIZE
             PInvoke.EnableMenuItem(hMenu, 0xF020, toEnable(ResizeMode != ResizeMode.NoResize)); // SC_MINIMIZE
             var retvalue = PInvoke.TrackPopupMenu(hMenu, 0x0100, (int)screenPos.X, (int)screenPos.Y, 0, Handle, IntPtr.Zero);
-            PInvoke.PostMessage(Handle, (uint)PInvoke.WindowMessage.WM_SYSCOMMAND, new(retvalue), IntPtr.Zero);
+            PInvoke.PostMessage(Handle, (uint)PInvoke.WindowMessage.WM_SYSCOMMAND, retvalue, IntPtr.Zero);
         }
 
         protected virtual PInvoke.HitTestFlags HitTest(Point pointerPos)

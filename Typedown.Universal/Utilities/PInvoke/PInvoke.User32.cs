@@ -124,189 +124,97 @@ namespace Typedown.Universal.Utilities
         public enum SystemMetric : int
         {
             SM_ARRANGE = 56,
-
             SM_CLEANBOOT = 67,
-
             SM_CMONITORS = 80,
-
             SM_CMOUSEBUTTONS = 43,
-
             SM_CXBORDER = 5,
-
             SM_CXCURSOR = 13,
-
             SM_CXDLGFRAME = 7,
-
             SM_CXDOUBLECLK = 36,
-
             SM_CXDRAG = 68,
-
             SM_CXEDGE = 45,
-
             SM_CXFIXEDFRAME = 7,
-
             SM_CXFOCUSBORDER = 83,
-
             SM_CXFRAME = 32,
-
             SM_CXFULLSCREEN = 16,
-
             SM_CXHSCROLL = 21,
-
             SM_CXHTHUMB = 10,
-
             SM_CXICON = 11,
-
             SM_CXICONSPACING = 38,
-
             SM_CXMAXIMIZED = 61,
-
             SM_CXMAXTRACK = 59,
-
             SM_CXMENUCHECK = 71,
-
             SM_CXMENUSIZE = 54,
-
             SM_CXMIN = 28,
-
             SM_CXMINIMIZED = 57,
-
             SM_CXMINSPACING = 47,
-
             SM_CXMINTRACK = 34,
-
             SM_CXPADDEDBORDER = 92,
-
             SM_CXSCREEN = 0,
-
             SM_CXSIZE = 30,
-
             SM_CXSIZEFRAME = 32,
-
             SM_CXSMICON = 49,
-
             SM_CXSMSIZE = 52,
-
             SM_CXVIRTUALSCREEN = 78,
-
             SM_CXVSCROLL = 2,
-
             SM_CYBORDER = 6,
-
             SM_CYCAPTION = 4,
-
             SM_CYCURSOR = 14,
-
             SM_CYDLGFRAME = 8,
-
             SM_CYDOUBLECLK = 37,
-
             SM_CYDRAG = 69,
-
             SM_CYEDGE = 46,
-
             SM_CYFIXEDFRAME = 8,
-
             SM_CYFOCUSBORDER = 84,
-
             SM_CYFRAME = 33,
-
             SM_CYFULLSCREEN = 17,
-
             SM_CYHSCROLL = 3,
-
             SM_CYICON = 12,
-
             SM_CYICONSPACING = 39,
-
             SM_CYKANJIWINDOW = 18,
-
             SM_CYMAXIMIZED = 62,
-
             SM_CYMAXTRACK = 60,
-
             SM_CYMENU = 15,
-
             SM_CYMENUCHECK = 72,
-
             SM_CYMENUSIZE = 55,
-
             SM_CYMIN = 29,
-
             SM_CYMINIMIZED = 58,
-
             SM_CYMINSPACING = 48,
-
             SM_CYMINTRACK = 35,
-
             SM_CYSCREEN = 1,
-
             SM_CYSIZE = 31,
-
             SM_CYSIZEFRAME = 33,
-
             SM_CYSMCAPTION = 51,
-
             SM_CYSMICON = 50,
-
             SM_CYSMSIZE = 53,
-
             SM_CYVIRTUALSCREEN = 79,
-
             SM_CYVSCROLL = 20,
-
             SM_CYVTHUMB = 9,
-
             SM_DBCSENABLED = 42,
-
             SM_DEBUG = 22,
-
             SM_DIGITIZER = 94,
-
             SM_IMMENABLED = 82,
-
             SM_MAXIMUMTOUCHES = 95,
-
             SM_MEDIACENTER = 87,
-
             SM_MENUDROPALIGNMENT = 40,
-
             SM_MIDEASTENABLED = 74,
-
             SM_MOUSEPRESENT = 19,
-
             SM_MOUSEHORIZONTALWHEELPRESENT = 91,
-
             SM_MOUSEWHEELPRESENT = 75,
-
             SM_NETWORK = 63,
-
             SM_PENWINDOWS = 41,
-
             SM_REMOTECONTROL = 0x2001,
-
             SM_REMOTESESSION = 0x1000,
-
             SM_SAMEDISPLAYFORMAT = 81,
-
             SM_SECURE = 44,
-
             SM_SERVERR2 = 89,
-
             SM_SHOWSOUNDS = 70,
-
             SM_SHUTTINGDOWN = 0x2000,
-
             SM_SLOWMACHINE = 73,
-
             SM_STARTER = 88,
-
             SM_SWAPBUTTON = 23,
-
             SM_TABLETPC = 86,
-
             SM_XVIRTUALSCREEN = 76,
-
             SM_YVIRTUALSCREEN = 77,
         }
 
@@ -624,7 +532,7 @@ namespace Typedown.Universal.Utilities
             public RECT rcNewWindow;
             public RECT rcOldWindow;
             public RECT rcClient;
-            IntPtr lppos;
+            nint lppos;
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -653,33 +561,6 @@ namespace Typedown.Universal.Utilities
             {
                 return $"X: {X}, Y: {Y}";
             }
-        }
-
-        public enum WindowPlacementFlags : uint
-        {
-            WPF_SETMINPOSITION = 0x0001,
-            WPF_RESTORETOMAXIMIZED = 0x0002,
-            WPF_ASYNCWINDOWPLACEMENT = 0x0004
-        }
-
-        public enum IDC_STANDARD_CURSORS : int
-        {
-            IDC_ARROW = 32512,
-            IDC_IBEAM = 32513,
-            IDC_WAIT = 32514,
-            IDC_CROSS = 32515,
-            IDC_UPARROW = 32516,
-            IDC_SIZE = 32640,
-            IDC_ICON = 32641,
-            IDC_SIZENWSE = 32642,
-            IDC_SIZENESW = 32643,
-            IDC_SIZEWE = 32644,
-            IDC_SIZENS = 32645,
-            IDC_SIZEALL = 32646,
-            IDC_NO = 32648,
-            IDC_APPSTARTING = 32650,
-            IDC_HELP = 32651,
-            IDC_HAND = 32649
         }
 
         [Flags]
@@ -741,45 +622,31 @@ namespace Typedown.Universal.Utilities
             PT_TOUCHPAD,
         }
 
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        public struct WNDCLASSEX
+        public enum WindowPlacementFlags : uint
         {
-            [MarshalAs(UnmanagedType.U4)]
-            public int cbSize;
-            [MarshalAs(UnmanagedType.U4)]
-            public int style;
-            public IntPtr lpfnWndProc; // not WndProc
-            public int cbClsExtra;
-            public int cbWndExtra;
-            public IntPtr hInstance;
-            public IntPtr hIcon;
-            public IntPtr hCursor;
-            public IntPtr hbrBackground;
-            public string lpszMenuName;
-            public string lpszClassName;
-            public IntPtr hIconSm;
+            WPF_SETMINPOSITION = 0x0001,
+            WPF_RESTORETOMAXIMIZED = 0x0002,
+            WPF_ASYNCWINDOWPLACEMENT = 0x0004
         }
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct WINDOWPLACEMENT
+        public enum IDC_STANDARD_CURSORS : int
         {
-            public uint length;
-            public WindowPlacementFlags flags;
-            public ShowWindowCommand showCmd;
-            public POINT ptMinPosition;
-            public POINT ptMaxPosition;
-            public RECT rcNormalPosition;
-            public RECT rcDevice;
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public class KBDLLHOOKSTRUCT
-        {
-            public uint vkCode;
-            public uint scanCode;
-            public KBDLLHOOKSTRUCTFlags flags;
-            public uint time;
-            public UIntPtr dwExtraInfo;
+            IDC_ARROW = 32512,
+            IDC_IBEAM = 32513,
+            IDC_WAIT = 32514,
+            IDC_CROSS = 32515,
+            IDC_UPARROW = 32516,
+            IDC_SIZE = 32640,
+            IDC_ICON = 32641,
+            IDC_SIZENWSE = 32642,
+            IDC_SIZENESW = 32643,
+            IDC_SIZEWE = 32644,
+            IDC_SIZENS = 32645,
+            IDC_SIZEALL = 32646,
+            IDC_NO = 32648,
+            IDC_APPSTARTING = 32650,
+            IDC_HELP = 32651,
+            IDC_HAND = 32649
         }
 
         [Flags]
@@ -807,21 +674,63 @@ namespace Typedown.Universal.Utilities
             LWA_COLORKEY = 0x00000001,
         }
 
-        public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        public struct WNDCLASSEX
+        {
+            [MarshalAs(UnmanagedType.U4)]
+            public int cbSize;
+            [MarshalAs(UnmanagedType.U4)]
+            public int style;
+            public nint lpfnWndProc; // not WndProc
+            public int cbClsExtra;
+            public int cbWndExtra;
+            public nint hInstance;
+            public nint hIcon;
+            public nint hCursor;
+            public nint hbrBackground;
+            public string lpszMenuName;
+            public string lpszClassName;
+            public nint hIconSm;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WINDOWPLACEMENT
+        {
+            public uint length;
+            public WindowPlacementFlags flags;
+            public ShowWindowCommand showCmd;
+            public POINT ptMinPosition;
+            public POINT ptMaxPosition;
+            public RECT rcNormalPosition;
+            public RECT rcDevice;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct KBDLLHOOKSTRUCT
+        {
+            public uint vkCode;
+            public uint scanCode;
+            public KBDLLHOOKSTRUCTFlags flags;
+            public uint time;
+            public nuint dwExtraInfo;
+        }
+
+        public delegate nint HookProc(int code, nint wParam, nint lParam);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowsHookExW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern nint SetWindowsHookEx(HookType hookType, HookProc lpfn, nint hMod, uint dwThreadId);
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr SetWindowsHookEx(HookType hookType, HookProc lpfn, IntPtr hMod, uint dwThreadId);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool UnhookWindowsHookEx(nint hhk);
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern bool UnhookWindowsHookEx(IntPtr hhk);
+        public static extern nint CallNextHookEx(nint hhk, int nCode, nint wParam, nint lParam);
 
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll", EntryPoint = "GetClassNameW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern int GetClassName(nint hWnd, StringBuilder buf, int nMaxCount);
 
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern int GetClassName(IntPtr hWnd, StringBuilder buf, int nMaxCount);
-
-        public static string GetClassName(IntPtr hWnd, int capacity = 256)
+        public static string GetClassName(nint hWnd, int capacity = 256)
         {
             var builder = new StringBuilder(capacity);
             GetClassName(hWnd, builder, capacity);
@@ -829,14 +738,14 @@ namespace Typedown.Universal.Utilities
         }
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr GetParent(IntPtr hWnd);
+        public static extern nint GetParent(nint hWnd);
 
+        [DllImport("user32.dll", EntryPoint = "PostMessageW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern bool PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+        public static extern bool PostMessage(nint hWnd, uint Msg, nint wParam, nint lParam);
 
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll", EntryPoint = "SendMessageW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern nint SendMessage(nint hWnd, uint Msg, nint wParam, nint lParam);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -849,97 +758,101 @@ namespace Typedown.Universal.Utilities
         }
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern bool IsZoomed(IntPtr hWnd);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool IsZoomed(nint hWnd);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         public static extern uint GetDoubleClickTime();
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+        public static extern nint SetParent(nint hWndChild, nint hWndNewParent);
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommand nCmdShow);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool ShowWindow(nint hWnd, ShowWindowCommand nCmdShow);
 
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr GetWindowLongPtr(IntPtr hWnd, WindowLongFlags nIndex);
+        [DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern nint GetWindowLongPtr(nint hWnd, WindowLongFlags nIndex);
 
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern int GetWindowLong(IntPtr hWnd, WindowLongFlags nIndex);
+        [DllImport("user32.dll", EntryPoint = "GetWindowLongW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern int GetWindowLong(nint hWnd, WindowLongFlags nIndex);
 
-        public static IntPtr SetWindowLongPtr(HandleRef hWnd, WindowLongFlags nIndex, IntPtr dwNewLong)
+        public static nint SetWindowLongPtr(HandleRef hWnd, WindowLongFlags nIndex, nint dwNewLong)
         {
             if (IntPtr.Size == 8)
                 return SetWindowLongPtr64(hWnd, nIndex, dwNewLong);
             else
-                return new IntPtr(SetWindowLong32(hWnd, nIndex, dwNewLong.ToInt32()));
+                return new IntPtr(SetWindowLong32(hWnd, nIndex, (int)dwNewLong));
         }
 
-        [DllImport("user32.dll", EntryPoint = "SetWindowLong", ExactSpelling = true)]
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern int SetWindowLong32(HandleRef hWnd, WindowLongFlags nIndex, int dwNewLong);
 
-        [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr", ExactSpelling = true)]
-        public static extern IntPtr SetWindowLongPtr64(HandleRef hWnd, WindowLongFlags nIndex, IntPtr dwNewLong);
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongPtrW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern nint SetWindowLongPtr64(HandleRef hWnd, WindowLongFlags nIndex, nint dwNewLong);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern int SetWindowLong(nint hWnd, WindowLongFlags nIndex, int dwNewLong);
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern int SetWindowLong(IntPtr hWnd, WindowLongFlags nIndex, int dwNewLong);
-
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern int GetDpiForWindow(IntPtr hWnd);
+        public static extern int GetDpiForWindow(nint hWnd);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         public static extern int GetSystemMetrics(SystemMetric smIndex);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
+        public static extern bool SetWindowPos(nint hWnd, nint hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern int TrackPopupMenu(IntPtr hMenu, uint uFlags, int x, int y, int nReserved, IntPtr hWnd, IntPtr prcRect);
-
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern bool EnableMenuItem(IntPtr hMenu, uint uIDEnableItem, uint uEnable);
-
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr LoadCursor(IntPtr hInstance, int lpCursorName);
-
-        public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
+        public static extern int TrackPopupMenu(nint hMenu, uint uFlags, int x, int y, int nReserved, nint hWnd, nint prcRect);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool EnumChildWindows(IntPtr hwndParent, EnumWindowsProc lpEnumFunc, IntPtr lParam);
+        public static extern bool EnableMenuItem(nint hMenu, uint uIDEnableItem, uint uEnable);
+
+        [DllImport("user32.dll", EntryPoint = "LoadCursorW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern nint LoadCursor(nint hInstance, int lpCursorName);
+
+        public delegate bool EnumWindowsProc(nint hwnd, nint lParam);
 
         [DllImport("user32.dll", ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool EnumChildWindows(nint hwndParent, EnumWindowsProc lpEnumFunc, nint lParam);
+
+        [DllImport("user32.dll", EntryPoint = "RegisterClassExW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.U2)]
         public static extern short RegisterClassEx([In] ref WNDCLASSEX lpwcx);
 
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr CreateWindowEx(WindowStylesEx dwExStyle, string lpClassName, string lpWindowName, WindowStyles dwStyle, int x, int y, int nWidth, int nHeight, IntPtr hWndParent, IntPtr hMenu, IntPtr hInstance, IntPtr lpParam);
+        [DllImport("user32.dll", EntryPoint = "CreateWindowExW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern nint CreateWindowEx(WindowStylesEx dwExStyle, string lpClassName, string lpWindowName, WindowStyles dwStyle, int x, int y, int nWidth, int nHeight, nint hWndParent, nint hMenu, nint hInstance, nint lpParam);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool DestroyWindow(IntPtr hwnd);
-
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, LayeredWindowFlags dwFlags);
+        public static extern bool DestroyWindow(nint hwnd);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+        public static extern bool SetLayeredWindowAttributes(nint hwnd, uint crKey, byte bAlpha, LayeredWindowFlags dwFlags);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
+        public static extern bool GetWindowPlacement(nint hWnd, ref WINDOWPLACEMENT lpwndpl);
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr GetForegroundWindow();
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool SetForegroundWindow(nint hWnd);
 
         [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern nint GetForegroundWindow();
+
+        [DllImport("user32.dll", EntryPoint = "MapVirtualKeyW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern int MapVirtualKey(uint uCode, MapVirtualKeyMapTypes uMapType);
 
-        [DllImport("user32.dll", ExactSpelling = true)]
+        [DllImport("user32.dll", EntryPoint = "GetKeyNameTextW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern int GetKeyNameText(int lParam, [Out] StringBuilder lpString, int nSize);
 
         [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern IntPtr GetSystemMenu(IntPtr hWnd, [MarshalAs(UnmanagedType.Bool)] bool bRevert);
+        public static extern nint GetSystemMenu(nint hWnd, [MarshalAs(UnmanagedType.Bool)] bool bRevert);
     }
 }
