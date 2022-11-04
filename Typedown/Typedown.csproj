@@ -6,6 +6,7 @@
 		<UseWPF>true</UseWPF>
 		<LangVersion>latest</LangVersion>
 		<Platforms>x64;x86</Platforms>
+		<PublishReadyToRun>true</PublishReadyToRun>
 		<AssetTargetFallback>uap10.0.19041</AssetTargetFallback>
 		<TargetPlatformVersion>10.0.22000.0</TargetPlatformVersion>
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
