@@ -4,7 +4,7 @@ using System.Reactive.Linq;
 
 namespace Typedown.Universal.Services
 {
-    public class EventCenter
+    public class EventCenter : IDisposable
     {
         private readonly Dictionary<string, List<Action<object>>> handlersDictionary = new();
 
@@ -30,6 +30,11 @@ namespace Typedown.Universal.Services
             if (handlersDictionary.TryGetValue(name, out var handlers))
                 foreach (var handler in handlers)
                     handler(args);
+        }
+
+        public void Dispose()
+        {
+            handlersDictionary.Clear();
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Runtime.CompilerServices;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Enums;
@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
-    public sealed partial class SettingsViewModel : INotifyPropertyChanged
+    public sealed partial class SettingsViewModel : INotifyPropertyChanged, IDisposable
     {
         public IReadOnlyList<string> History { get => GetSettingValue(new List<string>()); set => SetSettingValue(value); }
         public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -70,6 +70,8 @@ namespace Typedown.Universal.ViewModels
         public IServiceProvider ServiceProvider { get; }
 
         public Command<Unit> ResetSettingsCommand { get; } = new();
+
+        private readonly CompositeDisposable disposables = new();
 
         public SettingsViewModel(IServiceProvider serviceProvider)
         {
@@ -148,6 +150,11 @@ namespace Typedown.Universal.ViewModels
             cache.Clear();
             foreach (var item in GetType().GetProperties().Where(x => x.GetSetMethod() != null).Select(x => x.Name))
                 OnPropertyChanged(item);
+        }
+
+        public void Dispose()
+        {
+            disposables.Dispose();
         }
     }
 }

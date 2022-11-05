@@ -1,23 +1,20 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
-using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Universal.ViewModels
 {
-    public sealed partial class EditorViewModel : INotifyPropertyChanged
+    public sealed partial class EditorViewModel : INotifyPropertyChanged, IDisposable
     {
         public IServiceProvider ServiceProvider { get; }
 
@@ -62,6 +59,8 @@ namespace Typedown.Universal.ViewModels
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
         public IClipboard Clipboard => ServiceProvider.GetService<IClipboard>();
         public AutoBackup AutoBackup => ServiceProvider.GetService<AutoBackup>();
+
+        private readonly CompositeDisposable disposables = new();
 
         public EditorViewModel(IServiceProvider serviceProvider)
         {
@@ -331,6 +330,11 @@ namespace Typedown.Universal.ViewModels
         public void JumpBySlug(string slug)
         {
             MarkdownEditor?.PostMessage("ScrollTo", new { slug });
+        }
+
+        public void Dispose()
+        {
+            disposables.Dispose();
         }
     }
 }

@@ -1,14 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Reactive;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Typedown.Universal.Controls.FloatControls;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
@@ -18,7 +13,7 @@ using Windows.Foundation;
 
 namespace Typedown.Universal.ViewModels
 {
-    public sealed partial class FloatViewModel : INotifyPropertyChanged
+    public sealed partial class FloatViewModel : INotifyPropertyChanged, IDisposable
     {
         public IServiceProvider ServiceProvider { get; }
 
@@ -33,6 +28,8 @@ namespace Typedown.Universal.ViewModels
         public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
 
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
+
+        private readonly CompositeDisposable disposables = new();
 
         public FloatViewModel(IServiceProvider serviceProvider)
         {
@@ -112,6 +109,11 @@ namespace Typedown.Universal.ViewModels
                 var text = Localize.GetString(name) ?? name;
                 openedToolTip.Open(rect, text);
             }
+        }
+
+        public void Dispose()
+        {
+            disposables.Dispose();
         }
     }
 }

@@ -55,23 +55,23 @@ namespace Typedown.Universal.Utilities
 
             public event EventHandler<DependencyPropertyChangedEventArgs> ValueChanged;
 
-            public static ValueObject Bind(object source, string path)
+            public static ValueObject CreateBindingObject(object source, PropertyPath path)
             {
                 var valueObject = new ValueObject();
-                BindingOperations.SetBinding(valueObject, ValueProperty, new Binding() { Source = source, Path = new(path) });
+                BindingOperations.SetBinding(valueObject, ValueProperty, new Binding() { Source = source, Path = path });
                 return valueObject;
             }
         }
 
         private static readonly ConditionalWeakTable<object, HashSet<ValueObject>> valueObjectTable = new();
 
-        public static IObservable<object> WhenPropertyChanged<T>(this T source, string path) where T : class
+        public static IObservable<object> Binding<T>(this T source, PropertyPath path) where T : class
         {
             if (source is not DependencyObject && source is not INotifyPropertyChanged)
                 throw new ArgumentException();
             return Observable.Create<object>(o =>
             {
-                var valueObject = ValueObject.Bind(source, path);
+                var valueObject = ValueObject.CreateBindingObject(source, path);
                 void OnChanged(object sender, DependencyPropertyChangedEventArgs e) => o.OnNext(e.NewValue);
                 valueObject.ValueChanged += OnChanged;
                 if (valueObjectTable.TryGetValue(source, out var valueObjects))
@@ -90,6 +90,12 @@ namespace Typedown.Universal.Utilities
                     }
                 };
             });
+        }
+
+        public static IObservable<object> WhenPropertyChanged<T>(this T source, string propertyName) where T : INotifyPropertyChanged
+        {
+            var property = source.GetType().GetProperty(propertyName);
+            return source.GetPropertyObservable().Where(x => x.EventArgs.PropertyName == propertyName).Select(_ => property.GetValue(source));
         }
     }
 }

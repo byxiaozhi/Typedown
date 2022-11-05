@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reactive.Disposables;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Services;
@@ -10,7 +11,7 @@ using Typedown.Universal.Utilities;
 
 namespace Typedown.Universal.ViewModels
 {
-    public sealed partial class FormatViewModel : INotifyPropertyChanged
+    public sealed partial class FormatViewModel : INotifyPropertyChanged, IDisposable
     {
         public IServiceProvider ServiceProvider { get; }
 
@@ -25,6 +26,8 @@ namespace Typedown.Universal.ViewModels
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
 
         public Command<string> SetFormatCommand { get; } = new();
+
+        private readonly CompositeDisposable disposables = new();
 
         public FormatViewModel(IServiceProvider serviceProvider)
         {
@@ -42,6 +45,11 @@ namespace Typedown.Universal.ViewModels
         private void SetFormatFun(string type)
         {
             MarkdownEditor?.PostMessage("Format", type);
+        }
+
+        public void Dispose()
+        {
+            disposables.Dispose();
         }
     }
 }

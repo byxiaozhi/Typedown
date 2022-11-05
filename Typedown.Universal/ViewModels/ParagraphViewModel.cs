@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Linq;
 using System;
 using System.ComponentModel;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Threading.Tasks;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
@@ -11,7 +11,7 @@ using Typedown.Universal.Utilities;
 
 namespace Typedown.Universal.ViewModels
 {
-    public sealed partial class ParagraphViewModel : INotifyPropertyChanged
+    public sealed partial class ParagraphViewModel : INotifyPropertyChanged, IDisposable
     {
         public IServiceProvider ServiceProvider { get; }
 
@@ -32,6 +32,8 @@ namespace Typedown.Universal.ViewModels
         public Command<Unit> DuplicateCommand { get; } = new();
 
         public Command<Unit> InsertTableCommand { get; } = new();
+
+        private readonly CompositeDisposable disposables = new();
 
         public ParagraphViewModel(IServiceProvider serviceProvider)
         {
@@ -63,6 +65,11 @@ namespace Typedown.Universal.ViewModels
         {
             var result = await InsertTableDialog.OpenResizeTableDialog(ViewModel.XamlRoot);
             return result != null ? new { rows = result.Rows, columns = result.Columns } : null;
+        }
+
+        public void Dispose()
+        {
+            disposables.Dispose();
         }
     }
 }

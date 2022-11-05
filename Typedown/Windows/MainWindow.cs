@@ -5,6 +5,7 @@ using System.Reactive.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Threading;
 using Typedown.Controls;
@@ -53,12 +54,12 @@ namespace Typedown.Windows
             this.RestoreWindowPlacement();
         }
 
-        private async void OnLoaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            RootLayout ??= new() { Children = { new SplashScreen() } };
+            RootLayout ??= new() { Children = { new Controls.SplashScreen() } };
             Content ??= RootLayout;
             await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Background);
-            this.SaveWindowPlacement(new(8, 8));
+            SaveWindowPlacementWithOffset();
             Universal.App.InitializeXAMLIsland();
             InitializeComponent();
         }
@@ -95,7 +96,7 @@ namespace Typedown.Windows
 
         private async void OnRootControlLoaded(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
         {
-            if (RootLayout.Children.OfType<SplashScreen>().FirstOrDefault() is SplashScreen splashScreen)
+            if (RootLayout.Children.OfType<Controls.SplashScreen>().FirstOrDefault() is Controls.SplashScreen splashScreen)
             {
                 await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Render);
                 RootLayout.Children.Remove(splashScreen);
@@ -173,11 +174,13 @@ namespace Typedown.Windows
 
         private async void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (isCloseable) return;
-            e.Cancel = true;
-            await AppViewModel.FileViewModel.AutoSaveFile();
-            if (AppViewModel.EditorViewModel.Saved || await AppViewModel.FileViewModel.AskToSave())
-                ForceClose();
+            if (!isCloseable)
+            {
+                e.Cancel = true;
+                await AppViewModel.FileViewModel.AutoSaveFile();
+                if (AppViewModel.EditorViewModel.Saved || await AppViewModel.FileViewModel.AskToSave())
+                    ForceClose();
+            }
         }
 
         public async void ForceClose()
@@ -190,8 +193,19 @@ namespace Typedown.Windows
 
         private void OnClosed(object sender, EventArgs e)
         {
+            var keepRun = AppViewModel.SettingsViewModel.KeepRun;
             ServiceScope?.Dispose();
-            GC.Collect();
+            if (!AppViewModel.GetInstances().Any())
+            {
+                if (!keepRun)
+                {
+                    Application.Current.Shutdown();
+                }
+                else
+                {
+                    GC.Collect();
+                }
+            }
         }
 
         private void OnActivated(object sender, EventArgs e)
@@ -205,6 +219,11 @@ namespace Typedown.Windows
         }
 
         private void OnLocationChanged(object sender, EventArgs e)
+        {
+            SaveWindowPlacementWithOffset();
+        }
+
+        private void SaveWindowPlacementWithOffset()
         {
             this.SaveWindowPlacement(new(8, 8));
         }

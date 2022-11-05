@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Threading.Tasks;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
@@ -56,6 +57,8 @@ namespace Typedown.Universal.ViewModels
         public AutoBackup AutoBackup => ServiceProvider.GetService<AutoBackup>();
 
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
+
+        private readonly CompositeDisposable disposables = new();
 
         public FileViewModel(IServiceProvider serviceProvider)
         {
@@ -449,6 +452,7 @@ namespace Typedown.Universal.ViewModels
         public void Dispose()
         {
             saveFileTimer.Stop();
+            disposables.Dispose();
         }
 
         private void Exit()
