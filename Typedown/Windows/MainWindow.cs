@@ -212,9 +212,17 @@ namespace Typedown.Windows
             KeyboardAccelerator?.Stop();
         }
 
-        private void OnLocationChanged(object sender, EventArgs e)
+        private bool savingWindowPlacement = false;
+
+        private async void OnLocationChanged(object sender, EventArgs e)
         {
-            SaveWindowPlacementWithOffset();
+            if (!savingWindowPlacement)
+            {
+                savingWindowPlacement = true;
+                await Task.Delay(1000);
+                SaveWindowPlacementWithOffset();
+                savingWindowPlacement = false;
+            }
         }
 
         private void SaveWindowPlacementWithOffset()
