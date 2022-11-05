@@ -220,7 +220,7 @@ namespace Typedown.Windows
             {
                 savingWindowPlacement = true;
                 await Task.Delay(1000);
-                SaveWindowPlacementWithOffset();
+                if (IsLoaded) SaveWindowPlacementWithOffset();
                 savingWindowPlacement = false;
             }
         }
