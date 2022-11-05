@@ -22,12 +22,10 @@ using Windows.UI.Xaml.Input;
 using Typedown.Universal.ViewModels;
 using System.Reactive.Linq;
 using Newtonsoft.Json.Linq;
-using System.Web;
-using System.IO;
 
 namespace Typedown.Controls
 {
-    public class MarkdownEditor : UserControl, IMarkdownEditor
+    public class MarkdownEditor : UserControl, IMarkdownEditor, IDisposable
     {
         // static readonly string proxyPrefix = "http://local-file-access/";
 
@@ -69,7 +67,7 @@ namespace Typedown.Controls
 
         private void OnContentLoaded()
         {
-
+            Opacity = 1;
         }
 
         private void OnFilePathChanged(string path)
@@ -89,16 +87,14 @@ namespace Typedown.Controls
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
+            Opacity = 0;
             if (WebViewController == null)
             {
                 WebViewController = new();
                 await WebViewController.InitializeAsync(this, AppWindow.GetWindow(AppXamlHost.GetAppXamlHost(this)).Handle);
                 OnCoreWebView2Initialized();
             }
-            else
-            {
-                CoreWebView2.Reload();
-            }
+            LoadStaticResources();
         }
 
         private void OnCoreWebView2Initialized()
@@ -117,7 +113,10 @@ namespace Typedown.Controls
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
             // CoreWebView2.AddWebResourceRequestedFilter(proxyPrefix + "*", CoreWebView2WebResourceContext.All);
             // CoreWebView2.WebResourceRequested += OnWebResourceRequested;
+        }
 
+        private void LoadStaticResources()
+        {
             // var path = "http://localhost:3000";
             var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics", "index.html");
             WebViewController.CoreWebView2.Navigate(path);
@@ -157,7 +156,7 @@ namespace Typedown.Controls
 
         public void Dispose()
         {
-            WebViewController?.CoreWebView2Controller?.Close();
+            WebViewController.Dispose();
         }
 
         public Rectangle GetDummyRectangle(Rect rect)

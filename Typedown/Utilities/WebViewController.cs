@@ -14,6 +14,7 @@ using Windows.UI.Input;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Typedown.Controls;
+using System.Reactive.Disposables;
 
 namespace Typedown.Utilities
 {
@@ -37,7 +38,7 @@ namespace Typedown.Utilities
 
         private ContainerVisual webViewVisual;
 
-        private bool isDisposed = false;
+        private readonly CompositeDisposable disposables = new();
 
         public async Task InitializeAsync(FrameworkElement container, nint parentHWnd)
         {
@@ -49,10 +50,10 @@ namespace Typedown.Utilities
                 await EnsureCreateController();
                 InitializeEventHandler();
                 UpdataWindowScale();
-                Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).SubscribeWeak(_ => UpdateBounds());
+                disposables.Add(Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).Subscribe(_ => UpdateBounds()));
                 var window = System.Windows.Window.GetWindow(AppXamlHost.GetAppXamlHost(container));
-                Observable.FromEventPattern(window, nameof(System.Windows.Window.LocationChanged)).SubscribeWeak(_ => UpdateBounds());
-                Observable.FromEventPattern(window, nameof(System.Windows.Window.DpiChanged)).SubscribeWeak(_ => UpdataWindowScale());
+                disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.LocationChanged)).Subscribe(_ => UpdateBounds()));
+                disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.DpiChanged)).Subscribe(_ => UpdataWindowScale()));
             }
         }
 
@@ -107,13 +108,13 @@ namespace Typedown.Utilities
 
         private void InitializeEventHandler()
         {
-            Observable.FromEventPattern(Container, nameof(Container.PointerMoved)).SubscribeWeak(x => OnPointerMoved(x.EventArgs as PointerRoutedEventArgs));
-            Observable.FromEventPattern(Container, nameof(Container.PointerPressed)).SubscribeWeak(x => OnPointerPressed(x.EventArgs as PointerRoutedEventArgs));
-            Observable.FromEventPattern(Container, nameof(Container.PointerReleased)).SubscribeWeak(x => OnPointerReleased(x.EventArgs as PointerRoutedEventArgs));
-            Observable.FromEventPattern(Container, nameof(Container.PointerWheelChanged)).SubscribeWeak(x => OnPointerWheelChanged(x.EventArgs as PointerRoutedEventArgs));
-            Observable.FromEventPattern(Container, nameof(Container.PointerExited)).SubscribeWeak(x => OnPointerExited(x.EventArgs as PointerRoutedEventArgs));
-            Observable.FromEventPattern(Container, nameof(Container.GotFocus)).SubscribeWeak(x => OnContainerGotFocus(x.EventArgs as RoutedEventArgs));
-            Observable.FromEventPattern(Container, nameof(Container.GettingFocus)).SubscribeWeak(x => OnContainerGettingFocus(x.EventArgs as GettingFocusEventArgs));
+            disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerMoved)).Subscribe(x => OnPointerMoved(x.EventArgs as PointerRoutedEventArgs)));
+            disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerPressed)).Subscribe(x => OnPointerPressed(x.EventArgs as PointerRoutedEventArgs)));
+            disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerReleased)).Subscribe(x => OnPointerReleased(x.EventArgs as PointerRoutedEventArgs)));
+            disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerWheelChanged)).Subscribe(x => OnPointerWheelChanged(x.EventArgs as PointerRoutedEventArgs)));
+            disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerExited)).Subscribe(x => OnPointerExited(x.EventArgs as PointerRoutedEventArgs)));
+            disposables.Add(Observable.FromEventPattern(Container, nameof(Container.GotFocus)).Subscribe(x => OnContainerGotFocus(x.EventArgs as RoutedEventArgs)));
+            disposables.Add(Observable.FromEventPattern(Container, nameof(Container.GettingFocus)).Subscribe(x => OnContainerGettingFocus(x.EventArgs as GettingFocusEventArgs)));
             CoreWebView2Controller.LostFocus += OnCoreWebView2LostFocus;
             CoreWebView2Controller.MoveFocusRequested += OnCoreWebView2MoveFocusRequested;
             CoreWebView2CompositionController.CursorChanged += OnCoreWebView2CursorChanged;
@@ -551,9 +552,9 @@ namespace Typedown.Utilities
 
         public void Dispose()
         {
-            if (!isDisposed)
+            if (!disposables.IsDisposed)
             {
-                isDisposed = true;
+                disposables.Dispose();
                 CoreWebView2Controller.Close();
             }
         }
