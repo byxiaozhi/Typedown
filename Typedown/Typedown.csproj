@@ -12,7 +12,7 @@
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
 		<StartupObject>Typedown.Program</StartupObject>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
-		<ApplicationIcon>logo.ico</ApplicationIcon>
+		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -37,7 +37,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="logo.ico" />
+	  <Content Include="Assets\logo.ico" />
 	</ItemGroup>
 
 	<ItemGroup>

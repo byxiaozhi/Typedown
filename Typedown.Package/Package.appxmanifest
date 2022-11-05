@@ -51,7 +51,7 @@
               <uap:FileType ContentType="text/markdown">.rmd</uap:FileType>
             </uap:SupportedFileTypes>
             <uap:DisplayName>Typedown</uap:DisplayName>
-            <uap:Logo>Markdown.png</uap:Logo>
+            <uap:Logo>Assets\Markdown.png</uap:Logo>
             <uap:InfoTip>Markdown</uap:InfoTip>
           </uap:FileTypeAssociation>
         </uap:Extension>
