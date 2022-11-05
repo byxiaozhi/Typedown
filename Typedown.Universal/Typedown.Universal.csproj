@@ -227,7 +227,7 @@
     <Compile Include="Converters\ElementThemeConverter.cs" />
     <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
     <Compile Include="Converters\ShortcutKeyToStringConverter.cs" />
-    <Compile Include="Services\Database.cs" />
+    <Compile Include="Services\AppDbContext.cs" />
     <Compile Include="Services\AutoBackup.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
@@ -317,7 +317,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>3.1.30</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
@@ -526,7 +526,9 @@
   <ItemGroup>
     <PRIResource Include="Resources\Strings\zh-Hans\Resources.resw" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

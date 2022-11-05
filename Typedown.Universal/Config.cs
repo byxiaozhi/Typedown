@@ -2,9 +2,8 @@
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using Windows.Storage;
 
 namespace Typedown.Universal
 {
@@ -29,5 +28,17 @@ namespace Typedown.Universal
                 NamingStrategy = new CamelCaseNamingStrategy(true, true)
             }
         };
+
+        public static string GetLocalFolderPath()
+        {
+            try
+            {
+                return ApplicationData.Current.LocalFolder.Path;
+            }
+            catch (Exception)
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Typedown");
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Typedown.Universal.Services
 
         Dictionary<string, Metadata> Metadatas { get; set; }
 
-        private readonly string backupPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Backup");
+        private readonly string backupPath = Path.Combine(Config.GetLocalFolderPath(), "Backup");
 
         private readonly string metadataFilePath;
 
