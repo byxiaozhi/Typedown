@@ -158,7 +158,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create("Message", ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                await AppContentDialog.Create(dialogMessages.GetString("ReadErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
             }
         }
 
@@ -168,7 +168,7 @@ namespace Typedown.Universal.ViewModels
             if (folderPath != null)
             {
                 if (!Directory.Exists(folderPath))
-                    await AppContentDialog.Create("Message", "Folder does not exist.", dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                    await AppContentDialog.Create("Error", "Folder does not exist.", dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 SettingsViewModel.WorkFolder = folderPath;
                 SettingsViewModel.SidePaneOpen = true;
                 SettingsViewModel.SidePaneIndex = 0;
@@ -209,7 +209,7 @@ namespace Typedown.Universal.ViewModels
                 }
                 if (!File.Exists(path))
                 {
-                    _ = FileHistory.RemoveHistory(FilePath);
+                    _ = FileHistory.RemoveHistory(path);
                     throw new FileNotFoundException("File does not exist.");
                 }
                 else if (!skipSavedCheck && !await AskToSave())
