@@ -40,12 +40,13 @@ namespace Typedown
             builder.AddScoped<IClipboard, Clipboard>();
             builder.AddScoped<IFileExport, FileExport>();
             builder.AddScoped<IFileOperation, FileOperation>();
-            builder.AddScoped<IWindowService, WindowService>();
             builder.AddScoped<IKeyboardAccelerator, KeyboardAccelerator>();
-            builder.AddScoped<Transport>();
-            builder.AddScoped<RemoteInvoke>();
-            builder.AddScoped<EventCenter>();
+            builder.AddScoped<IWindowService, WindowService>();
             builder.AddScoped<AutoBackup>();
+            builder.AddScoped<Database>();
+            builder.AddScoped<EventCenter>();
+            builder.AddScoped<RemoteInvoke>();
+            builder.AddScoped<Transport>();
         }
 
         private static void RegisterComponent(ServiceCollection builder)

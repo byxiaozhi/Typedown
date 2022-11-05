@@ -168,20 +168,21 @@
     <Compile Include="Interfaces\IKeyboardAccelerator.cs" />
     <Compile Include="Interfaces\IMarkdownEditor.cs" />
     <Compile Include="Interfaces\IWindowPrivate.cs" />
-    <Compile Include="Models\ContentHistory.cs" />
-    <Compile Include="Models\ContentState.cs" />
-    <Compile Include="Models\CursorState.cs" />
-    <Compile Include="Models\EditorEventArgs.cs" />
-    <Compile Include="Models\ExplorerItem.cs" />
-    <Compile Include="Models\FormatState.cs" />
-    <Compile Include="Models\KeyEventArgs.cs" />
-    <Compile Include="Models\MenuItemState.cs" />
-    <Compile Include="Models\MenuState.cs" />
-    <Compile Include="Models\ParagraphState.cs" />
-    <Compile Include="Models\ShortcutKey.cs" />
-    <Compile Include="Models\TocItem.cs" />
-    <Compile Include="Models\WindowPlacement.cs" />
-    <Compile Include="Models\WordCount.cs" />
+    <Compile Include="Models\PersistentModels\FileAccessHistory.cs" />
+    <Compile Include="Models\RuntimeModels\ContentHistory.cs" />
+    <Compile Include="Models\RuntimeModels\ContentState.cs" />
+    <Compile Include="Models\RuntimeModels\CursorState.cs" />
+    <Compile Include="Models\EventArgs\EditorEventArgs.cs" />
+    <Compile Include="Models\RuntimeModels\ExplorerItem.cs" />
+    <Compile Include="Models\RuntimeModels\FormatState.cs" />
+    <Compile Include="Models\EventArgs\KeyEventArgs.cs" />
+    <Compile Include="Models\RuntimeModels\MenuItemState.cs" />
+    <Compile Include="Models\RuntimeModels\MenuState.cs" />
+    <Compile Include="Models\RuntimeModels\ParagraphState.cs" />
+    <Compile Include="Models\RuntimeModels\ShortcutKey.cs" />
+    <Compile Include="Models\RuntimeModels\TocItem.cs" />
+    <Compile Include="Models\RuntimeModels\WindowPlacement.cs" />
+    <Compile Include="Models\RuntimeModels\WordCount.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -226,6 +227,7 @@
     <Compile Include="Converters\ElementThemeConverter.cs" />
     <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
     <Compile Include="Converters\ShortcutKeyToStringConverter.cs" />
+    <Compile Include="Services\Database.cs" />
     <Compile Include="Services\AutoBackup.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
@@ -315,6 +317,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core">
+      <Version>3.1.30</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
       <Version>6.0.1</Version>
     </PackageReference>

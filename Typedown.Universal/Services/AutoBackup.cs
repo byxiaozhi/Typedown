@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace Typedown.Universal.Services
 {
@@ -22,7 +21,7 @@ namespace Typedown.Universal.Services
 
         Dictionary<string, Metadata> Metadatas { get; set; }
 
-        private readonly string backupPath;
+        private readonly string backupPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Backup");
 
         private readonly string metadataFilePath;
 
@@ -30,14 +29,6 @@ namespace Typedown.Universal.Services
 
         public AutoBackup()
         {
-            try
-            {
-                backupPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalCacheFolder.Path, "Backup");
-            }
-            catch (Exception)
-            {
-                backupPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Typedown", "Backup");
-            }
             metadataFilePath = Path.Combine(backupPath, "metadata");
             metadataFilePath2 = Path.Combine(backupPath, "metadata2");
         }
