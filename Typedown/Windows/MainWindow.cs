@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
@@ -78,6 +79,7 @@ namespace Typedown.Windows
             Content ??= RootLayout;
             RootLayout.Children.Add(AppXamlHost);
             InitializeBinding();
+            Dispatcher.InvokeAsync(SetMaxWorkingSetSize, DispatcherPriority.SystemIdle);
         }
 
         public void InitializeBinding()
@@ -195,17 +197,9 @@ namespace Typedown.Windows
         {
             var keepRun = AppViewModel.SettingsViewModel.KeepRun;
             ServiceScope?.Dispose();
-            if (!AppViewModel.GetInstances().Any())
-            {
-                if (!keepRun)
-                {
-                    Application.Current.Shutdown();
-                }
-                else
-                {
-                    GC.Collect();
-                }
-            }
+            if (!AppViewModel.GetInstances().Any() && !keepRun)
+                Application.Current.Shutdown();
+            SetMaxWorkingSetSize();
         }
 
         private void OnActivated(object sender, EventArgs e)
@@ -226,6 +220,14 @@ namespace Typedown.Windows
         private void SaveWindowPlacementWithOffset()
         {
             this.SaveWindowPlacement(new(8, 8));
+        }
+
+        private void SetMaxWorkingSetSize()
+        {
+            var baseSize = 10 * 1024 * 1024;
+            var instanceSize = 20 * 1024 * 1024;
+            var totalSize = baseSize + AppViewModel.GetInstances().Count * instanceSize;
+            Process.GetCurrentProcess().MaxWorkingSet = new(totalSize);
         }
     }
 }
