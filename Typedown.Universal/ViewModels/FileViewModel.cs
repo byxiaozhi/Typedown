@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -33,14 +34,16 @@ namespace Typedown.Universal.ViewModels
 
         public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
 
+        public FileHistory FileHistory => ServiceProvider.GetService<FileHistory>();
+
         public string FilePath { get; set; } = null;
 
         public string FileName => Path.GetFileName(FilePath);
 
         public Command<Unit> NewFileCommand { get; } = new();
         public Command<string> NewWindowCommand { get; } = new();
-        public Command<Unit> OpenFileCommand { get; } = new();
-        public Command<Unit> OpenFolderCommand { get; } = new();
+        public Command<string> OpenFileCommand { get; } = new();
+        public Command<string> OpenFolderCommand { get; } = new();
         public Command<Unit> NewFolderCommand { get; } = new();
         public Command<Unit> ClearHistoryCommand { get; } = new();
         public Command<Unit> SaveCommand { get; } = new();
@@ -64,13 +67,13 @@ namespace Typedown.Universal.ViewModels
         {
             ServiceProvider = serviceProvider;
             NewFileCommand.OnExecute.Subscribe(async _ => await NewFileFun());
-            OpenFileCommand.OnExecute.Subscribe(_ => OpenFile());
-            OpenFolderCommand.OnExecute.Subscribe(_ => OpenFolder());
+            OpenFileCommand.OnExecute.Subscribe(OpenFile);
+            OpenFolderCommand.OnExecute.Subscribe(OpenFolder);
             SaveAsCommand.OnExecute.Subscribe(async _ => await SaveAs());
             SaveCommand.OnExecute.Subscribe(async _ => await Save());
             ExitCommand.OnExecute.Subscribe(_ => Exit());
-            ClearHistoryCommand.OnExecute.Subscribe(_ => ClearHistory());
-            ExportCommand.OnExecute.Subscribe(x => Export(x));
+            ClearHistoryCommand.OnExecute.Subscribe(x => { _ = FileHistory.ClearHistory(); });
+            ExportCommand.OnExecute.Subscribe(Export);
             PrintCommand.OnExecute.Subscribe(_ => Print());
             ImportCommand.OnExecute.Subscribe(_ => Import());
             RemoteInvoke.Handle<JToken, Task<bool>>("WriteAllText", WriteAllText);
@@ -144,36 +147,31 @@ namespace Typedown.Universal.ViewModels
             await LoadFile(filepath, true);
         }
 
-        private async void OpenFile()
+        private async void OpenFile(string filePath = null)
         {
             if (!await AskToSave()) return;
-            var filePicker = new FileOpenPicker();
-            FileExtension.Markdown.ToList().ForEach(filePicker.FileTypeFilter.Add);
-            filePicker.SetOwnerWindow(AppViewModel.MainWindow);
-            var file = await filePicker.PickSingleFileAsync();
-            if (file != null)
+            filePath ??= await AppViewModel.MainWindow.PickMarkdownFolderAsync();
+            try
             {
-                await LoadFile(file.Path, true);
+                if (filePath != null)
+                    await LoadFile(filePath, true);
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create("Message", ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
             }
         }
 
-        private async void OpenFolder()
+        private async void OpenFolder(string folderPath = null)
         {
-            var folderPicker = new FolderPicker();
-            folderPicker.SetOwnerWindow(AppViewModel.MainWindow);
-            FileExtension.Markdown.ToList().ForEach(folderPicker.FileTypeFilter.Add);
-            var folder = await folderPicker.PickSingleFolderAsync();
-            if (folder != null)
+            folderPath ??= await AppViewModel.MainWindow.PickMarkdownFolderAsync();
+            if (folderPath != null)
             {
-                SettingsViewModel.WorkFolder = folder.Path;
-                if (!SettingsViewModel.SidePaneOpen)
-                {
-                    SettingsViewModel.SidePaneOpen = true;
-                }
-                if (SettingsViewModel.SidePaneIndex != 0)
-                {
-                    SettingsViewModel.SidePaneIndex = 0;
-                }
+                if (!Directory.Exists(folderPath))
+                    await AppContentDialog.Create("Message", "Folder does not exist.", dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                SettingsViewModel.WorkFolder = folderPath;
+                SettingsViewModel.SidePaneOpen = true;
+                SettingsViewModel.SidePaneIndex = 0;
             }
         }
 
@@ -211,11 +209,8 @@ namespace Typedown.Universal.ViewModels
                 }
                 if (!File.Exists(path))
                 {
-                    if (SettingsViewModel.History.Contains(path))
-                    {
-                        SettingsViewModel.History = SettingsViewModel.History.Where(x => x != path).ToList();
-                    }
-                    throw new FileNotFoundException("File Not Found");
+                    _ = FileHistory.RemoveHistory(FilePath);
+                    throw new FileNotFoundException("File does not exist.");
                 }
                 else if (!skipSavedCheck && !await AskToSave())
                 {
@@ -225,7 +220,7 @@ namespace Typedown.Universal.ViewModels
                 EditorViewModel.FirstStart = false;
                 EditorViewModel.FileHash = Common.SimpleHash(text);
                 FilePath = path;
-                RecordHistory(FilePath);
+                _ = FileHistory.RecordHistory(FilePath);
                 var backup = await CheckBackup(path, EditorViewModel.CurrentHash);
                 if (backup == null)
                 {
@@ -255,19 +250,6 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        public void RecordHistory(string path)
-        {
-            var history = SettingsViewModel.History.ToList();
-            history.Remove(path);
-            history.Insert(0, path);
-            SettingsViewModel.History = history.Take(10).ToList();
-        }
-
-        private void ClearHistory()
-        {
-            SettingsViewModel.History = new List<string>();
-        }
-
         public async Task<bool> Save(bool alert = true)
         {
             if (FilePath == null)
@@ -282,7 +264,7 @@ namespace Typedown.Universal.ViewModels
                 {
                     EditorViewModel.FileHash = EditorViewModel.CurrentHash;
                     EditorViewModel.Saved = true;
-                    RecordHistory(FilePath);
+                    _ = FileHistory.RecordHistory(FilePath);
                 }
                 return result;
             }
@@ -307,7 +289,7 @@ namespace Typedown.Universal.ViewModels
                     }
                     EditorViewModel.FileHash = EditorViewModel.CurrentHash;
                     EditorViewModel.Saved = true;
-                    RecordHistory(FilePath);
+                    _ = FileHistory.RecordHistory(FilePath);
                     return file.Path;
                 }
             }

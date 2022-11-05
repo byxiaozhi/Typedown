@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
+using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Windows.UI.Xaml;
@@ -20,6 +24,7 @@ namespace Typedown.Universal.Controls
         public FormatViewModel Format => ViewModel?.FormatViewModel;
         public ParagraphViewModel Paragraph => ViewModel?.ParagraphViewModel;
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
+        public FileHistory FileHistory => this.GetService<FileHistory>();
 
         public FloatViewModel.SearchOpenType OpenSearch => FloatViewModel.SearchOpenType.Search;
         public FloatViewModel.SearchOpenType OpenReplace => FloatViewModel.SearchOpenType.Replace;
@@ -34,6 +39,8 @@ namespace Typedown.Universal.Controls
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
             await Dispatcher.RunIdleAsync(_ => HotkeyRegister());
+            disposables.Add(FileHistory.RecentlyOpened.GetCollectionObservable().Subscribe(_ => UpdateOpenRecentItem()));
+            UpdateOpenRecentItem();
         }
 
         private void HotkeyRegister()
@@ -150,6 +157,17 @@ namespace Typedown.Universal.Controls
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
+        }
+
+        private void UpdateOpenRecentItem()
+        {
+            var files = FileHistory.RecentlyOpened.ToList();
+            while (OpenRecentSubMenu.Items[1] is not MenuFlyoutSeparator)
+                OpenRecentSubMenu.Items.RemoveAt(1);
+            foreach (var file in files.Reverse<string>())
+                OpenRecentSubMenu.Items.Insert(1, new MenuFlyoutItem() { Text = file, Command = File.OpenFileCommand, CommandParameter = file });
+            NoRecentFilesItem.Visibility = files.Any() ? Visibility.Collapsed : Visibility.Visible;
+            ClearRecentFilesItem.IsEnabled = files.Any();
         }
     }
 }

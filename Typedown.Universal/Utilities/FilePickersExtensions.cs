@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Typedown.Universal.ViewModels;
 using Windows.Storage.Pickers;
 
 namespace Typedown.Universal.Utilities
@@ -27,6 +30,33 @@ namespace Typedown.Universal.Utilities
         public static void SetOwnerWindow(this FolderPicker picker, nint hWnd)
         {
             (picker as object as IInitializeWithWindow).Initialize(hWnd);
+        }
+
+        public static async Task<string> PickMarkdownFolderAsync(this nint window)
+        {
+            var folderPicker = new FolderPicker();
+            folderPicker.SetOwnerWindow(window);
+            FileExtension.Markdown.ToList().ForEach(folderPicker.FileTypeFilter.Add);
+            var folder = await folderPicker.PickSingleFolderAsync();
+            return folder?.Path;
+        }
+
+        public static async Task<string> PickMarkdownFileAsync(this nint window)
+        {
+            var filePicker = new FileOpenPicker();
+            FileExtension.Markdown.ToList().ForEach(filePicker.FileTypeFilter.Add);
+            filePicker.SetOwnerWindow(window);
+            var file = await filePicker.PickSingleFileAsync();
+            return file?.Path;
+        }
+
+        public static async Task<string> PickImageFileAsync(this nint window)
+        {
+            var filePicker = new FileOpenPicker();
+            FileExtension.Image.ToList().ForEach(filePicker.FileTypeFilter.Add);
+            filePicker.SetOwnerWindow(window);
+            var file = await filePicker.PickSingleFileAsync();
+            return file?.Path;
         }
     }
 }

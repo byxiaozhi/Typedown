@@ -32,8 +32,8 @@
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem x:Name="OpenFileItem" x:Uid="Open" KeyboardAcceleratorTextOverride="Ctrl+O" Command="{x:Bind File.OpenFileCommand}"/>
                 <MenuFlyoutItem x:Name="OpenFolderItem" x:Uid="OpenFolder" Command="{x:Bind File.OpenFolderCommand}"/>
-                <MenuFlyoutSubItem  x:Uid="OpenRecent">
-                    <MenuFlyoutItem x:Uid="NoRecentFiles" IsEnabled="False"/>
+                <MenuFlyoutSubItem x:Name="OpenRecentSubMenu" x:Uid="OpenRecent">
+                    <MenuFlyoutItem x:Name="NoRecentFilesItem" x:Uid="NoRecentFiles" IsEnabled="False"/>
                     <MenuFlyoutSeparator/>
                     <MenuFlyoutItem x:Name="ClearRecentFilesItem" x:Uid="ClearRecentFiles" Command="{x:Bind File.ClearHistoryCommand}"/>
                 </MenuFlyoutSubItem>

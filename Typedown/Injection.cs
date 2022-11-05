@@ -43,10 +43,11 @@ namespace Typedown
             builder.AddScoped<IKeyboardAccelerator, KeyboardAccelerator>();
             builder.AddScoped<IWindowService, WindowService>();
             builder.AddScoped<AutoBackup>();
-            builder.AddScoped<AppDbContext>();
             builder.AddScoped<EventCenter>();
             builder.AddScoped<RemoteInvoke>();
             builder.AddScoped<Transport>();
+            builder.AddSingleton<FileHistory>();
+            builder.AddTransient<AppDbContext>();
         }
 
         private static void RegisterComponent(ServiceCollection builder)

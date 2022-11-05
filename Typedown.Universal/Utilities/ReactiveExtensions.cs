@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
@@ -96,6 +97,18 @@ namespace Typedown.Universal.Utilities
         {
             var property = source.GetType().GetProperty(propertyName);
             return source.GetPropertyObservable().Where(x => x.EventArgs.PropertyName == propertyName).Select(_ => property.GetValue(source));
+        }
+
+        public static void DisposeOnUnloaded(this FrameworkElement frameworkElement, Action<Action<IDisposable>> disposableActions)
+        {
+            var disposables = new CompositeDisposable();
+            disposableActions((d) => disposables.Add(d));
+            void OnUnloaded(object sender, RoutedEventArgs e)
+            {
+                disposables.Dispose();
+                frameworkElement.Unloaded -= OnUnloaded;
+            }
+            frameworkElement.Unloaded += OnUnloaded;
         }
     }
 }

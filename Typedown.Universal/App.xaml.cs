@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Win32.UI.XamlHost;
 using Typedown.Universal.Interfaces;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 
 namespace System.Runtime.CompilerServices
@@ -13,11 +14,14 @@ namespace Typedown.Universal
     {
         public static new App Current { get; private set; }
 
+        public static CoreDispatcher Dispatcher { get; private set; }
+
         public App()
         {
-            Current = this;
             Initialize();
             ((Window.Current as object) as IWindowPrivate).TransparentBackground = true;
+            Current = this;
+            Dispatcher = Window.Current.Dispatcher;
         }
 
         public static void InitializeXAMLIsland()

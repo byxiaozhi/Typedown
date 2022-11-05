@@ -8,8 +8,8 @@ using Typedown.Universal.Services;
 
 namespace DatabaseMigration.Migrations
 {
-    [DbContext(typeof(Database))]
-    [Migration("20221105124024_InitialCreate")]
+    [DbContext(typeof(AppDbContext))]
+    [Migration("20221105150222_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace DatabaseMigration.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Accessed")
+                    b.Property<DateTime>("AccessTime")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FilePath")

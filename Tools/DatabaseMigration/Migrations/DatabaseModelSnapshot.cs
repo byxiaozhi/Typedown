@@ -22,7 +22,7 @@ namespace DatabaseMigration.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Accessed")
+                    b.Property<DateTime>("AccessTime")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FilePath")

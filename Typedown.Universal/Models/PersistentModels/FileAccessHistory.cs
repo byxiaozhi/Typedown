@@ -11,7 +11,7 @@ namespace Typedown.Universal.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public DateTime Accessed { get; set; }
+        public DateTime AccessTime { get; set; }
 
         public string FilePath { get; set; }
     }

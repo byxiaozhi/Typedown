@@ -168,6 +168,11 @@
     <Compile Include="Interfaces\IKeyboardAccelerator.cs" />
     <Compile Include="Interfaces\IMarkdownEditor.cs" />
     <Compile Include="Interfaces\IWindowPrivate.cs" />
+    <Compile Include="Migrations\20221105150222_InitialCreate.cs" />
+    <Compile Include="Migrations\20221105150222_InitialCreate.designer.cs">
+      <DependentUpon>20221105150222_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DatabaseModelSnapshot.cs" />
     <Compile Include="Models\PersistentModels\FileAccessHistory.cs" />
     <Compile Include="Models\RuntimeModels\ContentHistory.cs" />
     <Compile Include="Models\RuntimeModels\ContentState.cs" />
@@ -230,6 +235,7 @@
     <Compile Include="Services\AppDbContext.cs" />
     <Compile Include="Services\AutoBackup.cs" />
     <Compile Include="Services\EventCenter.cs" />
+    <Compile Include="Services\FileHistory.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
     <Compile Include="Services\Transport.cs" />
     <Compile Include="Utilities\Command.cs" />
@@ -526,9 +532,7 @@
   <ItemGroup>
     <PRIResource Include="Resources\Strings\zh-Hans\Resources.resw" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

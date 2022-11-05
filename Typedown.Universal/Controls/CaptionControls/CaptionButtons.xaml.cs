@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Reactive.Disposables;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.UI.Xaml;
@@ -19,6 +20,8 @@ namespace Typedown.Universal.Controls
         private const uint SC_RESTORE = 0xF120;
         private const uint SC_CLOSE = 0xF060;
 
+        private readonly CompositeDisposable disposables = new();
+
         public CaptionButtons()
         {
             InitializeComponent();
@@ -34,13 +37,13 @@ namespace Typedown.Universal.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            WindowService.WindowStateChanged += OnWindowStateChanged;
+            disposables.Add(WindowService.WindowStateChanged.Subscribe(OnWindowStateChanged));
             UpdateMaximizeButtonIcon();
         }
 
-        private void OnUnloaded(object sender, RoutedEventArgs e) => WindowService.WindowStateChanged -= OnWindowStateChanged;
+        private void OnUnloaded(object sender, RoutedEventArgs e) => disposables.Clear();
 
-        private void OnWindowStateChanged(object sender, nint hWnd) => UpdateMaximizeButtonIcon();
+        private void OnWindowStateChanged(nint hWnd) => UpdateMaximizeButtonIcon();
 
         private void UpdateMaximizeButtonIcon() => Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(PInvoke.IsZoomed(ParentHandle) ? "&#xe923;" : "&#xe922;");
     }

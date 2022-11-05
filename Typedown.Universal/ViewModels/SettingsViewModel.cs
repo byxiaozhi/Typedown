@@ -19,7 +19,6 @@ namespace Typedown.Universal.ViewModels
 {
     public sealed partial class SettingsViewModel : INotifyPropertyChanged, IDisposable
     {
-        public IReadOnlyList<string> History { get => GetSettingValue(new List<string>()); set => SetSettingValue(value); }
         public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public double SidePaneWidth { get => GetSettingValue(300d); set => SetSettingValue(value); }
         public bool StatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }

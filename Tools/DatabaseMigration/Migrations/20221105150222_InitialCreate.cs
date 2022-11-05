@@ -13,7 +13,7 @@ namespace DatabaseMigration.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Accessed = table.Column<DateTime>(nullable: false),
+                    AccessTime = table.Column<DateTime>(nullable: false),
                     FilePath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

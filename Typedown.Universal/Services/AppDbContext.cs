@@ -14,20 +14,20 @@ namespace Typedown.Universal.Services
 
         private readonly string dbPath = Path.Combine(Config.GetLocalFolderPath(), "Storage.db");
 
+        private static readonly object lockMigrateTask = new();
+
         private static Task migrateTask;
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            var builder = new SqliteConnectionStringBuilder()
-            {
-                DataSource = dbPath,
-            };
+            var builder = new SqliteConnectionStringBuilder() { DataSource = dbPath };
             options.UseSqlite(builder.ConnectionString);
         }
 
         public async Task EnsureMigrateAsync()
         {
-            migrateTask ??= Database.MigrateAsync();
+            lock (lockMigrateTask)
+                migrateTask ??= Database.MigrateAsync();
             await migrateTask;
         }
     }
@@ -48,10 +48,5 @@ namespace Typedown.Universal.Services
                 return ctx;
             });
         }
-    }
-
-    internal class Database: AppDbContext
-    {
-
     }
 }
