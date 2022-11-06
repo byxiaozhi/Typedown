@@ -7,16 +7,63 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Grid Height="32" ColumnSpacing="8" x:Name="CaptionWrapper">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="NavigationState">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition To="BackVisible" GeneratedDuration="0:0:0.1">
+                        <VisualTransition.Storyboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackButton" Storyboard.TargetProperty="Visibility">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitlePanelTranslation" Storyboard.TargetProperty="X">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="-22"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualTransition.Storyboard>
+                    </VisualTransition>
+                    <VisualTransition To="BackCollapsed" GeneratedDuration="0:0:0.1">
+                        <VisualTransition.Storyboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackButton" Storyboard.TargetProperty="Visibility">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitlePanelTranslation" Storyboard.TargetProperty="X">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="22"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualTransition.Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="BackVisible">
+                    <VisualState.Setters>
+                        <Setter Target="BackButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="BackCollapsed">
+                    <VisualState.Setters>
+                        <Setter Target="BackButton.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" MinWidth="4"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+        <StackPanel x:Name="TitlePanel" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+            <StackPanel.RenderTransform>
+                <TranslateTransform x:Name="TitlePanelTranslation" />
+            </StackPanel.RenderTransform>
             <Image Source="ms-appx:///Assets/Square44x44Logo.png" Width="24" Height="24" VerticalAlignment="Center"/>
             <TextBlock Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center"/>
         </StackPanel>
