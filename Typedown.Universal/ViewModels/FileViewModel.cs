@@ -384,8 +384,7 @@ namespace Typedown.Universal.ViewModels
 
         public async Task LoadStartUpMarkdown()
         {
-            string[] args = Environment.GetCommandLineArgs();
-            var path = FilePath ?? args.Where(x => FileExtension.Markdown.Where(x.EndsWith).Any()).FirstOrDefault();
+            var path = CommandLine.GetOpenFilePath(AppViewModel.CommandLineArgs);
             if (!string.IsNullOrEmpty(path))
             {
                 try
@@ -467,9 +466,14 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        public bool TryGetOpenedWindow(string filePath, out IntPtr window)
+        public static bool TryGetOpenedWindow(string filePath, out IntPtr window)
         {
-            window = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath == filePath).FirstOrDefault()?.MainWindow ?? default;
+            if (string.IsNullOrEmpty(filePath))
+            {
+                window = default;
+                return false;
+            }
+            window = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath?.ToLower() == filePath.ToLower()).FirstOrDefault()?.MainWindow ?? default;
             return window != default;
         }
 

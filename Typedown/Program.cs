@@ -51,13 +51,11 @@ namespace Typedown
 
         private static void OpenNewWindow()
         {
-            var args = Environment.GetCommandLineArgs();
-            var path = args.Where(x => FileExtension.Markdown.Where(x.EndsWith).Any()).FirstOrDefault() ?? "";
             using var client = new NamedPipeClientStream(".", "Typedown.Program.PiPe", PipeDirection.InOut);
             client.Connect(1000);
             using var reader = new StreamReader(client);
             using var writer = new StreamWriter(client);
-            writer.WriteLine(path);
+            writer.WriteLine(string.Join("\0", Environment.GetCommandLineArgs()));
             writer.Flush();
             var handle = new IntPtr(long.Parse(reader.ReadLine()));
             PInvoke.SetForegroundWindow(handle);
@@ -73,9 +71,8 @@ namespace Typedown
                     await server.WaitForConnectionAsync();
                     using var reader = new StreamReader(server);
                     using var writer = new StreamWriter(server);
-                    var path = await reader.ReadLineAsync();
-                    if (!FileExtension.Markdown.Contains(Path.GetExtension(path).ToLower())) path = "";
-                    var handle = await App.Current.Dispatcher.InvokeAsync(() => Utilities.Common.OpenNewWindow(path));
+                    var args = (await reader.ReadLineAsync()).Split("\0");
+                    var handle = await App.Current.Dispatcher.InvokeAsync(() => Utilities.Common.OpenNewWindow(args));
                     await writer.WriteLineAsync(handle.ToString());
                     await writer.FlushAsync();
                 }

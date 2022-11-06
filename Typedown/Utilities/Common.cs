@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.Enums;
@@ -13,6 +12,7 @@ using Typedown.Windows;
 using Microsoft.Win32;
 using Windows.UI.ViewManagement;
 using Typedown.Properties;
+using System.Reactive.Linq;
 
 namespace Typedown.Utilities
 {
@@ -97,23 +97,24 @@ namespace Typedown.Utilities
             window.WindowState = settings.StartupIsMaximized ? WindowState.Maximized : WindowState.Normal;
         }
 
-        public static IntPtr OpenNewWindow(string path)
+        public static IntPtr OpenNewWindow(string[] args)
         {
-            var oldWindow = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath == path);
-            if (string.IsNullOrEmpty(path) || !oldWindow.Any())
+            var filePath = CommandLine.GetOpenFilePath(args);
+            if (string.IsNullOrEmpty(filePath) || !FileViewModel.TryGetOpenedWindow(filePath, out var windowHWnd))
             {
-                var promise = new TaskCompletionSource<IntPtr>();
                 var newWindow = new MainWindow();
-                newWindow.InitializeComponent();
-                newWindow.AppViewModel.FileViewModel.OpenFileCommand.Execute(path);
-                newWindow.ShowActivated = true;
-                newWindow.Loaded += (s, e) => promise.SetResult((s as MainWindow).Handle);
                 newWindow.Show();
+                newWindow.InitializeComponent();
+                newWindow.AppViewModel.CommandLineArgs = args;
                 return newWindow.Handle;
             }
             else
             {
-                return oldWindow.FirstOrDefault().MainWindow;
+                var appWindows = Application.Current.Windows.OfType<AppWindow>();
+                var window = appWindows.Where(x => x.Handle == windowHWnd).FirstOrDefault();
+                if (window?.WindowState == WindowState.Minimized)
+                    SystemCommands.RestoreWindow(window);
+                return windowHWnd;
             }
         }
     }

@@ -3,8 +3,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -63,6 +61,7 @@ namespace Typedown.Windows
             SaveWindowPlacementWithOffset();
             Universal.App.InitializeXAMLIsland();
             InitializeComponent();
+            AppViewModel.MainWindow = Handle;
         }
 
         public void InitializeComponent()
@@ -71,7 +70,6 @@ namespace Typedown.Windows
                 return;
             ServiceScope = Injection.ServiceProvider.CreateScope();
             DataContext = AppViewModel = ServiceProvider.GetService<AppViewModel>();
-            AppViewModel.MainWindow = Handle;
             RootControl = new RootControl();
             AppXamlHost = new AppXamlHost(RootControl);
             RootControl.Loaded += OnRootControlLoaded;
@@ -107,6 +105,7 @@ namespace Typedown.Windows
         {
             base.OnStateChanged(e);
             WindowService?.RaiseWindowStateChanged(Handle);
+            SaveWindowPlacementWithOffset();
         }
 
         private void CanGoBackChanged()
