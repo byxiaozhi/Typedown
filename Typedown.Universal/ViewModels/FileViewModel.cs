@@ -34,9 +34,11 @@ namespace Typedown.Universal.ViewModels
 
         public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
 
-        public FileHistory FileHistory => ServiceProvider.GetService<FileHistory>();
+        public AccessHistory AccessHistory => ServiceProvider.GetService<AccessHistory>();
 
-        public string FilePath { get; set; } = null;
+        public string WorkFolder { get; private set; } = null;
+
+        public string FilePath { get; private set; } = null;
 
         public string FileName => Path.GetFileName(FilePath);
 
@@ -72,7 +74,7 @@ namespace Typedown.Universal.ViewModels
             SaveAsCommand.OnExecute.Subscribe(async _ => await SaveAs());
             SaveCommand.OnExecute.Subscribe(async _ => await Save());
             ExitCommand.OnExecute.Subscribe(_ => Exit());
-            ClearHistoryCommand.OnExecute.Subscribe(x => { _ = FileHistory.ClearHistory(); });
+            ClearHistoryCommand.OnExecute.Subscribe(x => { _ = AccessHistory.ClearHistory(); });
             ExportCommand.OnExecute.Subscribe(Export);
             PrintCommand.OnExecute.Subscribe(_ => Print());
             ImportCommand.OnExecute.Subscribe(_ => Import());
@@ -82,9 +84,10 @@ namespace Typedown.Universal.ViewModels
             saveFileTimer.Interval = TimeSpan.FromSeconds(5);
             saveFileTimer.Tick += SaveFileTimerTick;
             saveFileTimer.Start();
+            _ = App.Dispatcher.RunIdleAsync(_ => OnStartup());
         }
 
-        public async void SaveFileTimerTick(object sender, object e)
+        private async void SaveFileTimerTick(object sender, object e)
         {
             if (SettingsViewModel.AutoSave)
             {
@@ -105,7 +108,7 @@ namespace Typedown.Universal.ViewModels
             return FilePath != null;
         }
 
-        public async Task<bool> AutoBackupFile()
+        private async Task<bool> AutoBackupFile()
         {
             if ((EditorViewModel.FileHash != EditorViewModel.CurrentHash))
                 return await AutoBackup.Backup(FilePath, EditorViewModel.Markdown);
@@ -141,7 +144,7 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        public async void TryOpenFile(string filepath)
+        private async void TryOpenFile(string filepath)
         {
             if (!await AskToSave()) return;
             await LoadFile(filepath, true);
@@ -168,14 +171,18 @@ namespace Typedown.Universal.ViewModels
             if (folderPath != null)
             {
                 if (!Directory.Exists(folderPath))
+                {
+                    _ = AccessHistory.RemoveFolderHistory(folderPath);
                     await AppContentDialog.Create("Error", "Folder does not exist.", dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
-                SettingsViewModel.WorkFolder = folderPath;
+                }
+                WorkFolder = folderPath;
                 SettingsViewModel.SidePaneOpen = true;
                 SettingsViewModel.SidePaneIndex = 0;
+                _ = AccessHistory.RecordFolderHistory(folderPath);
             }
         }
 
-        public async Task<string> CheckBackup(string path, ulong fileHash)
+        private async Task<string> CheckBackup(string path, ulong fileHash)
         {
             string text = await AutoBackup.GetBackup(path);
             if (text == null || Common.SimpleHash(text) == fileHash) return null;
@@ -197,19 +204,18 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        public async Task LoadFile(string path, bool skipSavedCheck = false, bool postMessage = true)
+        private async Task LoadFile(string path, bool skipSavedCheck = false, bool postMessage = true)
         {
             try
             {
-                var openedWindow = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath == path).FirstOrDefault();
-                if (openedWindow != default && openedWindow.FileViewModel != this)
+                if (TryGetOpenedWindow(path, out var window) && window != AppViewModel.MainWindow)
                 {
-                    PInvoke.SetForegroundWindow(openedWindow.MainWindow);
+                    PInvoke.SetForegroundWindow(window);
                     return;
                 }
                 if (!File.Exists(path))
                 {
-                    _ = FileHistory.RemoveHistory(path);
+                    _ = AccessHistory.RemoveFileHistory(path);
                     throw new FileNotFoundException("File does not exist.");
                 }
                 else if (!skipSavedCheck && !await AskToSave())
@@ -220,7 +226,7 @@ namespace Typedown.Universal.ViewModels
                 EditorViewModel.FirstStart = false;
                 EditorViewModel.FileHash = Common.SimpleHash(text);
                 FilePath = path;
-                _ = FileHistory.RecordHistory(FilePath);
+                _ = AccessHistory.RecordFileHistory(FilePath);
                 var backup = await CheckBackup(path, EditorViewModel.CurrentHash);
                 if (backup == null)
                 {
@@ -250,7 +256,7 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        public async Task<bool> Save(bool alert = true)
+        private async Task<bool> Save(bool alert = true)
         {
             if (FilePath == null)
             {
@@ -264,7 +270,7 @@ namespace Typedown.Universal.ViewModels
                 {
                     EditorViewModel.FileHash = EditorViewModel.CurrentHash;
                     EditorViewModel.Saved = true;
-                    _ = FileHistory.RecordHistory(FilePath);
+                    _ = AccessHistory.RecordFileHistory(FilePath);
                 }
                 return result;
             }
@@ -289,7 +295,7 @@ namespace Typedown.Universal.ViewModels
                     }
                     EditorViewModel.FileHash = EditorViewModel.CurrentHash;
                     EditorViewModel.Saved = true;
-                    _ = FileHistory.RecordHistory(FilePath);
+                    _ = AccessHistory.RecordFileHistory(FilePath);
                     return file.Path;
                 }
             }
@@ -429,6 +435,42 @@ namespace Typedown.Universal.ViewModels
             {
                 await AppContentDialog.Create(dialogMessages.GetString("ImportErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
             }
+        }
+
+        private async void OnStartup()
+        {
+            if (string.IsNullOrEmpty(WorkFolder))
+            {
+                switch (SettingsViewModel.FolderStartupAction)
+                {
+                    case Enums.FolderStartupAction.OpenLast:
+                        await AccessHistory.EnsureInitialized();
+                        if (AccessHistory.FolderRecentlyOpened.FirstOrDefault() is string lastFolder && Directory.Exists(lastFolder))
+                            OpenFolder(lastFolder);
+                        break;
+                    case Enums.FolderStartupAction.OpenFolder:
+                        if (Directory.Exists(SettingsViewModel.StartupOpenFolder))
+                            OpenFolder(SettingsViewModel.StartupOpenFolder);
+                        break;
+                }
+            }
+            if (string.IsNullOrEmpty(FilePath))
+            {
+                switch (SettingsViewModel.FileStartupAction)
+                {
+                    case Enums.FileStartupAction.OpenLast:
+                        await AccessHistory.EnsureInitialized();
+                        if (AccessHistory.FileRecentlyOpened.FirstOrDefault() is string lastFile && !TryGetOpenedWindow(lastFile, out _) && File.Exists(lastFile))
+                            OpenFile(lastFile);
+                        break;
+                }
+            }
+        }
+
+        public bool TryGetOpenedWindow(string filePath, out IntPtr window)
+        {
+            window = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath == filePath).FirstOrDefault()?.MainWindow ?? default;
+            return window != default;
         }
 
         public void Dispose()

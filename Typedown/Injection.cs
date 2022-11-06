@@ -46,7 +46,7 @@ namespace Typedown
             builder.AddScoped<EventCenter>();
             builder.AddScoped<RemoteInvoke>();
             builder.AddScoped<Transport>();
-            builder.AddSingleton<FileHistory>();
+            builder.AddSingleton<AccessHistory>();
             builder.AddTransient<AppDbContext>();
         }
 

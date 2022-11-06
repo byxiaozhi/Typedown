@@ -12,6 +12,8 @@ namespace Typedown.Universal.Services
     {
         public DbSet<FileAccessHistory> FileAccessHistories { get; set; }
 
+        public DbSet<FolderAccessHistory> FolderAccessHistories { get; set; }
+
         private readonly string dbPath = Path.Combine(Config.GetLocalFolderPath(), "Storage.db");
 
         private static readonly object lockMigrateTask = new();

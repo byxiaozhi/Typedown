@@ -24,7 +24,7 @@ namespace Typedown.Universal.Controls
         public FormatViewModel Format => ViewModel?.FormatViewModel;
         public ParagraphViewModel Paragraph => ViewModel?.ParagraphViewModel;
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
-        public FileHistory FileHistory => this.GetService<FileHistory>();
+        public AccessHistory FileHistory => this.GetService<AccessHistory>();
 
         public FloatViewModel.SearchOpenType OpenSearch => FloatViewModel.SearchOpenType.Search;
         public FloatViewModel.SearchOpenType OpenReplace => FloatViewModel.SearchOpenType.Replace;
@@ -39,7 +39,7 @@ namespace Typedown.Universal.Controls
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
             await Dispatcher.RunIdleAsync(_ => HotkeyRegister());
-            disposables.Add(FileHistory.RecentlyOpened.GetCollectionObservable().Subscribe(_ => UpdateOpenRecentItem()));
+            disposables.Add(FileHistory.FileRecentlyOpened.GetCollectionObservable().Subscribe(_ => UpdateOpenRecentItem()));
             UpdateOpenRecentItem();
         }
 
@@ -161,7 +161,7 @@ namespace Typedown.Universal.Controls
 
         private void UpdateOpenRecentItem()
         {
-            var files = FileHistory.RecentlyOpened.ToList();
+            var files = FileHistory.FileRecentlyOpened.ToList();
             while (OpenRecentSubMenu.Items[1] is not MenuFlyoutSeparator)
                 OpenRecentSubMenu.Items.RemoveAt(1);
             foreach (var file in files.Reverse<string>())

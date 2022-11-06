@@ -105,7 +105,7 @@ namespace Typedown.Utilities
                 var promise = new TaskCompletionSource<IntPtr>();
                 var newWindow = new MainWindow();
                 newWindow.InitializeComponent();
-                newWindow.AppViewModel.FileViewModel.FilePath = path;
+                newWindow.AppViewModel.FileViewModel.OpenFileCommand.Execute(path);
                 newWindow.ShowActivated = true;
                 newWindow.Loaded += (s, e) => promise.SetResult((s as MainWindow).Handle);
                 newWindow.Show();

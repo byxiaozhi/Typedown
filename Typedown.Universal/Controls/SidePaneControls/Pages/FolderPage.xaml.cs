@@ -22,7 +22,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
     {
         public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
+        public FileViewModel FileViewModel => ViewModel?.FileViewModel;
 
         public IFileOperation FileOperation => this.GetService<IFileOperation>();
 
@@ -40,7 +40,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             WorkFolderExplorerItem = new ExplorerItem() { IsExpanded = true };
-            disposables.Add(Settings.WhenPropertyChanged(nameof(Settings.WorkFolder)).Cast<string>().StartWith(Settings.WorkFolder).Subscribe(UpdateWorkFolder));
+            disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.WorkFolder)).Cast<string>().StartWith(FileViewModel.WorkFolder).Subscribe(UpdateWorkFolder));
         }
 
         private void UpdateWorkFolder(string workFolder)
@@ -288,10 +288,10 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
             }
         }
 
-        private async void OnOpenClick(object sender, RoutedEventArgs e)
+        private void OnOpenClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            await ViewModel.FileViewModel.LoadFile(item.FullPath);
+            ViewModel.FileViewModel.OpenFileCommand.Execute(item.FullPath);
         }
 
         private void OnOpenInNewWindowClick(object sender, RoutedEventArgs e)
