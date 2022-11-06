@@ -9,8 +9,8 @@
     mc:Ignorable="d">
     <StackPanel Spacing="4">
         <settingitems:GeneralSetting/>
-        <StackPanel Spacing="4" Margin="-8,8,0,0">
+        <!--<StackPanel Spacing="4" Margin="-8,8,0,0">
             <HyperlinkButton Content="帮助我们完善翻译"/>
-        </StackPanel>
+        </StackPanel>-->
     </StackPanel>
 </Page>

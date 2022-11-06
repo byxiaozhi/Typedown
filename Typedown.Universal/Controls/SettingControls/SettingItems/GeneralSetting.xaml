@@ -91,11 +91,11 @@
         </controls:ButtonSettingItem>
         
         <TextBlock Text="数据" Margin="0,16,0,4"/>
-        <controls:ButtonSettingItem Title="文件访问历史" Description="文件访问历史默认在设备上保留 90 天">
+        <!--<controls:ButtonSettingItem Title="文件访问历史" Description="文件访问历史默认在设备上保留 90 天">
             <controls:ButtonSettingItem.Icon>
                 <FontIcon Glyph="&#xf738;"/>
             </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>
+        </controls:ButtonSettingItem>-->
         <controls:NormalSettingItem Title="恢复默认设置" Description="还原应用默认设置">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xebc4;"/>
