@@ -27,7 +27,7 @@ namespace Typedown.Universal.Services
 
         public async Task RecordFileHistory(string filePath)
         {
-            using var ctx = await ServiceProvider.GetAppDbContext();
+            using var ctx = await AppDbContext.Create();
             var model = ctx.FileAccessHistories;
             var item = new FileAccessHistory() { FilePath = filePath, AccessTime = DateTime.Now };
             await model.AddAsync(item);
@@ -37,7 +37,7 @@ namespace Typedown.Universal.Services
 
         public async Task RemoveFileHistory(string filePath)
         {
-            using var ctx = await ServiceProvider.GetAppDbContext();
+            using var ctx = await AppDbContext.Create();
             var model = ctx.FileAccessHistories;
             model.RemoveRange(model.Where(x => x.FilePath == filePath));
             await ctx.SaveChangesAsync();
@@ -46,7 +46,7 @@ namespace Typedown.Universal.Services
 
         public async Task ClearFileHistory()
         {
-            using var ctx = await ServiceProvider.GetAppDbContext();
+            using var ctx = await AppDbContext.Create();
             var model = ctx.FileAccessHistories;
             model.RemoveRange(model);
             await ctx.SaveChangesAsync();
@@ -55,7 +55,7 @@ namespace Typedown.Universal.Services
 
         private async Task UpdateFileRecentlyOpened(string filePath, CollectionChangeAction action)
         {
-            using var ctx = await ServiceProvider.GetAppDbContext();
+            using var ctx = await AppDbContext.Create();
             var model = ctx.FileAccessHistories;
             var maxCount = 10;
             switch (action)
@@ -87,7 +87,7 @@ namespace Typedown.Universal.Services
 
         public async Task RecordFolderHistory(string folderPath)
         {
-            using var ctx = await ServiceProvider.GetAppDbContext();
+            using var ctx = await AppDbContext.Create();
             var model = ctx.FolderAccessHistories;
             var item = new FolderAccessHistory() { FolderPath = folderPath, AccessTime = DateTime.Now };
             await model.AddAsync(item);
@@ -97,7 +97,7 @@ namespace Typedown.Universal.Services
 
         public async Task RemoveFolderHistory(string folderPath)
         {
-            using var ctx = await ServiceProvider.GetAppDbContext();
+            using var ctx = await AppDbContext.Create();
             var model = ctx.FolderAccessHistories;
             model.RemoveRange(model.Where(x => x.FolderPath == folderPath));
             await ctx.SaveChangesAsync();
@@ -106,7 +106,7 @@ namespace Typedown.Universal.Services
 
         public async Task ClearFolderHistory()
         {
-            using var ctx = await ServiceProvider.GetAppDbContext();
+            using var ctx = await AppDbContext.Create();
             var model = ctx.FolderAccessHistories;
             model.RemoveRange(model);
             await ctx.SaveChangesAsync();
@@ -115,7 +115,7 @@ namespace Typedown.Universal.Services
 
         private async Task UpdateFolderRecentlyOpened(string folderPath, CollectionChangeAction action)
         {
-            using var ctx = await ServiceProvider.GetAppDbContext();
+            using var ctx = await AppDbContext.Create();
             var model = ctx.FolderAccessHistories;
             var maxCount = 10;
             switch (action)

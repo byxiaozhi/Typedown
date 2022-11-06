@@ -1,7 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.IO;
 using System.Threading.Tasks;
 using Typedown.Universal.Models;
@@ -32,20 +30,12 @@ namespace Typedown.Universal.Services
                 migrateTask ??= Database.MigrateAsync();
             await migrateTask;
         }
-    }
 
-    public static class AppDbContextExtensions
-    {
-        public static Task InitAppDbContext(this IServiceProvider serviceProvider)
-        {
-            return Task.Run(() => serviceProvider.GetService<AppDbContext>().EnsureMigrateAsync());
-        }
-
-        public static Task<AppDbContext> GetAppDbContext(this IServiceProvider serviceProvider)
+        public static Task<AppDbContext> Create()
         {
             return Task.Run(async () =>
             {
-                var ctx = serviceProvider.GetService<AppDbContext>();
+                var ctx = new AppDbContext();
                 await ctx.EnsureMigrateAsync();
                 return ctx;
             });

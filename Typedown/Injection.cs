@@ -48,7 +48,6 @@ namespace Typedown
             builder.AddScoped<RemoteInvoke>();
             builder.AddScoped<Transport>();
             builder.AddSingleton<AccessHistory>();
-            builder.AddTransient<AppDbContext>();
         }
 
         private static void RegisterComponent(ServiceCollection builder)
