@@ -25,6 +25,7 @@ using System.Web;
 using System.IO;
 using Windows.UI.Xaml.Shapes;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Typedown.Controls
 {
@@ -122,8 +123,9 @@ namespace Typedown.Controls
 #endif
         }
 
-        private void OnWebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs args)
+        private async void OnWebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs args)
         {
+            var deferral = args.GetDeferral();
             try
             {
                 var uri = new Uri(args.Request.Uri);
@@ -136,12 +138,16 @@ namespace Typedown.Controls
                     var baseDir = System.IO.Path.GetDirectoryName(AppViewModel.FileViewModel.FilePath);
                     path = System.IO.Path.Combine(baseDir, path);
                 }
-                var stream = new MemoryStream(File.ReadAllBytes(path));
+                var stream = await Task.Run(() => new MemoryStream(File.ReadAllBytes(path)));
                 args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
             }
             catch (Exception)
             {
                 args.Response = CoreWebView2.Environment.CreateWebResourceResponse(null, 404, "Not found", null);
+            }
+            finally
+            {
+                deferral.Complete();
             }
         }
 
