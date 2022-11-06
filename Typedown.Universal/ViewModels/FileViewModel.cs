@@ -144,25 +144,12 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        private async void TryOpenFile(string filepath)
-        {
-            if (!await AskToSave()) return;
-            await LoadFile(filepath, true);
-        }
-
         private async void OpenFile(string filePath = null)
         {
             if (!await AskToSave()) return;
             filePath ??= await AppViewModel.MainWindow.PickMarkdownFolderAsync();
-            try
-            {
-                if (filePath != null)
-                    await LoadFile(filePath, true);
-            }
-            catch (Exception ex)
-            {
-                await AppContentDialog.Create(dialogMessages.GetString("ReadErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
-            }
+            if (filePath != null)
+                await LoadFile(filePath, true);
         }
 
         private async void OpenFolder(string folderPath = null)
@@ -170,48 +157,22 @@ namespace Typedown.Universal.ViewModels
             folderPath ??= await AppViewModel.MainWindow.PickMarkdownFolderAsync();
             if (folderPath != null)
             {
-                if (!Directory.Exists(folderPath))
+                if (await LoadFolder(folderPath))
                 {
-                    _ = AccessHistory.RemoveFolderHistory(folderPath);
-                    await AppContentDialog.Create("Error", "Folder does not exist.", dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                    SettingsViewModel.SidePaneOpen = true;
+                    SettingsViewModel.SidePaneIndex = 0;
                 }
-                WorkFolder = folderPath;
-                SettingsViewModel.SidePaneOpen = true;
-                SettingsViewModel.SidePaneIndex = 0;
-                _ = AccessHistory.RecordFolderHistory(folderPath);
             }
         }
 
-        private async Task<string> CheckBackup(string path, ulong fileHash)
-        {
-            string text = await AutoBackup.GetBackup(path);
-            if (text == null || Common.SimpleHash(text) == fileHash) return null;
-            var dialog = AppContentDialog.Create();
-            dialog.Title = dialogMessages.GetString("RecoverTitle");
-            dialog.Content = dialogMessages.GetString("RecoverContent");
-            dialog.PrimaryButtonText = dialogMessages.GetString("Recover");
-            dialog.SecondaryButtonText = dialogMessages.GetString("Delete");
-            dialog.DefaultButton = ContentDialogButton.Primary;
-            var result = await dialog.ShowAsync(AppViewModel.XamlRoot);
-            if (result == ContentDialogResult.Primary)
-            {
-                return text;
-            }
-            else
-            {
-                AutoBackup.DeleteBackup(path);
-                return null;
-            }
-        }
-
-        private async Task LoadFile(string path, bool skipSavedCheck = false, bool postMessage = true)
+        private async Task<bool> LoadFile(string path, bool skipSavedCheck = false, bool postMessage = true)
         {
             try
             {
                 if (TryGetOpenedWindow(path, out var window) && window != AppViewModel.MainWindow)
                 {
                     PInvoke.SetForegroundWindow(window);
-                    return;
+                    return false;
                 }
                 if (!File.Exists(path))
                 {
@@ -220,7 +181,7 @@ namespace Typedown.Universal.ViewModels
                 }
                 else if (!skipSavedCheck && !await AskToSave())
                 {
-                    return;
+                    return false;
                 }
                 var text = await File.ReadAllTextAsync(path);
                 EditorViewModel.FirstStart = false;
@@ -249,10 +210,54 @@ namespace Typedown.Universal.ViewModels
 
                     MarkdownEditor?.PostMessage("LoadFile", EditorViewModel.Markdown);
                 }
+                return true;
             }
             catch (Exception ex)
             {
                 await AppContentDialog.Create(dialogMessages.GetString("ReadErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                return false;
+            }
+        }
+
+        private async Task<bool> LoadFolder(string folderPath)
+        {
+            try
+            {
+                if (!Directory.Exists(folderPath))
+                {
+                    _ = AccessHistory.RemoveFolderHistory(folderPath);
+                    throw new FileNotFoundException("Folder does not exist.");
+                }
+                WorkFolder = folderPath;
+                _ = AccessHistory.RecordFolderHistory(folderPath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create("Error", ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                return false;
+            }
+        }
+
+        private async Task<string> CheckBackup(string path, ulong fileHash)
+        {
+            string text = await AutoBackup.GetBackup(path);
+            if (text == null || Common.SimpleHash(text) == fileHash) return null;
+            var dialog = AppContentDialog.Create();
+            dialog.Title = dialogMessages.GetString("RecoverTitle");
+            dialog.Content = dialogMessages.GetString("RecoverContent");
+            dialog.PrimaryButtonText = dialogMessages.GetString("Recover");
+            dialog.SecondaryButtonText = dialogMessages.GetString("Delete");
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            var result = await dialog.ShowAsync(AppViewModel.XamlRoot);
+            if (result == ContentDialogResult.Primary)
+            {
+                return text;
+            }
+            else
+            {
+                AutoBackup.DeleteBackup(path);
+                return null;
             }
         }
 
@@ -445,11 +450,11 @@ namespace Typedown.Universal.ViewModels
                     case Enums.FolderStartupAction.OpenLast:
                         await AccessHistory.EnsureInitialized();
                         if (AccessHistory.FolderRecentlyOpened.FirstOrDefault() is string lastFolder && Directory.Exists(lastFolder))
-                            OpenFolder(lastFolder);
+                            await LoadFolder(lastFolder);
                         break;
                     case Enums.FolderStartupAction.OpenFolder:
                         if (Directory.Exists(SettingsViewModel.StartupOpenFolder))
-                            OpenFolder(SettingsViewModel.StartupOpenFolder);
+                            await LoadFolder(SettingsViewModel.StartupOpenFolder);
                         break;
                 }
             }
@@ -460,7 +465,7 @@ namespace Typedown.Universal.ViewModels
                     case Enums.FileStartupAction.OpenLast:
                         await AccessHistory.EnsureInitialized();
                         if (AccessHistory.FileRecentlyOpened.FirstOrDefault() is string lastFile && !TryGetOpenedWindow(lastFile, out _) && File.Exists(lastFile))
-                            OpenFile(lastFile);
+                            await LoadFile(lastFile, true);
                         break;
                 }
             }
