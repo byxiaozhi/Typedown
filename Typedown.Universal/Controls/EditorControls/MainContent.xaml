@@ -8,6 +8,7 @@
     xmlns:viewmodels="using:Typedown.Universal.ViewModels" xmlns:converters="using:Typedown.Universal.Converters"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
+    x:Name="ThisControl"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     SizeChanged="OnSizeChanged"
@@ -15,21 +16,51 @@
     d:DesignWidth="400">
     <UserControl.Resources>
         <converters:GridLengthToDoubleConverter x:Key="GridLengthToDoubleConverter"/>
+        <TranslateTransform x:Key="LeftPaneTransform" x:Name="LeftPaneTransform" />
     </UserControl.Resources>
     <Grid Background="{ThemeResource SolidBackgroundFillColorTertiary}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SidePaneStates">
-                <VisualState x:Name="SidePaneOpen">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition To="SidePaneExpand" GeneratedDuration="0:0:0.333">
+                        <VisualTransition.Storyboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThisControl" Storyboard.TargetProperty="IsLeftPaneLoad">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="True"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LeftPaneTransform" Storyboard.TargetProperty="X">
+                                    <DiscreteDoubleKeyFrame KeyTime="0" Value="{x:Bind local:MainContent.GetColumnWidthNegative(LeftPaneColumn.Width), Mode=OneWay}"/>
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.333" Value="0" KeySpline="0.0, 0.0, 0.0, 1.0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualTransition.Storyboard>
+                    </VisualTransition>
+                    <VisualTransition To="SidePaneCollapse" GeneratedDuration="0:0:0.167">
+                        <VisualTransition.Storyboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThisControl" Storyboard.TargetProperty="IsLeftPaneLoad">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="True"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftPaneColumn" Storyboard.TargetProperty="MaxWidth">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="65535"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LeftPaneTransform" Storyboard.TargetProperty="X">
+                                    <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.167"  KeySpline="1.0, 1.0, 0.0, 1.0" Value="{x:Bind local:MainContent.GetColumnWidthNegative(LeftPaneColumn.Width), Mode=OneWay}"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualTransition.Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="SidePaneExpand">
                     <VisualState.Setters>
-                        <Setter Target="Splitter.Visibility" Value="Visible"/>
-                        <Setter Target="SplitterLine.Visibility" Value="Visible"/>
+                        <Setter Target="ThisControl.IsLeftPaneLoad" Value="True"/>
                         <Setter Target="LeftPaneColumn.MaxWidth" Value="65535"/>
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="SidePaneHide">
+                <VisualState x:Name="SidePaneCollapse">
                     <VisualState.Setters>
-                        <Setter Target="Splitter.Visibility" Value="Collapsed"/>
-                        <Setter Target="SplitterLine.Visibility" Value="Collapsed"/>
+                        <Setter Target="ThisControl.IsLeftPaneLoad" Value="False"/>
                         <Setter Target="LeftPaneColumn.MaxWidth" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -40,9 +71,21 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:LeftPane x:Name="LeftPane" x:Load="{x:Bind Settings.SidePaneOpen, Mode=OneWay}"/>
+        <local:LeftPane 
+            x:Name="LeftPane" 
+            x:Load="{x:Bind IsLeftPaneLoad, Mode=OneWay}" 
+            RenderTransform="{StaticResource LeftPaneTransform}"/>
         <local:EditorContainer Grid.Column="2" />
-        <Border x:Name="SplitterLine" Grid.Column="1" Width="1" Background="{ThemeResource CardStrokeColorDefault}"/>
-        <local:GridSplitter x:Name="Splitter" Grid.Column="1" ColumnMinWidth="40" ColumnExpectWidth="{Binding SettingsViewModel.SidePaneWidth, Mode=TwoWay}" ColumnWidth="{x:Bind LeftPaneColumn.Width, Converter={StaticResource GridLengthToDoubleConverter}, Mode=TwoWay}"/>
+        <Border 
+            x:Name="SplitterLine" Grid.Column="1" Width="1" 
+            x:Load="{x:Bind IsLeftPaneLoad, Mode=OneWay}"
+            RenderTransform="{StaticResource LeftPaneTransform}"
+            Background="{ThemeResource CardStrokeColorDefault}"/>
+        <local:GridSplitter 
+            x:Name="Splitter" Grid.Column="1" ColumnMinWidth="40" 
+            x:Load="{x:Bind IsLeftPaneLoad, Mode=OneWay}" 
+            ColumnExpectWidth="{x:Bind Settings.SidePaneWidth, Mode=TwoWay}" 
+            ColumnMaxWidth="{x:Bind LeftPaneMaxWidth, Mode=OneWay}"
+            ColumnWidth="{x:Bind LeftPaneColumn.Width, Converter={StaticResource GridLengthToDoubleConverter}, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

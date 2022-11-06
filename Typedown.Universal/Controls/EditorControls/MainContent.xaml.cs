@@ -1,26 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Disposables;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Typedown.Universal.Interfaces;
+using System.Reactive.Linq;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Controls
 {
-    public sealed partial class MainContent : UserControl
+    public sealed partial class MainContent : UserControl, INotifyPropertyChanged
     {
+        private static DependencyProperty IsLeftPaneLoadProperty = DependencyProperty.Register(nameof(IsLeftPaneLoad), typeof(bool), typeof(MainContent), new(false));
+        private bool IsLeftPaneLoad { get => (bool)GetValue(IsLeftPaneLoadProperty); set => SetValue(IsLeftPaneLoadProperty, value); }
+
+        private static DependencyProperty LeftPaneMaxWidthProperty = DependencyProperty.Register(nameof(LeftPaneMaxWidth), typeof(double), typeof(MainContent), new(0d));
+        private double LeftPaneMaxWidth { get => (double)GetValue(LeftPaneMaxWidthProperty); set => SetValue(LeftPaneMaxWidthProperty, value); }
+
         public AppViewModel ViewModel => DataContext as AppViewModel;
 
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
@@ -29,33 +26,33 @@ namespace Typedown.Universal.Controls
 
         public MainContent()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            disposables.Add(ViewModel.SettingsViewModel.GetPropertyObservable().Subscribe(x => OnSettingsViewModelPropertyChanged(x.Sender as SettingsViewModel, x.EventArgs)));
-            VisualStateManager.GoToState(this, Settings.SidePaneOpen ? "SidePaneOpen" : "SidePaneHide", false);
+            disposables.Add(Settings.WhenPropertyChanged(nameof(Settings.SidePaneOpen)).Cast<bool>().Subscribe(x => UpdateSidePaneState(x, true)));
+            UpdateSidePaneState(Settings.SidePaneOpen, false);
         }
 
-        private void OnSettingsViewModelPropertyChanged(SettingsViewModel sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void UpdateSidePaneState(bool sidePaneOpen, bool useTransitions = true)
         {
-            switch (e.PropertyName)
-            {
-                case nameof(SettingsViewModel.SidePaneOpen):
-                    VisualStateManager.GoToState(this, sender.SidePaneOpen ? "SidePaneOpen" : "SidePaneHide", true);
-                    break;
-            }
+            VisualStateManager.GoToState(this, sidePaneOpen ? "SidePaneExpand" : "SidePaneCollapse", useTransitions);
         }
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Splitter.ColumnMaxWidth = ActualWidth - 40;
+            LeftPaneMaxWidth = ActualWidth - 40;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
+        }
+
+        public static double GetColumnWidthNegative(GridLength length)
+        {
+            return -length.Value;
         }
     }
 }
