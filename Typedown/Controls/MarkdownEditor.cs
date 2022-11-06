@@ -128,13 +128,14 @@ namespace Typedown.Controls
                 var uri = new Uri(args.Request.Uri);
                 var query = HttpUtility.ParseQueryString(uri.Query);
                 var path = query["path"];
+                if (path.StartsWith("file://"))
+                    path = new Uri(path).LocalPath;
                 if (!System.IO.Path.IsPathRooted(path))
                 {
                     var baseDir = System.IO.Path.GetDirectoryName(AppViewModel.FileViewModel.FilePath);
                     path = System.IO.Path.Combine(baseDir, path);
                 }
-                var stream = new MemoryStream();
-                await stream.WriteAsync(File.ReadAllBytes(path));
+                var stream = new MemoryStream(await File.ReadAllBytesAsync(path));
                 args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
             }
             catch (Exception)

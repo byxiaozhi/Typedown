@@ -261,7 +261,7 @@ export const checkImageContentType = url => {
  */
 export const getImageInfo = (src, baseUrl = window.DIRNAME) => {
   const imageExtension = IMAGE_EXT_REG.test(src)
-  const isUrl = URL_REG.test(src) || (imageExtension && /^file:\/\/.+/.test(src))
+  const isUrl = URL_REG.test(src)
   const isData = DATA_URL_REG.test(src)
   if (!src || /^\s*$/.test(src)) {
     return {
@@ -279,18 +279,6 @@ export const getImageInfo = (src, baseUrl = window.DIRNAME) => {
     isUnknownType: !imageExtension,
     src: 'http://local-file-access/?path=' + encodeURIComponent(src)
   }
-  // src = src.replace('\\', '/')
-  // if (src.startsWith('/')) {
-  //   return {
-  //     isUnknownType: !imageExtension,
-  //     src: 'file://' + (baseUrl ?? '') + src
-  //   }
-  // } else {
-  //   return {
-  //     isUnknownType: !imageExtension,
-  //     src: 'file:///' + (baseUrl ?? '') + src
-  //   }
-  // }
 }
 
 export const escapeHTML = str =>
