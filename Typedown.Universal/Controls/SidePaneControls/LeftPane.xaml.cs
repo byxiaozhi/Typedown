@@ -66,7 +66,7 @@ namespace Typedown.Universal.Controls
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Frame.Width = ActualWidth;
+            FrameClip.Rect = new(0, 0, Frame.ActualWidth, Frame.ActualHeight);
         }
     }
 }
