@@ -14,6 +14,10 @@ namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
+        private const string PART_DragBar = "PART_DragBar";
+
+        private const string PART_RootContainer = "PART_RootContainer";
+
         public static DependencyProperty ThemeProperty = DependencyProperty.Register(nameof(Theme), typeof(AppTheme), typeof(AppWindow));
         public AppTheme Theme { get => (AppTheme)GetValue(ThemeProperty); set => SetValue(ThemeProperty, value); }
 
@@ -29,13 +33,11 @@ namespace Typedown.Windows
 
         protected DragBar DragBar => GetTemplateChild(PART_DragBar) as DragBar;
 
+        protected Grid RootContainer => GetTemplateChild(PART_RootContainer) as Grid;
+
         private int RawBorderWidth => PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXFRAME) + PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXPADDEDBORDER);
 
         private double BorderWidth => RawBorderWidth / WindowScale;
-
-        private const string PART_DragBar = "PART_DragBar";
-
-        private const string PART_RootContainer = "PART_RootContainer";
 
         private readonly UISettings uiSettings = new();
 
@@ -83,9 +85,9 @@ namespace Typedown.Windows
             if (WindowState == WindowState.Normal && (ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip))
             {
                 var isTop = pointerPos.Y < BorderWidth;
-                var isBottom = pointerPos.Y > ActualHeight - BorderWidth;
+                var isBottom = pointerPos.Y > RootContainer.ActualHeight;
                 var isLeft = pointerPos.X < 0;
-                var isRight = pointerPos.X > ActualWidth - 2 * BorderWidth;
+                var isRight = pointerPos.X > RootContainer.ActualWidth;
                 if (isTop)
                 {
                     if (isLeft) return PInvoke.HitTestFlags.TOPLEFT;
@@ -125,12 +127,12 @@ namespace Typedown.Windows
                     handled = true;
                     if (PInvoke.DwmDefWindowProc(hWnd, msg, wParam, lParam, out var dwmHitTest))
                         return dwmHitTest;
-                    return (IntPtr)HitTest(PointFromScreen(Typedown.Utilities.Common.MakePoint(lParam)));
+                    return (IntPtr)HitTest(RootContainer.PointFromScreen(Utilities.Common.MakePoint(lParam)));
                 case PInvoke.WindowMessage.WM_NCRBUTTONUP:
                     if (wParam.ToInt32() == (int)PInvoke.HitTestFlags.CAPTION)
                     {
                         handled = true;
-                        OpenSystemMenu(Typedown.Utilities.Common.MakePoint(lParam));
+                        OpenSystemMenu(Utilities.Common.MakePoint(lParam));
                     }
                     break;
                 case PInvoke.WindowMessage.WM_NCMOUSELEAVE:
