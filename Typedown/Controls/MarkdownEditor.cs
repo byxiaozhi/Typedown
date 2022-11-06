@@ -17,17 +17,19 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Microsoft.Extensions.DependencyInjection;
 using Windows.Foundation;
-using Windows.UI.Xaml.Shapes;
 using Windows.UI.Xaml.Input;
 using Typedown.Universal.ViewModels;
 using System.Reactive.Linq;
 using Newtonsoft.Json.Linq;
+using System.Web;
+using System.IO;
+using Windows.UI.Xaml.Shapes;
 
 namespace Typedown.Controls
 {
     public class MarkdownEditor : UserControl, IMarkdownEditor, IDisposable
     {
-        // static readonly string proxyPrefix = "http://local-file-access/";
+        private static readonly string staticHost = Guid.NewGuid().ToString();
 
         public WebViewController WebViewController { get; private set; }
 
@@ -57,7 +59,6 @@ namespace Typedown.Controls
             RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme());
             RemoteInvoke.Handle<JToken, object>("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString));
             ActualThemeChanged += OnThemeChanged;
-            AppViewModel.FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FilePath)).Cast<string>().Subscribe(OnFilePathChanged);
         }
 
         private void OnThemeChanged(FrameworkElement sender, object args)
@@ -68,15 +69,6 @@ namespace Typedown.Controls
         private void OnContentLoaded()
         {
             Opacity = 1;
-        }
-
-        private void OnFilePathChanged(string path)
-        {
-            //if (CoreWebView2 != null)
-            //{
-            //    var script = $"window.DIRNAME={JsonConvert.SerializeObject(System.IO.Path.GetDirectoryName(path).Replace("\\", "/") + "/")}";
-            //    CoreWebView2.ExecuteScriptAsync(script);
-            //}
         }
 
         protected override void OnPointerPressed(PointerRoutedEventArgs e)
@@ -111,33 +103,45 @@ namespace Typedown.Controls
             CoreWebView2.Settings.IsZoomControlEnabled = false;
             CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
-            // CoreWebView2.AddWebResourceRequestedFilter(proxyPrefix + "*", CoreWebView2WebResourceContext.All);
-            // CoreWebView2.WebResourceRequested += OnWebResourceRequested;
+            CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
+            CoreWebView2.WebResourceRequested += OnWebResourceRequested;
+            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
+            CoreWebView2.SetVirtualHostNameToFolderMapping(staticHost, staticsFolder, CoreWebView2HostResourceAccessKind.Allow);
+#if DEBUG
+            CoreWebView2.OpenDevToolsWindow();
+#endif
         }
 
         private void LoadStaticResources()
         {
-            // var path = "http://localhost:3000";
-            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics", "index.html");
-            WebViewController.CoreWebView2.Navigate(path);
+# if DEBUG
+            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
+#else
+            WebViewController.CoreWebView2.Navigate($"http://{staticHost}/index.html");
+#endif
         }
 
-        //private async void OnWebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs args)
-        //{
-        //    try
-        //    {
-        //        var path = args.Request.Uri[proxyPrefix.Length..];
-        //        var pos = path.IndexOf('?');
-        //        path = HttpUtility.UrlDecode(pos > 0 ? path[..pos] : path);
-        //        using var stream = new MemoryStream();
-        //        await stream.WriteAsync(File.ReadAllBytes(path));
-        //        args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        args.Response = CoreWebView2.Environment.CreateWebResourceResponse(null, 404, "Not found", null);
-        //    }
-        //}
+        private async void OnWebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs args)
+        {
+            try
+            {
+                var uri = new Uri(args.Request.Uri);
+                var query = HttpUtility.ParseQueryString(uri.Query);
+                var path = query["path"];
+                if (!System.IO.Path.IsPathRooted(path))
+                {
+                    var baseDir = System.IO.Path.GetDirectoryName(AppViewModel.FileViewModel.FilePath);
+                    path = System.IO.Path.Combine(baseDir, path);
+                }
+                var stream = new MemoryStream();
+                await stream.WriteAsync(File.ReadAllBytes(path));
+                args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
+            }
+            catch (Exception)
+            {
+                args.Response = CoreWebView2.Environment.CreateWebResourceResponse(null, 404, "Not found", null);
+            }
+        }
 
         private async void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)
         {

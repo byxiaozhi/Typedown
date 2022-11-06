@@ -275,18 +275,22 @@ export const getImageInfo = (src, baseUrl = window.DIRNAME) => {
       src
     }
   }
-  src = src.replace('\\', '/')
-  if (src.startsWith('/')) {
-    return {
-      isUnknownType: !imageExtension,
-      src: 'file://' + (baseUrl ?? '') + src
-    }
-  } else {
-    return {
-      isUnknownType: !imageExtension,
-      src: 'file:///' + (baseUrl ?? '') + src
-    }
+  return {
+    isUnknownType: !imageExtension,
+    src: 'http://local-file-access/?path=' + encodeURIComponent(src)
   }
+  // src = src.replace('\\', '/')
+  // if (src.startsWith('/')) {
+  //   return {
+  //     isUnknownType: !imageExtension,
+  //     src: 'file://' + (baseUrl ?? '') + src
+  //   }
+  // } else {
+  //   return {
+  //     isUnknownType: !imageExtension,
+  //     src: 'file:///' + (baseUrl ?? '') + src
+  //   }
+  // }
 }
 
 export const escapeHTML = str =>
