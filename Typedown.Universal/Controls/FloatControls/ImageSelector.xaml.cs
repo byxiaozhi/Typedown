@@ -17,7 +17,7 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private readonly IMarkdownEditor markdownEditor;
 
-        private readonly Flyout flyout = new();
+        private readonly Flyout flyout = new() { Placement = FlyoutPlacementMode.Bottom };
 
         public ImageSelector(AppViewModel viewModel, IMarkdownEditor markdownEditor)
         {
@@ -32,9 +32,9 @@ namespace Typedown.Universal.Controls.FloatControls
         {
             TextBoxSrc.Text = HttpUtility.UrlDecode(imageInfo?["src"]?.ToString() ?? "");
             TextBoxAlt.Text = imageInfo?["alt"]?.ToString() ?? "";
-            TextBoxTitle.Text = imageInfo?["title"]?.ToString() ?? "";            
+            TextBoxTitle.Text = imageInfo?["title"]?.ToString() ?? "";
             flyout.Content = this;
-            flyout.ShowAt(markdownEditor.GetDummyRectangle(rect));
+            flyout.ShowAt(markdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));
         }
 
         private void OnFlyoutClosing(FlyoutBase sender, FlyoutBaseClosingEventArgs args)
