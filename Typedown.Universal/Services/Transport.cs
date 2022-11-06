@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -15,13 +14,14 @@ namespace Typedown.Services
 
         public IServiceProvider ServiceProvider { get; }
 
-        public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
+        public RemoteInvoke RemoteInvoke { get; }
 
-        public EventCenter EventCenter => ServiceProvider.GetService<EventCenter>();
+        public EventCenter EventCenter { get; }
 
-        public Transport(IServiceProvider serviceProvider)
+        public Transport(RemoteInvoke remoteInvoke, EventCenter eventCenter)
         {
-            ServiceProvider = serviceProvider;
+            RemoteInvoke = remoteInvoke;
+            EventCenter = eventCenter;
         }
 
         public async void EmitWebViewMessage(IMarkdownEditor sender, string json)

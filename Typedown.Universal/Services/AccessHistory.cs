@@ -17,11 +17,8 @@ namespace Typedown.Universal.Services
 
         private readonly TaskCompletionSource<bool> initializedTask = new();
 
-        public IServiceProvider ServiceProvider { get; }
-
-        public AccessHistory(IServiceProvider serviceProvider)
+        public AccessHistory()
         {
-            ServiceProvider = serviceProvider;
             _ = UpdateRecentlyOpened();
         }
 
