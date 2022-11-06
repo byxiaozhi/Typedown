@@ -22,7 +22,7 @@ using static Typedown.Universal.ViewModels.FloatViewModel;
 
 namespace Typedown.Universal.Controls.FloatControls
 {
-    public sealed partial class Search : UserControl
+    public sealed partial class FindReplace : UserControl
     {
         public AppViewModel ViewModel => DataContext as AppViewModel;
 
@@ -32,7 +32,7 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private readonly CompositeDisposable disposables = new();
 
-        public Search()
+        public FindReplace()
         {
             InitializeComponent();
             SharedShadow.Receivers.Add(BackgroundGrid);
@@ -50,18 +50,18 @@ namespace Typedown.Universal.Controls.FloatControls
             TextBoxSearch.Focus(FocusState.Pointer);
             TextBoxSearch.SelectionStart = 0;
             TextBoxSearch.SelectionLength = TextBoxSearch.Text.Length;
-            disposables.Add(Float.WhenPropertyChanged(nameof(Float.SearchOpen)).Cast<SearchOpenType>().Subscribe(s => SearchOpenChanged(s, true)));
-            SearchOpenChanged(Float.SearchOpen, false);
+            disposables.Add(Float.WhenPropertyChanged(nameof(Float.FindReplaceDialogOpen)).Cast<FindReplaceDialogState>().Subscribe(s => SearchOpenChanged(s, true)));
+            SearchOpenChanged(Float.FindReplaceDialogOpen, false);
         }
 
-        private void SearchOpenChanged(SearchOpenType state, bool useTransitions)
+        private void SearchOpenChanged(FindReplaceDialogState state, bool useTransitions)
         {
             switch (state)
             {
-                case SearchOpenType.Search:
-                    VisualStateManager.GoToState(this, "SearchMode", useTransitions && Settings.AnimationEnable);
+                case FindReplaceDialogState.Search:
+                    VisualStateManager.GoToState(this, "FindMode", useTransitions && Settings.AnimationEnable);
                     break;
-                case SearchOpenType.Replace:
+                case FindReplaceDialogState.Replace:
                     VisualStateManager.GoToState(this, "ReplaceMode", useTransitions && Settings.AnimationEnable);
                     break;
             }
@@ -74,7 +74,7 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private void OnCloseButtonClick(object sender, RoutedEventArgs e)
         {
-            Float.SearchOpen = 0;
+            Float.FindReplaceDialogOpen = 0;
         }
 
         private void OnReplaceButtonClick(object sender, RoutedEventArgs e)
@@ -102,7 +102,7 @@ namespace Typedown.Universal.Controls.FloatControls
         private void OnKeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Escape)
-                Float.SearchOpen = 0;
+                Float.FindReplaceDialogOpen = 0;
         }
 
         private void PostReplaceMessage(bool isSingle)
@@ -123,7 +123,7 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private void OnSwitchButtonClick(object sender, RoutedEventArgs e)
         {
-            Float.SearchOpen = Float.SearchOpen == SearchOpenType.Search ? SearchOpenType.Replace : SearchOpenType.Search;
+            Float.FindReplaceDialogOpen = Float.FindReplaceDialogOpen == FindReplaceDialogState.Search ? FindReplaceDialogState.Replace : FindReplaceDialogState.Search;
         }
     }
 }

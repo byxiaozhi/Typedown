@@ -1,13 +1,11 @@
 ﻿<UserControl
-    x:Class="Typedown.Universal.Controls.FloatControls.Search"
+    x:Class="Typedown.Universal.Controls.FloatControls.FindReplace"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Typedown.Universal.Controls.FloatControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:controls="using:Typedown.Universal.Controls" 
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
-    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    xmlns:controls="using:Typedown.Universal.Controls"
     SizeChanged="OnSizeChanged"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
@@ -22,7 +20,7 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="Mode">
                 <VisualStateGroup.Transitions>
-                    <VisualTransition To="SearchMode" GeneratedDuration="0:0:0.1">
+                    <VisualTransition To="FindMode" GeneratedDuration="0:0:0.1">
                         <VisualTransition.Storyboard>
                             <Storyboard>
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ReplaceRow" Storyboard.TargetProperty="MaxHeight" EnableDependentAnimation="True">
@@ -44,7 +42,7 @@
                         </VisualTransition.Storyboard>
                     </VisualTransition>
                 </VisualStateGroup.Transitions>
-                <VisualState x:Name="SearchMode">
+                <VisualState x:Name="FindMode">
                     <VisualState.Setters>
                         <Setter Target="ChevronRotateTransform.Angle" Value="180"/>
                         <Setter Target="ReplaceRow.MaxHeight" Value="0"/>
@@ -127,14 +125,14 @@
                 Width="8"
                 DeltaScale="-2"
                 ColumnMinWidth="400" 
-                ColumnExpectWidth="{x:Bind Settings.SearchDialogWidth, Mode=TwoWay}" 
+                ColumnExpectWidth="{x:Bind Settings.FindReplaceDialogWidth, Mode=TwoWay}" 
                 ColumnWidth="{x:Bind DialogGrid.Width, Mode=TwoWay}"/>
             <controls:GridSplitter 
                 x:Name="RightSplitter" 
                 HorizontalAlignment="Right"
                 DeltaScale="2"
                 ColumnMinWidth="400" 
-                ColumnExpectWidth="{x:Bind Settings.SearchDialogWidth, Mode=TwoWay}" 
+                ColumnExpectWidth="{x:Bind Settings.FindReplaceDialogWidth, Mode=TwoWay}" 
                 ColumnWidth="{x:Bind DialogGrid.Width, Mode=TwoWay}"/>
         </Grid>
     </Grid>

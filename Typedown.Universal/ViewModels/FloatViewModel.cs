@@ -17,11 +17,11 @@ namespace Typedown.Universal.ViewModels
     {
         public IServiceProvider ServiceProvider { get; }
 
-        public enum SearchOpenType { None, Search, Replace }
+        public enum FindReplaceDialogState { None, Search, Replace }
 
-        public SearchOpenType SearchOpen { get; set; }
+        public FindReplaceDialogState FindReplaceDialogOpen { get; set; }
 
-        public Command<SearchOpenType> SearchCommand { get; } = new();
+        public Command<FindReplaceDialogState> SearchCommand { get; } = new();
 
         public AppViewModel ViewModel => ServiceProvider.GetService<AppViewModel>();
 
@@ -40,20 +40,20 @@ namespace Typedown.Universal.ViewModels
             EventCenter.GetObservable<EditorEventArgs>("OpenTableTools").Subscribe(x => OnOpenTableTools(x.Args));
             EventCenter.GetObservable<EditorEventArgs>("OpenImageToolbar").Subscribe(x => OnOpenImageToolbar(x.Args));
             EventCenter.GetObservable<EditorEventArgs>("OpenToolTip").Subscribe(x => OnOpenToolTip(x.Args));
-            this.WhenPropertyChanged(nameof(SearchOpen)).Subscribe(_ => OnSearchOpenChange(SearchOpen));
+            this.WhenPropertyChanged(nameof(FindReplaceDialogOpen)).Subscribe(_ => OnFindReplaceDialogOpenChange(FindReplaceDialogOpen));
             SearchCommand.OnExecute.Subscribe(Search);
         }
 
-        public void Search(SearchOpenType open)
+        public void Search(FindReplaceDialogState open)
         {
-            SearchOpen = open;
+            FindReplaceDialogOpen = open;
             var text = ViewModel.EditorViewModel.SelectionText;
             ViewModel.EditorViewModel.SearchValue = text;
             if (!string.IsNullOrEmpty(text))
                 ViewModel.EditorViewModel.OnSearch();
         }
 
-        public void OnSearchOpenChange(SearchOpenType open)
+        public void OnFindReplaceDialogOpenChange(FindReplaceDialogState open)
         {
             MarkdownEditor?.PostMessage("SearchOpenChange", new { open = (int)open });
         }

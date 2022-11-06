@@ -144,7 +144,7 @@ namespace Typedown.Universal.ViewModels
                 var newText = arg["text"].ToString();
                 FileHash = Common.SimpleHash(newText);
                 OnMarkdownChange(newText);
-                if (FloatViewModel.SearchOpen > 0)
+                if (FloatViewModel.FindReplaceDialogOpen > 0)
                     OnSearch();
             }
         }
@@ -296,9 +296,9 @@ namespace Typedown.Universal.ViewModels
         public void Find(string action)
         {
             var appViewModel = ServiceProvider.GetService<AppViewModel>();
-            if (appViewModel.FloatViewModel.SearchOpen == 0)
+            if (appViewModel.FloatViewModel.FindReplaceDialogOpen == 0)
             {
-                appViewModel.FloatViewModel.SearchOpen = FloatViewModel.SearchOpenType.Search;
+                appViewModel.FloatViewModel.FindReplaceDialogOpen = FloatViewModel.FindReplaceDialogState.Search;
                 appViewModel.EditorViewModel.OnSearch();
             }
             else
@@ -310,7 +310,7 @@ namespace Typedown.Universal.ViewModels
         public void SearchValueChanged()
         {
             var floatViewModel = ServiceProvider.GetService<FloatViewModel>();
-            if (floatViewModel.SearchOpen > 0)
+            if (floatViewModel.FindReplaceDialogOpen > 0)
                 OnSearch();
         }
 

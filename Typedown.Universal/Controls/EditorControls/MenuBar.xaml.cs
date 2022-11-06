@@ -26,8 +26,8 @@ namespace Typedown.Universal.Controls
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
         public AccessHistory FileHistory => this.GetService<AccessHistory>();
 
-        public FloatViewModel.SearchOpenType OpenSearch => FloatViewModel.SearchOpenType.Search;
-        public FloatViewModel.SearchOpenType OpenReplace => FloatViewModel.SearchOpenType.Replace;
+        public FloatViewModel.FindReplaceDialogState OpenSearch => FloatViewModel.FindReplaceDialogState.Search;
+        public FloatViewModel.FindReplaceDialogState OpenReplace => FloatViewModel.FindReplaceDialogState.Replace;
 
         private readonly CompositeDisposable disposables = new();
 
@@ -47,6 +47,7 @@ namespace Typedown.Universal.Controls
         {
             void RegisterWindow(ShortcutKey key, MenuFlyoutItem item) => RegisterMenuItemShortcut(OnWindowShortcutEvent, key, item);
             void RegisterEditor(ShortcutKey key, MenuFlyoutItem item) => RegisterMenuItemShortcut(OnEditorShortcutEvent, key, item);
+
             RegisterWindow(Settings.ShortcutNewFile, NewFileItem);
             RegisterWindow(Settings.ShortcutNewWindow, NewWindowItem);
             RegisterWindow(Settings.ShortcutOpenFile, OpenFileItem);
@@ -57,6 +58,7 @@ namespace Typedown.Universal.Controls
             RegisterWindow(Settings.ShortcutExportSettings, ExportSettingsItem);
             RegisterWindow(Settings.ShortcutPrint, PrintItem);
             RegisterWindow(Settings.ShortcutClose, CloseItem);
+
             RegisterEditor(Settings.ShortcutUndo, UndoItem);
             RegisterEditor(Settings.ShortcutRedo, RedoItem);
             RegisterEditor(Settings.ShortcutCut, CutItem);
@@ -68,10 +70,12 @@ namespace Typedown.Universal.Controls
             RegisterEditor(Settings.ShortcutPasteAsPlainText, PasteAsPlainTextItem);
             RegisterEditor(Settings.ShortcutDelete, DeleteItem);
             RegisterEditor(Settings.ShortcutSelectAll, SelectAllItem);
-            RegisterEditor(Settings.ShortcutFind, FindItem);
-            RegisterEditor(Settings.ShortcutFindNext, FindNextItem);
-            RegisterEditor(Settings.ShortcutFindPrevious, FindPreviousItem);
-            RegisterEditor(Settings.ShortcutReplace, ReplaceItem);
+
+            RegisterWindow(Settings.ShortcutFind, FindItem);
+            RegisterWindow(Settings.ShortcutFindNext, FindNextItem);
+            RegisterWindow(Settings.ShortcutFindPrevious, FindPreviousItem);
+            RegisterWindow(Settings.ShortcutReplace, ReplaceItem);
+
             RegisterEditor(Settings.ShortcutHeading1, Heading1Item);
             RegisterEditor(Settings.ShortcutHeading2, Heading2Item);
             RegisterEditor(Settings.ShortcutHeading3, Heading3Item);
@@ -110,6 +114,7 @@ namespace Typedown.Universal.Controls
             RegisterEditor(Settings.ShortcutHyperlink, HyperlinkItem);
             RegisterEditor(Settings.ShortcutImage, ImageItem);
             RegisterEditor(Settings.ShortcutClearFormat, ClearFormatItem);
+
             RegisterWindow(Settings.ShortcutSidePane, SidePaneItem);
             RegisterWindow(Settings.ShortcutSourceCodeMode, SourceCodeModeItem);
             RegisterWindow(Settings.ShortcutFocusMode, FocusModeItem);

@@ -37,7 +37,7 @@ namespace Typedown.Universal.Controls
 
         private void UpdateSidePaneState(bool sidePaneOpen, bool useTransitions = true)
         {
-            VisualStateManager.GoToState(this, sidePaneOpen ? "SidePaneExpand" : "SidePaneCollapse", useTransitions);
+            VisualStateManager.GoToState(this, sidePaneOpen ? "SidePaneExpand" : "SidePaneCollapse", useTransitions && Settings.AnimationEnable);
         }
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)

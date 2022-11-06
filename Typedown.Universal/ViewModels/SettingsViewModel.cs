@@ -22,7 +22,7 @@ namespace Typedown.Universal.ViewModels
         public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public double SidePaneWidth { get => GetSettingValue(300d); set => SetSettingValue(value); }
         public bool StatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }
-        public double SearchDialogWidth { get => GetSettingValue(600d); set => SetSettingValue(value); }
+        public double FindReplaceDialogWidth { get => GetSettingValue(600d); set => SetSettingValue(value); }
         public bool SourceCode { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool Typewriter { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool FocusMode { get => GetSettingValue(false); set => SetSettingValue(value); }

@@ -102,8 +102,8 @@
     <Compile Include="Controls\FloatControls\ImageSelector.xaml.cs">
       <DependentUpon>ImageSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FloatControls\Search.xaml.cs">
-      <DependentUpon>Search.xaml</DependentUpon>
+    <Compile Include="Controls\FloatControls\FindReplace.xaml.cs">
+      <DependentUpon>FindReplace.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FloatControls\TableTools.cs" />
     <Compile Include="Controls\FloatControls\ToolTip.xaml.cs">
@@ -388,7 +388,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\FloatControls\Search.xaml">
+    <Page Include="Controls\FloatControls\FindReplace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

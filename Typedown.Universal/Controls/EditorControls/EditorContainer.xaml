@@ -9,11 +9,71 @@
     xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
+    x:Name="ThisControl"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    <UserControl.Resources>
+        <ScaleTransform 
+            x:Key="FindReplaceTransform" 
+            x:Name="FindReplaceTransform" 
+            CenterX="{x:Bind FindReplaceCenterPoint.X, Mode=OneWay}" 
+            CenterY="{x:Bind FindReplaceCenterPoint.Y, Mode=OneWay}"/>
+        <CircleEase x:Key="CircleEaseOut" EasingMode="EaseOut"/>
+        <CircleEase x:Key="CircleEaseIn" EasingMode="EaseIn"/>
+    </UserControl.Resources>
     <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="FindReplaceStates">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition To="FindReplaceVisible" GeneratedDuration="0:0:0.2">
+                        <VisualTransition.Storyboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThisControl" Storyboard.TargetProperty="IsFindReplaceLoad">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="True"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FindReplaceTransform" Storyboard.TargetProperty="ScaleX">
+                                    <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1" EasingFunction="{StaticResource CircleEaseOut}"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FindReplaceTransform" Storyboard.TargetProperty="ScaleY">
+                                    <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1" EasingFunction="{StaticResource CircleEaseOut}"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualTransition.Storyboard>
+                    </VisualTransition>
+                    <VisualTransition To="FindReplaceCollapsed" GeneratedDuration="0:0:0.2">
+                        <VisualTransition.Storyboard>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThisControl" Storyboard.TargetProperty="IsFindReplaceLoad">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="True"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FindReplaceTransform" Storyboard.TargetProperty="ScaleX">
+                                    <DiscreteDoubleKeyFrame KeyTime="0" Value="1"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" EasingFunction="{StaticResource CircleEaseIn}"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FindReplaceTransform" Storyboard.TargetProperty="ScaleY">
+                                    <DiscreteDoubleKeyFrame KeyTime="0" Value="1"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" EasingFunction="{StaticResource CircleEaseIn}"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualTransition.Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="FindReplaceVisible">
+                    <VisualState.Setters>
+                        <Setter Target="ThisControl.IsFindReplaceLoad" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="FindReplaceCollapsed">
+                    <VisualState.Setters>
+                        <Setter Target="ThisControl.IsFindReplaceLoad" Value="False"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <ContentPresenter x:Name="MarkdownEditorPresenter">
             <ContentPresenter.ContextFlyout>
                 <MenuFlyout x:Name="Flyout" OverlayInputPassThroughElement="{Binding XamlRoot.Content}" AreOpenCloseAnimationsEnabled="{Binding SettingsViewModel.AnimationEnable}">
@@ -59,6 +119,9 @@
                 </MenuFlyout>
             </ContentPresenter.ContextFlyout>
         </ContentPresenter>
-        <float:Search x:Name="SearchFloat" x:Load="{x:Bind local:EditorContainer.GetSearchFloatLoad(Float.SearchOpen), Mode=OneWay}"/>
+        <float:FindReplace 
+            x:Name="FindReplaceDialog" 
+            x:Load="{x:Bind IsFindReplaceLoad, Mode=OneWay}"
+            RenderTransform="{StaticResource FindReplaceTransform}"/>
     </Grid>
 </UserControl>
