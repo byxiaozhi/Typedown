@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Typedown.Controls;
 using System.Reactive.Disposables;
+using System.Diagnostics;
 
 namespace Typedown.Utilities
 {
@@ -23,6 +24,8 @@ namespace Typedown.Utilities
         public FrameworkElement Container { get; private set; }
 
         public IntPtr ParentHWnd { get; private set; }
+
+        private static uint webView2ProcessId;
 
         private float WindowScale => PInvoke.GetDpiForWindow(ParentHWnd) / 96f;
 
@@ -54,6 +57,7 @@ namespace Typedown.Utilities
                 var window = System.Windows.Window.GetWindow(AppXamlHost.GetAppXamlHost(container));
                 disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.LocationChanged)).Subscribe(_ => UpdateBounds()));
                 disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.DpiChanged)).Subscribe(_ => UpdataWindowScale()));
+                SetMaxWorkingSetSize();
             }
         }
 
@@ -101,7 +105,6 @@ namespace Typedown.Utilities
                 var raw = typeof(CoreWebView2CompositionController).GetField("_rawNative", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(CoreWebView2CompositionController);
                 CoreWebView2Controller = typeof(CoreWebView2Controller).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(object) }, null).Invoke(new object[] { raw }) as CoreWebView2Controller;
                 CoreWebView2Controller.DefaultBackgroundColor = System.Drawing.Color.Transparent;
-
             }
             return CoreWebView2Controller != null;
         }
@@ -548,6 +551,19 @@ namespace Typedown.Utilities
                 global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(cursor, 0);
             else
                 global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
+        }
+
+        private void SetMaxWorkingSetSize()
+        {
+            if (CoreWebView2 != null)
+            {
+                if (webView2ProcessId != CoreWebView2.BrowserProcessId)
+                {
+                    webView2ProcessId = CoreWebView2.BrowserProcessId;
+                    if (Process.GetProcessById((int)webView2ProcessId) is Process process)
+                        process.MaxWorkingSet = new(30 * 1024 * 1024);
+                }
+            }
         }
 
         public void Dispose()
