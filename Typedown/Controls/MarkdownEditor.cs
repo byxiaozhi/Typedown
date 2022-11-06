@@ -24,6 +24,7 @@ using Newtonsoft.Json.Linq;
 using System.Web;
 using System.IO;
 using Windows.UI.Xaml.Shapes;
+using System.Threading;
 
 namespace Typedown.Controls
 {
@@ -121,7 +122,7 @@ namespace Typedown.Controls
 #endif
         }
 
-        private async void OnWebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs args)
+        private void OnWebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs args)
         {
             try
             {
@@ -135,7 +136,7 @@ namespace Typedown.Controls
                     var baseDir = System.IO.Path.GetDirectoryName(AppViewModel.FileViewModel.FilePath);
                     path = System.IO.Path.Combine(baseDir, path);
                 }
-                var stream = new MemoryStream(await File.ReadAllBytesAsync(path));
+                var stream = new MemoryStream(File.ReadAllBytes(path));
                 args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
             }
             catch (Exception)
