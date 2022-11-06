@@ -27,6 +27,8 @@ namespace Typedown.Universal.ViewModels
 
         public SettingsViewModel SettingsViewModel { get; }
 
+        public UIViewModel UIViewModel { get; }
+
         public IReadOnlyList<Frame> FrameStack { get; set; } = new List<Frame>();
 
         public Command<Unit> GoBackCommand { get; } = new(false);
@@ -48,7 +50,8 @@ namespace Typedown.Universal.ViewModels
             FloatViewModel floatViewModel,
             FormatViewModel formatViewModel,
             ParagraphViewModel paragraphViewModel,
-            SettingsViewModel settingsViewModel)
+            SettingsViewModel settingsViewModel,
+            UIViewModel uiViewModel)
         {
             ServiceProvider = serviceProvider;
             EditorViewModel = editorViewModel;
@@ -57,6 +60,7 @@ namespace Typedown.Universal.ViewModels
             FormatViewModel = formatViewModel;
             ParagraphViewModel = paragraphViewModel;
             SettingsViewModel = settingsViewModel;
+            UIViewModel = uiViewModel;
             GoBackCommand.OnExecute.Subscribe(_ => GoBack());
             lock (instances) instances.Add(new(this));
         }

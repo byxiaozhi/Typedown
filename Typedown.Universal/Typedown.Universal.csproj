@@ -262,6 +262,7 @@
     <Compile Include="ViewModels\ParagraphViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.HotKey.cs" />
+    <Compile Include="ViewModels\UIViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

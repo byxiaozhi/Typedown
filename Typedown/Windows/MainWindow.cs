@@ -87,12 +87,10 @@ namespace Typedown.Windows
             SetBinding(ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
             SetBinding(TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             SetBinding(IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
+            SetBinding(TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
             AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => CanGoBackChanged();
-            AppViewModel.FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FileName)).Subscribe(_ => UpdateTitle());
-            AppViewModel.EditorViewModel.WhenPropertyChanged(nameof(EditorViewModel.DisplaySaved)).Subscribe(_ => UpdateTitle());
             AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme)).Subscribe(_ => UpdateStartupTheme());
             KeyboardAccelerator.IsEnable = IsActive;
-            UpdateTitle();
             CanGoBackChanged();
         }
 
@@ -140,17 +138,6 @@ namespace Typedown.Windows
                     .ToList()
                     .ForEach(x => x.InvalidateMeasure());
             }
-        }
-
-        private void UpdateTitle()
-        {
-            var title = new StringBuilder();
-            if (!AppViewModel.EditorViewModel.DisplaySaved)
-                title.Append('*');
-            if (AppViewModel.FileViewModel.FileName != null)
-                title.Append(AppViewModel.FileViewModel.FileName + " - ");
-            title.Append(Assembly.GetExecutingAssembly().GetName().Name);
-            Title = title.ToString();
         }
 
         private void UpdateStartupTheme()

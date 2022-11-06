@@ -16,8 +16,9 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-            <TextBlock Text="Typedown" Style="{ThemeResource CaptionTextBlockStyle}"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+            <Image Source="ms-appx:///Assets/Square44x44Logo.png" Width="24" Height="24" VerticalAlignment="Center"/>
+            <TextBlock Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center"/>
         </StackPanel>
         <Button 
             VerticalAlignment="Center" 

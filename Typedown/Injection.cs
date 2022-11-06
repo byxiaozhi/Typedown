@@ -33,6 +33,7 @@ namespace Typedown
             builder.AddScoped<FormatViewModel>();
             builder.AddScoped<ParagraphViewModel>();
             builder.AddScoped<SettingsViewModel>();
+            builder.AddScoped<UIViewModel>();
         }
 
         private static void RegisterService(ServiceCollection builder)
