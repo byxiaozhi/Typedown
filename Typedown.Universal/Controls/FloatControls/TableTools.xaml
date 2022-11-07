@@ -1,0 +1,16 @@
+﻿<MenuFlyout
+    x:Class="Typedown.Universal.Controls.FloatControls.TableTools"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.FloatControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Placement="RightEdgeAlignedTop"
+    mc:Ignorable="d">
+    <MenuFlyoutItem x:Uid="InsertRowAbove" Name="InsertPreviousRow" Click="InsertPreviousRow_Click"/>
+    <MenuFlyoutItem x:Uid="InsertRowBelow" Name="InsertNextRow" Click="InsertNextRow_Click"/>
+    <MenuFlyoutItem x:Uid="RemoveRow" Name="RemoveNurrentRow" Click="RemoveNurrentRow_Click"/>
+    <MenuFlyoutItem x:Uid="InsertColumnLeft" Name="InsertLeftColumn" Click="InsertLeftColumn_Click"/>
+    <MenuFlyoutItem x:Uid="InsertColumnRight" Name="InsertRightColumn" Click="InsertRightColumn_Click"/>
+    <MenuFlyoutItem x:Uid="RemoveColumn" Name="RemoveCurrentColumn" Click="RemoveCurrentColumn_Click"/>
+</MenuFlyout>

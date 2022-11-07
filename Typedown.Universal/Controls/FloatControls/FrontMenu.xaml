@@ -1,8 +1,14 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <MenuFlyout x:Key="EditorFrontMenu" Placement="Bottom">
-        <MenuFlyoutItem x:Uid="Duplicate" Command="{Binding ParagraphViewModel.DuplicateCommand}"/>
+﻿<MenuFlyout
+    x:Class="Typedown.Universal.Controls.FloatControls.FrontMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.FloatControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Placement="Bottom"
+    Closed="OnClosed"
+    mc:Ignorable="d">
+    <MenuFlyoutItem x:Uid="Duplicate" Command="{Binding ParagraphViewModel.DuplicateCommand}"/>
         <MenuFlyoutSubItem x:Uid="TurnInto">
             
             <ToggleMenuFlyoutItem 
@@ -106,6 +112,4 @@
             x:Uid="Delete" 
             KeyboardAcceleratorTextOverride="{Binding SettingsViewModel.ShortcutDelete, Converter={StaticResource ShortcutKeyToStringConverter}}" 
             Command="{Binding ParagraphViewModel.DeleteParagraphCommand}"/>
-        
-    </MenuFlyout>
-</ResourceDictionary>
+</MenuFlyout>

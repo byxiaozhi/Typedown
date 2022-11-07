@@ -93,7 +93,9 @@
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommonControls\EnumNameBlock.cs" />
-    <Compile Include="Controls\FloatControls\FrontMenu.cs" />
+    <Compile Include="Controls\FloatControls\FrontMenu.xaml.cs">
+      <DependentUpon>FrontMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CommonControls\PathPickerButton.cs" />
     <Compile Include="Controls\CommonControls\GridSplitter.cs" />
     <Compile Include="Controls\DialogControls\InsertTableDialog.xaml.cs">
@@ -105,7 +107,9 @@
     <Compile Include="Controls\FloatControls\FindReplace.xaml.cs">
       <DependentUpon>FindReplace.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FloatControls\TableTools.cs" />
+    <Compile Include="Controls\FloatControls\TableTools.xaml.cs">
+      <DependentUpon>TableTools.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FloatControls\ToolTip.xaml.cs">
       <DependentUpon>ToolTip.xaml</DependentUpon>
     </Compile>
@@ -384,11 +388,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\FloatControls\FrontMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\FloatControls\ImageSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FloatControls\FindReplace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FloatControls\TableTools.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -517,14 +529,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Styles\ContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Styles\Flyouts\EditorFrontMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Styles\Flyouts\EditorTableTools.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
