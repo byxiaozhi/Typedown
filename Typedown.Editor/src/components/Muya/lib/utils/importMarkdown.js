@@ -444,41 +444,34 @@ const importRegister = ContentState => {
     let { anchor, focus } = cursor
     const lines = markdown.split('\n')
 
+    // 保证最少有一行
+    if (lines.length == 0)
+      lines.push('')
+
+    // 保证 anchor 在 focus 之前
+    if (anchor.line > focus.line || (anchor.line == focus.line && anchor.ch > focus.ch)) {
+      [anchor, focus] = [focus, anchor]
+    }
+
     // 调整光标位置，防止影响解析
     anchor = adjustCursor(anchor, lines[anchor.line - 1], lines[anchor.line], lines[anchor.line + 1])
     focus = adjustCursor(focus, lines[focus.line - 1], lines[focus.line], lines[focus.line + 1])
 
-    if (!anchor && !focus) {
-      return { markdown, isValid: false }
-    } else if (!focus) {
-      focus = anchor
-    } else if (!anchor) {
-      anchor = focus
-    } else if (anchor.line > focus.line || (anchor.line == focus.line && anchor.ch > focus.ch)) {
-      const tmpCursor = focus
-      focus = anchor
-      anchor = tmpCursor
+    // 注入 anchor
+    if (!anchor || !lines[anchor.line]) {
+      lines.push(CURSOR_ANCHOR_DNA)
+    } else {
+      const anchorText = lines[anchor.line]
+      lines[anchor.line] = anchorText.substring(0, anchor.ch) + CURSOR_ANCHOR_DNA + anchorText.substring(anchor.ch)
     }
 
-    const anchorText = lines[anchor.line]
-    const focusText = lines[focus.line]
-    if (!anchorText || !focusText) {
-      return { markdown, isValid: false }
-    }
-    if (anchor.line === focus.line) {
-      const minOffset = Math.min(anchor.ch, focus.ch)
-      const maxOffset = Math.max(anchor.ch, focus.ch)
-      const firstTextPart = anchorText.substring(0, minOffset)
-      const secondTextPart = anchorText.substring(minOffset, maxOffset)
-      const thirdTextPart = anchorText.substring(maxOffset)
-      lines[anchor.line] = firstTextPart +
-        (anchor.ch <= focus.ch ? CURSOR_ANCHOR_DNA : CURSOR_FOCUS_DNA) +
-        secondTextPart +
-        (anchor.ch <= focus.ch ? CURSOR_FOCUS_DNA : CURSOR_ANCHOR_DNA) +
-        thirdTextPart
+    // 注入 focus
+    if (!focus || !lines[focus.line]) {
+      lines[lines.length - 1] += CURSOR_FOCUS_DNA
     } else {
-      lines[anchor.line] = anchorText.substring(0, anchor.ch) + CURSOR_ANCHOR_DNA + anchorText.substring(anchor.ch)
-      lines[focus.line] = focusText.substring(0, focus.ch) + CURSOR_FOCUS_DNA + focusText.substring(focus.ch)
+      const focusText = lines[focus.line]
+      const focusch = anchor.line === focus.line ? focus.ch + CURSOR_ANCHOR_DNA.length : focus.ch
+      lines[focus.line] = focusText.substring(0, focusch) + CURSOR_FOCUS_DNA + focusText.substring(focusch)
     }
 
     return {

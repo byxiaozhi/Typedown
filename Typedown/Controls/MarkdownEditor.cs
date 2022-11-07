@@ -110,7 +110,7 @@ namespace Typedown.Controls
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             CoreWebView2.SetVirtualHostNameToFolderMapping(staticHost, staticsFolder, CoreWebView2HostResourceAccessKind.Allow);
 #if DEBUG
-            // CoreWebView2.OpenDevToolsWindow();
+            CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 

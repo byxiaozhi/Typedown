@@ -71,7 +71,7 @@ const Editor: React.FC = () => {
 
     useEffect(() => transport.addListener<{ text: string, cursor: string }>('SetMarkdown', ({ text, cursor }) => {
         setCursor(cursor)
-        setMarkdown(text)
+        setTimeout(() => setMarkdown(text))
         markdownRef.current = text
     }), []);
 

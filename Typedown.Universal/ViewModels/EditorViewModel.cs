@@ -120,6 +120,17 @@ namespace Typedown.Universal.ViewModels
             UpdateMuyaSelected();
         }
 
+        public void OnCodeMirrorSelectionChange(JToken arg)
+        {
+            CodeMirrorSelection = arg["cursor"];
+            var anchorLine = CodeMirrorSelection["anchor"]["line"].ToObject<int>();
+            var headLine = CodeMirrorSelection["head"]["line"].ToObject<int>();
+            var anchorCh = CodeMirrorSelection["anchor"]["ch"].ToObject<int>();
+            var headCh = CodeMirrorSelection["head"]["ch"].ToObject<int>();
+            TextSelected = Selected = anchorLine != headLine || anchorCh != headCh;
+            SelectionText = arg["selectionText"].ToString();
+        }
+
         public void UpdateMuyaSelected()
         {
             var formatViewModel = ServiceProvider.GetService<FormatViewModel>();
@@ -157,17 +168,6 @@ namespace Typedown.Universal.ViewModels
         public void OnCursorChange(JToken arg)
         {
             History.CursorChange(arg["cursor"]?.ToObject<CursorState>());
-        }
-
-        public void OnCodeMirrorSelectionChange(JToken arg)
-        {
-            CodeMirrorSelection = arg["cursor"];
-            var anchorLine = CodeMirrorSelection["anchor"]["line"].ToObject<int>();
-            var headLine = CodeMirrorSelection["head"]["line"].ToObject<int>();
-            var anchorCh = CodeMirrorSelection["anchor"]["ch"].ToObject<int>();
-            var headCh = CodeMirrorSelection["head"]["ch"].ToObject<int>();
-            TextSelected = Selected = anchorLine != headLine || anchorCh != headCh;
-            SelectionText = arg["selectionText"].ToString();
         }
 
         public void OnStateChange(JToken arg)

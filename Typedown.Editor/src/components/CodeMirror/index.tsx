@@ -70,7 +70,7 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         const lastMatch = matchsRef.current[matchIndexRef.current];
         matchsRef.current.forEach(({ marker }) => marker.clear())
         if ((value == null || value.length == 0)) {
-            if(lastMatch?.index >= 0){
+            if (lastMatch?.index >= 0) {
                 const head = editor.posFromIndex(lastMatch.index);
                 editor.setSelection(head, head);
             }
@@ -181,7 +181,10 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     useEffect(() => {
         if (markdownRef.current != props.markdown && editor) {
             markdownRef.current = props.markdown
+            const { anchor, focus } = cursorRef.current ?? {}
             editor.setValue(markdownRef.current)
+            if (anchor && focus)
+                editor.setSelection(anchor, focus, { scroll: true })
             scrollbarRef.current.scrollTop(props.scrollTopRef.current)
             if (searchArgRef.current?.value != "" && searchArgRef.current?.opt?.selection) {
                 const { value, opt } = searchArgRef.current
@@ -200,11 +203,7 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     }, [editor, props.searchArg, search])
 
     useEffect(() => {
-        if (cursorRef.current?.anchor != props.cursor?.anchor && editor) {
-            const { anchor, focus: head } = props.cursor
-            cursorRef.current = { anchor, head }
-            editor.setSelection(anchor, head, { scroll: true })
-        }
+        cursorRef.current = props.cursor
     }, [editor, props.cursor])
 
     const handleCodeMirrorState = useCallback((value: string) => {
