@@ -93,6 +93,22 @@
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommonControls\EnumNameBlock.cs" />
+    <Compile Include="Controls\EditorControls\MenuBarItems\ViewItem.xaml.cs">
+      <DependentUpon>ViewItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\MenuBarItems\FormatItem.xaml.cs">
+      <DependentUpon>FormatItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\MenuBarItems\ParagraphItem.xaml.cs">
+      <DependentUpon>ParagraphItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\MenuBarItems\EditItem.xaml.cs">
+      <DependentUpon>EditItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\MenuBarItems\FileItem.xaml.cs">
+      <DependentUpon>FileItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\MenuBarItems\MenuBarItemBase.cs" />
     <Compile Include="Controls\FloatControls\FrontMenu.xaml.cs">
       <DependentUpon>FrontMenu.xaml</DependentUpon>
     </Compile>
@@ -385,6 +401,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\DialogControls\InsertTableDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditorControls\MenuBarItems\ViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditorControls\MenuBarItems\FormatItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditorControls\MenuBarItems\ParagraphItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditorControls\MenuBarItems\EditItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditorControls\MenuBarItems\FileItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

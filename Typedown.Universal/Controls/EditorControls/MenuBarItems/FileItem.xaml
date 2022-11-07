@@ -1,0 +1,39 @@
+﻿<local:MenuBarItemBase
+    x:Uid="File"
+    x:Class="Typedown.Universal.Controls.EditorControls.MenuBarItems.FileItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.EditorControls.MenuBarItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d">
+    <MenuFlyoutItem x:Name="NewFileItem" x:Uid="New" KeyboardAcceleratorTextOverride="Ctrl+N" Command="{x:Bind File.NewFileCommand}"/>
+    <MenuFlyoutItem x:Name="NewWindowItem" x:Uid="NewWindow" KeyboardAcceleratorTextOverride="Ctrl+Shift+N" Command="{x:Bind File.NewWindowCommand}"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="OpenFileItem" x:Uid="Open" KeyboardAcceleratorTextOverride="Ctrl+O" Command="{x:Bind File.OpenFileCommand}"/>
+    <MenuFlyoutItem x:Name="OpenFolderItem" x:Uid="OpenFolder" Command="{x:Bind File.OpenFolderCommand}"/>
+    <MenuFlyoutSubItem x:Name="OpenRecentSubMenu" x:Uid="OpenRecent">
+        <MenuFlyoutItem x:Name="NoRecentFilesItem" x:Uid="NoRecentFiles" IsEnabled="False"/>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem x:Name="ClearRecentFilesItem" x:Uid="ClearRecentFiles" Command="{x:Bind File.ClearHistoryCommand}"/>
+    </MenuFlyoutSubItem>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="SaveItem" x:Uid="Save" KeyboardAcceleratorTextOverride="Ctrl+S" Command="{x:Bind File.SaveCommand}"/>
+    <MenuFlyoutItem x:Name="SaveAsItem" x:Uid="SaveAs" KeyboardAcceleratorTextOverride="Ctrl+Shift+S" Command="{x:Bind File.SaveAsCommand}"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Uid="Import"/>
+    <MenuFlyoutSubItem  x:Uid="Export">
+        <MenuFlyoutItem Text="PDF" Command="{x:Bind File.ExportCommand}" CommandParameter="pdf"/>
+        <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
+        <MenuFlyoutItem Text="TEXT" Command="{x:Bind File.ExportCommand}" CommandParameter="text"/>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem x:Name="ExportSettingsItem" Text="导出设置" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
+    </MenuFlyoutSubItem>
+    <MenuFlyoutItem x:Name="PrintItem" x:Uid="Print" Command="{x:Bind File.PrintCommand}" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="SettingItem" x:Uid="Settings" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/General"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="CloseItem" x:Uid="Close" Command="{x:Bind File.ExitCommand}" KeyboardAcceleratorTextOverride="Ctrl+W"/>
+</local:MenuBarItemBase>

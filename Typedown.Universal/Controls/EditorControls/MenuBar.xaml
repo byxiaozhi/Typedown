@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Typedown.Universal.Controls"
+    xmlns:items="using:Typedown.Universal.Controls.EditorControls.MenuBarItems"
     xmlns:utils="using:Typedown.Universal.Utilities"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,18 +11,14 @@
     xmlns:viewmodels="using:Typedown.Universal.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     SizeChanged="OnSizeChanged"
-    Loaded="OnLoaded"
-    Unloaded="OnUnloaded"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" 
     xmlns:converters="using:Typedown.Universal.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    
     <UserControl.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityReverseConverter" IsReverse="True"/>
     </UserControl.Resources>
-    
     <Grid BorderThickness="0,0,0,1" Margin="0,-4,0,0" BorderBrush="{ThemeResource CardStrokeColorDefault}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -29,141 +26,15 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <muxc:MenuBar x:Name="MenuBarControl" SizeChanged="OnMenuBarSizeChanged">
-
-            <muxc:MenuBarItem x:Uid="File">
-                <MenuFlyoutItem x:Name="NewFileItem" x:Uid="New"/>
-                <MenuFlyoutItem x:Name="NewWindowItem" x:Uid="NewWindow"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="OpenFileItem" x:Uid="Open"/>
-                <MenuFlyoutItem x:Name="OpenFolderItem" x:Uid="OpenFolder" Command="{x:Bind File.OpenFolderCommand}"/>
-                <MenuFlyoutSubItem x:Name="OpenRecentSubMenu" x:Uid="OpenRecent">
-                    <MenuFlyoutItem x:Name="NoRecentFilesItem" x:Uid="NoRecentFiles" IsEnabled="False"/>
-                    <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Name="ClearRecentFilesItem" x:Uid="ClearRecentFiles" Command="{x:Bind File.ClearHistoryCommand}"/>
-                </MenuFlyoutSubItem>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="SaveItem" x:Uid="Save"/>
-                <MenuFlyoutItem x:Name="SaveAsItem" x:Uid="SaveAs"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Uid="Import"/>
-                <MenuFlyoutSubItem  x:Uid="Export">
-                    <MenuFlyoutItem Text="PDF" Command="{x:Bind File.ExportCommand}" CommandParameter="pdf"/>
-                    <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
-                    <MenuFlyoutItem Text="TEXT" Command="{x:Bind File.ExportCommand}" CommandParameter="text"/>
-                    <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Name="ExportSettingsItem" Text="导出设置" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
-                </MenuFlyoutSubItem>
-                <MenuFlyoutItem x:Name="PrintItem" x:Uid="Print" Command="{x:Bind File.PrintCommand}"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="SettingItem" x:Uid="Settings" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/General"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="CloseItem" x:Uid="Close" Command="{x:Bind File.ExitCommand}"/>
-            </muxc:MenuBarItem>
-
-            <muxc:MenuBarItem x:Uid="Edit">
-                <MenuFlyoutItem x:Name="UndoItem" x:Uid="Undo" Command="{x:Bind Editor.UndoCommand}" IsEnabled="{x:Bind Editor.History.Undoable, Mode=OneWay}"/>
-                <MenuFlyoutItem x:Name="RedoItem" x:Uid="Redo" Command="{x:Bind Editor.RedoCommand}" IsEnabled="{x:Bind Editor.History.Redoable, Mode=OneWay}"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="CutItem" x:Uid="Cut" Command="{x:Bind Editor.CutCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
-                <MenuFlyoutItem x:Name="CopyItem" x:Uid="Copy" Command="{x:Bind Editor.CopyCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
-                <MenuFlyoutItem x:Name="PasteItem" x:Uid="Paste" Command="{x:Bind Editor.PasteCommand}"/>
-                <MenuFlyoutSeparator Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}"/>
-                <MenuFlyoutItem x:Name="CopyAsPlainTextItem" x:Uid="CopyAsPlainText" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsPlainText" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
-                <MenuFlyoutItem x:Name="CopyAsMarkdownItem" x:Uid="CopyAsMarkdown" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsMarkdown"/>
-                <MenuFlyoutItem x:Name="CopyAsHTMLCodeItem" x:Uid="CopyAsHTMLCode" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsHtml" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
-                <MenuFlyoutItem x:Name="PasteAsPlainTextItem" x:Uid="PasteAsPlainText" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.PasteCommand}" CommandParameter="pasteAsPlainText"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="DeleteItem" x:Uid="Delete" Command="{x:Bind Editor.DeleteSelectionCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="SelectAllItem" x:Uid="SelectAll" Command="{x:Bind Editor.SelectAllCommand}"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutSubItem x:Uid="FindAndReplace">
-                    <MenuFlyoutItem x:Name="FindItem" x:Uid="Find"/>
-                    <MenuFlyoutItem x:Name="FindNextItem" x:Uid="FindNext" Command="{x:Bind Editor.FindCommand}" CommandParameter="next"/>
-                    <MenuFlyoutItem x:Name="FindPreviousItem" x:Uid="FindPrevious" Command="{x:Bind Editor.FindCommand}" CommandParameter="prev"/>
-                    <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Name="ReplaceItem" x:Uid="Replace"/>
-                </MenuFlyoutSubItem>
-            </muxc:MenuBarItem>
-
-            <muxc:MenuBarItem x:Uid="Paragraph">
-                <MenuFlyoutSubItem x:Uid="Heading">
-                    <MenuFlyoutSubItem.Items>
-                        <ToggleMenuFlyoutItem x:Name="Heading1Item" x:Uid="Heading1"/>
-                        <ToggleMenuFlyoutItem x:Name="Heading2Item" x:Uid="Heading2"/>
-                        <ToggleMenuFlyoutItem x:Name="Heading3Item" x:Uid="Heading3"/>
-                        <ToggleMenuFlyoutItem x:Name="Heading4Item" x:Uid="Heading4"/>
-                        <ToggleMenuFlyoutItem x:Name="Heading5Item" x:Uid="Heading5"/>
-                        <ToggleMenuFlyoutItem x:Name="Heading6Item" x:Uid="Heading6"/>
-                    </MenuFlyoutSubItem.Items>
-                </MenuFlyoutSubItem>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="ParagraphItem" x:Uid="ItemParagraph"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="IncreaseHeadingLevelItem" x:Uid="IncreaseHeadingLevel"/>
-                <MenuFlyoutItem x:Name="DecreaseHeadingLevelItem" x:Uid="DecreaseHeadingLevel"/>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="TableItem" x:Uid="Table"/>
-                <ToggleMenuFlyoutItem x:Name="CodeFencesItem" x:Uid="CodeFences"/>
-                <ToggleMenuFlyoutItem x:Name="MathBlockItem" x:Uid="MathBlock"/>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="QuoteItem" x:Uid="Quote"/>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="OrderedListItem" x:Uid="OrderedList"/>
-                <ToggleMenuFlyoutItem x:Name="UnorderedItem" x:Uid="Unordered"/>
-                <ToggleMenuFlyoutItem x:Name="TaskListItem" x:Uid="TaskList" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ul-task" IsEnabled="{x:Bind Editor.ParagraphState.TaskList.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.TaskList.IsChecked, Mode=TwoWay}"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="InsertParagraphBeforeItem" x:Uid="InsertParagraphBefore" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="before"/>
-                <MenuFlyoutItem x:Name="InsertParagraphAfterItem" x:Uid="InsertParagraphAfter" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="after"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutSubItem x:Uid="Chart" IsEnabled="{x:Bind Editor.ParagraphState.Chart.IsEnable, Mode=TwoWay}">
-                    <MenuFlyoutItem x:Name="VegaChartItem" x:Uid="VegaChart" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="vega-lite"/>
-                    <MenuFlyoutItem x:Name="FlowChartItem" x:Uid="FlowChart" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="flowchart"/>
-                    <MenuFlyoutItem x:Name="SequenceDiagramItem" x:Uid="SequenceDiagram" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="sequence"/>
-                    <MenuFlyoutItem x:Name="PlantUMLDiagramItem" x:Uid="PlantUMLDiagram" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="plantuml"/>
-                    <MenuFlyoutItem x:Name="MermaidItem" x:Uid="Mermaid" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="mermaid"/>
-                </MenuFlyoutSubItem>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="LinkReferencesItem" Text="链接引用"/>
-                <ToggleMenuFlyoutItem x:Name="FootNoteItem" Text="脚注"/>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="HorizontalLineItem" x:Uid="HorizontalLine" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="hr" IsEnabled="{x:Bind Editor.ParagraphState.HorizontalLine.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.HorizontalLine.IsChecked, Mode=TwoWay}"/>
-                <ToggleMenuFlyoutItem x:Name="TocItem" Text="内容目录"/>
-                <ToggleMenuFlyoutItem x:Name="YAMLFrontMatterItem" x:Uid="YAMLFrontMatter" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="front-matter" IsEnabled="{x:Bind Editor.ParagraphState.FrontMatter.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.FrontMatter.IsChecked, Mode=TwoWay}"/>
-            </muxc:MenuBarItem>
-
-            <muxc:MenuBarItem x:Uid="Format">
-                <ToggleMenuFlyoutItem x:Name="StrongItem" x:Uid="Strong"/>
-                <ToggleMenuFlyoutItem x:Name="EmphasisItem" x:Uid="Emphasis"/>
-                <ToggleMenuFlyoutItem x:Name="UnderlineItem" x:Uid="Underline"/>
-                <ToggleMenuFlyoutItem x:Name="InlineCodeItem" x:Uid="InlineCode"/>
-                <ToggleMenuFlyoutItem x:Name="InlineMathItem" x:Uid="InlineMath" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="inline_math" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.InlineMath, Mode=OneWay}"/>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="StrikethroughItem" x:Uid="Strikethrough"/>
-                <ToggleMenuFlyoutItem x:Name="HighlightItem" x:Uid="Highlight" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="mark" IsChecked="{x:Bind Format.FormatState.Highlight, Mode=OneWay}"/>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="HyperlinkItem" x:Uid="Hyperlink"/>
-                <ToggleMenuFlyoutItem x:Name="ImageItem" x:Uid="Image"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem x:Name="ClearFormatItem" x:Uid="ClearFormat"/>
-            </muxc:MenuBarItem>
-
-            <muxc:MenuBarItem x:Uid="View">
-                <ToggleMenuFlyoutItem x:Name="SidePaneItem" x:Uid="SidePane"/>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="SourceCodeModeItem" x:Uid="SourceCodeMode"/>
-                <ToggleMenuFlyoutItem x:Name="FocusModeItem" x:Uid="FocusMode"/>
-                <ToggleMenuFlyoutItem x:Name="TypewriterModeItem" x:Uid="TypewriterMode"/>
-                <MenuFlyoutSeparator/>
-                <ToggleMenuFlyoutItem x:Name="StatusBarItem" x:Uid="StatusBar" IsChecked="{x:Bind Settings.StatusBarOpen, Mode=TwoWay}"/>
-            </muxc:MenuBarItem>
-
+            <items:FileItem/>
+            <items:EditItem/>
+            <items:ParagraphItem/>
+            <items:FormatItem/>
+            <items:ViewItem/>
         </muxc:MenuBar>
-        
         <StackPanel 
             x:Name="TitleStackPanel"
             Grid.Column="1" 
-            Margin="0,0,138,0"
             Orientation="Horizontal" 
             HorizontalAlignment="Center"
             x:Load="{x:Bind Settings.AppCompactMode, Mode=OneWay}">
@@ -171,7 +42,6 @@
                 Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" 
                 Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center"/>
         </StackPanel>
-        
         <Button 
             x:Name="SettingsButton"
             Grid.Column="2" 
@@ -191,6 +61,5 @@
                 </muxc:AnimatedIcon>
             </Viewbox>
         </Button>
-        
     </Grid>
 </UserControl>

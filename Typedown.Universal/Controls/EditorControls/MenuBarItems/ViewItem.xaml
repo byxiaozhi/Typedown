@@ -1,0 +1,17 @@
+﻿<local:MenuBarItemBase
+    x:Uid="View"
+    x:Class="Typedown.Universal.Controls.EditorControls.MenuBarItems.ViewItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.EditorControls.MenuBarItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ToggleMenuFlyoutItem x:Name="SidePaneItem" x:Uid="SidePane" KeyboardAcceleratorTextOverride="Ctrl+Shift+L" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="SourceCodeModeItem" x:Uid="SourceCodeMode" KeyboardAcceleratorTextOverride="Ctrl+/" IsChecked="{x:Bind Settings.SourceCode, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="FocusModeItem" x:Uid="FocusMode" KeyboardAcceleratorTextOverride="F8" IsChecked="{x:Bind Settings.FocusMode, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="TypewriterModeItem" x:Uid="TypewriterMode" KeyboardAcceleratorTextOverride="F9" IsChecked="{x:Bind Settings.Typewriter, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="StatusBarItem" x:Uid="StatusBar" IsChecked="{x:Bind Settings.StatusBarOpen, Mode=TwoWay}"/>
+</local:MenuBarItemBase>

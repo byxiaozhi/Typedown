@@ -1,0 +1,53 @@
+﻿<local:MenuBarItemBase
+    x:Uid="Paragraph"
+    x:Class="Typedown.Universal.Controls.EditorControls.MenuBarItems.ParagraphItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.EditorControls.MenuBarItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <MenuFlyoutSubItem x:Uid="Heading">
+        <MenuFlyoutSubItem.Items>
+            <ToggleMenuFlyoutItem x:Name="Heading1Item" x:Uid="Heading1" KeyboardAcceleratorTextOverride="Ctrl+1" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 1" IsEnabled="{x:Bind Editor.ParagraphState.Heading1.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading1.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading2Item" x:Uid="Heading2" KeyboardAcceleratorTextOverride="Ctrl+2" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 2" IsEnabled="{x:Bind Editor.ParagraphState.Heading2.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading2.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading3Item" x:Uid="Heading3" KeyboardAcceleratorTextOverride="Ctrl+3" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 3" IsEnabled="{x:Bind Editor.ParagraphState.Heading3.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading3.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading4Item" x:Uid="Heading4" KeyboardAcceleratorTextOverride="Ctrl+4" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 4" IsEnabled="{x:Bind Editor.ParagraphState.Heading4.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading4.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading5Item" x:Uid="Heading5" KeyboardAcceleratorTextOverride="Ctrl+5" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 5" IsEnabled="{x:Bind Editor.ParagraphState.Heading5.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading5.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading6Item" x:Uid="Heading6" KeyboardAcceleratorTextOverride="Ctrl+6" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 6" IsEnabled="{x:Bind Editor.ParagraphState.Heading6.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading6.IsChecked, Mode=TwoWay}"/>
+        </MenuFlyoutSubItem.Items>
+    </MenuFlyoutSubItem>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="ItemParagraphItem" x:Uid="ItemParagraph" KeyboardAcceleratorTextOverride="Ctrl+0" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="paragraph" IsEnabled="{x:Bind Editor.ParagraphState.Paragraph.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Paragraph.IsChecked, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="IncreaseHeadingLevelItem" x:Uid="IncreaseHeadingLevel" KeyboardAcceleratorTextOverride="Ctrl+=" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="upgrade heading"/>
+    <MenuFlyoutItem x:Name="DecreaseHeadingLevelItem" x:Uid="DecreaseHeadingLevel" KeyboardAcceleratorTextOverride="Ctrl+-" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="degrade heading"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="TableItem" x:Uid="Table" KeyboardAcceleratorTextOverride="Ctrl+Shift+T" Command="{x:Bind Paragraph.InsertTableCommand}" IsEnabled="{x:Bind Editor.ParagraphState.Table.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Table.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="CodeFencesItem" x:Uid="CodeFences" KeyboardAcceleratorTextOverride="Ctrl+Shift+K" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="pre" IsEnabled="{x:Bind Editor.ParagraphState.Table.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="MathBlockItem" x:Uid="MathBlock" KeyboardAcceleratorTextOverride="Ctrl+Shift+M" Command="{x:Bind Paragraph.UpdateParagraphCommand}"  CommandParameter="mathblock" IsEnabled="{x:Bind Editor.ParagraphState.MathBlock.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.MathBlock.IsChecked, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="QuoteItem" x:Uid="Quote" KeyboardAcceleratorTextOverride="Ctrl+Shift+Q" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="blockquote" IsEnabled="{x:Bind Editor.ParagraphState.QuoteBlock.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.QuoteBlock.IsChecked, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="OrderedListItem" x:Uid="OrderedList" KeyboardAcceleratorTextOverride="Ctrl+Shift+[" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ol-order" IsEnabled="{x:Bind Editor.ParagraphState.OrderList.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.OrderList.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="UnorderedItem" x:Uid="Unordered" KeyboardAcceleratorTextOverride="Ctrl+Shift+]" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ul-bullet" IsEnabled="{x:Bind Editor.ParagraphState.BulletList.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.BulletList.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="TaskListItem" x:Uid="TaskList" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ul-task" IsEnabled="{x:Bind Editor.ParagraphState.TaskList.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.TaskList.IsChecked, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="InsertParagraphBeforeItem" x:Uid="InsertParagraphBefore" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="before"/>
+    <MenuFlyoutItem x:Name="InsertParagraphAfterItem" x:Uid="InsertParagraphAfter" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="after"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutSubItem x:Uid="Chart" IsEnabled="{x:Bind Editor.ParagraphState.Chart.IsEnable, Mode=TwoWay}">
+        <MenuFlyoutItem x:Name="VegaChartItem" x:Uid="VegaChart" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="vega-lite"/>
+        <MenuFlyoutItem x:Name="FlowChartItem" x:Uid="FlowChart" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="flowchart"/>
+        <MenuFlyoutItem x:Name="SequenceDiagramItem" x:Uid="SequenceDiagram" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="sequence"/>
+        <MenuFlyoutItem x:Name="PlantUMLDiagramItem" x:Uid="PlantUMLDiagram" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="plantuml"/>
+        <MenuFlyoutItem x:Name="MermaidItem" x:Uid="Mermaid" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="mermaid"/>
+    </MenuFlyoutSubItem>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="LinkReferencesItem" Text="链接引用"/>
+    <ToggleMenuFlyoutItem x:Name="FootNoteItem" Text="脚注"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="HorizontalLineItem" x:Uid="HorizontalLine" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="hr" IsEnabled="{x:Bind Editor.ParagraphState.HorizontalLine.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.HorizontalLine.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="TocItem" Text="内容目录"/>
+    <ToggleMenuFlyoutItem x:Name="YAMLFrontMatterItem" x:Uid="YAMLFrontMatter" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="front-matter" IsEnabled="{x:Bind Editor.ParagraphState.FrontMatter.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.FrontMatter.IsChecked, Mode=TwoWay}"/>
+</local:MenuBarItemBase>

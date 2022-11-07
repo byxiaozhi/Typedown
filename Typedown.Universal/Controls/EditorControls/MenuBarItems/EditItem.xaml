@@ -1,0 +1,35 @@
+﻿<local:MenuBarItemBase
+    x:Uid="Edit"
+    x:Class="Typedown.Universal.Controls.EditorControls.MenuBarItems.EditItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.EditorControls.MenuBarItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d">
+    <MenuFlyoutItem x:Name="UndoItem" x:Uid="Undo" Command="{x:Bind Editor.UndoCommand}" IsEnabled="{x:Bind Editor.History.Undoable, Mode=OneWay}" KeyboardAcceleratorTextOverride="Ctrl+Z"/>
+    <MenuFlyoutItem x:Name="RedoItem" x:Uid="Redo" Command="{x:Bind Editor.RedoCommand}" IsEnabled="{x:Bind Editor.History.Redoable, Mode=OneWay}" KeyboardAcceleratorTextOverride="Ctrl+Y"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="CutItem" x:Uid="Cut" Command="{x:Bind Editor.CutCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Ctrl+X" CommandParameter="normal"/>
+    <MenuFlyoutItem x:Name="CopyItem" x:Uid="Copy" Command="{x:Bind Editor.CopyCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Ctrl+C" CommandParameter="normal"/>
+    <MenuFlyoutItem x:Name="PasteItem" x:Uid="Paste" Command="{x:Bind Editor.PasteCommand}" KeyboardAcceleratorTextOverride="Ctrl+V" CommandParameter="normal"/>
+    <MenuFlyoutSeparator Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}"/>
+    <MenuFlyoutItem x:Name="CopyAsPlainTextItem" x:Uid="CopyAsPlainText" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsPlainText" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
+    <MenuFlyoutItem x:Name="CopyAsMarkdownItem" x:Uid="CopyAsMarkdown" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsMarkdown" KeyboardAcceleratorTextOverride="Ctrl+Shift+C" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
+    <MenuFlyoutItem x:Name="CopyAsHTMLCodeItem" x:Uid="CopyAsHTMLCode" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsHtml" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
+    <MenuFlyoutItem x:Name="PasteAsPlainTextItem" x:Uid="PasteAsPlainText" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.PasteCommand}" CommandParameter="pasteAsPlainText" KeyboardAcceleratorTextOverride="Ctrl+Shift+V" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="DeleteItem" x:Uid="Delete" Command="{x:Bind Editor.DeleteSelectionCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Delete"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="SelectAllItem" x:Uid="SelectAll" Command="{x:Bind Editor.SelectAllCommand}" KeyboardAcceleratorTextOverride="Ctrl+A"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutSubItem x:Uid="FindAndReplace">
+        <MenuFlyoutItem x:Name="FindItem" x:Uid="Find" KeyboardAcceleratorTextOverride="Ctrl+F" Command="{x:Bind Float.SearchCommand}" CommandParameter="{x:Bind OpenSearch}"/>
+        <MenuFlyoutItem x:Name="FindNextItem" x:Uid="FindNext" Command="{x:Bind Editor.FindCommand}" CommandParameter="next" KeyboardAcceleratorTextOverride="F3"/>
+        <MenuFlyoutItem x:Name="FindPreviousItem" x:Uid="FindPrevious" Command="{x:Bind Editor.FindCommand}" CommandParameter="prev" KeyboardAcceleratorTextOverride="Shift+F3"/>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem x:Name="ReplaceItem" x:Uid="Replace" KeyboardAcceleratorTextOverride="Ctrl+H" Command="{x:Bind Float.SearchCommand}" CommandParameter="{x:Bind OpenReplace}"/>
+    </MenuFlyoutSubItem>
+</local:MenuBarItemBase>
