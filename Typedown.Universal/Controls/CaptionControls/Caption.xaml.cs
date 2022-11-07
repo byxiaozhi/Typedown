@@ -13,7 +13,7 @@ namespace Typedown.Universal.Controls
     {
         public AppViewModel ViewModel => DataContext as AppViewModel;
 
-        public SettingsViewModel Settings => ViewModel.SettingsViewModel;
+        public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
         private readonly CompositeDisposable disposables = new();
 
@@ -33,7 +33,8 @@ namespace Typedown.Universal.Controls
 
         private void UpdateBackButtonState(bool canGoBack, bool useTransitions = true)
         {
-            VisualStateManager.GoToState(this, canGoBack ? "BackVisible" : "BackCollapsed", useTransitions && Settings.AnimationEnable);
+            if (IsLoaded)
+                VisualStateManager.GoToState(this, canGoBack ? "BackVisible" : "BackCollapsed", useTransitions && Settings.AnimationEnable);
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

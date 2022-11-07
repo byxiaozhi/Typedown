@@ -50,5 +50,10 @@ namespace Typedown.Universal.Controls
         {
             Effect = SlideNavigationTransitionEffect.FromRight
         } : new SuppressNavigationTransitionInfo();
+
+        public static bool GetCaptionIsLoad(bool compactMode, Type currentPage)
+        {
+            return !compactMode || currentPage != typeof(MainPage);
+        }
     }
 }

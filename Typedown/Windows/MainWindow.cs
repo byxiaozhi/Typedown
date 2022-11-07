@@ -86,10 +86,11 @@ namespace Typedown.Windows
             SetBinding(TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             SetBinding(IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             SetBinding(TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
-            AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => CanGoBackChanged();
+            AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => UpdateDragBar();
             AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme)).Subscribe(_ => UpdateStartupTheme());
+            AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.MenuBarWidth)).Subscribe(_ => UpdateDragBar());
             KeyboardAccelerator.IsEnable = IsActive;
-            CanGoBackChanged();
+            UpdateDragBar();
         }
 
         private async void OnRootControlLoaded(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
@@ -108,11 +109,15 @@ namespace Typedown.Windows
             SaveWindowPlacementWithOffset();
         }
 
-        private void CanGoBackChanged()
+        private void UpdateDragBar()
         {
             if (DragBar != null)
             {
-                var leftSpace = AppViewModel.GoBackCommand.IsExecutable ? 32 : 0;
+                double leftSpace = 0;
+                if (AppViewModel.GoBackCommand.IsExecutable)
+                    leftSpace = 32;
+                else if (AppViewModel.SettingsViewModel.AppCompactMode)
+                    leftSpace = AppViewModel.UIViewModel.MenuBarWidth;
                 var rightSpace = Universal.Config.IsMicaSupported ? 0 : 46 * 3;
                 DragBar.Margin = new(leftSpace, 0, rightSpace, 0);
             }

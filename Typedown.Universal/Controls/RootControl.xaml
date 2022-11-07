@@ -27,10 +27,10 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="4"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:Caption x:Name="Caption" x:Load="{x:Bind Settings.AppCompactMode.Equals(x:False), Mode=OneWay}"/>
+        <local:Caption x:Name="Caption" x:Load="{x:Bind local:RootControl.GetCaptionIsLoad(Settings.AppCompactMode, Frame.SourcePageType), Mode=OneWay}"/>
         <local:GlobalFrame x:Name="Frame" Background="{ThemeResource ContentFrameBackgroundBrush}" Grid.Row="1"/>
     </Grid>
 </UserControl>

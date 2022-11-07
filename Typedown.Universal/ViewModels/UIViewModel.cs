@@ -20,6 +20,8 @@ namespace Typedown.Universal.ViewModels
 
         public string MainWindowTitle { get; private set; }
 
+        public double MenuBarWidth { get; set; }
+
         private readonly CompositeDisposable disposables = new();
 
         public UIViewModel(IServiceProvider serviceProvider)

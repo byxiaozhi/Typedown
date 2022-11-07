@@ -57,6 +57,7 @@ namespace Typedown.Universal.Controls
             RegisterWindow(Settings.ShortcutSaveAs, SaveAsItem);
             RegisterWindow(Settings.ShortcutExportSettings, ExportSettingsItem);
             RegisterWindow(Settings.ShortcutPrint, PrintItem);
+            RegisterWindow(Settings.ShortcutSettings, SettingItem);
             RegisterWindow(Settings.ShortcutClose, CloseItem);
 
             RegisterEditor(Settings.ShortcutUndo, UndoItem);
@@ -173,6 +174,31 @@ namespace Typedown.Universal.Controls
                 OpenRecentSubMenu.Items.Insert(1, new MenuFlyoutItem() { Text = file, Command = File.OpenFileCommand, CommandParameter = file });
             NoRecentFilesItem.Visibility = files.Any() ? Visibility.Collapsed : Visibility.Visible;
             ClearRecentFilesItem.IsEnabled = files.Any();
+        }
+
+        private void OnMenuBarSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (ViewModel != null)
+                ViewModel.UIViewModel.MenuBarWidth = (sender as FrameworkElement).ActualWidth;
+        }
+
+        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (TitleStackPanel != null)
+            {
+                if (ActualWidth / 2 > MenuBarControl.ActualWidth + TitleStackPanel.ActualWidth / 2 + 16)
+                {
+                    TitleStackPanel.Margin = new(0);
+                    Grid.SetColumn(TitleStackPanel, 0);
+                    Grid.SetColumnSpan(TitleStackPanel, 2);
+                }
+                else
+                {
+                    TitleStackPanel.Margin = new(0, 0, 46 * 3, 0);
+                    Grid.SetColumn(TitleStackPanel, 1);
+                    Grid.SetColumnSpan(TitleStackPanel, 1);
+                }
+            }
         }
     }
 }

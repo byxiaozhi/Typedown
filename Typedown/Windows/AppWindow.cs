@@ -9,12 +9,15 @@ using Typedown.Universal.Utilities;
 using Typedown.Utilities;
 using Typedown.Controls;
 using Typedown.Universal.Enums;
+using System.Drawing.Printing;
 
 namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
         private const string PART_DragBar = "PART_DragBar";
+
+        private const string PART_TopNonClientArea = "PART_TopNonClientArea";
 
         private const string PART_RootContainer = "PART_RootContainer";
 
@@ -165,8 +168,12 @@ namespace Typedown.Windows
 
         private void UpdateRootContainer()
         {
-            if (GetTemplateChild(PART_RootContainer) is FrameworkElement ele)
-                ele.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
+            if (GetTemplateChild(PART_RootContainer) is FrameworkElement root && GetTemplateChild(PART_TopNonClientArea) is FrameworkElement topNCArea)
+            {
+                root.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
+                var canResize = WindowState != WindowState.Maximized && ResizeMode != ResizeMode.NoResize;
+                topNCArea.Height = canResize ? BorderWidth - root.Margin.Top : 0;
+            }
         }
 
         private void UpdateSystemBackdrop()
@@ -197,13 +204,21 @@ namespace Typedown.Windows
         {
             var template = new ControlTemplate(typeof(AppWindow));
             var container = new FrameworkElementFactory(typeof(Grid)) { Name = PART_RootContainer };
+
             var content = new FrameworkElementFactory(typeof(ContentPresenter));
-            var dragBar = new FrameworkElementFactory(typeof(DragBar)) { Name = PART_DragBar };
             content.SetValue(ContentPresenter.ContentProperty, new TemplateBindingExtension(ContentProperty));
+            container.AppendChild(content);
+
+            var dragBar = new FrameworkElementFactory(typeof(DragBar)) { Name = PART_DragBar };
             dragBar.SetValue(HeightProperty, new TemplateBindingExtension(CaptionHeightProperty));
             dragBar.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
-            container.AppendChild(content);
             container.AppendChild(dragBar);
+
+            var topNonClientArea = new FrameworkElementFactory(typeof(DragBar)) { Name = PART_TopNonClientArea };
+            topNonClientArea.SetValue(MarginProperty, new Thickness(0, 0, 46 * 3, 0));
+            topNonClientArea.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
+            container.AppendChild(topNonClientArea);
+
             template.VisualTree = container;
             return template;
         }

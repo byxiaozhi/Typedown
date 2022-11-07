@@ -55,12 +55,12 @@
         </controls:NormalSettingItem>
         
         <TextBlock Text="布局" Margin="0,16,0,4"/>
-        <!--<controls:NormalSettingItem Title="紧凑模式" Description="菜单栏与标题在同一行显示">
+        <controls:NormalSettingItem Title="紧凑模式" Description="菜单栏与标题在同一行显示">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf246;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.AppCompactMode, Mode=TwoWay}"/>
-        </controls:NormalSettingItem>-->
+        </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="显示状态栏" Description="选择是否显示底部状态栏">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe90e;"/>
