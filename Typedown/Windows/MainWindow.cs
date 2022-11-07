@@ -86,10 +86,8 @@ namespace Typedown.Windows
             SetBinding(TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             SetBinding(IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             SetBinding(TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
-            AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => CanGoBackChanged();
             AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme)).Subscribe(_ => UpdateStartupTheme());
             KeyboardAccelerator.IsEnable = IsActive;
-            CanGoBackChanged();
         }
 
         private async void OnRootControlLoaded(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
@@ -106,16 +104,6 @@ namespace Typedown.Windows
             base.OnStateChanged(e);
             WindowService?.RaiseWindowStateChanged(Handle);
             SaveWindowPlacementWithOffset();
-        }
-
-        private void CanGoBackChanged()
-        {
-            if (DragBar != null)
-            {
-                var leftSpace = AppViewModel.GoBackCommand.IsExecutable ? 32 : 0;
-                var rightSpace = Universal.Config.IsMicaSupported ? 0 : 46 * 3;
-                DragBar.Margin = new(leftSpace, 0, rightSpace, 0);
-            }
         }
 
         private void CloseMenuFlyout()
