@@ -20,6 +20,8 @@ namespace Typedown.Universal.Controls
         public Caption()
         {
             InitializeComponent();
+            if (Config.IsMicaSupported)
+                CaptionWrapper.Children.Remove(CaptionWrapper.Children.OfType<CaptionButtons>().First());
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)

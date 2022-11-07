@@ -30,7 +30,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:DragBar Grid.RowSpan="2" VerticalAlignment="Top" Height="32"/>
         <local:Caption x:Name="Caption" x:Load="{x:Bind Settings.AppCompactMode.Equals(x:False), Mode=OneWay}"/>
         <local:GlobalFrame x:Name="Frame" Background="{ThemeResource ContentFrameBackgroundBrush}" Grid.Row="1"/>
     </Grid>

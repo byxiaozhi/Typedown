@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Typedown.Universal.Controls"
-    xmlns:app="using:Typedown.Universal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
@@ -88,6 +87,6 @@
                 </muxc:AnimatedIcon>
             </Viewbox>
         </Button>
-        <local:CaptionButtons x:Name="CaptionButtons" Grid.Column="2" x:Load="{x:Bind app:Config.IsMicaSupported.Equals(x:False)}"/>
+        <local:CaptionButtons Grid.Column="2"/>
     </Grid>
 </UserControl>

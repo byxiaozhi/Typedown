@@ -79,7 +79,6 @@
     <Compile Include="Controls\CaptionControls\CaptionButtons.xaml.cs">
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CaptionControls\DragBar.cs" />
     <Compile Include="Controls\CommonControls\GlobalFrame.cs" />
     <Compile Include="Controls\DialogControls\FeedbackDialog.xaml.cs">
       <DependentUpon>FeedbackDialog.xaml</DependentUpon>

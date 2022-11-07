@@ -9,13 +9,12 @@ using Typedown.Universal.Utilities;
 using Typedown.Utilities;
 using Typedown.Controls;
 using Typedown.Universal.Enums;
-using Typedown.Universal;
 
 namespace Typedown.Windows
 {
     public class AppWindow : Window
     {
-        private const string PART_TopNonClientArea = "PART_TopNonClientArea";
+        private const string PART_DragBar = "PART_DragBar";
 
         private const string PART_RootContainer = "PART_RootContainer";
 
@@ -31,6 +30,8 @@ namespace Typedown.Windows
         public nint Handle { get; private set; }
 
         public double WindowScale => PInvoke.GetDpiForWindow(Handle) / 96.0;
+
+        protected DragBar DragBar => GetTemplateChild(PART_DragBar) as DragBar;
 
         protected Grid RootContainer => GetTemplateChild(PART_RootContainer) as Grid;
 
@@ -164,16 +165,8 @@ namespace Typedown.Windows
 
         private void UpdateRootContainer()
         {
-            if (GetTemplateChild(PART_RootContainer) is FrameworkElement root)
-                root.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
-            UpdateTopNonClientDragBar();
-        }
-
-        private void UpdateTopNonClientDragBar()
-        {
-            var canResize = WindowState == WindowState.Maximized || ResizeMode == ResizeMode.NoResize;
-            if (GetTemplateChild(PART_TopNonClientArea) is FrameworkElement dragBar && GetTemplateChild(PART_RootContainer) is FrameworkElement root)
-                dragBar.Height = canResize ? 0 : BorderWidth - root.Margin.Top;
+            if (GetTemplateChild(PART_RootContainer) is FrameworkElement ele)
+                ele.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
         }
 
         private void UpdateSystemBackdrop()
@@ -187,7 +180,7 @@ namespace Typedown.Windows
                 AppTheme.Dark => true,
                 _ => !Utilities.Common.GetUseLightTheme()
             };
-            if (Config.IsMicaSupported)
+            if (Universal.Config.IsMicaSupported)
             {
                 compositionTarget.BackgroundColor = Colors.Transparent;
                 this.SetMicaBackdrop(IsMicaEnable);
@@ -204,28 +197,13 @@ namespace Typedown.Windows
         {
             var template = new ControlTemplate(typeof(AppWindow));
             var container = new FrameworkElementFactory(typeof(Grid)) { Name = PART_RootContainer };
-
             var content = new FrameworkElementFactory(typeof(ContentPresenter));
+            var dragBar = new FrameworkElementFactory(typeof(DragBar)) { Name = PART_DragBar };
             content.SetValue(ContentPresenter.ContentProperty, new TemplateBindingExtension(ContentProperty));
+            dragBar.SetValue(HeightProperty, new TemplateBindingExtension(CaptionHeightProperty));
+            dragBar.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
             container.AppendChild(content);
-
-            if (Config.IsMicaSupported)
-            {
-                var dragBar = new FrameworkElementFactory(typeof(NonClientArea));
-                dragBar.SetValue(HeightProperty, new TemplateBindingExtension(CaptionHeightProperty));
-                dragBar.SetValue(WidthProperty, 46 * 3d);
-                dragBar.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
-                dragBar.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Right);
-                container.AppendChild(dragBar);
-            }
-
-            {
-                var dragBar = new FrameworkElementFactory(typeof(NonClientArea)) { Name = PART_TopNonClientArea };
-                dragBar.SetValue(MarginProperty, new Thickness(0, 0, 46 * 3, 0));
-                dragBar.SetValue(VerticalAlignmentProperty, VerticalAlignment.Top);
-                container.AppendChild(dragBar);
-            }
-
+            container.AppendChild(dragBar);
             template.VisualTree = container;
             return template;
         }
