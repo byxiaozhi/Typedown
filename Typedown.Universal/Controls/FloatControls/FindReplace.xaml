@@ -87,7 +87,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Uid="TextBoxSearch" x:Name="TextBoxSearch" KeyDown="OnTextBoxSearchKeyDown"/>
+                    <TextBox x:Uid="TextBoxSearch" x:Name="TextBoxSearch" KeyDown="OnTextBoxSearchKeyDown" Text="{x:Bind ViewModel.EditorViewModel.SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <Button Grid.Column="1" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.EditorViewModel.FindCommand}" CommandParameter="next">
                         <FontIcon FontSize="14" Glyph="&#xE74B;"/>
                     </Button>

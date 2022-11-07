@@ -57,7 +57,7 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
             var focused = PInvoke.GetForegroundWindow();
             if (focused != ViewModel.MainWindow)
                 return false;
-            TriggerMenuFlyoutItem(item);
+            _ = Dispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => TriggerMenuFlyoutItem(item));
             return true;
         }
 
@@ -67,7 +67,7 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
             var focused = FocusManager.GetFocusedElement(XamlRoot);
             if (focused != editor)
                 return false;
-            TriggerMenuFlyoutItem(item);
+            _ = Dispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => TriggerMenuFlyoutItem(item));
             return true;
         }
 
