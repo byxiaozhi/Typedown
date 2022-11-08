@@ -221,7 +221,8 @@ class ClickEvent {
       contentState.clickHandler(event)
     }
 
-    eventCenter.attachDOMEvent(container, 'click', handler)
+    eventCenter.attachDOMEvent(window, 'mouseup', handler)
+    // eventCenter.attachDOMEvent(container, 'click', handler)
     eventCenter.attachDOMEvent(container, 'contextmenu', handler)
   }
 }
