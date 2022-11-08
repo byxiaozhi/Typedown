@@ -14,7 +14,7 @@
     d:DesignWidth="400">
     <Page.Resources>
         <Thickness x:Key="TreeViewItemPresenterPadding">0</Thickness>
-        
+
         <SolidColorBrush x:Key="FocusStrokeColorOuterBrush" Color="{ThemeResource FocusStrokeColorOuter}"/>
         <SolidColorBrush x:Key="NormalStrokeColorOuterBrush" Color="Transparent"/>
 
@@ -66,7 +66,9 @@
         <DataTemplate x:Key="FolderTemplate" x:DataType="models:ExplorerItem">
             <muxc:TreeViewItem ItemsSource="{x:Bind Children}" IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}" 
                                ContextFlyout="{StaticResource FolderContextFlyout}" BorderThickness="1" Margin="-1" 
-                               Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded">
+                               Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded"
+                               CanDrag="True" DragStarting="OnItemDragStarting" DragOver="OnItemDragOver" 
+                               Background="Transparent" AllowDrop="True" Drop="OnFolderItemDrop">
                 <Grid ColumnSpacing="8" Height="32">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -81,7 +83,9 @@
 
         <DataTemplate x:Key="FileTemplate" x:DataType="models:ExplorerItem">
             <muxc:TreeViewItem ContextFlyout="{StaticResource FileContextFlyout}" BorderThickness="1" Margin="-1" 
-                               Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded">
+                               Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded"
+                               CanDrag="True" DragStarting="OnItemDragStarting" DragOver="OnItemDragOver" 
+                               Background="Transparent" AllowDrop="True" Drop="OnFolderItemDrop">
                 <Grid ColumnSpacing="8" Height="32">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -103,6 +107,8 @@
     <Grid>
         <muxc:TreeView 
             x:Name="TreeView"
+            CanReorderItems="False"
+            CanDragItems="False"
             DataContext="{x:Bind WorkFolderExplorerItem, Mode=OneWay}"
             ItemsSource="{x:Bind WorkFolderExplorerItem.Children, Mode=OneWay}" 
             ItemTemplateSelector="{StaticResource ExplorerItemTemplateSelector}" 

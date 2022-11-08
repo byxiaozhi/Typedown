@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -11,6 +12,8 @@ using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -87,6 +90,11 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
         private ExplorerItem GetExplorerItemFromMenuFlyoutItem(object menuFlyoutItem)
         {
             return (menuFlyoutItem as MenuFlyoutItem).DataContext as ExplorerItem;
+        }
+
+        private ExplorerItem GetExplorerItemFromTreeViewItem(object menuFlyoutItem)
+        {
+            return (menuFlyoutItem as muxc.TreeViewItem).DataContext as ExplorerItem;
         }
 
         private async void OnNewFileClick(object sender, RoutedEventArgs e)
@@ -298,6 +306,45 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
             ViewModel.FileViewModel.NewWindowCommand.Execute(item.FullPath);
+        }
+
+        private async void OnItemDragStarting(UIElement sender, DragStartingEventArgs args)
+        {
+            var item = GetExplorerItemFromTreeViewItem(sender);
+            if (item.Type == ExplorerItem.ExplorerItemType.File)
+            {
+                var file = await StorageFile.GetFileFromPathAsync(item.FullPath);
+                args.Data.SetStorageItems(new List<IStorageItem>() { file });
+            }
+            if (item.Type == ExplorerItem.ExplorerItemType.Folder)
+            {
+                var folder = await StorageFolder.GetFolderFromPathAsync(item.FullPath);
+                args.Data.SetStorageItems(new List<IStorageItem>() { folder });
+            }
+        }
+
+        private void OnItemDragOver(object sender, DragEventArgs e)
+        {
+            var target = GetExplorerItemFromTreeViewItem(sender);
+            if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
+                target.Type == ExplorerItem.ExplorerItemType.Folder)
+            {
+                e.AcceptedOperation = DataPackageOperation.Move;
+            }
+        }
+
+        private async void OnFolderItemDrop(object sender, DragEventArgs e)
+        {
+            var target = GetExplorerItemFromTreeViewItem(sender);
+            if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
+                target.Type == ExplorerItem.ExplorerItemType.Folder)
+            {
+                var items = await e.DataView.GetStorageItemsAsync();
+                e.AcceptedOperation = DataPackageOperation.Move;
+                var collection = new StringCollection();
+                items.ToList().ForEach(x => collection.Add(x.Path));
+                FileOperation.Move(collection, target.FullPath);
+            }
         }
     }
 
