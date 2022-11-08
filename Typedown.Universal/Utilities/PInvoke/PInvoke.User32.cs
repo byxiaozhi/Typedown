@@ -811,6 +811,10 @@ namespace Typedown.Universal.Utilities
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool EnableMenuItem(nint hMenu, uint uIDEnableItem, uint uEnable);
 
+        [DllImport("user32.dll", ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool SetMenuDefaultItem(nint hMenu, uint uItem, uint fByPos);
+
         [DllImport("user32.dll", EntryPoint = "LoadCursorW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern nint LoadCursor(nint hInstance, int lpCursorName);
 

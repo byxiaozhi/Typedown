@@ -79,6 +79,7 @@ namespace Typedown.Windows
             PInvoke.EnableMenuItem(hMenu, 0xF010, toEnable(WindowState == WindowState.Normal)); // SC_MOVE
             PInvoke.EnableMenuItem(hMenu, 0xF000, toEnable(WindowState == WindowState.Normal && canResize));// SC_SIZE
             PInvoke.EnableMenuItem(hMenu, 0xF020, toEnable(ResizeMode != ResizeMode.NoResize)); // SC_MINIMIZE
+            PInvoke.SetMenuDefaultItem(hMenu, WindowState == WindowState.Maximized ? 0u : 4u, 1);
             var retvalue = PInvoke.TrackPopupMenu(hMenu, 0x0100, (int)screenPos.X, (int)screenPos.Y, 0, Handle, IntPtr.Zero);
             PInvoke.PostMessage(Handle, (uint)PInvoke.WindowMessage.WM_SYSCOMMAND, retvalue, IntPtr.Zero);
         }
