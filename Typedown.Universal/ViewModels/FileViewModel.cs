@@ -285,7 +285,7 @@ namespace Typedown.Universal.ViewModels
         {
             var filePicker = new FileSavePicker();
             filePicker.SetOwnerWindow(AppViewModel.MainWindow);
-            filePicker.FileTypeChoices.Add("Markdown Files", FileExtension.Markdown.ToList());
+            filePicker.FileTypeChoices.Add("Markdown Files", FileTypeHelper.Markdown.ToList());
             filePicker.SuggestedFileName = FileName ?? "untitled";
             var file = await filePicker.PickSaveFileAsync();
             if (file != null)

@@ -36,7 +36,7 @@ namespace Typedown.Universal.Utilities
         {
             var folderPicker = new FolderPicker();
             folderPicker.SetOwnerWindow(window);
-            FileExtension.Markdown.ToList().ForEach(folderPicker.FileTypeFilter.Add);
+            FileTypeHelper.Markdown.ToList().ForEach(folderPicker.FileTypeFilter.Add);
             var folder = await folderPicker.PickSingleFolderAsync();
             return folder?.Path;
         }
@@ -44,7 +44,7 @@ namespace Typedown.Universal.Utilities
         public static async Task<string> PickMarkdownFileAsync(this nint window)
         {
             var filePicker = new FileOpenPicker();
-            FileExtension.Markdown.ToList().ForEach(filePicker.FileTypeFilter.Add);
+            FileTypeHelper.Markdown.ToList().ForEach(filePicker.FileTypeFilter.Add);
             filePicker.SetOwnerWindow(window);
             var file = await filePicker.PickSingleFileAsync();
             return file?.Path;
@@ -53,7 +53,7 @@ namespace Typedown.Universal.Utilities
         public static async Task<string> PickImageFileAsync(this nint window)
         {
             var filePicker = new FileOpenPicker();
-            FileExtension.Image.ToList().ForEach(filePicker.FileTypeFilter.Add);
+            FileTypeHelper.Image.ToList().ForEach(filePicker.FileTypeFilter.Add);
             filePicker.SetOwnerWindow(window);
             var file = await filePicker.PickSingleFileAsync();
             return file?.Path;

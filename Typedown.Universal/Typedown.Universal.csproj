@@ -269,7 +269,7 @@
     <Compile Include="Utilities\Command.cs" />
     <Compile Include="Utilities\CommandLine.cs" />
     <Compile Include="Utilities\Common.cs" />
-    <Compile Include="Utilities\FileExtension.cs" />
+    <Compile Include="Utilities\FileTypeHelper.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
     <Compile Include="Utilities\Localize.cs" />

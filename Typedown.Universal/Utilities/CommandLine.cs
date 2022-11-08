@@ -10,7 +10,7 @@ namespace Typedown.Universal.Utilities
     {
         public static string GetOpenFilePath(string[] commandLineArgs)
         {
-            return commandLineArgs?.Where(x => FileExtension.Markdown.Where(x.EndsWith).Any()).FirstOrDefault();
+            return commandLineArgs?.Where(FileTypeHelper.IsMarkdownFile).FirstOrDefault();
         }
     }
 }

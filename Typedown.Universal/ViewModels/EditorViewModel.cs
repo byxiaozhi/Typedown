@@ -256,7 +256,7 @@ namespace Typedown.Universal.ViewModels
             var files = Clipboard.GetFileDropList();
             if (files != null && files.Count == 1)
             {
-                if (FileExtension.Image.Where(files[0].ToLower().EndsWith).Any())
+                if (FileTypeHelper.Image.Where(files[0].ToLower().EndsWith).Any())
                 {
                     MarkdownEditor?.PostMessage("InsertImage", new { src = files[0] });
                 }

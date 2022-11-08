@@ -74,7 +74,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <ContentPresenter x:Name="MarkdownEditorPresenter">
+        <ContentPresenter x:Name="MarkdownEditorPresenter" AllowDrop="True" DragEnter="OnDragEnter" Drop="OnDrop">
             <ContentPresenter.ContextFlyout>
                 <MenuFlyout x:Name="Flyout" OverlayInputPassThroughElement="{Binding XamlRoot.Content}" AreOpenCloseAnimationsEnabled="{Binding SettingsViewModel.AnimationEnable}">
                     <MenuFlyoutItem x:Name="HeaderButtons">

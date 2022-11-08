@@ -274,7 +274,7 @@ namespace Typedown.Universal.Models
                 return false;
             if (attr.HasFlag(FileAttributes.Directory))
                 return true;
-            return FileExtension.Markdown.Contains(Path.GetExtension(name));
+            return FileTypeHelper.IsMarkdownFile(name);
         }
 
         public class DefaultComparer : Comparer<ExplorerItem>

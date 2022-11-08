@@ -28,7 +28,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="TextBoxSrc"/>
-                <controls:PathPickerButton Path="{x:Bind TextBoxSrc.Text, Mode=TwoWay}" x:Name="ImagePickerButton" MinWidth="80" Grid.Column="1" FileTypeFilter="{x:Bind utils:FileExtension.Image}" Content="浏览"/>
+                <controls:PathPickerButton Path="{x:Bind TextBoxSrc.Text, Mode=TwoWay}" x:Name="ImagePickerButton" MinWidth="80" Grid.Column="1" FileTypeFilter="{x:Bind utils:FileTypeHelper.Image}" Content="浏览"/>
             </Grid>
             <Grid Margin="0,8,0,0" RowSpacing="8" ColumnSpacing="8">
                 <Grid.RowDefinitions>
