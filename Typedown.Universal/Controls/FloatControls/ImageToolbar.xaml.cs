@@ -67,6 +67,7 @@ namespace Typedown.Universal.Controls.FloatControls
         private void DeleteClick(object sender, RoutedEventArgs e)
         {
             PostEditTableMessage(new { type = "delete" });
+            Hide();
         }
 
         private void PostEditTableMessage(object args)

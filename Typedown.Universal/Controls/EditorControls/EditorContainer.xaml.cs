@@ -82,10 +82,10 @@ namespace Typedown.Universal.Controls
                             e.AcceptedOperation = DataPackageOperation.Link;
                             e.DragUIOverride.Caption = "打开";
                             break;
-                        //case FileTypeHelper.FileType.Image:
-                        //    e.AcceptedOperation = DataPackageOperation.Link;
-                        //    e.DragUIOverride.Caption = "插入";
-                        //    break;
+                        case FileTypeHelper.FileType.Image:
+                            e.AcceptedOperation = DataPackageOperation.Link;
+                            e.DragUIOverride.Caption = "插入";
+                            break;
                     }
                 }
 
@@ -107,10 +107,10 @@ namespace Typedown.Universal.Controls
                 {
                     ViewModel.FileViewModel.OpenFileCommand.Execute(item.Path);
                 }
-                //if (FileTypeHelper.IsImageFile(item.Path))
-                //{
-
-                //}
+                if (FileTypeHelper.IsImageFile(item.Path))
+                {
+                    ViewModel.MarkdownEditor.PostMessage("InsertImage", new { src = item.Path });
+                }
             }
         }
     }
