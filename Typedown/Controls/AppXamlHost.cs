@@ -15,12 +15,11 @@ namespace Typedown.Controls
     {
         private static readonly ConditionalWeakTable<UIElement, AppXamlHost> instanceTable = new();
 
-        public UIElement Content { get; }
+        public UIElement Content { get; set; }
 
-        public AppXamlHost(UIElement content)
+        public AppXamlHost()
         {
             InitialTypeName = "Typedown.Controls.AppXamlHostRootLayout";
-            Content = content;
         }
 
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
@@ -37,7 +36,11 @@ namespace Typedown.Controls
             {
                 instanceTable.Add(element, this);
                 if (element is AppXamlHostRootLayout layout)
-                    layout.Children.Add(Content);
+                {
+                    var presenter = new ContentPresenter();
+                    presenter.SetBinding(ContentPresenter.ContentProperty, new Binding() { Source = this, Path = new(nameof(Content)) });
+                    layout.Children.Add(presenter);
+                }
             }
         }
 

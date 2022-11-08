@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
@@ -45,11 +46,6 @@ namespace Typedown.Windows
             MinWidth = 480;
             MinHeight = 300;
             Loaded += OnLoaded;
-            Closed += OnClosed;
-            Closing += OnClosing;
-            Activated += OnActivated;
-            Deactivated += OnDeactivated;
-            LocationChanged += OnLocationChanged;
             this.RestoreWindowPlacement();
         }
 
@@ -71,7 +67,7 @@ namespace Typedown.Windows
             ServiceScope = Injection.ServiceProvider.CreateScope();
             DataContext = AppViewModel = ServiceProvider.GetService<AppViewModel>();
             RootControl = new RootControl();
-            AppXamlHost = new AppXamlHost(RootControl);
+            AppXamlHost = new AppXamlHost() { Content = RootControl };
             RootControl.Loaded += OnRootControlLoaded;
             RootLayout ??= new();
             Content ??= RootLayout;
@@ -165,14 +161,28 @@ namespace Typedown.Windows
 
         private bool isCloseable = false;
 
-        private async void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private bool isClosing = false;
+
+        protected async override void OnClosing(CancelEventArgs e)
         {
-            if (!isCloseable)
+            base.OnClosing(e);
+            try
             {
-                e.Cancel = true;
-                await AppViewModel.FileViewModel.AutoSaveFile();
-                if (AppViewModel.EditorViewModel.Saved || await AppViewModel.FileViewModel.AskToSave())
-                    ForceClose();
+                if (!isCloseable)
+                {
+                    e.Cancel = true;
+                    if (!isClosing)
+                    {
+                        isClosing = true;
+                        await AppViewModel.FileViewModel.AutoSaveFile();
+                        if (AppViewModel.EditorViewModel.Saved || await AppViewModel.FileViewModel.AskToSave())
+                            ForceClose();
+                    }
+                }
+            }
+            finally
+            {
+                isClosing = false;
             }
         }
 
@@ -184,29 +194,33 @@ namespace Typedown.Windows
             Close();
         }
 
-        private void OnClosed(object sender, EventArgs e)
+        protected override void OnClosed(EventArgs e)
         {
+            base.OnClosed(e);
             var keepRun = AppViewModel.SettingsViewModel.KeepRun;
             ServiceScope?.Dispose();
             if (!AppViewModel.GetInstances().Any() && !keepRun)
                 Application.Current.Shutdown();
-            SetMaxWorkingSetSize();
+            Dispatcher.InvokeAsync(SetMaxWorkingSetSize, DispatcherPriority.SystemIdle);
         }
 
-        private void OnActivated(object sender, EventArgs e)
+        protected override void OnActivated(EventArgs e)
         {
+            base.OnActivated(e);
             KeyboardAccelerator?.Start();
         }
 
-        private void OnDeactivated(object sender, EventArgs e)
+        protected override void OnDeactivated(EventArgs e)
         {
+            base.OnDeactivated(e);
             KeyboardAccelerator?.Stop();
         }
 
         private bool savingWindowPlacement = false;
 
-        private async void OnLocationChanged(object sender, EventArgs e)
+        protected async override void OnLocationChanged(EventArgs e)
         {
+            base.OnLocationChanged(e);
             if (!savingWindowPlacement)
             {
                 savingWindowPlacement = true;
@@ -214,6 +228,7 @@ namespace Typedown.Windows
                 if (IsLoaded) SaveWindowPlacementWithOffset();
                 savingWindowPlacement = false;
             }
+
         }
 
         private void SaveWindowPlacementWithOffset()

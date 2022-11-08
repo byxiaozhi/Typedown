@@ -9,7 +9,6 @@ using Typedown.Universal.Utilities;
 using Typedown.Utilities;
 using Typedown.Controls;
 using Typedown.Universal.Enums;
-using System.Drawing.Printing;
 
 namespace Typedown.Windows
 {
