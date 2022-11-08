@@ -18,7 +18,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using static Typedown.Universal.ViewModels.FloatViewModel;
 
 namespace Typedown.Universal.Controls.FloatControls
 {
@@ -50,18 +49,18 @@ namespace Typedown.Universal.Controls.FloatControls
             TextBoxSearch.Focus(FocusState.Pointer);
             TextBoxSearch.SelectionStart = 0;
             TextBoxSearch.SelectionLength = TextBoxSearch.Text.Length;
-            disposables.Add(Float.WhenPropertyChanged(nameof(Float.FindReplaceDialogOpen)).Cast<FindReplaceDialogState>().Subscribe(s => SearchOpenChanged(s, true)));
+            disposables.Add(Float.WhenPropertyChanged(nameof(Float.FindReplaceDialogOpen)).Cast<FloatViewModel.FindReplaceDialogState>().Subscribe(s => SearchOpenChanged(s, true)));
             SearchOpenChanged(Float.FindReplaceDialogOpen, false);
         }
 
-        private void SearchOpenChanged(FindReplaceDialogState state, bool useTransitions)
+        private void SearchOpenChanged(FloatViewModel.FindReplaceDialogState state, bool useTransitions)
         {
             switch (state)
             {
-                case FindReplaceDialogState.Search:
+                case FloatViewModel.FindReplaceDialogState.Search:
                     VisualStateManager.GoToState(this, "FindMode", useTransitions && Settings.AnimationEnable);
                     break;
-                case FindReplaceDialogState.Replace:
+                case FloatViewModel.FindReplaceDialogState.Replace:
                     VisualStateManager.GoToState(this, "ReplaceMode", useTransitions && Settings.AnimationEnable);
                     break;
             }
@@ -123,7 +122,7 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private void OnSwitchButtonClick(object sender, RoutedEventArgs e)
         {
-            Float.FindReplaceDialogOpen = Float.FindReplaceDialogOpen == FindReplaceDialogState.Search ? FindReplaceDialogState.Replace : FindReplaceDialogState.Search;
+            Float.FindReplaceDialogOpen = Float.FindReplaceDialogOpen == FloatViewModel.FindReplaceDialogState.Search ? FloatViewModel.FindReplaceDialogState.Replace : FloatViewModel.FindReplaceDialogState.Search;
         }
     }
 }

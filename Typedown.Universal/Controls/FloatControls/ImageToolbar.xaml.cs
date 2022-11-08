@@ -36,7 +36,7 @@ namespace Typedown.Universal.Controls.FloatControls
         {
             AreOpenCloseAnimationsEnabled = ViewModel.SettingsViewModel.AnimationEnable;
             OverlayInputPassThroughElement = ViewModel.XamlRoot.Content;
-            ShowAt(MarkdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, rect.Height)));
+            ShowAt(MarkdownEditor.GetDummyRectangle(rect));
         }
 
         private void EditClick(object sender, RoutedEventArgs e)

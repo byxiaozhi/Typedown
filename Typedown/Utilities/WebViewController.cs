@@ -526,8 +526,15 @@ namespace Typedown.Utilities
 
         public void MoveFocusIntoCoreWebView(CoreWebView2MoveFocusReason reason)
         {
-            CoreWebView2Controller.MoveFocus(reason);
-            webHasFocus = true;
+            try
+            {
+                CoreWebView2Controller.MoveFocus(reason);
+                webHasFocus = true;
+            }
+            catch (Exception)
+            {
+                webHasFocus = false;
+            }
         }
 
         private void OnCoreWebView2MoveFocusRequested(object sender, CoreWebView2MoveFocusRequestedEventArgs e)
