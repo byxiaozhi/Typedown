@@ -84,10 +84,10 @@ namespace Typedown.Universal.Utilities
             public string lpszProgressTitle;
         }
 
-        [DllImport("shell32.dll", EntryPoint = "SHFileOperation", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true, ThrowOnUnmappableChar = true)]
+        [DllImport("shell32.dll", EntryPoint = "SHFileOperationW", ExactSpelling = true, CharSet = CharSet.Unicode)]
         private static extern int SHFileOperation32(ref SHFILEOPSTRUCT32 lpFileOp);
 
-        [DllImport("shell32.dll", EntryPoint = "SHFileOperation", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true, ThrowOnUnmappableChar = true)]
+        [DllImport("shell32.dll", EntryPoint = "SHFileOperationW", ExactSpelling = true, CharSet = CharSet.Unicode)]
         private static extern int SHFileOperation64(ref SHFILEOPSTRUCT64 lpFileOp);
 
         public static int SHFileOperation(ref SHFILEOPSTRUCT lpFileOp)
