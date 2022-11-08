@@ -6,9 +6,9 @@ import { cumputeCheckboxStatus } from '../utils/cumputeCheckBoxStatus'
 
 const clickCtrl = ContentState => {
   ContentState.prototype.clickHandler = function (event) {
-    const { eventCenter } = this.muya
+    const { eventCenter, container } = this.muya
     const { target } = event
-    if (isMuyaEditorElement(target)) {
+    if (isMuyaEditorElement(target) || target === container) {
       const lastBlock = this.getLastBlock()
       const archor = this.findOutMostBlock(lastBlock)
       const archorParagraph = document.querySelector(`#${archor.key}`)
@@ -63,7 +63,7 @@ const clickCtrl = ContentState => {
         const frontIcon = target.closest('.ag-front-icon')
         const rect = frontIcon.getBoundingClientRect()
         const reference = {
-          getBoundingClientRect () {
+          getBoundingClientRect() {
             return rect
           },
           clientWidth: rect.width,
