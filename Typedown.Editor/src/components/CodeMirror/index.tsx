@@ -1,4 +1,3 @@
-import Scrollbars from "components/Scrollbar";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import transport from "services/transport";
 import { matchString } from 'services/common'
@@ -26,18 +25,16 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     const [marginTop, setMarginTop] = useState(0);
     const matchsRef = useRef<any[]>([]);
     const matchIndexRef = useRef(0);
-    const scrollbarRef = useRef<any>();
     const markdownRef = useRef('');
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
 
     const relativeScroll = useCallback((delta: number) => {
-        const scrollbar = scrollbarRef.current
-        scrollbar.scrollTop(scrollbar.getScrollTop() + delta)
+        window.scrollBy(0, delta)
     }, [])
 
     const scrollToElement = useCallback((selector) => {
-        if (editor == null || scrollbarRef.current == null) {
+        if (editor == null) {
             return;
         }
         const anchor = document.querySelector(selector)
@@ -50,9 +47,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     const scrollToElementIfInvisible = useCallback((selector) => {
         const anchor = document.querySelector(selector)
         if (anchor) {
-            const { container } = scrollbarRef.current
             const { y } = anchor.getBoundingClientRect()
-            if (y < 0 || y > container.clientHeight) {
+            if (y < 0 || y > window.innerHeight) {
                 scrollToElement(selector)
             }
         }
@@ -185,7 +181,7 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             editor.setValue(markdownRef.current)
             if (anchor && focus)
                 editor.setSelection(anchor, focus, { scroll: true })
-            scrollbarRef.current.scrollTop(props.scrollTopRef.current)
+            window.scrollTo(window.scrollX, props.scrollTopRef.current)
             if (searchArgRef.current?.value != "" && searchArgRef.current?.opt?.selection) {
                 const { value, opt } = searchArgRef.current
                 const selection = opt.selection.head ? opt.selection : undefined
@@ -203,7 +199,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     }, [editor, props.searchArg, search])
 
     useEffect(() => {
-        cursorRef.current = props.cursor
+        const { anchor, focus: head } = props.cursor ?? {}
+        cursorRef.current = { anchor, head }
     }, [editor, props.cursor])
 
     const handleCodeMirrorState = useCallback((value: string) => {
@@ -261,35 +258,39 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         editor?.focus()
     }, [editor])
 
+    useEffect(() => {
+        const onscroll = () => {
+            props.scrollTopRef.current = window.scrollY
+        }
+        addEventListener('scroll', onscroll);
+        return () => removeEventListener('scroll', onscroll)
+    }, [props.scrollTopRef])
+
     return (
-        <Scrollbars
-            scrollbarRef={(ref: any) => scrollbarRef.current = ref}
-            onScrollStop={() => props.scrollTopRef.current = scrollbarRef.current.getScrollTop()}>
-            <div
-                className="cm-s-one-dark"
-                style={{
-                    maxWidth: props.options?.editorAreaWidth,
-                    margin: '24px auto',
-                    boxSizing: 'border-box',
-                    paddingTop: marginTop,
-                    paddingLeft: 14,
-                    paddingRight: 14,
-                    fontSize: props.options?.fontSize,
-                    lineHeight: props.options?.lineHeight
-                }}>
-                <CodeMirror
-                    ref={(ref: any) => ref && setEditor(ref.editor)}
-                    options={{
-                        theme: 'one-dark',
-                        mode: 'markdown',
-                        lineNumbers: true,
-                        lineWrapping: true
-                    }}
-                    onChange={handleCodeMirrorContent}
-                    onSelection={handleCodeMirrorSelection}
-                />
-            </div>
-        </Scrollbars>
+        <div
+            className="cm-s-one-dark"
+            style={{
+                maxWidth: props.options?.editorAreaWidth,
+                margin: '24px auto',
+                boxSizing: 'border-box',
+                paddingTop: marginTop,
+                paddingLeft: 14,
+                paddingRight: 14,
+                fontSize: props.options?.fontSize,
+                lineHeight: props.options?.lineHeight
+            }}>
+            <CodeMirror
+                ref={(ref: any) => ref && setEditor(ref.editor)}
+                options={{
+                    theme: 'one-dark',
+                    mode: 'markdown',
+                    lineNumbers: true,
+                    lineWrapping: true
+                }}
+                onChange={handleCodeMirrorContent}
+                onSelection={handleCodeMirrorSelection}
+            />
+        </div>
     )
 }
 

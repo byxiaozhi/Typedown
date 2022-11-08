@@ -30,7 +30,3 @@
     --scrollbarThumb: #9f9f9f;
     --scrollbarTrack: #2c2c2c
 }
-
-#root {
-    opacity: 1 !important;
-}

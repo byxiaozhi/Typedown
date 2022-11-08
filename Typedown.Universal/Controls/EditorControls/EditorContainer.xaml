@@ -119,6 +119,24 @@
                 </MenuFlyout>
             </ContentPresenter.ContextFlyout>
         </ContentPresenter>
+        <ScrollBar 
+            x:Name="HorizontalScrollBar" 
+            Orientation="Horizontal" 
+            VerticalAlignment="Bottom" 
+            IndicatorMode="MouseIndicator" 
+            Scroll="OnScroll" 
+            Value="{x:Bind ScrollState.ScrollX, Mode=OneWay}"
+            ViewportSize="{x:Bind ScrollState.ViewportWidth, Mode=OneWay}"
+            Maximum="{x:Bind ScrollState.MaximumX, Mode=OneWay}"/>
+        <ScrollBar 
+            x:Name="VerticalScrollBar" 
+            Orientation="Vertical" 
+            HorizontalAlignment="Right" 
+            IndicatorMode="MouseIndicator" 
+            Scroll="OnScroll" 
+            Value="{x:Bind ScrollState.ScrollY, Mode=OneWay}"
+            ViewportSize="{x:Bind ScrollState.ViewportHeight, Mode=OneWay}"
+            Maximum="{x:Bind ScrollState.MaximumY, Mode=OneWay}"/>
         <float:FindReplace 
             x:Name="FindReplaceDialog" 
             x:Load="{x:Bind IsFindReplaceLoad, Mode=OneWay}"

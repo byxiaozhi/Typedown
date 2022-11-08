@@ -1,20 +1,9 @@
 body {
     margin: 0;
-    height: 100vh;
-    overflow: hidden;
+    min-width: 400px;
 }
 
-#root {
-    height: 100%;
-}
-
-.root-scrollbar>div:first-child {
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    margin-bottom: 0 !important;
-    margin-right: 0 !important;
+:root::-webkit-scrollbar {
+    width: 0;
+    display: none;
 }

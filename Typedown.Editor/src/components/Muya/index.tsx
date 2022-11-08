@@ -1,4 +1,3 @@
-import Scrollbars from "components/Scrollbar";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import transport from "services/transport";
 import Muya from 'components/Muya/lib'
@@ -39,18 +38,16 @@ const STANDAR_Y = 320
 const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     const [editor, setEditor] = useState<Muya>();
     const [marginTop, setMarginTop] = useState(0);
-    const scrollbarRef = useRef<any>();
     const markdownRef = useRef('');
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
 
     const relativeScroll = useCallback((delta: number) => {
-        const scrollbar = scrollbarRef.current
-        scrollbar.scrollTop(scrollbar.getScrollTop() + delta)
+        window.scrollBy(0, delta)
     }, [])
 
     const scrollToElement = useCallback((selector) => {
-        if (editor == null || scrollbarRef.current == null) {
+        if (editor == null) {
             return;
         }
         const anchor = document.querySelector(selector)
@@ -63,9 +60,8 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     const scrollToElementIfInvisible = useCallback((selector) => {
         const anchor = document.querySelector(selector)
         if (anchor) {
-            const { container } = scrollbarRef.current
             const { y } = anchor.getBoundingClientRect()
-            if (y < 0 || y > container.clientHeight) {
+            if (y < 0 || y > window.innerHeight) {
                 scrollToElement(selector)
             }
         }
@@ -76,9 +72,8 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     }, [editor, relativeScroll])
 
     const scrollToCursorIfInvisible = useCallback(() => {
-        const { container } = scrollbarRef.current
         const y = editor?.getSelection().cursorCoords.y;
-        if (y < 0 || y > container.clientHeight) {
+        if (y < 0 || y > window.innerHeight) {
             relativeScroll(y - STANDAR_Y)
         }
     }, [editor, relativeScroll])
@@ -108,10 +103,10 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
             markdownRef.current = props.markdown
             editor.setMarkdown(props.markdown, cursorRef.current)
             const scrollTop = props.scrollTopRef.current;
-            scrollbarRef.current.scrollTop(scrollTop)
+            window.scrollTo(window.scrollX, scrollTop)
             scrollToCursorIfInvisible()
             setTimeout(() => {
-                scrollbarRef.current.scrollTop(scrollTop)
+                window.scrollTo(window.scrollX, scrollTop)
                 scrollToCursorIfInvisible()
                 search(searchArgRef.current)
             }, 100);
@@ -231,9 +226,8 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         const selectionText = window.getSelection()?.toString();
         transport.postMessage('SelectionChange', { selection, menuState, selectionText });
         const { y } = selection.cursorCoords
-        const { container } = scrollbarRef.current
-        props.options?.typewriter && relativeScroll(y - container.clientHeight / 2 + 136);
-        container.clientHeight - y < 100 && relativeScroll(y - container.clientHeight + 100);
+        props.options?.typewriter && relativeScroll(y - window.innerHeight / 2 + 136);
+        window.innerHeight - y < 100 && relativeScroll(y - window.innerHeight + 100);
     }), [editor, props.options?.typewriter, relativeScroll])
 
     useEffect(() => editor?.on('selectionFormats', (formats: any) => {
@@ -271,18 +265,21 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         editor?.focus()
     }, [editor])
 
+    useEffect(() => {
+        const onscroll = () => {
+            props.scrollTopRef.current = window.scrollY
+        }
+        addEventListener('scroll', onscroll);
+        return () => removeEventListener('scroll', onscroll)
+    }, [props.scrollTopRef])
+
     return (
-        <Scrollbars
-            scrollbarRef={(ref: any) => scrollbarRef.current = ref}
-            onScrollStop={() => props.scrollTopRef.current = scrollbarRef.current.getScrollTop()}>
-            <div
-                style={{
-                    fontSize: props.options?.fontSize,
-                    lineHeight: props.options?.lineHeight
-                }}>
-                <div id="editor" />
-            </div>
-        </Scrollbars>
+        <div style={{
+            fontSize: props.options?.fontSize,
+            lineHeight: props.options?.lineHeight
+        }}>
+            <div id="editor" />
+        </div>
     )
 
 }

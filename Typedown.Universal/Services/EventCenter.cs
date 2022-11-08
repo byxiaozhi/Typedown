@@ -18,9 +18,12 @@ namespace Typedown.Universal.Services
                 handlersDictionary[name].Add(handler);
                 return () =>
                 {
-                    handlersDictionary[name].Remove(handler);
-                    if (handlersDictionary[name].Count == 0)
-                        handlersDictionary.Remove(name);
+                    if (handlersDictionary.TryGetValue(name, out var handlers))
+                    {
+                        handlers.Remove(handler);
+                        if (handlers.Count == 0)
+                            handlersDictionary.Remove(name);
+                    }
                 };
             });
         }

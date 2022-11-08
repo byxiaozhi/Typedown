@@ -42,5 +42,3 @@ function onThemeChanged({ theme, color, background }: any) {
     themeColorAlphas.forEach(e => document.body.style.setProperty(`--themeColor${e}`, `rgba(${r}, ${g}, ${b}, ${a * (e / 100)})`))
     document.documentElement.style.background = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`
 }
-
-export { onThemeChanged }

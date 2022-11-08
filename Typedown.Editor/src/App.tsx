@@ -1,6 +1,7 @@
 import React from 'react';
 import Editor from 'components/Editor';
 import 'services/theme'
+import 'services/scrollbar'
 import 'services/localization'
 import './App.scss';
 

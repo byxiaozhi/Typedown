@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Windows.ApplicationModel.DataTransfer;
@@ -15,11 +18,14 @@ namespace Typedown.Universal.Controls
 {
     public sealed partial class EditorContainer : UserControl
     {
-        private static DependencyProperty IsFindReplaceLoadProperty = DependencyProperty.Register(nameof(IsFindReplaceLoad), typeof(bool), typeof(EditorContainer), new(false));
+        private readonly static DependencyProperty IsFindReplaceLoadProperty = DependencyProperty.Register(nameof(IsFindReplaceLoad), typeof(bool), typeof(EditorContainer), new(false));
         private bool IsFindReplaceLoad { get => (bool)GetValue(IsFindReplaceLoadProperty); set => SetValue(IsFindReplaceLoadProperty, value); }
 
-        private static DependencyProperty FindReplaceCenterPointProperty = DependencyProperty.Register(nameof(FindReplaceCenterPoint), typeof(Point), typeof(EditorContainer), new(new Point()));
+        private readonly static DependencyProperty FindReplaceCenterPointProperty = DependencyProperty.Register(nameof(FindReplaceCenterPoint), typeof(Point), typeof(EditorContainer), new(new Point()));
         private Point FindReplaceCenterPoint { get => (Point)GetValue(FindReplaceCenterPointProperty); set => SetValue(FindReplaceCenterPointProperty, value); }
+
+        private readonly static DependencyProperty ScrollStateProperty = DependencyProperty.Register(nameof(ScrollState), typeof(ScrollState), typeof(EditorContainer), new(new ScrollState()));
+        private ScrollState ScrollState { get => (ScrollState)GetValue(ScrollStateProperty); set => SetValue(ScrollStateProperty, value); }
 
         public AppViewModel ViewModel => DataContext as AppViewModel;
         public FloatViewModel Float => ViewModel?.FloatViewModel;
@@ -41,6 +47,8 @@ namespace Typedown.Universal.Controls
             disposables.Add(Float.WhenPropertyChanged(nameof(Float.FindReplaceDialogOpen))
                 .Cast<FloatViewModel.FindReplaceDialogState>()
                 .Subscribe(x => UpdateFindReplaceState(x, true)));
+            disposables.Add(Editor.EventCenter.GetObservable<EditorEventArgs>("OnScroll")
+                .Subscribe(x => ScrollState = x.Args.ToObject<ScrollState>()));
             UpdateFindReplaceState(Float.FindReplaceDialogOpen, false);
         }
 
@@ -59,6 +67,11 @@ namespace Typedown.Universal.Controls
                 _ => FindReplaceCenterPoint.Y
             });
             VisualStateManager.GoToState(this, findReplaceOpen != FloatViewModel.FindReplaceDialogState.None ? "FindReplaceVisible" : "FindReplaceCollapsed", useTransitions && Settings.AnimationEnable);
+        }
+
+        private void OnScroll(object sender, Windows.UI.Xaml.Controls.Primitives.ScrollEventArgs e)
+        {
+            ViewModel.MarkdownEditor.PostMessage("OnScroll", new { ScrollX = HorizontalScrollBar.Value, ScrollY = VerticalScrollBar.Value });
         }
 
         private void OnMenuFlyoutItemPointerReleased(object sender, PointerRoutedEventArgs e)

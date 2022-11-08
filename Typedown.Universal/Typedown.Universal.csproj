@@ -212,6 +212,7 @@
     <Compile Include="Models\RuntimeModels\MenuItemState.cs" />
     <Compile Include="Models\RuntimeModels\MenuState.cs" />
     <Compile Include="Models\RuntimeModels\ParagraphState.cs" />
+    <Compile Include="Models\RuntimeModels\ScrollState.cs" />
     <Compile Include="Models\RuntimeModels\ShortcutKey.cs" />
     <Compile Include="Models\RuntimeModels\TocItem.cs" />
     <Compile Include="Models\RuntimeModels\WindowPlacement.cs" />
