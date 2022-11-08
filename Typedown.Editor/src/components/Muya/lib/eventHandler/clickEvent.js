@@ -4,13 +4,13 @@ import { CLASS_OR_ID } from '../config'
 import selection from '../selection'
 
 class ClickEvent {
-  constructor (muya) {
+  constructor(muya) {
     this.muya = muya
     this.clickBinding()
     this.contextClickBingding()
   }
 
-  contextClickBingding () {
+  contextClickBingding() {
     const { container, eventCenter, contentState } = this.muya
     const handler = event => {
       event.preventDefault()
@@ -59,7 +59,7 @@ class ClickEvent {
     eventCenter.attachDOMEvent(container, 'contextmenu', handler)
   }
 
-  clickBinding () {
+  clickBinding() {
     const { container, eventCenter, contentState } = this.muya
     const handler = event => {
       const { target } = event
@@ -82,7 +82,7 @@ class ClickEvent {
         event.stopPropagation()
         const rect = target.getBoundingClientRect()
         const reference = {
-          getBoundingClientRect () {
+          getBoundingClientRect() {
             return rect
           },
           width: rect.offsetWidth,
@@ -155,13 +155,14 @@ class ClickEvent {
         // Handle show image toolbar
         const rect = imageWrapper.querySelector('.ag-image-container').getBoundingClientRect()
         const reference = {
-          getBoundingClientRect () {
+          getBoundingClientRect() {
             return rect
           },
           width: imageWrapper.offsetWidth,
           height: imageWrapper.offsetHeight
         }
-        if(event.type == 'click') {
+        // if(event.type == 'click') {
+        if (event.type == 'mouseup') {
           eventCenter.dispatch('muya-image-toolbar', {
             reference,
             imageInfo
@@ -174,14 +175,14 @@ class ClickEvent {
       // Handle click imagewrapper when it's empty or image load failed.
       if (
         (imageWrapper &&
-        (
-          imageWrapper.classList.contains('ag-empty-image') ||
-          imageWrapper.classList.contains('ag-image-fail')
-        ))
+          (
+            imageWrapper.classList.contains('ag-empty-image') ||
+            imageWrapper.classList.contains('ag-image-fail')
+          ))
       ) {
         const rect = imageWrapper.getBoundingClientRect()
         const reference = {
-          getBoundingClientRect () {
+          getBoundingClientRect() {
             return rect
           }
         }
@@ -189,7 +190,7 @@ class ClickEvent {
         eventCenter.dispatch('muya-image-selector', {
           reference,
           imageInfo,
-          cb: () => {}
+          cb: () => { }
         })
         event.preventDefault()
         return event.stopPropagation()
@@ -221,17 +222,17 @@ class ClickEvent {
       contentState.clickHandler(event)
     }
 
-    eventCenter.attachDOMEvent(window, 'mouseup', handler)
+    eventCenter.attachDOMEvent(window, 'mouseup', e => e.which == 1 && handler(e))
     // eventCenter.attachDOMEvent(container, 'click', handler)
     eventCenter.attachDOMEvent(container, 'contextmenu', handler)
   }
 }
 
-function getToolItem (target) {
+function getToolItem(target) {
   return target.closest('[data-label]')
 }
 
-function selectionText (node) {
+function selectionText(node) {
   const textLen = node.textContent.length
   operateClassName(node, 'remove', CLASS_OR_ID.AG_HIDE)
   operateClassName(node, 'add', CLASS_OR_ID.AG_GRAY)
