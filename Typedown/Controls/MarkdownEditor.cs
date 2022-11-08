@@ -31,8 +31,6 @@ namespace Typedown.Controls
 {
     public class MarkdownEditor : UserControl, IMarkdownEditor, IDisposable
     {
-        private static readonly string staticHost = Guid.NewGuid().ToString();
-
         public WebViewController WebViewController { get; private set; }
 
         public CoreWebView2 CoreWebView2 => WebViewController?.CoreWebView2;
@@ -107,19 +105,20 @@ namespace Typedown.Controls
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
             CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
             CoreWebView2.WebResourceRequested += OnWebResourceRequested;
-            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
-            CoreWebView2.SetVirtualHostNameToFolderMapping(staticHost, staticsFolder, CoreWebView2HostResourceAccessKind.Allow);
 #if DEBUG
-            CoreWebView2.OpenDevToolsWindow();
+            // CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 
         private void LoadStaticResources()
         {
 # if DEBUG
-            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
+            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
+            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
+            // WebViewController.CoreWebView2.Navigate("http://localhost:3000");
 #else
-            WebViewController.CoreWebView2.Navigate($"http://{staticHost}/index.html");
+            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
+            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
 #endif
         }
 

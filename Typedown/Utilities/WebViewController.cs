@@ -111,6 +111,7 @@ namespace Typedown.Utilities
 
         private void InitializeEventHandler()
         {
+            disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerEntered)).Subscribe(x => OnPointerEntered(x.EventArgs as PointerRoutedEventArgs)));
             disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerMoved)).Subscribe(x => OnPointerMoved(x.EventArgs as PointerRoutedEventArgs)));
             disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerPressed)).Subscribe(x => OnPointerPressed(x.EventArgs as PointerRoutedEventArgs)));
             disposables.Add(Observable.FromEventPattern(Container, nameof(Container.PointerReleased)).Subscribe(x => OnPointerReleased(x.EventArgs as PointerRoutedEventArgs)));
@@ -139,6 +140,11 @@ namespace Typedown.Utilities
         private bool isRightMouseButtonPressed;
         private bool isXButton1Pressed;
         private bool isXButton2Pressed;
+
+        private void OnPointerEntered(PointerRoutedEventArgs args)
+        {
+            OnCursorChanged();
+        }
 
         private void OnPointerMoved(PointerRoutedEventArgs args)
         {
