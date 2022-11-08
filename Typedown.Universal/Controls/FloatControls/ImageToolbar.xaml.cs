@@ -59,7 +59,7 @@ namespace Typedown.Universal.Controls.FloatControls
             PostEditTableMessage(new { type = "center" });
         }
 
-        private void ImageEditRightClick(object sender, RoutedEventArgs e)
+        private void RightClick(object sender, RoutedEventArgs e)
         {
             PostEditTableMessage(new { type = "right" });
         }

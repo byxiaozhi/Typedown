@@ -5,7 +5,7 @@
     xmlns:local="using:Typedown.Universal.Controls.FloatControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    ShowMode="TransientWithDismissOnPointerMoveAway"
+    ShowMode="Transient"
     Placement="TopEdgeAlignedLeft"
     mc:Ignorable="d">
     <Flyout.FlyoutPresenterStyle>
@@ -15,25 +15,25 @@
     </Flyout.FlyoutPresenterStyle>
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="EditClick">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="EditClick" ToolTipService.ToolTip="编辑">
                 <FontIcon FontSize="14" Glyph="&#xE70F;"/>
             </Button>
             <AppBarSeparator/>
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="InlineClick">
-                <FontIcon FontSize="14" Glyph="&#xe8e6;"/>
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="InlineClick" ToolTipService.ToolTip="行内样式">
+                <FontIcon FontSize="14" Glyph="&#xe8a1;"/>
             </Button>
             <AppBarSeparator/>
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="LeftClick">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="LeftClick" ToolTipService.ToolTip="左对齐">
                 <FontIcon FontSize="14" Glyph="&#xE8E4;"/>
             </Button>
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="CenterClick">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="CenterClick" ToolTipService.ToolTip="居中对齐">
                 <FontIcon FontSize="14" Glyph="&#xE8E3;"/>
             </Button>
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="ImageEditRightClick">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="RightClick" ToolTipService.ToolTip="右对齐">
                 <FontIcon FontSize="14" Glyph="&#xE8E2;"/>
             </Button>
             <AppBarSeparator/>
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="DeleteClick">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="DeleteClick" ToolTipService.ToolTip="删除">
                 <FontIcon FontSize="14" Glyph="&#xE74D;"/>
             </Button>
         </StackPanel>
