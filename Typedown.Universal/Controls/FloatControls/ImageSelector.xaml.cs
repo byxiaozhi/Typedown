@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using Newtonsoft.Json.Linq;
 using System.Web;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.ViewModels;
@@ -13,17 +11,17 @@ namespace Typedown.Universal.Controls.FloatControls
 {
     public sealed partial class ImageSelector : UserControl
     {
-        public AppViewModel ViewModel { get; }
+        private AppViewModel ViewModel { get; }
 
-        private readonly IMarkdownEditor markdownEditor;
+        private IMarkdownEditor MarkdownEditor { get; }
 
         private readonly Flyout flyout = new() { Placement = FlyoutPlacementMode.Bottom };
 
         public ImageSelector(AppViewModel viewModel, IMarkdownEditor markdownEditor)
         {
             ViewModel = viewModel;
-            this.markdownEditor = markdownEditor;
-            flyout.AreOpenCloseAnimationsEnabled = ViewModel.SettingsViewModel.AnimationEnable;
+            MarkdownEditor = markdownEditor;
+            flyout.AreOpenCloseAnimationsEnabled = this.ViewModel.SettingsViewModel.AnimationEnable;
             flyout.Closing += OnFlyoutClosing;
             InitializeComponent();
         }
@@ -34,7 +32,7 @@ namespace Typedown.Universal.Controls.FloatControls
             TextBoxAlt.Text = imageInfo?["alt"]?.ToString() ?? "";
             TextBoxTitle.Text = imageInfo?["title"]?.ToString() ?? "";
             flyout.Content = this;
-            flyout.ShowAt(markdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));
+            flyout.ShowAt(MarkdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));
         }
 
         private void OnFlyoutClosing(FlyoutBase sender, FlyoutBaseClosingEventArgs args)
@@ -55,7 +53,7 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private void SaveImageSrc(string src, string title = null, string alt = null)
         {
-            markdownEditor.PostMessage("ReplaceImage", new { src, alt, title });
+            MarkdownEditor.PostMessage("ReplaceImage", new { src, alt, title });
         }
     }
 }

@@ -14,11 +14,11 @@ namespace Typedown.Universal.Controls.FloatControls
 
         public Visibility ColumnItemVisibility => !IsRow ? Visibility.Visible : Visibility.Collapsed;
 
-        private readonly IMarkdownEditor markdownEditor;
+        private IMarkdownEditor MarkdownEditor { get; }
 
         public TableTools(SettingsViewModel settings, IMarkdownEditor markdownEditor)
         {
-            this.markdownEditor = markdownEditor;
+            MarkdownEditor = markdownEditor;
             AreOpenCloseAnimationsEnabled = settings.AnimationEnable;
             InitializeComponent();
         }
@@ -26,9 +26,9 @@ namespace Typedown.Universal.Controls.FloatControls
         public void Open(Rect rect, string type)
         {
             IsRow = type != "bottom";
-            OverlayInputPassThroughElement = (markdownEditor as UIElement).XamlRoot.Content;
+            OverlayInputPassThroughElement = (MarkdownEditor as UIElement).XamlRoot.Content;
             UpdateItemVisibility();
-            ShowAt(markdownEditor.GetDummyRectangle(rect));
+            ShowAt(MarkdownEditor.GetDummyRectangle(rect));
         }
 
         private void UpdateItemVisibility()
@@ -69,7 +69,7 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private void PostEditTableMessage(object args)
         {
-            markdownEditor.PostMessage("EditTable", args);
+            MarkdownEditor.PostMessage("EditTable", args);
         }
     }
 }

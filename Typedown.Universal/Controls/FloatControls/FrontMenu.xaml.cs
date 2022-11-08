@@ -9,13 +9,12 @@ namespace Typedown.Universal.Controls.FloatControls
 {
     public sealed partial class FrontMenu : MenuFlyout
     {
-        public  AppViewModel ViewModel { get; }
+        public AppViewModel ViewModel { get; }
 
         public FrontMenu(AppViewModel viewModel)
         {
             ViewModel = viewModel;
             InitializeComponent();
-            
         }
 
         private void OnClosed(object sender, object e)

@@ -12,16 +12,16 @@ namespace Typedown.Universal.Controls.FloatControls
     {
         private readonly Flyout flyout = new();
 
-        private readonly AppViewModel viewModel;
+        public AppViewModel ViewModel { get; }
 
-        private readonly IMarkdownEditor markdownEditor;
+        public IMarkdownEditor MarkdownEditor { get; }
 
         private readonly DispatcherTimer hideTimer = new();
 
         public ToolTip(AppViewModel viewModel, IMarkdownEditor markdownEditor)
         {
-            this.viewModel = viewModel;
-            this.markdownEditor = markdownEditor;
+            ViewModel = viewModel;
+            MarkdownEditor = markdownEditor;
             hideTimer.Interval = TimeSpan.FromSeconds(3);
             hideTimer.Tick += OnHideTimerTick;
             flyout.Closed += OnFlyoutClosed;
@@ -33,10 +33,10 @@ namespace Typedown.Universal.Controls.FloatControls
             ContentTextBlock.Text = text;
             var options = new FlyoutShowOptions() { Placement = FlyoutPlacementMode.Top, ShowMode = FlyoutShowMode.TransientWithDismissOnPointerMoveAway };
             flyout.AreOpenCloseAnimationsEnabled = false;
-            flyout.OverlayInputPassThroughElement = viewModel.XamlRoot.Content;
+            flyout.OverlayInputPassThroughElement = ViewModel.XamlRoot.Content;
             flyout.FlyoutPresenterStyle = Resources["ToolTipFlyoutStyle"] as Style;
             flyout.Content = this;
-            flyout.ShowAt(markdownEditor.GetDummyRectangle(rect), options);
+            flyout.ShowAt(MarkdownEditor.GetDummyRectangle(rect), options);
             hideTimer.Start();
         }
 

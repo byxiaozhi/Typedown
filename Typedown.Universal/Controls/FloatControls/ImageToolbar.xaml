@@ -1,0 +1,41 @@
+﻿<Flyout
+    x:Class="Typedown.Universal.Controls.FloatControls.ImageToolbar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.FloatControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    ShowMode="TransientWithDismissOnPointerMoveAway"
+    Placement="TopEdgeAlignedLeft"
+    mc:Ignorable="d">
+    <Flyout.FlyoutPresenterStyle>
+        <Style TargetType="FlyoutPresenter" BasedOn="{StaticResource DefaultFlyoutPresenterStyle}" >
+            <Setter Property="Padding" Value="4" />
+        </Style>
+    </Flyout.FlyoutPresenterStyle>
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="EditClick">
+                <FontIcon FontSize="14" Glyph="&#xE70F;"/>
+            </Button>
+            <AppBarSeparator/>
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="InlineClick">
+                <FontIcon FontSize="14" Glyph="&#xe8e6;"/>
+            </Button>
+            <AppBarSeparator/>
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="LeftClick">
+                <FontIcon FontSize="14" Glyph="&#xE8E4;"/>
+            </Button>
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="CenterClick">
+                <FontIcon FontSize="14" Glyph="&#xE8E3;"/>
+            </Button>
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="ImageEditRightClick">
+                <FontIcon FontSize="14" Glyph="&#xE8E2;"/>
+            </Button>
+            <AppBarSeparator/>
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="DeleteClick">
+                <FontIcon FontSize="14" Glyph="&#xE74D;"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Flyout>

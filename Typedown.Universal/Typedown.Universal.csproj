@@ -123,6 +123,9 @@
     <Compile Include="Controls\FloatControls\FindReplace.xaml.cs">
       <DependentUpon>FindReplace.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FloatControls\ImageToolbar.xaml.cs">
+      <DependentUpon>ImageToolbar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FloatControls\TableTools.xaml.cs">
       <DependentUpon>TableTools.xaml</DependentUpon>
     </Compile>
@@ -433,6 +436,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FloatControls\FindReplace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FloatControls\ImageToolbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
