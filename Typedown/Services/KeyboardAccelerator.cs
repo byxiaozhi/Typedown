@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Reactive.Disposables;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
@@ -12,8 +12,11 @@ using Windows.System;
 
 namespace Typedown.Services
 {
-    public class KeyboardAccelerator : IDisposable, IKeyboardAccelerator
+    public class KeyboardAccelerator : DependencyObject, IDisposable, IKeyboardAccelerator
     {
+        public static DependencyProperty IsEnableProperty { get; } = DependencyProperty.Register(nameof(IsEnable), typeof(bool), typeof(KeyboardAccelerator), new(false));
+        public bool IsEnable { get => (bool)GetValue(IsEnableProperty); set => SetValue(IsEnableProperty, value); }
+
         private PInvoke.HookProc hookProc;
 
         private IntPtr hHook = IntPtr.Zero;
@@ -22,13 +25,17 @@ namespace Typedown.Services
 
         private readonly HashSet<EventHandler<Universal.Models.KeyEventArgs>> globalRegistered = new();
 
-        public bool IsEnable
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
-            get { return hHook != IntPtr.Zero; }
-            set { if (value) Start(); else Stop(); }
+            base.OnPropertyChanged(e);
+            if (e.Property == IsEnableProperty)
+            {
+                if ((bool)e.NewValue) Start();
+                else Stop();
+            }
         }
 
-        public void Start()
+        private void Start()
         {
             if (hHook == IntPtr.Zero)
             {
@@ -38,7 +45,7 @@ namespace Typedown.Services
             }
         }
 
-        public void Stop()
+        private void Stop()
         {
             if (hHook != IntPtr.Zero)
             {
@@ -124,7 +131,8 @@ namespace Typedown.Services
 
         public string GetVirtualKeyNameText(VirtualKey key)
         {
-            if (key == VirtualKey.Delete) return "Delete";
+            if (key == VirtualKey.Delete) 
+                return nameof(VirtualKey.Delete);
             var buffer = new StringBuilder(32);
             var scanCode = PInvoke.MapVirtualKey((uint)key, PInvoke.MapVirtualKeyMapTypes.MAPVK_VK_TO_VSC);
             var lParam = scanCode << 16;

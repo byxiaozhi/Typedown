@@ -82,10 +82,10 @@ namespace Typedown.Windows
             SetBinding(TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             SetBinding(IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             SetBinding(TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
+            BindingOperations.SetBinding(KeyboardAccelerator, KeyboardAccelerator.IsEnableProperty, new Binding() { Source = this, Path = new(nameof(IsActive)) });
             AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => UpdateDragBar();
             AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme)).Subscribe(_ => UpdateStartupTheme());
             AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.MenuBarWidth)).Subscribe(_ => UpdateDragBar());
-            KeyboardAccelerator.IsEnable = IsActive;
             UpdateDragBar();
         }
 
@@ -202,18 +202,6 @@ namespace Typedown.Windows
             if (!AppViewModel.GetInstances().Any() && !keepRun)
                 Application.Current.Shutdown();
             Dispatcher.InvokeAsync(SetMaxWorkingSetSize, DispatcherPriority.SystemIdle);
-        }
-
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
-            KeyboardAccelerator?.Start();
-        }
-
-        protected override void OnDeactivated(EventArgs e)
-        {
-            base.OnDeactivated(e);
-            KeyboardAccelerator?.Stop();
         }
 
         private bool savingWindowPlacement = false;
