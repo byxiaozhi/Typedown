@@ -54,8 +54,8 @@ namespace Typedown.Universal.ViewModels
         public ShortcutKey ShortcutOrderedList { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, (Key)219)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutUnordered { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, (Key)221)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutTaskList { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.X)); set => SetSettingValue(value); }
-        public ShortcutKey ShortcutInsertParagraphBefore { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
-        public ShortcutKey ShortcutInsertParagraphAfter { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
+        public ShortcutKey ShortcutInsertParagraphBefore { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.Enter)); set => SetSettingValue(value); }
+        public ShortcutKey ShortcutInsertParagraphAfter { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.Enter)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutVegaChart { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
         public ShortcutKey ShortcutFlowChart { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
         public ShortcutKey ShortcutSequenceDiagram { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
