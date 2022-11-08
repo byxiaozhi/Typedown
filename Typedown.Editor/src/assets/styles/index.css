@@ -1104,6 +1104,7 @@ span.ag-reference-link {
   display: none;
   cursor: pointer;
   opacity: .6;
+  user-select: none;
 }
 
 .ag-front-icon:hover {
@@ -1158,6 +1159,7 @@ span.ag-reference-link {
   opacity: 0;
   z-index: 1;
   transition: opacity .2s ease-in-out;
+  user-select: none;
 }
 
 .ag-active .ag-code-copy {
