@@ -12,6 +12,7 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 
 namespace Typedown.Universal.Controls
@@ -124,6 +125,21 @@ namespace Typedown.Universal.Controls
                 {
                     ViewModel.MarkdownEditor.PostMessage("InsertImage", new { src = item.Path });
                 }
+            }
+        }
+
+        private void OnPointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            var type = e.GetCurrentPoint(this).PointerDevice.PointerDeviceType;
+            if (type == Windows.Devices.Input.PointerDeviceType.Mouse)
+            {
+                HorizontalScrollBar.IndicatorMode = ScrollingIndicatorMode.MouseIndicator;
+                VerticalScrollBar.IndicatorMode = ScrollingIndicatorMode.MouseIndicator;
+            }
+            else
+            {
+                HorizontalScrollBar.IndicatorMode = ScrollingIndicatorMode.TouchIndicator;
+                VerticalScrollBar.IndicatorMode = ScrollingIndicatorMode.TouchIndicator;
             }
         }
     }

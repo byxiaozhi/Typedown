@@ -177,11 +177,13 @@ namespace Typedown.Windows
             }
         }
 
+        private HwndTarget compositionTarget;
+
         private void UpdateSystemBackdrop()
         {
             if (Handle == IntPtr.Zero)
                 return;
-            var compositionTarget = HwndSource.FromHwnd(Handle).CompositionTarget;
+            compositionTarget ??= HwndSource.FromHwnd(Handle).CompositionTarget;
             var isDarkMode = Theme switch
             {
                 AppTheme.Light => false,
