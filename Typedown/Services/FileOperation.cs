@@ -19,7 +19,7 @@ namespace Typedown.Services
             }
             var shf = new PInvoke.SHFILEOPSTRUCT
             {
-                wFunc = PInvoke.ShellFileOperation.FO_DELETE,
+                wFunc = PInvoke.FileFuncFlags.FO_DELETE,
                 fFlags = PInvoke.FILEOP_FLAGS.FOF_ALLOWUNDO,
                 pFrom = pFrom
             };
@@ -35,7 +35,7 @@ namespace Typedown.Services
             }
             var shf = new PInvoke.SHFILEOPSTRUCT
             {
-                wFunc = PInvoke.ShellFileOperation.FO_COPY,
+                wFunc = PInvoke.FileFuncFlags.FO_COPY,
                 fFlags = PInvoke.FILEOP_FLAGS.FOF_ALLOWUNDO,
                 pFrom = pFrom,
                 pTo = to + "\0"
@@ -52,7 +52,7 @@ namespace Typedown.Services
             }
             var shf = new PInvoke.SHFILEOPSTRUCT
             {
-                wFunc = PInvoke.ShellFileOperation.FO_MOVE,
+                wFunc = PInvoke.FileFuncFlags.FO_MOVE,
                 fFlags = PInvoke.FILEOP_FLAGS.FOF_ALLOWUNDO,
                 pFrom = pFrom,
                 pTo = to + "\0"
@@ -64,7 +64,7 @@ namespace Typedown.Services
         {
             var shf = new PInvoke.SHFILEOPSTRUCT
             {
-                wFunc = PInvoke.ShellFileOperation.FO_RENAME,
+                wFunc = PInvoke.FileFuncFlags.FO_RENAME,
                 fFlags = PInvoke.FILEOP_FLAGS.FOF_ALLOWUNDO,
                 pFrom = from + "\0",
                 pTo = to + "\0"

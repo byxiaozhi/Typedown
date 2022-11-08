@@ -109,6 +109,7 @@
             x:Name="TreeView"
             CanReorderItems="False"
             CanDragItems="False"
+            AllowDrop="False"
             DataContext="{x:Bind WorkFolderExplorerItem, Mode=OneWay}"
             ItemsSource="{x:Bind WorkFolderExplorerItem.Children, Mode=OneWay}" 
             ItemTemplateSelector="{StaticResource ExplorerItemTemplateSelector}" 
