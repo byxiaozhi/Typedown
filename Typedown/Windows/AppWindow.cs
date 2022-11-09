@@ -55,9 +55,11 @@ namespace Typedown.Windows
             Handle = new WindowInteropHelper(this).Handle;
             var style = PInvoke.GetWindowLong(Handle, PInvoke.WindowLongFlags.GWL_STYLE);
             PInvoke.SetWindowLong(Handle, PInvoke.WindowLongFlags.GWL_STYLE, style & ~(int)PInvoke.WindowStyles.WS_CLIPCHILDREN);
-            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = Universal.Config.IsMicaSupported ? -1 : 0 });
+            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = -1 });
             PInvoke.SetWindowPos(Handle, IntPtr.Zero, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
-            HwndSource.FromHwnd(Handle).AddHook(WndProc);
+            var source = HwndSource.FromHwnd(Handle);
+            source.CompositionTarget.BackgroundColor = Colors.Transparent;
+            source.AddHook(WndProc);
             UpdateRootContainer();
             UpdateSystemBackdrop();
         }
@@ -170,35 +172,32 @@ namespace Typedown.Windows
         {
             if (GetTemplateChild(PART_RootContainer) is FrameworkElement root && GetTemplateChild(PART_TopNonClientArea) is FrameworkElement topNCArea)
             {
-                root.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1, 0, 0);
+                root.Margin = new(0, WindowState == WindowState.Maximized ? BorderWidth : 1 / WindowScale, 0, 0);
                 var canResize = WindowState != WindowState.Maximized && ResizeMode != ResizeMode.NoResize;
                 topNCArea.Height = canResize ? BorderWidth - root.Margin.Top : 0;
             }
         }
 
-        private HwndTarget compositionTarget;
-
         private void UpdateSystemBackdrop()
         {
             if (Handle == IntPtr.Zero)
                 return;
-            compositionTarget ??= HwndSource.FromHwnd(Handle).CompositionTarget;
             var isDarkMode = Theme switch
             {
                 AppTheme.Light => false,
                 AppTheme.Dark => true,
                 _ => !Utilities.Common.GetUseLightTheme()
             };
+            this.SetDarkMode(isDarkMode);
             if (Universal.Config.IsMicaSupported)
             {
-                compositionTarget.BackgroundColor = Colors.Transparent;
                 this.SetMicaBackdrop(IsMicaEnable);
                 this.SetCaptionColor(IsMicaEnable ? 0xffffffffu : isDarkMode ? 0x00202020u : 0x00f3f3f3u);
-                this.SetDarkMode(isDarkMode);
             }
             else
             {
-                compositionTarget.BackgroundColor = isDarkMode ? Color.FromRgb(0x20, 0x20, 0x20) : Color.FromRgb(0xf3, 0xf3, 0xf3);
+                if (GetTemplateChild(PART_RootContainer) is Grid root)
+                    root.Background = new SolidColorBrush(isDarkMode ? Color.FromRgb(0x20, 0x20, 0x20) : Color.FromRgb(0xf3, 0xf3, 0xf3));
             }
         }
 
