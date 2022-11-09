@@ -77,7 +77,7 @@ namespace Typedown.Universal.ViewModels
         public ShortcutKey ShortcutImage { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.I)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutClearFormat { get => GetSettingValue<ShortcutKey>(new(Mod.Control, (Key)220)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutSidePane { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.L)); set => SetSettingValue(value); }
-        public ShortcutKey ShortcutSourceCodeMode { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
+        public ShortcutKey ShortcutSourceCodeMode { get => GetSettingValue<ShortcutKey>(new(Mod.Control, (Key)191)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutFocusMode { get => GetSettingValue<ShortcutKey>(new(Mod.None, Key.F8)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutTypewriterMode { get => GetSettingValue<ShortcutKey>(new(Mod.None, Key.F9)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutStatusBar { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }

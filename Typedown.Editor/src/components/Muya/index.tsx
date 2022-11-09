@@ -9,7 +9,7 @@ import ImageToolbar from 'components/Muya/lib/ui/imageToolbar'
 import LinkTools from 'components/Muya/lib/ui/linkTools'
 import TableBarTools from 'components/Muya/lib/ui/tableTools'
 import FrontMenu from 'components/Muya/lib/ui/frontMenu'
-import { createApplicationMenuState } from "services/state";
+import { createApplicationMenuState } from "services/menuState";
 import 'components/Muya/themes/default.css'
 
 interface IMuyaEditor {

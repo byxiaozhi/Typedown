@@ -270,8 +270,6 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         <div
             className="cm-s-one-dark"
             style={{
-                maxWidth: props.options?.editorAreaWidth,
-                margin: '24px auto',
                 boxSizing: 'border-box',
                 paddingTop: marginTop,
                 paddingLeft: 14,

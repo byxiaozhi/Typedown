@@ -18,19 +18,19 @@ const ref = { pos: 0 };
 
 const remoteFunction =
   <T, TResult>(name: string) =>
-  (args?: T) =>
-    new Promise<TResult>((resolve, reject) => {
-      const id = `invoke_${ref.pos++}`;
-      transport.addListener(id, (e) => {
-        if (e.code == 0) {
-          resolve(e.data);
-        } else {
-          reject(new Error(e.msg));
-        }
-        transport.removeAllListeners(id);
+    (args?: T) =>
+      new Promise<TResult>((resolve, reject) => {
+        const id = `invoke_${ref.pos++}`;
+        transport.addListener(id, (e) => {
+          if (e.code == 0) {
+            resolve(e.data);
+          } else {
+            reject(new Error(e.msg));
+          }
+          transport.removeAllListeners(id);
+        });
+        window.chrome.webview.postMessage({ type: "invoke", id, name, args });
       });
-      window.chrome.webview.postMessage({ type: "invoke", id, name, args });
-    });
 
 const postMessageDiff = (name: string, arg: unknown) => {
   const oldArg = prevMap.get(name);
@@ -76,15 +76,11 @@ const postMessageDiff = (name: string, arg: unknown) => {
 export default {
   addListener: <T>(eventName: string, listener: Listener<T>) => {
     transport.addListener(eventName, listener);
-    return () => {
-      transport.removeListener(eventName, listener);
-    };
+    return () => { transport.removeListener(eventName, listener) };
   },
-  removeListener: <T>(eventName: string, listener: Listener<T>) =>
-    transport.removeListener(eventName, listener),
-  removeAllListener: (eventName: string) =>
-    transport.removeAllListeners(eventName),
-  // postMessage: (name: string, arg: unknown) => window.chrome.webview.postMessage({ type: 'message', name, arg }),
+  removeListener: <T>(eventName: string, listener: Listener<T>) => transport.removeListener(eventName, listener),
+  removeAllListener: (eventName: string) => transport.removeAllListeners(eventName),
+  postMessageNoDiff: (name: string, args: unknown) => window.chrome.webview.postMessage({ type: 'message', name, args }),
   postMessage: postMessageDiff,
 };
 
