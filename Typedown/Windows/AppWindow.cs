@@ -80,6 +80,8 @@ namespace Typedown.Windows
 
         private void UpdateClientPos()
         {
+            if (Handle == IntPtr.Zero)
+                return;
             PInvoke.GetClientRect(Handle, out var rect);
             var rawBorderThiness = (int)(BorderThiness * ScalingFactor);
             var rawCaptionHeight = (int)(CaptionHeight * ScalingFactor);
