@@ -12,22 +12,13 @@ namespace Typedown.Universal
 {
     public sealed partial class App : XamlApplication
     {
-        public static new App Current { get; private set; }
-
         public static CoreDispatcher Dispatcher { get; private set; }
 
         public App()
         {
             Initialize();
             ((Window.Current as object) as IWindowPrivate).TransparentBackground = true;
-            Current = this;
             Dispatcher = Window.Current.Dispatcher;
-        }
-
-        public static void InitializeXAMLIsland()
-        {
-            if (Current == null)
-                new App();
         }
     }
 }

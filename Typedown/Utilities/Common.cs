@@ -1,34 +1,28 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Windows;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.Enums;
 using Typedown.Universal.ViewModels;
 using Typedown.Windows;
-using Microsoft.Win32;
 using Windows.UI.ViewManagement;
-using Typedown.Properties;
+using Windows.Foundation;
 using System.Reactive.Linq;
+using Windows.UI;
+using Typedown.Universal;
 
 namespace Typedown.Utilities
 {
     public static class Common
     {
-        public static System.Windows.Point MakePoint(this IntPtr p) => new(p.ToInt32() & 0xFFFF, p.ToInt32() >> 16);
+        public static Point MakePoint(this IntPtr p) => new(p.ToInt32() & 0xFFFF, p.ToInt32() >> 16);
 
-        public static nint PackPoint(this System.Drawing.Point point) => point.X | (point.Y << 16);
+        public static nint PackPoint(this Point point) => ((int)point.X) | (((int)point.Y) << 16);
 
-        public static string GetMimeType(string fileName)
-        {
-            var ext = Path.GetExtension(fileName).ToLower();
-            var regKey = Registry.ClassesRoot.OpenSubKey(ext);
-            var mime = regKey?.GetValue("Content Type")?.ToString();
-            return mime ?? "application/unknown";
-        }
+        public static int GetHighWord(IntPtr p) => (int)(p.ToInt64() >> 16);
+
+        public static int GetLowWord(IntPtr p) => (int)(p.ToInt64() & 0xFFFF);
 
         static public void OpenUrl(string url)
         {
@@ -60,41 +54,40 @@ namespace Typedown.Utilities
 
         public static bool GetUseLightTheme()
         {
-            using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
-            var registryValueObject = key?.GetValue("AppsUseLightTheme");
-            return registryValueObject == null || (int)registryValueObject > 0;
+            return App.Current.RequestedTheme == global::Windows.UI.Xaml.ApplicationTheme.Light;
         }
 
-        public static void SaveWindowPlacement(this AppWindow window, System.Windows.Point offset = default)
+        public static void SaveWindowPlacement(this MainWindow window, Point offset = default)
         {
-            PInvoke.WINDOWPLACEMENT placement = new();
-            PInvoke.GetWindowPlacement(window.Handle, ref placement);
-            var settings = Settings.Default;
+            PInvoke.GetWindowPlacement(window.Handle, out var placement);
             var scale = PInvoke.GetDpiForWindow(window.Handle) / 96.0;
-            settings.StartupIsMaximized = placement.showCmd == PInvoke.ShowWindowCommand.Maximize;
-            settings.StartupLeft = placement.rcNormalPosition.left / scale + offset.X;
-            settings.StartupTop = placement.rcNormalPosition.top / scale + offset.Y;
-            settings.StartupWidth = (placement.rcNormalPosition.right - placement.rcNormalPosition.left) / scale;
-            settings.StartupHeight = (placement.rcNormalPosition.bottom - placement.rcNormalPosition.top) / scale;
-            settings.Save();
+            window.AppViewModel.SettingsViewModel.StartupPlacement = new(
+                placement.showCmd == PInvoke.ShowWindowCommand.Maximize,
+                new(
+                    x: placement.rcNormalPosition.left + offset.X * scale,
+                    y: placement.rcNormalPosition.top + offset.X * scale,
+                    width: (placement.rcNormalPosition.right - placement.rcNormalPosition.left),
+                    height: (placement.rcNormalPosition.bottom - placement.rcNormalPosition.top))
+                );
         }
 
-        public static void RestoreWindowPlacement(this AppWindow window)
+        public static void RestoreWindowPlacement(this MainWindow window)
         {
-            var settings = Settings.Default;
-            if (settings.StartupLeft >= 0 && settings.StartupTop >= 0)
+            var placement = window.AppViewModel.SettingsViewModel.StartupPlacement;
+            if (placement == null)
             {
-                window.WindowStartupLocation = WindowStartupLocation.Manual;
-                window.Left = settings.StartupLeft;
-                window.Top = settings.StartupTop;
+                window.StartupLocation = WindowStartupLocation.CenterScreen;
+                window.Width = 1200;
+                window.Height = 800;
             }
             else
             {
-                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                window.Left = placement.NormalPosition.Left;
+                window.Top = placement.NormalPosition.Top;
+                window.Width = placement.NormalPosition.Width;
+                window.Height = placement.NormalPosition.Height;
+                window.State = placement.IsMaximized ? WindowState.Maximized : WindowState.Normal;
             }
-            window.Width = settings.StartupWidth;
-            window.Height = settings.StartupHeight;
-            window.WindowState = settings.StartupIsMaximized ? WindowState.Maximized : WindowState.Normal;
         }
 
         public static IntPtr OpenNewWindow(string[] args)
@@ -104,16 +97,15 @@ namespace Typedown.Utilities
             {
                 var newWindow = new MainWindow();
                 newWindow.Show();
-                newWindow.InitializeComponent();
                 newWindow.AppViewModel.CommandLineArgs = args;
                 return newWindow.Handle;
             }
             else
             {
-                var appWindows = Application.Current.Windows.OfType<AppWindow>();
+                var appWindows = FrameWindow.Windows.OfType<AppWindow>();
                 var window = appWindows.Where(x => x.Handle == windowHWnd).FirstOrDefault();
-                if (window?.WindowState == WindowState.Minimized)
-                    SystemCommands.RestoreWindow(window);
+                // if (window?.State == WindowState.Minimized)
+                // SystemCommands.RestoreWindow(window);
                 return windowHWnd;
             }
         }

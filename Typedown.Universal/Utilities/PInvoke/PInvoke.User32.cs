@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Windows.System;
+using static Typedown.Universal.Utilities.PInvoke;
 
 namespace Typedown.Universal.Utilities
 {
@@ -119,6 +121,23 @@ namespace Typedown.Universal.Utilities
             WS_SIZEBOX = WS_THICKFRAME,
             WS_TILEDWINDOW = WS_OVERLAPPEDWINDOW,
             WS_CHILDWINDOW = WS_CHILD,
+        }
+
+        [Flags]
+        public enum ClassStyles : uint
+        {
+            ByteAlignClient = 0x1000,
+            ByteAlignWindow = 0x2000,
+            ClassDC = 0x40,
+            DoubleClicks = 0x8,
+            DropShadow = 0x20000,
+            GlobalClass = 0x4000,
+            HorizontalRedraw = 0x2,
+            NoClose = 0x200,
+            OwnDC = 0x20,
+            ParentDC = 0x80,
+            SaveBits = 0x800,
+            VerticalRedraw = 0x1
         }
 
         public enum SystemMetric : int
@@ -680,8 +699,8 @@ namespace Typedown.Universal.Utilities
             [MarshalAs(UnmanagedType.U4)]
             public int cbSize;
             [MarshalAs(UnmanagedType.U4)]
-            public int style;
-            public nint lpfnWndProc; // not WndProc
+            public ClassStyles style;
+            public WindowProc lpfnWndProc; // not WndProc
             public int cbClsExtra;
             public int cbWndExtra;
             public nint hInstance;
@@ -715,7 +734,35 @@ namespace Typedown.Universal.Utilities
             public nuint dwExtraInfo;
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+
+        public struct MSG
+        {
+            public IntPtr hwnd;
+            public uint message;
+            public UIntPtr wParam;
+            public IntPtr lParam;
+            public int time;
+            public POINT pt;
+            public int lPrivate;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WINDOWPOS
+        {
+            public IntPtr hwnd;
+            public IntPtr hwndInsertAfter;
+            public int x;
+            public int y;
+            public int cx;
+            public int cy;
+            public uint flags;
+        }
+
         public delegate nint HookProc(int code, nint wParam, nint lParam);
+
+        [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+        public delegate IntPtr WindowProc(nint hwnd, uint uMsg, nint wParam, nint lParam);
 
         [DllImport("user32.dll", EntryPoint = "SetWindowsHookExW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern nint SetWindowsHookEx(HookType hookType, HookProc lpfn, nint hMod, uint dwThreadId);
@@ -818,6 +865,9 @@ namespace Typedown.Universal.Utilities
         [DllImport("user32.dll", EntryPoint = "LoadCursorW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern nint LoadCursor(nint hInstance, int lpCursorName);
 
+        [DllImport("user32.dll", EntryPoint = "LoadIconW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern IntPtr LoadIcon(IntPtr hInstance, nint lpIconName);
+
         public delegate bool EnumWindowsProc(nint hwnd, nint lParam);
 
         [DllImport("user32.dll", ExactSpelling = true)]
@@ -841,7 +891,7 @@ namespace Typedown.Universal.Utilities
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetWindowPlacement(nint hWnd, ref WINDOWPLACEMENT lpwndpl);
+        public static extern bool GetWindowPlacement(nint hWnd, out WINDOWPLACEMENT lpwndpl);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -854,9 +904,51 @@ namespace Typedown.Universal.Utilities
         public static extern int MapVirtualKey(uint uCode, MapVirtualKeyMapTypes uMapType);
 
         [DllImport("user32.dll", EntryPoint = "GetKeyNameTextW", CharSet = CharSet.Unicode, ExactSpelling = true)]
-        public static extern int GetKeyNameText(int lParam, [Out] StringBuilder lpString, int nSize);
+        public static extern int GetKeyNameText(int lParam, StringBuilder lpString, int nSize);
 
         [DllImport("user32.dll", ExactSpelling = true)]
         public static extern nint GetSystemMenu(nint hWnd, [MarshalAs(UnmanagedType.Bool)] bool bRevert);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr DefWindowProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern bool GetClientRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport("user32.dll", EntryPoint = "GetMessageW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetMessage(out MSG lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
+
+
+        [DllImport("user32.dll", EntryPoint = "PostThreadMessageW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool PostThreadMessage(uint threadId, uint msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool TranslateMessage(ref MSG lpMsg);
+
+        [DllImport("user32.dll", EntryPoint = "DispatchMessageW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern IntPtr DispatchMessage(ref MSG lpmsg);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowTextW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool SetWindowText(IntPtr hwnd, string lpString);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool ScreenToClient(IntPtr hWnd, ref POINT lpPoint);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool EnableMouseInPointer(bool fEnable);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern short GetKeyState(int nVirtKey);
+
+        public static bool GetIsKeyDown(VirtualKey key) => (GetKeyState((int)key) & 0x8000) > 0;
     }
 }

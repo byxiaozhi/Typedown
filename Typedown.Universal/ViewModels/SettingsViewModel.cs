@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -19,6 +20,7 @@ namespace Typedown.Universal.ViewModels
 {
     public sealed partial class SettingsViewModel : INotifyPropertyChanged, IDisposable
     {
+        public WindowPlacement StartupPlacement { get => GetSettingValue<WindowPlacement>(null); set => SetSettingValue(value); }
         public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public double SidePaneWidth { get => GetSettingValue(300d); set => SetSettingValue(value); }
         public bool StatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }

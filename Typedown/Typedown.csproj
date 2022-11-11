@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
-		<UseWPF>true</UseWPF>
+		<UseWPF>False</UseWPF>
 		<LangVersion>latest</LangVersion>
 		<Platforms>x64;x86</Platforms>
 		<PublishReadyToRun>true</PublishReadyToRun>
@@ -22,7 +22,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />
+		<PackageReference Include="Microsoft.Toolkit.UI.XamlHost" Version="6.1.2" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1418.22" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 
@@ -44,21 +45,6 @@
 
 	<ItemGroup>
 	  <Content Include="Assets\logo.ico" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Properties\Settings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Settings.settings</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Properties\Settings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-	  </None>
 	</ItemGroup>
 
 </Project>

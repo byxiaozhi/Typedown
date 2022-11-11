@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.IO.Pipes;
 using System.IO;
 using Typedown.Universal.Utilities;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Typedown.Windows;
 
 namespace Typedown
 {
@@ -18,13 +18,18 @@ namespace Typedown
 
         private static readonly Mutex mutex = new(true, "Typedown.Program.Mutex");
 
+        public static Dispatcher Dispatcher { get; private set; }
+
         [STAThread]
         public static void Main()
         {
             if (mutex.WaitOne(TimeSpan.Zero, true))
             {
-                Task.Run(ListenPipe);
-                Startup();
+                Dispatcher.Run(() =>
+                {
+                    Dispatcher = Dispatcher.Current;
+                    Startup();
+                });
             }
             else
             {
@@ -35,7 +40,12 @@ namespace Typedown
         private static void Startup()
         {
             hHook = PInvoke.SetWindowsHookEx(PInvoke.HookType.WH_CBT, hookProc, IntPtr.Zero, PInvoke.GetCurrentThreadId());
-            new App().Run();
+            using (new Universal.App())
+            {
+                var window = new MainWindow();
+                window.Show();
+                Task.Run(ListenPipe);
+            }
         }
 
         private static IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam)
@@ -72,7 +82,7 @@ namespace Typedown
                     using var reader = new StreamReader(server);
                     using var writer = new StreamWriter(server);
                     var args = (await reader.ReadLineAsync()).Split("\0");
-                    var handle = await App.Current.Dispatcher.InvokeAsync(() => Utilities.Common.OpenNewWindow(args));
+                    var handle = await Dispatcher.InvokeAsync(() => Utilities.Common.OpenNewWindow(args));
                     await writer.WriteLineAsync(handle.ToString());
                     await writer.FlushAsync();
                 }

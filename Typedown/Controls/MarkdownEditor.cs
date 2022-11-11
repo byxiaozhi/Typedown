@@ -83,7 +83,7 @@ namespace Typedown.Controls
             if (WebViewController == null)
             {
                 WebViewController = new();
-                await WebViewController.InitializeAsync(this, AppWindow.GetWindow(AppXamlHost.GetAppXamlHost(this)).Handle);
+                await WebViewController.InitializeAsync(this, AppWindow.GetWindow(this).Handle);
                 OnCoreWebView2Initialized();
             }
             LoadStaticResources();

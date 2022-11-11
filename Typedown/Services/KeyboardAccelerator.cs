@@ -4,17 +4,17 @@ using System.Reactive.Disposables;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
-using System.Windows.Input;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Windows.System;
+using Windows.UI.Xaml;
 
 namespace Typedown.Services
 {
     public class KeyboardAccelerator : DependencyObject, IDisposable, IKeyboardAccelerator
     {
-        public static DependencyProperty IsEnableProperty { get; } = DependencyProperty.Register(nameof(IsEnable), typeof(bool), typeof(KeyboardAccelerator), new(false));
+        public static DependencyProperty IsEnableProperty { get; } = DependencyProperty.Register(nameof(IsEnable), typeof(bool), typeof(KeyboardAccelerator), new(false, OnPropertyChanged));
         public bool IsEnable { get => (bool)GetValue(IsEnableProperty); set => SetValue(IsEnableProperty, value); }
 
         private PInvoke.HookProc hookProc;
@@ -23,15 +23,15 @@ namespace Typedown.Services
 
         private readonly Dictionary<ShortcutKey, HashSet<EventHandler<Universal.Models.KeyEventArgs>>> registeredDictionary = new();
 
-        private readonly HashSet<EventHandler<Universal.Models.KeyEventArgs>> globalRegistered = new();
+        private readonly HashSet<EventHandler<KeyEventArgs>> globalRegistered = new();
 
-        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            base.OnPropertyChanged(e);
+            var target = d as KeyboardAccelerator;
             if (e.Property == IsEnableProperty)
             {
-                if ((bool)e.NewValue) Start();
-                else Stop();
+                if ((bool)e.NewValue) target.Start();
+                else target.Stop();
             }
         }
 
@@ -83,18 +83,18 @@ namespace Typedown.Services
         private VirtualKeyModifiers GetVirtualKeyModifiers()
         {
             var modifiers = VirtualKeyModifiers.None;
-            if (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt))
+            if (PInvoke.GetIsKeyDown(VirtualKey.Menu))
                 modifiers |= VirtualKeyModifiers.Menu;
-            if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+            if (PInvoke.GetIsKeyDown(VirtualKey.Control))
                 modifiers |= VirtualKeyModifiers.Control;
-            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            if (PInvoke.GetIsKeyDown(VirtualKey.Shift))
                 modifiers |= VirtualKeyModifiers.Shift;
-            if (Keyboard.IsKeyDown(Key.LWin) || Keyboard.IsKeyDown(Key.RWin))
+            if (PInvoke.GetIsKeyDown(VirtualKey.LeftWindows) || PInvoke.GetIsKeyDown(VirtualKey.RightWindows))
                 modifiers |= VirtualKeyModifiers.Windows;
             return modifiers;
         }
 
-        public IDisposable Register(ShortcutKey key, EventHandler<Universal.Models.KeyEventArgs> handler)
+        public IDisposable Register(ShortcutKey key, EventHandler<KeyEventArgs> handler)
         {
             if (key == null || handler == null)
                 return Disposable.Empty;

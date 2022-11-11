@@ -74,49 +74,51 @@ namespace Typedown.Services
 
         public void CutToClipboard(StringCollection files)
         {
-            byte[] moveEffect = new byte[] { 2, 0, 0, 0 };
-            MemoryStream dropEffect = new();
-            dropEffect.Write(moveEffect, 0, moveEffect.Length);
-            System.Windows.DataObject data = new();
-            data.SetFileDropList(files);
-            data.SetData("Preferred DropEffect", dropEffect);
-            System.Windows.Clipboard.Clear();
-            System.Windows.Clipboard.SetDataObject(data, true);
+            //byte[] moveEffect = new byte[] { 2, 0, 0, 0 };
+            //MemoryStream dropEffect = new();
+            //dropEffect.Write(moveEffect, 0, moveEffect.Length);
+            //System.Windows.DataObject data = new();
+            //data.SetFileDropList(files);
+            //data.SetData("Preferred DropEffect", dropEffect);
+            //System.Windows.Clipboard.Clear();
+            //System.Windows.Clipboard.SetDataObject(data, true);
         }
 
         public void CopyToClipboard(StringCollection files)
         {
-            byte[] moveEffect = new byte[] { 5, 0, 0, 0 };
-            MemoryStream dropEffect = new();
-            dropEffect.Write(moveEffect, 0, moveEffect.Length);
-            System.Windows.DataObject data = new();
-            data.SetFileDropList(files);
-            data.SetData("Preferred DropEffect", dropEffect);
-            System.Windows.Clipboard.Clear();
-            System.Windows.Clipboard.SetDataObject(data, true);
+            //byte[] moveEffect = new byte[] { 5, 0, 0, 0 };
+            //MemoryStream dropEffect = new();
+            //dropEffect.Write(moveEffect, 0, moveEffect.Length);
+            //System.Windows.DataObject data = new();
+            //data.SetFileDropList(files);
+            //data.SetData("Preferred DropEffect", dropEffect);
+            //System.Windows.Clipboard.Clear();
+            //System.Windows.Clipboard.SetDataObject(data, true);
         }
 
-        public bool IsPasteEnabled
-        {
-            get => System.Windows.Clipboard.ContainsData("Preferred DropEffect") && System.Windows.Clipboard.ContainsFileDropList();
-        }
+        //public bool IsPasteEnabled
+        //{
+        //    get => System.Windows.Clipboard.ContainsData("Preferred DropEffect") && System.Windows.Clipboard.ContainsFileDropList();
+        //}
+
+        public bool IsPasteEnabled => false;
 
         public void PasteFromClipboard(string to)
         {
-            if (IsPasteEnabled)
-            {
-                var files = System.Windows.Clipboard.GetFileDropList();
-                var stream = (Stream)System.Windows.Clipboard.GetData("Preferred DropEffect");
-                var effects = (System.Windows.DragDropEffects)stream.ReadByte();
-                if (effects.HasFlag(System.Windows.DragDropEffects.Move))
-                {
-                    Move(files, to);
-                }
-                else
-                {
-                    Copy(files, to);
-                }
-            }
+            //if (IsPasteEnabled)
+            //{
+            //    var files = System.Windows.Clipboard.GetFileDropList();
+            //    var stream = (Stream)System.Windows.Clipboard.GetData("Preferred DropEffect");
+            //    var effects = (System.Windows.DragDropEffects)stream.ReadByte();
+            //    if (effects.HasFlag(System.Windows.DragDropEffects.Move))
+            //    {
+            //        Move(files, to);
+            //    }
+            //    else
+            //    {
+            //        Copy(files, to);
+            //    }
+            //}
         }
 
         public bool IsFilenameValid(string sourceFolder, string fileName)

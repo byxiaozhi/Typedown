@@ -54,9 +54,9 @@ namespace Typedown.Utilities
                 InitializeEventHandler();
                 UpdataWindowScale();
                 disposables.Add(Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).Subscribe(_ => UpdateBounds()));
-                var window = System.Windows.Window.GetWindow(AppXamlHost.GetAppXamlHost(container));
-                disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.LocationChanged)).Subscribe(_ => UpdateBounds()));
-                disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.DpiChanged)).Subscribe(_ => UpdataWindowScale()));
+                //var window = System.Windows.Window.GetWindow(AppXamlHost.GetAppXamlHost(container));
+                //disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.LocationChanged)).Subscribe(_ => UpdateBounds()));
+                //disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.DpiChanged)).Subscribe(_ => UpdataWindowScale()));
                 SetMaxWorkingSetSize();
             }
         }
@@ -590,7 +590,7 @@ namespace Typedown.Utilities
 
         ~WebViewController()
         {
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ApplicationIdle, Dispose);
+            Program.Dispatcher.InvokeAsync(Dispose);
         }
     }
 }
