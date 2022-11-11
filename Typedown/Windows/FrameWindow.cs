@@ -53,40 +53,43 @@ namespace Typedown.Windows
             return PInvoke.DefWindowProc(hWnd, msg, wParam, lParam);
         }
 
-        public static DependencyProperty LeftProperty { get; } = DependencyProperty.Register(nameof(Left), typeof(double), typeof(Window), new(100d, OnPropertyChanged));
+        public static DependencyProperty LeftProperty { get; } = DependencyProperty.Register(nameof(Left), typeof(double), typeof(FrameWindow), new(100d, OnPropertyChanged));
         public double Left { get => (double)GetValue(LeftProperty); set => SetValue(LeftProperty, value); }
 
-        public static DependencyProperty TopProperty { get; } = DependencyProperty.Register(nameof(Top), typeof(double), typeof(Window), new(100d, OnPropertyChanged));
+        public static DependencyProperty TopProperty { get; } = DependencyProperty.Register(nameof(Top), typeof(double), typeof(FrameWindow), new(100d, OnPropertyChanged));
         public double Top { get => (double)GetValue(TopProperty); set => SetValue(TopProperty, value); }
 
-        public static DependencyProperty WidthProperty { get; } = DependencyProperty.Register(nameof(Width), typeof(double), typeof(Window), new(800d, OnPropertyChanged));
+        public static DependencyProperty WidthProperty { get; } = DependencyProperty.Register(nameof(Width), typeof(double), typeof(FrameWindow), new(800d, OnPropertyChanged));
         public double Width { get => (double)GetValue(WidthProperty); set => SetValue(WidthProperty, value); }
 
-        public static DependencyProperty HeightProperty { get; } = DependencyProperty.Register(nameof(Height), typeof(double), typeof(Window), new(600d, OnPropertyChanged));
+        public static DependencyProperty HeightProperty { get; } = DependencyProperty.Register(nameof(Height), typeof(double), typeof(FrameWindow), new(600d, OnPropertyChanged));
         public double Height { get => (double)GetValue(HeightProperty); set => SetValue(HeightProperty, value); }
 
-        public static DependencyProperty MinWidthProperty { get; } = DependencyProperty.Register(nameof(MinWidth), typeof(double), typeof(Window), new(0d, OnPropertyChanged));
+        public static DependencyProperty MinWidthProperty { get; } = DependencyProperty.Register(nameof(MinWidth), typeof(double), typeof(FrameWindow), new(0d, OnPropertyChanged));
         public double MinWidth { get => (double)GetValue(MinWidthProperty); set => SetValue(MinWidthProperty, value); }
 
-        public static DependencyProperty MinHeightProperty { get; } = DependencyProperty.Register(nameof(MinHeight), typeof(double), typeof(Window), new(0d, OnPropertyChanged));
+        public static DependencyProperty MinHeightProperty { get; } = DependencyProperty.Register(nameof(MinHeight), typeof(double), typeof(FrameWindow), new(0d, OnPropertyChanged));
         public double MinHeight { get => (double)GetValue(MinHeightProperty); set => SetValue(MinHeightProperty, value); }
 
-        public static DependencyProperty BorderThinessProperty { get; } = DependencyProperty.Register(nameof(BorderThiness), typeof(double), typeof(Window), new(default(double), OnPropertyChanged));
+        public static DependencyProperty BorderThinessProperty { get; } = DependencyProperty.Register(nameof(BorderThiness), typeof(double), typeof(FrameWindow), new(default(double), OnPropertyChanged));
         public double BorderThiness { get => (double)GetValue(BorderThinessProperty); private set => SetValue(BorderThinessProperty, value); }
 
-        public static DependencyProperty ScalingFactorProperty { get; } = DependencyProperty.Register(nameof(ScalingFactor), typeof(double), typeof(Window), new(default(double), OnPropertyChanged));
+        public static DependencyProperty ScalingFactorProperty { get; } = DependencyProperty.Register(nameof(ScalingFactor), typeof(double), typeof(FrameWindow), new(default(double), OnPropertyChanged));
         public double ScalingFactor { get => (double)GetValue(ScalingFactorProperty); private set => SetValue(ScalingFactorProperty, value); }
 
-        public static DependencyProperty IsActivedProperty { get; } = DependencyProperty.Register(nameof(IsActived), typeof(double), typeof(Window), new(default(bool), OnPropertyChanged));
+        public static DependencyProperty IsActivedProperty { get; } = DependencyProperty.Register(nameof(IsActived), typeof(bool), typeof(FrameWindow), new(default(bool), OnPropertyChanged));
         public bool IsActived { get => (bool)GetValue(IsActivedProperty); private set => SetValue(IsActivedProperty, value); }
 
-        public static DependencyProperty StateProperty { get; } = DependencyProperty.Register(nameof(State), typeof(WindowState), typeof(Window), new(WindowState.Normal, OnPropertyChanged));
+        public static DependencyProperty TopmostProperty { get; } = DependencyProperty.Register(nameof(Topmost), typeof(bool), typeof(FrameWindow), new(false, OnPropertyChanged));
+        public bool Topmost { get => (bool)GetValue(TopmostProperty); set => SetValue(TopmostProperty, value); }
+
+        public static DependencyProperty StateProperty { get; } = DependencyProperty.Register(nameof(State), typeof(WindowState), typeof(FrameWindow), new(WindowState.Normal, OnPropertyChanged));
         public WindowState State { get => (WindowState)GetValue(StateProperty); set => SetValue(StateProperty, value); }
 
         public static DependencyProperty StartupLocationProperty { get; } = DependencyProperty.Register(nameof(StartupLocation), typeof(WindowStartupLocation), typeof(Window), new(WindowStartupLocation.Manual, OnPropertyChanged));
         public WindowStartupLocation StartupLocation { get => (WindowStartupLocation)GetValue(StartupLocationProperty); set => SetValue(StartupLocationProperty, value); }
 
-        public static DependencyProperty TitleProperty { get; } = DependencyProperty.Register(nameof(Title), typeof(string), typeof(Window), new("Typedown", OnPropertyChanged));
+        public static DependencyProperty TitleProperty { get; } = DependencyProperty.Register(nameof(Title), typeof(string), typeof(FrameWindow), new("Typedown", OnPropertyChanged));
         public string Title { get => (string)GetValue(TitleProperty); set => SetValue(TitleProperty, value); }
 
         public nint Handle { get; private set; }
@@ -162,11 +165,17 @@ namespace Typedown.Windows
                 IntPtr.Zero,
                 Process.GetCurrentProcess().Handle,
                 IntPtr.Zero);
+            InitializeWindow();
+            windows.Add(Handle, this);
+            OnCreated(EventArgs.Empty);
+        }
+
+        private void InitializeWindow()
+        {
             UpdateScaleProperty();
             UpdateBorderThinessProperty();
             SetStartupPos();
-            windows.Add(Handle, this);
-            OnCreated(EventArgs.Empty);
+            SetTopmost();
         }
 
         public void EnsureCreate()
@@ -271,6 +280,10 @@ namespace Typedown.Windows
                 {
                     target.SetWindowTitle();
                 }
+                else if (e.Property == TopmostProperty)
+                {
+                    target.SetTopmost();
+                }
             }
         }
 
@@ -369,6 +382,13 @@ namespace Typedown.Windows
             if (Handle == IntPtr.Zero)
                 return;
             PInvoke.SetWindowText(Handle, Title);
+        }
+
+        private void SetTopmost()
+        {
+            if (Handle == IntPtr.Zero)
+                return;
+            PInvoke.SetWindowPos(Handle, Topmost ? -1 : -2, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
         }
     }
 
