@@ -31,7 +31,6 @@ namespace Typedown.Utilities
             SynchronizationContext.SetSynchronizationContext(new SyncContext(dispatcher));
             while (PInvoke.GetMessage(out var msg, IntPtr.Zero, 0, 0))
             {
-                Trace.WriteLine((PInvoke.WindowMessage)msg.message);
                 if (msg.message != 0)
                 {
                     PInvoke.TranslateMessage(ref msg);
