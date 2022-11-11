@@ -74,8 +74,8 @@ namespace Typedown.Windows
         public static DependencyProperty BorderThinessProperty { get; } = DependencyProperty.Register(nameof(BorderThiness), typeof(double), typeof(Window), new(default(double), OnPropertyChanged));
         public double BorderThiness { get => (double)GetValue(BorderThinessProperty); private set => SetValue(BorderThinessProperty, value); }
 
-        public static DependencyProperty ScaleProperty { get; } = DependencyProperty.Register(nameof(Scale), typeof(double), typeof(Window), new(default(double), OnPropertyChanged));
-        public double Scale { get => (double)GetValue(ScaleProperty); private set => SetValue(ScaleProperty, value); }
+        public static DependencyProperty ScalingFactorProperty { get; } = DependencyProperty.Register(nameof(ScalingFactor), typeof(double), typeof(Window), new(default(double), OnPropertyChanged));
+        public double ScalingFactor { get => (double)GetValue(ScalingFactorProperty); private set => SetValue(ScalingFactorProperty, value); }
 
         public static DependencyProperty IsActivedProperty { get; } = DependencyProperty.Register(nameof(IsActived), typeof(double), typeof(Window), new(default(bool), OnPropertyChanged));
         public bool IsActived { get => (bool)GetValue(IsActivedProperty); private set => SetValue(IsActivedProperty, value); }
@@ -220,6 +220,12 @@ namespace Typedown.Windows
                     var rect = Marshal.PtrToStructure<PInvoke.RECT>(lParam);
                     PInvoke.SetWindowPos(hWnd, 0, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, PInvoke.SetWindowPosFlags.SWP_NOZORDER);
                     break;
+                case PInvoke.WindowMessage.WM_GETMINMAXINFO:
+                    var minMaxInfo = Marshal.PtrToStructure<PInvoke.MINMAXINFO>(lParam);
+                    minMaxInfo.ptMinTrackSize.X = (int)(MinWidth * ScalingFactor);
+                    minMaxInfo.ptMinTrackSize.Y = (int)(MinHeight * ScalingFactor);
+                    Marshal.StructureToPtr(minMaxInfo, lParam, true);
+                    break;
             }
             return PInvoke.DefWindowProc(hWnd, msg, wParam, lParam);
         }
@@ -241,7 +247,7 @@ namespace Typedown.Windows
                 {
                     target.OnStateChanged(EventArgs.Empty);
                 }
-                else if (e.Property == ScaleProperty)
+                else if (e.Property == ScalingFactorProperty)
                 {
                     target.OnScaleChanged(EventArgs.Empty);
                 }
@@ -272,10 +278,10 @@ namespace Typedown.Windows
         {
             isInternalChange = true;
             PInvoke.GetWindowRect(Handle, out var rect);
-            Left = rect.left / Scale;
-            Top = rect.top / Scale;
-            Width = (rect.right - rect.left) / Scale;
-            Height = (rect.bottom - rect.top) / Scale;
+            Left = rect.left / ScalingFactor;
+            Top = rect.top / ScalingFactor;
+            Width = (rect.right - rect.left) / ScalingFactor;
+            Height = (rect.bottom - rect.top) / ScalingFactor;
             isInternalChange = false;
         }
 
@@ -296,14 +302,14 @@ namespace Typedown.Windows
         private void UpdateBorderThinessProperty()
         {
             isInternalChange = true;
-            BorderThiness = (PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXFRAME) + PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXPADDEDBORDER)) / Scale;
+            BorderThiness = (PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXFRAME) + PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXPADDEDBORDER)) / ScalingFactor;
             isInternalChange = false;
         }
 
         private void UpdateScaleProperty()
         {
             isInternalChange = true;
-            Scale = PInvoke.GetDpiForWindow(Handle) / 96d;
+            ScalingFactor = PInvoke.GetDpiForWindow(Handle) / 96d;
             isInternalChange = false;
         }
 
@@ -318,10 +324,10 @@ namespace Typedown.Windows
         {
             if (Handle == IntPtr.Zero)
                 return;
-            var rawLeft = (int)(Left * Scale);
-            var rawTop = (int)(Top * Scale);
-            var rawWidth = (int)(Width * Scale);
-            var rawHeight = (int)(Height * Scale);
+            var rawLeft = (int)(Left * ScalingFactor);
+            var rawTop = (int)(Top * ScalingFactor);
+            var rawWidth = (int)(Width * ScalingFactor);
+            var rawHeight = (int)(Height * ScalingFactor);
             PInvoke.SetWindowPos(Handle, IntPtr.Zero, rawLeft, rawTop, rawWidth, rawHeight, 0);
         }
 
@@ -329,15 +335,15 @@ namespace Typedown.Windows
         {
             if (Handle == IntPtr.Zero)
                 return;
-            var rawLeft = (int)(Left * Scale);
-            var rawTop = (int)(Top * Scale);
-            var rawWidth = (int)(Width * Scale);
-            var rawHeight = (int)(Height * Scale);
+            var rawLeft = (int)(Left * ScalingFactor);
+            var rawTop = (int)(Top * ScalingFactor);
+            var rawWidth = (int)(Width * ScalingFactor);
+            var rawHeight = (int)(Height * ScalingFactor);
             switch (StartupLocation)
             {
                 case WindowStartupLocation.CenterScreen:
                     var cx = PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXSCREEN);
-                    var cy = PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CYSCREEN) - (int)(40 * Scale);
+                    var cy = PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CYSCREEN) - (int)(40 * ScalingFactor);
                     rawLeft = (cx - rawWidth) / 2;
                     rawTop = (cy - rawHeight) / 2;
                     break;

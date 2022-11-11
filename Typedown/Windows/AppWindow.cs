@@ -84,9 +84,9 @@ namespace Typedown.Windows
         {
             PInvoke.GetClientRect(Handle, out var rect);
             PInvoke.SetWindowPos(xamlSourceHwnd, new IntPtr(1), 0, 0, rect.right, rect.bottom, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
-            PInvoke.SetWindowPos(topBorder.Handle, IntPtr.Zero, 0, 0, rect.right - 46 * 3, (int)(BorderThiness * Scale), PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            PInvoke.SetWindowPos(topBorder.Handle, IntPtr.Zero, 0, 0, rect.right - 46 * 3, (int)(BorderThiness * ScalingFactor), PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
             var dragBarHeight = CaptionHeight + (State == WindowState.Maximized ? BorderThiness : 0);
-            PInvoke.SetWindowPos(dragBar.Handle, IntPtr.Zero, (int)(LeftClientAreaWidth * Scale), 0, (int)(rect.right - RightClientAreaWidth * Scale), (int)(dragBarHeight * Scale), PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            PInvoke.SetWindowPos(dragBar.Handle, IntPtr.Zero, (int)(LeftClientAreaWidth * ScalingFactor), 0, (int)(rect.right - RightClientAreaWidth * ScalingFactor), (int)(dragBarHeight * ScalingFactor), PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
         }
 
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -153,7 +153,7 @@ namespace Typedown.Windows
 
         private void UpdateRootLayout()
         {
-            rootLayout.Margin = new(0, State == WindowState.Maximized ? BorderThiness : 1 / Scale, 0, 0);
+            rootLayout.Margin = new(0, State == WindowState.Maximized ? BorderThiness : 1 / ScalingFactor, 0, 0);
         }
 
         public void OpenSystemMenu(Point screenPos)
@@ -206,9 +206,9 @@ namespace Typedown.Windows
                     if (wParam != IntPtr.Zero)
                     {
                         var p = (PInvoke.NCCALCSIZE_PARAMS)Marshal.PtrToStructure(lParam, typeof(PInvoke.NCCALCSIZE_PARAMS));
-                        p.rcNewWindow.left += (int)(BorderThiness * Scale);
-                        p.rcNewWindow.right -= (int)(BorderThiness * Scale);
-                        p.rcNewWindow.bottom -= (int)(BorderThiness * Scale);
+                        p.rcNewWindow.left += (int)(BorderThiness * ScalingFactor);
+                        p.rcNewWindow.right -= (int)(BorderThiness * ScalingFactor);
+                        p.rcNewWindow.bottom -= (int)(BorderThiness * ScalingFactor);
                         Marshal.StructureToPtr(p, lParam, true);
                         return IntPtr.Zero;
                     }
@@ -218,8 +218,8 @@ namespace Typedown.Windows
                         return dwmHitTest;
                     var point = Utilities.Common.MakePoint(lParam);
                     PInvoke.GetWindowRect(hWnd, out var rect);
-                    point.X = (point.X - rect.left) / Scale;
-                    point.Y = (point.Y - rect.top) / Scale;
+                    point.X = (point.X - rect.left) / ScalingFactor;
+                    point.Y = (point.Y - rect.top) / ScalingFactor;
                     return (IntPtr)HitTest(point);
                 case PInvoke.WindowMessage.WM_NCRBUTTONUP:
                     if (wParam.ToInt32() == (int)PInvoke.HitTestFlags.CAPTION)

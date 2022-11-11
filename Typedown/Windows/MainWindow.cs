@@ -36,8 +36,8 @@ namespace Typedown.Windows
             Title = "Typedown";
             MinWidth = 480;
             MinHeight = 300;
-            Width = 1200;
-            Height = 740;
+            Width = 1130;
+            Height = 700;
             StartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }

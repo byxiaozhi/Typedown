@@ -582,6 +582,16 @@ namespace Typedown.Universal.Utilities
             }
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct MINMAXINFO
+        {
+            public POINT ptReserved;
+            public POINT ptMaxSize;
+            public POINT ptMaxPosition;
+            public POINT ptMinTrackSize;
+            public POINT ptMaxTrackSize;
+        }
+
         [Flags]
         public enum PEN_FLAGS : int
         {
