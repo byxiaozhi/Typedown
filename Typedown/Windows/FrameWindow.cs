@@ -151,18 +151,20 @@ namespace Typedown.Windows
 
         private void CreateWindow()
         {
+            var style = PInvoke.WindowStyles.WS_OVERLAPPEDWINDOW;
+            if (State == WindowState.Maximized)
+                style |= PInvoke.WindowStyles.WS_MAXIMIZE;
+            var exStyle = PInvoke.WindowStylesEx.WS_EX_NOREDIRECTIONBITMAP;
             Handle = PInvoke.CreateWindowEx(
-                PInvoke.WindowStylesEx.WS_EX_NOREDIRECTIONBITMAP,
-                className,
-                Title,
-                PInvoke.WindowStyles.WS_OVERLAPPEDWINDOW,
-                (int)Left, (int)Top, (int)Width, (int)Height,
+                exStyle, className, Title, style,
+                0, 0, 0, 0,
                 IntPtr.Zero,
                 IntPtr.Zero,
                 Process.GetCurrentProcess().Handle,
                 IntPtr.Zero);
             UpdateScaleProperty();
             UpdateBorderThinessProperty();
+            SetStartupPos();
             windows.Add(Handle, this);
             OnCreated(EventArgs.Empty);
         }
@@ -176,7 +178,11 @@ namespace Typedown.Windows
         public void Show()
         {
             EnsureCreate();
-            PInvoke.ShowWindow(Handle, PInvoke.ShowWindowCommand.Normal);
+            PInvoke.ShowWindow(Handle, State switch
+            {
+                WindowState.Maximized => PInvoke.ShowWindowCommand.Maximize,
+                _ => PInvoke.ShowWindowCommand.Normal
+            });
         }
 
         public void Close()
@@ -201,15 +207,18 @@ namespace Typedown.Windows
                     break;
                 case PInvoke.WindowMessage.WM_WINDOWPOSCHANGED:
                     UpdatePosProperty();
-                    UpdateStateProperty();
                     break;
-                case PInvoke.WindowMessage.WM_DPICHANGED:
-                    UpdateScaleProperty();
-                    UpdatePosProperty();
-                    UpdateBorderThinessProperty();
+                case PInvoke.WindowMessage.WM_SIZE:
+                    UpdateStateProperty();
                     break;
                 case PInvoke.WindowMessage.WM_ACTIVATE:
                     UpdateActiveProperty();
+                    break;
+                case PInvoke.WindowMessage.WM_DPICHANGED:
+                    UpdateScaleProperty();
+                    UpdateBorderThinessProperty();
+                    var rect = Marshal.PtrToStructure<PInvoke.RECT>(lParam);
+                    PInvoke.SetWindowPos(hWnd, 0, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, PInvoke.SetWindowPosFlags.SWP_NOZORDER);
                     break;
             }
             return PInvoke.DefWindowProc(hWnd, msg, wParam, lParam);
@@ -276,8 +285,9 @@ namespace Typedown.Windows
             PInvoke.GetWindowPlacement(Handle, out var placement);
             State = placement.showCmd switch
             {
+                PInvoke.ShowWindowCommand.ShowMinimized => WindowState.Minimized,
+                PInvoke.ShowWindowCommand.ShowMaximized => WindowState.Maximized,
                 PInvoke.ShowWindowCommand.Minimize => WindowState.Minimized,
-                PInvoke.ShowWindowCommand.Maximize => WindowState.Maximized,
                 _ => WindowState.Normal
             };
             isInternalChange = false;
@@ -306,6 +316,8 @@ namespace Typedown.Windows
 
         private void SetWindowPos()
         {
+            if (Handle == IntPtr.Zero)
+                return;
             var rawLeft = (int)(Left * Scale);
             var rawTop = (int)(Top * Scale);
             var rawWidth = (int)(Width * Scale);
@@ -313,12 +325,34 @@ namespace Typedown.Windows
             PInvoke.SetWindowPos(Handle, IntPtr.Zero, rawLeft, rawTop, rawWidth, rawHeight, 0);
         }
 
+        private void SetStartupPos()
+        {
+            if (Handle == IntPtr.Zero)
+                return;
+            var rawLeft = (int)(Left * Scale);
+            var rawTop = (int)(Top * Scale);
+            var rawWidth = (int)(Width * Scale);
+            var rawHeight = (int)(Height * Scale);
+            switch (StartupLocation)
+            {
+                case WindowStartupLocation.CenterScreen:
+                    var cx = PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CXSCREEN);
+                    var cy = PInvoke.GetSystemMetrics(PInvoke.SystemMetric.SM_CYSCREEN) - (int)(40 * Scale);
+                    rawLeft = (cx - rawWidth) / 2;
+                    rawTop = (cy - rawHeight) / 2;
+                    break;
+            }
+            PInvoke.SetWindowPos(Handle, IntPtr.Zero, rawLeft, rawTop, rawWidth, rawHeight, 0);
+        }
+
         private void SetWindowState()
         {
+            if (Handle == IntPtr.Zero)
+                return;
             var showCmd = State switch
             {
-                WindowState.Minimized => PInvoke.ShowWindowCommand.Minimize,
-                WindowState.Maximized => PInvoke.ShowWindowCommand.Maximize,
+                WindowState.Minimized => PInvoke.ShowWindowCommand.ShowMinimized,
+                WindowState.Maximized => PInvoke.ShowWindowCommand.ShowMaximized,
                 _ => PInvoke.ShowWindowCommand.Normal
             };
             PInvoke.ShowWindow(Handle, showCmd);
@@ -326,6 +360,8 @@ namespace Typedown.Windows
 
         private void SetWindowTitle()
         {
+            if (Handle == IntPtr.Zero)
+                return;
             PInvoke.SetWindowText(Handle, Title);
         }
     }

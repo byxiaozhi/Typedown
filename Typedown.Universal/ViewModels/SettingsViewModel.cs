@@ -20,7 +20,7 @@ namespace Typedown.Universal.ViewModels
 {
     public sealed partial class SettingsViewModel : INotifyPropertyChanged, IDisposable
     {
-        public WindowPlacement StartupPlacement { get => GetSettingValue<WindowPlacement>(null); set => SetSettingValue(value); }
+        public PInvoke.WINDOWPLACEMENT? StartupPlacement { get => GetSettingValue<PInvoke.WINDOWPLACEMENT?>(null); set => SetSettingValue(value); }
         public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public double SidePaneWidth { get => GetSettingValue(300d); set => SetSettingValue(value); }
         public bool StatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }

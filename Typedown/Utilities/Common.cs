@@ -60,34 +60,19 @@ namespace Typedown.Utilities
         public static void SaveWindowPlacement(this MainWindow window, Point offset = default)
         {
             PInvoke.GetWindowPlacement(window.Handle, out var placement);
-            var scale = PInvoke.GetDpiForWindow(window.Handle) / 96.0;
-            window.AppViewModel.SettingsViewModel.StartupPlacement = new(
-                placement.showCmd == PInvoke.ShowWindowCommand.Maximize,
-                new(
-                    x: placement.rcNormalPosition.left + offset.X * scale,
-                    y: placement.rcNormalPosition.top + offset.X * scale,
-                    width: (placement.rcNormalPosition.right - placement.rcNormalPosition.left),
-                    height: (placement.rcNormalPosition.bottom - placement.rcNormalPosition.top))
-                );
+            window.AppViewModel.SettingsViewModel.StartupPlacement = placement;
         }
 
-        public static void RestoreWindowPlacement(this MainWindow window)
+        public static bool TryRestoreWindowPlacement(this MainWindow window)
         {
             var placement = window.AppViewModel.SettingsViewModel.StartupPlacement;
-            if (placement == null)
-            {
-                window.StartupLocation = WindowStartupLocation.CenterScreen;
-                window.Width = 1200;
-                window.Height = 800;
-            }
-            else
-            {
-                window.Left = placement.NormalPosition.Left;
-                window.Top = placement.NormalPosition.Top;
-                window.Width = placement.NormalPosition.Width;
-                window.Height = placement.NormalPosition.Height;
-                window.State = placement.IsMaximized ? WindowState.Maximized : WindowState.Normal;
-            }
+            if (!placement.HasValue)
+                return false;
+            var value = placement.Value;
+            if (value.showCmd != PInvoke.ShowWindowCommand.ShowMaximized)
+                value.showCmd = PInvoke.ShowWindowCommand.Normal;
+            PInvoke.SetWindowPlacement(window.Handle, ref value);
+            return true;
         }
 
         public static IntPtr OpenNewWindow(string[] args)

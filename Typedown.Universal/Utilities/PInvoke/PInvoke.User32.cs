@@ -895,6 +895,10 @@ namespace Typedown.Universal.Utilities
 
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool SetWindowPlacement(nint hWnd, ref WINDOWPLACEMENT lpwndpl);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetForegroundWindow(nint hWnd);
 
         [DllImport("user32.dll", ExactSpelling = true)]

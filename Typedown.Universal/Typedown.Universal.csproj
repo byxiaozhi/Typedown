@@ -215,7 +215,6 @@
     <Compile Include="Models\RuntimeModels\ScrollState.cs" />
     <Compile Include="Models\RuntimeModels\ShortcutKey.cs" />
     <Compile Include="Models\RuntimeModels\TocItem.cs" />
-    <Compile Include="Models\RuntimeModels\WindowPlacement.cs" />
     <Compile Include="Models\RuntimeModels\WordCount.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

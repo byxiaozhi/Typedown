@@ -36,7 +36,9 @@ namespace Typedown.Windows
             Title = "Typedown";
             MinWidth = 480;
             MinHeight = 300;
-            this.RestoreWindowPlacement();
+            Width = 1200;
+            Height = 740;
+            StartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
@@ -63,6 +65,7 @@ namespace Typedown.Windows
         protected override void OnCreated(EventArgs args)
         {
             base.OnCreated(args);
+            this.TryRestoreWindowPlacement();
             AppViewModel.MainWindow = Handle;
         }
 
@@ -173,7 +176,8 @@ namespace Typedown.Windows
 
         private void SaveWindowPlacementWithOffset()
         {
-            this.SaveWindowPlacement(new(8, 8));
+            if (AppViewModel.MainWindow != IntPtr.Zero)
+                this.SaveWindowPlacement(new(8, 8));
         }
 
         private void SetMaxWorkingSetSize()
