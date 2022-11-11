@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reactive.Disposables;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Windows;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;

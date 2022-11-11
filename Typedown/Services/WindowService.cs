@@ -1,8 +1,5 @@
-﻿using System;
-using Typedown.Controls;
-using Typedown.Universal.Interfaces;
+﻿using Typedown.Universal.Interfaces;
 using Windows.UI.Xaml;
-using Typedown.Utilities;
 using System.Reactive.Subjects;
 using Typedown.Windows;
 
