@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
 using Typedown.Universal.Utilities;
+using System.Diagnostics;
 
 namespace Typedown.Utilities
 {
@@ -30,6 +31,7 @@ namespace Typedown.Utilities
             SynchronizationContext.SetSynchronizationContext(new SyncContext(dispatcher));
             while (PInvoke.GetMessage(out var msg, IntPtr.Zero, 0, 0))
             {
+                Trace.WriteLine((PInvoke.WindowMessage)msg.message);
                 if (msg.message != 0)
                 {
                     PInvoke.TranslateMessage(ref msg);
@@ -39,7 +41,8 @@ namespace Typedown.Utilities
                 {
                     action();
                 }
-                if (dispatcher.queue.IsAddingCompleted)
+                if (dispatcher.queue.IsAddingCompleted || 
+                    msg.message == (uint)PInvoke.WindowMessage.WM_QUIT)
                 {
                     break;
                 }
