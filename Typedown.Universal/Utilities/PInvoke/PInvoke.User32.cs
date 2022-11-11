@@ -950,5 +950,9 @@ namespace Typedown.Universal.Utilities
         public static extern short GetKeyState(int nVirtKey);
 
         public static bool GetIsKeyDown(VirtualKey key) => (GetKeyState((int)key) & 0x80) > 0;
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool IsIconic(IntPtr Hwnd);
     }
 }

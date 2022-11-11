@@ -104,8 +104,8 @@ namespace Typedown.Utilities
             {
                 var appWindows = FrameWindow.Windows.OfType<AppWindow>();
                 var window = appWindows.Where(x => x.Handle == windowHWnd).FirstOrDefault();
-                // if (window?.State == WindowState.Minimized)
-                // SystemCommands.RestoreWindow(window);
+                if (window != null && PInvoke.IsIconic(window.Handle))
+                    PInvoke.ShowWindow(window.Handle, PInvoke.ShowWindowCommand.Restore);
                 return windowHWnd;
             }
         }
