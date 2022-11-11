@@ -192,6 +192,7 @@ namespace Typedown.Windows
                 WindowState.Maximized => PInvoke.ShowWindowCommand.Maximize,
                 _ => PInvoke.ShowWindowCommand.Normal
             });
+            UpdateActiveProperty();
         }
 
         public void Close()
