@@ -24,7 +24,6 @@ using Newtonsoft.Json.Linq;
 using System.Web;
 using System.IO;
 using Windows.UI.Xaml.Shapes;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Typedown.Controls

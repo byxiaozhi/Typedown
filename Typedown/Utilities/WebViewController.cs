@@ -13,9 +13,9 @@ using Windows.System;
 using Windows.UI.Input;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
-using Typedown.Controls;
 using System.Reactive.Disposables;
 using System.Diagnostics;
+using Typedown.Windows;
 
 namespace Typedown.Utilities
 {
@@ -54,9 +54,9 @@ namespace Typedown.Utilities
                 InitializeEventHandler();
                 UpdataWindowScale();
                 disposables.Add(Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).Subscribe(_ => UpdateBounds()));
-                //var window = System.Windows.Window.GetWindow(AppXamlHost.GetAppXamlHost(container));
-                //disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.LocationChanged)).Subscribe(_ => UpdateBounds()));
-                //disposables.Add(Observable.FromEventPattern(window, nameof(System.Windows.Window.DpiChanged)).Subscribe(_ => UpdataWindowScale()));
+                var window = AppWindow.GetWindow(container);
+                disposables.Add(Observable.FromEventPattern(window, nameof(AppWindow.LocationChanged)).Subscribe(_ => UpdateBounds()));
+                disposables.Add(Observable.FromEventPattern(window, nameof(AppWindow.ScaleChanged)).Subscribe(_ => UpdataWindowScale()));
                 SetMaxWorkingSetSize();
             }
         }
