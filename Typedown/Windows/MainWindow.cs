@@ -43,7 +43,6 @@ namespace Typedown.Windows
         private async void InitializeComponent()
         {
             DataContext = AppViewModel;
-            AppViewModel.MainWindow = Handle;
             Content = RootControl;
             InitializeBinding();
             await Dispatcher.RunIdleAsync(_ => SetMaxWorkingSetSize());
@@ -59,6 +58,12 @@ namespace Typedown.Windows
             AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => UpdateDragBar();
             AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.MenuBarWidth)).Subscribe(_ => UpdateDragBar());
             UpdateDragBar();
+        }
+
+        protected override void OnCreated(EventArgs args)
+        {
+            base.OnCreated(args);
+            AppViewModel.MainWindow = Handle;
         }
 
         protected override void OnStateChanged(EventArgs e)

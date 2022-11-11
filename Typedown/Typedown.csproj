@@ -25,6 +25,7 @@
 		<PackageReference Include="Microsoft.Toolkit.UI.XamlHost" Version="6.1.2" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1418.22" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="PropertyChanged.Fody" Version="4.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>

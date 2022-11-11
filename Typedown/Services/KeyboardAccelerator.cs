@@ -104,7 +104,7 @@ namespace Typedown.Services
             return Disposable.Create(() => registeredDictionary[key].Remove(handler));
         }
 
-        public IDisposable RegisterGlobal(EventHandler<Universal.Models.KeyEventArgs> handler)
+        public IDisposable RegisterGlobal(EventHandler<KeyEventArgs> handler)
         {
             if (handler == null)
                 return Disposable.Empty;

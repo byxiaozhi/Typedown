@@ -8,7 +8,7 @@ using Windows.UI.Xaml;
 
 namespace Typedown.Windows
 {
-    public class FrameWindow : DependencyObject
+    public partial class FrameWindow : DependencyObject, INotifyPropertyChanged
     {
         private const string className = "FRAME";
 
