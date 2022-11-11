@@ -12,7 +12,7 @@ namespace Typedown.Universal.Controls
     {
         private IWindowService WindowService => this.GetService<IWindowService>();
 
-        private nint ParentHandle => PInvoke.GetParent(WindowService.GetWindow(this));
+        private nint WindowHandle => WindowService.GetWindow(this);
 
         private const uint WM_SYSCOMMAND = 0x0112;
         private const uint SC_MINIMIZE = 0xF020;
@@ -29,11 +29,11 @@ namespace Typedown.Universal.Controls
 
         private void Button_Minimize_Click(object sender, RoutedEventArgs e) => SendCommand(SC_MINIMIZE);
 
-        private void Button_MaximizeOrRestore_Click(object sender, RoutedEventArgs e) => SendCommand(PInvoke.IsZoomed(ParentHandle) ? SC_RESTORE : SC_MAXIMIZE);
+        private void Button_MaximizeOrRestore_Click(object sender, RoutedEventArgs e) => SendCommand(PInvoke.IsZoomed(WindowHandle) ? SC_RESTORE : SC_MAXIMIZE);
 
         private void Button_Close_Click(object sender, RoutedEventArgs e) => SendCommand(SC_CLOSE);
 
-        private void SendCommand(uint command) => PInvoke.PostMessage(ParentHandle, WM_SYSCOMMAND, (nint)command, IntPtr.Zero);
+        private void SendCommand(uint command) => PInvoke.PostMessage(WindowHandle, WM_SYSCOMMAND, (nint)command, IntPtr.Zero);
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -45,6 +45,6 @@ namespace Typedown.Universal.Controls
 
         private void OnWindowStateChanged(nint hWnd) => UpdateMaximizeButtonIcon();
 
-        private void UpdateMaximizeButtonIcon() => Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(PInvoke.IsZoomed(ParentHandle) ? "&#xe923;" : "&#xe922;");
+        private void UpdateMaximizeButtonIcon() => Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(PInvoke.IsZoomed(WindowHandle) ? "&#xe923;" : "&#xe922;");
     }
 }
