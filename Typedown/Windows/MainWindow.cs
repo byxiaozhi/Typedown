@@ -78,14 +78,17 @@ namespace Typedown.Windows
 
         private void UpdateDragBar()
         {
-            double leftSpace = 0;
+            CaptionHeight = 32;
             if (AppViewModel.GoBackCommand.IsExecutable)
-                leftSpace = 32;
+            {
+                LeftClientAreaWidth = 32;
+            }
             else if (AppViewModel.SettingsViewModel.AppCompactMode)
-                leftSpace = AppViewModel.UIViewModel.MenuBarWidth;
-            var rightSpace = Universal.Config.IsMicaSupported ? 0 : 46 * 3;
-            LeftClientAreaWidth = leftSpace;
-            RightClientAreaWidth = rightSpace;
+            {
+                LeftClientAreaWidth = AppViewModel.UIViewModel.MenuBarWidth;
+                CaptionHeight = 40;
+            }
+            RightClientAreaWidth = Universal.Config.IsMicaSupported ? 0 : 46 * 3;
         }
 
         private void CloseMenuFlyout()

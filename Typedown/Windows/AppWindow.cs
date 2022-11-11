@@ -71,22 +71,26 @@ namespace Typedown.Windows
             dragBar = new(Handle);
             topBorder = new(Handle);
 
-            UpdateClientPos();
-
             PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = -1 });
             PInvoke.SetWindowPos(Handle, IntPtr.Zero, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
 
-            UpdateRootLayout();
+            UpdateClientPos();
             UpdateSystemBackdrop();
         }
 
         private void UpdateClientPos()
         {
             PInvoke.GetClientRect(Handle, out var rect);
-            PInvoke.SetWindowPos(xamlSourceHwnd, new IntPtr(1), 0, 0, rect.right, rect.bottom, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
-            PInvoke.SetWindowPos(topBorder.Handle, IntPtr.Zero, 0, 0, rect.right - 46 * 3, (int)(BorderThiness * ScalingFactor), PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
-            var dragBarHeight = CaptionHeight + (State == WindowState.Maximized ? BorderThiness : 0);
-            PInvoke.SetWindowPos(dragBar.Handle, IntPtr.Zero, (int)(LeftClientAreaWidth * ScalingFactor), 0, (int)(rect.right - RightClientAreaWidth * ScalingFactor), (int)(dragBarHeight * ScalingFactor), PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            var rawBorderThiness = (int)(BorderThiness * ScalingFactor);
+            var rawCaptionHeight = (int)(CaptionHeight * ScalingFactor);
+            var rawCaptionButtonsWidth = (int)((46 * 3) * ScalingFactor);
+            var rawLeftClientAreaWidth = (int)(LeftClientAreaWidth * ScalingFactor);
+            var rawRightClientAreaWidth = (int)(RightClientAreaWidth * ScalingFactor);
+            var rawTopInvisibleHeight = State == WindowState.Maximized ? rawBorderThiness : 1;
+            var rawDragBarHeight = rawCaptionHeight + rawTopInvisibleHeight;
+            PInvoke.SetWindowPos(xamlSourceHwnd, new IntPtr(1), 0, rawTopInvisibleHeight, rect.right, rect.bottom - rawTopInvisibleHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            PInvoke.SetWindowPos(topBorder.Handle, IntPtr.Zero, 0, 0, rect.right - rawCaptionButtonsWidth, rawBorderThiness, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            PInvoke.SetWindowPos(dragBar.Handle, IntPtr.Zero, rawLeftClientAreaWidth, 0, rect.right - rawRightClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
         }
 
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -147,13 +151,7 @@ namespace Typedown.Windows
         protected override void OnStateChanged(EventArgs args)
         {
             base.OnStateChanged(args);
-            UpdateRootLayout();
             UpdateClientPos();
-        }
-
-        private void UpdateRootLayout()
-        {
-            rootLayout.Margin = new(0, State == WindowState.Maximized ? BorderThiness : 1 / ScalingFactor, 0, 0);
         }
 
         public void OpenSystemMenu(Point screenPos)
@@ -193,7 +191,8 @@ namespace Typedown.Windows
                 else if (isLeft) return PInvoke.HitTestFlags.LEFT;
                 else if (isRight) return PInvoke.HitTestFlags.RIGHT;
             }
-            if ((State == WindowState.Maximized && pointerPos.Y < CaptionHeight + BorderThiness) || pointerPos.Y < CaptionHeight)
+            var topInvisibleHeight = State == WindowState.Maximized ? BorderThiness : 1 / ScalingFactor;
+            if (pointerPos.Y < CaptionHeight + topInvisibleHeight)
                 return PInvoke.HitTestFlags.CAPTION;
             return PInvoke.HitTestFlags.CLIENT;
         }
