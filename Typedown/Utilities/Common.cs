@@ -57,8 +57,10 @@ namespace Typedown.Utilities
             return App.Current.RequestedTheme == global::Windows.UI.Xaml.ApplicationTheme.Light;
         }
 
-        public static void SaveWindowPlacement(this MainWindow window, Point offset = default)
+        public static void TrySaveWindowPlacement(this MainWindow window, Point offset = default)
         {
+            if (window.Handle == IntPtr.Zero)
+                return;
             PInvoke.GetWindowPlacement(window.Handle, out var placement);
             var rawX = (int)(offset.X * window.ScalingFactor);
             var rawY = (int)(offset.Y * window.ScalingFactor);

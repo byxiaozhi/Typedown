@@ -62,10 +62,11 @@ namespace Typedown.Windows
             UpdateDragBar();
         }
 
-        protected override void OnCreated(EventArgs args)
+        protected override async void OnCreated(EventArgs args)
         {
             base.OnCreated(args);
             this.TryRestoreWindowPlacement();
+            SaveWindowPlacementWithOffset();
             AppViewModel.MainWindow = Handle;
         }
 
@@ -73,6 +74,18 @@ namespace Typedown.Windows
         {
             base.OnStateChanged(e);
             WindowService?.RaiseWindowStateChanged(Handle);
+            SaveWindowPlacementWithOffset();
+        }
+
+        protected override void OnLocationChanged(EventArgs e)
+        {
+            base.OnLocationChanged(e);
+            SaveWindowPlacementWithOffset();
+        }
+
+        protected override void OnSizeChanged(EventArgs args)
+        {
+            base.OnSizeChanged(args);
             SaveWindowPlacementWithOffset();
         }
 
@@ -155,9 +168,9 @@ namespace Typedown.Windows
 
         public async void ForceClose()
         {
-            this.SaveWindowPlacement();
-            await Task.Yield();
+            this.TrySaveWindowPlacement();
             isCloseable = true;
+            await Task.Yield();
             Close();
         }
 
@@ -171,16 +184,22 @@ namespace Typedown.Windows
             await Dispatcher.RunIdleAsync(_ => SetMaxWorkingSetSize());
         }
 
-        protected override void OnLocationChanged(EventArgs e)
-        {
-            base.OnLocationChanged(e);
-            SaveWindowPlacementWithOffset();
-        }
+        private bool isPlacementSaving = false;
 
-        private void SaveWindowPlacementWithOffset()
+        private async void SaveWindowPlacementWithOffset()
         {
-            if (AppViewModel.MainWindow != IntPtr.Zero)
-                this.SaveWindowPlacement(new(8, 8));
+            if (!isPlacementSaving && !isCloseable && !isClosing)
+            {
+                isPlacementSaving = true;
+                try
+                {
+                    await Dispatcher.RunIdleAsync(_ => this.TrySaveWindowPlacement(new(8, 8)));
+                }
+                finally
+                {
+                    isPlacementSaving = false;
+                }
+            }
         }
 
         private void SetMaxWorkingSetSize()

@@ -72,7 +72,7 @@ namespace Typedown.Windows
             topBorder = new(Handle);
 
             PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = -1 });
-            PInvoke.SetWindowPos(Handle, IntPtr.Zero, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
+            PInvoke.SetWindowPos(Handle, 0, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
 
             UpdateClientPos();
             UpdateSystemBackdrop();
@@ -90,9 +90,9 @@ namespace Typedown.Windows
             var rawRightClientAreaWidth = (int)(RightClientAreaWidth * ScalingFactor);
             var rawTopInvisibleHeight = State == WindowState.Maximized ? rawBorderThiness : 1;
             var rawDragBarHeight = rawCaptionHeight + rawTopInvisibleHeight;
-            PInvoke.SetWindowPos(xamlSourceHwnd, new IntPtr(1), 0, rawTopInvisibleHeight, rect.right, rect.bottom - rawTopInvisibleHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
-            PInvoke.SetWindowPos(topBorder.Handle, IntPtr.Zero, 0, 0, rect.right - rawCaptionButtonsWidth, rawBorderThiness, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
-            PInvoke.SetWindowPos(dragBar.Handle, IntPtr.Zero, rawLeftClientAreaWidth, 0, rect.right - rawRightClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            PInvoke.SetWindowPos(xamlSourceHwnd, 0, 0, rawTopInvisibleHeight, rect.right, rect.bottom - rawTopInvisibleHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW | PInvoke.SetWindowPosFlags.SWP_NOZORDER);
+            PInvoke.SetWindowPos(topBorder.Handle, 0, 0, 0, rect.right - rawCaptionButtonsWidth, rawBorderThiness, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            PInvoke.SetWindowPos(dragBar.Handle, 0, rawLeftClientAreaWidth, 0, rect.right - rawRightClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
         }
 
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
