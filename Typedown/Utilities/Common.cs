@@ -60,6 +60,12 @@ namespace Typedown.Utilities
         public static void SaveWindowPlacement(this MainWindow window, Point offset = default)
         {
             PInvoke.GetWindowPlacement(window.Handle, out var placement);
+            var rawX = (int)(offset.X * window.ScalingFactor);
+            var rawY = (int)(offset.Y * window.ScalingFactor);
+            placement.rcNormalPosition.left += rawX;
+            placement.rcNormalPosition.top += rawY;
+            placement.rcNormalPosition.right += rawX;
+            placement.rcNormalPosition.bottom += rawY;
             window.AppViewModel.SettingsViewModel.StartupPlacement = placement;
         }
 
