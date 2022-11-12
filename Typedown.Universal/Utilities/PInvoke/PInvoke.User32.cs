@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using Windows.System;
@@ -771,6 +773,8 @@ namespace Typedown.Universal.Utilities
 
         public delegate nint HookProc(int code, nint wParam, nint lParam);
 
+        public delegate bool EnumThreadDelegate(IntPtr hWnd, IntPtr lParam);
+
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
         public delegate IntPtr WindowProc(nint hwnd, uint uMsg, nint wParam, nint lParam);
 
@@ -968,5 +972,17 @@ namespace Typedown.Universal.Utilities
         [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool IsIconic(IntPtr Hwnd);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool EnumThreadWindows(int dwThreadId, EnumThreadDelegate lpfn, nint lParam);
+
+        public static IEnumerable<IntPtr> EnumProcessWindow(int processId)
+        {
+            var handles = new List<IntPtr>();
+            foreach (ProcessThread thread in Process.GetProcessById(processId).Threads)
+                EnumThreadWindows(thread.Id, (hWnd, _) => { handles.Add(hWnd); return true; }, 0);
+            return handles;
+        }
     }
 }

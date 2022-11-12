@@ -38,14 +38,13 @@ namespace Typedown.Windows
         public static DependencyProperty RightClientAreaWidthProperty { get; } = DependencyProperty.Register(nameof(RightClientAreaWidth), typeof(double), typeof(AppWindow), new(0d, OnPropertyChanged));
         public double RightClientAreaWidth { get => (double)GetValue(RightClientAreaWidthProperty); set => SetValue(RightClientAreaWidthProperty, value); }
 
+        public IntPtr XamlSourceHandle { get; private set; }
 
         private readonly WindowRootLayout rootLayout = new();
 
         private readonly ContentPresenter rootContent = new();
 
         private readonly DesktopWindowXamlSource xamlSource = new();
-
-        private IntPtr xamlSourceHwnd;
 
         private DragWindow topBorder, dragBar;
 
@@ -66,7 +65,7 @@ namespace Typedown.Windows
             var desktopWindowXamlSourceNative = xamlSource.GetInterop<IDesktopWindowXamlSourceNative>();
             desktopWindowXamlSourceNative.AttachToWindow(Handle);
             CoreWindow.DetachCoreWindow();
-            xamlSourceHwnd = desktopWindowXamlSourceNative.WindowHandle;
+            XamlSourceHandle = desktopWindowXamlSourceNative.WindowHandle;
 
             dragBar = new(Handle);
             topBorder = new(Handle);
@@ -90,7 +89,7 @@ namespace Typedown.Windows
             var rawRightClientAreaWidth = (int)(RightClientAreaWidth * ScalingFactor);
             var rawTopInvisibleHeight = State == WindowState.Maximized ? rawBorderThiness : 1;
             var rawDragBarHeight = rawCaptionHeight + rawTopInvisibleHeight;
-            PInvoke.SetWindowPos(xamlSourceHwnd, 0, 0, rawTopInvisibleHeight, rect.right, rect.bottom - rawTopInvisibleHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW | PInvoke.SetWindowPosFlags.SWP_NOZORDER);
+            PInvoke.SetWindowPos(XamlSourceHandle, 0, 0, rawTopInvisibleHeight, rect.right, rect.bottom - rawTopInvisibleHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW | PInvoke.SetWindowPosFlags.SWP_NOZORDER);
             PInvoke.SetWindowPos(topBorder.Handle, 0, 0, 0, rect.right - rawCaptionButtonsWidth, rawBorderThiness, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
             PInvoke.SetWindowPos(dragBar.Handle, 0, rawLeftClientAreaWidth, 0, rect.right - rawRightClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
         }
