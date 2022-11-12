@@ -42,8 +42,8 @@ namespace Typedown
             hHook = PInvoke.SetWindowsHookEx(PInvoke.HookType.WH_CBT, hookProc, IntPtr.Zero, PInvoke.GetCurrentThreadId());
             using (new Universal.App())
             {
-                var window = new MainWindow();
-                window.Show();
+                new MainWindow().Show();
+                ExitSigWindow.Start();
                 Task.Run(ListenPipe);
             }
         }

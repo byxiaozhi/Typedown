@@ -10,7 +10,7 @@ namespace Typedown.Windows
 {
     public partial class FrameWindow : DependencyObject, INotifyPropertyChanged
     {
-        private const string className = "FRAME";
+        private static readonly string ClassName = typeof(FrameWindow).FullName;
 
         private static readonly Dictionary<nint, FrameWindow> windows = new();
         public static IEnumerable<FrameWindow> Windows => windows.Values;
@@ -36,7 +36,7 @@ namespace Typedown.Windows
             wndClass.hCursor = PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_ARROW);
             wndClass.hbrBackground = 0;
             wndClass.lpszMenuName = null;
-            wndClass.lpszClassName = className;
+            wndClass.lpszClassName = ClassName;
             var result = PInvoke.RegisterClassEx(ref wndClass);
             return result != 0;
         }
@@ -159,7 +159,7 @@ namespace Typedown.Windows
                 style |= PInvoke.WindowStyles.WS_MAXIMIZE;
             var exStyle = PInvoke.WindowStylesEx.WS_EX_NOREDIRECTIONBITMAP;
             Handle = PInvoke.CreateWindowEx(
-                exStyle, className, Title, style,
+                exStyle, ClassName, Title, style,
                 0, 0, 0, 0,
                 IntPtr.Zero,
                 IntPtr.Zero,

@@ -8,7 +8,7 @@ namespace Typedown.Windows
 {
     public class DragWindow
     {
-        private const string className = "DRAG_BAR";
+        private static readonly string ClassName = typeof(DragWindow).FullName;
 
         private static readonly Dictionary<nint, DragWindow> windows = new();
 
@@ -32,7 +32,7 @@ namespace Typedown.Windows
             wndClass.hCursor = PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_ARROW);
             wndClass.hbrBackground = 0;
             wndClass.lpszMenuName = null;
-            wndClass.lpszClassName = className;
+            wndClass.lpszClassName = ClassName;
             var result = PInvoke.RegisterClassEx(ref wndClass);
             return result != 0;
         }
@@ -60,7 +60,7 @@ namespace Typedown.Windows
         {
             Handle = PInvoke.CreateWindowEx(
                 PInvoke.WindowStylesEx.WS_EX_NOREDIRECTIONBITMAP | PInvoke.WindowStylesEx.WS_EX_LAYERED,
-                className,
+                ClassName,
                 "",
                 PInvoke.WindowStyles.WS_CHILD,
                 0, 0, 0, 0,
