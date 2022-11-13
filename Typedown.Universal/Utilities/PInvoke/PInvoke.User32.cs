@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using Windows.System;
-using static Typedown.Universal.Utilities.PInvoke;
 
 namespace Typedown.Universal.Utilities
 {
@@ -984,5 +983,8 @@ namespace Typedown.Universal.Utilities
                 EnumThreadWindows(thread.Id, (hWnd, _) => { handles.Add(hWnd); return true; }, 0);
             return handles;
         }
+
+        [DllImport("user32.dll", EntryPoint = "LoadImageW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern nint LoadImage(nint hinst, string lpszName, uint uType, int cxDesired, int cyDesired, uint fuLoad);
     }
 }

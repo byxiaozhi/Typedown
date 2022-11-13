@@ -32,7 +32,7 @@ namespace Typedown.Windows
             wndClass.cbClsExtra = 0;
             wndClass.cbWndExtra = 0;
             wndClass.hInstance = Process.GetCurrentProcess().Handle;
-            wndClass.hIcon = IntPtr.Zero;
+            wndClass.hIcon = PInvoke.LoadImage(0, "Assets/logo.ico", 1, 0, 0, 0x0010 | 0x0040);
             wndClass.hCursor = PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_ARROW);
             wndClass.hbrBackground = 0;
             wndClass.lpszMenuName = null;
