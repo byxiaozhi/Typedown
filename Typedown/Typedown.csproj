@@ -6,7 +6,6 @@
 		<UseWPF>True</UseWPF>
 		<LangVersion>latest</LangVersion>
 		<Platforms>x64;x86</Platforms>
-		<PublishReadyToRun>true</PublishReadyToRun>
 		<AssetTargetFallback>uap10.0.19041</AssetTargetFallback>
 		<TargetPlatformVersion>10.0.22000.0</TargetPlatformVersion>
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
@@ -26,16 +25,10 @@
   	</PropertyGroup>
 
 	<ItemGroup>
-		<PublishReadyToRunExclude Include="Microsoft.EntityFrameworkCore.dll" />
-		<PublishReadyToRunExclude Include="Microsoft.EntityFrameworkCore.Relational.dll" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Toolkit.UI.XamlHost" Version="6.1.2" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1418.22" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="PropertyChanged.Fody" Version="4.0.5" >
+		<PackageReference Include="PropertyChanged.Fody" Version="4.0.5">
 			<PrivateAssets>All</PrivateAssets>
 		</PackageReference>
 	</ItemGroup>
