@@ -19,11 +19,11 @@ namespace Typedown.Universal.Enums
         [Localize("ImageUploadMethod/OSS")]
         OSS,
 
-        [Localize("ImageUploadMethod/SSH")]
-        SSH,
+        [Localize("ImageUploadMethod/SCP")]
+        SCP,
 
-        [Localize("ImageUploadMethod/CMD")]
-        CMD = 1024
+        [Localize("ImageUploadMethod/PowerShell")]
+        PowerShell = 1024
     }
 
     public static partial class Enumerable

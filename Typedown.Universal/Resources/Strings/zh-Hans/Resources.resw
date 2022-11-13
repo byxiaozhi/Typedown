@@ -497,10 +497,6 @@
     <value>图像</value>
     <comment>图像</comment>
   </data>
-  <data name="ImageUploadMethod.CMD" xml:space="preserve">
-    <value>命令行</value>
-    <comment>命令行</comment>
-  </data>
   <data name="ImageUploadMethod.FTP" xml:space="preserve">
     <value>FTP</value>
     <comment>FTP</comment>
@@ -513,8 +509,12 @@
     <value>OSS</value>
     <comment>对象存储OSS</comment>
   </data>
-  <data name="ImageUploadMethod.SSH" xml:space="preserve">
-    <value>SSH</value>
+  <data name="ImageUploadMethod.PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+    <comment>PowerShell</comment>
+  </data>
+  <data name="ImageUploadMethod.SCP" xml:space="preserve">
+    <value>SCP</value>
     <comment>SSH</comment>
   </data>
   <data name="Import.Text" xml:space="preserve">

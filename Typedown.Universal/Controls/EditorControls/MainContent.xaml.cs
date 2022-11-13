@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Disposables;
@@ -40,6 +41,7 @@ namespace Typedown.Universal.Controls
             VisualStateManager.GoToState(this, sidePaneOpen ? "SidePaneExpand" : "SidePaneCollapse", useTransitions && Settings.AnimationEnable);
         }
 
+        [SuppressPropertyChangedWarnings]
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             LeftPaneMaxWidth = ActualWidth - 40;

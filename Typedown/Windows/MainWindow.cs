@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PropertyChanged;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -62,7 +63,7 @@ namespace Typedown.Windows
             UpdateDragBar();
         }
 
-        protected override async void OnCreated(EventArgs args)
+        protected override void OnCreated(EventArgs args)
         {
             base.OnCreated(args);
             this.TryRestoreWindowPlacement();
@@ -70,6 +71,7 @@ namespace Typedown.Windows
             AppViewModel.MainWindow = Handle;
         }
 
+        [SuppressPropertyChangedWarnings]
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
@@ -77,12 +79,14 @@ namespace Typedown.Windows
             SaveWindowPlacementWithOffset();
         }
 
+        [SuppressPropertyChangedWarnings]
         protected override void OnLocationChanged(EventArgs e)
         {
             base.OnLocationChanged(e);
             SaveWindowPlacementWithOffset();
         }
 
+        [SuppressPropertyChangedWarnings]
         protected override void OnSizeChanged(EventArgs args)
         {
             base.OnSizeChanged(args);

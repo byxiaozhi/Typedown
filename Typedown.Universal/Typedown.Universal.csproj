@@ -20,6 +20,14 @@
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)' == 'x64'">
+		<SelfContained>false</SelfContained>
+    	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)' == 'x86'">
+		<SelfContained>false</SelfContained>
+    	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
@@ -155,6 +163,21 @@
     </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\ShortcutSetting.xaml.cs">
       <DependentUpon>ShortcutSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\FTPSetting.xaml.cs">
+      <DependentUpon>FTPSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\GitSetting.xaml.cs">
+      <DependentUpon>GitSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\OSSSetting.xaml.cs">
+      <DependentUpon>OSSSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\PowerShellSetting.xaml.cs">
+      <DependentUpon>PowerShellSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\SCPSetting.xaml.cs">
+      <DependentUpon>SCPSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\ViewSetting.xaml.cs">
       <DependentUpon>ViewSetting.xaml</DependentUpon>
@@ -486,6 +509,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SettingControls\SettingItems\ShortcutSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\FTPSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\GitSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\OSSSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\PowerShellSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\SCPSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

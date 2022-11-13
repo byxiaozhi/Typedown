@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using static System.Net.WebRequestMethods;
 
 namespace Typedown.Universal.Controls.SettingControls.SettingItems
 {
@@ -29,9 +30,22 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
             InitializeComponent();
         }
 
-        public static bool IsCopyImageItemLoad(InsertImageAction action)
+        public static bool IsCopyImagePathSettingItemLoad(InsertImageAction action)
         {
             return action == InsertImageAction.CopyToPath;
+        }
+
+        public static FrameworkElement GetUploadSettingItem(ImageUploadMethod method)
+        {
+            return method switch
+            {
+                ImageUploadMethod.FTP => new UploadSettingItems.FTPSetting(),
+                ImageUploadMethod.Git => new UploadSettingItems.GitSetting(),
+                ImageUploadMethod.OSS => new UploadSettingItems.OSSSetting(),
+                ImageUploadMethod.SCP => new UploadSettingItems.SCPSetting(),
+                ImageUploadMethod.PowerShell => new UploadSettingItems.PowerShellSetting(),
+                _ => null
+            };
         }
     }
 }

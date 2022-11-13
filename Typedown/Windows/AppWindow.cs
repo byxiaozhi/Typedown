@@ -12,6 +12,7 @@ using Microsoft.Toolkit.Win32.UI.XamlHost;
 using Windows.UI.Xaml.Media;
 using Windows.UI;
 using Windows.Foundation;
+using PropertyChanged;
 
 namespace Typedown.Windows
 {
@@ -94,6 +95,7 @@ namespace Typedown.Windows
             PInvoke.SetWindowPos(dragBar.Handle, 0, rawLeftClientAreaWidth, 0, rect.right - rawRightClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
         }
 
+        [SuppressPropertyChangedWarnings]
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var target = d as AppWindow;
@@ -149,6 +151,7 @@ namespace Typedown.Windows
             }
         }
 
+        [SuppressPropertyChangedWarnings]
         protected override void OnStateChanged(EventArgs args)
         {
             base.OnStateChanged(args);

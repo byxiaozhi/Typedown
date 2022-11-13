@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -127,26 +128,31 @@ namespace Typedown.Windows
             Closed?.Invoke(this, args);
         }
 
+        [SuppressPropertyChangedWarnings]
         protected virtual void OnLocationChanged(EventArgs args)
         {
             LocationChanged?.Invoke(this, args);
         }
 
+        [SuppressPropertyChangedWarnings]
         protected virtual void OnSizeChanged(EventArgs args)
         {
             SizeChanged?.Invoke(this, args);
         }
 
+        [SuppressPropertyChangedWarnings]
         protected virtual void OnStateChanged(EventArgs args)
         {
             StateChanged?.Invoke(this, args);
         }
 
+        [SuppressPropertyChangedWarnings]
         protected virtual void OnScaleChanged(EventArgs args)
         {
             ScaleChanged?.Invoke(this, args);
         }
 
+        [SuppressPropertyChangedWarnings]
         protected virtual void OnIsActivedChanged(EventArgs args)
         {
             IsActivedChanged?.Invoke(this, args);
@@ -240,6 +246,7 @@ namespace Typedown.Windows
             return PInvoke.DefWindowProc(hWnd, msg, wParam, lParam);
         }
 
+        [SuppressPropertyChangedWarnings]
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var target = d as FrameWindow;

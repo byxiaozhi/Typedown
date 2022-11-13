@@ -30,7 +30,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyClipboardImageItem" 
-                    x:Load="{x:Bind local:ImageSetting.IsCopyImageItemLoad(Settings.InsertClipboardImageAction), Mode=OneWay}"
+                    x:Load="{x:Bind local:ImageSetting.IsCopyImagePathSettingItemLoad(Settings.InsertClipboardImageAction), Mode=OneWay}"
                     Title="复制剪贴板图片到" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -57,7 +57,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyLocalImageItem" 
-                    x:Load="{x:Bind local:ImageSetting.IsCopyImageItemLoad(Settings.InsertLocalImageAction), Mode=OneWay}"
+                    x:Load="{x:Bind local:ImageSetting.IsCopyImagePathSettingItemLoad(Settings.InsertLocalImageAction), Mode=OneWay}"
                     Title="复制本地图片到" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -83,7 +83,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyWebImageItem" 
-                    x:Load="{x:Bind local:ImageSetting.IsCopyImageItemLoad(Settings.InsertWebImageAction), Mode=OneWay}"
+                    x:Load="{x:Bind local:ImageSetting.IsCopyImagePathSettingItemLoad(Settings.InsertWebImageAction), Mode=OneWay}"
                     Title="复制网络图片到"
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -121,7 +121,6 @@
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
                 <controls:NormalSettingItem Title="上传服务">
-                    
                     <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.ImageUploadMethods}" SelectedItem="{Binding SettingsViewModel.ImageUploadMethod, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -129,8 +128,8 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    
                 </controls:NormalSettingItem>
+                <ContentPresenter Content="{x:Bind local:ImageSetting.GetUploadSettingItem(Settings.ImageUploadMethod), Mode=OneWay}"/>
             </StackPanel>
         </controls:ExpanderSettingItem>
         

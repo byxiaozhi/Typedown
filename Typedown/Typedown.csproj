@@ -15,6 +15,16 @@
 		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Platform)' == 'x64'">
+		<SelfContained>false</SelfContained>
+    	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)' == 'x86'">
+		<SelfContained>false</SelfContained>
+    	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+  	</PropertyGroup>
+
 	<ItemGroup>
 		<PublishReadyToRunExclude Include="Microsoft.EntityFrameworkCore.dll" />
 		<PublishReadyToRunExclude Include="Microsoft.EntityFrameworkCore.Relational.dll" />
@@ -25,7 +35,9 @@
 		<PackageReference Include="Microsoft.Toolkit.UI.XamlHost" Version="6.1.2" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1418.22" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="PropertyChanged.Fody" Version="4.0.5" />
+		<PackageReference Include="PropertyChanged.Fody" Version="4.0.5" >
+			<PrivateAssets>All</PrivateAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
