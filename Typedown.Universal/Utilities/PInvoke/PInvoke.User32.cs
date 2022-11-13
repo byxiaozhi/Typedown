@@ -927,7 +927,7 @@ namespace Typedown.Universal.Utilities
         [DllImport("user32.dll", ExactSpelling = true)]
         public static extern nint GetSystemMenu(nint hWnd, [MarshalAs(UnmanagedType.Bool)] bool bRevert);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", EntryPoint = "DefWindowProcW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern IntPtr DefWindowProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll", ExactSpelling = true)]
