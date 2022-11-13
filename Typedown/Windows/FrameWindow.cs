@@ -290,6 +290,8 @@ namespace Typedown.Windows
 
         private void UpdatePosProperty()
         {
+            if (PInvoke.IsIconic(Handle))
+                return;
             isInternalChange = true;
             PInvoke.GetWindowRect(Handle, out var rect);
             Left = rect.left / ScalingFactor;

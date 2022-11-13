@@ -86,8 +86,12 @@ namespace Typedown.Universal.Utilities
 
         public static string GetShortcutKeyText(this ShortcutKey key)
         {
-            if (key == null)
-                return string.Empty;
+            return string.Join('+', GetShortcutKeyTextList(key));
+        }
+
+        public static List<string> GetShortcutKeyTextList(this ShortcutKey key)
+        {
+            if (key == null) return new();
             var result = new List<string>();
             if (key.Modifiers.HasFlag(VirtualKeyModifiers.Control))
                 result.Add(GetVirtualKeyNameText(VirtualKey.Control));
@@ -98,12 +102,15 @@ namespace Typedown.Universal.Utilities
             if (key.Modifiers.HasFlag(VirtualKeyModifiers.Windows))
                 result.Add("Win");
             result.Add(GetVirtualKeyNameText(key.Key));
-            return string.Join('+', result);
+            return result;
         }
 
         public static string GetVirtualKeyNameText(this VirtualKey key)
         {
-            if (key == VirtualKey.Delete) return "Delete";
+            if (key == VirtualKey.Delete) 
+                return "Delete";
+            if (key == VirtualKey.LeftWindows || key == VirtualKey.RightWindows)
+                return "Win";
             var buffer = new StringBuilder(32);
             var scanCode = PInvoke.MapVirtualKey((uint)key, PInvoke.MapVirtualKeyMapTypes.MAPVK_VK_TO_VSC);
             var lParam = scanCode << 16;

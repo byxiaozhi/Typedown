@@ -12,13 +12,13 @@ namespace Typedown.Universal.Controls
 {
     public class PathPickerButton : Button
     {
-        public static DependencyProperty PathProperty = DependencyProperty.Register(nameof(Path), typeof(string), typeof(EnumNameBlock), new(""));
+        public static DependencyProperty PathProperty = DependencyProperty.Register(nameof(Path), typeof(string), typeof(PathPickerButton), new(""));
         public string Path { get => (string)GetValue(PathProperty); set => SetValue(PathProperty, value.Replace("\\", "/")); }
 
-        public static DependencyProperty ModeProperty = DependencyProperty.Register(nameof(Mode), typeof(PathPickMode), typeof(EnumNameBlock), new(PathPickMode.File));
+        public static DependencyProperty ModeProperty = DependencyProperty.Register(nameof(Mode), typeof(PathPickMode), typeof(PathPickerButton), new(PathPickMode.File));
         public PathPickMode Mode { get => (PathPickMode)GetValue(ModeProperty); set => SetValue(ModeProperty, value); }
 
-        public static DependencyProperty FileTypeFilterProperty = DependencyProperty.Register(nameof(FileTypeFilter), typeof(IEnumerable<string>), typeof(EnumNameBlock), new(PathPickMode.File));
+        public static DependencyProperty FileTypeFilterProperty = DependencyProperty.Register(nameof(FileTypeFilter), typeof(IEnumerable<string>), typeof(PathPickerButton), new(PathPickMode.File));
         public IEnumerable<string> FileTypeFilter { get => (IEnumerable<string>)GetValue(FileTypeFilterProperty); set => SetValue(FileTypeFilterProperty, value); }
 
         private nint Window => this.GetService<IWindowService>().GetWindow(this);

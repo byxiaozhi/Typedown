@@ -16,10 +16,10 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
-    [Localize("HotKeyPage/Content")]
-    public sealed partial class HotKeyPage : Page
+    [Localize("ShortcutPage/Content")]
+    public sealed partial class ShortcutPage : Page
     {
-        public HotKeyPage()
+        public ShortcutPage()
         {
             this.InitializeComponent();
         }

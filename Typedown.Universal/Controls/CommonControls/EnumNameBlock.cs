@@ -14,7 +14,6 @@ namespace Typedown.Universal.Controls
     public class EnumNameBlock : ContentControl
     {
         public static DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(object), typeof(EnumNameBlock), null);
-
         public object Value { get => GetValue(ValueProperty); set => SetValue(ValueProperty, value); }
 
         public EnumNameBlock()

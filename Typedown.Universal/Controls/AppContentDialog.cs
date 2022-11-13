@@ -9,6 +9,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 using System.Threading;
 using System.Runtime.CompilerServices;
+using Windows.UI.Xaml.Input;
+using Typedown.Universal.Utilities;
 
 namespace Typedown.Universal.Controls
 {
@@ -80,13 +82,13 @@ namespace Typedown.Universal.Controls
 
         public event TypedEventHandler<AppContentDialog, AppContentDialogButtonClickEventArgs> CloseButtonClick;
 
-        private Button PrimaryButton => GetTemplateChild("PrimaryButton") as Button;
+        public Button PrimaryButton => GetTemplateChild("PrimaryButton") as Button;
 
-        private Button SecondaryButton => GetTemplateChild("SecondaryButton") as Button;
+        public Button SecondaryButton => GetTemplateChild("SecondaryButton") as Button;
 
-        private Button CloseButton => GetTemplateChild("CloseButton") as Button;
+        public Button CloseButton => GetTemplateChild("CloseButton") as Button;
 
-        private Grid LayoutRoot => GetTemplateChild("LayoutRoot") as Grid;
+        public Grid LayoutRoot => GetTemplateChild("LayoutRoot") as Grid;
 
         private Rectangle SmokeLayerBackground => GetTemplateChild("SmokeLayerBackground") as Rectangle;
 
@@ -98,6 +100,7 @@ namespace Typedown.Universal.Controls
         {
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
+            AddHandler(KeyDownEvent, new KeyEventHandler(OnKeyDown), true);
         }
 
         private void SetButtonState()
@@ -138,6 +141,29 @@ namespace Typedown.Universal.Controls
             }
         }
 
+        private async void SetFocusButton()
+        {
+            bool success = false;
+            for(int i = 0; i < 10 && !success; i++)
+            {
+                await Task.Delay(100);
+                if (DefaultButton == ContentDialogButton.Primary && PrimaryButton.Visibility == Visibility.Visible)
+                    success = PrimaryButton.Focus(FocusState.Programmatic);
+                else if (DefaultButton == ContentDialogButton.Secondary && SecondaryButton.Visibility == Visibility.Visible)
+                    success = SecondaryButton.Focus(FocusState.Programmatic);
+                else if (DefaultButton == ContentDialogButton.Close && CloseButton.Visibility == Visibility.Visible)
+                    success = CloseButton.Focus(FocusState.Programmatic);
+                else if (PrimaryButton.Visibility == Visibility.Visible)
+                    success = PrimaryButton.Focus(FocusState.Programmatic);
+                else if (SecondaryButton.Visibility == Visibility.Visible)
+                    success = SecondaryButton.Focus(FocusState.Programmatic);
+                else if (CloseButton.Visibility == Visibility.Visible)
+                    success = CloseButton.Focus(FocusState.Programmatic);
+                else
+                    success = true;
+            }
+        }
+
         public void SetShadow()
         {
             var sharedShadow = new ThemeShadow();
@@ -149,12 +175,14 @@ namespace Typedown.Universal.Controls
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             SetButtonState();
+            SetFocusButton();
             SetShadow();
             VisualStateManager.GoToState(this, "DialogShowing", true);
             PrimaryButton.Click += OnPrimaryButtonClick;
             SecondaryButton.Click += OnSecondaryButtonClick;
             CloseButton.Click += OnCloseButtonClick;
             Opened?.Invoke(this, new());
+            FocusManager.GettingFocus += OnFocusManagerGettingFocus;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -164,6 +192,21 @@ namespace Typedown.Universal.Controls
             SecondaryButton.Click -= OnSecondaryButtonClick;
             CloseButton.Click -= OnCloseButtonClick;
             Closed?.Invoke(this, new(result.Task.Result));
+            FocusManager.GettingFocus -= OnFocusManagerGettingFocus;
+        }
+
+        private void OnFocusManagerGettingFocus(object sender, GettingFocusEventArgs e)
+        {
+            if (e.NewFocusedElement is FrameworkElement ele)
+            {
+                if (ele != this && ele.GetAncestor<AppContentDialog>() == null)
+                {
+                    if (e.Direction == FocusNavigationDirection.Next)
+                        e.TrySetNewFocusedElement(FocusManager.FindFirstFocusableElement(this));
+                    else if (e.Direction == FocusNavigationDirection.Previous)
+                        e.TrySetNewFocusedElement(FocusManager.FindLastFocusableElement(this));
+                }
+            }
         }
 
         private void OnPrimaryButtonClick(object sender, RoutedEventArgs e)
@@ -191,6 +234,12 @@ namespace Typedown.Universal.Controls
             if (clickEventArgs.Cancel)
                 return;
             SetResult(ContentDialogResult.None);
+        }
+
+        private void OnKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (IsLoaded && CloseButton.Visibility == Visibility.Visible && e.Key == Windows.System.VirtualKey.Escape)
+                OnCloseButtonClick(this, null);
         }
 
         private void SetResult(ContentDialogResult result)

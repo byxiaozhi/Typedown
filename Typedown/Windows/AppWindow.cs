@@ -79,7 +79,7 @@ namespace Typedown.Windows
 
         private void UpdateClientPos()
         {
-            if (Handle == IntPtr.Zero)
+            if (Handle == IntPtr.Zero || PInvoke.IsIconic(Handle))
                 return;
             PInvoke.GetClientRect(Handle, out var rect);
             var rawBorderThiness = (int)(BorderThiness * ScalingFactor);

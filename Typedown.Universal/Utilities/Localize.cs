@@ -111,13 +111,17 @@ namespace Typedown.Universal.Utilities
 
     public class LocalizeAttribute : Attribute
     {
-        public string ResourceKey { get; }
+        public string ResourceKey => ResourceKeys[0];
+
+        public string[] ResourceKeys { get; }
 
         public string Text => Localize.GetString(ResourceKey);
 
-        public LocalizeAttribute(string resourceKey)
+        public IEnumerable<string> Texts => ResourceKeys.Select(Localize.GetString);
+
+        public LocalizeAttribute(params string[] resourceKeys)
         {
-            ResourceKey = resourceKey;
+            ResourceKeys = resourceKeys;
         }
     }
 }

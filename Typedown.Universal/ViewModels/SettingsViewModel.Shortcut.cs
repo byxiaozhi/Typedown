@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
+using Typedown.Universal.Utilities;
 using Key = Windows.System.VirtualKey;
 using Mod = Windows.System.VirtualKeyModifiers;
 
@@ -12,16 +13,37 @@ namespace Typedown.Universal.ViewModels
 {
     public partial class SettingsViewModel
     {
+        [Localize("File/Title", "New/Text")]
         public ShortcutKey ShortcutNewFile { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.N)); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "NewWindow/Text")]
         public ShortcutKey ShortcutNewWindow { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.N)); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "Open/Text")]
         public ShortcutKey ShortcutOpenFile { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.O)); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "OpenFolder/Text")]
         public ShortcutKey ShortcutOpenFolder { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "ClearRecentFiles/Text")]
         public ShortcutKey ShortcutClearRecentFiles { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "Save/Text")]
         public ShortcutKey ShortcutSave { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.S)); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "SaveAs/Text")]
         public ShortcutKey ShortcutSaveAs { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.S)); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "ExportSettings/Text")]
         public ShortcutKey ShortcutExportSettings { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "Print/Text")]
         public ShortcutKey ShortcutPrint { get => GetSettingValue<ShortcutKey>(new(Mod.Menu | Mod.Shift, Key.P)); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "Settings/Text")]
         public ShortcutKey ShortcutSettings { get => GetSettingValue<ShortcutKey>(new(Mod.Control, (Key)0xBC)); set => SetSettingValue(value); }
+
+        [Localize("File/Title", "Close/Text")]
         public ShortcutKey ShortcutClose { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.W)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutUndo { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.Z)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutRedo { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.Y)); set => SetSettingValue(value); }

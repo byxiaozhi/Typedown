@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reactive.Disposables;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -20,7 +21,7 @@ namespace Typedown.Services
 
         private IntPtr hHook = IntPtr.Zero;
 
-        private readonly Dictionary<ShortcutKey, HashSet<EventHandler<Universal.Models.KeyEventArgs>>> registeredDictionary = new();
+        private readonly Dictionary<ShortcutKey, HashSet<EventHandler<KeyEventArgs>>> registeredDictionary = new();
 
         private readonly HashSet<EventHandler<KeyEventArgs>> globalRegistered = new();
 
@@ -57,7 +58,8 @@ namespace Typedown.Services
         {
             if (code >= 0)
             {
-                if (wParam == (nint)PInvoke.WindowMessage.WM_KEYDOWN)
+                var msg = (PInvoke.WindowMessage)wParam;
+                if (msg == PInvoke.WindowMessage.WM_KEYDOWN || msg == PInvoke.WindowMessage.WM_SYSKEYDOWN)
                 {
                     var args = (PInvoke.KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(PInvoke.KBDLLHOOKSTRUCT));
                     if (OnKeyBoardEvent(args)) return 1;
@@ -70,7 +72,7 @@ namespace Typedown.Services
         {
             var key = (VirtualKey)args.vkCode;
             var modifiers = GetVirtualKeyModifiers();
-            var eventArgs = new Universal.Models.KeyEventArgs(key, modifiers);
+            var eventArgs = new KeyEventArgs(key, modifiers);
             foreach (var action in globalRegistered)
                 action(this, eventArgs);
             if (registeredDictionary.TryGetValue(new(modifiers, key), out var actions))
@@ -113,30 +115,12 @@ namespace Typedown.Services
 
         public string GetShortcutKeyText(ShortcutKey key)
         {
-            if (key == null)
-                return string.Empty;
-            var result = new List<string>();
-            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Control))
-                result.Add(GetVirtualKeyNameText(VirtualKey.Control));
-            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Menu))
-                result.Add(GetVirtualKeyNameText(VirtualKey.Menu));
-            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Shift))
-                result.Add(GetVirtualKeyNameText(VirtualKey.Shift));
-            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Windows))
-                result.Add("Win");
-            result.Add(GetVirtualKeyNameText(key.Key));
-            return string.Join('+', result);
+            return Common.GetShortcutKeyText(key);
         }
 
         public string GetVirtualKeyNameText(VirtualKey key)
         {
-            if (key == VirtualKey.Delete) 
-                return nameof(VirtualKey.Delete);
-            var buffer = new StringBuilder(32);
-            var scanCode = PInvoke.MapVirtualKey((uint)key, PInvoke.MapVirtualKeyMapTypes.MAPVK_VK_TO_VSC);
-            var lParam = scanCode << 16;
-            PInvoke.GetKeyNameText(lParam, buffer, buffer.Capacity);
-            return buffer.ToString();
+            return Common.GetVirtualKeyNameText(key);
         }
 
         public void Dispose()

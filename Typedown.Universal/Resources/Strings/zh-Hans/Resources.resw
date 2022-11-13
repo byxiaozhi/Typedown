@@ -145,6 +145,10 @@
     <value>右对齐</value>
     <comment>右对齐</comment>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>全部</value>
+    <comment>全部</comment>
+  </data>
   <data name="AppCompactMode.MergeTitleBar" xml:space="preserve">
     <value>仅合并标题栏</value>
     <comment>仅合并标题栏</comment>
@@ -481,10 +485,6 @@
     <value>水平分割线</value>
     <comment>水平分割线</comment>
   </data>
-  <data name="HotKeyPage.Content" xml:space="preserve">
-    <value>快捷键</value>
-    <comment>快捷键</comment>
-  </data>
   <data name="Hyperlink.Text" xml:space="preserve">
     <value>超链接</value>
     <comment>超链接</comment>
@@ -792,6 +792,10 @@
   <data name="Settings.Text" xml:space="preserve">
     <value>设置</value>
     <comment>设置</comment>
+  </data>
+  <data name="ShortcutPage.Content" xml:space="preserve">
+    <value>快捷键</value>
+    <comment>快捷键</comment>
   </data>
   <data name="SidePane.Text" xml:space="preserve">
     <value>侧栏</value>

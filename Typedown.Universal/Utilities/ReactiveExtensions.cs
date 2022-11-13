@@ -59,17 +59,15 @@ namespace Typedown.Universal.Utilities
             public static ValueObject CreateBindingObject(object source, PropertyPath path)
             {
                 var valueObject = new ValueObject();
-                BindingOperations.SetBinding(valueObject, ValueProperty, new Binding() { Source = source, Path = path });
+                BindingOperations.SetBinding(valueObject, ValueProperty, new Binding() { Source = source, Path = path, Mode = BindingMode.TwoWay });
                 return valueObject;
             }
         }
 
         private static readonly ConditionalWeakTable<object, HashSet<ValueObject>> valueObjectTable = new();
 
-        public static IObservable<object> Binding<T>(this T source, PropertyPath path) where T : class
+        public static IObservable<object> Binding<T>(this T source, PropertyPath path) where T : DependencyObject
         {
-            if (source is not DependencyObject && source is not INotifyPropertyChanged)
-                throw new ArgumentException();
             return Observable.Create<object>(o =>
             {
                 var valueObject = ValueObject.CreateBindingObject(source, path);

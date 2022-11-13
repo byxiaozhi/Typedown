@@ -80,6 +80,12 @@
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommonControls\GlobalFrame.cs" />
+    <Compile Include="Controls\CommonControls\ShortcutPicker.xaml.cs">
+      <DependentUpon>ShortcutPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CommonControls\ShortcutPickerButton.xaml.cs">
+      <DependentUpon>ShortcutPickerButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DialogControls\FeedbackDialog.xaml.cs">
       <DependentUpon>FeedbackDialog.xaml</DependentUpon>
     </Compile>
@@ -146,6 +152,9 @@
     </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\ImageSetting.xaml.cs">
       <DependentUpon>ImageSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\ShortcutSetting.xaml.cs">
+      <DependentUpon>ShortcutSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\ViewSetting.xaml.cs">
       <DependentUpon>ViewSetting.xaml</DependentUpon>
@@ -235,8 +244,8 @@
     <Compile Include="Pages\SettingPages\ImagePage.xaml.cs">
       <DependentUpon>ImagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingPages\HotKeyPage.xaml.cs">
-      <DependentUpon>HotKeyPage.xaml</DependentUpon>
+    <Compile Include="Pages\SettingPages\ShortcutPage.xaml.cs">
+      <DependentUpon>ShortcutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingPages\MenuBarPage.xaml.cs">
       <DependentUpon>MenuBarPage.xaml</DependentUpon>
@@ -285,7 +294,7 @@
     <Compile Include="ViewModels\FormatViewModel.cs" />
     <Compile Include="ViewModels\ParagraphViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\SettingsViewModel.HotKey.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.Shortcut.cs" />
     <Compile Include="ViewModels\UIViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -384,6 +393,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\CommonControls\ShortcutPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CommonControls\ShortcutPickerButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\DialogControls\FeedbackDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -468,6 +485,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SettingControls\SettingItems\ShortcutSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SettingControls\SettingItems\ViewSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -536,7 +557,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SettingPages\HotKeyPage.xaml">
+    <Page Include="Pages\SettingPages\ShortcutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
