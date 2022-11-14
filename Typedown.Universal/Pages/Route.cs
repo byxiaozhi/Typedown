@@ -27,6 +27,7 @@ namespace Typedown.Universal.Pages
             "SidePane" => typeof(SidePanePage),
             "StatusBar" => typeof(StatusBarPage),
             "Image" => typeof(ImagePage),
+            "ImageUpload" => typeof(ImageUploadPage),
             "View" => typeof(ViewPage),
             _ => null
         };

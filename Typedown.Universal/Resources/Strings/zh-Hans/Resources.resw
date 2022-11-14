@@ -361,6 +361,18 @@
     <value>导出为 PDF</value>
     <comment>导出到 PDF</comment>
   </data>
+  <data name="ExportType.HTML" xml:space="preserve">
+    <value>HTML</value>
+    <comment>HTML</comment>
+  </data>
+  <data name="ExportType.Image" xml:space="preserve">
+    <value>图像</value>
+    <comment>图像</comment>
+  </data>
+  <data name="ExportType.PDF" xml:space="preserve">
+    <value>PDF</value>
+    <comment>PDF</comment>
+  </data>
   <data name="Feedback.Text" xml:space="preserve">
     <value>反馈</value>
     <comment>反馈</comment>
@@ -516,6 +528,10 @@
   <data name="ImageUploadMethod.SCP" xml:space="preserve">
     <value>SCP</value>
     <comment>SSH</comment>
+  </data>
+  <data name="ImageUploadPage.Content" xml:space="preserve">
+    <value>上传配置</value>
+    <comment>上传配置</comment>
   </data>
   <data name="Import.Text" xml:space="preserve">
     <value>导入</value>

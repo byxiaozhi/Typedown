@@ -17,7 +17,7 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xed25;"/>
             </controls:NormalSettingItem.Icon>
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind ViewModel.SettingsViewModel.OpenFolderAfterExport, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="添加导出配置" Description="自定义导出格式、样式">
             <controls:NormalSettingItem.Icon>

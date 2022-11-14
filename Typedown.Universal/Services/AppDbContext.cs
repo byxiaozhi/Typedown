@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Typedown.Universal.Models;
@@ -8,9 +9,14 @@ namespace Typedown.Universal.Services
 {
     public class AppDbContext : DbContext
     {
+        public DbSet<ExportSetting> ExportSettings { get; set; }
+
         public DbSet<FileAccessHistory> FileAccessHistories { get; set; }
 
         public DbSet<FolderAccessHistory> FolderAccessHistories { get; set; }
+
+        public DbSet<ImageUploadSetting> ImageUploadSettings { get; set; }
+
 
         private readonly string dbPath = Path.Combine(Config.GetLocalFolderPath(), "Storage.db");
 

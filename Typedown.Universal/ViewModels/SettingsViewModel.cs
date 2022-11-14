@@ -64,8 +64,7 @@ namespace Typedown.Universal.ViewModels
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
         public bool PreferRelativeImagePaths { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool AutoEncodeImageURL { get => GetSettingValue(true); set => SetSettingValue(value); }
-        public ImageUploadMethod ImageUploadMethod { get => GetSettingValue(ImageUploadMethod.None); set => SetSettingValue(value); }
-        public string ImageUploadConfig { get => GetSettingValue(""); set => SetSettingValue(value); }
+        public bool OpenFolderAfterExport { get => GetSettingValue(false); set => SetSettingValue(value); }
 
         public IServiceProvider ServiceProvider { get; }
 

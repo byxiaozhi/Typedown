@@ -13,6 +13,8 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="4">
+        <TextBlock Text="常规" Margin="0,0,0,4"/>
+        
         <controls:ExpanderSettingItem Title="图片插入时操作" Description="当插入图片时的操作">
             <controls:ExpanderSettingItem.Icon>
                 <FontIcon Glyph="&#xe91b;"/>
@@ -107,7 +109,19 @@
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.PreferRelativeImagePaths, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        
+
+        <controls:NormalSettingItem IsEnabled="{x:Bind Settings.PreferRelativeImagePaths, Mode=OneWay}">
+            <controls:NormalSettingItem.Title>
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock VerticalAlignment="Center" Text="相对路径前添加"/>
+                    <Border Background="{ThemeResource CardBackgroundFillColorDefault}" CornerRadius="4" Padding="6,0,6,2" Margin="0,2,0,0">
+                        <TextBlock Text="./"/>
+                    </Border>
+                </StackPanel>
+            </controls:NormalSettingItem.Title>
+            <ToggleSwitch/>
+        </controls:NormalSettingItem>
+
         <controls:NormalSettingItem Title="插入时自动转义图片URL" Description="自动对URL中的特殊字符进行编码">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe7c5;"/>
@@ -115,23 +129,12 @@
             <ToggleSwitch IsOn="{x:Bind Settings.AutoEncodeImageURL, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
 
-        <controls:ExpanderSettingItem Title="上传设置" Description="设置图片上传方式">
-            <controls:ExpanderSettingItem.Icon>
+        <TextBlock Text="图片上传" Margin="0,16,0,4"/>
+        <controls:ButtonSettingItem Title="上传配置" Description="设置图片上传方式" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/ImageUpload">
+            <controls:ButtonSettingItem.Icon>
                 <FontIcon Glyph="&#xee71;"/>
-            </controls:ExpanderSettingItem.Icon>
-            <StackPanel>
-                <controls:NormalSettingItem Title="上传服务">
-                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.ImageUploadMethods}" SelectedItem="{Binding SettingsViewModel.ImageUploadMethod, Mode=TwoWay}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <controls:EnumNameBlock Value="{Binding}"/>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </controls:NormalSettingItem>
-                <ContentPresenter Content="{x:Bind local:ImageSetting.GetUploadSettingItem(Settings.ImageUploadMethod), Mode=OneWay}"/>
-            </StackPanel>
-        </controls:ExpanderSettingItem>
+            </controls:ButtonSettingItem.Icon>
+        </controls:ButtonSettingItem>
         
     </StackPanel>
 </UserControl>

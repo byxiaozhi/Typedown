@@ -161,6 +161,9 @@
     <Compile Include="Controls\SettingControls\SettingItems\ImageSetting.xaml.cs">
       <DependentUpon>ImageSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\ImageUploadSetting.xaml.cs">
+      <DependentUpon>ImageUploadSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\ShortcutSetting.xaml.cs">
       <DependentUpon>ShortcutSetting.xaml</DependentUpon>
     </Compile>
@@ -214,6 +217,7 @@
       <DependentUpon>SearchPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\AppTheme.cs" />
+    <Compile Include="Enums\ExportType.cs" />
     <Compile Include="Enums\ImageUploadMethod.cs" />
     <Compile Include="Enums\InsertImageAction.cs" />
     <Compile Include="Enums\StartupAction.cs" />
@@ -231,9 +235,19 @@
     <Compile Include="Migrations\20221106012751_AddFolderModel.designer.cs">
       <DependentUpon>20221106012751_AddFolderModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20221114040857_AddSettingModel.cs" />
+    <Compile Include="Migrations\20221114040857_AddSettingModel.Designer.cs">
+      <DependentUpon>20221114040857_AddSettingModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20221114042351_ModifyEnumType.cs" />
+    <Compile Include="Migrations\20221114042351_ModifyEnumType.Designer.cs">
+      <DependentUpon>20221114042351_ModifyEnumType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DatabaseModelSnapshot.cs" />
+    <Compile Include="Models\PersistentModels\ExportSetting.cs" />
     <Compile Include="Models\PersistentModels\FileAccessHistory.cs" />
     <Compile Include="Models\PersistentModels\FolderAccessHistory.cs" />
+    <Compile Include="Models\PersistentModels\ImageUploadSetting.cs" />
     <Compile Include="Models\RuntimeModels\ContentHistory.cs" />
     <Compile Include="Models\RuntimeModels\ContentState.cs" />
     <Compile Include="Models\RuntimeModels\CursorState.cs" />
@@ -267,6 +281,9 @@
     <Compile Include="Pages\SettingPages\ImagePage.xaml.cs">
       <DependentUpon>ImagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SettingPages\ImageUploadPage.xaml.cs">
+      <DependentUpon>ImageUploadPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingPages\ShortcutPage.xaml.cs">
       <DependentUpon>ShortcutPage.xaml</DependentUpon>
     </Compile>
@@ -296,6 +313,7 @@
     <Compile Include="Services\AutoBackup.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Services\AccessHistory.cs" />
+    <Compile Include="Services\ImageUpload.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
     <Compile Include="Services\Transport.cs" />
     <Compile Include="Utilities\Command.cs" />
@@ -511,6 +529,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SettingControls\SettingItems\ImageUploadSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SettingControls\SettingItems\ShortcutSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -600,6 +622,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingPages\ImagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPages\ImageUploadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

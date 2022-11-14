@@ -15,24 +15,31 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using static System.Net.WebRequestMethods;
 
 namespace Typedown.Universal.Controls.SettingControls.SettingItems
 {
-    public sealed partial class ImageSetting : UserControl
+    public sealed partial class ImageUploadSetting : UserControl
     {
         public AppViewModel ViewModel => DataContext as AppViewModel;
 
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
-        public ImageSetting()
+        public ImageUploadSetting()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
-        public static bool IsCopyImagePathSettingItemLoad(InsertImageAction action)
+        public static FrameworkElement GetUploadSettingItem(ImageUploadMethod method)
         {
-            return action == InsertImageAction.CopyToPath;
+            return method switch
+            {
+                ImageUploadMethod.FTP => new UploadSettingItems.FTPSetting(),
+                ImageUploadMethod.Git => new UploadSettingItems.GitSetting(),
+                ImageUploadMethod.OSS => new UploadSettingItems.OSSSetting(),
+                ImageUploadMethod.SCP => new UploadSettingItems.SCPSetting(),
+                ImageUploadMethod.PowerShell => new UploadSettingItems.PowerShellSetting(),
+                _ => null
+            };
         }
     }
 }

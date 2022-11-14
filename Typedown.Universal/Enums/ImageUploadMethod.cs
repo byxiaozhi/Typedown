@@ -11,16 +11,16 @@ namespace Typedown.Universal.Enums
         None = 0,
 
         [Localize("ImageUploadMethod/FTP")]
-        FTP,
+        FTP = 1,
 
         [Localize("ImageUploadMethod/Git")]
-        Git,
+        Git = 2,
 
         [Localize("ImageUploadMethod/OSS")]
-        OSS,
+        OSS = 3,
 
         [Localize("ImageUploadMethod/SCP")]
-        SCP,
+        SCP = 4,
 
         [Localize("ImageUploadMethod/PowerShell")]
         PowerShell = 1024

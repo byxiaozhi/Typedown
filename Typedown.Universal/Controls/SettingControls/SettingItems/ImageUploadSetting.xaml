@@ -1,0 +1,29 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.SettingControls.SettingItems.ImageUploadSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.SettingControls.SettingItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Universal.Controls" 
+    xmlns:enums="using:Typedown.Universal.Enums"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel Spacing="4">
+        <controls:NormalSettingItem Title="添加上传配置">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xee71;"/>
+            </controls:NormalSettingItem.Icon>
+            <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100">添加</Button>
+        </controls:NormalSettingItem>
+
+        <TextBlock Text="上传配置" Margin="0,16,0,4"/>
+        <controls:ButtonSettingItem Title="七牛云" Description="FTP, 已启用">
+            <controls:ButtonSettingItem.Icon>
+                <FontIcon Glyph="&#xee71;"/>
+            </controls:ButtonSettingItem.Icon>
+        </controls:ButtonSettingItem>
+    </StackPanel>
+</UserControl>
