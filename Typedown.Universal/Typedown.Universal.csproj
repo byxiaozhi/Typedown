@@ -94,6 +94,9 @@
     <Compile Include="Controls\CommonControls\ShortcutPickerButton.xaml.cs">
       <DependentUpon>ShortcutPickerButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DialogControls\AddUploadConfigDialog.xaml.cs">
+      <DependentUpon>AddUploadConfigDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DialogControls\FeedbackDialog.xaml.cs">
       <DependentUpon>FeedbackDialog.xaml</DependentUpon>
     </Compile>
@@ -167,20 +170,23 @@
     <Compile Include="Controls\SettingControls\SettingItems\ShortcutSetting.xaml.cs">
       <DependentUpon>ShortcutSetting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\FTPSetting.xaml.cs">
-      <DependentUpon>FTPSetting.xaml</DependentUpon>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\CommonConfig.xaml.cs">
+      <DependentUpon>CommonConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\GitSetting.xaml.cs">
-      <DependentUpon>GitSetting.xaml</DependentUpon>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\FTPConfig.xaml.cs">
+      <DependentUpon>FTPConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\OSSSetting.xaml.cs">
-      <DependentUpon>OSSSetting.xaml</DependentUpon>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\GitConfig.xaml.cs">
+      <DependentUpon>GitConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\PowerShellSetting.xaml.cs">
-      <DependentUpon>PowerShellSetting.xaml</DependentUpon>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\OSSConfig.xaml.cs">
+      <DependentUpon>OSSConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingControls\SettingItems\UploadSettingItems\SCPSetting.xaml.cs">
-      <DependentUpon>SCPSetting.xaml</DependentUpon>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\PowerShellConfig.xaml.cs">
+      <DependentUpon>PowerShellConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\SCPSettingConfig.xaml.cs">
+      <DependentUpon>SCPSettingConfig.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\ViewSetting.xaml.cs">
       <DependentUpon>ViewSetting.xaml</DependentUpon>
@@ -216,6 +222,7 @@
     <Compile Include="Controls\SidePaneControls\SearchPane.xaml.cs">
       <DependentUpon>SearchPane.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\EmptyToVisibilityConverter.cs" />
     <Compile Include="Enums\AppTheme.cs" />
     <Compile Include="Enums\ExportType.cs" />
     <Compile Include="Enums\ImageUploadMethod.cs" />
@@ -243,11 +250,19 @@
     <Compile Include="Migrations\20221114042351_ModifyEnumType.Designer.cs">
       <DependentUpon>20221114042351_ModifyEnumType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20221114050804_ModifyImageUploadSetting.cs" />
+    <Compile Include="Migrations\20221114050804_ModifyImageUploadSetting.Designer.cs">
+      <DependentUpon>20221114050804_ModifyImageUploadSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20221114080155_RenameModel.cs" />
+    <Compile Include="Migrations\20221114080155_RenameModel.designer.cs">
+      <DependentUpon>20221114080155_RenameModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DatabaseModelSnapshot.cs" />
-    <Compile Include="Models\PersistentModels\ExportSetting.cs" />
+    <Compile Include="Models\PersistentModels\ExportConfig.cs" />
     <Compile Include="Models\PersistentModels\FileAccessHistory.cs" />
     <Compile Include="Models\PersistentModels\FolderAccessHistory.cs" />
-    <Compile Include="Models\PersistentModels\ImageUploadSetting.cs" />
+    <Compile Include="Models\PersistentModels\ImageUploadConfig.cs" />
     <Compile Include="Models\RuntimeModels\ContentHistory.cs" />
     <Compile Include="Models\RuntimeModels\ContentState.cs" />
     <Compile Include="Models\RuntimeModels\CursorState.cs" />
@@ -277,6 +292,9 @@
     </Compile>
     <Compile Include="Pages\SettingPages\GeneralPage.xaml.cs">
       <DependentUpon>GeneralPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingPages\UploadConfigPage.xaml.cs">
+      <DependentUpon>UploadConfigPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingPages\ImagePage.xaml.cs">
       <DependentUpon>ImagePage.xaml</DependentUpon>
@@ -445,6 +463,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\DialogControls\AddUploadConfigDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\DialogControls\FeedbackDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -537,23 +559,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\FTPSetting.xaml">
+    <Page Include="Controls\SettingControls\SettingItems\UploadConfigItems\CommonConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\GitSetting.xaml">
+    <Page Include="Controls\SettingControls\SettingItems\UploadConfigItems\FTPConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\OSSSetting.xaml">
+    <Page Include="Controls\SettingControls\SettingItems\UploadConfigItems\GitConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\PowerShellSetting.xaml">
+    <Page Include="Controls\SettingControls\SettingItems\UploadConfigItems\OSSConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SettingControls\SettingItems\UploadSettingItems\SCPSetting.xaml">
+    <Page Include="Controls\SettingControls\SettingItems\UploadConfigItems\PowerShellConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\UploadConfigItems\SCPSettingConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -618,6 +644,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingPages\GeneralPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPages\UploadConfigPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

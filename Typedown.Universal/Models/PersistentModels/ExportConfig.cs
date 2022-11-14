@@ -10,19 +10,19 @@ using Typedown.Universal.Enums;
 
 namespace Typedown.Universal.Models
 {
-    [Table("ExportSetting")]
-    public class ExportSetting
+    [Table("ExportConfig")]
+    public class ExportConfig
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public string Notes { get; set; }
+        public string Notes { get; set; } = string.Empty;
 
         public ExportType Type { get; set; }
 
-        public string Config { get; set; }
+        public string Config { get; set; } = string.Empty;
     }
 }

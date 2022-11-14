@@ -4,5 +4,7 @@
     xmlns:converters="using:Typedown.Universal.Converters">
     <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityReverseConverter" IsReverse="True"/>
+    <converters:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter"/>
+    <converters:EmptyToVisibilityConverter x:Key="EmptyToVisibilityReverseConverter" IsReverse="True"/>
     <converters:ShortcutKeyToStringConverter x:Key="ShortcutKeyToStringConverter"/>
 </ResourceDictionary>

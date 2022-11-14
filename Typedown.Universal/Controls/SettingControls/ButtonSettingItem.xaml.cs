@@ -42,7 +42,7 @@ namespace Typedown.Universal.Controls
         public static readonly DependencyProperty CommandParameterProperty = DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(ButtonSettingItem), new(null));
         public object CommandParameter { get => GetValue(CommandParameterProperty); set => SetValue(CommandParameterProperty, value); }
 
-        public EventHandler Click;
+        public event EventHandler Click;
 
         public ButtonSettingItem()
         {

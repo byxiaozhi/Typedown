@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.Controls.DialogControls;
 using Typedown.Universal.Enums;
+using Typedown.Universal.Models;
+using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Windows.Foundation;
@@ -24,22 +27,52 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
+        public ImageUpload ImageUpload => this.GetService<ImageUpload>();
+
         public ImageUploadSetting()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-        public static FrameworkElement GetUploadSettingItem(ImageUploadMethod method)
+        private void OnAddButtonClick(object sender, RoutedEventArgs e)
         {
-            return method switch
+            AddConfigItem();
+        }
+
+        private async void AddConfigItem()
+        {
+            var result = await AddUploadConfigDialog.OpenAddUploadConfigDialog(XamlRoot);
+            if (result == null)
+                return;
+            await ImageUpload.AddImageUploadConfig(result.ConfigName, result.UploadMethod);
+        }
+
+        private void OnConfigItemClick(object sender, EventArgs e)
+        {
+            var config = (sender as ButtonSettingItem).Tag as ImageUploadConfig;
+            ViewModel.NavigateCommand.Execute($"Settings/UploadConfig?{config.Id}");
+        }
+
+        private async void OnDeleteClick(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as MenuFlyoutItem).DataContext as ImageUploadConfig;
+            if (item != null)
+                await ImageUpload.RemoveImageUploadConfig(item.Id);
+        }
+
+        public static string GetConfigItemDescription(ImageUploadMethod method, bool isEnable)
+        {
+            var list = new List<string>();
+            list.Add(method switch
             {
-                ImageUploadMethod.FTP => new UploadSettingItems.FTPSetting(),
-                ImageUploadMethod.Git => new UploadSettingItems.GitSetting(),
-                ImageUploadMethod.OSS => new UploadSettingItems.OSSSetting(),
-                ImageUploadMethod.SCP => new UploadSettingItems.SCPSetting(),
-                ImageUploadMethod.PowerShell => new UploadSettingItems.PowerShellSetting(),
-                _ => null
-            };
+                ImageUploadMethod.FTP => "FTP",
+                ImageUploadMethod.Git => "Git",
+                ImageUploadMethod.OSS => "OSS",
+                ImageUploadMethod.SCP => "SCP",
+                _ => "未配置"
+            });
+            list.Add(isEnable ? "已启用" : "未启用");
+            return string.Join(", ", list);
         }
     }
 }

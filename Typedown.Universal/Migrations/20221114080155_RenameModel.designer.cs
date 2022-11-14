@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Typedown.Universal.Services;
 
 namespace DatabaseMigration.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20221114080155_RenameModel")]
+    partial class RenameModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

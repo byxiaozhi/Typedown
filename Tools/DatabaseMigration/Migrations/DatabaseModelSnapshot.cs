@@ -16,7 +16,7 @@ namespace DatabaseMigration.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.30");
 
-            modelBuilder.Entity("Typedown.Universal.Models.ExportSetting", b =>
+            modelBuilder.Entity("Typedown.Universal.Models.ExportConfig", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace DatabaseMigration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExportSetting");
+                    b.ToTable("ExportConfig");
                 });
 
             modelBuilder.Entity("Typedown.Universal.Models.FileAccessHistory", b =>
@@ -73,7 +73,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("FolderAccessHistory");
                 });
 
-            modelBuilder.Entity("Typedown.Universal.Models.ImageUploadSetting", b =>
+            modelBuilder.Entity("Typedown.Universal.Models.ImageUploadConfig", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,6 +81,9 @@ namespace DatabaseMigration.Migrations
 
                     b.Property<string>("Config")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsEnable")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Method")
                         .HasColumnType("INTEGER");
@@ -93,7 +96,7 @@ namespace DatabaseMigration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ImageUploadSetting");
+                    b.ToTable("ImageUploadConfig");
                 });
 #pragma warning restore 612, 618
         }

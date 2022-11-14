@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Disposables;
 using Typedown.Universal.Pages.SettingPages;
@@ -21,7 +21,7 @@ namespace Typedown.Universal.Pages
 
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
 
-        public ObservableCollection<string> BreadcrumbBarItems { get; } = new();
+        public ObservableCollection<SettingsBreadcrumbBarItem> BreadcrumbBarItems { get; } = new();
 
         private readonly CompositeDisposable disposables = new();
 
@@ -64,7 +64,7 @@ namespace Typedown.Universal.Pages
             {
                 case NavigationMode.Forward:
                 case NavigationMode.New:
-                    BreadcrumbBarItems.Add(Localize.GetTypeString(ContentFrame.SourcePageType));
+                    BreadcrumbBarItems.Add(new(e.Content as Page));
                     break;
                 case NavigationMode.Back:
                     BreadcrumbBarItems.RemoveAt(BreadcrumbBarItems.Count - 1);
@@ -74,12 +74,13 @@ namespace Typedown.Universal.Pages
 
         private void Navigate(string args)
         {
-            var path = args?.TrimStart('/').Split('/');
+            var path = args?.Split('?')[0].TrimStart('/').Split('/');
             if (path != null && path.Length > 1)
             {
                 var type = Route.GetSettingsPageType(path[1]);
+                var query = args.Contains("?") ? args.Substring(args.IndexOf("?") + 1) : "";
                 if (type != Frame.SourcePageType)
-                    ContentFrame.Navigate(type, null, GetTransition());
+                    ContentFrame.Navigate(type, query, GetTransition());
             }
         }
 
@@ -100,8 +101,32 @@ namespace Typedown.Universal.Pages
 
         private void OnBreadcrumbBarItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
         {
-            for (int i = args.Index + 1; i < BreadcrumbBarItems.Count; i++)
+            var count = BreadcrumbBarItems.Count - args.Index - 1;
+            for (int i = 0; i < count; i++)
                 ContentFrame.GoBack();
+        }
+
+        public void SetPageTitle(Page page, string title)
+        {
+            var item = BreadcrumbBarItems.Where(x => x.Page == page).FirstOrDefault();
+            if (item != null)
+                item.Title = title;
+        }
+    }
+
+    public partial class SettingsBreadcrumbBarItem : INotifyPropertyChanged
+    {
+        public Page Page { get; }
+
+        public Type PageType { get; }
+
+        public string Title { get; set; }
+
+        public SettingsBreadcrumbBarItem(Page page, string title = null)
+        {
+            Page = page;
+            PageType = Page.GetType();
+            Title = title ?? Localize.GetTypeString(PageType);
         }
     }
 }

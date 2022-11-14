@@ -6,24 +6,58 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Universal.Controls" 
-    xmlns:enums="using:Typedown.Universal.Enums"
+    xmlns:enums="using:Typedown.Universal.Enums" 
+    xmlns:models="using:Typedown.Universal.Models"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="SystemFillColorCriticalBrush" Color="{ThemeResource SystemFillColorCritical}"/>
+        <MenuFlyout x:Key="ConfigItemMenuFlyout">
+            <MenuFlyoutItem Text="删除" Click="OnDeleteClick"/>
+        </MenuFlyout>
+    </UserControl.Resources>
     <StackPanel Spacing="4">
         <controls:NormalSettingItem Title="添加上传配置">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xee71;"/>
             </controls:NormalSettingItem.Icon>
-            <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100">添加</Button>
+            <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100" Click="OnAddButtonClick">添加</Button>
         </controls:NormalSettingItem>
 
         <TextBlock Text="上传配置" Margin="0,16,0,4"/>
-        <controls:ButtonSettingItem Title="七牛云" Description="FTP, 已启用">
-            <controls:ButtonSettingItem.Icon>
-                <FontIcon Glyph="&#xee71;"/>
-            </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>
+
+        <ListView 
+            x:Name="ConfigListView" 
+            Grid.Row="1" 
+            Grid.ColumnSpan="4" 
+            ItemsSource="{x:Bind ImageUpload.ImageUploadConfigs}" 
+            SelectionMode="None">
+            <ListView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition/>
+                    <ContentThemeTransition/>
+                    <ReorderThemeTransition/>
+                </TransitionCollection>
+            </ListView.ItemContainerTransitions>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,4"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:ImageUploadConfig">
+                    <controls:ButtonSettingItem 
+                        Title="{x:Bind Name, Mode=OneWay}" 
+                        Description="{x:Bind local:ImageUploadSetting.GetConfigItemDescription(Method, IsEnable), Mode=OneWay}"
+                        Tag="{x:Bind}" 
+                        Click="OnConfigItemClick" 
+                        ContextFlyout="{StaticResource ConfigItemMenuFlyout}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </StackPanel>
 </UserControl>

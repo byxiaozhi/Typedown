@@ -9,13 +9,13 @@ namespace Typedown.Universal.Services
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<ExportSetting> ExportSettings { get; set; }
+        public DbSet<ExportConfig> ExportConfigs { get; set; }
 
         public DbSet<FileAccessHistory> FileAccessHistories { get; set; }
 
         public DbSet<FolderAccessHistory> FolderAccessHistories { get; set; }
 
-        public DbSet<ImageUploadSetting> ImageUploadSettings { get; set; }
+        public DbSet<ImageUploadConfig> ImageUploadConfigs { get; set; }
 
 
         private readonly string dbPath = Path.Combine(Config.GetLocalFolderPath(), "Storage.db");

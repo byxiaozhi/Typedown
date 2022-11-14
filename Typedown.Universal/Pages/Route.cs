@@ -22,12 +22,13 @@ namespace Typedown.Universal.Pages
             "Editor" => typeof(EditorPage),
             "Export" => typeof(ExportPage),
             "General" => typeof(GeneralPage),
-            "Shortcut" => typeof(ShortcutPage),
-            "MenuBar" => typeof(MenuBarPage),
-            "SidePane" => typeof(SidePanePage),
-            "StatusBar" => typeof(StatusBarPage),
             "Image" => typeof(ImagePage),
             "ImageUpload" => typeof(ImageUploadPage),
+            "MenuBar" => typeof(MenuBarPage),
+            "Shortcut" => typeof(ShortcutPage),
+            "SidePane" => typeof(SidePanePage),
+            "StatusBar" => typeof(StatusBarPage),
+            "UploadConfig" => typeof(UploadConfigPage),
             "View" => typeof(ViewPage),
             _ => null
         };

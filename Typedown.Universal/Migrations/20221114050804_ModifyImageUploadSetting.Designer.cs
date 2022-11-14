@@ -2,21 +2,23 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Typedown.Universal.Services;
 
 namespace DatabaseMigration.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20221114050804_ModifyImageUploadSetting")]
+    partial class ModifyImageUploadSetting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.30");
 
-            modelBuilder.Entity("Typedown.Universal.Models.ExportConfig", b =>
+            modelBuilder.Entity("Typedown.Universal.Models.ExportSetting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +38,7 @@ namespace DatabaseMigration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExportConfig");
+                    b.ToTable("ExportSetting");
                 });
 
             modelBuilder.Entity("Typedown.Universal.Models.FileAccessHistory", b =>
@@ -73,7 +75,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("FolderAccessHistory");
                 });
 
-            modelBuilder.Entity("Typedown.Universal.Models.ImageUploadConfig", b =>
+            modelBuilder.Entity("Typedown.Universal.Models.ImageUploadSetting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,7 +98,7 @@ namespace DatabaseMigration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ImageUploadConfig");
+                    b.ToTable("ImageUploadSetting");
                 });
 #pragma warning restore 612, 618
         }

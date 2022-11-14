@@ -1,8 +1,8 @@
 ﻿<UserControl
-    x:Class="Typedown.Universal.Controls.SettingControls.SettingItems.UploadSettingItems.FTPSetting"
+    x:Class="Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigItems.FTPConfig"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Typedown.Universal.Controls.SettingControls.SettingItems.UploadSettingItems"
+    xmlns:local="using:Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigItems"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Typedown.Universal.Controls" 
@@ -11,8 +11,8 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <StackPanel>
-        <controls:NormalSettingItem Title="连接配置" HorizontalActionAlignment="Stretch" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
+    <StackPanel Spacing="4">
+        <controls:NormalSettingItem Title="连接配置" HorizontalActionAlignment="Stretch">
             <StackPanel Spacing="12">
                 <Grid ColumnSpacing="8" RowSpacing="4">
                     <Grid.RowDefinitions>
@@ -63,7 +63,7 @@
                 <Button Content="测试连接" HorizontalAlignment="Right" Margin="0,4,0,0"/>
             </StackPanel>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="上传配置" HorizontalActionAlignment="Stretch" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
+        <controls:NormalSettingItem Title="上传配置" HorizontalActionAlignment="Stretch">
             <StackPanel Spacing="12">
                 <Grid ColumnSpacing="8" RowSpacing="4">
                     <Grid.RowDefinitions>
