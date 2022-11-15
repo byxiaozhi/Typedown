@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Models;
+using Typedown.Universal.Utilities;
 
 namespace Typedown.Universal.Services
 {
@@ -64,23 +65,8 @@ namespace Typedown.Universal.Services
         public async Task UpdateImageUploadConfigs()
         {
             using var ctx = await AppDbContext.Create();
-            var allItems = await ctx.ImageUploadConfigs.ToListAsync();
-            ImageUploadConfigs.Where(x => allItems.All(y => x.Id != y.Id)).ToList().ForEach(x => ImageUploadConfigs.Remove(x));
-            int i = 0;
-            foreach (var item in allItems)
-            {
-                if (ImageUploadConfigs.Count <= i || ImageUploadConfigs[i].Id != item.Id)
-                {
-                    ImageUploadConfigs.Remove(ImageUploadConfigs.Where(x => x.Id == item.Id).FirstOrDefault());
-                    ImageUploadConfigs.Insert(i, item);
-                }
-                else
-                {
-                    foreach (var props in typeof(ImageUploadConfig).GetProperties().Where(p => p.CanRead && p.CanWrite))
-                        props.SetValue(ImageUploadConfigs[i], props.GetValue(item));
-                }
-                i++;
-            }
+            var newItems = await ctx.ImageUploadConfigs.ToListAsync();
+            ImageUploadConfigs.UpdateCollection(newItems, (a, b) => a.Id == b.Id);
         }
     }
 }

@@ -70,14 +70,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
                 .Where(x => string.IsNullOrEmpty(FliterCategory?.Category) || x.Category == FliterCategory.Category)
                 .Where(x => string.IsNullOrEmpty(SearchText) || x.DisplayName.ToLower().Contains(SearchText.ToLower()) || x.Description.ToLower().Contains(SearchText.ToLower()))
                 .ToList();
-            SettingItems.Where(x => !newItems.Contains(x)).ToList().ForEach(x => SettingItems.Remove(x));
-            int i = 0;
-            foreach (var item in newItems)
-            {
-                if (SettingItems.Count <= i || SettingItems[i] != item)
-                    SettingItems.Insert(i, item);
-                i++;
-            }
+            SettingItems.UpdateCollection(newItems, (a, b) => a == b);
         }
     }
 

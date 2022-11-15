@@ -76,14 +76,6 @@ namespace Typedown.Universal.Utilities
             return JObject.Parse(await result.Content.ReadAsStringAsync());
         }
 
-        public static void InsertByOrder<T>(this IList<T> list, T item, Func<T, T, int> cmp)
-        {
-            int i = 0;
-            while (i < list.Count && cmp(item, list[i]) >= 0)
-                i++;
-            list.Insert(i, item);
-        }
-
         public static string GetShortcutKeyText(this ShortcutKey key)
         {
             return string.Join('+', GetShortcutKeyTextList(key));
@@ -107,7 +99,7 @@ namespace Typedown.Universal.Utilities
 
         public static string GetVirtualKeyNameText(this VirtualKey key)
         {
-            if (key == VirtualKey.Delete) 
+            if (key == VirtualKey.Delete)
                 return "Delete";
             if (key == VirtualKey.LeftWindows || key == VirtualKey.RightWindows)
                 return "Win";
@@ -116,6 +108,20 @@ namespace Typedown.Universal.Utilities
             var lParam = scanCode << 16;
             PInvoke.GetKeyNameText(lParam, buffer, buffer.Capacity);
             return buffer.ToString();
+        }
+
+        public static void CopyProperties<T>(this T source, T target)
+        {
+            foreach (var prop in typeof(T).GetProperties())
+            {
+                if (prop.CanRead && prop.CanWrite)
+                {
+                    var oldValue = prop.GetValue(target);
+                    var newValue = prop.GetValue(source);
+                    if (!(oldValue?.Equals(newValue) ?? oldValue == newValue))
+                        prop.SetValue(target, newValue);
+                }
+            }
         }
     }
 }
