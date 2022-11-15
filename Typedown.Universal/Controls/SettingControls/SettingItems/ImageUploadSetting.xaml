@@ -11,12 +11,14 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    
     <UserControl.Resources>
         <SolidColorBrush x:Key="SystemFillColorCriticalBrush" Color="{ThemeResource SystemFillColorCritical}"/>
         <MenuFlyout x:Key="ConfigItemMenuFlyout">
             <MenuFlyoutItem Text="删除" Click="OnDeleteClick"/>
         </MenuFlyout>
     </UserControl.Resources>
+    
     <StackPanel Spacing="4">
         <controls:NormalSettingItem Title="添加上传配置">
             <controls:NormalSettingItem.Icon>

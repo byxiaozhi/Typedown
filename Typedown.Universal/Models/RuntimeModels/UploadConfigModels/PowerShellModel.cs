@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Typedown.Universal.Models.UploadConfigModels
 {
-    public class PowerShellModel : UploadConfigModel
+    public class PowerShellModel : ConfigModel
     {
         public string Script { get; set; } = string.Empty;
     }

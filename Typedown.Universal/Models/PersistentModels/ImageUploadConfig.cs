@@ -24,13 +24,13 @@ namespace Typedown.Universal.Models
 
         public string Config { get; private set; } = new JObject().ToString();
 
-        public T LoadUploadConfig<T>() where T : UploadConfigModel, new()
+        public T LoadUploadConfig<T>() where T : ConfigModel, new()
         {
             var config = ParseConfig();
             return config.TryGetValue(typeof(T).Name, out var value) ? value.ToObject<T>() : new();
         }
 
-        public void StoreUploadConfig<T>(T uploadConfig) where T : UploadConfigModel
+        public void StoreUploadConfig<T>(T uploadConfig) where T : ConfigModel
         {
             var config = ParseConfig();
             config[typeof(T).Name] = JObject.FromObject(uploadConfig);

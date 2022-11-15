@@ -94,6 +94,9 @@
     <Compile Include="Controls\CommonControls\ShortcutPickerButton.xaml.cs">
       <DependentUpon>ShortcutPickerButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DialogControls\AddExportConfigDialog.xaml.cs">
+      <DependentUpon>AddExportConfigDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DialogControls\AddUploadConfigDialog.xaml.cs">
       <DependentUpon>AddUploadConfigDialog.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,18 @@
     </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\EditorSetting.xaml.cs">
       <DependentUpon>EditorSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\ExportConfigItems\CommonConfig.xaml.cs">
+      <DependentUpon>CommonConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\ExportConfigItems\HTMLConfig.xaml.cs">
+      <DependentUpon>HTMLConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\ExportConfigItems\ImageConfig.xaml.cs">
+      <DependentUpon>ImageConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControls\SettingItems\ExportConfigItems\PDFConfig.xaml.cs">
+      <DependentUpon>PDFConfig.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\ExportSetting.xaml.cs">
       <DependentUpon>ExportSetting.xaml</DependentUpon>
@@ -270,6 +285,10 @@
     <Compile Include="Models\RuntimeModels\CursorState.cs" />
     <Compile Include="Models\EventArgs\EditorEventArgs.cs" />
     <Compile Include="Models\RuntimeModels\ExplorerItem.cs" />
+    <Compile Include="Models\RuntimeModels\ExportConfigModels\ConfigModel.cs" />
+    <Compile Include="Models\RuntimeModels\ExportConfigModels\HTMLConfigModel.cs" />
+    <Compile Include="Models\RuntimeModels\ExportConfigModels\ImageConfigModel.cs" />
+    <Compile Include="Models\RuntimeModels\ExportConfigModels\PDFConfigModel.cs" />
     <Compile Include="Models\RuntimeModels\FormatState.cs" />
     <Compile Include="Models\EventArgs\KeyEventArgs.cs" />
     <Compile Include="Models\RuntimeModels\MenuItemState.cs" />
@@ -283,7 +302,7 @@
     <Compile Include="Models\RuntimeModels\UploadConfigModels\OSSConfigModel.cs" />
     <Compile Include="Models\RuntimeModels\UploadConfigModels\PowerShellModel.cs" />
     <Compile Include="Models\RuntimeModels\UploadConfigModels\SCPConfigModel.cs" />
-    <Compile Include="Models\RuntimeModels\UploadConfigModels\UploadConfigModel.cs" />
+    <Compile Include="Models\RuntimeModels\UploadConfigModels\ConfigModel.cs" />
     <Compile Include="Models\RuntimeModels\WordCount.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -300,6 +319,9 @@
     </Compile>
     <Compile Include="Pages\SettingPages\GeneralPage.xaml.cs">
       <DependentUpon>GeneralPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingPages\ExportConfigPage.xaml.cs">
+      <DependentUpon>ExportConfigPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingPages\UploadConfigPage.xaml.cs">
       <DependentUpon>UploadConfigPage.xaml</DependentUpon>
@@ -471,6 +493,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\DialogControls\AddExportConfigDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\DialogControls\AddUploadConfigDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -544,6 +570,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SettingControls\SettingItems\EditorSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\ExportConfigItems\CommonConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\ExportConfigItems\HTMLConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\ExportConfigItems\ImageConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingControls\SettingItems\ExportConfigItems\PDFConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -654,6 +696,10 @@
     <Page Include="Pages\SettingPages\GeneralPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPages\ExportConfigPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\SettingPages\UploadConfigPage.xaml">
       <SubType>Designer</SubType>

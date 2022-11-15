@@ -20,6 +20,7 @@ namespace Typedown.Universal.Pages
         {
             "About" => typeof(AboutPage),
             "Editor" => typeof(EditorPage),
+            "ExportConfig" => typeof(ExportConfigPage),
             "Export" => typeof(ExportPage),
             "General" => typeof(GeneralPage),
             "Image" => typeof(ImagePage),

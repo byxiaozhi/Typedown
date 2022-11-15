@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Typedown.Universal.Models.UploadConfigModels
 {
-    public class SCPConfigModel : UploadConfigModel
+    public class SCPConfigModel : ConfigModel
     {
         public string Host { get; set; } = string.Empty;
 

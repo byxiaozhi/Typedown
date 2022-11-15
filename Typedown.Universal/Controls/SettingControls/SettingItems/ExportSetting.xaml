@@ -6,10 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Universal.Controls"
+    xmlns:models="using:Typedown.Universal.Models"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="SystemFillColorCriticalBrush" Color="{ThemeResource SystemFillColorCritical}"/>
+        <MenuFlyout x:Key="ConfigItemMenuFlyout">
+            <MenuFlyoutItem Text="删除" Click="OnDeleteClick"/>
+        </MenuFlyout>
+    </UserControl.Resources>
+    
     <StackPanel Spacing="4">
 
         <TextBlock Text="常规" Margin="0,0,0,4"/>
@@ -23,30 +31,41 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xed0e;"/>
             </controls:NormalSettingItem.Icon>
-            <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100">添加</Button>
+            <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100" Click="OnAddButtonClick">添加</Button>
         </controls:NormalSettingItem>
 
-        <TextBlock Text="导出配置" Margin="0,16,0,4"/>
-        <controls:ButtonSettingItem Title="PDF" Description="A4(148mm x 210mm), 正常边距, 默认样式">
-            <controls:ButtonSettingItem.Icon>
-                <FontIcon Glyph="&#xea90;"/>
-            </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>
-        <controls:ButtonSettingItem Title="HTML" Description="正常边距, 默认样式">
-            <controls:ButtonSettingItem.Icon>
-                <FontIcon Glyph="&#xe8a5;"/>
-            </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>
-        <controls:ButtonSettingItem Title="HTML(without Styles)" Description="正常边距, 无样式">
-            <controls:ButtonSettingItem.Icon>
-                <FontIcon Glyph="&#xe8a5;"/>
-            </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>
-        <controls:ButtonSettingItem Title="Image" Description="A4(148mm x 210mm), 300DPI, 正常边距, 默认样式">
-            <controls:ButtonSettingItem.Icon>
-                <FontIcon Glyph="&#xe91b;"/>
-            </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>
+        <TextBlock Text="导出配置" Margin="0,16,0,4" Visibility="{x:Bind ConfigItemsTitleVisibility(FileExport.ExportConfigs), Mode=OneWay}"/>
+        <ListView 
+            x:Name="ConfigListView" 
+            Grid.Row="1" 
+            Grid.ColumnSpan="4" 
+            ItemsSource="{x:Bind FileExport.ExportConfigs}" 
+            SelectionMode="None">
+            <ListView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition/>
+                    <ContentThemeTransition/>
+                    <ReorderThemeTransition/>
+                </TransitionCollection>
+            </ListView.ItemContainerTransitions>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,4"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:ExportConfig">
+                    <controls:ButtonSettingItem 
+                        Title="{x:Bind Name, Mode=OneWay}" 
+                        Description="{x:Bind local:ExportSetting.GetConfigItemDescription(Type), Mode=OneWay}"
+                        Tag="{x:Bind}" 
+                        Click="OnConfigItemClick" 
+                        ContextFlyout="{StaticResource ConfigItemMenuFlyout}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </StackPanel>
 </UserControl>

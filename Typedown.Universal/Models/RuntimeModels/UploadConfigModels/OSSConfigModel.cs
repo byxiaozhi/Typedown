@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Typedown.Universal.Models.UploadConfigModels
 {
-    public class OSSConfigModel : UploadConfigModel
+    public class OSSConfigModel : ConfigModel
     {
         public string AccessKey { get; set; } = string.Empty;
 

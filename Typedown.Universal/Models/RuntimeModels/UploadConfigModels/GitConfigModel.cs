@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Typedown.Universal.Models.UploadConfigModels
 {
-    public class GitConfigModel : UploadConfigModel
+    public class GitConfigModel : ConfigModel
     {
         public string URL { get; set; } = string.Empty;
 

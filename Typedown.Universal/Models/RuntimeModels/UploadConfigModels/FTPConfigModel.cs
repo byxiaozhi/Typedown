@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Typedown.Universal.Models.UploadConfigModels
 {
-    public class FTPConfigModel : UploadConfigModel
+    public class FTPConfigModel : ConfigModel
     {
         public string Host { get; set; } = string.Empty;
 

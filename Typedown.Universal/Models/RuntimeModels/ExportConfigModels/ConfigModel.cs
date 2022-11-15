@@ -6,14 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Typedown.Universal.Models.UploadConfigModels
+namespace Typedown.Universal.Models.ExportConfigModels
 {
-    public partial class UploadConfigModel : INotifyPropertyChanged
+    public partial class ConfigModel : INotifyPropertyChanged
     {
         public Dictionary<string, JToken> Addition { get; } = new();
 
-        public string UploadPath { get; set; } = string.Empty;
-
-        public string ExternalURL { get; set; } = string.Empty;
+        public string ScriptAfter { get; } = string.Empty;
     }
 }
