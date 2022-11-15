@@ -12,12 +12,21 @@
     d:DesignWidth="400">
     <StackPanel Spacing="4">
         <controls:NormalSettingItem Title="启用">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8fb;"/>
+            </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind ImageUploadConfig.IsEnable, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="名称">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8ac;"/>
+            </controls:NormalSettingItem.Icon>
             <TextBox MinWidth="200" Text="{x:Bind ImageUploadConfig.Name, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="上传方式">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe9e9;"/>
+            </controls:NormalSettingItem.Icon>
             <ComboBox
                 MinWidth="200"
                 ItemsSource="{x:Bind enums:Enumerable.ImageUploadMethods}"

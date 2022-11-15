@@ -7,4 +7,5 @@
     <converters:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter"/>
     <converters:EmptyToVisibilityConverter x:Key="EmptyToVisibilityReverseConverter" IsReverse="True"/>
     <converters:ShortcutKeyToStringConverter x:Key="ShortcutKeyToStringConverter"/>
+    <converters:BoolReverseConverter x:Key="BoolReverseConverter"/>
 </ResourceDictionary>

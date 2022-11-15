@@ -6,11 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Typedown.Universal.Controls" 
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
-        <TextBlock>PowerShell</TextBlock>
-    </Grid>
+    <StackPanel Spacing="4">
+
+        <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
+            <StackPanel Margin="-16,0,0,0" Spacing="8">
+                <TextBlock>脚本</TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind PowerShellConfigModel.Script, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="400"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="测试上传" Margin="0,4,0,0"/>
+            </StackPanel>
+        </controls:NormalSettingItem>
+
+    </StackPanel>
 </UserControl>

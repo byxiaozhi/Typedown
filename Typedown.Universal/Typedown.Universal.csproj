@@ -185,8 +185,8 @@
     <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\PowerShellConfig.xaml.cs">
       <DependentUpon>PowerShellConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\SCPSettingConfig.xaml.cs">
-      <DependentUpon>SCPSettingConfig.xaml</DependentUpon>
+    <Compile Include="Controls\SettingControls\SettingItems\UploadConfigItems\SCPConfig.xaml.cs">
+      <DependentUpon>SCPConfig.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingControls\SettingItems\ViewSetting.xaml.cs">
       <DependentUpon>ViewSetting.xaml</DependentUpon>
@@ -222,7 +222,9 @@
     <Compile Include="Controls\SidePaneControls\SearchPane.xaml.cs">
       <DependentUpon>SearchPane.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolReverseConverter.cs" />
     <Compile Include="Converters\EmptyToVisibilityConverter.cs" />
+    <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
     <Compile Include="Enums\AppTheme.cs" />
     <Compile Include="Enums\ExportType.cs" />
     <Compile Include="Enums\ImageUploadMethod.cs" />
@@ -276,6 +278,12 @@
     <Compile Include="Models\RuntimeModels\ScrollState.cs" />
     <Compile Include="Models\RuntimeModels\ShortcutKey.cs" />
     <Compile Include="Models\RuntimeModels\TocItem.cs" />
+    <Compile Include="Models\RuntimeModels\UploadConfigModels\FTPConfigModel.cs" />
+    <Compile Include="Models\RuntimeModels\UploadConfigModels\GitConfigModel.cs" />
+    <Compile Include="Models\RuntimeModels\UploadConfigModels\OSSConfigModel.cs" />
+    <Compile Include="Models\RuntimeModels\UploadConfigModels\PowerShellModel.cs" />
+    <Compile Include="Models\RuntimeModels\UploadConfigModels\SCPConfigModel.cs" />
+    <Compile Include="Models\RuntimeModels\UploadConfigModels\UploadConfigModel.cs" />
     <Compile Include="Models\RuntimeModels\WordCount.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -325,7 +333,6 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\BoolToObjectConverter.cs" />
     <Compile Include="Converters\ElementThemeConverter.cs" />
-    <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
     <Compile Include="Converters\ShortcutKeyToStringConverter.cs" />
     <Compile Include="Services\AppDbContext.cs" />
     <Compile Include="Services\AutoBackup.cs" />
@@ -579,7 +586,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SettingControls\SettingItems\UploadConfigItems\SCPSettingConfig.xaml">
+    <Page Include="Controls\SettingControls\SettingItems\UploadConfigItems\SCPConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

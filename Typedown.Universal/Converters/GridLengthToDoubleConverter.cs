@@ -10,18 +10,16 @@ namespace Typedown.Universal.Converters
 {
     public class GridLengthToDoubleConverter : IValueConverter
     {
+        public GridUnitType GridUnitType { get; set; } = GridUnitType.Pixel;
+
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value is GridLength length)
-                return length.Value;
-            return 0d;
+            return value is GridLength length ? length.Value : 0d;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            if (value is double length)
-                return new GridLength(length);
-            return new GridLength(0);
+            return new GridLength(value is double length ? length : 0, GridUnitType);
         }
     }
 }

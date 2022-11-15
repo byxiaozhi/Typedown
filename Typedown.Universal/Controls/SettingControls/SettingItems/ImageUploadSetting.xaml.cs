@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Typedown.Universal.Controls.DialogControls;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Models;
+using Typedown.Universal.Models.UploadConfigModels;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
@@ -69,10 +71,16 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
                 ImageUploadMethod.Git => "Git",
                 ImageUploadMethod.OSS => "OSS",
                 ImageUploadMethod.SCP => "SCP",
+                ImageUploadMethod.PowerShell => "PowerShell",
                 _ => "未配置"
             });
             list.Add(isEnable ? "已启用" : "未启用");
             return string.Join(", ", list);
+        }
+
+        public Visibility ConfigItemsTitleVisibility(ObservableCollection<ImageUploadConfig> configs)
+        {
+            return configs.Any() ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

@@ -1,0 +1,82 @@
+﻿<UserControl
+    x:Class="Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigItems.SCPConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Typedown.Universal.Controls" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:converters="using:Typedown.Universal.Converters"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel Spacing="4">
+
+        <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
+            <Grid ColumnSpacing="16" Margin="-16,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="100"/>
+                    <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="主机" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind SCPConfigModel.Host, Mode=TwoWay}" Margin="0,6"/>
+                <TextBlock Grid.Row="1" Text="端口" VerticalAlignment="Center"/>
+                <muxc:NumberBox Grid.Row="1" Grid.Column="1" Value="{x:Bind SCPConfigModel.Port, Mode=TwoWay}" Margin="0,6"/>
+                <TextBlock Grid.Row="2" Text="用户名" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind SCPConfigModel.Username, Mode=TwoWay}" Margin="0,6"/>
+
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0,6">
+                    <RadioButton Content="使用密码" x:Name="UsePasswordRadioButton" IsChecked="{x:Bind SCPConfigModel.PubKeyAuthentication, Converter={StaticResource BoolReverseConverter}, Mode=TwoWay}"/>
+                    <RadioButton Content="使用私钥" x:Name="UsePubKeyRadioButton" IsChecked="{x:Bind SCPConfigModel.PubKeyAuthentication, Mode=TwoWay}"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="4" Text="密码" VerticalAlignment="Center" Visibility="{x:Bind UsePasswordRadioButton.IsChecked, Mode=OneWay}"/>
+                <PasswordBox Grid.Row="4" Grid.Column="1" Margin="0,6" Password="{x:Bind SCPConfigModel.Password, Mode=TwoWay}" Visibility="{x:Bind UsePasswordRadioButton.IsChecked, Mode=OneWay}"/>
+
+                <TextBlock Grid.Row="5" Text="私钥文件" VerticalAlignment="Center" Visibility="{x:Bind UsePubKeyRadioButton.IsChecked, Mode=OneWay}"/>
+                <TextBox Grid.Row="5" Grid.Column="1" Margin="0,6" Text="{x:Bind SCPConfigModel.IdentityFile, Mode=TwoWay}" Visibility="{x:Bind UsePubKeyRadioButton.IsChecked, Mode=OneWay}"/>
+                <TextBlock Grid.Row="6" Text="私钥密码" VerticalAlignment="Center" Visibility="{x:Bind UsePubKeyRadioButton.IsChecked, Mode=OneWay}"/>
+                <PasswordBox Grid.Row="6" Grid.Column="1" Margin="0,6" Password="{x:Bind SCPConfigModel.Passphrase, Mode=TwoWay}" Visibility="{x:Bind UsePubKeyRadioButton.IsChecked, Mode=OneWay}"/>
+
+                <Button Grid.Row="7" Grid.Column="1" Content="测试连接" Margin="0,6"/>
+            </Grid>
+        </controls:NormalSettingItem>
+
+        <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
+            <Grid RowSpacing="12" ColumnSpacing="16" Margin="-16,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="100"/>
+                    <ColumnDefinition Width="1e10*" MaxWidth="500"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="上传路径" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind SCPConfigModel.UploadPath, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="1" Text="外部URL" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind SCPConfigModel.ExternalURL, Mode=TwoWay}"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="测试上传"/>
+            </Grid>
+        </controls:NormalSettingItem>
+
+    </StackPanel>
+</UserControl>

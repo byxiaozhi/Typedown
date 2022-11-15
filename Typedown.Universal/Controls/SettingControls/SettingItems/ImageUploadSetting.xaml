@@ -25,8 +25,7 @@
             <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100" Click="OnAddButtonClick">添加</Button>
         </controls:NormalSettingItem>
 
-        <TextBlock Text="上传配置" Margin="0,16,0,4"/>
-
+        <TextBlock Text="上传配置" Margin="0,16,0,4" Visibility="{x:Bind ConfigItemsTitleVisibility(ImageUpload.ImageUploadConfigs), Mode=OneWay}"/>
         <ListView 
             x:Name="ConfigListView" 
             Grid.Row="1" 

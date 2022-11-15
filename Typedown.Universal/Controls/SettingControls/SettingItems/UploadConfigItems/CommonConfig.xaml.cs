@@ -24,7 +24,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigI
 
         public CommonConfig()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

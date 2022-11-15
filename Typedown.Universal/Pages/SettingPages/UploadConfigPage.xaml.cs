@@ -43,17 +43,13 @@ namespace Typedown.Universal.Pages.SettingPages
         {
             ImageUploadConfig = await UploadService.Value.GetImageUploadConfig(configId);
             if (ImageUploadConfig != null)
-            {
                 disposables.Add(ImageUploadConfig.WhenPropertyChanged(nameof(ImageUploadConfig.Name)).Cast<string>().StartWith(ImageUploadConfig.Name).Subscribe(UpdateTitle));
-            }
         }
 
         private async void OnUnloaded(object sender, RoutedEventArgs e)
         {
             if (ImageUploadConfig != null)
-            {
                 await UploadService.Value.SaveImageUploadConfig(ImageUploadConfig);
-            }
             disposables.Clear();
         }
 
@@ -62,15 +58,15 @@ namespace Typedown.Universal.Pages.SettingPages
             this.GetAncestor<SettingsPage>()?.SetPageTitle(this, title);
         }
 
-        public static FrameworkElement GetUploadConfigItem(ImageUploadMethod method)
+        public FrameworkElement GetUploadConfigItem(ImageUploadMethod method, ImageUploadConfig config)
         {
             return method switch
             {
-                ImageUploadMethod.FTP => new FTPConfig(),
-                ImageUploadMethod.Git => new GitConfig(),
-                ImageUploadMethod.OSS => new OSSConfig(),
-                ImageUploadMethod.SCP => new SCPConfig(),
-                ImageUploadMethod.PowerShell => new PowerShellConfig(),
+                ImageUploadMethod.FTP => new FTPConfig() { ImageUploadConfig = ImageUploadConfig },
+                ImageUploadMethod.Git => new GitConfig() { ImageUploadConfig = ImageUploadConfig },
+                ImageUploadMethod.OSS => new OSSConfig() { ImageUploadConfig = ImageUploadConfig },
+                ImageUploadMethod.SCP => new SCPConfig() { ImageUploadConfig = ImageUploadConfig },
+                ImageUploadMethod.PowerShell => new PowerShellConfig() { ImageUploadConfig = ImageUploadConfig },
                 _ => null
             };
         }

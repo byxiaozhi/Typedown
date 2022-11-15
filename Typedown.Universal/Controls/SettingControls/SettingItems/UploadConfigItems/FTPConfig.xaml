@@ -7,82 +7,59 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Typedown.Universal.Controls" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
     <StackPanel Spacing="4">
-        <controls:NormalSettingItem Title="连接配置" HorizontalActionAlignment="Stretch">
-            <StackPanel Spacing="12">
-                <Grid ColumnSpacing="8" RowSpacing="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="3e10*" MaxWidth="300"/>
-                        <ColumnDefinition Width="1e10*" MaxWidth="100"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="1" Text="主机名"/>
-                    <TextBox Grid.Column="1" Grid.Row="1"/>
-                    <TextBlock Grid.Column="2" Text="端口号"/>
-                    <muxc:NumberBox Grid.Column="2" Grid.Row="1"/>
-                </Grid>
-                <Grid ColumnSpacing="8" RowSpacing="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="1e10*" MaxWidth="200"/>
-                        <ColumnDefinition Width="1e10*" MaxWidth="200"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="1" Text="用户名"/>
-                    <TextBox Grid.Column="1" Grid.Row="1"/>
-                    <TextBlock Grid.Column="2" Text="密码"/>
-                    <TextBox Grid.Column="2" Grid.Row="1"/>
-                </Grid>
-                <Grid ColumnSpacing="8" RowSpacing="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="1e10*" MaxWidth="200"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="1" Text="连接模式"/>
-                    <ComboBox Grid.Column="1" Grid.Row="1" Width="200" SelectedIndex="0" HorizontalAlignment="Right">
-                        <x:String>被动模式</x:String>
-                        <x:String>主动模式</x:String>
-                    </ComboBox>
-                </Grid>
-                
-                <Button Content="测试连接" HorizontalAlignment="Right" Margin="0,4,0,0"/>
-            </StackPanel>
+        
+        <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
+            <Grid RowSpacing="12" ColumnSpacing="16" Margin="-16,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="100"/>
+                    <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="主机" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind FTPConfigModel.Host, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="1" Text="端口" VerticalAlignment="Center"/>
+                <muxc:NumberBox Grid.Row="1" Grid.Column="1" Value="{x:Bind FTPConfigModel.Port, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="2" Text="用户名" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind FTPConfigModel.Username, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="3" Text="密码" VerticalAlignment="Center"/>
+                <PasswordBox Grid.Row="3" Grid.Column="1" Password="{x:Bind FTPConfigModel.Password, Mode=TwoWay}"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="测试连接"/>
+            </Grid>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="上传配置" HorizontalActionAlignment="Stretch">
-            <StackPanel Spacing="12">
-                <Grid ColumnSpacing="8" RowSpacing="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="1e10*" MaxWidth="500"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Text="上传路径"/>
-                    <TextBox Grid.Column="1" Grid.Row="1"/>
-                    <TextBlock Grid.Column="1" Grid.Row="2" Text="图片访问URL" Margin="0,8,0,0"/>
-                    <TextBox Grid.Column="1" Grid.Row="3"/>
-                </Grid>
-                <Button Content="测试上传" HorizontalAlignment="Right"/>
-            </StackPanel>
+        
+        <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
+            <Grid RowSpacing="12" ColumnSpacing="16" Margin="-16,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="100"/>
+                    <ColumnDefinition Width="1e10*" MaxWidth="500"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="上传路径" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind FTPConfigModel.UploadPath, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="1" Text="外部URL" VerticalAlignment="Center"/>
+                <TextBox  Grid.Row="1" Grid.Column="1" Text="{x:Bind FTPConfigModel.ExternalURL, Mode=TwoWay}"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="测试上传"/>
+            </Grid>
         </controls:NormalSettingItem>
+        
     </StackPanel>
 </UserControl>
