@@ -70,7 +70,7 @@ namespace Typedown.Universal.Controls
             VisualStateManager.GoToState(this, findReplaceOpen != FloatViewModel.FindReplaceDialogState.None ? "FindReplaceVisible" : "FindReplaceCollapsed", useTransitions && Settings.AnimationEnable);
         }
 
-        private void OnScroll(object sender, Windows.UI.Xaml.Controls.Primitives.ScrollEventArgs e)
+        private void OnScroll(object sender, ScrollEventArgs e)
         {
             ViewModel.MarkdownEditor.PostMessage("OnScroll", new { ScrollX = HorizontalScrollBar.Value, ScrollY = VerticalScrollBar.Value });
         }
@@ -141,6 +141,16 @@ namespace Typedown.Universal.Controls
                 HorizontalScrollBar.IndicatorMode = ScrollingIndicatorMode.TouchIndicator;
                 VerticalScrollBar.IndicatorMode = ScrollingIndicatorMode.TouchIndicator;
             }
+        }
+
+        private Visibility IsScrollBarVisibility(double maximum)
+        {
+            return maximum <= 0 ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private double GetSmallChange(double fontSize, double lineHeight)
+        {
+            return fontSize * lineHeight;
         }
     }
 }

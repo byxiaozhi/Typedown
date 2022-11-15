@@ -27,7 +27,7 @@ namespace Typedown.Utilities
 
         private static uint webView2ProcessId;
 
-        private float WindowScale => PInvoke.GetDpiForWindow(ParentHWnd) / 96f;
+        private double WindowScale => PInvoke.GetDpiForWindow(ParentHWnd) / 96d;
 
         private static Task<CoreWebView2Environment> coreWebView2EnvironmentTask;
         private static CoreWebView2Environment CoreWebView2Environment => coreWebView2EnvironmentTask.IsCompleted ? coreWebView2EnvironmentTask.Result : null;
@@ -322,7 +322,8 @@ namespace Typedown.Utilities
         {
             if (webViewVisual != null)
             {
-                webViewVisual.Scale = new(new(1 / WindowScale), 1);
+                var scale = (float)(1 / WindowScale);
+                webViewVisual.Scale = new(scale, scale, 1);
                 UpdateBounds();
             }
         }

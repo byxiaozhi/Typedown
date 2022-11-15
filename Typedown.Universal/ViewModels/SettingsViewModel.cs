@@ -32,8 +32,8 @@ namespace Typedown.Universal.ViewModels
         public bool SearchIsRegexp { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool SearchIsWholeWord { get => GetSettingValue(false); set => SetSettingValue(value); }
         public int SidePaneIndex { get => GetSettingValue(0); set => SetSettingValue(value); }
-        public float FontSize { get => GetSettingValue(16f); set => SetSettingValue(value); }
-        public float LineHeight { get => GetSettingValue(1.6f); set => SetSettingValue(value); }
+        public double FontSize { get => GetSettingValue(16d); set => SetSettingValue(value); }
+        public double LineHeight { get => GetSettingValue(1.6d); set => SetSettingValue(value); }
         public bool AutoPairBracket { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool AutoPairQuote { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool TrimUnnecessaryCodeBlockEmptyLines { get => GetSettingValue(false); set => SetSettingValue(value); }
