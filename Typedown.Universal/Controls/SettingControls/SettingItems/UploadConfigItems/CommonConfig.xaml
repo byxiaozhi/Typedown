@@ -39,5 +39,12 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </controls:NormalSettingItem>
+        <ContentPresenter Content="{x:Bind Detail, Mode=OneWay}"/>
+        <controls:NormalSettingItem Title="删除此配置">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe74d;"/>
+            </controls:NormalSettingItem.Icon>
+            <Button Content="删除" MinWidth="100" Click="OnDeleteButtonClick"/>
+        </controls:NormalSettingItem>
     </StackPanel>
 </UserControl>

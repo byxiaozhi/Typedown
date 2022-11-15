@@ -9,9 +9,7 @@
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     mc:Ignorable="d">
-
-    <StackPanel Spacing="4">
-        <upload:CommonConfig ImageUploadConfig="{x:Bind ImageUploadConfig, Mode=OneWay}"/>
-        <ContentPresenter Content="{x:Bind GetUploadConfigItem(ImageUploadConfig.Method, ImageUploadConfig), Mode=OneWay}"/>
-    </StackPanel>
+    <upload:CommonConfig 
+        ImageUploadConfig="{x:Bind ImageUploadConfig, Mode=OneWay}" 
+        Detail="{x:Bind GetUploadConfigItem(ImageUploadConfig.Method), Mode=OneWay}"/>
 </Page>

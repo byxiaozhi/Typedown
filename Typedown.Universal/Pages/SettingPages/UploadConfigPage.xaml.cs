@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigItems;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Models;
@@ -58,7 +59,7 @@ namespace Typedown.Universal.Pages.SettingPages
             this.GetAncestor<SettingsPage>()?.SetPageTitle(this, title);
         }
 
-        public FrameworkElement GetUploadConfigItem(ImageUploadMethod method, ImageUploadConfig config)
+        public FrameworkElement GetUploadConfigItem(ImageUploadMethod method)
         {
             return method switch
             {
@@ -69,6 +70,17 @@ namespace Typedown.Universal.Pages.SettingPages
                 ImageUploadMethod.PowerShell => new PowerShellConfig() { ImageUploadConfig = ImageUploadConfig },
                 _ => null
             };
+        }
+
+        public async Task DeleteConfigAsync()
+        {
+            if (ImageUploadConfig != null)
+            {
+                var service = this.GetService<ImageUpload>();
+                await service.RemoveImageUploadConfig(ImageUploadConfig.Id);
+                ImageUploadConfig = null;
+                Frame.GoBack();
+            }
         }
     }
 }

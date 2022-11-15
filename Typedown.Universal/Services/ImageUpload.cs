@@ -37,13 +37,21 @@ namespace Typedown.Universal.Services
             await UpdateImageUploadConfigs();
         }
 
-        public async Task SaveImageUploadConfig(ImageUploadConfig config)
+        public async Task<bool> SaveImageUploadConfig(ImageUploadConfig config)
         {
-            using var ctx = await AppDbContext.Create();
-            var model = ctx.ImageUploadConfigs;
-            model.Update(config);
-            await ctx.SaveChangesAsync();
-            await UpdateImageUploadConfigs();
+            try
+            {
+                using var ctx = await AppDbContext.Create();
+                var model = ctx.ImageUploadConfigs;
+                model.Update(config);
+                await ctx.SaveChangesAsync();
+                await UpdateImageUploadConfigs();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<ImageUploadConfig> GetImageUploadConfig(int id)

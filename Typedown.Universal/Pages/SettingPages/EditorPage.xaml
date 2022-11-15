@@ -9,7 +9,5 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <StackPanel Spacing="4">
-        <settingitems:EditorSetting/>
-    </StackPanel>
+    <settingitems:EditorSetting/>
 </Page>
