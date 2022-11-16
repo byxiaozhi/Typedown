@@ -96,6 +96,8 @@ namespace Typedown.Universal.Controls
 
         private TaskCompletionSource<ContentDialogResult> result;
 
+        private object prevFocusedElement;
+
         public AppContentDialog()
         {
             Loaded += OnLoaded;
@@ -144,7 +146,8 @@ namespace Typedown.Universal.Controls
         private async void SetFocusButton()
         {
             bool success = false;
-            for(int i = 0; i < 10 && !success; i++)
+            prevFocusedElement = FocusManager.GetFocusedElement(XamlRoot);
+            for (int i = 0; i < 10 && !success; i++)
             {
                 await Task.Delay(100);
                 if (DefaultButton == ContentDialogButton.Primary && PrimaryButton.Visibility == Visibility.Visible)
@@ -185,7 +188,7 @@ namespace Typedown.Universal.Controls
             FocusManager.GettingFocus += OnFocusManagerGettingFocus;
         }
 
-        private void OnUnloaded(object sender, RoutedEventArgs e)
+        private async void OnUnloaded(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, "DialogHidden", true);
             PrimaryButton.Click -= OnPrimaryButtonClick;
@@ -193,6 +196,7 @@ namespace Typedown.Universal.Controls
             CloseButton.Click -= OnCloseButtonClick;
             Closed?.Invoke(this, new(result.Task.Result));
             FocusManager.GettingFocus -= OnFocusManagerGettingFocus;
+            await FocusManager.TryFocusAsync(prevFocusedElement as DependencyObject, FocusState.Programmatic);
         }
 
         private void OnFocusManagerGettingFocus(object sender, GettingFocusEventArgs e)

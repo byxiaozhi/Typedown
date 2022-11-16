@@ -46,6 +46,7 @@
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="Padding" Value="0"/>
                     <Setter Property="Margin" Value="0,0,0,4"/>
+                    <Setter Property="IsTabStop" Value="False"/>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
