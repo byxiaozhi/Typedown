@@ -196,7 +196,8 @@ namespace Typedown.Universal.Controls
             CloseButton.Click -= OnCloseButtonClick;
             Closed?.Invoke(this, new(result.Task.Result));
             FocusManager.GettingFocus -= OnFocusManagerGettingFocus;
-            await FocusManager.TryFocusAsync(prevFocusedElement as DependencyObject, FocusState.Programmatic);
+            if (prevFocusedElement is FrameworkElement ele && ele.IsLoaded)
+                await FocusManager.TryFocusAsync(ele, FocusState.Programmatic);
         }
 
         private void OnFocusManagerGettingFocus(object sender, GettingFocusEventArgs e)
