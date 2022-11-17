@@ -357,6 +357,10 @@
     <value>导出</value>
     <comment>导出</comment>
   </data>
+  <data name="ExportSettings.Text" xml:space="preserve">
+    <value>导出设置</value>
+    <comment>导出设置</comment>
+  </data>
   <data name="ExportToPDF" xml:space="preserve">
     <value>导出为 PDF</value>
     <comment>导出到 PDF</comment>
@@ -444,6 +448,10 @@
   <data name="FontSize.Text" xml:space="preserve">
     <value>字体大小</value>
     <comment>字体大小</comment>
+  </data>
+  <data name="FootNote.Text" xml:space="preserve">
+    <value>脚注</value>
+    <comment>脚注</comment>
   </data>
   <data name="Format.Title" xml:space="preserve">
     <value>格式</value>
@@ -628,6 +636,10 @@
   <data name="Lines" xml:space="preserve">
     <value>行</value>
     <comment>行</comment>
+  </data>
+  <data name="LinkReference.Text" xml:space="preserve">
+    <value>链接引用</value>
+    <comment>链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
     <value>加载图片失败</value>
@@ -884,6 +896,10 @@
   <data name="TextBoxSearch.PlaceholderText" xml:space="preserve">
     <value>查找</value>
     <comment>查找</comment>
+  </data>
+  <data name="Toc.Text" xml:space="preserve">
+    <value>内容目录</value>
+    <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
     <value>总计</value>

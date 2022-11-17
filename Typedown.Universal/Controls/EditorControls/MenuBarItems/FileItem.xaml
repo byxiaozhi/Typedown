@@ -29,7 +29,7 @@
         <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
         <MenuFlyoutItem Text="TEXT" Command="{x:Bind File.ExportCommand}" CommandParameter="text"/>
         <MenuFlyoutSeparator/>
-        <MenuFlyoutItem x:Name="ExportSettingsItem" Text="导出设置" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
+        <MenuFlyoutItem x:Name="ExportSettingsItem" x:Uid="ExportSettings" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
     </MenuFlyoutSubItem>
     <MenuFlyoutItem x:Name="PrintItem" x:Uid="Print" Command="{x:Bind File.PrintCommand}" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
     <MenuFlyoutSeparator/>

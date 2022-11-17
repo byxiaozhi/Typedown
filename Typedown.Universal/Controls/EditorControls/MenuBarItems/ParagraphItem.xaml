@@ -44,10 +44,10 @@
         <MenuFlyoutItem x:Name="MermaidItem" x:Uid="Mermaid" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="mermaid"/>
     </MenuFlyoutSubItem>
     <MenuFlyoutSeparator/>
-    <ToggleMenuFlyoutItem x:Name="LinkReferencesItem" Text="链接引用"/>
-    <ToggleMenuFlyoutItem x:Name="FootNoteItem" Text="脚注"/>
+    <ToggleMenuFlyoutItem x:Name="LinkReferencesItem" x:Uid="LinkReference" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="linkref"/>
+    <ToggleMenuFlyoutItem x:Name="FootNoteItem" x:Uid="FootNote" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="footnote"/>
     <MenuFlyoutSeparator/>
     <ToggleMenuFlyoutItem x:Name="HorizontalLineItem" x:Uid="HorizontalLine" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="hr" IsEnabled="{x:Bind Editor.ParagraphState.HorizontalLine.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.HorizontalLine.IsChecked, Mode=TwoWay}"/>
-    <ToggleMenuFlyoutItem x:Name="TocItem" Text="内容目录"/>
+    <ToggleMenuFlyoutItem x:Name="TocItem" x:Uid="Toc" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="toc"/>
     <ToggleMenuFlyoutItem x:Name="YAMLFrontMatterItem" x:Uid="YAMLFrontMatter" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="front-matter" IsEnabled="{x:Bind Editor.ParagraphState.FrontMatter.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.FrontMatter.IsChecked, Mode=TwoWay}"/>
 </local:MenuBarItemBase>
