@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
 using System.Xml.Linq;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
+using Typedown.Universal.Models.UploadConfigModels;
 using Typedown.Universal.Pages.SettingPages;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -38,6 +42,31 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigI
         private void OnDeleteButtonClick(object sender, RoutedEventArgs e)
         {
             this.GetAncestor<UploadConfigPage>()?.DeleteConfigAsync();
+        }
+
+        private async void OnTestUploadButtonClick(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            try
+            {
+                button.IsEnabled = false;
+                var filePicker = new FileOpenPicker();
+                FileTypeHelper.Image.ToList().ForEach(filePicker.FileTypeFilter.Add);
+                filePicker.SetOwnerWindow(this.GetService<IWindowService>().GetWindow(this));
+                var file = await filePicker.PickSingleFileAsync();
+                if (file == null)
+                    return;
+                var res = await ImageUploadConfig.LoadUploadConfig().Upload(this.GetService<IServiceProvider>(), file.Path);
+                await AppContentDialog.Create("上传成功", res, "Ok").ShowAsync(XamlRoot);
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create("上传失败", ex.Message, "Ok").ShowAsync(XamlRoot);
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            }
         }
     }
 }

@@ -15,5 +15,7 @@ namespace Typedown.Universal.Models.UploadConfigModels
         public string UploadPath { get; set; } = string.Empty;
 
         public string ExternalURL { get; set; } = string.Empty;
+
+        public virtual Task<string> Upload(IServiceProvider serviceProvider, string filePath) => Task.FromResult(filePath);
     }
 }

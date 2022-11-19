@@ -23,7 +23,7 @@ namespace Typedown.Universal.Controls.DialogControls
         public static readonly DependencyProperty ConfigNameProperty = DependencyProperty.Register(nameof(ConfigName), typeof(string), typeof(AddUploadConfigDialog), new(""));
         public string ConfigName { get => (string)GetValue(ConfigNameProperty); set => SetValue(ConfigNameProperty, value); }
 
-        public static readonly DependencyProperty UploadMethodProperty = DependencyProperty.Register(nameof(UploadMethod), typeof(ImageUploadMethod), typeof(AddUploadConfigDialog), new(ImageUploadMethod.None));
+        public static readonly DependencyProperty UploadMethodProperty = DependencyProperty.Register(nameof(UploadMethod), typeof(ImageUploadMethod), typeof(AddUploadConfigDialog), new(Enums.Enumerable.AvailableImageUploadMethods.First()));
         public ImageUploadMethod UploadMethod { get => (ImageUploadMethod)GetValue(UploadMethodProperty); set => SetValue(UploadMethodProperty, value); }
 
         public static readonly DependencyProperty ErrMsgProperty = DependencyProperty.Register(nameof(ErrMsg), typeof(string), typeof(AddUploadConfigDialog), new(""));

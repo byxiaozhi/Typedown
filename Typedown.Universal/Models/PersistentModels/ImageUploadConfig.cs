@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,17 +25,37 @@ namespace Typedown.Universal.Models
 
         public string Config { get; private set; } = new JObject().ToString();
 
-        public T LoadUploadConfig<T>() where T : ConfigModel, new()
+        public ConfigModel LoadUploadConfig()
         {
             var config = ParseConfig();
-            return config.TryGetValue(typeof(T).Name, out var value) ? value.ToObject<T>() : new();
+            if (config.TryGetValue(((int)Method).ToString(), out var value))
+                return value.ToObject(GetConfigModelType()) as ConfigModel;
+            return null;
         }
 
-        public void StoreUploadConfig<T>(T uploadConfig) where T : ConfigModel
+        public T LoadUploadConfig<T>() where T: ConfigModel, new()
+        {
+            return (LoadUploadConfig() as T) ?? new();
+        }
+
+        public void StoreUploadConfig(ConfigModel uploadConfig)
         {
             var config = ParseConfig();
-            config[typeof(T).Name] = JObject.FromObject(uploadConfig);
+            config[((int)Method).ToString()] = JObject.FromObject(uploadConfig);
             Config = config.ToString();
+        }
+
+        private Type GetConfigModelType()
+        {
+            return Method switch
+            {
+                ImageUploadMethod.FTP => typeof(FTPConfigModel),
+                ImageUploadMethod.Git => typeof(GitConfigModel),
+                ImageUploadMethod.OSS => typeof(OSSConfigModel),
+                ImageUploadMethod.SCP => typeof(SCPConfigModel),
+                ImageUploadMethod.PowerShell => typeof(PowerShellModel),
+                _ => typeof(ConfigModel)
+            };
         }
 
         private JObject ParseConfig()

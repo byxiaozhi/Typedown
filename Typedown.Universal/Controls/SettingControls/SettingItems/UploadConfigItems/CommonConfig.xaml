@@ -28,7 +28,7 @@
             </controls:NormalSettingItem.Icon>
             <ComboBox
                 MinWidth="200"
-                ItemsSource="{x:Bind enums:Enumerable.ImageUploadMethods}"
+                ItemsSource="{x:Bind enums:Enumerable.AvailableImageUploadMethods}"
                 DataContext="{x:Bind}" 
                 SelectedItem="{Binding ImageUploadConfig.Method, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>
@@ -39,6 +39,12 @@
             </ComboBox>
         </controls:NormalSettingItem>
         <ContentPresenter Content="{x:Bind Detail, Mode=OneWay}"/>
+        <controls:NormalSettingItem Title="测试上传">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe74a;"/>
+            </controls:NormalSettingItem.Icon>
+            <Button Content="选择文件" MinWidth="100" Click="OnTestUploadButtonClick"/>
+        </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="删除此配置">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe74d;"/>

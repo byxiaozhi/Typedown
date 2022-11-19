@@ -19,7 +19,7 @@
         <TextBox Margin="0,8,0,0" Text="{x:Bind ConfigName, Mode=TwoWay}"/>
         <TextBlock Margin="0,8,0,0" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Text="{x:Bind ErrMsg, Mode=OneWay}" Visibility="{x:Bind ErrMsg, Converter={StaticResource EmptyToVisibilityReverseConverter}, Mode=OneWay}"/>
         <TextBlock Margin="0,12,0,0">上传方式</TextBlock>
-        <ComboBox Margin="0,8,0,0" HorizontalAlignment="Stretch" ItemsSource="{x:Bind enums:Enumerable.ImageUploadMethods}" SelectedItem="{Binding UploadMethod, ElementName=ThisControl, Mode=TwoWay}">
+        <ComboBox Margin="0,8,0,0" HorizontalAlignment="Stretch" ItemsSource="{x:Bind enums:Enumerable.AvailableImageUploadMethods}" SelectedItem="{Binding UploadMethod, ElementName=ThisControl, Mode=TwoWay}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <controls:EnumNameBlock Value="{Binding}"/>
