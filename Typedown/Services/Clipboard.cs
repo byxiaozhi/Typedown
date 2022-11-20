@@ -1,4 +1,7 @@
 ﻿using System.Collections.Specialized;
+using System.IO;
+using System.IO.Pipes;
+using System.Windows.Media.Imaging;
 using Typedown.Universal.Interfaces;
 
 namespace Typedown.Services
@@ -23,6 +26,19 @@ namespace Typedown.Services
         public StringCollection GetFileDropList()
         {
             return System.Windows.Clipboard.GetFileDropList();
+        }
+
+        public byte[] GetImage()
+        {
+            var image = System.Windows.Clipboard.GetImage();
+            if (image == null) return null;
+            using var memoryStream = new MemoryStream();
+            var encoder = new PngBitmapEncoder()
+            {
+                Frames = { BitmapFrame.Create(image) }
+            };
+            encoder.Save(memoryStream);
+            return memoryStream.GetBuffer();
         }
 
         public void SetText(string text, TextDataFormat format)

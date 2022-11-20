@@ -30,5 +30,7 @@ namespace Typedown.Universal.Interfaces
         StringCollection GetFileDropList();
 
         void SetFileDropList(StringCollection fileDropList);
+
+        byte[] GetImage();
     }
 }

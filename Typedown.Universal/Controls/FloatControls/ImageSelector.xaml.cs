@@ -1,6 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Threading.Tasks;
 using System.Web;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Services;
+using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.UI.Xaml;
@@ -16,6 +20,8 @@ namespace Typedown.Universal.Controls.FloatControls
         private IMarkdownEditor MarkdownEditor { get; }
 
         private readonly Flyout flyout = new() { Placement = FlyoutPlacementMode.Bottom };
+
+        private static string currentSrc;
 
         public ImageSelector(AppViewModel viewModel, IMarkdownEditor markdownEditor)
         {
@@ -33,17 +39,30 @@ namespace Typedown.Universal.Controls.FloatControls
             TextBoxTitle.Text = imageInfo?["title"]?.ToString() ?? "";
             flyout.Content = this;
             flyout.ShowAt(MarkdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));
+            currentSrc = TextBoxSrc.Text;
         }
 
         private void OnFlyoutClosing(FlyoutBase sender, FlyoutBaseClosingEventArgs args)
         {
-            args.Cancel = ImagePickerButton.IsPicking;
+            args.Cancel = ImagePickerButton.IsPicking || SaveButton.IsLoading;
         }
 
-        private void OnSaveButtonClick(object sender, RoutedEventArgs e)
+        private async void OnSaveButtonClick(object sender, RoutedEventArgs e)
         {
-            SaveImageSrc(TextBoxSrc.Text, TextBoxTitle.Text, TextBoxAlt.Text);
-            flyout.Hide();
+            SaveButton.IsLoading = true;
+            try
+            {
+                await SaveImageSrc(TextBoxSrc.Text, TextBoxTitle.Text, TextBoxAlt.Text);
+                flyout.Hide();
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create("Error", ex.Message, Localize.GetDialogString("Ok")).ShowAsync(XamlRoot);
+            }
+            finally
+            {
+                SaveButton.IsLoading = false;
+            }
         }
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
@@ -51,9 +70,21 @@ namespace Typedown.Universal.Controls.FloatControls
             flyout.Hide();
         }
 
-        private void SaveImageSrc(string src, string title = null, string alt = null)
+        private async Task SaveImageSrc(string src, string title = null, string alt = null)
         {
-            MarkdownEditor.PostMessage("ReplaceImage", new { src, alt, title });
+            if (src != currentSrc)
+            {
+                var imageAction = this.GetService<ImageAction>();
+                if (Common.IsWebSrc(src)) src = await imageAction.DoWebFileAction(src);
+                else src = await imageAction.DoLocalFileAction(src);
+            }
+            if (flyout.IsOpen)
+            {
+                if (ViewModel.SettingsViewModel.AutoEncodeImageURL)
+                    src = HttpUtility.UrlEncode(src);
+                MarkdownEditor.PostMessage("ReplaceImage", new { src, alt, title });
+            }
+
         }
     }
 }

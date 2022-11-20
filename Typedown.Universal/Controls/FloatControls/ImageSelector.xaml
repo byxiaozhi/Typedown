@@ -63,7 +63,7 @@
                     </muxc:AnimatedIcon>
                 </Viewbox>
             </Button>
-            <Button Grid.Column="1" MinWidth="100" Content="保存" Click="OnSaveButtonClick" Style="{ThemeResource AccentButtonStyle}"/>
+            <controls:ProgressButton x:Name="SaveButton" Grid.Column="1" Content="保存" MinWidth="100" Click="OnSaveButtonClick" Style="{ThemeResource AccentButtonStyle}"/>
             <Button Grid.Column="2" MinWidth="100" Content="取消" Click="OnCancelButtonClick"/>
         </Grid>
     </Grid>

@@ -1,0 +1,14 @@
+﻿<Button
+    x:Class="Typedown.Universal.Controls.ProgressButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.CommonControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    mc:Ignorable="d">
+    <Grid>
+        <ContentPresenter x:Name="ButtonContent" Content="{x:Bind Content, Mode=OneWay}" x:Load="{x:Bind IsLoading, Mode=OneWay, Converter={StaticResource BoolReverseConverter}}"/>
+        <muxc:ProgressRing IsActive="{x:Bind IsLoading, Mode=OneWay}" Height="16" Width="16" VerticalAlignment="Center"/>
+    </Grid>
+</Button>

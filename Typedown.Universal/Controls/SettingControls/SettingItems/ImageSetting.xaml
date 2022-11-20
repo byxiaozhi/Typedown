@@ -159,7 +159,7 @@
             </StackPanel>
         </controls:ExpanderSettingItem>
 
-        <controls:NormalSettingItem Title="默认图片根目录" Description="未保存文件使用的图片根目录" HorizontalActionAlignment="Stretch">
+        <controls:NormalSettingItem Title="默认图片根目录" Description="未保存文件或剪贴板图片默认使用的图片根目录" HorizontalActionAlignment="Stretch">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8b7;"/>
             </controls:NormalSettingItem.Icon>

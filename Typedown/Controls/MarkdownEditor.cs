@@ -106,16 +106,16 @@ namespace Typedown.Controls
             CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
             CoreWebView2.WebResourceRequested += OnWebResourceRequested;
 #if DEBUG
-            // CoreWebView2.OpenDevToolsWindow();
+            CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 
         private void LoadStaticResources()
         {
 # if DEBUG
-            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
-            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
-            // WebViewController.CoreWebView2.Navigate("http://localhost:3000");
+            // var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
+            // WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
+            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
@@ -129,7 +129,7 @@ namespace Typedown.Controls
             {
                 var uri = new Uri(args.Request.Uri);
                 var query = HttpUtility.ParseQueryString(uri.Query);
-                var path = query["path"];
+                var path = HttpUtility.UrlDecode(query["path"]);
                 if (path.StartsWith("file://"))
                     path = new Uri(path).LocalPath;
                 if (!System.IO.Path.IsPathRooted(path))

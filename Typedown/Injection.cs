@@ -45,6 +45,7 @@ namespace Typedown
             builder.AddScoped<IWindowService, WindowService>();
             builder.AddScoped<AutoBackup>();
             builder.AddScoped<EventCenter>();
+            builder.AddScoped<ImageAction>();
             builder.AddScoped<ImageUpload>();
             builder.AddScoped<RemoteInvoke>();
             builder.AddScoped<Transport>();

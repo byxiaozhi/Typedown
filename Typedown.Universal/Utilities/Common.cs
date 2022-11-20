@@ -3,9 +3,10 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Typedown.Universal.Models;
@@ -32,24 +33,7 @@ namespace Typedown.Universal.Utilities
             }
             catch
             {
-                // hack because of this: https://github.com/dotnet/corefx/issues/10361
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    url = url.Replace("&", "^&");
-                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    Process.Start("xdg-open", url);
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    Process.Start("open", url);
-                }
-                else
-                {
-                    throw;
-                }
+                Process.Start(new ProcessStartInfo(url.Replace("&", "^&")) { UseShellExecute = true });
             }
         }
 
@@ -121,6 +105,50 @@ namespace Typedown.Universal.Utilities
                     if (!(oldValue?.Equals(newValue) ?? oldValue == newValue))
                         prop.SetValue(target, newValue);
                 }
+            }
+        }
+
+        public static string CombinePath(params string[] path)
+        {
+            return Path.Combine(path).Replace("\\", "/");
+        }
+
+        public static bool IsWebSrc(string src)
+        {
+            src = src.Replace("\\", "/").ToLower();
+            if (src.StartsWith("file://") || src.StartsWith("//") || src.StartsWith("."))
+                return false;
+            if (src.StartsWith("http://") || src.StartsWith("https://") || src.StartsWith("ftp://"))
+                return true;
+            var first = src.Split('/')[0];
+            return first.Length > 2 && first.Contains(".");
+        }
+
+        public static bool FileContentEqual(string filePath, byte[] content)
+        {
+            try
+            {
+                if (new FileInfo(filePath).Length != content.Length)
+                    return false;
+                return File.ReadAllBytes(filePath).SequenceEqual(content);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool FileContentEqual(string filePath1, string filePath2)
+        {
+            try
+            {
+                if (new FileInfo(filePath1).Length != new FileInfo(filePath2).Length)
+                    return false;
+                return File.ReadAllBytes(filePath1).SequenceEqual(File.ReadAllBytes(filePath2));
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

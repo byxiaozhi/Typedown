@@ -88,6 +88,9 @@
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommonControls\GlobalFrame.cs" />
+    <Compile Include="Controls\CommonControls\ProgressButton.xaml.cs">
+      <DependentUpon>ProgressButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CommonControls\ToolTip.cs" />
     <Compile Include="Controls\CommonControls\MenuItemCollection.cs" />
     <Compile Include="Controls\CommonControls\ShortcutPicker.xaml.cs">
@@ -497,6 +500,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\CaptionControls\CaptionButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CommonControls\ProgressButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

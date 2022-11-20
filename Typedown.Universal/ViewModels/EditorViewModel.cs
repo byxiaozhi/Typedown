@@ -2,11 +2,13 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Services;
@@ -236,7 +238,7 @@ namespace Typedown.Universal.ViewModels
             MarkdownEditor?.PostMessage("Cut", new { type });
         }
 
-        public void Paste(string type)
+        public async void Paste(string type)
         {
             string text = null;
             string html = null;
@@ -253,14 +255,29 @@ namespace Typedown.Universal.ViewModels
                 MarkdownEditor?.PostMessage("Paste", new { type, text, html });
                 return;
             }
+
             var files = Clipboard.GetFileDropList();
             if (files != null && files.Count == 1)
             {
                 if (FileTypeHelper.Image.Where(files[0].ToLower().EndsWith).Any())
                 {
-                    MarkdownEditor?.PostMessage("InsertImage", new { src = files[0] });
+                    MarkdownEditor?.PostMessage("InsertImage", new { src = files[0], alt = Path.GetFileNameWithoutExtension(files[0]) });
                 }
                 return;
+            }
+
+            var image = Clipboard.GetImage();
+            if (image != null)
+            {
+                try
+                {
+                    var path = await ServiceProvider.GetService<ImageAction>().DoClipboardAction(image);
+                    MarkdownEditor?.PostMessage("InsertImage", new { src = path });
+                }
+                catch (Exception ex)
+                {
+                    await AppContentDialog.Create("Error", ex.Message, Localize.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                }
             }
         }
 
