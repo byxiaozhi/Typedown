@@ -20,7 +20,7 @@ const renderIcon = (h, className, icon) => {
 }
 
 // I dont want operate dom directly, is there any better method? need help!
-export default function image (h, cursor, block, token, outerClass) {
+export default function image(h, cursor, block, token, outerClass) {
   const imageInfo = getImageInfo(token.attrs.src)
   const { selectedImage } = this.muya.contentState
   const data = {
@@ -34,6 +34,7 @@ export default function image (h, cursor, block, token, outerClass) {
   let { src } = imageInfo
   const alt = token.attrs.alt
   const title = token.attrs.title
+  const style = token.attrs.style
   const width = token.attrs.width
   const height = token.attrs.height
 
@@ -95,7 +96,7 @@ export default function image (h, cursor, block, token, outerClass) {
     } else {
       wrapperSelector += `.${CLASS_OR_ID.AG_IMAGE_FAIL}`
     }
-
+    
     // Add image selected class name.
     if (selectedImage) {
       const { key, token: selectToken } = selectedImage
@@ -107,10 +108,10 @@ export default function image (h, cursor, block, token, outerClass) {
         wrapperSelector += `.${CLASS_OR_ID.AG_INLINE_IMAGE_SELECTED}`
       }
     }
-
+    
     const renderImage = () => {
       const data = {
-        props: { alt: alt.replace(/[`*{}[\]()#+\-.!_>~:|<>$]/g, ''), src: domsrc, title }
+        props: { alt: alt.replace(/[`*{}[\]()#+\-.!_>~:|<>$]/g, ''), src: domsrc, title, style }
       }
 
       if (typeof width === 'number') {
@@ -123,7 +124,7 @@ export default function image (h, cursor, block, token, outerClass) {
 
       return h('img', data)
     }
-
+    
     return isSuccess
       ? [
         h(wrapperSelector, data, [

@@ -139,7 +139,7 @@ const addFormat = (type, block, { start, end }) => {
 const checkTokenIsInlineFormat = token => {
   const { type, tag } = token
   if (FORMAT_TYPES.includes(type)) return true
-  if (type === 'html_tag' && /^(?:u|sub|sup|mark)$/i.test(tag)) return true
+  if (type === 'html_tag' && /^(?:u|sub|sup|mark|img)$/i.test(tag)) return true
   return false
 }
 
@@ -181,7 +181,7 @@ const formatCtrl = ContentState => {
         }
       })(tokens)
     }
-
+    
     return { formats, tokens, neighbors }
   }
 

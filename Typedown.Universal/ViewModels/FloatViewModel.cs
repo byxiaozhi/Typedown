@@ -62,7 +62,8 @@ namespace Typedown.Universal.ViewModels
         {
             var imageToolbar = ServiceProvider.GetService<ImageToolbar>();
             var rect = args["boundingClientRect"].ToObject<Rect>();
-            imageToolbar.Open(rect);
+            var attrs = args["attrs"];
+            imageToolbar.Open(rect, attrs);
         }
 
         public void OnOpenFrontMenu(JToken args)

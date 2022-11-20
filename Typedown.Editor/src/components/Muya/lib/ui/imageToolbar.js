@@ -12,14 +12,14 @@ class ImageToolbar {
       if (reference) {
         this.imageInfo = imageInfo
         const boundingClientRect = reference.getBoundingClientRect()
-        transport.postMessage('OpenImageToolbar', { boundingClientRect })
+        transport.postMessage('OpenImageToolbar', { boundingClientRect, attrs: imageInfo.token.attrs })
       }
     })
-    this.onImageEditToolbarClick = ({ type }) => this.selectItem(type)
+    this.onImageEditToolbarClick = args => this.handleImageEditToolbarClick(args)
     transport.addListener('ImageEditToolbarClick', this.onImageEditToolbarClick)
   }
 
-  selectItem(type) {
+  handleImageEditToolbarClick({ type, attrName, attrValue }) {
     const { imageInfo } = this
     switch (type) {
       // Delete image.
@@ -45,10 +45,12 @@ class ImageToolbar {
       case 'inline':
       case 'left':
       case 'center':
-      case 'right': {
+      case 'right':
         this.muya.contentState.updateImage(this.imageInfo, 'data-align', type)
         break;
-      }
+      case 'updateImage':
+        this.muya.contentState.updateImage(this.imageInfo, attrName, attrValue)
+        break;
     }
   }
 

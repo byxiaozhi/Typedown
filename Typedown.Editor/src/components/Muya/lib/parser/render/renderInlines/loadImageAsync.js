@@ -36,6 +36,7 @@ export default function loadImageAsync (imageInfo, attrs, className, imageClass)
         img.src = domsrc
         if (attrs.alt) img.alt = attrs.alt.replace(/[`*{}[\]()#+\-.!_>~:|<>$]/g, '')
         if (attrs.title) img.setAttribute('title', attrs.title)
+        if (attrs.style) img.setAttribute('style', attrs.style)
         if (attrs.width && typeof attrs.width === 'number') {
           img.setAttribute('width', attrs.width)
         }

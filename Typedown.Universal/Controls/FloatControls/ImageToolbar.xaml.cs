@@ -32,6 +32,8 @@ namespace Typedown.Universal.Controls.FloatControls
 
         private readonly CompositeDisposable disposables = new();
 
+        private JToken attrs;
+
         public ImageToolbar(AppViewModel viewModel, IMarkdownEditor markdownEditor, IKeyboardAccelerator keyboardAccelerator)
         {
             ViewModel = viewModel;
@@ -40,8 +42,9 @@ namespace Typedown.Universal.Controls.FloatControls
             InitializeComponent();
         }
 
-        public void Open(Rect rect)
+        public void Open(Rect rect, JToken attrs)
         {
+            this.attrs = attrs;
             AreOpenCloseAnimationsEnabled = ViewModel.SettingsViewModel.AnimationEnable;
             OverlayInputPassThroughElement = ViewModel.XamlRoot.Content;
             ShowAt(MarkdownEditor.GetDummyRectangle(rect));
@@ -75,12 +78,20 @@ namespace Typedown.Universal.Controls.FloatControls
         private void DeleteClick(object sender, RoutedEventArgs e)
         {
             PostEditTableMessage(new { type = "delete" });
-            Hide();
+        }
+
+        private void ZoomClick(object sender, RoutedEventArgs e)
+        {
+            var zoom = (sender as MenuFlyoutItem).Tag as string;
+            var style = (attrs["style"]?.ToString() ?? "").Split(';').Where(x => !x.StartsWith("zoom:") && !string.IsNullOrWhiteSpace(x)).ToList();
+            style.Add($"zoom:{zoom}");
+            PostEditTableMessage(new { type = "updateImage", attrName = "style", attrValue = $"{string.Join(';', style)};" });
         }
 
         private void PostEditTableMessage(object args)
         {
             MarkdownEditor.PostMessage("ImageEditToolbarClick", args);
+            Hide();
         }
 
         private void OnOpened(object sender, object e)

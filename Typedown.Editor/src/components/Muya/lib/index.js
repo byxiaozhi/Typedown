@@ -105,8 +105,12 @@ class Muya {
   dispatchChange = () => {
     this.dispatchChangeContentChange()
     setTimeout(() => {
-      this.dispatchSelectionChange()
-      this.dispatchSelectionFormats()
+      try {
+        this.dispatchSelectionChange()
+        this.dispatchSelectionFormats()
+      } catch (err) {
+        console.log(err)
+      }
     });
   }
 

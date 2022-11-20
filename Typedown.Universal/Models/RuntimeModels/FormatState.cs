@@ -24,7 +24,7 @@ namespace Typedown.Universal.Models
             Highlight = types.Contains("html_tag") && tags.Contains("mark");
             Strikethrough = types.Contains("del");
             Hyperlink = types.Contains("link");
-            Image = types.Contains("image");
+            Image = types.Contains("image") || tags.Contains("img");
         }
 
         public bool Bold { get; }
