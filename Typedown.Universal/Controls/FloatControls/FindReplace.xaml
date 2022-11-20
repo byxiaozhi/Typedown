@@ -88,13 +88,13 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Uid="TextBoxSearch" x:Name="TextBoxSearch" KeyDown="OnTextBoxSearchKeyDown" Text="{x:Bind ViewModel.EditorViewModel.SearchValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button Grid.Column="1" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.EditorViewModel.FindCommand}" CommandParameter="next">
+                    <Button Grid.Column="1" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.EditorViewModel.FindCommand}" CommandParameter="next" controls:ToolTip.TextResource="FindNext/Text">
                         <FontIcon FontSize="14" Glyph="&#xE74B;"/>
                     </Button>
-                    <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.EditorViewModel.FindCommand}" CommandParameter="prev">
+                    <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.EditorViewModel.FindCommand}" CommandParameter="prev" controls:ToolTip.TextResource="FindPrevious/Text">
                         <FontIcon FontSize="14" Glyph="&#xE74A;"/>
                     </Button>
-                    <Button Grid.Column="3" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}">
+                    <Button Grid.Column="3" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="MoreOptions/Text">
                         <FontIcon FontSize="14" Glyph="&#xE9E9;"/>
                         <Button.Flyout>
                             <MenuFlyout Placement="Top">
@@ -104,7 +104,7 @@
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>
-                    <Button Grid.Column="4" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="OnCloseButtonClick">
+                    <Button Grid.Column="4" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="OnCloseButtonClick" controls:ToolTip.TextResource="Close/Text">
                         <FontIcon FontSize="14" Glyph="&#xf78a;"/>
                     </Button>
                 </Grid>

@@ -661,6 +661,10 @@
     <value>分钟</value>
     <comment>分钟</comment>
   </data>
+  <data name="MoreOptions.Text" xml:space="preserve">
+    <value>更多选项</value>
+    <comment>更多选项</comment>
+  </data>
   <data name="New.Text" xml:space="preserve">
     <value>新建</value>
     <comment>新建</comment>

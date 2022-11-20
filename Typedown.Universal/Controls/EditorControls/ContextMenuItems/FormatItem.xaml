@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Typedown.Universal.Controls.EditorControls.ContextMenuItems"
+    xmlns:controls="using:Typedown.Universal.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
@@ -10,19 +11,19 @@
     <MenuFlyoutItem.Template>
         <ControlTemplate TargetType="MenuFlyoutItem">
             <StackPanel Orientation="Horizontal" Spacing="4" Padding="4,2,4,2" d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}">
-                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="strong">
+                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="strong" controls:ToolTip.TextResource="Strong/Text">
                     <FontIcon FontSize="16" Glyph="&#xE8DD;"/>
                 </Button>
-                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="em">
+                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="em" controls:ToolTip.TextResource="Emphasis/Text">
                     <FontIcon FontSize="16" Glyph="&#xE8DB;"/>
                 </Button>
-                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="u">
+                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="u" controls:ToolTip.TextResource="Underline/Text">
                     <FontIcon FontSize="16" Glyph="&#xE8DC;"/>
                 </Button>
-                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="del">
+                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="del" controls:ToolTip.TextResource="Strikethrough/Text">
                     <FontIcon FontSize="16" Glyph="&#xEDE0;"/>
                 </Button>
-                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="clear">
+                <Button Style="{StaticResource EllipsisIconButtonStyle}" Command="{Binding FormatViewModel.SetFormatCommand}" CommandParameter="clear" controls:ToolTip.TextResource="ClearFormat/Text">
                     <FontIcon FontSize="16" Glyph="&#xe75c;"/>
                 </Button>
             </StackPanel>

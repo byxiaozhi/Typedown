@@ -88,6 +88,7 @@
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommonControls\GlobalFrame.cs" />
+    <Compile Include="Controls\CommonControls\ToolTip.cs" />
     <Compile Include="Controls\CommonControls\MenuItemCollection.cs" />
     <Compile Include="Controls\CommonControls\ShortcutPicker.xaml.cs">
       <DependentUpon>ShortcutPicker.xaml</DependentUpon>

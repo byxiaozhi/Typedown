@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:converters="using:Typedown.Universal.Converters"
+    xmlns:controls="using:Typedown.Universal.Controls"
     mc:Ignorable="d"
     FontSize="12"
     d:DesignHeight="300"
@@ -22,7 +23,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Spacing="4">
-            <ToggleButton Padding="6" BorderThickness="0" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}">
+            <ToggleButton Padding="6" BorderThickness="0" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}" controls:ToolTip.TextResource="SidePane/Text">
                 <ToggleButton.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ToggleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
