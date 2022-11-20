@@ -61,7 +61,7 @@ class ClickEvent {
 
   clickBinding() {
     const { container, eventCenter, contentState } = this.muya
-    const handler = event => {
+    const clickHandler = event => {
       const { target } = event
       // handler table click
       const toolItem = getToolItem(target)
@@ -161,8 +161,7 @@ class ClickEvent {
           width: imageWrapper.offsetWidth,
           height: imageWrapper.offsetHeight
         }
-        // if(event.type == 'click') {
-        if (event.type == 'mouseup') {
+        if (event.type == 'click') {
           eventCenter.dispatch('muya-image-toolbar', {
             reference,
             imageInfo
@@ -222,9 +221,13 @@ class ClickEvent {
       contentState.clickHandler(event)
     }
 
-    eventCenter.attachDOMEvent(window, 'mouseup', e => e.which == 1 && handler(e))
-    // eventCenter.attachDOMEvent(container, 'click', handler)
-    eventCenter.attachDOMEvent(container, 'contextmenu', handler)
+    const mouseupHandler = event => {
+      setTimeout(() => contentState.mouseupHandler(event))
+    }
+
+    eventCenter.attachDOMEvent(window, 'mouseup', mouseupHandler)
+    eventCenter.attachDOMEvent(container, 'click', clickHandler)
+    eventCenter.attachDOMEvent(container, 'contextmenu', clickHandler)
   }
 }
 

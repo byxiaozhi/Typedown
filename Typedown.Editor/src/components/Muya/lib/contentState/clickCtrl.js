@@ -75,6 +75,10 @@ const clickCtrl = ContentState => {
         return this.partialRender()
       }
     }
+  }
+
+  ContentState.prototype.mouseupHandler = function (event) {
+    const { eventCenter } = this.muya
     const { start, end } = selection.getCursorRange()
     // fix #625, the selection maybe not in edit area.
     if (!start || !end) {
