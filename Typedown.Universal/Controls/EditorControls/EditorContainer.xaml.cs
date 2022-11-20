@@ -39,7 +39,6 @@ namespace Typedown.Universal.Controls
         public EditorContainer()
         {
             InitializeComponent();
-            HeaderButtons.AddHandler(Button.PointerReleasedEvent, new PointerEventHandler(OnMenuFlyoutItemPointerReleased), true);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -75,9 +74,14 @@ namespace Typedown.Universal.Controls
             ViewModel.MarkdownEditor.PostMessage("OnScroll", new { ScrollX = HorizontalScrollBar.Value, ScrollY = VerticalScrollBar.Value });
         }
 
-        private void OnMenuFlyoutItemPointerReleased(object sender, PointerRoutedEventArgs e)
+        private Visibility IsScrollBarVisibility(double maximum)
         {
-            Flyout.Hide();
+            return maximum <= 0 ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private double GetSmallChange(double fontSize, double lineHeight)
+        {
+            return fontSize * lineHeight;
         }
 
         private async void OnDragEnter(object sender, DragEventArgs e)
@@ -143,14 +147,9 @@ namespace Typedown.Universal.Controls
             }
         }
 
-        private Visibility IsScrollBarVisibility(double maximum)
+        private void OnFormatItemClick(object sender, EventArgs e)
         {
-            return maximum <= 0 ? Visibility.Collapsed : Visibility.Visible;
-        }
-
-        private double GetSmallChange(double fontSize, double lineHeight)
-        {
-            return fontSize * lineHeight;
+            Flyout.Hide();
         }
     }
 }

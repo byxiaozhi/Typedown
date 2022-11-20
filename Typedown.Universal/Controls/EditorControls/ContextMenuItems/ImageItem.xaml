@@ -1,0 +1,16 @@
+﻿<controls:MenuItemCollection
+    xmlns:controls="using:Typedown.Universal.Controls"
+    x:Class="Typedown.Universal.Controls.EditorControls.ContextMenuItems.ImageItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Universal.Controls.EditorControls.ContextMenuItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <MenuFlyoutItem Text="打开图片位置"/>
+    <MenuFlyoutItem Text="复制图片到..."/>
+    <MenuFlyoutItem Text="移动图片到..."/>
+    <MenuFlyoutItem Text="上传图片"/>
+    <MenuFlyoutItem Text="图片另存为"/>
+    <MenuFlyoutItem Text="删除图片文件"/>
+</controls:MenuItemCollection>

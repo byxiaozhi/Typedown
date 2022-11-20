@@ -44,9 +44,6 @@ namespace Typedown.Universal.Models
 
         private void UpdateEnableMenuItem()
         {
-            FormatIsEnable = true;
-            HyperlinkIsEnable = true;
-            ImageIsEnable = true;
             if (MenuState.IsDisabled)
             {
                 ResetEnableMenuItem(false);
@@ -71,7 +68,7 @@ namespace Typedown.Universal.Models
                 HyperlinkIsEnable = false;
                 ImageIsEnable = false;
             }
-            else if(Heading1.IsChecked || Heading2.IsChecked || Heading3.IsChecked || Heading4.IsChecked || Heading5.IsChecked || Heading6.IsChecked)
+            else if (Heading1.IsChecked || Heading2.IsChecked || Heading3.IsChecked || Heading4.IsChecked || Heading5.IsChecked || Heading6.IsChecked)
             {
                 ResetEnableMenuItem(false);
                 Heading1.IsEnable = true;
@@ -85,7 +82,8 @@ namespace Typedown.Universal.Models
                 DegradeHeading.IsEnable = true;
                 FormatIsEnable = true;
                 HyperlinkIsEnable = true;
-            } else
+            }
+            else
             {
                 ResetEnableMenuItem(true);
                 DegradeHeading.IsEnable = !Paragraph.IsChecked;
@@ -117,6 +115,9 @@ namespace Typedown.Universal.Models
             HorizontalLine.IsEnable = IsEnable;
             FrontMatter.IsEnable = IsEnable;
             Chart.IsEnable = IsEnable;
+            FormatIsEnable = IsEnable;
+            HyperlinkIsEnable = IsEnable;
+            ImageIsEnable = IsEnable;
         }
 
         public MenuItemState Heading1 { get; set; } = new();

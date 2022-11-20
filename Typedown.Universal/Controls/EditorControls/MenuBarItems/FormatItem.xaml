@@ -14,7 +14,7 @@
     <ToggleMenuFlyoutItem x:Name="InlineMathItem" x:Uid="InlineMath" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="inline_math" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.InlineMath, Mode=OneWay}"/>
     <MenuFlyoutSeparator/>
     <ToggleMenuFlyoutItem x:Name="StrikethroughItem" x:Uid="Strikethrough" KeyboardAcceleratorTextOverride="Alt+Shift+5" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="del" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Strikethrough, Mode=OneWay}"/>
-    <ToggleMenuFlyoutItem x:Name="HighlightItem" x:Uid="Highlight" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="mark" IsChecked="{x:Bind Format.FormatState.Highlight, Mode=OneWay}"/>
+    <ToggleMenuFlyoutItem x:Name="HighlightItem" x:Uid="Highlight" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="mark" IsChecked="{x:Bind Format.FormatState.Highlight, Mode=OneWay}" IsEnabled="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}"/>
     <MenuFlyoutSeparator/>
     <ToggleMenuFlyoutItem x:Name="HyperlinkItem" x:Uid="Hyperlink" KeyboardAcceleratorTextOverride="Ctrl+K" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="link" IsEnabled="{x:Bind Editor.ParagraphState.HyperlinkIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Hyperlink, Mode=OneWay}"/>
     <ToggleMenuFlyoutItem x:Name="ImageItem" x:Uid="Image" KeyboardAcceleratorTextOverride="Ctrl+Shift+I" Command="{x:Bind Format.SetFormatCommand}" CommandParameter="image" IsEnabled="{x:Bind Editor.ParagraphState.ImageIsEnable, Mode=OneWay}" IsChecked="{x:Bind Format.FormatState.Image, Mode=OneWay}"/>

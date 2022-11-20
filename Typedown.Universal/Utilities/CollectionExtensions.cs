@@ -17,6 +17,12 @@ namespace Typedown.Universal.Utilities
             list.Insert(i, item);
         }
 
+        public static void UpdateList<T>(this IList<T> collection, IList<T> source)
+        {
+            collection.Clear();
+            source.ToList().ForEach(collection.Add);
+        }
+
         public static void UpdateCollection<T>(this ObservableCollection<T> collection, IList<T> source, Func<T, T, bool> equals)
         {
             foreach (var item in collection.Where(x => source.All(y => !equals(x, y))).ToList())

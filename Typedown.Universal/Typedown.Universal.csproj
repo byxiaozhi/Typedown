@@ -88,6 +88,7 @@
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommonControls\GlobalFrame.cs" />
+    <Compile Include="Controls\CommonControls\MenuItemCollection.cs" />
     <Compile Include="Controls\CommonControls\ShortcutPicker.xaml.cs">
       <DependentUpon>ShortcutPicker.xaml</DependentUpon>
     </Compile>
@@ -102,6 +103,15 @@
     </Compile>
     <Compile Include="Controls\DialogControls\FeedbackDialog.xaml.cs">
       <DependentUpon>FeedbackDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\ContextMenuItems\FormatItem.xaml.cs">
+      <DependentUpon>FormatItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\ContextMenuItems\CodeFencesItem.xaml.cs">
+      <DependentUpon>CodeFencesItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditorControls\ContextMenuItems\ImageItem.xaml.cs">
+      <DependentUpon>ImageItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\EditorControls\EditorContainer.xaml.cs">
       <DependentUpon>EditorContainer.xaml</DependentUpon>
@@ -506,6 +516,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\DialogControls\FeedbackDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditorControls\ContextMenuItems\FormatItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditorControls\ContextMenuItems\CodeFencesItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditorControls\ContextMenuItems\ImageItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
