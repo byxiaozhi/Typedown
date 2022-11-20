@@ -5,10 +5,19 @@
     xmlns:local="using:Typedown.Universal.Controls.FloatControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="ToolTipControl"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
+        <Storyboard x:Key="Storyboard" x:Name="OpacityStoryboard">
+            <DoubleAnimation 
+                x:Name="OpacityAnimation" 
+                Duration="0:0:0.18" 
+                Storyboard.TargetName="ToolTipControl" 
+                Storyboard.TargetProperty="FlyoutOpacity" 
+                EnableDependentAnimation="True"/>
+        </Storyboard>
         <Style x:Key="ToolTipFlyoutStyle" TargetType="FlyoutPresenter">
             <Setter Property="MinWidth" Value="0" />
             <Setter Property="MinHeight" Value="0" />
@@ -21,6 +30,7 @@
             <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}"/>
             <Setter Property="Background" Value="{ThemeResource AcrylicInAppFillColorDefaultBrush}"/>
             <Setter Property="BorderBrush" Value="{ThemeResource SurfaceStrokeColorFlyoutBrush}"/>
+            <Setter Property="Opacity" Value="{x:Bind FlyoutOpacity, Mode=OneWay}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="FlyoutPresenter">

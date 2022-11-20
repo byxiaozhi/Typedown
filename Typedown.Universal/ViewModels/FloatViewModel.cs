@@ -102,10 +102,9 @@ namespace Typedown.Universal.ViewModels
             if (args["open"].ToObject<bool>())
             {
                 openedToolTip = ServiceProvider.GetService<ToolTip>();
-                var rect = args["boundingClientRect"].ToObject<Rect>();
                 var name = args["tooltip"].ToString();
                 var text = Localize.GetString(name) ?? name;
-                openedToolTip.Open(rect, text);
+                openedToolTip.Open(text);
             }
         }
 

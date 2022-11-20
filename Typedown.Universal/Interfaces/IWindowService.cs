@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reactive.Subjects;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 
 namespace Typedown.Universal.Interfaces
@@ -9,5 +10,7 @@ namespace Typedown.Universal.Interfaces
         Subject<nint> WindowStateChanged { get; }
 
         nint GetWindow(UIElement element);
+
+        Point GetCursorPos(UIElement relativeTo);
     }
 }
