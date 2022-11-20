@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Disposables;
@@ -10,7 +11,6 @@ using System.Runtime.CompilerServices;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
-using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -53,15 +53,20 @@ namespace Typedown.Universal.ViewModels
         public bool Topmost { get => GetSettingValue(false); set => SetSettingValue(value); }
         public FileStartupAction FileStartupAction { get => GetSettingValue(FileStartupAction.None); set => SetSettingValue(value); }
         public FolderStartupAction FolderStartupAction { get => GetSettingValue(FolderStartupAction.OpenLast); set => SetSettingValue(value); }
-        public string StartupOpenFolder { get => GetSettingValue(KnownFolders.DocumentsLibrary.Path); set => SetSettingValue(value); }
+        public string StartupOpenFolder { get => GetSettingValue(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)); set => SetSettingValue(value); }
         public bool AppCompactMode { get => GetSettingValue(false); set => SetSettingValue(value); }
         public InsertImageAction InsertClipboardImageAction { get => GetSettingValue(InsertImageAction.None); set => SetSettingValue(value); }
         public string InsertClipboardImageCopyPath { get => GetSettingValue("./images"); set => SetSettingValue(value); }
+        public int? InsertClipboardImageUseUploadConfigId { get => GetSettingValue<int?>(null); set => SetSettingValue(value); }
         public InsertImageAction InsertLocalImageAction { get => GetSettingValue(InsertImageAction.None); set => SetSettingValue(value); }
         public string InsertLocalImageCopyPath { get => GetSettingValue("./images"); set => SetSettingValue(value); }
+        public int? InsertLocalImageUseUploadConfigId { get => GetSettingValue<int?>(null); set => SetSettingValue(value); }
         public InsertImageAction InsertWebImageAction { get => GetSettingValue(InsertImageAction.None); set => SetSettingValue(value); }
         public string InsertWebImageCopyPath { get => GetSettingValue("./images"); set => SetSettingValue(value); }
+        public int? InsertWebImageUseUploadConfigId { get => GetSettingValue<int?>(null); set => SetSettingValue(value); }
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
+        public string DefaultImageBasePath { get => GetSettingValue(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), Config.AppName)); set => SetSettingValue(value); }
+        public bool AutoCopyRelativePathImage { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool PreferRelativeImagePaths { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool AutoEncodeImageURL { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool OpenFolderAfterExport { get => GetSettingValue(false); set => SetSettingValue(value); }

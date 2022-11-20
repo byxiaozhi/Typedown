@@ -40,6 +40,8 @@ namespace Typedown.Universal.ViewModels
 
         public string FilePath { get; private set; } = null;
 
+        public string ImageBasePath => string.IsNullOrEmpty(FilePath) ? SettingsViewModel.DefaultImageBasePath : Path.GetDirectoryName(FilePath);
+
         public string FileName => Path.GetFileName(FilePath);
 
         public Command<Unit> NewFileCommand { get; } = new();

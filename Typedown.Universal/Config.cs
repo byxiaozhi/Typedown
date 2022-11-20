@@ -35,8 +35,10 @@ namespace Typedown.Universal
             }
             catch (Exception)
             {
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Typedown");
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), AppName);
             }
         }
+
+        public static string AppName => "Typedown";
     }
 }

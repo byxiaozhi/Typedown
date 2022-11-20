@@ -133,10 +133,7 @@ namespace Typedown.Controls
                 if (path.StartsWith("file://"))
                     path = new Uri(path).LocalPath;
                 if (!System.IO.Path.IsPathRooted(path))
-                {
-                    var baseDir = System.IO.Path.GetDirectoryName(AppViewModel.FileViewModel.FilePath);
-                    path = System.IO.Path.Combine(baseDir, path);
-                }
+                    path = System.IO.Path.Combine(AppViewModel.FileViewModel.ImageBasePath, path);
                 var stream = await Task.Run(() => new MemoryStream(File.ReadAllBytes(path)));
                 args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
             }

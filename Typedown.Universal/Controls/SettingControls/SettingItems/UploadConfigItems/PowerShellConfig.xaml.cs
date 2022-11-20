@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Models.UploadConfigModels;
+using Typedown.Universal.Utilities;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -39,6 +42,27 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigI
         private void OnPowerShellConfigModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             ImageUploadConfig.StoreUploadConfig(PowerShellConfigModel);
+        }
+
+        private async void OnImportButtonClick(object sender, RoutedEventArgs e)
+        {
+            var filePicker = new FileOpenPicker();
+            filePicker.FileTypeFilter.Add(".ps1");
+            filePicker.SetOwnerWindow(this.GetService<IWindowService>().GetWindow(this));
+            var file = await filePicker.PickSingleFileAsync();
+            if (file != null)
+                PowerShellConfigModel.Script = File.ReadAllText(file.Path);
+        }
+
+        private async void OnExportButtonClick(object sender, RoutedEventArgs e)
+        {
+            var filePicker = new FileSavePicker();
+            filePicker.SuggestedFileName = ImageUploadConfig.Name;
+            filePicker.FileTypeChoices.Add("PowerShell Cmdlet File", new List<string>() { ".ps1" });
+            filePicker.SetOwnerWindow(this.GetService<IWindowService>().GetWindow(this));
+            var file = await filePicker.PickSaveFileAsync();
+            if (file != null)
+                File.WriteAllText(file.Path, PowerShellConfigModel.Script);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Typedown.Services;
+using Typedown.Universal;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
@@ -34,7 +35,7 @@ namespace Typedown.Windows
 
         public MainWindow()
         {
-            Title = "Typedown";
+            Title = Config.AppName;
             MinWidth = 480;
             MinHeight = 300;
             Width = 1130;

@@ -8,6 +8,9 @@
     xmlns:controls="using:Typedown.Universal.Controls" 
     xmlns:enums="using:Typedown.Universal.Enums" 
     xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
+    xmlns:models="using:Typedown.Universal.Models"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
     d:DesignHeight="300"
@@ -32,7 +35,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyClipboardImageItem" 
-                    x:Load="{x:Bind local:ImageSetting.IsCopyImagePathSettingItemLoad(Settings.InsertClipboardImageAction), Mode=OneWay}"
+                    x:Load="{x:Bind IsCopyImagePathSettingItemLoad(Settings.InsertClipboardImageAction), Mode=OneWay}"
                     Title="复制剪贴板图片到" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -47,6 +50,23 @@
                         <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind Settings.InsertClipboardImageCopyPath, Mode=TwoWay}"/>
                     </Grid>
                 </controls:NormalSettingItem>
+                <controls:NormalSettingItem 
+                    x:Name="UploadClipboardImageItem" 
+                    x:Load="{x:Bind IsSelectUploadConfigSettingItemLoad(Settings.InsertClipboardImageAction), Mode=OneWay}"
+                    Title="剪贴板图片使用上传配置" 
+                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
+                    BorderThickness="0,1,0,0">
+                    <ComboBox 
+                        MinWidth="200" 
+                        SelectedItem="{x:Bind ClipboardImageUploadConfig, Mode=TwoWay}"
+                        ItemsSource="{x:Bind UploadConfigOptions}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="local:UploadConfigOption">
+                                <TextBlock Text="{x:Bind Name, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </controls:NormalSettingItem>
 
                 <controls:NormalSettingItem Title="本地图片" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
                     <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.InsertImageActions}" SelectedItem="{Binding SettingsViewModel.InsertLocalImageAction, Mode=TwoWay}">
@@ -59,7 +79,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyLocalImageItem" 
-                    x:Load="{x:Bind local:ImageSetting.IsCopyImagePathSettingItemLoad(Settings.InsertLocalImageAction), Mode=OneWay}"
+                    x:Load="{x:Bind IsCopyImagePathSettingItemLoad(Settings.InsertLocalImageAction), Mode=OneWay}"
                     Title="复制本地图片到" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -74,6 +94,24 @@
                         <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind Settings.InsertLocalImageCopyPath, Mode=TwoWay}"/>
                     </Grid>
                 </controls:NormalSettingItem>
+                <controls:NormalSettingItem 
+                    x:Name="UploadLocalImageItem" 
+                    x:Load="{x:Bind IsSelectUploadConfigSettingItemLoad(Settings.InsertLocalImageAction), Mode=OneWay}"
+                    Title="本地图片使用上传配置" 
+                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
+                    BorderThickness="0,1,0,0">
+                    <ComboBox 
+                        MinWidth="200" 
+                        SelectedItem="{x:Bind LocalImageUploadConfig, Mode=TwoWay}"
+                        ItemsSource="{x:Bind UploadConfigOptions}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="local:UploadConfigOption">
+                                <TextBlock Text="{x:Bind Name, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </controls:NormalSettingItem>
+                
                 <controls:NormalSettingItem Title="网络图片" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
                     <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.InsertImageActions}" SelectedItem="{Binding SettingsViewModel.InsertWebImageAction, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
@@ -85,7 +123,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyWebImageItem" 
-                    x:Load="{x:Bind local:ImageSetting.IsCopyImagePathSettingItemLoad(Settings.InsertWebImageAction), Mode=OneWay}"
+                    x:Load="{x:Bind IsCopyImagePathSettingItemLoad(Settings.InsertWebImageAction), Mode=OneWay}"
                     Title="复制网络图片到"
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -100,9 +138,49 @@
                         <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind Settings.InsertWebImageCopyPath, Mode=TwoWay}"/>
                     </Grid>
                 </controls:NormalSettingItem>
+                <controls:NormalSettingItem 
+                    x:Name="UploadWebImageItem" 
+                    x:Load="{x:Bind IsSelectUploadConfigSettingItemLoad(Settings.InsertWebImageAction), Mode=OneWay}"
+                    Title="网络图片使用上传配置" 
+                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
+                    BorderThickness="0,1,0,0">
+                    <ComboBox 
+                        MinWidth="200" 
+                        SelectedItem="{x:Bind WebImageUploadConfig, Mode=TwoWay}"
+                        ItemsSource="{x:Bind UploadConfigOptions}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="local:UploadConfigOption">
+                                <TextBlock Text="{x:Bind Name, Mode=OneWay}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </controls:NormalSettingItem>
+                
             </StackPanel>
         </controls:ExpanderSettingItem>
-        
+
+        <controls:NormalSettingItem Title="默认图片根目录" Description="未保存文件使用的图片根目录" HorizontalActionAlignment="Stretch">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8b7;"/>
+            </controls:NormalSettingItem.Icon>
+            <Grid ColumnSpacing="4" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="1" Text="{x:Bind Settings.DefaultImageBasePath, Mode=TwoWay}" PlaceholderText="请选择文件夹"/>
+                <controls:PathPickerButton Grid.Column="2" Content="浏览" Mode="Folder" Path="{x:Bind Settings.DefaultImageBasePath, Mode=TwoWay}"/>
+            </Grid>
+        </controls:NormalSettingItem>
+
+        <controls:NormalSettingItem Title="自动复制图片" Description="另存为文件时自动复制使用相对路径的图片">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8c8;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.AutoCopyRelativePathImage, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+
         <controls:NormalSettingItem Title="优先使用相对路径" Description="插入图片时优先采用相对路径">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf003;"/>

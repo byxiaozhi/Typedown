@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Typedown.Universal;
 using Typedown.Universal.Utilities;
 using Windows.UI.Xaml;
 
@@ -90,7 +91,7 @@ namespace Typedown.Windows
         public static DependencyProperty StartupLocationProperty { get; } = DependencyProperty.Register(nameof(StartupLocation), typeof(WindowStartupLocation), typeof(Window), new(WindowStartupLocation.Manual, OnPropertyChanged));
         public WindowStartupLocation StartupLocation { get => (WindowStartupLocation)GetValue(StartupLocationProperty); set => SetValue(StartupLocationProperty, value); }
 
-        public static DependencyProperty TitleProperty { get; } = DependencyProperty.Register(nameof(Title), typeof(string), typeof(FrameWindow), new("Typedown", OnPropertyChanged));
+        public static DependencyProperty TitleProperty { get; } = DependencyProperty.Register(nameof(Title), typeof(string), typeof(FrameWindow), new(Config.AppName, OnPropertyChanged));
         public string Title { get => (string)GetValue(TitleProperty); set => SetValue(TitleProperty, value); }
 
         public nint Handle { get; private set; }

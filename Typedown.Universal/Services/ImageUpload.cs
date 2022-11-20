@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -6,6 +7,8 @@ using System.Threading.Tasks;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
+using Typedown.Universal.ViewModels;
+using static Typedown.Universal.Services.ImageAction;
 
 namespace Typedown.Universal.Services
 {
@@ -13,8 +16,11 @@ namespace Typedown.Universal.Services
     {
         public ObservableCollection<ImageUploadConfig> ImageUploadConfigs { get; } = new();
 
-        public ImageUpload()
+        private IServiceProvider serviceProvider;
+
+        public ImageUpload(IServiceProvider serviceProvider)
         {
+            this.serviceProvider = serviceProvider;
             _ = UpdateImageUploadConfigs();
         }
 
@@ -67,6 +73,23 @@ namespace Typedown.Universal.Services
             using var ctx = await AppDbContext.Create();
             var newItems = await ctx.ImageUploadConfigs.ToListAsync();
             ImageUploadConfigs.UpdateCollection(newItems, (a, b) => a.Id == b.Id);
+        }
+
+        public async Task<string> Upload(InsertImageSource source, string filePath)
+        {
+            var settings = serviceProvider.GetService<SettingsViewModel>();
+            var configId = source switch
+            {
+                InsertImageSource.Clipboard => settings.InsertClipboardImageUseUploadConfigId,
+                InsertImageSource.Local => settings.InsertLocalImageUseUploadConfigId,
+                InsertImageSource.Web => settings.InsertWebImageUseUploadConfigId,
+                _ => throw new NotImplementedException()
+            };
+            if (!configId.HasValue || ImageUploadConfigs.Where(x=> x.IsEnable && x.Id == configId.Value).FirstOrDefault() is not ImageUploadConfig config)
+            {
+                throw new InvalidOperationException("Failed to load upload configuration.");
+            }
+            return await config.LoadUploadConfig().Upload(serviceProvider, filePath);
         }
     }
 }

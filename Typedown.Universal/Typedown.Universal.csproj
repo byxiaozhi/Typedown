@@ -360,6 +360,7 @@
     <Compile Include="Services\AutoBackup.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Services\AccessHistory.cs" />
+    <Compile Include="Services\ImageAction.cs" />
     <Compile Include="Services\ImageUpload.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
     <Compile Include="Services\Transport.cs" />
