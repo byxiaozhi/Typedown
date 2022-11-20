@@ -47,6 +47,9 @@ namespace Typedown.Universal.Models
             if (MenuState.IsDisabled)
             {
                 ResetEnableMenuItem(false);
+                FormatIsEnable = true;
+                HyperlinkIsEnable = true;
+                ImageIsEnable = true;
             }
             else if (MenuState.IsCodeContent || MenuState.IsCodeFences)
             {
