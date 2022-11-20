@@ -5,6 +5,8 @@
     xmlns:local="using:Typedown.Universal.Controls.FloatControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Opened="OnOpened"
+    Closed="OnClosed"
     ShowMode="Transient"
     Placement="TopEdgeAlignedLeft"
     mc:Ignorable="d">

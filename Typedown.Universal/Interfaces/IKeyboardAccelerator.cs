@@ -10,6 +10,8 @@ namespace Typedown.Universal.Interfaces
 
         IDisposable RegisterGlobal(EventHandler<KeyEventArgs> handler);
 
+        IObservable<KeyEventArgs> GetObservable();
+
         string GetShortcutKeyText(ShortcutKey key);
 
         string GetVirtualKeyNameText(VirtualKey key);

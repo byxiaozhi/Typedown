@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Web;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,10 +28,15 @@ namespace Typedown.Universal.Controls.FloatControls
 
         public IMarkdownEditor MarkdownEditor { get; }
 
-        public ImageToolbar(AppViewModel viewModel, IMarkdownEditor markdownEditor)
+        public IKeyboardAccelerator KeyboardAccelerator { get; }
+
+        private readonly CompositeDisposable disposables = new();
+
+        public ImageToolbar(AppViewModel viewModel, IMarkdownEditor markdownEditor, IKeyboardAccelerator keyboardAccelerator)
         {
             ViewModel = viewModel;
             MarkdownEditor = markdownEditor;
+            KeyboardAccelerator = keyboardAccelerator;
             InitializeComponent();
         }
 
@@ -73,6 +81,20 @@ namespace Typedown.Universal.Controls.FloatControls
         private void PostEditTableMessage(object args)
         {
             MarkdownEditor.PostMessage("ImageEditToolbarClick", args);
+        }
+
+        private void OnOpened(object sender, object e)
+        {
+            disposables.Add(KeyboardAccelerator.GetObservable().Where(e => e.Key == VirtualKey.Back || e.Key == VirtualKey.Delete).Subscribe(e =>
+            {
+                _ = Dispatcher.RunIdleAsync(_ => DeleteClick(null, null));
+                e.Handled = true;
+            }));
+        }
+
+        private void OnClosed(object sender, object e)
+        {
+            disposables.Dispose();
         }
     }
 }

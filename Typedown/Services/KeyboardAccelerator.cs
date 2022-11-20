@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Typedown.Universal.Interfaces;
@@ -111,6 +112,11 @@ namespace Typedown.Services
                 return Disposable.Empty;
             globalRegistered.Add(handler);
             return Disposable.Create(() => globalRegistered.Remove(handler));
+        }
+
+        public IObservable<KeyEventArgs> GetObservable()
+        {
+            return Observable.Create<KeyEventArgs>(o => RegisterGlobal((_, e) => o.OnNext(e)));
         }
 
         public string GetShortcutKeyText(ShortcutKey key)
