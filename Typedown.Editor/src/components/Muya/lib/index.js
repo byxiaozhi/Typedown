@@ -103,6 +103,14 @@ class Muya {
   }
 
   dispatchChange = () => {
+    this.dispatchChangeContentChange()
+    setTimeout(() => {
+      this.dispatchSelectionChange()
+      this.dispatchSelectionFormats()
+    });
+  }
+
+  dispatchChangeContentChange = () => {
     const { markdown, cursor } = this.getMarkdownAndCursor()
     const wordCount = this.getWordCount(markdown)
     this.markdown = markdown
@@ -322,6 +330,7 @@ class Muya {
     }
     this.contentState.selectAll()
     this.dispatchSelectionChange()
+    this.dispatchSelectionFormats()
   }
 
   delete() {

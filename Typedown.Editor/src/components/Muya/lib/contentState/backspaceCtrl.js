@@ -134,8 +134,6 @@ const backspaceCtrl = ContentState => {
 
       this.render()
 
-      this.muya.dispatchSelectionChange()
-      this.muya.dispatchSelectionFormats()
       return this.muya.dispatchChange()
     }
 

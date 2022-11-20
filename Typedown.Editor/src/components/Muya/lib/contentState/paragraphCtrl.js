@@ -180,8 +180,6 @@ const paragraphCtrl = ContentState => {
           setTimeout(() => {
             this.updateTaskListItem(listItemParagraph, listType)
             this.partialRender()
-            this.muya.dispatchSelectionChange()
-            this.muya.dispatchSelectionFormats()
             this.muya.dispatchChange()
           })
           return false
@@ -639,8 +637,6 @@ const paragraphCtrl = ContentState => {
     }
 
     if (needDispatchChange) {
-      this.muya.dispatchSelectionChange()
-      this.muya.dispatchSelectionFormats()
       this.muya.dispatchChange()
     }
   }

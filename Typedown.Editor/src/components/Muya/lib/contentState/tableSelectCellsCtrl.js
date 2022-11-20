@@ -184,7 +184,6 @@ const tableSelectCellsCtrl = ContentState => {
 
     if (hasContent) {
       this.singleRender(tableBlock, false)
-
       return this.muya.dispatchChange()
     } else {
       const cellKey = cells[0].key

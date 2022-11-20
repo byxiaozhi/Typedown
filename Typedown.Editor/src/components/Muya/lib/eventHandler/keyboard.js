@@ -5,7 +5,7 @@ import { getParagraphReference, getImageInfo } from '../utils'
 import { checkEditEmoji } from '../ui/emojis'
 
 class Keyboard {
-  constructor (muya) {
+  constructor(muya) {
     this.muya = muya
     this.isComposed = false
     this.shownFloat = new Set()
@@ -17,7 +17,7 @@ class Keyboard {
     this.listen()
   }
 
-  listen () {
+  listen() {
     // cache shown float box
     this.muya.eventCenter.subscribe('muya-float', (tool, status) => {
       status ? this.shownFloat.add(tool) : this.shownFloat.delete(tool)
@@ -32,13 +32,13 @@ class Keyboard {
     })
   }
 
-  hideAllFloatTools () {
+  hideAllFloatTools() {
     for (const tool of this.shownFloat) {
       tool.hide()
     }
   }
 
-  recordIsComposed () {
+  recordIsComposed() {
     const { container, eventCenter, contentState } = this.muya
     const handler = event => {
       if (event.type === 'compositionstart') {
@@ -56,7 +56,7 @@ class Keyboard {
     eventCenter.attachDOMEvent(container, 'compositionstart', handler)
   }
 
-  dispatchEditorState () {
+  dispatchEditorState() {
     const { container, eventCenter } = this.muya
 
     let timer = null
@@ -82,10 +82,11 @@ class Keyboard {
 
       if (timer) clearTimeout(timer)
       timer = setTimeout(() => {
-        this.muya.dispatchSelectionChange()
-        this.muya.dispatchSelectionFormats()
         if (!this.isComposed && event.type === 'click') {
           this.muya.dispatchChange()
+        } else {
+          this.muya.dispatchSelectionChange()
+          this.muya.dispatchSelectionFormats()
         }
       })
     }
@@ -95,7 +96,7 @@ class Keyboard {
     eventCenter.attachDOMEvent(container, 'keyup', changeHandler)
   }
 
-  keydownBinding () {
+  keydownBinding() {
     const { container, eventCenter, contentState } = this.muya
     const docHandler = event => {
       switch (event.code) {
@@ -197,7 +198,7 @@ class Keyboard {
     eventCenter.attachDOMEvent(document, 'keydown', docHandler)
   }
 
-  inputBinding () {
+  inputBinding() {
     const { container, eventCenter, contentState } = this.muya
     const inputHandler = event => {
       if (!this.isComposed) {
@@ -223,7 +224,7 @@ class Keyboard {
     eventCenter.attachDOMEvent(container, 'input', inputHandler)
   }
 
-  keyupBinding () {
+  keyupBinding() {
     const { container, eventCenter, contentState } = this.muya
     const handler = event => {
       container.classList.remove('ag-meta-or-ctrl')

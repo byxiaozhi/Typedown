@@ -48,7 +48,6 @@ const coreApi = ContentState => {
     }
 
     this.partialRender()
-    this.muya.dispatchSelectionChange()
     this.muya.dispatchChange()
   }
 }

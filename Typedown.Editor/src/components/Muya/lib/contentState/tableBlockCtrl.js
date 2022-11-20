@@ -69,9 +69,6 @@ const tableBlockCtrl = ContentState => {
 
   ContentState.prototype.createTable = function (tableChecker) {
     this.createFigure(tableChecker)
-
-    this.muya.dispatchSelectionChange()
-    this.muya.dispatchSelectionFormats()
     this.muya.dispatchChange()
   }
 
