@@ -53,6 +53,7 @@ namespace Typedown.Universal.Controls.FloatControls
             try
             {
                 await SaveImageSrc(TextBoxSrc.Text, TextBoxTitle.Text, TextBoxAlt.Text);
+                SaveButton.IsLoading = false;
                 flyout.Hide();
             }
             catch (Exception ex)
