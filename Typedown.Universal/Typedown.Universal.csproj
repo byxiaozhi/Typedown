@@ -378,6 +378,7 @@
     <Compile Include="Services\ImageUpload.cs" />
     <Compile Include="Services\RemoteInvoke.cs" />
     <Compile Include="Services\Transport.cs" />
+    <Compile Include="Utilities\ComboBoxPatch.cs" />
     <Compile Include="Utilities\Command.cs" />
     <Compile Include="Utilities\CommandLine.cs" />
     <Compile Include="Utilities\Common.cs" />
@@ -778,6 +779,10 @@
     <Page Include="Resources\Styles\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\ContentDialog.xaml">
       <SubType>Designer</SubType>

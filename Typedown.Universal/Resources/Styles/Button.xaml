@@ -1,9 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Microsoft.UI.Xaml.Controls" 
-    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
-    xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,7)">
+    xmlns:local="using:Microsoft.UI.Xaml.Controls">
     
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Default">
@@ -61,23 +59,22 @@
                     <ContentPresenter
                         x:Name="ContentPresenter"
                         Background="{TemplateBinding Background}"
-                        contract7Present:BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                        BackgroundSizing="{TemplateBinding BackgroundSizing}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         Content="{TemplateBinding Content}"
                         ContentTemplate="{TemplateBinding ContentTemplate}"
                         ContentTransitions="{TemplateBinding ContentTransitions}"
-                        contract7Present:CornerRadius="{TemplateBinding CornerRadius}"
-                        contract7NotPresent:CornerRadius="{ThemeResource ControlCornerRadius}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
                         Padding="{TemplateBinding Padding}"
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                         AutomationProperties.AccessibilityView="Raw"
                         local:AnimatedIcon.State="Normal">
 
-                        <contract7Present:ContentPresenter.BackgroundTransition>
-                            <contract7Present:BrushTransition Duration="0:0:0.083" />
-                        </contract7Present:ContentPresenter.BackgroundTransition>
+                        <ContentPresenter.BackgroundTransition>
+                            <BrushTransition Duration="0:0:0.083" />
+                        </ContentPresenter.BackgroundTransition>
 
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">

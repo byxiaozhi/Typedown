@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/Button.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Resources/Styles/ComboBox.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/ContentDialog.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/ToggleSwitch.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Resources/Converters.xaml"/>
