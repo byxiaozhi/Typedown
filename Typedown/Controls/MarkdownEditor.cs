@@ -104,16 +104,16 @@ namespace Typedown.Controls
             CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
 #if DEBUG
-            CoreWebView2.OpenDevToolsWindow();
+            // CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 
         private void LoadStaticResources()
         {
 # if DEBUG
-            // var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
-            // WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
-            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
+            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
+            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
+            // WebViewController.CoreWebView2.Navigate("http://localhost:3000");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
