@@ -8,6 +8,7 @@
     Style="{ThemeResource DefaultButtonStyle}"
     Margin="-8"
     MinHeight="50"
+    Background="Transparent"
     BorderBrush="Transparent"
     xmlns:utils="using:Typedown.Universal.Utilities"
     Click="OnClick"
