@@ -83,69 +83,10 @@ namespace Typedown.Services
             ExportConfigs.UpdateCollection(newItems, (a, b) => a.Id == b.Id);
         }
 
-        public async Task HtmlToPdf(string basePath, string htmlString, string savePath)
+        public async Task Print(string basePath, string html, string documentName = null)
         {
-            var tmpWindow = PInvoke.CreateWindowEx(0, "Static", null, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            using var destroyWindow = Disposable.Create(() => PInvoke.DestroyWindow(tmpWindow));
-            var environment = await WebViewController.EnsureCreateEnvironment();
-            var compositionController = await environment.CreateCoreWebView2CompositionControllerAsync(tmpWindow);
-            var raw = typeof(CoreWebView2CompositionController).GetField("_rawNative", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(compositionController);
-            var controller = typeof(CoreWebView2Controller).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(object) }, null).Invoke(new object[] { raw }) as CoreWebView2Controller;
-            using var closeController = Disposable.Create(() => controller.Close());
-            var coreWebView2 = controller.CoreWebView2;
-            var loadedTaskSource = new TaskCompletionSource<bool>();
-            var tmpBaseUrl = $"http://{Guid.NewGuid()}/";
-            coreWebView2.NavigationCompleted += (s, e) => loadedTaskSource.SetResult(true);
-            coreWebView2.WebResourceRequested += (s, e) => OnHtmlToPdfWebResourceRequested(coreWebView2, e, htmlString);
-            coreWebView2.AddWebResourceRequestedFilter($"{tmpBaseUrl}*", CoreWebView2WebResourceContext.All);
-            controller.CoreWebView2.Navigate(tmpBaseUrl);
-            await loadedTaskSource.Task;
-            await controller.CoreWebView2.PrintToPdfAsync(savePath);
-            controller.Close();
+            using var stream = await FileConverter.HtmlToPdf(basePath, html);
+            await PrintHelper.PrintPDF(ViewModel.MainWindow, stream, documentName);
         }
-
-        private async void OnHtmlToPdfWebResourceRequested(CoreWebView2 webview, CoreWebView2WebResourceRequestedEventArgs args, string htmlString)
-        {
-            var uri = new Uri(args.Request.Uri);
-            if (uri.LocalPath == "/")
-            {
-                args.Response = webview.Environment.CreateWebResourceResponse(new MemoryStream(Encoding.UTF8.GetBytes(htmlString)), 200, "OK", null);
-            }
-            else
-            {
-                var deferral = args.GetDeferral();
-                try
-                {
-                    var filePath = Path.Combine(ViewModel.FileViewModel.ImageBasePath, uri.LocalPath.TrimStart('/'));
-                    args.Response = webview.Environment.CreateWebResourceResponse(new MemoryStream(await File.ReadAllBytesAsync(filePath)), 200, "OK", null);
-                }
-                catch
-                {
-                    args.Response = webview.Environment.CreateWebResourceResponse(null, 404, "Not Found", null);
-                }
-                finally
-                {
-                    deferral.Complete();
-                }
-            }
-        }
-
-        public async Task Print(string basePath, string htmlString, string documentName = null)
-        {
-            var tmpFile = Universal.Utilities.Common.GetTempFileName(".pdf");
-            using var deleteTmpFile = Disposable.Create(() => File.Delete(tmpFile));
-            await HtmlToPdf(basePath, htmlString, tmpFile);
-            using var stream = new MemoryStream();
-            await stream.WriteAsync(await File.ReadAllBytesAsync(tmpFile));
-            using var pdf = PdfDocument.Load(stream);
-            using var print = pdf.CreatePrintDocument();
-            print.DocumentName = documentName;
-            var dialog = new PrintDialog() { Document = print, UseEXDialog = true };
-            var result = dialog.ShowDialog(new Win32Window(ViewModel.MainWindow));
-            if (result == DialogResult.OK)
-                print.Print();
-        }
-
-        private record Win32Window(nint Handle) : IWin32Window;
     }
 }

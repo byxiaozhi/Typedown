@@ -42,6 +42,8 @@ namespace Typedown.Universal.ViewModels
 
         public string ImageBasePath => string.IsNullOrEmpty(FilePath) ? SettingsViewModel.DefaultImageBasePath : Path.GetDirectoryName(FilePath);
 
+        public string ImageBaseUrl => $"file:///{ImageBasePath.Replace("\\", "/").TrimEnd('/')}/";
+
         public string FileName => Path.GetFileName(FilePath);
 
         public Command<Unit> NewFileCommand { get; } = new();
@@ -80,8 +82,7 @@ namespace Typedown.Universal.ViewModels
             ExportCommand.OnExecute.Subscribe(Export);
             PrintCommand.OnExecute.Subscribe(_ => Print());
             ImportCommand.OnExecute.Subscribe(_ => Import());
-            RemoteInvoke.Handle<JToken, Task<bool>>("WriteAllText", WriteAllText);
-            RemoteInvoke.Handle<JToken, Task<bool>>("ConvertHTML", ConvertHTML);
+            RemoteInvoke.Handle<JToken, Task>("ExportCallback", ExportCallback);
             RemoteInvoke.Handle<JToken, bool>("PrintHTML", PrintHTML);
             saveFileTimer.Interval = TimeSpan.FromSeconds(5);
             saveFileTimer.Tick += SaveFileTimerTick;
@@ -210,7 +211,7 @@ namespace Typedown.Universal.ViewModels
                 if (postMessage)
                 {
 
-                    MarkdownEditor?.PostMessage("LoadFile", EditorViewModel.Markdown);
+                    MarkdownEditor?.PostMessage("LoadFile", new { text = EditorViewModel.Markdown, baseUrl = ImageBaseUrl });
                 }
                 return true;
             }
@@ -263,6 +264,23 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
+        private async Task<bool> WriteAllText(string path, string text, bool alert = true)
+        {
+            try
+            {
+                await File.WriteAllTextAsync(path, text);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                if (alert)
+                {
+                    await AppContentDialog.Create(dialogMessages.GetString("SaveErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                }
+                return false;
+            }
+        }
+
         private async Task<bool> Save(bool alert = true)
         {
             if (FilePath == null)
@@ -272,7 +290,7 @@ namespace Typedown.Universal.ViewModels
             }
             else
             {
-                var result = (bool)await WriteAllText(JObject.FromObject(new { path = FilePath, text = EditorViewModel.Markdown, alert }));
+                var result = await WriteAllText(FilePath, EditorViewModel.Markdown, alert);
                 if (result)
                 {
                     EditorViewModel.FileHash = EditorViewModel.CurrentHash;
@@ -292,7 +310,7 @@ namespace Typedown.Universal.ViewModels
             var file = await filePicker.PickSaveFileAsync();
             if (file != null)
             {
-                var result = (bool)await WriteAllText(JObject.FromObject(new { path = file.Path, text = EditorViewModel.Markdown }));
+                var result = await WriteAllText(FilePath, EditorViewModel.Markdown);
                 if (result)
                 {
                     if (FilePath == null)
@@ -309,50 +327,17 @@ namespace Typedown.Universal.ViewModels
             return null;
         }
 
-        private async Task<bool> ConvertHTML(JToken arg)
+        private async Task<bool> PrintHTML(JToken args)
         {
-            var html = arg["html"].ToString();
-            var format = arg["format"].ToString();
-            var path = arg["path"].ToString();
-            try
-            {
-                if (format == "pdf")
-                {
-                    var fileExport = ServiceProvider.GetService<IFileExport>();
-                    await fileExport.HtmlToPdf(ImageBasePath, html, path);
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                await AppContentDialog.Create(dialogMessages.GetString("ExportErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
-                return false;
-            }
-        }
-
-        private async Task<bool> PrintHTML(JToken arg)
-        {
-            var html = arg["html"].ToString();
+            var html = args["html"].ToString();
             var fileExport = ServiceProvider.GetService<IFileExport>();
             await fileExport.Print(Path.GetDirectoryName(FilePath), html, FileName);
             return true;
         }
 
-        private async Task<bool> WriteAllText(JToken arg)
+        private async Task ExportCallback(JToken args)
         {
-            try
-            {
-                await File.WriteAllTextAsync(arg["path"].ToString(), arg["text"].ToString());
-                return true;
-            }
-            catch (Exception ex)
-            {
-                if (arg["alert"] == null || arg["alert"].ToObject<bool>())
-                {
-                    await AppContentDialog.Create(dialogMessages.GetString("SaveErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
-                }
-                return false;
-            }
+            await Task.Yield();
         }
 
         private bool askToSaveOpened;
@@ -409,19 +394,20 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        private async void Export(string type)
+        private void Export(string type)
         {
-            var filePicker = new FileSavePicker();
-            filePicker.SetOwnerWindow(AppViewModel.MainWindow);
-            filePicker.FileTypeChoices.Add(type, new List<string> { "." + type });
-            var file = await filePicker.PickSaveFileAsync();
-            if (file == null) return;
-            MarkdownEditor?.PostMessage("Export", new { type, path = file.Path, title = file.DisplayName });
+            throw new NotImplementedException();
+            //var filePicker = new FileSavePicker();
+            //filePicker.SetOwnerWindow(AppViewModel.MainWindow);
+            //filePicker.FileTypeChoices.Add(type, new List<string> { "." + type });
+            //var file = await filePicker.PickSaveFileAsync();
+            //if (file == null) return;
+            //MarkdownEditor?.PostMessage("Export", new { type, path = file.Path, title = file.DisplayName });
         }
 
         private void Print()
         {
-            MarkdownEditor?.PostMessage("Export", new { type = "print", title = FileName ?? "untitled" });
+            MarkdownEditor?.PostMessage("Export", new { type = "print", baseUrl = ImageBaseUrl, title = FileName ?? "untitled" });
         }
 
         private async void Import()

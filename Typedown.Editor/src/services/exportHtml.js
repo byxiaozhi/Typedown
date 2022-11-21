@@ -132,6 +132,7 @@ class ExportHtml {
       superSubScript: this.options?.superSubScript ?? false,
       footnote: this.options?.footnote ?? false,
       isGitlabCompatibilityEnabled: this.options?.isGitlabCompatibilityEnabled ?? false,
+      baseUrl: this.options?.baseUrl,
       highlight(code, lang) {
         // Language may be undefined (GH#591)
         if (!lang) {

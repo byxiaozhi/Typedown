@@ -1,6 +1,5 @@
 import runSanitize from './dompurify'
 import { URL_REG, DATA_URL_REG, IMAGE_EXT_REG } from '../config'
-import remote from 'services/remote/common'
 
 const ID_PREFIX = 'ag-'
 let id = 0
@@ -259,25 +258,52 @@ export const checkImageContentType = url => {
  * @param {string} src Image url
  * @param {string} baseUrl Base path; used on desktop to fix the relative image path.
  */
-export const getImageInfo = (src, baseUrl = window.DIRNAME) => {
+export const getImageInfo = (src, baseUrl = window.baseUrl) => {
   const imageExtension = IMAGE_EXT_REG.test(src)
-  const isUrl = URL_REG.test(src)
-  const isData = DATA_URL_REG.test(src)
-  if (!src || /^\s*$/.test(src)) {
-    return {
-      isUnknownType: false,
-      src: ''
+  const isUrl = URL_REG.test(src) || (imageExtension && /^file:\/\/.+/.test(src))
+
+  // Treat an URL with valid extension as image.
+  if (imageExtension) {
+    // NOTE: Check both "C:\" and "C:/" because we're using "file:///C:/".
+    const isAbsoluteLocal = /^(?:\/|\\\\|[a-zA-Z]:\\|[a-zA-Z]:\/).+/.test(src)
+
+    if (isUrl || (!isAbsoluteLocal && !baseUrl)) {
+      if (!isUrl && !baseUrl) {
+        console.warn('"baseUrl" is not defined!')
+      }
+
+      return {
+        isUnknownType: false,
+        src
+      }
+    } else {
+      // Correct relative path on desktop. If we resolve a absolute path "path.resolve" doesn't do anything.
+      // NOTE: We don't need to convert Windows styled path to UNIX style because Chromium handels this internal.
+      return {
+        isUnknownType: false,
+        src: `${baseUrl.trimEnd('/')}/${src.trimStart('/')}`
+      }
     }
-  }
-  if (isUrl || isData) {
+  } else if (isUrl && !imageExtension) {
+    // Assume it's a valid image and make a http request later
     return {
-      isUnknownType: !(imageExtension || isData),
+      isUnknownType: true,
       src
     }
   }
+
+  // Data url
+  if (DATA_URL_REG.test(src)) {
+    return {
+      isUnknownType: false,
+      src
+    }
+  }
+
+  // Url type is unknown
   return {
-    isUnknownType: !imageExtension,
-    src: 'http://local-file-access/?path=' + encodeURIComponent(src)
+    isUnknownType: false,
+    src: ''
   }
 }
 

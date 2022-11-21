@@ -19,8 +19,6 @@ namespace Typedown.Universal.Interfaces
 
         Task UpdateExportConfigs();
 
-        Task HtmlToPdf(string basePath, string htmlString, string savePath);
-
-        Task Print(string basePath, string htmlString, string documentName = null);
+        Task Print(string basePath, string html, string documentName = null);
     }
 }

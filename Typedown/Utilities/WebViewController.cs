@@ -101,12 +101,16 @@ namespace Typedown.Utilities
         {
             if (CoreWebView2Controller == null)
             {
-                await coreWebView2CompositionControllerTask;
-                var raw = typeof(CoreWebView2CompositionController).GetField("_rawNative", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(CoreWebView2CompositionController);
-                CoreWebView2Controller = typeof(CoreWebView2Controller).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(object) }, null).Invoke(new object[] { raw }) as CoreWebView2Controller;
+                CoreWebView2Controller = CreateCoreWebView2Controller(await coreWebView2CompositionControllerTask);
                 CoreWebView2Controller.DefaultBackgroundColor = System.Drawing.Color.Transparent;
             }
             return CoreWebView2Controller;
+        }
+
+        public static CoreWebView2Controller CreateCoreWebView2Controller(CoreWebView2CompositionController compositionController)
+        {
+            var raw = typeof(CoreWebView2CompositionController).GetField("_rawNative", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(compositionController);
+            return typeof(CoreWebView2Controller).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(object) }, null).Invoke(new object[] { raw }) as CoreWebView2Controller;
         }
 
         private void InitializeEventHandler()

@@ -103,8 +103,6 @@ namespace Typedown.Controls
             CoreWebView2.Settings.IsZoomControlEnabled = false;
             CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
-            CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
-            CoreWebView2.WebResourceRequested += OnWebResourceRequested;
 #if DEBUG
             CoreWebView2.OpenDevToolsWindow();
 #endif
@@ -120,31 +118,6 @@ namespace Typedown.Controls
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
 #endif
-        }
-
-        private async void OnWebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs args)
-        {
-            var deferral = args.GetDeferral();
-            try
-            {
-                var uri = new Uri(args.Request.Uri);
-                var query = HttpUtility.ParseQueryString(uri.Query);
-                var path = HttpUtility.UrlDecode(query["path"]);
-                if (path.StartsWith("file://"))
-                    path = new Uri(path).LocalPath;
-                if (!System.IO.Path.IsPathRooted(path))
-                    path = System.IO.Path.Combine(AppViewModel.FileViewModel.ImageBasePath, path);
-                var stream = await Task.Run(() => new MemoryStream(File.ReadAllBytes(path)));
-                args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
-            }
-            catch (Exception)
-            {
-                args.Response = CoreWebView2.Environment.CreateWebResourceResponse(null, 404, "Not found", null);
-            }
-            finally
-            {
-                deferral.Complete();
-            }
         }
 
         private async void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)

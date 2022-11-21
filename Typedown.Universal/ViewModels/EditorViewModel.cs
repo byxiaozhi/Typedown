@@ -109,7 +109,8 @@ namespace Typedown.Universal.ViewModels
                 PreferLooseListItem = Settings.PreferLooseListItem,
                 AutoPairMarkdownSyntax = Settings.AutoPairMarkdownSyntax,
                 EditorAreaWidth = Settings.EditorAreaWidth,
-                Markdown = Markdown
+                Markdown = Markdown,
+                BaseUrl = FileViewModel.ImageBaseUrl
             };
         }
 
@@ -214,7 +215,8 @@ namespace Typedown.Universal.ViewModels
             MarkdownEditor?.PostMessage("SetMarkdown", new
             {
                 text = state.Text,
-                cursor = state.Cursor
+                cursor = state.Cursor,
+                baseUrl = FileViewModel.ImageBaseUrl
             });
         }
 

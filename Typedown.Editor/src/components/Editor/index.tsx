@@ -23,7 +23,8 @@ const Editor: React.FC = () => {
     const OnFileLoaded = useCallback(() => setTimeout(() => transport.postMessage('FileLoaded', { text: markdownRef.current }), 100), [])
 
     useEffect(() => {
-        remote.getSettings().then(({ markdown, ...opt }: any) => {
+        remote.getSettings().then(({ markdown, baseUrl, ...opt }: any) => {
+            window.baseUrl = baseUrl
             setOptions(opt)
             setMarkdown(markdown)
             markdownRef.current = markdown
@@ -46,37 +47,36 @@ const Editor: React.FC = () => {
         transport.postMessage('CursorChange', { cursor })
     }, [cursor])
 
-    useEffect(() => transport.addListener<{ type: string, path: string, title: string }>('Export', async ({ type, path, title }) => {
+    useEffect(() => transport.addListener<{ type: string, context: unknown, baseUrl: string, title: string }>('Export', async ({ type, context, baseUrl, title }) => {
         const generateOption = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc) }
-        const text = await new ExportHtml(markdownRef.current, optionsRef.current).generate(generateOption)
-        if (type == 'html') {
-            remote.writeAllText({ path, text })
-        } else if (type == 'pdf') {
-            remote.convertHTML({ path, html: text, format: type })
-        } else if (type == 'print') {
-            remote.printHTML({ html: text })
+        const html = await new ExportHtml(markdownRef.current, { ...optionsRef.current, baseUrl }).generate(generateOption)
+        if (type == 'print') {
+            remote.printHTML({ html, context })
+        } else {
+            remote.exportCallback({ html, context })
         }
     }), []);
 
-    useEffect(() => transport.addListener<{ type: string, text: string }>('ImportFile', ({ type, text }) => {
+    useEffect(() => transport.addListener<{ type: string, text: string }>('ImportFile', ({ text }) => {
         setMarkdown(htmlToMarkdown(text, [], DEFAULT_TURNDOWN_CONFIG))
     }), [options]);
 
-    useEffect(() => transport.addListener<string>('LoadFile', text => {
+    useEffect(() => transport.addListener<{ text: string, baseUrl: string }>('LoadFile', ({ text, baseUrl }) => {
+        window.baseUrl = baseUrl
         setCursor({ anchor: { line: 0, ch: 0 }, focus: { line: 0, ch: 0 } })
         setMarkdown(text)
         markdownRef.current = text
         OnFileLoaded();
     }), [OnFileLoaded]);
 
-    useEffect(() => transport.addListener<{ text: string, cursor: string }>('SetMarkdown', ({ text, cursor }) => {
+    useEffect(() => transport.addListener<{ text: string, cursor: string, baseUrl: string }>('SetMarkdown', ({ text, cursor, baseUrl }) => {
+        window.baseUrl = baseUrl
         setCursor(cursor)
         setTimeout(() => setMarkdown(text))
         markdownRef.current = text
     }), []);
 
     useEffect(() => transport.addListener<Record<string, unknown>>('SettingsChanged', (newOptions) => {
-        console.log(newOptions)
         for (const name in newOptions) {
             const value = newOptions[name];
             if (name.startsWith('search'))
