@@ -151,5 +151,16 @@ namespace Typedown.Universal.Utilities
                 return false;
             }
         }
+
+        public static string GetTempFileName(string extension)
+        {
+            string result;
+            do
+            {
+                var fileName = Path.GetTempFileName();
+                result = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(fileName) + extension);
+            } while (File.Exists(result) || Directory.Exists(result));
+            return result;
+        }
     }
 }

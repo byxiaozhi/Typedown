@@ -61,7 +61,7 @@ namespace Typedown.Utilities
             }
         }
 
-        private static async Task EnsureCreateEnvironment()
+        public static async Task<CoreWebView2Environment> EnsureCreateEnvironment()
         {
             if (coreWebView2EnvironmentTask == null)
             {
@@ -71,11 +71,11 @@ namespace Typedown.Utilities
 #endif
                 var options = new CoreWebView2EnvironmentOptions(string.Join(" ", commandLineArgs));
                 coreWebView2EnvironmentTask = CoreWebView2Environment.CreateAsync(null, null, options);
-                await coreWebView2EnvironmentTask;
+                return await coreWebView2EnvironmentTask;
             }
             else
             {
-                await coreWebView2EnvironmentTask;
+                return await coreWebView2EnvironmentTask;
             }
         }
 
@@ -97,7 +97,7 @@ namespace Typedown.Utilities
             }
         }
 
-        public async Task<bool> EnsureCreateController()
+        public async Task<CoreWebView2Controller> EnsureCreateController()
         {
             if (CoreWebView2Controller == null)
             {
@@ -106,7 +106,7 @@ namespace Typedown.Utilities
                 CoreWebView2Controller = typeof(CoreWebView2Controller).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(object) }, null).Invoke(new object[] { raw }) as CoreWebView2Controller;
                 CoreWebView2Controller.DefaultBackgroundColor = System.Drawing.Color.Transparent;
             }
-            return CoreWebView2Controller != null;
+            return CoreWebView2Controller;
         }
 
         private void InitializeEventHandler()

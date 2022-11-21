@@ -1,13 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Web.WebView2.Core;
+using PdfiumViewer;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Reactive.Disposables;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
+using Typedown.Universal.ViewModels;
+using Typedown.Utilities;
 
 namespace Typedown.Services
 {
@@ -15,8 +23,11 @@ namespace Typedown.Services
     {
         public ObservableCollection<ExportConfig> ExportConfigs { get; } = new();
 
-        public FileExport()
+        public AppViewModel ViewModel { get; }
+
+        public FileExport(AppViewModel viewModel)
         {
+            ViewModel = viewModel;
             _ = UpdateExportConfigs();
         }
 
@@ -71,14 +82,40 @@ namespace Typedown.Services
             ExportConfigs.UpdateCollection(newItems, (a, b) => a.Id == b.Id);
         }
 
-        public void HtmlToPdf(string basePath, string htmlString, string sourcePath, string savePath)
+        public async Task HtmlToPdf(string basePath, string htmlString, string savePath)
         {
-            throw new NotImplementedException();
+            var tmpWindow = PInvoke.CreateWindowEx(0, "Static", null, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            using var destroyWindow = Disposable.Create(() => PInvoke.DestroyWindow(tmpWindow));
+            var environment = await WebViewController.EnsureCreateEnvironment();
+            var compositionController = await environment.CreateCoreWebView2CompositionControllerAsync(tmpWindow);
+            var raw = typeof(CoreWebView2CompositionController).GetField("_rawNative", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(compositionController);
+            var controller = typeof(CoreWebView2Controller).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(object) }, null).Invoke(new object[] { raw }) as CoreWebView2Controller;
+            using var closeController = Disposable.Create(() => controller.Close());
+            var coreWebView2 = controller.CoreWebView2;
+            var loadedTaskSource = new TaskCompletionSource<bool>();
+            coreWebView2.DOMContentLoaded += (s, e) => loadedTaskSource.SetResult(true);
+            controller.CoreWebView2.NavigateToString(htmlString);
+            await loadedTaskSource.Task;
+            await controller.CoreWebView2.PrintToPdfAsync(savePath);
+            controller.Close();
         }
 
-        public void Print(string basePath, string htmlString)
+        public async Task Print(string basePath, string htmlString, string documentName = null)
         {
-            throw new NotImplementedException();
+            var tmpFile = Universal.Utilities.Common.GetTempFileName(".pdf");
+            using var deleteTmpFile = Disposable.Create(() => File.Delete(tmpFile));
+            await HtmlToPdf(basePath, htmlString, tmpFile);
+            using var stream = new MemoryStream();
+            await stream.WriteAsync(File.ReadAllBytes(tmpFile));
+            using var pdf = PdfDocument.Load(stream);
+            using var print = pdf.CreatePrintDocument();
+            print.DocumentName = documentName;
+            var dialog = new PrintDialog() { Document = print };
+            var result = dialog.ShowDialog(new Win32Window(ViewModel.MainWindow));
+            if (result == DialogResult.OK)
+                print.Print();
         }
+
+        private record Win32Window(nint Handle) : IWin32Window;
     }
 }

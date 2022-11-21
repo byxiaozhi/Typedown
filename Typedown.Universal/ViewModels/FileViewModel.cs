@@ -319,7 +319,7 @@ namespace Typedown.Universal.ViewModels
                 if (format == "pdf")
                 {
                     var fileExport = ServiceProvider.GetService<IFileExport>();
-                    fileExport.HtmlToPdf(Path.GetDirectoryName(FilePath), html, FilePath, path);
+                    await fileExport.HtmlToPdf(ImageBasePath, html, path);
                 }
                 return true;
             }
@@ -330,11 +330,11 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        private bool PrintHTML(JToken arg)
+        private async Task<bool> PrintHTML(JToken arg)
         {
             var html = arg["html"].ToString();
             var fileExport = ServiceProvider.GetService<IFileExport>();
-            fileExport.Print(Path.GetDirectoryName(FilePath), html);
+            await fileExport.Print(Path.GetDirectoryName(FilePath), html, FileName);
             return true;
         }
 
