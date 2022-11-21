@@ -13,5 +13,7 @@ namespace Typedown.Universal.Interfaces
         void PostMessage(string name, object arg);
 
         Rectangle GetDummyRectangle(Rect rect);
+
+        Rectangle MoveDummyRectangle(Point offset);
     }
 }

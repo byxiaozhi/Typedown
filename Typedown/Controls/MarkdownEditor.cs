@@ -176,6 +176,13 @@ namespace Typedown.Controls
             return dummyRectangle;
         }
 
+        public Rectangle MoveDummyRectangle(Point offset)
+        {
+            Canvas.SetLeft(dummyRectangle, Canvas.GetLeft(dummyRectangle) + offset.X);
+            Canvas.SetTop(dummyRectangle, Canvas.GetTop(dummyRectangle) + offset.Y);
+            return dummyRectangle;
+        }
+
         private void SetChromeWidgetWindowTransparent()
         {
             var processId = (int)WebViewController.CoreWebView2.BrowserProcessId;

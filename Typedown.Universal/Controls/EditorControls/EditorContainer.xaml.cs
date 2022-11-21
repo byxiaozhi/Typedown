@@ -25,7 +25,7 @@ namespace Typedown.Universal.Controls
         private readonly static DependencyProperty FindReplaceCenterPointProperty = DependencyProperty.Register(nameof(FindReplaceCenterPoint), typeof(Point), typeof(EditorContainer), new(new Point()));
         private Point FindReplaceCenterPoint { get => (Point)GetValue(FindReplaceCenterPointProperty); set => SetValue(FindReplaceCenterPointProperty, value); }
 
-        private readonly static DependencyProperty ScrollStateProperty = DependencyProperty.Register(nameof(ScrollState), typeof(ScrollState), typeof(EditorContainer), new(new ScrollState()));
+        private readonly static DependencyProperty ScrollStateProperty = DependencyProperty.Register(nameof(ScrollState), typeof(ScrollState), typeof(EditorContainer), new(new ScrollState(), (d, e) => (d as EditorContainer).OnDependencyPropertyChanged(e)));
         private ScrollState ScrollState { get => (ScrollState)GetValue(ScrollStateProperty); set => SetValue(ScrollStateProperty, value); }
 
         public AppViewModel ViewModel => DataContext as AppViewModel;
@@ -150,6 +150,17 @@ namespace Typedown.Universal.Controls
         private void OnFormatItemClick(object sender, EventArgs e)
         {
             Flyout.Hide();
+        }
+
+        private void OnDependencyPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            if (e.Property == ScrollStateProperty)
+            {
+                if (e.OldValue is ScrollState oldValue && e.NewValue is ScrollState newValue && MarkdownEditorPresenter.Content is IMarkdownEditor editor)
+                {
+                    editor.MoveDummyRectangle(new(oldValue.ScrollX - newValue.ScrollX, oldValue.ScrollY - newValue.ScrollY));
+                }
+            }
         }
     }
 }
