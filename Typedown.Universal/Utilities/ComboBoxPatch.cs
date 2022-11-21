@@ -1,7 +1,6 @@
 ﻿using Typedown.Universal.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 
 namespace Typedown.Universal.Utilities
 {
@@ -30,11 +29,12 @@ namespace Typedown.Universal.Utilities
             var settings = target.GetService<SettingsViewModel>();
             if (settings != null && settings.AppTheme != Enums.AppTheme.Default)
             {
-                foreach (var popup in VisualTreeHelper.GetOpenPopupsForXamlRoot(target.XamlRoot))
-                {
-                    popup.RequestedTheme = settings.AppTheme == Enums.AppTheme.Light ? ElementTheme.Dark : ElementTheme.Light;
-                    popup.RequestedTheme = settings.AppTheme == Enums.AppTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
-                }
+                target.RequestedTheme = settings.AppTheme == Enums.AppTheme.Light ? ElementTheme.Dark : ElementTheme.Light;
+                target.RequestedTheme = settings.AppTheme == Enums.AppTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
+            }
+            else
+            {
+                target.RequestedTheme = ElementTheme.Default;
             }
         }
     }
