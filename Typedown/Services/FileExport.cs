@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Typedown.Universal.Enums;
@@ -93,11 +94,40 @@ namespace Typedown.Services
             using var closeController = Disposable.Create(() => controller.Close());
             var coreWebView2 = controller.CoreWebView2;
             var loadedTaskSource = new TaskCompletionSource<bool>();
-            coreWebView2.DOMContentLoaded += (s, e) => loadedTaskSource.SetResult(true);
-            controller.CoreWebView2.NavigateToString(htmlString);
+            var tmpBaseUrl = $"http://{Guid.NewGuid()}/";
+            coreWebView2.NavigationCompleted += (s, e) => loadedTaskSource.SetResult(true);
+            coreWebView2.WebResourceRequested += (s, e) => OnHtmlToPdfWebResourceRequested(coreWebView2, e, htmlString);
+            coreWebView2.AddWebResourceRequestedFilter($"{tmpBaseUrl}*", CoreWebView2WebResourceContext.All);
+            controller.CoreWebView2.Navigate(tmpBaseUrl);
             await loadedTaskSource.Task;
             await controller.CoreWebView2.PrintToPdfAsync(savePath);
             controller.Close();
+        }
+
+        private async void OnHtmlToPdfWebResourceRequested(CoreWebView2 webview, CoreWebView2WebResourceRequestedEventArgs args, string htmlString)
+        {
+            var uri = new Uri(args.Request.Uri);
+            if (uri.LocalPath == "/")
+            {
+                args.Response = webview.Environment.CreateWebResourceResponse(new MemoryStream(Encoding.UTF8.GetBytes(htmlString)), 200, "OK", null);
+            }
+            else
+            {
+                var deferral = args.GetDeferral();
+                try
+                {
+                    var filePath = Path.Combine(ViewModel.FileViewModel.ImageBasePath, uri.LocalPath.TrimStart('/'));
+                    args.Response = webview.Environment.CreateWebResourceResponse(new MemoryStream(await File.ReadAllBytesAsync(filePath)), 200, "OK", null);
+                }
+                catch
+                {
+                    args.Response = webview.Environment.CreateWebResourceResponse(null, 404, "Not Found", null);
+                }
+                finally
+                {
+                    deferral.Complete();
+                }
+            }
         }
 
         public async Task Print(string basePath, string htmlString, string documentName = null)
@@ -106,11 +136,11 @@ namespace Typedown.Services
             using var deleteTmpFile = Disposable.Create(() => File.Delete(tmpFile));
             await HtmlToPdf(basePath, htmlString, tmpFile);
             using var stream = new MemoryStream();
-            await stream.WriteAsync(File.ReadAllBytes(tmpFile));
+            await stream.WriteAsync(await File.ReadAllBytesAsync(tmpFile));
             using var pdf = PdfDocument.Load(stream);
             using var print = pdf.CreatePrintDocument();
             print.DocumentName = documentName;
-            var dialog = new PrintDialog() { Document = print };
+            var dialog = new PrintDialog() { Document = print, UseEXDialog = true };
             var result = dialog.ShowDialog(new Win32Window(ViewModel.MainWindow));
             if (result == DialogResult.OK)
                 print.Print();

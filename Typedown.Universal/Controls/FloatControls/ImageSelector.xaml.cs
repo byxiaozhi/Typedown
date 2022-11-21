@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Typedown.Universal.Interfaces;
@@ -82,7 +83,9 @@ namespace Typedown.Universal.Controls.FloatControls
             if (flyout.IsOpen)
             {
                 if (ViewModel.SettingsViewModel.AutoEncodeImageURL)
-                    src = HttpUtility.UrlEncode(src);
+                {
+                    // TODO
+                }
                 MarkdownEditor.PostMessage("ReplaceImage", new { src, alt, title });
             }
 
