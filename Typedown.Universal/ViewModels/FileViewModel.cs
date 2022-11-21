@@ -428,8 +428,8 @@ namespace Typedown.Universal.ViewModels
         {
             try
             {
-                var filePicker = new FileOpenPicker();
-                filePicker.FileTypeFilter.Add(".html");
+                var filePicker = new FileOpenPicker() { FileTypeFilter = { ".html" } };
+                filePicker.SetOwnerWindow(AppViewModel.MainWindow);
                 var file = await filePicker.PickSingleFileAsync();
                 if (file != null)
                 {

@@ -23,7 +23,7 @@
     <MenuFlyoutItem x:Name="SaveItem" x:Uid="Save" KeyboardAcceleratorTextOverride="Ctrl+S" Command="{x:Bind File.SaveCommand}"/>
     <MenuFlyoutItem x:Name="SaveAsItem" x:Uid="SaveAs" KeyboardAcceleratorTextOverride="Ctrl+Shift+S" Command="{x:Bind File.SaveAsCommand}"/>
     <MenuFlyoutSeparator/>
-    <MenuFlyoutItem x:Uid="Import"/>
+    <MenuFlyoutItem x:Uid="Import" Command="{x:Bind File.ImportCommand}"/>
     <MenuFlyoutSubItem  x:Uid="Export">
         <MenuFlyoutItem Text="PDF" Command="{x:Bind File.ExportCommand}" CommandParameter="pdf"/>
         <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
