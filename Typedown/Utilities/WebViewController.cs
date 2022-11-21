@@ -267,7 +267,7 @@ namespace Typedown.Utilities
 
         private void OnPointerExited(PointerRoutedEventArgs args)
         {
-            global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
+            _ = Container.Dispatcher.RunIdleAsync(_ => global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0));
             if (args.Pointer.PointerDeviceType == PointerDeviceType.Mouse)
             {
                 OnXamlPointerMessage(PInvoke.WindowMessage.WM_MOUSELEAVE, args);
