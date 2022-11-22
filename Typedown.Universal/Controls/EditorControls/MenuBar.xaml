@@ -63,7 +63,8 @@
         </Button>
         <local:CaptionButtons 
             x:Name="CaptionButtons"
-            Grid.Column="2"
+            HorizontalAlignment="Right"
+            Grid.ColumnSpan="3"
             x:Load="{x:Bind Settings.AppCompactMode}"/>
     </Grid>
 </UserControl>
