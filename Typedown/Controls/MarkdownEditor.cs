@@ -21,10 +21,10 @@ using Windows.UI.Xaml.Input;
 using Typedown.Universal.ViewModels;
 using System.Reactive.Linq;
 using Newtonsoft.Json.Linq;
-using System.Web;
-using System.IO;
 using Windows.UI.Xaml.Shapes;
 using System.Threading.Tasks;
+using Windows.UI.ViewManagement;
+using Windows.System;
 
 namespace Typedown.Controls
 {
@@ -48,6 +48,8 @@ namespace Typedown.Controls
 
         private readonly ResourceLoader stringResources = ResourceLoader.GetForViewIndependentUse("Resources");
 
+        private readonly UISettings uiSettings = new();
+
         public MarkdownEditor(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
@@ -57,12 +59,12 @@ namespace Typedown.Controls
             RemoteInvoke.Handle("ContentLoaded", OnContentLoaded);
             RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme());
             RemoteInvoke.Handle<JToken, object>("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString));
-            ActualThemeChanged += OnThemeChanged;
+            AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme)).Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged))).Subscribe(_ => OnThemeChanged());
         }
 
-        private void OnThemeChanged(FrameworkElement sender, object args)
+        private async void OnThemeChanged()
         {
-            PostMessage("ThemeChanged", ServiceProvider.GetCurrentTheme());
+            await Dispatcher.RunIdleAsync(_ => PostMessage("ThemeChanged", ServiceProvider.GetCurrentTheme()));
         }
 
         private void OnContentLoaded()
@@ -103,6 +105,7 @@ namespace Typedown.Controls
             CoreWebView2.Settings.IsZoomControlEnabled = false;
             CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
+            CoreWebView2.NewWindowRequested += OnNewWindowRequested;
 #if DEBUG
             CoreWebView2.OpenDevToolsWindow();
 #endif
@@ -111,9 +114,9 @@ namespace Typedown.Controls
         private void LoadStaticResources()
         {
 # if DEBUG
-            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
-            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
-            // WebViewController.CoreWebView2.Navigate("http://localhost:3000");
+            // var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
+            // WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
+            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
@@ -133,6 +136,13 @@ namespace Typedown.Controls
         private void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
         {
             Transport.EmitWebViewMessage(this, e.WebMessageAsJson);
+        }
+
+        private void OnNewWindowRequested(object sender, CoreWebView2NewWindowRequestedEventArgs args)
+        {
+            args.Handled = true;
+            if (PInvoke.GetIsKeyDown(VirtualKey.Control))
+                Universal.Utilities.Common.OpenUrl(args.Uri);
         }
 
         public void Dispose()
