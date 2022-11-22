@@ -6,19 +6,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:enums="using:Typedown.Universal.Enums" 
+    xmlns:utils="using:Typedown.Universal.Utilities"
     xmlns:controls="using:Typedown.Universal.Controls"
     Style="{StaticResource DefaultAppContentDialogStyle}"
     x:Name="ThisControl"
-    Title="添加上传配置"
-    PrimaryButtonText="添加"
-    SecondaryButtonText = "取消"
+    x:Uid="AddUploadConfig"
+    PrimaryButtonText="{utils:StringResource Key=Add/Text}"
+    SecondaryButtonText="{utils:StringResource Key=Cancel/Text}"
     DefaultButton="Primary"
     mc:Ignorable="d">
     <StackPanel>
-        <TextBlock>名称</TextBlock>
+        <TextBlock x:Uid="Name"/>
         <TextBox Margin="0,8,0,0" Text="{x:Bind ConfigName, Mode=TwoWay}"/>
         <TextBlock Margin="0,8,0,0" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Text="{x:Bind ErrMsg, Mode=OneWay}" Visibility="{x:Bind ErrMsg, Converter={StaticResource EmptyToVisibilityReverseConverter}, Mode=OneWay}"/>
-        <TextBlock Margin="0,12,0,0">上传方式</TextBlock>
+        <TextBlock Margin="0,12,0,0" x:Uid="UploadMethod"/>
         <ComboBox Margin="0,8,0,0" HorizontalAlignment="Stretch" ItemsSource="{x:Bind enums:Enumerable.AvailableImageUploadMethods}" SelectedItem="{Binding UploadMethod, ElementName=ThisControl, Mode=TwoWay}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

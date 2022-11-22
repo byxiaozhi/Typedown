@@ -15,16 +15,18 @@
     <UserControl.Resources>
         <SolidColorBrush x:Key="SystemFillColorCriticalBrush" Color="{ThemeResource SystemFillColorCritical}"/>
         <MenuFlyout x:Key="ConfigItemMenuFlyout">
-            <MenuFlyoutItem Text="删除" Click="OnDeleteClick"/>
+            <MenuFlyoutItem x:Uid="Delete" Click="OnDeleteClick"/>
         </MenuFlyout>
     </UserControl.Resources>
     
     <StackPanel Spacing="4">
-        <controls:NormalSettingItem Title="添加上传配置">
+        <controls:NormalSettingItem x:Uid="AddUploadConfig">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xee71;"/>
             </controls:NormalSettingItem.Icon>
-            <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100" Click="OnAddButtonClick">添加</Button>
+            <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100" Click="OnAddButtonClick">
+                <TextBlock x:Uid="Add"/>
+            </Button>
         </controls:NormalSettingItem>
 
         <TextBlock Text="上传配置" Margin="0,16,0,4" Visibility="{x:Bind ConfigItemsTitleVisibility(ImageUpload.ImageUploadConfigs), Mode=OneWay}"/>

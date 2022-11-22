@@ -18,9 +18,17 @@ namespace Typedown.Utilities
 
         public static void SetCoreWindow(IntPtr handle)
         {
-            CoreWindowHandle = handle;
-            var exStyle = PInvoke.GetWindowLong(CoreWindowHandle, PInvoke.WindowLongFlags.GWL_EXSTYLE);
-            PInvoke.SetWindowLong(CoreWindowHandle, PInvoke.WindowLongFlags.GWL_EXSTYLE, exStyle | (int)PInvoke.WindowStylesEx.WS_EX_TOOLWINDOW);
+            if (IsCoreWindow(handle))
+            {
+                CoreWindowHandle = handle;
+                var exStyle = PInvoke.GetWindowLong(CoreWindowHandle, PInvoke.WindowLongFlags.GWL_EXSTYLE);
+                PInvoke.SetWindowLong(CoreWindowHandle, PInvoke.WindowLongFlags.GWL_EXSTYLE, exStyle | (int)PInvoke.WindowStylesEx.WS_EX_TOOLWINDOW);
+            }
+        }
+
+        public static bool IsCoreWindow(nint handle)
+        {
+            return PInvoke.GetClassName(handle) == typeof(global::Windows.UI.Core.CoreWindow).FullName;
         }
     }
 }

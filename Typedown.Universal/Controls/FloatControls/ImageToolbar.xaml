@@ -35,7 +35,7 @@
                 <FontIcon FontSize="14" Glyph="&#xE8E2;"/>
             </Button>
             <AppBarSeparator/>
-            <Button Grid.Column="3" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" ToolTipService.ToolTip="缩放">
+            <Button Grid.Column="3" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="Zoom/Text">
                 <FontIcon FontSize="14" Glyph="&#xe9a6;"/>
                 <Button.Flyout>
                     <MenuFlyout Placement="Top">

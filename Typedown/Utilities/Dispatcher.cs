@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
 using Typedown.Universal.Utilities;
-using System.Diagnostics;
 
 namespace Typedown.Utilities
 {

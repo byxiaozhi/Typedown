@@ -52,8 +52,7 @@ namespace Typedown
         {
             if (code == 3) // HCBT_CREATEWND 
             {
-                var className = PInvoke.GetClassName(wParam);
-                if (className == typeof(global::Windows.UI.Core.CoreWindow).FullName)
+                if (CoreWindow.IsCoreWindow(wParam))
                     CoreWindow.SetCoreWindow(wParam);
             }
             return PInvoke.CallNextHookEx(hHook, code, wParam, lParam);

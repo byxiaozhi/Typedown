@@ -27,8 +27,8 @@ namespace Typedown.Universal.Controls
         {
             SetBinding(RequestedThemeProperty, new Binding()
             {
-                Source = this.GetService<SettingsViewModel>(),
-                Path = new(nameof(SettingsViewModel.AppTheme)),
+                Source = this.GetService<UIViewModel>(),
+                Path = new(nameof(UIViewModel.ActualTheme)),
                 Converter = new ElementThemeConverter()
             });
         }

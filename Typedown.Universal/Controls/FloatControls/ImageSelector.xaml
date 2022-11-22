@@ -19,16 +19,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock FontWeight="SemiBold" FontSize="20" Text="编辑图片"/>
+        <TextBlock FontWeight="SemiBold" FontSize="20" x:Uid="EditImage"/>
         <StackPanel Grid.Row="1" Spacing="8">
-            <TextBlock Text="路径"/>
+            <TextBlock x:Uid="Path"/>
             <Grid ColumnSpacing="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="TextBoxSrc"/>
-                <controls:PathPickerButton Path="{x:Bind TextBoxSrc.Text, Mode=TwoWay}" x:Name="ImagePickerButton" MinWidth="80" Grid.Column="1" FileTypeFilter="{x:Bind utils:FileTypeHelper.Image}" Content="浏览"/>
+                <controls:PathPickerButton Path="{x:Bind TextBoxSrc.Text, Mode=TwoWay}" x:Name="ImagePickerButton" MinWidth="80" Grid.Column="1" FileTypeFilter="{x:Bind utils:FileTypeHelper.Image}" x:Uid="SelectFile"/>
             </Grid>
             <Grid Margin="0,8,0,0" RowSpacing="8" ColumnSpacing="8">
                 <Grid.RowDefinitions>
@@ -39,9 +39,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Alt"/>
+                <TextBlock x:Uid="ImageAlt"/>
                 <TextBox x:Name="TextBoxAlt" Grid.Row="1"/>
-                <TextBlock Grid.Column="1" Text="标题"/>
+                <TextBlock Grid.Column="1" x:Uid="Title"/>
                 <TextBox x:Name="TextBoxTitle" Grid.Column="1" Grid.Row="1"/>
             </Grid>
         </StackPanel>
@@ -51,7 +51,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Image">
+            <Button Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Image" controls:ToolTip.TextResource="Settings/Text">
                 <Viewbox Width="16" Height="16">
                     <muxc:AnimatedIcon x:Name="Icon_Setting">
                         <muxc:AnimatedIcon.Source>
@@ -63,8 +63,12 @@
                     </muxc:AnimatedIcon>
                 </Viewbox>
             </Button>
-            <controls:ProgressButton x:Name="SaveButton" Grid.Column="1" Content="保存" MinWidth="100" Click="OnSaveButtonClick" Style="{ThemeResource AccentButtonStyle}"/>
-            <Button Grid.Column="2" MinWidth="100" Content="取消" Click="OnCancelButtonClick"/>
+            <controls:ProgressButton x:Name="SaveButton" Grid.Column="1" MinWidth="100" Click="OnSaveButtonClick" Style="{ThemeResource AccentButtonStyle}">
+                <TextBlock x:Uid="Save"/>
+            </controls:ProgressButton>
+            <Button Grid.Column="2" MinWidth="100" Click="OnCancelButtonClick">
+                <TextBlock x:Uid="Cancel"/>
+            </Button>
         </Grid>
     </Grid>
 </UserControl>

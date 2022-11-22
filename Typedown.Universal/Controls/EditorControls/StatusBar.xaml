@@ -45,7 +45,7 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
             <Grid>
-                <ComboBox SelectedIndex="{x:Bind Settings.WordCountMethod}" MinWidth="80" VerticalAlignment="Stretch" Foreground="{ThemeResource TextFillColorSecondary}">
+                <ComboBox SelectedIndex="{x:Bind Settings.WordCountMethod}" MinWidth="80" VerticalAlignment="Stretch" Foreground="{ThemeResource TextFillColorSecondary}" local:ToolTip.TextResource="WordCount/Text">
                     <ComboBox.Resources>
                         <ResourceDictionary>
                             <SolidColorBrush x:Key="ComboBoxBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>

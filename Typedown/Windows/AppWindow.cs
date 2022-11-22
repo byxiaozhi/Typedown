@@ -141,7 +141,7 @@ namespace Typedown.Windows
                 _ => !Utilities.Common.GetUseLightTheme()
             };
             this.SetDarkMode(isDarkMode);
-            if (Universal.Config.IsMicaSupported)
+            if (Config.IsMicaSupported)
             {
                 this.SetMicaBackdrop(IsMicaEnable);
                 this.SetCaptionColor(IsMicaEnable ? 0xffffffffu : isDarkMode ? 0x00202020u : 0x00f3f3f3u);

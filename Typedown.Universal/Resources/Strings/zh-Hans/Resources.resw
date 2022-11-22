@@ -133,6 +133,14 @@
     <value>关于</value>
     <comment>关于</comment>
   </data>
+  <data name="Add.Text" xml:space="preserve">
+    <value>添加</value>
+    <comment>添加</comment>
+  </data>
+  <data name="AddUploadConfig.Title" xml:space="preserve">
+    <value>添加上传配置</value>
+    <comment>添加上传配置</comment>
+  </data>
   <data name="AlignCenter" xml:space="preserve">
     <value>居中对齐</value>
     <comment>居中对齐</comment>
@@ -224,6 +232,10 @@
   <data name="BtnSave.Content" xml:space="preserve">
     <value>保存</value>
     <comment>保存</comment>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>取消</value>
+    <comment>取消</comment>
   </data>
   <data name="CaseSensitive.Text" xml:space="preserve">
     <value>区分大小写</value>
@@ -324,6 +336,10 @@
   <data name="Edit.Title" xml:space="preserve">
     <value>编辑</value>
     <comment>编辑</comment>
+  </data>
+  <data name="EditImage.Text" xml:space="preserve">
+    <value>编辑图片</value>
+    <comment>编辑图片</comment>
   </data>
   <data name="Editor.Text" xml:space="preserve">
     <value>编辑器</value>
@@ -513,6 +529,10 @@
     <value>图像</value>
     <comment>图像</comment>
   </data>
+  <data name="ImageAlt.Text" xml:space="preserve">
+    <value>Alt</value>
+    <comment>Alt</comment>
+  </data>
   <data name="ImagePage.Content" xml:space="preserve">
     <value>图像</value>
     <comment>图像</comment>
@@ -677,6 +697,10 @@
     <value>更多选项</value>
     <comment>更多选项</comment>
   </data>
+  <data name="Name.Text" xml:space="preserve">
+    <value>名称</value>
+    <comment>名称</comment>
+  </data>
   <data name="New.Text" xml:space="preserve">
     <value>新建</value>
     <comment>新建</comment>
@@ -764,6 +788,10 @@
   <data name="PasteAsPlainText.Text" xml:space="preserve">
     <value>粘贴为纯文本</value>
     <comment>粘贴为纯文本</comment>
+  </data>
+  <data name="Path.Text" xml:space="preserve">
+    <value>路径</value>
+    <comment>路径</comment>
   </data>
   <data name="PlantUMLDiagram.Text" xml:space="preserve">
     <value>PlantUML Diagram</value>
@@ -921,6 +949,10 @@
     <value>查找</value>
     <comment>查找</comment>
   </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>标题</value>
+    <comment>标题</comment>
+  </data>
   <data name="Toc.Text" xml:space="preserve">
     <value>内容目录</value>
     <comment>内容目录</comment>
@@ -961,6 +993,10 @@
     <value>更新</value>
     <comment>更新</comment>
   </data>
+  <data name="UploadMethod.Text" xml:space="preserve">
+    <value>上传方式</value>
+    <comment>上传方式</comment>
+  </data>
   <data name="UseRegexp.Text" xml:space="preserve">
     <value>正则匹配</value>
     <comment>正则匹配</comment>
@@ -985,13 +1021,13 @@
     <value>全字</value>
     <comment>全字匹配</comment>
   </data>
-  <data name="Word Count" xml:space="preserve">
-    <value>字数</value>
-    <comment>字数统计</comment>
-  </data>
   <data name="Word.Text" xml:space="preserve">
     <value>词</value>
     <comment>词</comment>
+  </data>
+  <data name="WordCount.Text" xml:space="preserve">
+    <value>字数</value>
+    <comment>字数统计</comment>
   </data>
   <data name="Words.Text" xml:space="preserve">
     <value>词</value>
@@ -1000,5 +1036,9 @@
   <data name="YAMLFrontMatter.Text" xml:space="preserve">
     <value>YAML Front Matter</value>
     <comment>YAML Front Matter</comment>
+  </data>
+  <data name="Zoom.Text" xml:space="preserve">
+    <value>缩放</value>
+    <comment>缩放</comment>
   </data>
 </root>
