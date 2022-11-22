@@ -88,6 +88,13 @@ namespace Typedown.Windows
         }
 
         [SuppressPropertyChangedWarnings]
+        protected override void OnScaleChanged(EventArgs args)
+        {
+            base.OnScaleChanged(args);
+            WindowService?.RaiseWindowScaleChanged(Handle);
+        }
+
+        [SuppressPropertyChangedWarnings]
         protected override void OnLocationChanged(EventArgs e)
         {
             base.OnLocationChanged(e);

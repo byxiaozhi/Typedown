@@ -61,5 +61,9 @@
                 </muxc:AnimatedIcon>
             </Viewbox>
         </Button>
+        <local:CaptionButtons 
+            x:Name="CaptionButtons"
+            Grid.Column="2"
+            x:Load="{x:Bind Settings.AppCompactMode}"/>
     </Grid>
 </UserControl>

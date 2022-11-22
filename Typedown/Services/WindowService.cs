@@ -13,9 +13,13 @@ namespace Typedown.Services
 
         public Subject<nint> WindowIsActivedChanged { get; } = new();
 
+        public Subject<nint> WindowScaleChanged { get; } = new();
+
         public void RaiseWindowStateChanged(nint hWnd) => WindowStateChanged.OnNext(hWnd);
 
         public void RaiseWindowIsActivedChanged(nint hWnd) => WindowIsActivedChanged.OnNext(hWnd);
+
+        public void RaiseWindowScaleChanged(nint hWnd) => WindowScaleChanged.OnNext(hWnd);
 
         public nint GetWindow(UIElement element) => AppWindow.GetWindow(element)?.Handle ?? default;
 

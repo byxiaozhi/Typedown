@@ -72,7 +72,7 @@ namespace Typedown.Windows
             dragBar = new(Handle);
             topBorder = new(Handle);
 
-            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = -1 });
+            PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = Config.IsMicaSupported ? -1 : 0 });
             PInvoke.SetWindowPos(Handle, 0, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
 
             UpdateClientPos();
@@ -89,11 +89,11 @@ namespace Typedown.Windows
             var rawCaptionButtonsWidth = (int)((46 * 3) * ScalingFactor);
             var rawLeftClientAreaWidth = (int)(LeftClientAreaWidth * ScalingFactor);
             var rawRightClientAreaWidth = (int)(RightClientAreaWidth * ScalingFactor);
-            var rawTopInvisibleHeight = State == WindowState.Maximized ? rawBorderThiness : 1;
+            var rawTopInvisibleHeight = State == WindowState.Maximized ? rawBorderThiness : 0;
             var rawDragBarHeight = rawCaptionHeight + rawTopInvisibleHeight;
             PInvoke.SetWindowPos(XamlSourceHandle, 0, 0, rawTopInvisibleHeight, rect.right, rect.bottom - rawTopInvisibleHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW | PInvoke.SetWindowPosFlags.SWP_NOZORDER);
             PInvoke.SetWindowPos(topBorder.Handle, 0, 0, 0, rect.right - rawCaptionButtonsWidth, rawBorderThiness, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
-            PInvoke.SetWindowPos(dragBar.Handle, 0, rawLeftClientAreaWidth, 0, rect.right - rawRightClientAreaWidth - rawLeftClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            PInvoke.SetWindowPos(dragBar.Handle, 0, rawLeftClientAreaWidth, 0, rect.right - rawLeftClientAreaWidth - rawRightClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
         }
 
         [SuppressPropertyChangedWarnings]
@@ -196,7 +196,7 @@ namespace Typedown.Windows
                 else if (isLeft) return PInvoke.HitTestFlags.LEFT;
                 else if (isRight) return PInvoke.HitTestFlags.RIGHT;
             }
-            var topInvisibleHeight = State == WindowState.Maximized ? BorderThiness : 1 / ScalingFactor;
+            var topInvisibleHeight = State == WindowState.Maximized ? BorderThiness : 0;
             if (pointerPos.Y < CaptionHeight + topInvisibleHeight)
                 return PInvoke.HitTestFlags.CAPTION;
             return PInvoke.HitTestFlags.CLIENT;
