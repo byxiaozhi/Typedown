@@ -27,6 +27,9 @@ module.exports = function override(config, env) {
             new webpack.optimize.LimitChunkCountPlugin({
                 maxChunks: 1
             }),
+            new webpack.ProvidePlugin({
+                process: 'process/browser',
+            }),
         ]
     }
 

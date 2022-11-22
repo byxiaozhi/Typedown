@@ -110,7 +110,7 @@ namespace Typedown.Universal.ViewModels
                 AutoPairMarkdownSyntax = Settings.AutoPairMarkdownSyntax,
                 EditorAreaWidth = Settings.EditorAreaWidth,
                 Markdown = Markdown,
-                BaseUrl = FileViewModel.ImageBaseUrl
+                BasePath = FileViewModel.ImageBasePath
             };
         }
 
@@ -216,7 +216,7 @@ namespace Typedown.Universal.ViewModels
             {
                 text = state.Text,
                 cursor = state.Cursor,
-                baseUrl = FileViewModel.ImageBaseUrl
+                basePath = FileViewModel.ImageBasePath
             });
         }
 

@@ -7,6 +7,6 @@ export declare global {
                 postMessage: <T>(arg: T) => void
             }
         }
-        baseUrl: string
+        basePath: string
     }
 }

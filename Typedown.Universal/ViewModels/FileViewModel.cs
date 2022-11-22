@@ -42,8 +42,6 @@ namespace Typedown.Universal.ViewModels
 
         public string ImageBasePath => string.IsNullOrEmpty(FilePath) ? SettingsViewModel.DefaultImageBasePath : Path.GetDirectoryName(FilePath);
 
-        public string ImageBaseUrl => $"file:///{ImageBasePath.Replace("\\", "/").TrimEnd('/')}/";
-
         public string FileName => Path.GetFileName(FilePath);
 
         public Command<Unit> NewFileCommand { get; } = new();
@@ -211,7 +209,7 @@ namespace Typedown.Universal.ViewModels
                 if (postMessage)
                 {
 
-                    MarkdownEditor?.PostMessage("LoadFile", new { text = EditorViewModel.Markdown, baseUrl = ImageBaseUrl });
+                    MarkdownEditor?.PostMessage("LoadFile", new { text = EditorViewModel.Markdown, basePath = ImageBasePath });
                 }
                 return true;
             }
@@ -407,7 +405,7 @@ namespace Typedown.Universal.ViewModels
 
         private void Print()
         {
-            MarkdownEditor?.PostMessage("Export", new { type = "print", baseUrl = ImageBaseUrl, title = FileName ?? "untitled" });
+            MarkdownEditor?.PostMessage("Export", new { type = "print", basePath = ImageBasePath, title = FileName ?? "untitled" });
         }
 
         private async void Import()

@@ -104,7 +104,7 @@ namespace Typedown.Controls
             CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
 #if DEBUG
-            // CoreWebView2.OpenDevToolsWindow();
+            CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 

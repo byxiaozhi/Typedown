@@ -23,8 +23,8 @@ const Editor: React.FC = () => {
     const OnFileLoaded = useCallback(() => setTimeout(() => transport.postMessage('FileLoaded', { text: markdownRef.current }), 100), [])
 
     useEffect(() => {
-        remote.getSettings().then(({ markdown, baseUrl, ...opt }: any) => {
-            window.baseUrl = baseUrl
+        remote.getSettings().then(({ markdown, basePath, ...opt }: any) => {
+            window.basePath = basePath
             setOptions(opt)
             setMarkdown(markdown)
             markdownRef.current = markdown
@@ -47,8 +47,10 @@ const Editor: React.FC = () => {
         transport.postMessage('CursorChange', { cursor })
     }, [cursor])
 
-    useEffect(() => transport.addListener<{ type: string, context: unknown, baseUrl: string, title: string }>('Export', async ({ type, context, baseUrl, title }) => {
+    useEffect(() => transport.addListener<{ type: string, context: unknown, basePath: string, title: string }>('Export', async ({ type, context, basePath, title }) => {
         const generateOption = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc) }
+        const baseUrl = `file:///${basePath.replaceAll('\\','/')}/`
+        console.log(baseUrl)
         const html = await new ExportHtml(markdownRef.current, { ...optionsRef.current, baseUrl }).generate(generateOption)
         if (type == 'print') {
             remote.printHTML({ html, context })
@@ -61,16 +63,16 @@ const Editor: React.FC = () => {
         setMarkdown(htmlToMarkdown(text, [], DEFAULT_TURNDOWN_CONFIG))
     }), [options]);
 
-    useEffect(() => transport.addListener<{ text: string, baseUrl: string }>('LoadFile', ({ text, baseUrl }) => {
-        window.baseUrl = baseUrl
+    useEffect(() => transport.addListener<{ text: string, basePath: string }>('LoadFile', ({ text, basePath }) => {
+        window.basePath = basePath
         setCursor({ anchor: { line: 0, ch: 0 }, focus: { line: 0, ch: 0 } })
         setMarkdown(text)
         markdownRef.current = text
         OnFileLoaded();
     }), [OnFileLoaded]);
 
-    useEffect(() => transport.addListener<{ text: string, cursor: string, baseUrl: string }>('SetMarkdown', ({ text, cursor, baseUrl }) => {
-        window.baseUrl = baseUrl
+    useEffect(() => transport.addListener<{ text: string, cursor: string, basePath: string }>('SetMarkdown', ({ text, cursor, basePath }) => {
+        window.basePath = basePath
         setCursor(cursor)
         setTimeout(() => setMarkdown(text))
         markdownRef.current = text

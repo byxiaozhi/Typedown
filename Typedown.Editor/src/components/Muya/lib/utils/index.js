@@ -1,5 +1,6 @@
 import runSanitize from './dompurify'
 import { URL_REG, DATA_URL_REG, IMAGE_EXT_REG } from '../config'
+import path from 'path-browserify'
 
 const ID_PREFIX = 'ag-'
 let id = 0
@@ -256,9 +257,9 @@ export const checkImageContentType = url => {
  * Return image information and correct the relative image path if needed.
  *
  * @param {string} src Image url
- * @param {string} baseUrl Base path; used on desktop to fix the relative image path.
+ * @param {string} basePath Base path; used on desktop to fix the relative image path.
  */
-export const getImageInfo = (src, baseUrl = window.baseUrl) => {
+export const getImageInfo = (src, basePath = window.basePath) => {
   const imageExtension = IMAGE_EXT_REG.test(src)
   const isUrl = URL_REG.test(src) || (imageExtension && /^file:\/\/.+/.test(src))
 
@@ -267,9 +268,9 @@ export const getImageInfo = (src, baseUrl = window.baseUrl) => {
     // NOTE: Check both "C:\" and "C:/" because we're using "file:///C:/".
     const isAbsoluteLocal = /^(?:\/|\\\\|[a-zA-Z]:\\|[a-zA-Z]:\/).+/.test(src)
 
-    if (isUrl || (!isAbsoluteLocal && !baseUrl)) {
-      if (!isUrl && !baseUrl) {
-        console.warn('"baseUrl" is not defined!')
+    if (isUrl || (!isAbsoluteLocal && !basePath)) {
+      if (!isUrl && !basePath) {
+        console.warn('"basePath" is not defined!')
       }
 
       return {
@@ -281,7 +282,7 @@ export const getImageInfo = (src, baseUrl = window.baseUrl) => {
       // NOTE: We don't need to convert Windows styled path to UNIX style because Chromium handels this internal.
       return {
         isUnknownType: false,
-        src: `${baseUrl.trimEnd('/')}/${src.trimStart('/')}`
+        src: path.resolve(basePath, src.replace('\\', '/').trimStart('/'))
       }
     }
   } else if (isUrl && !imageExtension) {
