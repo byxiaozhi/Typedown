@@ -52,8 +52,8 @@ namespace Typedown
         {
             if (code == 3) // HCBT_CREATEWND 
             {
-                if (CoreWindow.IsCoreWindow(wParam))
-                    CoreWindow.SetCoreWindow(wParam);
+                if (CoreWindowHelper.IsCoreWindow(wParam))
+                    CoreWindowHelper.SetCoreWindow(wParam);
             }
             return PInvoke.CallNextHookEx(hHook, code, wParam, lParam);
         }

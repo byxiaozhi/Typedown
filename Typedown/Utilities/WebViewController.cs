@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Input;
 using System.Reactive.Disposables;
 using System.Diagnostics;
 using Typedown.Windows;
+using Windows.UI.Core;
 
 namespace Typedown.Utilities
 {
@@ -43,22 +44,36 @@ namespace Typedown.Utilities
 
         private readonly CompositeDisposable disposables = new();
 
-        public async Task InitializeAsync(FrameworkElement container, nint parentHWnd)
+        public async Task<bool> InitializeAsync(FrameworkElement container, nint parentHWnd)
         {
             if (Container == null)
             {
-                Container = container;
-                ParentHWnd = parentHWnd;
-                await EnsureCreateCompositionController();
-                await EnsureCreateController();
-                InitializeEventHandler();
-                UpdataWindowScale();
-                disposables.Add(Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).Subscribe(_ => UpdateBounds()));
-                var window = AppWindow.GetWindow(container);
-                disposables.Add(Observable.FromEventPattern(window, nameof(AppWindow.LocationChanged)).Subscribe(_ => UpdateBounds()));
-                disposables.Add(Observable.FromEventPattern(window, nameof(AppWindow.ScaleChanged)).Subscribe(_ => UpdataWindowScale()));
-                SetMaxWorkingSetSize();
+                try
+                {
+                    Container = container;
+                    ParentHWnd = parentHWnd;
+                    await EnsureCreateCompositionController();
+                    await EnsureCreateController();
+                    if (disposables.IsDisposed)
+                    {
+                        CoreWebView2Controller.Close();
+                        throw new ObjectDisposedException(nameof(WebViewController));
+                    }
+                    InitializeEventHandler();
+                    UpdataWindowScale();
+                    disposables.Add(Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).Subscribe(_ => UpdateBounds()));
+                    var window = AppWindow.GetWindow(container);
+                    disposables.Add(Observable.FromEventPattern(window, nameof(AppWindow.LocationChanged)).Subscribe(_ => UpdateBounds()));
+                    disposables.Add(Observable.FromEventPattern(window, nameof(AppWindow.ScaleChanged)).Subscribe(_ => UpdataWindowScale()));
+                    SetMaxWorkingSetSize();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
+            return false;
         }
 
         public static async Task<CoreWebView2Environment> EnsureCreateEnvironment()
@@ -147,7 +162,7 @@ namespace Typedown.Utilities
 
         private void OnPointerEntered(PointerRoutedEventArgs args)
         {
-            OnCursorChanged();
+            UpdateCursor();
         }
 
         private void OnPointerMoved(PointerRoutedEventArgs args)
@@ -271,7 +286,7 @@ namespace Typedown.Utilities
 
         private void OnPointerExited(PointerRoutedEventArgs args)
         {
-            global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
+            CoreWindow.GetForCurrentThread().PointerCursor = new(0, 0);
             if (args.Pointer.PointerDeviceType == PointerDeviceType.Mouse)
             {
                 OnXamlPointerMessage(PInvoke.WindowMessage.WM_MOUSELEAVE, args);
@@ -384,21 +399,21 @@ namespace Typedown.Utilities
             }
         }
 
-        private static readonly IReadOnlyDictionary<IntPtr, global::Windows.UI.Core.CoreCursorType> coreCursorTypeDic = new Dictionary<IntPtr, global::Windows.UI.Core.CoreCursorType>()
+        private static readonly IReadOnlyDictionary<nint, Lazy<CoreCursor>> coreCursorTypeDic = new Dictionary<nint, Lazy<CoreCursor>>()
         {
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_ARROW),  global::Windows.UI.Core.CoreCursorType.Arrow},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_CROSS),  global::Windows.UI.Core.CoreCursorType.Cross},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_HAND),  global::Windows.UI.Core.CoreCursorType.Hand},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_HELP),  global::Windows.UI.Core.CoreCursorType.Help},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_IBEAM),  global::Windows.UI.Core.CoreCursorType.IBeam},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZEALL),  global::Windows.UI.Core.CoreCursorType.SizeAll},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENESW),  global::Windows.UI.Core.CoreCursorType.SizeNortheastSouthwest},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENS),  global::Windows.UI.Core.CoreCursorType.SizeNorthSouth},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENWSE),  global::Windows.UI.Core.CoreCursorType.SizeNorthwestSoutheast},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZEWE),  global::Windows.UI.Core.CoreCursorType.SizeWestEast},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_NO),  global::Windows.UI.Core.CoreCursorType.UniversalNo},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_UPARROW),  global::Windows.UI.Core.CoreCursorType.UpArrow},
-            {PInvoke.LoadCursor(IntPtr.Zero, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_WAIT),  global::Windows.UI.Core.CoreCursorType.Wait}
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_ARROW),  new(() => new(CoreCursorType.Arrow, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_CROSS),  new(() => new(CoreCursorType.Cross, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_HAND),  new(() => new(CoreCursorType.Hand, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_HELP),  new(() => new(CoreCursorType.Help, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_IBEAM),  new(() => new(CoreCursorType.IBeam, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZEALL),  new(() => new(CoreCursorType.SizeAll, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENESW),  new(() => new(CoreCursorType.SizeNortheastSouthwest, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENS),  new(() => new(CoreCursorType.SizeNorthSouth, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZENWSE),  new(() => new(CoreCursorType.SizeNorthwestSoutheast, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_SIZEWE),  new(() => new(CoreCursorType.SizeWestEast, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_NO),  new(() => new(CoreCursorType.UniversalNo, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_UPARROW),  new(() => new(CoreCursorType.UpArrow, 0))},
+            {PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_WAIT),  new(() => new(CoreCursorType.Wait, 0))},
         };
 
         private CoreWebView2MouseEventVirtualKeys GetKeyModifiers(PointerRoutedEventArgs args)
@@ -560,15 +575,13 @@ namespace Typedown.Utilities
 
         private void OnCoreWebView2CursorChanged(object sender, object e)
         {
-            OnCursorChanged();
+            UpdateCursor();
         }
 
-        private void OnCursorChanged()
+        private void UpdateCursor()
         {
-            if (coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor))
-                global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(cursor, 0);
-            else
-                global::Windows.UI.Core.CoreWindow.GetForCurrentThread().PointerCursor = new global::Windows.UI.Core.CoreCursor(0, 0);
+            coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor);
+            CoreWindow.GetForCurrentThread().PointerCursor = cursor?.Value ?? new(0, 0);
         }
 
         private void SetMaxWorkingSetSize()
@@ -589,7 +602,7 @@ namespace Typedown.Utilities
             if (!disposables.IsDisposed)
             {
                 disposables.Dispose();
-                CoreWebView2Controller.Close();
+                CoreWebView2Controller?.Close();
             }
         }
 

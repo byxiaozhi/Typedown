@@ -130,7 +130,7 @@ class Keyboard {
     }
 
     const handler = event => {
-      if (event.metaKey || event.ctrlKey) {
+      if (!this.isControlDown && (event.metaKey || event.ctrlKey)) {
         this.isControlDown = true
         container.classList.add('ag-meta-or-ctrl')
       }
@@ -229,8 +229,10 @@ class Keyboard {
   keyupBinding() {
     const { container, eventCenter, contentState } = this.muya
     const handler = event => {
-      this.isControlDown = false
-      container.classList.remove('ag-meta-or-ctrl')
+      if (this.isControlDown && !event.metaKey && !event.ctrlKey) {
+        this.isControlDown = false
+        container.classList.remove('ag-meta-or-ctrl')
+      }
       // check if edit emoji
       const node = selection.getSelectionStart()
       const paragraph = findNearestParagraph(node)
@@ -298,6 +300,9 @@ class Keyboard {
       if (this.isControlDown && !event.metaKey && !event.ctrlKey) {
         this.isControlDown = false
         container.classList.remove('ag-meta-or-ctrl')
+      } else if (!this.isControlDown && (event.metaKey || event.ctrlKey)) {
+        this.isControlDown = true
+        container.classList.add('ag-meta-or-ctrl')
       }
     }
 

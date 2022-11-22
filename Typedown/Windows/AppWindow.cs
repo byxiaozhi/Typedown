@@ -66,7 +66,7 @@ namespace Typedown.Windows
 
             var desktopWindowXamlSourceNative = xamlSource.GetInterop<IDesktopWindowXamlSourceNative>();
             desktopWindowXamlSourceNative.AttachToWindow(Handle);
-            CoreWindow.DetachCoreWindow();
+            CoreWindowHelper.DetachCoreWindow();
             XamlSourceHandle = desktopWindowXamlSourceNative.WindowHandle;
 
             dragBar = new(Handle);

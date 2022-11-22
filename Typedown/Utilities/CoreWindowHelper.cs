@@ -3,7 +3,7 @@ using Typedown.Universal.Utilities;
 
 namespace Typedown.Utilities
 {
-    public static class CoreWindow
+    public static class CoreWindowHelper
     {
         public static nint CoreWindowHandle { get; private set; }
 
