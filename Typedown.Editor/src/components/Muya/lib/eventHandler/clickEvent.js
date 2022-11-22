@@ -218,6 +218,14 @@ class ClickEvent {
       if (target.tagName === 'INPUT' && target.classList.contains(CLASS_OR_ID.AG_TASK_LIST_ITEM_CHECKBOX)) {
         contentState.listItemCheckBoxClick(target)
       }
+
+      // handler open link
+      if ((event.metaKey || event.ctrlKey) && event.path.some(x => x.tagName === 'A')) {
+        event.preventDefault();
+        const link = event.path.find(x => x.tagName == 'A')
+        window.open(link.href)
+      }
+
       contentState.clickHandler(event)
     }
 
