@@ -9,6 +9,7 @@ using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -39,6 +40,7 @@ namespace Typedown.Universal.Controls
         public EditorContainer()
         {
             InitializeComponent();
+            AddHandler(PointerMovedEvent, new PointerEventHandler(OnPointerPointerMoved), true);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -132,18 +134,17 @@ namespace Typedown.Universal.Controls
             }
         }
 
-        private void OnPointerEntered(object sender, PointerRoutedEventArgs e)
+        private void OnPointerPointerMoved(object sender, PointerRoutedEventArgs e)
         {
-            var type = e.GetCurrentPoint(this).PointerDevice.PointerDeviceType;
-            if (type == Windows.Devices.Input.PointerDeviceType.Mouse)
-            {
-                HorizontalScrollBar.IndicatorMode = ScrollingIndicatorMode.MouseIndicator;
-                VerticalScrollBar.IndicatorMode = ScrollingIndicatorMode.MouseIndicator;
-            }
-            else
+            if (e.Pointer.PointerDeviceType == PointerDeviceType.Touch)
             {
                 HorizontalScrollBar.IndicatorMode = ScrollingIndicatorMode.TouchIndicator;
                 VerticalScrollBar.IndicatorMode = ScrollingIndicatorMode.TouchIndicator;
+            }
+            else
+            {
+                HorizontalScrollBar.IndicatorMode = ScrollingIndicatorMode.MouseIndicator;
+                VerticalScrollBar.IndicatorMode = ScrollingIndicatorMode.MouseIndicator;
             }
         }
 

@@ -10,7 +10,6 @@
     xmlns:items="using:Typedown.Universal.Controls.EditorControls.ContextMenuItems"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
-    PointerEntered="OnPointerEntered"
     x:Name="ThisControl"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
