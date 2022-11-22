@@ -30,7 +30,7 @@
                 <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="{ThemeResource CardStrokeColorDefault}"/>
             </muxc:NavigationView.Resources>
             <muxc:NavigationView.PaneFooter>
-                <Button Width="32" Height="32" x:Name="SeatchButton" Click="OnSearchButtonClick" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}">
+                <Button Width="32" Height="32" x:Name="SeatchButton" Click="OnSearchButtonClick" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" local:ToolTip.TextResource="Search/Text">
                     <FontIcon FontSize="14" Glyph="&#xe721;"/>
                 </Button>
             </muxc:NavigationView.PaneFooter>

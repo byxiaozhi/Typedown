@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
 using System.Reactive.Disposables;
@@ -100,15 +99,14 @@ namespace Typedown.Universal.Controls
                     {
                         case FileTypeHelper.FileType.Markdown:
                             e.AcceptedOperation = DataPackageOperation.Link;
-                            e.DragUIOverride.Caption = "打开";
+                            e.DragUIOverride.Caption = Localize.GetString("Open/Text");
                             break;
                         case FileTypeHelper.FileType.Image:
                             e.AcceptedOperation = DataPackageOperation.Link;
-                            e.DragUIOverride.Caption = "插入";
+                            e.DragUIOverride.Caption = Localize.GetString("InsertImage/Text");
                             break;
                     }
                 }
-
             }
             finally
             {

@@ -46,6 +46,7 @@
             x:Name="SettingsButton"
             Grid.Column="2" 
             Margin="0,0,4,0" 
+            local:ToolTip.TextResource="Settings/Text"
             Style="{ThemeResource EllipsisIconButtonStyle}" 
             Command="{x:Bind ViewModel.NavigateCommand}" 
             CommandParameter="Settings/General"

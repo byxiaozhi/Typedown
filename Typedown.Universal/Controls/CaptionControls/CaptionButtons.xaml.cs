@@ -53,9 +53,14 @@ namespace Typedown.Universal.Controls
             var foreground = Resources[isActived ? "ActivedButtonForeground" : "DeactivedButtonForeground"] as Brush;
             Button_Minimize.Foreground = foreground;
             Button_MaximizeOrRestore.Foreground = foreground;
-            Button_Close.Foreground= foreground;
+            Button_Close.Foreground = foreground;
         }
 
-        private void UpdateMaximizeButtonIcon() => Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(PInvoke.IsZoomed(WindowHandle) ? "&#xe923;" : "&#xe922;");
+        private void UpdateMaximizeButtonIcon()
+        {
+            var isZoomed = PInvoke.IsZoomed(WindowHandle);
+            Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(isZoomed ? "&#xe923;" : "&#xe922;");
+            ToolTip.SetTextResource(Button_MaximizeOrRestore, isZoomed ? "Restore/Text" : "Maximize/Text");
+        }
     }
 }

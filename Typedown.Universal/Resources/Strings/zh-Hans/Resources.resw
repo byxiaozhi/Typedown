@@ -262,8 +262,8 @@
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close.Text" xml:space="preserve">
-    <value>退出</value>
-    <comment>退出</comment>
+    <value>关闭</value>
+    <comment>关闭</comment>
   </data>
   <data name="CodeFences.Text" xml:space="preserve">
     <value>代码块</value>
@@ -581,6 +581,10 @@
     <value>在右边插入列</value>
     <comment>在右边插入列</comment>
   </data>
+  <data name="InsertImage.Text" xml:space="preserve">
+    <value>插入图像</value>
+    <comment>插入图像</comment>
+  </data>
   <data name="InsertImageAction.CopyToPath" xml:space="preserve">
     <value>复制到指定路径</value>
     <comment>复制到指定路径</comment>
@@ -649,6 +653,10 @@
     <value>公式块</value>
     <comment>公式块</comment>
   </data>
+  <data name="Maximize.Text" xml:space="preserve">
+    <value>最大化</value>
+    <comment>最大化</comment>
+  </data>
   <data name="MenuBarPage.Content" xml:space="preserve">
     <value>菜单栏</value>
     <comment>菜单栏</comment>
@@ -656,6 +664,10 @@
   <data name="Mermaid.Text" xml:space="preserve">
     <value>Mermaid</value>
     <comment>Mermaid</comment>
+  </data>
+  <data name="Minimize.Text" xml:space="preserve">
+    <value>最小化</value>
+    <comment>最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
     <value>分钟</value>
@@ -789,6 +801,10 @@
     <value>调整表格大小</value>
     <comment>调整表格</comment>
   </data>
+  <data name="Restore.Text" xml:space="preserve">
+    <value>还原</value>
+    <comment>还原</comment>
+  </data>
   <data name="RestoreDefaultSettings.Text" xml:space="preserve">
     <value>重置为默认值</value>
     <comment>恢复默认</comment>
@@ -804,6 +820,10 @@
   <data name="Saved" xml:space="preserve">
     <value>保存</value>
     <comment>已保存</comment>
+  </data>
+  <data name="Search.Text" xml:space="preserve">
+    <value>搜索</value>
+    <comment>搜索</comment>
   </data>
   <data name="SelectAll.Text" xml:space="preserve">
     <value>全选</value>
