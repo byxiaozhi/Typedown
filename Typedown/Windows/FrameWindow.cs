@@ -233,7 +233,6 @@ namespace Typedown.Windows
                     break;
                 case PInvoke.WindowMessage.WM_DPICHANGED:
                     UpdateScaleProperty();
-                    UpdateBorderThinessProperty();
                     var rect = Marshal.PtrToStructure<PInvoke.RECT>(lParam);
                     PInvoke.SetWindowPos(hWnd, 0, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, PInvoke.SetWindowPosFlags.SWP_NOZORDER);
                     break;
