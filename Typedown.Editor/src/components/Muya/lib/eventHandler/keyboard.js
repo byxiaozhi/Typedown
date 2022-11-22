@@ -8,6 +8,7 @@ class Keyboard {
   constructor(muya) {
     this.muya = muya
     this.isComposed = false
+    this.isControlDown = false
     this.shownFloat = new Set()
     this.recordIsComposed()
     this.dispatchEditorState()
@@ -130,6 +131,7 @@ class Keyboard {
 
     const handler = event => {
       if (event.metaKey || event.ctrlKey) {
+        this.isControlDown = true
         container.classList.add('ag-meta-or-ctrl')
       }
 
@@ -227,6 +229,7 @@ class Keyboard {
   keyupBinding() {
     const { container, eventCenter, contentState } = this.muya
     const handler = event => {
+      this.isControlDown = false
       container.classList.remove('ag-meta-or-ctrl')
       // check if edit emoji
       const node = selection.getSelectionStart()
@@ -291,7 +294,15 @@ class Keyboard {
       }
     }
 
-    eventCenter.attachDOMEvent(window, 'keyup', handler) // temp use input event
+    const mousemoveHandler = event => {
+      if (this.isControlDown && !event.metaKey && !event.ctrlKey) {
+        this.isControlDown = false
+        container.classList.remove('ag-meta-or-ctrl')
+      }
+    }
+
+    eventCenter.attachDOMEvent(container, 'keyup', handler) // temp use input event
+    eventCenter.attachDOMEvent(container, 'mousemove', mousemoveHandler)
   }
 }
 
