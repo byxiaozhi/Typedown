@@ -19,6 +19,8 @@ namespace Typedown.Windows
 
         private static readonly PInvoke.WindowProc staticWndProc = new(StaticWndProc);
 
+        private readonly DispatcherTimer timer = new() { Interval = TimeSpan.FromSeconds(1) };
+
         static FrameWindow()
         {
             PInvoke.EnableMouseInPointer(true);
@@ -114,9 +116,15 @@ namespace Typedown.Windows
 
         private bool isInternalChange = false;
 
+        public FrameWindow()
+        {
+            timer.Tick += OnTick;
+        }
+
         protected virtual void OnCreated(EventArgs args)
         {
             Created?.Invoke(this, args);
+            timer.Start();
         }
 
         protected virtual void OnClosing(CancelEventArgs args)
@@ -127,6 +135,7 @@ namespace Typedown.Windows
         protected virtual void OnClosed(EventArgs args)
         {
             Closed?.Invoke(this, args);
+            timer.Stop();
         }
 
         [SuppressPropertyChangedWarnings]
@@ -199,6 +208,11 @@ namespace Typedown.Windows
                 WindowState.Maximized => PInvoke.ShowWindowCommand.Maximize,
                 _ => PInvoke.ShowWindowCommand.Normal
             });
+            UpdateActiveProperty();
+        }
+
+        private void OnTick(object sender, object e)
+        {
             UpdateActiveProperty();
         }
 

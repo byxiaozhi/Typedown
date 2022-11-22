@@ -291,7 +291,7 @@ class Keyboard {
       }
     }
 
-    eventCenter.attachDOMEvent(container, 'keyup', handler) // temp use input event
+    eventCenter.attachDOMEvent(window, 'keyup', handler) // temp use input event
   }
 }
 
