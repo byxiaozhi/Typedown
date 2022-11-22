@@ -81,6 +81,13 @@ namespace Typedown.Windows
         }
 
         [SuppressPropertyChangedWarnings]
+        protected override void OnIsActivedChanged(EventArgs args)
+        {
+            base.OnIsActivedChanged(args);
+            WindowService?.RaiseWindowIsActivedChanged(Handle);
+        }
+
+        [SuppressPropertyChangedWarnings]
         protected override void OnLocationChanged(EventArgs e)
         {
             base.OnLocationChanged(e);
@@ -96,17 +103,22 @@ namespace Typedown.Windows
 
         private void UpdateDragBar()
         {
-            CaptionHeight = 32;
             if (AppViewModel.GoBackCommand.IsExecutable)
             {
                 LeftClientAreaWidth = 32;
+                CaptionHeight = 32;
             }
             else if (AppViewModel.SettingsViewModel.AppCompactMode)
             {
                 LeftClientAreaWidth = AppViewModel.UIViewModel.MenuBarWidth;
                 CaptionHeight = 40;
             }
-            RightClientAreaWidth = Universal.Config.IsMicaSupported ? 0 : 46 * 3;
+            else
+            {
+                LeftClientAreaWidth = 0;
+                CaptionHeight = 32;
+            }
+            RightClientAreaWidth = Config.IsMicaSupported ? 0 : 46 * 3;
         }
 
         private void CloseMenuFlyout()

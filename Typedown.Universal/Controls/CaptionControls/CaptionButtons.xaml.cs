@@ -5,6 +5,7 @@ using Typedown.Universal.Interfaces;
 using Typedown.Universal.Utilities;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace Typedown.Universal.Controls
 {
@@ -38,12 +39,22 @@ namespace Typedown.Universal.Controls
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             disposables.Add(WindowService.WindowStateChanged.Subscribe(OnWindowStateChanged));
+            disposables.Add(WindowService.WindowIsActivedChanged.Subscribe(OnWindowIsActivedChanged));
             UpdateMaximizeButtonIcon();
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e) => disposables.Clear();
 
         private void OnWindowStateChanged(nint hWnd) => UpdateMaximizeButtonIcon();
+
+        private void OnWindowIsActivedChanged(nint hWnd)
+        {
+            var isActived = PInvoke.GetForegroundWindow() == hWnd;
+            var foreground = Resources[isActived ? "ActivedButtonForeground" : "DeactivedButtonForeground"] as Brush;
+            Button_Minimize.Foreground = foreground;
+            Button_MaximizeOrRestore.Foreground = foreground;
+            Button_Close.Foreground= foreground;
+        }
 
         private void UpdateMaximizeButtonIcon() => Icon_MaximizeOrRestore.Glyph = WebUtility.HtmlDecode(PInvoke.IsZoomed(WindowHandle) ? "&#xe923;" : "&#xe922;");
     }

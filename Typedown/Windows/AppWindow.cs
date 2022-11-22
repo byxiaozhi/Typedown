@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI;
 using Windows.Foundation;
 using PropertyChanged;
+using Typedown.Universal;
 
 namespace Typedown.Windows
 {
@@ -92,7 +93,7 @@ namespace Typedown.Windows
             var rawDragBarHeight = rawCaptionHeight + rawTopInvisibleHeight;
             PInvoke.SetWindowPos(XamlSourceHandle, 0, 0, rawTopInvisibleHeight, rect.right, rect.bottom - rawTopInvisibleHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW | PInvoke.SetWindowPosFlags.SWP_NOZORDER);
             PInvoke.SetWindowPos(topBorder.Handle, 0, 0, 0, rect.right - rawCaptionButtonsWidth, rawBorderThiness, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
-            PInvoke.SetWindowPos(dragBar.Handle, 0, rawLeftClientAreaWidth, 0, rect.right - rawRightClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
+            PInvoke.SetWindowPos(dragBar.Handle, 0, rawLeftClientAreaWidth, 0, rect.right - rawRightClientAreaWidth - rawLeftClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
         }
 
         [SuppressPropertyChangedWarnings]

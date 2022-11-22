@@ -9,6 +9,8 @@ namespace Typedown.Universal.Interfaces
     {
         Subject<nint> WindowStateChanged { get; }
 
+        Subject<nint> WindowIsActivedChanged { get; }
+
         nint GetWindow(UIElement element);
 
         Point GetCursorPos(UIElement relativeTo);
