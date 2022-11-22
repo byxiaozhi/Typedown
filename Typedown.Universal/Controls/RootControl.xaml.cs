@@ -65,12 +65,21 @@ namespace Typedown.Universal.Controls
 
         private void UpdateWindowBorder(nint hWnd)
         {
-            var thickness = PInvoke.IsZoomed(hWnd) ? 0 : 1 / (PInvoke.GetDpiForWindow(hWnd) / 96d);
-            RootGrid.BorderThickness = new(0, thickness, 0, 0);
+            if (PInvoke.IsZoomed(hWnd))
+            {
+                RootGrid.BorderThickness = new(0);
+                return;
+            }
+            if (Environment.OSVersion.Version.Build >= 22000)
+            {
+                RootGrid.BorderThickness = new(0, 1, 0, 0);
+                return;
+            }
             var isDarkMode = ActualTheme == Windows.UI.Xaml.ElementTheme.Dark;
             var isActived = PInvoke.GetForegroundWindow() == hWnd;
             int alpha = Config.IsMicaSupported ? 0 : 255;
             int color = isDarkMode ? isActived ? 50 : 60 : isActived ? 110 : 170;
+            RootGrid.BorderThickness = new(0, 1 / (PInvoke.GetDpiForWindow(hWnd) / 96d), 0, 0);
             RootGrid.BorderBrush = new SolidColorBrush(Color.FromArgb((byte)alpha, (byte)color, (byte)color, (byte)color));
         }
 
