@@ -14,7 +14,10 @@ namespace Typedown.Universal.Utilities
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool QueryPerformanceFrequency(out long frequency);
 
-        [DllImport("kernel32", EntryPoint = "LoadLibraryW", CharSet = CharSet.Unicode, ExactSpelling = true)]
-        public static extern IntPtr LoadLibrary([MarshalAs(UnmanagedType.LPStr)] string lpFileName);
+        [DllImport("kernel32.dll", EntryPoint = "LoadLibraryW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern IntPtr LoadLibrary([MarshalAs(UnmanagedType.LPWStr)] string lpFileName);
+
+        [DllImport("kernel32.dll", EntryPoint = "GetModuleHandleW", CharSet = CharSet.Unicode, ExactSpelling = true)]
+        public static extern nint GetModuleHandle([MarshalAs(UnmanagedType.LPWStr)] string lpModuleName);
     }
 }

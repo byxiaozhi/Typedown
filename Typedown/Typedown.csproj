@@ -52,10 +52,4 @@
 		<None Include="Resources\Statics\**" CopyToOutputDirectory="PreserveNewest" Link="Resources\Statics\%(RecursiveDir)\%(Filename)%(Extension)" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Content Include="Assets\logo.ico">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
-
 </Project>

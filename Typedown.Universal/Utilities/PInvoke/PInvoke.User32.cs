@@ -879,7 +879,7 @@ namespace Typedown.Universal.Utilities
         public static extern nint LoadCursor(nint hInstance, int lpCursorName);
 
         [DllImport("user32.dll", EntryPoint = "LoadIconW", CharSet = CharSet.Unicode, ExactSpelling = true)]
-        public static extern IntPtr LoadIcon(IntPtr hInstance, nint lpIconName);
+        public static extern IntPtr LoadIcon(nint hInstance, string lpIconName);
 
         public delegate bool EnumWindowsProc(nint hwnd, nint lParam);
 
