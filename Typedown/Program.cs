@@ -7,6 +7,7 @@ using Typedown.Universal.Utilities;
 using System.Threading;
 using System.Threading.Tasks;
 using Typedown.Windows;
+using Typedown.Universal;
 
 namespace Typedown
 {
@@ -62,7 +63,7 @@ namespace Typedown
         private static void OpenNewWindow()
         {
             using var client = new NamedPipeClientStream(".", "Typedown.Program.PiPe", PipeDirection.InOut);
-            client.Connect(1000);
+            client.Connect();
             using var reader = new StreamReader(client);
             using var writer = new StreamWriter(client);
             writer.WriteLine(string.Join("\0", Environment.GetCommandLineArgs()));
@@ -85,6 +86,7 @@ namespace Typedown
                     var handle = await Dispatcher.InvokeAsync(() => Utilities.Common.OpenNewWindow(args));
                     await writer.WriteLineAsync(handle.ToString());
                     await writer.FlushAsync();
+                    await App.Dispatcher.TryRunIdleAsync(_ => { });
                 }
                 catch (Exception ex)
                 {
