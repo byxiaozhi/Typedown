@@ -264,6 +264,7 @@
     <Compile Include="Interfaces\IFileOperation.cs" />
     <Compile Include="Interfaces\IKeyboardAccelerator.cs" />
     <Compile Include="Interfaces\IMarkdownEditor.cs" />
+    <Compile Include="Interfaces\IPowerShellService.cs" />
     <Compile Include="Interfaces\IWindowPrivate.cs" />
     <Compile Include="Migrations\20221105150222_InitialCreate.cs" />
     <Compile Include="Migrations\20221105150222_InitialCreate.designer.cs">
@@ -476,9 +477,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.PowerShell.SDK">
-      <Version>6.1.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Win32.UI.XamlApplication">
       <Version>6.1.3</Version>

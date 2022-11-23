@@ -21,13 +21,9 @@ namespace Typedown.Universal.Models.UploadConfigModels
         {
             return await Task.Run(() =>
             {
-                using var powerShell = System.Management.Automation.PowerShell.Create();
-                powerShell.AddScript(Script);
-                powerShell.Invoke();
-                powerShell.Commands.Clear();
-                powerShell.AddCommand("Upload-Image").AddParameters(new List<string>() { filePath });
-                var result = powerShell.Invoke();
-                return result.First().ToString();
+                var powerShell = serviceProvider.GetService<IPowerShellService>();
+                var result = powerShell.Invoke(Script, "Upload-Image", filePath);
+                return result.First();
             });
         }
     }
