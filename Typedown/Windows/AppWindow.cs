@@ -8,12 +8,12 @@ using Windows.UI.Xaml;
 using Typedown.Universal.Controls;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Controls;
-using Microsoft.Toolkit.Win32.UI.XamlHost;
 using Windows.UI.Xaml.Media;
 using Windows.UI;
 using Windows.Foundation;
 using PropertyChanged;
 using Typedown.Universal;
+using Typedown.Interfaces;
 
 namespace Typedown.Windows
 {
@@ -64,7 +64,7 @@ namespace Typedown.Windows
         {
             base.OnCreated(args);
 
-            var desktopWindowXamlSourceNative = xamlSource.GetInterop<IDesktopWindowXamlSourceNative>();
+            var desktopWindowXamlSourceNative = xamlSource as IDesktopWindowXamlSourceNative;
             desktopWindowXamlSourceNative.AttachToWindow(Handle);
             CoreWindowHelper.DetachCoreWindow();
             XamlSourceHandle = desktopWindowXamlSourceNative.WindowHandle;

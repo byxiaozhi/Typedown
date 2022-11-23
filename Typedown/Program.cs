@@ -39,6 +39,7 @@ namespace Typedown
 
         private static void Startup()
         {
+            PInvoke.SetProcessDPIAware();
             hHook = PInvoke.SetWindowsHookEx(PInvoke.HookType.WH_CBT, hookProc, IntPtr.Zero, PInvoke.GetCurrentThreadId());
             using (new Universal.App())
             {

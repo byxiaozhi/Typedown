@@ -986,5 +986,8 @@ namespace Typedown.Universal.Utilities
 
         [DllImport("user32.dll", EntryPoint = "LoadImageW", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern nint LoadImage(nint hinst, string lpszName, uint uType, int cxDesired, int cyDesired, uint fuLoad);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern bool SetProcessDPIAware();
     }
 }
