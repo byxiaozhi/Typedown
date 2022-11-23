@@ -33,9 +33,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="PdfiumViewer" Version="2.13.0" />
 		<PackageReference Include="PdfiumViewer.Native.x86_64.no_v8-no_xfa" Version="2018.4.8.256" />
-		<PackageReference Include="PropertyChanged.Fody" Version="4.0.5">
-			<PrivateAssets>All</PrivateAssets>
-		</PackageReference>
+		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="all" />
 	</ItemGroup>
 
 	<ItemGroup>
