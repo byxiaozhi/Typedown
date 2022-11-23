@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Typedown.Universal;
 using Typedown.Universal.Utilities;
@@ -12,38 +11,12 @@ namespace Typedown.Windows
 {
     public partial class FrameWindow : DependencyObject, INotifyPropertyChanged
     {
-        private static readonly string ClassName = typeof(FrameWindow).FullName;
+        private static readonly WindowClass windowClass = WindowClass.Register(typeof(FrameWindow).FullName, StaticWndProc);
 
         private static readonly Dictionary<nint, FrameWindow> windows = new();
         public static IEnumerable<FrameWindow> Windows => windows.Values;
 
-        private static readonly PInvoke.WindowProc staticWndProc = new(StaticWndProc);
-
         private DispatcherTimer timer;
-
-        static FrameWindow()
-        {
-            PInvoke.EnableMouseInPointer(true);
-            RegisterClass();
-        }
-
-        private static bool RegisterClass()
-        {
-            var wndClass = new PInvoke.WNDCLASSEX();
-            wndClass.cbSize = Marshal.SizeOf(wndClass);
-            wndClass.style = PInvoke.ClassStyles.HorizontalRedraw | PInvoke.ClassStyles.VerticalRedraw;
-            wndClass.lpfnWndProc = staticWndProc;
-            wndClass.cbClsExtra = 0;
-            wndClass.cbWndExtra = 0;
-            wndClass.hInstance = Process.GetCurrentProcess().Handle;
-            wndClass.hIcon = PInvoke.LoadIcon(PInvoke.GetModuleHandle(null), "#32512");
-            wndClass.hCursor = PInvoke.LoadCursor(0, (int)PInvoke.IDC_STANDARD_CURSORS.IDC_ARROW);
-            wndClass.hbrBackground = 0;
-            wndClass.lpszMenuName = null;
-            wndClass.lpszClassName = ClassName;
-            var result = PInvoke.RegisterClassEx(ref wndClass);
-            return result != 0;
-        }
 
         private static IntPtr StaticWndProc(nint hWnd, uint msg, nint wParam, nint lParam)
         {
@@ -169,13 +142,7 @@ namespace Typedown.Windows
             if (State == WindowState.Maximized)
                 style |= PInvoke.WindowStyles.WS_MAXIMIZE;
             var exStyle = PInvoke.WindowStylesEx.WS_EX_NOREDIRECTIONBITMAP;
-            Handle = PInvoke.CreateWindowEx(
-                exStyle, ClassName, Title, style,
-                0, 0, 0, 0,
-                IntPtr.Zero,
-                IntPtr.Zero,
-                Process.GetCurrentProcess().Handle,
-                IntPtr.Zero);
+            Handle = windowClass.CreateWindow(Title, style, exStyle);
             InitializeWindow();
             windows.Add(Handle, this);
             OnCreated(EventArgs.Empty);

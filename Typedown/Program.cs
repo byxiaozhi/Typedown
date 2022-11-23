@@ -41,6 +41,7 @@ namespace Typedown
         private static void Startup()
         {
             PInvoke.SetProcessDPIAware();
+            PInvoke.EnableMouseInPointer(true);
             hHook = PInvoke.SetWindowsHookEx(PInvoke.HookType.WH_CBT, hookProc, IntPtr.Zero, PInvoke.GetCurrentThreadId());
             using (new App())
             {
