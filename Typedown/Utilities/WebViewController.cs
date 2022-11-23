@@ -592,7 +592,7 @@ namespace Typedown.Utilities
                 {
                     webView2ProcessId = CoreWebView2.BrowserProcessId;
                     if (Process.GetProcessById((int)webView2ProcessId) is Process process)
-                        process.MaxWorkingSet = new(30 * 1024 * 1024);
+                        process.MaxWorkingSet = process.MinWorkingSet;
                 }
             }
         }

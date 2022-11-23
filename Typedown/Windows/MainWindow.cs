@@ -44,12 +44,11 @@ namespace Typedown.Windows
             InitializeComponent();
         }
 
-        private async void InitializeComponent()
+        private void InitializeComponent()
         {
             DataContext = AppViewModel;
             Content = RootControl;
             InitializeBinding();
-            await Dispatcher.RunIdleAsync(_ => SetMaxWorkingSetSize());
         }
 
         public void InitializeBinding()
@@ -198,14 +197,18 @@ namespace Typedown.Windows
             Close();
         }
 
-        protected async override void OnClosed(EventArgs e)
+        protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
             var keepRun = AppViewModel.SettingsViewModel.KeepRun;
             ServiceScope?.Dispose();
-            if (!AppViewModel.GetInstances().Any() && !keepRun)
-                Program.Dispatcher.Shutdown();
-            await Dispatcher.RunIdleAsync(_ => SetMaxWorkingSetSize());
+            if (!AppViewModel.GetInstances().Any())
+            {
+                if (keepRun)
+                    Process.GetCurrentProcess().MaxWorkingSet = Process.GetCurrentProcess().MinWorkingSet;
+                else
+                    Program.Dispatcher.Shutdown();
+            }
         }
 
         private bool isPlacementSaving = false;
@@ -224,14 +227,6 @@ namespace Typedown.Windows
                     isPlacementSaving = false;
                 }
             }
-        }
-
-        private void SetMaxWorkingSetSize()
-        {
-            var baseSize = 10 * 1024 * 1024;
-            var instanceSize = 20 * 1024 * 1024;
-            var totalSize = baseSize + AppViewModel.GetInstances().Count * instanceSize;
-            Process.GetCurrentProcess().MaxWorkingSet = new(totalSize);
         }
     }
 }
