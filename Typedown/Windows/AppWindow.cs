@@ -34,12 +34,6 @@ namespace Typedown.Windows
         public static DependencyProperty IsMicaEnableProperty { get; } = DependencyProperty.Register(nameof(IsMicaEnable), typeof(bool), typeof(AppWindow), new(true, OnPropertyChanged));
         public bool IsMicaEnable { get => (bool)GetValue(IsMicaEnableProperty); set => SetValue(IsMicaEnableProperty, value); }
 
-        public static DependencyProperty LeftClientAreaWidthProperty { get; } = DependencyProperty.Register(nameof(LeftClientAreaWidth), typeof(double), typeof(AppWindow), new(0d, OnPropertyChanged));
-        public double LeftClientAreaWidth { get => (double)GetValue(LeftClientAreaWidthProperty); set => SetValue(LeftClientAreaWidthProperty, value); }
-
-        public static DependencyProperty RightClientAreaWidthProperty { get; } = DependencyProperty.Register(nameof(RightClientAreaWidth), typeof(double), typeof(AppWindow), new(0d, OnPropertyChanged));
-        public double RightClientAreaWidth { get => (double)GetValue(RightClientAreaWidthProperty); set => SetValue(RightClientAreaWidthProperty, value); }
-
         public IntPtr XamlSourceHandle { get; private set; }
 
         private readonly WindowRootLayout rootLayout = new();
@@ -47,8 +41,6 @@ namespace Typedown.Windows
         private readonly ContentPresenter rootContent = new();
 
         private readonly DesktopWindowXamlSource xamlSource = new();
-
-        private DragWindow topBorder, dragBar;
 
         private readonly UISettings uiSettings = new();
 
@@ -69,9 +61,6 @@ namespace Typedown.Windows
             CoreWindowHelper.DetachCoreWindow();
             XamlSourceHandle = desktopWindowXamlSourceNative.WindowHandle;
 
-            dragBar = new(Handle);
-            topBorder = new(Handle);
-
             PInvoke.DwmExtendFrameIntoClientArea(Handle, new PInvoke.MARGINS() { cyTopHeight = Config.IsMicaSupported ? -1 : 0 });
             PInvoke.SetWindowPos(Handle, 0, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_FRAMECHANGED | PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
 
@@ -85,15 +74,8 @@ namespace Typedown.Windows
                 return;
             PInvoke.GetClientRect(Handle, out var rect);
             var rawBorderThiness = (int)(BorderThiness * ScalingFactor);
-            var rawCaptionHeight = (int)(CaptionHeight * ScalingFactor);
-            var rawCaptionButtonsWidth = (int)((46 * 3) * ScalingFactor);
-            var rawLeftClientAreaWidth = (int)(LeftClientAreaWidth * ScalingFactor);
-            var rawRightClientAreaWidth = (int)(RightClientAreaWidth * ScalingFactor);
             var rawTopInvisibleHeight = State == WindowState.Maximized ? rawBorderThiness : 0;
-            var rawDragBarHeight = rawCaptionHeight + rawTopInvisibleHeight;
             PInvoke.SetWindowPos(XamlSourceHandle, 0, 0, rawTopInvisibleHeight, rect.right, rect.bottom - rawTopInvisibleHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW | PInvoke.SetWindowPosFlags.SWP_NOZORDER);
-            PInvoke.SetWindowPos(topBorder.Handle, 0, 0, 0, rect.right - rawCaptionButtonsWidth, rawBorderThiness, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
-            PInvoke.SetWindowPos(dragBar.Handle, 0, rawLeftClientAreaWidth, 0, rect.right - rawLeftClientAreaWidth - rawRightClientAreaWidth, rawDragBarHeight, PInvoke.SetWindowPosFlags.SWP_SHOWWINDOW);
         }
 
         [SuppressPropertyChangedWarnings]
@@ -111,10 +93,6 @@ namespace Typedown.Windows
             else if (e.Property == IsMicaEnableProperty || e.Property == ThemeProperty)
             {
                 target.UpdateSystemBackdrop();
-            }
-            else if (e.Property == LeftClientAreaWidthProperty || e.Property == RightClientAreaWidthProperty)
-            {
-                target.UpdateClientPos();
             }
         }
 

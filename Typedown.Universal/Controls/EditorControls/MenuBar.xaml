@@ -10,6 +10,8 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
     xmlns:viewmodels="using:Typedown.Universal.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     SizeChanged="OnSizeChanged"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" 
     xmlns:converters="using:Typedown.Universal.Converters"
@@ -25,7 +27,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <muxc:MenuBar x:Name="MenuBarControl" SizeChanged="OnMenuBarSizeChanged">
+        <muxc:MenuBar x:Name="MenuBarControl">
             <items:FileItem/>
             <items:EditItem/>
             <items:ParagraphItem/>
@@ -39,11 +41,13 @@
             HorizontalAlignment="Center"
             x:Load="{x:Bind Settings.AppCompactMode, Mode=OneWay}">
             <TextBlock 
+                TextTrimming="CharacterEllipsis"
                 Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" 
                 Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center"/>
         </StackPanel>
         <Button 
             x:Name="SettingsButton"
+            HorizontalAlignment="Right"
             Grid.Column="2" 
             Margin="0,0,4,0" 
             local:ToolTip.TextResource="Settings/Text"
@@ -62,10 +66,12 @@
                 </muxc:AnimatedIcon>
             </Viewbox>
         </Button>
+        <local:DragBar x:Name="LeftDragBar" Grid.Column="0" Height="4" VerticalAlignment="Top" x:Load="{x:Bind Settings.AppCompactMode}"/>
+        <local:DragBar x:Name="RightDragBar" Grid.Column="1" x:Load="{x:Bind Settings.AppCompactMode}"/>
         <local:CaptionButtons 
             x:Name="CaptionButtons"
             HorizontalAlignment="Right"
-            Grid.ColumnSpan="3"
-            x:Load="{x:Bind Settings.AppCompactMode}"/>
+            Grid.Column="2"
+            x:Load="{x:Bind CaptionButtonsLoad(Settings.AppCompactMode), Mode=OneWay}"/>
     </Grid>
 </UserControl>

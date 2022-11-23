@@ -15,6 +15,8 @@ namespace Typedown.Universal.Interfaces
 
         nint GetWindow(UIElement element);
 
+        nint GetXamlSourceHandle(UIElement element);
+
         Point GetCursorPos(UIElement relativeTo);
     }
 }

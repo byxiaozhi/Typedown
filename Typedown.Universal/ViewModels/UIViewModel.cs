@@ -26,9 +26,9 @@ namespace Typedown.Universal.ViewModels
 
         public string MainWindowTitle { get; private set; }
 
-        public double MenuBarWidth { get; set; }
-
         public ElementTheme ActualTheme { get; private set; }
+
+        public double CaptionHeight { get; set; } = 32;
 
         private readonly CompositeDisposable disposables = new();
 

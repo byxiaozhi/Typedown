@@ -57,10 +57,8 @@ namespace Typedown.Windows
             BindingOperations.SetBinding(this, TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             BindingOperations.SetBinding(this, IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             BindingOperations.SetBinding(this, TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
+            BindingOperations.SetBinding(this, CaptionHeightProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.CaptionHeight)) });
             BindingOperations.SetBinding(KeyboardAccelerator, KeyboardAccelerator.IsEnableProperty, new Binding() { Source = this, Path = new(nameof(IsActived)) });
-            AppViewModel.GoBackCommand.CanExecuteChanged += (s, e) => UpdateDragBar();
-            AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.MenuBarWidth)).Subscribe(_ => UpdateDragBar());
-            UpdateDragBar();
         }
 
         protected override void OnCreated(EventArgs args)
@@ -105,26 +103,6 @@ namespace Typedown.Windows
         {
             base.OnSizeChanged(args);
             SaveWindowPlacementWithOffset();
-        }
-
-        private void UpdateDragBar()
-        {
-            if (AppViewModel.GoBackCommand.IsExecutable)
-            {
-                LeftClientAreaWidth = 32;
-                CaptionHeight = 32;
-            }
-            else if (AppViewModel.SettingsViewModel.AppCompactMode)
-            {
-                LeftClientAreaWidth = AppViewModel.UIViewModel.MenuBarWidth;
-                CaptionHeight = 40;
-            }
-            else
-            {
-                LeftClientAreaWidth = 0;
-                CaptionHeight = 32;
-            }
-            RightClientAreaWidth = Config.IsMicaSupported ? 0 : 46 * 3;
         }
 
         private void CloseMenuFlyout()

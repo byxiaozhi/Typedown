@@ -13,7 +13,7 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <Grid Height="32" ColumnSpacing="8" x:Name="CaptionWrapper">
+    <Grid Height="32" x:Name="CaptionWrapper">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="NavigationState">
                 <VisualStateGroup.Transitions>
@@ -22,6 +22,9 @@
                             <Storyboard>
                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackButton" Storyboard.TargetProperty="Visibility">
                                     <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                </ObjectAnimationUsingKeyFrames>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitlePanel" Storyboard.TargetProperty="Margin">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="4,0,0,0"/>
                                 </ObjectAnimationUsingKeyFrames>
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitlePanelTranslation" Storyboard.TargetProperty="X">
                                     <EasingDoubleKeyFrame KeyTime="0" Value="-22"/>
@@ -36,6 +39,9 @@
                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackButton" Storyboard.TargetProperty="Visibility">
                                     <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
                                 </ObjectAnimationUsingKeyFrames>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitlePanel" Storyboard.TargetProperty="Margin">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="12,0,0,0"/>
+                                </ObjectAnimationUsingKeyFrames>
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitlePanelTranslation" Storyboard.TargetProperty="X">
                                     <EasingDoubleKeyFrame KeyTime="0" Value="22"/>
                                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
@@ -47,27 +53,22 @@
                 <VisualState x:Name="BackVisible">
                     <VisualState.Setters>
                         <Setter Target="BackButton.Visibility" Value="Visible"/>
+                        <Setter Target="TitlePanel.Margin" Value="4,0,0,0"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="BackCollapsed">
                     <VisualState.Setters>
                         <Setter Target="BackButton.Visibility" Value="Collapsed"/>
+                        <Setter Target="TitlePanel.Margin" Value="12,0,0,0"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="4"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="TitlePanel" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
-            <StackPanel.RenderTransform>
-                <TranslateTransform x:Name="TitlePanelTranslation" />
-            </StackPanel.RenderTransform>
-            <Image Source="ms-appx:///Assets/Square44x44Logo.png" Width="24" Height="24" VerticalAlignment="Center"/>
-            <TextBlock Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center"/>
-        </StackPanel>
         <Button 
             VerticalAlignment="Center" 
             Grid.Column="0" 
@@ -88,6 +89,14 @@
                 </muxc:AnimatedIcon>
             </Viewbox>
         </Button>
+        <StackPanel x:Name="TitlePanel" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="8" Margin="12,0,0,0">
+            <StackPanel.RenderTransform>
+                <TranslateTransform x:Name="TitlePanelTranslation" />
+            </StackPanel.RenderTransform>
+            <Image Source="ms-appx:///Assets/Square44x44Logo.png" Width="24" Height="24" VerticalAlignment="Center"/>
+            <TextBlock Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center"/>
+        </StackPanel>
+        <local:DragBar Grid.Column="1"/>
         <local:CaptionButtons x:Name="CaptionButtons" Grid.Column="2" x:Load="{x:Bind app:Config.IsMicaSupported.Equals(x:False)}"/>
     </Grid>
 </UserControl>

@@ -23,6 +23,8 @@ namespace Typedown.Services
 
         public nint GetWindow(UIElement element) => AppWindow.GetWindow(element)?.Handle ?? default;
 
+        public nint GetXamlSourceHandle(UIElement element) => AppWindow.GetWindow(element)?.XamlSourceHandle ?? default;
+
         public Point GetCursorPos(UIElement relativeTo)
         {
             var window = AppWindow.GetWindow(relativeTo);

@@ -11,24 +11,12 @@ namespace Typedown.Windows
 {
     public partial class FrameWindow : DependencyObject, INotifyPropertyChanged
     {
-        private static readonly WindowClass windowClass = WindowClass.Register(typeof(FrameWindow).FullName, StaticWndProc);
+        private static readonly WindowClass windowClass = WindowClass.Register(typeof(FrameWindow).FullName);
 
         private static readonly Dictionary<nint, FrameWindow> windows = new();
         public static IEnumerable<FrameWindow> Windows => windows.Values;
 
         private DispatcherTimer timer;
-
-        private static IntPtr StaticWndProc(nint hWnd, uint msg, nint wParam, nint lParam)
-        {
-            if (windows.TryGetValue(hWnd, out var val))
-            {
-                var result = val.WndProc(hWnd, msg, wParam, lParam);
-                if (msg == (uint)PInvoke.WindowMessage.WM_DESTROY)
-                    windows.Remove(hWnd);
-                return result;
-            }
-            return PInvoke.DefWindowProc(hWnd, msg, wParam, lParam);
-        }
 
         public static DependencyProperty LeftProperty { get; } = DependencyProperty.Register(nameof(Left), typeof(double), typeof(FrameWindow), new(100d, OnPropertyChanged));
         public double Left { get => (double)GetValue(LeftProperty); set => SetValue(LeftProperty, value); }
@@ -142,7 +130,7 @@ namespace Typedown.Windows
             if (State == WindowState.Maximized)
                 style |= PInvoke.WindowStyles.WS_MAXIMIZE;
             var exStyle = PInvoke.WindowStylesEx.WS_EX_NOREDIRECTIONBITMAP;
-            Handle = windowClass.CreateWindow(Title, style, exStyle);
+            Handle = windowClass.CreateWindow(WndProc, Title, style, exStyle);
             InitializeWindow();
             windows.Add(Handle, this);
             OnCreated(EventArgs.Empty);

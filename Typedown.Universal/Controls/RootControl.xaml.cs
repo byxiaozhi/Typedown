@@ -77,7 +77,7 @@ namespace Typedown.Universal.Controls
             }
             var isDarkMode = ActualTheme == Windows.UI.Xaml.ElementTheme.Dark;
             var isActived = PInvoke.GetForegroundWindow() == hWnd;
-            int alpha = Config.IsMicaSupported ? 0 : 255;
+            int alpha = Environment.OSVersion.Version.Build >= 22000 ? 0 : 255;
             int color = isDarkMode ? isActived ? 50 : 60 : isActived ? 110 : 170;
             RootGrid.BorderThickness = new(0, 1 / (PInvoke.GetDpiForWindow(hWnd) / 96d), 0, 0);
             RootGrid.BorderBrush = new SolidColorBrush(Color.FromArgb((byte)alpha, (byte)color, (byte)color, (byte)color));
