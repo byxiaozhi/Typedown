@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 
 namespace Typedown.Utilities
 {
@@ -16,7 +13,7 @@ namespace Typedown.Utilities
 
         public override void Post(SendOrPostCallback d, object state)
         {
-            _ = dispatcher.InvokeAsync(() => d.Invoke(state));
+            dispatcher.InvokeAsync(() => d.Invoke(state));
         }
 
         public override void Send(SendOrPostCallback d, object state)

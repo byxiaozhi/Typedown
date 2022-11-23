@@ -9,23 +9,18 @@ namespace Typedown.Utilities
 {
     public class Dispatcher
     {
-        private static readonly Dictionary<uint, Dispatcher> dispatchers = new();
+        public static Dispatcher Current => dispatchers[PInvoke.GetCurrentThreadId()];
+
+        private static readonly ConcurrentDictionary<uint, Dispatcher> dispatchers = new();
 
         private readonly BlockingCollection<Action> queue = new();
 
-        private readonly uint threadId;
-
-        private Dispatcher()
-        {
-            threadId = PInvoke.GetCurrentThreadId();
-            dispatchers.Add(threadId, this);
-        }
-
-        public static Dispatcher Current => dispatchers.TryGetValue(PInvoke.GetCurrentThreadId(), out var val) ? val : null;
+        private readonly uint threadId = PInvoke.GetCurrentThreadId();
 
         public static void Run(Action entry)
         {
             var dispatcher = new Dispatcher();
+            dispatchers[dispatcher.threadId] = dispatcher;
             dispatcher.InvokeAsync(entry);
             SynchronizationContext.SetSynchronizationContext(new SyncContext(dispatcher));
             while (PInvoke.GetMessage(out var msg, IntPtr.Zero, 0, 0))
@@ -39,12 +34,8 @@ namespace Typedown.Utilities
                 {
                     action();
                 }
-                if (dispatcher.queue.IsAddingCompleted || 
-                    msg.message == (uint)PInvoke.WindowMessage.WM_QUIT)
-                {
-                    break;
-                }
             }
+            dispatchers.Remove(dispatcher.threadId, out _);
         }
 
         public Task<TResult> InvokeAsync<TResult>(Func<TResult> action)
@@ -76,9 +67,7 @@ namespace Typedown.Utilities
 
         public void Shutdown()
         {
-            lock (dispatchers) dispatchers.Remove(threadId);
-            queue.CompleteAdding();
-            PInvoke.PostThreadMessage(threadId, 0, IntPtr.Zero, IntPtr.Zero);
+            PInvoke.PostThreadMessage(threadId, (uint)PInvoke.WindowMessage.WM_QUIT, IntPtr.Zero, IntPtr.Zero);
         }
     }
 }
