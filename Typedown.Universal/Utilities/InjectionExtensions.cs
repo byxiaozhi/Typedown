@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using Typedown.Universal.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
@@ -19,6 +20,11 @@ namespace Typedown.Universal.Utilities
             {
                 return default;
             }
+        }
+
+        public static Lazy<T> GetServiceLazy<T>(this FrameworkElement element)
+        {
+            return new(() => GetService<T>(element));
         }
 
         public static T GetAncestor<T>(this FrameworkElement element, string name = null) where T : FrameworkElement

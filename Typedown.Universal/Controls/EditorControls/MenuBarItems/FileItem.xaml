@@ -6,15 +6,13 @@
     xmlns:local="using:Typedown.Universal.Controls.EditorControls.MenuBarItems"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Loaded="OnLoaded"
-    Unloaded="OnUnloaded"
     mc:Ignorable="d">
     <MenuFlyoutItem x:Name="NewFileItem" x:Uid="New" KeyboardAcceleratorTextOverride="Ctrl+N" Command="{x:Bind File.NewFileCommand}"/>
     <MenuFlyoutItem x:Name="NewWindowItem" x:Uid="NewWindow" KeyboardAcceleratorTextOverride="Ctrl+Shift+N" Command="{x:Bind File.NewWindowCommand}"/>
     <MenuFlyoutSeparator/>
     <MenuFlyoutItem x:Name="OpenFileItem" x:Uid="Open" KeyboardAcceleratorTextOverride="Ctrl+O" Command="{x:Bind File.OpenFileCommand}"/>
     <MenuFlyoutItem x:Name="OpenFolderItem" x:Uid="OpenFolder" Command="{x:Bind File.OpenFolderCommand}"/>
-    <MenuFlyoutSubItem x:Name="OpenRecentSubMenu" x:Uid="OpenRecent">
+    <MenuFlyoutSubItem x:Name="OpenRecentSubMenu" x:Uid="OpenRecent" Loaded="OnOpenRecentSubMenuLoaded">
         <MenuFlyoutItem x:Name="NoRecentFilesItem" x:Uid="NoRecentFiles" IsEnabled="False"/>
         <MenuFlyoutSeparator/>
         <MenuFlyoutItem x:Name="ClearRecentFilesItem" x:Uid="ClearRecentFiles" Command="{x:Bind File.ClearHistoryCommand}"/>
@@ -24,7 +22,7 @@
     <MenuFlyoutItem x:Name="SaveAsItem" x:Uid="SaveAs" KeyboardAcceleratorTextOverride="Ctrl+Shift+S" Command="{x:Bind File.SaveAsCommand}"/>
     <MenuFlyoutSeparator/>
     <MenuFlyoutItem x:Uid="Import" Command="{x:Bind File.ImportCommand}"/>
-    <MenuFlyoutSubItem  x:Uid="Export">
+    <MenuFlyoutSubItem x:Uid="Export">
         <MenuFlyoutItem Text="PDF" Command="{x:Bind File.ExportCommand}" CommandParameter="pdf"/>
         <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
         <MenuFlyoutItem Text="TEXT" Command="{x:Bind File.ExportCommand}" CommandParameter="text"/>

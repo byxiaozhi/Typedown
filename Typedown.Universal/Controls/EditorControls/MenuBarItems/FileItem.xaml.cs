@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reactive.Disposables;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
 {
@@ -25,19 +14,9 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
 
         public AccessHistory FileHistory => this.GetService<AccessHistory>();
 
-        private readonly CompositeDisposable disposables = new();
-
         public FileItem()
         {
             InitializeComponent();
-        }
-
-        private async void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            await Dispatcher.RunIdleAsync(_ => { });
-            if (!IsLoaded) return;
-            disposables.Add(FileHistory.FileRecentlyOpened.GetCollectionObservable().Subscribe(_ => UpdateOpenRecentItem()));
-            UpdateOpenRecentItem();
         }
 
         protected override void OnRegisterShortcut()
@@ -66,9 +45,9 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
             ClearRecentFilesItem.IsEnabled = files.Any();
         }
 
-        private void OnUnloaded(object sender, RoutedEventArgs e)
+        private void OnOpenRecentSubMenuLoaded(object sender, RoutedEventArgs e)
         {
-            disposables.Clear();
+            UpdateOpenRecentItem();
         }
     }
 }
