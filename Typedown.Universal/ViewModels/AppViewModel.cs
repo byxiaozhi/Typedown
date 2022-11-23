@@ -15,19 +15,19 @@ namespace Typedown.Universal.ViewModels
     {
         public IServiceProvider ServiceProvider { get; }
 
-        public EditorViewModel EditorViewModel { get; }
+        public EditorViewModel EditorViewModel => ServiceProvider.GetService<EditorViewModel>();
 
-        public FileViewModel FileViewModel { get; }
+        public FileViewModel FileViewModel => ServiceProvider.GetService<FileViewModel>();
 
-        public FloatViewModel FloatViewModel { get; }
+        public FloatViewModel FloatViewModel => ServiceProvider.GetService<FloatViewModel>();
 
-        public FormatViewModel FormatViewModel { get; }
+        public FormatViewModel FormatViewModel => ServiceProvider.GetService<FormatViewModel>();
 
-        public ParagraphViewModel ParagraphViewModel { get; }
+        public ParagraphViewModel ParagraphViewModel => ServiceProvider.GetService<ParagraphViewModel>();
 
-        public SettingsViewModel SettingsViewModel { get; }
+        public SettingsViewModel SettingsViewModel => ServiceProvider.GetService<SettingsViewModel>();
 
-        public UIViewModel UIViewModel { get; }
+        public UIViewModel UIViewModel => ServiceProvider.GetService<UIViewModel>();
 
         public IReadOnlyList<Frame> FrameStack { get; set; } = new List<Frame>();
 
@@ -45,26 +45,12 @@ namespace Typedown.Universal.ViewModels
 
         private static readonly List<WeakReference<AppViewModel>> instances = new();
 
-        public AppViewModel(
-            IServiceProvider serviceProvider,
-            EditorViewModel editorViewModel,
-            FileViewModel fileViewModel,
-            FloatViewModel floatViewModel,
-            FormatViewModel formatViewModel,
-            ParagraphViewModel paragraphViewModel,
-            SettingsViewModel settingsViewModel,
-            UIViewModel uiViewModel)
+        public AppViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            EditorViewModel = editorViewModel;
-            FileViewModel = fileViewModel;
-            FloatViewModel = floatViewModel;
-            FormatViewModel = formatViewModel;
-            ParagraphViewModel = paragraphViewModel;
-            SettingsViewModel = settingsViewModel;
-            UIViewModel = uiViewModel;
             GoBackCommand.OnExecute.Subscribe(_ => GoBack());
-            lock (instances) instances.Add(new(this));
+            lock (instances) 
+                instances.Add(new(this));
         }
 
         public void GoBack()
@@ -74,7 +60,8 @@ namespace Typedown.Universal.ViewModels
 
         public void Dispose()
         {
-            lock (instances) instances.RemoveAll(x => !x.TryGetTarget(out var target) || target == this);
+            lock (instances) 
+                instances.RemoveAll(x => !x.TryGetTarget(out var target) || target == this);
         }
 
         ~AppViewModel()

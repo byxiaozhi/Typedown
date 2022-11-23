@@ -107,7 +107,7 @@ namespace Typedown.Controls
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
             CoreWebView2.NewWindowRequested += OnNewWindowRequested;
 #if DEBUG
-            CoreWebView2.OpenDevToolsWindow();
+            // CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 

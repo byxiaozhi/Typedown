@@ -19,7 +19,7 @@ namespace Typedown.Windows
 
         private static readonly PInvoke.WindowProc staticWndProc = new(StaticWndProc);
 
-        private readonly DispatcherTimer timer = new() { Interval = TimeSpan.FromSeconds(1) };
+        private DispatcherTimer timer;
 
         static FrameWindow()
         {
@@ -116,15 +116,10 @@ namespace Typedown.Windows
 
         private bool isInternalChange = false;
 
-        public FrameWindow()
-        {
-            timer.Tick += OnTick;
-        }
-
         protected virtual void OnCreated(EventArgs args)
         {
             Created?.Invoke(this, args);
-            timer.Start();
+            InitializeTimer();
         }
 
         protected virtual void OnClosing(CancelEventArgs args)
@@ -135,7 +130,7 @@ namespace Typedown.Windows
         protected virtual void OnClosed(EventArgs args)
         {
             Closed?.Invoke(this, args);
-            timer.Stop();
+            DisposeTimer();
         }
 
         [SuppressPropertyChangedWarnings]
@@ -208,11 +203,6 @@ namespace Typedown.Windows
                 WindowState.Maximized => PInvoke.ShowWindowCommand.Maximize,
                 _ => PInvoke.ShowWindowCommand.Normal
             });
-            UpdateActiveProperty();
-        }
-
-        private void OnTick(object sender, object e)
-        {
             UpdateActiveProperty();
         }
 
@@ -413,6 +403,31 @@ namespace Typedown.Windows
             if (Handle == IntPtr.Zero)
                 return;
             PInvoke.SetWindowPos(Handle, Topmost ? -1 : -2, 0, 0, 0, 0, PInvoke.SetWindowPosFlags.SWP_NOMOVE | PInvoke.SetWindowPosFlags.SWP_NOSIZE);
+        }
+
+        private void InitializeTimer()
+        {
+            if (timer == null)
+            {
+                timer = new() { Interval = TimeSpan.FromSeconds(1) };
+                timer.Tick += OnTick;
+                timer.Start();
+            }
+        }
+
+        private void DisposeTimer()
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Tick -= OnTick;
+                timer = null;
+            }
+        }
+
+        private void OnTick(object sender, object e)
+        {
+            UpdateActiveProperty();
         }
     }
 
