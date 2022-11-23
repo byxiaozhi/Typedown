@@ -118,6 +118,7 @@ namespace Typedown.Windows
                 AppTheme.Dark => true,
                 _ => !Utilities.Common.GetUseLightTheme()
             };
+            rootLayout.RequestedTheme = isDarkMode ? ElementTheme.Dark : ElementTheme.Light;
             this.SetDarkMode(isDarkMode);
             if (Config.IsMicaSupported)
             {

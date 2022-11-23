@@ -29,7 +29,7 @@ namespace Typedown.Universal.Controls
             xamlSourceHandle = windowService.GetXamlSourceHandle(this);
             var style = PInvoke.WindowStyles.WS_CHILD | PInvoke.WindowStyles.WS_VISIBLE;
             var styleEx = PInvoke.WindowStylesEx.WS_EX_NOREDIRECTIONBITMAP | PInvoke.WindowStylesEx.WS_EX_LAYERED;
-            dragBarhandle = windowClass.CreateWindow(WndProc, null, style, styleEx, new(), parentHandle, 0);
+            dragBarhandle = windowClass.CreateWindow(WndProc, Name, style, styleEx, new(), parentHandle, 0);
             PInvoke.SetLayeredWindowAttributes(dragBarhandle, 0, 255, PInvoke.LayeredWindowFlags.LWA_ALPHA);
             PInvoke.SetWindowPos(dragBarhandle, 0, 0, 0, 0, 0, 0);
             UpdatePos();
