@@ -268,7 +268,7 @@ export const getImageInfo = (src, basePath = window.basePath) => {
     // NOTE: Check both "C:\" and "C:/" because we're using "file:///C:/".
     const isAbsoluteLocal = /^(?:\/|\\\\|[a-zA-Z]:\\|[a-zA-Z]:\/).+/.test(src)
 
-    if (isUrl || (!isAbsoluteLocal && !basePath)) {
+    if (isUrl || isAbsoluteLocal || !basePath) {
       if (!isUrl && !basePath) {
         console.warn('"basePath" is not defined!')
       }
