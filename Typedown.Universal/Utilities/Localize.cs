@@ -8,11 +8,14 @@ namespace Typedown.Universal.Utilities
 {
     public static class Localize
     {
-        public static ResourceLoader Resources { get; } = ResourceLoader.GetForViewIndependentUse("Resources");
+        public static IReadOnlyDictionary<string, ResourceLoader> ResourcesDictionary = new Dictionary<string, ResourceLoader>()
+        {
+            {"CommonResources",  ResourceLoader.GetForViewIndependentUse("CommonResources")},
+            {"DialogMessages",  ResourceLoader.GetForViewIndependentUse("DialogMessages")},
+            {"Resources",  ResourceLoader.GetForViewIndependentUse("Resources")}
+        };
 
-        public static ResourceLoader DialogMessages { get; } = ResourceLoader.GetForViewIndependentUse("DialogMessages");
-
-        public static Dictionary<string, string> Langs { get; } = new()
+        public static Dictionary<string, string> SupportedLangs { get; } = new()
         {
             { "af", "Afrikaans" },
             { "am", "አማርኛ" },
@@ -98,26 +101,37 @@ namespace Typedown.Universal.Utilities
             { "zh-Hant", "繁體中文 (繁體)" },
         };
 
-        public static Dictionary<string, string> LangsOptions { get; } = new(Langs.Append(new("default", Resources.GetString("LanguageSystemSetting"))));
+        public static Dictionary<string, string> LangsOptions { get; } = new(SupportedLangs.Append(new("default", GetString("UseSystemSetting"))));
 
         public static string GetLangOptionDisplayName(string key) => LangsOptions[key];
 
-        public static string GetString(string key) => Resources.GetString(key);
+        public static string GetString(string key, string source = null)
+        {
+            if (string.IsNullOrEmpty(source) || !ResourcesDictionary.ContainsKey(key))
+                return ResourcesDictionary.Values.Select(x => x.GetString(key)).Where(x => !string.IsNullOrEmpty(x)).FirstOrDefault();
+            return ResourcesDictionary[source].GetString(key);
+        }
 
-        public static string GetDialogString(string key) => DialogMessages.GetString(key);
+        public static string GetDialogString(string key)
+        {
+            return GetString(key, "DialogMessages");
+        }
 
-        public static string GetTypeString(Type type) => (type.GetCustomAttribute(typeof(LocalizeAttribute)) as LocalizeAttribute)?.Text;
+        public static string GetTypeString(Type type)
+        {
+            return (type.GetCustomAttribute(typeof(LocalizeAttribute)) as LocalizeAttribute)?.Text;
+        }
     }
 
     public class LocalizeAttribute : Attribute
     {
-        public string ResourceKey => ResourceKeys[0];
+        public string ResourceKey => ResourceKeys.FirstOrDefault();
 
         public string[] ResourceKeys { get; }
 
-        public string Text => Localize.GetString(ResourceKey);
+        public string Text => Texts.FirstOrDefault();
 
-        public IEnumerable<string> Texts => ResourceKeys.Select(Localize.GetString);
+        public IEnumerable<string> Texts => ResourceKeys.Select(x => Localize.GetString(x));
 
         public LocalizeAttribute(params string[] resourceKeys)
         {

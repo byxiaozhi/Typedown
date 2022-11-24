@@ -7,19 +7,11 @@ namespace Typedown.Universal.Utilities
     {
         public string Key { get; set; }
 
-        public StringResource()
-        {
-
-        }
-
-        public StringResource(string key)
-        {
-            Key = key;
-        }
+        public string Source { get; set; }
 
         protected override object ProvideValue()
         {
-            return Localize.GetString(Key);
+            return Localize.GetString(Key, Source);
         }
     }
 }
