@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
@@ -42,11 +43,15 @@ namespace Typedown.Universal.Controls.CommonControls
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             settings = this.GetService<SettingsViewModel>();
-            existShortcutKeys = typeof(SettingsViewModel)
+            existShortcutKeys = new();
+            typeof(SettingsViewModel)
                 .GetProperties()
                 .Where(x => x.PropertyType == typeof(ShortcutKey))
-                .Where(x => x.GetValue(settings) is ShortcutKey)
-                .ToDictionary(x => x.GetValue(settings) as ShortcutKey, x => x);
+                .Select(x => (PropertyInfo: x, ShortcutKey: x.GetValue(settings) as ShortcutKey))
+                .Where(x => x.ShortcutKey != null && x.ShortcutKey != new ShortcutKey(0, 0))
+                .ToList()
+                .ForEach(x => existShortcutKeys[x.ShortcutKey] = x.PropertyInfo);
+
             modifiers = new HashSet<VirtualKey>() {
                 VirtualKey.LeftControl,
                 VirtualKey.RightControl,
@@ -70,7 +75,7 @@ namespace Typedown.Universal.Controls.CommonControls
             ErrorMsgPanel.Visibility = Visibility.Collapsed;
             var shortcutKey = new ShortcutKey(args.Modifiers, args.Key);
             var displayText = Common.GetShortcutKeyTextList(shortcutKey);
-            if (!modifiers.Contains(args.Key) && args.Modifiers != 0)
+            if (!modifiers.Contains(args.Key) && (args.Modifiers != 0 || (args.Key >= VirtualKey.F1 && args.Key <= VirtualKey.F12) || args.Key == VirtualKey.Delete))
             {
                 if (existShortcutKeys.ContainsKey(shortcutKey) && shortcutKey != currentShortcutKey)
                 {

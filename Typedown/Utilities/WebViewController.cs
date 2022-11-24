@@ -150,6 +150,7 @@ namespace Typedown.Utilities
         };
 
         private XamlFocusChangeInfo xamlFocusChangeInfo;
+        private bool isMouseEntered;
         private bool webHasFocus;
         private bool hasMouseCapture;
         private bool hasPenCapture;
@@ -162,6 +163,7 @@ namespace Typedown.Utilities
 
         private void OnPointerEntered(PointerRoutedEventArgs args)
         {
+            isMouseEntered = true;
             UpdateCursor();
         }
 
@@ -286,6 +288,7 @@ namespace Typedown.Utilities
 
         private void OnPointerExited(PointerRoutedEventArgs args)
         {
+            isMouseEntered = false;
             CoreWindow.GetForCurrentThread().PointerCursor = new(0, 0);
             if (args.Pointer.PointerDeviceType == PointerDeviceType.Mouse)
             {
@@ -580,8 +583,11 @@ namespace Typedown.Utilities
 
         private void UpdateCursor()
         {
-            coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor);
-            CoreWindow.GetForCurrentThread().PointerCursor = cursor?.Value ?? new(0, 0);
+            if(isMouseEntered || hasMouseCapture)
+            {
+                coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor);
+                CoreWindow.GetForCurrentThread().PointerCursor = cursor?.Value ?? new(0, 0);
+            }
         }
 
         private void SetMaxWorkingSetSize()

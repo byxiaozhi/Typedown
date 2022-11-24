@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reactive.Disposables;
-using System.Runtime.InteropServices.WindowsRuntime;
+using Typedown.Universal.Interfaces;
+using Typedown.Universal.Models;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Key = Windows.System.VirtualKey;
+using Mod = Windows.System.VirtualKeyModifiers;
 
 namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
 {
@@ -32,6 +25,8 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
 
         public AccessHistory FileHistory => this.GetService<AccessHistory>();
 
+        public HashSet<ShortcutKey> handledKey;
+
         public EditItem()
         {
             InitializeComponent();
@@ -39,7 +34,27 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            
+            var acc = this.GetService<IKeyboardAccelerator>();
+            disposables.Add(acc.RegisterGlobal((s, e) =>
+            {
+                handledKey ??= new()
+                {
+                    new(Mod.Control, Key.Z),
+                    new(Mod.Control, Key.Y),
+                    new(Mod.Control, Key.X),
+                    new(Mod.Control, Key.C),
+                    new(Mod.Control, Key.V),
+                    new(Mod.Control, Key.A),
+                    new(Mod.None, Key.Delete),
+                };
+                if (handledKey.Contains(new(e.Modifiers, e.Key)))
+                {
+                    var editor = this.GetService<IMarkdownEditor>();
+                    var focused = FocusManager.GetFocusedElement(XamlRoot);
+                    if (focused == editor)
+                        e.Handled = true;
+                }
+            }));
         }
 
         protected override void OnRegisterShortcut()
