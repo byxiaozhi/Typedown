@@ -34,17 +34,17 @@
             <items:FormatItem/>
             <items:ViewItem/>
         </muxc:MenuBar>
-        <StackPanel 
-            x:Name="TitleStackPanel"
-            Grid.Column="1" 
-            Orientation="Horizontal" 
-            HorizontalAlignment="Center"
-            x:Load="{x:Bind Settings.AppCompactMode, Mode=OneWay}">
+        <Grid x:Name="TitleGrid" Grid.Column="1" x:Load="{x:Bind Settings.AppCompactMode, Mode=OneWay}">
             <TextBlock 
+                x:Name="TitleTextBlock"
+                Margin="4,0,4,0"
+                TextWrapping="NoWrap"
                 TextTrimming="CharacterEllipsis"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" 
-                Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center"/>
-        </StackPanel>
+                Style="{ThemeResource CaptionTextBlockStyle}" />
+        </Grid>
         <Button 
             x:Name="SettingsButton"
             HorizontalAlignment="Right"

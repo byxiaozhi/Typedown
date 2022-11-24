@@ -19,19 +19,19 @@ namespace Typedown.Universal.Controls
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (TitleStackPanel != null)
+            if (TitleGrid != null)
             {
-                if (ActualWidth / 2 > MenuBarControl.ActualWidth + TitleStackPanel.ActualWidth / 2 + 16)
+                if (ActualWidth / 2 > MenuBarControl.ActualWidth + TitleTextBlock.ActualWidth / 2 + 16)
                 {
-                    TitleStackPanel.Margin = new(0);
-                    Grid.SetColumn(TitleStackPanel, 0);
-                    Grid.SetColumnSpan(TitleStackPanel, 3);
+                    TitleGrid.Margin = new(0);
+                    Grid.SetColumn(TitleGrid, 0);
+                    Grid.SetColumnSpan(TitleGrid, 3);
                 }
                 else
                 {
-                    TitleStackPanel.Margin = new(0, 0, 46 * 3, 0);
-                    Grid.SetColumn(TitleStackPanel, 1);
-                    Grid.SetColumnSpan(TitleStackPanel, 2);
+                    TitleGrid.Margin = new(0, 0, 46 * 3, 0);
+                    Grid.SetColumn(TitleGrid, 1);
+                    Grid.SetColumnSpan(TitleGrid, 2);
                 }
             }
         }

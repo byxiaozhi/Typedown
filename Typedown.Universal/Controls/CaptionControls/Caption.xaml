@@ -89,13 +89,25 @@
                 </muxc:AnimatedIcon>
             </Viewbox>
         </Button>
-        <StackPanel x:Name="TitlePanel" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="8" Margin="12,0,0,0">
-            <StackPanel.RenderTransform>
+        <Grid x:Name="TitlePanel" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" ColumnSpacing="8" Margin="12,0,0,0">
+            <Grid.RenderTransform>
                 <TranslateTransform x:Name="TitlePanelTranslation" />
-            </StackPanel.RenderTransform>
-            <Image Source="ms-appx:///Assets/Square44x44Logo.png" Width="24" Height="24" VerticalAlignment="Center"/>
-            <TextBlock Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Center"/>
-        </StackPanel>
+            </Grid.RenderTransform>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="142"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="ms-appx:///Assets/Square44x44Logo.png" Width="24" Height="24" VerticalAlignment="Center"/>
+            <TextBlock 
+                TextWrapping="NoWrap"
+                TextTrimming="CharacterEllipsis"
+                Grid.Column="1"
+                Text="{x:Bind ViewModel.UIViewModel.MainWindowTitle, Mode=OneWay}" 
+                Style="{ThemeResource CaptionTextBlockStyle}" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
+        </Grid>
         <local:DragBar Grid.Column="1"/>
         <local:CaptionButtons x:Name="CaptionButtons" Grid.Column="2" x:Load="{x:Bind app:Config.IsMicaSupported.Equals(x:False)}"/>
     </Grid>
