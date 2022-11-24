@@ -98,19 +98,20 @@ namespace Typedown.Universal.ViewModels
             }
             return new
             {
-                FocusMode = Settings.FocusMode,
-                Typewriter = Settings.Typewriter,
-                SourceCode = Settings.SourceCode,
-                FontSize = Settings.FontSize,
-                LineHeight = Settings.LineHeight,
-                AutoPairBracket = Settings.AutoPairBracket,
-                AutoPairQuote = Settings.AutoPairQuote,
-                TrimUnnecessaryCodeBlockEmptyLines = Settings.TrimUnnecessaryCodeBlockEmptyLines,
-                PreferLooseListItem = Settings.PreferLooseListItem,
-                AutoPairMarkdownSyntax = Settings.AutoPairMarkdownSyntax,
-                EditorAreaWidth = Settings.EditorAreaWidth,
-                Markdown = Markdown,
-                BasePath = FileViewModel.ImageBasePath
+                Settings.FocusMode,
+                Settings.Typewriter,
+                Settings.SourceCode,
+                Settings.FontSize,
+                Settings.LineHeight,
+                Settings.AutoPairBracket,
+                Settings.AutoPairQuote,
+                Settings.TrimUnnecessaryCodeBlockEmptyLines,
+                Settings.PreferLooseListItem,
+                Settings.AutoPairMarkdownSyntax,
+                Settings.EditorAreaWidth,
+                Settings.TabSize,
+                Markdown,
+                FileViewModel.ImageBasePath
             };
         }
 
