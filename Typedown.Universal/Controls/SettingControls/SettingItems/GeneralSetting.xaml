@@ -74,10 +74,10 @@
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf2b7;"/>
             </controls:NormalSettingItem.Icon>
-            <ComboBox ItemsSource="{x:Bind utils:Localize.LangsOptions.Keys}" Width="200" SelectedItem="{Binding SettingsViewModel.Language, Mode=TwoWay}">
+            <ComboBox ItemsSource="{x:Bind utils:Locale.LangsOptions.Keys}" Width="200" SelectedItem="{Binding SettingsViewModel.Language, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
-                        <TextBlock Text="{x:Bind utils:Localize.GetLangOptionDisplayName((x:String))}"/>
+                        <TextBlock Text="{x:Bind utils:Locale.GetLangOptionDisplayName((x:String))}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>

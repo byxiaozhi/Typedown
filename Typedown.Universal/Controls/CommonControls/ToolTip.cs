@@ -18,7 +18,7 @@ namespace Typedown.Universal.Controls
         private static void OnResourcePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue is string resource && !string.IsNullOrEmpty(resource))
-                ToolTipService.SetToolTip(target, Localize.GetString(resource));
+                ToolTipService.SetToolTip(target, Locale.GetString(resource));
             else
                 ToolTipService.SetToolTip(target, null);
         }

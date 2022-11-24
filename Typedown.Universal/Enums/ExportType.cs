@@ -7,16 +7,16 @@ namespace Typedown.Universal.Enums
 {
     public enum ExportType
     {
-        [Localize("None")]
+        [Locale("None")]
         None = 0,
 
-        [Localize("ExportType/PDF")]
+        [Locale("ExportType/PDF")]
         PDF = 1,
 
-        [Localize("ExportType/HTML")]
+        [Locale("ExportType/HTML")]
         HTML = 2,
 
-        [Localize("ExportType/Image")]
+        [Locale("ExportType/Image")]
         Image = 3,
     }
 

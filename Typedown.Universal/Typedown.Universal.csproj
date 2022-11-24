@@ -394,7 +394,6 @@
     <Compile Include="Utilities\PInvoke\PInvoke.Shell32.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.User32.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
-    <Compile Include="Utilities\StringResource.cs" />
     <Compile Include="Utilities\WindowClass.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\EditorViewModel.cs" />

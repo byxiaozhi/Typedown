@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
-    [Localize("ExportPage/Content")]
+    [Locale("ExportPage/Content")]
     public sealed partial class ExportPage : Page
     {
         public ExportPage()

@@ -84,7 +84,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 
     public record UploadConfigOption
     {
-        public static UploadConfigOption None => new() { Id = null, Name = Localize.GetString("None") };
+        public static UploadConfigOption None => new() { Id = null, Name = Locale.GetString("None") };
 
         public int? Id { get; set; }
 

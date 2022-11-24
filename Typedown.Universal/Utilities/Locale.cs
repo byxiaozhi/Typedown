@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml.Markup;
 
 namespace Typedown.Universal.Utilities
 {
-    public static class Localize
+    public static class Locale
     {
-        public static IReadOnlyDictionary<string, ResourceLoader> ResourcesDictionary = new Dictionary<string, ResourceLoader>()
+        public enum ResourceSource
         {
-            {"CommonResources",  ResourceLoader.GetForViewIndependentUse("CommonResources")},
-            {"DialogMessages",  ResourceLoader.GetForViewIndependentUse("DialogMessages")},
-            {"Resources",  ResourceLoader.GetForViewIndependentUse("Resources")}
+            All = 0,
+            CommonResources = 1,
+            DialogMessages = 2,
+            Resources = 3,
+        }
+
+        public static IReadOnlyDictionary<ResourceSource, ResourceLoader> ResourcesDictionary = new Dictionary<ResourceSource, ResourceLoader>()
+        {
+            {ResourceSource.CommonResources,  ResourceLoader.GetForViewIndependentUse(nameof(ResourceSource.CommonResources))},
+            {ResourceSource.DialogMessages,  ResourceLoader.GetForViewIndependentUse(nameof(ResourceSource.DialogMessages))},
+            {ResourceSource.Resources,  ResourceLoader.GetForViewIndependentUse(nameof(ResourceSource.Resources))}
         };
 
         public static Dictionary<string, string> SupportedLangs { get; } = new()
@@ -105,37 +114,48 @@ namespace Typedown.Universal.Utilities
 
         public static string GetLangOptionDisplayName(string key) => LangsOptions[key];
 
-        public static string GetString(string key, string source = null)
+        public static string GetString(string key, ResourceSource source = 0)
         {
-            if (string.IsNullOrEmpty(source) || !ResourcesDictionary.ContainsKey(key))
+            if (source == 0 || !ResourcesDictionary.ContainsKey(source))
                 return ResourcesDictionary.Values.Select(x => x.GetString(key)).Where(x => !string.IsNullOrEmpty(x)).FirstOrDefault();
             return ResourcesDictionary[source].GetString(key);
         }
 
         public static string GetDialogString(string key)
         {
-            return GetString(key, "DialogMessages");
+            return GetString(key, ResourceSource.DialogMessages);
         }
 
         public static string GetTypeString(Type type)
         {
-            return (type.GetCustomAttribute(typeof(LocalizeAttribute)) as LocalizeAttribute)?.Text;
+            return (type.GetCustomAttribute(typeof(LocaleAttribute)) as LocaleAttribute)?.Text;
         }
     }
 
-    public class LocalizeAttribute : Attribute
+    public class LocaleAttribute : Attribute
     {
-        public string ResourceKey => ResourceKeys.FirstOrDefault();
-
-        public string[] ResourceKeys { get; }
+        public string[] Keys { get; }
 
         public string Text => Texts.FirstOrDefault();
 
-        public IEnumerable<string> Texts => ResourceKeys.Select(x => Localize.GetString(x));
+        public IEnumerable<string> Texts => Keys.Select(x => Locale.GetString(x));
 
-        public LocalizeAttribute(params string[] resourceKeys)
+        public LocaleAttribute(params string[] keys)
         {
-            ResourceKeys = resourceKeys;
+            Keys = keys;
+        }
+    }
+
+    [MarkupExtensionReturnType(ReturnType = typeof(string))]
+    public class LocaleString : MarkupExtension
+    {
+        public string Key { get; set; }
+
+        public Locale.ResourceSource Source { get; set; }
+
+        protected override object ProvideValue()
+        {
+            return Locale.GetString(Key, Source);
         }
     }
 }

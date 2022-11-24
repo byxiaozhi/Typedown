@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
-    [Localize("MenuBarPage/Content")]
+    [Locale("MenuBarPage/Content")]
     public sealed partial class MenuBarPage : Page
     {
         public MenuBarPage()

@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
-    [Localize("SidePanePage/Content")]
+    [Locale("SidePanePage/Content")]
     public sealed partial class SidePanePage : Page
     {
         public SidePanePage()

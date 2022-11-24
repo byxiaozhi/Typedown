@@ -8,31 +8,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d">
-    <MenuFlyoutItem x:Name="NewFileItem" Text="{u:StringResource Key=New}" KeyboardAcceleratorTextOverride="Ctrl+N" Command="{x:Bind File.NewFileCommand}"/>
-    <MenuFlyoutItem x:Name="NewWindowItem" Text="{u:StringResource Key=NewWindow}" KeyboardAcceleratorTextOverride="Ctrl+Shift+N" Command="{x:Bind File.NewWindowCommand}"/>
+    <MenuFlyoutItem x:Name="NewFileItem" Text="{u:LocaleString Key=New}" KeyboardAcceleratorTextOverride="Ctrl+N" Command="{x:Bind File.NewFileCommand}"/>
+    <MenuFlyoutItem x:Name="NewWindowItem" Text="{u:LocaleString Key=NewWindow}" KeyboardAcceleratorTextOverride="Ctrl+Shift+N" Command="{x:Bind File.NewWindowCommand}"/>
     <MenuFlyoutSeparator/>
-    <MenuFlyoutItem x:Name="OpenFileItem" Text="{u:StringResource Key=Open}" KeyboardAcceleratorTextOverride="Ctrl+O" Command="{x:Bind File.OpenFileCommand}"/>
-    <MenuFlyoutItem x:Name="OpenFolderItem" Text="{u:StringResource Key=OpenFolder}" Command="{x:Bind File.OpenFolderCommand}"/>
-    <MenuFlyoutSubItem x:Name="OpenRecentSubMenu" Text="{u:StringResource Key=OpenRecent}" Loaded="OnOpenRecentSubMenuLoaded">
-        <MenuFlyoutItem x:Name="NoRecentFilesItem" Text="{u:StringResource Key=NoRecentFiles}" IsEnabled="False"/>
+    <MenuFlyoutItem x:Name="OpenFileItem" Text="{u:LocaleString Key=Open}" KeyboardAcceleratorTextOverride="Ctrl+O" Command="{x:Bind File.OpenFileCommand}"/>
+    <MenuFlyoutItem x:Name="OpenFolderItem" Text="{u:LocaleString Key=OpenFolder}" Command="{x:Bind File.OpenFolderCommand}"/>
+    <MenuFlyoutSubItem x:Name="OpenRecentSubMenu" Text="{u:LocaleString Key=OpenRecent}" Loaded="OnOpenRecentSubMenuLoaded">
+        <MenuFlyoutItem x:Name="NoRecentFilesItem" Text="{u:LocaleString Key=NoRecentFiles}" IsEnabled="False"/>
         <MenuFlyoutSeparator/>
-        <MenuFlyoutItem x:Name="ClearRecentFilesItem" Text="{u:StringResource Key=ClearRecentFiles}" Command="{x:Bind File.ClearHistoryCommand}"/>
+        <MenuFlyoutItem x:Name="ClearRecentFilesItem" Text="{u:LocaleString Key=ClearRecentFiles}" Command="{x:Bind File.ClearHistoryCommand}"/>
     </MenuFlyoutSubItem>
     <MenuFlyoutSeparator/>
-    <MenuFlyoutItem x:Name="SaveItem" Text="{u:StringResource Key=Save}" KeyboardAcceleratorTextOverride="Ctrl+S" Command="{x:Bind File.SaveCommand}"/>
-    <MenuFlyoutItem x:Name="SaveAsItem" Text="{u:StringResource Key=SaveAs}" KeyboardAcceleratorTextOverride="Ctrl+Shift+S" Command="{x:Bind File.SaveAsCommand}"/>
+    <MenuFlyoutItem x:Name="SaveItem" Text="{u:LocaleString Key=Save}" KeyboardAcceleratorTextOverride="Ctrl+S" Command="{x:Bind File.SaveCommand}"/>
+    <MenuFlyoutItem x:Name="SaveAsItem" Text="{u:LocaleString Key=SaveAs}" KeyboardAcceleratorTextOverride="Ctrl+Shift+S" Command="{x:Bind File.SaveAsCommand}"/>
     <MenuFlyoutSeparator/>
-    <MenuFlyoutItem Text="{u:StringResource Key=Import}" Command="{x:Bind File.ImportCommand}"/>
-    <MenuFlyoutSubItem Text="{u:StringResource Key=Export}">
+    <MenuFlyoutItem Text="{u:LocaleString Key=Import}" Command="{x:Bind File.ImportCommand}"/>
+    <MenuFlyoutSubItem Text="{u:LocaleString Key=Export}">
         <MenuFlyoutItem Text="PDF" Command="{x:Bind File.ExportCommand}" CommandParameter="pdf"/>
         <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
         <MenuFlyoutItem Text="TEXT" Command="{x:Bind File.ExportCommand}" CommandParameter="text"/>
         <MenuFlyoutSeparator/>
-        <MenuFlyoutItem x:Name="ExportSettingsItem" Text="{u:StringResource Key=ExportSettings}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
+        <MenuFlyoutItem x:Name="ExportSettingsItem" Text="{u:LocaleString Key=ExportSettings}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
     </MenuFlyoutSubItem>
-    <MenuFlyoutItem x:Name="PrintItem" Text="{u:StringResource Key=Print}" Command="{x:Bind File.PrintCommand}" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
+    <MenuFlyoutItem x:Name="PrintItem" Text="{u:LocaleString Key=Print}" Command="{x:Bind File.PrintCommand}" KeyboardAcceleratorTextOverride="Alt+Shift+P"/>
     <MenuFlyoutSeparator/>
-    <MenuFlyoutItem x:Name="SettingItem" Text="{u:StringResource Key=Settings}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/General"/>
+    <MenuFlyoutItem x:Name="SettingItem" Text="{u:LocaleString Key=Settings}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/General"/>
     <MenuFlyoutSeparator/>
-    <MenuFlyoutItem x:Name="CloseItem" Text="{u:StringResource Key=Close}" Command="{x:Bind File.ExitCommand}" KeyboardAcceleratorTextOverride="Ctrl+W"/>
+    <MenuFlyoutItem x:Name="CloseItem" Text="{u:LocaleString Key=Close}" Command="{x:Bind File.ExitCommand}" KeyboardAcceleratorTextOverride="Ctrl+W"/>
 </local:MenuBarItemBase>

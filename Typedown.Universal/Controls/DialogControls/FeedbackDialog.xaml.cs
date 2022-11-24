@@ -36,12 +36,12 @@ namespace Typedown.Universal.Controls
         public static async Task OpenFeedbackDialog(XamlRoot xamlRoot)
         {
             var content = new FeedbackDialog();
-            var result = await AppContentDialog.Create(Localize.GetDialogString("FeedbackTitle"), content, Localize.GetDialogString("Cancel"), Localize.GetDialogString("Submit")).ShowAsync(xamlRoot);
+            var result = await AppContentDialog.Create(Locale.GetDialogString("FeedbackTitle"), content, Locale.GetDialogString("Cancel"), Locale.GetDialogString("Submit")).ShowAsync(xamlRoot);
             if (result == ContentDialogResult.None)
                 return;
             string msg;
             if (string.IsNullOrEmpty(content.Feedback))
-                msg = Localize.GetDialogString("ContentCanNotBeBlank");
+                msg = Locale.GetDialogString("ContentCanNotBeBlank");
             else
                 try
                 {
@@ -52,7 +52,7 @@ namespace Typedown.Universal.Controls
                         contact = content.Contact,
                     });
                     if (res["code"].ToObject<int>() == 0)
-                        msg = Localize.GetDialogString("SubmittedSuccessfully");
+                        msg = Locale.GetDialogString("SubmittedSuccessfully");
                     else
                         msg = res["msg"].ToString();
                 }
@@ -60,7 +60,7 @@ namespace Typedown.Universal.Controls
                 {
                     msg = ex.Message;
                 }
-            await AppContentDialog.Create(Localize.GetDialogString("FeedbackTitle"), msg, Localize.GetDialogString("Ok")).ShowAsync(xamlRoot);
+            await AppContentDialog.Create(Locale.GetDialogString("FeedbackTitle"), msg, Locale.GetDialogString("Ok")).ShowAsync(xamlRoot);
         }
     }
 }

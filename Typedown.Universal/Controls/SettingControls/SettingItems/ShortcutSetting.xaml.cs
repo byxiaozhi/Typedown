@@ -60,7 +60,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
                 .Select(x => new ShortcutSettingItemModel(target, x))
                 .ToList();
             FliterCategories = AllSettingItems.Select(x => x.Category).ToHashSet().Select(x => new ShortcutSettingCategoryModel(x, x)).ToList();
-            FliterCategories.Insert(0, new(Localize.GetString("All"), null));
+            FliterCategories.Insert(0, new(Locale.GetString("All"), null));
             FliterCategory = FliterCategories[0];
         }
 
@@ -92,7 +92,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
         {
             Target = target;
             Property = property;
-            var texts = Property.GetCustomAttribute<LocalizeAttribute>()?.Texts.ToList();
+            var texts = Property.GetCustomAttribute<LocaleAttribute>()?.Texts.ToList();
             if (texts == null || !texts.Any())
             {
                 DisplayName = Property.Name;

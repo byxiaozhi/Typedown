@@ -6,13 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:enums="using:Typedown.Universal.Enums" 
-    xmlns:utils="using:Typedown.Universal.Utilities"
+    xmlns:u="using:Typedown.Universal.Utilities"
     xmlns:controls="using:Typedown.Universal.Controls"
     Style="{StaticResource DefaultAppContentDialogStyle}"
     x:Name="ThisControl"
     x:Uid="AddUploadConfig"
-    PrimaryButtonText="{utils:StringResource Key=Add/Text}"
-    SecondaryButtonText="{utils:StringResource Key=Cancel/Text}"
+    PrimaryButtonText="{u:LocaleString Key=Add/Text}"
+    SecondaryButtonText="{u:LocaleString Key=Cancel/Text}"
     DefaultButton="Primary"
     mc:Ignorable="d">
     <StackPanel>

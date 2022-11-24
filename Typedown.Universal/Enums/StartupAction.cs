@@ -9,22 +9,22 @@ namespace Typedown.Universal.Enums
 {
     public enum FileStartupAction
     {
-        [Localize("FileStartupAction/NewFile")]
+        [Locale("FileStartupAction/NewFile")]
         None,
 
-        [Localize("FileStartupAction/OpenLast")]
+        [Locale("FileStartupAction/OpenLast")]
         OpenLast
     }
 
     public enum FolderStartupAction
     {
-        [Localize("NoAction")]
+        [Locale("NoAction")]
         None,
 
-        [Localize("FolderStartupAction/OpenLast")]
+        [Locale("FolderStartupAction/OpenLast")]
         OpenLast,
 
-        [Localize("FolderStartupAction/OpenFolder")]
+        [Locale("FolderStartupAction/OpenFolder")]
         OpenFolder
     }
 

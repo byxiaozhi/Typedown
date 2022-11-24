@@ -126,7 +126,7 @@ namespace Typedown.Universal.Pages
         {
             Page = page;
             PageType = Page.GetType();
-            Title = title ?? Localize.GetTypeString(PageType);
+            Title = title ?? Locale.GetTypeString(PageType);
         }
     }
 }

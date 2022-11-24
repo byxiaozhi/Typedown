@@ -9,13 +9,13 @@ namespace Typedown.Universal.Enums
 {
     public enum InsertImageAction
     {
-        [Localize("NoAction")]
+        [Locale("NoAction")]
         None,
 
-        [Localize("InsertImageAction/CopyToPath")]
+        [Locale("InsertImageAction/CopyToPath")]
         CopyToPath,
 
-        [Localize("InsertImageAction/Upload")]
+        [Locale("InsertImageAction/Upload")]
         Upload,
     }
 

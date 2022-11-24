@@ -13,37 +13,37 @@ namespace Typedown.Universal.ViewModels
 {
     public partial class SettingsViewModel
     {
-        [Localize("File/Title", "New/Text")]
+        [Locale("File/Title", "New/Text")]
         public ShortcutKey ShortcutNewFile { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.N)); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "NewWindow/Text")]
+        [Locale("File/Title", "NewWindow/Text")]
         public ShortcutKey ShortcutNewWindow { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.N)); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "Open/Text")]
+        [Locale("File/Title", "Open/Text")]
         public ShortcutKey ShortcutOpenFile { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.O)); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "OpenFolder/Text")]
+        [Locale("File/Title", "OpenFolder/Text")]
         public ShortcutKey ShortcutOpenFolder { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "ClearRecentFiles/Text")]
+        [Locale("File/Title", "ClearRecentFiles/Text")]
         public ShortcutKey ShortcutClearRecentFiles { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "Save/Text")]
+        [Locale("File/Title", "Save/Text")]
         public ShortcutKey ShortcutSave { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.S)); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "SaveAs/Text")]
+        [Locale("File/Title", "SaveAs/Text")]
         public ShortcutKey ShortcutSaveAs { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.S)); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "ExportSettings/Text")]
+        [Locale("File/Title", "ExportSettings/Text")]
         public ShortcutKey ShortcutExportSettings { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "Print/Text")]
+        [Locale("File/Title", "Print/Text")]
         public ShortcutKey ShortcutPrint { get => GetSettingValue<ShortcutKey>(new(Mod.Menu | Mod.Shift, Key.P)); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "Settings/Text")]
+        [Locale("File/Title", "Settings/Text")]
         public ShortcutKey ShortcutSettings { get => GetSettingValue<ShortcutKey>(new(Mod.Control, (Key)0xBC)); set => SetSettingValue(value); }
 
-        [Localize("File/Title", "Close/Text")]
+        [Locale("File/Title", "Close/Text")]
         public ShortcutKey ShortcutClose { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.W)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutUndo { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.Z)); set => SetSettingValue(value); }
         public ShortcutKey ShortcutRedo { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.Y)); set => SetSettingValue(value); }

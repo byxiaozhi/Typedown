@@ -99,11 +99,11 @@ namespace Typedown.Universal.Controls
                     {
                         case FileTypeHelper.FileType.Markdown:
                             e.AcceptedOperation = DataPackageOperation.Link;
-                            e.DragUIOverride.Caption = Localize.GetString("Open/Text");
+                            e.DragUIOverride.Caption = Locale.GetString("Open/Text");
                             break;
                         case FileTypeHelper.FileType.Image:
                             e.AcceptedOperation = DataPackageOperation.Link;
-                            e.DragUIOverride.Caption = Localize.GetString("InsertImage/Text");
+                            e.DragUIOverride.Caption = Locale.GetString("InsertImage/Text");
                             break;
                     }
                 }

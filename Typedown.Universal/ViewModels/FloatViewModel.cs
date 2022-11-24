@@ -104,7 +104,7 @@ namespace Typedown.Universal.ViewModels
             {
                 openedToolTip = ServiceProvider.GetService<ToolTip>();
                 var name = args["tooltip"].ToString();
-                var text = Localize.GetString(name) ?? name;
+                var text = Locale.GetString(name) ?? name;
                 openedToolTip.Open(text);
             }
         }

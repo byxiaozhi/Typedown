@@ -125,7 +125,7 @@ namespace Typedown.Controls
 
         private async void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)
         {
-            await AppContentDialog.Create("Message", args.Message, Localize.GetString("Ok")).ShowAsync();
+            await AppContentDialog.Create("Message", args.Message, Locale.GetString("Ok")).ShowAsync();
         }
 
         public void PostMessage(string name, object args)

@@ -59,7 +59,7 @@ namespace Typedown.Universal.Controls.FloatControls
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create("Error", ex.Message, Localize.GetDialogString("Ok")).ShowAsync(XamlRoot);
+                await AppContentDialog.Create("Error", ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
             }
             finally
             {

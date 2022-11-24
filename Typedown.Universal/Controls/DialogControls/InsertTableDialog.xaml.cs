@@ -33,7 +33,7 @@ namespace Typedown.Universal.Controls
 
         public static async Task<Result> OpenInsertTableDialog(XamlRoot xamlRoot)
         {
-            var (dialog, content) = CreateContentDialog(Localize.GetDialogString("InsertTableTitle"));
+            var (dialog, content) = CreateContentDialog(Locale.GetDialogString("InsertTableTitle"));
             var result = await dialog.ShowAsync(xamlRoot);
             if (result == ContentDialogResult.Primary)
                 return new() { Rows = (int)content.rows.Value, Columns = (int)content.columns.Value };
@@ -42,7 +42,7 @@ namespace Typedown.Universal.Controls
 
         public static async Task<Result> OpenResizeTableDialog(XamlRoot xamlRoot)
         {
-            var (dialog, content) = CreateContentDialog(Localize.GetDialogString("ResizeTableTitle"));
+            var (dialog, content) = CreateContentDialog(Locale.GetDialogString("ResizeTableTitle"));
             var result = await dialog.ShowAsync(xamlRoot);
             if (result == ContentDialogResult.Primary)
                 return new() { Rows = (int)content.rows.Value, Columns = (int)content.columns.Value };
@@ -52,7 +52,7 @@ namespace Typedown.Universal.Controls
         private static (AppContentDialog, InsertTableDialog) CreateContentDialog(string title)
         {
             var content = new InsertTableDialog();
-            var dialog = AppContentDialog.Create(title, content, Localize.GetDialogString("Cancel"), Localize.GetDialogString("Ok"));
+            var dialog = AppContentDialog.Create(title, content, Locale.GetDialogString("Cancel"), Locale.GetDialogString("Ok"));
             return (dialog, content);
         }
     }

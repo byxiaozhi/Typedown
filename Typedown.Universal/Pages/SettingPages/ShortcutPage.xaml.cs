@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
-    [Localize("ShortcutPage/Content")]
+    [Locale("ShortcutPage/Content")]
     public sealed partial class ShortcutPage : Page
     {
         public ShortcutPage()

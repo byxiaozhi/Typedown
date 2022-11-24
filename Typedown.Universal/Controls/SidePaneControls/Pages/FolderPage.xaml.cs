@@ -102,7 +102,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
             try
             {
-                var filename = Localize.GetString("UntitledDocument");
+                var filename = Locale.GetString("UntitledDocument");
                 var extension = ".md";
                 var fullname = filename + extension;
                 if (FileOperation.IsFilenameValid(item.FullPath, fullname))
@@ -134,7 +134,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Localize.GetDialogString("CreateDocErrorTitle"), ex.Message, Localize.GetDialogString("Ok")).ShowAsync(XamlRoot);
+                await AppContentDialog.Create(Locale.GetDialogString("CreateDocErrorTitle"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
             }
         }
 
@@ -143,7 +143,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
             try
             {
-                var foldername = Localize.GetString("UntitledFolder");
+                var foldername = Locale.GetString("UntitledFolder");
                 var fullname = foldername;
                 if (FileOperation.IsFilenameValid(item.FullPath, fullname))
                 {
@@ -181,7 +181,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Localize.GetDialogString("CreateFolderErrorTitle"), ex.Message, Localize.GetDialogString("Ok")).ShowAsync(ViewModel.XamlRoot);
+                await AppContentDialog.Create(Locale.GetDialogString("CreateFolderErrorTitle"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(ViewModel.XamlRoot);
             }
         }
 

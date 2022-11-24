@@ -28,7 +28,7 @@ namespace Typedown.Universal.Controls
             public object Convert(object value, Type targetType, object parameter, string language)
             {
                 var field = value?.GetType().GetField(value.ToString());
-                var attribute = field?.GetCustomAttribute(typeof(LocalizeAttribute)) as LocalizeAttribute;
+                var attribute = field?.GetCustomAttribute(typeof(LocaleAttribute)) as LocaleAttribute;
                 return attribute?.Text;
             }
 

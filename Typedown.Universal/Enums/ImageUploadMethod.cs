@@ -7,22 +7,22 @@ namespace Typedown.Universal.Enums
 {
     public enum ImageUploadMethod
     {
-        [Localize("None")]
+        [Locale("None")]
         None = 0,
 
-        [Localize("ImageUploadMethod/FTP")]
+        [Locale("ImageUploadMethod/FTP")]
         FTP = 1,
 
-        [Localize("ImageUploadMethod/Git")]
+        [Locale("ImageUploadMethod/Git")]
         Git = 2,
 
-        [Localize("ImageUploadMethod/OSS")]
+        [Locale("ImageUploadMethod/OSS")]
         OSS = 3,
 
-        [Localize("ImageUploadMethod/SCP")]
+        [Locale("ImageUploadMethod/SCP")]
         SCP = 4,
 
-        [Localize("ImageUploadMethod/PowerShell")]
+        [Locale("ImageUploadMethod/PowerShell")]
         PowerShell = 1024
     }
 
