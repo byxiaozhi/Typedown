@@ -49,7 +49,7 @@ const Editor: React.FC = () => {
 
     useEffect(() => transport.addListener<{ type: string, context: unknown, basePath: string, title: string }>('Export', async ({ type, context, basePath, title }) => {
         const generateOption = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc) }
-        const baseUrl = `file:///${basePath.replaceAll('\\','/')}/`
+        const baseUrl = `file:///${basePath.replaceAll('\\', '/')}/`
         const html = await new ExportHtml(markdownRef.current, { ...optionsRef.current, baseUrl }).generate(generateOption)
         if (type == 'print') {
             remote.printHTML({ html, context })
@@ -90,7 +90,11 @@ const Editor: React.FC = () => {
         setSearchOpen(open)
     }), []);
 
-    if (options?.sourceCode) {
+    if (!options) {
+        return <></>
+    }
+
+    if (options.sourceCode) {
         return (
             <CodeMirror
                 options={options}

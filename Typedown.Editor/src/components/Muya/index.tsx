@@ -41,6 +41,7 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     const markdownRef = useRef('');
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
+    const optionsRef = useRef<any>(props.options);
 
     const relativeScroll = useCallback((delta: number) => {
         window.scrollBy(0, delta)
@@ -122,13 +123,23 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     }, [editor, props.searchArg, search])
 
     useEffect(() => {
-        const opt = props.options;
-        if (opt == null) return;
         const ele = document.getElementById('editor');
-        const muya = new Muya(ele, opt);
+        const muya = new Muya(ele, optionsRef.current);
         setEditor(muya);
         return () => muya.destroy()
-    }, [props.options]);
+    }, []);
+
+    useEffect(() => {
+        editor && Object.assign(editor.options, props.options)
+    }, [editor, props.options])
+
+    useEffect(() => {
+        editor?.setFocusMode(props.options.focusMode)
+    }, [editor, props.options.focusMode])
+
+    useEffect(() => {
+        editor?.setFont({ fontSize: props.options?.fontSize, lineHeight: props.options?.lineHeight })
+    }, [editor, props.options?.fontSize, props.options?.lineHeight])
 
     useEffect(() => transport.addListener<{ slug: string }>('ScrollTo', ({ slug }) => {
         scrollToElement(`#${slug}`)
