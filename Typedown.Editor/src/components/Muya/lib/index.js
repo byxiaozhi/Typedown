@@ -412,6 +412,7 @@ class Muya {
     this.imageSelector.destroy()
     this.imageToolbar.destroy()
     this.tableBarTools.destroy()
+    this.isDestroyed = true
   }
 }
 

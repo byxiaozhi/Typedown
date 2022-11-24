@@ -40,6 +40,7 @@ namespace Typedown.Universal.Controls
         {
             InitializeComponent();
             AddHandler(PointerMovedEvent, new PointerEventHandler(OnPointerPointerMoved), true);
+            AddHandler(PointerWheelChangedEvent, new PointerEventHandler(OnPointerWheelChanged), true);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -143,6 +144,15 @@ namespace Typedown.Universal.Controls
             {
                 HorizontalScrollBar.IndicatorMode = ScrollingIndicatorMode.MouseIndicator;
                 VerticalScrollBar.IndicatorMode = ScrollingIndicatorMode.MouseIndicator;
+            }
+        }
+
+        private void OnPointerWheelChanged(object sender, PointerRoutedEventArgs e)
+        {
+            if (e.KeyModifiers.HasFlag(Windows.System.VirtualKeyModifiers.Control))
+            {
+                var delta = e.GetCurrentPoint(this).Properties.MouseWheelDelta;
+                Settings.FontSize = Math.Max(8, Math.Min(48, Math.Round(Settings.FontSize * (1 + delta / 1200d), 1)));
             }
         }
 

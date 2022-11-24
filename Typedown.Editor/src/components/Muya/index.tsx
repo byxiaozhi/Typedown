@@ -72,9 +72,13 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     }, [editor, relativeScroll])
 
     const scrollToCursorIfInvisible = useCallback(() => {
-        const y = editor?.getSelection().cursorCoords.y;
-        if (y < 0 || y > window.innerHeight) {
-            relativeScroll(y - STANDAR_Y)
+        try {
+            const y = editor?.getSelection().cursorCoords.y;
+            if (y < 0 || y > window.innerHeight) {
+                relativeScroll(y - STANDAR_Y)
+            }
+        } catch (err) {
+            console.log(err)
         }
     }, [editor, relativeScroll])
 
@@ -262,7 +266,11 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     }, [props.options?.editorAreaWidth])
 
     useEffect(() => {
-        editor?.focus()
+        try {
+            editor?.focus()
+        } catch (err) {
+            console.log(err)
+        }
     }, [editor])
 
     useEffect(() => {
