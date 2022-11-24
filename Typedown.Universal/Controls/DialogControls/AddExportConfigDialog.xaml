@@ -7,18 +7,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:enums="using:Typedown.Universal.Enums" 
     xmlns:controls="using:Typedown.Universal.Controls"
+    xmlns:u="using:Typedown.Universal.Utilities"
     Style="{StaticResource DefaultAppContentDialogStyle}"
     x:Name="ThisControl"
-    Title="添加导出配置"
-    PrimaryButtonText="添加"
-    SecondaryButtonText = "取消"
+    Title="{u:LocaleString Key=Export.AddConfig.Title}"
+    PrimaryButtonText="{u:LocaleString Key=Add}"
+    CloseButtonText = "{u:LocaleString Key=Cancel}"
     DefaultButton="Primary"
     mc:Ignorable="d">
     <StackPanel>
-        <TextBlock>名称</TextBlock>
+        <TextBlock Text="{u:LocaleString Key=Name}"/>
         <TextBox Margin="0,8,0,0" Text="{x:Bind ConfigName, Mode=TwoWay}"/>
         <TextBlock Margin="0,8,0,0" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Text="{x:Bind ErrMsg, Mode=OneWay}" Visibility="{x:Bind ErrMsg, Converter={StaticResource EmptyToVisibilityReverseConverter}, Mode=OneWay}"/>
-        <TextBlock Margin="0,12,0,0">上传方式</TextBlock>
+        <TextBlock Margin="0,12,0,0" Text="{u:LocaleString Key=Export.Type}"/>
         <ComboBox Margin="0,8,0,0" HorizontalAlignment="Stretch" ItemsSource="{x:Bind enums:Enumerable.ExportTypes}" SelectedItem="{Binding ExportType, ElementName=ThisControl, Mode=TwoWay}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

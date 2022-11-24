@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:converters="using:Typedown.Universal.Converters"
     xmlns:controls="using:Typedown.Universal.Controls"
+    xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d"
     FontSize="12"
     d:DesignHeight="300"
@@ -23,7 +24,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Spacing="4">
-            <ToggleButton Padding="6" BorderThickness="0" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}" controls:ToolTip.TextResource="SidePane/Text">
+            <ToggleButton Padding="6" BorderThickness="0" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}" controls:ToolTip.TextResource="SidePane">
                 <ToggleButton.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ToggleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
@@ -45,7 +46,7 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
             <Grid>
-                <ComboBox SelectedIndex="{x:Bind Settings.WordCountMethod}" MinWidth="80" VerticalAlignment="Stretch" Foreground="{ThemeResource TextFillColorSecondary}" local:ToolTip.TextResource="WordCount/Text">
+                <ComboBox SelectedIndex="{x:Bind Settings.WordCountMethod}" MinWidth="80" VerticalAlignment="Stretch" Foreground="{ThemeResource TextFillColorSecondary}" local:ToolTip.TextResource="WordCount">
                     <ComboBox.Resources>
                         <ResourceDictionary>
                             <SolidColorBrush x:Key="ComboBoxBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>
@@ -64,13 +65,13 @@
                     <ComboBoxItem>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Bind Editor.ContentState.WordCount.Character, Mode=OneWay}" />
-                            <TextBlock Margin="4,0,0,0" x:Uid="Characters"/>
+                            <TextBlock Margin="4,0,0,0" Text="{u:LocaleString Key=Characters}"/>
                         </StackPanel>
                     </ComboBoxItem>
                     <ComboBoxItem>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Bind Editor.ContentState.WordCount.Word, Mode=OneWay}" />
-                            <TextBlock Margin="4,0,0,0" x:Uid="Words"/>
+                            <TextBlock Margin="4,0,0,0" Text="{u:LocaleString Key=Words}"/>
                         </StackPanel>
                     </ComboBoxItem>
                 </ComboBox>

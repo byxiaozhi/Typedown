@@ -10,13 +10,13 @@ namespace Typedown.Universal.Enums
         [Locale("None")]
         None = 0,
 
-        [Locale("ExportType/PDF")]
+        [Locale("Export.Types.PDF")]
         PDF = 1,
 
-        [Locale("ExportType/HTML")]
+        [Locale("Export.Types.HTML")]
         HTML = 2,
 
-        [Locale("ExportType/Image")]
+        [Locale("Export.Types.Image")]
         Image = 3,
     }
 

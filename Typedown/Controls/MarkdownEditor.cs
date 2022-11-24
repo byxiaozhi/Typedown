@@ -46,8 +46,6 @@ namespace Typedown.Controls
 
         private readonly Rectangle dummyRectangle = new();
 
-        private readonly ResourceLoader stringResources = ResourceLoader.GetForViewIndependentUse("Resources");
-
         private readonly UISettings uiSettings = new();
 
         public MarkdownEditor(IServiceProvider serviceProvider)
@@ -58,7 +56,7 @@ namespace Typedown.Controls
             IsTabStop = true;
             RemoteInvoke.Handle("ContentLoaded", OnContentLoaded);
             RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme());
-            RemoteInvoke.Handle<JToken, object>("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, stringResources.GetString));
+            RemoteInvoke.Handle<JToken, object>("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, x => Locale.GetString(x)));
             AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme)).Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged))).Subscribe(_ => OnThemeChanged());
         }
 

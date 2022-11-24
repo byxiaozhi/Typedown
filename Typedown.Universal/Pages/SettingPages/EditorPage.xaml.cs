@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
-    [Locale("EditorPage/Content")]
+    [Locale("Editor.Title")]
     public sealed partial class EditorPage : Page
     {
         public EditorPage()

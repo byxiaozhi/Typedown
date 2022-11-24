@@ -11,16 +11,18 @@ namespace Typedown.Universal.Utilities
     {
         public enum ResourceSource
         {
-            All = 0,
-            CommonResources = 1,
-            DialogMessages = 2,
-            Resources = 3,
+            All,
+            CommonResources,
+            DialogResources,
+            SettingsResources,
+            Resources
         }
 
         public static IReadOnlyDictionary<ResourceSource, ResourceLoader> ResourcesDictionary = new Dictionary<ResourceSource, ResourceLoader>()
         {
             {ResourceSource.CommonResources,  ResourceLoader.GetForViewIndependentUse(nameof(ResourceSource.CommonResources))},
-            {ResourceSource.DialogMessages,  ResourceLoader.GetForViewIndependentUse(nameof(ResourceSource.DialogMessages))},
+            {ResourceSource.DialogResources,  ResourceLoader.GetForViewIndependentUse(nameof(ResourceSource.DialogResources))},
+            {ResourceSource.SettingsResources,  ResourceLoader.GetForViewIndependentUse(nameof(ResourceSource.SettingsResources))},
             {ResourceSource.Resources,  ResourceLoader.GetForViewIndependentUse(nameof(ResourceSource.Resources))}
         };
 
@@ -116,6 +118,7 @@ namespace Typedown.Universal.Utilities
 
         public static string GetString(string key, ResourceSource source = 0)
         {
+            key = key.Replace('.', '/');
             if (source == 0 || !ResourcesDictionary.ContainsKey(source))
                 return ResourcesDictionary.Values.Select(x => x.GetString(key)).Where(x => !string.IsNullOrEmpty(x)).FirstOrDefault();
             return ResourcesDictionary[source].GetString(key);
@@ -123,7 +126,7 @@ namespace Typedown.Universal.Utilities
 
         public static string GetDialogString(string key)
         {
-            return GetString(key, ResourceSource.DialogMessages);
+            return GetString(key, ResourceSource.DialogResources);
         }
 
         public static string GetTypeString(Type type)

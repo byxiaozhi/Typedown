@@ -11,14 +11,15 @@
     xmlns:converters="using:Typedown.Universal.Converters" 
     xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
     xmlns:app="using:Typedown.Universal"
+    xmlns:u="using:Typedown.Universal.Utilities"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="4">
-        
-        <TextBlock Text="窗口" Margin="0,0,0,4"/>
-        <controls:ExpanderSettingItem Title="主题" Description="选择要显示的应用主题">
+
+        <TextBlock Text="{u:LocaleString Key=View.Window}" Margin="0,0,0,4"/>
+        <controls:ExpanderSettingItem Title="{u:LocaleString Key=View.AppTheme.Title}" Description="{u:LocaleString Key=View.AppTheme.Description}">
             <controls:ExpanderSettingItem.Icon>
                 <FontIcon Glyph="&#xe790;"/>
             </controls:ExpanderSettingItem.Icon>
@@ -35,60 +36,44 @@
                 </muxc:RadioButtons>
             </StackPanel>
         </controls:ExpanderSettingItem>
-        <controls:NormalSettingItem Title="使用云母材料" Description="开启后窗口背景具有云母背景效果">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.UseMicaMaterial.Title}" Description="{u:LocaleString Key=View.UseMicaMaterial.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf4a5;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="窗口动画" Description="关闭可获得更快的响应速度">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.AnimationEnable.Title}" Description="{u:LocaleString Key=View.AnimationEnable.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8be;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.AnimationEnable, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="置于顶层" Description="使窗口始终在顶部">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.Topmost.Title}" Description="{u:LocaleString Key=View.Topmost.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xee40;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.Topmost, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        
-        <TextBlock Text="布局" Margin="0,16,0,4"/>
-        <controls:NormalSettingItem Title="紧凑模式" Description="菜单栏与标题在同一行显示">
+
+        <TextBlock Text="{u:LocaleString Key=View.Layout}" Margin="0,16,0,4"/>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.AppCompactMode.Title}" Description="{u:LocaleString Key=View.AppCompactMode.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf246;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.AppCompactMode, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="显示状态栏" Description="选择是否显示底部状态栏">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.StatusBarOpen.Title}" Description="{u:LocaleString Key=View.StatusBarOpen.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe90e;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.StatusBarOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="显示侧边栏" Description="选择是否显示侧边栏">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.SidePaneOpen.Title}" Description="{u:LocaleString Key=View.SidePaneOpen.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xea4b;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-
-        <!--<TextBlock Text="自定义" Margin="0,16,0,4"/>
-        <controls:ButtonSettingItem Title="菜单栏" Description="自定义菜单栏显示内容" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/MenuBar">
-            <controls:ButtonSettingItem.Icon>
-                <FontIcon Glyph="&#xea4b;"/>
-            </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>
-        <controls:ButtonSettingItem Title="侧栏" Description="自定义侧栏显示内容" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/SidePane">
-            <controls:ButtonSettingItem.Icon>
-                <FontIcon Glyph="&#xea4b;"/>
-            </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>
-        <controls:ButtonSettingItem Title="状态栏" Description="自定义状态栏显示内容" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/StatusBar">
-            <controls:ButtonSettingItem.Icon>
-                <FontIcon Glyph="&#xea4b;"/>
-            </controls:ButtonSettingItem.Icon>
-        </controls:ButtonSettingItem>-->
+        
     </StackPanel>
 </UserControl>

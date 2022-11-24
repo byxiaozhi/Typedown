@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Typedown.Universal.Controls"
     xmlns:items="using:Typedown.Universal.Controls.EditorControls.MenuBarItems"
-    xmlns:utils="using:Typedown.Universal.Utilities"
+    xmlns:u="using:Typedown.Universal.Utilities"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 

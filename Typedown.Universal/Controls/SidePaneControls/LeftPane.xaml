@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
     xmlns:converters="using:Typedown.Universal.Converters"
+    xmlns:u="using:Typedown.Universal.Utilities"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     SizeChanged="OnSizeChanged"
@@ -30,13 +31,13 @@
                 <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="{ThemeResource CardStrokeColorDefault}"/>
             </muxc:NavigationView.Resources>
             <muxc:NavigationView.PaneFooter>
-                <Button Width="32" Height="32" x:Name="SeatchButton" Click="OnSearchButtonClick" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" local:ToolTip.TextResource="Search/Text">
+                <Button Width="32" Height="32" x:Name="SeatchButton" Click="OnSearchButtonClick" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" local:ToolTip.TextResource="Search">
                     <FontIcon FontSize="14" Glyph="&#xe721;"/>
                 </Button>
             </muxc:NavigationView.PaneFooter>
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem x:Uid="SidePaneFilesTab" Tag="Folder" Name="Folder"/>
-                <muxc:NavigationViewItem x:Uid="SidePaneOutlineTab" Tag="Toc" Name="Toc"/>
+                <muxc:NavigationViewItem Content="{u:LocaleString Key=Files}" Tag="Folder" Name="Folder"/>
+                <muxc:NavigationViewItem Content="{u:LocaleString Key=Outline}" Tag="Toc" Name="Toc"/>
             </muxc:NavigationView.MenuItems>
         </muxc:NavigationView>
         <Frame Margin="0,50,0,0" Visibility="{x:Bind NavigationView.Visibility,Mode=OneWay}" x:Name="Frame">

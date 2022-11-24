@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About.Text" xml:space="preserve">
-    <value>关于</value>
-    <comment>关于</comment>
-  </data>
   <data name="AboutApp.Text" xml:space="preserve">
     <value>关于应用程序</value>
     <comment>关于应用</comment>
@@ -409,18 +405,6 @@
     <value>使用感受</value>
     <comment>使用感受</comment>
   </data>
-  <data name="File.Title" xml:space="preserve">
-    <value>文件</value>
-    <comment>文件</comment>
-  </data>
-  <data name="FileStartupAction.OpenLast" xml:space="preserve">
-    <value>打开上次使用的文件</value>
-    <comment>打开上次使用的文件</comment>
-  </data>
-  <data name="FileStartupAction/NewFile" xml:space="preserve">
-    <value>新建文件</value>
-    <comment>新建文件</comment>
-  </data>
   <data name="Find.Text" xml:space="preserve">
     <value>查找</value>
     <comment>查找</comment>
@@ -449,14 +433,6 @@
     <value>专注模式</value>
     <comment>专注模式</comment>
   </data>
-  <data name="FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>打开指定文件夹</value>
-    <comment>打开指定文件夹</comment>
-  </data>
-  <data name="FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>打开上次使用的文件夹</value>
-    <comment>打开上次使用的文件夹</comment>
-  </data>
   <data name="Font.Text" xml:space="preserve">
     <value>字体</value>
     <comment>字体</comment>
@@ -468,46 +444,6 @@
   <data name="FootNote.Text" xml:space="preserve">
     <value>脚注</value>
     <comment>脚注</comment>
-  </data>
-  <data name="Format.Title" xml:space="preserve">
-    <value>格式</value>
-    <comment>格式</comment>
-  </data>
-  <data name="General.Text" xml:space="preserve">
-    <value>通用</value>
-    <comment>通用</comment>
-  </data>
-  <data name="GeneralPage.Content" xml:space="preserve">
-    <value>通用</value>
-    <comment>通用</comment>
-  </data>
-  <data name="Heading.Text" xml:space="preserve">
-    <value>标题</value>
-    <comment>标题</comment>
-  </data>
-  <data name="Heading1.Text" xml:space="preserve">
-    <value>一级标题</value>
-    <comment>一级标题</comment>
-  </data>
-  <data name="Heading2.Text" xml:space="preserve">
-    <value>二级标题</value>
-    <comment>二级标题</comment>
-  </data>
-  <data name="Heading3.Text" xml:space="preserve">
-    <value>三级标题</value>
-    <comment>三级标题</comment>
-  </data>
-  <data name="Heading4.Text" xml:space="preserve">
-    <value>四级标题</value>
-    <comment>四级标题</comment>
-  </data>
-  <data name="Heading5.Text" xml:space="preserve">
-    <value>五级标题</value>
-    <comment>五级标题</comment>
-  </data>
-  <data name="Heading6.Text" xml:space="preserve">
-    <value>六级标题</value>
-    <comment>六级标题</comment>
   </data>
   <data name="Help.Title" xml:space="preserve">
     <value>帮助</value>

@@ -75,6 +75,7 @@
             Margin="4,0,0,0" 
             Padding="6" 
             x:Name="BackButton"
+            local:ToolTip.TextResource="Back"
             Style="{ThemeResource EllipsisIconButtonStyle}" 
             Command="{x:Bind ViewModel.GoBackCommand}"
             x:Load="{x:Bind ViewModel.GoBackCommand.IsExecutable, Mode=OneWay}">

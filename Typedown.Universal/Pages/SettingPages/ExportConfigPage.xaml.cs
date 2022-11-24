@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
+    [Locale("ExportConfig.Title")]
     public sealed partial class ExportConfigPage : Page
     {
         private static DependencyProperty ExportConfigProperty { get; } = DependencyProperty.Register(nameof(ExportConfig), typeof(ExportConfig), typeof(ExportConfigPage), null);

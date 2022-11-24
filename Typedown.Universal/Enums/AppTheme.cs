@@ -9,13 +9,13 @@ namespace Typedown.Universal.Enums
 {
     public enum AppTheme
     {
-        [Locale("AppTheme/Default")]
+        [Locale("UseSystemSetting")]
         Default = 0,
 
-        [Locale("AppTheme/Light")]
+        [Locale("View.AppTheme.Light")]
         Light = 1,
 
-        [Locale("AppTheme/Dark")]
+        [Locale("View.AppTheme.Dark")]
         Dark = 2,
     }
 

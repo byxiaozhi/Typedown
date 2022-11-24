@@ -12,10 +12,10 @@ namespace Typedown.Universal.Enums
         [Locale("NoAction")]
         None,
 
-        [Locale("InsertImageAction/CopyToPath")]
+        [Locale("Image.InsertActions.CopyToPath")]
         CopyToPath,
 
-        [Locale("InsertImageAction/Upload")]
+        [Locale("Image.InsertActions.Upload")]
         Upload,
     }
 

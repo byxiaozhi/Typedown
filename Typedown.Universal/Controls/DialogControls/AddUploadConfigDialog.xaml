@@ -10,16 +10,16 @@
     xmlns:controls="using:Typedown.Universal.Controls"
     Style="{StaticResource DefaultAppContentDialogStyle}"
     x:Name="ThisControl"
-    x:Uid="AddUploadConfig"
-    PrimaryButtonText="{u:LocaleString Key=Add/Text}"
-    SecondaryButtonText="{u:LocaleString Key=Cancel/Text}"
+    Title="{u:LocaleString Key=ImageUpload.AddConfig.Title}"
+    PrimaryButtonText="{u:LocaleString Key=Add}"
+    SecondaryButtonText="{u:LocaleString Key=Cancel}"
     DefaultButton="Primary"
     mc:Ignorable="d">
     <StackPanel>
-        <TextBlock x:Uid="Name"/>
+        <TextBlock Text="{u:LocaleString Key=Name}"/>
         <TextBox Margin="0,8,0,0" Text="{x:Bind ConfigName, Mode=TwoWay}"/>
         <TextBlock Margin="0,8,0,0" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Text="{x:Bind ErrMsg, Mode=OneWay}" Visibility="{x:Bind ErrMsg, Converter={StaticResource EmptyToVisibilityReverseConverter}, Mode=OneWay}"/>
-        <TextBlock Margin="0,12,0,0" x:Uid="UploadMethod"/>
+        <TextBlock Margin="0,12,0,0" Text="{u:LocaleString Key=ImageUpload.Method}"/>
         <ComboBox Margin="0,8,0,0" HorizontalAlignment="Stretch" ItemsSource="{x:Bind enums:Enumerable.AvailableImageUploadMethods}" SelectedItem="{Binding UploadMethod, ElementName=ThisControl, Mode=TwoWay}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

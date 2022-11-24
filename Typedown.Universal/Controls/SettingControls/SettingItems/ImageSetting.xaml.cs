@@ -63,7 +63,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
             UploadConfigOptions.UpdateCollection(ImageUpload.ImageUploadConfigs
                 .Where(x => x.IsEnable)
                 .Select(x => new UploadConfigOption() { Id = x.Id, Name = x.Name })
-                .Union(System.Linq.Enumerable.Repeat(UploadConfigOption.None, 1))
+                .Append(UploadConfigOption.None)
                 .ToList(),
                 (a, b) => a.Id == b.Id);
             await Task.Yield();

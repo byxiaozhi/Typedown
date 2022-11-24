@@ -37,7 +37,7 @@
     <MenuFlyoutItem x:Name="InsertParagraphBeforeItem" Text="{u:LocaleString Key=InsertParagraphBefore}" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="before"/>
     <MenuFlyoutItem x:Name="InsertParagraphAfterItem" Text="{u:LocaleString Key=InsertParagraphAfter}" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="after"/>
     <MenuFlyoutSeparator/>
-    <MenuFlyoutSubItem x:Uid="Chart" IsEnabled="{x:Bind Editor.ParagraphState.Chart.IsEnable, Mode=TwoWay}">
+    <MenuFlyoutSubItem Text="{u:LocaleString Key=Chart}" IsEnabled="{x:Bind Editor.ParagraphState.Chart.IsEnable, Mode=TwoWay}">
         <MenuFlyoutItem x:Name="VegaChartItem" Text="{u:LocaleString Key=VegaChart}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="vega-lite"/>
         <MenuFlyoutItem x:Name="FlowChartItem" Text="{u:LocaleString Key=FlowChart}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="flowchart"/>
         <MenuFlyoutItem x:Name="SequenceDiagramItem" Text="{u:LocaleString Key=SequenceDiagram}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="sequence"/>

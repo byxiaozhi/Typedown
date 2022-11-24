@@ -5,12 +5,13 @@
     xmlns:local="using:Typedown.Universal.Controls.FloatControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Universal.Utilities"
     Placement="RightEdgeAlignedTop"
     mc:Ignorable="d">
-    <MenuFlyoutItem x:Uid="InsertRowAbove" Name="InsertPreviousRow" Click="InsertPreviousRow_Click"/>
-    <MenuFlyoutItem x:Uid="InsertRowBelow" Name="InsertNextRow" Click="InsertNextRow_Click"/>
-    <MenuFlyoutItem x:Uid="RemoveRow" Name="RemoveNurrentRow" Click="RemoveNurrentRow_Click"/>
-    <MenuFlyoutItem x:Uid="InsertColumnLeft" Name="InsertLeftColumn" Click="InsertLeftColumn_Click"/>
-    <MenuFlyoutItem x:Uid="InsertColumnRight" Name="InsertRightColumn" Click="InsertRightColumn_Click"/>
-    <MenuFlyoutItem x:Uid="RemoveColumn" Name="RemoveCurrentColumn" Click="RemoveCurrentColumn_Click"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=InsertRowAbove}" Name="InsertPreviousRow" Click="InsertPreviousRow_Click"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=InsertRowBelow}" Name="InsertNextRow" Click="InsertNextRow_Click"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=RemoveRow}" Name="RemoveNurrentRow" Click="RemoveNurrentRow_Click"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=InsertColumnLeft}" Name="InsertLeftColumn" Click="InsertLeftColumn_Click"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=InsertColumnRight}" Name="InsertRightColumn" Click="InsertRightColumn_Click"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=RemoveColumn}" Name="RemoveCurrentColumn" Click="RemoveCurrentColumn_Click"/>
 </MenuFlyout>

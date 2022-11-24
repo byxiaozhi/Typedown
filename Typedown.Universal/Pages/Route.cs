@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Typedown.Universal.Pages.SettingPages;
 
 namespace Typedown.Universal.Pages
@@ -25,10 +21,7 @@ namespace Typedown.Universal.Pages
             "General" => typeof(GeneralPage),
             "Image" => typeof(ImagePage),
             "ImageUpload" => typeof(ImageUploadPage),
-            "MenuBar" => typeof(MenuBarPage),
             "Shortcut" => typeof(ShortcutPage),
-            "SidePane" => typeof(SidePanePage),
-            "StatusBar" => typeof(StatusBarPage),
             "UploadConfig" => typeof(UploadConfigPage),
             "View" => typeof(ViewPage),
             _ => null

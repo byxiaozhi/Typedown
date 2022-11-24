@@ -90,6 +90,10 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
 
         public ShortcutSettingItemModel(SettingsViewModel target, PropertyInfo property)
         {
+            if(property.Name == nameof(target.ShortcutParagraph))
+            {
+
+            }
             Target = target;
             Property = property;
             var texts = Property.GetCustomAttribute<LocaleAttribute>()?.Texts.ToList();
@@ -102,7 +106,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
             else
             {
                 DisplayName = string.IsNullOrEmpty(texts.Last()) ? Property.Name : texts.Last();
-                Description = string.Join(" / ", texts.Take(texts.Count - 1).Union(Enumerable.Repeat(DisplayName, 1)));
+                Description = string.Join(" / ", texts.Take(texts.Count - 1).Append(DisplayName));
                 Category = texts.First();
             }
         }

@@ -8,6 +8,7 @@
     xmlns:controls="using:Typedown.Universal.Controls" 
     xmlns:settingItems="using:Typedown.Universal.Controls.SettingControls.SettingItems" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:u="using:Typedown.Universal.Utilities"
     xmlns:converters="using:Typedown.Universal.Converters"
     SizeChanged="OnSizeChanged"
     Loaded="OnLoaded"
@@ -44,20 +45,20 @@
             <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>
         </muxc:NavigationView.Resources>
         <muxc:NavigationView.MenuItems>
-            <muxc:NavigationViewItem Icon="Globe" x:Uid="GeneralPage" Tag="General"/>
-            <muxc:NavigationViewItem Icon="View" x:Uid="ViewPage" Tag="View"/>
-            <muxc:NavigationViewItem Icon="Edit" x:Uid="EditorPage" Tag="Editor"/>
-            <muxc:NavigationViewItem x:Uid="ImagePage" Tag="Image">
+            <muxc:NavigationViewItem Icon="Globe" Content="{u:LocaleString Key=General.Title}" Tag="General"/>
+            <muxc:NavigationViewItem Icon="View" Content="{u:LocaleString Key=View.Title}" Tag="View"/>
+            <muxc:NavigationViewItem Icon="Edit" Content="{u:LocaleString Key=Editor.Title}" Tag="Editor"/>
+            <muxc:NavigationViewItem Content="{u:LocaleString Key=Image.Title}" Tag="Image">
                 <muxc:NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xe91b;"/>
                 </muxc:NavigationViewItem.Icon>
             </muxc:NavigationViewItem>
-            <muxc:NavigationViewItem x:Uid="ExportPage" Tag="Export">
+            <muxc:NavigationViewItem Content="{u:LocaleString Key=Export.Title}" Tag="Export">
                 <muxc:NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xf000;"/>
                 </muxc:NavigationViewItem.Icon>
             </muxc:NavigationViewItem>
-            <muxc:NavigationViewItem x:Uid="AboutPage" Tag="About">
+            <muxc:NavigationViewItem Content="{u:LocaleString Key=About.Title}" Tag="About">
                 <muxc:NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xe946;"/>
                 </muxc:NavigationViewItem.Icon>

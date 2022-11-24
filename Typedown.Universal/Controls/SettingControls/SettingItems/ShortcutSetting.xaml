@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Universal.Controls" 
     xmlns:common="using:Typedown.Universal.Controls.CommonControls"
+    xmlns:u="using:Typedown.Universal.Utilities"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     mc:Ignorable="d"
@@ -24,7 +25,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <AutoSuggestBox 
-            PlaceholderText="搜索" 
+            PlaceholderText="{u:LocaleString Key=Search}" 
             Text="{x:Bind SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             QueryIcon="Find"/>
         <Viewbox 

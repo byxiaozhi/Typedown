@@ -57,8 +57,6 @@ namespace Typedown.Universal.ViewModels
         public Command<Unit> PrintCommand { get; } = new();
         public Command<Unit> ExitCommand { get; } = new();
 
-        private readonly ResourceLoader dialogMessages = ResourceLoader.GetForViewIndependentUse("DialogMessages");
-
         private readonly DispatcherTimer saveFileTimer = new();
 
         public AutoBackup AutoBackup => ServiceProvider.GetService<AutoBackup>();
@@ -215,7 +213,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(dialogMessages.GetString("ReadErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                await AppContentDialog.Create(Locale.GetDialogString("ReadErrorTitle"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 return false;
             }
         }
@@ -235,7 +233,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create("Error", ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                await AppContentDialog.Create("Error", ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 return false;
             }
         }
@@ -245,10 +243,10 @@ namespace Typedown.Universal.ViewModels
             string text = await AutoBackup.GetBackup(path);
             if (text == null || Common.SimpleHash(text) == fileHash) return null;
             var dialog = AppContentDialog.Create();
-            dialog.Title = dialogMessages.GetString("RecoverTitle");
-            dialog.Content = dialogMessages.GetString("RecoverContent");
-            dialog.PrimaryButtonText = dialogMessages.GetString("Recover");
-            dialog.SecondaryButtonText = dialogMessages.GetString("Delete");
+            dialog.Title = Locale.GetDialogString("RecoverTitle");
+            dialog.Content = Locale.GetDialogString("RecoverContent");
+            dialog.PrimaryButtonText = Locale.GetDialogString("Recover");
+            dialog.SecondaryButtonText = Locale.GetDialogString("Delete");
             dialog.DefaultButton = ContentDialogButton.Primary;
             var result = await dialog.ShowAsync(AppViewModel.XamlRoot);
             if (result == ContentDialogResult.Primary)
@@ -273,7 +271,7 @@ namespace Typedown.Universal.ViewModels
             {
                 if (alert)
                 {
-                    await AppContentDialog.Create(dialogMessages.GetString("SaveErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                    await AppContentDialog.Create(Locale.GetDialogString("SaveErrorTitle"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 }
                 return false;
             }
@@ -352,11 +350,11 @@ namespace Typedown.Universal.ViewModels
             }
             askToSaveOpened = true;
             var result = await AppContentDialog.Create(
-                dialogMessages.GetString("AsKToSaveTitle"),
-                dialogMessages.GetString("AsKToSaveContent"),
-                dialogMessages.GetString("Cancel"),
-                dialogMessages.GetString("Save"),
-                dialogMessages.GetString("Don'tSave")).ShowAsync(AppViewModel.XamlRoot);
+                Locale.GetDialogString("AsKToSaveTitle"),
+                Locale.GetDialogString("AsKToSaveContent"),
+                Locale.GetDialogString("Cancel"),
+                Locale.GetDialogString("Save"),
+                Locale.GetDialogString("Don'tSave")).ShowAsync(AppViewModel.XamlRoot);
             askToSaveOpened = false;
             switch (result)
             {
@@ -423,7 +421,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(dialogMessages.GetString("ImportErrorTitle"), ex.Message, dialogMessages.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                await AppContentDialog.Create(Locale.GetDialogString("ImportErrorTitle"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
             }
         }
 

@@ -351,15 +351,6 @@
     <Compile Include="Pages\SettingPages\ShortcutPage.xaml.cs">
       <DependentUpon>ShortcutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingPages\MenuBarPage.xaml.cs">
-      <DependentUpon>MenuBarPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SettingPages\SidePanePage.xaml.cs">
-      <DependentUpon>SidePanePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SettingPages\StatusBarPage.xaml.cs">
-      <DependentUpon>StatusBarPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\SettingPages\ViewPage.xaml.cs">
       <DependentUpon>ViewPage.xaml</DependentUpon>
     </Compile>
@@ -752,18 +743,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SettingPages\MenuBarPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\SettingPages\SidePanePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\SettingPages\StatusBarPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\SettingPages\ViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -794,13 +773,18 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Resources\Strings\zh-Hans\DialogMessages.resw" />
+    <PRIResource Include="Resources\Strings\zh-Hans\DialogResources.resw" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Resources\Strings\zh-Hans\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Resources\Strings\zh-Hans\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hans\SettingsResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

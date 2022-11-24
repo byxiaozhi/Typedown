@@ -8,6 +8,7 @@
     xmlns:float="using:Typedown.Universal.Controls.FloatControls" 
     xmlns:viewmodels="using:Typedown.Universal.ViewModels" 
     xmlns:items="using:Typedown.Universal.Controls.EditorControls.ContextMenuItems"
+    xmlns:u="using:Typedown.Universal.Utilities"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
     mc:Ignorable="d"
     x:Name="ThisControl"
@@ -80,7 +81,7 @@
                 <MenuFlyout x:Name="Flyout" OverlayInputPassThroughElement="{Binding XamlRoot.Content}" AreOpenCloseAnimationsEnabled="{Binding SettingsViewModel.AnimationEnable}">
                     <items:FormatItem x:Name="MenuFormatItem" x:Load="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" ItemClick="OnFormatItemClick"/>
                     <MenuFlyoutSeparator x:Name="MenuFormatItemSeparator" x:Load="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}"/>
-                    <MenuFlyoutSubItem x:Name="MenuImageItem" x:Uid="Image" x:Load="{x:Bind Format.FormatState.Image, Mode=OneWay}">
+                    <MenuFlyoutSubItem x:Name="MenuImageItem" Text="{u:LocaleString Key=Image}" x:Load="{x:Bind Format.FormatState.Image, Mode=OneWay}">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xe91b;"/>
                         </MenuFlyoutSubItem.Icon>
@@ -89,27 +90,27 @@
                         </local:MenuItemCollection.Value>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator x:Name="MenuImageItemSeparator" x:Load="{x:Bind Format.FormatState.Image, Mode=OneWay}"/>
-                    <MenuFlyoutSubItem x:Name="MenuCodeFencesItem" x:Uid="CodeFences" x:Load="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=OneWay}">
+                    <MenuFlyoutSubItem x:Name="MenuCodeFencesItem" Text="{u:LocaleString Key=CodeFences}" x:Load="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=OneWay}">
                         <local:MenuItemCollection.Value>
                             <items:CodeFencesItem/>
                         </local:MenuItemCollection.Value>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator x:Name="MenuCodeFencesItemSeparator" x:Load="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=OneWay}"/>
-                    <MenuFlyoutItem x:Uid="Undo" KeyboardAcceleratorTextOverride="{x:Bind Settings.ShortcutUndo, Mode=OneWay, Converter={StaticResource ShortcutKeyToStringConverter}}" Icon="Undo" Command="{x:Bind Editor.UndoCommand}" IsEnabled="{x:Bind Editor.History.Undoable, Mode=OneWay}"/>
+                    <MenuFlyoutItem Text="{u:LocaleString Key=Undo}" KeyboardAcceleratorTextOverride="{x:Bind Settings.ShortcutUndo, Mode=OneWay, Converter={StaticResource ShortcutKeyToStringConverter}}" Icon="Undo" Command="{x:Bind Editor.UndoCommand}" IsEnabled="{x:Bind Editor.History.Undoable, Mode=OneWay}"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Name="CutItem" x:Uid="Cut" Icon="Cut" Command="{x:Bind Editor.CutCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Ctrl+X" CommandParameter="normal"/>
-                    <MenuFlyoutItem x:Name="CopyItem" x:Uid="Copy" Icon="Copy" Command="{x:Bind Editor.CopyCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Ctrl+C" CommandParameter="normal"/>
-                    <MenuFlyoutItem x:Name="PasteItem" x:Uid="Paste" Icon="Paste" Command="{x:Bind Editor.PasteCommand}" KeyboardAcceleratorTextOverride="Ctrl+V" CommandParameter="normal"/>
-                    <MenuFlyoutSubItem x:Uid="CopyPasteAs">
-                        <MenuFlyoutItem x:Name="CopyAsPlainTextItem" x:Uid="CopyAsPlainText" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsPlainText" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
-                        <MenuFlyoutItem x:Name="CopyAsMarkdownItem" x:Uid="CopyAsMarkdown" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsMarkdown" KeyboardAcceleratorTextOverride="Ctrl+Shift+C" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
-                        <MenuFlyoutItem x:Name="CopyAsHTMLCodeItem" x:Uid="CopyAsHTMLCode" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsHtml" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
-                        <MenuFlyoutItem x:Name="PasteAsPlainTextItem" x:Uid="PasteAsPlainText" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.PasteCommand}" CommandParameter="pasteAsPlainText" KeyboardAcceleratorTextOverride="Ctrl+Shift+V"/>
+                    <MenuFlyoutItem x:Name="CutItem" Text="{u:LocaleString Key=Cut}" Icon="Cut" Command="{x:Bind Editor.CutCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Ctrl+X" CommandParameter="normal"/>
+                    <MenuFlyoutItem x:Name="CopyItem" Text="{u:LocaleString Key=Copy}" Icon="Copy" Command="{x:Bind Editor.CopyCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Ctrl+C" CommandParameter="normal"/>
+                    <MenuFlyoutItem x:Name="PasteItem" Text="{u:LocaleString Key=Paste}" Icon="Paste" Command="{x:Bind Editor.PasteCommand}" KeyboardAcceleratorTextOverride="Ctrl+V" CommandParameter="normal"/>
+                    <MenuFlyoutSubItem Text="{u:LocaleString Key=CopyPasteAs}">
+                        <MenuFlyoutItem x:Name="CopyAsPlainTextItem" Text="{u:LocaleString Key=CopyAsPlainText}" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsPlainText" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
+                        <MenuFlyoutItem x:Name="CopyAsMarkdownItem" Text="{u:LocaleString Key=CopyAsMarkdown}" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsMarkdown" KeyboardAcceleratorTextOverride="Ctrl+Shift+C" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
+                        <MenuFlyoutItem x:Name="CopyAsHTMLCodeItem" Text="{u:LocaleString Key=CopyAsHTMLCode}" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.CopyCommand}" CommandParameter="copyAsHtml" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}"/>
+                        <MenuFlyoutItem x:Name="PasteAsPlainTextItem" Text="{u:LocaleString Key=PasteAsPlainText}" Visibility="{x:Bind Settings.SourceCode, Mode=OneWay, Converter={StaticResource BoolToVisibilityReverseConverter}}" Command="{x:Bind Editor.PasteCommand}" CommandParameter="pasteAsPlainText" KeyboardAcceleratorTextOverride="Ctrl+Shift+V"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Name="DeleteItem" x:Uid="Delete" Icon="Delete" Command="{x:Bind Editor.DeleteSelectionCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Delete"/>
+                    <MenuFlyoutItem x:Name="DeleteItem" Text="{u:LocaleString Key=Delete}" Command="{x:Bind Editor.DeleteSelectionCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" KeyboardAcceleratorTextOverride="Delete"/>
                     <MenuFlyoutSeparator/>
-                    <MenuFlyoutItem x:Name="SelectAllItem" x:Uid="SelectAll" Icon="SelectAll" Command="{x:Bind Editor.SelectAllCommand}" KeyboardAcceleratorTextOverride="Ctrl+A"/>
+                    <MenuFlyoutItem x:Name="SelectAllItem" Text="{u:LocaleString Key=SelectAll}" Command="{x:Bind Editor.SelectAllCommand}" KeyboardAcceleratorTextOverride="Ctrl+A"/>
                 </MenuFlyout>
             </ContentPresenter.ContextFlyout>
         </ContentPresenter>

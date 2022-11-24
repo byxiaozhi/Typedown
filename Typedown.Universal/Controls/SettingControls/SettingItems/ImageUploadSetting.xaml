@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Universal.Controls" 
     xmlns:enums="using:Typedown.Universal.Enums" 
+    xmlns:u="using:Typedown.Universal.Utilities"
     xmlns:models="using:Typedown.Universal.Models"
     mc:Ignorable="d"
     d:DesignHeight="300"
@@ -15,21 +16,21 @@
     <UserControl.Resources>
         <SolidColorBrush x:Key="SystemFillColorCriticalBrush" Color="{ThemeResource SystemFillColorCritical}"/>
         <MenuFlyout x:Key="ConfigItemMenuFlyout">
-            <MenuFlyoutItem x:Uid="Delete" Click="OnDeleteClick"/>
+            <MenuFlyoutItem Text="{u:LocaleString Key=Delete}" Click="OnDeleteClick"/>
         </MenuFlyout>
     </UserControl.Resources>
     
     <StackPanel Spacing="4">
-        <controls:NormalSettingItem x:Uid="AddUploadConfig">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=ImageUpload.AddConfig.Title}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xee71;"/>
             </controls:NormalSettingItem.Icon>
             <Button Style="{ThemeResource AccentButtonStyle}" MinWidth="100" Click="OnAddButtonClick">
-                <TextBlock x:Uid="Add"/>
+                <TextBlock Text="{u:LocaleString Key=Add}"/>
             </Button>
         </controls:NormalSettingItem>
 
-        <TextBlock Text="上传配置" Margin="0,16,0,4" Visibility="{x:Bind ConfigItemsTitleVisibility(ImageUpload.ImageUploadConfigs), Mode=OneWay}"/>
+        <TextBlock Text="{u:LocaleString Key=ImageUpload.Configs}" Margin="0,16,0,4" Visibility="{x:Bind ConfigItemsTitleVisibility(ImageUpload.ImageUploadConfigs), Mode=OneWay}"/>
         <ListView 
             x:Name="ConfigListView" 
             Grid.Row="1" 

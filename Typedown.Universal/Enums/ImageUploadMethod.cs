@@ -10,19 +10,19 @@ namespace Typedown.Universal.Enums
         [Locale("None")]
         None = 0,
 
-        [Locale("ImageUploadMethod/FTP")]
+        [Locale("ImageUpload.Methods.FTP")]
         FTP = 1,
 
-        [Locale("ImageUploadMethod/Git")]
+        [Locale("ImageUpload.Methods.SCP")]
         Git = 2,
 
-        [Locale("ImageUploadMethod/OSS")]
+        [Locale("ImageUpload.Methods.OSS")]
         OSS = 3,
 
-        [Locale("ImageUploadMethod/SCP")]
+        [Locale("ImageUpload.Methods.SCP")]
         SCP = 4,
 
-        [Locale("ImageUploadMethod/PowerShell")]
+        [Locale("ImageUpload.Methods.PowerShell")]
         PowerShell = 1024
     }
 

@@ -5,29 +5,31 @@
     xmlns:local="using:Typedown.Universal.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:app="using:Typedown.Universal"
+    xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
     <StackPanel Spacing="8">
 
-        <TextBlock FontWeight="SemiBold" x:Uid="AboutApp"/>
+        <TextBlock FontWeight="Bold" Text="{u:LocaleString Key=About.AboutApp}"/>
 
         <StackPanel Margin="2,0,0,0">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0,0,4,0">Typedown</TextBlock>
+                <TextBlock Margin="0,0,4,0" Text="{x:Bind app:Config.AppName}"/>
                 <TextBlock Text="{x:Bind local:AboutApp.GetAppVersion()}"/>
             </StackPanel>
-            <TextBlock x:Uid="AboutIntroduction"/>
+            <TextBlock Text="{u:LocaleString Key=About.Introduction}"/>
         </StackPanel>
 
         <StackPanel Margin="-12,8,0,0">
-            <HyperlinkButton x:Uid="BasedOnOpenSourceSoftware" NavigateUri="https://typedown.ownbox.cn/credits" />
-            <HyperlinkButton x:Uid="AppStorePage" NavigateUri="https://www.microsoft.com/store/apps/9P8TCW4H2HB4" />
+            <HyperlinkButton Content="{u:LocaleString Key=About.BasedOnOpenSourceSoftware}" NavigateUri="https://typedown.ownbox.cn/credits" />
+            <HyperlinkButton Content="{u:LocaleString Key=About.AppStorePage}" NavigateUri="https://www.microsoft.com/store/apps/9P8TCW4H2HB4" />
         </StackPanel>
 
         <StackPanel Margin="0,8,0,0" Spacing="16">
-            <Button MinWidth="100" Name="FeedBackButton" x:Uid="SendFeedback" Click="FeedBackButton_Click"/>
+            <Button MinWidth="100" Name="FeedBackButton" Content="{u:LocaleString Key=About.SendFeedback}" Click="FeedBackButton_Click"/>
         </StackPanel>
 
     </StackPanel>

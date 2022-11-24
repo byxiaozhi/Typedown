@@ -6,6 +6,7 @@
     xmlns:local="using:Typedown.Universal.Controls.EditorControls.ContextMenuItems"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d">
-    <MenuFlyoutItem Text="格式化代码"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=FormatCode}"/>
 </controls:MenuItemCollection>

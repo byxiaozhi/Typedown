@@ -5,31 +5,31 @@
     xmlns:local="using:Typedown.Universal.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="16">
         <StackPanel Spacing="8">
-            <TextBlock x:Uid="FeedbackRating"/>
+            <TextBlock Text="{u:LocaleString Key=Rating}"/>
             <RatingControl Value="{x:Bind Ranting, Mode=TwoWay}"  IsReadOnly="False" HorizontalAlignment="Left"/>
         </StackPanel>
         <StackPanel Spacing="8">
-            <TextBlock x:Uid="FeedbackContentTitle"/>
+            <TextBlock Text="{u:LocaleString Key=About.SendFeedBack}"/>
             <TextBox 
                 TextWrapping="Wrap" 
                 MinWidth="400"
                 Height="200" 
                 Text="{x:Bind Feedback, Mode=TwoWay}"
-                x:Uid="TextboxFeedbackContent"
+                PlaceholderText="{u:LocaleString Key=About.SendFeedbackDialog.Content.Placeholder}"
             />
         </StackPanel>
         <StackPanel Spacing="8">
-            <TextBlock x:Uid="FeedbackContact"/>
             <TextBox 
+                Header="{u:LocaleString Key=About.SendFeedbackDialog.Contact.Header}"
                 MinWidth="400" 
                 Text="{x:Bind Contact, Mode=TwoWay}"
-                x:Uid="TextboxFeedbackContact"
-                />
+                PlaceholderText="{u:LocaleString Key=About.SendFeedbackDialog.Contact.Header}"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

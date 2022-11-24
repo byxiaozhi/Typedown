@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
-    [Locale("ImagePage/Content")]
+    [Locale("Image.Title")]
     public sealed partial class ImagePage : Page
     {
         public ImagePage()

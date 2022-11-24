@@ -111,7 +111,7 @@ namespace Typedown.Universal.ViewModels
                 Settings.EditorAreaWidth,
                 Settings.TabSize,
                 Markdown,
-                FileViewModel.ImageBasePath
+                BasePath = FileViewModel.ImageBasePath,
             };
         }
 

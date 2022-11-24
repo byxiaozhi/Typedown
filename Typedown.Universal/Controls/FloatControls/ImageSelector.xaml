@@ -8,7 +8,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" 
     xmlns:controls="using:Typedown.Universal.Controls"
-    xmlns:utils="using:Typedown.Universal.Utilities"
+    xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -19,16 +19,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock FontWeight="SemiBold" FontSize="20" x:Uid="EditImage"/>
+        <TextBlock FontWeight="SemiBold" FontSize="20" Text="{u:LocaleString Key=EditImage}"/>
         <StackPanel Grid.Row="1" Spacing="8">
-            <TextBlock x:Uid="Path"/>
+            <TextBlock Text="{u:LocaleString Key=Path}"/>
             <Grid ColumnSpacing="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="TextBoxSrc"/>
-                <controls:PathPickerButton Path="{x:Bind TextBoxSrc.Text, Mode=TwoWay}" x:Name="ImagePickerButton" MinWidth="80" Grid.Column="1" FileTypeFilter="{x:Bind utils:FileTypeHelper.Image}" x:Uid="SelectFile"/>
+                <controls:PathPickerButton Path="{x:Bind TextBoxSrc.Text, Mode=TwoWay}" x:Name="ImagePickerButton" MinWidth="80" Grid.Column="1" FileTypeFilter="{x:Bind u:FileTypeHelper.Image}" Content="{u:LocaleString Key=Browse}"/>
             </Grid>
             <Grid Margin="0,8,0,0" RowSpacing="8" ColumnSpacing="8">
                 <Grid.RowDefinitions>
@@ -39,9 +39,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Uid="ImageAlt"/>
+                <TextBlock Text="{u:LocaleString Key=ImageAlt}"/>
                 <TextBox x:Name="TextBoxAlt" Grid.Row="1"/>
-                <TextBlock Grid.Column="1" x:Uid="Title"/>
+                <TextBlock Grid.Column="1" Text="{u:LocaleString Key=Title}"/>
                 <TextBox x:Name="TextBoxTitle" Grid.Column="1" Grid.Row="1"/>
             </Grid>
         </StackPanel>
@@ -51,7 +51,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Image" controls:ToolTip.TextResource="Settings/Text">
+            <Button Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Image" controls:ToolTip.TextResource="Settings">
                 <Viewbox Width="16" Height="16">
                     <muxc:AnimatedIcon x:Name="Icon_Setting">
                         <muxc:AnimatedIcon.Source>
@@ -63,12 +63,8 @@
                     </muxc:AnimatedIcon>
                 </Viewbox>
             </Button>
-            <controls:ProgressButton x:Name="SaveButton" Grid.Column="1" MinWidth="100" Click="OnSaveButtonClick" Style="{ThemeResource AccentButtonStyle}">
-                <TextBlock x:Uid="Save"/>
-            </controls:ProgressButton>
-            <Button Grid.Column="2" MinWidth="100" Click="OnCancelButtonClick">
-                <TextBlock x:Uid="Cancel"/>
-            </Button>
+            <controls:ProgressButton x:Name="SaveButton" Content="{u:LocaleString Key=Ok}" Grid.Column="1" MinWidth="100" Click="OnSaveButtonClick" Style="{ThemeResource AccentButtonStyle}"/>
+            <Button Grid.Column="2" Content="{u:LocaleString Key=Cancel}" MinWidth="100" Click="OnCancelButtonClick"/>
         </Grid>
     </Grid>
 </UserControl>

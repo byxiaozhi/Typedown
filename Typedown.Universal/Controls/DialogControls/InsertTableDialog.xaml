@@ -6,11 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="8">
-        <muxc:NumberBox x:Uid="NumberBoxRows" x:Name="rows" Value="4" Minimum="1" SpinButtonPlacementMode="Inline"/>
-        <muxc:NumberBox x:Uid="NumberBoxColumns" x:Name="columns" Value="3" Minimum="1" SpinButtonPlacementMode="Inline"/>
+        <muxc:NumberBox Header="{u:LocaleString Key=Rows}" x:Name="rows" Value="4" Minimum="1" SpinButtonPlacementMode="Inline"/>
+        <muxc:NumberBox Header="{u:LocaleString Key=Columns}" x:Name="columns" Value="3" Minimum="1" SpinButtonPlacementMode="Inline"/>
     </StackPanel>
 </UserControl>

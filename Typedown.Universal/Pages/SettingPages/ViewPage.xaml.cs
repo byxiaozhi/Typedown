@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Pages.SettingPages
 {
-    [Locale("ViewPage/Content")]
+    [Locale("View.Title")]
     public sealed partial class ViewPage : Page
     {
         public ViewPage()

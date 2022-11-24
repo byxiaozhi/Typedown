@@ -18,11 +18,11 @@
     </Flyout.FlyoutPresenterStyle>
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="EditClick" controls:ToolTip.TextResource="Edit/Title">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="EditClick" controls:ToolTip.TextResource="Edit">
                 <FontIcon FontSize="14" Glyph="&#xE70F;"/>
             </Button>
             <AppBarSeparator/>
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="InlineClick" ToolTipService.ToolTip="Inline">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="InlineClick" controls:ToolTip.TextResource="Inline">
                 <FontIcon FontSize="14" Glyph="&#xe8a1;"/>
             </Button>
             <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="LeftClick" controls:ToolTip.TextResource="AlignLeft">
@@ -35,7 +35,7 @@
                 <FontIcon FontSize="14" Glyph="&#xE8E2;"/>
             </Button>
             <AppBarSeparator/>
-            <Button Grid.Column="3" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="Zoom/Text">
+            <Button Grid.Column="3" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="Zoom">
                 <FontIcon FontSize="14" Glyph="&#xe9a6;"/>
                 <Button.Flyout>
                     <MenuFlyout Placement="Top">
@@ -53,7 +53,7 @@
                 </Button.Flyout>
             </Button>
             <AppBarSeparator/>
-            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="DeleteClick" controls:ToolTip.TextResource="Delete/Text">
+            <Button Grid.Column="2" Width="32" Height="32" Style="{ThemeResource EllipsisIconButtonStyle}" Click="DeleteClick" controls:ToolTip.TextResource="Delete">
                 <FontIcon FontSize="14" Glyph="&#xE74D;"/>
             </Button>
         </StackPanel>

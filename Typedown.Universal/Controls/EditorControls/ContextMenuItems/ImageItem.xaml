@@ -6,6 +6,7 @@
     xmlns:local="using:Typedown.Universal.Controls.EditorControls.ContextMenuItems"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d">
     <MenuFlyoutItem Text="打开图片位置"/>
     <MenuFlyoutItem Text="复制图片到..."/>

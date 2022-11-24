@@ -7,55 +7,56 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Typedown.Universal.Controls" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:u="using:Typedown.Universal.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="4">
-        <TextBlock Text="显示" Margin="0,0,0,4"/>
-        <controls:NormalSettingItem Title="字体大小" Description="编辑器默认字号">
+        <TextBlock Text="{u:LocaleString Key=Editor.Style}" Margin="0,0,0,4"/>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.FontSize.Title}" Description="{u:LocaleString Key=Editor.FontSize.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8e9;"/>
             </controls:NormalSettingItem.Icon>
             <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="1" NumberFormatter="{x:Bind FontSizeFormatter}" Value="{x:Bind Settings.FontSize, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="行高" Description="编辑器行高倍数">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.LineHeight.Title}" Description="{u:LocaleString Key=Editor.LineHeight.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe94e;"/>
             </controls:NormalSettingItem.Icon>
             <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="0.1" NumberFormatter="{x:Bind LineHeightFormatter}" Value="{x:Bind Settings.LineHeight, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="内容宽度" Description="编辑器内容最大宽度">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.EditorAreaWidth.Title}" Description="{u:LocaleString Key=Editor.EditorAreaWidth.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe9a6;"/>
             </controls:NormalSettingItem.Icon>
             <TextBox MinWidth="200" Text="{x:Bind Settings.EditorAreaWidth, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <TextBlock Text="Markdown" Margin="0,16,0,4"/>
-        <controls:NormalSettingItem Title="默认缩进" Description="调整引用和列表的默认缩进空格">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.TabSize.Title}" Description="{u:LocaleString Key=Editor.TabSize.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xede1;"/>
             </controls:NormalSettingItem.Icon>
             <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" NumberFormatter="{x:Bind IntegerFormatter}" Value="{x:Bind Settings.TabSize, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="自动补全引号" Description="输入左引号时自动补全右引号">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.AutoPairQuote.Title}" Description="{u:LocaleString Key=Editor.AutoPairQuote.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe9b1;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.AutoPairQuote, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="自动补全括号" Description="输入左括号时自动补全右引号">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.AutoPairBracket.Title}" Description="{u:LocaleString Key=Editor.AutoPairBracket.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph=""/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.AutoPairBracket, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="自动补全 Markdown 标记" Description="自动补全匹配的 Markdown 标记">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.AutoPairMarkdownSyntax.Title}" Description="{u:LocaleString Key=Editor.AutoPairMarkdownSyntax.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe943;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.AutoPairMarkdownSyntax, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="默认复制/剪切内容" Description="选择默认的复制/剪切内容">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.DefaultCopyCutFormat.Title}" Description="{u:LocaleString Key=Editor.DefaultCopyCutFormat.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8c8;"/>
             </controls:NormalSettingItem.Icon>
@@ -65,17 +66,16 @@
                 <x:String>HTML</x:String>
             </ComboBox>
         </controls:NormalSettingItem>
-        <TextBlock Text="扩展" Margin="0,16,0,4"/>
-        <controls:ExpanderSettingItem Title="拼写检查" Description="查找并高亮语法错误" State="启用">
+        <TextBlock Text="{u:LocaleString Key=Editor.Extension}" Margin="0,16,0,4"/>
+        <controls:ExpanderSettingItem Title="{u:LocaleString Key=Editor.SpellcheckEnabled.Title}" Description="{u:LocaleString Key=Editor.SpellcheckEnabled.Description}">
             <controls:ExpanderSettingItem.Icon>
                 <FontIcon Glyph="&#xf87b;"/>
             </controls:ExpanderSettingItem.Icon>
+            <controls:ExpanderSettingItem.State>
+                <ToggleSwitch IsOn="{x:Bind Settings.SpellcheckEnabled, Mode=TwoWay}"/>
+            </controls:ExpanderSettingItem.State>
             <StackPanel>
-                <controls:NormalSettingItem Title="启用">
-                    <ToggleSwitch IsOn="{x:Bind Settings.SpellcheckEnabled, Mode=TwoWay}"/>
-                </controls:NormalSettingItem>
-                <Border Height="1" Background="{ThemeResource CardStrokeColorDefault}"/>
-                <controls:NormalSettingItem Title="语言">
+                <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.SpellcheckEnabled.Language.Title}">
                     <ComboBox MinWidth="200" SelectedIndex="0">
                         <x:String>自动检测语言</x:String>
                     </ComboBox>
