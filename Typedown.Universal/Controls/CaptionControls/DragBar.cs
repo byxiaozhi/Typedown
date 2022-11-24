@@ -54,7 +54,7 @@ namespace Typedown.Universal.Controls
             PInvoke.GetWindowRect(xamlSourceHandle, out var xamlSourceRect);
             var position = TransformToVisual(XamlRoot.Content).TransformPoint(new(0, 0));
             var scalingFactor = PInvoke.GetDpiForWindow(dragBarhandle) / 96d;
-            var x = position.X * scalingFactor + xamlSourceRect.left - parentRect.left;
+            var x = position.X * scalingFactor;
             var y = position.Y * scalingFactor + xamlSourceRect.top - parentRect.top;
             var width = ActualWidth * scalingFactor;
             var height = ActualHeight * scalingFactor;
