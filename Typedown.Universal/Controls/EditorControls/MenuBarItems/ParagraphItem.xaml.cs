@@ -43,7 +43,7 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
             RegisterEditorShortcut(Settings.ShortcutMathBlock, MathBlockItem);
             RegisterEditorShortcut(Settings.ShortcutQuote, QuoteItem);
             RegisterEditorShortcut(Settings.ShortcutOrderedList, OrderedListItem);
-            RegisterEditorShortcut(Settings.ShortcutUnordered, UnorderedItem);
+            RegisterEditorShortcut(Settings.ShortcutUnorderedList, UnorderedListItem);
             RegisterEditorShortcut(Settings.ShortcutTaskList, TaskListItem);
             RegisterEditorShortcut(Settings.ShortcutInsertParagraphBefore, InsertParagraphBeforeItem);
             RegisterEditorShortcut(Settings.ShortcutInsertParagraphAfter, InsertParagraphAfterItem);

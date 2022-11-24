@@ -387,7 +387,7 @@
     <Compile Include="Utilities\FileTypeHelper.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
-    <Compile Include="Utilities\Localize.cs" />
+    <Compile Include="Utilities\Locale.cs" />
     <Compile Include="Utilities\CollectionExtensions.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.DwmApi.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.Kernel32.cs" />

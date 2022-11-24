@@ -189,6 +189,10 @@
     <value>取消</value>
     <comment>取消</comment>
   </data>
+  <data name="Chart" xml:space="preserve">
+    <value>图表</value>
+    <comment>图表</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
     <value>清除样式</value>
     <comment>清除样式</comment>
@@ -204,6 +208,10 @@
   <data name="Close" xml:space="preserve">
     <value>关闭</value>
     <comment>关闭</comment>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>代码</value>
+    <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
     <value>代码块</value>
@@ -337,6 +345,10 @@
     <value>查找上一个</value>
     <comment>查找上一个</comment>
   </data>
+  <data name="FlowChart" xml:space="preserve">
+    <value>Flow Chart</value>
+    <comment>Flow Chart</comment>
+  </data>
   <data name="FocusMode" xml:space="preserve">
     <value>专注模式</value>
     <comment>专注模式</comment>
@@ -425,6 +437,30 @@
     <value>内联</value>
     <comment>内联</comment>
   </data>
+  <data name="InlineCode" xml:space="preserve">
+    <value>内联代码</value>
+    <comment>内联代码</comment>
+  </data>
+  <data name="InlineMath" xml:space="preserve">
+    <value>内联公式</value>
+    <comment>内联公式</comment>
+  </data>
+  <data name="InputFootnoteDefine" xml:space="preserve">
+    <value>输入脚注定义...</value>
+    <comment>输入脚注定义...</comment>
+  </data>
+  <data name="InputLanguageIdentifier" xml:space="preserve">
+    <value>输入语言标识符...</value>
+    <comment>输入语言标识符...</comment>
+  </data>
+  <data name="InputMathFormula" xml:space="preserve">
+    <value>输入数学公式...</value>
+    <comment>输入数学公式...</comment>
+  </data>
+  <data name="InputYAMLFrontMatter" xml:space="preserve">
+    <value>输入 YAML Front Matter...</value>
+    <comment>输入 YAML Front Matter...</comment>
+  </data>
   <data name="InsertColumnLeft" xml:space="preserve">
     <value>在左边插入列</value>
     <comment>在左边插入列</comment>
@@ -436,6 +472,14 @@
   <data name="InsertImage" xml:space="preserve">
     <value>插入图像</value>
     <comment>插入图像</comment>
+  </data>
+  <data name="InsertParagraphAfter" xml:space="preserve">
+    <value>在下方插入段落</value>
+    <comment>在下方插入段落</comment>
+  </data>
+  <data name="InsertParagraphBefore" xml:space="preserve">
+    <value>在上方插入段落</value>
+    <comment>在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
     <value>在上方插入行</value>
@@ -477,6 +521,10 @@
     <value>加载图片失败</value>
     <comment>加载图片失败</comment>
   </data>
+  <data name="Math" xml:space="preserve">
+    <value>数学</value>
+    <comment>数学</comment>
+  </data>
   <data name="MathBlock" xml:space="preserve">
     <value>公式块</value>
     <comment>公式块</comment>
@@ -488,6 +536,10 @@
   <data name="MenuBar" xml:space="preserve">
     <value>菜单栏</value>
     <comment>菜单栏</comment>
+  </data>
+  <data name="Mermaid" xml:space="preserve">
+    <value>Mermaid</value>
+    <comment>Mermaid</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
     <value>分钟</value>
@@ -589,6 +641,10 @@
     <value>路径</value>
     <comment>路径</comment>
   </data>
+  <data name="PlantUMLDiagram" xml:space="preserve">
+    <value>PlantUML Diagram</value>
+    <comment>PlantUML Diagram</comment>
+  </data>
   <data name="Print" xml:space="preserve">
     <value>打印</value>
     <comment>打印</comment>
@@ -661,6 +717,10 @@
     <value>发送反馈</value>
     <comment>发送反馈</comment>
   </data>
+  <data name="SequenceDiagram" xml:space="preserve">
+    <value>Sequence Diagram</value>
+    <comment>Sequence Diagram</comment>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
     <comment>设置</comment>
@@ -673,9 +733,25 @@
     <value>侧栏</value>
     <comment>侧栏</comment>
   </data>
+  <data name="SourceCodeMode" xml:space="preserve">
+    <value>源代码模式</value>
+    <comment>源代码模式</comment>
+  </data>
+  <data name="StatusBar" xml:space="preserve">
+    <value>状态栏</value>
+    <comment>状态栏</comment>
+  </data>
   <data name="Stop" xml:space="preserve">
     <value>停止</value>
     <comment>停止</comment>
+  </data>
+  <data name="Strikethrough" xml:space="preserve">
+    <value>删除线</value>
+    <comment>删除线</comment>
+  </data>
+  <data name="Strong" xml:space="preserve">
+    <value>加粗</value>
+    <comment>加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
     <value>表格</value>
@@ -688,6 +764,10 @@
   <data name="Title" xml:space="preserve">
     <value>标题</value>
     <comment>标题</comment>
+  </data>
+  <data name="Toc" xml:space="preserve">
+    <value>内容目录</value>
+    <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
     <value>总计</value>
@@ -709,6 +789,10 @@
     <value>撤销</value>
     <comment>撤销</comment>
   </data>
+  <data name="UnorderedList" xml:space="preserve">
+    <value>无序列表</value>
+    <comment>无序列表</comment>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>更新</value>
     <comment>更新</comment>
@@ -724,6 +808,10 @@
   <data name="UseSystemSetting" xml:space="preserve">
     <value>使用系统设置</value>
     <comment>使用系统设置</comment>
+  </data>
+  <data name="VegaChart" xml:space="preserve">
+    <value>Vega Chart</value>
+    <comment>Vega Chart</comment>
   </data>
   <data name="View" xml:space="preserve">
     <value>查看</value>
