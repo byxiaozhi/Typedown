@@ -30,7 +30,8 @@ namespace Typedown.Universal.Controls.CommonControls
                 PrimaryButtonText = "保存",
                 SecondaryButtonText = "清除",
                 CloseButtonText = "取消",
-                DefaultButton = ContentDialogButton.Primary
+                DefaultButton = ContentDialogButton.Primary,
+                IsSecondaryButtonEnabled = ShortcutKey != null && ShortcutKey != new ShortcutKey(0, 0),
             };
             picker.Binding(new(nameof(picker.ShortcutKey))).Cast<ShortcutKey>().Subscribe(_ => OnPickerShortcutKeyChanged(dialog));
             dialog.PrimaryButtonClick += OnDialogPrimaryButtonClick;
@@ -57,7 +58,8 @@ namespace Typedown.Universal.Controls.CommonControls
         private void OnPickerShortcutKeyChanged(AppContentDialog dialog)
         {
             var picker = dialog.Content as ShortcutPicker;
-            dialog.PrimaryButton.IsEnabled = picker.Verified;
+            dialog.IsPrimaryButtonEnabled = picker.Verified;
+            dialog.IsSecondaryButtonEnabled = picker.ShortcutKey != null && picker.ShortcutKey != new ShortcutKey(0, 0);
         }
 
         public static bool HasShortcutKey(ShortcutKey key)
