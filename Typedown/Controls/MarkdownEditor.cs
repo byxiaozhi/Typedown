@@ -25,6 +25,8 @@ using Windows.UI.Xaml.Shapes;
 using System.Threading.Tasks;
 using Windows.UI.ViewManagement;
 using Windows.System;
+using System.IO;
+using System.Web;
 
 namespace Typedown.Controls
 {
@@ -105,20 +107,42 @@ namespace Typedown.Controls
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
             CoreWebView2.NewWindowRequested += OnNewWindowRequested;
 #if DEBUG
-            // CoreWebView2.OpenDevToolsWindow();
+            CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
+            CoreWebView2.WebResourceRequested += OnWebResourceRequested;
+            CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 
         private void LoadStaticResources()
         {
 # if DEBUG
-            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
-            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
-            // WebViewController.CoreWebView2.Navigate("http://localhost:3000");
+            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
 #endif
+        }
+
+        private async void OnWebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs args)
+        {
+            var deferral = args.GetDeferral();
+            try
+            {
+                var uri = new Uri(args.Request.Uri);
+                var query = HttpUtility.ParseQueryString(uri.Query);
+                var src = HttpUtility.UrlDecode(query["src"]);
+                var path = System.IO.Path.Combine(AppViewModel.FileViewModel.ImageBasePath, UriHelper.IsLocalUrl(src) ? new Uri(src).LocalPath : src);
+                var stream = await Task.Run(() => new MemoryStream(File.ReadAllBytes(path)));
+                args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
+            }
+            catch (Exception)
+            {
+                args.Response = CoreWebView2.Environment.CreateWebResourceResponse(null, 404, "Not found", null);
+            }
+            finally
+            {
+                deferral.Complete();
+            }
         }
 
         private async void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)

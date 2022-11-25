@@ -1,6 +1,7 @@
 import runSanitize from './dompurify'
 import { URL_REG, DATA_URL_REG, IMAGE_EXT_REG } from '../config'
 import path from 'path-browserify'
+import process from "process";
 
 const ID_PREFIX = 'ag-'
 let id = 0
@@ -262,6 +263,13 @@ export const checkImageContentType = url => {
 export const getImageInfo = (src, basePath = window.basePath) => {
   const imageExtension = IMAGE_EXT_REG.test(src)
   const isUrl = URL_REG.test(src) || (imageExtension && /^file:\/\/.+/.test(src))
+
+  if (src.length > 0 && !URL_REG.test(src) && process.env.NODE_ENV === 'development') {
+    return {
+      isUnknownType: !imageExtension,
+      src: 'http://local-file-access/?src=' + encodeURIComponent(src)
+    }
+  }
 
   // Treat an URL with valid extension as image.
   if (imageExtension) {
