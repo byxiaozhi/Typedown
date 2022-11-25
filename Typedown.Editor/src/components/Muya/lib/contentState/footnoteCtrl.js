@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-const FOOTNOTE_REG = /^\[\^([^\^\[\]\s]+?)(?<!\\)\]: /
+const FOOTNOTE_REG = /^\[\^([^\^\[\]\s]*?)(?<!\\)\]: /
 /* eslint-enable no-useless-escape */
 const footnoteCtrl = ContentState => {
   ContentState.prototype.updateFootnote = function (block, line) {

@@ -12,6 +12,8 @@ const createApplicationMenuState = ({ start, end, affiliation }) => {
     isCodeContent: false,
     // Whether the selection contains a table.
     isTable: false,
+    // 是否包含脚注.
+    isFootnote: false,
     // Contains keys about the selection type(s) (string, boolean) like "ul: true".
     affiliation: {}
   }
@@ -58,6 +60,9 @@ const createApplicationMenuState = ({ start, end, affiliation }) => {
       if (b.functionType === 'table') {
         state.isTable = true
         state.isDisabled = true
+      }
+      if (b.functionType === 'footnote') {
+        state.isFootnote = true
       }
       break
     } else if (isMultiline && /^h{1,6}$/.test(b.type)) {

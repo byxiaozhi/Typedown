@@ -366,7 +366,7 @@ const paragraphCtrl = ContentState => {
         this.insertBefore(child, quoteBlock)
       }
       this.removeBlock(quoteBlock)
-    // change paragraph to blockquote
+      // change paragraph to blockquote
     } else {
       if (start.key === end.key) {
         if (startBlock.type === 'span') {
@@ -627,6 +627,16 @@ const paragraphCtrl = ContentState => {
           start: { key, offset },
           end: { key, offset }
         }
+        break
+      }
+      case 'footnote': {
+        this.createFootnote('')
+        break
+      }
+      case 'linkref': {
+        break
+      }
+      case 'toc': {
         break
       }
     }

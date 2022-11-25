@@ -1,5 +1,6 @@
 import BaseFloat from '../baseFloat'
 import { patch, h } from '../../parser/render/snabbdom'
+import remote from 'services/remote/common'
 
 import './index.css'
 
@@ -33,7 +34,7 @@ const defaultOptions = {
   showArrow: false
 }
 
-class LinkTools extends BaseFloat {
+class FootnoteTool extends BaseFloat {
   static pluginName = 'footnoteTool'
 
   constructor(muya, options = {}) {
@@ -48,7 +49,14 @@ class LinkTools extends BaseFloat {
     const toolContainer = this.toolContainer = document.createElement('div')
     this.container.appendChild(toolContainer)
     this.floatBox.classList.add('ag-footnote-tool-container')
+    this.loadStringResources();
     this.listen()
+
+  }
+
+  async loadStringResources() {
+    const names = ['FootnoteNotFound', 'InputFootnoteDefine', 'Create', 'GoTo']
+    this.stringResources = await remote.getStringResources({ names })
   }
 
   listen() {
@@ -79,7 +87,7 @@ class LinkTools extends BaseFloat {
     }
 
     const mouseOutHandler = () => {
-      this.hide()
+      // this.hide()
     }
 
     eventCenter.attachDOMEvent(this.container, 'mouseover', mouseOverHandler)
@@ -95,18 +103,18 @@ class LinkTools extends BaseFloat {
       style: {
         'font-family': '"Segoe Fluent Icons", "Segoe MDL2 Assets"',
         'font-size': '16px',
-        'line-height': '1.6'
+        'line-height': '24px',
       }
     }, String.fromCharCode(parseInt('E783', 16)))
 
     const iconWrapper = h(iconWrapperSelector, icon)
-    let text = 'Can\'t find footnote with syntax [^abc]:'
+    let text = this.stringResources.footnoteNotFound.replaceAll('{identifier}', identifier)
     if (hasFootnote) {
       const footnoteBlock = footnotes.get(identifier)
 
       text = getFootnoteText(footnoteBlock)
       if (!text) {
-        text = 'Input the footnote definition...'
+        text = this.stringResources.inputFootnoteDefine
       }
     }
     const textNode = h('span.text', text)
@@ -116,7 +124,7 @@ class LinkTools extends BaseFloat {
           this.buttonClick(event, hasFootnote)
         }
       }
-    }, hasFootnote ? 'Go to' : 'Create')
+    }, hasFootnote ? this.stringResources.goTo : this.stringResources.create)
     const children = [textNode, button]
     if (!hasFootnote) {
       children.unshift(iconWrapper)
@@ -147,4 +155,4 @@ class LinkTools extends BaseFloat {
   }
 }
 
-export default LinkTools
+export default FootnoteTool

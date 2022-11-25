@@ -6,7 +6,8 @@ const names = [
     'InputMathFormula',
     'InputLanguageIdentifier',
     'ClickToAddAnImage',
-    'LoadImageFail'
+    'LoadImageFail',
+    'Footnote'
 ]
 
 remote.getStringResources({ names }).then(dic => {

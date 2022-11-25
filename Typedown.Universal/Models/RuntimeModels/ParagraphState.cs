@@ -39,7 +39,10 @@ namespace Typedown.Universal.Models
             Paragraph.IsChecked = affiliation.ContainsKey("p");
             HorizontalLine.IsChecked = affiliation.ContainsKey("hr");
             FrontMatter.IsChecked = affiliation.ContainsKey("frontmatter");
+            Footnote.IsChecked = MenuState.IsFootnote;
             Chart.IsChecked = (MenuState.IsCodeContent || MenuState.IsCodeFences) && !CodeFences.IsChecked && !MathBlock.IsChecked && !HtmlBlock.IsChecked;
+            Toc.IsChecked = false;
+            LinkReference.IsChecked = false;
         }
 
         private void UpdateEnableMenuItem()
@@ -104,9 +107,9 @@ namespace Typedown.Universal.Models
             Heading4.IsEnable = IsEnable;
             Heading5.IsEnable = IsEnable;
             Heading6.IsEnable = IsEnable;
+            Paragraph.IsEnable = IsEnable;
             UpgradeHeading.IsEnable = IsEnable;
             DegradeHeading.IsEnable = IsEnable;
-            Paragraph.IsEnable = IsEnable;
             Table.IsEnable = IsEnable;
             CodeFences.IsEnable = IsEnable;
             HtmlBlock.IsEnable = IsEnable;
@@ -115,9 +118,12 @@ namespace Typedown.Universal.Models
             OrderList.IsEnable = IsEnable;
             BulletList.IsEnable = IsEnable;
             TaskList.IsEnable = IsEnable;
-            HorizontalLine.IsEnable = IsEnable;
-            FrontMatter.IsEnable = IsEnable;
             Chart.IsEnable = IsEnable;
+            LinkReference.IsEnable = IsEnable;
+            Footnote.IsEnable = IsEnable;
+            HorizontalLine.IsEnable = IsEnable;
+            Toc.IsEnable = IsEnable;
+            FrontMatter.IsEnable = IsEnable;
             FormatIsEnable = IsEnable;
             HyperlinkIsEnable = IsEnable;
             ImageIsEnable = IsEnable;
@@ -129,9 +135,9 @@ namespace Typedown.Universal.Models
         public MenuItemState Heading4 { get; set; } = new();
         public MenuItemState Heading5 { get; set; } = new();
         public MenuItemState Heading6 { get; set; } = new();
+        public MenuItemState Paragraph { get; set; } = new();
         public MenuItemState UpgradeHeading { get; set; } = new();
         public MenuItemState DegradeHeading { get; set; } = new();
-        public MenuItemState Paragraph { get; set; } = new();
         public MenuItemState Table { get; set; } = new();
         public MenuItemState CodeFences { get; set; } = new();
         public MenuItemState HtmlBlock { get; set; } = new();
@@ -140,9 +146,12 @@ namespace Typedown.Universal.Models
         public MenuItemState OrderList { get; set; } = new();
         public MenuItemState BulletList { get; set; } = new();
         public MenuItemState TaskList { get; set; } = new();
-        public MenuItemState HorizontalLine { get; set; } = new();
-        public MenuItemState FrontMatter { get; set; } = new();
         public MenuItemState Chart { get; set; } = new();
+        public MenuItemState LinkReference { get; set; } = new();
+        public MenuItemState Footnote { get; set; } = new();
+        public MenuItemState HorizontalLine { get; set; } = new();
+        public MenuItemState Toc { get; set; } = new();
+        public MenuItemState FrontMatter { get; set; } = new();
 
         public bool FormatIsEnable { get; set; }
         public bool HyperlinkIsEnable { get; set; }

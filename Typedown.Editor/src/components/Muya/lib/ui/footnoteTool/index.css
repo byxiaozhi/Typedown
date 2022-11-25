@@ -3,7 +3,7 @@
   border-radius: 5px;
 }
 
-.ag-footnote-tool-container .ag-footnote-tool > div {
+.ag-footnote-tool-container .ag-footnote-tool>div {
   display: flex;
   height: 35px;
   align-items: center;
@@ -26,9 +26,9 @@
 }
 
 .ag-footnote-tool .icon-wrapper {
-  width: 14px;
-  height: 14px;
-  margin-right: 5px;
+  width: 16px;
+  height: 24px;
+  margin-right: 6px;
   position: relative;
 }
 
@@ -42,4 +42,3 @@
   color: var(--iconColor);
   transition: all .25s ease-in-out;
 }
-
