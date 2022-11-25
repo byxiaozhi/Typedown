@@ -220,10 +220,11 @@ class ClickEvent {
       }
 
       // handler open link
-      if ((event.metaKey || event.ctrlKey) && event.path.some(x => x.tagName === 'A')) {
+      const link = event.target.closest('a')
+      if (link) {
         event.preventDefault();
-        const link = event.path.find(x => x.tagName == 'A')
-        window.open(link.href)
+        if ((event.metaKey || event.ctrlKey))
+          window.open(link.href)
       }
 
       contentState.clickHandler(event)
