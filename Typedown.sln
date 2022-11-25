@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{9FF1ED00
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseMigration", "Tools\DatabaseMigration\DatabaseMigration.csproj", "{D890EBB0-B717-483A-AF99-3EE16B35B041}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Typedown.Editor", "Typedown.Editor\Typedown.Editor.esproj", "{DC6E07F0-C13B-4600-9857-4214E6036583}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -57,6 +59,17 @@ Global
 		{D890EBB0-B717-483A-AF99-3EE16B35B041}.Release|x64.Build.0 = Release|x64
 		{D890EBB0-B717-483A-AF99-3EE16B35B041}.Release|x86.ActiveCfg = Release|x86
 		{D890EBB0-B717-483A-AF99-3EE16B35B041}.Release|x86.Build.0 = Release|x86
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Debug|x64.Build.0 = Debug|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Debug|x86.Build.0 = Debug|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x64.ActiveCfg = Release|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x64.Build.0 = Release|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x64.Deploy.0 = Release|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x86.ActiveCfg = Release|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x86.Build.0 = Release|Any CPU
+		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -109,7 +109,7 @@ namespace Typedown.Controls
 #if DEBUG
             CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
             CoreWebView2.WebResourceRequested += OnWebResourceRequested;
-            CoreWebView2.OpenDevToolsWindow();
+            // CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 
