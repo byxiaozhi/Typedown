@@ -8,8 +8,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Typedown.Universal.Models;
+using Typedown.Universal.Models.RuntimeModels;
 using Windows.System;
 
 namespace Typedown.Universal.Utilities
@@ -108,22 +110,6 @@ namespace Typedown.Universal.Utilities
             }
         }
 
-        public static string CombinePath(params string[] path)
-        {
-            return Path.Combine(path).Replace("\\", "/");
-        }
-
-        public static bool IsWebSrc(string src)
-        {
-            src = src.Replace("\\", "/").ToLower();
-            if (src.StartsWith("file://") || src.StartsWith("//") || src.StartsWith("."))
-                return false;
-            if (src.StartsWith("http://") || src.StartsWith("https://") || src.StartsWith("ftp://"))
-                return true;
-            var first = src.Split('/')[0];
-            return first.Length > 2 && first.Contains(".");
-        }
-
         public static bool FileContentEqual(string filePath, byte[] content)
         {
             try
@@ -154,13 +140,21 @@ namespace Typedown.Universal.Utilities
 
         public static string GetTempFileName(string extension)
         {
-            string result;
-            do
-            {
-                var fileName = Path.GetTempFileName();
-                result = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(fileName) + extension);
-            } while (File.Exists(result) || Directory.Exists(result));
-            return result;
+            return Path.Combine(Path.GetTempPath(), Guid.NewGuid() + extension);
+        }
+
+        public static HtmlImgTag MatchHtmlImg(string html)
+        {
+            var tagRegex = @"(?<=<!--StartFragment-->\s*)(<img)[^>]*(/>|>)(?=\s*<!--EndFragment-->)";
+            var tagMatch = Regex.Match(html, tagRegex, RegexOptions.IgnoreCase);
+            if (!tagMatch.Success)
+                return null;
+            var tag = tagMatch.ToString();
+            var attrMatch = (string attr) => Regex.Match(tag, @"(?<=" + attr + @"=(""|'))[^""']*(?=(""|'))", RegexOptions.IgnoreCase);
+            var src = attrMatch("src").ToString();
+            var alt = attrMatch("alt").ToString();
+            var title = attrMatch("title").ToString();
+            return new(src, alt, title);
         }
     }
 }

@@ -482,7 +482,7 @@
     <comment>复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>不包括剪贴板图片文件</value>
+    <value>不包括剪贴板图片文件与网络图片</value>
     <comment>不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">

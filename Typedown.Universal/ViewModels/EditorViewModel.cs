@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
+using Typedown.Universal.Models.RuntimeModels;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 
@@ -243,43 +245,40 @@ namespace Typedown.Universal.ViewModels
 
         public async void Paste(string type)
         {
-            string text = null;
-            string html = null;
-            if (Clipboard.ContainsText(TextDataFormat.UnicodeText))
+            if (Clipboard.ContainsText(TextDataFormat.UnicodeText) || Clipboard.ContainsText(TextDataFormat.Html))
             {
-                text = Clipboard.GetText(TextDataFormat.UnicodeText);
-            }
-            if (Clipboard.ContainsText(TextDataFormat.Html))
-            {
-                html = Clipboard.GetText(TextDataFormat.Html);
-            }
-            if (text != null || html != null)
-            {
-                MarkdownEditor?.PostMessage("Paste", new { type, text, html });
-                return;
-            }
-
-            var files = Clipboard.GetFileDropList();
-            if (files != null && files.Count == 1)
-            {
-                if (FileTypeHelper.Image.Where(files[0].ToLower().EndsWith).Any())
+                var text = Clipboard.GetText(TextDataFormat.UnicodeText);
+                var html = Clipboard.GetText(TextDataFormat.Html);
+                if (Common.MatchHtmlImg(html) is HtmlImgTag img)
                 {
-                    MarkdownEditor?.PostMessage("InsertImage", new { src = files[0], alt = Path.GetFileNameWithoutExtension(files[0]) });
+                    if (UriHelper.IsWebUrl(img.Src))
+                        img.Src = await ServiceProvider.GetService<ImageAction>().DoWebFileAction(img.Src);
+                    else
+                        img.Src = await ServiceProvider.GetService<ImageAction>().DoLocalFileAction(img.Src);
+                    img.Src = img.Src.Replace('\\', '/');
+                    MarkdownEditor?.PostMessage("InsertImage", img);
+                    return;
                 }
-                return;
+                MarkdownEditor?.PostMessage("Paste", new { type, text, html });
             }
-
-            var image = Clipboard.GetImage();
-            if (image != null)
+            else if (Clipboard.GetFileDropList() is StringCollection files && files.Count == 1)
+            {
+                if (FileTypeHelper.IsImageFile(files[0]))
+                {
+                    MarkdownEditor?.PostMessage("InsertImage", new HtmlImgTag(src: files[0], alt: Path.GetFileNameWithoutExtension(files[0])));
+                }
+            }
+            else if (Clipboard.GetImage() is byte[] image)
             {
                 try
                 {
-                    var path = await ServiceProvider.GetService<ImageAction>().DoClipboardAction(image);
-                    MarkdownEditor?.PostMessage("InsertImage", new { src = path });
+                    var src = await ServiceProvider.GetService<ImageAction>().DoClipboardAction(image);
+                    src = src.Replace('\\', '/');
+                    MarkdownEditor?.PostMessage("InsertImage", new HtmlImgTag(src));
                 }
                 catch (Exception ex)
                 {
-                    await AppContentDialog.Create("Error", ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                    await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 }
             }
         }

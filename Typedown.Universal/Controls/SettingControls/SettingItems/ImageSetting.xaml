@@ -190,7 +190,7 @@
         </controls:NormalSettingItem>
 
         <controls:NormalSettingItem Title="{u:LocaleString Key=View.Image.AddSymbolBeforeRelativePath.Title}" IsEnabled="{x:Bind Settings.PreferRelativeImagePaths, Mode=OneWay}">
-            <ToggleSwitch/>
+            <ToggleSwitch IsOn="{x:Bind Settings.AddSymbolBeforeRelativePath, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
 
         <controls:NormalSettingItem Title="{u:LocaleString Key=View.Image.AutoEncodeImageURL.Title}" Description="{u:LocaleString Key=View.Image.AutoEncodeImageURL.Description}">

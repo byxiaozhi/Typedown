@@ -68,6 +68,7 @@ namespace Typedown.Universal.ViewModels
         public string DefaultImageBasePath { get => GetSettingValue(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), Config.AppName)); set => SetSettingValue(value); }
         public bool AutoCopyRelativePathImage { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool PreferRelativeImagePaths { get => GetSettingValue(false); set => SetSettingValue(value); }
+        public bool AddSymbolBeforeRelativePath { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool AutoEncodeImageURL { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool OpenFolderAfterExport { get => GetSettingValue(false); set => SetSettingValue(value); }
 

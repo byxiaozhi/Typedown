@@ -307,6 +307,7 @@
     <Compile Include="Models\RuntimeModels\ExportConfigModels\PDFConfigModel.cs" />
     <Compile Include="Models\RuntimeModels\FormatState.cs" />
     <Compile Include="Models\EventArgs\KeyEventArgs.cs" />
+    <Compile Include="Models\RuntimeModels\HtmlImgTag.cs" />
     <Compile Include="Models\RuntimeModels\MenuItemState.cs" />
     <Compile Include="Models\RuntimeModels\MenuState.cs" />
     <Compile Include="Models\RuntimeModels\ParagraphState.cs" />
@@ -385,6 +386,7 @@
     <Compile Include="Utilities\PInvoke\PInvoke.Shell32.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.User32.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
+    <Compile Include="Utilities\UriHelper.cs" />
     <Compile Include="Utilities\WindowClass.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\EditorViewModel.cs" />

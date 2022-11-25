@@ -233,7 +233,7 @@ namespace Typedown.Universal.ViewModels
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create("Error", ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 return false;
             }
         }

@@ -305,6 +305,10 @@
     <value>斜体</value>
     <comment>斜体</comment>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>错误</value>
+    <comment>错误</comment>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>导出</value>
     <comment>导出</comment>

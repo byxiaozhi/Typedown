@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Models.RuntimeModels;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
@@ -59,7 +60,7 @@ namespace Typedown.Universal.Controls.FloatControls
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create("Error", ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
             }
             finally
             {
@@ -77,8 +78,8 @@ namespace Typedown.Universal.Controls.FloatControls
             if (src != currentSrc)
             {
                 var imageAction = this.GetService<ImageAction>();
-                if (Common.IsWebSrc(src)) src = await imageAction.DoWebFileAction(src);
-                else src = await imageAction.DoLocalFileAction(src);
+                src = UriHelper.IsWebUrl(src) ? await imageAction.DoWebFileAction(src) : await imageAction.DoLocalFileAction(src);
+                src = src.Replace('\\', '/');
             }
             if (flyout.IsOpen)
             {
@@ -86,7 +87,7 @@ namespace Typedown.Universal.Controls.FloatControls
                 {
                     // TODO
                 }
-                MarkdownEditor.PostMessage("ReplaceImage", new { src, alt, title });
+                MarkdownEditor.PostMessage("ReplaceImage", new HtmlImgTag(src, alt, title));
             }
 
         }

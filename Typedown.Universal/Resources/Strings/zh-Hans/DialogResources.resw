@@ -153,6 +153,10 @@
     <value>不保存</value>
     <comment>不保存</comment>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>错误</value>
+    <comment>错误</comment>
+  </data>
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>导出失败</value>
     <comment>导出失败</comment>
