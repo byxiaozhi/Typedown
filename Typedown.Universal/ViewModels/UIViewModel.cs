@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Runtime;
 using System.Text;
+using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Windows.ApplicationModel;
 using Windows.UI.ViewManagement;
@@ -24,6 +27,8 @@ namespace Typedown.Universal.ViewModels
 
         public SettingsViewModel SettingsViewModel => ServiceProvider.GetService<SettingsViewModel>();
 
+        public RemoteInvoke RemoteInvoke => ServiceProvider.GetService<RemoteInvoke>();
+
         public string MainWindowTitle { get; private set; }
 
         public ElementTheme ActualTheme { get; private set; }
@@ -37,6 +42,7 @@ namespace Typedown.Universal.ViewModels
         public UIViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
+            RemoteInvoke.Handle<JToken, object>("GetStringResources", GetStringResources);
             _ = App.Dispatcher.RunIdleAsync(_ => InitializeBinding());
         }
 
@@ -47,6 +53,11 @@ namespace Typedown.Universal.ViewModels
             Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged)).Merge(SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme))).Subscribe(_ => UpdataActualTheme());
             UpdateTitle();
             UpdataActualTheme();
+        }
+
+        private object GetStringResources(JToken args)
+        {
+            return args["names"].ToObject<List<string>>().ToDictionary(x => x, x => Locale.GetString(x));
         }
 
         private async void UpdataActualTheme()

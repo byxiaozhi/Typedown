@@ -241,6 +241,10 @@
     <value>复制到路径</value>
     <comment>复制到路径</comment>
   </data>
+  <data name="Create" xml:space="preserve">
+    <value>创建</value>
+    <comment>创建</comment>
+  </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
     <value>Ctrl+单击 打开链接</value>
     <comment>Ctrl+单击 打开链接</comment>
@@ -373,6 +377,10 @@
     <value>脚注</value>
     <comment>脚注</comment>
   </data>
+  <data name="FootnoteNotFound" xml:space="preserve">
+    <value>未找到脚注标记 [^{identifier}]:</value>
+    <comment>未找到脚注标记 [^{identifier}]:</comment>
+  </data>
   <data name="Format" xml:space="preserve">
     <value>格式</value>
     <comment>格式</comment>
@@ -384,6 +392,10 @@
   <data name="General" xml:space="preserve">
     <value>通用</value>
     <comment>通用</comment>
+  </data>
+  <data name="GoTo" xml:space="preserve">
+    <value>转到</value>
+    <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
     <value>标题</value>

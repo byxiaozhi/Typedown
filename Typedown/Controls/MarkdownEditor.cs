@@ -1,8 +1,6 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Typedown.Services;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
@@ -10,7 +8,6 @@ using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Utilities;
 using Typedown.Windows;
-using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
@@ -20,7 +17,6 @@ using Windows.Foundation;
 using Windows.UI.Xaml.Input;
 using Typedown.Universal.ViewModels;
 using System.Reactive.Linq;
-using Newtonsoft.Json.Linq;
 using Windows.UI.Xaml.Shapes;
 using System.Threading.Tasks;
 using Windows.UI.ViewManagement;
@@ -58,7 +54,6 @@ namespace Typedown.Controls
             IsTabStop = true;
             RemoteInvoke.Handle("ContentLoaded", OnContentLoaded);
             RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme());
-            RemoteInvoke.Handle<JToken, object>("GetStringResources", arg => arg["names"].ToObject<List<string>>().ToDictionary(x => x, x => Locale.GetString(x)));
             AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme)).Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged))).Subscribe(_ => OnThemeChanged());
         }
 
@@ -109,7 +104,7 @@ namespace Typedown.Controls
 #if DEBUG
             CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
             CoreWebView2.WebResourceRequested += OnWebResourceRequested;
-            // CoreWebView2.OpenDevToolsWindow();
+            CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 
