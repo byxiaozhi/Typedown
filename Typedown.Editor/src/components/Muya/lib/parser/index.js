@@ -325,7 +325,7 @@ const tokenizerFac = (src, beginRules, inlineRules, pos = 0, top, labels, option
     }
 
     const rLinkTo = inlineRules.reference_link.exec(src)
-    if (rLinkTo && labels.has(rLinkTo[3] || rLinkTo[1]) && isLengthEven(rLinkTo[2]) && isLengthEven(rLinkTo[4])) {
+    if (rLinkTo && labels.has((rLinkTo[3] || rLinkTo[1])?.toLowerCase()) && isLengthEven(rLinkTo[2]) && isLengthEven(rLinkTo[4])) {
       pushPending()
       tokens.push({
         type: 'reference_link',
@@ -351,7 +351,7 @@ const tokenizerFac = (src, beginRules, inlineRules, pos = 0, top, labels, option
     }
 
     const rImageTo = inlineRules.reference_image.exec(src)
-    if (rImageTo && labels.has(rImageTo[3] || rImageTo[1]) && isLengthEven(rImageTo[2]) && isLengthEven(rImageTo[4])) {
+    if (rImageTo && labels.has((rImageTo[3] || rImageTo[1])?.toLowerCase()) && isLengthEven(rImageTo[2]) && isLengthEven(rImageTo[4])) {
       pushPending()
 
       tokens.push({
