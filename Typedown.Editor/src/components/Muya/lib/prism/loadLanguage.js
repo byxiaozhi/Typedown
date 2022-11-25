@@ -14,7 +14,7 @@ export const alias = { 'c++': 'cpp' }
 Object.keys(alias).forEach(name => Object.assign(languages[alias[name]], { alias: [...languages[alias[name]].alias ?? [], name] }))
 
 // Look for the origin languge by alias
-export const transfromAliasToOrigin = langs => {
+export const transformAliasToOrigin = langs => {
   const result = []
   for (const lang of langs) {
     if (languages[lang]) {

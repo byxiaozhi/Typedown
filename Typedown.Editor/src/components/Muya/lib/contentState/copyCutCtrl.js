@@ -53,7 +53,7 @@ const copyCutCtrl = ContentState => {
     this.muya.dispatchChange()
   }
 
-  ContentState.prototype.getClipBoradData = function () {
+  ContentState.prototype.getClipBoardData = function () {
     const { start, end } = selection.getCursorRange()
     if (!start || !end) {
       return { html: '', text: '' }
@@ -280,7 +280,7 @@ const copyCutCtrl = ContentState => {
       return
     }
 
-    const { html, text, plainText } = this.getClipBoradData()
+    const { html, text, plainText } = this.getClipBoardData()
     switch (type) {
       case 'normal': {
         remote.setClipboard({ type: 'text/html', data: html })
