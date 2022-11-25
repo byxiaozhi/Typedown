@@ -87,7 +87,7 @@ class FootnoteTool extends BaseFloat {
     }
 
     const mouseOutHandler = () => {
-      // this.hide()
+      this.hide()
     }
 
     eventCenter.attachDOMEvent(this.container, 'mouseover', mouseOverHandler)
