@@ -32,7 +32,7 @@
     <DefaultLanguage>zh-Hans</DefaultLanguage>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
-    <EntryPointProjectUniqueName>..\Typedown\Typedown.csproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\..\Dev\Typedown\Typedown.csproj</EntryPointProjectUniqueName>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <PackageCertificateKeyFile>C:\Users\12283\OneDrive\Typedown.Package_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -113,7 +113,7 @@
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Typedown.Universal\Typedown.Universal.csproj" />
-    <ProjectReference Include="..\Typedown\Typedown.csproj" />
+    <ProjectReference Include="..\..\Dev\Typedown.Universal\Typedown.Universal.csproj" />
+    <ProjectReference Include="..\..\Dev\Typedown\Typedown.csproj" />
   </ItemGroup>
 </Project>
