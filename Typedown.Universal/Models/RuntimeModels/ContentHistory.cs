@@ -159,7 +159,7 @@ namespace Typedown.Universal.Models
             {
                 content = content.TrimEnd('\r', '\n');
                 if ((pending.Text != null && pending.Text == content) ||
-                    (pending.Text == null && index > -1 && histories[index].Text == content))
+                    (pending.Text == null && index > -1 && histories[index].Text.Trim('\r','\n') == content.Trim('\r', '\n')))
                 {
                     return;
                 }
