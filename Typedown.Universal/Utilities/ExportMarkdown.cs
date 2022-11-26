@@ -16,9 +16,13 @@ namespace Typedown.Universal.Utilities
         }
 
         private readonly Stack<ListType> listType = new();
+
         private bool isLooseParentList = true;
+
         private readonly int listIndentation;
+
         private readonly bool listIndentationIsDfm;
+
         private readonly bool isGitlabCompatibilityEnabled;
 
         public ExportMarkdown(string listIndentation = "1", bool isGitlabCompatibilityEnabled = false)
@@ -33,13 +37,15 @@ namespace Typedown.Universal.Utilities
 
         public string Generate(IEnumerable<MarkdownBlock> blocks)
         {
-            return TranslateBlocks2Markdown(blocks);
+            var builder = new StringBuilder(2000000);
+            TranslateBlocks2Markdown(builder, blocks);
+            return builder.ToString();
         }
 
-        public string TranslateBlocks2Markdown(IEnumerable<MarkdownBlock> blocks, string indent = "", string listIndent = "")
+        public void TranslateBlocks2Markdown(StringBuilder builder, IEnumerable<MarkdownBlock> blocks, string indent = "", string listIndent = "")
         {
-            var result = new StringBuilder();
             var lastListBullet = string.Empty;
+            var startLength = builder.Length;
             foreach (var block in blocks)
             {
                 if (block.Type != "ul" && block.Type != "ol")
@@ -48,11 +54,11 @@ namespace Typedown.Universal.Utilities
                 {
                     case "p":
                     case "hr":
-                        InsertLineBreak(result, indent);
-                        result.Append(TranslateBlocks2Markdown(block.Children, indent));
+                        InsertLineBreak(startLength, builder, indent);
+                        TranslateBlocks2Markdown(builder, block.Children, indent);
                         break;
                     case "span":
-                        result.Append(NormalizeParagraphText(block, indent));
+                        NormalizeParagraphText(builder, block, indent);
                         break;
                     case "h1":
                     case "h2":
@@ -60,32 +66,32 @@ namespace Typedown.Universal.Utilities
                     case "h4":
                     case "h5":
                     case "h6":
-                        InsertLineBreak(result, indent);
-                        result.Append(NormalizeHeaderText(block, indent));
+                        InsertLineBreak(startLength, builder, indent);
+                        NormalizeHeaderText(builder, block, indent);
                         break;
                     case "figure":
-                        InsertLineBreak(result, indent);
+                        InsertLineBreak(startLength, builder, indent);
                         switch (block.FunctionType)
                         {
                             case "table":
                                 var table = block.Children[0];
-                                result.Append(NormalizeTable(table, indent));
+                                NormalizeTable(builder, table, indent);
                                 break;
                             case "html":
-                                result.Append(NormalizeHTML(block, indent));
+                                NormalizeHTML(builder, block, indent);
                                 break;
                             case "footnote":
-                                result.Append(NormalizeFootnote(block, indent));
+                                NormalizeFootnote(builder, block, indent);
                                 break;
                             case "multiplemath":
-                                result.Append(NormalizeMultipleMath(block, indent));
+                                NormalizeMultipleMath(builder, block, indent);
                                 break;
                             case "mermaid":
                             case "flowchart":
                             case "sequence":
                             case "plantuml":
                             case "vega-lite":
-                                result.Append(NormalizeContainer(block, indent));
+                                NormalizeContainer(builder, block, indent);
                                 break;
                         }
                         break;
@@ -93,8 +99,8 @@ namespace Typedown.Universal.Utilities
                         var insertNewLine1 = block.IsLooseListItem;
                         isLooseParentList = insertNewLine1;
                         if (insertNewLine1)
-                            this.InsertLineBreak(result, indent);
-                        result.Append(NormalizeListItem(block, indent + listIndent));
+                            InsertLineBreak(startLength, builder, indent);
+                        NormalizeListItem(builder, block, indent + listIndent);
                         isLooseParentList = true;
                         break;
                     case "ul":
@@ -107,10 +113,10 @@ namespace Typedown.Universal.Utilities
                         lastListBullet = bulletMarkerOrDelimiter1;
                         if (insertNewLine2)
                         {
-                            InsertLineBreak(result, indent);
+                            InsertLineBreak(startLength, builder, indent);
                         }
                         listType.Push(new() { Type = "ul" });
-                        result.Append(NormalizeList(block, indent, listIndent));
+                        NormalizeList(builder, block, indent, listIndent);
                         listType.Pop();
                         break;
                     case "ol":
@@ -121,63 +127,63 @@ namespace Typedown.Universal.Utilities
                             insertNewLine3 = false;
                         lastListBullet = bulletMarkerOrDelimiter2;
                         if (insertNewLine3)
-                            InsertLineBreak(result, indent);
+                            InsertLineBreak(startLength, builder, indent);
                         var listCount = block.Start ?? 1;
                         listType.Push(new() { Type = "ol", ListCount = listCount });
-                        result.Append(NormalizeList(block, indent, listIndent));
+                        NormalizeList(builder, block, indent, listIndent);
                         listType.Pop();
                         break;
                     case "pre":
-                        InsertLineBreak(result, indent);
+                        InsertLineBreak(startLength, builder, indent);
                         if (block.FunctionType == "frontmatter")
-                            result.Append(NormalizeFrontMatter(block, indent));
+                            NormalizeFrontMatter(builder, block, indent);
                         else
-                            result.Append(NormalizeCodeBlock(block, indent));
+                            NormalizeCodeBlock(builder, block, indent);
                         break;
                     case "blockquote":
-                        InsertLineBreak(result, indent);
-                        result.Append(NormalizeBlockquote(block, indent));
+                        InsertLineBreak(startLength, builder, indent);
+                        NormalizeBlockquote(builder, block, indent);
                         break;
                 }
             }
-            return result.ToString();
         }
 
-        public void InsertLineBreak(StringBuilder result, string indent)
+        public void InsertLineBreak(int startLength, StringBuilder builder, string indent)
         {
-            if (result.Length > 0) result.Append($"{indent}\n");
+            if (builder.Length - startLength > 0)
+                builder.Append(indent).Append('\n');
         }
 
-        public string NormalizeParagraphText(MarkdownBlock block, string indent)
+        public void NormalizeParagraphText(StringBuilder builder, MarkdownBlock block, string indent)
         {
-            return string.Join('\n', block.Text.Split('\n').Select(line => $"{indent}{line}")) + '\n';
+            foreach (var line in block.Text.Split('\n'))
+                builder.Append(indent).Append(line).Append('\n');
         }
 
-        public string NormalizeHeaderText(MarkdownBlock block, string indent)
+        public void NormalizeHeaderText(StringBuilder builder, MarkdownBlock block, string indent)
         {
             var headingStyle = block.HeadingStyle;
-            var marker = block.Marker ?? string.Empty;
             var text = block.Children[0].Text;
             if (headingStyle == "atx")
             {
                 var match = Regex.Match(text, @"(#{1,6})(.*)");
-                var atxHeadingText = $"{match.Groups[1]} {match.Groups[2].ToString().Trim()}";
-                return $"{indent}{atxHeadingText}\n";
+                builder.Append(indent).Append(match.Groups[1]).Append(' ').Append(match.Groups[2].ToString().Trim()).Append('\n');
             }
             else if (headingStyle == "setext")
             {
-                var lines = text.Trim().Split('\n');
-                return string.Join('\n', lines.Select(line => $"{indent}{line}")) + $"\n{indent}{marker.Trim()}\n";
+                var marker = block.Marker ?? string.Empty;
+                foreach (var line in text.Split('\n'))
+                    builder.Append(indent).Append(line).Append('\n');
+                builder.Append(indent).Append(marker.Trim()).Append('\n');
             }
-            return string.Empty;
         }
 
-        public string NormalizeBlockquote(MarkdownBlock block, string indent)
+        public void NormalizeBlockquote(StringBuilder builder, MarkdownBlock block, string indent)
         {
-            return TranslateBlocks2Markdown(block.Children, $"{indent}> ");
+            TranslateBlocks2Markdown(builder, block.Children, indent + "> ");
         }
 
-        public string NormalizeFrontMatter(MarkdownBlock block, string indent)
+        public void NormalizeFrontMatter(StringBuilder builder, MarkdownBlock block, string indent)
         {
             string startToken = string.Empty;
             string endToken = string.Empty;
@@ -204,15 +210,13 @@ namespace Typedown.Universal.Utilities
                     }
                     break;
             }
-            var result = new StringBuilder();
-            result.Append(startToken);
+            builder.Append(startToken);
             foreach (var line in block.Children[0].Children)
-                result.Append($"{line.Text}\n");
-            result.Append(endToken);
-            return result.ToString();
+                builder.Append(line.Text).Append('\n');
+            builder.Append(endToken);
         }
 
-        public string NormalizeMultipleMath(MarkdownBlock block, string indent)
+        public void NormalizeMultipleMath(StringBuilder builder, MarkdownBlock block, string indent)
         {
             string startToken = "$$";
             string endToken = "$$";
@@ -221,59 +225,50 @@ namespace Typedown.Universal.Utilities
                 startToken = "```math";
                 endToken = "```";
             }
-            var result = new StringBuilder();
-            result.Append($"{indent}{startToken}\n");
+            builder.Append(indent).Append(startToken).Append('\n');
             foreach (var line in block.Children[0].Children[0].Children)
-                result.Append($"{indent}{line.Text}\n");
-            result.Append($"{indent}{endToken}\n");
-            return result.ToString();
+                builder.Append(indent).Append(line.Text).Append('\n');
+            builder.Append(indent).Append(endToken).Append('\n');
         }
 
-        public string NormalizeContainer(MarkdownBlock block, string indent)
+        public void NormalizeContainer(StringBuilder builder, MarkdownBlock block, string indent)
         {
-            var result = new StringBuilder();
             var diagramType = block.Children[0].FunctionType;
-            result.Append($"```{diagramType}\n");
+            builder.Append("```").Append(diagramType).Append('\n');
             foreach (var line in block.Children[0].Children[0].Children)
-                result.Append($"{line.Text}\n");
-            result.Append("```\n");
-            return result.ToString();
+                builder.Append(line.Text).Append('\n');
+            builder.Append("```\n");
         }
 
-        public string NormalizeCodeBlock(MarkdownBlock block, string indent)
+        public void NormalizeCodeBlock(StringBuilder builder, MarkdownBlock block, string indent)
         {
-            var result = new StringBuilder();
             var codeContent = block.Children[1].Children[0];
             var textList = codeContent.Text.Split('\n');
             var functionType = block.FunctionType;
             if (functionType == "fencecode")
             {
-                result.Append($"{indent}```{block.Lang ?? ""}\n");
+                builder.Append(indent).Append("```").Append(block.Lang ?? "").Append('\n');
                 foreach (var text in textList)
-                    result.Append($"{indent}{text}\n");
-                result.Append($"{indent}```\n");
+                    builder.Append(indent).Append(text).Append('\n');
+                builder.Append(indent).Append("```\n");
             }
             else
             {
                 foreach (var text in textList)
-                    result.Append($"{indent}    {text}\n");
+                    builder.Append(indent).Append(new string(' ', 4)).Append(text).Append('\n');
             }
-            return result.ToString();
         }
 
-        public string NormalizeHTML(MarkdownBlock block, string indent)
+        public void NormalizeHTML(StringBuilder builder, MarkdownBlock block, string indent)
         {
-            var result = new StringBuilder();
             var codeContentText = block.Children[0].Children[0].Children[0].Text;
             var lines = codeContentText.Split('\n');
             foreach (var text in lines)
-                result.Append($"{indent}{text}\n");
-            return result.ToString();
+                builder.Append(indent).Append(text).Append('\n');
         }
 
-        public string NormalizeTable(MarkdownBlock table, string indent)
+        public void NormalizeTable(StringBuilder builder, MarkdownBlock table, string indent)
         {
-            var result = new StringBuilder();
             var row = table.Row;
             var column = table.Column;
             var tableData = new List<List<string>>();
@@ -299,49 +294,48 @@ namespace Typedown.Universal.Utilities
             for (int i = 0; i <= row; i++)
             {
                 var r = tableData[i];
-                var rs = indent + "|" + string.Join('|', r.Select((cell, j) =>
+                builder.Append(indent).Append('|');
+                builder.AppendJoin('|', r.Select((cell, j) =>
                 {
-                    var raw = $" {cell + string.Join("", Enumerable.Repeat(" ", columnWidth[j].width))}";
+                    var raw = " " + cell + new string(' ', columnWidth[j].width);
                     return raw.Substring(0, columnWidth[j].width);
-                })) + "|\n";
-                result.Append(rs);
+                }));
+                builder.Append("|\n");
                 if (i == 0)
                 {
-                    var cutOff = indent + "|" + string.Join('|', columnWidth.Select(x =>
+                    builder.Append(indent).Append('|');
+                    builder.AppendJoin('|', columnWidth.Select(x =>
                     {
-                        var raw = string.Join("", Enumerable.Repeat("-", x.width - 2));
+                        var raw = new string('-', x.width - 2);
                         switch (x.align)
                         {
                             case "left":
-                                raw = $":{raw} ";
+                                raw = ':' + raw + ' ';
                                 break;
                             case "center":
-                                raw = $":{raw}:";
+                                raw = ':' + raw + ':';
                                 break;
                             case "right":
-                                raw = $" {raw}:";
+                                raw = ' ' + raw + ':';
                                 break;
                             default:
-                                raw = $" {raw} ";
+                                raw = ' ' + raw + ' ';
                                 break;
                         }
                         return raw;
-                    })) + "|\n";
-                    result.Append(cutOff);
+                    }));
+                    builder.Append("|\n");
                 }
             }
-            result.Append("\n");
-            return result.ToString();
         }
 
-        public string NormalizeList(MarkdownBlock block, string indent, string listIndent)
+        public void NormalizeList(StringBuilder builder, MarkdownBlock block, string indent, string listIndent)
         {
-            return TranslateBlocks2Markdown(block.Children, indent, listIndent);
+            TranslateBlocks2Markdown(builder, block.Children, indent, listIndent);
         }
 
-        public string NormalizeListItem(MarkdownBlock block, string indent)
+        public void NormalizeListItem(StringBuilder builder, MarkdownBlock block, string indent)
         {
-            var result = new StringBuilder();
             var listInfo = listType.Peek();
             var isUnorderedList = listInfo.Type == "ul";
             var children = block.Children as IEnumerable<MarkdownBlock>;
@@ -350,7 +344,7 @@ namespace Typedown.Universal.Utilities
 
             if (isUnorderedList)
             {
-                itemMarker = !string.IsNullOrEmpty(bulletMarkerOrDelimiter) ? $"{bulletMarkerOrDelimiter} " : "- ";
+                itemMarker = (string.IsNullOrEmpty(bulletMarkerOrDelimiter) ? "-" : bulletMarkerOrDelimiter) + ' ';
             }
             else
             {
@@ -358,27 +352,21 @@ namespace Typedown.Universal.Utilities
                 //  We limit the number to 99 for Daring Fireball Markdown to prevent indentation issues.
                 var n = listInfo.ListCount;
                 if ((listIndentationIsDfm && n > 99) || n > 999999999)
-                {
                     n = 1;
-                }
                 listInfo.ListCount++;
                 var delimiter = string.IsNullOrEmpty(bulletMarkerOrDelimiter) ? "." : bulletMarkerOrDelimiter;
-                itemMarker = $"{n}{delimiter} ";
+                itemMarker = n.ToString() + delimiter + ' ';
             }
 
             // Subsequent paragraph indentation
-            var newIndent = indent + string.Join("", Enumerable.Repeat(" ", itemMarker.Length));
+            var newIndent = indent + new string(' ', itemMarker.Length);
 
             // New list indentation. We already added one space to the indentation
-            var listIndent = string.Empty;
+            string listIndent;
             if (listIndentationIsDfm)
-            {
-                listIndent = string.Join("", Enumerable.Repeat(" ", 4 - itemMarker.Length));
-            }
+                listIndent = new string(' ', 4 - itemMarker.Length);
             else
-            {
-                listIndent = string.Join("", Enumerable.Repeat(" ", listIndentation - 1));
-            }
+                listIndent = new string(' ', listIndentation - 1);
 
             // TODO: Indent subsequent paragraphs by one tab. - not important
             //  Problem: "translateBlocks2Markdown" use "indent" in spaces to indent elements. How should
@@ -392,30 +380,28 @@ namespace Typedown.Universal.Utilities
                 children = children.Skip(1);
             }
 
-            result.Append($"{indent}{itemMarker}");
-            result.Append(TranslateBlocks2Markdown(children, newIndent, listIndent).Substring(newIndent.Length));
-            return result.ToString();
+            builder.Append(indent).Append(itemMarker);
+            var startIndex = builder.Length;
+            TranslateBlocks2Markdown(builder, children, newIndent, listIndent);
+            builder.Remove(startIndex, newIndent.Length);
         }
 
-        public string NormalizeFootnote(MarkdownBlock block, string indent)
+        public void NormalizeFootnote(StringBuilder builder, MarkdownBlock block, string indent)
         {
-            var result = new StringBuilder();
             var identifier = block.Children[0].Text;
-            result.Append($"{indent}[^{identifier}]:");
+            builder.Append(indent).Append("[^").Append(identifier).Append("]:");
             var hasMultipleBlocks = block.Children.Count > 2 || block.Children[1].Type != "p";
             if (hasMultipleBlocks)
             {
-                result.Append('\n');
-                var newIndent = indent + "    ";
-                result.Append(TranslateBlocks2Markdown(block.Children.Skip(1), newIndent));
+                builder.Append('\n');
+                TranslateBlocks2Markdown(builder, block.Children.Skip(1), indent + new string(' ', 4));
             }
             else
             {
-                result.Append(' ');
+                builder.Append(' ');
                 var paragraphContent = block.Children[1].Children[0];
-                result.Append(NormalizeParagraphText(paragraphContent, indent));
+                NormalizeParagraphText(builder, paragraphContent, indent);
             }
-            return result.ToString();
         }
     }
 }
