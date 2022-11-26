@@ -48,7 +48,7 @@ namespace Typedown.Services
 
         public void SetText(string text)
         {
-            System.Windows.Clipboard.SetText(text);
+            System.Windows.Clipboard.SetText(text, System.Windows.TextDataFormat.UnicodeText);
         }
     }
 }

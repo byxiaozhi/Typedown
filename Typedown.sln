@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseMigration", "Tools\
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Typedown.Editor", "Typedown.Editor\Typedown.Editor.esproj", "{DC6E07F0-C13B-4600-9857-4214E6036583}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Typedown.Test", "Typedown.Test\Typedown.Test.csproj", "{B3BD8EAB-180B-42BC-B997-640725E71974}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Typedown.Universal.Test", "Typedown.Universal.Test\Typedown.Universal.Test.csproj", "{D2283D07-82FF-4EF6-B332-E5C4889D2567}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -70,6 +74,22 @@ Global
 		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x86.ActiveCfg = Release|Any CPU
 		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x86.Build.0 = Release|Any CPU
 		{DC6E07F0-C13B-4600-9857-4214E6036583}.Release|x86.Deploy.0 = Release|Any CPU
+		{B3BD8EAB-180B-42BC-B997-640725E71974}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B3BD8EAB-180B-42BC-B997-640725E71974}.Debug|x64.Build.0 = Debug|Any CPU
+		{B3BD8EAB-180B-42BC-B997-640725E71974}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3BD8EAB-180B-42BC-B997-640725E71974}.Debug|x86.Build.0 = Debug|Any CPU
+		{B3BD8EAB-180B-42BC-B997-640725E71974}.Release|x64.ActiveCfg = Release|Any CPU
+		{B3BD8EAB-180B-42BC-B997-640725E71974}.Release|x64.Build.0 = Release|Any CPU
+		{B3BD8EAB-180B-42BC-B997-640725E71974}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3BD8EAB-180B-42BC-B997-640725E71974}.Release|x86.Build.0 = Release|Any CPU
+		{D2283D07-82FF-4EF6-B332-E5C4889D2567}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2283D07-82FF-4EF6-B332-E5C4889D2567}.Debug|x64.Build.0 = Debug|Any CPU
+		{D2283D07-82FF-4EF6-B332-E5C4889D2567}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2283D07-82FF-4EF6-B332-E5C4889D2567}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2283D07-82FF-4EF6-B332-E5C4889D2567}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2283D07-82FF-4EF6-B332-E5C4889D2567}.Release|x64.Build.0 = Release|Any CPU
+		{D2283D07-82FF-4EF6-B332-E5C4889D2567}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2283D07-82FF-4EF6-B332-E5C4889D2567}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
