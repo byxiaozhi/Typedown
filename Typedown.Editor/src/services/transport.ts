@@ -1,5 +1,7 @@
 import EventEmitter from "events";
 
+const postMessage = (msg: unknown) => window.chrome.webview.postMessage(JSON.stringify(msg))
+
 type Listener<T> = (arg: T) => void;
 
 const transport = new EventEmitter();
@@ -9,12 +11,14 @@ interface IMessage {
   args: unknown;
 }
 
-window.chrome.webview.addEventListener<IMessage>("message", ({ data }) => {
-  transport.emit(data.name, data.args);
+window.chrome.webview.addEventListener<string>("message", ({ data }) => {
+  const { name, args } = JSON.parse(data) as IMessage
+  transport.emit(name, args);
 });
 
 const prevMap = new Map<string, string>();
 const ref = { pos: 0 };
+
 
 const remoteFunction =
   <T, TResult>(name: string) =>
@@ -29,14 +33,14 @@ const remoteFunction =
           }
           transport.removeAllListeners(id);
         });
-        window.chrome.webview.postMessage({ type: "invoke", id, name, args });
+        postMessage({ type: "invoke", id, name, args });
       });
 
 const postMessageDiff = (name: string, arg: unknown) => {
   const oldArg = prevMap.get(name);
   const newArg = JSON.stringify(arg);
   if (!oldArg) {
-    window.chrome.webview.postMessage({
+    postMessage({
       type: "diffmsg",
       diff: false,
       name,
@@ -63,7 +67,7 @@ const postMessageDiff = (name: string, arg: unknown) => {
   }
   prevMap.set(name, newArg);
   const diffArgs = newArg.slice(start, newEnd);
-  window.chrome.webview.postMessage({
+  postMessage({
     type: "diffmsg",
     diff: true,
     name,
@@ -80,7 +84,7 @@ export default {
   },
   removeListener: <T>(eventName: string, listener: Listener<T>) => transport.removeListener(eventName, listener),
   removeAllListener: (eventName: string) => transport.removeAllListeners(eventName),
-  postMessageNoDiff: (name: string, args: unknown) => window.chrome.webview.postMessage({ type: 'message', name, args }),
+  postMessageNoDiff: (name: string, args: unknown) => postMessage({ type: 'message', name, args }),
   postMessage: postMessageDiff,
 };
 

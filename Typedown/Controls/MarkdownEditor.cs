@@ -147,12 +147,12 @@ namespace Typedown.Controls
 
         public void PostMessage(string name, object args)
         {
-            CoreWebView2?.PostWebMessageAsJson(JsonConvert.SerializeObject(new { name, args }, Universal.Config.EditorJsonSerializerSettings));
+            CoreWebView2?.PostWebMessageAsString(JsonConvert.SerializeObject(new { name, args }, Universal.Config.EditorJsonSerializerSettings));
         }
 
         private void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
         {
-            Transport.EmitWebViewMessage(this, e.WebMessageAsJson);
+            Transport.EmitWebViewMessage(this, e.TryGetWebMessageAsString());
         }
 
         private void OnNewWindowRequested(object sender, CoreWebView2NewWindowRequestedEventArgs args)
