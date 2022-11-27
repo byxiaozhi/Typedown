@@ -32,7 +32,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.ExportConfigI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            ImageConfigModel = ExportConfig.LoadExportConfig<ImageConfigModel>();
+            ImageConfigModel = ExportConfig.LoadExportConfig() as ImageConfigModel;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

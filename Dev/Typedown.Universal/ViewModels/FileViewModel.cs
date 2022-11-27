@@ -11,6 +11,7 @@ using System.Reactive.Disposables;
 using System.Threading.Tasks;
 using Typedown.Universal.Controls;
 using Typedown.Universal.Interfaces;
+using Typedown.Universal.Models;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Windows.ApplicationModel.Resources;
@@ -53,7 +54,7 @@ namespace Typedown.Universal.ViewModels
         public Command<Unit> SaveCommand { get; } = new();
         public Command<Unit> SaveAsCommand { get; } = new();
         public Command<Unit> ImportCommand { get; } = new();
-        public Command<string> ExportCommand { get; } = new();
+        public Command<ExportConfig> ExportCommand { get; } = new();
         public Command<Unit> PrintCommand { get; } = new();
         public Command<Unit> ExitCommand { get; } = new();
 
@@ -390,9 +391,8 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        private void Export(string type)
+        private void Export(ExportConfig type)
         {
-            throw new NotImplementedException();
             //var filePicker = new FileSavePicker();
             //filePicker.SetOwnerWindow(AppViewModel.MainWindow);
             //filePicker.FileTypeChoices.Add(type, new List<string> { "." + type });

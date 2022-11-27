@@ -23,7 +23,7 @@ namespace Typedown.Universal.Controls.DialogControls
         public static readonly DependencyProperty ConfigNameProperty = DependencyProperty.Register(nameof(ConfigName), typeof(string), typeof(AddExportConfigDialog), new(""));
         public string ConfigName { get => (string)GetValue(ConfigNameProperty); set => SetValue(ConfigNameProperty, value); }
 
-        public static readonly DependencyProperty ExportTypeProperty = DependencyProperty.Register(nameof(ExportType), typeof(ExportType), typeof(AddExportConfigDialog), new(ExportType.None));
+        public static readonly DependencyProperty ExportTypeProperty = DependencyProperty.Register(nameof(ExportType), typeof(ExportType), typeof(AddExportConfigDialog), new(Enums.Enumerable.AvailableExportTypes.First()));
         public ExportType ExportType { get => (ExportType)GetValue(ExportTypeProperty); set => SetValue(ExportTypeProperty, value); }
 
         public static readonly DependencyProperty ErrMsgProperty = DependencyProperty.Register(nameof(ErrMsg), typeof(string), typeof(AddExportConfigDialog), new(""));

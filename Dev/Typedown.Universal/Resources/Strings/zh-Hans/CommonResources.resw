@@ -597,6 +597,10 @@
     <value>无操作</value>
     <comment>无操作</comment>
   </data>
+  <data name="NoExportConfigs" xml:space="preserve">
+    <value>无导出配置</value>
+    <comment>无导出配置</comment>
+  </data>
   <data name="None" xml:space="preserve">
     <value>无</value>
     <comment>无</comment>

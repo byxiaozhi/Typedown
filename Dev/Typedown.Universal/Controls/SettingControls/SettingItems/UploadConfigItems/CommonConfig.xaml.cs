@@ -1,27 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Cryptography;
-using System.Xml.Linq;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
-using Typedown.Universal.Models.UploadConfigModels;
 using Typedown.Universal.Pages.SettingPages;
-using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Markup;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigItems
 {

@@ -35,7 +35,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            PowerShellConfigModel = ImageUploadConfig.LoadUploadConfig<PowerShellModel>();
+            PowerShellConfigModel = ImageUploadConfig.LoadUploadConfig() as PowerShellModel;
             PowerShellConfigModel.PropertyChanged += OnPowerShellConfigModelPropertyChanged;
         }
 

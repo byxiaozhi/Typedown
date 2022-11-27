@@ -34,7 +34,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.ExportConfigI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            HTMLConfigModel = ExportConfig.LoadExportConfig<HTMLConfigModel>();
+            HTMLConfigModel = ExportConfig.LoadExportConfig() as HTMLConfigModel;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

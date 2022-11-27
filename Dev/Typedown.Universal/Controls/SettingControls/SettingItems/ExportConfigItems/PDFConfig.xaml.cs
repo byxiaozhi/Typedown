@@ -32,7 +32,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.ExportConfigI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            PDFConfigModel = ExportConfig.LoadExportConfig<PDFConfigModel>();
+            PDFConfigModel = ExportConfig.LoadExportConfig() as PDFConfigModel;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

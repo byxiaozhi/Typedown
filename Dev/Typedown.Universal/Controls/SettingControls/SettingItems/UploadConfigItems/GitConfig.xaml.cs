@@ -32,7 +32,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            GitConfigModel = ImageUploadConfig.LoadUploadConfig<GitConfigModel>();
+            GitConfigModel = ImageUploadConfig.LoadUploadConfig() as GitConfigModel;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

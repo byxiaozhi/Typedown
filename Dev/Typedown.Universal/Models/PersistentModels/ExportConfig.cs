@@ -1,13 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Models.ExportConfigModels;
 
@@ -28,17 +23,54 @@ namespace Typedown.Universal.Models
 
         public string Config { get; private set; } = new JObject().ToString();
 
-        public T LoadExportConfig<T>() where T : ConfigModel, new()
+        public ConfigModel LoadExportConfig()
         {
-            var config = ParseConfig();
-            return config.TryGetValue(typeof(T).Name, out var value) ? value.ToObject<T>() : new();
+            var allConfig = ParseConfig();
+            if (allConfig.TryGetValue(GetConfigModelKey(), out var value) && value.ToObject(GetConfigModelType()) is ConfigModel config)
+                return config;
+            var defaultConfig = GetDefaultConfigModel();
+            StoreExportConfig(defaultConfig);
+            return defaultConfig;
         }
 
-        public void StoreExportConfig<T>(T exportConfig) where T : ConfigModel
+        public void StoreExportConfig(ConfigModel exportConfig)
         {
             var config = ParseConfig();
-            config[typeof(T).Name] = JObject.FromObject(exportConfig);
+            config[GetConfigModelKey()] = JObject.FromObject(exportConfig);
             Config = config.ToString();
+        }
+
+        private Type GetConfigModelType()
+        {
+            return Type switch
+            {
+                ExportType.PDF => typeof(PDFConfigModel),
+                ExportType.HTML => typeof(HTMLConfigModel),
+                ExportType.Image => typeof(ImageConfigModel),
+                _ => typeof(ConfigModel)
+            };
+        }
+
+        private string GetConfigModelKey()
+        {
+            return Type switch
+            {
+                ExportType.PDF => "PDF",
+                ExportType.HTML => "HTML",
+                ExportType.Image => "Image",
+                _ => null
+            };
+        }
+
+        private ConfigModel GetDefaultConfigModel()
+        {
+            return Type switch
+            {
+                ExportType.PDF => new PDFConfigModel(),
+                ExportType.HTML => new HTMLConfigModel(),
+                ExportType.Image => new ImageConfigModel(),
+                _ => null
+            };
         }
 
         private JObject ParseConfig()

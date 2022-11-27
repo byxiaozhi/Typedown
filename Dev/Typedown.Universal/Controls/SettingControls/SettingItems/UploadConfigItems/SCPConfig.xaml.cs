@@ -33,7 +33,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            SCPConfigModel = ImageUploadConfig.LoadUploadConfig<SCPConfigModel>();
+            SCPConfigModel = ImageUploadConfig.LoadUploadConfig() as SCPConfigModel;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

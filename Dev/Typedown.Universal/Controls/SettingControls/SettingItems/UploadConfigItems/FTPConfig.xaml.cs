@@ -32,7 +32,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            FTPConfigModel = ImageUploadConfig.LoadUploadConfig<FTPConfigModel>();
+            FTPConfigModel = ImageUploadConfig.LoadUploadConfig() as FTPConfigModel;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

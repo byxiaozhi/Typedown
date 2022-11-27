@@ -27,21 +27,18 @@ namespace Typedown.Universal.Models
 
         public ConfigModel LoadUploadConfig()
         {
-            var config = ParseConfig();
-            if (config.TryGetValue(((int)Method).ToString(), out var value))
-                return value.ToObject(GetConfigModelType()) as ConfigModel;
-            return null;
-        }
-
-        public T LoadUploadConfig<T>() where T: ConfigModel, new()
-        {
-            return (LoadUploadConfig() as T) ?? new();
+            var allConfig = ParseConfig();
+            if (allConfig.TryGetValue(GetConfigModelKey(), out var value) && value.ToObject(GetConfigModelType()) is ConfigModel config)
+                return config;
+            var defaultConfig = GetDefaultConfigModel();
+            StoreUploadConfig(defaultConfig);
+            return defaultConfig;
         }
 
         public void StoreUploadConfig(ConfigModel uploadConfig)
         {
             var config = ParseConfig();
-            config[((int)Method).ToString()] = JObject.FromObject(uploadConfig);
+            config[GetConfigModelKey()] = JObject.FromObject(uploadConfig);
             Config = config.ToString();
         }
 
@@ -55,6 +52,32 @@ namespace Typedown.Universal.Models
                 ImageUploadMethod.SCP => typeof(SCPConfigModel),
                 ImageUploadMethod.PowerShell => typeof(PowerShellModel),
                 _ => typeof(ConfigModel)
+            };
+        }
+
+        private string GetConfigModelKey()
+        {
+            return Method switch
+            {
+                ImageUploadMethod.FTP => "FTP",
+                ImageUploadMethod.Git => "Git",
+                ImageUploadMethod.OSS => "OSS",
+                ImageUploadMethod.SCP => "SCP",
+                ImageUploadMethod.PowerShell => "PowerShell",
+                _ => null
+            };
+        }
+
+        private ConfigModel GetDefaultConfigModel()
+        {
+            return Method switch
+            {
+                ImageUploadMethod.FTP => new FTPConfigModel(),
+                ImageUploadMethod.Git => new GitConfigModel(),
+                ImageUploadMethod.OSS => new OSSConfigModel(),
+                ImageUploadMethod.SCP => new SCPConfigModel(),
+                ImageUploadMethod.PowerShell => new PowerShellModel(),
+                _ => null
             };
         }
 

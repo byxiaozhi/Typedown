@@ -32,7 +32,7 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems.UploadConfigI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            OSSConfigModel = ImageUploadConfig.LoadUploadConfig<OSSConfigModel>();
+            OSSConfigModel = ImageUploadConfig.LoadUploadConfig() as OSSConfigModel;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

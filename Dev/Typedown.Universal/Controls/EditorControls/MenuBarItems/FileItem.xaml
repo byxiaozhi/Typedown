@@ -8,6 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="using:Typedown.Universal.Utilities"
+    Loaded="OnLoaded"
     mc:Ignorable="d">
     <MenuFlyoutItem x:Name="NewFileItem" Text="{u:LocaleString Key=New}" Command="{x:Bind File.NewFileCommand}"/>
     <MenuFlyoutItem x:Name="NewWindowItem" Text="{u:LocaleString Key=NewWindow}" Command="{x:Bind File.NewWindowCommand}"/>
@@ -24,7 +25,8 @@
     <MenuFlyoutItem x:Name="SaveAsItem" Text="{u:LocaleString Key=SaveAs}" Command="{x:Bind File.SaveAsCommand}"/>
     <MenuFlyoutSeparator/>
     <MenuFlyoutItem Text="{u:LocaleString Key=Import}" Command="{x:Bind File.ImportCommand}"/>
-    <MenuFlyoutSubItem Text="{u:LocaleString Key=Export}">
+    <MenuFlyoutSubItem x:Name="ExportSubMenu" Text="{u:LocaleString Key=Export}" Loaded="OnExportSubMenuLoaded">
+        <MenuFlyoutItem x:Name="NoExportConfigItem" Text="{u:LocaleString Key=NoExportConfigs}" IsEnabled="False"/>
         <MenuFlyoutItem Text="PDF" Command="{x:Bind File.ExportCommand}" CommandParameter="pdf"/>
         <MenuFlyoutItem Text="HTML" Command="{x:Bind File.ExportCommand}" CommandParameter="html"/>
         <MenuFlyoutItem Text="TEXT" Command="{x:Bind File.ExportCommand}" CommandParameter="text"/>

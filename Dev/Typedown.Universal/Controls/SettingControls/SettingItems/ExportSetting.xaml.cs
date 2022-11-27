@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Typedown.Universal.Controls.DialogControls;
 using Typedown.Universal.Enums;
@@ -65,13 +67,9 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
         public static string GetConfigItemDescription(ExportType method)
         {
             var list = new List<string>();
-            list.Add(method switch
-            {
-                ExportType.PDF => "PDF",
-                ExportType.HTML => "HTML",
-                ExportType.Image => "Image",
-                _ => "未配置"
-            });
+            var field = method.GetType().GetField(method.ToString());
+            var attribute = field.GetCustomAttribute(typeof(LocaleAttribute)) as LocaleAttribute;
+            list.Add(attribute.Text);
             return string.Join(", ", list);
         }
 

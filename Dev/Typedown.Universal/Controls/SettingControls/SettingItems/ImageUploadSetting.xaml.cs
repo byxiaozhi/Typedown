@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Typedown.Universal.Controls.DialogControls;
 using Typedown.Universal.Enums;
@@ -65,16 +66,10 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
         public static string GetConfigItemDescription(ImageUploadMethod method, bool isEnable)
         {
             var list = new List<string>();
-            list.Add(method switch
-            {
-                ImageUploadMethod.FTP => "FTP",
-                ImageUploadMethod.Git => "Git",
-                ImageUploadMethod.OSS => "OSS",
-                ImageUploadMethod.SCP => "SCP",
-                ImageUploadMethod.PowerShell => "PowerShell",
-                _ => "未配置"
-            });
-            list.Add(isEnable ? "已启用" : "未启用");
+            var field = method.GetType().GetField(method.ToString());
+            var attribute = field.GetCustomAttribute(typeof(LocaleAttribute)) as LocaleAttribute;
+            list.Add(attribute.Text);
+            list.Add(isEnable ? Locale.GetString("On") : Locale.GetString("Off"));
             return string.Join(", ", list);
         }
 

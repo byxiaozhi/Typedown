@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using Typedown.Universal.Interfaces;
+using Typedown.Universal.Models;
 using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
@@ -14,9 +16,17 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
 
         public AccessHistory FileHistory => this.GetService<AccessHistory>();
 
+        public IFileExport FileExport => this.GetService<IFileExport>();
+
         public FileItem()
         {
             InitializeComponent();
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            UpdateOpenRecentItem();
+            UpdateExportItem();
         }
 
         protected override void OnRegisterShortcut()
@@ -48,6 +58,21 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
         private void OnOpenRecentSubMenuLoaded(object sender, RoutedEventArgs e)
         {
             UpdateOpenRecentItem();
+        }
+
+        private void UpdateExportItem()
+        {
+            var configs = FileExport.ExportConfigs.ToList();
+            while (ExportSubMenu.Items[1] is not MenuFlyoutSeparator)
+                ExportSubMenu.Items.RemoveAt(1);
+            foreach (var config in configs.Reverse<ExportConfig>())
+                ExportSubMenu.Items.Insert(1, new MenuFlyoutItem() { Text = config.Name, Command = File.ExportCommand, CommandParameter = config });
+            NoExportConfigItem.Visibility = configs.Any() ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private void OnExportSubMenuLoaded(object sender, RoutedEventArgs e)
+        {
+            UpdateExportItem();
         }
     }
 }
