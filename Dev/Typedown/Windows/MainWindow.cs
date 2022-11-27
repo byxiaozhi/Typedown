@@ -59,6 +59,7 @@ namespace Typedown.Windows
             BindingOperations.SetBinding(this, TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
             BindingOperations.SetBinding(this, CaptionHeightProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.CaptionHeight)) });
             BindingOperations.SetBinding(KeyboardAccelerator, KeyboardAccelerator.IsEnableProperty, new Binding() { Source = this, Path = new(nameof(IsActived)) });
+            AppViewModel.FileViewModel.NewWindowCommand.OnExecute.Subscribe(path => Utilities.Common.OpenNewWindow(new string[] { path }));
         }
 
         protected override void OnCreated(EventArgs args)

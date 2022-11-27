@@ -23,11 +23,14 @@ namespace Typedown.Universal.Utilities
 
         public static FileType GetFileType(string fileName)
         {
-            var ex = Path.GetExtension(fileName).ToLower();
-            if (Markdown.Contains(ex))
-                return FileType.Markdown;
-            if (Image.Contains(ex))
-                return FileType.Image;
+            if(!string.IsNullOrEmpty(fileName) && fileName.Contains('.'))
+            {
+                var ex = Path.GetExtension(fileName).ToLower();
+                if (Markdown.Contains(ex))
+                    return FileType.Markdown;
+                if (Image.Contains(ex))
+                    return FileType.Image;
+            }
             return FileType.Unknown;
         }
 
