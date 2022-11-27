@@ -15,9 +15,7 @@
     ]
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
+    "last 2 edge versions"
   ],
   "dependencies": {
     "@marktext/file-icons": "^1.0.6",
