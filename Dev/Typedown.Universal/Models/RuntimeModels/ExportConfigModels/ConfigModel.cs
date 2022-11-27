@@ -13,5 +13,7 @@ namespace Typedown.Universal.Models.ExportConfigModels
         public Dictionary<string, JToken> Addition { get; } = new();
 
         public string ScriptAfter { get; } = string.Empty;
+
+        public virtual Task Export(IServiceProvider serviceProvider, string html, string filePath) => null;
     }
 }

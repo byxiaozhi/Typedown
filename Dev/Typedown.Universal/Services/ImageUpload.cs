@@ -8,7 +8,7 @@ using Typedown.Universal.Enums;
 using Typedown.Universal.Models;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
-using static Typedown.Universal.Services.ImageAction;
+using Windows.Storage;
 
 namespace Typedown.Universal.Services
 {
@@ -18,10 +18,33 @@ namespace Typedown.Universal.Services
 
         private IServiceProvider serviceProvider;
 
-        public ImageUpload(IServiceProvider serviceProvider)
+        public ImageUpload(IServiceProvider serviceProvider, SettingsViewModel settings)
         {
             this.serviceProvider = serviceProvider;
-            _ = UpdateImageUploadConfigs();
+            settings.ResetSettingsCommand.OnExecute.Subscribe(async _ => await ResetDefaultConfigs());
+            Initialize();
+        }
+
+        private async void Initialize()
+        {
+            var settings = ApplicationData.Current.LocalSettings.Values;
+            if (settings["ImageUploadDatabaseInitialized"] == null)
+            {
+                settings["ImageUploadDatabaseInitialized"] = true;
+                await ResetDefaultConfigs();
+            }
+            else
+            {
+                await UpdateImageUploadConfigs();
+            }
+        }
+
+        private async Task ResetDefaultConfigs()
+        {
+            using var ctx = await AppDbContext.Create();
+            ctx.ImageUploadConfigs.RemoveRange(ctx.ImageUploadConfigs);
+            await ctx.SaveChangesAsync();
+            await UpdateImageUploadConfigs();
         }
 
         public async Task<ImageUploadConfig> AddImageUploadConfig(string name = null, ImageUploadMethod method = 0)
@@ -75,17 +98,17 @@ namespace Typedown.Universal.Services
             ImageUploadConfigs.UpdateCollection(newItems, (a, b) => a.Id == b.Id);
         }
 
-        public async Task<string> Upload(InsertImageSource source, string filePath)
+        public async Task<string> Upload(ImageAction.InsertImageSource source, string filePath)
         {
             var settings = serviceProvider.GetService<SettingsViewModel>();
             var configId = source switch
             {
-                InsertImageSource.Clipboard => settings.InsertClipboardImageUseUploadConfigId,
-                InsertImageSource.Local => settings.InsertLocalImageUseUploadConfigId,
-                InsertImageSource.Web => settings.InsertWebImageUseUploadConfigId,
+                ImageAction.InsertImageSource.Clipboard => settings.InsertClipboardImageUseUploadConfigId,
+                ImageAction.InsertImageSource.Local => settings.InsertLocalImageUseUploadConfigId,
+                ImageAction.InsertImageSource.Web => settings.InsertWebImageUseUploadConfigId,
                 _ => throw new NotImplementedException()
             };
-            if (!configId.HasValue || ImageUploadConfigs.Where(x=> x.IsEnable && x.Id == configId.Value).FirstOrDefault() is not ImageUploadConfig config)
+            if (!configId.HasValue || ImageUploadConfigs.Where(x => x.IsEnable && x.Id == configId.Value).FirstOrDefault() is not ImageUploadConfig config)
             {
                 throw new InvalidOperationException("Failed to load upload configuration.");
             }

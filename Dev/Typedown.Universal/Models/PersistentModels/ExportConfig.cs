@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,6 +21,8 @@ namespace Typedown.Universal.Models
         public string Notes { get; set; } = string.Empty;
 
         public ExportType Type { get; set; }
+
+        public List<(string name, string extension)> FileExtensions => GetFileExtensions();
 
         public string Config { get; private set; } = new JObject().ToString();
 
@@ -48,6 +51,17 @@ namespace Typedown.Universal.Models
                 ExportType.HTML => typeof(HTMLConfigModel),
                 ExportType.Image => typeof(ImageConfigModel),
                 _ => typeof(ConfigModel)
+            };
+        }
+
+        private List<(string, string)> GetFileExtensions()
+        {
+            return Type switch
+            {
+                ExportType.PDF => new() { ("PDF", ".pdf") },
+                ExportType.HTML => new() { ("HTML", ".html") },
+                ExportType.Image => new() { ("PNG", ".png") },
+                _ => new()
             };
         }
 

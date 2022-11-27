@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Typedown.Universal.Models.ExportConfigModels
@@ -11,5 +9,10 @@ namespace Typedown.Universal.Models.ExportConfigModels
         public string HeadExtra { get; set; }
 
         public string BodyExtra { get; set; }
+
+        public override async Task Export(IServiceProvider serviceProvider, string html, string filePath)
+        {
+            await File.WriteAllTextAsync(filePath, html);
+        }
     }
 }

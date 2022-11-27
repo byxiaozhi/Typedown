@@ -79,7 +79,7 @@ namespace Typedown.Universal.ViewModels
             ExportCommand.OnExecute.Subscribe(Export);
             PrintCommand.OnExecute.Subscribe(_ => Print());
             ImportCommand.OnExecute.Subscribe(_ => Import());
-            RemoteInvoke.Handle<JToken, Task>("ExportCallback", ExportCallback);
+            RemoteInvoke.Handle<JToken, bool>("ExportCallback", ExportCallback);
             RemoteInvoke.Handle<JToken, bool>("PrintHTML", PrintHTML);
             saveFileTimer.Interval = TimeSpan.FromSeconds(5);
             saveFileTimer.Tick += SaveFileTimerTick;
@@ -326,15 +326,36 @@ namespace Typedown.Universal.ViewModels
 
         private async Task<bool> PrintHTML(JToken args)
         {
-            var html = args["html"].ToString();
-            var fileExport = ServiceProvider.GetService<IFileExport>();
-            await fileExport.Print(Path.GetDirectoryName(FilePath), html, FileName);
-            return true;
+            try
+            {
+                var html = args["html"].ToString();
+                var fileExport = ServiceProvider.GetService<IFileExport>();
+                await fileExport.Print(Path.GetDirectoryName(FilePath), html, FileName);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                return false;
+            }
         }
 
-        private async Task ExportCallback(JToken args)
+        private async Task<bool> ExportCallback(JToken args)
         {
-            await Task.Yield();
+            try
+            {
+                var html = args["html"].ToString();
+                var filePath = args["context"]["filePath"].ToString();
+                var configId = args["context"]["configId"].ToObject<int>();
+                var config = await ServiceProvider.GetService<IFileExport>().GetExportConfig(configId);
+                await config.LoadExportConfig().Export(ServiceProvider, html, filePath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                return false;
+            }
         }
 
         private bool askToSaveOpened;
@@ -391,14 +412,17 @@ namespace Typedown.Universal.ViewModels
             }
         }
 
-        private void Export(ExportConfig type)
+        private async void Export(ExportConfig config)
         {
-            //var filePicker = new FileSavePicker();
-            //filePicker.SetOwnerWindow(AppViewModel.MainWindow);
-            //filePicker.FileTypeChoices.Add(type, new List<string> { "." + type });
-            //var file = await filePicker.PickSaveFileAsync();
-            //if (file == null) return;
-            //MarkdownEditor?.PostMessage("Export", new { type, path = file.Path, title = file.DisplayName });
+            var filePicker = new FileSavePicker();
+            filePicker.SetOwnerWindow(AppViewModel.MainWindow);
+            config.FileExtensions.ForEach(x => filePicker.FileTypeChoices.Add(x.name, new List<string> { x.extension }));
+            var file = await filePicker.PickSaveFileAsync();
+            if (file == null) return;
+            string basePath = null;
+            if (config.Type == Enums.ExportType.PDF || config.Type == Enums.ExportType.Image)
+                basePath = ImageBasePath;
+            MarkdownEditor?.PostMessage("Export", new { type = "export", title = file.DisplayName, basePath, context = new { configId = config.Id, filePath = file.Path } });
         }
 
         private void Print()

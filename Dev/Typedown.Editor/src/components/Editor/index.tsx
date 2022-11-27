@@ -49,7 +49,7 @@ const Editor: React.FC = () => {
 
     useEffect(() => transport.addListener<{ type: string, context: unknown, basePath: string, title: string }>('Export', async ({ type, context, basePath, title }) => {
         const generateOption = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc) }
-        const baseUrl = `file:///${basePath.replaceAll('\\', '/')}/`
+        const baseUrl = basePath ? `file:///${basePath.replaceAll('\\', '/')}/` : undefined
         const html = await new ExportHtml(markdownRef.current, { ...optionsRef.current, baseUrl }).generate(generateOption)
         if (type == 'print') {
             remote.printHTML({ html, context })

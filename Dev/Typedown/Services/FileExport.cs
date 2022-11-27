@@ -1,15 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Web.WebView2.Core;
-using PdfiumViewer;
 using System;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Reactive.Disposables;
-using System.Reflection;
-using System.Text;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Typedown.Universal;
 using Typedown.Universal.Enums;
 using Typedown.Universal.Interfaces;
 using Typedown.Universal.Models;
@@ -17,6 +12,7 @@ using Typedown.Universal.Services;
 using Typedown.Universal.Utilities;
 using Typedown.Universal.ViewModels;
 using Typedown.Utilities;
+using Windows.Storage;
 
 namespace Typedown.Services
 {
@@ -26,16 +22,44 @@ namespace Typedown.Services
 
         public AppViewModel ViewModel { get; }
 
-        public FileExport(AppViewModel viewModel)
+        public IFileConverter FileConverter { get; }
+
+        public FileExport(AppViewModel viewModel, SettingsViewModel settings, IFileConverter fileConverter)
         {
             ViewModel = viewModel;
-            _ = UpdateExportConfigs();
+            FileConverter = fileConverter;
+            settings.ResetSettingsCommand.OnExecute.Subscribe(async _ => await ResetDefaultConfigs());
+            Initialize();
+        }
+
+        private async void Initialize()
+        {
+            var settings = ApplicationData.Current.LocalSettings.Values;
+            if (settings["FileExportDatabaseInitialized"] == null)
+            {
+                settings["FileExportDatabaseInitialized"] = true;
+                await ResetDefaultConfigs();
+            }
+            else
+            {
+                await UpdateExportConfigs();
+            }
+        }
+
+        private async Task ResetDefaultConfigs()
+        {
+            using var ctx = await AppDbContext.Create();
+            ctx.ExportConfigs.RemoveRange(ctx.ExportConfigs);
+            await ctx.SaveChangesAsync();
+            await AddExportConfig("PDF", ExportType.PDF);
+            await AddExportConfig("HTML", ExportType.HTML);
+            await UpdateExportConfigs();
         }
 
         public async Task<ExportConfig> AddExportConfig(string name = null, ExportType type = 0)
         {
             using var ctx = await AppDbContext.Create();
-            var model = ctx;
+            var model = ctx.ExportConfigs;
             var res = new ExportConfig() { Name = name ?? string.Empty, Type = type };
             await model.AddAsync(res);
             await ctx.SaveChangesAsync();
@@ -85,7 +109,7 @@ namespace Typedown.Services
 
         public async Task Print(string basePath, string html, string documentName = null)
         {
-            using var stream = await FileConverter.HtmlToPdf(basePath, html);
+            using var stream = await FileConverter.HtmlToPdf(html);
             await PrintHelper.PrintPDF(ViewModel.MainWindow, stream, documentName);
         }
     }
