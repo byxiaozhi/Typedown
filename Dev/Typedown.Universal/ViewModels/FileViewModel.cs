@@ -307,7 +307,7 @@ namespace Typedown.Universal.ViewModels
             var file = await filePicker.PickSaveFileAsync();
             if (file != null)
             {
-                var result = await WriteAllText(FilePath, EditorViewModel.Markdown);
+                var result = await WriteAllText(file.Path, EditorViewModel.Markdown);
                 if (result)
                 {
                     if (FilePath == null)
