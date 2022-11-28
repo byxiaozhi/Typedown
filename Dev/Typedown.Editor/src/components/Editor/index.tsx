@@ -47,8 +47,8 @@ const Editor: React.FC = () => {
         transport.postMessage('CursorChange', { cursor })
     }, [cursor])
 
-    useEffect(() => transport.addListener<{ type: string, context: unknown, basePath: string, title: string }>('Export', async ({ type, context, basePath, title }) => {
-        const generateOption = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc) }
+    useEffect(() => transport.addListener<IExportArgs>('Export', async ({ type, context, basePath, title, options }) => {
+        const generateOption = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc), ...options }
         const baseUrl = basePath ? `file:///${basePath.replaceAll('\\', '/')}/` : undefined
         const html = await new ExportHtml(markdownRef.current, { ...optionsRef.current, baseUrl }).generate(generateOption)
         if (type == 'print') {

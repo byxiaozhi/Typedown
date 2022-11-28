@@ -14,6 +14,8 @@ namespace Typedown.Universal.Models.ExportConfigModels
 {
     public class PDFConfigModel : ConfigModel
     {
+        public string ExtraHead { get; set; } = "<style>.markdown-body { min-width: unset; max-width: unset; margin: unset; padding: 0; }</style>";
+
         public Size PageSize { get; set; } = new();
 
         public PageMargin Margins { get; set; } = new();

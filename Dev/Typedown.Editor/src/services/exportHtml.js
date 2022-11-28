@@ -210,7 +210,7 @@ class ExportHtml {
     this.mathRendererCalled = false
 
     // `extraCss` may changed in the mean time.
-    const { title, extraCss } = options
+    const { title, extraCss, extraHead, extraBody } = options
     return `<!DOCTYPE html>
 <html>
 <head>
@@ -291,9 +291,11 @@ class ExportHtml {
   </style>
   <style>${exportStyle}</style>
   ${extraCss ? `<style>${extraCss}</style>` : ''}
+  ${extraHead ?? ''}
 </head>
 <body>
   ${html}
+  ${extraBody ?? ''}
 </body>
 </html>`
   }

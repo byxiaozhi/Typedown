@@ -422,12 +422,24 @@ namespace Typedown.Universal.ViewModels
             string basePath = null;
             if (config.Type == Enums.ExportType.PDF || config.Type == Enums.ExportType.Image)
                 basePath = ImageBasePath;
-            MarkdownEditor?.PostMessage("Export", new { type = "export", title = file.DisplayName, basePath, context = new { configId = config.Id, filePath = file.Path } });
+            MarkdownEditor?.PostMessage("Export", new
+            {
+                type = "export",
+                title = file.DisplayName,
+                context = new { configId = config.Id, filePath = file.Path },
+                basePath,
+                options = config.LoadExportConfig()
+            });
         }
 
         private void Print()
         {
-            MarkdownEditor?.PostMessage("Export", new { type = "print", basePath = ImageBasePath, title = FileName ?? "untitled" });
+            MarkdownEditor?.PostMessage("Export", new
+            {
+                type = "print",
+                basePath = ImageBasePath,
+                title = FileName ?? "untitled"
+            });
         }
 
         private async void Import()
