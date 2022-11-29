@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -349,6 +350,8 @@ namespace Typedown.Universal.ViewModels
                 var configId = args["context"]["configId"].ToObject<int>();
                 var config = await ServiceProvider.GetService<IFileExport>().GetExportConfig(configId);
                 await config.LoadExportConfig().Export(ServiceProvider, html, filePath);
+                if(SettingsViewModel.OpenFolderAfterExport)
+                    Process.Start("explorer.exe", $"/select, \"{filePath}\"");
                 return true;
             }
             catch (Exception ex)
