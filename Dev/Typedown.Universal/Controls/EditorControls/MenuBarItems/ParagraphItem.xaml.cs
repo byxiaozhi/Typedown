@@ -38,10 +38,10 @@ namespace Typedown.Universal.Controls.EditorControls.MenuBarItems
             RegisterEditorShortcut(Settings.ShortcutSequenceDiagram, SequenceDiagramItem);
             RegisterEditorShortcut(Settings.ShortcutPlantUMLDiagram, PlantUMLDiagramItem);
             RegisterEditorShortcut(Settings.ShortcutMermaid, MermaidItem);
-            RegisterEditorShortcut(Settings.ShortcutLinkReferences, LinkReferencesItem);
+            //RegisterEditorShortcut(Settings.ShortcutLinkReferences, LinkReferencesItem);
             RegisterEditorShortcut(Settings.ShortcutFootNote, FootNoteItem);
             RegisterEditorShortcut(Settings.ShortcutHorizontalLine, HorizontalLineItem);
-            RegisterEditorShortcut(Settings.ShortcutToc, TocItem);
+            //RegisterEditorShortcut(Settings.ShortcutToc, TocItem);
             RegisterEditorShortcut(Settings.ShortcutYAMLFrontMatter, YAMLFrontMatterItem);
         }
     }

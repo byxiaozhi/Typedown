@@ -45,10 +45,10 @@
         <MenuFlyoutItem x:Name="MermaidItem" Text="{u:LocaleString Key=Mermaid}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="mermaid"/>
     </MenuFlyoutSubItem>
     <MenuFlyoutSeparator/>
-    <ToggleMenuFlyoutItem x:Name="LinkReferencesItem" Text="{u:LocaleString Key=LinkReference}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="linkref" IsEnabled="{x:Bind Editor.ParagraphState.LinkReference.IsEnable, Mode=TwoWay}"/>
+    <!--<ToggleMenuFlyoutItem x:Name="LinkReferencesItem" Text="{u:LocaleString Key=LinkReference}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="linkref" IsEnabled="{x:Bind Editor.ParagraphState.LinkReference.IsEnable, Mode=TwoWay}"/>-->
     <ToggleMenuFlyoutItem x:Name="FootNoteItem" Text="{u:LocaleString Key=Footnote}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="footnote" IsEnabled="{x:Bind Editor.ParagraphState.Footnote.IsEnable, Mode=TwoWay}"/>
-    <MenuFlyoutSeparator/>
+    <!--<MenuFlyoutSeparator/>-->
     <ToggleMenuFlyoutItem x:Name="HorizontalLineItem" Text="{u:LocaleString Key=HorizontalLine}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="hr" IsEnabled="{x:Bind Editor.ParagraphState.HorizontalLine.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.HorizontalLine.IsChecked, Mode=TwoWay}"/>
-    <ToggleMenuFlyoutItem x:Name="TocItem" Text="{u:LocaleString Key=Toc}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="toc" IsEnabled="{x:Bind Editor.ParagraphState.Toc.IsEnable, Mode=TwoWay}"/>
+    <!--<ToggleMenuFlyoutItem x:Name="TocItem" Text="{u:LocaleString Key=Toc}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="toc" IsEnabled="{x:Bind Editor.ParagraphState.Toc.IsEnable, Mode=TwoWay}"/>-->
     <ToggleMenuFlyoutItem x:Name="YAMLFrontMatterItem" Text="{u:LocaleString Key=YAMLFrontMatter}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="front-matter" IsEnabled="{x:Bind Editor.ParagraphState.FrontMatter.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.FrontMatter.IsChecked, Mode=TwoWay}"/>
 </local:MenuBarItemBase>

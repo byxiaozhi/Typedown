@@ -90,12 +90,12 @@
                         </local:MenuItemCollection.Value>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator x:Name="MenuImageItemSeparator" x:Load="{x:Bind Format.FormatState.Image, Mode=OneWay}"/>
-                    <MenuFlyoutSubItem x:Name="MenuCodeFencesItem" Text="{u:LocaleString Key=CodeFences}" x:Load="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=OneWay}">
+                    <!--<MenuFlyoutSubItem x:Name="MenuCodeFencesItem" Text="{u:LocaleString Key=CodeFences}" x:Load="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=OneWay}">
                         <local:MenuItemCollection.Value>
                             <items:CodeFencesItem/>
                         </local:MenuItemCollection.Value>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutSeparator x:Name="MenuCodeFencesItemSeparator" x:Load="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=OneWay}"/>
+                    <MenuFlyoutSeparator x:Name="MenuCodeFencesItemSeparator" x:Load="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=OneWay}"/>-->
                     <MenuFlyoutItem Text="{u:LocaleString Key=Undo}" KeyboardAcceleratorTextOverride="{x:Bind Settings.ShortcutUndo, Mode=OneWay, Converter={StaticResource ShortcutKeyToStringConverter}}" Icon="Undo" Command="{x:Bind Editor.UndoCommand}" IsEnabled="{x:Bind Editor.History.Undoable, Mode=OneWay}"/>
                     <MenuFlyoutSeparator/>
                     <MenuFlyoutItem x:Name="CutItem" Text="{u:LocaleString Key=Cut}" Icon="Cut" Command="{x:Bind Editor.CutCommand}" IsEnabled="{x:Bind Editor.Selected, Mode=OneWay}" CommandParameter="normal" KeyboardAcceleratorTextOverride="{x:Bind Settings.ShortcutCut, Mode=OneWay, Converter={StaticResource ShortcutKeyToStringConverter}}"/>
