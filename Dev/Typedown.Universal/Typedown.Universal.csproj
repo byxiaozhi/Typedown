@@ -83,7 +83,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config.cs" />
-    <Compile Include="Controls\AppContentDialog.cs" />
+    <Compile Include="Controls\CommonControls\AppContentDialog.cs" />
     <Compile Include="Controls\CaptionControls\CaptionButtons.xaml.cs">
       <DependentUpon>CaptionButtons.xaml</DependentUpon>
     </Compile>
@@ -99,6 +99,9 @@
     </Compile>
     <Compile Include="Controls\CommonControls\ShortcutPickerButton.xaml.cs">
       <DependentUpon>ShortcutPickerButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CommonControls\UnitNumberBox.xaml.cs">
+      <DependentUpon>UnitNumberBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\DialogControls\AddExportConfigDialog.xaml.cs">
       <DependentUpon>AddExportConfigDialog.xaml</DependentUpon>
@@ -259,6 +262,7 @@
     <Compile Include="Enums\ExportType.cs" />
     <Compile Include="Enums\ImageUploadMethod.cs" />
     <Compile Include="Enums\InsertImageAction.cs" />
+    <Compile Include="Enums\PrintOrientation.cs" />
     <Compile Include="Enums\StartupAction.cs" />
     <Compile Include="Interfaces\IClipboard.cs" />
     <Compile Include="Interfaces\IFileConverter.cs" />
@@ -293,9 +297,10 @@
       <DependentUpon>20221114080155_RenameModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DatabaseModelSnapshot.cs" />
-    <Compile Include="Models\ExportPdfSettings.cs" />
-    <Compile Include="Models\MarkdownBlock.cs" />
-    <Compile Include="Models\MarkdownCursor.cs" />
+    <Compile Include="Models\RuntimeModels\DimNumber.cs" />
+    <Compile Include="Models\RuntimeModels\ExportPdfSettings.cs" />
+    <Compile Include="Models\RuntimeModels\MarkdownBlock.cs" />
+    <Compile Include="Models\RuntimeModels\MarkdownCursor.cs" />
     <Compile Include="Models\PersistentModels\ExportConfig.cs" />
     <Compile Include="Models\PersistentModels\FileAccessHistory.cs" />
     <Compile Include="Models\PersistentModels\FolderAccessHistory.cs" />
@@ -314,6 +319,7 @@
     <Compile Include="Models\RuntimeModels\HtmlImgTag.cs" />
     <Compile Include="Models\RuntimeModels\MenuItemState.cs" />
     <Compile Include="Models\RuntimeModels\MenuState.cs" />
+    <Compile Include="Models\RuntimeModels\NumberUnit.cs" />
     <Compile Include="Models\RuntimeModels\ParagraphState.cs" />
     <Compile Include="Models\RuntimeModels\ScrollState.cs" />
     <Compile Include="Models\RuntimeModels\ShortcutKey.cs" />
@@ -380,12 +386,14 @@
     <Compile Include="Utilities\Command.cs" />
     <Compile Include="Utilities\CommandLine.cs" />
     <Compile Include="Utilities\Common.cs" />
+    <Compile Include="Utilities\ControlExtensions.cs" />
     <Compile Include="Utilities\FileTypeHelper.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
     <Compile Include="Utilities\Locale.cs" />
     <Compile Include="Utilities\CollectionExtensions.cs" />
     <Compile Include="Utilities\ExportMarkdown.cs" />
+    <Compile Include="Utilities\NumberUnit.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.DwmApi.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.Kernel32.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.Shell32.cs" />
@@ -511,6 +519,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CommonControls\ShortcutPickerButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CommonControls\UnitNumberBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

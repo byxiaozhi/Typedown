@@ -28,9 +28,16 @@ namespace Typedown.Universal.Models
 
         public ConfigModel LoadExportConfig()
         {
-            var allConfig = ParseConfig();
-            if (allConfig.TryGetValue(GetConfigModelKey(), out var value) && value.ToObject(GetConfigModelType()) is ConfigModel config)
-                return config;
+            try
+            {
+                var allConfig = ParseConfig();
+                if (allConfig.TryGetValue(GetConfigModelKey(), out var value) && value.ToObject(GetConfigModelType()) is ConfigModel config)
+                    return config;
+            }
+            catch
+            {
+                // Return default value;
+            }
             var defaultConfig = GetDefaultConfigModel();
             StoreExportConfig(defaultConfig);
             return defaultConfig;

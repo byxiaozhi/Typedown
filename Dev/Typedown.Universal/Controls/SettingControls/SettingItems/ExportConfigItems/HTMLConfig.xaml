@@ -11,7 +11,6 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-
     <StackPanel Spacing="4">
         <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
             <StackPanel Margin="-16,0,0,0" Spacing="8">

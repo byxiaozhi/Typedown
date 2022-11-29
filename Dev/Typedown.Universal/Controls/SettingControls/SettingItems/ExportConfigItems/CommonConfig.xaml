@@ -24,7 +24,7 @@
             </controls:NormalSettingItem.Icon>
             <ComboBox
                 MinWidth="200"
-                ItemsSource="{x:Bind enums:Enumerable.ExportTypes}"
+                ItemsSource="{x:Bind enums:Enumerable.AvailableExportTypes}"
                 DataContext="{x:Bind}" 
                 SelectedItem="{Binding ExportConfig.Type, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>

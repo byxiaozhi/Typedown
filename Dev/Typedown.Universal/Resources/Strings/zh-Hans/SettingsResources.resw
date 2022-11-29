@@ -261,6 +261,62 @@
     <value>导出完成后打开所在文件夹</value>
     <comment>导出完成后打开所在文件夹</comment>
   </data>
+  <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
+    <value>横向</value>
+    <comment>横向</comment>
+  </data>
+  <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
+    <value>纵向</value>
+    <comment>纵向</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
+    <value>页脚</value>
+    <comment>页脚</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Header" xml:space="preserve">
+    <value>页首</value>
+    <comment>页首</comment>
+  </data>
+  <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
+    <value>页首和页脚</value>
+    <comment>页首和页脚</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
+    <value>下</value>
+    <comment>下</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
+    <value>左</value>
+    <comment>左</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Right" xml:space="preserve">
+    <value>右</value>
+    <comment>右</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Text" xml:space="preserve">
+    <value>边距</value>
+    <comment>边距</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
+    <value>上</value>
+    <comment>上</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
+    <value>方向</value>
+    <comment>方向</comment>
+  </data>
+  <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
+    <value>高</value>
+    <comment>高</comment>
+  </data>
+  <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
+    <value>页面大小</value>
+    <comment>页面大小</comment>
+  </data>
+  <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
+    <value>宽</value>
+    <comment>宽</comment>
+  </data>
   <data name="Export.Title" xml:space="preserve">
     <value>导出</value>
     <comment>导出</comment>

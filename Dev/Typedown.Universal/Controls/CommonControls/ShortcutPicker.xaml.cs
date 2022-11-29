@@ -13,7 +13,7 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Typedown.Universal.Controls.CommonControls
+namespace Typedown.Universal.Controls
 {
     public sealed partial class ShortcutPicker : UserControl
     {

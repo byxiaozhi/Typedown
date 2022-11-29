@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Universal.Controls" 
-    xmlns:common="using:Typedown.Universal.Controls.CommonControls"
     xmlns:u="using:Typedown.Universal.Utilities"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
@@ -63,7 +62,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ShortcutSettingItemModel">
                     <controls:NormalSettingItem Title="{x:Bind DisplayName}" Description="{x:Bind Description}">
-                        <common:ShortcutPickerButton ShortcutKey="{x:Bind ShortcutKey, Mode=TwoWay}"/>
+                        <controls:ShortcutPickerButton ShortcutKey="{x:Bind ShortcutKey, Mode=TwoWay}"/>
                     </controls:NormalSettingItem>
                 </DataTemplate>
             </ListView.ItemTemplate>
