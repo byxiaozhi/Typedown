@@ -188,7 +188,7 @@ namespace Typedown.Universal.Controls.SidePanelControls.Pages
         private void OnOpenFileLocationClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            Process.Start("explorer.exe", $"/select, \"{item?.FullPath}\"");
+            Common.OpenFileLocation(item?.FullPath);
         }
 
         private void OnCutClick(object sender, RoutedEventArgs e)

@@ -39,6 +39,11 @@ namespace Typedown.Universal.Utilities
             }
         }
 
+        public static void OpenFileLocation(string filePath)
+        {
+            Process.Start("explorer.exe", $"/select, \"{filePath}\"");
+        }
+
         public static ulong SimpleHash(string str)
         {
             ulong hashedValue = 3074457345618258791ul;

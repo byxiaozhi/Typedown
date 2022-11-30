@@ -36,7 +36,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyClipboardImageItem" 
-                    x:Load="{x:Bind IsCopyImagePathSettingItemLoad(Settings.InsertClipboardImageAction), Mode=OneWay}"
+                    Visibility="{x:Bind IsCopyImagePathSettingItemVisibility(Settings.InsertClipboardImageAction), Mode=OneWay}"
                     Title="{u:LocaleString Key=View.Image.InsertAction.Clipboard.CopyPath.Title}" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -53,7 +53,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="UploadClipboardImageItem" 
-                    x:Load="{x:Bind IsSelectUploadConfigSettingItemLoad(Settings.InsertClipboardImageAction), Mode=OneWay}"
+                    Visibility="{x:Bind IsSelectUploadConfigSettingItemVisibility(Settings.InsertClipboardImageAction), Mode=OneWay}"
                     Title="{u:LocaleString Key=View.Image.InsertAction.Clipboard.UseConfig.Title}" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0">
@@ -80,7 +80,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyLocalImageItem" 
-                    x:Load="{x:Bind IsCopyImagePathSettingItemLoad(Settings.InsertLocalImageAction), Mode=OneWay}"
+                    Visibility="{x:Bind IsCopyImagePathSettingItemVisibility(Settings.InsertLocalImageAction), Mode=OneWay}"
                     Title="{u:LocaleString Key=View.Image.InsertAction.Local.CopyPath.Title}"
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -97,7 +97,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="UploadLocalImageItem" 
-                    x:Load="{x:Bind IsSelectUploadConfigSettingItemLoad(Settings.InsertLocalImageAction), Mode=OneWay}"
+                    Visibility="{x:Bind IsSelectUploadConfigSettingItemVisibility(Settings.InsertLocalImageAction), Mode=OneWay}"
                     Title="{u:LocaleString Key=View.Image.InsertAction.Local.UseConfig.Title}" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0">
@@ -124,7 +124,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="CopyWebImageItem" 
-                    x:Load="{x:Bind IsCopyImagePathSettingItemLoad(Settings.InsertWebImageAction), Mode=OneWay}"
+                    Visibility="{x:Bind IsCopyImagePathSettingItemVisibility(Settings.InsertWebImageAction), Mode=OneWay}"
                     Title="{u:LocaleString Key=View.Image.InsertAction.Web.CopyPath.Title}" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0"
@@ -141,7 +141,7 @@
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem 
                     x:Name="UploadWebImageItem" 
-                    x:Load="{x:Bind IsSelectUploadConfigSettingItemLoad(Settings.InsertWebImageAction), Mode=OneWay}"
+                    Visibility="{x:Bind IsSelectUploadConfigSettingItemVisibility(Settings.InsertWebImageAction), Mode=OneWay}"
                     Title="{u:LocaleString Key=View.Image.InsertAction.Web.UseConfig.Title}" 
                     BorderBrush="{ThemeResource CardStrokeColorDefault}" 
                     BorderThickness="0,1,0,0">

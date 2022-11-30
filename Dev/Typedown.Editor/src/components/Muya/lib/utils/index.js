@@ -290,7 +290,7 @@ export const getImageInfo = (src, basePath = window.basePath) => {
       // NOTE: We don't need to convert Windows styled path to UNIX style because Chromium handels this internal.
       return {
         isUnknownType: false,
-        src: path.resolve(basePath, src.replace('\\', '/').trimStart('/'))
+        src: path.resolve(basePath, src)
       }
     }
   } else if (isUrl && !imageExtension) {

@@ -34,11 +34,23 @@ const paragraphCtrl = ContentState => {
     end.type = endBlock.type
     end.block = endBlock
 
+    const selectedImage = this.selectedImage && {
+      key: this.selectedImage.key,
+      token: {
+        type: this.selectedImage.token.type,
+        attrs: this.selectedImage.token.attrs,
+        alt: this.selectedImage.token.alt,
+        src: this.selectedImage.token.src,
+        title: this.selectedImage.token.title
+      }
+    }
+
     return {
       start,
       end,
       affiliation,
-      cursorCoords
+      cursorCoords,
+      selectedImage
     }
   }
 

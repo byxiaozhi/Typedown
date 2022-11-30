@@ -30,7 +30,8 @@ namespace Typedown.Universal.Services
             try
             {
                 var result = src;
-                var filePath = UriHelper.IsLocalUrl(src) ? new Uri(src).LocalPath : src;
+                if (!UriHelper.TryGetLocalPath(src, out var filePath))
+                    return result;
                 switch (Settings.InsertLocalImageAction)
                 {
                     case Enums.InsertImageAction.CopyToPath:
@@ -40,7 +41,7 @@ namespace Typedown.Universal.Services
                         result = await Upload(InsertImageSource.Local, filePath);
                         break;
                     default:
-                        if(UriHelper.IsAbsolutePath(filePath) && Settings.PreferRelativeImagePaths)
+                        if (UriHelper.IsAbsolutePath(filePath) && Settings.PreferRelativeImagePaths)
                         {
                             result = Path.GetRelativePath(FileViewModel.ImageBasePath, filePath);
                             if (Settings.AddSymbolBeforeRelativePath)

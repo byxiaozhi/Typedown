@@ -252,10 +252,14 @@ namespace Typedown.Universal.ViewModels
                 if (Common.MatchHtmlImg(html) is HtmlImgTag img)
                 {
                     if (UriHelper.IsWebUrl(img.Src))
+                    {
                         img.Src = await ServiceProvider.GetService<ImageAction>().DoWebFileAction(img.Src);
-                    else
+                    }
+                    else if (UriHelper.TryGetLocalPath(img.Src, out _))
+                    {
                         img.Src = await ServiceProvider.GetService<ImageAction>().DoLocalFileAction(img.Src);
-                    img.Src = img.Src.Replace('\\', '/');
+                        img.Src = img.Src.Replace('\\', '/');
+                    }
                     MarkdownEditor?.PostMessage("InsertImage", img);
                     return;
                 }

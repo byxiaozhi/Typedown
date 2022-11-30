@@ -78,8 +78,15 @@ namespace Typedown.Universal.Controls.FloatControls
             if (src != currentSrc)
             {
                 var imageAction = this.GetService<ImageAction>();
-                src = UriHelper.IsWebUrl(src) ? await imageAction.DoWebFileAction(src) : await imageAction.DoLocalFileAction(src);
-                src = src.Replace('\\', '/');
+                if (UriHelper.IsWebUrl(src))
+                {
+                    src = await imageAction.DoWebFileAction(src);
+                }
+                else if (UriHelper.TryGetLocalPath(src, out _))
+                {
+                    src = await imageAction.DoLocalFileAction(src);
+                    src = src.Replace('\\', '/');
+                }
             }
             if (flyout.IsOpen)
             {

@@ -43,14 +43,14 @@ namespace Typedown.Universal.Controls.SettingControls.SettingItems
             UpdateUploadConfigOptions();
         }
 
-        public bool IsCopyImagePathSettingItemLoad(InsertImageAction action)
+        public Visibility IsCopyImagePathSettingItemVisibility(InsertImageAction action)
         {
-            return action == InsertImageAction.CopyToPath;
+            return action == InsertImageAction.CopyToPath ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        public bool IsSelectUploadConfigSettingItemLoad(InsertImageAction action)
+        public Visibility IsSelectUploadConfigSettingItemVisibility(InsertImageAction action)
         {
-            return action == InsertImageAction.Upload;
+            return action == InsertImageAction.Upload ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private readonly CompositeDisposable ImageUploadConfigsDisposables = new();

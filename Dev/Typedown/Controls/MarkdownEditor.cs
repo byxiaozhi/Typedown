@@ -126,7 +126,8 @@ namespace Typedown.Controls
                 var uri = new Uri(args.Request.Uri);
                 var query = HttpUtility.ParseQueryString(uri.Query);
                 var src = HttpUtility.UrlDecode(query["src"]);
-                var path = System.IO.Path.Combine(AppViewModel.FileViewModel.ImageBasePath, UriHelper.IsLocalUrl(src) ? new Uri(src).LocalPath : src);
+                UriHelper.TryGetLocalPath(src, out var path);
+                path = System.IO.Path.Combine(AppViewModel.FileViewModel.ImageBasePath, path);
                 var stream = await Task.Run(() => new MemoryStream(File.ReadAllBytes(path)));
                 args.Response = CoreWebView2.Environment.CreateWebResourceResponse(stream, 200, "OK", null);
             }
