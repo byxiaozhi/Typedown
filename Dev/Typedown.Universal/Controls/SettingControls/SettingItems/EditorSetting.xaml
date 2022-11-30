@@ -56,7 +56,7 @@
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.AutoPairMarkdownSyntax, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.DefaultCopyCutFormat.Title}" Description="{u:LocaleString Key=Editor.DefaultCopyCutFormat.Description}">
+        <!--<controls:NormalSettingItem Title="{u:LocaleString Key=Editor.DefaultCopyCutFormat.Title}" Description="{u:LocaleString Key=Editor.DefaultCopyCutFormat.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8c8;"/>
             </controls:NormalSettingItem.Icon>
@@ -65,8 +65,8 @@
                 <x:String>Markdown</x:String>
                 <x:String>HTML</x:String>
             </ComboBox>
-        </controls:NormalSettingItem>
-        <TextBlock Text="{u:LocaleString Key=Editor.Extension}" Margin="0,16,0,4"/>
+        </controls:NormalSettingItem>-->
+        <!--<TextBlock Text="{u:LocaleString Key=Editor.Extension}" Margin="0,16,0,4"/>
         <controls:ExpanderSettingItem Title="{u:LocaleString Key=Editor.SpellcheckEnabled.Title}" Description="{u:LocaleString Key=Editor.SpellcheckEnabled.Description}">
             <controls:ExpanderSettingItem.Icon>
                 <FontIcon Glyph="&#xf87b;"/>
@@ -81,6 +81,6 @@
                     </ComboBox>
                 </controls:NormalSettingItem>
             </StackPanel>
-        </controls:ExpanderSettingItem>
+        </controls:ExpanderSettingItem>-->
     </StackPanel>
 </UserControl>

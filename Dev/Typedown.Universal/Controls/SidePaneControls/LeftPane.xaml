@@ -30,11 +30,11 @@
                 <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
                 <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="{ThemeResource CardStrokeColorDefault}"/>
             </muxc:NavigationView.Resources>
-            <muxc:NavigationView.PaneFooter>
+            <!--<muxc:NavigationView.PaneFooter>
                 <Button Width="32" Height="32" x:Name="SeatchButton" Click="OnSearchButtonClick" Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" local:ToolTip.TextResource="Search">
                     <FontIcon FontSize="14" Glyph="&#xe721;"/>
                 </Button>
-            </muxc:NavigationView.PaneFooter>
+            </muxc:NavigationView.PaneFooter>-->
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Content="{u:LocaleString Key=Files}" Tag="Folder" Name="Folder"/>
                 <muxc:NavigationViewItem Content="{u:LocaleString Key=Outline}" Tag="Toc" Name="Toc"/>
