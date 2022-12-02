@@ -19,6 +19,7 @@
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <LangVersion>latest</LangVersion>
+    <DisableEmbeddedXbf>false</DisableEmbeddedXbf>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Platform)' == 'x64'">
     <SelfContained>false</SelfContained>
