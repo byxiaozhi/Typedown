@@ -38,7 +38,14 @@ namespace Typedown
                 Dispatcher.Run(() =>
                 {
                     Dispatcher = Dispatcher.Current;
-                    Startup();
+                    try
+                    {
+                        Startup();
+                    }
+                    catch
+                    {
+                        Dispatcher.Shutdown();
+                    }
                 });
             }
             else
