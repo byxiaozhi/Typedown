@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Utilities;
 
 namespace Typedown.Utilities
 {

@@ -2,9 +2,9 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Typedown.Universal.Interfaces;
-using Typedown.Universal.Models;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Interfaces;
+using Typedown.Core.Models;
+using Typedown.Core.Utilities;
 using Typedown.Utilities;
 
 namespace Typedown.Services
@@ -14,7 +14,7 @@ namespace Typedown.Services
         public async Task<MemoryStream> HtmlToPdf(string html, CoreWebView2PrintSettings settings = null)
         {
             var tmpWindow = PInvoke.CreateWindowEx(0, "Static", null, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            var tmpFile = Universal.Utilities.Common.GetTempFileName(".html");
+            var tmpFile = Core.Utilities.Common.GetTempFileName(".html");
             try
             {
                 var environment = await WebViewController.EnsureCreateEnvironment();

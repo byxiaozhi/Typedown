@@ -2,7 +2,7 @@
 using System.IO;
 using System.IO.Pipes;
 using System.Windows.Media.Imaging;
-using Typedown.Universal.Interfaces;
+using Typedown.Core.Interfaces;
 
 namespace Typedown.Services
 {

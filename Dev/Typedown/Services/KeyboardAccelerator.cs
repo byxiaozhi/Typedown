@@ -5,9 +5,9 @@ using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using Typedown.Universal.Interfaces;
-using Typedown.Universal.Models;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Interfaces;
+using Typedown.Core.Models;
+using Typedown.Core.Utilities;
 using Windows.System;
 using Windows.UI.Xaml;
 

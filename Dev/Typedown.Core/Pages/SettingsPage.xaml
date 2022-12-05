@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="Typedown.Core.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Core.Controls" 
+    xmlns:settingItems="using:Typedown.Core.Controls.SettingControls.SettingItems" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:u="using:Typedown.Core.Utilities"
+    xmlns:converters="using:Typedown.Core.Converters"
+    SizeChanged="OnSizeChanged"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d">
+    <muxc:NavigationView x:Name="NavigationView" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" SelectionChanged="OnNavigationViewSelectionChanged">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="LayoutStates">
+                <VisualState x:Name="Small">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="16,8,16,16"/>
+                        <Setter Target="FrameHeader.Margin" Value="48,0,16,0"/>
+                        <Setter Target="ContentFrameWrapper.RowSpacing" Value="8"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Medium">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="16,8,16,16"/>
+                        <Setter Target="FrameHeader.Margin" Value="16,0,16,0"/>
+                        <Setter Target="ContentFrameWrapper.RowSpacing" Value="8"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Large">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="48,8,48,48"/>
+                        <Setter Target="FrameHeader.Margin" Value="48,0,48,0"/>
+                        <Setter Target="ContentFrameWrapper.RowSpacing" Value="16"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <muxc:NavigationView.Resources>
+            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
+            <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>
+        </muxc:NavigationView.Resources>
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem Icon="Globe" Content="{u:LocaleString Key=General.Title}" Tag="General"/>
+            <muxc:NavigationViewItem Icon="View" Content="{u:LocaleString Key=View.Title}" Tag="View"/>
+            <muxc:NavigationViewItem Icon="Edit" Content="{u:LocaleString Key=Editor.Title}" Tag="Editor"/>
+            <muxc:NavigationViewItem Content="{u:LocaleString Key=Image.Title}" Tag="Image">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xe91b;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem Content="{u:LocaleString Key=Export.Title}" Tag="Export">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xf000;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem Content="{u:LocaleString Key=About.Title}" Tag="About">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xe946;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+        </muxc:NavigationView.MenuItems>
+        <Grid x:Name="ContentFrameWrapper">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="FrameHeader" MaxWidth="1200">
+                <muxc:BreadcrumbBar x:Name="BreadcrumbBar" ItemsSource="{x:Bind BreadcrumbBarItems}" ItemClicked="OnBreadcrumbBarItemClicked">
+                    <muxc:BreadcrumbBar.Resources>
+                        <SolidColorBrush x:Key="BreadcrumbBarNormalForegroundBrush" Color="{ThemeResource TextFillColorSecondary}"/>
+                        <SolidColorBrush x:Key="BreadcrumbBarHoverForegroundBrush" Color="{ThemeResource TextFillColorPrimary}"/>
+                        <SolidColorBrush x:Key="BreadcrumbBarPressedForegroundBrush" Color="{ThemeResource TextFillColorTertiary}"/>
+                        <StaticResource x:Key="BreadcrumbBarItemThemeFontSize" ResourceKey="TitleTextBlockFontSize"/>
+                        <Thickness x:Key="BreadcrumbBarChevronPadding">12,4,12,0</Thickness>
+                    </muxc:BreadcrumbBar.Resources>
+                    <muxc:BreadcrumbBar.ItemTemplate>
+                        <DataTemplate x:DataType="local:SettingsBreadcrumbBarItem">
+                            <TextBlock Text="{x:Bind Title, Mode=OneWay}"/>
+                        </DataTemplate>
+                    </muxc:BreadcrumbBar.ItemTemplate>
+                </muxc:BreadcrumbBar>
+            </Grid>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <controls:GlobalFrame x:Name="ContentFrame" MaxWidth="1200"/>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </muxc:NavigationView>
+</Page>

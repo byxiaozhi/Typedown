@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Utilities;
 
-namespace Typedown.Universal.Test.UtilityTests
+namespace Typedown.Core.Test.UtilityTests
 {
     [TestClass]
     public class UriHelperTest

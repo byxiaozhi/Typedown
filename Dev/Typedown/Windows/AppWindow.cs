@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Windows.UI.ViewManagement;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Utilities;
 using Typedown.Utilities;
-using Typedown.Universal.Enums;
+using Typedown.Core.Enums;
 using Windows.UI.Xaml;
-using Typedown.Universal.Controls;
+using Typedown.Core.Controls;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI;
 using Windows.Foundation;
 using PropertyChanged;
-using Typedown.Universal;
+using Typedown.Core;
 using Typedown.Interfaces;
 
 namespace Typedown.Windows

@@ -1,0 +1,36 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems.PowerShellConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Typedown.Core.Controls" 
+    xmlns:models="using:Typedown.Core.Models.UploadConfigModels"
+    Loaded="OnLoaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel Spacing="4">
+
+        <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
+            <StackPanel Margin="-16,0,0,0" Spacing="8">
+                <TextBlock>脚本</TextBlock>
+                <TextBox 
+                    Grid.Row="0" 
+                    Grid.Column="1" 
+                    PlaceholderText="{x:Bind models:PowerShellModel.DefaultScript}"
+                    Text="{x:Bind PowerShellConfigModel.Script, Mode=TwoWay}" 
+                    AcceptsReturn="True" 
+                    TextWrapping="Wrap" 
+                    MinHeight="400"/>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button Grid.Row="1" Grid.Column="1" Content="从文件导入" Margin="0,4,0,0" Click="OnImportButtonClick"/>
+                    <Button Grid.Row="1" Grid.Column="1" Content="保存到文件" Margin="0,4,0,0" Click="OnExportButtonClick"/>
+                </StackPanel>
+            </StackPanel>
+        </controls:NormalSettingItem>
+
+    </StackPanel>
+</UserControl>

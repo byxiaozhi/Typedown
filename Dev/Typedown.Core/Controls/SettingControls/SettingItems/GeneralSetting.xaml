@@ -1,0 +1,103 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.SettingControls.SettingItems.GeneralSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.SettingControls.SettingItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Core.Controls"
+    xmlns:utils="using:Typedown.Core.Utilities" 
+    xmlns:enums="using:Typedown.Core.Enums" 
+    xmlns:viewmodels="using:Typedown.Core.ViewModels" 
+    xmlns:u="using:Typedown.Core.Utilities"
+    d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <StackPanel Spacing="4">
+
+        <TextBlock Text="{u:LocaleString Key=General.Application}" Margin="0,0,0,4"/>
+        <controls:ExpanderSettingItem Title="{u:LocaleString Key=General.StartupAction.Title}" Description="{u:LocaleString Key=General.StartupAction.Description}">
+            <controls:ExpanderSettingItem.Icon>
+                <FontIcon Glyph="&#xe7b5;"/>
+            </controls:ExpanderSettingItem.Icon>
+            <StackPanel>
+                <controls:NormalSettingItem Title="{u:LocaleString Key=File}">
+                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.FileStartupActions}" SelectedItem="{Binding SettingsViewModel.FileStartupAction, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <controls:EnumNameBlock Value="{Binding}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </controls:NormalSettingItem>
+                <controls:NormalSettingItem Title="{u:LocaleString Key=Folder}" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
+                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.FolderStartupActions}" SelectedItem="{Binding SettingsViewModel.FolderStartupAction, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <controls:EnumNameBlock Value="{Binding}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </controls:NormalSettingItem>
+                <controls:NormalSettingItem 
+                    x:Name="StartOpenFolderItem" 
+                    x:Load="{x:Bind local:GeneralSetting.IsStartupOpenFolderItemLoad(Settings.FolderStartupAction), Mode=OneWay}"
+                    Title="{u:LocaleString Key=OpenFolder}" 
+                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
+                    BorderThickness="0,1,0,0"
+                    HorizontalActionAlignment="Stretch">
+                    <Grid ColumnSpacing="4" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Text="{x:Bind Settings.StartupOpenFolder, Mode=TwoWay}"/>
+                        <controls:PathPickerButton Grid.Column="2" Content="{u:LocaleString Key=Browse}" Mode="Folder" Path="{x:Bind Settings.StartupOpenFolder, Mode=TwoWay}"/>
+                    </Grid>
+                </controls:NormalSettingItem>
+            </StackPanel>
+        </controls:ExpanderSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.AutoSave.Title}" Description="{u:LocaleString Key=General.AutoSave.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe74e;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.AutoSave, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.KeepRun.Title}" Description="{u:LocaleString Key=General.KeepRun.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe945;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.KeepRun, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.Language.Title}" Description="{u:LocaleString Key=General.Language.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xf2b7;"/>
+            </controls:NormalSettingItem.Icon>
+            <ComboBox ItemsSource="{x:Bind utils:Locale.LangsOptions.Keys}" Width="200" SelectedItem="{Binding SettingsViewModel.Language, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Text="{x:Bind utils:Locale.GetLangOptionDisplayName((x:String))}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </controls:NormalSettingItem>
+
+        <TextBlock Text="{u:LocaleString Key=General.Custom}" Margin="0,16,0,4"/>
+        <controls:ButtonSettingItem Title="{u:LocaleString Key=General.ShortcutKeys.Title}" Description="{u:LocaleString Key=General.ShortcutKeys.Description}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Shortcut">
+            <controls:ButtonSettingItem.Icon>
+                <FontIcon Glyph="&#xe92e;"/>
+            </controls:ButtonSettingItem.Icon>
+        </controls:ButtonSettingItem>
+
+        <TextBlock Text="{u:LocaleString Key=General.Data}" Margin="0,16,0,4"/>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.RestoreDefault.Title}" Description="{u:LocaleString Key=General.RestoreDefault.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xebc4;"/>
+            </controls:NormalSettingItem.Icon>
+            <Button MinWidth="120" Command="{x:Bind Settings.ResetSettingsCommand}" Content="{u:LocaleString Key=Restore}"/>
+        </controls:NormalSettingItem>
+        
+    </StackPanel>
+</UserControl>

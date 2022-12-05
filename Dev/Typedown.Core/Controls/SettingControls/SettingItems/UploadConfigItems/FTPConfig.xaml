@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems.FTPConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Typedown.Core.Controls" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel Spacing="4">
+        
+        <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
+            <Grid RowSpacing="12" ColumnSpacing="16" Margin="-16,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="100"/>
+                    <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="主机" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind FTPConfigModel.Host, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="1" Text="端口" VerticalAlignment="Center"/>
+                <muxc:NumberBox Grid.Row="1" Grid.Column="1" Value="{x:Bind FTPConfigModel.Port, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="2" Text="用户名" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind FTPConfigModel.Username, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="3" Text="密码" VerticalAlignment="Center"/>
+                <PasswordBox Grid.Row="3" Grid.Column="1" Password="{x:Bind FTPConfigModel.Password, Mode=TwoWay}"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="测试连接"/>
+            </Grid>
+        </controls:NormalSettingItem>
+        
+        <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
+            <Grid RowSpacing="12" ColumnSpacing="16" Margin="-16,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="100"/>
+                    <ColumnDefinition Width="1e10*" MaxWidth="500"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="上传路径" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind FTPConfigModel.UploadPath, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="1" Text="外部URL" VerticalAlignment="Center"/>
+                <TextBox  Grid.Row="1" Grid.Column="1" Text="{x:Bind FTPConfigModel.ExternalURL, Mode=TwoWay}"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="测试上传"/>
+            </Grid>
+        </controls:NormalSettingItem>
+        
+    </StackPanel>
+</UserControl>

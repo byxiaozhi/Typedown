@@ -115,7 +115,6 @@
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\Dev\Typedown.Universal\Typedown.Universal.csproj" />
     <ProjectReference Include="..\..\Dev\Typedown\Typedown.csproj" />
   </ItemGroup>
 </Project>

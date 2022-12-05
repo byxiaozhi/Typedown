@@ -1,0 +1,79 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.SettingControls.SettingItems.ViewSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.SettingControls.SettingItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Core.Controls" 
+    xmlns:enums="using:Typedown.Core.Enums" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:converters="using:Typedown.Core.Converters" 
+    xmlns:viewmodels="using:Typedown.Core.ViewModels" 
+    xmlns:app="using:Typedown.Core"
+    xmlns:u="using:Typedown.Core.Utilities"
+    d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <StackPanel Spacing="4">
+
+        <TextBlock Text="{u:LocaleString Key=View.Window}" Margin="0,0,0,4"/>
+        <controls:ExpanderSettingItem Title="{u:LocaleString Key=View.AppTheme.Title}" Description="{u:LocaleString Key=View.AppTheme.Description}">
+            <controls:ExpanderSettingItem.Icon>
+                <FontIcon Glyph="&#xe790;"/>
+            </controls:ExpanderSettingItem.Icon>
+            <controls:ExpanderSettingItem.State>
+                <controls:EnumNameBlock Value="{x:Bind Settings.AppTheme, Mode=OneWay}"/>
+            </controls:ExpanderSettingItem.State>
+            <StackPanel Padding="48,16,16,16">
+                <muxc:RadioButtons ItemsSource="{x:Bind enums:Enumerable.AppThemes}" SelectedItem="{Binding SettingsViewModel.AppTheme, Mode=TwoWay}">
+                    <muxc:RadioButtons.ItemTemplate>
+                        <DataTemplate>
+                            <controls:EnumNameBlock Value="{Binding}"/>
+                        </DataTemplate>
+                    </muxc:RadioButtons.ItemTemplate>
+                </muxc:RadioButtons>
+            </StackPanel>
+        </controls:ExpanderSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.UseMicaMaterial.Title}" Description="{u:LocaleString Key=View.UseMicaMaterial.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xf4a5;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.AnimationEnable.Title}" Description="{u:LocaleString Key=View.AnimationEnable.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8be;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.AnimationEnable, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.Topmost.Title}" Description="{u:LocaleString Key=View.Topmost.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xee40;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.Topmost, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+
+        <TextBlock Text="{u:LocaleString Key=View.Layout}" Margin="0,16,0,4"/>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.AppCompactMode.Title}" Description="{u:LocaleString Key=View.AppCompactMode.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xf246;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.AppCompactMode, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.StatusBarOpen.Title}" Description="{u:LocaleString Key=View.StatusBarOpen.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe90e;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.StatusBarOpen, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.SidePaneOpen.Title}" Description="{u:LocaleString Key=View.SidePaneOpen.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xea4b;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        
+    </StackPanel>
+</UserControl>

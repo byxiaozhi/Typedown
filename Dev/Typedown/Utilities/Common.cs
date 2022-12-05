@@ -1,15 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
-using Typedown.Universal.Utilities;
-using Typedown.Universal.Enums;
-using Typedown.Universal.ViewModels;
+using Typedown.Core.Utilities;
+using Typedown.Core.Enums;
+using Typedown.Core.ViewModels;
 using Typedown.Windows;
 using Windows.UI.ViewManagement;
 using Windows.Foundation;
 using System.Reactive.Linq;
 using Windows.UI;
-using Typedown.Universal;
+using Typedown.Core;
+using Windows.UI.Xaml;
 
 namespace Typedown.Utilities
 {
@@ -34,7 +35,7 @@ namespace Typedown.Utilities
 
         public static bool GetUseLightTheme()
         {
-            return App.Current.RequestedTheme == global::Windows.UI.Xaml.ApplicationTheme.Light;
+            return Application.Current.RequestedTheme == global::Windows.UI.Xaml.ApplicationTheme.Light;
         }
 
         public static void TrySaveWindowPlacement(this MainWindow window, Point offset = default)

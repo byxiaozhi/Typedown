@@ -1,9 +1,9 @@
-﻿using Typedown.Universal.Interfaces;
+﻿using Typedown.Core.Interfaces;
 using Windows.UI.Xaml;
 using System.Reactive.Subjects;
 using Typedown.Windows;
 using Windows.Foundation;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Utilities;
 
 namespace Typedown.Services
 {

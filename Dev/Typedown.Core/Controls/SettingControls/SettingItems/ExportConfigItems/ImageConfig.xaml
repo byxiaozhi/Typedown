@@ -1,0 +1,23 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems.ImageConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Core.Controls" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel Spacing="4">
+        
+        <controls:NormalSettingItem Title="DPI">
+            <muxc:NumberBox MinWidth="200" Value="{x:Bind ImageConfigModel.DPI, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        
+    </StackPanel>
+</UserControl>

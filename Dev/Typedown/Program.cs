@@ -3,11 +3,20 @@ using Typedown.Utilities;
 using System.Diagnostics;
 using System.IO.Pipes;
 using System.IO;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Utilities;
 using System.Threading;
 using System.Threading.Tasks;
 using Typedown.Windows;
-using Typedown.Universal;
+using Microsoft.Toolkit.Win32.UI.XamlHost;
+using Windows.UI.Xaml.Markup;
+using System.Collections.Generic;
+using Typedown.Core.Interfaces;
+using Windows.UI.Xaml;
+
+namespace System.Runtime.CompilerServices
+{
+    public static class IsExternalInit { }
+}
 
 namespace Typedown
 {
@@ -43,12 +52,12 @@ namespace Typedown
             PInvoke.SetProcessDPIAware();
             PInvoke.EnableMouseInPointer(true);
             hHook = PInvoke.SetWindowsHookEx(PInvoke.HookType.WH_CBT, hookProc, IntPtr.Zero, PInvoke.GetCurrentThreadId());
-            using (new App())
-            {
-                new MainWindow().Show();
-                ExitSigWindow.Start();
-                Task.Run(ListenPipe);
-            }
+            var providers = new List<IXamlMetadataProvider>() { new Core.Typedown_Core_XamlTypeInfo.XamlMetaDataProvider() };
+            var xamlApp = new XamlApplication(providers) { Resources = new Core.Resources() };
+            ((Window.Current as object) as IWindowPrivate).TransparentBackground = true;
+            new MainWindow().Show();
+            ExitSigWindow.Start();
+            Task.Run(ListenPipe);
         }
 
         private static IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam)
@@ -87,7 +96,7 @@ namespace Typedown
                     var handle = await Dispatcher.InvokeAsync(() => Utilities.Common.OpenNewWindow(args));
                     await writer.WriteLineAsync(handle.ToString());
                     await writer.FlushAsync();
-                    await App.Dispatcher.TryRunIdleAsync(_ => { });
+                    await Dispatcher.InvokeAsync(() => { });
                 }
                 catch (Exception ex)
                 {

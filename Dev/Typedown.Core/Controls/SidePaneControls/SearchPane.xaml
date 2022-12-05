@@ -1,0 +1,36 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.SearchPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Height="49" Padding="8" ColumnSpacing="4" BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CardStrokeColorDefault}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <AutoSuggestBox 
+                x:Name="SearchTextBox" 
+                LostFocus="OnSearchTextBoxLostFocus" 
+                QueryIcon="Find"
+                PlaceholderText="在文件中搜索..."/>
+            <Button Grid.Column="1" Width="32" Height="32" x:Name="CloseButton" Click="OnCloseButtonClick" Style="{ThemeResource EllipsisIconButtonStyle}">
+                <FontIcon FontSize="10" Glyph="&#xe8bb;"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock>搜索</TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

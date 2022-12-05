@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Typedown.Services;
-using Typedown.Universal.Interfaces;
-using Typedown.Universal.Services;
-using Typedown.Universal.ViewModels;
+using Typedown.Core.Interfaces;
+using Typedown.Core.Services;
+using Typedown.Core.ViewModels;
 using Typedown.Controls;
-using Typedown.Universal.Controls.FloatControls;
+using Typedown.Core.Controls.FloatControls;
 
 namespace Typedown
 {

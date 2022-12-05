@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using System;
 using Typedown.Services;
-using Typedown.Universal.Controls;
-using Typedown.Universal.Interfaces;
-using Typedown.Universal.Services;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Controls;
+using Typedown.Core.Interfaces;
+using Typedown.Core.Services;
+using Typedown.Core.Utilities;
 using Typedown.Utilities;
 using Typedown.Windows;
 using Windows.UI.Xaml;
@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media;
 using Microsoft.Extensions.DependencyInjection;
 using Windows.Foundation;
 using Windows.UI.Xaml.Input;
-using Typedown.Universal.ViewModels;
+using Typedown.Core.ViewModels;
 using System.Reactive.Linq;
 using Windows.UI.Xaml.Shapes;
 using System.Threading.Tasks;
@@ -148,7 +148,7 @@ namespace Typedown.Controls
 
         public void PostMessage(string name, object args)
         {
-            CoreWebView2?.PostWebMessageAsString(JsonConvert.SerializeObject(new { name, args }, Universal.Config.EditorJsonSerializerSettings));
+            CoreWebView2?.PostWebMessageAsString(JsonConvert.SerializeObject(new { name, args }, Core.Config.EditorJsonSerializerSettings));
         }
 
         private void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
@@ -160,7 +160,7 @@ namespace Typedown.Controls
         {
             args.Handled = true;
             if (PInvoke.GetIsKeyDown(VirtualKey.Control))
-                Universal.Utilities.Common.OpenUrl(args.Uri);
+                Core.Utilities.Common.OpenUrl(args.Uri);
         }
 
         public void Dispose()

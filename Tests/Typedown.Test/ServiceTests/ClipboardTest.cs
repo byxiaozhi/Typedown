@@ -21,7 +21,7 @@ namespace Typedown.Test.ServiceTests
             var clipboard = GetDefaultClipboardService();
             var text = new Random().Next().ToString();
             clipboard.SetText(text);
-            Assert.AreEqual(text, clipboard.GetText(Universal.Interfaces.TextDataFormat.UnicodeText));
+            Assert.AreEqual(text, clipboard.GetText(Core.Interfaces.TextDataFormat.UnicodeText));
         }
     }
 }

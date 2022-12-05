@@ -1,0 +1,31 @@
+﻿<controls:AppContentDialog
+    x:Class="Typedown.Core.Controls.DialogControls.AddUploadConfigDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.DialogControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:enums="using:Typedown.Core.Enums" 
+    xmlns:u="using:Typedown.Core.Utilities"
+    xmlns:controls="using:Typedown.Core.Controls"
+    Style="{StaticResource DefaultAppContentDialogStyle}"
+    x:Name="ThisControl"
+    Title="{u:LocaleString Key=ImageUpload.AddConfig.Title}"
+    PrimaryButtonText="{u:LocaleString Key=Add}"
+    SecondaryButtonText="{u:LocaleString Key=Cancel}"
+    DefaultButton="Primary"
+    mc:Ignorable="d">
+    <StackPanel>
+        <TextBlock Text="{u:LocaleString Key=Name}"/>
+        <TextBox Margin="0,8,0,0" Text="{x:Bind ConfigName, Mode=TwoWay}"/>
+        <TextBlock Margin="0,8,0,0" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Text="{x:Bind ErrMsg, Mode=OneWay}" Visibility="{x:Bind ErrMsg, Converter={StaticResource EmptyToVisibilityReverseConverter}, Mode=OneWay}"/>
+        <TextBlock Margin="0,12,0,0" Text="{u:LocaleString Key=ImageUpload.Method}"/>
+        <ComboBox Margin="0,8,0,0" HorizontalAlignment="Stretch" ItemsSource="{x:Bind enums:Enumerable.AvailableImageUploadMethods}" SelectedItem="{Binding UploadMethod, ElementName=ThisControl, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <controls:EnumNameBlock Value="{Binding}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </StackPanel>
+</controls:AppContentDialog>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.IO;
-using Typedown.Universal.Interfaces;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Interfaces;
+using Typedown.Core.Utilities;
 
 namespace Typedown.Services
 {

@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using Typedown.Universal;
-using Typedown.Universal.Utilities;
+using Typedown.Core;
+using Typedown.Core.Utilities;
 using Windows.UI.Xaml;
 
 namespace Typedown.Windows

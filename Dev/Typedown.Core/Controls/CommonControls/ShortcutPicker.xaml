@@ -1,0 +1,56 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.ShortcutPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:utils="using:Typedown.Core.Utilities"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style TargetType="Border" x:Key="KeyBorderStyle">
+            <Setter Property="BackgroundSizing" Value="OuterBorderEdge"/>
+            <Setter Property="Background" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource AccentControlElevationBorderBrush}"/>
+            <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,8,12,8"/>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel MinWidth="360">
+        <TextBlock>请按下组合键</TextBlock>
+        <Grid HorizontalAlignment="Center" Height="48" Margin="0,16,0,0">
+            <ItemsControl 
+                x:Name="ShortcutKeys" 
+                IsTabStop="False"
+                x:Load="{x:Bind local:ShortcutPickerButton.HasShortcutKey(ShortcutKey), Mode=OneWay}" 
+                ItemsSource="{x:Bind utils:Common.GetShortcutKeyTextList(ShortcutKey), Mode=OneWay}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  Spacing="4"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <Border Style="{ThemeResource KeyBorderStyle}">
+                            <TextBlock Text="{x:Bind}" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"/>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <TextBlock 
+                x:Name="NoShortcutKey"
+                x:Load="{x:Bind local:ShortcutPickerButton.HasShortcutKeyReverse(ShortcutKey), Mode=OneWay}" 
+                VerticalAlignment="Center" 
+                Text="未设置"/>
+        </Grid>
+        <StackPanel Name="ErrorMsgPanel" Orientation="Horizontal" Spacing="8" Margin="0,16,0,0" Visibility="Collapsed" VerticalAlignment="Bottom">
+            <TextBlock Foreground="{ThemeResource SystemFillColorCriticalBrush}">快捷键已被占用</TextBlock>
+            <TextBlock x:Name="ExistOwnerTextBlock" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

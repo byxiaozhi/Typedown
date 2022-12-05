@@ -1,0 +1,54 @@
+﻿<local:MenuBarItemBase
+    Title="{u:LocaleString Key=Paragraph}"
+    x:Class="Typedown.Core.Controls.EditorControls.MenuBarItems.ParagraphItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.EditorControls.MenuBarItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Core.Utilities"
+    mc:Ignorable="d">
+    <MenuFlyoutSubItem Text="{u:LocaleString Key=Heading}">
+        <MenuFlyoutSubItem.Items>
+            <ToggleMenuFlyoutItem x:Name="Heading1Item" Text="{u:LocaleString Key=Heading1}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 1" IsEnabled="{x:Bind Editor.ParagraphState.Heading1.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading1.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading2Item" Text="{u:LocaleString Key=Heading2}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 2" IsEnabled="{x:Bind Editor.ParagraphState.Heading2.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading2.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading3Item" Text="{u:LocaleString Key=Heading3}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 3" IsEnabled="{x:Bind Editor.ParagraphState.Heading3.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading3.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading4Item" Text="{u:LocaleString Key=Heading4}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 4" IsEnabled="{x:Bind Editor.ParagraphState.Heading4.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading4.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading5Item" Text="{u:LocaleString Key=Heading5}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 5" IsEnabled="{x:Bind Editor.ParagraphState.Heading5.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading5.IsChecked, Mode=TwoWay}"/>
+            <ToggleMenuFlyoutItem x:Name="Heading6Item" Text="{u:LocaleString Key=Heading6}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="heading 6" IsEnabled="{x:Bind Editor.ParagraphState.Heading6.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Heading6.IsChecked, Mode=TwoWay}"/>
+        </MenuFlyoutSubItem.Items>
+    </MenuFlyoutSubItem>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="ItemParagraphItem" Text="{u:LocaleString Key=Paragraph}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="paragraph" IsEnabled="{x:Bind Editor.ParagraphState.Paragraph.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Paragraph.IsChecked, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="IncreaseHeadingLevelItem" Text="{u:LocaleString Key=IncreaseHeadingLevel}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="upgrade heading"/>
+    <MenuFlyoutItem x:Name="DecreaseHeadingLevelItem" Text="{u:LocaleString Key=DecreaseHeadingLevel}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="degrade heading"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="TableItem" Text="{u:LocaleString Key=Table}" Command="{x:Bind Paragraph.InsertTableCommand}" IsEnabled="{x:Bind Editor.ParagraphState.Table.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.Table.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="CodeFencesItem" Text="{u:LocaleString Key=CodeFences}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="pre" IsEnabled="{x:Bind Editor.ParagraphState.Table.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="MathBlockItem" Text="{u:LocaleString Key=MathBlock}" Command="{x:Bind Paragraph.UpdateParagraphCommand}"  CommandParameter="mathblock" IsEnabled="{x:Bind Editor.ParagraphState.MathBlock.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.MathBlock.IsChecked, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="QuoteItem" Text="{u:LocaleString Key=Quote}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="blockquote" IsEnabled="{x:Bind Editor.ParagraphState.QuoteBlock.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.QuoteBlock.IsChecked, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <ToggleMenuFlyoutItem x:Name="OrderedListItem" Text="{u:LocaleString Key=OrderedList}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ol-order" IsEnabled="{x:Bind Editor.ParagraphState.OrderList.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.OrderList.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="UnorderedListItem" Text="{u:LocaleString Key=UnorderedList}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ul-bullet" IsEnabled="{x:Bind Editor.ParagraphState.BulletList.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.BulletList.IsChecked, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="TaskListItem" Text="{u:LocaleString Key=TaskList}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="ul-task" IsEnabled="{x:Bind Editor.ParagraphState.TaskList.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.TaskList.IsChecked, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="InsertParagraphBeforeItem" Text="{u:LocaleString Key=InsertParagraphBefore}" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="before"/>
+    <MenuFlyoutItem x:Name="InsertParagraphAfterItem" Text="{u:LocaleString Key=InsertParagraphAfter}" Command="{x:Bind Paragraph.InsertParagraphCommand}" CommandParameter="after"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutSubItem Text="{u:LocaleString Key=Chart}" IsEnabled="{x:Bind Editor.ParagraphState.Chart.IsEnable, Mode=TwoWay}">
+        <MenuFlyoutItem x:Name="VegaChartItem" Text="{u:LocaleString Key=VegaChart}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="vega-lite"/>
+        <MenuFlyoutItem x:Name="FlowChartItem" Text="{u:LocaleString Key=FlowChart}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="flowchart"/>
+        <MenuFlyoutItem x:Name="SequenceDiagramItem" Text="{u:LocaleString Key=SequenceDiagram}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="sequence"/>
+        <MenuFlyoutItem x:Name="PlantUMLDiagramItem" Text="{u:LocaleString Key=PlantUMLDiagram}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="plantuml"/>
+        <MenuFlyoutItem x:Name="MermaidItem" Text="{u:LocaleString Key=Mermaid}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="mermaid"/>
+    </MenuFlyoutSubItem>
+    <MenuFlyoutSeparator/>
+    <!--<ToggleMenuFlyoutItem x:Name="LinkReferencesItem" Text="{u:LocaleString Key=LinkReference}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="linkref" IsEnabled="{x:Bind Editor.ParagraphState.LinkReference.IsEnable, Mode=TwoWay}"/>-->
+    <ToggleMenuFlyoutItem x:Name="FootNoteItem" Text="{u:LocaleString Key=Footnote}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="footnote" IsEnabled="{x:Bind Editor.ParagraphState.Footnote.IsEnable, Mode=TwoWay}"/>
+    <!--<MenuFlyoutSeparator/>-->
+    <ToggleMenuFlyoutItem x:Name="HorizontalLineItem" Text="{u:LocaleString Key=HorizontalLine}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="hr" IsEnabled="{x:Bind Editor.ParagraphState.HorizontalLine.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.HorizontalLine.IsChecked, Mode=TwoWay}"/>
+    <!--<ToggleMenuFlyoutItem x:Name="TocItem" Text="{u:LocaleString Key=Toc}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="toc" IsEnabled="{x:Bind Editor.ParagraphState.Toc.IsEnable, Mode=TwoWay}"/>-->
+    <ToggleMenuFlyoutItem x:Name="YAMLFrontMatterItem" Text="{u:LocaleString Key=YAMLFrontMatter}" Command="{x:Bind Paragraph.UpdateParagraphCommand}" CommandParameter="front-matter" IsEnabled="{x:Bind Editor.ParagraphState.FrontMatter.IsEnable, Mode=TwoWay}" IsChecked="{x:Bind Editor.ParagraphState.FrontMatter.IsChecked, Mode=TwoWay}"/>
+</local:MenuBarItemBase>

@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.FeedbackDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Core.Utilities"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <StackPanel Spacing="16">
+        <StackPanel Spacing="8">
+            <TextBlock Text="{u:LocaleString Key=Rating}"/>
+            <RatingControl Value="{x:Bind Ranting, Mode=TwoWay}"  IsReadOnly="False" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <StackPanel Spacing="8">
+            <TextBlock Text="{u:LocaleString Key=About.SendFeedBack}"/>
+            <TextBox 
+                TextWrapping="Wrap" 
+                MinWidth="400"
+                Height="200" 
+                Text="{x:Bind Feedback, Mode=TwoWay}"
+                PlaceholderText="{u:LocaleString Key=About.SendFeedbackDialog.Content.Placeholder}"
+            />
+        </StackPanel>
+        <StackPanel Spacing="8">
+            <TextBox 
+                Header="{u:LocaleString Key=About.SendFeedbackDialog.Contact.Header}"
+                MinWidth="400" 
+                Text="{x:Bind Contact, Mode=TwoWay}"
+                PlaceholderText="{u:LocaleString Key=About.SendFeedbackDialog.Contact.Header}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

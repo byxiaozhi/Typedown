@@ -1,5 +1,5 @@
 ﻿using System;
-using Typedown.Universal.Utilities;
+using Typedown.Core.Utilities;
 using Typedown.Utilities;
 
 namespace Typedown.Windows

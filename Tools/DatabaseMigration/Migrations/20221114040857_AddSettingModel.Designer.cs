@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Typedown.Universal.Services;
+using Typedown.Core.Services;
 
 namespace DatabaseMigration.Migrations
 {
@@ -18,7 +18,7 @@ namespace DatabaseMigration.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.30");
 
-            modelBuilder.Entity("Typedown.Universal.Models.ExportSetting", b =>
+            modelBuilder.Entity("Typedown.Core.Models.ExportSetting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,7 +41,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("ExportSetting");
                 });
 
-            modelBuilder.Entity("Typedown.Universal.Models.FileAccessHistory", b =>
+            modelBuilder.Entity("Typedown.Core.Models.FileAccessHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,7 +58,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("FileAccessHistory");
                 });
 
-            modelBuilder.Entity("Typedown.Universal.Models.FolderAccessHistory", b =>
+            modelBuilder.Entity("Typedown.Core.Models.FolderAccessHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +75,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("FolderAccessHistory");
                 });
 
-            modelBuilder.Entity("Typedown.Universal.Models.ImageUploadSetting", b =>
+            modelBuilder.Entity("Typedown.Core.Models.ImageUploadSetting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

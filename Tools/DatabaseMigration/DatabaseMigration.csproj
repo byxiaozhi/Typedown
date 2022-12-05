@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Dev\Typedown.Universal\Typedown.Universal.csproj" />
+	  <ProjectReference Include="..\..\Dev\Typedown.Core\Typedown.Core.csproj" />
 	</ItemGroup>
 
 </Project>

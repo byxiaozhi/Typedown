@@ -1,4 +1,4 @@
-﻿namespace Typedown.Universal.Services
+﻿namespace Typedown.Core.Services
 {
     public class Database : AppDbContext
     {

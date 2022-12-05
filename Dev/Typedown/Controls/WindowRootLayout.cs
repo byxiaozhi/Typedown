@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Typedown.Universal.Controls
+namespace Typedown.Core.Controls
 {
     public class WindowRootLayout : Grid
     {
