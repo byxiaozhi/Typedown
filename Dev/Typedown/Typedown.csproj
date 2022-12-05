@@ -12,6 +12,8 @@
 		<StartupObject>Typedown.Program</StartupObject>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
 		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+		<PublishTrimmed>true</PublishTrimmed>
+		<_SuppressWpfTrimError>true</_SuppressWpfTrimError>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Platform)' == 'x64'">
