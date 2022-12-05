@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UseWPF>True</UseWPF>
 		<LangVersion>latest</LangVersion>
 		<Platforms>x64;x86</Platforms>
 		<AssetTargetFallback>uap10.0.19041</AssetTargetFallback>
@@ -11,6 +12,8 @@
 		<StartupObject>Typedown.Program</StartupObject>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
 		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+		<PublishTrimmed>true</PublishTrimmed>
+		<_SuppressWpfTrimError>true</_SuppressWpfTrimError>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Platform)' == 'x64'">
@@ -48,21 +51,6 @@
 
 	<ItemGroup>
 		<None Include="Resources\Statics\**" CopyToOutputDirectory="PreserveNewest" Link="Resources\Statics\%(RecursiveDir)\%(Filename)%(Extension)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Reference Include="PresentationCore">
-	    <HintPath>Runtimes\PresentationCore.dll</HintPath>
-	  </Reference>
-	  <Reference Include="System.Drawing.Common">
-	    <HintPath>Runtimes\System.Drawing.Common.dll</HintPath>
-	  </Reference>
-	  <Reference Include="System.Windows.Forms">
-	    <HintPath>Runtimes\System.Windows.Forms.dll</HintPath>
-	  </Reference>
-	  <Reference Include="WindowsBase">
-	    <HintPath>Runtimes\WindowsBase.dll</HintPath>
-	  </Reference>
 	</ItemGroup>
 
 </Project>
