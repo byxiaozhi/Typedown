@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Typedown.UITest", "Tests\Ty
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Typedown.Core", "Dev\Typedown.Core\Typedown.Core.csproj", "{3538AD79-BD49-4081-B10B-090E4F75F6FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Typedown.ResourceGenerator", "Tools\Typedown.ResourceGenerator\Typedown.ResourceGenerator.csproj", "{ECC755F8-ACDC-4C64-9D3E-29539BE78372}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Typedown.ResourceGeneratorRunner", "Tools\Typedown.ResourceGeneratorRunner\Typedown.ResourceGeneratorRunner.csproj", "{8119E7DD-4B14-49D0-AD7E-4BDEFDC011D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +95,18 @@ Global
 		{3538AD79-BD49-4081-B10B-090E4F75F6FB}.Release|x64.Build.0 = Release|x64
 		{3538AD79-BD49-4081-B10B-090E4F75F6FB}.Release|x86.ActiveCfg = Release|x86
 		{3538AD79-BD49-4081-B10B-090E4F75F6FB}.Release|x86.Build.0 = Release|x86
+		{ECC755F8-ACDC-4C64-9D3E-29539BE78372}.Debug|x64.ActiveCfg = Debug|x64
+		{ECC755F8-ACDC-4C64-9D3E-29539BE78372}.Debug|x64.Build.0 = Debug|x64
+		{ECC755F8-ACDC-4C64-9D3E-29539BE78372}.Debug|x86.ActiveCfg = Debug|x86
+		{ECC755F8-ACDC-4C64-9D3E-29539BE78372}.Debug|x86.Build.0 = Debug|x86
+		{ECC755F8-ACDC-4C64-9D3E-29539BE78372}.Release|x64.ActiveCfg = Release|x64
+		{ECC755F8-ACDC-4C64-9D3E-29539BE78372}.Release|x86.ActiveCfg = Release|x86
+		{8119E7DD-4B14-49D0-AD7E-4BDEFDC011D8}.Debug|x64.ActiveCfg = Debug|x64
+		{8119E7DD-4B14-49D0-AD7E-4BDEFDC011D8}.Debug|x64.Build.0 = Debug|x64
+		{8119E7DD-4B14-49D0-AD7E-4BDEFDC011D8}.Debug|x86.ActiveCfg = Debug|x86
+		{8119E7DD-4B14-49D0-AD7E-4BDEFDC011D8}.Debug|x86.Build.0 = Debug|x86
+		{8119E7DD-4B14-49D0-AD7E-4BDEFDC011D8}.Release|x64.ActiveCfg = Release|x64
+		{8119E7DD-4B14-49D0-AD7E-4BDEFDC011D8}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +117,8 @@ Global
 		{B3BD8EAB-180B-42BC-B997-640725E71974} = {9FF4D6E1-2E2D-4F03-90AE-B5AE028C7F54}
 		{D2283D07-82FF-4EF6-B332-E5C4889D2567} = {9FF4D6E1-2E2D-4F03-90AE-B5AE028C7F54}
 		{9A59F339-E01E-4ED2-863E-110EC7DED0E1} = {9FF4D6E1-2E2D-4F03-90AE-B5AE028C7F54}
+		{ECC755F8-ACDC-4C64-9D3E-29539BE78372} = {9FF1ED00-9B9C-40CF-A0A2-68E9F2640CB4}
+		{8119E7DD-4B14-49D0-AD7E-4BDEFDC011D8} = {9FF1ED00-9B9C-40CF-A0A2-68E9F2640CB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF8FCD66-4C37-4993-8203-FC2A29823AB7}
