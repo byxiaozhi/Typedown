@@ -3,6 +3,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Windows.ApplicationModel;
 using Windows.Storage;
 
 namespace System.Runtime.CompilerServices
@@ -50,5 +51,19 @@ namespace Typedown.Core
         }
 
         public static string AppName => "Typedown";
+
+        public static bool IsPackaged { get; private set; }
+
+        static Config()
+        {
+            try
+            {
+                IsPackaged = Package.Current != null;
+            }
+            catch
+            {
+                IsPackaged = false;
+            }
+        }
     }
 }

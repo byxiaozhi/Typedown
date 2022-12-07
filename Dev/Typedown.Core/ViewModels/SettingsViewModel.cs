@@ -12,6 +12,7 @@ using Typedown.Core.Controls;
 using Typedown.Core.Enums;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
+using Windows.ApplicationModel;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
@@ -47,7 +48,7 @@ namespace Typedown.Core.ViewModels
         public int TabSize { get => GetSettingValue(4); set => SetSettingValue(value); }
         public bool SpellcheckEnabled { get => GetSettingValue(false); set => SetSettingValue(value); }
         public string SpellcheckLang { get => GetSettingValue(""); set => SetSettingValue(value); }
-        public bool KeepRun { get => GetSettingValue(true); set => SetSettingValue(value); }
+        public bool KeepRun { get => GetSettingValue(Config.IsPackaged); set => SetSettingValue(value); }
         public bool AnimationEnable { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool UseMicaEffect { get => GetSettingValue(Config.IsMicaSupported); set => SetSettingValue(value); }
         public bool Topmost { get => GetSettingValue(false); set => SetSettingValue(value); }

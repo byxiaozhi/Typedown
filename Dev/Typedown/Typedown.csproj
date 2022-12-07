@@ -15,6 +15,7 @@
 		<PublishTrimmed>true</PublishTrimmed>
 		<_SuppressWpfTrimError>true</_SuppressWpfTrimError>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<Version>1.2.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Platform)' == 'x64'">

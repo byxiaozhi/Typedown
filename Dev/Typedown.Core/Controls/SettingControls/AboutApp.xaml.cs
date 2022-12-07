@@ -12,14 +12,15 @@ namespace Typedown.Core.Controls
 
         public static string GetAppVersion()
         {
-            try
+            if (Config.IsPackaged)
             {
-                PackageVersion version = Package.Current.Id.Version;
+                var version = Package.Current.Id.Version;
                 return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
             }
-            catch
+            else
             {
-                return "Unpackaged";
+                var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision) + " (Unpackaged)";
             }
         }
 
