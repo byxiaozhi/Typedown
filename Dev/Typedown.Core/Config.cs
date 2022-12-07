@@ -42,7 +42,10 @@ namespace Typedown.Core
             }
             catch (Exception)
             {
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), AppName);
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), AppName);
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+                return path;
             }
         }
 

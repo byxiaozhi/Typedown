@@ -199,6 +199,7 @@ namespace Typedown.Windows
                 isPlacementSaving = true;
                 try
                 {
+                    await Task.Delay(100);
                     await Dispatcher.RunIdleAsync(_ => this.TrySaveWindowPlacement(new(8, 8)));
                 }
                 finally

@@ -83,7 +83,7 @@ namespace Typedown.Core.ViewModels
                 title.Append('*');
             if (AppViewModel.FileViewModel.FileName != null)
                 title.Append(AppViewModel.FileViewModel.FileName + " - ");
-            title.Append(AppInfo.Current.DisplayInfo.DisplayName);
+            title.Append(Config.AppName);
             MainWindowTitle = title.ToString();
         }
 

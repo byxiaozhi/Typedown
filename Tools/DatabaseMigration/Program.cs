@@ -4,7 +4,7 @@
     {
         public static void Main(string[] args)
         {
-            // Add-Migration -s DatabaseMigration -p DatabaseMigration
+            // Add-Migration -s Tools\DatabaseMigration -p Tools\DatabaseMigration
         }
     }
 }

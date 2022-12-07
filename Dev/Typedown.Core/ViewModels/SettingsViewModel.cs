@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,11 +78,9 @@ namespace Typedown.Core.ViewModels
 
         private readonly CompositeDisposable disposables = new();
 
-        public SettingsViewModel(IServiceProvider serviceProvider)
-        {
-            ServiceProvider = serviceProvider;
-            ResetSettingsCommand.OnExecute.Subscribe(_ => ResetSetting());
-        }
+        private readonly string settingsFile = Path.Combine(Config.GetLocalFolderPath(), "Settings.json");
+
+        private JToken store;
 
         private readonly HashSet<string> notifySet = new()
         {
@@ -102,39 +100,44 @@ namespace Typedown.Core.ViewModels
             "EditorAreaWidth"
         };
 
-        private IPropertySet Store => ApplicationData.Current.LocalSettings.Values;
-
-        private readonly Dictionary<string, object> cache = new();
-
-        public T GetSettingValue<T>(T defaultValue = default, [CallerMemberName] string propertyName = null)
+        public SettingsViewModel(IServiceProvider serviceProvider)
         {
-            if (cache.TryGetValue(propertyName, out var obj) && obj is T cacheResult)
-                return cacheResult;
+            ServiceProvider = serviceProvider;
+            ResetSettingsCommand.OnExecute.Subscribe(_ => ResetSetting());
+            LoadAllSettings();
+        }
+
+        private void LoadAllSettings()
+        {
             try
             {
-                if (Store[propertyName] is string str)
-                {
-                    var result = JsonConvert.DeserializeObject<T>(str);
-                    cache[propertyName] = result;
-                    return result;
-                }
-                else
-                {
-                    cache[propertyName] = defaultValue;
-                    return defaultValue;
-                }
+                store = JToken.Parse(File.ReadAllText(settingsFile));
             }
             catch
             {
-                cache[propertyName] = defaultValue;
-                return defaultValue;
+                store = new JObject();
             }
+        }
+
+        private async void SaveAllSettings()
+        {
+            await File.WriteAllTextAsync(settingsFile, store.ToString());
+        }
+
+        public T GetSettingValue<T>(T defaultValue = default, [CallerMemberName] string propertyName = null)
+        {
+            return (T)(store[propertyName]?.ToObject(typeof(T)) ?? defaultValue);
         }
 
         public void SetSettingValue<T>(T value, [CallerMemberName] string propertyName = null)
         {
-            cache[propertyName] = value;
-            Store[propertyName] = JsonConvert.SerializeObject(value);
+            if (value is null || value is string || value is long || value is int || value is short || value is sbyte || value is ulong || 
+                value is uint || value is ushort || value is byte || value is Enum || value is double || value is float || value is decimal|| 
+                value is DateTime || value is byte[] || value is bool || value is Guid || value is Uri || value is TimeSpan)
+                store[propertyName] = new JValue(value);
+            else
+                store[propertyName] = JObject.FromObject(value);
+            SaveAllSettings();
         }
 
         public void OnPropertyChanged(string propertyName, object before, object after)
@@ -151,8 +154,8 @@ namespace Typedown.Core.ViewModels
             var result = await dialog.ShowAsync(ServiceProvider.GetService<AppViewModel>().XamlRoot);
             if (result != ContentDialogResult.Primary)
                 return;
-            Store.Clear();
-            cache.Clear();
+            store = new JObject();
+            SaveAllSettings();
             foreach (var item in GetType().GetProperties().Where(x => x.GetSetMethod() != null).Select(x => x.Name))
                 OnPropertyChanged(item);
         }
