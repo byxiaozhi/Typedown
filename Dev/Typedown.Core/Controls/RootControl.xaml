@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
-    ActualThemeChanged="OnActualThemeChanged"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -26,7 +25,7 @@
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid x:Name="RootGrid">
+    <Grid x:Name="RootGrid" Background="{x:Bind Background, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" MinHeight="4"/>
             <RowDefinition Height="*"/>

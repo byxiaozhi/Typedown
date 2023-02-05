@@ -1,28 +1,30 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Typedown.Core.Utilities;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
+using Typedown.XamlUI;
 using Windows.Devices.Input;
 using Windows.System;
+using Windows.UI.Composition;
+using Windows.UI.Core;
 using Windows.UI.Input;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
-using System.Reactive.Disposables;
-using System.Diagnostics;
-using Typedown.Windows;
-using Windows.UI.Core;
 
 namespace Typedown.Utilities
 {
     public class WebViewController : IDisposable
     {
         public FrameworkElement Container { get; private set; }
+
+        public CoreDispatcher Dispatcher { get; private set; }
 
         public IntPtr ParentHWnd { get; private set; }
 
@@ -52,6 +54,7 @@ namespace Typedown.Utilities
                 {
                     Container = container;
                     ParentHWnd = parentHWnd;
+                    Dispatcher = container.Dispatcher;
                     await EnsureCreateCompositionController();
                     await EnsureCreateController();
                     if (disposables.IsDisposed)
@@ -62,9 +65,9 @@ namespace Typedown.Utilities
                     InitializeEventHandler();
                     UpdataWindowScale();
                     disposables.Add(Observable.FromEventPattern(Container, nameof(Container.SizeChanged)).Subscribe(_ => UpdateBounds()));
-                    var window = AppWindow.GetWindow(container);
-                    disposables.Add(Observable.FromEventPattern(window, nameof(AppWindow.LocationChanged)).Subscribe(_ => UpdateBounds()));
-                    disposables.Add(Observable.FromEventPattern(window, nameof(AppWindow.ScaleChanged)).Subscribe(_ => UpdataWindowScale()));
+                    var window = XamlWindow.GetWindow(container);
+                    disposables.Add(Observable.FromEventPattern(window, nameof(XamlWindow.LocationChanged)).Subscribe(_ => UpdateBounds()));
+                    disposables.Add(Observable.FromEventPattern(window, nameof(XamlWindow.DpiChanged)).Subscribe(_ => UpdataWindowScale()));
                     SetMaxWorkingSetSize();
                     return true;
                 }
@@ -583,7 +586,7 @@ namespace Typedown.Utilities
 
         private void UpdateCursor()
         {
-            if(isMouseEntered || hasMouseCapture)
+            if (isMouseEntered || hasMouseCapture)
             {
                 coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor);
                 CoreWindow.GetForCurrentThread().PointerCursor = cursor?.Value ?? new(0, 0);
@@ -614,7 +617,7 @@ namespace Typedown.Utilities
 
         ~WebViewController()
         {
-            Program.Dispatcher.InvokeAsync(Dispose);
+            _ = Dispatcher.TryRunIdleAsync(_ => Dispose());
         }
     }
 }

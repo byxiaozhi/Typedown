@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:ui="using:Typedown.XamlUI"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
@@ -99,7 +100,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="142"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Source="ms-appx:///Assets/Square44x44Logo.png" Width="24" Height="24" VerticalAlignment="Center"/>
+            <Image Grid.Column="0" Source="ms-appx:///Typedown.Core/Images/logo.ico" Width="16" Height="16" VerticalAlignment="Center"/>
             <TextBlock 
                 TextWrapping="NoWrap"
                 TextTrimming="CharacterEllipsis"
@@ -109,7 +110,12 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"/>
         </Grid>
-        <local:DragBar Grid.Column="1"/>
-        <local:CaptionButtons x:Name="CaptionButtons" Grid.Column="2" x:Load="{x:Bind app:Config.IsMicaSupported.Equals(x:False)}"/>
+        <Grid Grid.Column="1">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="ui:XamlWindow.Drag" Value="True"/>
+                </Style>
+            </Grid.Style>
+        </Grid>
     </Grid>
 </UserControl>

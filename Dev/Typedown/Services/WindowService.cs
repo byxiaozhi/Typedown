@@ -4,6 +4,7 @@ using System.Reactive.Subjects;
 using Typedown.Windows;
 using Windows.Foundation;
 using Typedown.Core.Utilities;
+using Typedown.XamlUI;
 
 namespace Typedown.Services
 {
@@ -13,21 +14,17 @@ namespace Typedown.Services
 
         public Subject<nint> WindowIsActivedChanged { get; } = new();
 
-        public Subject<nint> WindowScaleChanged { get; } = new();
-
         public void RaiseWindowStateChanged(nint hWnd) => WindowStateChanged.OnNext(hWnd);
 
         public void RaiseWindowIsActivedChanged(nint hWnd) => WindowIsActivedChanged.OnNext(hWnd);
 
-        public void RaiseWindowScaleChanged(nint hWnd) => WindowScaleChanged.OnNext(hWnd);
+        public nint GetWindow(UIElement element) => XamlWindow.GetWindow(element)?.Handle ?? default;
 
-        public nint GetWindow(UIElement element) => AppWindow.GetWindow(element)?.Handle ?? default;
-
-        public nint GetXamlSourceHandle(UIElement element) => AppWindow.GetWindow(element)?.XamlSourceHandle ?? default;
+        public nint GetXamlSourceHandle(UIElement element) => XamlWindow.GetWindow(element)?.XamlSourceHandle ?? default;
 
         public Point GetCursorPos(UIElement relativeTo)
         {
-            var window = AppWindow.GetWindow(relativeTo);
+            var window = XamlWindow.GetWindow(relativeTo);
             PInvoke.GetCursorPos(out var screenPos);
             PInvoke.GetWindowRect(window.XamlSourceHandle, out var xamlRootRect);
             var pos = new Point((screenPos.X - xamlRootRect.left) / window.ScalingFactor, (screenPos.Y - xamlRootRect.top) / window.ScalingFactor);

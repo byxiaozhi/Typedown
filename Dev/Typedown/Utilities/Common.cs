@@ -11,6 +11,7 @@ using System.Reactive.Linq;
 using Windows.UI;
 using Typedown.Core;
 using Windows.UI.Xaml;
+using Typedown.XamlUI;
 
 namespace Typedown.Utilities
 {
@@ -76,7 +77,7 @@ namespace Typedown.Utilities
             }
             else
             {
-                var appWindows = FrameWindow.Windows.OfType<AppWindow>();
+                var appWindows = XamlWindow.AllWindows;
                 var window = appWindows.Where(x => x.Handle == windowHWnd).FirstOrDefault();
                 if (window != null && PInvoke.IsIconic(window.Handle))
                     PInvoke.ShowWindow(window.Handle, PInvoke.ShowWindowCommand.Restore);

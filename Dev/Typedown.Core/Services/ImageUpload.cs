@@ -22,15 +22,14 @@ namespace Typedown.Core.Services
         {
             this.serviceProvider = serviceProvider;
             settings.ResetSettingsCommand.OnExecute.Subscribe(async _ => await ResetDefaultConfigs());
-            Initialize();
+            Initialize(settings);
         }
 
-        private async void Initialize()
+        private async void Initialize(SettingsViewModel settings)
         {
-            var settings = ApplicationData.Current.LocalSettings.Values;
-            if (settings["ImageUploadDatabaseInitialized"] == null)
+            if (!settings.ImageUploadDatabaseInitialized)
             {
-                settings["ImageUploadDatabaseInitialized"] = true;
+                settings.ImageUploadDatabaseInitialized = true;
                 await ResetDefaultConfigs();
             }
             else

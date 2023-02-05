@@ -135,10 +135,6 @@
     <Compile Include="Controls\CaptionControls\Caption.xaml.cs">
       <DependentUpon>Caption.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CaptionControls\CaptionButtons.xaml.cs">
-      <DependentUpon>CaptionButtons.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CaptionControls\DragBar.cs" />
     <Compile Include="Controls\CommonControls\AppContentDialog.cs" />
     <Compile Include="Controls\CommonControls\EnumNameBlock.cs" />
     <Compile Include="Controls\CommonControls\GlobalFrame.cs" />
@@ -450,7 +446,6 @@
     <Compile Include="Utilities\PInvoke\PInvoke.User32.cs" />
     <Compile Include="Utilities\ReactiveExtensions.cs" />
     <Compile Include="Utilities\UriHelper.cs" />
-    <Compile Include="Utilities\WindowClass.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\EditorViewModel.cs" />
     <Compile Include="ViewModels\FileViewModel.cs" />
@@ -469,17 +464,11 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit.Win32.UI.XamlApplication">
-      <Version>6.1.3</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.8.1</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.Web.WebView2">
-      <Version>1.0.1418.22</Version>
+      <Version>1.0.1518.46</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
+      <Version>13.0.2</Version>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody">
       <Version>4.1.0</Version>
@@ -487,13 +476,12 @@
     <PackageReference Include="System.Reactive">
       <Version>5.0.0</Version>
     </PackageReference>
+    <PackageReference Include="Typedown.XamlUI">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\CaptionControls\Caption.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\CaptionControls\CaptionButtons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -787,6 +775,9 @@
     <PRIResource Include="Resources\Strings\zh-Hans\SettingsResources.resw">
       <SubType>Designer</SubType>
     </PRIResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\logo.ico" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

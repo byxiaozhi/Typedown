@@ -11,8 +11,6 @@ namespace Typedown.Core.Interfaces
 
         Subject<nint> WindowIsActivedChanged { get; }
 
-        Subject<nint> WindowScaleChanged { get; }
-
         nint GetWindow(UIElement element);
 
         nint GetXamlSourceHandle(UIElement element);

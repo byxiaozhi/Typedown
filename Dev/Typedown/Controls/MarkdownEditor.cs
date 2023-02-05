@@ -23,6 +23,7 @@ using Windows.UI.ViewManagement;
 using Windows.System;
 using System.IO;
 using System.Web;
+using Typedown.XamlUI;
 
 namespace Typedown.Controls
 {
@@ -79,7 +80,7 @@ namespace Typedown.Controls
             if (WebViewController == null)
             {
                 WebViewController = new();
-                await WebViewController.InitializeAsync(this, AppWindow.GetWindow(this).XamlSourceHandle);
+                await WebViewController.InitializeAsync(this, XamlWindow.GetWindow(this).XamlSourceHandle);
                 SetChromeWidgetWindowTransparent();
                 OnCoreWebView2Initialized();
             }
@@ -111,7 +112,7 @@ namespace Typedown.Controls
         private void LoadStaticResources()
         {
 # if DEBUG
-            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
+            WebViewController.CoreWebView2.Navigate("http://www.baidu.com");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");

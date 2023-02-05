@@ -72,7 +72,8 @@ namespace Typedown.Core.ViewModels
         public bool AddSymbolBeforeRelativePath { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool AutoEncodeImageURL { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool OpenFolderAfterExport { get => GetSettingValue(false); set => SetSettingValue(value); }
-
+        public bool FileExportDatabaseInitialized { get => GetSettingValue(false); set => SetSettingValue(value); }
+        public bool ImageUploadDatabaseInitialized { get => GetSettingValue(false); set => SetSettingValue(value); }
         public IServiceProvider ServiceProvider { get; }
 
         public Command<Unit> ResetSettingsCommand { get; } = new();

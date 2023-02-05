@@ -15,6 +15,7 @@
     SizeChanged="OnSizeChanged"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" 
     xmlns:converters="using:Typedown.Core.Converters"
+    xmlns:ui="using:Typedown.XamlUI"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -66,12 +67,20 @@
                 </muxc:AnimatedIcon>
             </Viewbox>
         </Button>
-        <local:DragBar x:Name="LeftDragBar" Grid.Column="0" Height="4" VerticalAlignment="Top" x:Load="{x:Bind Settings.AppCompactMode}"/>
-        <local:DragBar x:Name="RightDragBar" Grid.Column="1" x:Load="{x:Bind Settings.AppCompactMode}"/>
-        <local:CaptionButtons 
-            x:Name="CaptionButtons"
-            HorizontalAlignment="Right"
-            Grid.Column="2"
-            x:Load="{x:Bind CaptionButtonsLoad(Settings.AppCompactMode), Mode=OneWay}"/>
+        <Grid x:Name="LeftDragBar" Grid.Column="0" Height="4" VerticalAlignment="Top" x:Load="{x:Bind Settings.AppCompactMode}">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="ui:XamlWindow.Drag" Value="True"/>
+                </Style>
+            </Grid.Style>
+        </Grid>
+        <Grid x:Name="RightDragBar" Grid.Column="1" x:Load="{x:Bind Settings.AppCompactMode}">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="ui:XamlWindow.Drag" Value="True"/>
+                </Style>
+            </Grid.Style>
+        </Grid>
     </Grid>
+
 </UserControl>

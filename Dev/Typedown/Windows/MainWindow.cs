@@ -16,10 +16,14 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
+using Typedown.XamlUI;
+using Typedown.Core.Converters;
+using Windows.UI;
+using System.Reactive.Linq;
 
 namespace Typedown.Windows
 {
-    public class MainWindow : AppWindow
+    public class MainWindow : XamlWindow
     {
         public IServiceScope ServiceScope { get; } = Injection.ServiceProvider.CreateScope();
 
@@ -40,7 +44,7 @@ namespace Typedown.Windows
             MinHeight = 300;
             Width = 1130;
             Height = 700;
-            StartupLocation = WindowStartupLocation.CenterScreen;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
@@ -48,106 +52,68 @@ namespace Typedown.Windows
         {
             DataContext = AppViewModel;
             Content = RootControl;
+            Frame = false;
+            Loaded += OnLoaded;
+            StateChanged += OnStateChanged;
+            IsActiveChanged += OnIsActiveChanged;
+            LocationChanged += OnLocationChanged;
+            SizeChanged += OnSizeChanged;
+            Closing += OnClosing;
+            Closed += OnClosed;
             InitializeBinding();
         }
 
         public void InitializeBinding()
         {
-            BindingOperations.SetBinding(this, ThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)) });
+            BindingOperations.SetBinding(this, RequestedThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)), Converter = new ElementThemeConverter() });
             BindingOperations.SetBinding(this, TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
-            BindingOperations.SetBinding(this, IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
+            // BindingOperations.SetBinding(this, IsMicaEnableProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.UseMicaEffect)) });
             BindingOperations.SetBinding(this, TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
-            BindingOperations.SetBinding(this, CaptionHeightProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.CaptionHeight)) });
-            BindingOperations.SetBinding(KeyboardAccelerator, KeyboardAccelerator.IsEnableProperty, new Binding() { Source = this, Path = new(nameof(IsActived)) });
+            BindingOperations.SetBinding(KeyboardAccelerator, KeyboardAccelerator.IsEnableProperty, new Binding() { Source = this, Path = new(nameof(IsActive)) });
             AppViewModel.FileViewModel.NewWindowCommand.OnExecute.Subscribe(path => Utilities.Common.OpenNewWindow(new string[] { path }));
+            AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.UseMicaEffect)).Cast<bool>().Subscribe(EnableMicaEffect);
+            EnableMicaEffect(AppViewModel.SettingsViewModel.UseMicaEffect);
         }
 
-        protected override void OnCreated(EventArgs args)
+        private void EnableMicaEffect(bool enable)
         {
-            base.OnCreated(args);
+            RootControl.Background = enable ? new SystemBackdropBrush(this) : new SolidColorBrush(Colors.Transparent);
+        }
+
+        private void OnLoaded(object sender, EventArgs e)
+        {
             this.TryRestoreWindowPlacement();
             SaveWindowPlacementWithOffset();
             AppViewModel.MainWindow = Handle;
         }
 
-        [SuppressPropertyChangedWarnings]
-        protected override void OnStateChanged(EventArgs e)
+        private void OnStateChanged(object sender, StateChangedEventArgs e)
         {
-            base.OnStateChanged(e);
             WindowService?.RaiseWindowStateChanged(Handle);
             SaveWindowPlacementWithOffset();
         }
 
-        [SuppressPropertyChangedWarnings]
-        protected override void OnIsActivedChanged(EventArgs args)
+        private void OnIsActiveChanged(object sender, IsActiveChangedEventArgs e)
         {
-            base.OnIsActivedChanged(args);
             WindowService?.RaiseWindowIsActivedChanged(Handle);
         }
 
-        [SuppressPropertyChangedWarnings]
-        protected override void OnScaleChanged(EventArgs args)
+        private void OnLocationChanged(object sender, LocationChangedEventArgs e)
         {
-            base.OnScaleChanged(args);
-            WindowService?.RaiseWindowScaleChanged(Handle);
-        }
-
-        [SuppressPropertyChangedWarnings]
-        protected override void OnLocationChanged(EventArgs e)
-        {
-            base.OnLocationChanged(e);
             SaveWindowPlacementWithOffset();
         }
 
-        [SuppressPropertyChangedWarnings]
-        protected override void OnSizeChanged(EventArgs args)
+        private void OnSizeChanged(object sender, XamlUI.SizeChangedEventArgs e)
         {
-            base.OnSizeChanged(args);
             SaveWindowPlacementWithOffset();
-        }
-
-        private void CloseMenuFlyout()
-        {
-            if (Content is FrameworkElement element && element.IsLoaded)
-            {
-                VisualTreeHelper.GetOpenPopupsForXamlRoot(element.XamlRoot)
-                    .Where(x => x.Child is MenuFlyoutPresenter)
-                    .ToList()
-                    .ForEach(x => x.IsOpen = false);
-            }
-        }
-
-        private void UpdatePopupPos()
-        {
-            if (Content is FrameworkElement element && element.IsLoaded)
-            {
-                VisualTreeHelper.GetOpenPopupsForXamlRoot(element.XamlRoot)
-                    .ToList()
-                    .ForEach(x => x.InvalidateMeasure());
-            }
-        }
-
-        protected override IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
-        {
-            switch ((PInvoke.WindowMessage)msg)
-            {
-                case PInvoke.WindowMessage.WM_NCLBUTTONDOWN:
-                    CloseMenuFlyout();
-                    break;
-                case PInvoke.WindowMessage.WM_WINDOWPOSCHANGED:
-                    UpdatePopupPos();
-                    break;
-            }
-            return base.WndProc(hWnd, msg, wParam, lParam);
         }
 
         private bool isCloseable = false;
 
         private bool isClosing = false;
 
-        protected async override void OnClosing(CancelEventArgs e)
+        private async void OnClosing(object sender, ClosingEventArgs e)
         {
-            base.OnClosing(e);
             try
             {
                 if (!isCloseable)
@@ -176,9 +142,8 @@ namespace Typedown.Windows
             Close();
         }
 
-        protected override void OnClosed(EventArgs e)
+        private void OnClosed(object sender, ClosedEventArgs e)
         {
-            base.OnClosed(e);
             var keepRun = AppViewModel.SettingsViewModel.KeepRun;
             ServiceScope?.Dispose();
             if (!AppViewModel.GetInstances().Any())
@@ -186,7 +151,7 @@ namespace Typedown.Windows
                 if (keepRun)
                     Process.GetCurrentProcess().MaxWorkingSet = Process.GetCurrentProcess().MinWorkingSet;
                 else
-                    Program.Dispatcher.Shutdown();
+                    Application.Current.Exit();
             }
         }
 

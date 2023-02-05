@@ -1,5 +1,8 @@
-﻿using System.Reactive.Disposables;
+﻿using System;
+using System.Reactive.Disposables;
+using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
+using Typedown.XamlUI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -17,7 +20,7 @@ namespace Typedown.Core.Controls
             InitializeComponent();
         }
 
-        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        private void OnSizeChanged(object sender, Windows.UI.Xaml.SizeChangedEventArgs e)
         {
             if (TitleGrid != null)
             {
@@ -34,11 +37,6 @@ namespace Typedown.Core.Controls
                     Grid.SetColumnSpan(TitleGrid, 2);
                 }
             }
-        }
-
-        private bool CaptionButtonsLoad(bool isCompactMode)
-        {
-            return isCompactMode && !Config.IsMicaSupported;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)

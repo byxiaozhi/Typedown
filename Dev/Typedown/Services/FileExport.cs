@@ -29,15 +29,14 @@ namespace Typedown.Services
             ViewModel = viewModel;
             FileConverter = fileConverter;
             settings.ResetSettingsCommand.OnExecute.Subscribe(async _ => await ResetDefaultConfigs());
-            Initialize();
+            Initialize(settings);
         }
 
-        private async void Initialize()
+        private async void Initialize(SettingsViewModel settings)
         {
-            var settings = ApplicationData.Current.LocalSettings.Values;
-            if (settings["FileExportDatabaseInitialized"] == null)
+            if (!settings.FileExportDatabaseInitialized)
             {
-                settings["FileExportDatabaseInitialized"] = true;
+                settings.FileExportDatabaseInitialized = true;
                 await ResetDefaultConfigs();
             }
             else
