@@ -112,7 +112,7 @@ namespace Typedown.Controls
         private void LoadStaticResources()
         {
 # if DEBUG
-            WebViewController.CoreWebView2.Navigate("http://www.baidu.com");
+            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
