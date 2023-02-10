@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Typedown.Core;
 using Typedown.Core.Enums;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Models;
@@ -12,7 +11,6 @@ using Typedown.Core.Services;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
 using Typedown.Utilities;
-using Windows.Storage;
 
 namespace Typedown.Services
 {

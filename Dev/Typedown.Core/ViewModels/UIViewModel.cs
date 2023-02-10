@@ -9,7 +9,6 @@ using System.Reactive.Linq;
 using System.Text;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
-using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;

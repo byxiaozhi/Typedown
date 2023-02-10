@@ -34,12 +34,15 @@ namespace Typedown
         protected override void OnLaunched()
         {
             base.OnLaunched();
-            new MainWindow().Show();
+            var window = new MainWindow();
+            var hasStartupPlacement = window.AppViewModel.SettingsViewModel.StartupPlacement.HasValue;
+            window.Show(hasStartupPlacement ? ShowWindowCommand.SW_HIDE : ShowWindowCommand.SW_NORMAL);
             ListenPipe();
         }
 
         private static async void ListenPipe()
         {
+            var dispatcher = Dispatcher.Current;
             while (true)
             {
                 try
@@ -49,7 +52,7 @@ namespace Typedown
                     using var reader = new StreamReader(server);
                     using var writer = new StreamWriter(server);
                     var args = (await reader.ReadLineAsync()).Split("\0");
-                    var handle = Utilities.Common.OpenNewWindow(args);
+                    var handle = await dispatcher.RunAsync(() => Utilities.Common.OpenNewWindow(args));
                     await writer.WriteLineAsync(handle.ToString());
                     await writer.FlushAsync();
                 }
@@ -68,8 +71,8 @@ namespace Typedown
             using var writer = new StreamWriter(client);
             writer.WriteLine(string.Join("\0", Environment.GetCommandLineArgs()));
             writer.Flush();
-            var handle = new IntPtr(long.Parse(reader.ReadLine()));
-            PInvoke.SetForegroundWindow(handle);
+            if (long.TryParse(reader.ReadLine(), out var handle))
+                PInvoke.SetForegroundWindow((nint)handle);
         }
     }
 }

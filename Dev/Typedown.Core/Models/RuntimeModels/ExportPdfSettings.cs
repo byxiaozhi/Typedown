@@ -1,10 +1,4 @@
-﻿using Microsoft.Web.WebView2.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Typedown.Core.Enums;
+﻿using Typedown.Core.Enums;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 

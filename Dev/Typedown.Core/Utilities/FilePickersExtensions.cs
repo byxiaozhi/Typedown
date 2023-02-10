@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Typedown.Core.ViewModels;
 using Windows.Storage.Pickers;
 
 namespace Typedown.Core.Utilities

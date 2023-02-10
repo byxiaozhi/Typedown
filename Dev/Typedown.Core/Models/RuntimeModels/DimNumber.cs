@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Typedown.Core.Utilities;
-
-namespace Typedown.Core.Models
+﻿namespace Typedown.Core.Models
 {
     public record DimNumber
     {

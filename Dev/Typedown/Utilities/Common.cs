@@ -1,17 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
+using System.Reactive.Linq;
 using Typedown.Core.Utilities;
-using Typedown.Core.Enums;
 using Typedown.Core.ViewModels;
 using Typedown.Windows;
-using Windows.UI.ViewManagement;
-using Windows.Foundation;
-using System.Reactive.Linq;
-using Windows.UI;
-using Typedown.Core;
-using Windows.UI.Xaml;
 using Typedown.XamlUI;
+using Windows.Foundation;
+using Windows.UI;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
 
 namespace Typedown.Utilities
 {
@@ -53,11 +51,14 @@ namespace Typedown.Utilities
             window.AppViewModel.SettingsViewModel.StartupPlacement = placement;
         }
 
-        public static bool TryRestoreWindowPlacement(this MainWindow window)
+        public static bool ShowWindowWithSavedPlacement(this MainWindow window)
         {
             var placement = window.AppViewModel.SettingsViewModel.StartupPlacement;
             if (!placement.HasValue)
+            {
+                window.Show(ShowWindowCommand.SW_NORMAL);
                 return false;
+            }
             var value = placement.Value;
             if (value.showCmd != PInvoke.ShowWindowCommand.ShowMaximized)
                 value.showCmd = PInvoke.ShowWindowCommand.Normal;

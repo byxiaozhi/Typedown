@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Reactive;
 using System.Reactive.Linq;

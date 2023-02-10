@@ -1,25 +1,21 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PropertyChanged;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Typedown.Services;
 using Typedown.Core;
 using Typedown.Core.Controls;
+using Typedown.Core.Converters;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
+using Typedown.Services;
 using Typedown.Utilities;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Typedown.XamlUI;
+using Windows.UI;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
-using Typedown.XamlUI;
-using Typedown.Core.Converters;
-using Windows.UI;
-using System.Reactive.Linq;
 
 namespace Typedown.Windows
 {
@@ -80,7 +76,7 @@ namespace Typedown.Windows
 
         private void OnLoaded(object sender, EventArgs e)
         {
-            this.TryRestoreWindowPlacement();
+            this.ShowWindowWithSavedPlacement();
             SaveWindowPlacementWithOffset();
             AppViewModel.MainWindow = Handle;
         }

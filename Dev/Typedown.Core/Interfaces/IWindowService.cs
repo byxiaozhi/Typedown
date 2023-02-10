@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reactive.Subjects;
+﻿using System.Reactive.Subjects;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 

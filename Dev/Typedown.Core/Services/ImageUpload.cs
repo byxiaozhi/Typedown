@@ -8,7 +8,6 @@ using Typedown.Core.Enums;
 using Typedown.Core.Models;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
-using Windows.Storage;
 
 namespace Typedown.Core.Services
 {

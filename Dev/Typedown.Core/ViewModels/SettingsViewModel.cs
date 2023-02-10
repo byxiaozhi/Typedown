@@ -12,9 +12,6 @@ using Typedown.Core.Controls;
 using Typedown.Core.Enums;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
-using Windows.ApplicationModel;
-using Windows.Foundation.Collections;
-using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Core.ViewModels

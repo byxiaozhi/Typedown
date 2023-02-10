@@ -1,6 +1,5 @@
 ﻿using System.Collections.Specialized;
 using System.IO;
-using System.IO.Pipes;
 using System.Windows.Media.Imaging;
 using Typedown.Core.Interfaces;
 

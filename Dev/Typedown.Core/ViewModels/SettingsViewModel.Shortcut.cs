@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Typedown.Core.Interfaces;
-using Typedown.Core.Models;
+﻿using Typedown.Core.Models;
 using Typedown.Core.Utilities;
 using Key = Windows.System.VirtualKey;
 using Mod = Windows.System.VirtualKeyModifiers;
