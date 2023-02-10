@@ -35,6 +35,8 @@ namespace Typedown.Core.Models
         [OnChangedMethod(nameof(OnIsExpandedChanged))]
         public bool IsExpanded { get; set; } = false;
 
+        public bool IsSelected { get; set; } = false;
+
         [OnChangedMethod(nameof(OnIsWatchingChanged))]
         private bool IsWatching { get; set; } = false;
 
@@ -254,7 +256,7 @@ namespace Typedown.Core.Models
             ClearChildren();
         }
 
-        public IEnumerable<FileSystemInfo> EnumerateFilteredFileSystemInfos()
+        private IEnumerable<FileSystemInfo> EnumerateFilteredFileSystemInfos()
         {
             try
             {
@@ -277,7 +279,7 @@ namespace Typedown.Core.Models
             return FileTypeHelper.IsMarkdownFile(name);
         }
 
-        public class DefaultComparer : Comparer<ExplorerItem>
+        private class DefaultComparer : Comparer<ExplorerItem>
         {
             public override int Compare(ExplorerItem x, ExplorerItem y)
             {

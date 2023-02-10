@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive.Disposables;
@@ -16,6 +15,7 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using muxc = Microsoft.UI.Xaml.Controls;
 
@@ -33,10 +33,16 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         public ExplorerItem WorkFolderExplorerItem { get; private set; }
 
+        private readonly Windows.UI.Xaml.Input.PointerEventHandler TreeViewItemPointerPressedEventHandler;
+
+        private readonly Windows.UI.Xaml.Input.PointerEventHandler TreeViewItemPointerReleasedEventHandler;
+
         private readonly CompositeDisposable disposables = new();
 
         public FolderPage()
         {
+            TreeViewItemPointerPressedEventHandler = new(OnTreeViewItemPointerPressed);
+            TreeViewItemPointerReleasedEventHandler = new(OnTreeViewItemPointerReleased);
             InitializeComponent();
         }
 
@@ -44,11 +50,19 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
         {
             WorkFolderExplorerItem = new ExplorerItem() { IsExpanded = true };
             disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.WorkFolder)).Cast<string>().StartWith(FileViewModel.WorkFolder).Subscribe(UpdateWorkFolder));
+            disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FilePath)).Cast<string>().StartWith(FileViewModel.FilePath).Subscribe(_ => UpdateSelectedItem(WorkFolderExplorerItem)));
         }
 
         private void UpdateWorkFolder(string workFolder)
         {
             WorkFolderExplorerItem.FullPath = workFolder;
+        }
+
+        private void UpdateSelectedItem(ExplorerItem item)
+        {
+            item.IsSelected = FileViewModel.FilePath == item.FullPath;
+            foreach (var next in item.Children)
+                UpdateSelectedItem(next);
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -229,9 +243,8 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         private async void RenameFile(ExplorerItem item)
         {
-            if (item == null) return;
-            var treeViewItem = TreeView.ContainerFromItem(item) as muxc.TreeViewItem;
-            if (treeViewItem == null) return;
+            if (item == null || TreeView.ContainerFromItem(item) is not muxc.TreeViewItem treeViewItem)
+                return;
             var container = treeViewItem.FindName("TextBoxContainer") as ContentPresenter;
             var textblock = treeViewItem.FindName("NameTextBlock") as TextBlock;
             var textBox = new TextBox()
@@ -267,55 +280,71 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
                 FileOperation.Rename(item.FullPath, Path.Combine(Path.GetDirectoryName(item.FullPath), source.Task.Result));
         }
 
-        private readonly Windows.UI.Xaml.Input.PointerEventHandler TreeViewItemPointerPressedEventHandler = new(OnTreeViewItemPointerPressed);
-
         private void OnTreeViewItemLoaded(object sender, RoutedEventArgs e)
         {
-            var grid = VisualTreeHelper.GetChild(sender as DependencyObject, 0) as UIElement;
+            if (sender is not muxc.TreeViewItem item || VisualTreeHelper.GetChild(item, 0) is not UIElement grid)
+                return;
             grid.AddHandler(PointerPressedEvent, TreeViewItemPointerPressedEventHandler, true);
+            item.AddHandler(PointerReleasedEvent, TreeViewItemPointerReleasedEventHandler, true);
+            if (item.DataContext is ExplorerItem explorerItem)
+                UpdateSelectedItem(explorerItem);
         }
 
         private void OnTreeViewItemUnloaded(object sender, RoutedEventArgs e)
         {
-            var grid = VisualTreeHelper.GetChild(sender as DependencyObject, 0) as UIElement;
+            if (sender is not muxc.TreeViewItem item || VisualTreeHelper.GetChild(item, 0) is not UIElement grid)
+                return;
             grid.RemoveHandler(PointerPressedEvent, TreeViewItemPointerPressedEventHandler);
+            item.RemoveHandler(PointerReleasedEvent, TreeViewItemPointerReleasedEventHandler);
         }
 
         private static void OnTreeViewItemPointerPressed(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             if ((e.OriginalSource as FrameworkElement).Name != "ExpandCollapseChevron" && (e.OriginalSource as FrameworkElement).GetAncestor<TextBox>() == null)
             {
-                var item = (sender as Grid).DataContext as ExplorerItem;
-                if (item.Type == ExplorerItem.ExplorerItemType.Folder)
+                if ((sender as Grid)?.DataContext is ExplorerItem item && item.Type == ExplorerItem.ExplorerItemType.Folder)
                 {
                     e.Handled = true;
-                    if (e.GetCurrentPoint(sender as Grid).Properties.IsLeftButtonPressed)
+                    if (e.GetCurrentPoint(sender as UIElement).Properties.IsLeftButtonPressed)
                         item.IsExpanded = !item.IsExpanded;
                 }
             }
         }
 
-        private void OnOpenClick(object sender, RoutedEventArgs e)
+        private async void OnTreeViewItemPointerReleased(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            var kind = e.GetCurrentPoint(sender as UIElement).Properties.PointerUpdateKind;
+            if (kind == Windows.UI.Input.PointerUpdateKind.LeftButtonReleased && 
+                (sender as muxc.TreeViewItem).DataContext is ExplorerItem item && 
+                item.Type == ExplorerItem.ExplorerItemType.File)
+                await ViewModel.FileViewModel.OpenFile(item.FullPath);
+            UpdateSelectedItem(WorkFolderExplorerItem);
+        }
+
+        private async void OnOpenClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            ViewModel.FileViewModel.OpenFileCommand.Execute(item.FullPath);
+            if (item != null)
+                await ViewModel.FileViewModel.OpenFile(item.FullPath);
+            UpdateSelectedItem(WorkFolderExplorerItem);
         }
 
         private void OnOpenInNewWindowClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            ViewModel.FileViewModel.NewWindowCommand.Execute(item.FullPath);
+            if (item != null)
+                ViewModel.FileViewModel.NewWindowCommand.Execute(item.FullPath);
         }
 
         private async void OnItemDragStarting(UIElement sender, DragStartingEventArgs args)
         {
             var item = GetExplorerItemFromTreeViewItem(sender);
-            if (item.Type == ExplorerItem.ExplorerItemType.File)
+            if (item?.Type == ExplorerItem.ExplorerItemType.File)
             {
                 var file = await StorageFile.GetFileFromPathAsync(item.FullPath);
                 args.Data.SetStorageItems(new List<IStorageItem>() { file });
             }
-            if (item.Type == ExplorerItem.ExplorerItemType.Folder)
+            if (item?.Type == ExplorerItem.ExplorerItemType.Folder)
             {
                 var folder = await StorageFolder.GetFolderFromPathAsync(item.FullPath);
                 args.Data.SetStorageItems(new List<IStorageItem>() { folder });
@@ -336,7 +365,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
         {
             var target = GetExplorerItemFromTreeViewItem(sender);
             if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
-                target.Type == ExplorerItem.ExplorerItemType.Folder)
+                target?.Type == ExplorerItem.ExplorerItemType.Folder)
             {
                 var items = await e.DataView.GetStorageItemsAsync();
                 e.AcceptedOperation = DataPackageOperation.Move;
@@ -354,8 +383,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
-            var explorerItem = (ExplorerItem)item;
-            return explorerItem.Type == ExplorerItem.ExplorerItemType.Folder ? FolderTemplate : FileTemplate;
+            return item is ExplorerItem explorerItem && explorerItem.Type == ExplorerItem.ExplorerItemType.Folder ? FolderTemplate : FileTemplate;
         }
     }
 }

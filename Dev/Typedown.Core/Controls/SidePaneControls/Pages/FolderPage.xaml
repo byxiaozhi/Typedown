@@ -85,6 +85,7 @@
         <DataTemplate x:Key="FileTemplate" x:DataType="models:ExplorerItem">
             <muxc:TreeViewItem ContextFlyout="{StaticResource FileContextFlyout}" BorderThickness="1" Margin="-1" 
                                Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded"
+                               IsSelected="{x:Bind IsSelected, Mode=TwoWay}"
                                CanDrag="True" DragStarting="OnItemDragStarting" DragOver="OnItemDragOver" 
                                Background="Transparent" AllowDrop="True" Drop="OnFolderItemDrop">
                 <Grid ColumnSpacing="8" Height="32">

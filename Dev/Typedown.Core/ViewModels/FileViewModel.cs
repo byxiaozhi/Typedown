@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -16,7 +14,6 @@ using Typedown.Core.Models;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
 using Windows.ApplicationModel.Core;
-using Windows.ApplicationModel.Resources;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -72,8 +69,8 @@ namespace Typedown.Core.ViewModels
         {
             ServiceProvider = serviceProvider;
             NewFileCommand.OnExecute.Subscribe(async _ => await NewFileFun());
-            OpenFileCommand.OnExecute.Subscribe(OpenFile);
-            OpenFolderCommand.OnExecute.Subscribe(OpenFolder);
+            OpenFileCommand.OnExecute.Subscribe(async x => await OpenFile(x));
+            OpenFolderCommand.OnExecute.Subscribe(async x => await OpenFolder(x));
             SaveAsCommand.OnExecute.Subscribe(async _ => await SaveAs());
             SaveCommand.OnExecute.Subscribe(async _ => await Save());
             ExitCommand.OnExecute.Subscribe(_ => Exit());
@@ -146,25 +143,26 @@ namespace Typedown.Core.ViewModels
             }
         }
 
-        private async void OpenFile(string filePath = null)
+        public async Task<bool> OpenFile(string filePath = null)
         {
-            if (!await AskToSave()) return;
-            filePath ??= await AppViewModel.MainWindow.PickMarkdownFolderAsync();
-            if (filePath != null)
-                await LoadFile(filePath, true);
+            if (!await AskToSave()) 
+                return false;
+            filePath ??= await AppViewModel.MainWindow.PickMarkdownFileAsync();
+            if (filePath == null) 
+                return false;
+            return await LoadFile(filePath, true);
         }
 
-        private async void OpenFolder(string folderPath = null)
+        public async Task<bool> OpenFolder(string folderPath = null)
         {
             folderPath ??= await AppViewModel.MainWindow.PickMarkdownFolderAsync();
-            if (folderPath != null)
-            {
-                if (await LoadFolder(folderPath))
-                {
-                    SettingsViewModel.SidePaneOpen = true;
-                    SettingsViewModel.SidePaneIndex = 0;
-                }
-            }
+            if (folderPath == null)
+                return false;
+            if (!await LoadFolder(folderPath))
+                return false;
+            SettingsViewModel.SidePaneOpen = true;
+            SettingsViewModel.SidePaneIndex = 0;
+            return true;
         }
 
         private async Task<bool> LoadFile(string path, bool skipSavedCheck = false, bool postMessage = true)
