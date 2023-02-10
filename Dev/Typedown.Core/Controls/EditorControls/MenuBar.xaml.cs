@@ -45,7 +45,7 @@ namespace Typedown.Core.Controls
             {
                 var uiViewModel = ViewModel.UIViewModel;
                 var oldCaptionHeight = uiViewModel.CaptionHeight;
-                uiViewModel.CaptionHeight = 41;
+                uiViewModel.CaptionHeight = 40;
                 disposables.Add(Disposable.Create(() => uiViewModel.CaptionHeight = oldCaptionHeight));
             }
         }
