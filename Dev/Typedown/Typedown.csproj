@@ -31,13 +31,14 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.30" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1518.46" />
+		<PackageReference Include="Microsoft.VCRTForwarders.140" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1587.40" />
 		<PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.22621.755" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 		<PackageReference Include="PdfiumViewer" Version="2.13.0" />
 		<PackageReference Include="PdfiumViewer.Native.x86_64.no_v8-no_xfa" Version="2018.4.8.256" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="all" />
-		<PackageReference Include="Typedown.XamlUI" Version="1.0.0" />
+		<PackageReference Include="Typedown.XamlUI" Version="1.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
