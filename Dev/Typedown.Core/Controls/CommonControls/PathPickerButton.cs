@@ -21,6 +21,8 @@ namespace Typedown.Core.Controls
         public static DependencyProperty FileTypeFilterProperty = DependencyProperty.Register(nameof(FileTypeFilter), typeof(IEnumerable<string>), typeof(PathPickerButton), new(PathPickMode.File));
         public IEnumerable<string> FileTypeFilter { get => (IEnumerable<string>)GetValue(FileTypeFilterProperty); set => SetValue(FileTypeFilterProperty, value); }
 
+        public event EventHandler<PickedEventArgs> Picked;
+
         private nint Window => this.GetService<IWindowService>().GetWindow(this);
 
         public bool IsPicking { get; private set; }
@@ -59,8 +61,9 @@ namespace Typedown.Core.Controls
             FileTypeFilter.ToList().ForEach(filePicker.FileTypeFilter.Add);
             filePicker.SetOwnerWindow(Window);
             var file = await filePicker.PickSingleFileAsync();
-            if (file != null)
-                Path = file.Path;
+            var isCancel = file is null;
+            if (!isCancel) Path = file.Path;
+            Picked?.Invoke(this, new(isCancel, file?.Path));
         }
 
         private async Task PickFolder()
@@ -68,14 +71,28 @@ namespace Typedown.Core.Controls
             var folderPicker = new FolderPicker();
             folderPicker.SetOwnerWindow(Window);
             var folder = await folderPicker.PickSingleFolderAsync();
-            if (folder != null)
-                Path = folder.Path;
+            var isCancel = folder is null;
+            if (!isCancel) Path = folder.Path;
+            Picked?.Invoke(this, new(isCancel, folder?.Path));
         }
 
         public enum PathPickMode
         {
             File,
             Folder,
+        }
+    }
+
+    public class PickedEventArgs
+    {
+        public bool IsCancel { get; }
+
+        public string Path { get; }
+
+        public PickedEventArgs(bool isCancel, string path)
+        {
+            IsCancel = isCancel;
+            Path = path;
         }
     }
 }

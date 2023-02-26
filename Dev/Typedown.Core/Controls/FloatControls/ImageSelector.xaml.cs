@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Typedown.Core.Interfaces;
@@ -25,6 +24,8 @@ namespace Typedown.Core.Controls.FloatControls
 
         private static string currentSrc;
 
+        private Rect rect;
+
         public ImageSelector(AppViewModel viewModel, IMarkdownEditor markdownEditor)
         {
             ViewModel = viewModel;
@@ -36,6 +37,7 @@ namespace Typedown.Core.Controls.FloatControls
 
         public void Open(Rect rect, JToken imageInfo)
         {
+            this.rect = rect;
             TextBoxSrc.Text = HttpUtility.UrlDecode(imageInfo?["src"]?.ToString() ?? "");
             TextBoxAlt.Text = imageInfo?["alt"]?.ToString() ?? "";
             TextBoxTitle.Text = imageInfo?["title"]?.ToString() ?? "";
@@ -97,6 +99,12 @@ namespace Typedown.Core.Controls.FloatControls
                 MarkdownEditor.PostMessage("ReplaceImage", new HtmlImgTag(src, alt, title));
             }
 
+        }
+
+        private void OnImagePickerButtonPicked(object sender, PickedEventArgs e)
+        {
+            if (!flyout.IsOpen)
+                flyout.ShowAt(MarkdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));
         }
     }
 }
