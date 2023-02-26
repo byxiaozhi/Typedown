@@ -9,14 +9,37 @@ using Typedown.Core.Services;
 namespace DatabaseMigration.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221106012751_AddFolderModel")]
-    partial class AddFolderModel
+    [Migration("20230226122314_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.30");
+
+            modelBuilder.Entity("Typedown.Core.Models.ExportConfig", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Config")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExportConfig");
+                });
 
             modelBuilder.Entity("Typedown.Core.Models.FileAccessHistory", b =>
                 {
@@ -50,6 +73,32 @@ namespace DatabaseMigration.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FolderAccessHistory");
+                });
+
+            modelBuilder.Entity("Typedown.Core.Models.ImageUploadConfig", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Config")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsEnable")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Method")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ImageUploadConfig");
                 });
 #pragma warning restore 612, 618
         }

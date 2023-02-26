@@ -325,29 +325,9 @@
     <Compile Include="Interfaces\IPowerShellService.cs" />
     <Compile Include="Interfaces\IWindowPrivate.cs" />
     <Compile Include="Interfaces\IWindowService.cs" />
-    <Compile Include="Migrations\20221105150222_InitialCreate.cs" />
-    <Compile Include="Migrations\20221105150222_InitialCreate.designer.cs">
-      <DependentUpon>20221105150222_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20221106012751_AddFolderModel.cs" />
-    <Compile Include="Migrations\20221106012751_AddFolderModel.designer.cs">
-      <DependentUpon>20221106012751_AddFolderModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20221114040857_AddSettingModel.cs" />
-    <Compile Include="Migrations\20221114040857_AddSettingModel.Designer.cs">
-      <DependentUpon>20221114040857_AddSettingModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20221114042351_ModifyEnumType.cs" />
-    <Compile Include="Migrations\20221114042351_ModifyEnumType.Designer.cs">
-      <DependentUpon>20221114042351_ModifyEnumType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20221114050804_ModifyImageUploadSetting.cs" />
-    <Compile Include="Migrations\20221114050804_ModifyImageUploadSetting.Designer.cs">
-      <DependentUpon>20221114050804_ModifyImageUploadSetting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20221114080155_RenameModel.cs" />
-    <Compile Include="Migrations\20221114080155_RenameModel.designer.cs">
-      <DependentUpon>20221114080155_RenameModel.cs</DependentUpon>
+    <Compile Include="Migrations\20230226122314_InitialCreate.cs" />
+    <Compile Include="Migrations\20230226122314_InitialCreate.designer.cs">
+      <DependentUpon>20230226122314_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DatabaseModelSnapshot.cs" />
     <Compile Include="Models\EventArgs\EditorEventArgs.cs" />

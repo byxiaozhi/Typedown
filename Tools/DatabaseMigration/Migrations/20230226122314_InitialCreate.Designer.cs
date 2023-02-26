@@ -9,8 +9,8 @@ using Typedown.Core.Services;
 namespace DatabaseMigration.Migrations
 {
     [DbContext(typeof(Database))]
-    [Migration("20221114080155_RenameModel")]
-    partial class RenameModel
+    [Migration("20230226122314_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
