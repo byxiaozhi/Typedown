@@ -42,8 +42,10 @@ namespace TranslationTool
                 }
                 if (res.TryGetValue(x, out var resItem))
                 {
-                    item.Comment = resItem.Comment;
-                    item.Values[resLang] = resItem.Value;
+                    if (!string.IsNullOrEmpty(resItem.Comment))
+                        item.Comment = resItem.Comment;
+                    if (!string.IsNullOrEmpty(resItem.Value))
+                        item.Values[resLang] = resItem.Value;
                 }
                 return item;
             });

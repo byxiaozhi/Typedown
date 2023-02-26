@@ -2,7 +2,7 @@
   {
     "Table": "DialogResources",
     "Name": "AsKToSaveContent",
-    "Comment": "您有未保存的更改",
+    "Comment": "未保存对话框/您有未保存的更改",
     "Values": {
       "af": "",
       "am": "",
@@ -91,7 +91,7 @@
   {
     "Table": "DialogResources",
     "Name": "AsKToSaveTitle",
-    "Comment": "是否要保存更改？",
+    "Comment": "未保存对话框/是否要保存更改？",
     "Values": {
       "af": "",
       "am": "",
@@ -180,7 +180,7 @@
   {
     "Table": "DialogResources",
     "Name": "Cancel",
-    "Comment": "取消",
+    "Comment": "对话框/取消",
     "Values": {
       "af": "",
       "am": "",
@@ -269,7 +269,7 @@
   {
     "Table": "DialogResources",
     "Name": "Confirm",
-    "Comment": "确定",
+    "Comment": "对话框/确定",
     "Values": {
       "af": "",
       "am": "",
@@ -358,7 +358,7 @@
   {
     "Table": "DialogResources",
     "Name": "ContentCanNotBeBlank",
-    "Comment": "内容不能为空",
+    "Comment": "对话框/内容不能为空",
     "Values": {
       "af": "",
       "am": "",
@@ -447,7 +447,7 @@
   {
     "Table": "DialogResources",
     "Name": "CreateDocErrorTitle",
-    "Comment": "新建文档失败",
+    "Comment": "创建文件对话框/新建文档失败",
     "Values": {
       "af": "",
       "am": "",
@@ -536,7 +536,7 @@
   {
     "Table": "DialogResources",
     "Name": "CreateFolderErrorTitle",
-    "Comment": "新建文件夹失败",
+    "Comment": "创建文件夹对话框/新建文件夹失败",
     "Values": {
       "af": "",
       "am": "",
@@ -625,7 +625,7 @@
   {
     "Table": "DialogResources",
     "Name": "Delete",
-    "Comment": "删除",
+    "Comment": "恢复文件对话框/删除",
     "Values": {
       "af": "",
       "am": "",
@@ -714,7 +714,7 @@
   {
     "Table": "DialogResources",
     "Name": "Don'tSave",
-    "Comment": "不保存",
+    "Comment": "未保存对话框/不保存",
     "Values": {
       "af": "",
       "am": "",
@@ -803,7 +803,7 @@
   {
     "Table": "DialogResources",
     "Name": "Error",
-    "Comment": "错误",
+    "Comment": "对话框/错误",
     "Values": {
       "af": "",
       "am": "",
@@ -892,7 +892,7 @@
   {
     "Table": "DialogResources",
     "Name": "ExportErrorTitle",
-    "Comment": "导出失败",
+    "Comment": "文件导出对话框/导出失败",
     "Values": {
       "af": "",
       "am": "",
@@ -981,7 +981,7 @@
   {
     "Table": "DialogResources",
     "Name": "FeedbackTitle",
-    "Comment": "反馈",
+    "Comment": "反馈对话框/反馈",
     "Values": {
       "af": "",
       "am": "",
@@ -1070,7 +1070,7 @@
   {
     "Table": "DialogResources",
     "Name": "ImportErrorTitle",
-    "Comment": "导入失败",
+    "Comment": "文件导入对话框/导入失败",
     "Values": {
       "af": "",
       "am": "",
@@ -1159,7 +1159,7 @@
   {
     "Table": "DialogResources",
     "Name": "InsertTableTitle",
-    "Comment": "插入表格",
+    "Comment": "表格对话框/插入表格",
     "Values": {
       "af": "",
       "am": "",
@@ -1248,7 +1248,7 @@
   {
     "Table": "DialogResources",
     "Name": "InstallNow",
-    "Comment": "立即安装",
+    "Comment": "环境检查对话框/立即安装",
     "Values": {
       "af": "",
       "am": "",
@@ -1337,7 +1337,7 @@
   {
     "Table": "DialogResources",
     "Name": "Ok",
-    "Comment": "确定",
+    "Comment": "对话框/确定",
     "Values": {
       "af": "",
       "am": "",
@@ -1426,7 +1426,7 @@
   {
     "Table": "DialogResources",
     "Name": "ReadErrorTitle",
-    "Comment": "读取失败",
+    "Comment": "打开文件对话框/读取失败",
     "Values": {
       "af": "",
       "am": "",
@@ -1515,7 +1515,7 @@
   {
     "Table": "DialogResources",
     "Name": "Recover",
-    "Comment": "恢复",
+    "Comment": "恢复文件对话框/恢复",
     "Values": {
       "af": "",
       "am": "",
@@ -1604,7 +1604,7 @@
   {
     "Table": "DialogResources",
     "Name": "RecoverContent",
-    "Comment": "您尚未保存此文件",
+    "Comment": "恢复文件对话框/您尚未保存此文件",
     "Values": {
       "af": "",
       "am": "",
@@ -1693,7 +1693,7 @@
   {
     "Table": "DialogResources",
     "Name": "RecoverTitle",
-    "Comment": "是否要恢复文件？",
+    "Comment": "恢复文件对话框/是否要恢复文件？",
     "Values": {
       "af": "",
       "am": "",
@@ -1782,7 +1782,7 @@
   {
     "Table": "DialogResources",
     "Name": "ResizeTableTitle",
-    "Comment": "调整表格",
+    "Comment": "表格对话框/调整表格",
     "Values": {
       "af": "",
       "am": "",
@@ -1871,7 +1871,7 @@
   {
     "Table": "DialogResources",
     "Name": "Save",
-    "Comment": "保存",
+    "Comment": "文件保存对话框/保存",
     "Values": {
       "af": "",
       "am": "",
@@ -1960,7 +1960,7 @@
   {
     "Table": "DialogResources",
     "Name": "SaveErrorTitle",
-    "Comment": "保存失败",
+    "Comment": "文件保存对话框/保存失败",
     "Values": {
       "af": "",
       "am": "",
@@ -2049,7 +2049,7 @@
   {
     "Table": "DialogResources",
     "Name": "Submit",
-    "Comment": "提交",
+    "Comment": "反馈对话框/提交",
     "Values": {
       "af": "",
       "am": "",
@@ -2138,7 +2138,7 @@
   {
     "Table": "DialogResources",
     "Name": "SubmittedSuccessfully",
-    "Comment": "提交成功",
+    "Comment": "反馈对话框/提交成功",
     "Values": {
       "af": "",
       "am": "",
@@ -2227,7 +2227,7 @@
   {
     "Table": "DialogResources",
     "Name": "WebView2RuntimeNotInstalledContent",
-    "Comment": "您需要安装 WebView2 运行时才能正常运行该软件。",
+    "Comment": "环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。",
     "Values": {
       "af": "",
       "am": "",
@@ -2316,7 +2316,7 @@
   {
     "Table": "DialogResources",
     "Name": "WebView2RuntimeNotInstalledTitle",
-    "Comment": "WebView2 运行时未安装",
+    "Comment": "环境检查对话框/WebView2 运行时未安装",
     "Values": {
       "af": "",
       "am": "",

@@ -4,355 +4,355 @@
     "Name": "Add",
     "Comment": "添加",
     "Values": {
-      "af": "",
-      "am": "",
-      "ar": "",
-      "as": "",
-      "az-arab": "",
-      "bg": "",
-      "bn": "",
-      "bs": "",
-      "ca": "",
-      "cs": "",
-      "cy": "",
-      "da": "",
-      "de": "",
-      "el": "",
-      "en": "",
-      "es": "",
-      "et": "",
-      "fa": "",
-      "fi": "",
-      "fil": "",
-      "fr": "",
-      "fr-CA": "",
-      "ga": "",
-      "gu": "",
-      "he": "",
-      "hi": "",
-      "hr": "",
-      "hu": "",
-      "hy": "",
-      "id": "",
-      "is": "",
-      "it": "",
-      "iu-cans": "",
-      "iu-Latn": "",
-      "ja": "",
-      "kk": "",
-      "km": "",
-      "kn": "",
-      "ko": "",
-      "ku-arab": "",
-      "ky-kg": "",
-      "lo": "",
-      "lt": "",
-      "lv": "",
-      "mg": "",
-      "mi": "",
-      "mk": "",
-      "ml": "",
-      "mn-Cyrl": "",
-      "mn-Mong": "",
-      "mr": "",
-      "ms": "",
-      "mt": "",
-      "nb": "",
-      "ne": "",
-      "nl": "",
-      "or": "",
-      "pa": "",
-      "pl": "",
-      "prs": "",
-      "pt": "",
-      "pt-PT": "",
-      "ro": "",
-      "ru": "",
-      "sk": "",
-      "sl": "",
-      "sq": "",
-      "sv": "",
-      "sw": "",
-      "ta": "",
-      "te": "",
-      "th": "",
-      "ti": "",
-      "tk-cyrl": "",
-      "tr": "",
-      "tt-arab": "",
-      "ug-arab": "",
-      "uk": "",
-      "ur": "",
-      "vi": "",
+      "af": "Voeg by",
+      "am": "አክል",
+      "ar": "إضافة",
+      "as": "যোগ কৰক",
+      "az-arab": "Əlavə et",
+      "bg": "Добавяне",
+      "bn": "যোগ করুন",
+      "bs": "Dodaj",
+      "ca": "Afegir",
+      "cs": "Přidat",
+      "cy": "Ychwanegu",
+      "da": "Tilføj",
+      "de": "Hinzufügen",
+      "el": "Προσθήκη",
+      "en": "Add",
+      "es": "Agregar",
+      "et": "Lisa",
+      "fa": "افزودن",
+      "fi": "Lisää",
+      "fil": "Idagdag",
+      "fr": "Ajouter",
+      "fr-CA": "Ajouter",
+      "ga": "Cuir leis",
+      "gu": "ઉમેરો",
+      "he": "הוסף",
+      "hi": "जोड़ें",
+      "hr": "Dodaj",
+      "hu": "Hozzáadás",
+      "hy": "Ավելացնել",
+      "id": "Tambah",
+      "is": "Bæta við",
+      "it": "Aggiungi",
+      "iu-cans": "ᑕᑎᖅ",
+      "iu-Latn": "Tâk",
+      "ja": "追加",
+      "kk": "Қосу",
+      "km": "បន្ថែម",
+      "kn": "ಸೇರಿಸಿ",
+      "ko": "추가",
+      "ku-arab": "Zêdeke",
+      "ky-kg": "Кошуу",
+      "lo": "ເພີ່ມ",
+      "lt": "Pridėti",
+      "lv": "Pievienot",
+      "mg": "Ampio",
+      "mi": "Tāpiri",
+      "mk": "Додади",
+      "ml": "ചേർക്കുക",
+      "mn-Cyrl": "нэмэх",
+      "mn-Mong": "нэмэх",
+      "mr": "जोडा",
+      "ms": "Tambah",
+      "mt": "Żid",
+      "nb": "Legg til",
+      "ne": "थप्नुहोस्",
+      "nl": "Toevoegen",
+      "or": "ଯୋଡ଼ନ୍ତୁ",
+      "pa": "ਜੋੜੋ",
+      "pl": "Dodaj",
+      "prs": "اضافه کردن",
+      "pt": "Adicionar",
+      "pt-PT": "Adicionar",
+      "ro": "Adăugare",
+      "ru": "Добавить",
+      "sk": "Pridať",
+      "sl": "Dodaj",
+      "sq": "Shto",
+      "sv": "Lägg till",
+      "sw": "Ongeza",
+      "ta": "சேர்க்க",
+      "te": "జోడించండి",
+      "th": "เพิ่ม",
+      "ti": "ኣክብረው",
+      "tk-cyrl": "Goşmak",
+      "tr": "Ekle",
+      "tt-arab": "Өстәү",
+      "ug-arab": "قوشۇش",
+      "uk": "Додати",
+      "ur": "شامل کریں",
+      "vi": "Thêm",
       "zh-Hans": "添加",
-      "zh-Hant": ""
+      "zh-Hant": "新增"
     }
   },
   {
     "Table": "CommonResources",
     "Name": "AlignCenter",
-    "Comment": "居中对齐",
+    "Comment": "段落/居中对齐",
     "Values": {
-      "af": "",
-      "am": "",
-      "ar": "",
-      "as": "",
-      "az-arab": "",
-      "bg": "",
-      "bn": "",
-      "bs": "",
-      "ca": "",
-      "cs": "",
-      "cy": "",
-      "da": "",
-      "de": "",
-      "el": "",
-      "en": "",
-      "es": "",
-      "et": "",
-      "fa": "",
-      "fi": "",
-      "fil": "",
-      "fr": "",
-      "fr-CA": "",
-      "ga": "",
-      "gu": "",
-      "he": "",
-      "hi": "",
-      "hr": "",
-      "hu": "",
-      "hy": "",
-      "id": "",
-      "is": "",
-      "it": "",
-      "iu-cans": "",
-      "iu-Latn": "",
-      "ja": "",
-      "kk": "",
-      "km": "",
-      "kn": "",
-      "ko": "",
-      "ku-arab": "",
-      "ky-kg": "",
-      "lo": "",
-      "lt": "",
-      "lv": "",
-      "mg": "",
-      "mi": "",
-      "mk": "",
-      "ml": "",
-      "mn-Cyrl": "",
-      "mn-Mong": "",
-      "mr": "",
-      "ms": "",
-      "mt": "",
-      "nb": "",
-      "ne": "",
-      "nl": "",
-      "or": "",
-      "pa": "",
-      "pl": "",
-      "prs": "",
-      "pt": "",
-      "pt-PT": "",
-      "ro": "",
-      "ru": "",
-      "sk": "",
-      "sl": "",
-      "sq": "",
-      "sv": "",
-      "sw": "",
-      "ta": "",
-      "te": "",
-      "th": "",
-      "ti": "",
-      "tk-cyrl": "",
-      "tr": "",
-      "tt-arab": "",
-      "ug-arab": "",
-      "uk": "",
-      "ur": "",
-      "vi": "",
+      "af": "Middel",
+      "am": "መልኩ",
+      "ar": "مركز",
+      "as": "মধ্যমস্থান",
+      "az-arab": "Ortaya Çək",
+      "bg": "Центриране",
+      "bn": "মাঝখানে সাজানো",
+      "bs": "Centralno",
+      "ca": "Centrat",
+      "cs": "Vystředit",
+      "cy": "Canolog",
+      "da": "Centrér",
+      "de": "Zentrieren",
+      "el": "Στοίχιση στο κέντρο",
+      "en": "Center",
+      "es": "Centrar",
+      "et": "Keskjoondus",
+      "fa": "مرکز",
+      "fi": "Keskitä",
+      "fil": "Gitnang-pantayin",
+      "fr": "Centrer",
+      "fr-CA": "Centrer",
+      "ga": "Ionramháil",
+      "gu": "કેન્દ્રિત કરો",
+      "he": "מרכז",
+      "hi": "केंद्रित करें",
+      "hr": "Poravnaj po sredini",
+      "hu": "Középre igazítás",
+      "hy": "Միջին",
+      "id": "Tengah",
+      "is": "Miðja",
+      "it": "Centra",
+      "iu-cans": "ᓴᖏᖅ",
+      "iu-Latn": "Saqqiqtaq",
+      "ja": "中央揃え",
+      "kk": "Орталық",
+      "km": "កំពូលនៃកញ្ចប់",
+      "kn": "ಮಧ್ಯೆಗೆ",
+      "ko": "가운데 정렬",
+      "ku-arab": "Navendî",
+      "ky-kg": "Орто",
+      "lo": "ທາງກາງ",
+      "lt": "Centruoti",
+      "lv": "Centrēt",
+      "mg": "Teny anaty seranana",
+      "mi": "Tiritahi",
+      "mk": "Центрирај",
+      "ml": "മധ്യഭാഗം",
+      "mn-Cyrl": "Төвлөрөх",
+      "mn-Mong": "Төвлөх",
+      "mr": "केंद्रीत करा",
+      "ms": "Tengah",
+      "mt": "Ċentrar",
+      "nb": "Sentrer",
+      "ne": "मध्यस्थानमा समरेखण गर्नुहोस्",
+      "nl": "Centreren",
+      "or": "କେନ୍ଦ୍ରିତ",
+      "pa": "ਕੇਂਦਰ ਸੰਜੋਗ",
+      "pl": "Wyśrodkuj",
+      "prs": "مرکز",
+      "pt": "Centrar",
+      "pt-PT": "Centrar",
+      "ro": "Aliniere la centru",
+      "ru": "По центру",
+      "sk": "Zarovnať na stred",
+      "sl": "Sredinsko poravnaj",
+      "sq": "Qendrore",
+      "sv": "Centrera",
+      "sw": "Weka kwenye kituo",
+      "ta": "மையம் செய்யும்",
+      "te": "మధ్యస్థంలో జారు",
+      "th": "จัดแนวกึ่งกลาง",
+      "ti": "ማርገገ",
+      "tk-cyrl": "Merkezleşdir",
+      "tr": "Ortala",
+      "tt-arab": "Мөскәлә",
+      "ug-arab": "ئوتتۇرا",
+      "uk": "По центру",
+      "ur": "مرکزی",
+      "vi": "Canh giữa",
       "zh-Hans": "居中对齐",
-      "zh-Hant": ""
+      "zh-Hant": "置中對齊"
     }
   },
   {
     "Table": "CommonResources",
     "Name": "AlignLeft",
-    "Comment": "左对齐",
+    "Comment": "段落/左对齐",
     "Values": {
-      "af": "",
-      "am": "",
-      "ar": "",
-      "as": "",
-      "az-arab": "",
-      "bg": "",
-      "bn": "",
-      "bs": "",
-      "ca": "",
-      "cs": "",
-      "cy": "",
-      "da": "",
-      "de": "",
-      "el": "",
-      "en": "",
-      "es": "",
-      "et": "",
-      "fa": "",
-      "fi": "",
-      "fil": "",
-      "fr": "",
-      "fr-CA": "",
-      "ga": "",
-      "gu": "",
-      "he": "",
-      "hi": "",
-      "hr": "",
-      "hu": "",
-      "hy": "",
-      "id": "",
-      "is": "",
-      "it": "",
-      "iu-cans": "",
-      "iu-Latn": "",
-      "ja": "",
-      "kk": "",
-      "km": "",
-      "kn": "",
-      "ko": "",
-      "ku-arab": "",
-      "ky-kg": "",
-      "lo": "",
-      "lt": "",
-      "lv": "",
-      "mg": "",
-      "mi": "",
-      "mk": "",
-      "ml": "",
-      "mn-Cyrl": "",
-      "mn-Mong": "",
-      "mr": "",
-      "ms": "",
-      "mt": "",
-      "nb": "",
-      "ne": "",
-      "nl": "",
-      "or": "",
-      "pa": "",
-      "pl": "",
-      "prs": "",
-      "pt": "",
-      "pt-PT": "",
-      "ro": "",
-      "ru": "",
-      "sk": "",
-      "sl": "",
-      "sq": "",
-      "sv": "",
-      "sw": "",
-      "ta": "",
-      "te": "",
-      "th": "",
-      "ti": "",
-      "tk-cyrl": "",
-      "tr": "",
-      "tt-arab": "",
-      "ug-arab": "",
-      "uk": "",
-      "ur": "",
-      "vi": "",
+      "af": "Links Uitlyn",
+      "am": "ማስተካከያ ግራ",
+      "ar": "محاذاة إلى اليسار",
+      "as": "বাওঁদিকে সারিবদ্ধ কৰক",
+      "az-arab": "Sola çək",
+      "bg": "Подравняване наляво",
+      "bn": "বাম সারি সমবর্তিত করুন",
+      "bs": "Poravnanje lijevo",
+      "ca": "Alinea a l'esquerra",
+      "cs": "Zarovnat doleva",
+      "cy": "Alinio ar y chwith",
+      "da": "Venstrestillet",
+      "de": "Linksbündig ausrichten",
+      "el": "Στοίχιση αριστερά",
+      "en": "Align Left",
+      "es": "Alinear a la izquierda",
+      "et": "Joondamine vasakule",
+      "fa": "تراز به چپ",
+      "fi": "Tasaa vasemmalle",
+      "fil": "Ialign sa kaliwa",
+      "fr": "Aligner à gauche",
+      "fr-CA": "Aligner à gauche",
+      "ga": "Líon ar chlé",
+      "gu": "ડાબ સંશોધન કરો",
+      "he": "יישור לשמאל",
+      "hi": "बाईं ओर संरेखित करें",
+      "hr": "Poravnaj lijevo",
+      "hu": "Balra igazítás",
+      "hy": "Ձախից համապատասխանեք",
+      "id": "Rata kiri",
+      "is": "Vinstri jöfnun",
+      "it": "Allineamento a sinistra",
+      "iu-cans": "ᖏᐊᓯ ᓂᑕᐃᓐ",
+      "iu-Latn": "Sigaqtiqtuq",
+      "ja": "左揃え",
+      "kk": "Солға тігізу",
+      "km": "តម្រឡើងទៅខាងឆ្វង",
+      "kn": "ಎಡ ಸಮರ್ಥಿಸು",
+      "ko": "왼쪽 정렬",
+      "ku-arab": "Pêkanî li çepê",
+      "ky-kg": "Солдон жөнөлөө",
+      "lo": "ມາດຕັ້ງຕົວຫຍັງ",
+      "lt": "Lygiuoti kairėje",
+      "lv": "Līdzināt pa kreisi",
+      "mg": "Aligner à gauche",
+      "mi": "Na iƙirari",
+      "mk": "Лево подравнување",
+      "ml": "ഇടത്തേക്ക് സമാനം ചെയ്യുക",
+      "mn-Cyrl": "Зүүн талд байрлуулах",
+      "mn-Mong": "Зүүн тал руу байрлуулах",
+      "mr": "डावीकडे समतोल",
+      "ms": "Jajarkan kiri",
+      "mt": "Allinja lemin",
+      "nb": "Venstrejuster",
+      "ne": "बायाँ तिर समतोल गर्नुहोस्",
+      "nl": "Links uitlijnen",
+      "or": "ବାମ ସମତୋଳ",
+      "pa": "ਖੱਬੇ ਹੱਦ ਤੇ ਇਕਠਾ",
+      "pl": "Wyrównaj do lewej",
+      "prs": "ترازی به چپ",
+      "pt": "Alinhar à esquerda",
+      "pt-PT": "Alinhar à esquerda",
+      "ro": "Aliniere la stânga",
+      "ru": "По левому краю",
+      "sk": "Zarovnať vľavo",
+      "sl": "Poravnaj levo",
+      "sq": "Vendos majtas",
+      "sv": "Vänsterjustera",
+      "sw": "Panga kushoto",
+      "ta": "இடது சீரமை",
+      "te": "ఎడమ సమం చేయి",
+      "th": "จัดแนวชิดซ้าย",
+      "ti": "ኣባል ጸሓፍ ንምብል",
+      "tk-cyrl": "Çepe almasyny görkez",
+      "tr": "Sola yasla",
+      "tt-arab": "Сул-игезенләү",
+      "ug-arab": "ئۈنۈمدىكىغا تەڭشەك",
+      "uk": "Вирівнювати ліворуч",
+      "ur": "بائیں تراش",
+      "vi": "Căn trái",
       "zh-Hans": "左对齐",
-      "zh-Hant": ""
+      "zh-Hant": "左對齊"
     }
   },
   {
     "Table": "CommonResources",
     "Name": "AlignRight",
-    "Comment": "右对齐",
+    "Comment": "段落/右对齐",
     "Values": {
-      "af": "",
-      "am": "",
-      "ar": "",
-      "as": "",
-      "az-arab": "",
-      "bg": "",
-      "bn": "",
-      "bs": "",
-      "ca": "",
-      "cs": "",
-      "cy": "",
-      "da": "",
-      "de": "",
-      "el": "",
-      "en": "",
-      "es": "",
-      "et": "",
-      "fa": "",
-      "fi": "",
-      "fil": "",
-      "fr": "",
-      "fr-CA": "",
-      "ga": "",
-      "gu": "",
-      "he": "",
-      "hi": "",
-      "hr": "",
-      "hu": "",
-      "hy": "",
-      "id": "",
-      "is": "",
-      "it": "",
-      "iu-cans": "",
-      "iu-Latn": "",
-      "ja": "",
-      "kk": "",
-      "km": "",
-      "kn": "",
-      "ko": "",
-      "ku-arab": "",
-      "ky-kg": "",
-      "lo": "",
-      "lt": "",
-      "lv": "",
-      "mg": "",
-      "mi": "",
-      "mk": "",
-      "ml": "",
-      "mn-Cyrl": "",
-      "mn-Mong": "",
-      "mr": "",
-      "ms": "",
-      "mt": "",
-      "nb": "",
-      "ne": "",
-      "nl": "",
-      "or": "",
-      "pa": "",
-      "pl": "",
-      "prs": "",
-      "pt": "",
-      "pt-PT": "",
-      "ro": "",
-      "ru": "",
-      "sk": "",
-      "sl": "",
-      "sq": "",
-      "sv": "",
-      "sw": "",
-      "ta": "",
-      "te": "",
-      "th": "",
-      "ti": "",
-      "tk-cyrl": "",
-      "tr": "",
-      "tt-arab": "",
-      "ug-arab": "",
-      "uk": "",
-      "ur": "",
-      "vi": "",
+      "af": "Regs",
+      "am": "ቀኝ ዝርዝር",
+      "ar": "محاذاة النص لليمين",
+      "as": "সমঞ্জস্থ হওৱা/সোঁজ সমবদ্ধ কৰক",
+      "az-arab": "Sağa doğru düzləndir",
+      "bg": "Подравни вдясно",
+      "bn": "দলবদ্ধ করুন / ডানসারি সাজান",
+      "bs": "Poravnaj desno",
+      "ca": "Alinea a la dreta",
+      "cs": "Zarovnat doprava",
+      "cy": "Alinio i'r dde",
+      "da": "Højrejuster",
+      "de": "Rechtsbündig",
+      "el": "Στοίχιση δεξιά",
+      "en": "Align Right",
+      "es": "Alinear a la derecha",
+      "et": "Paremjoondus",
+      "fa": "تراز به راست",
+      "fi": "Tasaa oikealle",
+      "fil": "Ipatapat sa kanan",
+      "fr": "Aligner à droite",
+      "fr-CA": "Aligner à droite",
+      "ga": "Ailínigh ar dheis",
+      "gu": "સમાંતર કરો / જમણી સમતલમાં આવો",
+      "he": "יישור לימין",
+      "hi": "संरेखित करें / दाईं तरफ संरेखित करें",
+      "hr": "Poravnanje udesno",
+      "hu": "Jobbra igazítás",
+      "hy": "Մասնաճյուղ արտածել աջ",
+      "id": "Rata kanan",
+      "is": "Hægra jafnaður",
+      "it": "Allineamento a destra",
+      "iu-cans": "ᐊᒥᖅᑯᕋᖅᑐᖅ/ᐊᓇᑕᐅᔪᖅ ᐃᓕᑎᓂᐊᖅ",
+      "iu-Latn": "Amik rikivut",
+      "ja": "右寄せ",
+      "kk": "Оңға түсіру",
+      "km": "ត្រឡប់ទៅស្ដាំ",
+      "kn": "ಸಮರ್ಥಿಸಿ ಬಲ ಹೊಂದಿಸು",
+      "ko": "오른쪽 맞춤",
+      "ku-arab": "ڕاست بریتین لەگەڵ",
+      "ky-kg": "оң жақта туратуу",
+      "lo": "ມາດຕະຖານຂອງຂອງຂອງ",
+      "lt": "Lygiuoti dešinėje",
+      "lv": "Līdzināt pa labi",
+      "mg": "Mifandray amin'ny mizotra eo amin'ny",
+      "mi": "Whakarite whakawaho",
+      "mk": "Подесно подредување",
+      "ml": "വലത്തെ ചേര്",
+      "mn-Cyrl": "Баруун талд байрлуулах",
+      "mn-Mong": "Баруун талд байрлуулах",
+      "mr": "उजवीकडे जुळवा",
+      "ms": "Jajarkan Kanan",
+      "mt": "Allinjament lejn id-dritt",
+      "nb": "Høyrejuster",
+      "ne": "दायाँमा संरेखित",
+      "nl": "Rechts uitlijnen",
+      "or": "ଡାହାଣ୍ତୁ ସମାନ୍ତର କରନ୍ତୁ",
+      "pa": "ਸੱਜਾਉਣਾ/ਸੱਜਾਉਣਾ ਸੱਜਾਉਣਾ",
+      "pl": "Wyrównaj do prawej",
+      "prs": "متن راست چین",
+      "pt": "Alinhar à direita",
+      "pt-PT": "Alinhar à direita",
+      "ro": "Aliniere la dreapta",
+      "ru": "Выровнять по правому краю",
+      "sk": "Zarovnať vpravo",
+      "sl": "Poravnaj desno",
+      "sq": "Drejto në të djathtë",
+      "sv": "Högerjustera",
+      "sw": "Panga kulia",
+      "ta": "வலப்பு சரிபார்த்தல்",
+      "te": "కుడి అమర్పు",
+      "th": "ชิดขวา",
+      "ti": "لجھ کېږي",
+      "tk-cyrl": "Saý",
+      "tr": "Sağa Hizala",
+      "tt-arab": "وەسەي چەكلەү",
+      "ug-arab": "كۆلۈپ توغرىلاش",
+      "uk": "По правому краю",
+      "ur": "دائیں تراجع",
+      "vi": "Căn lề phải",
       "zh-Hans": "右对齐",
-      "zh-Hant": ""
+      "zh-Hant": "右對齊"
     }
   },
   {
@@ -447,7 +447,7 @@
   {
     "Table": "CommonResources",
     "Name": "Application",
-    "Comment": "应用",
+    "Comment": "应用程序",
     "Values": {
       "af": "",
       "am": "",
@@ -529,7 +529,7 @@
       "uk": "",
       "ur": "",
       "vi": "",
-      "zh-Hans": "应用",
+      "zh-Hans": "应用程序",
       "zh-Hant": ""
     }
   },
@@ -981,7 +981,7 @@
   {
     "Table": "CommonResources",
     "Name": "Cancel",
-    "Comment": "取消",
+    "Comment": "对话框/取消",
     "Values": {
       "af": "",
       "am": "",
@@ -1070,7 +1070,7 @@
   {
     "Table": "CommonResources",
     "Name": "CaseSensitive",
-    "Comment": "区分大小写",
+    "Comment": "编辑/查找和替换/选项/区分大小写",
     "Values": {
       "af": "",
       "am": "",
@@ -1159,7 +1159,7 @@
   {
     "Table": "CommonResources",
     "Name": "Character",
-    "Comment": "字",
+    "Comment": "字符(单数)",
     "Values": {
       "af": "",
       "am": "",
@@ -1248,7 +1248,7 @@
   {
     "Table": "CommonResources",
     "Name": "Characters",
-    "Comment": "字",
+    "Comment": "字符(复数)",
     "Values": {
       "af": "",
       "am": "",
@@ -1426,7 +1426,7 @@
   {
     "Table": "CommonResources",
     "Name": "ClearFormat",
-    "Comment": "清除样式",
+    "Comment": "格式/清除样式",
     "Values": {
       "af": "",
       "am": "",
@@ -1515,7 +1515,7 @@
   {
     "Table": "CommonResources",
     "Name": "ClearRecentFiles",
-    "Comment": "清除最近文件",
+    "Comment": "文件/打开最近文件/清除最近文件",
     "Values": {
       "af": "",
       "am": "",
@@ -1693,7 +1693,7 @@
   {
     "Table": "CommonResources",
     "Name": "Close",
-    "Comment": "关闭",
+    "Comment": "文件/关闭",
     "Values": {
       "af": "",
       "am": "",
@@ -1871,7 +1871,7 @@
   {
     "Table": "CommonResources",
     "Name": "CodeFences",
-    "Comment": "代码块",
+    "Comment": "代码围栏",
     "Values": {
       "af": "",
       "am": "",
@@ -1960,7 +1960,7 @@
   {
     "Table": "CommonResources",
     "Name": "Columns",
-    "Comment": "列",
+    "Comment": "插入表格/列数",
     "Values": {
       "af": "",
       "am": "",
@@ -2049,7 +2049,7 @@
   {
     "Table": "CommonResources",
     "Name": "Copy",
-    "Comment": "复制",
+    "Comment": "编辑/复制",
     "Values": {
       "af": "",
       "am": "",
@@ -2138,7 +2138,7 @@
   {
     "Table": "CommonResources",
     "Name": "CopyAsHTMLCode",
-    "Comment": "复制为 HTML 代码",
+    "Comment": "编辑/复制为 HTML 代码",
     "Values": {
       "af": "",
       "am": "",
@@ -2227,7 +2227,7 @@
   {
     "Table": "CommonResources",
     "Name": "CopyAsMarkdown",
-    "Comment": "复制为 Markdown",
+    "Comment": "编辑/复制为 Markdown",
     "Values": {
       "af": "",
       "am": "",
@@ -2316,7 +2316,7 @@
   {
     "Table": "CommonResources",
     "Name": "CopyAsPath",
-    "Comment": "复制文件地址",
+    "Comment": "文件浏览框/复制文件地址",
     "Values": {
       "af": "",
       "am": "",
@@ -2405,7 +2405,7 @@
   {
     "Table": "CommonResources",
     "Name": "CopyAsPlainText",
-    "Comment": "复制为纯文本",
+    "Comment": "编辑/复制为纯文本",
     "Values": {
       "af": "",
       "am": "",
@@ -2583,7 +2583,7 @@
   {
     "Table": "CommonResources",
     "Name": "CopyPasteAs",
-    "Comment": "复制/粘贴为...",
+    "Comment": "编辑/复制/粘贴为...",
     "Values": {
       "af": "",
       "am": "",
@@ -2672,7 +2672,7 @@
   {
     "Table": "CommonResources",
     "Name": "CopyToPath",
-    "Comment": "复制到路径",
+    "Comment": "操作/复制到路径",
     "Values": {
       "af": "",
       "am": "",
@@ -3117,7 +3117,7 @@
   {
     "Table": "CommonResources",
     "Name": "Cut",
-    "Comment": "剪切",
+    "Comment": "编辑/剪切",
     "Values": {
       "af": "",
       "am": "",
@@ -3206,7 +3206,7 @@
   {
     "Table": "CommonResources",
     "Name": "Dark",
-    "Comment": "深色",
+    "Comment": "应用主题/深色",
     "Values": {
       "af": "",
       "am": "",
@@ -3384,7 +3384,7 @@
   {
     "Table": "CommonResources",
     "Name": "DecreaseHeadingLevel",
-    "Comment": "降低标题级别",
+    "Comment": "段落/降低标题级别",
     "Values": {
       "af": "",
       "am": "",
@@ -3740,7 +3740,7 @@
   {
     "Table": "CommonResources",
     "Name": "Duplicate",
-    "Comment": "重复",
+    "Comment": "段落/重复",
     "Values": {
       "af": "",
       "am": "",
@@ -4185,7 +4185,7 @@
   {
     "Table": "CommonResources",
     "Name": "Emphasis",
-    "Comment": "斜体",
+    "Comment": "格式/斜体",
     "Values": {
       "af": "",
       "am": "",
@@ -4363,7 +4363,7 @@
   {
     "Table": "CommonResources",
     "Name": "Export",
-    "Comment": "导出",
+    "Comment": "文件/导出",
     "Values": {
       "af": "",
       "am": "",
@@ -4452,7 +4452,7 @@
   {
     "Table": "CommonResources",
     "Name": "ExportSettings",
-    "Comment": "导出设置",
+    "Comment": "文件/导出/导出设置",
     "Values": {
       "af": "",
       "am": "",
@@ -4541,7 +4541,7 @@
   {
     "Table": "CommonResources",
     "Name": "ExportToPDF",
-    "Comment": "导出为PDF",
+    "Comment": "文件/导出/导出为PDF",
     "Values": {
       "af": "",
       "am": "",
@@ -4630,7 +4630,7 @@
   {
     "Table": "CommonResources",
     "Name": "Feedback",
-    "Comment": "反馈",
+    "Comment": "应用程序反馈",
     "Values": {
       "af": "",
       "am": "",
@@ -4719,7 +4719,7 @@
   {
     "Table": "CommonResources",
     "Name": "File",
-    "Comment": "文件",
+    "Comment": "文件(单数)",
     "Values": {
       "af": "",
       "am": "",
@@ -4808,7 +4808,7 @@
   {
     "Table": "CommonResources",
     "Name": "Files",
-    "Comment": "文件",
+    "Comment": "文件(复数)",
     "Values": {
       "af": "",
       "am": "",
@@ -4897,7 +4897,7 @@
   {
     "Table": "CommonResources",
     "Name": "Find",
-    "Comment": "查找",
+    "Comment": "编辑/查找和替换/查找",
     "Values": {
       "af": "",
       "am": "",
@@ -4986,7 +4986,7 @@
   {
     "Table": "CommonResources",
     "Name": "FindAndReplace",
-    "Comment": "查找和替换",
+    "Comment": "编辑/查找和替换",
     "Values": {
       "af": "",
       "am": "",
@@ -5075,7 +5075,7 @@
   {
     "Table": "CommonResources",
     "Name": "FindNext",
-    "Comment": "查找下一个",
+    "Comment": "编辑/查找和替换/查找下一个",
     "Values": {
       "af": "",
       "am": "",
@@ -5164,7 +5164,7 @@
   {
     "Table": "CommonResources",
     "Name": "FindPrevious",
-    "Comment": "查找上一个",
+    "Comment": "编辑/查找和替换/查找上一个",
     "Values": {
       "af": "",
       "am": "",
@@ -5342,7 +5342,7 @@
   {
     "Table": "CommonResources",
     "Name": "FocusMode",
-    "Comment": "专注模式",
+    "Comment": "视图/专注模式",
     "Values": {
       "af": "",
       "am": "",
@@ -5520,7 +5520,7 @@
   {
     "Table": "CommonResources",
     "Name": "Font",
-    "Comment": "字体",
+    "Comment": "设置/字体",
     "Values": {
       "af": "",
       "am": "",
@@ -5609,7 +5609,7 @@
   {
     "Table": "CommonResources",
     "Name": "FontSize",
-    "Comment": "字体大小",
+    "Comment": "设置/字体大小",
     "Values": {
       "af": "",
       "am": "",
@@ -5965,7 +5965,7 @@
   {
     "Table": "CommonResources",
     "Name": "FormatCode",
-    "Comment": "格式化代码",
+    "Comment": "代码块/格式化代码",
     "Values": {
       "af": "",
       "am": "",
@@ -6232,7 +6232,7 @@
   {
     "Table": "CommonResources",
     "Name": "Heading",
-    "Comment": "标题",
+    "Comment": "段落/标题",
     "Values": {
       "af": "",
       "am": "",
@@ -6321,7 +6321,7 @@
   {
     "Table": "CommonResources",
     "Name": "Heading1",
-    "Comment": "一级标题",
+    "Comment": "段落/一级标题",
     "Values": {
       "af": "",
       "am": "",
@@ -6410,7 +6410,7 @@
   {
     "Table": "CommonResources",
     "Name": "Heading2",
-    "Comment": "二级标题",
+    "Comment": "段落/二级标题",
     "Values": {
       "af": "",
       "am": "",
@@ -6499,7 +6499,7 @@
   {
     "Table": "CommonResources",
     "Name": "Heading3",
-    "Comment": "三级标题",
+    "Comment": "段落/三级标题",
     "Values": {
       "af": "",
       "am": "",
@@ -6588,7 +6588,7 @@
   {
     "Table": "CommonResources",
     "Name": "Heading4",
-    "Comment": "四级标题",
+    "Comment": "段落/四级标题",
     "Values": {
       "af": "",
       "am": "",
@@ -6677,7 +6677,7 @@
   {
     "Table": "CommonResources",
     "Name": "Heading5",
-    "Comment": "五级标题",
+    "Comment": "段落/五级标题",
     "Values": {
       "af": "",
       "am": "",
@@ -6766,7 +6766,7 @@
   {
     "Table": "CommonResources",
     "Name": "Heading6",
-    "Comment": "六级标题",
+    "Comment": "段落/六级标题",
     "Values": {
       "af": "",
       "am": "",
@@ -6855,7 +6855,7 @@
   {
     "Table": "CommonResources",
     "Name": "Help",
-    "Comment": "帮助",
+    "Comment": "应用程序帮助",
     "Values": {
       "af": "",
       "am": "",
@@ -6944,7 +6944,7 @@
   {
     "Table": "CommonResources",
     "Name": "Highlight",
-    "Comment": "高亮",
+    "Comment": "格式/高亮",
     "Values": {
       "af": "",
       "am": "",
@@ -7122,7 +7122,7 @@
   {
     "Table": "CommonResources",
     "Name": "Hyperlink",
-    "Comment": "超链接",
+    "Comment": "格式/超链接",
     "Values": {
       "af": "",
       "am": "",
@@ -7211,7 +7211,7 @@
   {
     "Table": "CommonResources",
     "Name": "Image",
-    "Comment": "图像",
+    "Comment": "格式/图像",
     "Values": {
       "af": "",
       "am": "",
@@ -7300,7 +7300,7 @@
   {
     "Table": "CommonResources",
     "Name": "ImageAlt",
-    "Comment": "Alt",
+    "Comment": "Img标签Alt属性",
     "Values": {
       "af": "",
       "am": "",
@@ -7389,7 +7389,7 @@
   {
     "Table": "CommonResources",
     "Name": "Import",
-    "Comment": "导入",
+    "Comment": "文件/导入",
     "Values": {
       "af": "",
       "am": "",
@@ -7478,7 +7478,7 @@
   {
     "Table": "CommonResources",
     "Name": "IncreaseHeadingLevel",
-    "Comment": "提升标题级别",
+    "Comment": "段落/提升标题级别",
     "Values": {
       "af": "",
       "am": "",
@@ -7656,7 +7656,7 @@
   {
     "Table": "CommonResources",
     "Name": "InlineCode",
-    "Comment": "内联代码",
+    "Comment": "格式/内联代码",
     "Values": {
       "af": "",
       "am": "",
@@ -7745,7 +7745,7 @@
   {
     "Table": "CommonResources",
     "Name": "InlineMath",
-    "Comment": "内联公式",
+    "Comment": "格式/内联公式",
     "Values": {
       "af": "",
       "am": "",
@@ -8368,7 +8368,7 @@
   {
     "Table": "CommonResources",
     "Name": "InsertImage",
-    "Comment": "插入图像",
+    "Comment": "格式/插入图像",
     "Values": {
       "af": "",
       "am": "",
@@ -8457,7 +8457,7 @@
   {
     "Table": "CommonResources",
     "Name": "InsertParagraphAfter",
-    "Comment": "在下方插入段落",
+    "Comment": "段落/在下方插入段落",
     "Values": {
       "af": "",
       "am": "",
@@ -8546,7 +8546,7 @@
   {
     "Table": "CommonResources",
     "Name": "InsertParagraphBefore",
-    "Comment": "在上方插入段落",
+    "Comment": "段落/在上方插入段落",
     "Values": {
       "af": "",
       "am": "",
@@ -8635,7 +8635,7 @@
   {
     "Table": "CommonResources",
     "Name": "InsertRowAbove",
-    "Comment": "在上方插入行",
+    "Comment": "段落/在上方插入行",
     "Values": {
       "af": "",
       "am": "",
@@ -8724,7 +8724,7 @@
   {
     "Table": "CommonResources",
     "Name": "InsertRowBelow",
-    "Comment": "在下方插入行",
+    "Comment": "段落/在下方插入行",
     "Values": {
       "af": "",
       "am": "",
@@ -8813,7 +8813,7 @@
   {
     "Table": "CommonResources",
     "Name": "Language",
-    "Comment": "语言",
+    "Comment": "设置/语言",
     "Values": {
       "af": "",
       "am": "",
@@ -8901,8 +8901,97 @@
   },
   {
     "Table": "CommonResources",
+    "Name": "LearnMore",
+    "Comment": "了解更多",
+    "Values": {
+      "af": "",
+      "am": "",
+      "ar": "",
+      "as": "",
+      "az-arab": "",
+      "bg": "",
+      "bn": "",
+      "bs": "",
+      "ca": "",
+      "cs": "",
+      "cy": "",
+      "da": "",
+      "de": "",
+      "el": "",
+      "en": "",
+      "es": "",
+      "et": "",
+      "fa": "",
+      "fi": "",
+      "fil": "",
+      "fr": "",
+      "fr-CA": "",
+      "ga": "",
+      "gu": "",
+      "he": "",
+      "hi": "",
+      "hr": "",
+      "hu": "",
+      "hy": "",
+      "id": "",
+      "is": "",
+      "it": "",
+      "iu-cans": "",
+      "iu-Latn": "",
+      "ja": "",
+      "kk": "",
+      "km": "",
+      "kn": "",
+      "ko": "",
+      "ku-arab": "",
+      "ky-kg": "",
+      "lo": "",
+      "lt": "",
+      "lv": "",
+      "mg": "",
+      "mi": "",
+      "mk": "",
+      "ml": "",
+      "mn-Cyrl": "",
+      "mn-Mong": "",
+      "mr": "",
+      "ms": "",
+      "mt": "",
+      "nb": "",
+      "ne": "",
+      "nl": "",
+      "or": "",
+      "pa": "",
+      "pl": "",
+      "prs": "",
+      "pt": "",
+      "pt-PT": "",
+      "ro": "",
+      "ru": "",
+      "sk": "",
+      "sl": "",
+      "sq": "",
+      "sv": "",
+      "sw": "",
+      "ta": "",
+      "te": "",
+      "th": "",
+      "ti": "",
+      "tk-cyrl": "",
+      "tr": "",
+      "tt-arab": "",
+      "ug-arab": "",
+      "uk": "",
+      "ur": "",
+      "vi": "",
+      "zh-Hans": "了解更多",
+      "zh-Hant": ""
+    }
+  },
+  {
+    "Table": "CommonResources",
     "Name": "Light",
-    "Comment": "浅色",
+    "Comment": "应用主题/浅色",
     "Values": {
       "af": "",
       "am": "",
@@ -8991,7 +9080,7 @@
   {
     "Table": "CommonResources",
     "Name": "Line",
-    "Comment": "行",
+    "Comment": "行(单数)",
     "Values": {
       "af": "",
       "am": "",
@@ -9080,7 +9169,7 @@
   {
     "Table": "CommonResources",
     "Name": "LineHeight",
-    "Comment": "行高",
+    "Comment": "设置/行高",
     "Values": {
       "af": "",
       "am": "",
@@ -9169,7 +9258,7 @@
   {
     "Table": "CommonResources",
     "Name": "Lines",
-    "Comment": "行",
+    "Comment": "行(复数)",
     "Values": {
       "af": "",
       "am": "",
@@ -9258,7 +9347,7 @@
   {
     "Table": "CommonResources",
     "Name": "LinkReference",
-    "Comment": "链接引用",
+    "Comment": "段落/链接引用",
     "Values": {
       "af": "",
       "am": "",
@@ -9614,7 +9703,7 @@
   {
     "Table": "CommonResources",
     "Name": "Maximize",
-    "Comment": "最大化",
+    "Comment": "窗口/最大化",
     "Values": {
       "af": "",
       "am": "",
@@ -9881,7 +9970,7 @@
   {
     "Table": "CommonResources",
     "Name": "Minimize",
-    "Comment": "最小化",
+    "Comment": "窗口/最小化",
     "Values": {
       "af": "",
       "am": "",
@@ -10237,7 +10326,7 @@
   {
     "Table": "CommonResources",
     "Name": "New",
-    "Comment": "新建",
+    "Comment": "文件/新建",
     "Values": {
       "af": "",
       "am": "",
@@ -10326,7 +10415,7 @@
   {
     "Table": "CommonResources",
     "Name": "NewFile",
-    "Comment": "新建文件",
+    "Comment": "文件浏览框/新建文件",
     "Values": {
       "af": "",
       "am": "",
@@ -10415,7 +10504,7 @@
   {
     "Table": "CommonResources",
     "Name": "NewFolder",
-    "Comment": "新建文件夹",
+    "Comment": "文件浏览框/新建文件夹",
     "Values": {
       "af": "",
       "am": "",
@@ -10504,7 +10593,7 @@
   {
     "Table": "CommonResources",
     "Name": "NewWindow",
-    "Comment": "新建窗口",
+    "Comment": "新建/新建窗口",
     "Values": {
       "af": "",
       "am": "",
@@ -10593,7 +10682,7 @@
   {
     "Table": "CommonResources",
     "Name": "NoAction",
-    "Comment": "无操作",
+    "Comment": "自动操作/无操作",
     "Values": {
       "af": "",
       "am": "",
@@ -10860,7 +10949,7 @@
   {
     "Table": "CommonResources",
     "Name": "NoRecentFiles",
-    "Comment": "无最近文件",
+    "Comment": "文件/打开最近/无最近文件",
     "Values": {
       "af": "",
       "am": "",
@@ -10949,7 +11038,7 @@
   {
     "Table": "CommonResources",
     "Name": "Off",
-    "Comment": "关",
+    "Comment": "开关/关",
     "Values": {
       "af": "",
       "am": "",
@@ -11038,7 +11127,7 @@
   {
     "Table": "CommonResources",
     "Name": "Ok",
-    "Comment": "确定",
+    "Comment": "对话框/确定",
     "Values": {
       "af": "",
       "am": "",
@@ -11127,7 +11216,7 @@
   {
     "Table": "CommonResources",
     "Name": "On",
-    "Comment": "开",
+    "Comment": "开关/开",
     "Values": {
       "af": "",
       "am": "",
@@ -11216,7 +11305,7 @@
   {
     "Table": "CommonResources",
     "Name": "Open",
-    "Comment": "打开",
+    "Comment": "文件/打开",
     "Values": {
       "af": "",
       "am": "",
@@ -11305,7 +11394,7 @@
   {
     "Table": "CommonResources",
     "Name": "OpenFileLocation",
-    "Comment": "打开文件位置",
+    "Comment": "文件/打开文件位置",
     "Values": {
       "af": "",
       "am": "",
@@ -11394,7 +11483,7 @@
   {
     "Table": "CommonResources",
     "Name": "OpenFolder",
-    "Comment": "打开文件夹",
+    "Comment": "文件/打开文件夹",
     "Values": {
       "af": "",
       "am": "",
@@ -11483,7 +11572,7 @@
   {
     "Table": "CommonResources",
     "Name": "OpenInNewWindow",
-    "Comment": "在新窗口中打开",
+    "Comment": "文件/在新窗口中打开",
     "Values": {
       "af": "",
       "am": "",
@@ -11572,7 +11661,7 @@
   {
     "Table": "CommonResources",
     "Name": "OpenRecent",
-    "Comment": "打开最近",
+    "Comment": "文件/打开最近",
     "Values": {
       "af": "",
       "am": "",
@@ -11750,7 +11839,7 @@
   {
     "Table": "CommonResources",
     "Name": "OrderedList",
-    "Comment": "有序列表",
+    "Comment": "段落/有序列表",
     "Values": {
       "af": "",
       "am": "",
@@ -11839,7 +11928,7 @@
   {
     "Table": "CommonResources",
     "Name": "Outline",
-    "Comment": "大纲",
+    "Comment": "侧栏/大纲",
     "Values": {
       "af": "",
       "am": "",
@@ -12017,7 +12106,7 @@
   {
     "Table": "CommonResources",
     "Name": "Paste",
-    "Comment": "粘贴",
+    "Comment": "编辑/粘贴",
     "Values": {
       "af": "",
       "am": "",
@@ -12106,7 +12195,7 @@
   {
     "Table": "CommonResources",
     "Name": "PasteAsPlainText",
-    "Comment": "粘贴为纯文本",
+    "Comment": "编辑/粘贴为纯文本",
     "Values": {
       "af": "",
       "am": "",
@@ -12195,7 +12284,7 @@
   {
     "Table": "CommonResources",
     "Name": "Path",
-    "Comment": "路径",
+    "Comment": "文件/路径",
     "Values": {
       "af": "",
       "am": "",
@@ -12373,7 +12462,7 @@
   {
     "Table": "CommonResources",
     "Name": "Print",
-    "Comment": "打印",
+    "Comment": "文件/打印",
     "Values": {
       "af": "",
       "am": "",
@@ -12462,7 +12551,7 @@
   {
     "Table": "CommonResources",
     "Name": "Quote",
-    "Comment": "引用",
+    "Comment": "段落/引用",
     "Values": {
       "af": "",
       "am": "",
@@ -12551,7 +12640,7 @@
   {
     "Table": "CommonResources",
     "Name": "Rating",
-    "Comment": "评分",
+    "Comment": "反馈/评分",
     "Values": {
       "af": "",
       "am": "",
@@ -12640,7 +12729,7 @@
   {
     "Table": "CommonResources",
     "Name": "Redo",
-    "Comment": "重做",
+    "Comment": "编辑/重做",
     "Values": {
       "af": "",
       "am": "",
@@ -12729,7 +12818,7 @@
   {
     "Table": "CommonResources",
     "Name": "RemoveColumn",
-    "Comment": "删除列",
+    "Comment": "表格/删除列",
     "Values": {
       "af": "",
       "am": "",
@@ -12818,7 +12907,7 @@
   {
     "Table": "CommonResources",
     "Name": "RemoveRow",
-    "Comment": "删除行",
+    "Comment": "表格/删除行",
     "Values": {
       "af": "",
       "am": "",
@@ -12907,7 +12996,7 @@
   {
     "Table": "CommonResources",
     "Name": "Rename",
-    "Comment": "重命名",
+    "Comment": "文件/重命名",
     "Values": {
       "af": "",
       "am": "",
@@ -12996,7 +13085,7 @@
   {
     "Table": "CommonResources",
     "Name": "Replace",
-    "Comment": "替换",
+    "Comment": "编辑/查找和替换/替换",
     "Values": {
       "af": "",
       "am": "",
@@ -13085,7 +13174,7 @@
   {
     "Table": "CommonResources",
     "Name": "ReplaceAll",
-    "Comment": "替换全部",
+    "Comment": "编辑/查找和替换/替换全部",
     "Values": {
       "af": "",
       "am": "",
@@ -13174,7 +13263,7 @@
   {
     "Table": "CommonResources",
     "Name": "ResizeTable",
-    "Comment": "调整表格大小",
+    "Comment": "表格/调整表格大小",
     "Values": {
       "af": "",
       "am": "",
@@ -13263,7 +13352,7 @@
   {
     "Table": "CommonResources",
     "Name": "Restore",
-    "Comment": "还原",
+    "Comment": "还原默认设置",
     "Values": {
       "af": "",
       "am": "",
@@ -13352,7 +13441,7 @@
   {
     "Table": "CommonResources",
     "Name": "Rows",
-    "Comment": "行",
+    "Comment": "插入表格/行数",
     "Values": {
       "af": "",
       "am": "",
@@ -13441,7 +13530,7 @@
   {
     "Table": "CommonResources",
     "Name": "Save",
-    "Comment": "保存",
+    "Comment": "文件/保存",
     "Values": {
       "af": "",
       "am": "",
@@ -13530,7 +13619,7 @@
   {
     "Table": "CommonResources",
     "Name": "SaveAs",
-    "Comment": "另存为",
+    "Comment": "文件/另存为",
     "Values": {
       "af": "",
       "am": "",
@@ -13619,7 +13708,7 @@
   {
     "Table": "CommonResources",
     "Name": "Saved",
-    "Comment": "已保存",
+    "Comment": "文件/已保存",
     "Values": {
       "af": "",
       "am": "",
@@ -14331,7 +14420,7 @@
   {
     "Table": "CommonResources",
     "Name": "SourceCodeMode",
-    "Comment": "源代码模式",
+    "Comment": "视图/源代码模式",
     "Values": {
       "af": "",
       "am": "",
@@ -14509,7 +14598,7 @@
   {
     "Table": "CommonResources",
     "Name": "Stop",
-    "Comment": "停止",
+    "Comment": "停止操作",
     "Values": {
       "af": "",
       "am": "",
@@ -14598,7 +14687,7 @@
   {
     "Table": "CommonResources",
     "Name": "Strikethrough",
-    "Comment": "删除线",
+    "Comment": "格式/删除线",
     "Values": {
       "af": "",
       "am": "",
@@ -14687,7 +14776,7 @@
   {
     "Table": "CommonResources",
     "Name": "Strong",
-    "Comment": "加粗",
+    "Comment": "格式/加粗",
     "Values": {
       "af": "",
       "am": "",
@@ -14776,7 +14865,7 @@
   {
     "Table": "CommonResources",
     "Name": "Table",
-    "Comment": "表格",
+    "Comment": "段落/表格",
     "Values": {
       "af": "",
       "am": "",
@@ -14865,7 +14954,7 @@
   {
     "Table": "CommonResources",
     "Name": "TaskList",
-    "Comment": "任务列表",
+    "Comment": "段落/任务列表",
     "Values": {
       "af": "",
       "am": "",
@@ -14954,7 +15043,7 @@
   {
     "Table": "CommonResources",
     "Name": "Theme",
-    "Comment": "主题",
+    "Comment": "应用程序主题",
     "Values": {
       "af": "",
       "am": "",
@@ -15399,7 +15488,7 @@
   {
     "Table": "CommonResources",
     "Name": "TypewriterMode",
-    "Comment": "打字机模式",
+    "Comment": "视图/打字机模式",
     "Values": {
       "af": "",
       "am": "",
@@ -15488,7 +15577,7 @@
   {
     "Table": "CommonResources",
     "Name": "Underline",
-    "Comment": "下划线",
+    "Comment": "格式/下划线",
     "Values": {
       "af": "",
       "am": "",
@@ -15577,7 +15666,7 @@
   {
     "Table": "CommonResources",
     "Name": "Undo",
-    "Comment": "撤销",
+    "Comment": "编辑/撤销",
     "Values": {
       "af": "",
       "am": "",
@@ -15666,7 +15755,7 @@
   {
     "Table": "CommonResources",
     "Name": "UnorderedList",
-    "Comment": "无序列表",
+    "Comment": "段落/无序列表",
     "Values": {
       "af": "",
       "am": "",
@@ -15755,7 +15844,7 @@
   {
     "Table": "CommonResources",
     "Name": "Update",
-    "Comment": "更新",
+    "Comment": "应用程序更新",
     "Values": {
       "af": "",
       "am": "",
@@ -15844,7 +15933,7 @@
   {
     "Table": "CommonResources",
     "Name": "UseRegexp",
-    "Comment": "正则匹配",
+    "Comment": "编辑/查找和替换/选项/正则匹配",
     "Values": {
       "af": "",
       "am": "",
@@ -16289,7 +16378,7 @@
   {
     "Table": "CommonResources",
     "Name": "WholeWord",
-    "Comment": "全字",
+    "Comment": "编辑/查找和替换/选项/全字匹配",
     "Values": {
       "af": "",
       "am": "",
@@ -16467,7 +16556,7 @@
   {
     "Table": "CommonResources",
     "Name": "Word",
-    "Comment": "词",
+    "Comment": "词(单数)",
     "Values": {
       "af": "",
       "am": "",
@@ -16645,7 +16734,7 @@
   {
     "Table": "CommonResources",
     "Name": "Words",
-    "Comment": "词",
+    "Comment": "词(复数)",
     "Values": {
       "af": "",
       "am": "",
@@ -16823,7 +16912,7 @@
   {
     "Table": "CommonResources",
     "Name": "Zoom",
-    "Comment": "缩放",
+    "Comment": "字体缩放",
     "Values": {
       "af": "",
       "am": "",

@@ -2,7 +2,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.AboutApp",
-    "Comment": "关于应用程序",
+    "Comment": "关于/关于应用程序",
     "Values": {
       "af": "",
       "am": "",
@@ -91,7 +91,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.AppStorePage",
-    "Comment": "应用商店页面",
+    "Comment": "关于/应用商店页面",
     "Values": {
       "af": "",
       "am": "",
@@ -180,7 +180,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.BasedOnOpenSourceSoftware",
-    "Comment": "基于开源软件",
+    "Comment": "关于/基于开源软件",
     "Values": {
       "af": "",
       "am": "",
@@ -269,7 +269,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.Introduction",
-    "Comment": "一款所见即所得 Markdown 编辑器",
+    "Comment": "关于/一款所见即所得 Markdown 编辑器",
     "Values": {
       "af": "",
       "am": "",
@@ -358,7 +358,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.SendFeedback",
-    "Comment": "发送反馈",
+    "Comment": "关于/发送反馈",
     "Values": {
       "af": "",
       "am": "",
@@ -447,7 +447,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.SendFeedbackDialog.Contact.Header",
-    "Comment": "联系方式",
+    "Comment": "关于/联系方式",
     "Values": {
       "af": "",
       "am": "",
@@ -536,7 +536,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.SendFeedbackDialog.Contact.Placeholder",
-    "Comment": "Email",
+    "Comment": "关于/Email",
     "Values": {
       "af": "",
       "am": "",
@@ -625,7 +625,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.SendFeedbackDialog.Content.Placeholder",
-    "Comment": "我们会非常重视您填写的内容",
+    "Comment": "关于/我们会非常重视您填写的内容",
     "Values": {
       "af": "",
       "am": "",
@@ -714,7 +714,7 @@
   {
     "Table": "SettingsResources",
     "Name": "About.Title",
-    "Comment": "关于",
+    "Comment": "关于/关于",
     "Values": {
       "af": "",
       "am": "",
@@ -803,7 +803,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.AutoPairBracket.Description",
-    "Comment": "输入左括号时自动补全右引号",
+    "Comment": "编辑器/输入左括号时自动补全右引号",
     "Values": {
       "af": "",
       "am": "",
@@ -892,7 +892,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.AutoPairBracket.Title",
-    "Comment": "自动补全括号",
+    "Comment": "编辑器/自动补全括号",
     "Values": {
       "af": "",
       "am": "",
@@ -981,7 +981,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.AutoPairMarkdownSyntax.Description",
-    "Comment": "自动补全匹配的 Markdown 标记",
+    "Comment": "编辑器/自动补全匹配的 Markdown 标记",
     "Values": {
       "af": "",
       "am": "",
@@ -1070,7 +1070,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.AutoPairMarkdownSyntax.Title",
-    "Comment": "自动补全 Markdown 标记",
+    "Comment": "编辑器/自动补全 Markdown 标记",
     "Values": {
       "af": "",
       "am": "",
@@ -1159,7 +1159,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.AutoPairQuote.Description",
-    "Comment": "输入左引号时自动补全右引号",
+    "Comment": "编辑器/输入左引号时自动补全右引号",
     "Values": {
       "af": "",
       "am": "",
@@ -1248,7 +1248,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.AutoPairQuote.Title",
-    "Comment": "自动补全引号",
+    "Comment": "编辑器/自动补全引号",
     "Values": {
       "af": "",
       "am": "",
@@ -1337,7 +1337,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.DefaultCopyCutFormat.Description",
-    "Comment": "选择默认的复制/剪切内容",
+    "Comment": "编辑器/选择默认的复制/剪切内容",
     "Values": {
       "af": "",
       "am": "",
@@ -1426,7 +1426,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.DefaultCopyCutFormat.Title",
-    "Comment": "默认复制/剪切内容",
+    "Comment": "编辑器/默认复制/剪切内容",
     "Values": {
       "af": "",
       "am": "",
@@ -1515,7 +1515,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.EditorAreaWidth.Description",
-    "Comment": "编辑器内容最大宽度",
+    "Comment": "编辑器/编辑器内容最大宽度",
     "Values": {
       "af": "",
       "am": "",
@@ -1604,7 +1604,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.EditorAreaWidth.Title",
-    "Comment": "内容宽度",
+    "Comment": "编辑器/内容宽度",
     "Values": {
       "af": "",
       "am": "",
@@ -1693,7 +1693,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.Extension",
-    "Comment": "扩展",
+    "Comment": "编辑器/扩展",
     "Values": {
       "af": "",
       "am": "",
@@ -1782,7 +1782,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.FontSize.Description",
-    "Comment": "编辑器默认字号",
+    "Comment": "编辑器/编辑器默认字号",
     "Values": {
       "af": "",
       "am": "",
@@ -1871,7 +1871,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.FontSize.Title",
-    "Comment": "字体大小",
+    "Comment": "编辑器/字体大小",
     "Values": {
       "af": "",
       "am": "",
@@ -1960,7 +1960,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.LineHeight.Description",
-    "Comment": "编辑器行高倍数",
+    "Comment": "编辑器/编辑器行高倍数",
     "Values": {
       "af": "",
       "am": "",
@@ -2049,7 +2049,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.LineHeight.Title",
-    "Comment": "行高",
+    "Comment": "编辑器/行高",
     "Values": {
       "af": "",
       "am": "",
@@ -2138,7 +2138,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.SpellcheckEnabled.Description",
-    "Comment": "查找并高亮语法错误",
+    "Comment": "编辑器/查找并高亮语法错误",
     "Values": {
       "af": "",
       "am": "",
@@ -2227,7 +2227,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.SpellcheckEnabled.Language.Auto",
-    "Comment": "自动检测语言",
+    "Comment": "编辑器/自动检测语言",
     "Values": {
       "af": "",
       "am": "",
@@ -2316,7 +2316,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.SpellcheckEnabled.Language.Title",
-    "Comment": "语言",
+    "Comment": "编辑器/语言",
     "Values": {
       "af": "",
       "am": "",
@@ -2405,7 +2405,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.SpellcheckEnabled.Title",
-    "Comment": "拼写检查",
+    "Comment": "编辑器/拼写检查",
     "Values": {
       "af": "",
       "am": "",
@@ -2494,7 +2494,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.Style",
-    "Comment": "样式",
+    "Comment": "编辑器/样式",
     "Values": {
       "af": "",
       "am": "",
@@ -2583,7 +2583,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.TabSize.Description",
-    "Comment": "调整引用和列表的默认缩进空格",
+    "Comment": "编辑器/调整引用和列表的默认缩进空格",
     "Values": {
       "af": "",
       "am": "",
@@ -2672,7 +2672,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.TabSize.Title",
-    "Comment": "默认缩进",
+    "Comment": "编辑器/默认缩进",
     "Values": {
       "af": "",
       "am": "",
@@ -2761,7 +2761,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Editor.Title",
-    "Comment": "编辑器",
+    "Comment": "编辑器/编辑器",
     "Values": {
       "af": "",
       "am": "",
@@ -2850,7 +2850,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.AddConfig.Description",
-    "Comment": "自定义导出格式、样式",
+    "Comment": "导出/自定义导出格式、样式",
     "Values": {
       "af": "",
       "am": "",
@@ -2939,7 +2939,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.AddConfig.Title",
-    "Comment": "添加导出配置",
+    "Comment": "导出/添加导出配置",
     "Values": {
       "af": "",
       "am": "",
@@ -3028,7 +3028,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.Configs",
-    "Comment": "导出配置",
+    "Comment": "导出/导出配置",
     "Values": {
       "af": "",
       "am": "",
@@ -3117,7 +3117,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.OpenFolderAfterExport.Title",
-    "Comment": "导出完成后打开所在文件夹",
+    "Comment": "导出/导出完成后打开所在文件夹",
     "Values": {
       "af": "",
       "am": "",
@@ -3206,7 +3206,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfig.Orientations.Landscape",
-    "Comment": "横向",
+    "Comment": "导出/横向",
     "Values": {
       "af": "",
       "am": "",
@@ -3295,7 +3295,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfig.Orientations.Portrait",
-    "Comment": "纵向",
+    "Comment": "导出/纵向",
     "Values": {
       "af": "",
       "am": "",
@@ -3384,7 +3384,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.Footer",
-    "Comment": "页脚",
+    "Comment": "导出/页脚",
     "Values": {
       "af": "",
       "am": "",
@@ -3473,7 +3473,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.Header",
-    "Comment": "页首",
+    "Comment": "导出/页首",
     "Values": {
       "af": "",
       "am": "",
@@ -3562,7 +3562,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.HeaderAndFooter.Text",
-    "Comment": "页首和页脚",
+    "Comment": "导出/页首和页脚",
     "Values": {
       "af": "",
       "am": "",
@@ -3651,7 +3651,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.Margins.Bottom",
-    "Comment": "下",
+    "Comment": "导出/下",
     "Values": {
       "af": "",
       "am": "",
@@ -3740,7 +3740,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.Margins.Left",
-    "Comment": "左",
+    "Comment": "导出/左",
     "Values": {
       "af": "",
       "am": "",
@@ -3829,7 +3829,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.Margins.Right",
-    "Comment": "右",
+    "Comment": "导出/右",
     "Values": {
       "af": "",
       "am": "",
@@ -3918,7 +3918,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.Margins.Text",
-    "Comment": "边距",
+    "Comment": "导出/边距",
     "Values": {
       "af": "",
       "am": "",
@@ -4007,7 +4007,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.Margins.Top",
-    "Comment": "上",
+    "Comment": "导出/上",
     "Values": {
       "af": "",
       "am": "",
@@ -4096,7 +4096,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.Orientation.Text",
-    "Comment": "方向",
+    "Comment": "导出/方向",
     "Values": {
       "af": "",
       "am": "",
@@ -4185,7 +4185,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.PageSize.Height",
-    "Comment": "高",
+    "Comment": "导出/高",
     "Values": {
       "af": "",
       "am": "",
@@ -4274,7 +4274,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.PageSize.Text",
-    "Comment": "页面大小",
+    "Comment": "导出/页面大小",
     "Values": {
       "af": "",
       "am": "",
@@ -4363,7 +4363,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.PDFConfigModel.PageSize.Width",
-    "Comment": "宽",
+    "Comment": "导出/宽",
     "Values": {
       "af": "",
       "am": "",
@@ -4452,7 +4452,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.Title",
-    "Comment": "导出",
+    "Comment": "导出/导出",
     "Values": {
       "af": "",
       "am": "",
@@ -4541,7 +4541,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.Type",
-    "Comment": "导出格式",
+    "Comment": "导出/导出格式",
     "Values": {
       "af": "",
       "am": "",
@@ -4630,7 +4630,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.Types.HTML",
-    "Comment": "HTML",
+    "Comment": "导出/HTML",
     "Values": {
       "af": "",
       "am": "",
@@ -4719,7 +4719,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.Types.Image",
-    "Comment": "Image",
+    "Comment": "导出/Image",
     "Values": {
       "af": "",
       "am": "",
@@ -4808,7 +4808,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Export.Types.PDF",
-    "Comment": "PDF",
+    "Comment": "导出/PDF",
     "Values": {
       "af": "",
       "am": "",
@@ -4897,7 +4897,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.Application",
-    "Comment": "应用",
+    "Comment": "通用/应用",
     "Values": {
       "af": "",
       "am": "",
@@ -4986,7 +4986,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.AutoSave.Description",
-    "Comment": "打开后应用会在文件发生修改时自动保存",
+    "Comment": "通用/打开后应用会在文件发生修改时自动保存",
     "Values": {
       "af": "",
       "am": "",
@@ -5075,7 +5075,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.AutoSave.Title",
-    "Comment": "自动保存",
+    "Comment": "通用/自动保存",
     "Values": {
       "af": "",
       "am": "",
@@ -5164,7 +5164,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.Custom",
-    "Comment": "自定义",
+    "Comment": "通用/自定义",
     "Values": {
       "af": "",
       "am": "",
@@ -5253,7 +5253,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.Data",
-    "Comment": "数据",
+    "Comment": "通用/数据",
     "Values": {
       "af": "",
       "am": "",
@@ -5342,7 +5342,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.KeepRun.Description",
-    "Comment": "关闭窗口后是否保留进程加速下次启动",
+    "Comment": "通用/关闭窗口后是否保留进程加速下次启动",
     "Values": {
       "af": "",
       "am": "",
@@ -5431,7 +5431,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.KeepRun.Title",
-    "Comment": "保持运行",
+    "Comment": "通用/保持运行",
     "Values": {
       "af": "",
       "am": "",
@@ -5520,7 +5520,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.Language.Description",
-    "Comment": "应用显示的语言",
+    "Comment": "通用/应用显示的语言",
     "Values": {
       "af": "",
       "am": "",
@@ -5609,7 +5609,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.Language.Title",
-    "Comment": "语言",
+    "Comment": "通用/语言",
     "Values": {
       "af": "",
       "am": "",
@@ -5698,7 +5698,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.RestoreDefault.Description",
-    "Comment": "还原应用默认设置",
+    "Comment": "通用/还原应用默认设置",
     "Values": {
       "af": "",
       "am": "",
@@ -5787,7 +5787,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.RestoreDefault.Title",
-    "Comment": "重置应用",
+    "Comment": "通用/重置应用",
     "Values": {
       "af": "",
       "am": "",
@@ -5876,7 +5876,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.ShortcutKeys.Description",
-    "Comment": "自定义快捷键",
+    "Comment": "通用/自定义快捷键",
     "Values": {
       "af": "",
       "am": "",
@@ -5965,7 +5965,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.ShortcutKeys.Title",
-    "Comment": "快捷键",
+    "Comment": "通用/快捷键",
     "Values": {
       "af": "",
       "am": "",
@@ -6054,7 +6054,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.StartupAction.Description",
-    "Comment": "当应用启动时进行的操作",
+    "Comment": "通用/当应用启动时进行的操作",
     "Values": {
       "af": "",
       "am": "",
@@ -6143,7 +6143,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.StartupAction.FileStartupAction.NewFile",
-    "Comment": "新建文件",
+    "Comment": "通用/新建文件",
     "Values": {
       "af": "",
       "am": "",
@@ -6232,7 +6232,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.StartupAction.FileStartupAction.OpenLast",
-    "Comment": "打开上次使用的文件",
+    "Comment": "通用/打开上次使用的文件",
     "Values": {
       "af": "",
       "am": "",
@@ -6321,7 +6321,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.StartupAction.FolderStartupAction.OpenFolder",
-    "Comment": "打开指定文件夹",
+    "Comment": "通用/打开指定文件夹",
     "Values": {
       "af": "",
       "am": "",
@@ -6410,7 +6410,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.StartupAction.FolderStartupAction.OpenLast",
-    "Comment": "打开上次使用的文件夹",
+    "Comment": "通用/打开上次使用的文件夹",
     "Values": {
       "af": "",
       "am": "",
@@ -6499,7 +6499,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.StartupAction.Title",
-    "Comment": "启动操作",
+    "Comment": "通用/启动操作",
     "Values": {
       "af": "",
       "am": "",
@@ -6588,7 +6588,7 @@
   {
     "Table": "SettingsResources",
     "Name": "General.Title",
-    "Comment": "常规",
+    "Comment": "通用/常规",
     "Values": {
       "af": "",
       "am": "",
@@ -6677,7 +6677,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Image.InsertActions.CopyToPath",
-    "Comment": "复制到路径",
+    "Comment": "图片/复制到路径",
     "Values": {
       "af": "",
       "am": "",
@@ -6766,7 +6766,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Image.InsertActions.Upload",
-    "Comment": "上传图片",
+    "Comment": "图片/上传图片",
     "Values": {
       "af": "",
       "am": "",
@@ -6855,7 +6855,7 @@
   {
     "Table": "SettingsResources",
     "Name": "Image.Title",
-    "Comment": "图片",
+    "Comment": "图片/图片",
     "Values": {
       "af": "",
       "am": "",
@@ -6944,7 +6944,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.AddConfig.Title",
-    "Comment": "添加上传配置",
+    "Comment": "图片/添加上传配置",
     "Values": {
       "af": "",
       "am": "",
@@ -7033,7 +7033,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.Configs",
-    "Comment": "上传配置",
+    "Comment": "图片/上传配置",
     "Values": {
       "af": "",
       "am": "",
@@ -7122,7 +7122,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.Method",
-    "Comment": "上传方式",
+    "Comment": "图片/上传方式",
     "Values": {
       "af": "",
       "am": "",
@@ -7211,7 +7211,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.Methods.FTP",
-    "Comment": "FTP",
+    "Comment": "图片/FTP",
     "Values": {
       "af": "",
       "am": "",
@@ -7300,7 +7300,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.Methods.Git",
-    "Comment": "Git",
+    "Comment": "图片/Git",
     "Values": {
       "af": "",
       "am": "",
@@ -7389,7 +7389,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.Methods.OSS",
-    "Comment": "OSS",
+    "Comment": "图片/OSS",
     "Values": {
       "af": "",
       "am": "",
@@ -7478,7 +7478,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.Methods.PowerShell",
-    "Comment": "PowerShell",
+    "Comment": "图片/PowerShell",
     "Values": {
       "af": "",
       "am": "",
@@ -7567,7 +7567,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.Methods.SCP",
-    "Comment": "SCP",
+    "Comment": "图片/SCP",
     "Values": {
       "af": "",
       "am": "",
@@ -7656,7 +7656,7 @@
   {
     "Table": "SettingsResources",
     "Name": "ImageUpload.Title",
-    "Comment": "图片上传",
+    "Comment": "图片/图片上传",
     "Values": {
       "af": "",
       "am": "",
@@ -7923,7 +7923,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.AnimationEnable.Description",
-    "Comment": "关闭可获得更快的响应速度",
+    "Comment": "视图/关闭可获得更快的响应速度",
     "Values": {
       "af": "",
       "am": "",
@@ -8012,7 +8012,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.AnimationEnable.Title",
-    "Comment": "窗口动画",
+    "Comment": "视图/窗口动画",
     "Values": {
       "af": "",
       "am": "",
@@ -8101,7 +8101,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.AppCompactMode.Description",
-    "Comment": "菜单栏与标题在同一行显示",
+    "Comment": "视图/菜单栏与标题在同一行显示",
     "Values": {
       "af": "",
       "am": "",
@@ -8190,7 +8190,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.AppCompactMode.Title",
-    "Comment": "紧凑模式",
+    "Comment": "视图/紧凑模式",
     "Values": {
       "af": "",
       "am": "",
@@ -8279,7 +8279,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.AppTheme.Dark",
-    "Comment": "深色",
+    "Comment": "视图/深色",
     "Values": {
       "af": "",
       "am": "",
@@ -8368,7 +8368,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.AppTheme.Description",
-    "Comment": "选择要显示的应用主题",
+    "Comment": "视图/选择要显示的应用主题",
     "Values": {
       "af": "",
       "am": "",
@@ -8457,7 +8457,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.AppTheme.Light",
-    "Comment": "浅色",
+    "Comment": "视图/浅色",
     "Values": {
       "af": "",
       "am": "",
@@ -8546,7 +8546,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.AppTheme.Title",
-    "Comment": "应用主题",
+    "Comment": "视图/应用主题",
     "Values": {
       "af": "",
       "am": "",
@@ -8635,7 +8635,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.AddSymbolBeforeRelativePath.Title",
-    "Comment": "相对路径前添加 \"./\"",
+    "Comment": "图片/相对路径前添加 \"./\"",
     "Values": {
       "af": "",
       "am": "",
@@ -8724,7 +8724,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.AutoCopyRelativePathImage.Description",
-    "Comment": "另存为文件时自动复制使用相对路径的图片",
+    "Comment": "图片/另存为文件时自动复制使用相对路径的图片",
     "Values": {
       "af": "",
       "am": "",
@@ -8813,7 +8813,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.AutoCopyRelativePathImage.Title",
-    "Comment": "自动复制图片",
+    "Comment": "图片/自动复制图片",
     "Values": {
       "af": "",
       "am": "",
@@ -8902,7 +8902,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.AutoEncodeImageURL.Description",
-    "Comment": "自动对URL中的特殊字符进行编码",
+    "Comment": "图片/自动对URL中的特殊字符进行编码",
     "Values": {
       "af": "",
       "am": "",
@@ -8991,7 +8991,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.AutoEncodeImageURL.Title",
-    "Comment": "插入时自动转义图片URL",
+    "Comment": "图片/插入时自动转义图片URL",
     "Values": {
       "af": "",
       "am": "",
@@ -9080,7 +9080,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.DefaultImageBasePath.Description",
-    "Comment": "未保存文件或剪贴板图片默认使用的图片根目录",
+    "Comment": "图片/未保存文件或剪贴板图片默认使用的图片根目录",
     "Values": {
       "af": "",
       "am": "",
@@ -9169,7 +9169,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.DefaultImageBasePath.Title",
-    "Comment": "默认图片根目录",
+    "Comment": "图片/默认图片根目录",
     "Values": {
       "af": "",
       "am": "",
@@ -9258,7 +9258,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Clipboard.CopyPath.Title",
-    "Comment": "复制剪贴板图片到",
+    "Comment": "图片/复制剪贴板图片到",
     "Values": {
       "af": "",
       "am": "",
@@ -9347,7 +9347,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Clipboard.Description",
-    "Comment": "不包括剪贴板图片文件",
+    "Comment": "图片/不包括剪贴板图片文件",
     "Values": {
       "af": "",
       "am": "",
@@ -9436,7 +9436,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Clipboard.Title",
-    "Comment": "剪贴板图片",
+    "Comment": "图片/剪贴板图片",
     "Values": {
       "af": "",
       "am": "",
@@ -9525,7 +9525,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Clipboard.UseConfig.Title",
-    "Comment": "剪贴板图片使用上传配置",
+    "Comment": "图片/剪贴板图片使用上传配置",
     "Values": {
       "af": "",
       "am": "",
@@ -9614,7 +9614,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Description",
-    "Comment": "当插入图片时执行的操作",
+    "Comment": "图片/当插入图片时执行的操作",
     "Values": {
       "af": "",
       "am": "",
@@ -9703,7 +9703,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Local.CopyPath.Title",
-    "Comment": "复制本地图片到",
+    "Comment": "图片/复制本地图片到",
     "Values": {
       "af": "",
       "am": "",
@@ -9792,7 +9792,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Local.Title",
-    "Comment": "本地图片",
+    "Comment": "图片/本地图片",
     "Values": {
       "af": "",
       "am": "",
@@ -9881,7 +9881,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Local.UseConfig.Title",
-    "Comment": "本地图片使用上传配置",
+    "Comment": "图片/本地图片使用上传配置",
     "Values": {
       "af": "",
       "am": "",
@@ -9970,7 +9970,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Title",
-    "Comment": "图片插入操作",
+    "Comment": "图片/图片插入操作",
     "Values": {
       "af": "",
       "am": "",
@@ -10059,7 +10059,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Web.CopyPath.Title",
-    "Comment": "复制网络图片到",
+    "Comment": "图片/复制网络图片到",
     "Values": {
       "af": "",
       "am": "",
@@ -10148,7 +10148,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Web.Title",
-    "Comment": "网络图片",
+    "Comment": "图片/网络图片",
     "Values": {
       "af": "",
       "am": "",
@@ -10237,7 +10237,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.InsertAction.Web.UseConfig.Title",
-    "Comment": "网络图片使用上传配置",
+    "Comment": "图片/网络图片使用上传配置",
     "Values": {
       "af": "",
       "am": "",
@@ -10326,7 +10326,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.PreferRelativeImagePaths.Description",
-    "Comment": "插入图片时优先采用相对路径",
+    "Comment": "图片/插入图片时优先采用相对路径",
     "Values": {
       "af": "",
       "am": "",
@@ -10415,7 +10415,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.PreferRelativeImagePaths.Title",
-    "Comment": "优先使用相对路径",
+    "Comment": "图片/优先使用相对路径",
     "Values": {
       "af": "",
       "am": "",
@@ -10504,7 +10504,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.Upload",
-    "Comment": "图片上传",
+    "Comment": "图片/图片上传",
     "Values": {
       "af": "",
       "am": "",
@@ -10593,7 +10593,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.UploadConfigs.Description",
-    "Comment": "设置图片上传方式",
+    "Comment": "图片/设置图片上传方式",
     "Values": {
       "af": "",
       "am": "",
@@ -10682,7 +10682,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Image.UploadConfigs.Title",
-    "Comment": "图片上传配置",
+    "Comment": "图片/图片上传配置",
     "Values": {
       "af": "",
       "am": "",
@@ -10771,7 +10771,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Layout",
-    "Comment": "布局",
+    "Comment": "视图/布局",
     "Values": {
       "af": "",
       "am": "",
@@ -10860,7 +10860,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.SidePaneOpen.Description",
-    "Comment": "选择是否显示侧栏",
+    "Comment": "视图/选择是否显示侧栏",
     "Values": {
       "af": "",
       "am": "",
@@ -10949,7 +10949,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.SidePaneOpen.Title",
-    "Comment": "显示侧栏",
+    "Comment": "视图/显示侧栏",
     "Values": {
       "af": "",
       "am": "",
@@ -11038,7 +11038,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.StatusBarOpen.Description",
-    "Comment": "选择是否显示底部状态栏",
+    "Comment": "视图/选择是否显示底部状态栏",
     "Values": {
       "af": "",
       "am": "",
@@ -11127,7 +11127,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.StatusBarOpen.Title",
-    "Comment": "显示状态栏",
+    "Comment": "视图/显示状态栏",
     "Values": {
       "af": "",
       "am": "",
@@ -11216,7 +11216,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Title",
-    "Comment": "外观",
+    "Comment": "视图/外观",
     "Values": {
       "af": "",
       "am": "",
@@ -11305,7 +11305,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Topmost.Description",
-    "Comment": "使窗口始终在顶部",
+    "Comment": "视图/使窗口始终在顶部",
     "Values": {
       "af": "",
       "am": "",
@@ -11394,7 +11394,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Topmost.Title",
-    "Comment": "置于顶层",
+    "Comment": "视图/置于顶层",
     "Values": {
       "af": "",
       "am": "",
@@ -11483,7 +11483,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.UseMicaMaterial.Description",
-    "Comment": "开启后窗口背景具有云母背景效果",
+    "Comment": "视图/开启后窗口背景具有云母背景效果",
     "Values": {
       "af": "",
       "am": "",
@@ -11572,7 +11572,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.UseMicaMaterial.Title",
-    "Comment": "使用云母材质",
+    "Comment": "视图/使用云母材质",
     "Values": {
       "af": "",
       "am": "",
@@ -11661,7 +11661,7 @@
   {
     "Table": "SettingsResources",
     "Name": "View.Window",
-    "Comment": "窗口",
+    "Comment": "视图/窗口",
     "Values": {
       "af": "",
       "am": "",
