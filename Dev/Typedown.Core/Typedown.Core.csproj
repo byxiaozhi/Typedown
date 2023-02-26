@@ -750,7 +750,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Resources\Strings\zh-Hans\CommonResources.resw" />
+    <PRIResource Include="Resources\Strings\zh-Hans\CommonResources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Resources\Strings\zh-Hans\DialogResources.resw" />
