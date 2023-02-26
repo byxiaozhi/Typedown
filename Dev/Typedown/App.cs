@@ -36,7 +36,10 @@ namespace Typedown
             base.OnLaunched();
             SignalWindow.Initialize();
             if (!await EnvCheck.EnsureWebView2Installed())
+            {
                 Exit();
+                return;
+            }
             var window = new MainWindow();
             var hasStartupPlacement = window.AppViewModel.SettingsViewModel.StartupPlacement.HasValue;
             window.Show(hasStartupPlacement ? ShowWindowCommand.SW_HIDE : ShowWindowCommand.SW_NORMAL);

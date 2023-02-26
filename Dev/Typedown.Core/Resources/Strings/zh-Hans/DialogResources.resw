@@ -119,110 +119,110 @@
   </resheader>
   <data name="AsKToSaveContent" xml:space="preserve">
     <value>您有未保存的更改</value>
-    <comment>您有未保存的更改</comment>
+    <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
     <value>是否要保存更改？</value>
-    <comment>是否要保存更改？</comment>
+    <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
-    <comment>取消</comment>
+    <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>确定</value>
-    <comment>确定</comment>
+    <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
     <value>内容不能为空</value>
-    <comment>内容不能为空</comment>
+    <comment>对话框/内容不能为空</comment>
   </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>新建文档失败</value>
-    <comment>新建文档失败</comment>
+    <comment>创建文件对话框/新建文档失败</comment>
   </data>
   <data name="CreateFolderErrorTitle" xml:space="preserve">
     <value>新建文件夹失败</value>
-    <comment>新建文件夹失败</comment>
+    <comment>创建文件夹对话框/新建文件夹失败</comment>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
-    <comment>删除</comment>
+    <comment>恢复文件对话框/删除</comment>
   </data>
   <data name="Don'tSave" xml:space="preserve">
     <value>不保存</value>
-    <comment>不保存</comment>
+    <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
     <value>错误</value>
-    <comment>错误</comment>
+    <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>导出失败</value>
-    <comment>导出失败</comment>
+    <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
     <value>反馈</value>
-    <comment>反馈</comment>
+    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>导入失败</value>
-    <comment>导入失败</comment>
+    <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
     <value>插入表格</value>
-    <comment>插入表格</comment>
+    <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
     <value>立即安装</value>
-    <comment>立即安装</comment>
+    <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>确定</value>
-    <comment>确定</comment>
+    <comment>对话框/确定</comment>
   </data>
   <data name="ReadErrorTitle" xml:space="preserve">
     <value>读取失败</value>
-    <comment>读取失败</comment>
+    <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
     <value>恢复</value>
-    <comment>恢复</comment>
+    <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
     <value>您尚未保存此文件</value>
-    <comment>您尚未保存此文件</comment>
+    <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
     <value>是否要恢复文件？</value>
-    <comment>是否要恢复文件？</comment>
+    <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
     <value>调整表格</value>
-    <comment>调整表格</comment>
+    <comment>表格对话框/调整表格</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>保存</value>
-    <comment>保存</comment>
+    <comment>文件保存对话框/保存</comment>
   </data>
   <data name="SaveErrorTitle" xml:space="preserve">
     <value>保存失败</value>
-    <comment>保存失败</comment>
+    <comment>文件保存对话框/保存失败</comment>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>提交</value>
-    <comment>提交</comment>
+    <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
     <value>提交成功</value>
-    <comment>提交成功</comment>
+    <comment>反馈对话框/提交成功</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
     <value>您需要安装 WebView2 运行时才能正常运行该软件。</value>
-    <comment>您需要安装 WebView2 运行时才能正常运行该软件。</comment>
+    <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 运行时未安装</value>
-    <comment>WebView2 运行时未安装</comment>
+    <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

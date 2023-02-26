@@ -123,23 +123,23 @@
   </data>
   <data name="AlignCenter" xml:space="preserve">
     <value>居中对齐</value>
-    <comment>居中对齐</comment>
+    <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
     <value>左对齐</value>
-    <comment>左对齐</comment>
+    <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
     <value>右对齐</value>
-    <comment>右对齐</comment>
+    <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
     <value>全部</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
-    <value>应用</value>
-    <comment>应用</comment>
+    <value>应用程序</value>
+    <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
     <value>自动</value>
@@ -163,19 +163,19 @@
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
-    <comment>取消</comment>
+    <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
     <value>区分大小写</value>
-    <comment>区分大小写</comment>
+    <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
     <value>字</value>
-    <comment>字</comment>
+    <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
     <value>字</value>
-    <comment>字</comment>
+    <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
     <value>图表</value>
@@ -183,11 +183,11 @@
   </data>
   <data name="ClearFormat" xml:space="preserve">
     <value>清除样式</value>
-    <comment>清除样式</comment>
+    <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
     <value>清除最近文件</value>
-    <comment>清除最近文件</comment>
+    <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
     <value>点击添加一张图片</value>
@@ -195,7 +195,7 @@
   </data>
   <data name="Close" xml:space="preserve">
     <value>关闭</value>
-    <comment>关闭</comment>
+    <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
     <value>代码</value>
@@ -203,31 +203,31 @@
   </data>
   <data name="CodeFences" xml:space="preserve">
     <value>代码块</value>
-    <comment>代码块</comment>
+    <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
     <value>列</value>
-    <comment>列</comment>
+    <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>复制</value>
-    <comment>复制</comment>
+    <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
     <value>复制为 HTML 代码</value>
-    <comment>复制为 HTML 代码</comment>
+    <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
     <value>复制为 Markdown</value>
-    <comment>复制为 Markdown</comment>
+    <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
     <value>复制文件地址</value>
-    <comment>复制文件地址</comment>
+    <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
     <value>复制为纯文本</value>
-    <comment>复制为纯文本</comment>
+    <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
     <value>复制内容</value>
@@ -235,11 +235,11 @@
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
     <value>复制/粘贴为...</value>
-    <comment>复制/粘贴为...</comment>
+    <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
     <value>复制到路径</value>
-    <comment>复制到路径</comment>
+    <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
     <value>创建</value>
@@ -259,11 +259,11 @@
   </data>
   <data name="Cut" xml:space="preserve">
     <value>剪切</value>
-    <comment>剪切</comment>
+    <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>深色</value>
-    <comment>深色</comment>
+    <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
     <value>数据</value>
@@ -271,7 +271,7 @@
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
     <value>降低标题级别</value>
-    <comment>降低标题级别</comment>
+    <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
     <value>默认</value>
@@ -287,7 +287,7 @@
   </data>
   <data name="Duplicate" xml:space="preserve">
     <value>重复</value>
-    <comment>重复</comment>
+    <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
@@ -307,7 +307,7 @@
   </data>
   <data name="Emphasis" xml:space="preserve">
     <value>斜体</value>
-    <comment>斜体</comment>
+    <comment>格式/斜体</comment>
   </data>
   <data name="Error" xml:space="preserve">
     <value>错误</value>
@@ -315,43 +315,43 @@
   </data>
   <data name="Export" xml:space="preserve">
     <value>导出</value>
-    <comment>导出</comment>
+    <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
     <value>导出设置</value>
-    <comment>导出设置</comment>
+    <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
     <value>导出为PDF</value>
-    <comment>导出为PDF</comment>
+    <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
     <value>反馈</value>
-    <comment>反馈</comment>
+    <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
     <value>文件</value>
-    <comment>文件</comment>
+    <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
     <value>文件</value>
-    <comment>文件</comment>
+    <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
     <value>查找</value>
-    <comment>查找</comment>
+    <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
     <value>查找和替换</value>
-    <comment>查找和替换</comment>
+    <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
     <value>查找下一个</value>
-    <comment>查找下一个</comment>
+    <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
     <value>查找上一个</value>
-    <comment>查找上一个</comment>
+    <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
     <value>Flow Chart</value>
@@ -359,7 +359,7 @@
   </data>
   <data name="FocusMode" xml:space="preserve">
     <value>专注模式</value>
-    <comment>专注模式</comment>
+    <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
     <value>文件夹</value>
@@ -367,11 +367,11 @@
   </data>
   <data name="Font" xml:space="preserve">
     <value>字体</value>
-    <comment>字体</comment>
+    <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
     <value>字体大小</value>
-    <comment>字体大小</comment>
+    <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
     <value>脚注</value>
@@ -387,7 +387,7 @@
   </data>
   <data name="FormatCode" xml:space="preserve">
     <value>格式化代码</value>
-    <comment>格式化代码</comment>
+    <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
     <value>通用</value>
@@ -399,39 +399,39 @@
   </data>
   <data name="Heading" xml:space="preserve">
     <value>标题</value>
-    <comment>标题</comment>
+    <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
     <value>一级标题</value>
-    <comment>一级标题</comment>
+    <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
     <value>二级标题</value>
-    <comment>二级标题</comment>
+    <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
     <value>三级标题</value>
-    <comment>三级标题</comment>
+    <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
     <value>四级标题</value>
-    <comment>四级标题</comment>
+    <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
     <value>五级标题</value>
-    <comment>五级标题</comment>
+    <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
     <value>六级标题</value>
-    <comment>六级标题</comment>
+    <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
     <value>帮助</value>
-    <comment>帮助</comment>
+    <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
     <value>高亮</value>
-    <comment>高亮</comment>
+    <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
     <value>水平分割线</value>
@@ -439,23 +439,23 @@
   </data>
   <data name="Hyperlink" xml:space="preserve">
     <value>超链接</value>
-    <comment>超链接</comment>
+    <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
     <value>图像</value>
-    <comment>图像</comment>
+    <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
     <value>Alt</value>
-    <comment>Alt</comment>
+    <comment>Img标签Alt属性</comment>
   </data>
   <data name="Import" xml:space="preserve">
     <value>导入</value>
-    <comment>导入</comment>
+    <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
     <value>提升标题级别</value>
-    <comment>提升标题级别</comment>
+    <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
     <value>内联</value>
@@ -463,11 +463,11 @@
   </data>
   <data name="InlineCode" xml:space="preserve">
     <value>内联代码</value>
-    <comment>内联代码</comment>
+    <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
     <value>内联公式</value>
-    <comment>内联公式</comment>
+    <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
     <value>输入脚注定义...</value>
@@ -495,47 +495,51 @@
   </data>
   <data name="InsertImage" xml:space="preserve">
     <value>插入图像</value>
-    <comment>插入图像</comment>
+    <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
     <value>在下方插入段落</value>
-    <comment>在下方插入段落</comment>
+    <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
     <value>在上方插入段落</value>
-    <comment>在上方插入段落</comment>
+    <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
     <value>在上方插入行</value>
-    <comment>在上方插入行</comment>
+    <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
     <value>在下方插入行</value>
-    <comment>在下方插入行</comment>
+    <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
     <value>语言</value>
-    <comment>语言</comment>
+    <comment>设置/语言</comment>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>了解更多</value>
+    <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
     <value>浅色</value>
-    <comment>浅色</comment>
+    <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
     <value>行</value>
-    <comment>行</comment>
+    <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
     <value>行高</value>
-    <comment>行高</comment>
+    <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
     <value>行</value>
-    <comment>行</comment>
+    <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
     <value>链接引用</value>
-    <comment>链接引用</comment>
+    <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
     <value>加载图片失败</value>
@@ -551,7 +555,7 @@
   </data>
   <data name="Maximize" xml:space="preserve">
     <value>最大化</value>
-    <comment>最大化</comment>
+    <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
     <value>菜单栏</value>
@@ -563,7 +567,7 @@
   </data>
   <data name="Minimize" xml:space="preserve">
     <value>最小化</value>
-    <comment>最小化</comment>
+    <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
     <value>分钟</value>
@@ -579,23 +583,23 @@
   </data>
   <data name="New" xml:space="preserve">
     <value>新建</value>
-    <comment>新建</comment>
+    <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
     <value>新建文件</value>
-    <comment>新建文件</comment>
+    <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
     <value>新建文件夹</value>
-    <comment>新建文件夹</comment>
+    <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
     <value>新建窗口</value>
-    <comment>新建窗口</comment>
+    <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
     <value>无操作</value>
-    <comment>无操作</comment>
+    <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
     <value>无导出配置</value>
@@ -607,39 +611,39 @@
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
     <value>无最近文件</value>
-    <comment>无最近文件</comment>
+    <comment>文件/打开最近/无最近文件</comment>
   </data>
   <data name="Off" xml:space="preserve">
     <value>关</value>
-    <comment>关</comment>
+    <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>确定</value>
-    <comment>确定</comment>
+    <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
     <value>开</value>
-    <comment>开</comment>
+    <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
     <value>打开</value>
-    <comment>打开</comment>
+    <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
     <value>打开文件位置</value>
-    <comment>打开文件位置</comment>
+    <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
     <value>打开文件夹</value>
-    <comment>打开文件夹</comment>
+    <comment>文件/打开文件夹</comment>
   </data>
   <data name="OpenInNewWindow" xml:space="preserve">
     <value>在新窗口中打开</value>
-    <comment>在新窗口中打开</comment>
+    <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
     <value>打开最近</value>
-    <comment>打开最近</comment>
+    <comment>文件/打开最近</comment>
   </data>
   <data name="OpenSourceSoftware" xml:space="preserve">
     <value>开源软件</value>
@@ -647,11 +651,11 @@
   </data>
   <data name="OrderedList" xml:space="preserve">
     <value>有序列表</value>
-    <comment>有序列表</comment>
+    <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
     <value>大纲</value>
-    <comment>大纲</comment>
+    <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
     <value>段落</value>
@@ -659,15 +663,15 @@
   </data>
   <data name="Paste" xml:space="preserve">
     <value>粘贴</value>
-    <comment>粘贴</comment>
+    <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
     <value>粘贴为纯文本</value>
-    <comment>粘贴为纯文本</comment>
+    <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
     <value>路径</value>
-    <comment>路径</comment>
+    <comment>文件/路径</comment>
   </data>
   <data name="PlantUMLDiagram" xml:space="preserve">
     <value>PlantUML Diagram</value>
@@ -675,63 +679,63 @@
   </data>
   <data name="Print" xml:space="preserve">
     <value>打印</value>
-    <comment>打印</comment>
+    <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
     <value>引用</value>
-    <comment>引用</comment>
+    <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
     <value>评分</value>
-    <comment>评分</comment>
+    <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
     <value>重做</value>
-    <comment>重做</comment>
+    <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
     <value>删除列</value>
-    <comment>删除列</comment>
+    <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
     <value>删除行</value>
-    <comment>删除行</comment>
+    <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>重命名</value>
-    <comment>重命名</comment>
+    <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
     <value>替换</value>
-    <comment>替换</comment>
+    <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
     <value>替换全部</value>
-    <comment>替换全部</comment>
+    <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
     <value>调整表格大小</value>
-    <comment>调整表格大小</comment>
+    <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
     <value>还原</value>
-    <comment>还原</comment>
+    <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
     <value>行</value>
-    <comment>行</comment>
+    <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>保存</value>
-    <comment>保存</comment>
+    <comment>文件/保存</comment>
   </data>
   <data name="SaveAs" xml:space="preserve">
     <value>另存为</value>
-    <comment>另存为</comment>
+    <comment>文件/另存为</comment>
   </data>
   <data name="Saved" xml:space="preserve">
     <value>已保存</value>
-    <comment>已保存</comment>
+    <comment>文件/已保存</comment>
   </data>
   <data name="Search" xml:space="preserve">
     <value>搜索</value>
@@ -763,7 +767,7 @@
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
     <value>源代码模式</value>
-    <comment>源代码模式</comment>
+    <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
     <value>状态栏</value>
@@ -771,27 +775,27 @@
   </data>
   <data name="Stop" xml:space="preserve">
     <value>停止</value>
-    <comment>停止</comment>
+    <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
     <value>删除线</value>
-    <comment>删除线</comment>
+    <comment>格式/删除线</comment>
   </data>
   <data name="Strong" xml:space="preserve">
     <value>加粗</value>
-    <comment>加粗</comment>
+    <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
     <value>表格</value>
-    <comment>表格</comment>
+    <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
     <value>任务列表</value>
-    <comment>任务列表</comment>
+    <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>主题</value>
-    <comment>主题</comment>
+    <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
     <value>标题</value>
@@ -811,27 +815,27 @@
   </data>
   <data name="TypewriterMode" xml:space="preserve">
     <value>打字机模式</value>
-    <comment>打字机模式</comment>
+    <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
     <value>下划线</value>
-    <comment>下划线</comment>
+    <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>撤销</value>
-    <comment>撤销</comment>
+    <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
     <value>无序列表</value>
-    <comment>无序列表</comment>
+    <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
     <value>更新</value>
-    <comment>更新</comment>
+    <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
     <value>正则匹配</value>
-    <comment>正则匹配</comment>
+    <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
     <value>使用系统设置</value>
@@ -851,7 +855,7 @@
   </data>
   <data name="WholeWord" xml:space="preserve">
     <value>全字</value>
-    <comment>全字</comment>
+    <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
     <value>窗口</value>
@@ -859,7 +863,7 @@
   </data>
   <data name="Word" xml:space="preserve">
     <value>词</value>
-    <comment>词</comment>
+    <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
     <value>字数</value>
@@ -867,7 +871,7 @@
   </data>
   <data name="Words" xml:space="preserve">
     <value>词</value>
-    <comment>词</comment>
+    <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">
     <value>YAML Front Matter</value>
@@ -875,6 +879,6 @@
   </data>
   <data name="Zoom" xml:space="preserve">
     <value>缩放</value>
-    <comment>缩放</comment>
+    <comment>字体缩放</comment>
   </data>
 </root>

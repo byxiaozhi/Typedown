@@ -119,5 +119,6 @@
   </resheader>
   <data name="AppName" xml:space="preserve">
     <value>Typedown</value>
+    <comment>应用程序名称</comment>
   </data>
 </root>

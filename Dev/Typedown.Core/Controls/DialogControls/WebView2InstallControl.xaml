@@ -32,11 +32,11 @@
             FontFamily="{StaticResource ContentControlThemeFontFamily}"/>
         <StackPanel Grid.Row="1" Margin="24,0" Spacing="8">
             <TextBlock TextWrapping="Wrap" Text="{u:LocaleString Key=WebView2RuntimeNotInstalledContent}"/>
-            <HyperlinkButton Content="了解更多" NavigateUri="https://developer.microsoft.com/microsoft-edge/webview2/" Margin="-12,0"/>
+            <HyperlinkButton Content="{u:LocaleString Key=LearnMore}" NavigateUri="https://developer.microsoft.com/microsoft-edge/webview2/" Margin="-12,0"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="16,0,16,16" Spacing="8" HorizontalAlignment="Right">
-            <Button MinWidth="80" Style="{ThemeResource AccentButtonStyle}" Click="OnInstallButtonClick">立即安装</Button>
-            <Button MinWidth="80" Click="OnCloseButtonClick">取消</Button>
+            <Button MinWidth="80" Style="{ThemeResource AccentButtonStyle}" Click="OnInstallButtonClick" Content="{u:LocaleString Key=InstallNow}"/>
+            <Button MinWidth="80" Click="OnCloseButtonClick" Content="{u:LocaleString Key=Cancel}"/>
         </StackPanel>
     </Grid>
 </UserControl>
