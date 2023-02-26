@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Typedown.Core;
 using Typedown.Core.Controls;
@@ -33,6 +34,8 @@ namespace Typedown.Windows
 
         public WindowService WindowService => ServiceProvider?.GetService<IWindowService>() as WindowService;
 
+        public Timer checkActiveTimer;
+
         public MainWindow()
         {
             Title = Config.AppName;
@@ -57,6 +60,7 @@ namespace Typedown.Windows
             Closing += OnClosing;
             Closed += OnClosed;
             InitializeBinding();
+            checkActiveTimer = new(CheckActiveTimerCallback, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
         }
 
         public void InitializeBinding()
@@ -64,7 +68,6 @@ namespace Typedown.Windows
             BindingOperations.SetBinding(this, RequestedThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)), Converter = new ElementThemeConverter() });
             BindingOperations.SetBinding(this, TopmostProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.Topmost)) });
             BindingOperations.SetBinding(this, TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
-            BindingOperations.SetBinding(KeyboardAccelerator, KeyboardAccelerator.IsEnableProperty, new Binding() { Source = this, Path = new(nameof(IsActive)) });
             AppViewModel.FileViewModel.NewWindowCommand.OnExecute.Subscribe(path => Utilities.Common.OpenNewWindow(new string[] { path }));
             AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.UseMicaEffect)).Cast<bool>().StartWith(AppViewModel.SettingsViewModel.UseMicaEffect).Subscribe(EnableMicaEffect);
         }
@@ -90,6 +93,7 @@ namespace Typedown.Windows
         private void OnIsActiveChanged(object sender, IsActiveChangedEventArgs e)
         {
             WindowService?.RaiseWindowIsActivedChanged(Handle);
+            KeyboardAccelerator.IsEnable = e.NewIsActive;
         }
 
         private void OnLocationChanged(object sender, LocationChangedEventArgs e)
@@ -140,6 +144,7 @@ namespace Typedown.Windows
         {
             var keepRun = AppViewModel.SettingsViewModel.KeepRun;
             ServiceScope?.Dispose();
+            checkActiveTimer?.Dispose();
             if (!AppViewModel.GetInstances().Any())
             {
                 if (keepRun)
@@ -166,6 +171,19 @@ namespace Typedown.Windows
                     isPlacementSaving = false;
                 }
             }
+        }
+
+        private async void CheckActiveTimerCallback(object state)
+        {
+            await Dispatcher.RunIdleAsync(_ =>
+            {
+                if (Handle != 0)
+                {
+                    var isActive = PInvoke.GetForegroundWindow() == Handle;
+                    if (isActive != KeyboardAccelerator.IsEnable)
+                        KeyboardAccelerator.IsEnable = isActive;
+                }
+            });
         }
     }
 }
