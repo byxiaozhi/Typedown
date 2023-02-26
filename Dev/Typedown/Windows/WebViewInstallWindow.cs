@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using Typedown.Core.Controls;
+using Typedown.Core.Utilities;
 using Typedown.XamlUI;
 
 namespace Typedown.Windows
@@ -17,7 +18,7 @@ namespace Typedown.Windows
             ResizeMode = WindowResizeMode.CanMinimize;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Frame = false;
-            Title = "WebView2 运行时未安装";
+            Title = Locale.GetDialogString("WebView2RuntimeNotInstalledTitle");
             Content = webView2InstallControl;
             webView2InstallControl.CloseButtonClick += (s, e) => Close();
             webView2InstallControl.InstallButtonClick += (s, e) => Install();

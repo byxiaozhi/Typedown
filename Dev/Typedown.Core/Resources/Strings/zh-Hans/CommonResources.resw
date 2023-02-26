@@ -130,8 +130,8 @@
     <comment>左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>右边对齐</value>
-    <comment>右边对齐</comment>
+    <value>右对齐</value>
+    <comment>右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
     <value>全部</value>

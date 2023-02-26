@@ -300,7 +300,7 @@
     <Compile Include="Controls\SidePaneControls\SearchPane.xaml.cs">
       <DependentUpon>SearchPane.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WebView2InstallControl.xaml.cs">
+    <Compile Include="Controls\DialogControls\WebView2InstallControl.xaml.cs">
       <DependentUpon>WebView2InstallControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\BoolReverseConverter.cs" />
@@ -676,7 +676,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\WebView2InstallControl.xaml">
+    <Page Include="Controls\DialogControls\WebView2InstallControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

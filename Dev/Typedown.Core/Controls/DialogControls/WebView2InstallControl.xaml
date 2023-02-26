@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:Typedown.XamlUI"
+    xmlns:u="using:Typedown.Core.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -24,15 +25,13 @@
             </StackPanel.Style>
         </StackPanel>
         <TextBlock 
-            Text="WebView2 运行时未安装" 
+            Text="{u:LocaleString Key=WebView2RuntimeNotInstalledTitle}" 
             FontSize="20"
             Margin="24,24,0,8"
             VerticalAlignment="Center" 
             FontFamily="{StaticResource ContentControlThemeFontFamily}"/>
         <StackPanel Grid.Row="1" Margin="24,0" Spacing="8">
-            <TextBlock TextWrapping="Wrap">
-                您需要安装 Microsoft Edge WebView2 运行时才能正常运行该软件
-            </TextBlock>
+            <TextBlock TextWrapping="Wrap" Text="{u:LocaleString Key=WebView2RuntimeNotInstalledContent}"/>
             <HyperlinkButton Content="了解更多" NavigateUri="https://developer.microsoft.com/microsoft-edge/webview2/" Margin="-12,0"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="16,0,16,16" Spacing="8" HorizontalAlignment="Right">

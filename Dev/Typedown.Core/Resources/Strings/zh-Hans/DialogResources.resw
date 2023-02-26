@@ -177,14 +177,6 @@
     <value>立即安装</value>
     <comment>立即安装</comment>
   </data>
-  <data name="LackOfRuntimeContent" xml:space="preserve">
-    <value>您的系统尚未安装 Microsoft Edge Webview2 运行时，缺少该运行时将无法运行应用，是否立即安装？</value>
-    <comment>您的系统尚未安装 Microsoft Edge Webview2 运行时，缺少该运行时将无法运行应用，是否立即安装？</comment>
-  </data>
-  <data name="LackOfRuntimeTitle" xml:space="preserve">
-    <value>缺少运行时</value>
-    <comment>缺少运行时</comment>
-  </data>
   <data name="Ok" xml:space="preserve">
     <value>确定</value>
     <comment>确定</comment>
@@ -224,5 +216,13 @@
   <data name="SubmittedSuccessfully" xml:space="preserve">
     <value>提交成功</value>
     <comment>提交成功</comment>
+  </data>
+  <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
+    <value>您需要安装 WebView2 运行时才能正常运行该软件。</value>
+    <comment>您需要安装 WebView2 运行时才能正常运行该软件。</comment>
+  </data>
+  <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
+    <value>WebView2 运行时未安装</value>
+    <comment>WebView2 运行时未安装</comment>
   </data>
 </root>
