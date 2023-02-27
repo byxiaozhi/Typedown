@@ -28,40 +28,48 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
             this.InitializeComponent();
         }
 
-        private void OnUploadSubMenuLoaded(object sender, RoutedEventArgs e)
+        private void OnOpenImageLocationItemLoaded(object sender, RoutedEventArgs e)
         {
             ViewModel = (sender as FrameworkElement).GetService<AppViewModel>();
             SelectedImage = ViewModel.EditorViewModel.Selection["selectedImage"];
             UpdateMenuItemState();
-            UpdateImageUploadConfigItem();
+            // UpdateImageUploadConfigItem();
         }
 
         private void UpdateMenuItemState()
         {
             var isLocalImage = UriHelper.TryGetLocalPath(ImageSrc, out _);
             OpenImageLocationItem.IsEnabled = isLocalImage;
-            MoveImageItem.IsEnabled = isLocalImage;
-            DeleteImageItem.IsEnabled = isLocalImage;
+            // MoveImageItem.IsEnabled = isLocalImage;
+            // DeleteImageItem.IsEnabled = isLocalImage;
         }
 
-        private void UpdateImageUploadConfigItem()
-        {
-            var configs = ImageUpload.ImageUploadConfigs.Where(x => x.IsEnable).ToList();
-            while (UploadSubMenu.Items[1] is not MenuFlyoutSeparator)
-                UploadSubMenu.Items.RemoveAt(1);
-            foreach (var config in configs.Reverse<ImageUploadConfig>())
-            {
-                var item = new MenuFlyoutItem() { Text = config.Name, Tag = config };
-                item.Click += (s, e) => OnUploadImageClick(config);
-                UploadSubMenu.Items.Insert(1, item);
-            }
-            NoUploadConfigItem.Visibility = configs.Any() ? Visibility.Collapsed : Visibility.Visible;
-        }
+        //private void UpdateImageUploadConfigItem()
+        //{
+        //    var configs = ImageUpload.ImageUploadConfigs.Where(x => x.IsEnable).ToList();
+        //    while (UploadSubMenu.Items[1] is not MenuFlyoutSeparator)
+        //        UploadSubMenu.Items.RemoveAt(1);
+        //    foreach (var config in configs.Reverse<ImageUploadConfig>())
+        //    {
+        //        var item = new MenuFlyoutItem() { Text = config.Name, Tag = config };
+        //        item.Click += (s, e) => OnUploadImageClick(config);
+        //        UploadSubMenu.Items.Insert(1, item);
+        //    }
+        //    NoUploadConfigItem.Visibility = configs.Any() ? Visibility.Collapsed : Visibility.Visible;
+        //}
+
         private void OnOpenImageLocationClick(object sender, RoutedEventArgs e)
         {
-            UriHelper.TryGetLocalPath(ImageSrc, out var path);
-            var fullPath = Path.GetFullPath(Path.Combine(ViewModel.FileViewModel.ImageBasePath, path));
-            Common.OpenFileLocation(fullPath);
+            try
+            {
+                UriHelper.TryGetLocalPath(ImageSrc, out var path);
+                var fullPath = Path.GetFullPath(Path.Combine(ViewModel.FileViewModel.ImageBasePath, path));
+                Common.OpenFileLocation(fullPath);
+            }
+            catch
+            {
+
+            }
         }
 
         private void OnCopyImageToClick(object sender, RoutedEventArgs e)
