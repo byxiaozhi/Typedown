@@ -206,7 +206,7 @@
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>Колонка</value>
+    <value>Столбцы</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
@@ -730,7 +730,7 @@
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Линия</value>
+    <value>Строки</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">

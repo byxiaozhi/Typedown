@@ -530,7 +530,7 @@
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>행</value>
+    <value>라인</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
@@ -538,7 +538,7 @@
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>줄</value>
+    <value>라인</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
@@ -730,7 +730,7 @@
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>라인</value>
+    <value>행</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
