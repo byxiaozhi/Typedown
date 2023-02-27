@@ -7,24 +7,29 @@ dictionary = dictionary.Merge(zhInputs, "zh-Hans").ToList();
 dictionary = dictionary.Merge(enInputs, "en").ToList();
 dictionary.WriteItems(@"C:\Users\12283\Documents\GitHub\Typedown\Tools\TranslationTool\Dictionary\");
 
-foreach (var lang in TextDictionary.SupportedLangs.Keys.Where(x => x == "en"))
+foreach (var lang in TextDictionary.SupportedLangs.Keys.Where(x => x == "ja"))
 {
     while (true)
     {
-        var inputs = dictionary.Where(x => !x.Values.ContainsKey(lang) || string.IsNullOrEmpty(x.Values[lang])).Take(30).ToList();
+        var inputs = dictionary.Where(x => !x.Values.ContainsKey(lang) || string.IsNullOrEmpty(x.Values[lang])).Take(10).ToList();
         if (!inputs.Any())
             break;
 
-        Console.WriteLine($"源语言：zh-Hans({TextDictionary.SupportedLangs["zh-Hans"]})");
-        Console.WriteLine($"目标语言：{lang}({TextDictionary.SupportedLangs[lang]})");
+        var enWords = inputs.Select(x => enInputs.Single(y => (x.Table, x.Name) == (y.Table, y.Name))).Select(x => x.Value).ToList();
 
-        var words = inputs.Select(x => zhInputs.Single(y => (x.Table, x.Name) == (y.Table, y.Name))).Select(x => x.Value).ToList();
-        Console.WriteLine($"待翻译文本(逗号分割)：" + string.Join(",", words));
+        Console.WriteLine("相同位置的待翻译文本为同义词，输入输出均以竖线\"|\"分割，并且一一对应\n");
 
-        Console.WriteLine($"翻译结果(逗号分割)：");
-        var results = Console.ReadLine().Split(",").ToList();
+        Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs["en"]})：" + string.Join("|", enWords));
+        Console.WriteLine();
 
-        if (words.Count != results.Count)
+        var zhWords = inputs.Select(x => zhInputs.Single(y => (x.Table, x.Name) == (y.Table, y.Name))).Select(x => x.Value).ToList();
+        Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs["zh-Hans"]})：" + string.Join("|", zhWords));
+        Console.WriteLine();
+
+        Console.WriteLine($"翻译结果({TextDictionary.SupportedLangs[lang]})：");
+        var results = Console.ReadLine().Split("|").ToList();
+
+        if (zhWords.Count != results.Count)
             continue;
 
         for (var i = 0; i < inputs.Count; i++)
@@ -32,7 +37,7 @@ foreach (var lang in TextDictionary.SupportedLangs.Keys.Where(x => x == "en"))
 
         dictionary.WriteItems(@"C:\Users\12283\Documents\GitHub\Typedown\Tools\TranslationTool\Dictionary\");
 
-        Console.WriteLine();
+        Console.WriteLine("\n");
     }
 
     var output = dictionary.Select(x => dictionary.GetTextResourceItem(x.Table, x.Name, lang)).Where(x => !string.IsNullOrEmpty(x.Value));
