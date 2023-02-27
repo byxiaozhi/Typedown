@@ -279,7 +279,8 @@ class Selection {
     const { left } = this.getCaretOffsets(root)
     const markedText = root.textContent
     const { type, info } = getCursorPositionWithinMarkedText(markedText, left)
-    const pre = markedText.slice(0, left)
+    const frontLength = (root.querySelector(".ag-front-icon")?.textContent ?? '').length
+    const pre = markedText.slice(frontLength, left)
     const post = markedText.slice(left)
     switch (type) {
       case 'OUT':
