@@ -45,7 +45,7 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
                     new(Mod.Control, Key.C),
                     new(Mod.Control, Key.V),
                     new(Mod.Control, Key.A),
-                    new(Mod.None, Key.Delete),
+                    // new(Mod.None, Key.Delete),
                 };
                 if (handledKey.Contains(new(e.Modifiers, e.Key)))
                 {
@@ -68,7 +68,7 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             RegisterEditorShortcut(Settings.ShortcutCopyAsMarkdown, CopyAsMarkdownItem);
             RegisterEditorShortcut(Settings.ShortcutCopyAsHTMLCode, CopyAsHTMLCodeItem);
             RegisterEditorShortcut(Settings.ShortcutPasteAsPlainText, PasteAsPlainTextItem);
-            RegisterEditorShortcut(Settings.ShortcutDelete, DeleteItem);
+            // RegisterEditorShortcut(Settings.ShortcutDelete, DeleteItem);
             RegisterEditorShortcut(Settings.ShortcutSelectAll, SelectAllItem);
             RegisterWindowShortcut(Settings.ShortcutFind, FindItem);
             RegisterWindowShortcut(Settings.ShortcutFindNext, FindNextItem);
