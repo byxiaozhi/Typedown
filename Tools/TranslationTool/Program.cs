@@ -1,7 +1,8 @@
 ﻿using System.Text;
 using TranslationTool;
 
-Console.OutputEncoding = Encoding.UTF8;
+Console.OutputEncoding = Encoding.Unicode;
+Console.InputEncoding = Encoding.Unicode;
 
 var zhInputs = TextResource.ReadItems(@"C:\Users\12283\Documents\GitHub\Typedown\Dev\Typedown.Core\Resources\Strings\zh-Hans\").ToList();
 var enInputs = TextResource.ReadItems(@"C:\Users\12283\Documents\GitHub\Typedown\Dev\Typedown.Core\Resources\Strings\en\").ToList();
@@ -11,12 +12,12 @@ dictionary = dictionary.Merge(enInputs, "en").ToList();
 dictionary.WriteItems(@"C:\Users\12283\Documents\GitHub\Typedown\Tools\TranslationTool\Dictionary\");
 
 var manualLangs = new List<string>() { "en", "ja", "ko", "ru", "fr", "de", "es", "it", "nl", "ar" };
-var batch = 50;
+var batch = 70;
 foreach (var lang in manualLangs)
 {
     while (true)
     {
-        var inputs = dictionary.Where(x => !x.Values.ContainsKey(lang) || string.IsNullOrEmpty(x.Values[lang])).Take(batch--).ToList();
+        var inputs = dictionary.Where(x => !x.Values.ContainsKey(lang) || string.IsNullOrEmpty(x.Values[lang])).Take(batch++).ToList();
         if (!inputs.Any())
             break;
 

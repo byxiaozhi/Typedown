@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>응용 프로그램에 대해</value>
+    <value>애플리케이션 정보</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>스토어 페이지</value>
+    <value>마이크로소프트 스토어 페이지</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -130,15 +130,15 @@
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
-    <value>위지윅 마크다운 에디터</value>
+    <value>WYSIWYG Markdown 편집기</value>
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
-    <value>의견 보내기</value>
+    <value>피드백 보내기</value>
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>접촉</value>
+    <value>연락처</value>
     <comment>关于/联系方式</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
@@ -146,35 +146,35 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>우리는 당신이 기입 한 콘텐츠를 소중하게 생각합니다</value>
+    <value>귀하의 의견을 매우 중요하게 생각합니다</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>관한</value>
+    <value>약</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>닫는 따옴표는 여는 괄호를 입력할 때 자동으로 완성됩니다.</value>
+    <value>왼쪽 인용 부호 입력시 자동으로 오른쪽 인용 부호 자동 완성</value>
     <comment>编辑器/输入左括号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>자동 완성 괄호</value>
+    <value>괄호 자동 완성</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>마크다운 태그 자동 완성 일치</value>
+    <value>일치하는 Markdown 태그 자동 완성</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>마크다운 태그 자동 완성</value>
+    <value>Markdown 태그 자동 완성</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>여는 따옴표를 입력하면 닫는 따옴표가 자동으로 완성됩니다.</value>
+    <value>왼쪽 인용 부호 입력시 자동으로 오른쪽 인용 부호 자동 완성</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>자동 완성 따옴표</value>
+    <value>인용 부호 자동 완성</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
@@ -182,23 +182,23 @@
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>기본적으로 콘텐츠 복사/잘라내기</value>
+    <value>기본 복사/잘라내기 내용</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>편집기 콘텐츠의 최대 너비</value>
+    <value>에디터 컨텐츠 최대 너비</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
-    <value>콘텐츠 너비</value>
+    <value>컨텐츠 너비</value>
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>뻗치다</value>
+    <value>확장</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>편집기 기본 글꼴 크기</value>
+    <value>에디터 기본 글꼴 크기</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,19 +206,19 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>편집기 줄 상위 배수</value>
+    <value>에디터 라인 높이 배수</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
-    <value>선 높이</value>
+    <value>라인 높이</value>
     <comment>编辑器/行高</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Description" xml:space="preserve">
-    <value>구문 오류 찾기 및 강조 표시</value>
+    <value>문법 오류 찾아 하이라이트</value>
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>자동 언어 감지</value>
+    <value>언어 자동 감지</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -234,7 +234,7 @@
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>참조 및 목록의 기본 들여쓰기 공간 조정</value>
+    <value>인용문과 목록의 기본 들여쓰기 간격 조정</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,11 +242,11 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>편집자</value>
+    <value>편집기</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
-    <value>내보내기 형식 및 스타일 사용자 지정</value>
+    <value>내보내기 형식 및 스타일 사용자 정의</value>
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
@@ -254,35 +254,39 @@
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>구성 내보내기</value>
+    <value>내보내기 구성</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>내보내기 파일 형식</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>내보내기가 완료되면 내보내기가 있는 폴더를 엽니다.</value>
+    <value>내보내기 후 폴더 열기</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>가로</value>
+    <value>가로 방향</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>경도의</value>
+    <value>세로 방향</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>페이지 바닥글</value>
+    <value>하단</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>맨 위로</value>
+    <value>상단</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>위쪽 및 바닥글</value>
+    <value>머리글 및 꼬리말</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>아래의</value>
+    <value>하단</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -306,7 +310,7 @@
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>높다</value>
+    <value>높이</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,11 +318,11 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>넓다</value>
+    <value>너비</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
-    <value>수출</value>
+    <value>내보내기</value>
     <comment>导出/导出</comment>
   </data>
   <data name="Export.Type" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,15 +338,15 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>적용하다</value>
+    <value>애플리케이션</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>앱을 열면 파일이 수정되면 앱이 자동으로 저장됩니다.</value>
+    <value>파일이 수정될 때 자동 저장</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,7 +354,7 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>사용자화</value>
+    <value>사용자 정의</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
@@ -358,15 +362,15 @@
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>창을 닫은 후 프로세스를 유지할지 여부는 다음 시작을 가속화합니다.</value>
+    <value>창을 닫아도 프로세스 유지</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
-    <value>계속 실행</value>
+    <value>프로세스 유지</value>
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>앱이 표시되는 언어</value>
+    <value>애플리케이션 언어</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,51 +378,51 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>앱 기본 설정 복원</value>
+    <value>애플리케이션 기본 설정 복원</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>앱 재설정</value>
+    <value>애플리케이션 재설정</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>사용자 지정 바로 가기 키</value>
+    <value>사용자 지정 단축키</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>바로 가기 키</value>
+    <value>단축키</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>앱이 시작될 때 발생하는 작업</value>
+    <value>애플리케이션 시작 시 수행되는 작업</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>새 파일 만들기</value>
+    <value>새 파일</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>마지막으로 사용한 파일 열기</value>
+    <value>최근 사용한 파일 열기</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>지정된 폴더를 엽니다.</value>
+    <value>지정된 폴더 열기</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>마지막으로 사용한 폴더 열기</value>
+    <value>최근 사용한 폴더 열기</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>작업 시작</value>
+    <value>시작</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>루틴</value>
+    <value>일반</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
-    <value>경로에 복사</value>
+    <value>경로로 복사</value>
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
@@ -434,75 +438,95 @@
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>구성 업로드</value>
+    <value>업로드 구성</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>이 구성 삭제</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>파일에서 가져오기</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>업로드 방법</value>
     <comment>图片/上传方式</comment>
   </data>
   <data name="ImageUpload.Methods.FTP" xml:space="preserve">
-    <value>증권 시세 표시기</value>
+    <value>FTP</value>
     <comment>图片/FTP</comment>
   </data>
   <data name="ImageUpload.Methods.Git" xml:space="preserve">
-    <value>힘내</value>
+    <value>Git</value>
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>증권 시세 표시기</value>
+    <value>OSS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
-    <value>파워쉘</value>
+    <value>PowerShell</value>
     <comment>图片/PowerShell</comment>
   </data>
   <data name="ImageUpload.Methods.SCP" xml:space="preserve">
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>파일 선택기</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>파일로 저장</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>업로드 테스트</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
     <value>이미지 업로드</value>
     <comment>图片/图片上传</comment>
   </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>바로 가기 키</value>
+    <value>단축키</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>구성 업로드</value>
+    <value>업로드 설정</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>더 빠른 응답을 위해 끄기</value>
+    <value>더 빠른 응답을 위해 닫기</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>창 애니메이션</value>
+    <value>윈도우 애니메이션</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>메뉴 모음이 머리글과 같은 줄에 나타납니다.</value>
+    <value>메뉴 바 및 타이틀 동일 행에 표시</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
-    <value>컴팩트 모드</value>
+    <value>콤팩트 모드</value>
     <comment>视图/紧凑模式</comment>
   </data>
   <data name="View.AppTheme.Dark" xml:space="preserve">
-    <value>어둠</value>
+    <value>어두운</value>
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>표시하려는 앱 테마를 선택합니다.</value>
+    <value>표시할 앱 테마 선택</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>광</value>
+    <value>밝은</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>테마 적용</value>
+    <value>앱 테마</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
@@ -510,11 +534,11 @@
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>파일로 저장할 때 상대 경로를 사용하는 사진을 자동으로 복사</value>
+    <value>파일로 저장할 때 사용되는 상대 경로에 있는 이미지 자동 복사</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>자동으로 사진 복사</value>
+    <value>이미지 자동 복사</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,39 +546,39 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>삽입 시 자동으로 이스케이프 이미지 URL</value>
+    <value>이미지 URL 삽입 시 자동 이스케이프</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>저장되지 않은 파일 또는 클립보드 그림은 기본적으로 그림 루트 디렉터리를 사용합니다.</value>
+    <value>저장되지 않은 파일이나 클립 보드 이미지의 기본 이미지 루트 디렉토리</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>기본 이미지 루트</value>
+    <value>기본 이미지 루트 디렉토리</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>클립보드 그림을 다음으로 복사</value>
+    <value>클립 보드 이미지 복사</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>클립보드 이미지 파일 및 웹 이미지는 포함되지 않습니다.</value>
+    <value>클립 보드 이미지 또는 네트워크 이미지를 포함하지 않음</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>클립보드 그림</value>
+    <value>클립 보드 이미지</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>클립보드 이미지는 업로드를 사용하여 구성됩니다.</value>
+    <value>클립 보드 이미지에 업로드 구성 사용</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>그림을 삽입할 때 수행할 작업</value>
+    <value>이미지 삽입 시 실행할 작업</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>로컬 이미지를 다음으로 복사합니다.</value>
+    <value>로컬 이미지 복사</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
@@ -562,31 +586,31 @@
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>로컬 이미지는 업로드 구성을 사용합니다.</value>
+    <value>로컬 이미지는 업로드 구성을 사용함</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>그림 삽입 작업</value>
+    <value>이미지 삽입 작업</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>네트워크 사진을 다음으로 복사</value>
+    <value>네트워크 이미지 복사</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>웹 이미지</value>
+    <value>네트워크 이미지</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>웹 이미지는 업로드 구성을 사용합니다.</value>
+    <value>네트워크 이미지는 업로드 구성을 사용함</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>그림을 삽입할 때 상대 경로가 선호됩니다.</value>
+    <value>이미지 삽입 시 상대 경로 우선 사용</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>상대 경로가 선호됩니다.</value>
+    <value>상대 경로 우선 사용</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +618,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>이미지 업로드 방법 설정</value>
+    <value>이미지 업로드 방식 설정</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -606,19 +630,19 @@
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
-    <value>사이드바를 표시할지 여부 선택</value>
+    <value>사이드 바 표시 여부 선택</value>
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>사이드바를 표시합니다.</value>
+    <value>사이드 바 표시</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
-    <value>하단 상태 표시줄을 표시할지 여부 선택</value>
+    <value>하단 상태 표시 줄 표시 여부 선택</value>
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>상태 표시줄을 표시합니다.</value>
+    <value>상태 표시 줄 표시</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
@@ -626,19 +650,19 @@
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>창을 항상 맨 위에 유지</value>
+    <value>창을 항상 위에 유지</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>최상위 수준으로</value>
+    <value>항상 위로</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>켜면 창 배경에 운모 배경 효과가 있습니다.</value>
+    <value>창 배경에 마이카 효과 활성화</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>운모 재료 사용</value>
+    <value>마이카 재질 사용</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
