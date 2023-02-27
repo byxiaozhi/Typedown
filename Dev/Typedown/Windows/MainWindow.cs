@@ -14,6 +14,7 @@ using Typedown.Core.ViewModels;
 using Typedown.Services;
 using Typedown.Utilities;
 using Typedown.XamlUI;
+using Windows.Globalization;
 using Windows.UI;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
@@ -191,7 +192,11 @@ namespace Typedown.Windows
         {
             try
             {
-                global::Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = AppViewModel.SettingsViewModel.Language;
+                var settingLanguage = AppViewModel.SettingsViewModel.Language;
+                if (Locale.SupportedLangs.ContainsKey(settingLanguage))
+                    ApplicationLanguages.PrimaryLanguageOverride = settingLanguage;
+                else
+                    ApplicationLanguages.PrimaryLanguageOverride = null;
             }
             catch
             {

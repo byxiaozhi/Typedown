@@ -104,7 +104,6 @@ namespace Typedown.Core.ViewModels
             ServiceProvider = serviceProvider;
             ResetSettingsCommand.OnExecute.Subscribe(_ => ResetSetting());
             LoadAllSettings();
-            Locale.CurrentLanguage = Language;
         }
 
         private void LoadAllSettings()

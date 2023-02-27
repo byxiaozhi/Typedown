@@ -15,7 +15,7 @@ namespace Typedown.Services
             //powerShell.AddCommand(command).AddParameters(parameters);
             //var result = powerShell.Invoke();
             //return result.Select(x => x.ToString());
-            throw new NotImplementedException("未实现");
+            throw new NotImplementedException("NotImplemented");
         }
     }
 }

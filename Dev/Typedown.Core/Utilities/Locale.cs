@@ -114,8 +114,6 @@ namespace Typedown.Core.Utilities
 
         public static ResourceContext ResourceContext { get; } = new();
 
-        public static string CurrentLanguage { get => ResourceContext.QualifierValues["Language"]; set => ResourceContext.QualifierValues["Language"] = value; }
-
         public static string GetString(string key, ResourceSource source = 0)
         {
             key = key.Replace('.', '/');
