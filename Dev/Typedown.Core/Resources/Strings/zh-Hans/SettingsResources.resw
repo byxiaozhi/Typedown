@@ -257,6 +257,10 @@
     <value>导出配置</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>导出文件类型</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
     <value>导出完成后打开所在文件夹</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
@@ -437,6 +441,14 @@
     <value>上传配置</value>
     <comment>图片/上传配置</comment>
   </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>删除此配置</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>从文件导入</value>
+    <comment>从文件导入</comment>
+  </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>上传方式</value>
     <comment>图片/上传方式</comment>
@@ -460,6 +472,18 @@
   <data name="ImageUpload.Methods.SCP" xml:space="preserve">
     <value>SCP</value>
     <comment>图片/SCP</comment>
+  </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>选择文件</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>保存到文件</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>测试上传</value>
+    <comment>测试上传</comment>
   </data>
   <data name="ImageUpload.Title" xml:space="preserve">
     <value>图片上传</value>

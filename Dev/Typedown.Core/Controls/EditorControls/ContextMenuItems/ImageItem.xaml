@@ -9,7 +9,7 @@
     xmlns:u="using:Typedown.Core.Utilities"
     xmlns:viewmodels="using:Typedown.Core.ViewModels" 
     mc:Ignorable="d">
-    <MenuFlyoutItem x:Name="OpenImageLocationItem" Text="打开图片位置" Click="OnOpenImageLocationClick" Loaded="OnOpenImageLocationItemLoaded"/>
+    <MenuFlyoutItem x:Name="OpenImageLocationItem" Text="{u:LocaleString Key=OpenImageLocation}" Click="OnOpenImageLocationClick" Loaded="OnOpenImageLocationItemLoaded"/>
     <!--<MenuFlyoutItem Text="复制图片到..." Click="OnCopyImageToClick"/>
     <MenuFlyoutItem x:Name="MoveImageItem" Text="移动图片到..." Click="OnMoveImageToClick"/>
     <MenuFlyoutSubItem x:Name="UploadSubMenu" Text="上传图片" Loaded="OnUploadSubMenuLoaded">

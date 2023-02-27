@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Typedown.Core.Controls" 
     xmlns:models="using:Typedown.Core.Models.UploadConfigModels"
+    xmlns:u="using:Typedown.Core.Utilities"
     Loaded="OnLoaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
@@ -16,7 +17,7 @@
 
         <controls:NormalSettingItem HorizontalActionAlignment="Stretch">
             <StackPanel Margin="-16,0,0,0" Spacing="8">
-                <TextBlock>脚本</TextBlock>
+                <TextBlock>PowerShell Script</TextBlock>
                 <TextBox 
                     Grid.Row="0" 
                     Grid.Column="1" 
@@ -26,8 +27,8 @@
                     TextWrapping="Wrap" 
                     MinHeight="400"/>
                 <StackPanel Orientation="Horizontal" Spacing="8">
-                    <Button Grid.Row="1" Grid.Column="1" Content="从文件导入" Margin="0,4,0,0" Click="OnImportButtonClick"/>
-                    <Button Grid.Row="1" Grid.Column="1" Content="保存到文件" Margin="0,4,0,0" Click="OnExportButtonClick"/>
+                    <Button Grid.Row="1" Grid.Column="1" Content="{u:LocaleString Key=ImageUpload.ImportFromFile}" Margin="0,4,0,0" Click="OnImportButtonClick"/>
+                    <Button Grid.Row="1" Grid.Column="1" Content="{u:LocaleString Key=ImageUpload.SaveToFile}" Margin="0,4,0,0" Click="OnExportButtonClick"/>
                 </StackPanel>
             </StackPanel>
         </controls:NormalSettingItem>

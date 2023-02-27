@@ -309,6 +309,10 @@
     <value>斜体</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>启用</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>错误</value>
     <comment>错误</comment>
@@ -636,6 +640,10 @@
   <data name="OpenFolder" xml:space="preserve">
     <value>打开文件夹</value>
     <comment>文件/打开文件夹</comment>
+  </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>打开图片位置</value>
+    <comment>打开图片位置</comment>
   </data>
   <data name="OpenInNewWindow" xml:space="preserve">
     <value>在新窗口中打开</value>
