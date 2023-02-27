@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>הוסף</value>
+    <value>הוסף ל</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>מרכז</value>
+    <value>יישור למרכז</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>יישור לשמאל</value>
+    <value>מיושר לשמאל</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>יישור לימין</value>
+    <value>מיושר לימין</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">

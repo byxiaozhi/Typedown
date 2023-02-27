@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Aggiungi</value>
+    <value>Aggiungi a</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Centra</value>
+    <value>Allineamento centrale</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Allineamento a sinistra</value>
+    <value>Allineato a sinistra</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Allineamento a destra</value>
+    <value>Allineato a destra</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">

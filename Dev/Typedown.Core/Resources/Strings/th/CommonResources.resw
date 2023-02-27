@@ -122,11 +122,11 @@
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>จัดแนวกึ่งกลาง</value>
+    <value>การจัดตําแหน่งกึ่งกลาง</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>จัดแนวชิดซ้าย</value>
+    <value>ชิดซ้าย</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">

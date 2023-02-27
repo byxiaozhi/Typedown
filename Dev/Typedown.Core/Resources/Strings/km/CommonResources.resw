@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>បន្ថែម</value>
+    <value>បន្ថែម ទៅ</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>កំពូលនៃកញ្ចប់</value>
+    <value>ការ តម្រឹម កណ្តាល</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>តម្រឡើងទៅខាងឆ្វង</value>
+    <value>ខាងឆ្វេង-តម្រឹម</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>ត្រឡប់ទៅស្ដាំ</value>
+    <value>ស្តាំ-តម្រឹម</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">

@@ -122,15 +122,15 @@
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Miðja</value>
+    <value>Miðstilling</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Vinstri jöfnun</value>
+    <value>Vinstristillt</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Hægra jafnaður</value>
+    <value>Hægri stilling</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">

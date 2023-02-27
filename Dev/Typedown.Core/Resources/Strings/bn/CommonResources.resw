@@ -122,15 +122,15 @@
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>মাঝখানে সাজানো</value>
+    <value>কেন্দ্রের সারিবদ্ধতা</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>বাম সারি সমবর্তিত করুন</value>
+    <value>বাম-জোটবদ্ধ</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>দলবদ্ধ করুন / ডানসারি সাজান</value>
+    <value>ডান-সংযুক্ত</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">

@@ -458,7 +458,7 @@
     <comment>图片/PowerShell</comment>
   </data>
   <data name="ImageUpload.Methods.SCP" xml:space="preserve">
-    <value>ティッカー</value>
+    <value>パソコン</value>
     <comment>图片/SCP</comment>
   </data>
   <data name="ImageUpload.Title" xml:space="preserve">

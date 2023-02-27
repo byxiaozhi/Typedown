@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>ଯୋଡ଼ନ୍ତୁ</value>
+    <value>ଯୋଡିବାକୁ ଯୋଡନ୍ତୁ</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>କେନ୍ଦ୍ରିତ</value>
+    <value>କେନ୍ଦ୍ର ସଂଯୋଜନା</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>ବାମ ସମତୋଳ</value>
+    <value>ବାମ-ସଂଯୋଜିତ</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>ଡାହାଣ୍ତୁ ସମାନ୍ତର କରନ୍ତୁ</value>
+    <value>ଡାହାଣ-ସଂଯୋଜିତ</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
