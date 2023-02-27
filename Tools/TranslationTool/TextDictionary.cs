@@ -53,6 +53,8 @@ namespace TranslationTool
 
         public static IEnumerable<TextDictionaryItem> ReadItems(string folder)
         {
+            if (!Directory.Exists(folder))
+                return Enumerable.Empty<TextDictionaryItem>();
             return Directory.GetFiles(folder, "*.json")
                 .SelectMany(x => JsonConvert.DeserializeObject<List<TextDictionaryItem>>(File.ReadAllText(x)));
         }

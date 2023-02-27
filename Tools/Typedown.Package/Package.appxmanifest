@@ -6,61 +6,135 @@
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
   IgnorableNamespaces="uap rescap">
 
-  <Identity
-    Name="62082Surprise.Typedown"
-    Publisher="CN=70DB4128-9F7D-4D9C-ADFC-7B5988F89237"
-    Version="1.3.1.0" />
+	<Identity
+	  Name="62082Surprise.Typedown"
+	  Publisher="CN=12283"
+	  Version="1.3.1.0" />
 
-  <Properties>
-    <DisplayName>Typedown</DisplayName>
-    <PublisherDisplayName>Surprise</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
-  </Properties>
+	<Properties>
+		<DisplayName>Typedown</DisplayName>
+		<PublisherDisplayName>Surprise</PublisherDisplayName>
+		<Logo>Assets\StoreLogo.png</Logo>
+	</Properties>
 
-  <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
-    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
-  </Dependencies>
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
+	</Dependencies>
 
-  <Resources>
-    <Resource Language="x-generate"/>
-  </Resources>
+	<Resources>
+		<Resource Language="af"/>
+		<Resource Language="am"/>
+		<Resource Language="ar"/>
+		<Resource Language="as"/>
+		<Resource Language="bg"/>
+		<Resource Language="bn"/>
+		<Resource Language="bs"/>
+		<Resource Language="ca"/>
+		<Resource Language="cs"/>
+		<Resource Language="cy"/>
+		<Resource Language="da"/>
+		<Resource Language="de"/>
+		<Resource Language="el"/>
+		<Resource Language="en"/>
+		<Resource Language="es"/>
+		<Resource Language="et"/>
+		<Resource Language="eu"/>
+		<Resource Language="fa"/>
+		<Resource Language="fi"/>
+		<Resource Language="fil"/>
+		<Resource Language="fr"/>
+		<Resource Language="ga"/>
+		<Resource Language="gl"/>
+		<Resource Language="gu"/>
+		<Resource Language="he"/>
+		<Resource Language="hi"/>
+		<Resource Language="hr"/>
+		<Resource Language="hu"/>
+		<Resource Language="hy"/>
+		<Resource Language="id"/>
+		<Resource Language="is"/>
+		<Resource Language="it"/>
+		<Resource Language="ja"/>
+		<Resource Language="ka"/>
+		<Resource Language="kk"/>
+		<Resource Language="km"/>
+		<Resource Language="kn"/>
+		<Resource Language="ko"/>
+		<Resource Language="lo"/>
+		<Resource Language="lt"/>
+		<Resource Language="lv"/>
+		<Resource Language="mi"/>
+		<Resource Language="mk"/>
+		<Resource Language="ml"/>
+		<Resource Language="mr"/>
+		<Resource Language="ms"/>
+		<Resource Language="mt"/>
+		<Resource Language="nb"/>
+		<Resource Language="ne"/>
+		<Resource Language="nl"/>
+		<Resource Language="or"/>
+		<Resource Language="pa"/>
+		<Resource Language="pl"/>
+		<Resource Language="prs"/>
+		<Resource Language="pt"/>
+		<Resource Language="ro"/>
+		<Resource Language="ru"/>
+		<Resource Language="sk"/>
+		<Resource Language="sl"/>
+		<Resource Language="sq"/>
+		<Resource Language="sr-Latn"/>
+		<Resource Language="sv"/>
+		<Resource Language="sw"/>
+		<Resource Language="ta"/>
+		<Resource Language="te"/>
+		<Resource Language="th"/>
+		<Resource Language="ti"/>
+		<Resource Language="tr"/>
+		<Resource Language="uk"/>
+		<Resource Language="ur"/>
+		<Resource Language="uz"/>
+		<Resource Language="vi"/>
+		<Resource Language="zh-Hans"/>
+		<Resource Language="zh-Hant"/>
+		<Resource Language="zu"/>
+	</Resources>
 
-  <Applications>
-    <Application Id="App"
-      Executable="$targetnametoken$.exe"
-      EntryPoint="$targetentrypoint$">
-      <uap:VisualElements
-        DisplayName="Typedown"
-        Description="Markdown editor"
-        BackgroundColor="transparent"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
-      </uap:VisualElements>
-      <Extensions>
-        <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="typedown">
-            <uap:SupportedFileTypes>
-              <uap:FileType ContentType="text/markdown">.md</uap:FileType>
-              <uap:FileType ContentType="text/markdown">.markdown</uap:FileType>
-              <uap:FileType ContentType="text/markdown">.mdown</uap:FileType>
-              <uap:FileType ContentType="text/markdown">.mkdn</uap:FileType>
-              <uap:FileType ContentType="text/markdown">.mdtext</uap:FileType>
-              <uap:FileType ContentType="text/markdown">.rmd</uap:FileType>
-            </uap:SupportedFileTypes>
-            <uap:DisplayName>Typedown</uap:DisplayName>
-            <uap:Logo>Assets\Markdown.png</uap:Logo>
-            <uap:InfoTip>Markdown</uap:InfoTip>
-          </uap:FileTypeAssociation>
-        </uap:Extension>
-      </Extensions>
-    </Application>
-  </Applications>
+	<Applications>
+		<Application Id="App"
+		  Executable="$targetnametoken$.exe"
+		  EntryPoint="$targetentrypoint$">
+			<uap:VisualElements
+			  DisplayName="Typedown"
+			  Description="Markdown editor"
+			  BackgroundColor="transparent"
+			  Square150x150Logo="Assets\Square150x150Logo.png"
+			  Square44x44Logo="Assets\Square44x44Logo.png">
+				<uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
+				<uap:SplashScreen Image="Assets\SplashScreen.png" />
+			</uap:VisualElements>
+			<Extensions>
+				<uap:Extension Category="windows.fileTypeAssociation">
+					<uap:FileTypeAssociation Name="typedown">
+						<uap:SupportedFileTypes>
+							<uap:FileType ContentType="text/markdown">.md</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.markdown</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.mdown</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.mkdn</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.mdtext</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.rmd</uap:FileType>
+						</uap:SupportedFileTypes>
+						<uap:DisplayName>Typedown</uap:DisplayName>
+						<uap:Logo>Assets\Markdown.png</uap:Logo>
+						<uap:InfoTip>Markdown</uap:InfoTip>
+					</uap:FileTypeAssociation>
+				</uap:Extension>
+			</Extensions>
+		</Application>
+	</Applications>
 
-  <Capabilities>
-    <Capability Name="internetClient" />
-    <rescap:Capability Name="runFullTrust" />
-  </Capabilities>
+	<Capabilities>
+		<Capability Name="internetClient" />
+		<rescap:Capability Name="runFullTrust" />
+	</Capabilities>
 </Package>

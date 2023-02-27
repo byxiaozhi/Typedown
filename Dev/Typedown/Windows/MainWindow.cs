@@ -38,6 +38,7 @@ namespace Typedown.Windows
 
         public MainWindow()
         {
+            TrySetPrimaryLanguage();
             Title = Config.AppName;
             MinWidth = 480;
             MinHeight = 300;
@@ -184,6 +185,18 @@ namespace Typedown.Windows
                         KeyboardAccelerator.IsEnable = isActive;
                 }
             });
+        }
+
+        private void TrySetPrimaryLanguage()
+        {
+            try
+            {
+                global::Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = AppViewModel.SettingsViewModel.Language;
+            }
+            catch
+            {
+
+            }
         }
     }
 }

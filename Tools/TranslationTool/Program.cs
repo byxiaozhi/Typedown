@@ -2,6 +2,7 @@
 
 var zhInputs = TextResource.ReadItems(@"C:\GitHub\Typedown\Dev\Typedown.Core\Resources\Strings\zh-Hans\").ToList();
 var dictionary = TextDictionary.ReadItems(@"C:\GitHub\Typedown\Tools\TranslationTool\Dictionary\").ToList();
+dictionary = dictionary.Merge(zhInputs, "zh-Hans").ToList();
 
 foreach (var lang in TextDictionary.SupportedLangs.Keys)
 {

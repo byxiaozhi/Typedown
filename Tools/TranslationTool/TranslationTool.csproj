@@ -16,8 +16,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dictionary\" />
-  </ItemGroup>
-
 </Project>
