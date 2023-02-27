@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AsKToSaveContent" xml:space="preserve">
+    <value>Imate neshranjene spremembe</value>
+    <comment>未保存对话框/您有未保存的更改</comment>
+  </data>
+  <data name="AsKToSaveTitle" xml:space="preserve">
+    <value>Ali želite shraniti spremembe?</value>
+    <comment>未保存对话框/是否要保存更改？</comment>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odpovedati</value>
+    <comment>对话框/取消</comment>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Si prepričan</value>
+    <comment>对话框/确定</comment>
+  </data>
+  <data name="ContentCanNotBeBlank" xml:space="preserve">
+    <value>Vsebina ne more biti prazna</value>
+    <comment>对话框/内容不能为空</comment>
+  </data>
+  <data name="CreateDocErrorTitle" xml:space="preserve">
+    <value>Ustvarjanje novega dokumenta ni uspelo</value>
+    <comment>创建文件对话框/新建文档失败</comment>
+  </data>
+  <data name="CreateFolderErrorTitle" xml:space="preserve">
+    <value>Ustvarjanje nove mape ni uspelo</value>
+    <comment>创建文件夹对话框/新建文件夹失败</comment>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Izbrisati</value>
+    <comment>恢复文件对话框/删除</comment>
+  </data>
+  <data name="Don'tSave" xml:space="preserve">
+    <value>Ne shranjevanje</value>
+    <comment>未保存对话框/不保存</comment>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>napaka</value>
+    <comment>对话框/错误</comment>
+  </data>
+  <data name="ExportErrorTitle" xml:space="preserve">
+    <value>Izvoz ni uspel</value>
+    <comment>文件导出对话框/导出失败</comment>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Povratne informacije</value>
+    <comment>反馈对话框/反馈</comment>
+  </data>
+  <data name="ImportErrorTitle" xml:space="preserve">
+    <value>Uvoz ni uspel</value>
+    <comment>文件导入对话框/导入失败</comment>
+  </data>
+  <data name="InsertTableTitle" xml:space="preserve">
+    <value>Vstavljanje tabele</value>
+    <comment>表格对话框/插入表格</comment>
+  </data>
+  <data name="InstallNow" xml:space="preserve">
+    <value>Namesti zdaj</value>
+    <comment>环境检查对话框/立即安装</comment>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Si prepričan</value>
+    <comment>对话框/确定</comment>
+  </data>
+  <data name="ReadErrorTitle" xml:space="preserve">
+    <value>Branje ni uspelo</value>
+    <comment>打开文件对话框/读取失败</comment>
+  </data>
+  <data name="Recover" xml:space="preserve">
+    <value>Izterja</value>
+    <comment>恢复文件对话框/恢复</comment>
+  </data>
+  <data name="RecoverContent" xml:space="preserve">
+    <value>Te datoteke niste shranili</value>
+    <comment>恢复文件对话框/您尚未保存此文件</comment>
+  </data>
+  <data name="RecoverTitle" xml:space="preserve">
+    <value>Ali želite obnoviti datoteke?</value>
+    <comment>恢复文件对话框/是否要恢复文件？</comment>
+  </data>
+  <data name="ResizeTableTitle" xml:space="preserve">
+    <value>Prilagodite tabelo</value>
+    <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Shraniti</value>
+    <comment>文件保存对话框/保存</comment>
+  </data>
+  <data name="SaveErrorTitle" xml:space="preserve">
+    <value>Shranjevanje ni uspelo</value>
+    <comment>文件保存对话框/保存失败</comment>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>predložiti</value>
+    <comment>反馈对话框/提交</comment>
+  </data>
+  <data name="SubmittedSuccessfully" xml:space="preserve">
+    <value>Predložitev je bila uspešna</value>
+    <comment>反馈对话框/提交成功</comment>
+  </data>
+  <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
+    <value>Če želite pravilno zagnati programsko opremo, morate namestiti čas zagona webView2.</value>
+    <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
+  </data>
+  <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
+    <value>Čas zagona WebView2 ni nameščen</value>
+    <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+</root>

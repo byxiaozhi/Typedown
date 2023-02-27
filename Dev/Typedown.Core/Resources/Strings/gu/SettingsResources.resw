@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.AboutApp" xml:space="preserve">
+    <value>કાર્યક્રમ વિશે</value>
+    <comment>关于/关于应用程序</comment>
+  </data>
+  <data name="About.AppStorePage" xml:space="preserve">
+    <value>પાનું સંગ્રહો</value>
+    <comment>关于/应用商店页面</comment>
+  </data>
+  <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
+    <value>ઓપન સોર્સ સોફ્ટવેર પર આધારિત</value>
+    <comment>关于/基于开源软件</comment>
+  </data>
+  <data name="About.Introduction" xml:space="preserve">
+    <value>WYSIWYG માર્કડાઉન સંપાદક</value>
+    <comment>关于/一款所见即所得 Markdown 编辑器</comment>
+  </data>
+  <data name="About.SendFeedback" xml:space="preserve">
+    <value>પ્રતિસાદ મોકલો</value>
+    <comment>关于/发送反馈</comment>
+  </data>
+  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
+    <value>સંપર્ક</value>
+    <comment>关于/联系方式</comment>
+  </data>
+  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
+    <value>ઇમેઇલ</value>
+    <comment>关于/Email</comment>
+  </data>
+  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
+    <value>તમે ભરો છો તે સામગ્રીની અમે કદર કરીએ છીએ</value>
+    <comment>关于/我们会非常重视您填写的内容</comment>
+  </data>
+  <data name="About.Title" xml:space="preserve">
+    <value>સંબંધિત</value>
+    <comment>关于/关于</comment>
+  </data>
+  <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
+    <value>શરૂઆતની કૌંસમાં દાખલ કરતી વખતે બંધ કરવા માટેનું અવતરણ ચિહ્ન આપોઆપ સમાપ્ત થઈ જાય છે</value>
+    <comment>编辑器/输入左括号时自动补全右引号</comment>
+  </data>
+  <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
+    <value>કૌંસને આપોઆપ સમાપ્ત કરો</value>
+    <comment>编辑器/自动补全括号</comment>
+  </data>
+  <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
+    <value>માર્કડાઉન ટેગોને બંધબેસતા આપમેળે સમાપ્ત કરો</value>
+    <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
+  </data>
+  <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
+    <value>માર્કડાઉન ટેગને આપમેળે સમાપ્ત કરો</value>
+    <comment>编辑器/自动补全 Markdown 标记</comment>
+  </data>
+  <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
+    <value>અવતરણ ચિહ્નોને બંધ કરવાનું આપોઆપ પૂર્ણ થાય છે જ્યારે અવતરણ ચિહ્નોને ખોલવાનું દાખલ કરવામાં આવે છે</value>
+    <comment>编辑器/输入左引号时自动补全右引号</comment>
+  </data>
+  <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
+    <value>અવતરણ ચિહ્નો આપોઆપ પૂર્ણ કરો</value>
+    <comment>编辑器/自动补全引号</comment>
+  </data>
+  <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
+    <value>મૂળભૂત નકલ/કટ સમાવિષ્ટો પસંદ કરો</value>
+    <comment>编辑器/选择默认的复制/剪切内容</comment>
+  </data>
+  <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
+    <value>મૂળભૂત રીતે સમાવિષ્ટોની નકલ કરો/કાપો</value>
+    <comment>编辑器/默认复制/剪切内容</comment>
+  </data>
+  <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
+    <value>સંપાદક સમાવિષ્ટોની મહત્તમ પહોળાઈ</value>
+    <comment>编辑器/编辑器内容最大宽度</comment>
+  </data>
+  <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
+    <value>સમાવિષ્ટ પહોળાઈ</value>
+    <comment>编辑器/内容宽度</comment>
+  </data>
+  <data name="Editor.Extension" xml:space="preserve">
+    <value>વિસ્તૃત કરો</value>
+    <comment>编辑器/扩展</comment>
+  </data>
+  <data name="Editor.FontSize.Description" xml:space="preserve">
+    <value>સંપાદક મૂળભૂત ફોન્ટ માપ</value>
+    <comment>编辑器/编辑器默认字号</comment>
+  </data>
+  <data name="Editor.FontSize.Title" xml:space="preserve">
+    <value>ફોન્ટ માપ</value>
+    <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.LineHeight.Description" xml:space="preserve">
+    <value>સંપાદક વાક્ય ઉચ્ચ ઘણાબધા</value>
+    <comment>编辑器/编辑器行高倍数</comment>
+  </data>
+  <data name="Editor.LineHeight.Title" xml:space="preserve">
+    <value>લીટી ઊંચાઈ</value>
+    <comment>编辑器/行高</comment>
+  </data>
+  <data name="Editor.SpellcheckEnabled.Description" xml:space="preserve">
+    <value>વાક્યરચના ભૂલો શોધો અને પ્રકાશિત કરો</value>
+    <comment>编辑器/查找并高亮语法错误</comment>
+  </data>
+  <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
+    <value>આપોઆપ ભાષા શોધ</value>
+    <comment>编辑器/自动检测语言</comment>
+  </data>
+  <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
+    <value>ભાષા</value>
+    <comment>编辑器/语言</comment>
+  </data>
+  <data name="Editor.SpellcheckEnabled.Title" xml:space="preserve">
+    <value>જોડણી ચકાસણી</value>
+    <comment>编辑器/拼写检查</comment>
+  </data>
+  <data name="Editor.Style" xml:space="preserve">
+    <value>શૈલી</value>
+    <comment>编辑器/样式</comment>
+  </data>
+  <data name="Editor.TabSize.Description" xml:space="preserve">
+    <value>સંદર્ભો અને યાદીઓ માટે મૂળભૂત ગોઠવણી જગ્યા સંતુલિત કરો</value>
+    <comment>编辑器/调整引用和列表的默认缩进空格</comment>
+  </data>
+  <data name="Editor.TabSize.Title" xml:space="preserve">
+    <value>મૂળભૂત ગોઠવણી</value>
+    <comment>编辑器/默认缩进</comment>
+  </data>
+  <data name="Editor.Title" xml:space="preserve">
+    <value>સંપાદક</value>
+    <comment>编辑器/编辑器</comment>
+  </data>
+  <data name="Export.AddConfig.Description" xml:space="preserve">
+    <value>નિકાસ બંધારણ અને શૈલીને વૈવિધ્યપૂર્ણ બનાવો</value>
+    <comment>导出/自定义导出格式、样式</comment>
+  </data>
+  <data name="Export.AddConfig.Title" xml:space="preserve">
+    <value>નિકાસ રૂપરેખાંકનને ઉમેરો</value>
+    <comment>导出/添加导出配置</comment>
+  </data>
+  <data name="Export.Configs" xml:space="preserve">
+    <value>રૂપરેખાંકનની નિકાસ કરો</value>
+    <comment>导出/导出配置</comment>
+  </data>
+  <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
+    <value>જ્યારે નિકાસ સમાપ્ત થાય, ત્યારે ફોલ્ડરને ખોલો કે જ્યાં તે સ્થિત થયેલ છે</value>
+    <comment>导出/导出完成后打开所在文件夹</comment>
+  </data>
+  <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
+    <value>ટ્રાન્સવર્સ</value>
+    <comment>导出/横向</comment>
+  </data>
+  <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
+    <value>રેખાંશીય</value>
+    <comment>导出/纵向</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
+    <value>પાનાંના ફુટર</value>
+    <comment>导出/页脚</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Header" xml:space="preserve">
+    <value>ભમરડો</value>
+    <comment>导出/页首</comment>
+  </data>
+  <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
+    <value>ટોચ અને ફુટર</value>
+    <comment>导出/页首和页脚</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
+    <value>હેઠળ</value>
+    <comment>导出/下</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
+    <value>ડાબો</value>
+    <comment>导出/左</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Right" xml:space="preserve">
+    <value>જમણો</value>
+    <comment>导出/右</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Text" xml:space="preserve">
+    <value>હાંસિયાઓ</value>
+    <comment>导出/边距</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
+    <value>ઉપર</value>
+    <comment>导出/上</comment>
+  </data>
+  <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
+    <value>દિશા</value>
+    <comment>导出/方向</comment>
+  </data>
+  <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
+    <value>ઊંચું</value>
+    <comment>导出/高</comment>
+  </data>
+  <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
+    <value>પાનાં માપ</value>
+    <comment>导出/页面大小</comment>
+  </data>
+  <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
+    <value>પહોળું</value>
+    <comment>导出/宽</comment>
+  </data>
+  <data name="Export.Title" xml:space="preserve">
+    <value>નિકાસ કરો</value>
+    <comment>导出/导出</comment>
+  </data>
+  <data name="Export.Type" xml:space="preserve">
+    <value>બંધારણ નિકાસ કરો</value>
+    <comment>导出/导出格式</comment>
+  </data>
+  <data name="Export.Types.HTML" xml:space="preserve">
+    <value>..HTML</value>
+    <comment>导出/HTML</comment>
+  </data>
+  <data name="Export.Types.Image" xml:space="preserve">
+    <value>ઇમેજ</value>
+    <comment>导出/Image</comment>
+  </data>
+  <data name="Export.Types.PDF" xml:space="preserve">
+    <value>..PDF</value>
+    <comment>导出/PDF</comment>
+  </data>
+  <data name="General.Application" xml:space="preserve">
+    <value>લાગુ કરો</value>
+    <comment>通用/应用</comment>
+  </data>
+  <data name="General.AutoSave.Description" xml:space="preserve">
+    <value>એકવાર ખોલ્યા પછી, જ્યારે ફાઇલમાં ફેરફાર થાય છે ત્યારે એપ્લિકેશન આપમેળે સેવ થાય છે</value>
+    <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
+  </data>
+  <data name="General.AutoSave.Title" xml:space="preserve">
+    <value>આપોઆપ સંગ્રહો</value>
+    <comment>通用/自动保存</comment>
+  </data>
+  <data name="General.Custom" xml:space="preserve">
+    <value>કસ્ટમાઇઝેશન</value>
+    <comment>通用/自定义</comment>
+  </data>
+  <data name="General.Data" xml:space="preserve">
+    <value>માહિતી</value>
+    <comment>通用/数据</comment>
+  </data>
+  <data name="General.KeepRun.Description" xml:space="preserve">
+    <value>વિન્ડોને બંધ કર્યા પછી પ્રક્રિયા રાખવી કે નહિં તે આગળની શરૂઆત ઝડપી બનાવે છે</value>
+    <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
+  </data>
+  <data name="General.KeepRun.Title" xml:space="preserve">
+    <value>ચલાવો</value>
+    <comment>通用/保持运行</comment>
+  </data>
+  <data name="General.Language.Description" xml:space="preserve">
+    <value>જે ભાષામાં એપ્લિકેશન પ્રદર્શિત થાય છે</value>
+    <comment>通用/应用显示的语言</comment>
+  </data>
+  <data name="General.Language.Title" xml:space="preserve">
+    <value>ભાષા</value>
+    <comment>通用/语言</comment>
+  </data>
+  <data name="General.RestoreDefault.Description" xml:space="preserve">
+    <value>એપ્લિકેશન મૂળભૂત ગોઠવણો પુનઃસંગ્રહો</value>
+    <comment>通用/还原应用默认设置</comment>
+  </data>
+  <data name="General.RestoreDefault.Title" xml:space="preserve">
+    <value>એપ્લિકેશનને પુન:સુયોજિત કરો</value>
+    <comment>通用/重置应用</comment>
+  </data>
+  <data name="General.ShortcutKeys.Description" xml:space="preserve">
+    <value>વૈવિધ્યપૂર્ણ ટૂંકાણ કીઓ</value>
+    <comment>通用/自定义快捷键</comment>
+  </data>
+  <data name="General.ShortcutKeys.Title" xml:space="preserve">
+    <value>ટૂંકાણ કી</value>
+    <comment>通用/快捷键</comment>
+  </data>
+  <data name="General.StartupAction.Description" xml:space="preserve">
+    <value>જ્યારે એપ્લિકેશન શરૂ થાય છે ત્યારે થતી ક્રિયા</value>
+    <comment>通用/当应用启动时进行的操作</comment>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
+    <value>નવી ફાઈલ બનાવો</value>
+    <comment>通用/新建文件</comment>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
+    <value>છેલ્લે વપરાયેલ ફાઇલ ખોલો</value>
+    <comment>通用/打开上次使用的文件</comment>
+  </data>
+  <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
+    <value>સ્પષ્ટ કરેલ ફોલ્ડર ખોલે છે</value>
+    <comment>通用/打开指定文件夹</comment>
+  </data>
+  <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
+    <value>છેલ્લે વપરાયેલ ફોલ્ડર ખોલો</value>
+    <comment>通用/打开上次使用的文件夹</comment>
+  </data>
+  <data name="General.StartupAction.Title" xml:space="preserve">
+    <value>ક્રિયા શરૂ કરો</value>
+    <comment>通用/启动操作</comment>
+  </data>
+  <data name="General.Title" xml:space="preserve">
+    <value>રુટીન</value>
+    <comment>通用/常规</comment>
+  </data>
+  <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
+    <value>પાથમાં નકલ કરો</value>
+    <comment>图片/复制到路径</comment>
+  </data>
+  <data name="Image.InsertActions.Upload" xml:space="preserve">
+    <value>ચિત્રને અપલોડ કરો</value>
+    <comment>图片/上传图片</comment>
+  </data>
+  <data name="Image.Title" xml:space="preserve">
+    <value>ઇમેજ</value>
+    <comment>图片/图片</comment>
+  </data>
+  <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
+    <value>અપલોડ રૂપરેખાંકનને ઉમેરો</value>
+    <comment>图片/添加上传配置</comment>
+  </data>
+  <data name="ImageUpload.Configs" xml:space="preserve">
+    <value>રૂપરેખાંકનને અપલોડ કરો</value>
+    <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.Method" xml:space="preserve">
+    <value>અપલોડ પદ્દતિ</value>
+    <comment>图片/上传方式</comment>
+  </data>
+  <data name="ImageUpload.Methods.FTP" xml:space="preserve">
+    <value>FTP</value>
+    <comment>图片/FTP</comment>
+  </data>
+  <data name="ImageUpload.Methods.Git" xml:space="preserve">
+    <value>Git</value>
+    <comment>图片/Git</comment>
+  </data>
+  <data name="ImageUpload.Methods.OSS" xml:space="preserve">
+    <value>OSS</value>
+    <comment>图片/OSS</comment>
+  </data>
+  <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+    <comment>图片/PowerShell</comment>
+  </data>
+  <data name="ImageUpload.Methods.SCP" xml:space="preserve">
+    <value>SCP</value>
+    <comment>图片/SCP</comment>
+  </data>
+  <data name="ImageUpload.Title" xml:space="preserve">
+    <value>ઇમેજ અપલોડ</value>
+    <comment>图片/图片上传</comment>
+  </data>
+  <data name="Shortcut.Title" xml:space="preserve">
+    <value>ટૂંકાણ કી</value>
+    <comment>快捷键</comment>
+  </data>
+  <data name="UploadConfig.Title" xml:space="preserve">
+    <value>રૂપરેખાંકનને અપલોડ કરો</value>
+    <comment>上传配置</comment>
+  </data>
+  <data name="View.AnimationEnable.Description" xml:space="preserve">
+    <value>ઝડપી પ્રત્યુત્તર માટે બંધ કરો</value>
+    <comment>视图/关闭可获得更快的响应速度</comment>
+  </data>
+  <data name="View.AnimationEnable.Title" xml:space="preserve">
+    <value>વિન્ડો એનિમેશન</value>
+    <comment>视图/窗口动画</comment>
+  </data>
+  <data name="View.AppCompactMode.Description" xml:space="preserve">
+    <value>મેનુ પટ્ટી એ જ લીટી પર હેડર તરીકે દેખાય છે</value>
+    <comment>视图/菜单栏与标题在同一行显示</comment>
+  </data>
+  <data name="View.AppCompactMode.Title" xml:space="preserve">
+    <value>કોમ્પેક્ટ સ્થિતિ</value>
+    <comment>视图/紧凑模式</comment>
+  </data>
+  <data name="View.AppTheme.Dark" xml:space="preserve">
+    <value>અંધારું</value>
+    <comment>视图/深色</comment>
+  </data>
+  <data name="View.AppTheme.Description" xml:space="preserve">
+    <value>તમે જે એપ્લિકેશન થીમ પ્રદર્શિત કરવા માંગો તે પસંદ કરો</value>
+    <comment>视图/选择要显示的应用主题</comment>
+  </data>
+  <data name="View.AppTheme.Light" xml:space="preserve">
+    <value>દીપ</value>
+    <comment>视图/浅色</comment>
+  </data>
+  <data name="View.AppTheme.Title" xml:space="preserve">
+    <value>થીમ લાગુ કરો</value>
+    <comment>视图/应用主题</comment>
+  </data>
+  <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
+    <value>સંબંધિત પાથો પહેલાં "./" ઉમેરો</value>
+    <comment>图片/相对路径前添加 "./"</comment>
+  </data>
+  <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
+    <value>આપમેળે ચિત્રોની નકલ કરો કે જે સંબંધિત પાથોને વાપરે છે જ્યારે ફાઇલ તરીકે સંગ્રહી રહ્યા છે</value>
+    <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
+  </data>
+  <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
+    <value>આપમેળે ચિત્રોની નકલ કરો</value>
+    <comment>图片/自动复制图片</comment>
+  </data>
+  <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
+    <value>આપમેળે ચોક્કસ અક્ષરોને URLs માં એનકોડ કરો</value>
+    <comment>图片/自动对URL中的特殊字符进行编码</comment>
+  </data>
+  <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
+    <value>જ્યારે દાખલ થયેલ હોય ત્યારે ઇમેજ URL માંથી આપમેળે બહાર નીકળી જાઓ</value>
+    <comment>图片/插入时自动转义图片URL</comment>
+  </data>
+  <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
+    <value>અસંગ્રહિત ફાઇલો અથવા ક્લિપબોર્ડ ચિત્રો મૂળભૂત રીતે ચિત્ર રુટ ડિરેક્ટરીને વાપરે છે</value>
+    <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
+  </data>
+  <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
+    <value>મૂળભૂત ચિત્ર રુટ</value>
+    <comment>图片/默认图片根目录</comment>
+  </data>
+  <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
+    <value>તેમાં ક્લિપબોર્ડ ચિત્રની નકલ કરો</value>
+    <comment>图片/复制剪贴板图片到</comment>
+  </data>
+  <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
+    <value>ક્લિપબોર્ડ ચિત્ર ફાઇલો અને વેબ ઇમેજોનો સમાવેશ થતો નથી</value>
+    <comment>图片/不包括剪贴板图片文件</comment>
+  </data>
+  <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
+    <value>ક્લિપબોર્ડ ચિત્ર</value>
+    <comment>图片/剪贴板图片</comment>
+  </data>
+  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
+    <value>ક્લિપબોર્ડ ઇમેજો અપલોડની મદદથી રૂપરેખાંકિત થયેલ છે</value>
+    <comment>图片/剪贴板图片使用上传配置</comment>
+  </data>
+  <data name="View.Image.InsertAction.Description" xml:space="preserve">
+    <value>જ્યારે ચિત્ર દાખલ થયેલ હોય ત્યારે લેવાની ક્રિયા</value>
+    <comment>图片/当插入图片时执行的操作</comment>
+  </data>
+  <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
+    <value>સ્થાનિક ચિત્રની આમાં નકલ કરો</value>
+    <comment>图片/复制本地图片到</comment>
+  </data>
+  <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
+    <value>સ્થાનિક ચિત્રો</value>
+    <comment>图片/本地图片</comment>
+  </data>
+  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
+    <value>સ્થાનિક ચિત્રો અપલોડ રૂપરેખાંકનને વાપરે છે</value>
+    <comment>图片/本地图片使用上传配置</comment>
+  </data>
+  <data name="View.Image.InsertAction.Title" xml:space="preserve">
+    <value>ચિત્ર દાખલ કરવાની ક્રિયા</value>
+    <comment>图片/图片插入操作</comment>
+  </data>
+  <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
+    <value>તેમાં નેટવર્ક ચિત્રની નકલ કરો</value>
+    <comment>图片/复制网络图片到</comment>
+  </data>
+  <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
+    <value>વેબ ચિત્રો</value>
+    <comment>图片/网络图片</comment>
+  </data>
+  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
+    <value>વેબ ચિત્રો અપલોડ રૂપરેખાંકનનો ઉપયોગ કરે છે</value>
+    <comment>图片/网络图片使用上传配置</comment>
+  </data>
+  <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
+    <value>સંબંધિત પાથો એ પ્રાધાન્ય થયેલ છે જ્યારે ચિત્રોને દાખલ કરી રહ્યા હોય</value>
+    <comment>图片/插入图片时优先采用相对路径</comment>
+  </data>
+  <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
+    <value>સંબંધિત પાથો પસંદ થયેલ છે</value>
+    <comment>图片/优先使用相对路径</comment>
+  </data>
+  <data name="View.Image.Upload" xml:space="preserve">
+    <value>ઇમેજ અપલોડ</value>
+    <comment>图片/图片上传</comment>
+  </data>
+  <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
+    <value>ચિત્ર અપલોડ પદ્દતિને સુયોજિત કરો</value>
+    <comment>图片/设置图片上传方式</comment>
+  </data>
+  <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
+    <value>ચિત્ર અપલોડ રૂપરેખાંકન</value>
+    <comment>图片/图片上传配置</comment>
+  </data>
+  <data name="View.Layout" xml:space="preserve">
+    <value>લેઆઉટ</value>
+    <comment>视图/布局</comment>
+  </data>
+  <data name="View.SidePaneOpen.Description" xml:space="preserve">
+    <value>પસંદ કરો કે શું બાજુપટ્ટીને દર્શાવવી કે નહિં</value>
+    <comment>视图/选择是否显示侧栏</comment>
+  </data>
+  <data name="View.SidePaneOpen.Title" xml:space="preserve">
+    <value>બાજુપટ્ટીને દર્શાવે છે</value>
+    <comment>视图/显示侧栏</comment>
+  </data>
+  <data name="View.StatusBarOpen.Description" xml:space="preserve">
+    <value>પસંદ કરો ક્યાંતો નીચેની પરિસ્થિતિદર્શક પટ્ટીને દર્શાવવી કે નહિં</value>
+    <comment>视图/选择是否显示底部状态栏</comment>
+  </data>
+  <data name="View.StatusBarOpen.Title" xml:space="preserve">
+    <value>પરિસ્થિતિદર્શક પટ્ટીને દર્શાવે છે</value>
+    <comment>视图/显示状态栏</comment>
+  </data>
+  <data name="View.Title" xml:space="preserve">
+    <value>દેખાવ</value>
+    <comment>视图/外观</comment>
+  </data>
+  <data name="View.Topmost.Description" xml:space="preserve">
+    <value>વિન્ડોને હંમેશા ટોચ પર રાખો</value>
+    <comment>视图/使窗口始终在顶部</comment>
+  </data>
+  <data name="View.Topmost.Title" xml:space="preserve">
+    <value>ટોચના સ્તર પર</value>
+    <comment>视图/置于顶层</comment>
+  </data>
+  <data name="View.UseMicaMaterial.Description" xml:space="preserve">
+    <value>જ્યારે ચાલુ કરવામાં આવે, ત્યારે વિન્ડોના પાશ્વભાગને અબરખની પાશ્વ ભાગની અસર છે</value>
+    <comment>视图/开启后窗口背景具有云母背景效果</comment>
+  </data>
+  <data name="View.UseMicaMaterial.Title" xml:space="preserve">
+    <value>અબરખની સામગ્રીનો ઉપયોગ કરો</value>
+    <comment>视图/使用云母材质</comment>
+  </data>
+  <data name="View.Window" xml:space="preserve">
+    <value>બારી</value>
+    <comment>视图/窗口</comment>
+  </data>
+</root>

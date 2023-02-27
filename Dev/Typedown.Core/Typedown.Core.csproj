@@ -768,6 +768,972 @@
   <ItemGroup>
     <Content Include="Images\logo.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\as\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\as\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\az-arab\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\az-arab\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bg\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bg\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bn\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bn\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bs\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bs\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ca\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ca\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cs\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cs\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cy\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cy\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\da\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\da\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\de\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\de\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\el\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\el\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\en\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\en\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\es\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\es\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\et\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\et\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fa\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fa\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fi\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fil\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fil\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr-CA\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr-CA\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ga\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ga\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gu\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gu\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\he\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\he\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hi\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hr\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hu\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hu\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hy\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hy\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\id\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\id\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\is\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\is\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\it\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\it\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\iu-cans\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\iu-cans\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\iu-Latn\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\iu-Latn\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ja\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ja\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kk\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\km\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\km\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kn\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kn\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ko\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ko\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ku-arab\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ku-arab\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ky-kg\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ky-kg\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lo\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lo\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lt\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lt\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lv\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lv\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mg\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mg\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mi\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mk\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ml\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ml\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mn-Cyrl\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mn-Cyrl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mn-Mong\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mn-Mong\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mr\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ms\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ms\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mt\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mt\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nb\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nb\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ne\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ne\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nl\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\or\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\or\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pa\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pa\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pl\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\prs\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\prs\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt-PT\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt-PT\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ro\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ro\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ru\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ru\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sk\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sl\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sq\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sq\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sv\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sv\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sw\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sw\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ta\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ta\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\te\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\te\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\th\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\th\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ti\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ti\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tk-cyrl\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tk-cyrl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tr\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tr\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tt-arab\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tt-arab\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ug-arab\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ug-arab\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uk\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uk\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ur\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ur\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\vi\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\vi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hant\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hant\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\af\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\af\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\am\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\am\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ar\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ar\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\af\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\af\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\am\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\am\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ar\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ar\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\as\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\as\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bg\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bg\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bn\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bn\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bs\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\bs\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ca\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ca\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cs\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cs\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cy\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\cy\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\da\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\da\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\de\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\de\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\el\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\el\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\en\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\en\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\es\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\es\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\et\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\et\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\eu\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\eu\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\eu\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\eu\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fa\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fa\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fi\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fi\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fil\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fil\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\fr\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ga\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ga\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gl\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gl\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gl\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gl\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gu\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\gu\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\he\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\he\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hi\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hi\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hr\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hr\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hu\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hu\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hy\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\hy\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\id\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\id\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\is\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\is\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\it\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\it\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ja\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ja\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ka\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ka\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ka\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ka\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kk\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kk\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\km\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\km\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kn\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\kn\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ko\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ko\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lo\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lo\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lt\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lt\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lv\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\lv\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mi\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mi\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mk\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mk\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ml\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ml\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mr\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mr\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ms\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ms\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mt\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\mt\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nb\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nb\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ne\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ne\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nl\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\nl\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\or\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\or\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pa\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pa\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pl\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pl\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\prs\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\prs\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\pt\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ro\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ro\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ru\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ru\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sk\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sk\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sl\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sl\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sq\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sq\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sr-Latn\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sr-Latn\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sr-Latn\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sr-Latn\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sv\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sv\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sw\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\sw\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ta\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ta\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\te\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\te\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\th\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\th\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ti\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ti\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tr\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\tr\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uk\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uk\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ur\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\ur\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uz\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uz\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uz\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\uz\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\vi\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\vi\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hant\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zh-Hant\SettingsResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zu\CommonResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zu\DialogResources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zu\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Resources\Strings\zu\SettingsResources.resw" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
