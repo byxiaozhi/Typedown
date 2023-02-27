@@ -206,7 +206,7 @@
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>Column</value>
+    <value>Columns</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
@@ -530,7 +530,7 @@
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Rows</value>
+    <value>Line</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
@@ -538,7 +538,7 @@
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Line</value>
+    <value>Lines</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
@@ -602,7 +602,7 @@
     <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
-    <value>No Action</value>
+    <value>No action</value>
     <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
@@ -638,7 +638,7 @@
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>Open Folder</value>
+    <value>Open folder</value>
     <comment>文件/打开文件夹</comment>
   </data>
   <data name="OpenImageLocation" xml:space="preserve">
@@ -730,7 +730,7 @@
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Line</value>
+    <value>Rows</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
