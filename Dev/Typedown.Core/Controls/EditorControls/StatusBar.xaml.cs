@@ -29,5 +29,9 @@ namespace Typedown.Core.Controls
         {
             this.InitializeComponent();
         }
+
+        private string CharacterUnit(int number) => number != 1 ? Locale.GetString("Characters") : Locale.GetString("Character");
+
+        private string WordUnit(int number) => number != 1 ? Locale.GetString("Words") : Locale.GetString("Word");
     }
 }
