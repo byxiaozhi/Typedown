@@ -1,7 +1,4 @@
-﻿using System.Text;
-using TranslationTool;
-
-Console.OutputEncoding = Encoding.UTF8;
+﻿using TranslationTool;
 
 var zhInputs = TextResource.ReadItems(@"C:\Users\12283\Documents\GitHub\Typedown\Dev\Typedown.Core\Resources\Strings\zh-Hans\").ToList();
 var enInputs = TextResource.ReadItems(@"C:\Users\12283\Documents\GitHub\Typedown\Dev\Typedown.Core\Resources\Strings\en\").ToList();
@@ -10,13 +7,11 @@ dictionary = dictionary.Merge(zhInputs, "zh-Hans").ToList();
 dictionary = dictionary.Merge(enInputs, "en").ToList();
 dictionary.WriteItems(@"C:\Users\12283\Documents\GitHub\Typedown\Tools\TranslationTool\Dictionary\");
 
-var manualLangs = new List<string>() { "en", "ja", "ko", "ru", "fr", "de", "es", "it", "nl", "ar" };
-var batch = 50;
-foreach (var lang in manualLangs)
+foreach (var lang in TextDictionary.SupportedLangs.Keys.Where(x => x == "ja"))
 {
     while (true)
     {
-        var inputs = dictionary.Where(x => !x.Values.ContainsKey(lang) || string.IsNullOrEmpty(x.Values[lang])).Take(batch--).ToList();
+        var inputs = dictionary.Where(x => !x.Values.ContainsKey(lang) || string.IsNullOrEmpty(x.Values[lang])).Take(30).ToList();
         if (!inputs.Any())
             break;
 
@@ -24,11 +19,11 @@ foreach (var lang in manualLangs)
 
         Console.WriteLine("相同位置的待翻译文本为同义词，输入输出均以竖线\"|\"分割，并且一一对应\n");
 
-        var zhWords = inputs.Select(x => zhInputs.Single(y => (x.Table, x.Name) == (y.Table, y.Name))).Select(x => x.Value).ToList();
-        Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs["zh-Hans"]})：" + string.Join("|", zhWords));
+        Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs["en"]})：" + string.Join("|", enWords));
         Console.WriteLine();
 
-        Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs["en"]})：" + string.Join("|", enWords));
+        var zhWords = inputs.Select(x => zhInputs.Single(y => (x.Table, x.Name) == (y.Table, y.Name))).Select(x => x.Value).ToList();
+        Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs["zh-Hans"]})：" + string.Join("|", zhWords));
         Console.WriteLine();
 
         Console.WriteLine($"翻译结果({TextDictionary.SupportedLangs[lang]})：");
@@ -62,7 +57,7 @@ foreach (var lang in manualLangs)
 //            inputs[i].Values[resultDic.Key] = resultDic.Value;
 //        }
 //    }
-//    dictionary.WriteItems(@"C:\Users\12283\Documents\GitHub\Typedown\Tools\TranslationTool\TempDictionary\");
+//    dictionary.WriteItems(@"C:\Users\12283\Documents\GitHub\Typedown\Tools\TranslationTool\Dictionary\");
 //    Console.WriteLine(lang);
 //}
 
