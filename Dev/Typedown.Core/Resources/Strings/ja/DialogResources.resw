@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AsKToSaveContent" xml:space="preserve">
-    <value>未保存の変更があります</value>
+    <value>未保存の変更があります。</value>
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>変更を保存しますか?</value>
+    <value>変更を保存しますか？</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,11 +130,11 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>確かですか</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>コンテンツを空にすることはできません</value>
+    <value>コンテンツが空であることはできません</value>
     <comment>对话框/内容不能为空</comment>
   </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>创建文件夹对话框/新建文件夹失败</comment>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>削除</value>
+    <value>Delete</value>
     <comment>恢复文件对话框/删除</comment>
   </data>
   <data name="Don'tSave" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>間違い</value>
+    <value>エラー</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>表を挿入する</value>
+    <value>表の挿入</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,23 +178,23 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>確かですか</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>読み取りに失敗しました</value>
+    <value>読み込みに失敗しました</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>回復する</value>
+    <value>復元する</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
-    <value>このファイルを保存していません</value>
+    <value>このファイルは保存されていません</value>
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>ファイルを回復しますか?</value>
+    <value>ファイルを復元しますか？</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
@@ -202,7 +202,7 @@
     <comment>表格对话框/调整表格</comment>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>セーブ</value>
+    <value>保存する</value>
     <comment>文件保存对话框/保存</comment>
   </data>
   <data name="SaveErrorTitle" xml:space="preserve">
@@ -210,19 +210,19 @@
     <comment>文件保存对话框/保存失败</comment>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value>送信</value>
+    <value>提出する</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>送信は成功しました</value>
+    <value>提出が成功しました</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>ソフトウェアを正しく実行するには、WebView2ランタイムをインストールする必要があります。</value>
+    <value>このソフトウェアを正しく実行するには WebView2ランタイムをインストールする必要があります。</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>WebView2 ランタイムがインストールされていない</value>
+    <value>WebView2ランタイムがインストールされていません</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

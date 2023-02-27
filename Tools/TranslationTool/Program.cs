@@ -11,7 +11,7 @@ foreach (var lang in TextDictionary.SupportedLangs.Keys.Where(x => x == "ja"))
 {
     while (true)
     {
-        var inputs = dictionary.Where(x => !x.Values.ContainsKey(lang) || string.IsNullOrEmpty(x.Values[lang])).Take(10).ToList();
+        var inputs = dictionary.Where(x => !x.Values.ContainsKey(lang) || string.IsNullOrEmpty(x.Values[lang])).Take(30).ToList();
         if (!inputs.Any())
             break;
 

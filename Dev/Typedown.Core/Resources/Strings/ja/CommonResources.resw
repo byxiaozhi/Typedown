@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>增</value>
+    <value>追加する</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>センターアライメント</value>
+    <value>中央揃え</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
@@ -134,7 +134,7 @@
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
-    <value>すべての</value>
+    <value>すべて</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
@@ -146,19 +146,19 @@
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>帰る</value>
+    <value>戻る</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
-    <value>ブラウズ。。。</value>
+    <value>参照...</value>
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>フォルダを参照する</value>
+    <value>フォルダを参照...</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>ローカルファイルを参照する</value>
+    <value>ローカルファイルを参照...</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -170,31 +170,31 @@
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>言葉</value>
+    <value>文字</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>言葉</value>
+    <value>文字</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>チャート</value>
+    <value>グラフ</value>
     <comment>图表</comment>
   </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>スタイルをクリアする</value>
+    <value>書式をクリア</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>最近使ったファイルをクリアする</value>
+    <value>最近のファイルをクリア</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>[画像を追加]をクリックします。</value>
+    <value>画像を追加するにはクリックしてください</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>シャットダウン</value>
+    <value>閉じる</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
@@ -202,27 +202,27 @@
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>コード ブロック</value>
+    <value>コードブロック</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>コラム</value>
+    <value>列</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>写し</value>
+    <value>コピー</value>
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>HTML コードとしてコピー</value>
+    <value>HTML としてコピー</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
-    <value>マークダウンとしてコピー</value>
+    <value>Markdown としてコピー</value>
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>ファイルアドレスをコピーする</value>
+    <value>パスとしてコピー</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
@@ -234,7 +234,7 @@
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
-    <value>コピー/貼り付け...</value>
+    <value>コピー/貼り付けする...</value>
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
@@ -242,27 +242,27 @@
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>創造する</value>
+    <value>作成</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+[リンクを開く]をクリックします</value>
+    <value>Ctrl + クリックしてリンクを開く</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>カスタマイズ</value>
+    <value>カスタム</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>カスタム ショートカット キー</value>
+    <value>カスタムショートカット</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>剪断</value>
+    <value>切り取り</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
-    <value>暗い</value>
+    <value>ダーク</value>
     <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
@@ -270,7 +270,7 @@
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>タイトルレベルを下げる</value>
+    <value>見出しレベルを下げる</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
@@ -286,7 +286,7 @@
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>繰り返す</value>
+    <value>複製</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
@@ -294,27 +294,31 @@
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>画像を編集する</value>
+    <value>画像を編集</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>編集者</value>
+    <value>エディター</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>埋め込みリンク</value>
+    <value>リンクを埋め込む</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
     <value>イタリック</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>有効にする</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
-    <value>間違い</value>
+    <value>エラー</value>
     <comment>错误</comment>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>輸出</value>
+    <value>エクスポート</value>
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
@@ -322,7 +326,7 @@
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>PDF にエクスポート</value>
+    <value>PDF としてエクスポート</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
@@ -338,23 +342,23 @@
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
-    <value>見付ける</value>
+    <value>検索</value>
     <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
-    <value>検索と置換</value>
+    <value>検索して置換</value>
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>次のものを見つける</value>
+    <value>次を検索</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>前のものを見つける</value>
+    <value>前を検索</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
-    <value>フローチャート</value>
+    <value>Flow Chart</value>
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
@@ -362,7 +366,7 @@
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>フォルダ</value>
+    <value>フォルダー</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
@@ -370,7 +374,7 @@
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
-    <value>文字サイズ</value>
+    <value>フォントサイズ</value>
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
@@ -378,7 +382,7 @@
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>脚注タグ [^{識別子}] が見つかりません:</value>
+    <value>脚注マーカーが見つかりませんでした [^{identifier}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
@@ -386,43 +390,43 @@
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>コードの書式を設定する</value>
+    <value>形式コード</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
-    <value>全般</value>
+    <value>一般</value>
     <comment>通用</comment>
   </data>
   <data name="GoTo" xml:space="preserve">
-    <value>行きます</value>
+    <value>移動</value>
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>タイトル</value>
+    <value>見出し</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>第 1 レベルの見出し</value>
+    <value>見出し1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>第 2 レベルの見出し</value>
+    <value>見出し2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>3 レベルの見出し</value>
+    <value>見出し3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>4 レベルの見出し</value>
+    <value>見出し4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>5 レベルの見出し</value>
+    <value>見出し5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>6 レベルの見出し</value>
+    <value>見出し6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -434,7 +438,7 @@
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>水平分割線</value>
+    <value>水平線</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
@@ -446,15 +450,15 @@
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
-    <value>代替</value>
+    <value>Alt</value>
     <comment>Img标签Alt属性</comment>
   </data>
   <data name="Import" xml:space="preserve">
-    <value>輸入</value>
+    <value>インポート</value>
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>タイトル レベルを上げる</value>
+    <value>見出しレベルを上げる</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -462,7 +466,7 @@
     <comment>内联</comment>
   </data>
   <data name="InlineCode" xml:space="preserve">
-    <value>インライン コード</value>
+    <value>インラインコード</value>
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
@@ -470,39 +474,39 @@
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>脚注の定義を入力してください...</value>
+    <value>脚注定義の入力...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>言語識別子を入力してください...</value>
+    <value>入力言語識別子...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>数式を入力してください...</value>
+    <value>数式を入力する...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>YAMLフロントマターを入力してください...</value>
+    <value>YAML Front Matterを入力する...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>左側に列を挿入する</value>
+    <value>左に列を挿入</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>右側に列を挿入する</value>
+    <value>右に列を挿入</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>画像を挿入する</value>
+    <value>画像を挿入</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>下に段落を挿入する</value>
+    <value>後に段落を挿入</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>上に段落を挿入する</value>
+    <value>前に段落を挿入</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
@@ -510,7 +514,7 @@
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>下に行を挿入する</value>
+    <value>下に行を挿入</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
@@ -518,15 +522,15 @@
     <comment>设置/语言</comment>
   </data>
   <data name="LearnMore" xml:space="preserve">
-    <value>詳細情報</value>
+    <value>詳細を学ぶ</value>
     <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>光</value>
+    <value>明るい</value>
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>はい</value>
+    <value>行</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
@@ -534,7 +538,7 @@
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>はい</value>
+    <value>行</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
@@ -546,7 +550,7 @@
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
-    <value>数学</value>
+    <value>数式</value>
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
@@ -554,7 +558,7 @@
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>最大化する</value>
+    <value>最大化</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
@@ -562,11 +566,11 @@
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
-    <value>人魚</value>
+    <value>Mermaid</value>
     <comment>Mermaid</comment>
   </data>
   <data name="Minimize" xml:space="preserve">
-    <value>最小化する</value>
+    <value>最小化</value>
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
@@ -582,19 +586,19 @@
     <comment>名称</comment>
   </data>
   <data name="New" xml:space="preserve">
-    <value>新築</value>
+    <value>新規</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>新しいファイルを作成する</value>
+    <value>新しいファイル</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>新しいフォルダを作成する</value>
+    <value>新しいフォルダ</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
-    <value>新しいウィンドウ</value>
+    <value>新規ウィンドウ</value>
     <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
@@ -602,31 +606,31 @@
     <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
-    <value>エクスポート構成なし</value>
+    <value>エクスポート設定なし</value>
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>じゃない</value>
+    <value>なし</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
-    <value>最近使ったファイルはありません</value>
+    <value>最近のファイルなし</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
   <data name="Off" xml:space="preserve">
-    <value>閉める</value>
+    <value>閉じる</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>確かですか</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>開ける</value>
+    <value>オン</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>開けて下さい</value>
+    <value>開く</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
@@ -637,12 +641,16 @@
     <value>フォルダを開く</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>画像の場所を開く</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
     <value>新しいウィンドウで開く</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
-    <value>最近使った項目を開く</value>
+    <value>最近開いたもの</value>
     <comment>文件/打开最近</comment>
   </data>
   <data name="OpenSourceSoftware" xml:space="preserve">
@@ -654,7 +662,7 @@
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
-    <value>概要</value>
+    <value>アウトライン</value>
     <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
@@ -662,7 +670,7 @@
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>スティックアップ</value>
+    <value>貼り付け</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
@@ -678,7 +686,7 @@
     <comment>PlantUML Diagram</comment>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>プリント</value>
+    <value>印刷</value>
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
@@ -686,47 +694,47 @@
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>スコア</value>
+    <value>評価</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
-    <value>やり直す</value>
+    <value>やり直し</value>
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>列を削除する</value>
+    <value>列を削除</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>行を削除する</value>
+    <value>行を削除</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>改名する</value>
+    <value>名前を変更する</value>
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>交換</value>
+    <value>置換</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
-    <value>すべて置換</value>
+    <value>全置換</value>
     <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
-    <value>テーブルのサイズを変更する</value>
+    <value>表のサイズを変更する</value>
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>戻す</value>
+    <value>復元</value>
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>はい</value>
+    <value>ライン</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>セーブ</value>
+    <value>保存</value>
     <comment>文件/保存</comment>
   </data>
   <data name="SaveAs" xml:space="preserve">
@@ -734,11 +742,11 @@
     <comment>文件/另存为</comment>
   </data>
   <data name="Saved" xml:space="preserve">
-    <value>保存</value>
+    <value>保存されました</value>
     <comment>文件/已保存</comment>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>捜索</value>
+    <value>検索</value>
     <comment>搜索</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">
@@ -746,19 +754,19 @@
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>ファイルを選択</value>
+    <value>ファイルを選択する</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
-    <value>シーケンス図</value>
+    <value>Sequence Diagram</value>
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>並べる</value>
+    <value>設定</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>ショートカットキー</value>
+    <value>ショートカット</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
@@ -774,7 +782,7 @@
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>やめて</value>
+    <value>停止</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -782,19 +790,19 @@
     <comment>格式/删除线</comment>
   </data>
   <data name="Strong" xml:space="preserve">
-    <value>ボールド</value>
+    <value>太字</value>
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>形</value>
+    <value>テーブル</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
-    <value>タスク リスト</value>
+    <value>タスクリスト</value>
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>話題</value>
+    <value>テーマ</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
@@ -802,15 +810,15 @@
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>コンテンツ カタログ</value>
+    <value>目次</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>トータル</value>
+    <value>合計</value>
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>変換先</value>
+    <value>に変換</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
@@ -818,15 +826,15 @@
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
-    <value>アンダーライン</value>
+    <value>下線</value>
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>破棄</value>
+    <value>アンドゥ</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>順序なしリスト</value>
+    <value>箇条書き</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
@@ -834,7 +842,7 @@
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>通常のマッチング</value>
+    <value>正規表現にマッチ</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
@@ -842,39 +850,39 @@
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
-    <value>ベガチャート</value>
+    <value>Vega Chart</value>
     <comment>Vega Chart</comment>
   </data>
   <data name="View" xml:space="preserve">
-    <value>眺める</value>
+    <value>表示する</value>
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>敷地</value>
+    <value>ウェブサイト</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
-    <value>言葉全文</value>
+    <value>全単語</value>
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
-    <value>窓</value>
+    <value>ウィンドウ</value>
     <comment>窗口</comment>
   </data>
   <data name="Word" xml:space="preserve">
-    <value>言葉</value>
+    <value>単語</value>
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
-    <value>単語数</value>
+    <value>ワード数</value>
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>言葉</value>
+    <value>単語</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">
-    <value>YAML フロントマター</value>
+    <value>YAMLフロントマター</value>
     <comment>YAML Front Matter</comment>
   </data>
   <data name="Zoom" xml:space="preserve">

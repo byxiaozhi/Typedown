@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>アプリケーションについて</value>
+    <value>アプリについて</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>ストアページ</value>
+    <value>Microsoftストアページ</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
-    <value>オープンソースソフトウェアに基づく</value>
+    <value>オープンソースソフトウェアを基にした</value>
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
-    <value>WYSIWYG マークダウン エディター</value>
+    <value>WYSIWYG Markdownエディター</value>
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
-    <value>フィードバックの送信</value>
+    <value>フィードバックを送信する</value>
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>接触</value>
+    <value>連絡先</value>
     <comment>关于/联系方式</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>電子メール</value>
+    <value>メール</value>
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>私たちはあなたが記入するコンテンツを大切にします</value>
+    <value>お客様のフィードバックを真摯に受け止めます</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>について</value>
+    <value>アプリについて</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>閉じ引用符は、左括弧を入力すると自動的に補完されます</value>
+    <value>左引用符が入力されたときに右引用符を自動補完する</value>
     <comment>编辑器/输入左括号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>オートコンプリート括弧</value>
+    <value>括弧を自動補完する</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>マークダウンタグに一致するオートコンプリート</value>
+    <value>マッチするMarkdownタグを自動補完する</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>マークダウンタグのオートコンプリート</value>
+    <value>Markdownタグを自動補完する</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>閉じ引用符は、開始引用符を入力すると自動的に補完されます。</value>
+    <value>左引用符が入力されたときに右引用符を自動補完する</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>オートコンプリート引用符</value>
+    <value>引用符を自動補完する</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
@@ -182,11 +182,11 @@
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>デフォルトでコンテンツをコピー/カット</value>
+    <value>デフォルトのコピー/カットコンテンツ</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>エディター コンテンツの最大幅</value>
+    <value>エディタコンテンツの最大幅</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,19 +194,19 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>延ばす</value>
+    <value>拡張機能</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>エディターの既定のフォント サイズ</value>
+    <value>エディタのデフォルトフォントサイズ</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
-    <value>文字サイズ</value>
+    <value>フォントサイズ</value>
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>エディター行の高倍数</value>
+    <value>エディタ行の高さの倍数</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -214,7 +214,7 @@
     <comment>编辑器/行高</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Description" xml:space="preserve">
-    <value>構文エラーを見つけて強調表示する</value>
+    <value>構文エラーを検索して強調表示する</value>
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
@@ -234,51 +234,55 @@
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>参照とリストの既定のインデント領域を調整する</value>
+    <value>引用とリストのデフォルトインデントスペースを調整する</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
-    <value>デフォルトのインデント</value>
+    <value>デフォルトインデント</value>
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>編集者</value>
+    <value>エディタ</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
-    <value>エクスポート形式とスタイルのカスタマイズ</value>
+    <value>エクスポート形式とスタイルをカスタマイズする</value>
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>エクスポート構成の追加</value>
+    <value>エクスポート設定を追加する</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>構成をエクスポートする</value>
+    <value>エクスポート設定</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>エクスポートファイルタイプ</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>エクスポートが完了したら、エクスポートが配置されているフォルダーを開きます</value>
+    <value>エクスポート後にフォルダを開く</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>横</value>
+    <value>横向き</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>経度の</value>
+    <value>縦向き</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>ページ フッター</value>
+    <value>フッター</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>ページのトップへ</value>
+    <value>ヘッダー</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>上部とフッター</value>
+    <value>ヘッダーとフッター</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
@@ -306,7 +310,7 @@
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>高い</value>
+    <value>高さ</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,19 +318,19 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>広い</value>
+    <value>幅</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
-    <value>輸出</value>
+    <value>エクスポート</value>
     <comment>导出/导出</comment>
   </data>
   <data name="Export.Type" xml:space="preserve">
-    <value>エクスポート形式</value>
+    <value>エクスポートフォーマット</value>
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>。.HTML</value>
+    <value>HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,15 +338,15 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>。.PDF</value>
+    <value>PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>申し込む</value>
+    <value>アプリケーション</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>開くと、ファイルが変更されるとアプリが自動的に保存されます</value>
+    <value>ファイルが変更されたときに自動的に保存する</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,7 +354,7 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>カスタマイズ</value>
+    <value>カスタム</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
@@ -358,15 +362,15 @@
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>ウィンドウを閉じた後もプロセスを保持するかどうかは、次の起動を加速します</value>
+    <value>ウィンドウを閉じてもプロセスを維持する</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
-    <value>走り続ける</value>
+    <value>起動し続ける</value>
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>アプリが表示される言語</value>
+    <value>アプリケーション言語</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,27 +378,27 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>アプリのデフォルト設定を復元する</value>
+    <value>アプリケーションのデフォルト設定を復元する</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>アプリをリセットする</value>
+    <value>アプリをリセット</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>カスタム ショートカット キー</value>
+    <value>カスタムショートカット</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>ショートカットキー</value>
+    <value>ショートカット</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>アプリの起動時に発生するアクション</value>
+    <value>アプリケーション起動時のアクション</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>新しいファイルを作成する</value>
+    <value>新規ファイル</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
@@ -402,7 +406,7 @@
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>指定したフォルダを開きます。</value>
+    <value>指定されたフォルダを開く</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
@@ -410,11 +414,11 @@
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>アクションを開始する</value>
+    <value>スタートアップ</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>ルーチン</value>
+    <value>一般</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>画像をアップロードする</value>
+    <value>画像をアップロード</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -430,51 +434,71 @@
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>アップロード設定を追加する</value>
+    <value>アップロード設定を追加</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>構成をアップロードする</value>
+    <value>アップロード設定</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>設定を削除する</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>ファイルからインポート</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>アップロード方法</value>
     <comment>图片/上传方式</comment>
   </data>
   <data name="ImageUpload.Methods.FTP" xml:space="preserve">
-    <value>ティッカー</value>
+    <value>FTP</value>
     <comment>图片/FTP</comment>
   </data>
   <data name="ImageUpload.Methods.Git" xml:space="preserve">
-    <value>ギット</value>
+    <value>Git</value>
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>ティッカー</value>
+    <value>OSS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
-    <value>ティッカー</value>
+    <value>PowerShell</value>
     <comment>图片/PowerShell</comment>
   </data>
   <data name="ImageUpload.Methods.SCP" xml:space="preserve">
-    <value>パソコン</value>
+    <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>ピッカーファイル</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>ファイルに保存</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>アップロードをテストする</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>画像のアップロード</value>
+    <value>画像をアップロードする</value>
     <comment>图片/图片上传</comment>
   </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>ショートカットキー</value>
+    <value>ショートカット</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>構成をアップロードする</value>
+    <value>アップロード設定</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>応答を高速化するためにオフにする</value>
+    <value>より高速なレスポンスのために閉じる</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
@@ -482,7 +506,7 @@
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>メニューバーはヘッダーと同じ行に表示されます</value>
+    <value>メニューバーとタイトルを同じ行に表示する</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -490,27 +514,27 @@
     <comment>视图/紧凑模式</comment>
   </data>
   <data name="View.AppTheme.Dark" xml:space="preserve">
-    <value>暗い</value>
+    <value>Dark</value>
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>表示するアプリのテーマを選択します</value>
+    <value>アプリのテーマとして表示するものを選択します</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>光</value>
+    <value>Light</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>テーマを適用する</value>
+    <value>アプリのテーマ</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>相対パスの前に "./" を追加します</value>
+    <value>相対パスの前に"./"を付ける</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>ファイルとして保存するときに相対パスを使用する画像を自動的にコピーする</value>
+    <value>ファイルとして保存する際に相対パスで使用される画像を自動的にコピーします</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
@@ -518,27 +542,27 @@
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
-    <value>URL 内の特殊文字を自動的にエンコードする</value>
+    <value>URL内の特殊文字を自動的にエンコードする</value>
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>挿入時に画像のURLを自動的にエスケープする</value>
+    <value>挿入する際に画像URLを自動的にエスケープする</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>保存されていないファイルまたはクリップボードの画像は、デフォルトで画像のルートディレクトリを使用します</value>
+    <value>保存されていないファイルまたはクリップボードの画像にデフォルトの画像ルートディレクトリを使用する</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>既定のイメージ ルート</value>
+    <value>デフォルトの画像ルートディレクトリ</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>クリップボードの画像を</value>
+    <value>クリップボードの画像をコピーする</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>クリップボードの画像ファイルとWeb画像は含まれていません</value>
+    <value>クリップボードの画像またはネットワーク画像は含まれません</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,47 +570,47 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>クリップボードの画像はアップロードを使用して構成されます</value>
+    <value>クリップボードの画像にアップロード設定を使用する</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>画像が挿入されたときに実行するアクション</value>
+    <value>画像の挿入時に実行するアクション</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>ローカルイメージをにコピーする</value>
+    <value>ローカルの画像をコピーする</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>ローカル画像</value>
+    <value>ローカルの画像</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>ローカルイメージはアップロード設定を使用します</value>
+    <value>ローカルの画像はアップロード構成を使用する</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>画像挿入操作</value>
+    <value>画像の挿入アクション</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>ネットワーク画像をにコピーする</value>
+    <value>ネットワーク画像をコピーする</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>ウェブ画像</value>
+    <value>ネットワーク画像</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Web イメージでアップロード構成を使用する</value>
+    <value>ネットワーク画像はアップロード構成を使用する</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>画像を挿入する場合は相対パスが推奨されます</value>
+    <value>画像の挿入時に相対パスを優先する</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>相対パスが推奨されます</value>
+    <value>相対パスの使用を優先する</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -598,7 +622,7 @@
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
-    <value>イメージのアップロード構成</value>
+    <value>画像のアップロード構成</value>
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
@@ -606,35 +630,35 @@
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
-    <value>サイドバーを表示するかどうかを選択する</value>
+    <value>サイドバーを表示するかどうかを選択します</value>
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>サイドバーを表示します</value>
+    <value>表示される側面バー</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
-    <value>下部のステータスバーを表示するかどうかを選択する</value>
+    <value>底部ステータスバーを表示するかどうかを選択します</value>
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>ステータスバーを表示します。</value>
+    <value>ステータスバーを表示する</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>様子</value>
+    <value>外観</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>ウィンドウを常に一番上に保つ</value>
+    <value>ウィンドウを常に最前面に表示する</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>トップレベルへ</value>
+    <value>最上位</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>オンにすると、ウィンドウの背景にはマイカの背景効果があります</value>
+    <value>ウィンドウの背景にマイカ効果を有効にする</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
@@ -642,7 +666,7 @@
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>窓</value>
+    <value>ウィンドウ</value>
     <comment>视图/窗口</comment>
   </data>
 </root>
