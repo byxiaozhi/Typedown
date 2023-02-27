@@ -426,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Upload Image</value>
+    <value>Upload image</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -558,11 +558,11 @@
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Copy Clipboard Images to</value>
+    <value>Copy clipboard images to</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Does not include clipboard images or network images</value>
+    <value>Does not include clipboard images or web images</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -570,7 +570,7 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Use Upload Settings for Clipboard Images</value>
+    <value>Clipboard image upload configuration</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
@@ -578,7 +578,7 @@
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Copy Local Images to</value>
+    <value>Copy local images to</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
@@ -586,7 +586,7 @@
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Local image uses upload configuration</value>
+    <value>Local image upload configuration</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
@@ -594,15 +594,15 @@
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Copy network image to</value>
+    <value>Copy web image to</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Network Image</value>
+    <value>Web Image</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Network image uses upload configuration</value>
+    <value>Web image upload configuration</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">

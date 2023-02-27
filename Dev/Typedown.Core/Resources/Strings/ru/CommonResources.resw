@@ -118,87 +118,87 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Добавить в</value>
+    <value>Добавить</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Выравнивание по центру</value>
+    <value>Выровнять по центру</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Выравнивание по левому краю</value>
+    <value>Выровнять слева</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Выравнивание по правому краю</value>
+    <value>Выровнять справа</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
-    <value>все</value>
+    <value>Все</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
-    <value>приложение</value>
+    <value>Приложение</value>
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>Автоматически</value>
+    <value>Авто</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>возвращать</value>
+    <value>Назад</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
-    <value>Просматривать...</value>
+    <value>Обзор...</value>
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>Просмотр папки</value>
+    <value>Обзор папки</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>Поиск локальных файлов</value>
+    <value>Обзор локального файла</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Отмена</value>
+    <value>Отменить</value>
     <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
-    <value>Чувствительность к регистру</value>
+    <value>Учитывать регистр</value>
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>слово</value>
+    <value>Символ</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>слово</value>
+    <value>Символы</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>диаграмма</value>
+    <value>Диаграмма</value>
     <comment>图表</comment>
   </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>Очистка стиля</value>
+    <value>Очистить форматирование</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>Очистка последних файлов</value>
+    <value>Очистить последние файлы</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>Нажмите Добавить изображение.</value>
+    <value>Нажмите, чтобы добавить изображение</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Отключение</value>
+    <value>Закрыть</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>код</value>
+    <value>Код</value>
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
@@ -206,15 +206,15 @@
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>столбец</value>
+    <value>Колонка</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>копировать</value>
+    <value>Копировать</value>
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>Копирование в виде HTML-кода</value>
+    <value>Копировать как HTML</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,35 +222,35 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>Скопируйте адрес файла</value>
+    <value>Копировать путь</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>Копирование в виде обычного текста</value>
+    <value>Копировать как обычный текст</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
-    <value>Копирование содержимого</value>
+    <value>Копировать содержимое</value>
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
-    <value>Скопировать/Вставить как...</value>
+    <value>Копировать/вставить как...</value>
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
-    <value>Копирование в путь</value>
+    <value>Копировать в путь</value>
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>создавать</value>
+    <value>Создать</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+Щелкните Открыть ссылку</value>
+    <value>Ctrl+щелчок для открытия ссылки</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>Настройка</value>
+    <value>Пользовательские</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
@@ -258,7 +258,7 @@
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>срез</value>
+    <value>Вырезать</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -266,15 +266,15 @@
     <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>данные</value>
+    <value>Данные</value>
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>Понизьте уровень заголовка</value>
+    <value>Уменьшить уровень заголовка</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>по умолчанию</value>
+    <value>По умолчанию</value>
     <comment>默认</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -282,35 +282,39 @@
     <comment>删除</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
-    <value>Удаление таблицы</value>
+    <value>Удалить таблицу</value>
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>повторять</value>
+    <value>Дублировать</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>редактировать</value>
+    <value>Изменить</value>
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>Редактирование изображения</value>
+    <value>Изменить изображение</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>редактор</value>
+    <value>Редактор</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>Встраивание ссылок</value>
+    <value>Встроить ссылку</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
-    <value>курсив</value>
+    <value>Курсив</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Включить</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
-    <value>ошибка</value>
+    <value>Ошибка</value>
     <comment>错误</comment>
   </data>
   <data name="Export" xml:space="preserve">
@@ -318,7 +322,7 @@
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
-    <value>Экспорт настроек</value>
+    <value>Настройки экспорта</value>
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
@@ -326,35 +330,35 @@
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>обратная связь</value>
+    <value>Обратная связь</value>
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
-    <value>файл</value>
+    <value>Файл</value>
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>файл</value>
+    <value>Файлы</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
-    <value>Находить</value>
+    <value>Поиск</value>
     <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
-    <value>Поиск и замена</value>
+    <value>Найти и заменить</value>
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>Найти следующую</value>
+    <value>Найти далее</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>Найти предыдущую</value>
+    <value>Найти предыдущее</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
-    <value>Блок-схема</value>
+    <value>Диаграмма потока</value>
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
@@ -362,11 +366,11 @@
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>папка</value>
+    <value>Папка</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
-    <value>шрифт</value>
+    <value>Шрифт</value>
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
@@ -374,23 +378,23 @@
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>сноска</value>
+    <value>Сноски</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>Тег сноски [^{identifier}] не найден:</value>
+    <value>Маркер сноски не найден [^{identifier}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
-    <value>формат</value>
+    <value>Формат</value>
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>Форматирование кода</value>
+    <value>Форматировать код</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
-    <value>Общее</value>
+    <value>Общие</value>
     <comment>通用</comment>
   </data>
   <data name="GoTo" xml:space="preserve">
@@ -398,31 +402,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>титул</value>
+    <value>Заголовок</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>Заголовок первого уровня</value>
+    <value>Заголовок 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>Заголовки второго уровня</value>
+    <value>Заголовок 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>Трехуровневые заголовки</value>
+    <value>Заголовок 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>Четырехуровневые заголовки</value>
+    <value>Заголовок 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>Пятиуровневые заголовки</value>
+    <value>Заголовок 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>Шестиуровневые заголовки</value>
+    <value>Заголовок 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -430,23 +434,23 @@
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>выделить</value>
+    <value>Выделить</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>Горизонтальная разделительная линия</value>
+    <value>Горизонтальная линия</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
-    <value>Гиперссылки</value>
+    <value>Гиперссылка</value>
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>образ</value>
+    <value>Изображение</value>
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
-    <value>Альтернативный вариант</value>
+    <value>Alt</value>
     <comment>Img标签Alt属性</comment>
   </data>
   <data name="Import" xml:space="preserve">
@@ -454,7 +458,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>Повышение уровня заголовка</value>
+    <value>Увеличить уровень заголовка</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -466,51 +470,51 @@
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>Встроенные формулы</value>
+    <value>Встроенная математика</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>Введите определение сноски...</value>
+    <value>Ввод определения сноски...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>Введите идентификатор языка...</value>
+    <value>Ввод идентификатора языка...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>Введите математическую формулу...</value>
+    <value>Ввод математики...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>Войдите в YAML Front Matter...</value>
+    <value>Ввод YAML Front Matter...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>Вставка столбца слева</value>
+    <value>Вставить столбец слева</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>Вставка столбца справа</value>
+    <value>Вставить столбец справа</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>Вставка изображения</value>
+    <value>Вставить изображение</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>Включить абзац ниже</value>
+    <value>Вставить параграф после</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>Включить абзац выше</value>
+    <value>Вставить параграф до</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>Вставка строк выше</value>
+    <value>Вставить строку выше</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>Вставка строки ниже</value>
+    <value>Вставить строку ниже</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
@@ -518,27 +522,27 @@
     <comment>设置/语言</comment>
   </data>
   <data name="LearnMore" xml:space="preserve">
-    <value>Подробнее</value>
+    <value>Узнать больше</value>
     <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>свет</value>
+    <value>Свет</value>
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Да</value>
+    <value>Строки</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
-    <value>Высота линии</value>
+    <value>Межстрочный интервал</value>
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Да</value>
+    <value>Строка</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>Ссылки на ссылки</value>
+    <value>Ссылочная ссылка</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
@@ -546,51 +550,51 @@
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
-    <value>математика</value>
+    <value>Математика</value>
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>Блок формул</value>
+    <value>Математический блок</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>максимизировать</value>
+    <value>Максимизировать</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>строка меню</value>
+    <value>Меню</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
-    <value>Русалка</value>
+    <value>Mermaid</value>
     <comment>Mermaid</comment>
   </data>
   <data name="Minimize" xml:space="preserve">
-    <value>минимизировать</value>
+    <value>Минимизировать</value>
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>минута</value>
+    <value>Минуты</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
-    <value>Дополнительные опции</value>
+    <value>Дополнительно</value>
     <comment>更多选项</comment>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>имя</value>
+    <value>Имя</value>
     <comment>名称</comment>
   </data>
   <data name="New" xml:space="preserve">
-    <value>новостройка</value>
+    <value>Новый</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>Создание нового файла</value>
+    <value>Новый файл</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>Создание новой папки</value>
+    <value>Новая папка</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
@@ -598,7 +602,7 @@
     <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
-    <value>Без действий</value>
+    <value>Нет действия</value>
     <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
@@ -606,47 +610,51 @@
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>не</value>
+    <value>Нет</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
-    <value>Нет последних файлов</value>
+    <value>Нет недавних файлов</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
   <data name="Off" xml:space="preserve">
-    <value>закрывать</value>
+    <value>Закрыть</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Уверен</value>
+    <value>ОК</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>открытый</value>
+    <value>Включено</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Откройте</value>
+    <value>Открыть</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
-    <value>Откройте расположение файла</value>
+    <value>Открыть местоположение файла</value>
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>Откройте папку</value>
+    <value>Открыть папку</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>Открыть местоположение изображения</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>Откроется в новом окне</value>
+    <value>Открыть в новом окне</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
-    <value>Открыть Последние</value>
+    <value>Открыть недавно</value>
     <comment>文件/打开最近</comment>
   </data>
   <data name="OpenSourceSoftware" xml:space="preserve">
-    <value>Программное обеспечение с открытым исходным кодом</value>
+    <value>Открытое программное обеспечение с открытым исходным кодом</value>
     <comment>开源软件</comment>
   </data>
   <data name="OrderedList" xml:space="preserve">
@@ -654,59 +662,59 @@
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
-    <value>очертание</value>
+    <value>Контур</value>
     <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
-    <value>параграф</value>
+    <value>Параграф</value>
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>торчащий</value>
+    <value>Вставить</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
-    <value>Вставка в виде обычного текста</value>
+    <value>Вставить как обычный текст</value>
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>путь</value>
+    <value>Путь</value>
     <comment>文件/路径</comment>
   </data>
   <data name="PlantUMLDiagram" xml:space="preserve">
-    <value>Диаграмма PlantUML</value>
+    <value>PlantUML Diagram</value>
     <comment>PlantUML Diagram</comment>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>печатать</value>
+    <value>Печать</value>
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>цитировать</value>
+    <value>Цитата</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>Счёт</value>
+    <value>Рейтинг</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
-    <value>повторить</value>
+    <value>Повторить</value>
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>Удаление столбца</value>
+    <value>Удалить столбец</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>Удаление строки</value>
+    <value>Удалить строку</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>переименовать</value>
+    <value>Переименовать</value>
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>замена</value>
+    <value>Заменить</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
@@ -714,19 +722,19 @@
     <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
-    <value>Изменение размера таблицы</value>
+    <value>Изменить размер таблицы</value>
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>восстанавливать</value>
+    <value>Восстановить</value>
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Да</value>
+    <value>Линия</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Спасать</value>
+    <value>Сохранить</value>
     <comment>文件/保存</comment>
   </data>
   <data name="SaveAs" xml:space="preserve">
@@ -738,27 +746,27 @@
     <comment>文件/已保存</comment>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Искать</value>
+    <value>Поиск</value>
     <comment>搜索</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>Выбрать все</value>
+    <value>Выделить все</value>
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>Выберите файл</value>
+    <value>Выбрать файл</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
-    <value>Схема последовательностей</value>
+    <value>Диаграмма последовательности</value>
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Устанавливать</value>
+    <value>Настройки</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>сочетание клавиш</value>
+    <value>Горячие клавиши</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
@@ -774,19 +782,19 @@
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Прекрати</value>
+    <value>Остановить</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
-    <value>Зачеркивание</value>
+    <value>Не удалено</value>
     <comment>格式/删除线</comment>
   </data>
   <data name="Strong" xml:space="preserve">
-    <value>Смелый</value>
+    <value>Жирный</value>
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>форма</value>
+    <value>Таблица</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
@@ -794,23 +802,23 @@
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>тема</value>
+    <value>Тема</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>титул</value>
+    <value>Заголовок</value>
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Каталог контента</value>
+    <value>Оглавление</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>итог</value>
+    <value>Итого</value>
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>Конвертировать в</value>
+    <value>Преобразовать в</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
@@ -818,59 +826,59 @@
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
-    <value>подчеркнуть</value>
+    <value>Подчеркивание</value>
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>аннулировать</value>
+    <value>Отменить</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Неупорядоченный список</value>
+    <value>Маркеры</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>обновлять</value>
+    <value>Обновить</value>
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>Регулярное сопоставление</value>
+    <value>Регулярное выражение совпадения</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>Использование системных настроек</value>
+    <value>Использовать системные настройки</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
-    <value>График Вега</value>
+    <value>Диаграмма Vega</value>
     <comment>Vega Chart</comment>
   </data>
   <data name="View" xml:space="preserve">
-    <value>Вид</value>
+    <value>Просмотр</value>
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>место</value>
+    <value>Веб-сайт</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
-    <value>Полное слово</value>
+    <value>Целое слово</value>
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
-    <value>окно</value>
+    <value>Окно</value>
     <comment>窗口</comment>
   </data>
   <data name="Word" xml:space="preserve">
-    <value>слово</value>
+    <value>Слово</value>
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
-    <value>количество слов</value>
+    <value>Количество слов</value>
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>слово</value>
+    <value>Слова</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">
@@ -878,7 +886,7 @@
     <comment>YAML Front Matter</comment>
   </data>
   <data name="Zoom" xml:space="preserve">
-    <value>увеличить</value>
+    <value>Масштабировать</value>
     <comment>字体缩放</comment>
   </data>
 </root>

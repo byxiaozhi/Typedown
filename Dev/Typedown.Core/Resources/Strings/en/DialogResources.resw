@@ -198,7 +198,7 @@
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Adjust Table</value>
+    <value>Resize Table</value>
     <comment>表格对话框/调整表格</comment>
   </data>
   <data name="Save" xml:space="preserve">

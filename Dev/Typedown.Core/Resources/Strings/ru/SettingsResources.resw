@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>О приложении</value>
+    <value>О программе</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Страница магазина</value>
+    <value>Страница в Microsoft Store</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
-    <value>Основано на программном обеспечении с открытым исходным кодом</value>
+    <value>Основано на открытом исходном коде</value>
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
-    <value>Редактор WYSIWYG Markdown</value>
+    <value>Редактор Markdown WYSIWYG</value>
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
@@ -142,47 +142,47 @@
     <comment>关于/联系方式</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Отправить по электронной почте</value>
+    <value>Email</value>
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Мы ценим контент, который вы заполняете</value>
+    <value>Мы очень серьезно относимся к вашим отзывам</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>относительно</value>
+    <value>О программе</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Закрывающая кавычка заполняется автоматически при вводе открывающей скобки</value>
+    <value>Автозавершение правой кавычки при вводе левой</value>
     <comment>编辑器/输入左括号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Автозаполнение скобок</value>
+    <value>Автозавершение скобок</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Автозаполнение соответствия тегов Markdown</value>
+    <value>Автозавершение соответствующего тега Markdown</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Автозаполнение тега Markdown</value>
+    <value>Автозавершение тегов Markdown</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Закрывающие кавычки заполняются автоматически при вводе открывающих кавычек</value>
+    <value>Автозавершение правой кавычки при вводе левой</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Автозаполнение кавычек</value>
+    <value>Автозавершение кавычек</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Выбор содержимого по умолчанию для копирования и вырезания</value>
+    <value>Выбор содержимого по умолчанию для копирования/вырезания</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Копирование/вырезание содержимого по умолчанию</value>
+    <value>Содержимое копирования/вырезания по умолчанию</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,7 +194,7 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>вытягивать</value>
+    <value>Расширения</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
@@ -206,11 +206,11 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Строка редактора высокая кратная</value>
+    <value>Множитель высоты строки редактора</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
-    <value>Высота линии</value>
+    <value>Высота строки</value>
     <comment>编辑器/行高</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Description" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>стиль</value>
+    <value>Стиль</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Настройка пространства отступов по умолчанию для ссылок и списков</value>
+    <value>Настроить отступы по умолчанию для цитат и списков</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,55 +242,59 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>редактор</value>
+    <value>Редактор</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
-    <value>Настройка формата и стиля экспорта</value>
+    <value>Настроить формат и стиль экспорта</value>
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>Добавление конфигурации экспорта</value>
+    <value>Добавить настройки экспорта</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Экспорт конфигурации</value>
+    <value>Настройки экспорта</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Тип файла экспорта</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>После завершения экспорта откройте папку, в которой он находится</value>
+    <value>Открыть папку после экспорта</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Поперечный</value>
+    <value>Альбомная</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Продольный</value>
+    <value>Книжная</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>нижний колонтитул</value>
+    <value>Нижний колонтитул</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Вверх</value>
+    <value>Верхний колонтитул</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Верхний и нижний колонтитулы</value>
+    <value>Верхний и нижний колонтитул</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>под</value>
+    <value>Снизу</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
-    <value>Налево</value>
+    <value>Слева</value>
     <comment>导出/左</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Right" xml:space="preserve">
-    <value>Правильно</value>
+    <value>Справа</value>
     <comment>导出/右</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Text" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>над</value>
+    <value>Сверху</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>направление</value>
+    <value>Направление</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>высокий</value>
+    <value>Высота</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>широкий</value>
+    <value>Ширина</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,23 +330,23 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
-    <value>Образ</value>
+    <value>Изображение</value>
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>применять</value>
+    <value>Приложение</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>После открытия приложение автоматически сохраняется при изменении файла</value>
+    <value>Автоматически сохранять при изменении файла</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,23 +354,23 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Настройка</value>
+    <value>Настроить</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>данные</value>
+    <value>Данные</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Следует ли сохранить процесс после закрытия окна, ускоряет следующий запуск</value>
+    <value>Оставаться запущенным после закрытия окна</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
-    <value>Продолжайте работать</value>
+    <value>Оставаться запущенным</value>
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Язык, на котором отображается приложение</value>
+    <value>Язык приложения</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,68 +378,76 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Восстановление параметров приложения по умолчанию</value>
+    <value>Восстановить настройки приложения по умолчанию</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>Сброс приложения</value>
+    <value>Сбросить приложение</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Пользовательские сочетания клавиш</value>
+    <value>Пользовательские ярлыки</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>сочетание клавиш</value>
+    <value>Ярлыки</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Действие, выполняемое при запуске приложения</value>
+    <value>Действие при запуске приложения</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Создание нового файла</value>
+    <value>Новый файл</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Открытие последнего использованного файла</value>
+    <value>Открыть последний использованный файл</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Открывает указанную папку</value>
+    <value>Открыть указанную папку</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Открытие последней использованной папки</value>
+    <value>Открыть последнюю использованную папку</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Запустите действие</value>
+    <value>Запуск</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>рутина</value>
+    <value>Общие</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
-    <value>Копирование в путь</value>
+    <value>Копировать в путь</value>
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Загрузка изображения</value>
+    <value>Загрузить изображение</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
-    <value>Образ</value>
+    <value>Изображение</value>
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>Добавление конфигурации отправки</value>
+    <value>Добавить настройку загрузки</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Загрузка конфигурации</value>
+    <value>Настройки загрузки</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Удалить настройку</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Импортировать из файла</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Метод загрузки</value>
@@ -450,39 +462,51 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>ПСОК</value>
+    <value>OSS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
-    <value>Оболочка PowerShell</value>
+    <value>PowerShell</value>
     <comment>图片/PowerShell</comment>
   </data>
   <data name="ImageUpload.Methods.SCP" xml:space="preserve">
-    <value>УПП</value>
+    <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Выбрать файл</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Сохранить в файл</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Тестовая загрузка</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Загрузка изображений</value>
+    <value>Загрузить изображения</value>
     <comment>图片/图片上传</comment>
   </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>сочетание клавиш</value>
+    <value>Ярлыки</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Загрузка конфигурации</value>
+    <value>Настройки загрузки</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Выключите для более быстрого отклика</value>
+    <value>Закрыть для более быстрого ответа</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Анимация окон</value>
+    <value>Анимация окна</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Строка меню отображается в той же строке, что и заголовок</value>
+    <value>Полоса меню и заголовок на одной строке</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,99 +518,99 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Выберите тему приложения, которую вы хотите отобразить</value>
+    <value>Выберите тему приложения, которую хотите отобразить</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>свет</value>
+    <value>Светлый</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Применение темы</value>
+    <value>Тема приложения</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Добавление "./" перед относительными путями</value>
+    <value>Добавить "./" в начало относительных путей</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Автоматическое копирование рисунков, использующих относительные пути при сохранении в виде файла</value>
+    <value>Автоматически копировать изображения, используемые в относительных путях при сохранении в файл</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Автоматическое копирование изображений</value>
+    <value>Автоматически копировать изображения</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
-    <value>Автоматическое кодирование специальных символов в URL-адресах</value>
+    <value>Автоматически кодировать специальные символы в URL-адресах</value>
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Автоматическое экранирование URL-адресов изображений при вставке</value>
+    <value>Автоматически экранировать URL изображений при вставке</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Несохраненные файлы или изображения буфера обмена по умолчанию используют корневой каталог рисунков</value>
+    <value>Корневой каталог по умолчанию для несохраненных файлов или изображений в буфере обмена</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Корень изображения по умолчанию</value>
+    <value>Корневой каталог изображений по умолчанию</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Скопируйте рисунок буфера обмена в</value>
+    <value>Копировать изображения из буфера обмена в</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Файлы изображений буфера обмена и веб-изображения не включены</value>
+    <value>Не включает изображения из буфера обмена или изображения из Интернета</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>Изображение буфера обмена</value>
+    <value>Изображение в буфере обмена</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Изображения буфера обмена настраиваются с помощью загрузок</value>
+    <value>Конфигурация загрузки изображений в буфере обмена</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Действие, выполняемое при вставке рисунка</value>
+    <value>Действие при вставке изображений</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Скопируйте локальное изображение в</value>
+    <value>Копировать локальные изображения в</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Локальные изображения</value>
+    <value>Локальное изображение</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Локальные изображения используют конфигурацию загрузки</value>
+    <value>Конфигурация загрузки локальных изображений</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Операция вставки рисунка</value>
+    <value>Действие при вставке изображений</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Скопируйте сетевое изображение в</value>
+    <value>Копировать изображения из Интернета в</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Веб-изображения</value>
+    <value>Изображение из Интернета</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Веб-изображения используют конфигурацию загрузки</value>
+    <value>Конфигурация загрузки изображений из Интернета</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Относительные контуры предпочтительны при вставке рисунков</value>
+    <value>Приоритет использования относительного пути при вставке изображений</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Предпочтительны относительные пути</value>
+    <value>Приоритет использования относительного пути</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +618,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Настройка метода загрузки изображения</value>
+    <value>Установить метод загрузки изображений</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -602,47 +626,47 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>схема</value>
+    <value>Макет</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
-    <value>Выберите, следует ли отображать боковую панель</value>
+    <value>Выберите, показывать ли боковую панель</value>
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Отображает боковую панель</value>
+    <value>Показать боковую панель</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
-    <value>Выберите, следует ли отображать нижнюю строку состояния</value>
+    <value>Выберите, показывать ли нижнюю панель состояния</value>
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Отображает строку состояния</value>
+    <value>Показать панель состояния</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>внешность</value>
+    <value>Внешний вид</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Держите окно всегда сверху</value>
+    <value>Сделать окно всегда на верху</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>на верхний уровень</value>
+    <value>Поверх всего</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>При включении фон окна имеет эффект слюдяного фона</value>
+    <value>Включить эффект мусковита для фона окна</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Использование слюдяных материалов</value>
+    <value>Использовать материал мусковита</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>окно</value>
+    <value>Окно</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

@@ -12,7 +12,7 @@ dictionary = dictionary.Merge(enInputs, "en").ToList();
 dictionary.WriteItems(@"C:\Users\12283\Documents\GitHub\Typedown\Tools\TranslationTool\Dictionary\");
 
 var manualLangs = new List<string>() { "en", "ja", "ko", "ru", "fr", "de", "es", "it", "nl", "ar" };
-var batch = 70;
+var batch = 30;
 foreach (var lang in manualLangs)
 {
     while (true)
