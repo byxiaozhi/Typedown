@@ -234,11 +234,11 @@
     <comment>反馈对话框/提交成功</comment>
   </data>
   <data name="UploadFailedTitle" xml:space="preserve">
-    <value>Upload successful</value>
+    <value>Upload failed</value>
     <comment>上传失败</comment>
   </data>
   <data name="UploadSuccessfulTitle" xml:space="preserve">
-    <value>Upload failed</value>
+    <value>Upload successful</value>
     <comment>上传成功</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
