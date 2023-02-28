@@ -118,27 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>أضف إلى</value>
+    <value>إضافة</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>محاذاة المركز</value>
+    <value>وسط</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>محاذاة لليسار</value>
+    <value>محاذاة إلى اليسار</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>محاذاة لليمين</value>
+    <value>محاذاة إلى اليمين</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
-    <value>كل</value>
+    <value>الكل</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
-    <value>تطبيق</value>
+    <value>التطبيق</value>
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>أعاد</value>
+    <value>العودة</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -158,55 +158,59 @@
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>استعرض بحثا عن الملفات المحلية</value>
+    <value>تصفح الملف المحلي</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>إلغاء الأمر</value>
+    <value>إلغاء</value>
     <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
-    <value>حساس لحالة الأحرف</value>
+    <value>حساسية الحالة</value>
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>كلمة</value>
+    <value>حرف</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>كلمة</value>
+    <value>الأحرف</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>جدول</value>
+    <value>رسم بياني</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>مسح</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>مسح النمط</value>
+    <value>مسح التنسيق</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>مسح الملفات الحديثة</value>
+    <value>مسح الملفات الأخيرة</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>انقر على إضافة صورة</value>
+    <value>انقر لإضافة صورة</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>إيقاف التشغيل</value>
+    <value>إغلاق</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>رمز</value>
+    <value>كود</value>
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>كتلة التعليمات البرمجية</value>
+    <value>بنية الكود</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>عمود</value>
+    <value>الأعمدة</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
@@ -214,7 +218,7 @@
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>نسخ ككود HTML</value>
+    <value>نسخ ك HTML</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,11 +226,11 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>نسخ عنوان الملف</value>
+    <value>نسخ مسار</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>نسخ كنص عادي</value>
+    <value>نسخ نص بسيط</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
@@ -234,7 +238,7 @@
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
-    <value>نسخ / لصق ك ...</value>
+    <value>نسخ/لصق ك...</value>
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
@@ -242,39 +246,39 @@
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>خلق</value>
+    <value>إنشاء</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+انقر فوق فتح الرابط</value>
+    <value>Ctrl + انقر فوق لفتح الرابط</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>التخصيص</value>
+    <value>مخصص</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>مفاتيح الاختصار المخصصة</value>
+    <value>اختصارات مخصصة</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>جز</value>
+    <value>قص</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
-    <value>داكن</value>
+    <value>الوضع الداكن</value>
     <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>بيانات</value>
+    <value>البيانات</value>
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>خفض مستوى العنوان</value>
+    <value>تقليل مستوى العنوان</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>افتراضي</value>
+    <value>الافتراضي</value>
     <comment>默认</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -286,11 +290,11 @@
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>كرر</value>
+    <value>تكرار</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>حرر</value>
+    <value>تحرير</value>
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
@@ -298,16 +302,20 @@
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>محرر</value>
+    <value>المحرر</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>تضمين الروابط</value>
+    <value>تضمين الرابط</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
     <value>مائل</value>
     <comment>格式/斜体</comment>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>تمكين</value>
+    <comment>启用</comment>
   </data>
   <data name="Error" xml:space="preserve">
     <value>خطأ</value>
@@ -322,7 +330,7 @@
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>تصدير إلى PDF</value>
+    <value>تصدير كـPDF</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
@@ -330,15 +338,15 @@
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
-    <value>ملف</value>
+    <value>الملف</value>
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>ملف</value>
+    <value>الملفات</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
-    <value>وجد</value>
+    <value>البحث</value>
     <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
@@ -346,15 +354,15 @@
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>ابحث عن التالي</value>
+    <value>العثور على التالي</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>ابحث عن السابق</value>
+    <value>العثور على السابق</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
-    <value>مخطط التدفق</value>
+    <value>رسم بياني تدفق</value>
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
@@ -362,7 +370,7 @@
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>مجلد</value>
+    <value>المجلد</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
@@ -374,11 +382,11 @@
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>الحاشيه</value>
+    <value>الهوامش السفلية</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>علامة الحاشية السفلية [^{معرف}] غير موجودة:</value>
+    <value>لم يتم العثور على علامة الهامش السفلي [^{identifier}] :</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
@@ -386,7 +394,7 @@
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>تنسيق التعليمات البرمجية</value>
+    <value>تنسيق الرمز</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
@@ -394,51 +402,51 @@
     <comment>通用</comment>
   </data>
   <data name="GoTo" xml:space="preserve">
-    <value>الانتقال إلى</value>
+    <value>اذهب إلى</value>
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>عنوان</value>
+    <value>العنوان</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>عنوان المستوى الأول</value>
+    <value>العنوان 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>عناوين المستوى الثاني</value>
+    <value>العنوان 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>عناوين من ثلاثة مستويات</value>
+    <value>العنوان 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>عناوين من أربعة مستويات</value>
+    <value>العنوان 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>عناوين من خمسة مستويات</value>
+    <value>العنوان 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>عناوين من ستة مستويات</value>
+    <value>العنوان 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>تعليمات</value>
+    <value>المساعدة</value>
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>تمييز</value>
+    <value>تسليط الضوء</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>خط التقسيم الأفقي</value>
+    <value>الخط الأفقي</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
-    <value>الارتباطات التشعبية</value>
+    <value>رابط تشعبي</value>
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
@@ -446,19 +454,19 @@
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
-    <value>البديل</value>
+    <value>نص بديل</value>
     <comment>Img标签Alt属性</comment>
   </data>
   <data name="Import" xml:space="preserve">
-    <value>استورد</value>
+    <value>المستند</value>
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>رفع مستوى العنوان</value>
+    <value>زيادة مستوى العنوان</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
-    <value>مضمنه</value>
+    <value>تضمين</value>
     <comment>内联</comment>
   </data>
   <data name="InlineCode" xml:space="preserve">
@@ -466,31 +474,31 @@
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>الصيغ المضمنة</value>
+    <value>رياضيات مضمنة</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>أدخل تعريف الحاشية السفلية...</value>
+    <value>تحديد تعريف حاشية السفلية ...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>أدخل معرف اللغة...</value>
+    <value>تحديد معرف اللغة ...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>أدخل الصيغة الرياضية...</value>
+    <value>إدخال رياضيات ...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>أدخل المسألة الأمامية YAML ...</value>
+    <value>إدخال YAML Front Matter ...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>إدراج عمود على اليمين</value>
+    <value>إدراج عمود إلى اليسار</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>إدراج عمود على اليسار</value>
+    <value>إدراج عمود إلى اليمين</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
@@ -498,19 +506,19 @@
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>إدراج فقرة أدناه</value>
+    <value>إدراج فقرة بعد</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>إدراج فقرة أعلاه</value>
+    <value>إدراج فقرة قبل</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>إدراج صفوف أعلاه</value>
+    <value>إدراج صف أعلى</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>إدراج صف أدناه</value>
+    <value>إدراج صف أسفل</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
@@ -518,15 +526,15 @@
     <comment>设置/语言</comment>
   </data>
   <data name="LearnMore" xml:space="preserve">
-    <value>التعرف على المزيد</value>
+    <value>تعرف على المزيد</value>
     <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>ضوء</value>
+    <value>فاتح</value>
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>نعم</value>
+    <value>خط</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
@@ -534,15 +542,15 @@
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>نعم</value>
+    <value>الأسطر</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>مراجع الارتباط</value>
+    <value>مرجع الرابط</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
-    <value>فشل تحميل الصورة</value>
+    <value>فشل في تحميل الصورة</value>
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
@@ -550,19 +558,19 @@
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>كتلة الصيغة</value>
+    <value>مكتل الرياضيات</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>تعظيم</value>
+    <value>تكبير</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>شريط القوائم</value>
+    <value>شريط القائمة</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
-    <value>حورية البحر</value>
+    <value>Mermaid</value>
     <comment>Mermaid</comment>
   </data>
   <data name="Minimize" xml:space="preserve">
@@ -570,7 +578,7 @@
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>دقيقة</value>
+    <value>دقائق</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
@@ -578,19 +586,23 @@
     <comment>更多选项</comment>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>اسم</value>
+    <value>الاسم</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>الاسم لا يمكن أن يكون فارغًا</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>بنيت حديثا</value>
+    <value>جديد</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>إنشاء ملف جديد</value>
+    <value>ملف جديد</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>إنشاء مجلد جديد</value>
+    <value>مجلد جديد</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
@@ -602,31 +614,35 @@
     <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
-    <value>لا يوجد تكوين تصدير</value>
+    <value>لا توجد تكوينات للتصدير</value>
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>لا</value>
+    <value>لا شيء</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
     <value>لا توجد ملفات حديثة</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>غير معين</value>
+    <comment>未设置</comment>
+  </data>
   <data name="Off" xml:space="preserve">
-    <value>غلق</value>
+    <value>أغلق</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>هل أنت متأكد</value>
+    <value>تأكيد</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>مفتوح</value>
+    <value>على</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>افتح ذلك</value>
+    <value>فتح</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
@@ -634,15 +650,19 @@
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>افتح المجلد</value>
+    <value>فتح المجلد</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>فتح موقع الصورة</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>يفتح في نافذة جديدة</value>
+    <value>فتح في نافذة جديدة</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
-    <value>فتح الأخيرة</value>
+    <value>الأخير المفتوح</value>
     <comment>文件/打开最近</comment>
   </data>
   <data name="OpenSourceSoftware" xml:space="preserve">
@@ -654,7 +674,7 @@
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
-    <value>خط</value>
+    <value>المخطط التفصيلي</value>
     <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
@@ -662,7 +682,7 @@
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>ستيك اب</value>
+    <value>لصق</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
@@ -670,7 +690,7 @@
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>مسار</value>
+    <value>المسار</value>
     <comment>文件/路径</comment>
   </data>
   <data name="PlantUMLDiagram" xml:space="preserve">
@@ -678,19 +698,19 @@
     <comment>PlantUML Diagram</comment>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>طبع</value>
+    <value>طباعة</value>
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>استشهد</value>
+    <value>اقتباس</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>نقاط</value>
+    <value>تقييم</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
-    <value>اعاده</value>
+    <value>إعادة</value>
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
@@ -702,11 +722,11 @@
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>اعاده تسميه</value>
+    <value>إعادة تسمية</value>
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>تغيير</value>
+    <value>استبدال</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
@@ -718,23 +738,23 @@
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>يستعيد</value>
+    <value>استعادة</value>
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>نعم</value>
+    <value>صفوف</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>أنقذ</value>
+    <value>حفظ</value>
     <comment>文件/保存</comment>
   </data>
   <data name="SaveAs" xml:space="preserve">
-    <value>حفظ باسم</value>
+    <value>حفظ ك</value>
     <comment>文件/另存为</comment>
   </data>
   <data name="Saved" xml:space="preserve">
-    <value>حفظ</value>
+    <value>تم حفظها</value>
     <comment>文件/已保存</comment>
   </data>
   <data name="Search" xml:space="preserve">
@@ -742,23 +762,23 @@
     <comment>搜索</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>حدد الكل</value>
+    <value>تحديد الكل</value>
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>حدد الملف</value>
+    <value>تحديد الملف</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
-    <value>مخطط التسلسل</value>
+    <value>مخطط السلسلة الزمنية</value>
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>نصب</value>
+    <value>الإعدادات</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>مفتاح الاختصار</value>
+    <value>اختصارات</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
@@ -766,27 +786,27 @@
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>وضع التعليمات البرمجية المصدر</value>
+    <value>وضع رمز المصدر</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
-    <value>شريط</value>
+    <value>شريط الحالة</value>
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>كف عن هذا</value>
+    <value>إيقاف</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
-    <value>يتوسطه خط</value>
+    <value>خط النص السطري</value>
     <comment>格式/删除线</comment>
   </data>
   <data name="Strong" xml:space="preserve">
-    <value>جريء</value>
+    <value>عريض</value>
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>شكل</value>
+    <value>جدول</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
@@ -794,23 +814,23 @@
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>موضوع</value>
+    <value>الموضوع</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>عنوان</value>
+    <value>العنوان</value>
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>كتالوج المحتوى</value>
+    <value>جدول المحتويات</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>مجموع</value>
+    <value>الإجمالي</value>
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>قم بالتحويل إلى</value>
+    <value>تحويل إلى</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
@@ -822,11 +842,11 @@
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>سحق</value>
+    <value>تراجع</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>قائمة غير مرتبة</value>
+    <value>نقاط</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
@@ -834,23 +854,23 @@
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>مطابقة منتظمة</value>
+    <value>تطابق التعبيرات العادية</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>استخدم إعدادات النظام</value>
+    <value>استخدام إعدادات النظام</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
-    <value>مخطط فيجا</value>
+    <value>مخطط فيغا</value>
     <comment>Vega Chart</comment>
   </data>
   <data name="View" xml:space="preserve">
-    <value>منظر</value>
+    <value>عرض</value>
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>موقع</value>
+    <value>موقع الويب</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
@@ -858,11 +878,11 @@
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
-    <value>نافذة</value>
+    <value>النافذة</value>
     <comment>窗口</comment>
   </data>
   <data name="Word" xml:space="preserve">
-    <value>كلمة</value>
+    <value>الكلمة</value>
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
@@ -870,15 +890,15 @@
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>كلمة</value>
+    <value>الكلمات</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">
-    <value>YAML المسألة الأمامية</value>
+    <value>المعلومات الأمامية YAML</value>
     <comment>YAML Front Matter</comment>
   </data>
   <data name="Zoom" xml:space="preserve">
-    <value>التكبير</value>
+    <value>تكبير</value>
     <comment>字体缩放</comment>
   </data>
 </root>

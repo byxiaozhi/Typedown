@@ -122,19 +122,19 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>هل تريد حفظ تغييراتك؟</value>
+    <value>هل تريد حفظ التغييرات؟</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>إلغاء الأمر</value>
+    <value>إلغاء</value>
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>هل أنت متأكد</value>
+    <value>موافق</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>لا يمكن أن يكون المحتوى فارغا</value>
+    <value>لا يمكن أن يكون المحتوى فارغًا</value>
     <comment>对话框/内容不能为空</comment>
   </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
@@ -150,7 +150,7 @@
     <comment>恢复文件对话框/删除</comment>
   </data>
   <data name="Don'tSave" xml:space="preserve">
-    <value>لا تحفظ</value>
+    <value>عدم الحفظ</value>
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>ردود الفعل</value>
+    <value>تقديم ملاحظات</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -178,51 +178,75 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>هل أنت متأكد</value>
+    <value>موافق</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>يرجى الضغط على مفتاح المفاتيح المركب</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>فشلت القراءة</value>
+    <value>فشل التحميل</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>أفاق</value>
+    <value>استعادة</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
-    <value>لم تقم بحفظ هذا الملف</value>
+    <value>لم تقم بحفظ هذا الملف بعد</value>
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>هل تريد استعادة الملفات؟</value>
+    <value>هل تريد استعادة الملف؟</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>ضبط الجدول</value>
+    <value>تغيير حجم الجدول</value>
     <comment>表格对话框/调整表格</comment>
   </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>موافق لاستعادة إعدادات التطبيق الافتراضية</value>
+    <comment>确定恢复应用默认设置？</comment>
+  </data>
   <data name="Save" xml:space="preserve">
-    <value>أنقذ</value>
+    <value>حفظ</value>
     <comment>文件保存对话框/保存</comment>
   </data>
   <data name="SaveErrorTitle" xml:space="preserve">
     <value>فشل الحفظ</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>تعيين مفتاح اختصار</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>المفتاح الاختصاري محجوز</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>إرسال</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>تم التقديم بنجاح</value>
+    <value>تم الإرسال بنجاح</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>فشل الرفع</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>تم الرفع بنجاح</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>تحتاج إلى تثبيت وقت تشغيل WebView2 لتشغيل البرنامج بشكل صحيح.</value>
+    <value>تحتاج إلى تثبيت برنامج تشغيل WebView2 لتشغيل هذا البرنامج بشكل صحيح.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>لم يتم تثبيت وقت تشغيل WebView2</value>
+    <value>برنامج تشغيل WebView2 غير مثبت</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>
