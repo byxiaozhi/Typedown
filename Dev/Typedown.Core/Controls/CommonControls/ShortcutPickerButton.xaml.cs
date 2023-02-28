@@ -25,11 +25,11 @@ namespace Typedown.Core.Controls
             var dialog = new AppContentDialog
             {
                 XamlRoot = XamlRoot,
-                Title = "设置快捷键",
+                Title = Locale.GetDialogString("SetShortcutKeyTitle"),
                 Content = picker,
-                PrimaryButtonText = "保存",
-                SecondaryButtonText = "清除",
-                CloseButtonText = "取消",
+                PrimaryButtonText = Locale.GetString("Save"),
+                SecondaryButtonText = Locale.GetString("Clear"),
+                CloseButtonText = Locale.GetString("Cancel"),
                 DefaultButton = ContentDialogButton.Primary,
                 IsSecondaryButtonEnabled = ShortcutKey != null && ShortcutKey != new ShortcutKey(0, 0),
             };

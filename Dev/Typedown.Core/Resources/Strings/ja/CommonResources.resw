@@ -181,6 +181,10 @@
     <value>グラフ</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>クリア</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
     <value>書式をクリア</value>
     <comment>格式/清除样式</comment>
@@ -616,6 +620,10 @@
   <data name="NoRecentFiles" xml:space="preserve">
     <value>最近のファイルなし</value>
     <comment>文件/打开最近/无最近文件</comment>
+  </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>未設定</value>
+    <comment>未设置</comment>
   </data>
   <data name="Off" xml:space="preserve">
     <value>閉じる</value>

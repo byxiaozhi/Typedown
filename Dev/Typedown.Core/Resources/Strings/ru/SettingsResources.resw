@@ -154,8 +154,8 @@
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Автозавершение правой кавычки при вводе левой</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Автоматическое завершение правой скобки при вводе левой скобки</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
     <value>Автозавершение скобок</value>
@@ -170,7 +170,7 @@
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Автозавершение правой кавычки при вводе левой</value>
+    <value>Автоматическое завершение правой кавычки при вводе левой кавычки</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">

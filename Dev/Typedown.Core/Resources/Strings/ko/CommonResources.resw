@@ -181,6 +181,10 @@
     <value>차트</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>지우기</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
     <value>서식 지우기</value>
     <comment>格式/清除样式</comment>
@@ -616,6 +620,10 @@
   <data name="NoRecentFiles" xml:space="preserve">
     <value>최근 파일 없음</value>
     <comment>文件/打开最近/无最近文件</comment>
+  </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>설정되지 않음</value>
+    <comment>未设置</comment>
   </data>
   <data name="Off" xml:space="preserve">
     <value>닫기</value>

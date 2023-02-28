@@ -130,8 +130,8 @@ namespace Typedown.Core.ViewModels
 
         public void SetSettingValue<T>(T value, [CallerMemberName] string propertyName = null)
         {
-            if (value is null || value is string || value is long || value is int || value is short || value is sbyte || value is ulong || 
-                value is uint || value is ushort || value is byte || value is Enum || value is double || value is float || value is decimal|| 
+            if (value is null || value is string || value is long || value is int || value is short || value is sbyte || value is ulong ||
+                value is uint || value is ushort || value is byte || value is Enum || value is double || value is float || value is decimal ||
                 value is DateTime || value is byte[] || value is bool || value is Guid || value is Uri || value is TimeSpan)
                 store[propertyName] = new JValue(value);
             else
@@ -148,7 +148,7 @@ namespace Typedown.Core.ViewModels
 
         public async void ResetSetting()
         {
-            var dialog = AppContentDialog.Create("重置应用", "确定恢复应用默认设置？", "取消", "确定");
+            var dialog = AppContentDialog.Create(Locale.GetString("General.RestoreDefault.Title"), Locale.GetDialogString("RestoreSettingsContent"), Locale.GetString("Cancel"), Locale.GetString("Ok"));
             dialog.DefaultButton = ContentDialogButton.Close;
             var result = await dialog.ShowAsync(ServiceProvider.GetService<AppViewModel>().XamlRoot);
             if (result != ContentDialogResult.Primary)

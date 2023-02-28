@@ -154,8 +154,8 @@
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>左引用符が入力されたときに右引用符を自動補完する</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>左括弧が入力されたときに右括弧を自動補完する</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
     <value>括弧を自動補完する</value>

@@ -154,8 +154,8 @@
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Auto complete right quote when left quote is entered</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Auto complete right bracket when left bracket is entered</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
     <value>Auto complete brackets</value>
@@ -506,7 +506,7 @@
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Menu Bar and Title in Same Row</value>
+    <value>Menu Bar and title in same row</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -534,19 +534,19 @@
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Automatically Copy Images Used in Relative Paths When Saving as File</value>
+    <value>Automatically copy images used in relative paths when saving as file</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Automatically Copy Images</value>
+    <value>Automatically copy images</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
-    <value>Automatically Encode Special Characters in URLs</value>
+    <value>Automatically encode special characters in URLs</value>
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Automatically Escape Image URLs When Inserting</value>
+    <value>Automatically escape image URLs when inserting</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">

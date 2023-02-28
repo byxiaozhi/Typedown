@@ -48,7 +48,7 @@
                 x:Name="NoShortcutKey"
                 x:Load="{x:Bind local:ShortcutPickerButton.HasShortcutKeyReverse(ShortcutKey), Mode=OneWay}" 
                 VerticalAlignment="Center" 
-                Text="未设置"/>
+                Text="{utils:LocaleString Key=NotSet}"/>
         </Grid>
         <Viewbox Width="14" Height="14" VerticalAlignment="Center">
             <SymbolIcon Symbol="Edit"/>

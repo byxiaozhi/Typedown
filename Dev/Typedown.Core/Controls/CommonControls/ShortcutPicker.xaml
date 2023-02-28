@@ -22,7 +22,7 @@
         </Style>
     </UserControl.Resources>
     <StackPanel MinWidth="360">
-        <TextBlock>请按下组合键</TextBlock>
+        <TextBlock Text="{utils:LocaleString Key=PleasePressTheKeyCombination}"/>
         <Grid HorizontalAlignment="Center" Height="48" Margin="0,16,0,0">
             <ItemsControl 
                 x:Name="ShortcutKeys" 
@@ -46,10 +46,10 @@
                 x:Name="NoShortcutKey"
                 x:Load="{x:Bind local:ShortcutPickerButton.HasShortcutKeyReverse(ShortcutKey), Mode=OneWay}" 
                 VerticalAlignment="Center" 
-                Text="未设置"/>
+                Text="{utils:LocaleString Key=NotSet}"/>
         </Grid>
         <StackPanel Name="ErrorMsgPanel" Orientation="Horizontal" Spacing="8" Margin="0,16,0,0" Visibility="Collapsed" VerticalAlignment="Bottom">
-            <TextBlock Foreground="{ThemeResource SystemFillColorCriticalBrush}">快捷键已被占用</TextBlock>
+            <TextBlock Foreground="{ThemeResource SystemFillColorCriticalBrush}" Text="{utils:LocaleString Key=ShortcutKeyIsOccupied}"/>
             <TextBlock x:Name="ExistOwnerTextBlock" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
         </StackPanel>
     </StackPanel>

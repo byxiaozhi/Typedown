@@ -181,6 +181,10 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>アプリケーションの初期設定に戻すには、キーの組み合わせを押してください</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
     <value>読み込みに失敗しました</value>
     <comment>打开文件对话框/读取失败</comment>
@@ -201,6 +205,10 @@
     <value>テーブルを調整する</value>
     <comment>表格对话框/调整表格</comment>
   </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>OK?</value>
+    <comment>确定恢复应用默认设置？</comment>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>保存する</value>
     <comment>文件保存对话框/保存</comment>
@@ -208,6 +216,14 @@
   <data name="SaveErrorTitle" xml:space="preserve">
     <value>保存に失敗しました</value>
     <comment>文件保存对话框/保存失败</comment>
+  </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>ショートカットの設定</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>ショートカットキーが使用されています。</value>
+    <comment>快捷键已被占用</comment>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>提出する</value>

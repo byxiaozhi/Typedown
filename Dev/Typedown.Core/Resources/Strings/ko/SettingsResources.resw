@@ -154,8 +154,8 @@
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>왼쪽 인용 부호 입력시 자동으로 오른쪽 인용 부호 자동 완성</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>왼쪽 괄호 입력 시 오른쪽 괄호 자동 완성</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
     <value>괄호 자동 완성</value>
@@ -170,7 +170,7 @@
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>왼쪽 인용 부호 입력시 자동으로 오른쪽 인용 부호 자동 완성</value>
+    <value>왼쪽 따옴표 입력 시 오른쪽 따옴표 자동 완성</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
