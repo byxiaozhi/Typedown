@@ -3,6 +3,7 @@ using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -46,15 +47,17 @@ namespace Typedown.Controls
 
         private readonly UISettings uiSettings = new();
 
+        private readonly CompositeDisposable disposables = new();
+
         public MarkdownEditor(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
             Loaded += OnLoaded;
             Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent), Children = { dummyRectangle } };
             IsTabStop = true;
-            RemoteInvoke.Handle("ContentLoaded", OnContentLoaded);
-            RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme());
-            AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme)).Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged))).Subscribe(_ => OnThemeChanged());
+            disposables.Add(RemoteInvoke.Handle("ContentLoaded", OnContentLoaded));
+            disposables.Add(RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme()));
+            disposables.Add(AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme)).Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged))).Subscribe(_ => OnThemeChanged()));
         }
 
         private async void OnThemeChanged()
@@ -168,6 +171,7 @@ namespace Typedown.Controls
         public void Dispose()
         {
             WebViewController.Dispose();
+            disposables.Dispose();
         }
 
         public Rectangle GetDummyRectangle(Rect rect)

@@ -46,44 +46,67 @@ namespace Typedown.Core.ViewModels
         {
             dispatcher = CoreApplication.GetCurrentView().CoreWindow.Dispatcher;
             ServiceProvider = serviceProvider;
-            RemoteInvoke.Handle<JToken, object>("GetStringResources", GetStringResources);
+            disposables.Add(RemoteInvoke.Handle<JToken, object>("GetStringResources", GetStringResources));
             _ = CoreApplication.GetCurrentView().CoreWindow.Dispatcher.RunIdleAsync(_ => InitializeBinding());
         }
 
         private void InitializeBinding()
         {
-            EditorViewModel.WhenPropertyChanged(nameof(EditorViewModel.DisplaySaved)).Subscribe(_ => UpdateTitle());
-            FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FileName)).Subscribe(_ => UpdateTitle());
-            Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged)).Merge(SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme))).Subscribe(_ => UpdataActualTheme());
+            if (disposables.IsDisposed)
+                return;
+            disposables.Add(EditorViewModel.WhenPropertyChanged(nameof(EditorViewModel.DisplaySaved)).Subscribe(_ => UpdateTitle()));
+            disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FileName)).Subscribe(_ => UpdateTitle()));
+            disposables.Add(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged)).Merge(SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme))).Subscribe(_ => UpdateActualTheme()));
             UpdateTitle();
-            UpdataActualTheme();
+            UpdateActualTheme();
         }
 
         private object GetStringResources(JToken args)
         {
-            return args["names"].ToObject<List<string>>().ToDictionary(x => x, x => Locale.GetString(x));
+            try
+            {
+                return args["names"].ToObject<List<string>>().ToDictionary(x => x, x => Locale.GetString(x));
+            }
+            catch
+            {
+                return new Dictionary<string, string>();
+            }
         }
 
-        private async void UpdataActualTheme()
+        private async void UpdateActualTheme()
         {
-            await dispatcher.TryRunIdleAsync(_ =>
+            await dispatcher?.TryRunIdleAsync(_ =>
             {
-                if (SettingsViewModel.AppTheme == Enums.AppTheme.Default)
-                    ActualTheme = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
-                else
-                    ActualTheme = SettingsViewModel.AppTheme == Enums.AppTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
+                try
+                {
+                    if (SettingsViewModel.AppTheme == Enums.AppTheme.Default)
+                        ActualTheme = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
+                    else
+                        ActualTheme = SettingsViewModel.AppTheme == Enums.AppTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
+                }
+                catch
+                {
+                    // Ignore
+                }
             });
         }
 
         private void UpdateTitle()
         {
-            var title = new StringBuilder();
-            if (!AppViewModel.EditorViewModel.DisplaySaved)
-                title.Append('*');
-            if (AppViewModel.FileViewModel.FileName != null)
-                title.Append(AppViewModel.FileViewModel.FileName + " - ");
-            title.Append(Config.AppName);
-            MainWindowTitle = title.ToString();
+            try
+            {
+                var title = new StringBuilder();
+                if (!AppViewModel.EditorViewModel.DisplaySaved)
+                    title.Append('*');
+                if (AppViewModel.FileViewModel.FileName != null)
+                    title.Append(AppViewModel.FileViewModel.FileName + " - ");
+                title.Append(Config.AppName);
+                MainWindowTitle = title.ToString();
+            }
+            catch
+            {
+                // Ignore
+            }
         }
 
         public void Dispose()
