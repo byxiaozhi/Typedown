@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Over de applicatie</value>
+    <value>Over de toepassing</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Winkelpagina</value>
+    <value>Microsoft Store-pagina</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
-    <value>Gebaseerd op open source software</value>
+    <value>Gebaseerd op opensourcesoftware</value>
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
-    <value>Een WYSIWYG Markdown editor</value>
+    <value>Een WYSIWYG Markdown-editor</value>
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
@@ -146,31 +146,31 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>We waarderen de inhoud die u invult</value>
+    <value>We nemen uw feedback zeer serieus</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>betreffende</value>
+    <value>Over</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Het afsluitende aanhalingsteken wordt automatisch voltooid bij het invoeren van het haakje openen</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Automatisch rechter haakje aanvullen wanneer het linker haakje wordt ingevoerd</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Haakjes voor automatisch aanvullen</value>
+    <value>Haakjes automatisch aanvullen</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Overeenkomende Markdown-tags voor automatisch aanvullen</value>
+    <value>Automatisch bijpassend markdown-label aanvullen</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>De Markdown-tag automatisch aanvullen</value>
+    <value>Markdown-labels automatisch aanvullen</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Het sluiten van aanhalingstekens wordt automatisch voltooid wanneer het openen van aanhalingstekens wordt ingevoerd</value>
+    <value>Automatisch rechter aanhalingsteken aanvullen wanneer het linker aanhalingsteken wordt ingevoerd</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
@@ -178,15 +178,15 @@
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Selecteer de standaard inhoud voor kopiëren/knippen</value>
+    <value>Standaard kopieer-/knipinhoud selecteren</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Standaard inhoud kopiëren/knippen</value>
+    <value>Standaard kopieer-/knipinhoud</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>De maximale breedte van de editorinhoud</value>
+    <value>Maximale breedte van de editor-inhoud</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,31 +194,31 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>verlengen</value>
+    <value>Extensies</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Standaardlettergrootte van de editor</value>
+    <value>Standaardlettergrootte van de editor.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
-    <value>Tekengrootte</value>
+    <value>Lettergrootte</value>
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Editorlijn hoog veelvoud</value>
+    <value>Meervoudige regelhoogte van de editor</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
-    <value>Lijnhoogte</value>
+    <value>Regelhoogte</value>
     <comment>编辑器/行高</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Description" xml:space="preserve">
-    <value>Syntaxisfouten zoeken en markeren</value>
+    <value>Syntaxfouten vinden en markeren</value>
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Automatische taaldetectie</value>
+    <value>Taal automatisch detecteren</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>stijl</value>
+    <value>Stijl</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>De standaardinspringruimte voor verwijzingen en lijsten aanpassen</value>
+    <value>Standaard inspringingsspatie voor citaten en lijsten aanpassen</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,47 +242,51 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>editor</value>
+    <value>Editor</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
-    <value>Exportindeling en -stijl aanpassen</value>
+    <value>Exportformaat en stijl aanpassen</value>
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>Een exportconfiguratie toevoegen</value>
+    <value>Exportconfiguratie toevoegen</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>De configuratie exporteren</value>
+    <value>Exportconfiguraties</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Exportbestandstype</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Wanneer het exporteren is voltooid, opent u de map waarin deze zich bevindt</value>
+    <value>Map openen na exporteren</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Dwars</value>
+    <value>Liggend</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Longitudinaal</value>
+    <value>Staand</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>paginavoettekst</value>
+    <value>Voettekst</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Boven</value>
+    <value>Koptekst</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Boven- en voettekst</value>
+    <value>Koptekst en voettekst</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>onder</value>
+    <value>Onderaan</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -298,23 +302,23 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>boven</value>
+    <value>Bovenkant</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>richting</value>
+    <value>Richting</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>hoog</value>
+    <value>Hoogte</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
-    <value>Paginaformaat</value>
+    <value>Paginagrootte</value>
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>wijd</value>
+    <value>Breedte</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -322,27 +326,27 @@
     <comment>导出/导出</comment>
   </data>
   <data name="Export.Type" xml:space="preserve">
-    <value>Exportindeling</value>
+    <value>Exportformaat</value>
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
-    <value>Beeld</value>
+    <value>Afbeelding</value>
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>toepassen</value>
+    <value>Toepassing</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Eenmaal geopend, wordt de app automatisch opgeslagen wanneer het bestand wordt gewijzigd</value>
+    <value>Automatisch opslaan wanneer het bestand is gewijzigd</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,23 +354,23 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Aanpassing</value>
+    <value>Aanpassen</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>gegevens</value>
+    <value>Gegevens</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Of het proces na het sluiten van het venster moet worden behouden, versnelt de volgende opstart</value>
+    <value>Proces blijven draaien na het sluiten van het venster</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
-    <value>Blijven hardlopen</value>
+    <value>Blijven draaien</value>
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>De taal waarin de app wordt weergegeven</value>
+    <value>Toepassingstaal</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,47 +378,47 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>De standaardinstellingen van de app herstellen</value>
+    <value>Toepassingsstandaardinstellingen herstellen</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>De app opnieuw instellen</value>
+    <value>App herstellen</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Aangepaste sneltoetsen</value>
+    <value>Aangepaste snelkoppelingen</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>sneltoets</value>
+    <value>Snelkoppelingen</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>De actie die plaatsvindt wanneer de app wordt gestart</value>
+    <value>Actie wanneer de toepassing wordt gestart</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Een nieuw bestand maken</value>
+    <value>Nieuw bestand openen</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Het laatst gebruikte bestand openen</value>
+    <value>Laatst gesloten bestand herstellen</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Opent de opgegeven map</value>
+    <value>Aangepaste map openen</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Open de laatst gebruikte map</value>
+    <value>Laatst gesloten map herstellen</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Start de actie</value>
+    <value>Opstarten</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>routine</value>
+    <value>Algemeen</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,20 +426,28 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Een afbeelding uploaden</value>
+    <value>Afbeelding uploaden</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
-    <value>Beeld</value>
+    <value>Afbeelding</value>
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>Een uploadconfiguratie toevoegen</value>
+    <value>Uploadconfiguratie toevoegen</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Upload de configuratie</value>
+    <value>Uploadconfiguraties</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Configuratie verwijderen</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Importeren vanuit bestand</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Uploadmethode</value>
@@ -461,28 +473,44 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Bestandkiezer</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Opslaan naar bestand</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Test upload</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Afbeelding uploaden</value>
+    <value>Afbeeldingen uploaden</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>App herstarten om wijzigingen door te voeren</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>sneltoets</value>
+    <value>Sneltoetsen</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Upload de configuratie</value>
+    <value>Upload-instellingen</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Uitschakelen voor snellere respons</value>
+    <value>Sluiten voor snellere reactie</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Vensteranimatie</value>
+    <value>Vensteranimaties</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>De menubalk verschijnt op dezelfde regel als de koptekst</value>
+    <value>Menubalk en titel in dezelfde rij weergeven</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,51 +522,51 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Selecteer het app-thema dat u wilt weergeven</value>
+    <value>Selecteer welk app-thema moet worden weergegeven</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>licht</value>
+    <value>Licht</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Een thema toepassen</value>
+    <value>App-thema</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Voeg "./" toe voor relatieve paden</value>
+    <value>Voeg "./" toe aan relatieve paden</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Kopieer automatisch afbeeldingen die relatieve paden gebruiken wanneer ze als bestand worden opgeslagen</value>
+    <value>Automatisch afbeeldingen kopiëren die gebruikt worden in relatieve paden bij het opslaan als bestand</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Foto's automatisch kopiëren</value>
+    <value>Afbeeldingen automatisch kopiëren</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
-    <value>Automatisch speciale tekens coderen in URL's</value>
+    <value>Automatisch speciale tekens in URL's coderen</value>
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Automatisch ontsnappen aan afbeeldings-URL's wanneer deze worden ingevoegd</value>
+    <value>Afbeeldings-URL's automatisch escapen bij invoegen</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Niet-opgeslagen bestanden of klembordafbeeldingen gebruiken standaard de hoofdmap van de afbeelding</value>
+    <value>Standaardafbeeldingsmap voor onopgeslagen bestanden of klembordafbeeldingen</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Standaard hoofdmap van afbeelding</value>
+    <value>Standaardafbeeldingsmap</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Kopieer de klembordafbeelding naar</value>
+    <value>Kopieer klembordafbeeldingen naar</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Klembordafbeeldingsbestanden en webafbeeldingen zijn niet inbegrepen</value>
+    <value>Bevat geen klembordafbeeldingen of webafbeeldingen</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,103 +574,103 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Klembordafbeeldingen worden geconfigureerd met behulp van uploads</value>
+    <value>Klembordafbeelding uploadconfiguratie</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>De actie die moet worden uitgevoerd wanneer een afbeelding wordt ingevoegd</value>
+    <value>Actie uitvoeren bij het invoegen van afbeeldingen</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Kopieer de lokale afbeelding naar</value>
+    <value>Lokale afbeeldingen kopiëren naar</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Lokale afbeeldingen</value>
+    <value>Lokale afbeelding</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Lokale afbeeldingen gebruiken de uploadconfiguratie</value>
+    <value>Uploadconfiguratie voor lokale afbeelding</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Bewerking voor het invoegen van afbeeldingen</value>
+    <value>Afbeeldingsinvoegactie</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Kopieer de netwerkafbeelding naar</value>
+    <value>Webafbeelding kopiëren naar</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Webafbeeldingen</value>
+    <value>Webafbeelding</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Webafbeeldingen gebruiken de uploadconfiguratie</value>
+    <value>Uploadconfiguratie voor webafbeeldingen</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Relatieve paden hebben de voorkeur bij het invoegen van afbeeldingen</value>
+    <value>Voorkeur geven aan relatief pad bij het invoegen van afbeeldingen</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Relatieve paden hebben de voorkeur</value>
+    <value>Voorkeur geven aan relatief pad</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
-    <value>Afbeelding uploaden</value>
+    <value>Afbeeldingen uploaden</value>
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>De methode voor het uploaden van afbeeldingen instellen</value>
+    <value>Afbeeldingsuploadmethode instellen</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
-    <value>Configuratie voor het uploaden van afbeeldingen</value>
+    <value>Afbeeldingsuploadconfiguratie</value>
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>indeling</value>
+    <value>Layout</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
-    <value>Kiezen of u de zijbalk wilt weergeven</value>
+    <value>Kiezen of de zijbalk weergegeven moet worden</value>
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Geeft de zijbalk weer</value>
+    <value>Toon zijbalk</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
-    <value>Kiezen of u de onderste statusbalk wilt weergeven</value>
+    <value>Kies of de onderste statusbalk wordt weergegeven</value>
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Geeft de statusbalk weer</value>
+    <value>Toon statusbalk</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>uiterlijk</value>
+    <value>Uiterlijk</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Houd het raam altijd bovenaan</value>
+    <value>Maak venster altijd bovenop</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>naar het hoogste niveau</value>
+    <value>Bovenste</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Wanneer ingeschakeld, heeft de vensterachtergrond een mica-achtergrondeffect</value>
+    <value>Schakel het mica-achtergrondeffect in voor de vensterachtergrond</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Gebruik mica materialen</value>
+    <value>Gebruik mica-materiaal</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>venster</value>
+    <value>Venster</value>
     <comment>视图/窗口</comment>
   </data>
 </root>
