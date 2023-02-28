@@ -198,9 +198,9 @@ namespace Typedown.Core.ViewModels
                 value = SearchValue,
                 opt = new
                 {
-                    isCaseSensitive = Settings.SearchIsCaseSensitive,
-                    isWholeWord = Settings.SearchIsWholeWord,
-                    isRegexp = Settings.SearchIsRegexp,
+                    searchIsCaseSensitive = Settings.SearchIsCaseSensitive,
+                    searchIsWholeWord = Settings.SearchIsWholeWord,
+                    searchIsRegexp = Settings.SearchIsRegexp,
                     selection = Settings.SourceCode ? CodeMirrorSelection : Selection
                 }
             });

@@ -113,9 +113,9 @@ namespace Typedown.Core.Controls.FloatControls
                 opt = new
                 {
                     isSingle,
-                    isCaseSensitive = ViewModel.SettingsViewModel.SearchIsCaseSensitive,
-                    isWholeWord = ViewModel.SettingsViewModel.SearchIsWholeWord,
-                    isRegexp = ViewModel.SettingsViewModel.SearchIsRegexp,
+                    searchIsCaseSensitive = ViewModel.SettingsViewModel.SearchIsCaseSensitive,
+                    searchIsWholeWord = ViewModel.SettingsViewModel.SearchIsWholeWord,
+                    searchIsRegexp = ViewModel.SettingsViewModel.SearchIsRegexp,
                 }
             });
         }
