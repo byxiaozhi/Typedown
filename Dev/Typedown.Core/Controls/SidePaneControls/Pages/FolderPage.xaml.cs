@@ -116,7 +116,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
             try
             {
-                var filename = Locale.GetString("UntitledDocument");
+                var filename = "Untitled";
                 var extension = ".md";
                 var fullname = filename + extension;
                 if (FileOperation.IsFilenameValid(item.FullPath, fullname))
@@ -157,7 +157,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
             try
             {
-                var foldername = Locale.GetString("UntitledFolder");
+                var foldername = "New Folder";
                 var fullname = foldername;
                 if (FileOperation.IsFilenameValid(item.FullPath, fullname))
                 {
@@ -373,6 +373,12 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
                 items.ToList().ForEach(x => collection.Add(x.Path));
                 FileOperation.Move(collection, target.FullPath);
             }
+        }
+
+        private void OnTreeViewContextFlyoutOpening(object sender, object e)
+        {
+            if (!Directory.Exists(FileViewModel.WorkFolder) && sender is MenuFlyout flyout)
+                flyout.Hide();
         }
     }
 

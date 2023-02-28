@@ -54,7 +54,7 @@
             <MenuFlyoutItem Text="{u:LocaleString Key=Delete}" Click="OnDeleteClick"/>
         </MenuFlyout>
 
-        <MenuFlyout x:Key="TreeViewContextFlyout">
+        <MenuFlyout x:Key="TreeViewContextFlyout" Opening="OnTreeViewContextFlyoutOpening">
             <MenuFlyoutItem Text="{u:LocaleString Key=NewFile}" Click="OnNewFileClick"/>
             <MenuFlyoutItem Text="{u:LocaleString Key=NewFolder}" Click="OnNewFolderClick"/>
             <MenuFlyoutItem Text="{u:LocaleString Key=OpenFileLocation}" Click="OnOpenFileLocationClick"/>
