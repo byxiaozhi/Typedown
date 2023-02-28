@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>உங்கள் மாற்றங்களைச் சேமிக்க விரும்புகிறீர்களா?</value>
+    <value>மாற்றங்களைச் சேமிக்க விரும்புகிறீர்களா?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>உறுதியாக தெரியுமா</value>
+    <value>சரி</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>தவறாகக் கொள்ளப்பட்ட</value>
+    <value>தவறு</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>ஒரு அட்டவணையை செருகவும்</value>
+    <value>அட்டவணையைச் செருகவும்</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>உறுதியாக தெரியுமா</value>
+    <value>சரி</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>விசை கலவையை அழுத்தவும்</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>வாசிப்பு தோல்வியுற்றது</value>
+    <value>ஏற்றுவதில் தோல்வியுற்றது</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>திரும்பப்பெறு</value>
+    <value>திருப்பிக்டகொடு</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>கோப்புகளை மீட்டெடுக்க விரும்புகிறீர்களா?</value>
+    <value>கோப்பை மீட்டெடுக்க விரும்புகிறீர்களா?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>அட்டவணையை சரிசெய்யவும்</value>
+    <value>அட்டவணையை மறுசீரமைக்கவும்</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>பயன்பாட்டு இயல்புநிலை அமைப்புகளை மீட்டெடுக்க சரி</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>கெலிப்புத்தடங்கல்</value>
@@ -209,6 +217,14 @@
     <value>சேமி தோல்வியுற்றது</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>குறுக்குவழி விசை அமைக்கவும்</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>குறுக்குவழி விசை ஆக்கிரமிக்கப்பட்டுள்ளது</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>சமர்ப்பிக்க</value>
     <comment>反馈对话框/提交</comment>
@@ -217,12 +233,20 @@
     <value>சமர்ப்பிப்பு வெற்றிகரமாக இருந்தது</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>பதிவேற்றம் தோல்வியுற்றது</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>பதிவேற்றம் வெற்றிகரமாக</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>மென்பொருளை சரியாக இயக்க வெப்வியூ 2 இயக்க நேரத்தை நிறுவ வேண்டும்.</value>
+    <value>இந்த மென்பொருளை சரியாக இயக்க வெப்வியூ 2 இயக்க நேரத்தை நிறுவ வேண்டும்.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>வெப்வியூ 2 இயக்க நேரம் நிறுவப்படவில்லை</value>
+    <value>வெப்வியூ2 இயக்க நேரம் நிறுவப்படவில்லை</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

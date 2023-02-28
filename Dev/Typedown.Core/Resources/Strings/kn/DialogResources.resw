@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>ನಿಮ್ಮ ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?</value>
+    <value>ನೀವು ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಲು ಬಯಸುವಿರಾ?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>ನೀನು ಖಚಿತವಾಗಿರುವಿಯಾ</value>
+    <value>ಸರಿ</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>ನೀನು ಖಚಿತವಾಗಿರುವಿಯಾ</value>
+    <value>ಸರಿ</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>ದಯವಿಟ್ಟು ಕೀಲಿ ಸಂಯೋಜನೆಯನ್ನು ಒತ್ತಿ</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>ಓದಲು ವಿಫಲವಾಗಿದೆ</value>
+    <value>ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>ಪುನಃ ಪಡೆಯಿರಿ</value>
+    <value>ಪುನಃಸ್ಥಾಪನೆ</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>ನೀವು ಫೈಲ್ ಗಳನ್ನು ಮರುಪಡೆಯಲು ಬಯಸುವಿರಾ?</value>
+    <value>ನೀವು ಫೈಲ್ ಅನ್ನು ಪುನಃಸ್ಥಾಪಿಸಲು ಬಯಸುವಿರಾ?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>ಟೇಬಲ್ ಹೊಂದಿಸಿ</value>
+    <value>ಕೋಷ್ಟಕದ ಗಾತ್ರ</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>ಅಪ್ಲಿಕೇಶನ್ ಡೀಫಾಲ್ಟ್ ಸೆಟ್ಟಿಂಗ್ ಗಳನ್ನು ಪುನಃಸ್ಥಾಪಿಸಲು ಸರಿ</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>ಉಳಿಸು</value>
@@ -209,6 +217,14 @@
     <value>ಉಳಿಸಲು ವಿಫಲವಾಗಿದೆ</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>ಶಾರ್ಟ್ ಕಟ್ ಕೀಲಿ ಸೆಟ್ ಮಾಡಿ</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>ಶಾರ್ಟ್ ಕಟ್ ಕೀಲಿಯನ್ನು ಆಕ್ರಮಿಸಲಾಗಿದೆ</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>ಸಲ್ಲಿಸು</value>
     <comment>反馈对话框/提交</comment>
@@ -217,8 +233,16 @@
     <value>ಸಲ್ಲಿಕೆ ಯಶಸ್ವಿಯಾಗಿದೆ</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>ಅಪ್ ಲೋಡ್ ವಿಫಲವಾಗಿದೆ</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>ಅಪ್ ಲೋಡ್ ಯಶಸ್ವಿಯಾಗಿದೆ</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>ಸಾಫ್ಟ್ ವೇರ್ ಅನ್ನು ಸರಿಯಾಗಿ ಚಲಾಯಿಸಲು ನೀವು WebView2 ರನ್ ಟೈಮ್ ಅನ್ನು ಸ್ಥಾಪಿಸಬೇಕು.</value>
+    <value>ಈ ಸಾಫ್ಟ್ ವೇರ್ ಅನ್ನು ಸರಿಯಾಗಿ ಚಲಿಸಲು ನೀವು WebView2 ರನ್ ಟೈಮ್ ಅನ್ನು ಸ್ಥಾಪಿಸಬೇಕು.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">

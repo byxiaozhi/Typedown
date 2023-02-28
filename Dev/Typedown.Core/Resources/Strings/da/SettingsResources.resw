@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Om ansøgningen</value>
+    <value>Om ansøgning</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Butik side</value>
+    <value>Microsoft Store-side</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -134,7 +134,7 @@
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
-    <value>Send feedback</value>
+    <value>Send Feedback</value>
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
@@ -146,47 +146,47 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Vi værdsætter det indhold, du udfylder</value>
+    <value>Vi tager din feedback meget alvorligt</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>angående</value>
+    <value>Omtrent</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Det afsluttende anførselstegn fuldføres automatisk, når du indtaster åbningsparentesen</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Udfyld automatisk højre parentes, når venstre parentes er indtastet</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
     <value>Autofuldførelse af parenteser</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Autofuldførelse af matchende Markdown-tags</value>
+    <value>Tag til automatisk udfyldning af matchende markdown</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Autofuldfør Markdown-tagget</value>
+    <value>Automatisk fuldførelse af markdown-tags</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Lukning af anførselstegn fuldføres automatisk, når der indtastes åbne anførselstegn</value>
+    <value>Udfyld automatisk højre tilbud, når venstre tilbud indtastes</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Autofuldføre anførselstegn</value>
+    <value>Autofuldføre citater</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Vælg standardindholdet for kopiering/klip</value>
+    <value>Vælg standardkopier/klip indhold</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Kopier/klip indhold som standard</value>
+    <value>Standard kopier/klipper indhold</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>Den maksimale bredde af editorindholdet</value>
+    <value>Maksimal bredde af editorindhold</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>Udvide</value>
+    <value>Udvidelser</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Editorens standard skriftstørrelse</value>
+    <value>Standard skriftstørrelse på editor.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Editor linje høj multipel</value>
+    <value>Editor linjehøjde flere</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Automatisk registrering af sprog</value>
+    <value>Registrer automatisk sprog</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>stil</value>
+    <value>Stil</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Justere standardindrykningsrummet for referencer og lister</value>
+    <value>Justere standardindrykningsplads for anførselstegn og lister</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>redaktør</value>
+    <value>Redaktør</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -250,39 +250,43 @@
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>Tilføj en eksportkonfiguration</value>
+    <value>Tilføj eksportkonfiguration</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Eksportér konfigurationen</value>
+    <value>Eksporter konfigurationer</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Eksportér filtype</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Når eksporten er fuldført, skal du åbne den mappe, hvor den er placeret</value>
+    <value>Åbn mappen efter eksport</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Tværgående</value>
+    <value>Landskab</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Langsgående</value>
+    <value>Portræt</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>sidefod</value>
+    <value>Sidefod</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Top</value>
+    <value>Header</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Top og sidefod</value>
+    <value>Sidehoved og sidefod</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>under</value>
+    <value>Bund</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>ovenover</value>
+    <value>Top</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>retning</value>
+    <value>Retning</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>høj</value>
+    <value>Højde</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>bred</value>
+    <value>Bredde</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,15 +338,15 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>anvende</value>
+    <value>Ansøgning</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Når appen er åbnet, gemmes den automatisk, når filen ændres</value>
+    <value>Gem automatisk, når filen ændres</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,15 +354,15 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Tilpasning</value>
+    <value>Sædvane</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>data</value>
+    <value>Data</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Om processen skal bevares efter lukning af vinduet, fremskynder den næste opstart</value>
+    <value>Hold processen kørende efter lukning af vindue</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Det sprog, som appen vises på</value>
+    <value>Sprog for ansøgning</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,47 +378,47 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Gendan appens standardindstillinger</value>
+    <value>Gendan standardindstillingerne for applikationen</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>Nulstil appen</value>
+    <value>Nulstil app</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Brugerdefinerede genvejstaster</value>
+    <value>Brugerdefinerede genveje</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>genvejstast</value>
+    <value>Genveje</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Den handling, der sker, når appen starter</value>
+    <value>Handling, når applikationen starter</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Opret en ny fil</value>
+    <value>Åbn ny fil</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Åbn den sidst anvendte fil</value>
+    <value>Gendan sidst lukkede fil</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Åbner den angivne mappe</value>
+    <value>Åbn brugerdefineret mappe</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Åbn den sidst anvendte mappe</value>
+    <value>Gendan sidst lukkede mappe</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Start handlingen</value>
+    <value>Start</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>rutine</value>
+    <value>Generel</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Upload et billede</value>
+    <value>Upload billede</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -430,12 +434,20 @@
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>Tilføj en uploadkonfiguration</value>
+    <value>Tilføj uploadkonfiguration</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Upload konfigurationen</value>
+    <value>Upload konfigurationer</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Slet konfiguration</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Importer fra fil</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Metode til upload</value>
@@ -461,28 +473,44 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Picker-fil</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Gem i fil</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Test upload</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Upload af billede</value>
+    <value>Upload billeder</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Genstart app er påkrævet for at ændringer træder i kraft</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>genvejstast</value>
+    <value>Genveje</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Upload konfigurationen</value>
+    <value>Indstillinger for upload</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Sluk for hurtigere respons</value>
+    <value>Luk for hurtigere respons</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Vinduesanimation</value>
+    <value>Vinduesanimationer</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Menulinjen vises på samme linje som overskriften</value>
+    <value>Menulinje og titel i samme række</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,27 +522,27 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Vælg det apptema, du vil have vist</value>
+    <value>Vælg, hvilket apptema der skal vises</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>lys</value>
+    <value>Lys</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Anvende et tema</value>
+    <value>App-tema</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Tilføj "./" før relative stier</value>
+    <value>Forsæt "./" til relative stier</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Kopiér automatisk billeder, der bruger relative stier, når du gemmer som en fil</value>
+    <value>Kopier automatisk billeder, der bruges i relative stier, når du gemmer som fil</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Kopier billeder automatisk</value>
+    <value>Kopier automatisk billeder</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,71 +550,71 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Undslippe automatisk billedwebadresser, når de indsættes</value>
+    <value>Undslippe automatisk billedwebadresser, når du indsætter</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Ikke-gemte filer eller udklipsholderbilleder bruger som standard billedets rodmappe</value>
+    <value>Standard billedrodmappe til ikke-gemte filer eller udklipsholderbilleder</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Standard billede rod</value>
+    <value>Standard billede rod mappe</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Kopiere udklipsholderbilledet til</value>
+    <value>Kopier udklipsholderbilleder til</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Udklipsholderens billedfiler og webbilleder er ikke inkluderet</value>
+    <value>Omfatter ikke udklipsholderbilleder eller webbilleder</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>Udklipsholder billede</value>
+    <value>Billede af udklipsholder</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Udklipsholderbilleder konfigureres ved hjælp af uploads</value>
+    <value>Konfiguration af upload af udklipsholderbillede</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Den handling, der skal udføres, når et billede indsættes</value>
+    <value>Handling, der skal udføres, når du indsætter billeder</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Kopier det lokale billede til</value>
+    <value>Kopier lokale billeder til</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Lokale billeder</value>
+    <value>Lokalt billede</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Lokale billeder bruger uploadkonfigurationen</value>
+    <value>Konfiguration af upload af lokalt billede</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Handling for indsættelse af billeder</value>
+    <value>Indsæt billedhandling</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Kopier netværksbilledet til</value>
+    <value>Kopier webbillede til</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Webbilleder</value>
+    <value>Webbillede</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Webbilleder bruger uploadkonfigurationen</value>
+    <value>Konfiguration af upload af webbillede</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Relative stier foretrækkes, når du indsætter billeder</value>
+    <value>Foretrækker at bruge relativ sti, når du indsætter billeder</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Relative stier foretrækkes</value>
+    <value>Prioriter ved hjælp af relativ sti</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +622,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Indstil billedoverførselsmetoden</value>
+    <value>Indstil metode til upload af billede</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>layout</value>
+    <value>Layout</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Viser indholdsoversigten</value>
+    <value>Vis sidebjælke</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,31 +646,31 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Viser statuslinjen</value>
+    <value>Vis statuslinje</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>udseende</value>
+    <value>Udseende</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Hold vinduet altid på toppen</value>
+    <value>Gør vinduet altid på toppen</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>til det øverste niveau</value>
+    <value>Øverste</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Når den er tændt, har vinduesbaggrunden en glimmerbaggrundseffekt</value>
+    <value>Aktivere glimmerbaggrundseffekten for vinduets baggrund</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Brug glimmermaterialer</value>
+    <value>Brug glimmermateriale</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>vindue</value>
+    <value>Vindue</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>Wil u u veranderinge stoor?</value>
+    <value>Wil u veranderinge stoor?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Is jy seker</value>
+    <value>OUKEI</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>Voeg 'n tabel in</value>
+    <value>Voeg tabel in</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Is jy seker</value>
+    <value>OUKEI</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Druk asseblief op die toetskombinasie</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Lees misluk</value>
+    <value>Kon nie laai nie</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>Herwin</value>
+    <value>Herstel</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>Wil u lêers herstel?</value>
+    <value>Wil u die lêer herstel?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Verstel die tabel</value>
+    <value>Verander die grootte van die tafel</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>OK om die standaardinstellings van die toepassing te herstel</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Stoor</value>
@@ -209,20 +217,36 @@
     <value>Stoor misluk</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Stel die kortpadsleutel in</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>Kortpadsleutel is beset</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Dien in</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Die voorlegging was suksesvol</value>
+    <value>Voorlegging suksesvol</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>Oplaai misluk</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Laai suksesvol op</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>U moet die WebView2-looptyd installeer om die sagteware behoorlik uit te voer.</value>
+    <value>U moet WebView2-looptyd installeer om hierdie sagteware behoorlik uit te voer.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>Die WebView2-looptyd is nie geïnstalleer nie</value>
+    <value>WebView2 Runtime nie geïnstalleer nie</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

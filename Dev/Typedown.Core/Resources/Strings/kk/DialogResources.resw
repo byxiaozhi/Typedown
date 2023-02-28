@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>Өзгерістерді сақтағыңыз келе ме?</value>
+    <value>Өзгертулерді сақтағыңыз келе ме?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Сенімдісің бе</value>
+    <value>ЖАҚСЫ</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -150,11 +150,11 @@
     <comment>恢复文件对话框/删除</comment>
   </data>
   <data name="Don'tSave" xml:space="preserve">
-    <value>Сақтамау</value>
+    <value>Сақтамаңыз</value>
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>қате</value>
+    <value>Қате</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>кері байланыс</value>
+    <value>Кері байланыс</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Сенімдісің бе</value>
+    <value>ЖАҚСЫ</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Кілт комбинациясын басуыңызды сұраймыз</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Оқу жаңылысы</value>
+    <value>Жүктеу жаңылысы</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>қалпына келтіру</value>
+    <value>Қалпына келтіру</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>Файлдарды қалпына келтіргіңіз келе ме?</value>
+    <value>Файлды қалпына келтіргіңіз келе ме?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Кестені реттеу</value>
+    <value>Кесте өлшемін өзгерту</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>Қолданбаның әдепкі параметрлерін қалпына келтіруге жарайды</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Сақтау</value>
@@ -209,6 +217,14 @@
     <value>Сақтау жаңылысы</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Пернелер тіркесімін орнату</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>Пернелер тіркесімі бар</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Жіберу</value>
     <comment>反馈对话框/提交</comment>
@@ -217,8 +233,16 @@
     <value>Ұсыну сәтті өтті</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>Кері жүктеу жаңылысы</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Кері жүктеу сәтті өтті</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>Бағдарламалық жасақтаманы дұрыс іске қосу үшін WebView2 іске қосу уақытын орнату қажет.</value>
+    <value>Бұл бағдарламалық жасақтаманы дұрыс іске қосу үшін WebView2 іске қосу уақытын орнату қажет.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">

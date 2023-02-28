@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>Gusto mo bang i-save ang iyong mga pagbabago?</value>
+    <value>Gusto mo bang i-save ang mga pagbabago?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Sigurado ka ba</value>
+    <value>ok na</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -150,11 +150,11 @@
     <comment>恢复文件对话框/删除</comment>
   </data>
   <data name="Don'tSave" xml:space="preserve">
-    <value>Huwag mag-ipon</value>
+    <value>Huwag Mag-ipon</value>
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>pagkakamali</value>
+    <value>Mali</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>feedback na lang</value>
+    <value>Feedback</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -170,23 +170,27 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>Magsingit ng isang talahanayan</value>
+    <value>Ipasok ang Table</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
-    <value>Mag install ngayon</value>
+    <value>Mag-install Ngayon</value>
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Sigurado ka ba</value>
+    <value>ok na</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Mangyaring pindutin ang kumbinasyon ng key</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Hindi natuloy ang pagbabasa</value>
+    <value>Nabigo sa pag-load</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>makabawi ka na</value>
+    <value>Ibalik muli</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>Gusto mo bang mabawi ang mga file?</value>
+    <value>Gusto mo bang ibalik ang file?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Ayusin ang talahanayan</value>
+    <value>Palitan ang Laki ng Talahanayan</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>OK na ibalik ang default settings ng application</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Mag-ipon</value>
@@ -209,20 +217,36 @@
     <value>Nabigo ang pag-save</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Itakda ang Shortcut Key</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>Ang shortcut key ay inookupahan</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
-    <value>isumite ang</value>
+    <value>Isumite ang</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Naging matagumpay ang pagsusumite</value>
+    <value>Matagumpay ang pagsusumite</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>Nabigo ang pag-upload</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Mag upload ng matagumpay</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>Kailangan mong i install ang WebView2 runtime upang patakbuhin ang software nang maayos.</value>
+    <value>Kailangan mong i install ang WebView2 runtime upang patakbuhin nang maayos ang software na ito.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>Ang WebView2 runtime ay hindi naka install</value>
+    <value>Hindi Naka install ang WebView2 Runtime</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

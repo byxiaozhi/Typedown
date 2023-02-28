@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>האם ברצונך לשמור את השינויים?</value>
+    <value>האם ברצונך לשמור שינויים?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>אתה בטוח</value>
+    <value>אוקיי</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>טעות</value>
+    <value>שגיאה</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -178,11 +178,15 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>אתה בטוח</value>
+    <value>אוקיי</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>אנא לחץ על צירוף המקשים</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>הקריאה נכשלה</value>
+    <value>טעינת הטעינה נכשלה</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>האם ברצונך לשחזר קבצים?</value>
+    <value>האם ברצונך לשחזר את הקובץ?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>התאמת הטבלה</value>
+    <value>שינוי גודל טבלה</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>אישור כדי לשחזר את הגדרות ברירת המחדל של היישום</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>שמר</value>
@@ -209,20 +217,36 @@
     <value>השמירה נכשלה</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>הגדרת מקש קיצור</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>מקש הקיצור תפוס</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>שלח</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>ההגשה עברה בהצלחה</value>
+    <value>ההגשה הסתיימה בהצלחה</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>ההעלאה נכשלה</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>ההעלאה הצליחה</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>עליך להתקין את זמן הריצה של WebView2 כדי להפעיל את התוכנה כראוי.</value>
+    <value>עליך להתקין את זמן הריצה של WebView2 כדי להפעיל תוכנה זו כראוי.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>זמן הריצה של WebView2 אינו מותקן</value>
+    <value>זמן ריצה של WebView2 אינו מותקן</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

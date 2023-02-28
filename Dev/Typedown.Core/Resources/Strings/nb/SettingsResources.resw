@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Om søknaden</value>
+    <value>Om søknad</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Lagre side</value>
+    <value>Microsoft Store-siden</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -146,35 +146,35 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Vi verdsetter innholdet du fyller ut</value>
+    <value>Vi tar tilbakemeldingene dine svært alvorlig</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>om</value>
+    <value>Om</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Det avsluttende anførselstegnet fullføres automatisk når du går inn i den innledende parentesen</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Autofullfør høyre hakeparentes når venstre hakeparentes er angitt</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
     <value>Autofullfør parenteser</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Autofullfør samsvarende Markdown-koder</value>
+    <value>Automatisk fullføring av samsvarende markdown-tag</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Autofullfør Markdown-taggen</value>
+    <value>Autofullfør markdown-koder</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Avsluttende anførselstegn fullføres automatisk når innledende anførselstegn angis</value>
+    <value>Autofullfør høyre tilbud når venstre tilbud angis</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Autofullfør anførselstegn</value>
+    <value>Autofullfør tilbud</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
@@ -182,11 +182,11 @@
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Kopiere / klippe ut innhold som standard</value>
+    <value>Standard kopiering/utklipp av innhold</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>Maksimal bredde på redigeringsinnholdet</value>
+    <value>Maksimal bredde på redigeringsinnhold</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>forlenge</value>
+    <value>Utvidelser</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Editor standard skriftstørrelse</value>
+    <value>Standard skriftstørrelse på redigeringsprogrammet.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Redaktørlinje høyt multiplum</value>
+    <value>Editor linjehøyde flere</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Automatisk språkgjenkjenning</value>
+    <value>Automatisk gjenkjenning av språk</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>stil</value>
+    <value>Stil</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Justere standard innrykksområde for referanser og lister</value>
+    <value>Justere standard innrykksområde for anførselstegn og lister</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>redaktør</value>
+    <value>Redaktør</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -250,39 +250,43 @@
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>Legge til en eksportkonfigurasjon</value>
+    <value>Legge til eksportkonfigurasjon</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Eksportere konfigurasjonen</value>
+    <value>Eksportere konfigurasjoner</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Eksportere filtype</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Når eksporten er fullført, åpner du mappen der den ligger</value>
+    <value>Åpne mappen etter eksport</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Tverrstilt</value>
+    <value>Landskap</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Langsgående</value>
+    <value>Portrett</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>bunntekst på side</value>
+    <value>Bunntekst</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Topp</value>
+    <value>Topptekst</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Topp- og bunntekst</value>
+    <value>Topptekst og bunntekst</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>under</value>
+    <value>Bunn</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>over</value>
+    <value>Topp</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>retning</value>
+    <value>Retning</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>høy</value>
+    <value>Høyde</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>vid</value>
+    <value>Bredde</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,15 +338,15 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>bruke</value>
+    <value>Søknad</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Når den er åpnet, lagres appen automatisk når filen endres</value>
+    <value>Lagre automatisk når filen endres</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,15 +354,15 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Tilpassing</value>
+    <value>Skikk</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>data</value>
+    <value>Data</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Om du vil beholde prosessen etter at vinduet er lukket, akseler neste oppstart</value>
+    <value>Hold prosessen i gang etter lukking av vinduet</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Språket som appen vises på</value>
+    <value>Språk for programmet</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,47 +378,47 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Gjenopprett appens standardinnstillinger</value>
+    <value>Gjenopprett standardinnstillingene for programmet</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>Tilbakestill appen</value>
+    <value>Tilbakestill app</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Egendefinerte hurtigtaster</value>
+    <value>Egendefinerte snarveier</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>Hurtigtast</value>
+    <value>Snarveier</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Handlingen som skjer når appen starter</value>
+    <value>Handling når programmet starter</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Opprette en ny fil</value>
+    <value>Åpne ny fil</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Åpne den sist brukte filen</value>
+    <value>Gjenopprett sist lukket fil</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Åpner den angitte mappen</value>
+    <value>Åpne egendefinert mappe</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Åpne den sist brukte mappen</value>
+    <value>Gjenopprett siste lukkede mappe</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Start handlingen</value>
+    <value>Oppstart</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>rutine</value>
+    <value>Generelt</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Last opp et bilde</value>
+    <value>Last opp bilde</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -430,12 +434,20 @@
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>Legge til en opplastingskonfigurasjon</value>
+    <value>Legge til konfigurasjon for opplasting</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Last opp konfigurasjonen</value>
+    <value>Laste opp konfigurasjoner</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Slett konfigurasjon</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Importer fra fil</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Last opp metode</value>
@@ -461,28 +473,44 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Picker-fil</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Lagre til fil</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Test opplasting</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Opplasting av bilde</value>
+    <value>Last opp bilder</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Start appen på nytt er nødvendig for at endringene skal tre i kraft</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>Hurtigtast</value>
+    <value>Snarveier</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Last opp konfigurasjonen</value>
+    <value>Innstillinger for opplasting</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Slå av for raskere respons</value>
+    <value>Lukk for raskere respons</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Vindu animasjon</value>
+    <value>Vindu animasjoner</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Menylinjen vises på samme linje som toppteksten</value>
+    <value>Menylinje og tittel i samme rad</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,27 +522,27 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Velg apptemaet du vil vise</value>
+    <value>Velg hvilket apptema som skal vises</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>lys</value>
+    <value>Lys</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Bruke et tema</value>
+    <value>App-tema</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Legg til "./" før relative baner</value>
+    <value>Forbeed "./" til relative baner</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Kopier automatisk bilder som bruker relative baner når du lagrer som en fil</value>
+    <value>Kopier automatisk bilder som brukes i relative baner når du lagrer som fil</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Kopiere bilder automatisk</value>
+    <value>Kopier bilder automatisk</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,23 +550,23 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Unnslippe bildenettadresser automatisk når de settes inn</value>
+    <value>Unnslippe bildenettadresser automatisk når du setter inn</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Ulagrede filer eller utklippstavlebilder bruker bilderotkatalogen som standard</value>
+    <value>Standard bilderotkatalog for ikke-lagrede filer eller utklippstavlebilder</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Standard bilderot</value>
+    <value>Standard bilderotkatalog</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Kopiere utklippstavlebildet til</value>
+    <value>Kopiere utklippstavlebilder til</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Utklippstavlebildefiler og webbilder er ikke inkludert</value>
+    <value>Inkluderer ikke utklippstavlebilder eller webbilder</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,47 +574,47 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Utklippstavlebilder konfigureres ved hjelp av opplastinger</value>
+    <value>Konfigurasjon av bildeopplasting av utklippstavle</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Handlingen som skal utføres når et bilde settes inn</value>
+    <value>Handling som skal utføres når du setter inn bilder</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Kopier det lokale bildet til</value>
+    <value>Kopier lokale bilder til</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Lokale bilder</value>
+    <value>Lokalt bilde</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Lokale bilder bruker opplastingskonfigurasjonen</value>
+    <value>Konfigurasjon av lokal bildeopplasting</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Operasjon for innsetting av bilder</value>
+    <value>Handlingen Sett inn bilde</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Kopiere nettverksbildet til</value>
+    <value>Kopier webbilde til</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Web-bilder</value>
+    <value>Bilde på nettet</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Webbilder bruker opplastingskonfigurasjonen</value>
+    <value>Konfigurasjon av opplasting av webbilder</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Relative baner foretrekkes når du setter inn bilder</value>
+    <value>Foretrekker å bruke relativ bane når du setter inn bilder</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Relative baner foretrekkes</value>
+    <value>Prioriter bruk av relativ bane</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +622,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Angi bildeopplastingsmetoden</value>
+    <value>Angi metode for bildeopplasting</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Viser sidepanelet</value>
+    <value>Vis sidestolpe</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,31 +646,31 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Viser statuslinjen</value>
+    <value>Vis statuslinje</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>utseende</value>
+    <value>Utseende</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Hold vinduet alltid på toppen</value>
+    <value>Gjør vinduet alltid på toppen</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>til toppnivå</value>
+    <value>Øverste</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Når den er slått på, har vindusbakgrunnen en glimmerbakgrunnseffekt</value>
+    <value>Aktiver glimmerbakgrunnseffekten for vinduets bakgrunn</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Bruk glimmermaterialer</value>
+    <value>Bruk glimmermateriale</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>vindu</value>
+    <value>Vindu</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

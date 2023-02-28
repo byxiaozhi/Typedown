@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Kas oled kindel</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>viga</value>
+    <value>Viga</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>Tabeli lisamine</value>
+    <value>Lisa tabel</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,11 +178,15 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Kas oled kindel</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Palun vajutage klahvikombinatsiooni</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Lugemine ebaõnnestus</value>
+    <value>Laadimine ebaõnnestus</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>Kas soovite faile taastada?</value>
+    <value>Kas soovite faili taastada?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Tabeli reguleerimine</value>
+    <value>Tabeli suuruse muutmine</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>OK rakenduse vaikesätete taastamiseks</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Salvestama</value>
@@ -209,6 +217,14 @@
     <value>Salvestamine ebaõnnestus</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Määra kiirklahv</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>Kiirklahv on hõivatud</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Esitada</value>
     <comment>反馈对话框/提交</comment>
@@ -217,12 +233,20 @@
     <value>Esitamine õnnestus</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>Üleslaadimine nurjus</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Üleslaadimine õnnestus</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>Tarkvara õigeks käitamiseks peate installima WebView2 käitusaja.</value>
+    <value>Selle tarkvara õigeks käitamiseks peate installima WebView2 käitusaja.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>WebView2 käitusaega pole installitud</value>
+    <value>WebView2 käitusaeg pole installitud</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

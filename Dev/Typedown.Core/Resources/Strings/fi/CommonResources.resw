@@ -118,35 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Lisää kohteeseen</value>
+    <value>Lisätä</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Keskityksen tasaus</value>
+    <value>Keskus</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Tasattu vasemmalle</value>
+    <value>Tasaa vasemmalle</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Tasattu oikealle</value>
+    <value>Tasaa oikealle</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
-    <value>kaikki</value>
+    <value>Kaikki</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
-    <value>sovellus</value>
+    <value>Sovellus</value>
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>automaattinen</value>
+    <value>Auto</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>paluu</value>
+    <value>Selkä</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -158,7 +158,7 @@
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>Selaa paikallisia tiedostoja</value>
+    <value>Selaa paikallista tiedostoa</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -170,19 +170,23 @@
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>sana</value>
+    <value>Merkki</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>sana</value>
+    <value>Merkkiä</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>kaavio</value>
+    <value>Kaavio</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Selvä</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>Tyylin tyhjentäminen</value>
+    <value>Tyhjennä muoto</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
@@ -190,7 +194,7 @@
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>Klikkaa Lisää kuva</value>
+    <value>Lisää kuva klikkaamalla</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
@@ -198,23 +202,23 @@
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>koodi</value>
+    <value>Koodi</value>
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>Koodi-lohko</value>
+    <value>Koodi Aidat</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>sarake</value>
+    <value>Sarakkeet</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>kopioida</value>
+    <value>Kopioida</value>
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>Kopioi HTML-koodina</value>
+    <value>Kopioi HTML-muodossa</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,7 +226,7 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>Kopioi tiedoston osoite</value>
+    <value>Kopioi polkuna</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
@@ -242,23 +246,23 @@
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>luoda</value>
+    <value>Luoda</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+napsauta Avaa linkki</value>
+    <value>Ctrl+napsauta avataksesi linkin</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>Mukauttaminen</value>
+    <value>Tapa</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>Mukautetut pikanäppäimet</value>
+    <value>Mukautetut pikakuvakkeet</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>leikkaus</value>
+    <value>Leikata</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -266,15 +270,15 @@
     <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>data</value>
+    <value>Data</value>
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>Alenna otsikkotasoa</value>
+    <value>Otsikkotason pienentäminen</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>laiminlyönti</value>
+    <value>Laiminlyönti</value>
     <comment>默认</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -286,31 +290,35 @@
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>toistaa</value>
+    <value>Kaksoiskappale</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>muokata</value>
+    <value>Muokata</value>
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>Kuvan muokkaaminen</value>
+    <value>Muokkaa kuvaa</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>editori</value>
+    <value>Editori</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>Linkkien upottaminen</value>
+    <value>Upota linkki</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
-    <value>kursivoitu</value>
+    <value>Kursivoitu</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Ottaa käyttöön</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
-    <value>virhe</value>
+    <value>Virhe</value>
     <comment>错误</comment>
   </data>
   <data name="Export" xml:space="preserve">
@@ -322,19 +330,19 @@
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>Vie PDF-muotoon</value>
+    <value>Vie PDF-tiedostona</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>palaute</value>
+    <value>Palaute</value>
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
-    <value>tiedosto</value>
+    <value>Tiedosto</value>
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>tiedosto</value>
+    <value>Tiedostot</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
@@ -358,15 +366,15 @@
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
-    <value>Tarkennustila</value>
+    <value>Tarkastelutila</value>
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>kansio</value>
+    <value>Kansio</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
-    <value>fontti</value>
+    <value>Fontti</value>
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
@@ -374,19 +382,19 @@
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>alaviite</value>
+    <value>Alaviitteet</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>Alaviitetunnistetta [^{identifier}] ei löydy:</value>
+    <value>Alaviitemerkkiä ei löydy [^{identifier}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
-    <value>formaatti</value>
+    <value>Formaatti</value>
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>Koodin muotoileminen</value>
+    <value>Muotoile koodi</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
@@ -398,31 +406,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>nimike</value>
+    <value>Otsikko</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>Ensimmäisen tason otsikko</value>
+    <value>Otsake 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>Toisen tason otsikot</value>
+    <value>Otsake 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>Kolmitasoiset otsikot</value>
+    <value>Otsake 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>Nelitasoiset otsikot</value>
+    <value>Otsake 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>Viisitasoiset otsikot</value>
+    <value>Otsake 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>Kuusitasoiset otsikot</value>
+    <value>Otsake 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -430,19 +438,19 @@
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>korostaa</value>
+    <value>Korostaa</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>Vaakasuora jakoviiva</value>
+    <value>Vaakaviiva</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
-    <value>Hyperlinkit</value>
+    <value>Hyperlinkki</value>
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>kuva</value>
+    <value>Kuva</value>
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>Nosta otsikkotasoa</value>
+    <value>Otsikkotason nostaminen</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -466,47 +474,47 @@
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>Tekstiin sidotut kaavat</value>
+    <value>Sisäinen matematiikka</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>Kirjoita alaviitteen määritelmä...</value>
+    <value>Syötteen alaviitteen määritelmä...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>Anna kielitunniste...</value>
+    <value>Syöttökielen tunniste...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>Kirjoita matemaattinen kaava...</value>
+    <value>Syötä matematiikkaa...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>Anna YAML Front Matter...</value>
+    <value>Syötä YAML Front Matter...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>Sarakkeen lisääminen vasemmalle</value>
+    <value>Lisää sarake vasemmalle</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>Sarakkeen lisääminen oikealle</value>
+    <value>Lisää sarake oikealle</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>Kuvan lisääminen</value>
+    <value>Lisää kuva</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>Lisää kappale alle</value>
+    <value>Lisää kappale jälkeen</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>Kappaleen lisääminen yläpuolelle</value>
+    <value>Lisää kappale ennen</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>Rivien lisääminen yläpuolelle</value>
+    <value>Lisää rivi yläpuolelle</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
@@ -522,11 +530,11 @@
     <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>valo</value>
+    <value>Valo</value>
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Kyllä</value>
+    <value>Rivi</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
@@ -534,11 +542,11 @@
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Kyllä</value>
+    <value>Rivit</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>Linkitä viitteet</value>
+    <value>Linkin viite</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
@@ -546,19 +554,19 @@
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
-    <value>matematiikka</value>
+    <value>Matikka</value>
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>Kaavan lohko</value>
+    <value>Matematiikan lohko</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>maksimoida</value>
+    <value>Maksimoida</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>valikkorivi</value>
+    <value>Valikkorivi</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
@@ -566,11 +574,11 @@
     <comment>Mermaid</comment>
   </data>
   <data name="Minimize" xml:space="preserve">
-    <value>minimoida</value>
+    <value>Minimoida</value>
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minuutti</value>
+    <value>Pöytäkirja</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
@@ -581,16 +589,20 @@
     <value>Nimi</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>Nimi ei voi olla tyhjä</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>hiljattain rakennettu</value>
+    <value>Uusi</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>Luo uusi tiedosto</value>
+    <value>Uusi tiedosto</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>Luo uusi kansio</value>
+    <value>Uusi kansio</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
@@ -606,27 +618,31 @@
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>ei</value>
+    <value>Ei lainkaan</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
-    <value>Ei viimeaikaisia tiedostoja</value>
+    <value>Ei äskettäisiä tiedostoja</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>Ei asetettu</value>
+    <comment>未设置</comment>
+  </data>
   <data name="Off" xml:space="preserve">
-    <value>sulkea</value>
+    <value>Sulkea</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Oletko varma</value>
+    <value>OKEI</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>avata</value>
+    <value>Päälle</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Avaa se</value>
+    <value>Avata</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
@@ -637,8 +653,12 @@
     <value>Avaa kansio</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>Avaa kuvan sijainti</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>Avautuu uuteen ikkunaan</value>
+    <value>Avaa uudessa ikkunassa</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
@@ -650,19 +670,19 @@
     <comment>开源软件</comment>
   </data>
   <data name="OrderedList" xml:space="preserve">
-    <value>Järjestetty luettelo</value>
+    <value>Tilattu luettelo</value>
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
-    <value>hahmotella</value>
+    <value>Hahmotella</value>
     <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
-    <value>kappale</value>
+    <value>Kappale</value>
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>aseellinen ryöstö</value>
+    <value>Tahna</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
@@ -670,7 +690,7 @@
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>polku</value>
+    <value>Polku</value>
     <comment>文件/路径</comment>
   </data>
   <data name="PlantUMLDiagram" xml:space="preserve">
@@ -678,35 +698,35 @@
     <comment>PlantUML Diagram</comment>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>vedos</value>
+    <value>Vedos</value>
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>mainita</value>
+    <value>Siteerata</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>Pistetilanne</value>
+    <value>Luokitus</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
-    <value>uusia</value>
+    <value>Uusia</value>
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>Sarakkeen poistaminen</value>
+    <value>Poista sarake</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>Rivin poistaminen</value>
+    <value>Poista rivi</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>nimetä uudelleen</value>
+    <value>Nimetä uudelleen</value>
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>korvaaminen</value>
+    <value>Korvata</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
@@ -718,11 +738,11 @@
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>palauttaa</value>
+    <value>Palauttaa</value>
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Kyllä</value>
+    <value>Rivit</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -746,7 +766,7 @@
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>Valitse tiedosto</value>
+    <value>Valitse Tiedosto</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
@@ -754,11 +774,11 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Pystyttää</value>
+    <value>Asetukset</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>pikanäppäin</value>
+    <value>Pikakuvakkeet</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
@@ -766,7 +786,7 @@
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>Lähdekoodi-tila</value>
+    <value>Lähdekoodin tila</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
@@ -774,7 +794,7 @@
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Lopeta tuo</value>
+    <value>Seis</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,7 +806,7 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>lomake</value>
+    <value>Pöytä</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
@@ -794,23 +814,23 @@
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>aihe</value>
+    <value>Teema</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>nimike</value>
+    <value>Nimike</value>
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Sisältöluettelo</value>
+    <value>Sisällysluettelo</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>koko</value>
+    <value>Koko</value>
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>Muunna muotoon</value>
+    <value>Käänny muotoon</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
@@ -818,27 +838,27 @@
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
-    <value>alleviivata</value>
+    <value>Alleviivata</value>
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>kumota</value>
+    <value>Kumota</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Järjestämätön luettelo</value>
+    <value>Luoteja</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>päivittää</value>
+    <value>Päivittää</value>
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>Säännöllinen vastaavuus</value>
+    <value>Säännöllisen lausekkeen vastaavuus</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>Käytä järjestelmäasetuksia</value>
+    <value>Käytä järjestelmäasetusta</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
@@ -850,7 +870,7 @@
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>paikka</value>
+    <value>Verkkosivusto</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
@@ -858,19 +878,19 @@
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
-    <value>ikkuna</value>
+    <value>Ikkuna</value>
     <comment>窗口</comment>
   </data>
   <data name="Word" xml:space="preserve">
-    <value>sana</value>
+    <value>Sana</value>
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
-    <value>sanamäärä</value>
+    <value>Sanamäärä</value>
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>sana</value>
+    <value>Sanat</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">
@@ -878,7 +898,7 @@
     <comment>YAML Front Matter</comment>
   </data>
   <data name="Zoom" xml:space="preserve">
-    <value>zoomata</value>
+    <value>Zoomata</value>
     <comment>字体缩放</comment>
   </data>
 </root>

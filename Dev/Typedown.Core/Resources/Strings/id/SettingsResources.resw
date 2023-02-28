@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Tentang aplikasi</value>
+    <value>Tentang Aplikasi</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Halaman toko</value>
+    <value>Halaman Microsoft Store</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -134,7 +134,7 @@
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
-    <value>Kirim masukan</value>
+    <value>Kirim Umpan Balik</value>
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
@@ -146,43 +146,43 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Kami menghargai konten yang Anda isi</value>
+    <value>Kami menanggapi umpan balik Anda dengan sangat serius</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>tentang</value>
+    <value>Sekitar</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Tanda kutip penutup secara otomatis selesai saat memasukkan tanda kurung buka</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Selesaikan braket kanan secara otomatis saat braket kiri dimasukkan</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Tanda kurung lengkapiotomatis</value>
+    <value>Tanda kurung lengkap otomatis</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Tag penurunan harga pencocokan otomatis</value>
+    <value>Tag markdown pencocokan lengkap otomatis</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Lengkapi otomatis tag Markdown</value>
+    <value>Tag penurunan harga lengkap otomatis</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Tanda kutip penutup secara otomatis selesai saat tanda kutip pembuka dimasukkan</value>
+    <value>Lengkapi otomatis kutipan kanan saat kutipan kiri dimasukkan</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Tanda kutip lengkapiotomatis</value>
+    <value>Kutipan lengkap otomatis</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Pilih konten salin/potong default</value>
+    <value>Pilih salin/potong konten default</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Salin/potong konten secara default</value>
+    <value>Salin/potong konten default</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>Memperpanjang</value>
+    <value>Ekstensi</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Ukuran font default editor</value>
+    <value>Ukuran font default editor.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Editor baris tinggi beberapa</value>
+    <value>Editor tinggi garis beberapa</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Deteksi bahasa otomatis</value>
+    <value>Bahasa deteksi otomatis</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>gaya</value>
+    <value>Gaya</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Menyesuaikan ruang indentasi default untuk referensi dan daftar</value>
+    <value>Menyesuaikan ruang indentasi default untuk kutipan dan daftar</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>editor</value>
+    <value>Editor</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -257,32 +257,36 @@
     <value>Mengekspor konfigurasi</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Ekspor jenis file</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Ketika ekspor selesai, buka folder di mana ia berada</value>
+    <value>Buka folder setelah ekspor</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Melintang</value>
+    <value>Lanskap</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Longitudinal</value>
+    <value>Potret</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>footer halaman</value>
+    <value>Footer</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Puncak</value>
+    <value>Header</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Atas dan footer</value>
+    <value>Header dan Footer</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>di bawah</value>
+    <value>Dasar</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>atas</value>
+    <value>Puncak</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>arah</value>
+    <value>Arah</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>tinggi</value>
+    <value>Tinggi</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>lebar</value>
+    <value>Lebar</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,15 +338,15 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>berlaku</value>
+    <value>Aplikasi</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Setelah dibuka, aplikasi secara otomatis disimpan saat file dimodifikasi</value>
+    <value>Simpan secara otomatis saat file diubah</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,15 +354,15 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Kustomisasi</value>
+    <value>Adat</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>data</value>
+    <value>Data</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Apakah akan mempertahankan proses setelah menutup jendela mempercepat startup berikutnya</value>
+    <value>Jaga agar proses tetap berjalan setelah menutup jendela</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Bahasa tempat aplikasi ditampilkan</value>
+    <value>Bahasa aplikasi</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,47 +378,47 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Pulihkan pengaturan default aplikasi</value>
+    <value>Kembalikan pengaturan default aplikasi</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>Setel ulang aplikasi</value>
+    <value>Setel Ulang Aplikasi</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Tombol pintasan khusus</value>
+    <value>Pintasan kustom</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>tombol pintasan</value>
+    <value>Cara pintas</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Tindakan yang terjadi saat aplikasi dimulai</value>
+    <value>Tindakan saat aplikasi dimulai</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Membuat file baru</value>
+    <value>Buka file baru</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Membuka file yang terakhir digunakan</value>
+    <value>Memulihkan file yang terakhir ditutup</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Membuka folder yang ditentukan</value>
+    <value>Buka folder kustom</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Membuka folder yang terakhir digunakan</value>
+    <value>Memulihkan folder yang terakhir ditutup</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Mulai tindakan</value>
+    <value>Startup</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>Rutin</value>
+    <value>Umum</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Mengunggah gambar</value>
+    <value>Unggah gambar</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -434,8 +438,16 @@
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Mengunggah konfigurasi</value>
+    <value>Konfigurasi upload</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Hapus konfigurasi</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Impor Dari File</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Metode upload</value>
@@ -461,20 +473,36 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>File Pemilih</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Simpan ke File</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Uji unggahan</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Unggah gambar</value>
+    <value>Unggah Gambar</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Mulai Ulang Aplikasi diperlukan agar perubahan diterapkan</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>tombol pintasan</value>
+    <value>Cara pintas</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Mengunggah konfigurasi</value>
+    <value>Pengaturan Upload</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Matikan untuk respons yang lebih cepat</value>
+    <value>Tutup untuk respons yang lebih cepat</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
@@ -482,7 +510,7 @@
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Bilah menu muncul pada baris yang sama dengan header</value>
+    <value>Bilah Menu dan judul dalam baris yang sama</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,27 +522,27 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Pilih tema aplikasi yang ingin Anda tampilkan</value>
+    <value>Pilih tema aplikasi mana yang akan ditampilkan</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>ringan</value>
+    <value>Ringan</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Menerapkan tema</value>
+    <value>Tema aplikasi</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Tambahkan "./" sebelum jalur relatif</value>
+    <value>Tambahkan "./" ke jalur relatif</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Secara otomatis menyalin gambar yang menggunakan jalur relatif saat menyimpan sebagai file</value>
+    <value>Secara otomatis menyalin gambar yang digunakan dalam jalur relatif saat menyimpan sebagai file</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Menyalin gambar secara otomatis</value>
+    <value>Salin gambar secara otomatis</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,35 +550,35 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Secara otomatis lolos dari URL gambar saat disisipkan</value>
+    <value>Secara otomatis lolos dari URL gambar saat menyisipkan</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>File yang belum disimpan atau gambar clipboard menggunakan direktori root gambar secara default</value>
+    <value>Direktori root gambar default untuk file yang belum disimpan atau gambar clipboard</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Akar gambar default</value>
+    <value>Direktori root gambar default</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Menyalin gambar clipboard ke</value>
+    <value>Salin gambar clipboard ke</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>File gambar clipboard dan gambar web tidak disertakan</value>
+    <value>Tidak termasuk gambar clipboard atau gambar web</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>Gambar clipboard</value>
+    <value>Gambar Clipboard</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Gambar clipboard dikonfigurasi menggunakan unggahan</value>
+    <value>Konfigurasi unggahan gambar clipboard</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Tindakan yang harus diambil saat gambar disisipkan</value>
+    <value>Tindakan yang harus dijalankan saat menyisipkan gambar</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
@@ -558,35 +586,35 @@
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Gambar lokal</value>
+    <value>Gambar Lokal</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Gambar lokal menggunakan konfigurasi upload</value>
+    <value>Konfigurasi unggahan gambar lokal</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Operasi penyisipan gambar</value>
+    <value>Tindakan sisipkan gambar</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Salin gambar jaringan ke</value>
+    <value>Salin gambar web ke</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Gambar web</value>
+    <value>Gambar Web</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Gambar web menggunakan konfigurasi upload</value>
+    <value>Konfigurasi unggahan gambar web</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Jalur relatif lebih disukai saat menyisipkan gambar</value>
+    <value>Lebih suka menggunakan jalur relatif saat menyisipkan gambar</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Jalur relatif lebih disukai</value>
+    <value>Prioritaskan menggunakan jalur relatif</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>tata letak</value>
+    <value>Tata letak</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Menampilkan bar samping</value>
+    <value>Perlihatkan Bilah Samping</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,23 +646,23 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Menampilkan bilah status</value>
+    <value>Perlihatkan Bilah Status</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>rupa</value>
+    <value>Rupa</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Jaga agar jendela selalu berada di atas</value>
+    <value>Buat jendela selalu di atas</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>ke tingkat atas</value>
+    <value>Paling atas</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Saat diaktifkan, latar belakang jendela memiliki efek latar belakang mika</value>
+    <value>Mengaktifkan efek latar belakang mika untuk latar belakang jendela</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
@@ -642,7 +670,7 @@
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>jendela</value>
+    <value>Jendela</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

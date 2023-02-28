@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Mayelana nesicelo</value>
+    <value>Mayelana Isicelo</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Ikhasi lesitolo</value>
+    <value>Ikhasi lesitolo se-Microsoft</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
-    <value>Ngokusekelwe kwisofthiwe yomthombo ovulekile</value>
+    <value>Ngokusekelwe kwisofthiwe evulekile</value>
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
@@ -134,7 +134,7 @@
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
-    <value>Thumela impendulo</value>
+    <value>Thumela Impendulo</value>
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
@@ -146,35 +146,35 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Siyakwazisa okuqukethwe okugcwalisayo</value>
+    <value>Sithatha impendulo yakho ngokungathí sina</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>ngokuphathelene</value>
+    <value>Nge</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Uphawu lwekhotheshini yokuvala luqedwa ngokuzenzakalelayo lapho ungena ku-parenthesis yokuvula</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Auto ephelele ubakaki kwesokudla uma ubakaki kwesokunxele ifakiwe</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Autocomplete parentheses</value>
+    <value>Izibiyeli eziphelele ngokuzenzakalela</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Qedela ngokuzenzakalela amathegi we-Markdown afanayo</value>
+    <value>Auto ephelele ukufanisa markdown ithegi</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Qedela ngokuzenzakalela ithegi ye-Markdown</value>
+    <value>Auto ephelele markdown amathegi</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Izimpawu zokucaphuna zokuvala ziqedwa ngokuzenzakalelayo uma kufakwa izimpawu zokucaphuna zokuvula</value>
+    <value>Auto ephelele lesisho kwesokudla lapho lesisho kwesokunxele ifakiwe</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Qedela ngokuzenzakalela izimpawu zekhotheshini</value>
+    <value>Auto izingcaphuno ephelele</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
@@ -182,7 +182,7 @@
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Kopisha/usike okuqukethwe ngokuzenzakalelayo</value>
+    <value>Ikhophi /okuqukethwe okumisiwe</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>nweba</value>
+    <value>Izandiso</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Umhleli wefonti omisiwe</value>
+    <value>Usayizi wefonti omisiwe womhleli.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Umhleli umugqa okusezingeni eliphezulu eziningi</value>
+    <value>Umhleli umugqa ukuphakama eziningi</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,11 +218,11 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Ukutholakala kolimi okuzenzakalelayo</value>
+    <value>Thola ngokuzenzakalela ulimi</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
-    <value>ulwimi</value>
+    <value>Ulwimi</value>
     <comment>编辑器/语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>isitayela</value>
+    <value>Isitayela</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Lungisa isikhala se-indentation esimisiwe sezinkomba nezinhlu</value>
+    <value>Lungisa isikhala se-indentation esimisiwe ingcaphuno nezinhlu</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>umhleli</value>
+    <value>Umhleli</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -254,43 +254,47 @@
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Hambisa ukucushwa</value>
+    <value>Export configurations</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Uhlobo lwefayela lokuthekelisa</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Uma ukuthekelisa sekuphelile, vula ifolda lapho itholakala khona</value>
+    <value>Vula ifolda ngemuva kokuthekelisa</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Transverse</value>
+    <value>Landscape</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Longitudinal</value>
+    <value>Portrait</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>isinyawo sekhasi</value>
+    <value>Footer</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Phezulu</value>
+    <value>Isihloko</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Phezulu futhi footer</value>
+    <value>Inhloko kanye ne-Footer</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>ngaphansi</value>
+    <value>Phansi</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
-    <value>kwesokunxele</value>
+    <value>Kwesobunxele</value>
     <comment>导出/左</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Right" xml:space="preserve">
-    <value>kwesokudla</value>
+    <value>Kwesokudla</value>
     <comment>导出/右</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Text" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>ngenhla</value>
+    <value>Phezulu</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>isiqondiso</value>
+    <value>Isiqondiso</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>okusezingeni eliphezulu</value>
+    <value>Ukuphakama</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>ububanzi</value>
+    <value>Ububanzi</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,31 +338,31 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>isicelo</value>
+    <value>Izisebenziso</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Uma ivuliwe, uhlelo lokusebenza lugcinwa ngokuzenzakalelayo uma ifayela liguqulwa</value>
+    <value>Gcina ngokuzenzakalelayo uma ifayela liguquliwe</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>Autosave</value>
+    <value>Gcina ngokuzenzakalela</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Ukwenza ngokwezifiso</value>
+    <value>Isiko</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>idatha</value>
+    <value>Idatha</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Uma ngabe ukugcina inqubo ngemuva kokuvala iwindi kusheshisa ukuqala okulandelayo</value>
+    <value>Gcina inqubo isebenza ngemuva kokuvala iwindi</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,11 +370,11 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Ulimi lapho uhlelo lokusebenza luboniswa khona</value>
+    <value>Ulimi lwesicelo</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
-    <value>ulwimi</value>
+    <value>Ulwimi</value>
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
@@ -382,39 +386,39 @@
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Okhiye bonqamulelo ngokwezifiso</value>
+    <value>Izinqamuleli zenkambiso</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>ukhiye onqamulelayo</value>
+    <value>Izinqamuleli</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Isenzo esenzeka lapho uhlelo lokusebenza luqala</value>
+    <value>Isenzo uma uhlelo lokusebenza luqala</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Akha ifayela elisha</value>
+    <value>Vula ifayela elisha</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Vula ifayela lokugcina elisetshenzisiwe</value>
+    <value>Buyisela ifayela lokugcina elivaliwe</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Ivula ifolda ecacisiwe</value>
+    <value>Vula ifolda esemthethweni</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Vula ifolda yokugcina esetshenzisiwe</value>
+    <value>Buyisela ifolda yokugcina evaliwe</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Qala isenzo</value>
+    <value>Ukuqala</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>isimiso</value>
+    <value>Jwayelekile</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -430,12 +434,20 @@
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>Engeza ukumiswa kokulayisha</value>
+    <value>Engeza ukucushwa kokulayisha</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
     <value>Layisha ukucushwa</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Susa ukumiswa</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Ngenisa Kusuka Kufayela</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Layisha indlela</value>
@@ -461,28 +473,44 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Ifayela le-Picker</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Gcina kufayela</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Ukulayisha kokuhlola</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Ukulayishwa kwesithombe</value>
+    <value>Layisha izithombe</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Qala kabusha App kudinga izinguquko ukusebenza</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>ukhiye onqamulelayo</value>
+    <value>Izinqamuleli</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Layisha ukucushwa</value>
+    <value>Layisha Izimiso</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Cisha impendulo esheshayo</value>
+    <value>Vala impendulo esheshayo</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Isifanekiso sefasitela</value>
+    <value>Izithombe zamafasitela</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Ibha yemenyu ivela emgqeni ofanayo nenhloko</value>
+    <value>Ibha yemenyu nesihloko emgqeni ofanayo</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,27 +522,27 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Khetha indikimba yohlelo lokusebenza ofuna ukuyibonisa</value>
+    <value>Khetha ukuthi iyiphi indikimba yohlelo lokusebenza ozoyibonisa</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>ukukhanya</value>
+    <value>Ukukhanya</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Faka indikimba</value>
+    <value>Indikimba yohlelo lokusebenza</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Engeza "./" ngaphambi kwezindlela ezilinganiselwe</value>
+    <value>Prepend "./" ezindleleni isihlobo</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Kopisha ngokuzenzakalelayo izithombe ezisebenzisa izindlela ezilinganiselwe uma ulondoloza njengefayela</value>
+    <value>Kopisha ngokuzenzakalelayo izithombe ezisetshenziswa ezindleleni ezilinganiselwe uma ulondoloza njengefayela</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Kopisha izithombe ngokuzenzakalelayo</value>
+    <value>Kopisha ngokuzenzakalelayo izithombe</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,23 +550,23 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Balekela ngokuzenzakalelayo ama-URL wesithombe uma efakwa</value>
+    <value>Balekela ngokuzenzakalelayo ama-URL wesithombe uma ufaka</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Amafayela angagciniwe noma izithombe zebhodi lokunamathisela zisebenzisa umkhombandlela wempande yesithombe ngokuzenzakalelayo</value>
+    <value>Umkhombandlela wempande yesithombe esimisiwe samafayela angagciniwe noma izithombe zebhodi lokunamathisela</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Impande yesithombe esimisiwe</value>
+    <value>Umkhombandlela wempande yesithombe esimisiwe</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Kopisha isithombe sebhodi lokunamathisela ku</value>
+    <value>Kopisha izithombe zebhodi lokunamathisela ku</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Amafayela wezithombe zebhodi lokunamathisela nezithombe zewebhu azifakiwe</value>
+    <value>Ayifaki izithombe zebhodi lokunamathisela noma izithombe zewebhu</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,47 +574,47 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Izithombe zebhodi lokunamathisela zilungiselelwe ngokusebenzisa ukulayishwa</value>
+    <value>Ukumiswa kokulayisha isithombe se-Clipboard</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Isenzo okufanele sithathwe uma kufakwa isithombe</value>
+    <value>Isenzo sokwenza uma ufaka izithombe</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Kopisha isithombe sendawo ku</value>
+    <value>Kopisha izithombe zendawo ku</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Izithombe zendawo</value>
+    <value>Isithombe sendawo</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Izithombe zendawo zisebenzisa ukucushwa kokulayisha</value>
+    <value>Ukumiswa kokulayisha isithombe sendawo</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Umsebenzi wokufaka isithombe</value>
+    <value>Faka isenzo sesithombe</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Kopisha isithombe somphambo ku</value>
+    <value>Kopisha isithombe sewebhu ku</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Izithombe zewebhu</value>
+    <value>Isithombe sewebhu</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Izithombe zewebhu zisebenzisa ukucushwa kokulayisha</value>
+    <value>Ukucushwa kokulayisha isithombe sewebhu</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Izindlela ezilinganiselwe zikhethwa uma ufaka izithombe</value>
+    <value>Ukhetha ukusebenzisa indlela ehlobene uma ufaka izithombe</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Izindlela ezilinganiselwe zikhethwa</value>
+    <value>Beka phambili usebenzisa indlela ehlobene</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +622,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Setha indlela yokulayisha isithombe</value>
+    <value>Misa indlela yokulayisha isithombe</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>isakhiwo</value>
+    <value>Isakhiwo</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Ibonisa ibha eseceleni</value>
+    <value>Bonisa ibha eseceleni</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,31 +646,31 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Ibonisa ibha yesimo</value>
+    <value>Bonisa ibha yesimo</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>ukubukeka</value>
+    <value>Ukubukeka</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Gcina iwindi njalo phezulu</value>
+    <value>Yenza iwindi njalo ngaphezulu</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>ezingeni eliphezulu</value>
+    <value>Topmost</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Uma ivuliwe, isizinda sewindi unomphumela wangemuva we-mica</value>
+    <value>Vumela umphumela wesizinda se-mica wesizinda sewindi</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Sebenzisa izinto ze-mica</value>
+    <value>Sebenzisa impahla ye-mica</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>iwindi</value>
+    <value>Ifasitela</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

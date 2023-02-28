@@ -122,11 +122,11 @@
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>पृष्ठ भण्डारण गर्नुहोस्</value>
+    <value>माइक्रोसफ्ट स्टोर पृष्ठ</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
-    <value>खुला स्रोत सफ्टवेयरमा आधारित</value>
+    <value>ओपन सोर्स सफ्टवेयरमा आधारित</value>
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
@@ -146,43 +146,43 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>तपाईँले भरेको सामग्रीलाई हामी महत्व दिन्छौं</value>
+    <value>हामी तपाईंको प्रतिक्रियालाई धेरै गम्भीरतापूर्वक लिन्छौं</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>सम्बन्धित</value>
+    <value>को बारे मा</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>उद्घाटन कोष्ठक प्रविष्ट गर्दा बन्द उद्धरण चिनो स्वचालित रूपमा पूरा हुन्छ</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>बायाँ कोष्ठक प्रविष्ट गर्दा दायाँ कोष्ठक स्वत: पूरा गर्नुहोस्</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
     <value>स्वत: पूर्ण कोष्ठक</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>मिल्दो मार्कडाउन ट्यागहरू स्वत: पूरा गर्नुहोस्</value>
+    <value>स्वत: मिल्दो मार्कडाउन ट्याग पूरा गर्नुहोस्</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>मार्कडाउन ट्याग स्वत: पूर्ण गर्नुहोस्</value>
+    <value>पूर्ण मार्कडाउन ट्याग स्वत: गर्नुहोस्</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>उद्धरण चिनो खोल्दा बन्द उद्धरण चिनो प्रविष्ट गर्दा स्वचालित रूपमा पूरा हुन्छ</value>
+    <value>बायाँ उद्धरण प्रविष्ट गर्दा दायाँ उद्धरण स्वत: पूरा गर्नुहोस्</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>उद्धरण चिनो स्वत: पूर्ण गर्नुहोस्</value>
+    <value>स्वत: पूर्ण उद्धरण</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>पूर्वनिर्धारित प्रतिलिपि/कटौती सामग्री चयन गर्नुहोस्</value>
+    <value>पूर्वनिर्धारित प्रतिलिपि/कट सामग्री चयन गर्नुहोस्</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>पूर्वनिर्धारित रूपमा सामग्री प्रतिलिपि/काट्नुहोस्</value>
+    <value>पूर्वनिर्धारित प्रतिलिपि/सामग्री काट्नुहोस्</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>विस्तार गर्नुहोस्</value>
+    <value>एक्सटेन्सन</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>सम्पादक पूर्वनिर्धारित फन्ट साइज</value>
+    <value>सम्पादकको पूर्वनिर्धारित फन्ट साइज ।</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>सम्पादक रेखा उच्च बहुविध</value>
+    <value>सम्पादक रेखा उचाइ बहुविध</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>स्वत: भाषा खोजी</value>
+    <value>स्वत: भाषा पत्ता लगाउनुहोस्</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -234,7 +234,7 @@
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>सन्दर्भ र सूचीका लागि पूर्वनिर्धारित इन्डेन्टेसन खाली स्थान समायोजन गर्नुहोस्</value>
+    <value>उद्धरण र सूचीका लागि पूर्वनिर्धारित इन्डेन्टेसन खाली स्थान समायोजन गर्नुहोस्</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -257,32 +257,36 @@
     <value>कन्फिगरेसन निर्यात गर्नुहोस्</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>फाइल प्रकार निर्यात गर्नुहोस्</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>जब निर्यात पूरा हुन्छ, यो अवस्थित फोल्डर खोल्नुहोस्</value>
+    <value>निर्यात पछि फोल्डर खोल्नुहोस्</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Transverse</value>
+    <value>ल्यान्डस्केप</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>अनुदैर्ध्य</value>
+    <value>पोर्ट्रेट</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>पृष्ठ फुटर</value>
+    <value>फुटर</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>माथि</value>
+    <value>हेडर</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>माथिल्लो र फुटर</value>
+    <value>हेडर र फुटर</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>के तहत</value>
+    <value>तल</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -306,7 +310,7 @@
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>उच्च</value>
+    <value>उचाइ</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>चौडा</value>
+    <value>चौडाइ</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,23 +338,23 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>लागू गर्नुहोस्</value>
+    <value>अनुप्रयोग</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>एक पटक खोल्दा, फाइल परिमार्जन गर्दा अनुप्रयोग स्वचालित रूपमा बचत हुन्छ</value>
+    <value>फाइल परिमार्जन गर्दा स्वचालित रूपमा बचत गर्नुहोस्</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>स्वत: बचत</value>
+    <value>स्वत: बचत गर्नुहोस्</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>अनुकूलन</value>
+    <value>अनुकूल</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
@@ -358,7 +362,7 @@
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>सञ्झ्याल बन्द गरिसकेपछि प्रक्रिया राख्ने या नराख्ने ले पछिल्लो सुरुआतलाई गति दिन्छ</value>
+    <value>सञ्झ्याल बन्द गरिसकेपछि प्रक्रिया चलाउँदै राख्नुहोस्</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>अनुप्रयोग प्रदर्शन गरिएको भाषा</value>
+    <value>अनुप्रयोग भाषा</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -382,39 +386,39 @@
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>अनुकूल सर्टकट कुञ्जीहरू</value>
+    <value>अनुकूल सर्टकटहरू</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>सर्टकट कुञ्जी</value>
+    <value>सर्टकटहरू</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>अनुप्रयोग सुरु गर्दा हुने कार्य</value>
+    <value>अनुप्रयोग सुरु हुँदा कार्य</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>नयाँ फाइल सिर्जना गर्नुहोस्</value>
+    <value>नयाँ फाइल खोल्नुहोस्</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>अन्तिम प्रयोग गरिएको फाइल खोल्नुहोस्</value>
+    <value>अन्तिम बन्द गरिएको फाइल पुनस्र्थापना गर्नुहोस्</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>निर्दिष्ट गरिएको फोल्डर खोल्दछ</value>
+    <value>अनुकूल फोल्डर खोल्नुहोस्</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>अन्तिम प्रयोग गरिएको फोल्डर खोल्नुहोस्</value>
+    <value>अन्तिम बन्द गरिएको फोल्डर पुनर्स्थापना गर्नुहोस्</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>कार्य सुरु गर्नुहोस्</value>
+    <value>सुरुआत गर्नुहोस्</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>नियमित</value>
+    <value>जनरल</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -436,6 +440,14 @@
   <data name="ImageUpload.Configs" xml:space="preserve">
     <value>कन्फिगरेसन अपलोड गर्नुहोस्</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>कन्फिगरेसन मेट्नुहोस्</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>फाइलबाट आयात गर्नुहोस्</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>अपलोड विधि</value>
@@ -461,16 +473,32 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>पिकर फाइल</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>फाइलमा बचत गर्नुहोस्</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>परीक्षण अपलोड</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>छवि अपलोड</value>
+    <value>छविहरू अपलोड गर्नुहोस्</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>परिवर्तनहरू प्रभावकारी हुनका लागि अनुप्रयोग पुन: सुरु गर्नुहोस् आवश्यक छ</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>सर्टकट कुञ्जी</value>
+    <value>सर्टकटहरू</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>कन्फिगरेसन अपलोड गर्नुहोस्</value>
+    <value>सेटिङ अपलोड गर्नुहोस्</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
@@ -482,7 +510,7 @@
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>मेनुपट्टी हेडरको समान रेखामा देखिन्छ</value>
+    <value>एउटै पङ्क्तिमा मेनु पट्टी र शीर्षक</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,7 +522,7 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>तपाईँले प्रदर्शन गर्न चाहनुभएको अनुप्रयोग विषयवस्तु चयन गर्नुहोस्</value>
+    <value>कुन अनुप्रयोग विषयवस्तु प्रदर्शन गर्ने चयन गर्नुहोस्</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
@@ -502,19 +530,19 @@
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>विषयवस्तु लागू गर्नुहोस्</value>
+    <value>अनुप्रयोग विषयवस्तु</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>सम्बन्धित मार्गहरू अघि "./" थप्नुहोस्</value>
+    <value>सम्बन्धित मार्गहरूमा "./" पूर्वनिर्भर गर्नुहोस्</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>फाइलको रूपमा बचत गर्दा सापेक्षिक मार्ग प्रयोग गर्ने चित्रहरू स्वचालित रूपमा प्रतिलिपि बनाउनुहोस्</value>
+    <value>फाइलको रूपमा बचत गर्दा सापेक्षपथमा प्रयोग गरिएका छविहरू स्वचालित रूपमा प्रतिलिपि बनाउनुहोस्</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>चित्रहरू स्वचालित रूपमा प्रतिलिपि बनाउनुहोस्</value>
+    <value>छविहरू स्वचालित रूपमा प्रतिलिपि बनाउनुहोस्</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -526,67 +554,67 @@
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>बचत नगरिएका फाइलहरू वा क्लिपबोर्ड चित्रहरूले पूर्वनिर्धारित रूपमा चित्र मूल डाइरेक्टरी प्रयोग गर्दछ</value>
+    <value>बचत नगरिएका फाइलहरू वा क्लिपबोर्ड छविहरूका लागि पूर्वनिर्धारित छवि मूल डाइरेक्टरी</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>पूर्वनिर्धारित छवि मूल</value>
+    <value>पूर्वनिर्धारित छवि मूल डाइरेक्टरी</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>यसमा क्लिपबोर्ड चित्र प्रतिलिपि बनाउनुहोस्</value>
+    <value>यसमा क्लिपबोर्ड छविहरू प्रतिलिपि बनाउनुहोस्</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>क्लिपबोर्ड छवि फाइलहरू र वेब छविहरू समावेश गरिएका छैनन्</value>
+    <value>क्लिपबोर्ड छविहरू वा वेब छविहरू समावेश गर्दैन</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>क्लिपबोर्ड चित्र</value>
+    <value>क्लिपबोर्ड छवि</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>क्लिपबोर्ड छविहरू अपलोड हरू प्रयोग गरेर कन्फिगर गरिएका छन्</value>
+    <value>क्लिपबोर्ड छवि अपलोड कन्फिगरेसन</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>चित्र घुसाउँदा लिने कार्य</value>
+    <value>छविहरू घुसाउँदा कार्यान्वयन गर्ने कार्य</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>यसमा स्थानीय छवि प्रतिलिपि बनाउनुहोस्</value>
+    <value>यसमा स्थानीय छविहरू प्रतिलिपि बनाउनुहोस्</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>स्थानीय छविहरू</value>
+    <value>स्थानीय छवि</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>स्थानीय छविहरूले अपलोड कन्फिगरेसन प्रयोग गर्दछ</value>
+    <value>स्थानीय छवि अपलोड कन्फिगरेसन</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>चित्र सम्मिलन सञ्चालन</value>
+    <value>छवि कार्य घुसाउनुहोस्</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>यसमा सञ्जाल चित्र प्रतिलिपि बनाउनुहोस्</value>
+    <value>यसमा वेब छवि प्रतिलिपि बनाउनुहोस्</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>वेब छविहरू</value>
+    <value>वेब छवि</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>वेब छविहरूले अपलोड कन्फिगरेसन प्रयोग गर्दछ</value>
+    <value>वेब छवि अपलोड कन्फिगरेसन</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>चित्रहरू घुसाउँदा सम्बन्धित मार्गहरू रुचाइएका छन्</value>
+    <value>छवि घुसाउँदा सापेक्षिक मार्ग प्रयोग गर्न रुचाउनुहोस्</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>सापेक्षिक मार्गहरू रुचाइएका छन्</value>
+    <value>सापेक्ष िक मार्ग प्रयोग लाई प्राथमिकता दिनुहोस्</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>किनारापट्टी प्रदर्शन गर्दछ</value>
+    <value>किनारा पट्टी देखाउनुहोस्</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,7 +646,7 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>स्थिति पट्टी प्रदर्शन गर्दछ</value>
+    <value>स्थिति पट्टी देखाउनुहोस्</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
@@ -626,15 +654,15 @@
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>सञ्झ्याललाई जहिले पनि माथि राख्नुहोस्</value>
+    <value>सञ्झ्याल जहिले पनि माथि बनाउनुहोस्</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>माथिल्लो तहमा</value>
+    <value>सबैभन्दा माथि</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>चालू गर्दा, सञ्झ्याल पृष्ठभूमिमा अभ्रक पृष्ठभूमि प्रभाव हुन्छ</value>
+    <value>सञ्झ्याल पृष्ठभूमिका लागि अभ्रक पृष्ठभूमि प्रभाव सक्षम पार्नुहोस्</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">

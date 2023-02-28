@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Um umsóknina</value>
+    <value>Um umsókn</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Geyma síðu</value>
+    <value>Síða Microsoft Store</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -134,7 +134,7 @@
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
-    <value>Senda ábendingu</value>
+    <value>Senda endurgjöf</value>
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
@@ -146,35 +146,35 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Við metum mikils efnið sem þú fyllir út</value>
+    <value>Við tökum athugasemdir þínar mjög alvarlega</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>varðandi</value>
+    <value>Um</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Tilvitnunarmerki lokunar klárast sjálfkrafa þegar farið er inn í opna sviga</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Ljúka sjálfkrafa við hægri sviga þegar vinstri sviga er slegið inn</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Sjálfvirk útfylling innan sviga</value>
+    <value>Sjálfvirk útfylling sviga</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Sjálfvirk útfylling sem passar við Markdown tags</value>
+    <value>Sjálfvirk samsvörun við merki</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Fylltu sjálfkrafa út Markdown merkið</value>
+    <value>Sjálfvirk merkingarmerki</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Gæsalappir lokast sjálfkrafa þegar gæsalappir eru færðar inn</value>
+    <value>Ljúka sjálfkrafa við hægri tilvitnun þegar vinstri tilvitnun er slegin inn</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Tilvitnanir í sjálfvirka útfyllingu</value>
+    <value>Sjálfvirk tilvitnun</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
@@ -182,7 +182,7 @@
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Afritaðu / klipptu efni sjálfgefið</value>
+    <value>Sjálfgefið afrita / klippa efni</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>framlengja</value>
+    <value>Eftirnafn</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Sjálfgefin leturstærð ritils</value>
+    <value>Sjálfgefin leturstærð ritils.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Ritillína hátt margfeldi</value>
+    <value>Hæð ritstjóralínu margfeldi</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,11 +218,11 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Sjálfvirk tungumálagreining</value>
+    <value>Greina tungumál sjálfkrafa</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
-    <value>tungumál</value>
+    <value>Tungumál</value>
     <comment>编辑器/语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>stíll</value>
+    <value>Stíll</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Stilla sjálfgefið inndráttarrými fyrir tilvísanir og lista</value>
+    <value>Stilla sjálfgefið inndráttarrými fyrir tilvitnanir og lista</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>ritstjóri</value>
+    <value>Ritstjóri</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -250,39 +250,43 @@
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>Bæta við útflutningsskilgreiningu</value>
+    <value>Bæta við útflutningsstillingum</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Flytja út grunnstillingarnar</value>
+    <value>Flytja út skilgreiningar</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Flytja út skráartegund</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Þegar útflutningi er lokið skaltu opna möppuna þar sem hún er staðsett</value>
+    <value>Opna möppuna eftir útflutning</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Þversum</value>
+    <value>Landslag</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Langsum</value>
+    <value>Andlitsmynd</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>síðufótur</value>
+    <value>Fót</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Toppur</value>
+    <value>Haus</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Toppur og fótur</value>
+    <value>Haus og fótur</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>undir</value>
+    <value>Botn</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>yfir</value>
+    <value>Toppur</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>átt</value>
+    <value>Átt</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>hár</value>
+    <value>Hæð</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>breiður</value>
+    <value>Breidd</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,31 +338,31 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>nota</value>
+    <value>Umsókn</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Þegar forritið hefur verið opnað er það vistað sjálfkrafa þegar skránni er breytt</value>
+    <value>Vista sjálfkrafa þegar skránni er breytt</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>Vistun sjálfvirkrar vistunar</value>
+    <value>Sjálfvirk vistun</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Customization</value>
+    <value>Venja</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>gögn</value>
+    <value>Gögn</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Hvort halda skuli ferlinu eftir lokun flýtir fyrir næstu ræsingu</value>
+    <value>Halda ferli í gangi eftir lokun glugga</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,55 +370,55 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Tungumálið sem forritið birtist á</value>
+    <value>Tungumál umsóknar</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
-    <value>tungumál</value>
+    <value>Tungumál</value>
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Endurheimtu sjálfgefnar stillingar forritsins</value>
+    <value>Endurheimta sjálfgefnar stillingar forrits</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>Endurstilla forritið</value>
+    <value>Endurstilla forrit</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Sérsniðin flýtilyklar</value>
+    <value>Sérsniðin flýtileiðir</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>flýtilyklalykill</value>
+    <value>Flýtivísanir</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Aðgerðin sem á sér stað þegar forritið er ræst</value>
+    <value>Aðgerð þegar forritið er ræst</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Búa til nýja skrá</value>
+    <value>Opna nýja skrá</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Opna síðustu notuðu skrána</value>
+    <value>Endurheimta síðustu lokuðu skrá</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Opnar umbeðna möppu</value>
+    <value>Opna sérsniðna möppu</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Opna möppuna sem síðast var notuð</value>
+    <value>Endurheimta síðustu lokuðu möppu</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Hefja aðgerð</value>
+    <value>Gangsetning</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>rútína</value>
+    <value>Almennur</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -430,12 +434,20 @@
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>Bæta við upphleðslustillingu</value>
+    <value>Bæta við stillingum fyrir upphleðslu</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Hladdu upp stillingunum</value>
+    <value>Hlaða upp stillingum</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Eyða stillingum</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Flytja inn úr skrá</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Aðferð við upphleðslu</value>
@@ -461,20 +473,36 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Picker skrá</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Vista í skrá</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Prófunarupphleðsla</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Upphleðsla myndar</value>
+    <value>Hladdu upp myndum</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Endurræsa forritið er nauðsynlegt til að breytingar taki gildi</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>flýtilyklalykill</value>
+    <value>Flýtivísanir</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Hladdu upp stillingunum</value>
+    <value>Hlaða upp stillingum</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Slökkva á til að fá hraðari viðbrögð</value>
+    <value>Loka fyrir hraðari viðbrögð</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
@@ -482,7 +510,7 @@
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Valmyndastikan birtist í sömu línu og hausinn</value>
+    <value>Valmynd Bar og titill í sömu röð</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,23 +522,23 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Veldu forritaþemað sem þú vilt birta</value>
+    <value>Veldu hvaða forritaþema á að birta</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>ljós</value>
+    <value>Ljós</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Notaðu þema</value>
+    <value>Þema forrits</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Bættu við "./" á undan hlutfallslegum slóðum</value>
+    <value>Prepend "./" að hlutfallslegum leiðum</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Afrita sjálfkrafa myndir sem nota afstæðar slóðir þegar þær eru vistaðar sem skrá</value>
+    <value>Afrita sjálfkrafa myndir sem notaðar eru í afstæðum slóðum þegar þær eru vistaðar sem skrá</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
@@ -522,71 +550,71 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Sleppa sjálfkrafa við slóðir mynda þegar þær eru settar inn</value>
+    <value>Sleppa sjálfkrafa við vefslóðir mynda þegar þær eru settar inn</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Óvistaðar skrár eða klippiborðsmyndir nota sjálfgefið skráarsafn myndrótar</value>
+    <value>Sjálfgefin skráasafn fyrir óvistaðar skrár eða klippiborðsmyndir</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Sjálfgefin myndrót</value>
+    <value>Sjálfgefin skrá yfir rót mynda</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Afrita klippiborðsmyndina í</value>
+    <value>Afrita myndir af klippispjaldi í</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Klippispjaldsmyndaskrár og vefmyndir eru ekki innifaldar</value>
+    <value>Inniheldur ekki klippiborðsmyndir eða vefmyndir</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>Klippispjald mynd</value>
+    <value>Klippiborðsmynd</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Klippispjaldsmyndir eru stilltar með upphleðslum</value>
+    <value>Stillingar fyrir upphleðslu klippispjalds myndar</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Aðgerðin sem á að grípa til þegar mynd er sett inn</value>
+    <value>Aðgerð sem á að framkvæma þegar myndir eru settar inn</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Afritaðu staðbundna mynd til</value>
+    <value>Afrita staðbundnar myndir í</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Staðbundnar myndir</value>
+    <value>Staðbundin mynd</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Staðbundnar myndir nota stillingar upphleðslu</value>
+    <value>Stillingar fyrir upphleðslu mynda á staðnum</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Aðgerð við innsetningu myndar</value>
+    <value>Setja inn myndaðgerð</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Afritaðu netmyndina í</value>
+    <value>Afrita vefmynd í</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Vefmyndir</value>
+    <value>Vefmynd</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Vefmyndir nota stillingar upphleðslu</value>
+    <value>Stillingar fyrir upphleðslu vefmynda</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Hlutfallslegar slóðir eru ákjósanlegar þegar myndir eru settar inn</value>
+    <value>Viltu frekar nota afstæða slóð þegar þú setur inn myndir</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Hlutfallslegar leiðir eru ákjósanlegar</value>
+    <value>Forgangsraða með því að nota afstæða leið</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +622,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Stilltu aðferð við upphleðslu myndar</value>
+    <value>Stilla aðferð við upphleðslu myndar</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>umbrot</value>
+    <value>Umbrot</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Sýnir skenkur</value>
+    <value>Sýna hliðarslá</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,23 +646,23 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Sýnir stöðustikuna</value>
+    <value>Sýna stöðustiku</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>útlit</value>
+    <value>Útlit</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Hafðu gluggann alltaf efst</value>
+    <value>Búa til glugga alltaf efst</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>í efsta þrep</value>
+    <value>Hæstur</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Þegar kveikt er á glugganum hefur bakgrunnur hans glimmer bakgrunnsáhrif</value>
+    <value>Virkja bakgrunnsáhrif glimmersins fyrir bakgrunn gluggans</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
@@ -642,7 +670,7 @@
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>gluggi</value>
+    <value>Gluggi</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

@@ -14,6 +14,14 @@ foreach (var lang in manualLangs)
     ManualTranslate(lang);
 }
 
+await AutoTranslate("zh-Hans", "zh-Hant");
+
+foreach (var lang in TextDictionary.SupportedLangs.Keys.Where(x => !manualLangs.Contains(x) && x != "zh-Hant" && x != "zh-Hans"))
+{
+    await AutoTranslate("en", lang);
+    Console.WriteLine(lang);
+}
+
 void ManualTranslate(string lang)
 {
     var zhInputs = TextResource.ReadItems(@$"{projectPath}\Dev\Typedown.Core\Resources\Strings\zh-Hans\").ToList();
@@ -69,7 +77,7 @@ async Task AutoTranslate(string sourceLang, string targetLang)
     for (var i = 0; i < inputs.Count; i++)
         foreach (var resultDic in results[i])
             inputs[i].Values[resultDic.Key] = resultDic.Value;
-    dictionary.WriteItems(@$"{projectPath}\Tools\TranslationTool\TempDictionary\");
+    dictionary.WriteItems(@$"{projectPath}\Tools\TranslationTool\BingDictionary\");
     var output = dictionary.Select(x => dictionary.GetTextResourceItem(x.Table, x.Name, targetLang)).Where(x => !string.IsNullOrEmpty(x.Value));
     output.WriteItems(@$"{projectPath}\Dev\Typedown.Core\Resources\Strings\{targetLang}\");
 }

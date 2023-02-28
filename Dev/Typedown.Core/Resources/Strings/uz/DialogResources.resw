@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Ishonchingiz komilmi</value>
+    <value>XO'P</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>xato</value>
+    <value>Xatolik</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>fikr-mulohaza</value>
+    <value>Fikr-mulohaza</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -170,23 +170,27 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>Jadval qoʻyish</value>
+    <value>Jadvalni qoʻyish</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
-    <value>Hoziroq o'rnatish</value>
+    <value>Hozir o'rnatish</value>
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Ishonchingiz komilmi</value>
+    <value>XO'P</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Iltimos tugmalar birikmasini bosing</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Oʻqib boʻlmadi</value>
+    <value>Yuklash muvaffaqiyatsiz tugadi</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>qayta tiklash</value>
+    <value>Qayta tiklash</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>Fayllarni tiklashni istaysizmi?</value>
+    <value>Faylni tiklashni istaysizmi?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Jadvalni sozlash</value>
+    <value>Jadvalni oʻlchamini oʻlchami</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>Dastur andoza moslamalarini tiklash uchun OK</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Saqlash</value>
@@ -209,20 +217,36 @@
     <value>Saqlab boʻlmadi</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Tugmalar birikmasini oʻrnatish</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>Tugmalar birikmasi</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Topshiring</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Taqdim etish muvaffaqiyatli bo'ldi</value>
+    <value>Boʻysunish muvaffaqiyatli</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>Yozib qoʻyib boʻlmadi</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Yozib qoʻyish muvaffaqiyatli</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>Dasturni to'g'ri bajarish uchun WebView2 ish vaqtini o'rnatish kerak.</value>
+    <value>Ushbu dasturiy ta'minotni to'g'ri ishga tushirish uchun WebView2 ish vaqtini o'rnatishingiz kerak.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>WebView2 ish vaqti oʻrnatilmagan</value>
+    <value>WebView2 Ish vaqti oʻrnatilmagan</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

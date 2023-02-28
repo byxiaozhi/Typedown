@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>El szeretné menteni a módosításokat?</value>
+    <value>Szeretné menteni a módosításokat?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Biztos vagy benne</value>
+    <value>OKÉ</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>hiba</value>
+    <value>Hiba</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>visszacsatolás</value>
+    <value>Visszacsatolás</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Biztos vagy benne</value>
+    <value>OKÉ</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Kérjük, nyomja meg a billentyűkombinációt</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Az olvasás sikertelen</value>
+    <value>Nem sikerült betölteni</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>visszaszerez</value>
+    <value>Visszaad</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>Szeretné helyreállítani a fájlokat?</value>
+    <value>Vissza szeretné állítani a fájlt?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>A táblázat módosítása</value>
+    <value>Táblázat átméretezése</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>OK az alkalmazás alapértelmezett beállításainak visszaállításához</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Megment</value>
@@ -209,13 +217,29 @@
     <value>A mentés sikertelen</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Gyorsbillentyű beállítása</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>A gyorsbillentyű foglalva van</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
-    <value>előterjeszt</value>
+    <value>Előterjeszt</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>A beadvány sikeres volt</value>
+    <value>A benyújtás sikeres</value>
     <comment>反馈对话框/提交成功</comment>
+  </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>A feltöltés sikertelen</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Sikeres feltöltés</value>
+    <comment>上传成功</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
     <value>A szoftver megfelelő futtatásához telepítenie kell a WebView2 futtatókörnyezetet.</value>

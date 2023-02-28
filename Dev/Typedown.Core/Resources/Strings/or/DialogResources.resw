@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>ଆପଣ ଆପଣଙ୍କ ପରିବର୍ତ୍ତନଗୁଡିକ ସଞ୍ଚୟ କରିବାକୁ ଚାହାଁନ୍ତି କି?</value>
+    <value>ଆପଣ ପରିବର୍ତ୍ତନଗୁଡିକ ସଞ୍ଚୟ କରିବାକୁ ଚାହାଁନ୍ତି କି?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>କଣ ଆପଣ ସୁନିଶ୍ଚିତ ଅଛନ୍ତି</value>
+    <value>ଠିକ୍‌ ଅଛି</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>ଭୁଲ</value>
+    <value>ତ୍ରୁଟି</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>ଏକ ଟେବୁଲ୍ ସନ୍ନିବେଶ କରନ୍ତୁ</value>
+    <value>ଟେବୁଲ୍ ସନ୍ନିବେଶ କରନ୍ତୁ</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,11 +178,15 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>କଣ ଆପଣ ସୁନିଶ୍ଚିତ ଅଛନ୍ତି</value>
+    <value>ଠିକ୍‌ ଅଛି</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>ଦୟାକରି ମୁଖ୍ୟ ମିଶ୍ରଣ ଦବାନ୍ତୁ</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>ପଢନ୍ତୁ ବିଫଳ</value>
+    <value>ଲୋଡ୍ କରିବାକୁ ବିଫଳ ହୋଇଛି</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>ଆପଣ ଫାଇଲଗୁଡିକ ପୁନରୁଦ୍ଧାର କରିବାକୁ ଚାହାଁନ୍ତି କି?</value>
+    <value>ଆପଣ ଫାଇଲ୍ ପୁନରୁଦ୍ଧାର କରିବାକୁ ଚାହାଁନ୍ତି କି?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>ଟେବୁଲ୍ ଆଡଜଷ୍ଟ କରନ୍ତୁ</value>
+    <value>ଟେବୁଲ୍ ର ଆକାର କରନ୍ତୁ</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>ଆପ୍ଲିକେସନ ଡିଫଲ୍ଟ ସେଟିଂସ୍ ପୁନରୁଦ୍ଧାର କରିବାକୁ ଓକେ</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>ସଞ୍ଚୟ କରନ୍ତୁ</value>
@@ -209,6 +217,14 @@
     <value>Save ବିଫଳ ହୋଇଛି</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>ସର୍ଟକଟ୍ କୀ ସେଟ୍ କରନ୍ତୁ</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>ସର୍ଟକଟ୍ କୀ ଦଖଲ ହୋଇଛି</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>ଜମା କରନ୍ତୁ</value>
     <comment>反馈对话框/提交</comment>
@@ -217,12 +233,20 @@
     <value>ଦାଖଲ ସଫଳ ହୋଇଛି</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>ଅପଲୋଡ୍ ବିଫଳ ହୋଇଛି</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>ଅପଲୋଡ୍ ସଫଳ ହୋଇଛି</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>ସଫ୍ଟୱେୟାର୍ ସଠିକ୍ ଭାବରେ ଚଳାଇବାପାଇଁ ଆପଣଙ୍କୁ WebView2 ରନ୍ ଟାଇମ୍ ସଂସ୍ଥାପନ କରିବା ଆବଶ୍ୟକ।</value>
+    <value>ଏହି ସଫ୍ଟୱେୟାର୍ ସଠିକ୍ ଭାବରେ ଚଳାଇବାପାଇଁ ଆପଣଙ୍କୁ WebView2 ରନ୍ ଟାଇମ୍ ସଂସ୍ଥାପନ କରିବା ଆବଶ୍ୟକ।</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>ୱେବ୍View2 ରନ୍ ଟାଇମ୍ ସଂସ୍ଥାପିତ ହୋଇନାହିଁ</value>
+    <value>WebView2 Runtime ସଂସ୍ଥାପିତ ହୋଇନାହିଁ</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

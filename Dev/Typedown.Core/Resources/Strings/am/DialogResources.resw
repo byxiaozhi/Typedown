@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>ለውጥህን ማቆየት ትፈልጋለህ?</value>
+    <value>ለውጦችን መቆጠብ ትፈልጋለህ?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>እርግጠኛ ነህ</value>
+    <value>እሺ</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>ጠረጴዛ አስገባ</value>
+    <value>ሠንጠረዥ አስገባ</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>እርግጠኛ ነህ</value>
+    <value>እሺ</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>እባክዎ ቁልፍ ውሂብ ይጫኑ</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>አንብብ አልተሳካም</value>
+    <value>መጫን አልተቻለም</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>ማገገሚያ</value>
+    <value>ይመልከቱ</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>ፋይሎችን ማግኘት ትፈልጋለህ?</value>
+    <value>ፋይሉን መመለስ ትፈልጋለህ?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>ጠረጴዛውን ያስተካክሉ</value>
+    <value>ገበታ</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>Ok to restore the application default settings</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>አስቀምጥ</value>
@@ -209,20 +217,36 @@
     <value>አጠራቅም አልተሳካም</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>አቋራጭ ቁልፍ አስቀምጥ</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>አቋራጭ ቁልፍ ተይዟል</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>አስረክብ</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>መገዛት ተሳክቶለት ነበር</value>
+    <value>መገዛት ስኬታማ ነው</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>አውርድ አልተሳካም</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>በተሳካ ሁኔታ አውርድ</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>ሶፍትዌሩን በትክክል ለማሰራት WebView2 runtime መጫን ያስፈልግዎታል።</value>
+    <value>ይህን ሶፍትዌር በትክክል ለማሰራት WebView2 runtime መጫን ያስፈልግዎታል።</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>የ ዌብቪው2 ሮታይም አልተገጠመም</value>
+    <value>WebView2 ሩንታይም አልተገጠመም</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

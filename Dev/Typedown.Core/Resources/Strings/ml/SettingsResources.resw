@@ -122,7 +122,7 @@
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>സ്റ്റോർ പേജ്</value>
+    <value>Microsoft സ്റ്റോർ പേജ്</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -146,35 +146,35 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>നിങ്ങൾ പൂരിപ്പിക്കുന്ന ഉള്ളടക്കത്തെ ഞങ്ങൾ വിലമതിക്കുന്നു</value>
+    <value>നിങ്ങളുടെ ഫീഡ് ബാക്ക് ഞങ്ങൾ വളരെ ഗൗരവമായി എടുക്കുന്നു</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>ബന്ധപ്പെട്ടത്</value>
+    <value>കുറിച്ച്</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>ഓപ്പണിംഗ് പാരെന്തെസിസിൽ പ്രവേശിക്കുമ്പോൾ ക്ലോസിംഗ് ക്വട്ടേഷൻ മാർക്ക് സ്വയമേവ പൂർത്തിയാകും</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>ഇടത് ബ്രാക്കറ്റ് നൽകുമ്പോൾ ഓട്ടോ പൂർണ്ണമായ വലത് ബ്രാക്കറ്റ്</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Autocomplete parentheses</value>
+    <value>ഓട്ടോ പൂർണ്ണമായ ബ്രാക്കറ്റുകൾ</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>മാർക്ക്ഡൗൺ ടാഗുകളുമായി പൊരുത്തപ്പെടുന്ന ഓട്ടോകംപ്ലീറ്റ്</value>
+    <value>ഓട്ടോ കംപ്ലീറ്റ് മാച്ചിംഗ് മാർക്ക്ഡൗൺ ടാഗ്</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>മാർക്ക്ഡൗൺ ടാഗ് സ്വയം പൂരിപ്പിക്കുക</value>
+    <value>ഓട്ടോ സമ്പൂർണ്ണ മാർക്ക്ഡൗൺ ടാഗുകൾ</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>ഓപ്പണിംഗ് ക്വട്ടേഷൻ മാർക്ക് നൽകുമ്പോൾ ക്ലോസിംഗ് ക്വട്ടേഷൻ മാർക്ക് യാന്ത്രികമായി പൂർത്തിയാകും</value>
+    <value>ഇടത് ഉദ്ധരണി നൽകുമ്പോൾ സ്വയം പൂർണ്ണമായ വലത് ഉദ്ധരണി</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>ഓട്ടോ പൂർണ്ണമായ ഉദ്ധരണി അടയാളങ്ങൾ</value>
+    <value>ഓട്ടോ പൂർണ്ണമായ ഉദ്ധരണികൾ</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
@@ -182,7 +182,7 @@
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>ഡിഫോൾട്ടായി ഉള്ളടക്കം പകർത്തുക / കട്ട് ചെയ്യുക</value>
+    <value>ഡിഫോൾട്ട് പകർപ്പ് /കട്ട് ഉള്ളടക്കം</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>നീട്ടുക</value>
+    <value>Extensions</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>എഡിറ്റർ ഡിഫോൾട്ട് ഫോണ്ട് വലുപ്പം</value>
+    <value>എഡിറ്ററുടെ ഡിഫോൾട്ട് ഫോണ്ട് വലുപ്പം.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>എഡിറ്റർ ലൈൻ ഹൈ മൾട്ടിപ്പിൾ</value>
+    <value>എഡിറ്റർ ലൈൻ ഉയരം ഒന്നിലധികം</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>ഓട്ടോമാറ്റിക് ഭാഷ കണ്ടെത്തൽ</value>
+    <value>ഭാഷ സ്വയം കണ്ടെത്തുക</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -234,7 +234,7 @@
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>റഫറൻസുകൾക്കും ലിസ്റ്റുകൾക്കുമായി ഡിഫോൾട്ട് ഇൻഡന്റേഷൻ സ്പേസ് ക്രമീകരിക്കുക</value>
+    <value>ഉദ്ധരണികൾക്കും ലിസ്റ്റുകൾക്കുമായി ഡിഫോൾട്ട് ഇൻഡന്റേഷൻ സ്പേസ് ക്രമീകരിക്കുക</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -250,35 +250,39 @@
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>ഒരു കയറ്റുമതി ക്രമീകരണം ചേർക്കുക</value>
+    <value>കയറ്റുമതി ക്രമീകരണം ചേർക്കുക</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>കോൺഫിഗറേഷൻ കയറ്റുമതി ചെയ്യുക</value>
+    <value>എക്സ്പോർട്ട് കോൺഫിഗറേഷനുകൾ</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>കയറ്റുമതി ഫയൽ തരം</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>കയറ്റുമതി പൂർത്തിയാകുമ്പോൾ, അത് സ്ഥിതിചെയ്യുന്ന ഫോൾഡർ തുറക്കുക</value>
+    <value>കയറ്റുമതിക്ക് ശേഷം ഫോൾഡർ തുറക്കുക</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Transverse</value>
+    <value>ലാൻഡ്സ്കേപ്പ്</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>രേഖാംശം</value>
+    <value>ഛായാചിത്രം</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>പേജ് അടിക്കുറിപ്പ്</value>
+    <value>അടിക്കുറിപ്പ്</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>പമ്പരം</value>
+    <value>തലക്കെട്ട്</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>മുകളിലും കാലിലും</value>
+    <value>തലക്കെട്ടും അടിക്കുറിപ്പും</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
@@ -298,7 +302,7 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>മുകളിൽ</value>
+    <value>പമ്പരം</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
@@ -306,7 +310,7 @@
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>ഉയര് ന്നു</value>
+    <value>ഉയരം</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>വിശാലം</value>
+    <value>വീതി</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,23 +338,23 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>Apply</value>
+    <value>ആപ്ലിക്കേഷൻ</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>തുറന്നുകഴിഞ്ഞാൽ, ഫയൽ പരിഷ്കരിക്കുമ്പോൾ അപ്ലിക്കേഷൻ സ്വയമേവ സംരക്ഷിക്കപ്പെടും</value>
+    <value>ഫയൽ പരിഷ്കരിക്കുമ്പോൾ സ്വയമേവ സംരക്ഷിക്കുക</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>Autosave</value>
+    <value>ഓട്ടോ ലാഭം</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>ഇഷ്ടാനുസൃതമാക്കൽ</value>
+    <value>ഇഷ്ടാനുസൃത</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
@@ -358,7 +362,7 @@
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>വിൻഡോ അടച്ച ശേഷം പ്രക്രിയ നിലനിർത്തണോ എന്നത് അടുത്ത സ്റ്റാർട്ടപ്പിനെ ത്വരിതപ്പെടുത്തുന്നു</value>
+    <value>വിൻഡോ അടച്ചതിന് ശേഷം പ്രക്രിയ പ്രവർത്തിപ്പിക്കുക</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>അപ്ലിക്കേഷൻ പ്രദർശിപ്പിക്കുന്ന ഭാഷ</value>
+    <value>ആപ്ലിക്കേഷൻ ഭാഷ</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,7 +378,7 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>അപ്ലിക്കേഷൻ ഡിഫോൾട്ട് ക്രമീകരണങ്ങൾ പുനഃസ്ഥാപിക്കുക</value>
+    <value>ആപ്ലിക്കേഷൻ ഡിഫോൾട്ട് ക്രമീകരണങ്ങൾ പുനഃസ്ഥാപിക്കുക</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
@@ -382,39 +386,39 @@
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>ഇഷ് ടാനുസൃത കുറുക്കുവഴി കീകൾ</value>
+    <value>ഇഷ്ടാനുസൃത കുറുക്കുവഴികൾ</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>കുറുക്കുവഴി കീ</value>
+    <value>കുറുക്കുവഴികൾ</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>അപ്ലിക്കേഷൻ ആരംഭിക്കുമ്പോൾ സംഭവിക്കുന്ന നടപടി</value>
+    <value>ആപ്ലിക്കേഷൻ ആരംഭിക്കുമ്പോൾ നടപടി</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>ഒരു പുതിയ ഫയൽ സൃഷ്ടിക്കുക</value>
+    <value>പുതിയ ഫയല് തുറക്കുക</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>അവസാനമായി ഉപയോഗിച്ച ഫയല് തുറക്കുക</value>
+    <value>അവസാനമായി അടച്ച ഫയൽ പുനഃസ്ഥാപിക്കുക</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>നിർദ്ദിഷ്ട ഫോൾഡർ തുറക്കുന്നു</value>
+    <value>ഇഷ്ടാനുസൃത ഫോൾഡർ തുറക്കുക</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>അവസാനമായി ഉപയോഗിച്ച ഫോൾഡർ തുറക്കുക</value>
+    <value>അവസാനത്തെ അടച്ച ഫോൾഡർ പുനഃസ്ഥാപിക്കുക</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>പ്രവർത്തനം ആരംഭിക്കുക</value>
+    <value>സ്റ്റാർട്ടപ്പ്</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>ദിനചര്യ</value>
+    <value>പൊതുവായവ</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>ഒരു ചിത്രം അപ് ലോഡ് ചെയ്യുക</value>
+    <value>ചിത്രം അപ് ലോഡ് ചെയ്യുക</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -434,8 +438,16 @@
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>കോൺഫിഗറേഷൻ അപ് ലോഡ് ചെയ്യുക</value>
+    <value>കോൺഫിഗറേഷനുകൾ അപ് ലോഡ് ചെയ്യുക</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>കോൺഫിഗറേഷൻ ഇല്ലാതാക്കുക</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>ഫയലിൽ നിന്ന് ഇംപോർട്ട് ചെയ്യുക</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>അപ് ലോഡ് രീതി</value>
@@ -461,28 +473,44 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>പിക്കര് ഫയല്</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>ഫയലിലേക്ക് സംരക്ഷിക്കുക</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>ടെസ്റ്റ് അപ് ലോഡ്</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>ഇമേജ് അപ് ലോഡ് ചെയ്യുക</value>
+    <value>ചിത്രങ്ങൾ അപ് ലോഡ് ചെയ്യുക</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>മാറ്റങ്ങൾ പ്രാബല്യത്തിൽ വരുന്നതിന് ആപ്പ് റീസ്റ്റാർട്ട് ചെയ്യേണ്ടത് ആവശ്യമാണ്</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>കുറുക്കുവഴി കീ</value>
+    <value>കുറുക്കുവഴികൾ</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>കോൺഫിഗറേഷൻ അപ് ലോഡ് ചെയ്യുക</value>
+    <value>ക്രമീകരണം അപ് ലോഡ് ചെയ്യുക</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>വേഗത്തിലുള്ള പ്രതികരണത്തിനായി ഓഫ് ചെയ്യുക</value>
+    <value>വേഗത്തിലുള്ള പ്രതികരണത്തിനായി ക്ലോസ് ചെയ്യുക</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>വിൻഡോ ആനിമേഷൻ</value>
+    <value>ജാലക ആനിമേഷനുകൾ</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>മെനു ബാർ ഹെഡ്ഡറിന്റെ അതേ ലൈനിൽ പ്രത്യക്ഷപ്പെടുന്നു</value>
+    <value>മെനു ബാറും ശീർഷകവും ഒരേ നിരയിൽ</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,7 +522,7 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>നിങ്ങൾ പ്രദർശിപ്പിക്കാൻ ആഗ്രഹിക്കുന്ന അപ്ലിക്കേഷൻ തീം തിരഞ്ഞെടുക്കുക</value>
+    <value>ഏത് ആപ്പ് തീം പ്രദർശിപ്പിക്കണമെന്ന് തിരഞ്ഞെടുക്കുക</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
@@ -502,19 +530,19 @@
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>ഒരു പ്രമേയം പ്രയോഗിക്കുക</value>
+    <value>ആപ്പ് പ്രമേയം</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>ആപേക്ഷിക പാതകൾക്ക് മുമ്പ് "./" ചേർക്കുക</value>
+    <value>ആപേക്ഷിക പാതകളിലേക്ക് "./" മുൻകൂട്ടി നിശ്ചയിക്കുക</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>ഫയലായി സേവ് ചെയ്യുമ്പോൾ ആപേക്ഷിക പാതകൾ ഉപയോഗിക്കുന്ന ചിത്രങ്ങൾ സ്വയമേവ പകർത്തുക</value>
+    <value>ഫയലായി സേവ് ചെയ്യുമ്പോൾ ആപേക്ഷിക പാതകളിൽ ഉപയോഗിക്കുന്ന ഇമേജുകൾ സ്വയമേവ പകർത്തുക</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>ചിത്രങ്ങൾ യാന്ത്രികമായി പകർത്തുക</value>
+    <value>ഇമേജുകൾ ഓട്ടോമാറ്റിക്കായി പകർത്തുക</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -526,67 +554,67 @@
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>സംരക്ഷിക്കപ്പെടാത്ത ഫയലുകളോ ക്ലിപ്പ്ബോർഡ് ചിത്രങ്ങളോ ഡിഫോൾട്ടായി പിക്ചർ റൂട്ട് ഡയറക്ടറി ഉപയോഗിക്കുന്നു</value>
+    <value>സംരക്ഷിക്കപ്പെടാത്ത ഫയലുകൾ അല്ലെങ്കിൽ ക്ലിപ്പ്ബോർഡ് ഇമേജുകൾക്കായുള്ള ഡിഫോൾട്ട് ഇമേജ് റൂട്ട് ഡയറക്ടറി</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Default image root</value>
+    <value>Default image root directory</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>ക്ലിപ്പ്ബോർഡ് ചിത്രം പകർത്തുക</value>
+    <value>ക്ലിപ്പ്ബോർഡ് ഇമേജുകൾ ഇതിലേക്ക് പകർത്തുക</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>ക്ലിപ്ബോർഡ് ഇമേജ് ഫയലുകളും വെബ് ഇമേജുകളും ഉൾപ്പെടുത്തിയിട്ടില്ല</value>
+    <value>ക്ലിപ്പ്ബോർഡ് ഇമേജുകളോ വെബ് ഇമേജുകളോ ഉൾപ്പെടുന്നില്ല</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>ക്ലിപ്ബോർഡ് ചിത്രം</value>
+    <value>Clipboard ചിത്രം</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>അപ്ലോഡുകൾ ഉപയോഗിച്ച് ക്ലിപ്പ്ബോർഡ് ഇമേജുകൾ കോൺഫിഗർ ചെയ്യുന്നു</value>
+    <value>ക്ലിപ്ബോർഡ് ഇമേജ് അപ് ലോഡ് കോൺഫിഗറേഷൻ</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>ഒരു ചിത്രം ചേർക്കുമ്പോൾ എടുക്കേണ്ട നടപടി</value>
+    <value>ഇമേജുകൾ ചേർക്കുമ്പോൾ നടപ്പിലാക്കേണ്ട നടപടി</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>ഇതിനായി പ്രാദേശിക ചിത്രം പകർത്തുക</value>
+    <value>പ്രാദേശിക ഇമേജുകൾ ഇതിലേക്ക് പകർത്തുക</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>പ്രാദേശിക ചിത്രങ്ങൾ</value>
+    <value>പ്രാദേശിക ചിത്രം</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>പ്രാദേശിക ഇമേജുകൾ അപ്ലോഡ് കോൺഫിഗറേഷൻ ഉപയോഗിക്കുന്നു</value>
+    <value>പ്രാദേശിക ഇമേജ് അപ് ലോഡ് കോൺഫിഗറേഷൻ</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>ചിത്രം ചേർക്കൽ പ്രവർത്തനം</value>
+    <value>ഇമേജ് പ്രവർത്തനം ചേർക്കുക</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>നെറ്റ് വർക്ക് ചിത്രം ഇതിലേക്ക് പകർത്തുക</value>
+    <value>വെബ് ഇമേജ് പകർത്തുക</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>വെബ് ചിത്രങ്ങൾ</value>
+    <value>വെബ് ഇമേജ്</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>വെബ് ഇമേജുകൾ അപ്ലോഡ് കോൺഫിഗറേഷൻ ഉപയോഗിക്കുന്നു</value>
+    <value>വെബ് ഇമേജ് അപ് ലോഡ് കോൺഫിഗറേഷൻ</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>ചിത്രങ്ങൾ ചേർക്കുമ്പോൾ ആപേക്ഷിക പാതകൾ മുൻഗണന നൽകുന്നു</value>
+    <value>ഇമേജുകൾ ചേർക്കുമ്പോൾ ആപേക്ഷിക പാത ഉപയോഗിക്കാൻ ഇഷ്ടപ്പെടുന്നു</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>ആപേക്ഷിക പാതകൾ മുൻഗണന നൽകുന്നു</value>
+    <value>ആപേക്ഷിക പാത ഉപയോഗിച്ച് മുൻഗണന നൽകുക</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>layout</value>
+    <value>Layout</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>സൈഡ്ബാർ പ്രദർശിപ്പിക്കുന്നു</value>
+    <value>സൈഡ് ബാർ കാണിക്കുക</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,7 +646,7 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>സ്റ്റാറ്റസ് ബാർ പ്രദർശിപ്പിക്കുന്നു</value>
+    <value>സ്റ്റാറ്റസ് ബാർ കാണിക്കുക</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
@@ -626,19 +654,19 @@
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>വിൻഡോ എല്ലായ്പ്പോഴും മുകളിൽ സൂക്ഷിക്കുക</value>
+    <value>വിൻഡോ എല്ലായ്പ്പോഴും മുകളിൽ ഉണ്ടാക്കുക</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>ഏറ്റവും ഉയർന്ന നിലയിലേക്ക്</value>
+    <value>Topmost</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>ഓണാക്കുമ്പോൾ, വിൻഡോ പശ്ചാത്തലത്തിന് ഒരു മൈക്ക പശ്ചാത്തല പ്രഭാവമുണ്ട്</value>
+    <value>ജാലക പശ്ചാത്തലത്തിനായി മൈക്ക പശ്ചാത്തല പ്രഭാവം പ്രവർത്തനക്ഷമമാക്കുക</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>മൈക്ക മെറ്റീരിയലുകൾ ഉപയോഗിക്കുക</value>
+    <value>മൈക്ക മെറ്റീരിയൽ ഉപയോഗിക്കുക</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">

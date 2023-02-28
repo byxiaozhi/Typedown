@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>त्यात भर घाला</value>
+    <value>मिळवणे</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>केंद्र संरेखण</value>
+    <value>केंद्र</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>लेफ्ट-गठबंधन</value>
+    <value>डावे पक्ष संरेखित करा</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>उजव्या विचारसरणीचे</value>
+    <value>उजवीकडे संरेखित करा</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
@@ -142,11 +142,11 @@
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>स्वयंचलित</value>
+    <value>ऑटो</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>पुनरागमन</value>
+    <value>पाठ</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -154,11 +154,11 @@
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>फोल्डर ब्राउझ करा</value>
+    <value>ब्राउझ फोल्डर</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>स्थानिक फायलींसाठी ब्राउझ करा</value>
+    <value>स्थानिक फाइल ब्राउझ करा</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -170,39 +170,43 @@
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>शब्द</value>
+    <value>चारित्र्य</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>शब्द</value>
+    <value>पात्रे</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
     <value>तक्ता</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>पारदर्शी</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>शैली साफ करा</value>
+    <value>स्पष्ट स्वरूप</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>अलीकडील फायली साफ करा</value>
+    <value>अलीकडील फाइल्स साफ करा</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>प्रतिमा जोडा क्लिक करा</value>
+    <value>प्रतिमा जोडण्यासाठी क्लिक करा</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>बंद</value>
+    <value>मिटणे</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>कोड</value>
+    <value>संहिता</value>
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>कोड ब्लॉक</value>
+    <value>Code Fences</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
@@ -214,7 +218,7 @@
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>एचटीएमएल कोड म्हणून कॉपी करा</value>
+    <value>HTML म्हणून Copy</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,11 +226,11 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>फाईल पत्ता कॉपी करा</value>
+    <value>पाथ म्हणून कॉपी करा</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>साधा मजकूर म्हणून कॉपी करा</value>
+    <value>साध्या मजकूर म्हणून कॉपी करा</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
@@ -238,7 +242,7 @@
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
-    <value>मार्गाची कॉपी करा</value>
+    <value>पाथ वर कॉपी करा</value>
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
@@ -246,19 +250,19 @@
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+Open Link क्लिक करा</value>
+    <value>लिंक उघडण्यासाठी Ctrl+क्लिक करा</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>Customization</value>
+    <value>सानुकूल</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>Custom shortcut keys</value>
+    <value>Custom Shortcuts</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>कातरणे</value>
+    <value>कापणे</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -270,7 +274,7 @@
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>शीर्षक पातळी कमी करा</value>
+    <value>हेडिंग लेव्हल कमी करा</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
@@ -286,7 +290,7 @@
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>पुनरावृत्ती करा</value>
+    <value>डुप्लिकेट</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
@@ -294,7 +298,7 @@
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>चित्र संपादित करा</value>
+    <value>प्रतिमा संपादित करा</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
@@ -302,12 +306,16 @@
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>दुवे एम्बेड करा</value>
+    <value>एम्बेड लिंक</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
     <value>इटालिक</value>
     <comment>格式/斜体</comment>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>सक्षम करा</value>
+    <comment>启用</comment>
   </data>
   <data name="Error" xml:space="preserve">
     <value>चूक</value>
@@ -322,7 +330,7 @@
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>पीडीएफ वर निर्यात करा</value>
+    <value>पीडीएफ म्हणून निर्यात करा</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
@@ -334,7 +342,7 @@
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>कानस</value>
+    <value>फाइल्स</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
@@ -346,11 +354,11 @@
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>पुढचे शोधा</value>
+    <value>पुढील शोधा</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>मागील एक शोधा</value>
+    <value>मागील शोधा</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
@@ -362,11 +370,11 @@
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>folder</value>
+    <value>Folder</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
-    <value>font</value>
+    <value>फॉन्ट</value>
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
@@ -374,19 +382,19 @@
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>तळटीप</value>
+    <value>फूटनोट्स</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>तळटीप टॅग [^{ओळखकर्ता}] सापडला नाही:</value>
+    <value>तळटीप मार्कर सापडला नाही [^{ओळखकर्ता}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
-    <value>format</value>
+    <value>प्रारूप</value>
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>कोड फॉरमॅट करा</value>
+    <value>प्रारूप कोड</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
@@ -398,31 +406,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>पदवी</value>
+    <value>मथळा</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>प्रथम स्तरीय शीर्षक</value>
+    <value>शीर्षक 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>द्वितीय स्तरीय शीर्षक</value>
+    <value>शीर्षक 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>त्रिस्तरीय शीर्षक</value>
+    <value>शीर्षक 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>चार स्तरीय शीर्षक</value>
+    <value>शीर्षक 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>पांच स्तरीय शीर्षक</value>
+    <value>शीर्षक 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>छह-स्तरीय शीर्षक</value>
+    <value>शीर्षक 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -434,15 +442,15 @@
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>क्षैतिज विभाजन रेखा</value>
+    <value>क्षैतिज रेखा</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
-    <value>Hyperlinks</value>
+    <value>Hyperlink</value>
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>प्रतिमा</value>
+    <value>फोटो</value>
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>शीर्षक पातळी वाढवा</value>
+    <value>हेडिंग लेव्हल वाढवा</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -462,55 +470,55 @@
     <comment>内联</comment>
   </data>
   <data name="InlineCode" xml:space="preserve">
-    <value>इनलाइन कोड</value>
+    <value>Inline Code</value>
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>इनलाइन फॉर्मूला</value>
+    <value>इनलाइन मैथ</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>तळटीपाची व्याख्या प्रविष्ट करा...</value>
+    <value>इनपुट फुटनोट परिभाषा...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>भाषा ओळखकर्ता प्रविष्ट करा...</value>
+    <value>इनपुट लैंग्वेज आइडेंटिफायर...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>गणिताचा फॉर्म्युला प्रविष्ट करा...</value>
+    <value>इनपुट गणित...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>याएमएल फ्रंट मॅटर प्रविष्ट करा...</value>
+    <value>इनपुट याएमएल फ्रंट मैटर...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>डावीकडे एक स्तंभ घाला</value>
+    <value>डावीकडे कॉलम घाला</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>उजवीकडे एक स्तंभ घाला</value>
+    <value>उजवीकडे स्तंभ घाला</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>एक प्रतिमा घाला</value>
+    <value>प्रतिमा घाला</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>खाली एक परिच्छेद घाला</value>
+    <value>नंतर परिच्छेद घाला</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>वर एक परिच्छेद घाला</value>
+    <value>आधी परिच्छेद घाला</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>वर ओळी घाला</value>
+    <value>वर रांग घाला</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>खाली एक रांग घाला</value>
+    <value>खाली रांग घाला</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
@@ -526,15 +534,15 @@
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>हो</value>
+    <value>ओळ</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
-    <value>रेषेची उंची</value>
+    <value>लाइन उंची</value>
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>हो</value>
+    <value>ओळी</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
@@ -546,19 +554,19 @@
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
-    <value>गणित</value>
+    <value>गणित[ संपादन]</value>
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>फॉर्म्युला ब्लॉक</value>
+    <value>गणित ब्लॉक</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>जास्तीत जास्त</value>
+    <value>जास्तीत जास्त करा</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>menu bar</value>
+    <value>Menu Bar</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
@@ -570,7 +578,7 @@
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>मिनिट</value>
+    <value>मिनट</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
@@ -581,16 +589,20 @@
     <value>नाम</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>नाव रिकामे करता येत नाही</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>नव्याने बांधण्यात आलेले</value>
+    <value>नवीन</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>नवीन फाइल तयार करा</value>
+    <value>नई फाइल</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>नवीन फोल्डर तयार करा</value>
+    <value>नवीन फोल्डर</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
@@ -606,27 +618,31 @@
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>नाही</value>
+    <value>काहीच नाही</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
     <value>अलीकडील फायली नाहीत</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>सेट नाही</value>
+    <comment>未设置</comment>
+  </data>
   <data name="Off" xml:space="preserve">
     <value>मिटणे</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>तुला खात्री आहे का</value>
+    <value>ठीक आहे</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>उघडणे</value>
+    <value>वर</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>ते उघडा</value>
+    <value>उघडणे</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
@@ -634,11 +650,15 @@
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>फोल्डर उघडा</value>
+    <value>ओपन फोल्डर</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>ओपन इमेज लोकेशन</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>नवीन विंडोमध्ये उघडते</value>
+    <value>नवीन विंडोमध्ये उघडा</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
@@ -662,7 +682,7 @@
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>स्टिकअप</value>
+    <value>पेस्ट करा</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
@@ -682,15 +702,15 @@
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>उद्धृत करा</value>
+    <value>भाव सांगणे</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>स्कोर</value>
+    <value>रेटिंग</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
-    <value>redo</value>
+    <value>Redo</value>
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
@@ -698,7 +718,7 @@
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>रांग हटवा</value>
+    <value>रो डिलीट करा</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
@@ -706,15 +726,15 @@
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>रिप्लेसमेंट</value>
+    <value>बदला</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
-    <value>सर्व बदलून टाका</value>
+    <value>सर्वांची जागा घ्या</value>
     <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
-    <value>टेबलचा आकार बदला</value>
+    <value>आकार सारणी पुनर्निर्मित करा</value>
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
@@ -722,7 +742,7 @@
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>हो</value>
+    <value>रांगा</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -754,27 +774,27 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>सेट अप करा</value>
+    <value>सेटिंग्स</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>शॉर्टकट की</value>
+    <value>शॉर्टकट</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
-    <value>साइडबार</value>
+    <value>साइड बार</value>
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>स्रोत कोड मोड</value>
+    <value>सोर्स कोड मोड</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
-    <value>Status Bar</value>
+    <value>स्टेटस बार</value>
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>ते थांबवा</value>
+    <value>थांबणे</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,7 +806,7 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>रूप</value>
+    <value>टेबल</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
@@ -794,7 +814,7 @@
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>विषय</value>
+    <value>थीम</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
@@ -802,7 +822,7 @@
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Content catalog</value>
+    <value>सामग्री सारणी</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
@@ -814,7 +834,7 @@
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
-    <value>Typewriter mode</value>
+    <value>Typewriter Mode</value>
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
@@ -822,11 +842,11 @@
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>रद्दबातल करणे</value>
+    <value>Undo</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Unordered list</value>
+    <value>गोळ्या</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
@@ -834,11 +854,11 @@
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>नियमित मिलान</value>
+    <value>रेग्युलर एक्सप्रेशन मॅच</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>सिस्टम सेटिंग्ज वापरा</value>
+    <value>सिस्टम सेटिंग वापरा</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
@@ -850,11 +870,11 @@
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>साइट</value>
+    <value>संकेतस्थळ ।</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
-    <value>पूर्ण शब्द</value>
+    <value>संपूर्ण शब्द</value>
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
@@ -870,7 +890,7 @@
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>शब्द</value>
+    <value>शब्द[ संपादन]</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">

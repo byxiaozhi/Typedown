@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Tambah ke</value>
+    <value>Menambah</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Penjajaran pusat</value>
+    <value>Pusat</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Jajar kiri</value>
+    <value>Jajar Ke Kiri</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Sejajar kanan</value>
+    <value>Jajar Ke Kanan</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
@@ -142,7 +142,7 @@
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>Automatik</value>
+    <value>Auto</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
@@ -154,11 +154,11 @@
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>Semak lalu folder</value>
+    <value>Semak Lalu Folder</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>Semak imbas fail setempat</value>
+    <value>Semak imbas Fail Tempatan</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -166,31 +166,35 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
-    <value>Sensitif kes</value>
+    <value>Kes Sensitif</value>
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>Perkataan</value>
+    <value>Aksara</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>Perkataan</value>
+    <value>Aksara</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
     <value>Carta</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Jelas</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>Kosongkan gaya</value>
+    <value>Kosongkan Format</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>Kosongkan fail terbaru</value>
+    <value>Kosongkan Fail Terkini</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>Klik Tambah imej</value>
+    <value>Klik untuk menambah imej</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
@@ -202,7 +206,7 @@
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>Blok kod</value>
+    <value>Pagar Kod</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
@@ -214,7 +218,7 @@
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>Salin sebagai kod HTML</value>
+    <value>Salin sebagai HTML</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,15 +226,15 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>Salin alamat fail</value>
+    <value>Salin sebagai Laluan</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>Salin sebagai teks biasa</value>
+    <value>Salin sebagai Teks Biasa</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
-    <value>Salin kandungan</value>
+    <value>Salin Kandungan</value>
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
@@ -238,7 +242,7 @@
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
-    <value>Salin ke laluan</value>
+    <value>Salin ke Laluan</value>
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
@@ -246,19 +250,19 @@
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+Klik Buka Pautan</value>
+    <value>Ctrl+Klik untuk membuka pautan</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>Penyesuaian</value>
+    <value>Tersuai</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>Kekunci pintasan tersuai</value>
+    <value>Pintasan Tersuai</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>Ricih</value>
+    <value>Memotong</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -270,7 +274,7 @@
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>Turunkan aras tajuk</value>
+    <value>Mengurangkan aras tajuk</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
@@ -282,11 +286,11 @@
     <comment>删除</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
-    <value>Memadamkan jadual</value>
+    <value>Padamkan Jadual</value>
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>Mengulangi</value>
+    <value>Pendua</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
@@ -294,7 +298,7 @@
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>Mengedit gambar</value>
+    <value>Edit imej</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
@@ -302,15 +306,19 @@
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>Benamkan pautan</value>
+    <value>Embed Link</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
     <value>Italik</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Mengaktifkan</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
-    <value>Kesilapan</value>
+    <value>Ralat</value>
     <comment>错误</comment>
   </data>
   <data name="Export" xml:space="preserve">
@@ -318,11 +326,11 @@
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
-    <value>Seting eksport</value>
+    <value>Seting Eksport</value>
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>Eksport ke PDF</value>
+    <value>Eksport sebagai PDF</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
@@ -342,15 +350,15 @@
     <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
-    <value>Cari dan ganti</value>
+    <value>Cari dan Ganti</value>
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>Cari yang seterusnya</value>
+    <value>Cari Berikut</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>Cari yang sebelumnya</value>
+    <value>Cari Terdahulu</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
@@ -358,7 +366,7 @@
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
-    <value>Mod fokus</value>
+    <value>Mod Fokus</value>
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
@@ -378,7 +386,7 @@
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>Tag nota kaki [^{identifier}] tidak dijumpai:</value>
+    <value>Penanda nota kaki tidak dijumpai [^{identifier}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
@@ -386,7 +394,7 @@
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>Memformatkan kod</value>
+    <value>Kod Format</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
@@ -402,27 +410,27 @@
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>Tajuk peringkat pertama</value>
+    <value>Tajuk 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>Tajuk peringkat kedua</value>
+    <value>Tajuk 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>Tajuk tiga aras</value>
+    <value>Tajuk 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>Tajuk empat aras</value>
+    <value>Tajuk 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>Tajuk lima peringkat</value>
+    <value>Tajuk 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>Tajuk enam aras</value>
+    <value>Tajuk 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -434,7 +442,7 @@
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>Garis pembahagi mendatar</value>
+    <value>Garisan Mendatar</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>Tingkatkan tahap tajuk</value>
+    <value>Meningkatkan aras tajuk</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -462,23 +470,23 @@
     <comment>内联</comment>
   </data>
   <data name="InlineCode" xml:space="preserve">
-    <value>Kod sebaris</value>
+    <value>Kod Dalam Talian</value>
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>Formula sebaris</value>
+    <value>Matematik Sebaris</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>Masukkan definisi nota kaki...</value>
+    <value>Definisi Nota Kaki Input...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>Masukkan pengecam bahasa...</value>
+    <value>Pengecam Bahasa Input...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>Masukkan formula matematik...</value>
+    <value>Matematik Input...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
@@ -486,31 +494,31 @@
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>Menyelitkan lajur di sebelah kiri</value>
+    <value>Selitkan Lajur Ke Kiri</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>Menyelitkan lajur di sebelah kanan</value>
+    <value>Selitkan Lajur Ke Kanan</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>Menyelitkan imej</value>
+    <value>Selitkan Imej</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>Menyelitkan perenggan di bawah</value>
+    <value>Menyelitkan perenggan selepas</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>Menyelitkan perenggan di atas</value>
+    <value>Menyelitkan perenggan sebelum</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>Menyelitkan baris di atas</value>
+    <value>Selitkan baris di atas</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>Menyelitkan baris di bawah</value>
+    <value>Selitkan baris di bawah</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
@@ -526,23 +534,23 @@
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Ya</value>
+    <value>Baris</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
-    <value>Ketinggian garisan</value>
+    <value>Ketinggian Talian</value>
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Ya</value>
+    <value>Garisan</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>Rujukan pautan</value>
+    <value>Rujukan Pautan</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
-    <value>Gagal memuatkan imej</value>
+    <value>Gagal memuatkan Imej</value>
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
@@ -550,7 +558,7 @@
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>Blok formula</value>
+    <value>Blok Matematik</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
@@ -558,7 +566,7 @@
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>bar menu</value>
+    <value>Menu Bar</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
@@ -574,27 +582,31 @@
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
-    <value>Opsyen lain</value>
+    <value>Opsyen Lain</value>
     <comment>更多选项</comment>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nama</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>Nama tidak boleh kosong</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>Dibina baru</value>
+    <value>Baru</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>Buat fail baharu</value>
+    <value>Fail Baru</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>Buat folder baru</value>
+    <value>Folder Baru</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
-    <value>Tetingkap baru</value>
+    <value>Tetingkap Baru</value>
     <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
@@ -606,39 +618,47 @@
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>Tidak</value>
+    <value>Tiada</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
-    <value>Tiada fail terbaru</value>
+    <value>Tiada Fail Terkini</value>
     <comment>文件/打开最近/无最近文件</comment>
+  </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>Tidak ditetapkan</value>
+    <comment>未设置</comment>
   </data>
   <data name="Off" xml:space="preserve">
     <value>Tutup</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Adakah awak pasti</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>Terbuka</value>
+    <value>Pada</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Buka</value>
+    <value>Terbuka</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
-    <value>Membuka lokasi fail</value>
+    <value>Buka Lokasi Fail</value>
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>Buka folder</value>
+    <value>Buka Folder</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>Buka Lokasi Imej</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>Terbuka dalam tetingkap baharu</value>
+    <value>Buka dalam tetingkap baru</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
@@ -646,11 +666,11 @@
     <comment>文件/打开最近</comment>
   </data>
   <data name="OpenSourceSoftware" xml:space="preserve">
-    <value>Perisian sumber terbuka</value>
+    <value>Perisian Sumber Terbuka</value>
     <comment>开源软件</comment>
   </data>
   <data name="OrderedList" xml:space="preserve">
-    <value>Senarai pesanan</value>
+    <value>Senarai Tertib</value>
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
@@ -662,11 +682,11 @@
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>pelekat</value>
+    <value>Tampal</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
-    <value>Tampal sebagai teks biasa</value>
+    <value>Tampal sebagai Teks Biasa</value>
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
@@ -682,11 +702,11 @@
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>Cite</value>
+    <value>Quote</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>Skor</value>
+    <value>Penarafan</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
@@ -694,11 +714,11 @@
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>Memadamkan lajur</value>
+    <value>Padamkan Lajur</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>Memadamkan baris</value>
+    <value>Padamkan Baris</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
@@ -706,15 +726,15 @@
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>Penggantian</value>
+    <value>Menggantikan</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
-    <value>Gantikan semua</value>
+    <value>Gantikan Semua</value>
     <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
-    <value>Mensaiz semula jadual</value>
+    <value>Mensaiz semula Jadual</value>
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
@@ -722,7 +742,7 @@
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Ya</value>
+    <value>Baris</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -742,11 +762,11 @@
     <comment>搜索</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>Pilih semua</value>
+    <value>Pilih Semua</value>
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>Pilih fail</value>
+    <value>Pilih Fail</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
@@ -754,27 +774,27 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Menyediakan</value>
+    <value>Seting</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>kekunci pintasan</value>
+    <value>Pintasan</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
-    <value>Sidebar</value>
+    <value>Bar Sisi</value>
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>Mod kod sumber</value>
+    <value>Mod Kod Sumber</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
-    <value>Bar status</value>
+    <value>Status Bar</value>
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Hentikannya</value>
+    <value>Berhenti</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,15 +806,15 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>Borang</value>
+    <value>Jadual</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
-    <value>Senarai tugas</value>
+    <value>Senarai Tugas</value>
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>Topik</value>
+    <value>Tema</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
@@ -802,7 +822,7 @@
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Katalog kandungan</value>
+    <value>Senarai Kandungan</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
@@ -810,11 +830,11 @@
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>Tukar kepada</value>
+    <value>Bertukar menjadi</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
-    <value>Mod mesin taip</value>
+    <value>Mod Mesin Taip</value>
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
@@ -822,11 +842,11 @@
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>quash</value>
+    <value>Membatalkan</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Senarai tidak teratur</value>
+    <value>Peluru</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
@@ -834,7 +854,7 @@
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>Padanan biasa</value>
+    <value>Padanan Ungkapan Biasa</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
@@ -850,11 +870,11 @@
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>Laman</value>
+    <value>Laman web</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
-    <value>Perkataan penuh</value>
+    <value>Seluruh Perkataan</value>
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
@@ -866,7 +886,7 @@
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
-    <value>kiraan perkataan</value>
+    <value>Kiraan Perkataan</value>
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">

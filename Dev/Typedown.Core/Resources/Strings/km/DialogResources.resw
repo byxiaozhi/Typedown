@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>តើអ្នកចង់រក្សាទុកការផ្លាស់ប្តូររបស់អ្នកឬទេ?</value>
+    <value>តើអ្នកចង់រក្សាទុកការផ្លាស់ប្តូរឬទេ?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>តើ​អ្នក​ប្រាកដ​ឬ​អត់</value>
+    <value>យល់ព្រម</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>មតិ យោបល់</value>
+    <value>បញ្ចេញមតិ</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -170,23 +170,27 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>បញ្ចូលតុ</value>
+    <value>បញ្ចូល Table</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
-    <value>ដំឡើង ឥឡូវ</value>
+    <value>ដំឡើងឥឡូវនេះ</value>
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>តើ​អ្នក​ប្រាកដ​ឬ​អត់</value>
+    <value>យល់ព្រម</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>សូម ចុច បន្សំ គន្លឹះ</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>អាន បរាជ័យ</value>
+    <value>មិន បាន ផ្ទុក</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>ជាសះស្បើយឡើងវិញ</value>
+    <value>ស្ដារឡើងវិញ</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>ចង់ ស្តារ ឯកសារ ឡើង វិញ ឬ ទេ?</value>
+    <value>តើអ្នកចង់ស្តារឯកសារឡើងវិញដែរឬទេ?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>លៃតម្រូវតុ</value>
+    <value>តារាង Resize</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>យល់ព្រម ដើម្បី ស្ដារ ការ កំណត់ លំនាំ ដើម កម្មវិធី</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>រក្សាទុក</value>
@@ -209,20 +217,36 @@
     <value>រក្សាទុកបានបរាជ័យ</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>កំណត់ Shortcut Key</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>កូនសោ កាត់ ត្រូវ បាន កាន់ កាប់</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>ដាក់ស្នើ</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>ការ ដាក់ ជូន នេះ ទទួល បាន ជោគជ័យ</value>
+    <value>ការ ដាក់ ជូន ទទួល បាន ជោគជ័យ</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>ការ Upload បាន បរាជ័យ</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Upload ជោគជ័យ</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>អ្នក ត្រូវ ដំឡើង WebView2 runtime ដើម្បី ដំណើរ ការ កម្មវិធី ឲ្យ បាន ត្រឹមត្រូវ &amp; # 160; ។</value>
+    <value>អ្នក ត្រូវ ដំឡើង WebView2 runtime ដើម្បី ដំណើរ ការ កម្មវិធី នេះ ឲ្យ បាន ត្រឹមត្រូវ ។</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>WebView2 runtime មិន ត្រូវ បាន ដំឡើង ទេ</value>
+    <value>WebView2 Runtime មិនដំឡើង</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

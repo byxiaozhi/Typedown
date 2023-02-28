@@ -118,35 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Qoʻshish</value>
+    <value>Qo'shish</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Markaz tekisligi</value>
+    <value>Markaz</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Chapga tekislangan</value>
+    <value>Chapga tekislash</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Oʻngga tekislangan</value>
+    <value>Oʻngga tekislash</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
-    <value>hammasi</value>
+    <value>Hammasi</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
-    <value>ilova</value>
+    <value>Dastur</value>
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>avtomatik</value>
+    <value>Avto</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>qaytarish</value>
+    <value>Orqaga</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -154,11 +154,11 @@
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>Jildni koʻrish</value>
+    <value>&amp; Jildni koʻrish</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>Lokal fayllarga koʻrish</value>
+    <value>Lokal faylni koʻrish</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -166,23 +166,27 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
-    <value>Kattalik sezgirligi</value>
+    <value>Katta-kattalik sezgirligi</value>
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>so'z</value>
+    <value>Belgi</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>so'z</value>
+    <value>Harflar</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>diagramma</value>
+    <value>Diagramma</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Tozalash</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>Uslubni tozalash</value>
+    <value>Formatni tozalash</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
@@ -190,31 +194,31 @@
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>Rasm qo'shish tugmasini bosing</value>
+    <value>Rasm qo'shish uchun bosing</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Yoping</value>
+    <value>Yopish</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>kod</value>
+    <value>Kod</value>
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>Kod bloki</value>
+    <value>Kod to'siqlari</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>ustun</value>
+    <value>Ustunlar</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>nusxa olish</value>
+    <value>Nusxa olish</value>
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>HTML kodi sifatida nusxa ko'chirish</value>
+    <value>HTML sifatida nusxa olish</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,7 +226,7 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>Faylning manzilidan nusxa olish</value>
+    <value>Yoʻl sifatida nusxa olish</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
@@ -230,7 +234,7 @@
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
-    <value>Matndan nusxa olish</value>
+    <value>Kontentdan nusxa olish</value>
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
@@ -242,15 +246,15 @@
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>yaratish</value>
+    <value>Yaratish</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+Click Linkni ochish</value>
+    <value>Bogʻni ochish uchun Ctrl+Chertish</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>O'zlashtirish</value>
+    <value>Boshqa</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
@@ -258,7 +262,7 @@
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>qaychi</value>
+    <value>Kesish</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -266,15 +270,15 @@
     <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>ma'lumotlar</value>
+    <value>Maʼlumotlar</value>
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>Sarlavha darajasini pasaytirish</value>
+    <value>Sarlavha darajasini kamaytirish</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>andoza</value>
+    <value>Andoza</value>
     <comment>默认</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -286,11 +290,11 @@
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>takrorlash</value>
+    <value>Nusxasini &amp; koʻpaytiring</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>tahrirlash</value>
+    <value>Tahrirlash</value>
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
@@ -298,19 +302,23 @@
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>tahrirchi</value>
+    <value>Tahrirchi</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>Bogʻlarni qoʻshish</value>
+    <value>Bogʻni qoʻshish</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
-    <value>italik</value>
+    <value>Italik</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Yoqish</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
-    <value>xato</value>
+    <value>Xatolik</value>
     <comment>错误</comment>
   </data>
   <data name="Export" xml:space="preserve">
@@ -318,23 +326,23 @@
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
-    <value>Eksport moslamalari</value>
+    <value>Eksport qilish moslamalari</value>
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>PDF' ga eksport qilish</value>
+    <value>PDF sifatida eksport qilish</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>fikr-mulohaza</value>
+    <value>Fikr-mulohaza</value>
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
-    <value>fayl</value>
+    <value>Fayl</value>
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>fayl</value>
+    <value>Fayllar</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
@@ -346,11 +354,11 @@
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>Keyingisini toping</value>
+    <value>Keyingini qidirish</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>Oldingisini toping</value>
+    <value>Oldingini qidirish</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
@@ -358,39 +366,39 @@
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
-    <value>Fokus rejimi</value>
+    <value>Fokus usuli</value>
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>jild</value>
+    <value>Jild</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
-    <value>shrift</value>
+    <value>Shrift</value>
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
-    <value>Shrift oʻlchami</value>
+    <value>Shriftning oʻlchami</value>
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>izoh</value>
+    <value>Izohlar</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>[^identifier}] izohi topilmadi:</value>
+    <value>[^{identifier}] topilmadi:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
-    <value>formati</value>
+    <value>Formatlash</value>
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>Kodni formatlash</value>
+    <value>Formatlash kodi</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
-    <value>umumiy</value>
+    <value>Umumiy</value>
     <comment>通用</comment>
   </data>
   <data name="GoTo" xml:space="preserve">
@@ -398,31 +406,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>sarlavha</value>
+    <value>Sarlavha</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>Birinchi darajali sarlavha</value>
+    <value>1-sarlavha</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>Ikkinchi darajali sarlavhalar</value>
+    <value>2-sarlavha</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>Uch darajali xatboshilar</value>
+    <value>3-sarlavha</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>Toʻrt darajali xatboshilar</value>
+    <value>4-sarlavha</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>Besh darajali xatboshilar</value>
+    <value>5-sarlavha</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>Olti darajali xatboshilar</value>
+    <value>6-sarlavha</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -430,19 +438,19 @@
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>ta'kidlash</value>
+    <value>Taʼkidlash</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>Gorizontal bo'linish chizig'i</value>
+    <value>Gorizontal chiziq</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
-    <value>Giperhavolalar</value>
+    <value>Giperhavola</value>
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>rasm</value>
+    <value>Rasm</value>
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>Sarlavha darajasini koʻtarish</value>
+    <value>Sarlavha darajasini oshirish</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -466,55 +474,55 @@
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>Formulalarni inline</value>
+    <value>Matematik maʼdanni koʻchir</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>Freydning nomini kiriting...</value>
+    <value>Qoʻyish uchun freyk ochish...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>Til identifikatori kiriting...</value>
+    <value>Kirish tili identifikatori...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>Matematika formulasini kiriting...</value>
+    <value>Kirish matematikasi...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>YAML old materiyasini kiriting...</value>
+    <value>Kirish YAML Old Materiya...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>Chapga ustun qoʻyish</value>
+    <value>Ustunni chapga qoʻyish</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>Oʻng tomonga ustun qoʻyish</value>
+    <value>Oʻngga qoʻyish</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>Rasm qoʻyish</value>
+    <value>Rasmni qoʻyish</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>Quyida xat qoʻyish</value>
+    <value>Keyingi paragrafni qoʻyish</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>Yuqoriga abzats qoʻyish</value>
+    <value>Oldinga xatni qoʻyish</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>Yuqoriga satr qoʻyish</value>
+    <value>Yuqoriga qoʻyish</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>Pastga satr qoʻyish</value>
+    <value>Pastga qoʻyish</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>til</value>
+    <value>Til</value>
     <comment>设置/语言</comment>
   </data>
   <data name="LearnMore" xml:space="preserve">
@@ -522,23 +530,23 @@
     <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>yorug'lik</value>
+    <value>Yorugʻlik</value>
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Ha</value>
+    <value>Satr</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
-    <value>Satr balandligi</value>
+    <value>Satrning balandligi</value>
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Ha</value>
+    <value>Chiziqlar</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>Bogʻlama maʼlumotlari</value>
+    <value>Bogʻlama maʼlumoti</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
@@ -546,19 +554,19 @@
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
-    <value>matematika</value>
+    <value>Matematik</value>
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>Formulalar bloki</value>
+    <value>Matematik blok</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>maksimallashtirish</value>
+    <value>Yoyish</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>menyu paneli</value>
+    <value>Menyu paneli</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
@@ -570,7 +578,7 @@
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>daqiqa</value>
+    <value>Daqiqa</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
@@ -581,16 +589,20 @@
     <value>Nom</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>Nom boʻsh boʻlishi mumkin emas</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>yangi qurilgan</value>
+    <value>Yangi</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>Yangi fayl yaratish</value>
+    <value>Yangi fayl</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>Yangi jild yaratish</value>
+    <value>Yangi jild</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
@@ -606,27 +618,31 @@
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>yoʻq</value>
+    <value>Hech kim</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
-    <value>Yaqinda hech qanday fayl yoʻq</value>
+    <value>Yaqinda ochilgan fayllar yoʻq</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>Oʻrnatilmagan</value>
+    <comment>未设置</comment>
+  </data>
   <data name="Off" xml:space="preserve">
-    <value>yopish</value>
+    <value>Yopish</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Ishonchingiz komilmi</value>
+    <value>XO'P</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>ochish</value>
+    <value>Yoʻq</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Uni oching</value>
+    <value>Ochish</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
@@ -636,6 +652,10 @@
   <data name="OpenFolder" xml:space="preserve">
     <value>Jildni ochish</value>
     <comment>文件/打开文件夹</comment>
+  </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>Rasm manzilini ochish</value>
+    <comment>打开图片位置</comment>
   </data>
   <data name="OpenInNewWindow" xml:space="preserve">
     <value>Yangi oynada ochish</value>
@@ -654,15 +674,15 @@
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
-    <value>chizma</value>
+    <value>Koʻkcha</value>
     <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
-    <value>abzats</value>
+    <value>Abzats</value>
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>yopishqoq</value>
+    <value>Qoʻyish</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
@@ -670,7 +690,7 @@
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>yo'l</value>
+    <value>Yoʻl</value>
     <comment>文件/路径</comment>
   </data>
   <data name="PlantUMLDiagram" xml:space="preserve">
@@ -678,19 +698,19 @@
     <comment>PlantUML Diagram</comment>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>chop etish</value>
+    <value>Bosib chiqarish</value>
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>keltiring</value>
+    <value>Taklif</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>Skor</value>
+    <value>Reyting</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
-    <value>qayta tiklash</value>
+    <value>Qaytarish</value>
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
@@ -698,15 +718,15 @@
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>Satrni oʻchirish</value>
+    <value>Satrni olib tashlash</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>qayta nomlash</value>
+    <value>Nomini oʻzgartirish</value>
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>almashtirish</value>
+    <value>&amp; Almashtirish</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
@@ -718,11 +738,11 @@
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>qayta tiklash</value>
+    <value>Qayta tiklash</value>
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Ha</value>
+    <value>Satrlar</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -754,19 +774,19 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Oʻrnatish</value>
+    <value>Moslamalar</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>tugmalar birikmasi</value>
+    <value>Tugmalar birikmasi</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
-    <value>Yon panel</value>
+    <value>Yon paneli</value>
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>Manba kodi rejimi</value>
+    <value>Manba kodi usuli</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
@@ -774,7 +794,7 @@
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Uni to'xtating</value>
+    <value>Toʻxtatish</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,7 +806,7 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>shakl</value>
+    <value>Jadval</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
@@ -794,19 +814,19 @@
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>mavzu</value>
+    <value>Mavzu</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>sarlavha</value>
+    <value>Sarlavha</value>
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Kontent katalogi</value>
+    <value>Mundarija jadvali</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>umumiy</value>
+    <value>Jami</value>
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
@@ -818,27 +838,27 @@
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
-    <value>taʼkidlangan</value>
+    <value>Taʼkidlangan</value>
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>quash</value>
+    <value>Bekor qilish</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Qayd etilmagan ro'yxat</value>
+    <value>Oʻqlar</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>yangilash</value>
+    <value>Yangilash</value>
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>Doimiy moslashish</value>
+    <value>Doimiy ifoda mosligi</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>Tizimning moslamalaridan foydalanish</value>
+    <value>Tizim moslamasini ishlatish</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
@@ -850,27 +870,27 @@
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>sayt</value>
+    <value>Veb-sayt</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
-    <value>To'liq so'z</value>
+    <value>Butun soʻz</value>
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
-    <value>oyna</value>
+    <value>Oyna</value>
     <comment>窗口</comment>
   </data>
   <data name="Word" xml:space="preserve">
-    <value>so'z</value>
+    <value>Soʻz</value>
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
-    <value>so'zlar soni</value>
+    <value>Soʻzlarni hisoblash</value>
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>so'z</value>
+    <value>Soʻzlar</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">
@@ -878,7 +898,7 @@
     <comment>YAML Front Matter</comment>
   </data>
   <data name="Zoom" xml:space="preserve">
-    <value>kattalashtirish</value>
+    <value>Kattalashtirish</value>
     <comment>字体缩放</comment>
   </data>
 </root>

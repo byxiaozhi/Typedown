@@ -181,6 +181,10 @@
     <value>確定</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>請按下組合鍵</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
     <value>讀取失敗</value>
     <comment>打开文件对话框/读取失败</comment>
@@ -201,6 +205,10 @@
     <value>調整表格</value>
     <comment>表格对话框/调整表格</comment>
   </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>確定恢復應用預設設置？</value>
+    <comment>确定恢复应用默认设置？</comment>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>保存</value>
     <comment>文件保存对话框/保存</comment>
@@ -209,6 +217,14 @@
     <value>保存失敗</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>設置快速鍵</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>快捷鍵已被佔用</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>提交</value>
     <comment>反馈对话框/提交</comment>
@@ -216,6 +232,14 @@
   <data name="SubmittedSuccessfully" xml:space="preserve">
     <value>提交成功</value>
     <comment>反馈对话框/提交成功</comment>
+  </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>上傳失敗</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>上傳成功</value>
+    <comment>上传成功</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
     <value>您需要安裝 WebView2 運行時才能正常運行該軟體。</value>

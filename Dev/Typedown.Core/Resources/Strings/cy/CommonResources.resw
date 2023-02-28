@@ -118,35 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Ychwanegu at</value>
+    <value>Adio</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Aliniad y ganolfan</value>
+    <value>Canol</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Wedi'i alinio â'r chwith</value>
+    <value>Cyd-fynd â'r chwith</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Wedi'i alinio â'r dde</value>
+    <value>Alinio Hawl</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
-    <value>holl</value>
+    <value>Holl</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
-    <value>cais</value>
+    <value>Cais</value>
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>awtomatig</value>
+    <value>Awto</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>dychwelyd</value>
+    <value>Cefn</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -154,11 +154,11 @@
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>Pori'r ffolder</value>
+    <value>Pori Ffolder</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>Pori am ffeiliau lleol</value>
+    <value>Pori ffeil leol</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -166,55 +166,59 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
-    <value>Achos sensitif</value>
+    <value>Achos yn sensitif</value>
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>gair</value>
+    <value>Cymeriad</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>gair</value>
+    <value>Cymeriadau</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>siart</value>
+    <value>Siart</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clirio</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>Clirio'r arddull</value>
+    <value>Fformat clir</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>Clirio ffeiliau diweddar</value>
+    <value>Ffeiliau Diweddar Clir</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>Cliciwch Ychwanegu delwedd</value>
+    <value>Cliciwch i ychwanegu delwedd</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Cau lawr</value>
+    <value>Cau</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>cod</value>
+    <value>Cod</value>
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>Bloc cod</value>
+    <value>Ffensys Cod</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>colofn</value>
+    <value>Colofnau</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>copi</value>
+    <value>Copi</value>
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>Copi fel cod HTML</value>
+    <value>Copi fel HTML</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,15 +226,15 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>Copïo cyfeiriad y ffeil</value>
+    <value>Copi fel Llwybr</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>Copi fel testun plaen</value>
+    <value>Copi fel Testun Plaen</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
-    <value>Copïo'r cynnwys</value>
+    <value>Copïo Cynnwys</value>
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
@@ -238,27 +242,27 @@
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
-    <value>Copïo i'r llwybr</value>
+    <value>Copi i Path</value>
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>creu</value>
+    <value>Creu</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl + Cliciwch Agored Dolen</value>
+    <value>Ctrl + Cliciwch i Agor Dolen</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>Addasu</value>
+    <value>Arfer</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>Allweddi shortcut arferol</value>
+    <value>Bysellau Byr Arferol</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>cneifio</value>
+    <value>Torri</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -266,15 +270,15 @@
     <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>data</value>
+    <value>Data</value>
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>Gostwng lefel y teitl</value>
+    <value>Lleihau Lefel Pennawd</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>rhagosodiad</value>
+    <value>Rhagosodiad</value>
     <comment>默认</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -282,35 +286,39 @@
     <comment>删除</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
-    <value>Dileu'r tabl</value>
+    <value>Dileu'r Tabl</value>
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>ailadrodd</value>
+    <value>Dyblyg</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>golygu</value>
+    <value>Golygu</value>
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>Golygu'r llun</value>
+    <value>Golygu Delwedd</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>golygydd</value>
+    <value>Golygydd</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>Gwreiddio dolenni</value>
+    <value>Dolen Ymgorffori</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
-    <value>italig</value>
+    <value>Italig</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Galluogi</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
-    <value>camgymeriad</value>
+    <value>Gwall</value>
     <comment>错误</comment>
   </data>
   <data name="Export" xml:space="preserve">
@@ -318,23 +326,23 @@
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
-    <value>Lleoliadau allforio</value>
+    <value>Gosodiadau Allforio</value>
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>Allforio i PDF</value>
+    <value>Allforio ar ffurf PDF</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>adborth</value>
+    <value>Adborth</value>
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
-    <value>ffeil</value>
+    <value>Ffeil</value>
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>ffeil</value>
+    <value>Ffeiliau</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
@@ -342,15 +350,15 @@
     <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
-    <value>Canfod a disodli</value>
+    <value>Dod o hyd i a disodli</value>
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>Dod o hyd i'r un nesaf</value>
+    <value>Dod o hyd i nesaf</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>Dod o hyd i'r un blaenorol</value>
+    <value>Canfod Blaenorol</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
@@ -358,15 +366,15 @@
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
-    <value>Modd ffocws</value>
+    <value>Modd Ffocws</value>
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>ffolder</value>
+    <value>Ffolder</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
-    <value>ffont</value>
+    <value>Ffont</value>
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
@@ -374,19 +382,19 @@
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>troednodyn</value>
+    <value>Troednodiadau</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>Footnote tag [^{identifier}] heb ei ganfod:</value>
+    <value>Footnote marker not found [^{identifier}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
-    <value>fformat</value>
+    <value>Fformat</value>
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>Fformatio'r cod</value>
+    <value>Cod Fformat</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
@@ -398,31 +406,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>teitl</value>
+    <value>Pennawd</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>Pennawd lefel gyntaf</value>
+    <value>Pennawd 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>Penawdau ail lefel</value>
+    <value>Pennawd 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>Penawdau tair lefel</value>
+    <value>Pennawd 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>Penawdau pedair lefel</value>
+    <value>pennawd 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>Penawdau pum lefel</value>
+    <value>Pennawd 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>Penawdau chwe lefel</value>
+    <value>Pennawd 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -430,19 +438,19 @@
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>amlygu</value>
+    <value>Amlygu</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>Llinell rhannu llorweddol</value>
+    <value>Llinell Llorweddol</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
-    <value>Hypergysylltiadau</value>
+    <value>Hypergyswllt</value>
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>delwedd</value>
+    <value>Delwedd</value>
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>Dyrchafu lefel y teitl</value>
+    <value>Cynyddu Lefel y Pennawd</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -462,51 +470,51 @@
     <comment>内联</comment>
   </data>
   <data name="InlineCode" xml:space="preserve">
-    <value>Cod llinell</value>
+    <value>Cod Inline</value>
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>Fformiwlâu inline</value>
+    <value>Inline Math</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>Rhowch ddiffiniad troednodyn...</value>
+    <value>Diffiniad troednodyn mewnbwn...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>Rhowch dynodwr iaith...</value>
+    <value>Dynodwr Iaith Mewnbwn...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>Rhowch y fformiwla mathemateg...</value>
+    <value>Mewnbwn Math...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>Rhowch Fater Blaen YAML...</value>
+    <value>Mewnbwn YAML Front Matter...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>Rhowch golofn ar y chwith</value>
+    <value>Mewnosod Colofn Chwith</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>Rhowch golofn ar y dde</value>
+    <value>Mewnosod Colofn Dde</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>Mewnosod delwedd</value>
+    <value>Mewnosod Delwedd</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>Mewnosod paragraff isod</value>
+    <value>Mewnosod paragraff ar ôl</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>Mewnosod paragraff uchod</value>
+    <value>Mewnosod paragraff cyn</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>Rhowch resi uwchben</value>
+    <value>Rhowch res uchod</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
@@ -522,23 +530,23 @@
     <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>golau</value>
+    <value>Golau</value>
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Ie</value>
+    <value>Llinell</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
-    <value>Uchder y llinell</value>
+    <value>Uchder y Llinell</value>
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Ie</value>
+    <value>Llinellau</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>Cyfeiriadau cyswllt</value>
+    <value>Cyfeirnod Cyswllt</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
@@ -546,19 +554,19 @@
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
-    <value>mathemateg</value>
+    <value>Mathemateg</value>
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>Bloc fformiwla</value>
+    <value>Bloc Mathemateg</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>Mwyhau</value>
+    <value>Uchafu</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>bar dewislen</value>
+    <value>Bar Bwydlen</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
@@ -570,7 +578,7 @@
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>munud</value>
+    <value>Munudau</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
@@ -578,23 +586,27 @@
     <comment>更多选项</comment>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>enw</value>
+    <value>Enw</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>Ni all enw fod yn wag</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>newydd ei hadeiladu</value>
+    <value>Newydd</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>Creu ffeil newydd</value>
+    <value>Ffeil newydd</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>Creu ffolder newydd</value>
+    <value>Ffolder newydd</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
-    <value>Ffenest newydd</value>
+    <value>Ffenest Newydd</value>
     <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
@@ -606,39 +618,47 @@
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>ni</value>
+    <value>Dim</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
     <value>Dim ffeiliau diweddar</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>Heb ei osod</value>
+    <comment>未设置</comment>
+  </data>
   <data name="Off" xml:space="preserve">
-    <value>cau</value>
+    <value>Cau</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Wyt ti'n siŵr</value>
+    <value>OCÊ</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>agor</value>
+    <value>Ar</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Agora fe</value>
+    <value>Agor</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
-    <value>Agor y lleoliad ffeiliau</value>
+    <value>Lleoliad Ffeil Agored</value>
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>Agorwch y ffolder</value>
+    <value>Ffolder agored</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>Lleoliad Delwedd Agored</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>Yn agor mewn ffenest newydd</value>
+    <value>Agor yn y Ffenest Newydd</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
@@ -646,31 +666,31 @@
     <comment>文件/打开最近</comment>
   </data>
   <data name="OpenSourceSoftware" xml:space="preserve">
-    <value>Meddalwedd ffynhonnell agored</value>
+    <value>Meddalwedd Ffynhonnell Agored</value>
     <comment>开源软件</comment>
   </data>
   <data name="OrderedList" xml:space="preserve">
-    <value>Rhestr archebedig</value>
+    <value>Rhestr Archebedig</value>
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
-    <value>amlinellu</value>
+    <value>Amlinellu</value>
     <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
-    <value>paragraff</value>
+    <value>Paragraff</value>
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>Stickup</value>
+    <value>Pastio</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
-    <value>Gludwch fel testun plaen</value>
+    <value>Gludwch fel Testun Plaen</value>
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>llwybr</value>
+    <value>Llwybr</value>
     <comment>文件/路径</comment>
   </data>
   <data name="PlantUMLDiagram" xml:space="preserve">
@@ -678,11 +698,11 @@
     <comment>PlantUML Diagram</comment>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>argraffu</value>
+    <value>Argraffu</value>
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>Nodi</value>
+    <value>Dyfynnu</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
@@ -694,19 +714,19 @@
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>Dileu'r golofn</value>
+    <value>Dileu Colofn</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>Dileu'r rhes</value>
+    <value>Dileu Rhes</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>ailenwi</value>
+    <value>Ailenwi</value>
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>amnewidiad</value>
+    <value>Amnewid</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
@@ -718,11 +738,11 @@
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>adfer</value>
+    <value>Adfer</value>
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Ie</value>
+    <value>Rhesi</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -742,11 +762,11 @@
     <comment>搜索</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>Dewiswch pob</value>
+    <value>Dewiswch Pob</value>
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>Dewis y ffeil</value>
+    <value>Dewis ffeil</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
@@ -754,27 +774,27 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Sefydlu</value>
+    <value>Gosodiadau</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>allwedd llwybr byr</value>
+    <value>Hwylus</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
-    <value>Bar ochr</value>
+    <value>Bar Ochr</value>
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>Modd cod ffynhonnell</value>
+    <value>Modd Cod Ffynhonnell</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
-    <value>Bar statws</value>
+    <value>Bar Statws</value>
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Stopia</value>
+    <value>Peidio</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,59 +806,59 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>ffurf</value>
+    <value>Bwrdd</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
-    <value>Rhestr tasgau</value>
+    <value>Rhestr Tasg</value>
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>Pwnc</value>
+    <value>Thema</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>teitl</value>
+    <value>Teitl</value>
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Catalog cynnwys</value>
+    <value>Tabl Cynnwys</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>cyfanswm</value>
+    <value>Cyfanswm</value>
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>Trosi i</value>
+    <value>Trowch i mewn</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
-    <value>Modd teipiadur</value>
+    <value>Modd Teipiadur</value>
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
-    <value>tanlinellu</value>
+    <value>Tanlinellu</value>
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>Ddiddymu</value>
+    <value>Datod</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Rhestr heb ei datrys</value>
+    <value>Bwledi</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>diweddaru</value>
+    <value>Diweddaru</value>
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>Paru rheolaidd</value>
+    <value>Gêm fynegiant rheolaidd</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>Defnyddio gosodiadau'r system</value>
+    <value>Defnyddio gosodiad y system</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
@@ -850,27 +870,27 @@
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>safle</value>
+    <value>Gwefan</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
-    <value>Gair llawn</value>
+    <value>Gair cyfan</value>
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
-    <value>ffenestr</value>
+    <value>Ffenestr</value>
     <comment>窗口</comment>
   </data>
   <data name="Word" xml:space="preserve">
-    <value>gair</value>
+    <value>Gair</value>
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
-    <value>cyfrif geiriau</value>
+    <value>Cyfrif Geiriau</value>
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>gair</value>
+    <value>Geiriau</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">

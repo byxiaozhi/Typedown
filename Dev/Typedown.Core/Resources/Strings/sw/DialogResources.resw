@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>Unataka kuokoa mabadiliko yako?</value>
+    <value>Unataka kuokoa mabadiliko?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Una uhakika</value>
+    <value>Sawa kabisa</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -170,23 +170,27 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>Ingiza meza</value>
+    <value>Ingiza Jedwali</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
-    <value>Sakinisha sasa</value>
+    <value>Sakinisha Sasa</value>
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Una uhakika</value>
+    <value>Sawa kabisa</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Tafadhali bonyeza mchanganyiko muhimu</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Soma imeshindikana</value>
+    <value>Kushindwa kupakia</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>Kufufua</value>
+    <value>Rejesha</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -198,8 +202,12 @@
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Rekebisha jedwali</value>
+    <value>Jedwali la Resize</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>Sawa ili kurejesha mipangilio chaguomsingi ya programu</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Hifadhi</value>
@@ -209,20 +217,36 @@
     <value>Hifadhi imeshindikana</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Weka ufunguo wa njia ya mkato</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>Ufunguo wa njia ya mkato unakaliwa</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Wasilisha</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Uwasilishaji ulifanikiwa</value>
+    <value>Uwasilishaji umefanikiwa</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>Upakiaji umeshindikana</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Pakia mafanikio</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>Unahitaji kusakinisha wakati wa kukimbia wa WebView2 ili kuendesha programu vizuri.</value>
+    <value>Unahitaji kusakinisha muda wa kukimbia wa WebView2 ili kuendesha programu hii vizuri.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>Muda wa kukimbia wa WebView2 haujasakinishwa</value>
+    <value>Runtime ya WebView2 Haijasakinishwa</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

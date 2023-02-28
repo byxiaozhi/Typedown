@@ -122,11 +122,11 @@
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Sahifani saqlash</value>
+    <value>Microsoft Store sahifasi</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
-    <value>Ochiq manba dasturiy ta'minoti asosida</value>
+    <value>Ochiq manbali dasturiy ta'minot asosida</value>
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
@@ -146,43 +146,43 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Biz siz to'ldirgan tarkibni qadrlaymiz</value>
+    <value>Biz sizning fikr-mulohazalaringizga juda jiddiy e'tibor beramiz</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>to'g'risida</value>
+    <value>Haqida</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Ochilish qavsiga kirishda avtomatik ravishda yopish iqtibos belgisi to'ldirilgan</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Chap qavs kiritilganda oʻngdagi avtomatik toʻldirilgan braket</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Avtomatik toʻldirilar</value>
+    <value>Avto-to'liq qavslar</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Markdown teglarini avto-toʻplash</value>
+    <value>Avtomatik to'liq mos keladigan belgilanish yorlig'i</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Markdown yorligʻini avto-toʻldirilish</value>
+    <value>Avtomatik to'liq belgilash teglari</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Iqtiboslarni ochish belgilari kiritilganda avtomatik ravishda yopilish iqtiboslari to'ldirilgan</value>
+    <value>Chap qoʻngʻiroq kiritilganda avto- toʻliq oʻng talqin</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Iqtiboslarni avto-toʻldirish</value>
+    <value>Avtomatik tugatish talqini</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Andoza nusxa olish/kesish tarkibini tanlang</value>
+    <value>Andoza nusxa olish/kesish tarkibini tanlash</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Andoza bo'yicha kontentdan nusxa olish/kesish</value>
+    <value>Andoza nusxa olish/kesish tarkibi</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>uzaytirish</value>
+    <value>Kengaytmalar</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Tahrirchi andoza shrift oʻlchami</value>
+    <value>Tahrirchining andoza shrift oʻlchami.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Tahrirchi qatori yuqori ko'p</value>
+    <value>Tahrirchi satrining balandligi bir necha</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,11 +218,11 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Tilni avtomatik aniqlash</value>
+    <value>Tilni avto-aniqlash</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
-    <value>til</value>
+    <value>Til</value>
     <comment>编辑器/语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>uslub</value>
+    <value>Uslub</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Maʼlumot uchun andoza boʻsh joyni moslash</value>
+    <value>Andoza boʻsh joyni iqtibos va roʻyxatlar uchun moslash</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>tahrirchi</value>
+    <value>Tahrirchi</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -257,40 +257,44 @@
     <value>Moslamalarni eksport qilish</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Faylning turini eksport qilish</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Eksport tugagandan soʻng jild joylashgan jildni oching</value>
+    <value>Jildni eksportdan keyin ochish</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Koʻchiruvchi</value>
+    <value>Manzara</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Uzunlamasına</value>
+    <value>Portret</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>sahifa altgigi</value>
+    <value>Altys</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Yuqori</value>
+    <value>Sarlavha</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Yuqori va yuqori</value>
+    <value>Sarlavha va sarlavhalar</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>ostida</value>
+    <value>Pastki</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
-    <value>chap tomon</value>
+    <value>Chapdan</value>
     <comment>导出/左</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Right" xml:space="preserve">
-    <value>o'ng</value>
+    <value>Oʻngda</value>
     <comment>导出/右</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Text" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>yuqorida</value>
+    <value>Yuqori</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>yo'nalishi</value>
+    <value>Yoʻnalish</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>yuqori</value>
+    <value>Boʻyiga</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>keng</value>
+    <value>Kengligi</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,31 +338,31 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>qo'llash</value>
+    <value>Dastur</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Ochilgandan so'ng, fayl o'zgartirilganda ilova avtomatik ravishda saqlanadi</value>
+    <value>Fayl oʻzgarganda saqlash</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>Avtomatik saqlash</value>
+    <value>Avto-saqlash</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>O'zlashtirish</value>
+    <value>Boshqa</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>ma'lumotlar</value>
+    <value>Maʼlumotlar</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Oyna yopilgandan keyin jarayonni saqlab qolish keyingi ishga tushirishni tezlashtiradi</value>
+    <value>Oyna yopilgandan soʻng jarayonni davom ettirish</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,15 +370,15 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Ilova ko'rsatiladigan til</value>
+    <value>Dastur tili</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
-    <value>til</value>
+    <value>Til</value>
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Ilovaning andoza moslamalarini tiklash</value>
+    <value>Dastur andoza moslamalarini tiklash</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
@@ -382,39 +386,39 @@
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Tugmalar birikmasi</value>
+    <value>&amp; Boshqa tugmalar</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>tugmalar birikmasi</value>
+    <value>Tugmalar birikmasi</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Ilova ishga tushganda sodir bo'ladigan amal</value>
+    <value>Dastur ishga tushganda amal</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Yangi fayl yaratish</value>
+    <value>Yangi faylni ochish</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Oxirgi ishlatilgan faylni ochish</value>
+    <value>Oxirgi yopilgan faylni tiklash</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Koʻrsatilgan jildni ochish</value>
+    <value>Maxsus jildni ochish</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Oxirgi ishlatilgan jildni ochish</value>
+    <value>Oxirgi yopilgan jildni tiklash</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Amalni boshlash</value>
+    <value>Ishga tushirish</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>odatdagi</value>
+    <value>Umumiy</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -436,6 +440,14 @@
   <data name="ImageUpload.Configs" xml:space="preserve">
     <value>Moslamalarni yuklash</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Moslamalarni olib tashlash</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Fayldan import qilish</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Yuklash usuli</value>
@@ -461,28 +473,44 @@
     <value>SKP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Tanlagich fayli</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Faylga saqlash</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Sinovdan o'tish</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Rasmni yuklash</value>
+    <value>Rasmlarni yuklash</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>O'zgarishlar kuchga kirishi uchun qayta ishga tushirish ilovasi talab qilinadi</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>tugmalar birikmasi</value>
+    <value>Tugmalar birikmasi</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Moslamalarni yuklash</value>
+    <value>Yozib qoʻyish moslamalari</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Tezroq javob berish uchun o'chirib qo'yish</value>
+    <value>Tezroq javob berish uchun yopish</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Oynaning animatsiya</value>
+    <value>Oynaning animatsiyalari</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Menyu paneli sarlavha bilan bir satrda koʻrinadi</value>
+    <value>Bir qatordagi menyular paneli va sarlavhasi</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,27 +522,27 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Koʻrsatmoqchi boʻlgan ilova mavzusini tanlang</value>
+    <value>Qaysi ilova mavzusini koʻrsatishni tanlang</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>yorug'lik</value>
+    <value>Yorugʻlik</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Mavzuni qoʻllash</value>
+    <value>Ilova mavzusi</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Nisbiy yoʻllardan oldin "./" qoʻshish</value>
+    <value>"./" ni nisbiy yoʻllarga oldinga</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Fayl sifatida saqlashda nisbiy yo'llardan foydalanadigan rasmlarni avtomatik nusxalash</value>
+    <value>Fayl sifatida saqlashda nisbiy yoʻllarda ishlatiladigan rasmlardan avtomatik nusxa olish</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Rasmlarni avtomatik nusxalash</value>
+    <value>Rasmlardan avtomatik nusxa olish</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,23 +550,23 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Qoʻyilganda rasm URL'laridan avtomatik qochib qutulish</value>
+    <value>Qoʻyishda rasm URL'laridan avtomatik qochish</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Saqlanmagan fayllar yoki klipbord rasmlari andoza boʻyicha rasm ildiz direktoriyasini ishlatadi</value>
+    <value>Saqlanmagan fayllar yoki klipbord rasmlari uchun andoza rasm ildiz direktoriyasi</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Andoza rasm ildizi</value>
+    <value>Andoza rasm ildiz direktoriyasi</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Klipbord rasmidan nusxa olish</value>
+    <value>Klipbord rasmlarini koʻchirish</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Klipbord rasm fayllari va veb-rasmlari qo'shilmaydi</value>
+    <value>Klipbord rasmlari yoki veb-rasmlarni o'z ichiga olmaydi</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,47 +574,47 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Klipbord rasmlari yuklamalar yordamida moslangan</value>
+    <value>Klipbord rasmini yuklash moslamasi</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Rasm qo'yilganda olib borilishi kerak bo'lgan amal</value>
+    <value>Rasmlarni qo'yishda bajarish uchun amal</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Lokal rasmdan nusxa olish</value>
+    <value>Lokal rasmlardan nusxa olish</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Lokal rasmlar</value>
+    <value>Lokal rasm</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Yuklash moslamasi lokal rasmlardan foydalanadi</value>
+    <value>Lokal rasm yuklash moslamasi</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Rasm qoʻyilish amali</value>
+    <value>Rasm qoʻyish amali</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Tarmoq rasmidan nusxa olish</value>
+    <value>Veb-rasmdan nusxa olish</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Veb-rasmlar</value>
+    <value>Veb-rasm</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Veb-rasmlar yuklash konfiguratsiyasidan foydalanadi</value>
+    <value>Veb-rasm yuklash moslamasi</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Rasmlarni qo'yishda nisbiy yo'llar afzal</value>
+    <value>Rasm qoʻyishda nisbiy yoʻlni qoʻllashni afzal koʻrish</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Nisbiy yoʻllar afzal</value>
+    <value>Nisbiy yoʻlni qoʻllash</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>tartibi</value>
+    <value>Qatlam</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -622,27 +650,27 @@
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>tashqi ko'rinishi</value>
+    <value>Tashqi ko'rinishi</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Oynani hamisha tepada saqlash</value>
+    <value>Oynani yuqoriga koʻrsatish</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>yuqori darajaga</value>
+    <value>Eng yaxshi</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Oynaning orqa foni yoqilganda mika fon effektiga ega</value>
+    <value>Oynaning orqa foni uchun mika fon effektini yoqish</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Mika materiallaridan foydalanish</value>
+    <value>Mika materialidan foydalanish</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>oyna</value>
+    <value>Oyna</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

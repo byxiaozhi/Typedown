@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>درباره برنامه</value>
+    <value>درباره کاربرد</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>صفحه فروشگاه</value>
+    <value>صفحه فروشگاه مایکروسافت</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>ما برای محتوایی که پر می کنید ارزش قائلیم</value>
+    <value>ما بازخورد شما را بسیار جدی می گیریم</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
@@ -154,35 +154,35 @@
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>علامت نقل قول بسته شدن به طور خودکار در هنگام ورود به پرانتز باز تکمیل می شود</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>خودکار کامل براکت راست هنگامی که براکت چپ وارد شده است</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>پرانچرهای خودکامل</value>
+    <value>پرانتز کامل خودکار</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>خودکار مطابق با برچسب علامت گذاری</value>
+    <value>خودکار کامل تطبیق برچسب نشانه گذاری</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>خودکار تگ Markdown را کامل کنید</value>
+    <value>خودکار کامل علامت گذاری برچسب ها</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>بسته شدن علامت های نقل قول به طور خودکار تکمیل می شوند در هنگام باز کردن علامت های نقل قول وارد می شوند</value>
+    <value>خودکار کامل نقل قول راست هنگامی که نقل قول چپ وارد شده است</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>علائم نقل قول کامل خودکار</value>
+    <value>خودکار به نقل از کامل</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>محتوای کپی/برش پیش فرض را انتخاب کنید</value>
+    <value>انتخاب محتوای کپی/برش پیش فرض</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>کپی / برش محتوا به طور پیش فرض</value>
+    <value>محتوای کپی/برش پیش فرض</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>گسترش</value>
+    <value>پسوند</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>اندازه فونت پیش فرض ویرایشگر</value>
+    <value>اندازه فونت پیش فرض ویرایشگر.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>خط ویرایشگر چند برابر بالا</value>
+    <value>ویرایشگر خط ارتفاع چند</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>تشخیص خودکار زبان</value>
+    <value>زبان شناسایی خودکار</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -234,7 +234,7 @@
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>تنظیم فضای پیش فرض برای ارجاعات و لیست ها</value>
+    <value>تنظیم فضای پیش فرض برای نقل قول ها و لیست ها</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -250,39 +250,43 @@
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>اضافه کردن پیکربندی صادرات</value>
+    <value>افزودن پیکربندی صادرات</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>صادرات پیکربندی</value>
+    <value>پیکربندی صادرات</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>نوع فایل صادرات</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>هنگامی که صادرات کامل شد، پوشه ای را که در آن قرار دارد باز کنید</value>
+    <value>باز کردن پوشه پس از صادرات</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>عرضی</value>
+    <value>چشم انداز</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>طولی</value>
+    <value>پرتره</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>پاورقی صفحه</value>
+    <value>پاورقی</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>بالا</value>
+    <value>هدر</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>بالا و پاورقی</value>
+    <value>هدر و پاورقی</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>تحت</value>
+    <value>پایین</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -306,7 +310,7 @@
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>بالا</value>
+    <value>ارتفاع</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>گسترده</value>
+    <value>عرض</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,19 +338,19 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>درخواست</value>
+    <value>برنامه</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>پس از باز شدن، برنامه به طور خودکار ذخیره می شود زمانی که فایل اصلاح می شود</value>
+    <value>ذخیره خودکار هنگامی که پرونده تغییر یافته است</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>Autosave</value>
+    <value>ذخیره خودکار</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
@@ -358,7 +362,7 @@
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>این که آیا برای نگه داشتن فرایند پس از بستن پنجره شتاب راه اندازی بعدی</value>
+    <value>نگه داشتن روند در حال اجرا پس از بسته شدن پنجره</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>زبانی که برنامه در آن نمایش داده می شود</value>
+    <value>زبان کاربرد</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -382,39 +386,39 @@
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>کلیدهای میانبر سفارشی</value>
+    <value>میانبرهای سفارشی</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>کلید میانبر</value>
+    <value>میانبر</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>اقدامی که وقتی برنامه شروع می شود رخ می دهد</value>
+    <value>عمل هنگامی که برنامه شروع می شود</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>ایجاد یک فایل جدید</value>
+    <value>باز کردن فایل جدید</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>باز کردن آخرین فایل مورد استفاده</value>
+    <value>بازگرداندن آخرین پرونده بسته</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>پوشه مشخص شده را باز می کند</value>
+    <value>باز کردن پوشه سفارشی</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>باز کردن آخرین پوشه استفاده شده</value>
+    <value>بازگرداندن آخرین پوشه بسته</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>شروع عمل</value>
+    <value>راه اندازی</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>روال</value>
+    <value>عمومی</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>آپلود یک تصویر</value>
+    <value>آپلود تصویر</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -434,8 +438,16 @@
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>آپلود پیکربندی</value>
+    <value>پیکربندی های آپلود</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>حذف پیکربندی</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>واردات از پرونده</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>روش آپلود</value>
@@ -461,28 +473,44 @@
     <value>اس سی پی</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>پرونده پیکر</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>ذخیره در پرونده</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>آپلود تست</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>آپلود تصویر</value>
+    <value>آپلود تصاویر</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>راه اندازی مجدد برنامه نیاز به تغییرات را به اثر</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>کلید میانبر</value>
+    <value>میانبر</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>آپلود پیکربندی</value>
+    <value>تنظیمات آپلود</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>خاموش کردن برای پاسخ سریع تر</value>
+    <value>بستن برای پاسخ سریع تر</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>انیمیشن پنجره</value>
+    <value>انیمیشن های پنجره</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>نوار منو در همان خط سرصفحه ظاهر می شود</value>
+    <value>نوار منو و عنوان در یک ردیف</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,7 +522,7 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>تم برنامه ای را که می خواهید نمایش داده شود انتخاب کنید</value>
+    <value>انتخاب کدام تم برنامه برای نمایش</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
@@ -502,19 +530,19 @@
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>یک موضوع را اعمال کنید</value>
+    <value>تم برنامه</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>اضافه کردن "./" قبل از مسیرهای نسبی</value>
+    <value>Prepend "./" to relative paths</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>کپی خودکار تصاویری که از مسیرهای نسبی هنگام ذخیره به عنوان یک فایل استفاده می کنند</value>
+    <value>کپی خودکار تصاویر مورد استفاده در مسیرهای نسبی هنگام ذخیره به عنوان فایل</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>کپی کردن تصاویر به صورت خودکار</value>
+    <value>کپی خودکار تصاویر</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,23 +550,23 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>فرار خودکار از URLs تصویر هنگامی که درج</value>
+    <value>فرار خودکار از URLs تصویر در هنگام درج</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>فایل های ذخیره نشده یا تصاویر کلیپ بورد به طور پیش فرض از دایرکتوری ریشه تصویر استفاده می کنند</value>
+    <value>دایرکتوری ریشه تصویر پیش فرض برای فایل های ذخیره نشده و یا تصاویر کلیپ بورد</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>ریشه تصویر پیش فرض</value>
+    <value>دایرکتوری ریشه تصویر پیش فرض</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>کپی کردن تصویر کلیپ بورد به</value>
+    <value>کپی تصاویر کلیپ بورد به</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>فایل های تصویر کلیپ بورد و تصاویر وب گنجانده نشده اند</value>
+    <value>تصاویر کلیپ بورد یا تصاویر وب را شامل نمی شود</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,47 +574,47 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>تصاویر کلیپ بورد با استفاده از آپلود پیکربندی می شوند</value>
+    <value>پیکربندی آپلود تصویر کلیپ بورد</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>اقدام به گرفتن زمانی که یک عکس درج شده است</value>
+    <value>اقدام برای اجرا در هنگام درج تصاویر</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>کپی کردن تصویر محلی به</value>
+    <value>کپی تصاویر محلی به</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>تصاویر محلی</value>
+    <value>تصویر محلی</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>تصاویر محلی از پیکربندی آپلود استفاده می کنند</value>
+    <value>پیکربندی آپلود تصویر محلی</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>عملیات درج تصویر</value>
+    <value>درج عمل تصویر</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>کپی کردن تصویر شبکه به</value>
+    <value>کپی کردن تصویر وب به</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>تصاویر وب</value>
+    <value>تصویر وب</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>تصاویر وب از پیکربندی آپلود استفاده می کنند</value>
+    <value>پیکربندی آپلود تصویر وب</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>مسیرهای نسبی در هنگام درج تصاویر ترجیح داده می شوند</value>
+    <value>ترجیح می دهم هنگام درج تصاویر از مسیر نسبی استفاده کنید</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>مسیرهای نسبی ترجیح داده می شوند</value>
+    <value>اولویت بندی با استفاده از مسیر نسبی</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>نوار کناری را نمایش می دهد</value>
+    <value>نمایش نوار جانبی</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,7 +646,7 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>نوار وضعیت را نمایش می دهد</value>
+    <value>نمایش نوار وضعیت</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
@@ -626,15 +654,15 @@
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>نگه داشتن پنجره همیشه در بالا</value>
+    <value>پنجره را همیشه در بالا</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>به سطح بالا</value>
+    <value>بالاترین</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>وقتی روشن شد، پس زمینه پنجره اثر پس زمینه میکا دارد</value>
+    <value>فعال کردن اثر پس زمینه میکا برای پس زمینه پنجره</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">

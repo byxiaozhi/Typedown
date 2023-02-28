@@ -118,23 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Cuir le</value>
+    <value>Cuir</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Ailíniú ionaid</value>
+    <value>Ionad</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Ailínithe ar chlé</value>
+    <value>Ailíniú ar chlé</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Ceart-ailínithe</value>
+    <value>Ailíniú Ceart</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
-    <value>go léir</value>
+    <value>Gach</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
@@ -142,11 +142,11 @@
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>uathoibríoch</value>
+    <value>Auto</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>filleadh</value>
+    <value>Ar ais</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -154,11 +154,11 @@
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>Brabhsáil an fillteán</value>
+    <value>Fillteán Brabhsáil</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>Brabhsáil do chomhaid áitiúla</value>
+    <value>Brabhsáil Comhad Áitiúil</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -166,55 +166,59 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
-    <value>Cás íogair</value>
+    <value>Cás Íogair</value>
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>focal</value>
+    <value>Carachtar</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>focal</value>
+    <value>Carachtair</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>cairt</value>
+    <value>Cairt</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Glan</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>Glan an stíl</value>
+    <value>Formáid Shoiléir</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>Comhaid shoiléire le déanaí</value>
+    <value>Comhaid Shoiléire le déanaí</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>Cliceáil Cuir íomhá leis</value>
+    <value>Cliceáil chun íomhá a chur leis</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Múch</value>
+    <value>Dún</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>cód</value>
+    <value>Cód</value>
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>Bloc cód</value>
+    <value>Fálta cód</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>colún</value>
+    <value>Colúin</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>cóip</value>
+    <value>Cóip</value>
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>Cóipeáil mar chód HTML</value>
+    <value>Cóipeáil mar HTML</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,15 +226,15 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>Cóipeáil seoladh an chomhaid</value>
+    <value>Cóipeáil mar Chosán</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>Cóipeáil mar théacs simplí</value>
+    <value>Cóipeáil mar Plain Text</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
-    <value>Cóipeáil an t-ábhar</value>
+    <value>Cóipeáil Ábhar</value>
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
@@ -238,15 +242,15 @@
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
-    <value>Cóipeáil chuig cosán</value>
+    <value>Cóip go Cosán</value>
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>cruthaigh</value>
+    <value>Cruthaigh</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+Cliceáil Nasc Oscailte</value>
+    <value>Ctrl+Cliceáil chun Nasc Oscailte</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
@@ -254,11 +258,11 @@
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>Eochracha aicearra saincheaptha</value>
+    <value>Aicearraí saincheaptha</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>Shear</value>
+    <value>Gearr</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -270,11 +274,11 @@
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>Leibhéal an teidil a ísliú</value>
+    <value>Leibhéal Ceannteideal Laghdaithe</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>réamhshocrú</value>
+    <value>Réamhshocrú</value>
     <comment>默认</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -286,31 +290,35 @@
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>Déan Athrá</value>
+    <value>Dúblach</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>cuir in eagar</value>
+    <value>Cuir in eagar</value>
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>Cuir an pictiúr in eagar</value>
+    <value>Cuir íomhá in eagar</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>eagarthóir</value>
+    <value>Eagarthóir</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>Naisc leabú</value>
+    <value>Nasc leabú</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
-    <value>iodálach</value>
+    <value>Iodálach</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Cumasaigh</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
-    <value>botún</value>
+    <value>Earráid</value>
     <comment>错误</comment>
   </data>
   <data name="Export" xml:space="preserve">
@@ -318,23 +326,23 @@
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
-    <value>Socruithe easpórtála</value>
+    <value>Socruithe Easpórtála</value>
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>Easpórtáil chuig PDF</value>
+    <value>Easpórtáil mar PDF</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>aiseolas</value>
+    <value>Aiseolas</value>
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
-    <value>comhad</value>
+    <value>Comhad</value>
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>comhad</value>
+    <value>Comhaid</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
@@ -342,15 +350,15 @@
     <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
-    <value>Aimsigh agus cuir in ionad</value>
+    <value>Aimsigh agus Cuir in ionad</value>
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>Faigh an chéad cheann eile</value>
+    <value>Faigh Ar Aghaidh</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>Aimsigh an ceann roimhe seo</value>
+    <value>Aimsigh Roimhe Seo</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
@@ -358,15 +366,15 @@
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
-    <value>Mód fócas</value>
+    <value>Mód Fócas</value>
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>fillteán</value>
+    <value>Fillteán</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
-    <value>cló</value>
+    <value>Cló</value>
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
@@ -374,19 +382,19 @@
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>fonóta</value>
+    <value>Nótaí nótaí</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>Clib fonóta [^{aitheantóir}] ní fhaightear:</value>
+    <value>Marcóir fonóta nach bhfuil le fáil [^{aitheantóir}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
-    <value>formáid</value>
+    <value>Formáid</value>
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>Formáid an cód</value>
+    <value>Cód formáide</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
@@ -398,31 +406,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>teideal</value>
+    <value>Ceannteideal</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>Ceannteideal céadleibhéil</value>
+    <value>Ceannteideal 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>Ceannteidil dara leibhéal</value>
+    <value>Ceannteideal 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>Ceannteidil trí leibhéal</value>
+    <value>Ceannteideal 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>Ceannteidil ceithre leibhéal</value>
+    <value>Ceannteideal 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>Ceannteidil cúig leibhéal</value>
+    <value>Ceannteideal 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>Ceannteidil sé leibhéal</value>
+    <value>Ceannteideal 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -430,11 +438,11 @@
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>aibhsiú</value>
+    <value>Buaicphointe</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>Líne roinnte cothrománach</value>
+    <value>Líne chothrománach</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
@@ -442,7 +450,7 @@
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>íomhá</value>
+    <value>Íomhá</value>
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>Ardaigh leibhéal an teidil</value>
+    <value>Leibhéal Ceannteideal a Mhéadú</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -462,27 +470,27 @@
     <comment>内联</comment>
   </data>
   <data name="InlineCode" xml:space="preserve">
-    <value>Cód inlíne</value>
+    <value>Cód Inlíne</value>
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>Foirmlí inlíne</value>
+    <value>Mata Inlíne</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>Cuir isteach sainmhíniú fonóta...</value>
+    <value>Sainmhíniú fonóta ionchuir...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>Cuir isteach aitheantóir teanga...</value>
+    <value>Aitheantóir teanga ionchuir...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>Cuir isteach an fhoirmle mata...</value>
+    <value>Mata Ionchuir ...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>Cuir isteach ábhar tosaigh YAML ...</value>
+    <value>Ábhar Tosaigh YAML Ionchur ...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
@@ -490,7 +498,7 @@
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>Cuir isteach colún ar dheis</value>
+    <value>Cuir isteach Colún Ceart</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
@@ -498,23 +506,23 @@
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>Cuir isteach mír thíos</value>
+    <value>Cuir isteach mír tar éis</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>Cuir isteach mír thuas</value>
+    <value>Cuir isteach mír roimh</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>Cuir isteach sraitheanna thuas</value>
+    <value>Cuir isteach Rae thuas</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>Cuir isteach sraith thíos</value>
+    <value>Cuir isteach Rae thíos</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>teanga</value>
+    <value>Teanga</value>
     <comment>设置/语言</comment>
   </data>
   <data name="LearnMore" xml:space="preserve">
@@ -522,43 +530,43 @@
     <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>solas</value>
+    <value>Solas</value>
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Tá</value>
+    <value>Líne</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
-    <value>Airde líne</value>
+    <value>Airde Líne</value>
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Tá</value>
+    <value>Línte</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>Nasctagairtí</value>
+    <value>Nasc-Tagairt</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
-    <value>Theip air íomhá a luchtú</value>
+    <value>Theip air Íomhá a Luchtú</value>
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
-    <value>matamaitic</value>
+    <value>Mata</value>
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>Bloc foirmle</value>
+    <value>Bloc Mata</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>uasmhéadú</value>
+    <value>Uasmhéadú</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>barra roghchláir</value>
+    <value>Barra roghchláir</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
@@ -566,35 +574,39 @@
     <comment>Mermaid</comment>
   </data>
   <data name="Minimize" xml:space="preserve">
-    <value>íoslaghdú</value>
+    <value>Íoslaghdú</value>
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>nóiméad</value>
+    <value>Miontuairiscí</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
-    <value>Tuilleadh roghanna</value>
+    <value>Tuilleadh Roghanna</value>
     <comment>更多选项</comment>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>ainm</value>
+    <value>Fón</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>Ní féidir ainm a bheith folamh</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>nuathógtha</value>
+    <value>Nua</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>Cruthaigh comhad nua</value>
+    <value>Comhad Nua</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>Cruthaigh fillteán nua</value>
+    <value>Fillteán Nua</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
-    <value>Fuinneog nua</value>
+    <value>Fuinneog Nua</value>
     <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
@@ -602,43 +614,51 @@
     <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
-    <value>Gan cumraíocht easpórtála</value>
+    <value>Gan Cumraíocht Easpórtála</value>
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>ní</value>
+    <value>Dada</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
-    <value>Gan aon chomhaid le déanaí</value>
+    <value>Gan Comhaid le déanaí</value>
     <comment>文件/打开最近/无最近文件</comment>
+  </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>Gan a bheith socraithe</value>
+    <comment>未设置</comment>
   </data>
   <data name="Off" xml:space="preserve">
     <value>Dún</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>An bhfuil tú cinnte</value>
+    <value>Ceart go leor</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>oscailte</value>
+    <value>Ar aghaidh</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Oscail é</value>
+    <value>Oscailte</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
-    <value>Oscail suíomh an chomhaid</value>
+    <value>Suíomh Comhad Oscailte</value>
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>Oscail an fillteán</value>
+    <value>Fillteán Oscailte</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>Suíomh íomhá oscailte</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>Osclaítear i bhfuinneog nua</value>
+    <value>Oscailte i bhFuinneog Nua</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
@@ -658,19 +678,19 @@
     <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
-    <value>mír</value>
+    <value>Mír</value>
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>Stickup</value>
+    <value>Greamaigh</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
-    <value>Greamaigh mar théacs simplí</value>
+    <value>Greamaigh mar Plain Text</value>
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>cosán</value>
+    <value>Cosán</value>
     <comment>文件/路径</comment>
   </data>
   <data name="PlantUMLDiagram" xml:space="preserve">
@@ -678,15 +698,15 @@
     <comment>PlantUML Diagram</comment>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>cló</value>
+    <value>Priontáil</value>
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>lua</value>
+    <value>Athfhriotal</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>Scór</value>
+    <value>Rátáil</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
@@ -694,11 +714,11 @@
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>Scrios an colún</value>
+    <value>Scrios colún</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>Scrios an tsraith</value>
+    <value>Scrios Rae</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
@@ -706,23 +726,23 @@
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>athsholáthar</value>
+    <value>Cuir in ionad</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
-    <value>Cuir gach rud in ionad</value>
+    <value>Cuir in ionad gach duine</value>
     <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
-    <value>Athraigh an tábla</value>
+    <value>Tábla Athraigh</value>
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>athchóiriú</value>
+    <value>Athchóiriú</value>
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Tá</value>
+    <value>Sraitheanna</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -742,11 +762,11 @@
     <comment>搜索</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>Roghnaigh gach</value>
+    <value>Roghnaigh Gach</value>
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>Roghnaigh an comhad</value>
+    <value>Roghnaigh Comhad</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
@@ -754,27 +774,27 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Bunaithe</value>
+    <value>Socruithe</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>eochair aicearra</value>
+    <value>aicearraí</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
-    <value>Taobhbharra</value>
+    <value>Taobh Barra</value>
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>Mód cód foinse</value>
+    <value>Mód Cód Foinse</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
-    <value>Barra stádais</value>
+    <value>Barra Stádais</value>
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Éirigh as</value>
+    <value>Stop</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,23 +806,23 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>foirm</value>
+    <value>Tábla</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
-    <value>Liosta tascanna</value>
+    <value>Liosta Tascanna</value>
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>ábhar</value>
+    <value>Téama</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>teideal</value>
+    <value>Teideal</value>
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Catalóg ábhair</value>
+    <value>Tábla na nÁbhar</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
@@ -810,23 +830,23 @@
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>Tiontaigh go</value>
+    <value>Cas isteach</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
-    <value>Modh clóscríobháin</value>
+    <value>Mód Typewriter</value>
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
-    <value>faoi líne</value>
+    <value>Faoi líne</value>
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>Quash</value>
+    <value>Gan amhras</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Liosta neamhordaithe</value>
+    <value>Urchair</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
@@ -834,11 +854,11 @@
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>Meaitseáil rialta</value>
+    <value>Cluiche Léirithe Rialta</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>Bain úsáid as socruithe an chórais</value>
+    <value>Úsáid socrú córais</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
@@ -850,19 +870,19 @@
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>suíomh</value>
+    <value>Suíomh Gréasáin</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
-    <value>Focal iomlán</value>
+    <value>Focal Iomlán</value>
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
-    <value>fuinneog</value>
+    <value>Fuinneog</value>
     <comment>窗口</comment>
   </data>
   <data name="Word" xml:space="preserve">
-    <value>focal</value>
+    <value>Focal</value>
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
@@ -870,7 +890,7 @@
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>focal</value>
+    <value>Focail</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">

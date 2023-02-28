@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>നിങ്ങളുടെ മാറ്റങ്ങൾ സംരക്ഷിക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</value>
+    <value>മാറ്റങ്ങൾ സംരക്ഷിക്കണോ?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>നിനക്ക് ഉറപ്പാണോ</value>
+    <value>ശരി</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>തെറ്റ്</value>
+    <value>പിശക്</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>feedback</value>
+    <value>Feedback</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>ഒരു ടേബിൾ ഇടുക</value>
+    <value>പട്ടിക ചേർക്കുക</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>നിനക്ക് ഉറപ്പാണോ</value>
+    <value>ശരി</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>കീ കോമ്പിനേഷൻ അമർത്തുക</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>വായന പരാജയപ്പെട്ടു</value>
+    <value>ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>സുഖം പ്രാപിക്കുക</value>
+    <value>പുനഃസ്ഥാപിക്കുക</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>ഫയലുകൾ വീണ്ടെടുക്കണോ?</value>
+    <value>ഫയൽ പുനഃസ്ഥാപിക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>പട്ടിക ക്രമീകരിക്കുക</value>
+    <value>ടേബിൾ റീസൈസ് ചെയ്യുക</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>ആപ്ലിക്കേഷൻ ഡിഫോൾട്ട് ക്രമീകരണങ്ങൾ പുനഃസ്ഥാപിക്കാൻ ശരി</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>രക്ഷിക്കുക</value>
@@ -209,20 +217,36 @@
     <value>Save പരാജയപ്പെട്ടു</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>കുറുക്കുവഴി കീ സജ്ജമാക്കുക</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>കുറുക്കുവഴി കീ കൈവശമുണ്ട്</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>സമർപ്പിക്കുക</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>സമർപ്പണം വിജയകരമായിരുന്നു</value>
+    <value>സമര് പ്പണം വിജയകരം</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>അപ് ലോഡ് പരാജയപ്പെട്ടു</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>അപ് ലോഡ് ചെയ്യുന്നത് വിജയകരം</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>സോഫ്റ്റ് വെയർ ശരിയായി പ്രവർത്തിപ്പിക്കാൻ നിങ്ങൾ വെബ് വ്യൂ2 റൺടൈം ഇൻസ്റ്റാൾ ചെയ്യേണ്ടതുണ്ട്.</value>
+    <value>ഈ സോഫ്റ്റ് വെയർ ശരിയായി പ്രവർത്തിപ്പിക്കാൻ നിങ്ങൾ WebView2 റൺടൈം ഇൻസ്റ്റാൾ ചെയ്യേണ്ടതുണ്ട്.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>WebView2 റൺടൈം ഇൻസ്റ്റാൾ ചെയ്തിട്ടില്ല</value>
+    <value>WebView2 Runtime Install ചെയ്തിട്ടില്ല</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

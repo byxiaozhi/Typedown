@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Ynglŷn â'r cais</value>
+    <value>Ynglŷn â Application</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Tudalen siop</value>
+    <value>Tudalen Siop Microsoft</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -134,7 +134,7 @@
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
-    <value>Anfon adborth</value>
+    <value>Anfon Adborth</value>
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Rydym yn gwerthfawrogi'r cynnwys rydych chi'n ei lenwi</value>
+    <value>Rydym yn cymryd eich adborth o ddifrif</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
@@ -154,39 +154,39 @@
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Mae'r marc dyfyniad cau yn cael ei gwblhau'n awtomatig wrth fynd i mewn i'r parenthesis agoriadol</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Cromfachau dde cyflawn auto pan fydd cromfachau chwith yn cael ei nodi</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Rhieni awtocomplete</value>
+    <value>Cromfachau cyflawn auto</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Autocomplete paru tagiau Markdown</value>
+    <value>Auto gwblhau paru markdown tag</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Awtocomplete y tag Markdown</value>
+    <value>Auto cwblhau tagiau markdown</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Mae marciau dyfyniadau cau yn cael eu cwblhau'n awtomatig pan fydd marciau dyfyniadau agoriadol yn cael eu nodi</value>
+    <value>Dyfyniad cywir cyflawn auto pan fydd dyfyniad chwith yn cael ei nodi</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Marciau dyfyniadau awtocomplete</value>
+    <value>Dyfyniadau cyflawn auto</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Dewiswch y copi / torri cynnwys diofyn</value>
+    <value>Dewiswch gopi diofyn / torri cynnwys</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Copi/torri cynnwys yn ddiofyn</value>
+    <value>Copi diofyn / torri cynnwys</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>Lled mwyaf cynnwys y golygydd</value>
+    <value>Lled mwyaf cynnwys golygydd</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>ymestyn</value>
+    <value>Estyniadau</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Maint ffont diofyn golygydd</value>
+    <value>Maint ffont diofyn golygydd.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Golygydd llinell uchel lluosog</value>
+    <value>Lluosog uchder llinell golygydd</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Canfod iaith awtomatig</value>
+    <value>Auto canfod iaith</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>arddull</value>
+    <value>Arddull</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Addaswch y gofod indentation diofyn ar gyfer cyfeiriadau a rhestrau</value>
+    <value>Addasu gofod indentation diofyn ar gyfer dyfyniadau a rhestrau</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>golygydd</value>
+    <value>Golygydd</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -254,35 +254,39 @@
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Allforio'r cyfluniad</value>
+    <value>Cyfluniadau allforio</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Allforio math o ffeil</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Pan fydd yr allforio wedi'i gwblhau, agorwch y ffolder lle mae wedi'i leoli</value>
+    <value>Agorwch y ffolder ar ôl allforio</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Trawsrywiol</value>
+    <value>Tirlun</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Hydredol</value>
+    <value>Portread</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>Troediwr tudalen</value>
+    <value>Troedyn</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Brig</value>
+    <value>Pennyn</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Top a troediwr</value>
+    <value>Pennill a Throed</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>dan</value>
+    <value>Gwaelod</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>uwchlaw</value>
+    <value>Brig</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>cyfeiriad</value>
+    <value>Cyfeiriad</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>uchel</value>
+    <value>Taldra</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>llydan</value>
+    <value>Lled</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,31 +338,31 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>cynnig</value>
+    <value>Cais</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Ar ôl ei agor, mae'r ap yn cael ei arbed yn awtomatig pan fydd y ffeil yn cael ei addasu</value>
+    <value>Cadw'n awtomatig pan fydd y ffeil yn cael ei addasu</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>Autosave</value>
+    <value>Auto arbed</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Addasu</value>
+    <value>Arfer</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>data</value>
+    <value>Data</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>P'un ai i gadw'r broses ar ôl cau'r ffenestr yn cyflymu'r cychwyn nesaf</value>
+    <value>Cadw'r broses redeg ar ôl cau ffenest</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Yr iaith lle mae'r ap yn cael ei arddangos</value>
+    <value>Iaith ymgeisio</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,47 +378,47 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Adfer gosodiadau diofyn yr app</value>
+    <value>Adfer gosodiadau diofyn cais</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>Ailosod yr ap</value>
+    <value>Ap Ailosod</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Allweddi shortcut arferol</value>
+    <value>Llwybrau byr arferol</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>allwedd llwybr byr</value>
+    <value>Hwylus</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Y weithred sy'n digwydd pan fydd yr ap yn dechrau</value>
+    <value>Gweithredu pan fydd y cais yn dechrau</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Creu ffeil newydd</value>
+    <value>Agor ffeil newydd</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Agor y ffeil a ddefnyddir olaf</value>
+    <value>Adfer y ffeil gaeedig ddiwethaf</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Yn agor y ffolder penodedig</value>
+    <value>Ffolder arfer agored</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Agorwch y ffolder a ddefnyddir ddiwethaf</value>
+    <value>Adfer ffolder caeedig diwethaf</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Dechrau'r camau</value>
+    <value>Cychwyn</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>rheolwaith</value>
+    <value>Cyffredinol</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -434,8 +438,16 @@
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Uwchlwytho'r cyfluniad</value>
+    <value>Cyfluniadau uwchlwytho</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Dileu cyfluniad</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Mewnforio o ffeil</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Dull uwchlwytho</value>
@@ -461,28 +473,44 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Ffeil Picker</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Cadw i ffeil</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Uwchlwytho prawf</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Uwchlwytho delwedd</value>
+    <value>Uwchlwytho Delweddau</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Mae angen Restart App er mwyn i newidiadau ddod i rym</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>allwedd llwybr byr</value>
+    <value>Hwylus</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Uwchlwytho'r cyfluniad</value>
+    <value>Gosodiadau Uwchlwytho</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Diffodd am ymateb cyflymach</value>
+    <value>Cau am ymateb cyflymach</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Animeiddio ffenestri</value>
+    <value>Animeiddiadau ffenestri</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Mae'r bar dewislen yn ymddangos ar yr un llinell â'r pennill</value>
+    <value>Menu Bar a theitl yn yr un rhes</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,27 +522,27 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Dewiswch thema'r ap rydych chi am ei arddangos</value>
+    <value>Dewiswch pa thema ap i'w arddangos</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>golau</value>
+    <value>Golau</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Cymhwyso thema</value>
+    <value>Thema'r ap</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Ychwanegu "./" cyn llwybrau cymharol</value>
+    <value>Prepend "./" i lwybrau cymharol</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Copïwch luniau sy'n defnyddio llwybrau cymharol yn awtomatig wrth arbed fel ffeil</value>
+    <value>Copïo delweddau a ddefnyddir yn awtomatig mewn llwybrau cymharol wrth arbed fel ffeil</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Copïo lluniau yn awtomatig</value>
+    <value>Copïo delweddau yn awtomatig</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,71 +550,71 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Dianc yn awtomatig i URLs delwedd wrth ei fewnosod</value>
+    <value>Dianc yn awtomatig delwedd URLs wrth fewnosod</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Mae ffeiliau heb eu cadw neu luniau clipfwrdd yn defnyddio'r cyfeirlyfr gwraidd llun yn ddiofyn</value>
+    <value>Cyfeiriadur gwraidd delwedd ddiofyn ar gyfer ffeiliau heb eu cadw neu ddelweddau clipfwrdd</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Gwreiddyn delwedd diofyn</value>
+    <value>Cyfeiriadur gwraidd delwedd ddiofyn</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Copïwch y llun clipfwrdd i</value>
+    <value>Copïwch ddelweddau clipfwrdd i</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Nid yw ffeiliau delwedd clipfwrdd a delweddau ar y we wedi'u cynnwys</value>
+    <value>Ddim yn cynnwys delweddau clipfwrdd na delweddau ar y we</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>Llun clipfwrdd</value>
+    <value>Clipfwrdd Delwedd</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Mae delweddau clipfwrdd wedi'u ffurfweddu gan ddefnyddio uwchlwythiadau</value>
+    <value>Clipboard image upload configuration</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Y camau i'w cymryd pan fydd llun yn cael ei fewnosod</value>
+    <value>Gweithredu i weithredu wrth fewnosod delweddau</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Copïwch y ddelwedd leol i</value>
+    <value>Copïwch ddelweddau lleol i</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Delweddau lleol</value>
+    <value>Delwedd Leol</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Mae delweddau lleol yn defnyddio'r cyfluniad uwchlwytho</value>
+    <value>Cyfluniad uwchlwytho delweddau lleol</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Gweithrediad mewnosod lluniau</value>
+    <value>Mewnosod camau delwedd</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Copïwch y llun rhwydwaith i</value>
+    <value>Copïwch ddelwedd ar y we i</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Delweddau ar y we</value>
+    <value>Delwedd y We</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Mae delweddau gwe yn defnyddio'r cyfluniad uwchlwytho</value>
+    <value>Cyfluniad uwchlwytho delwedd gwe</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Mae'n well gan lwybrau cymharol wrth fewnosod lluniau</value>
+    <value>Gwell ganddo ddefnyddio llwybr cymharol wrth fewnosod delweddau</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Llwybrau cymharol yn cael eu ffafrio</value>
+    <value>Blaenoriaethu gan ddefnyddio llwybr cymharol</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +622,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Gosod y dull uwchlwytho delwedd</value>
+    <value>Gosod dull uwchlwytho delwedd</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>haenlun</value>
+    <value>Haenlun</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Arddangos y bar ochr</value>
+    <value>Dangos Bar Ochr</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,31 +646,31 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Dangos y bar statws</value>
+    <value>Dangos Bar Statws</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>gwedd</value>
+    <value>Gwedd</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Cadw'r ffenest bob amser ar y top</value>
+    <value>Gwneud ffenest bob amser ar y brig</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>i'r lefel uchaf</value>
+    <value>Topmost</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>O'i droi ymlaen, mae cefndir y ffenestr yn cael effaith cefndir mica</value>
+    <value>Galluogi effaith gefndir y mica ar gyfer cefndir y ffenestr</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Defnyddio deunyddiau mica</value>
+    <value>Defnyddio deunydd mica</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>ffenestr</value>
+    <value>Ffenestr</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

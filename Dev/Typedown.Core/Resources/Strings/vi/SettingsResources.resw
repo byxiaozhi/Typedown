@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Giới thiệu về ứng dụng</value>
+    <value>Về ứng dụng</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Trang Cửa hàng ứng dụng</value>
+    <value>Trang Microsoft Store</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
-    <value>Một trình chỉnh sửa Markdown mà bạn thấy và nhận được</value>
+    <value>Trình soạn thảo WYSIWYG Markdown</value>
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
@@ -138,7 +138,7 @@
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Thông tin liên hệ</value>
+    <value>Sự tiếp xúc</value>
     <comment>关于/联系方式</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
@@ -146,47 +146,47 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Chúng tôi rất coi trọng những gì bạn đã điền vào</value>
+    <value>Chúng tôi rất coi trọng phản hồi của bạn</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>Về điều đó</value>
+    <value>Về</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Tự động bổ sung dấu ngoặc kép bên phải khi bạn nhập dấu ngoặc đơn bên trái</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Tự động hoàn thành dấu ngoặc vuông bên phải khi nhập dấu ngoặc trái</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Tự động bổ sung dấu ngoặc đơn đầy đủ</value>
+    <value>Tự động hoàn thành dấu ngoặc vuông</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Tự động bổ sung thẻ Markdown phù hợp</value>
+    <value>Tự động hoàn thành thẻ đánh dấu phù hợp</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Tự động bổ sung thẻ Markdown</value>
+    <value>Tự động hoàn thành thẻ đánh dấu</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Tự động bổ sung dấu ngoặc kép bên phải khi bạn nhập dấu ngoặc kép bên trái</value>
+    <value>Tự động hoàn thành báo giá bên phải khi nhập báo giá bên trái</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Tự động bổ sung dấu ngoặc kép đầy đủ</value>
+    <value>Tự động hoàn thành báo giá</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Chọn nội dung sao chép/cắt mặc định</value>
+    <value>Chọn nội dung sao chép / cắt mặc định</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Sao chép/cắt nội dung theo mặc định</value>
+    <value>Nội dung sao chép / cắt mặc định</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>Chiều rộng tối đa của nội dung trình soạn thảo</value>
+    <value>Chiều rộng tối đa của nội dung trình chỉnh sửa</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>Mở rộng</value>
+    <value>Phần mở rộng</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Kích thước phông chữ mặc định của trình soạn thảo</value>
+    <value>Kích thước phông chữ mặc định của trình chỉnh sửa.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,15 +206,15 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Dòng biên tập viên cao gấp bội</value>
+    <value>Chiều cao dòng trình chỉnh sửa nhiều</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
-    <value>Hàng cao</value>
+    <value>Chiều cao dòng</value>
     <comment>编辑器/行高</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Description" xml:space="preserve">
-    <value>Tìm và tô sáng lỗi cú pháp</value>
+    <value>Tìm và đánh dấu lỗi cú pháp</value>
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
@@ -230,23 +230,23 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>Kiểu</value>
+    <value>Phong cách</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Điều chỉnh không gian thu nhỏ mặc định cho tham chiếu và danh sách</value>
+    <value>Điều chỉnh khoảng lõm mặc định cho dấu ngoặc kép và danh sách</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
-    <value>Thụt lề theo mặc định</value>
+    <value>Thụt lề mặc định</value>
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>Trình chỉnh sửa</value>
+    <value>Biên tập viên</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
-    <value>Tùy chỉnh định dạng xuất, kiểu</value>
+    <value>Tùy chỉnh định dạng và kiểu xuất</value>
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
@@ -257,40 +257,44 @@
     <value>Xuất cấu hình</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Xuất loại tệp</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Mở thư mục nơi bạn đang ở sau khi xuất xong</value>
+    <value>Mở thư mục sau khi xuất</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Ngang</value>
+    <value>Phong cảnh</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Theo chiều dọc</value>
+    <value>Chân dung</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>Chân trang</value>
+    <value>Chân</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Đầu trang</value>
+    <value>Tiêu đề</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Đầu trang và chân trang</value>
+    <value>Đầu trang và Chân trang</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>Tiếp theo</value>
+    <value>Đáy</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
-    <value>Trái</value>
+    <value>Bên trái</value>
     <comment>导出/左</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Right" xml:space="preserve">
-    <value>Phải</value>
+    <value>Bên phải</value>
     <comment>导出/右</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Text" xml:space="preserve">
@@ -298,7 +302,7 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>Lên trên</value>
+    <value>Đỉnh</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
@@ -306,7 +310,7 @@
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>Cao</value>
+    <value>Chiều cao</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,11 +318,11 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>rộng</value>
+    <value>Chiều rộng</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
-    <value>Xuất</value>
+    <value>Xuất khẩu</value>
     <comment>导出/导出</comment>
   </data>
   <data name="Export.Type" xml:space="preserve">
@@ -330,7 +334,7 @@
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
-    <value>Image</value>
+    <value>Ảnh</value>
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
@@ -342,7 +346,7 @@
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Khi mở, ứng dụng sẽ tự động lưu khi tệp được sửa đổi</value>
+    <value>Tự động lưu khi tệp được sửa đổi</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,7 +354,7 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Tùy chỉnh</value>
+    <value>Phong tục</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
@@ -358,15 +362,15 @@
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Có nên giữ quá trình sau khi đóng cửa sổ để tăng tốc độ khởi động tiếp theo hay không</value>
+    <value>Giữ cho quá trình chạy sau khi đóng cửa sổ</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
-    <value>Giữ nó chạy</value>
+    <value>Tiếp tục chạy</value>
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Ứng dụng ngôn ngữ được hiển thị</value>
+    <value>Ngôn ngữ ứng dụng</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -382,7 +386,7 @@
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Tùy chỉnh các phím tắt</value>
+    <value>Phím tắt tùy chỉnh</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
@@ -390,31 +394,31 @@
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Hành động được thực hiện khi ứng dụng khởi động</value>
+    <value>Hành động khi ứng dụng khởi động</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Tạo tệp mới</value>
+    <value>Mở tệp mới</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Mở tệp được sử dụng lần cuối</value>
+    <value>Khôi phục tệp đã đóng cuối cùng</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Mở cặp được chỉ định</value>
+    <value>Mở thư mục tùy chỉnh</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Mở cặp được sử dụng lần cuối</value>
+    <value>Khôi phục thư mục đã đóng cuối cùng</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Bắt đầu hành động</value>
+    <value>Khởi động</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>Thông thường</value>
+    <value>Tổng quát</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -426,7 +430,7 @@
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
-    <value>Hình ảnh</value>
+    <value>Ảnh</value>
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
@@ -437,8 +441,16 @@
     <value>Tải lên cấu hình</value>
     <comment>图片/上传配置</comment>
   </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Xóa cấu hình</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Nhập từ tệp</value>
+    <comment>从文件导入</comment>
+  </data>
   <data name="ImageUpload.Method" xml:space="preserve">
-    <value>Cách tải lên</value>
+    <value>Phương thức tải lên</value>
     <comment>图片/上传方式</comment>
   </data>
   <data name="ImageUpload.Methods.FTP" xml:space="preserve">
@@ -461,20 +473,36 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Tệp bộ chọn</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Lưu vào tệp</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Thử nghiệm tải lên</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Hình ảnh được tải lên</value>
+    <value>Tải lên hình ảnh</value>
     <comment>图片/图片上传</comment>
+  </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Khởi động lại ứng dụng là bắt buộc để các thay đổi có hiệu lực</value>
+    <comment>重启应用后生效</comment>
   </data>
   <data name="Shortcut.Title" xml:space="preserve">
     <value>Phím tắt</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Tải lên cấu hình</value>
+    <value>Cài đặt tải lên</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Tắt để có được phản hồi nhanh hơn</value>
+    <value>Đóng để phản hồi nhanh hơn</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
@@ -482,7 +510,7 @@
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Thanh menu được hiển thị trên cùng một dòng với tiêu đề</value>
+    <value>Thanh Menu và tiêu đề trong cùng một hàng</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,39 +522,39 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Chọn chủ đề ứng dụng bạn muốn hiển thị</value>
+    <value>Chọn chủ đề ứng dụng để hiển thị</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>Màu sáng</value>
+    <value>Ánh sáng</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Áp dụng chủ đề</value>
+    <value>Chủ đề ứng dụng</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Thêm "./" trước đường dẫn tương đối</value>
+    <value>Thêm "./" vào đường dẫn tương đối</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Tự động sao chép hình ảnh sử dụng đường dẫn tương đối khi lưu dưới dạng tệp</value>
+    <value>Tự động sao chép hình ảnh được sử dụng trong đường dẫn tương đối khi lưu dưới dạng tệp</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Tự động sao chép ảnh</value>
+    <value>Tự động sao chép hình ảnh</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
-    <value>Các ký tự đặc biệt trong URL được mã hóa tự động</value>
+    <value>Tự động mã hóa các ký tự đặc biệt trong URL</value>
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>URL hình ảnh tự động chuyển hướng khi chèn</value>
+    <value>Tự động thoát khỏi URL hình ảnh khi chèn</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Thư mục gốc hình ảnh được sử dụng theo mặc định của tệp hoặc hình ảnh bảng tạm không được lưu</value>
+    <value>Thư mục gốc hình ảnh mặc định cho các tệp chưa được lưu hoặc hình ảnh khay nhớ tạm</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
@@ -534,11 +562,11 @@
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Sao chép hình ảnh bảng tạm đến</value>
+    <value>Sao chép hình ảnh bảng tạm vào</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Không bao gồm các tập tin hình ảnh bảng tạm và hình ảnh mạng</value>
+    <value>Không bao gồm hình ảnh clipboard hoặc hình ảnh web</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,15 +574,15 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Hình ảnh bảng tạm sử dụng cấu hình tải lên</value>
+    <value>Cấu hình tải lên hình ảnh khay nhớ tạm</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Hành động được thực hiện khi bạn chèn ảnh</value>
+    <value>Hành động cần thực thi khi chèn hình ảnh</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Sao chép hình ảnh địa phương đến</value>
+    <value>Sao chép hình ảnh cục bộ vào</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
@@ -562,27 +590,27 @@
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Ảnh cục bộ sử dụng cấu hình tải lên</value>
+    <value>Cấu hình tải lên hình ảnh cục bộ</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Thao tác chèn ảnh</value>
+    <value>Chèn hành động hình ảnh</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Sao chép hình ảnh mạng đến</value>
+    <value>Sao chép hình ảnh web vào</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Ảnh internet</value>
+    <value>Hình ảnh web</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Ảnh internet sử dụng cấu hình tải lên</value>
+    <value>Cấu hình tải lên hình ảnh web</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Ưu tiên đường dẫn tương đối khi chèn ảnh</value>
+    <value>Thích sử dụng đường dẫn tương đối khi chèn hình ảnh</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
@@ -590,11 +618,11 @@
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
-    <value>Hình ảnh được tải lên</value>
+    <value>Tải lên hình ảnh</value>
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Thiết lập cách tải lên ảnh</value>
+    <value>Đặt phương thức tải lên hình ảnh</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>Bố cục</value>
+    <value>Bố trí</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -622,19 +650,19 @@
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>Ngoại hình</value>
+    <value>Bề ngoài</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Giữ cửa sổ luôn ở trên cùng</value>
+    <value>Tạo cửa sổ luôn ở trên cùng</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>Đặt trên cùng</value>
+    <value>Trên cùng</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Nền cửa sổ mở ra có hiệu ứng nền mica</value>
+    <value>Bật hiệu ứng nền mica cho nền cửa sổ</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">

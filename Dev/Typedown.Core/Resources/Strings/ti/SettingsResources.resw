@@ -122,11 +122,11 @@
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>ገጽ መኽዘን</value>
+    <value>ገጽ ድኳን Microsoft</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
-    <value>ኣብ ክፉት ምንጪ ሶፍትዌር እተመስረተ</value>
+    <value>ኣብ ክፉት ምንጪ ኣብ ዘለዎ ሶፍትዌር እተመስረተ</value>
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>ነቲ እትመልኦ ትሕዝቶ ኣኽቢርና ኢና እንርእዮ</value>
+    <value>ነቲ እተዋህበካ ርእይቶ ኣርዚንና ኢና እንርእዮ</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
@@ -154,27 +154,27 @@
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>እቲ ናይ መዕጸዊ ምልክት ጥቕሲ ናብቲ ናይ መኽፈቲ ሓዲኡ ኽትኣቱ ኸለኻ ብኡንብኡ ይዛዘም</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>ጸጋማይ ሓጹር ኪኣቱ ኸሎ ማኪና ምሉእ የማናይ ሓጹር ትኣቱ</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>ምሉእ ብምሉእ እተማልአ ሓባብ</value>
+    <value>ምሉእ ሓጹር ማኪና</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>ምሉእ ብምሉእ ምስ ማርክዳውን ዚመሳሰል ምልክት</value>
+    <value>ምሉእ ብምሉእ ምስ ምልክት ማኪና ዚመሳሰል ምልክት</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>ነቲ ማርክዳውን ዚብሃል ምልክት ምልኣቶ</value>
+    <value>ምሉእ ምልክት ማኪና</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>ምልክት መኽፈቲ ጥቕሲ ኺኣቱ ኸሎ ምልክት መዕጸዊ ጥቕሲ ብኡንብኡ ይዛዘም</value>
+    <value>ጸጋማይ ጥቕሲ ኽትኣቱ ኸለኻ ምሉእ የማናይ ጥቕሲ ማኪና</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>ምሉእ ብምሉእ እተጠቕሰ ምልክት</value>
+    <value>ምሉእ ጥቕስታት ማኪና</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
@@ -182,7 +182,7 @@
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>ትሕዝቶ ብስርዓት ምቕዳሕ/ምቝራጽ</value>
+    <value>ናይ ቀደም ቅዳሕ/ቍራጽ ትሕዝቶ</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>ምዝርጋሕ</value>
+    <value>ምስፋሕ</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>ግዝፊ ፊደላት ኣሰናዳኢ</value>
+    <value>ግዝፊ ናይ ኣሰናዳኢ ፊደላት።</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>ልዑል መስመር ኣሰናዳኢ</value>
+    <value>ቍመት መስመር ኣሰናዳኢ</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>ኣውቶማቲክ ቋንቋ ምፍላጥ</value>
+    <value>ቋንቋ ኣውቶማቲክ ፍለጥ</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -234,7 +234,7 @@
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>መወከሲታትን ዝርዝር ስማትን ንምርካብ ነቲ ናይ ቀደም ናይ ባንክ ቦታ ኣተዓራርዮ</value>
+    <value>ንጥቕስታትን ዝርዝር ስማትን ዚኸውን ናይ ስንብታ ቦታ ኣተዓራርዮ</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -250,39 +250,43 @@
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>ናይ ወጻኢ ፕሮግራም ወሲኽካ</value>
+    <value>ኣሰራርሓ ሰደድ ወሲኽካ</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>ነቲ ኣሰራርሓ ሰደድዎ</value>
+    <value>ኣሰራርሓ ሰደድ</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>ዓይነት ፋይል ሰደድ</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>እቲ ሰደቓ ምስ ተወድአ ነቲ ዚርከበሉ ፋይል ክፈትዎ</value>
+    <value>ድሕሪ ሰደቓ ነቲ ፋይል ክፈትዎ</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>ተመሓላላፍ</value>
+    <value>ገጸ ምድሪ</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>ሎንጊቱዲናል</value>
+    <value>ስእሊ</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>እግሪ ገጽ</value>
+    <value>እግሪ</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>ላዕሊ</value>
+    <value>ኣርእስቲ</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>ላዕሊ ዀነ እግሪ</value>
+    <value>ርእስን ፎተርን</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>ኣብ ትሕቲ</value>
+    <value>ታሕተዋይ ክፋል</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -306,7 +310,7 @@
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>ልዑል</value>
+    <value>ቍመት</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>ሰፊሕ</value>
+    <value>ግፍሒ</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,23 +338,23 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>ኣመልከት</value>
+    <value>ኣወዓዕላ</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>ሓንሳእ ምስ ተኸፍተ እቲ ፋይል ምስ ተተዓራረየ እቲ ኣፕሊኬሽን ብኡንብኡ ይዕቀብ</value>
+    <value>እቲ ፋይል ምስ ተተዓራረየ ብኡንብኡ ኣዋህልሎ</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>ኣውቶሴቭ</value>
+    <value>ማኪና ምዕቃብ</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>ምልማድ</value>
+    <value>ልምዲ</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
@@ -358,7 +362,7 @@
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>መስኰት ድሕሪ ምዕጻውካ ነቲ መስርሕ ምቕጻል ወይ ዘይምቕጻል ነቲ ዚቕጽል ጅመራ ቐልጢፉ እዩ ዚጅምሮ</value>
+    <value>መስኰት ድሕሪ ምዕጻውካ መስርሕካ ምቕጻል ቀጽል</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>እቲ ኣፕሊኬሽን ዚቐርበሉ ቛንቋ</value>
+    <value>ቋንቋ ኣወዓዕላ</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,47 +378,47 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>ነቲ ኣፕሊኬሽን ናብ ቀደሙ ምምላስ</value>
+    <value>ናይ ኣወዓዕላ ፕሮግራማት ናብ ቀደሙ ምምላስ</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>ነቲ ኣፕሊኬሽን እንደገና ኣዐርሶ</value>
+    <value>ኣፕሊኬሽን እንደገና ኣዐሪ</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>መፍትሕ ሓጺር መገዲ</value>
+    <value>ናይ ልምዲ መተሓላለፊታት</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>መፍትሕ ሓጺር መገዲ</value>
+    <value>ሓጸርቲ መገዲ</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>እቲ ኣፕሊኬሽን ኪጅምር ከሎ ዚፍጸም ስጕምቲ</value>
+    <value>ኣወዓዕላኡ ኺጅምር ከሎ ስጕምቲ</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>ሓድሽ ፋይል ፍጠር</value>
+    <value>ሓድሽ ፋይል ክፈት</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>ነታ ናይ መወዳእታ እተጠቕመት ፋይል ክፈት</value>
+    <value>ናይ መወዳእታ ዕጹው ፋይል ምምላስ</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>ነቲ እተወሰነ ፋይል ይኸፍቶ</value>
+    <value>ናይ ጉምሩክ ፋይል ክፈት</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>ነታ ናይ መወዳእታ እተጠቕመት ፋይል ክፈትዋ</value>
+    <value>ናይ መወዳእታ ዕጹው ፋይል ምምላስ</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>ነቲ ተግባር ጀምሮ</value>
+    <value>መጀመርታ</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>ልሙድ ንጥፈታት</value>
+    <value>ጀነራል</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -430,12 +434,20 @@
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>ኣራግፍ ኣራግፍ</value>
+    <value>ኣራግፍ</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>ነቲ ፕሮግራም ኣራግፎ</value>
+    <value>ኣሰራርሓታት ኣራግፍ</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>ኣሰራርሓ ኣወግድ</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>ካብ ፋይል ዚመጽእ import</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>ሜላ ኣራግፍ</value>
@@ -461,28 +473,44 @@
     <value>ኤስ. ሲ. ፒ.</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>ፋይል ፒከር</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>ፋይል ኣዋህልል</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>ኣራግፍ ፈተና</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>ምስሊ ኣራጊፍካ</value>
+    <value>ምስልታት ኣራግፍ</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>ኣፕሊኬሽን እንደገና ምጅማር ለውጢ ኺግበር ኣለዎ</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>መፍትሕ ሓጺር መገዲ</value>
+    <value>ሓጸርቲ መገዲ</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>ነቲ ፕሮግራም ኣራግፎ</value>
+    <value>ኣራጊፍካ ኣራግፎ</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>ቅልጡፍ ምላሽ ንምርካብ ኣቋሪጽካ</value>
+    <value>ቅልጡፍ ምላሽ ንምሃብ ቅረብ</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>ህያው መስኰት</value>
+    <value>ህያው ስእሊ መስኰት</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>እቲ ባር ሜኖኣዊ ኣቀማምጣ ምስቲ ኣርእስቲ ሕደ መስመር እዩ ዚርአ</value>
+    <value>መቝነን ባርን መዓርግን ኣብ ሓደ መስርዕ</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,7 +522,7 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>ነቲ ኸተርእዮ እትደሊ ኣፕሊኬሽን ምረጽ</value>
+    <value>ነየናይ ኣፕሊኬሽን ፍረ ነገር ከም ዜርኢ ምረጽ</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
@@ -502,19 +530,19 @@
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>ፍረ ነገር ኣብ ግብሪ ኣውዕሎ</value>
+    <value>ፍረ ነገር ኣፕሊኬሽን</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>ቅድሚ ተዛማዲ መገድታት "./" ወሲኽካ</value>
+    <value>ንተዛማዲ መገድታት ኣቐዲምካ "./"</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>ከም ፋይል ከተዋህልል ከለኻ ተዛማዲ መገድታት ዚጥቀም ስእልታት ብቕጽበት ቀዲሕካ</value>
+    <value>ከም ፋይል ከተዋህልል ከለኻ ኣብ ተዛማዲ መገድታት ዚዝውተር ስእልታት ብቕጽበት ቀዲሕካ</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>ስእልታት ብቕጽበት ቀድሖ</value>
+    <value>ምስልታት ብቕጽበት ቀዲሕካ</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,23 +550,23 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>ምስ ኣእተዉ ብኡንብኡ ኻብ ምስሊ URL ኣምለጡ</value>
+    <value>ክትኣቱ ኸለኻ ብኡንብኡ ኻብ ምስሊ URL ኣምለጥ</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>ዘይተዓቀበ ፋይላት ወይ ስእልታት ክሊፕቦርድ ነቲ ናይ ስእሊ ሱር መሐበሪ ብስርዓት ተጠቐመሉ</value>
+    <value>ዘይተዓቀበ ፋይላት ወይ ስእልታት ክሊፕቦርድ</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>ሱር ምስሊ</value>
+    <value>ናይ ቀደም ምስሊ ሱር መሐበሪ</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>ነቲ ስእሊ ክሊፕቦር ቀድሖ</value>
+    <value>ስእልታት ክሊፕቦር ቀዲሕካ</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>ናይ ክሊፕቦርድ ምስሊ ፋይላትን ወብ ሳይት ስእልታትን ኣይተጠቓለልን</value>
+    <value>ስእልታት ክሊፕቦር ወይ ስእልታት ወብ ሳይት ኣየጠቓልልን እዩ</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,47 +574,47 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>ኣራግፍ ተጠቒምካ ስእልታት ክሊፕቦር ይስራሕ</value>
+    <value>ምስሊ ክሊፕቦርድ ኣራጊፍካ</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>ስእሊ ኺኣቱ ኸሎ እትወስዶ ስጕምቲ</value>
+    <value>ምስልታት ክትኣቱ ኸለኻ እትፍጽሞ ስጕምቲ</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>ነቲ ኣብቲ ኸባቢ ዘሎ ምስሊ ቐድሖ</value>
+    <value>ነቲ ኣብቲ ኸባቢ ዘሎ ስእልታት ቀድሖ</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>ኣብቲ ኸባቢ ዘሎ ምስልታት</value>
+    <value>ናይቲ ኸባቢ ምስሊ</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>ኣብቲ ኸባቢ ዘሎ ምስልታት ነቲ ኣራግፍ ዚጥቀመሉ ኣገባብ ይጥቀመሉ</value>
+    <value>ኣብቲ ኸባቢ ዘሎ ምስሊ ኣራጊፍካ</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>ናይ ስእሊ መእተዊ</value>
+    <value>ስጕምቲ ምስሊ ኣእቱ</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>ነቲ ኣብ መርበብ ሓበሬታ ዘሎ ስእሊ ቐድሖ</value>
+    <value>ምስሊ ወብ ሳይት ቀዲሕካ</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>ስእልታት ወብ ሳይት</value>
+    <value>ምስሊ ወብ ሳይት</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>ወብ ሳይት ዚርአ ስእልታት ነቲ ኣራግፍ ዚጥቀመሉ ኣገባብ ይጥቀመሉ</value>
+    <value>ናይ ወብ ሳይት ምስሊ ኣቃውማ ኣራጊፍካ</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>ስእልታት ክትኣቱ ኸለኻ ተዛማዲ መገዲ እዩ ዚመርጽ</value>
+    <value>ምስልታት ክትኣቱ ኸለኻ ተዛማዲ መገዲ ኽትጥቀም ምረጽ</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>ተዛማዲ መገዲ እዩ ዚመርጽ</value>
+    <value>ተዛማዲ መገዲ ምጥቃም ቀዳምነት ምሃብ</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +622,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>ነቲ ምስሊ ኣራግፎ</value>
+    <value>ሜላ ኣራግፍ ምስሊ ኣዳሉ</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>ነቲ ጐድኒ ባር የርኢ</value>
+    <value>ጐድኒ ባር ኣርእዮ</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,7 +646,7 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>ነቲ ናይ ኵነታት ባር የርኢ</value>
+    <value>ባር ኵነታት ኣርኢ</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
@@ -626,19 +654,19 @@
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>ወትሩ ነቲ መስኰት ኣብ ላዕሊ ግበሮ</value>
+    <value>ወትሩ ኣብ ላዕሊ መስኰት ግበር</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>ናብ ላዕለዋይ ደረጃ</value>
+    <value>ልዕሊ ዅሉ</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>እቲ መስኰት ምስ ተተንከፈ ናይ ድሕረ ባይታ ጽልዋ ኣለዎ</value>
+    <value>ድሕረ ባይታ እቲ መስኰት ዜሕድሮ ጽልዋ ሚካ ኣረዲእካ</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>ሚካ ናውቲ ተጠቐም</value>
+    <value>ማይካ ተጠቐም</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">

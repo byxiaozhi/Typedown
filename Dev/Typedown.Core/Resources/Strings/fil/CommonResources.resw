@@ -118,23 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Idagdag sa</value>
+    <value>Magdagdag ng</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Pag align ng center</value>
+    <value>Center</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Nakahanay sa kaliwa</value>
+    <value>Ihanay ang Kaliwa</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Nakahanay sa kanan</value>
+    <value>Align Right</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
-    <value>lahat ng</value>
+    <value>Lahat ng</value>
     <comment>全部</comment>
   </data>
   <data name="Application" xml:space="preserve">
@@ -142,11 +142,11 @@
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>automatic na</value>
+    <value>Auto</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>balik ka na</value>
+    <value>Bumalik</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -154,11 +154,11 @@
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>Mag-browse sa folder</value>
+    <value>Mag-browse sa Folder</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>Mag browse para sa mga lokal na file</value>
+    <value>Mag browse ng Lokal na File</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -166,55 +166,59 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
-    <value>Sensitibo sa kaso</value>
+    <value>Kaso Sensitibo</value>
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>salita</value>
+    <value>Pagkatao</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>salita</value>
+    <value>Mga Tauhan</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>tsart</value>
+    <value>Tsart</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Malinaw na</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>I-clear ang estilo</value>
+    <value>I-clear ang Format</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>I-clear ang mga kamakailang file</value>
+    <value>I-clear ang mga Kamakailang File</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>I-click ang Magdagdag ng imahe</value>
+    <value>Mag-klik para magdagdag ng imahe</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Magsara</value>
+    <value>Isara ang</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>code</value>
+    <value>Code</value>
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>Pag block ng code</value>
+    <value>Mga Bakod ng Code</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>haligi</value>
+    <value>Mga Haligi</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>kopyahin ang</value>
+    <value>Kopyahin</value>
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>Kopyahin bilang HTML code</value>
+    <value>Kopyahin bilang HTML</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,15 +226,15 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>Kopyahin ang address ng file</value>
+    <value>Kopyahin bilang Landas</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>Kopyahin bilang plain text</value>
+    <value>Kopyahin bilang Plain Text</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
-    <value>Kopyahin ang nilalaman</value>
+    <value>Kopyahin ang Nilalaman</value>
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
@@ -238,27 +242,27 @@
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
-    <value>Kopyahin sa path</value>
+    <value>Kopyahin sa Path</value>
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>lumikha ng</value>
+    <value>Lumikha ng</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+Click Buksan ang Link</value>
+    <value>Ctrl+Click para buksan ang link</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>Pagpapasadya</value>
+    <value>Pasadyang</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>Pasadyang mga shortcut key</value>
+    <value>Pasadyang Mga Shortcut</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>gupitin ang buhok</value>
+    <value>Gupitin</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -266,15 +270,15 @@
     <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>mga datos</value>
+    <value>Mga Data</value>
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>Ibaba ang antas ng pamagat</value>
+    <value>Bawasan ang Antas ng Heading</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>default na</value>
+    <value>Default na</value>
     <comment>默认</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -282,35 +286,39 @@
     <comment>删除</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
-    <value>Tanggalin ang talahanayan</value>
+    <value>Tanggalin ang Table</value>
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>ulitin mo na lang</value>
+    <value>Duplo</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>edit</value>
+    <value>I-edit</value>
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>I-edit ang larawan</value>
+    <value>I-edit ang Imahe</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>patnugot</value>
+    <value>Patnugot</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>Mag-embed ng mga link</value>
+    <value>Mag-embed ng Link</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
-    <value>italic</value>
+    <value>Italic</value>
     <comment>格式/斜体</comment>
   </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Paganahin ang</value>
+    <comment>启用</comment>
+  </data>
   <data name="Error" xml:space="preserve">
-    <value>pagkakamali</value>
+    <value>Mali</value>
     <comment>错误</comment>
   </data>
   <data name="Export" xml:space="preserve">
@@ -318,23 +326,23 @@
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
-    <value>Mga setting ng pag-export</value>
+    <value>Mga Setting ng Pag-export</value>
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>I-export sa PDF</value>
+    <value>I-export bilang PDF</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>feedback na lang</value>
+    <value>Feedback</value>
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
-    <value>mag-file</value>
+    <value>Mag-file</value>
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>mag-file</value>
+    <value>Mga File</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
@@ -342,15 +350,15 @@
     <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
-    <value>Hanapin at palitan ang</value>
+    <value>Hanapin at Palitan</value>
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>Hanapin mo na ang susunod</value>
+    <value>Hanapin ang Susunod</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>Hanapin ang nauna</value>
+    <value>Hanapin ang Nakaraan</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
@@ -358,39 +366,39 @@
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
-    <value>Mode ng pokus</value>
+    <value>Focus Mode</value>
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
-    <value>folder</value>
+    <value>Folder</value>
     <comment>文件夹</comment>
   </data>
   <data name="Font" xml:space="preserve">
-    <value>font</value>
+    <value>Font</value>
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
-    <value>Laki ng font</value>
+    <value>Laki ng Font</value>
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>talababa</value>
+    <value>Mga Talababa</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>Tag footnote [^{identifier}] not found:</value>
+    <value>Hindi natagpuan ang footnote marker [^{identifier}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
-    <value>format na format</value>
+    <value>Format</value>
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>Format ang code</value>
+    <value>Format Code</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
-    <value>pangkalahatang</value>
+    <value>Pangkalahatan</value>
     <comment>通用</comment>
   </data>
   <data name="GoTo" xml:space="preserve">
@@ -398,31 +406,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>Pamagat</value>
+    <value>Heading</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>Unang antas ng heading</value>
+    <value>Heading 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>Mga heading sa ikalawang antas</value>
+    <value>Heading 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>Mga heading ng tatlong antas</value>
+    <value>Heading 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>Mga heading na may apat na antas</value>
+    <value>Heading 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>Mga headings na may limang antas</value>
+    <value>Heading 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>Mga heading na may anim na antas</value>
+    <value>Heading 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -430,19 +438,19 @@
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>i-highlight ang</value>
+    <value>I-highlight ang</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>Pahalang na linya ng paghahati</value>
+    <value>Pahalang na Linya</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
-    <value>Mga hyperlink</value>
+    <value>Hyperlink</value>
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>imahe</value>
+    <value>Imahe</value>
     <comment>格式/图像</comment>
   </data>
   <data name="ImageAlt" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>Itaas ang antas ng pamagat</value>
+    <value>Dagdagan ang Antas ng Pamagat</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -462,59 +470,59 @@
     <comment>内联</comment>
   </data>
   <data name="InlineCode" xml:space="preserve">
-    <value>Inline code</value>
+    <value>Inline Code</value>
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>Mga inline na formula</value>
+    <value>Inline na matematika</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>Ipasok ang kahulugan ng footnote...</value>
+    <value>Kahulugan ng Input Footnote...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>Ipasok ang tagatukoy ng wika...</value>
+    <value>Input Language Identifier...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>Ipasok ang formula ng matematika...</value>
+    <value>Ipasok ang Math...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>Ipasok ang YAML Front Matter...</value>
+    <value>Input YAML Front Matter...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>Magsingit ng haligi sa kaliwa</value>
+    <value>Ipasok ang Kaliwa ng Haligi</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>Magsingit ng haligi sa kanan</value>
+    <value>Ipasok ang Haligi ng Kanan</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>Magsingit ng imahe</value>
+    <value>Ipasok ang Imahe</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>Magsingit ng talata sa ibaba</value>
+    <value>Ipasok ang talata pagkatapos</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>Magsingit ng talata sa itaas</value>
+    <value>Ipasok ang Talata Bago</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>Ipasok ang mga hilera sa itaas</value>
+    <value>Ipasok ang Hilera sa Itaas</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>Ipasok ang isang hilera sa ibaba</value>
+    <value>Ipasok ang Hilera sa ibaba</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>wika</value>
+    <value>Wika</value>
     <comment>设置/语言</comment>
   </data>
   <data name="LearnMore" xml:space="preserve">
@@ -522,43 +530,43 @@
     <comment>了解更多</comment>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>liwanag</value>
+    <value>Liwanag</value>
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Oo nga</value>
+    <value>Linya</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
-    <value>Taas ng linya</value>
+    <value>Taas ng Linya</value>
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Oo nga</value>
+    <value>Mga Linya</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>Mga sanggunian sa link</value>
+    <value>Sanggunian sa Link</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
-    <value>Nabigo sa pag-load ng imahe</value>
+    <value>Nabigo sa Pag-load ng Imahe</value>
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
-    <value>matematika</value>
+    <value>Matematika</value>
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>Formula block</value>
+    <value>Math Block</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>maximize ang</value>
+    <value>Mag-maximize</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>menu bar</value>
+    <value>Menu Bar</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
@@ -566,35 +574,39 @@
     <comment>Mermaid</comment>
   </data>
   <data name="Minimize" xml:space="preserve">
-    <value>i-minimize ang</value>
+    <value>I-minimise</value>
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minuto</value>
+    <value>Mga Minuto</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
-    <value>Higit pang mga pagpipilian</value>
+    <value>Higit pang mga Pagpipilian</value>
     <comment>更多选项</comment>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>pangalan</value>
+    <value>Pangalan</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>Hindi pwedeng walang laman ang pangalan</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>bagong gawa pa lang</value>
+    <value>Bagong</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>Lumikha ng isang bagong file</value>
+    <value>Bagong File</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>Gumawa ng bagong folder</value>
+    <value>Bagong Folder</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
-    <value>Bagong window</value>
+    <value>Bagong Window</value>
     <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
@@ -602,43 +614,51 @@
     <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
-    <value>Walang configuration ng pag export</value>
+    <value>Walang Pag export ng Pag configure</value>
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>hindi naman</value>
+    <value>Wala na</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
-    <value>Walang mga kamakailang file</value>
+    <value>Walang Mga Kamakailang File</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>Hindi nakatakda</value>
+    <comment>未设置</comment>
+  </data>
   <data name="Off" xml:space="preserve">
-    <value>malapit na</value>
+    <value>Isara ang</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Sigurado ka ba</value>
+    <value>ok na</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>bukas na bukas</value>
+    <value>Sa</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Buksan mo na</value>
+    <value>Buksan ang</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
-    <value>Buksan ang lokasyon ng file</value>
+    <value>Buksan ang Lokasyon ng File</value>
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>Buksan ang folder</value>
+    <value>Buksan ang Folder</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>Buksan ang Lokasyon ng Imahe</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>Magbubukas sa bagong window</value>
+    <value>Buksan sa Bagong Window</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
@@ -646,31 +666,31 @@
     <comment>文件/打开最近</comment>
   </data>
   <data name="OpenSourceSoftware" xml:space="preserve">
-    <value>Open source na software</value>
+    <value>Buksan ang Pinagmulan ng Software</value>
     <comment>开源软件</comment>
   </data>
   <data name="OrderedList" xml:space="preserve">
-    <value>Iniutos na listahan</value>
+    <value>Listahang Iniutos</value>
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
-    <value>balangkas</value>
+    <value>Balangkas</value>
     <comment>侧栏/大纲</comment>
   </data>
   <data name="Paragraph" xml:space="preserve">
-    <value>talata</value>
+    <value>Talata</value>
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>stickup</value>
+    <value>I-paste</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
-    <value>Idikit bilang plain text</value>
+    <value>Idikit bilang Plain Text</value>
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>landas</value>
+    <value>Landas</value>
     <comment>文件/路径</comment>
   </data>
   <data name="PlantUMLDiagram" xml:space="preserve">
@@ -678,51 +698,51 @@
     <comment>PlantUML Diagram</comment>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>i-print</value>
+    <value>Mag-print</value>
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>banggitin ang</value>
+    <value>Quote</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>Score</value>
+    <value>Rating</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
-    <value>muling gawin</value>
+    <value>Muling Gawin</value>
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>Tanggalin ang haligi</value>
+    <value>Tanggalin ang Haligi</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>Tanggalin ang hanay</value>
+    <value>Tanggalin ang Hilera</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>palitan ang pangalan</value>
+    <value>Palitan ang pangalan</value>
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>kapalit na</value>
+    <value>Palitan ang</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
-    <value>Palitan ang lahat</value>
+    <value>Palitan ang Lahat</value>
     <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
-    <value>Baguhin ang laki ng talahanayan</value>
+    <value>Palitan ang Laki ng Talahanayan</value>
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>ibalik ang</value>
+    <value>Ibalik muli</value>
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Oo nga</value>
+    <value>Mga hilera</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -742,11 +762,11 @@
     <comment>搜索</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>Piliin ang lahat</value>
+    <value>Piliin ang Lahat</value>
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>Piliin ang file</value>
+    <value>Pumili ng File</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
@@ -754,27 +774,27 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Mag-set up</value>
+    <value>Mga Setting</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>shortcut key</value>
+    <value>Mga Shortcut</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
-    <value>Sidebar</value>
+    <value>Side Bar</value>
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>Mode ng source code</value>
+    <value>Source Code Mode</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
-    <value>Bar ng katayuan</value>
+    <value>Status Bar</value>
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Tigilan mo na ito</value>
+    <value>Tigilan mo na</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,15 +806,15 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>form na</value>
+    <value>Talahanayan</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
-    <value>Listahan ng mga gawain</value>
+    <value>Listahan ng mga Gawain</value>
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>paksa</value>
+    <value>Tema</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
@@ -802,43 +822,43 @@
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Catalog ng nilalaman</value>
+    <value>Talaan ng mga Nilalaman</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>kabuuan</value>
+    <value>Kabuuang</value>
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>Mag-convert sa</value>
+    <value>Mag-on sa</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
-    <value>Mode ng typewriter</value>
+    <value>Typewriter Mode</value>
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
-    <value>salungguhitan ang</value>
+    <value>Salungguhitan ang</value>
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>quash</value>
+    <value>Mag-undo</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Listahan ng hindi nakaayos</value>
+    <value>Mga bala</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>update na po</value>
+    <value>Update</value>
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>Regular na pagtutugma</value>
+    <value>Regular Expression Match</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>Gamitin ang mga setting ng system</value>
+    <value>Gamitin ang setting ng system</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
@@ -850,27 +870,27 @@
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>site</value>
+    <value>Website</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
-    <value>Buong salita</value>
+    <value>Buong Salita</value>
     <comment>编辑/查找和替换/选项/全字匹配</comment>
   </data>
   <data name="Window" xml:space="preserve">
-    <value>bintana</value>
+    <value>Window</value>
     <comment>窗口</comment>
   </data>
   <data name="Word" xml:space="preserve">
-    <value>salita</value>
+    <value>Salita</value>
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
-    <value>bilang ng salita</value>
+    <value>Bilang ng Salita</value>
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>salita</value>
+    <value>Mga Salita</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">
@@ -878,7 +898,7 @@
     <comment>YAML Front Matter</comment>
   </data>
   <data name="Zoom" xml:space="preserve">
-    <value>mag-zoom</value>
+    <value>Mag-zoom</value>
     <comment>字体缩放</comment>
   </data>
 </root>

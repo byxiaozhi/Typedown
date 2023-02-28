@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>ኣብ ርእሲ እዚ</value>
+    <value>ወሲኽካ</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>ምትዕርራይ ማእከል</value>
+    <value>ማእከል</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>የማናይ ሸነኽ</value>
+    <value>ንየማን ኣሰማምዓዮ</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
@@ -142,11 +142,11 @@
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>ብቕጽበት</value>
+    <value>ኣውቶማቲክ</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>ምምላስ</value>
+    <value>ንድሕሪት ተመለስኩ</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -154,11 +154,11 @@
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>ነቲ ፋይል መርምሮ</value>
+    <value>ፎልደር መርመር</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>ነቲ ኣብቲ ኸባቢ ዚርከብ ፋይላት መርምሮ</value>
+    <value>ኣብቲ ኸባቢ ዚርከብ ፋይል መርምሮ</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -170,31 +170,35 @@
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>ቃል</value>
+    <value>ገጸ ባህርይ</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>ቃል</value>
+    <value>ገጸ-ባህርያት</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
     <value>ሰሌዳ</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>ንጹር</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>ነቲ ኣጸሓሕፋ ኣጽርዮ</value>
+    <value>ንጹር ቅርጺ</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>ናይ ቀረባ እዋን ፋይላት ንጹር</value>
+    <value>ንጹር ናይ ቀረባ እዋን ፋይላት</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>ምስሊ ኽትውስኽ ጠውቕ</value>
+    <value>ምስሊ ንምውሳኽ ጠውቕ</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>ዕፀዎ</value>
+    <value>ቀሪብካ</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
@@ -202,11 +206,11 @@
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>ኮድ</value>
+    <value>ሓጹር ኮድ</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>ዓምዲ</value>
+    <value>ዓምድታት</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
@@ -214,7 +218,7 @@
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>ከም ኮድ HTML ቅዳሕ</value>
+    <value>ቅዳሕ HTML</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,15 +226,15 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>ኣድራሻ ፋይል ቀዲሕካ</value>
+    <value>ከም መገዲ ጌርካ ምቕዳሕ</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>ከም ተራ ጽሑፍ ቅዳሕ</value>
+    <value>ከም ተራ ጽሑፍ ጌርካ ምቕዳሕ</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
-    <value>ነቲ ትሕዝቶ ቐድሖ</value>
+    <value>ትሕዝቶ ቐዲሕካ</value>
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
@@ -242,23 +246,23 @@
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>ክፈጥር</value>
+    <value>ፍጠር</value>
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+Click Open Link</value>
+    <value>Ctrl+Click to Open Link</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>ምልማድ</value>
+    <value>ልምዲ</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>መፍትሕ ሓጺር መገዲ</value>
+    <value>ናይ ልምዲ መሕጸርያ</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>ቀምሽ</value>
+    <value>ቍረጽ</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -270,7 +274,7 @@
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>ደረጃ ኣርእስቲ ንታሕቲ</value>
+    <value>ደረጃ ርእስኻ ምንካይ</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
@@ -282,19 +286,19 @@
     <comment>删除</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
-    <value>ነቲ ሰደቓ ኣወግዶ</value>
+    <value>ሰሌዳ ኣወግድ</value>
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>ምድግጋም</value>
+    <value>ምደጋገም</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>እተሰናደወ</value>
+    <value>ኣረምቲ</value>
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>ነቲ ስእሊ ኣዳሉ</value>
+    <value>ምስሊ ኣረም</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
@@ -302,12 +306,16 @@
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>መእተዊታት</value>
+    <value>መእተዊ</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
     <value>ኢታሊክ</value>
     <comment>格式/斜体</comment>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>ኣጽኒዕካ ሓዝ</value>
+    <comment>启用</comment>
   </data>
   <data name="Error" xml:space="preserve">
     <value>ጌጋ</value>
@@ -318,15 +326,15 @@
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
-    <value>ናይ ንግዲ ዅነታት</value>
+    <value>ኵነታት ሰደድ</value>
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>ናብ ፒ. ዲ. ኤፍ.</value>
+    <value>ፒ. ዲ. ኤፍ.</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>ርእይቶ</value>
+    <value>እተዋህበ ርእይቶ</value>
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
@@ -334,7 +342,7 @@
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>ፋይል</value>
+    <value>ፋይላት</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
@@ -346,11 +354,11 @@
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>ነታ እትቕጽል ርኸባ</value>
+    <value>ቀጺልካ ርኸብ</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>ነታ ኣቐዲማ ዝነበረት ርኸባ</value>
+    <value>ኣቐዲምካ ርኸብ</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
@@ -358,7 +366,7 @@
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
-    <value>ኣቓልቦ ዚግበረሉ ሜላ</value>
+    <value>ኣገባብ ኣትኵሮ</value>
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
@@ -374,23 +382,23 @@
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>እግረ ጽሑፍ</value>
+    <value>እግረ -ጽውጽታት</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>እግረ ጽሑፍ ምልክት [^{identifier}] ኣይተረኽበን፦</value>
+    <value>ምልክት እግረ ጽሑፍ ኣይተረኽበን [{identifier}] ፦</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
-    <value>ፎርማት</value>
+    <value>ቅርጺ</value>
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>ነቲ ኮድ ኣዳሉ</value>
+    <value>ኮድ ፎርማት</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
-    <value>ሓፈሻዊ</value>
+    <value>ጀነራል</value>
     <comment>通用</comment>
   </data>
   <data name="GoTo" xml:space="preserve">
@@ -398,31 +406,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>ኣርእስቲ</value>
+    <value>ርእስኻ ምግታእ</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>ቀዳማይ ደረጃ ዘለዎ ኣርእስቲ</value>
+    <value>ኣርእስቲ 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>ካልኣይ ደረጃ ዘለዎ ኣርእስትታት</value>
+    <value>ኣርእስቲ 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>ሰለስተ ደርቢ ዘለዎ ኣርእስትታት</value>
+    <value>ኣርእስቲ 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>ኣርባዕተ ደርቢ ዘለዎ ኣርእስትታት</value>
+    <value>ኣርእስቲ 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>ሓሙሽተ ደርቢ ዘለዎ ኣርእስትታት</value>
+    <value>ርእስኻ ምግታእ 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>ሽዱሽተ ደርቢ ዘለዎ ኣርእስትታት</value>
+    <value>ኣርእስቲ 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -430,11 +438,11 @@
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>ጐሊሑ ዚርአ</value>
+    <value>ጐሊሑ ዚጐልሕ ነጥብታት</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>ንጋድም ዚመቓቐል መስመር</value>
+    <value>ንጋድም መስመር</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>ደረጃ ኣርእስቲ ልዕል ኣብል</value>
+    <value>ደረጃ ርእስኻ ምውሳኽ</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -466,23 +474,23 @@
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>ቀመማት መስመር</value>
+    <value>ሕሳብ ኢንላይን</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>ትርጕም እግረ ጽሑፍ ኣእቱ...</value>
+    <value>ናይ እግረ - ጽሑፍ ትርጕም...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>መለለዪ ቛንቋ ኣእቱ ...</value>
+    <value>መለለዪ ቛንቋ...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>ናብ ቀመር ሕሳብ ኣእቱ...</value>
+    <value>ናይ ሕሳብ ሕሳብ...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>ናብ ናይ ቅድሚት ነገር ያምል ኣእቱ ...</value>
+    <value>መእተዊ YAML Front Matter...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
@@ -490,7 +498,7 @@
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>ኣብ የማን ዓምዲ ኣእቱ</value>
+    <value>የማን ዓምዲ ኣእቱ</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
@@ -498,19 +506,19 @@
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>ኣብ ታሕቲ ዘሎ ሕጡብ ጽሑፍ ኣእቱ</value>
+    <value>ድሕሪኡ ሕጡብ ጽሑፍ ኣእቱ</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>ኣብ ላዕሊ ዘሎ ሕጡብ ጽሑፍ ኣእቱ</value>
+    <value>ቅድሚኡ ዘሎ ሕጡብ ጽሑፍ ኣእቱ</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>ኣብ ላዕሊ መስርዕ ኣእቱ</value>
+    <value>ኣብ ላዕሊ ዘሎ መስርዕ ኣእቱ</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>ኣብ ታሕቲ መስርዕ ኣእቱ</value>
+    <value>ኣብ ታሕቲ ዘሎ መስርዕ ኣእቱ</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
@@ -526,7 +534,7 @@
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>እወ</value>
+    <value>መስመር</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
@@ -534,11 +542,11 @@
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>እወ</value>
+    <value>መስመራት</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>መወከሲታት ሊንክ</value>
+    <value>መወከሲ ሊንክ</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
@@ -550,11 +558,11 @@
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>ፎርሙላ</value>
+    <value>ናይ ሕሳብ ሕንጻጽ</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>ኣመሓይሽን</value>
+    <value>ኣዛይዶ</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
@@ -570,7 +578,7 @@
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>ደቒቕ</value>
+    <value>ደቓይቕ</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
@@ -581,16 +589,20 @@
     <value>ስም</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>ስም ባዶ ኪኸውን ኣይክእልን እዩ</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>ሓድሽ እተሃንጸ</value>
+    <value>ሓዱሽ</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>ሓድሽ ፋይል ፍጠር</value>
+    <value>ሓድሽ ፋይል</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>ሓድሽ ፋይል ፍጠር</value>
+    <value>ሓድሽ ፎርም</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
@@ -602,43 +614,47 @@
     <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
-    <value>ናብ ወጻኢ ዚስደድ ኣሰራርሓ የልቦን</value>
+    <value>ናብ ወጻኢ ዚስደድ ነገር የልቦን</value>
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>ኣይገብርን እዩ</value>
+    <value>ዋላ ሓደ የለን</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
     <value>ናይ ቀረባ እዋን ፋይላት የልቦን</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>ኣይተዳለወን</value>
+    <comment>未设置</comment>
+  </data>
   <data name="Off" xml:space="preserve">
-    <value>መዕጸዊ</value>
+    <value>ቀሪብካ</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>ርግፀኛ ዲኻ</value>
+    <value>ሐራይ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="On" xml:space="preserve">
-    <value>ክፉት</value>
-    <comment>开关/开</comment>
-  </data>
   <data name="Open" xml:space="preserve">
-    <value>ክፈቶ</value>
+    <value>ክፉት</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
-    <value>ነቲ ፋይል ዚርከበሉ ቦታ ኽፈትዎ</value>
+    <value>ቦታ ፋይል ክፉት</value>
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>ነቲ ፋይል ክፈትዎ</value>
+    <value>ፎልደር ክፈት</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>ቦታ ስእሊ ኽፈት</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>ብሓድሽ መስኰት ይኽፈት</value>
+    <value>ኣብ ሓድሽ መስኰት ተኸፊቱ</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
@@ -662,7 +678,7 @@
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>ምልጋብ</value>
+    <value>መቐመጢ</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
@@ -686,7 +702,7 @@
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>ነጥቢ</value>
+    <value>ደረጃ</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
@@ -694,15 +710,15 @@
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>ነቲ ዓምዲ ኣወግዶ</value>
+    <value>ዓምዲ ኣወግድ</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>ነቲ መስርዕ ኣወግዶ</value>
+    <value>መስርዕ ኣወግድ</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>ስም</value>
+    <value>ስም ካዕካዕ</value>
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
@@ -714,7 +730,7 @@
     <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
-    <value>ነቲ ሰደቓ እንደገና ኣቐምጠሉ</value>
+    <value>ሰሌዳ ምቕያሩ</value>
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
@@ -722,7 +738,7 @@
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>እወ</value>
+    <value>መስርዕ</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -746,7 +762,7 @@
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>ነቲ ፋይል ምረጽ</value>
+    <value>ፋይል ምረጽ</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
@@ -754,15 +770,15 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>ምድላው</value>
+    <value>ኵነታት</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>መፍትሕ ሓጺር መገዲ</value>
+    <value>ሓጸርቲ መገዲ</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
-    <value>ሲድባር</value>
+    <value>ጐድኒ ባር</value>
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
@@ -774,7 +790,7 @@
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>ጠጠው ኣብል</value>
+    <value>ደው በል</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,7 +802,7 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>ፎርም</value>
+    <value>ሰሌዳ</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
@@ -794,7 +810,7 @@
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>ኣርእስቲ</value>
+    <value>ፍረ ነገር</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
@@ -802,7 +818,7 @@
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>ዝርዝር ትሕዝቶ</value>
+    <value>ሰሌዳ ትሕዝቶ</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
@@ -810,7 +826,7 @@
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>ናብ ምቕያር</value>
+    <value>ናብ</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
@@ -822,11 +838,11 @@
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>ኳሽ</value>
+    <value>ኣተዓረየ</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>ዘይተኣዘዘ ዝርዝር</value>
+    <value>ጠያይት</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
@@ -834,11 +850,11 @@
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>ስሩዕ ውድድር</value>
+    <value>ስሩዕ መግለጺ</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
-    <value>ነቲ ስርዓት ተጠቐመሉ</value>
+    <value>ስርዓት ተጠቐም</value>
     <comment>使用系统设置</comment>
   </data>
   <data name="VegaChart" xml:space="preserve">
@@ -870,7 +886,7 @@
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>ቃል</value>
+    <value>ቃላት</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">

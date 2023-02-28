@@ -181,6 +181,10 @@
     <value>圖表</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>清除</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
     <value>清除樣式</value>
     <comment>格式/清除样式</comment>
@@ -308,6 +312,10 @@
   <data name="Emphasis" xml:space="preserve">
     <value>斜體</value>
     <comment>格式/斜体</comment>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>啟用</value>
+    <comment>启用</comment>
   </data>
   <data name="Error" xml:space="preserve">
     <value>錯誤</value>
@@ -581,6 +589,10 @@
     <value>名稱</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>名稱不能為空</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
     <value>新建</value>
     <comment>文件/新建</comment>
@@ -613,6 +625,10 @@
     <value>無最近檔</value>
     <comment>文件/打开最近/无最近文件</comment>
   </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>未設置</value>
+    <comment>未设置</comment>
+  </data>
   <data name="Off" xml:space="preserve">
     <value>關</value>
     <comment>开关/关</comment>
@@ -636,6 +652,10 @@
   <data name="OpenFolder" xml:space="preserve">
     <value>打開資料夾</value>
     <comment>文件/打开文件夹</comment>
+  </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>打開圖片位置</value>
+    <comment>打开图片位置</comment>
   </data>
   <data name="OpenInNewWindow" xml:space="preserve">
     <value>在新視窗中打開</value>

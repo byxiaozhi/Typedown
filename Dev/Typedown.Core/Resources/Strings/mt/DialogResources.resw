@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>Tixtieq tissejvja l-bidliet tiegħek?</value>
+    <value>Tixtieq tissejvja l-bidliet?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Żgur</value>
+    <value>Kollox sew</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>feedback</value>
+    <value>Feedback</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -170,23 +170,27 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>Daħħal tabella</value>
+    <value>Daħħal it-Tabella</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
-    <value>Installa issa</value>
+    <value>Installa Issa</value>
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Żgur</value>
+    <value>Kollox sew</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Agħfas il-kombinazzjoni tat-tasti</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Il-qari ma rnexxiex</value>
+    <value>Ma rnexxilux jillowdja</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>Jirkupraw</value>
+    <value>Restawr</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>Tixtieq tirkupra l-fajls?</value>
+    <value>Tixtieq tirrestawra l-fajl?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Aġġusta t-tabella</value>
+    <value>Tabella tad-daqs mill-ġdid</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>OK biex tirrestawra l-issettjar default tal-applikazzjoni</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Tissejvja</value>
@@ -209,20 +217,36 @@
     <value>L-issejvjar ma rnexxiex</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Issettja t-Tast tax-Shortcut</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>Iċ-ċavetta tax-shortcut hija okkupata</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Jissottomettu</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Is-sottomissjoni rnexxiet</value>
+    <value>Sottomissjoni b'suċċess</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>It-tlugħ ma rnexxiex</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Ittella' b'suċċess</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>Għandek bżonn tinstalla r-runtime tal-WebView2 biex tħaddem is-softwer kif suppost.</value>
+    <value>Għandek bżonn tinstalla WebView2 runtime biex tħaddem dan is-softwer kif suppost.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>Ir-runtime tal-WebView2 mhux installat</value>
+    <value>WebView2 Runtime Mhux Installat</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Żid ma'</value>
+    <value>Żid</value>
     <comment>添加</comment>
   </data>
   <data name="AlignCenter" xml:space="preserve">
-    <value>Allinjament taċ-ċentru</value>
+    <value>Ċentru</value>
     <comment>段落/居中对齐</comment>
   </data>
   <data name="AlignLeft" xml:space="preserve">
-    <value>Allinjat max-xellug</value>
+    <value>Allinja x-Xellug</value>
     <comment>段落/左对齐</comment>
   </data>
   <data name="AlignRight" xml:space="preserve">
-    <value>Allinjat mal-lemin</value>
+    <value>Allinja Lejn il-Lemin</value>
     <comment>段落/右对齐</comment>
   </data>
   <data name="All" xml:space="preserve">
@@ -142,11 +142,11 @@
     <comment>应用程序</comment>
   </data>
   <data name="Auto" xml:space="preserve">
-    <value>Awtomatiku</value>
+    <value>Awtomatika</value>
     <comment>自动</comment>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Ritorn</value>
+    <value>Lura</value>
     <comment>返回</comment>
   </data>
   <data name="Browse" xml:space="preserve">
@@ -154,11 +154,11 @@
     <comment>浏览...</comment>
   </data>
   <data name="BrowseFolder" xml:space="preserve">
-    <value>Ibbrawżja l-fowlder</value>
+    <value>Ibbrawżja l-Fowlder</value>
     <comment>浏览文件夹</comment>
   </data>
   <data name="BrowseLocalFiles" xml:space="preserve">
-    <value>Ibbrawżja għall-fajls lokali</value>
+    <value>Ibbrawżja l-Fajl Lokali</value>
     <comment>浏览本地文件</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -166,35 +166,39 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="CaseSensitive" xml:space="preserve">
-    <value>Każ sensittiv</value>
+    <value>Każ Sensittiv</value>
     <comment>编辑/查找和替换/选项/区分大小写</comment>
   </data>
   <data name="Character" xml:space="preserve">
-    <value>Kelma</value>
+    <value>Karattru</value>
     <comment>字符(单数)</comment>
   </data>
   <data name="Characters" xml:space="preserve">
-    <value>Kelma</value>
+    <value>Karattri</value>
     <comment>字符(复数)</comment>
   </data>
   <data name="Chart" xml:space="preserve">
     <value>Chart</value>
     <comment>图表</comment>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Ċara</value>
+    <comment>清除</comment>
+  </data>
   <data name="ClearFormat" xml:space="preserve">
-    <value>Neħħi l-istil</value>
+    <value>Format Ċar</value>
     <comment>格式/清除样式</comment>
   </data>
   <data name="ClearRecentFiles" xml:space="preserve">
-    <value>Neħħi l-fajls riċenti</value>
+    <value>Neħħi l-Fajls Riċenti</value>
     <comment>文件/打开最近文件/清除最近文件</comment>
   </data>
   <data name="ClickToAddAnImage" xml:space="preserve">
-    <value>Ikklikkja Żid immaġni</value>
+    <value>Ikklikkja biex iżżid immaġni</value>
     <comment>点击添加一张图片</comment>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Agħlaq ħalqek</value>
+    <value>Qrib</value>
     <comment>文件/关闭</comment>
   </data>
   <data name="Code" xml:space="preserve">
@@ -202,11 +206,11 @@
     <comment>代码</comment>
   </data>
   <data name="CodeFences" xml:space="preserve">
-    <value>Blokka tal-kodiċi</value>
+    <value>Ċnut tal-Kodiċi</value>
     <comment>代码围栏</comment>
   </data>
   <data name="Columns" xml:space="preserve">
-    <value>Kolonna</value>
+    <value>Kolonni</value>
     <comment>插入表格/列数</comment>
   </data>
   <data name="Copy" xml:space="preserve">
@@ -214,7 +218,7 @@
     <comment>编辑/复制</comment>
   </data>
   <data name="CopyAsHTMLCode" xml:space="preserve">
-    <value>Ikkopja bħala kodiċi HTML</value>
+    <value>Ikkopja bħala HTML</value>
     <comment>编辑/复制为 HTML 代码</comment>
   </data>
   <data name="CopyAsMarkdown" xml:space="preserve">
@@ -222,15 +226,15 @@
     <comment>编辑/复制为 Markdown</comment>
   </data>
   <data name="CopyAsPath" xml:space="preserve">
-    <value>Ikkopja l-indirizz tal-fajl</value>
+    <value>Ikkopja bħala Mogħdija</value>
     <comment>文件浏览框/复制文件地址</comment>
   </data>
   <data name="CopyAsPlainText" xml:space="preserve">
-    <value>Ikkopja bħala test sempliċi</value>
+    <value>Ikkopja bħala Test Sempliċi</value>
     <comment>编辑/复制为纯文本</comment>
   </data>
   <data name="CopyContent" xml:space="preserve">
-    <value>Ikkopja l-kontenut</value>
+    <value>Ikkopja l-Kontenut</value>
     <comment>复制内容</comment>
   </data>
   <data name="CopyPasteAs" xml:space="preserve">
@@ -238,7 +242,7 @@
     <comment>编辑/复制/粘贴为...</comment>
   </data>
   <data name="CopyToPath" xml:space="preserve">
-    <value>Ikkopja fil-mogħdija</value>
+    <value>Ikkopja fil-Mogħdija</value>
     <comment>操作/复制到路径</comment>
   </data>
   <data name="Create" xml:space="preserve">
@@ -246,19 +250,19 @@
     <comment>创建</comment>
   </data>
   <data name="CtrlAndClickOpenLink" xml:space="preserve">
-    <value>Ctrl+Ikklikkja Link Miftuħa</value>
+    <value>Ctrl+Ikklikkja biex Tiftaħ il-Link</value>
     <comment>Ctrl+单击 打开链接</comment>
   </data>
   <data name="Custom" xml:space="preserve">
-    <value>Personalizzazzjoni</value>
+    <value>Personalizzat</value>
     <comment>自定义</comment>
   </data>
   <data name="CustomShortcutKeys" xml:space="preserve">
-    <value>Tasti ta' shortcut apposta</value>
+    <value>Shortcuts Tad-Dwana</value>
     <comment>自定义快捷键</comment>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>shear</value>
+    <value>Maqtugħa</value>
     <comment>编辑/剪切</comment>
   </data>
   <data name="Dark" xml:space="preserve">
@@ -266,11 +270,11 @@
     <comment>应用主题/深色</comment>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>data</value>
+    <value>Dejta</value>
     <comment>数据</comment>
   </data>
   <data name="DecreaseHeadingLevel" xml:space="preserve">
-    <value>Baxxi l-livell tat-titlu</value>
+    <value>Naqqas il-Livell tal-Intestatura</value>
     <comment>段落/降低标题级别</comment>
   </data>
   <data name="Default" xml:space="preserve">
@@ -282,11 +286,11 @@
     <comment>删除</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
-    <value>Ħassar it-tabella</value>
+    <value>Ħassar it-Tabella</value>
     <comment>删除表格</comment>
   </data>
   <data name="Duplicate" xml:space="preserve">
-    <value>Irrepeti</value>
+    <value>Duplikat</value>
     <comment>段落/重复</comment>
   </data>
   <data name="Edit" xml:space="preserve">
@@ -294,20 +298,24 @@
     <comment>编辑</comment>
   </data>
   <data name="EditImage" xml:space="preserve">
-    <value>Editja l-istampa</value>
+    <value>Editja l-Immaġni</value>
     <comment>编辑图片</comment>
   </data>
   <data name="Editor" xml:space="preserve">
-    <value>editur</value>
+    <value>Editur</value>
     <comment>编辑器</comment>
   </data>
   <data name="EmbedLink" xml:space="preserve">
-    <value>Embed links</value>
+    <value>Embed Link</value>
     <comment>嵌入链接</comment>
   </data>
   <data name="Emphasis" xml:space="preserve">
-    <value>korsiv</value>
+    <value>Korsiv</value>
     <comment>格式/斜体</comment>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Jippermettu</value>
+    <comment>启用</comment>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Żball</value>
@@ -318,15 +326,15 @@
     <comment>文件/导出</comment>
   </data>
   <data name="ExportSettings" xml:space="preserve">
-    <value>L-issettjar ta' l-esportazzjoni</value>
+    <value>Issettjar ta' l-Esportazzjoni</value>
     <comment>文件/导出/导出设置</comment>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>Esportazzjoni għal PDF</value>
+    <value>Esporta bħala PDF</value>
     <comment>文件/导出/导出为PDF</comment>
   </data>
   <data name="Feedback" xml:space="preserve">
-    <value>feedback</value>
+    <value>Feedback</value>
     <comment>应用程序反馈</comment>
   </data>
   <data name="File" xml:space="preserve">
@@ -334,7 +342,7 @@
     <comment>文件(单数)</comment>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>Fajl</value>
+    <value>Fajls</value>
     <comment>文件(复数)</comment>
   </data>
   <data name="Find" xml:space="preserve">
@@ -342,15 +350,15 @@
     <comment>编辑/查找和替换/查找</comment>
   </data>
   <data name="FindAndReplace" xml:space="preserve">
-    <value>Sib u ibdel</value>
+    <value>Sib u Ibdel</value>
     <comment>编辑/查找和替换</comment>
   </data>
   <data name="FindNext" xml:space="preserve">
-    <value>Sib dak li jmiss</value>
+    <value>Sib Li Jmiss</value>
     <comment>编辑/查找和替换/查找下一个</comment>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>Sib dik ta 'qabel</value>
+    <value>Sib Preċedenti</value>
     <comment>编辑/查找和替换/查找上一个</comment>
   </data>
   <data name="FlowChart" xml:space="preserve">
@@ -358,7 +366,7 @@
     <comment>Flow Chart</comment>
   </data>
   <data name="FocusMode" xml:space="preserve">
-    <value>Modalità ta' fokus</value>
+    <value>Modalità ta' Fokus</value>
     <comment>视图/专注模式</comment>
   </data>
   <data name="Folder" xml:space="preserve">
@@ -370,15 +378,15 @@
     <comment>设置/字体</comment>
   </data>
   <data name="FontSize" xml:space="preserve">
-    <value>Daqs tal-font</value>
+    <value>Daqs tal-Font</value>
     <comment>设置/字体大小</comment>
   </data>
   <data name="Footnote" xml:space="preserve">
-    <value>Nota</value>
+    <value>Noti f'qiegħ il-paġna</value>
     <comment>脚注</comment>
   </data>
   <data name="FootnoteNotFound" xml:space="preserve">
-    <value>Tikketta tan-nota f'qiegħ il-paġna [^{identifikatur}] ma nstabitx:</value>
+    <value>Il-markatur tan-nota f'qiegħ il-paġna ma nstabx [^{identifikatur}]:</value>
     <comment>未找到脚注标记 [^{identifier}]:</comment>
   </data>
   <data name="Format" xml:space="preserve">
@@ -386,7 +394,7 @@
     <comment>格式</comment>
   </data>
   <data name="FormatCode" xml:space="preserve">
-    <value>Ifformattja l-kodiċi</value>
+    <value>Kodiċi tal-Format</value>
     <comment>代码块/格式化代码</comment>
   </data>
   <data name="General" xml:space="preserve">
@@ -398,31 +406,31 @@
     <comment>转到</comment>
   </data>
   <data name="Heading" xml:space="preserve">
-    <value>Titolu</value>
+    <value>Intestatura</value>
     <comment>段落/标题</comment>
   </data>
   <data name="Heading1" xml:space="preserve">
-    <value>Intestatura tal-ewwel livell</value>
+    <value>Intestatura 1</value>
     <comment>段落/一级标题</comment>
   </data>
   <data name="Heading2" xml:space="preserve">
-    <value>Intestaturi tat-tieni livell</value>
+    <value>Intestatura 2</value>
     <comment>段落/二级标题</comment>
   </data>
   <data name="Heading3" xml:space="preserve">
-    <value>Intestaturi fuq tliet livelli</value>
+    <value>Intestatura 3</value>
     <comment>段落/三级标题</comment>
   </data>
   <data name="Heading4" xml:space="preserve">
-    <value>Intestaturi fuq erba' livelli</value>
+    <value>Intestatura 4</value>
     <comment>段落/四级标题</comment>
   </data>
   <data name="Heading5" xml:space="preserve">
-    <value>Intestaturi fuq ħames livelli</value>
+    <value>Titlu 5</value>
     <comment>段落/五级标题</comment>
   </data>
   <data name="Heading6" xml:space="preserve">
-    <value>Intestaturi ta' sitt livelli</value>
+    <value>Intestatura 6</value>
     <comment>段落/六级标题</comment>
   </data>
   <data name="Help" xml:space="preserve">
@@ -430,15 +438,15 @@
     <comment>应用程序帮助</comment>
   </data>
   <data name="Highlight" xml:space="preserve">
-    <value>jenfasizzaw</value>
+    <value>Aċċenn</value>
     <comment>格式/高亮</comment>
   </data>
   <data name="HorizontalLine" xml:space="preserve">
-    <value>Linja ta' diviżjoni orizzontali</value>
+    <value>Linja Orizzontali</value>
     <comment>水平分割线</comment>
   </data>
   <data name="Hyperlink" xml:space="preserve">
-    <value>Hyperlinks</value>
+    <value>Hyperlink</value>
     <comment>格式/超链接</comment>
   </data>
   <data name="Image" xml:space="preserve">
@@ -454,7 +462,7 @@
     <comment>文件/导入</comment>
   </data>
   <data name="IncreaseHeadingLevel" xml:space="preserve">
-    <value>Għolli l-livell tat-titlu</value>
+    <value>Żid il-Livell tal-Intestatura</value>
     <comment>段落/提升标题级别</comment>
   </data>
   <data name="Inline" xml:space="preserve">
@@ -462,55 +470,55 @@
     <comment>内联</comment>
   </data>
   <data name="InlineCode" xml:space="preserve">
-    <value>Kodiċi inline</value>
+    <value>Kodiċi Inline</value>
     <comment>格式/内联代码</comment>
   </data>
   <data name="InlineMath" xml:space="preserve">
-    <value>Formuli inline</value>
+    <value>Matematika Inline</value>
     <comment>格式/内联公式</comment>
   </data>
   <data name="InputFootnoteDefine" xml:space="preserve">
-    <value>Daħħal id-definizzjoni tan-nota f'qiegħ il-paġna...</value>
+    <value>Definizzjoni tan-nota f'qiegħ il-paġna tal-input...</value>
     <comment>输入脚注定义...</comment>
   </data>
   <data name="InputLanguageIdentifier" xml:space="preserve">
-    <value>Daħħal l-identifikatur tal-lingwa...</value>
+    <value>Identifikatur tal-Lingwa ta' l-Input...</value>
     <comment>输入语言标识符...</comment>
   </data>
   <data name="InputMathFormula" xml:space="preserve">
-    <value>Daħħal il-formula tal-matematika...</value>
+    <value>Matematika tal-Input...</value>
     <comment>输入数学公式...</comment>
   </data>
   <data name="InputYAMLFrontMatter" xml:space="preserve">
-    <value>Daħħal il-Materja ta 'Quddiem YAML ...</value>
+    <value>Input YAML Materja ta 'Quddiem ...</value>
     <comment>输入 YAML Front Matter...</comment>
   </data>
   <data name="InsertColumnLeft" xml:space="preserve">
-    <value>Daħħal kolonna fuq ix-xellug</value>
+    <value>Daħħal il-kolonna xellug</value>
     <comment>在左边插入列</comment>
   </data>
   <data name="InsertColumnRight" xml:space="preserve">
-    <value>Daħħal kolonna fuq il-lemin</value>
+    <value>Daħħal il-Kolonna Lemin</value>
     <comment>在右边插入列</comment>
   </data>
   <data name="InsertImage" xml:space="preserve">
-    <value>Daħħal immaġni</value>
+    <value>Daħħal l-Immaġni</value>
     <comment>格式/插入图像</comment>
   </data>
   <data name="InsertParagraphAfter" xml:space="preserve">
-    <value>Daħħal paragrafu hawn taħt</value>
+    <value>Daħħal il-paragrafu wara</value>
     <comment>段落/在下方插入段落</comment>
   </data>
   <data name="InsertParagraphBefore" xml:space="preserve">
-    <value>Daħħal paragrafu hawn fuq</value>
+    <value>Daħħal il-paragrafu qabel</value>
     <comment>段落/在上方插入段落</comment>
   </data>
   <data name="InsertRowAbove" xml:space="preserve">
-    <value>Daħħal ringieli hawn fuq</value>
+    <value>Daħħal ir-ringiela hawn fuq</value>
     <comment>段落/在上方插入行</comment>
   </data>
   <data name="InsertRowBelow" xml:space="preserve">
-    <value>Daħħal ringiela hawn taħt</value>
+    <value>Daħħal ir-ringiela hawn taħt</value>
     <comment>段落/在下方插入行</comment>
   </data>
   <data name="Language" xml:space="preserve">
@@ -526,23 +534,23 @@
     <comment>应用主题/浅色</comment>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Iva</value>
+    <value>Linja</value>
     <comment>行(单数)</comment>
   </data>
   <data name="LineHeight" xml:space="preserve">
-    <value>Għoli tal-linja</value>
+    <value>Għoli tal-Linja</value>
     <comment>设置/行高</comment>
   </data>
   <data name="Lines" xml:space="preserve">
-    <value>Iva</value>
+    <value>Linji</value>
     <comment>行(复数)</comment>
   </data>
   <data name="LinkReference" xml:space="preserve">
-    <value>Referenzi għall-link</value>
+    <value>Referenza tal-Link</value>
     <comment>段落/链接引用</comment>
   </data>
   <data name="LoadImageFail" xml:space="preserve">
-    <value>Ma rnexxilux jillowdja l-immaġni</value>
+    <value>Ma Rnexxilux Jillowdja l-Immaġni</value>
     <comment>加载图片失败</comment>
   </data>
   <data name="Math" xml:space="preserve">
@@ -550,15 +558,15 @@
     <comment>数学</comment>
   </data>
   <data name="MathBlock" xml:space="preserve">
-    <value>Blokka tal-formula</value>
+    <value>Blokk tal-Matematika</value>
     <comment>公式块</comment>
   </data>
   <data name="Maximize" xml:space="preserve">
-    <value>timmassimizza</value>
+    <value>Immassimizza</value>
     <comment>窗口/最大化</comment>
   </data>
   <data name="MenuBar" xml:space="preserve">
-    <value>strixxa tal-men�</value>
+    <value>Strixxa tal-Menù</value>
     <comment>菜单栏</comment>
   </data>
   <data name="Mermaid" xml:space="preserve">
@@ -570,31 +578,35 @@
     <comment>窗口/最小化</comment>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>Minuta</value>
+    <value>Minuti</value>
     <comment>分钟</comment>
   </data>
   <data name="MoreOptions" xml:space="preserve">
-    <value>Aktar għażliet</value>
+    <value>Aktar Għażliet</value>
     <comment>更多选项</comment>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Isem</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>L-isem ma jistax ikun vojt</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
-    <value>mibnija ġdida</value>
+    <value>Ġdid</value>
     <comment>文件/新建</comment>
   </data>
   <data name="NewFile" xml:space="preserve">
-    <value>Oħloq fajl ġdid</value>
+    <value>Fajl Ġdid</value>
     <comment>文件浏览框/新建文件</comment>
   </data>
   <data name="NewFolder" xml:space="preserve">
-    <value>Oħloq fowlder ġdid</value>
+    <value>Fowlder Ġdid</value>
     <comment>文件浏览框/新建文件夹</comment>
   </data>
   <data name="NewWindow" xml:space="preserve">
-    <value>Tieqa ġdida</value>
+    <value>Tieqa Ġdida</value>
     <comment>新建/新建窗口</comment>
   </data>
   <data name="NoAction" xml:space="preserve">
@@ -602,43 +614,51 @@
     <comment>自动操作/无操作</comment>
   </data>
   <data name="NoExportConfigs" xml:space="preserve">
-    <value>Ebda konfigurazzjoni tal-esportazzjoni</value>
+    <value>Ebda Konfigurazzjoni tal-Esportazzjoni</value>
     <comment>无导出配置</comment>
   </data>
   <data name="None" xml:space="preserve">
-    <value>Mhux</value>
+    <value>Xejn</value>
     <comment>无</comment>
   </data>
   <data name="NoRecentFiles" xml:space="preserve">
-    <value>Ebda fajls riċenti</value>
+    <value>Ebda Fajls Riċenti</value>
     <comment>文件/打开最近/无最近文件</comment>
+  </data>
+  <data name="NotSet" xml:space="preserve">
+    <value>Mhux issettjat</value>
+    <comment>未设置</comment>
   </data>
   <data name="Off" xml:space="preserve">
     <value>Qrib</value>
     <comment>开关/关</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Żgur</value>
+    <value>Kollox sew</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="On" xml:space="preserve">
-    <value>Miftuħa</value>
+    <value>Fuq</value>
     <comment>开关/开</comment>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Iftaħha</value>
+    <value>Miftuħa</value>
     <comment>文件/打开</comment>
   </data>
   <data name="OpenFileLocation" xml:space="preserve">
-    <value>Iftaħ il-post tal-fajl</value>
+    <value>Iftaħ il-Post tal-Fajl</value>
     <comment>文件/打开文件位置</comment>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value>Iftaħ il-fowlder</value>
+    <value>Iftaħ il-Fowlder</value>
     <comment>文件/打开文件夹</comment>
   </data>
+  <data name="OpenImageLocation" xml:space="preserve">
+    <value>Iftaħ il-Post ta' l-Immaġni</value>
+    <comment>打开图片位置</comment>
+  </data>
   <data name="OpenInNewWindow" xml:space="preserve">
-    <value>Jiftaħ f'tieqa ġdida</value>
+    <value>Iftaħ f'Tieqa Ġdida</value>
     <comment>文件/在新窗口中打开</comment>
   </data>
   <data name="OpenRecent" xml:space="preserve">
@@ -650,7 +670,7 @@
     <comment>开源软件</comment>
   </data>
   <data name="OrderedList" xml:space="preserve">
-    <value>Lista ordnata</value>
+    <value>Lista Ordnata</value>
     <comment>段落/有序列表</comment>
   </data>
   <data name="Outline" xml:space="preserve">
@@ -662,11 +682,11 @@
     <comment>段落</comment>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>Twaħħil</value>
+    <value>Ippejstja</value>
     <comment>编辑/粘贴</comment>
   </data>
   <data name="PasteAsPlainText" xml:space="preserve">
-    <value>Ippejstja bħala test sempliċi</value>
+    <value>Pejst bħala Test Sempliċi</value>
     <comment>编辑/粘贴为纯文本</comment>
   </data>
   <data name="Path" xml:space="preserve">
@@ -682,11 +702,11 @@
     <comment>文件/打印</comment>
   </data>
   <data name="Quote" xml:space="preserve">
-    <value>iċċita</value>
+    <value>Kwotazzjoni</value>
     <comment>段落/引用</comment>
   </data>
   <data name="Rating" xml:space="preserve">
-    <value>Punteġġ</value>
+    <value>Klassifikazzjoni</value>
     <comment>反馈/评分</comment>
   </data>
   <data name="Redo" xml:space="preserve">
@@ -694,11 +714,11 @@
     <comment>编辑/重做</comment>
   </data>
   <data name="RemoveColumn" xml:space="preserve">
-    <value>Ħassar il-kolonna</value>
+    <value>Ħassar il-Kolonna</value>
     <comment>表格/删除列</comment>
   </data>
   <data name="RemoveRow" xml:space="preserve">
-    <value>Ħassar ir-ringiela</value>
+    <value>Ħassar ir-Ringiela</value>
     <comment>表格/删除行</comment>
   </data>
   <data name="Rename" xml:space="preserve">
@@ -706,15 +726,15 @@
     <comment>文件/重命名</comment>
   </data>
   <data name="Replace" xml:space="preserve">
-    <value>Sostituzzjoni</value>
+    <value>Ibdel</value>
     <comment>编辑/查找和替换/替换</comment>
   </data>
   <data name="ReplaceAll" xml:space="preserve">
-    <value>Issostitwixxi kollox</value>
+    <value>Issostitwixxi Kollox</value>
     <comment>编辑/查找和替换/替换全部</comment>
   </data>
   <data name="ResizeTable" xml:space="preserve">
-    <value>Ibdel id-daqs tat-tabella</value>
+    <value>Tabella tad-daqs mill-ġdid</value>
     <comment>表格/调整表格大小</comment>
   </data>
   <data name="Restore" xml:space="preserve">
@@ -722,7 +742,7 @@
     <comment>还原默认设置</comment>
   </data>
   <data name="Rows" xml:space="preserve">
-    <value>Iva</value>
+    <value>Ringieli</value>
     <comment>插入表格/行数</comment>
   </data>
   <data name="Save" xml:space="preserve">
@@ -742,11 +762,11 @@
     <comment>搜索</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>Agħżel kollox</value>
+    <value>Agħżel Kollox</value>
     <comment>全选</comment>
   </data>
   <data name="SelectFile" xml:space="preserve">
-    <value>Agħżel il-fajl</value>
+    <value>Agħżel il-Fajl</value>
     <comment>选择文件</comment>
   </data>
   <data name="SequenceDiagram" xml:space="preserve">
@@ -754,11 +774,11 @@
     <comment>Sequence Diagram</comment>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Stabbilit</value>
+    <value>Issettjar</value>
     <comment>设置</comment>
   </data>
   <data name="ShortcutKey" xml:space="preserve">
-    <value>tast tax-shortcut</value>
+    <value>Shortcuts</value>
     <comment>快捷键</comment>
   </data>
   <data name="SidePane" xml:space="preserve">
@@ -766,15 +786,15 @@
     <comment>侧栏</comment>
   </data>
   <data name="SourceCodeMode" xml:space="preserve">
-    <value>Modalità tal-kodiċi tas-sors</value>
+    <value>Modalità tal-Kodiċi tas-Sors</value>
     <comment>视图/源代码模式</comment>
   </data>
   <data name="StatusBar" xml:space="preserve">
-    <value>Strixxa ta' l-istatus</value>
+    <value>Strixxa ta' l-Istatus</value>
     <comment>状态栏</comment>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Ieqaf</value>
+    <value>Waqqaf</value>
     <comment>停止操作</comment>
   </data>
   <data name="Strikethrough" xml:space="preserve">
@@ -786,15 +806,15 @@
     <comment>格式/加粗</comment>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>Forma</value>
+    <value>Tabella</value>
     <comment>段落/表格</comment>
   </data>
   <data name="TaskList" xml:space="preserve">
-    <value>Lista ta' attivitajiet</value>
+    <value>Lista ta' Attivitajiet</value>
     <comment>段落/任务列表</comment>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>Suġġett</value>
+    <value>Tema</value>
     <comment>应用程序主题</comment>
   </data>
   <data name="Title" xml:space="preserve">
@@ -802,7 +822,7 @@
     <comment>标题</comment>
   </data>
   <data name="Toc" xml:space="preserve">
-    <value>Katalgu tal-kontenut</value>
+    <value>Tabella tal-Kontenut</value>
     <comment>内容目录</comment>
   </data>
   <data name="Total" xml:space="preserve">
@@ -810,23 +830,23 @@
     <comment>总计</comment>
   </data>
   <data name="TurnInto" xml:space="preserve">
-    <value>Ikkonverti għal</value>
+    <value>Ibdel fi</value>
     <comment>转换为</comment>
   </data>
   <data name="TypewriterMode" xml:space="preserve">
-    <value>Modalità tat-tajprajter</value>
+    <value>Modalità tat-Tajprajter</value>
     <comment>视图/打字机模式</comment>
   </data>
   <data name="Underline" xml:space="preserve">
-    <value>sottolinja</value>
+    <value>Sottolinja</value>
     <comment>格式/下划线</comment>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>quash</value>
+    <value>Erġa</value>
     <comment>编辑/撤销</comment>
   </data>
   <data name="UnorderedList" xml:space="preserve">
-    <value>Lista mhux ordnata</value>
+    <value>Balal</value>
     <comment>段落/无序列表</comment>
   </data>
   <data name="Update" xml:space="preserve">
@@ -834,7 +854,7 @@
     <comment>应用程序更新</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
-    <value>Tqabbil regolari</value>
+    <value>Logħba ta 'Espressjoni Regolari</value>
     <comment>编辑/查找和替换/选项/正则匹配</comment>
   </data>
   <data name="UseSystemSetting" xml:space="preserve">
@@ -850,7 +870,7 @@
     <comment>查看</comment>
   </data>
   <data name="Website" xml:space="preserve">
-    <value>Sit</value>
+    <value>Websajt</value>
     <comment>网站</comment>
   </data>
   <data name="WholeWord" xml:space="preserve">
@@ -866,11 +886,11 @@
     <comment>词(单数)</comment>
   </data>
   <data name="WordCount" xml:space="preserve">
-    <value>għadd tal-kliem</value>
+    <value>Għadd tal-Kelma</value>
     <comment>字数</comment>
   </data>
   <data name="Words" xml:space="preserve">
-    <value>Kelma</value>
+    <value>Kliem</value>
     <comment>词(复数)</comment>
   </data>
   <data name="YAMLFrontMatter" xml:space="preserve">

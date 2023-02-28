@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AsKToSaveContent" xml:space="preserve">
-    <value>Bạn có những thay đổi chưa lưu</value>
+    <value>Bạn có các thay đổi chưa được lưu</value>
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
@@ -126,23 +126,23 @@
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Hủy bỏ</value>
+    <value>Hủy</value>
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Nội dung không thể trống</value>
+    <value>Nội dung không được để trống</value>
     <comment>对话框/内容不能为空</comment>
   </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
-    <value>Tài liệu mới không thành công</value>
+    <value>Không thể tạo tài liệu mới</value>
     <comment>创建文件对话框/新建文档失败</comment>
   </data>
   <data name="CreateFolderErrorTitle" xml:space="preserve">
-    <value>Thư mục mới không thành công</value>
+    <value>Không thể tạo thư mục mới</value>
     <comment>创建文件夹对话框/新建文件夹失败</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -158,7 +158,7 @@
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
-    <value>Xuất thất bại</value>
+    <value>Xuất không thành công</value>
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
@@ -166,27 +166,31 @@
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
-    <value>Việc nhập không thành công</value>
+    <value>Nhập không thành công</value>
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>Chèn bảng</value>
+    <value>Chèn Bảng</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
-    <value>Cài đặt ngay bây giờ</value>
+    <value>Cài đặt ngay</value>
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Vui lòng nhấn tổ hợp phím</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Đọc thất bại</value>
+    <value>Không tải được</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>Phục hồi</value>
+    <value>Khôi phục</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -198,31 +202,51 @@
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Điều chỉnh bảng</value>
+    <value>Đổi kích cỡ bảng</value>
     <comment>表格对话框/调整表格</comment>
   </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>OK để khôi phục cài đặt mặc định của ứng dụng</value>
+    <comment>确定恢复应用默认设置？</comment>
+  </data>
   <data name="Save" xml:space="preserve">
-    <value>Lưu</value>
+    <value>Cứu</value>
     <comment>文件保存对话框/保存</comment>
   </data>
   <data name="SaveErrorTitle" xml:space="preserve">
-    <value>Lưu thất bại</value>
+    <value>Lưu không thành công</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Đặt phím tắt</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>Phím tắt bị chiếm dụng</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
-    <value>Gửi</value>
+    <value>Trình</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Gửi thành công</value>
+    <value>Gửi bài thành công</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>Tải lên không thành công</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Tải lên thành công</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>Bạn cần cài đặt webView2 thời gian chạy để hoạt động đúng phần mềm.</value>
+    <value>Bạn cần cài đặt thời gian chạy WebView2 để chạy phần mềm này đúng cách.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>WebView2 không được cài đặt tại thời gian chạy</value>
+    <value>Thời gian chạy WebView2 chưa được cài đặt</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

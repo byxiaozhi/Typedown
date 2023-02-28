@@ -154,8 +154,8 @@
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>輸入左括號時自動補全右引號</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>輸入左括號時自動補全右括弧</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
     <value>自動補全括弧</value>
@@ -256,6 +256,10 @@
   <data name="Export.Configs" xml:space="preserve">
     <value>匯出配置</value>
     <comment>导出/导出配置</comment>
+  </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>匯出檔案類型</value>
+    <comment>导出文件类型</comment>
   </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
     <value>匯出完成後打開所在資料夾</value>
@@ -437,6 +441,14 @@
     <value>上傳配置</value>
     <comment>图片/上传配置</comment>
   </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>刪除此配置</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>從檔案導入</value>
+    <comment>从文件导入</comment>
+  </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>上傳方式</value>
     <comment>图片/上传方式</comment>
@@ -461,9 +473,25 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>選擇檔案</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>保存到檔案</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>測試上傳</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
     <value>圖片上傳</value>
     <comment>图片/图片上传</comment>
+  </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>重啟應用後生效</value>
+    <comment>重启应用后生效</comment>
   </data>
   <data name="Shortcut.Title" xml:space="preserve">
     <value>快速鍵</value>

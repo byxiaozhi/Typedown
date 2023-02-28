@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>तपाईँ तपाईँका परिवर्तनहरू बचत गर्न चाहनुहुन्छ?</value>
+    <value>के तपाईँ परिवर्तनहरू बचत गर्न चाहनुहुन्छ?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>के तपाईं निश्चित हुनुहुन्छ</value>
+    <value>ठीक छ</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>गल्ती</value>
+    <value>त्रुटि</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>प्रतिक्रिया[सम्पादन गर्ने]</value>
+    <value>प्रतिक्रिया</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>के तपाईं निश्चित हुनुहुन्छ</value>
+    <value>ठीक छ</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>कृपया कुञ्जी संयोजन थिच्नुहोस्</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>पढ्न असफल भयो</value>
+    <value>लोड गर्न असफल भयो</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>पुन: प्राप्त गर्नुहोस्</value>
+    <value>पुनस्र्थापना गर्नुहोस्</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>के तपाईँ फाइलहरू पुन: प्राप्त गर्न चाहनुहुन्छ?</value>
+    <value>तपाईँ फाइल पुनस्र्थापना गर्न चाहनुहुन्छ?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>तालिका समायोजन गर्नुहोस्</value>
+    <value>तालिका पुन: साइज गर्नुहोस्</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>अनुप्रयोग पूर्वनिर्धारित सेटिङ पुनर्स्थापना गर्न ठीक छ</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>बचत गर्नुहोस्</value>
@@ -209,20 +217,36 @@
     <value>बचत गर्न असफल भयो</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>सर्टकट कुञ्जी सेट गर्नुहोस्</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>सर्टकट कुञ्जी कब्जा गरिएको छ</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>पेश गर्नुहोस्</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>सबमिशन सफल रहा</value>
+    <value>सबमिशन सफल भयो</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>अपलोड गर्न असफल भयो</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>अपलोड सफल</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>तपाईँले सफ्टवेयर राम्रोसँग चलाउन वेबभ्यू २ रनटाइम स्थापना गर्न आवश्यक छ ।</value>
+    <value>तपाईँले यो सफ्टवेयर ठीकसँग चलाउन वेबभ्यू२ रनटाइम स्थापना गर्न आवश्यक छ ।</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>वेबभ्यू२ रनटाइम स्थापना गरिएको छैन ।</value>
+    <value>वेबभ्यू२ रनटाइम स्थापना गरिएको छैन</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

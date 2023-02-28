@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>क्या आप अपने परिवर्तन सहेजना चाहते हैं?</value>
+    <value>क्या आप परिवर्तन सहेजना चाहते हैं?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>क्या आपको यकीन है</value>
+    <value>ठीक है</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -150,11 +150,11 @@
     <comment>恢复文件对话框/删除</comment>
   </data>
   <data name="Don'tSave" xml:space="preserve">
-    <value>बचत न करें</value>
+    <value>बचत मत करो</value>
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>गलती</value>
+    <value>भूल</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>कोई तालिका सम्मिलित करें</value>
+    <value>तालिका सम्मिलित करें</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>क्या आपको यकीन है</value>
+    <value>ठीक है</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>कृपया कुंजी संयोजन दबाएँ</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>पढ़ें विफल</value>
+    <value>लोड करने में विफल</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>वसूल करना</value>
+    <value>पुनर्स्थापित करना</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>क्या आप फ़ाइलें पुनर्प्राप्त करना चाहते हैं?</value>
+    <value>क्या आप फ़ाइल पुनर्स्थापित करना चाहते हैं?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>तालिका समायोजित करें</value>
+    <value>तालिका का आकार बदलें</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>अनुप्रयोग डिफ़ॉल्ट सेटिंग्स पुनर्स्थापित करने के लिए ठीक</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>रक्षा कर</value>
@@ -209,16 +217,32 @@
     <value>सहेजना विफल रहा</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>शॉर्टकट कुंजी सेट करें</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>शॉर्टकट कुंजी भरी हुई है</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>जमा करें</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>सबमिशन सफल रहा</value>
+    <value>सबमिशन सफल</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>अपलोड विफल रहा</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>सफल अपलोड करें</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>सॉफ़्टवेयर को ठीक से चलाने के लिए आपको WebView2 रनटाइम स्थापित करने की आवश्यकता है।</value>
+    <value>इस सॉफ़्टवेयर को ठीक से चलाने के लिए आपको WebView2 रनटाइम स्थापित करने की आवश्यकता है.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">

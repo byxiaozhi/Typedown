@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>আপনি কি আপনার পরিবর্তনগুলি সংরক্ষণ করতে চান?</value>
+    <value>আপনি কি পরিবর্তনগুলি সংরক্ষণ করতে চান?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>তুমি কি নিশ্চিত</value>
+    <value>ঠিক আছে</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -154,7 +154,7 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>ভুল</value>
+    <value>ত্রুটি</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
-    <value>একটি টেবিল সন্নিবেশ করুন</value>
+    <value>সারণী সন্নিবেশ করুন</value>
     <comment>表格对话框/插入表格</comment>
   </data>
   <data name="InstallNow" xml:space="preserve">
@@ -178,15 +178,19 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>তুমি কি নিশ্চিত</value>
+    <value>ঠিক আছে</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>দয়া করে মূল সংমিশ্রণটি টিপুন</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>পড়া ব্যর্থ হয়েছে</value>
+    <value>লোড করতে ব্যর্থ হয়েছে</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>পুনরুদ্ধার</value>
+    <value>পুনঃস্থাপন</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
@@ -194,12 +198,16 @@
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>আপনি কি ফাইলপুনরুদ্ধার করতে চান?</value>
+    <value>আপনি কি ফাইলটি পুনরুদ্ধার করতে চান?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>টেবিল টি সামঞ্জস্য করুন</value>
+    <value>টেবিল ের আকার পরিবর্তন করুন</value>
     <comment>表格对话框/调整表格</comment>
+  </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>অ্যাপ্লিকেশন ডিফল্ট সেটিংস পুনরুদ্ধার করতে ওকে</value>
+    <comment>确定恢复应用默认设置？</comment>
   </data>
   <data name="Save" xml:space="preserve">
     <value>সংরক্ষণ</value>
@@ -209,20 +217,36 @@
     <value>সংরক্ষণ ব্যর্থ হয়েছে</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>শর্টকাট কী সেট করুন</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>শর্টকাট কী দখল করা আছে</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>জমা</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>জমা দেওয়া সফল হয়েছিল</value>
+    <value>জমা দেওয়া সফল</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>আপলোড ব্যর্থ হয়েছে</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>আপলোড সফল</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>সফ্টওয়্যারটি সঠিকভাবে চালানোর জন্য আপনাকে ওয়েবভিউ 2 রানটাইম ইনস্টল করতে হবে।</value>
+    <value>এই সফ্টওয়্যারটি সঠিকভাবে চালানোর জন্য আপনাকে WebView2 রানটাইম ইনস্টল করতে হবে।</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>ওয়েবভিউ 2 রানটাইম ইনস্টল করা নেই</value>
+    <value>WebView2 রানটাইম ইনস্টল করা হয়নি</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>

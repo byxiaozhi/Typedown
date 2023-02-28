@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.AboutApp" xml:space="preserve">
-    <value>Tungkol sa application</value>
+    <value>Tungkol sa Application</value>
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Pahina ng tindahan</value>
+    <value>Pahina ng Microsoft Store</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
-    <value>Batay sa open source software</value>
+    <value>Batay sa open-source software</value>
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
@@ -134,7 +134,7 @@
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
-    <value>Magpadala ng feedback</value>
+    <value>Magpadala ng Feedback</value>
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
@@ -146,35 +146,35 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Pinahahalagahan namin ang nilalaman na iyong pinupuno</value>
+    <value>Seryoso kami sa feedback mo</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>hinggil sa</value>
+    <value>Tungkol sa</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Ang pangwakas na quotation mark ay awtomatikong nakumpleto kapag pumapasok sa pambungad na panaklong</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Auto kumpleto kanang bracket kapag kaliwang bracket ay ipinasok</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Mga panaklong na autocomplete</value>
+    <value>Auto kumpletong mga bracket</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Pagtutugma ng autocomplete Markdown tag</value>
+    <value>Auto kumpletong pagtutugma ng markdown tag</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Autocomplete ang Markdown tag</value>
+    <value>Auto kumpletong markdown tag</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Ang mga pangwakas na sipi ay awtomatikong nakumpleto kapag ipinasok ang mga marka ng pagbukas ng mga sipi</value>
+    <value>Auto complete right quote kapag left quote ang ipinasok</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Mga sipi ng autocomplete</value>
+    <value>Auto kumpletong mga quote</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
@@ -182,11 +182,11 @@
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Kopyahin / i cut ang nilalaman sa pamamagitan ng default</value>
+    <value>Default na kopyahin / gupitin ang nilalaman</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>Ang maximum na lapad ng nilalaman ng editor</value>
+    <value>Pinakamataas na lapad ng nilalaman ng editor</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>pahabain ang</value>
+    <value>Mga Extension</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Default na laki ng font ng editor</value>
+    <value>Default na laki ng font ng editor.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Editor linya mataas na maramihang</value>
+    <value>Taas ng linya ng editor maramihang</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -218,11 +218,11 @@
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Awtomatikong pagtuklas ng wika</value>
+    <value>Auto detect ang wika</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
-    <value>wika</value>
+    <value>Wika</value>
     <comment>编辑器/语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>estilo ng estilo</value>
+    <value>Estilo</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Ayusin ang default na puwang ng indentation para sa mga sanggunian at listahan</value>
+    <value>Ayusin ang default na puwang ng indentation para sa mga quote at listahan</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>patnugot</value>
+    <value>Patnugot</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -250,47 +250,51 @@
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>Magdagdag ng isang configuration ng pag export</value>
+    <value>Magdagdag ng configuration ng pag export</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>I-export ang configuration</value>
+    <value>Mag export ng mga configuration</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>I-export ang uri ng file</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Kapag kumpleto na ang pag export, buksan ang folder kung saan ito matatagpuan</value>
+    <value>Buksan ang folder pagkatapos i export</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Transverse</value>
+    <value>Landscape</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Pahaba</value>
+    <value>Larawan</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>footer ng pahina</value>
+    <value>Footer</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Tuktok</value>
+    <value>Header</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Tuktok at footer</value>
+    <value>Header at Footer</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>sa ilalim ng</value>
+    <value>Ibaba</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
-    <value>kaliwa</value>
+    <value>Kaliwa</value>
     <comment>导出/左</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Right" xml:space="preserve">
-    <value>tama ba</value>
+    <value>Tama na</value>
     <comment>导出/右</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Text" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>sa itaas</value>
+    <value>Tuktok</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>direksyon</value>
+    <value>Direksyon</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>mataas na</value>
+    <value>Taas</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>malawak na</value>
+    <value>Lapad ng katawan</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,31 +338,31 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>mag apply ka na</value>
+    <value>Paglalapat</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Sa sandaling binuksan, ang app ay awtomatikong na save kapag ang file ay binago</value>
+    <value>Awtomatikong i-save kapag binago ang file</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
-    <value>I-save ang sarili</value>
+    <value>Auto save</value>
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Pagpapasadya</value>
+    <value>Pasadyang</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>mga datos</value>
+    <value>Mga Data</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Kung upang panatilihin ang proseso pagkatapos ng pagsasara ng window accelerates ang susunod na startup</value>
+    <value>Panatilihin ang proseso na tumatakbo pagkatapos ng pagsasara ng window</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,55 +370,55 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Ang wika kung saan ipinapakita ang app</value>
+    <value>Wika ng aplikasyon</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
-    <value>wika</value>
+    <value>Wika</value>
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Ibalik ang mga default na setting ng app</value>
+    <value>Ibalik ang default na setting ng application</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>I-reset ang app</value>
+    <value>I-reset ang App</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Pasadyang mga shortcut key</value>
+    <value>Pasadyang mga shortcut</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>shortcut key</value>
+    <value>Mga Shortcut</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Ang pagkilos na nangyayari kapag nagsimula ang app</value>
+    <value>Pagkilos kapag nagsimula ang application</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Lumikha ng isang bagong file</value>
+    <value>Buksan ang bagong file</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Buksan ang huling ginamit na file</value>
+    <value>Ibalik muli ang huling closed file</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Binubuksan ang tinukoy na folder</value>
+    <value>Buksan ang pasadyang folder</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Buksan ang huling ginamit na folder</value>
+    <value>Ibalik muli ang huling sarado folder</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Simulan ang aksyon</value>
+    <value>Startup</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>routine na</value>
+    <value>Pangkalahatan</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Mag upload ng isang imahe</value>
+    <value>Mag-upload ng imahe</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -430,12 +434,20 @@
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>Magdagdag ng isang configuration ng pag upload</value>
+    <value>Magdagdag ng configuration ng pag upload</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>I-upload ang configuration</value>
+    <value>Mag upload ng mga configuration</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Tanggalin ang configuration</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Mag-import Mula sa File</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Paraan ng pag-upload</value>
@@ -461,28 +473,44 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Picker File</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>I-save sa File</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Pag-upload ng pagsubok</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Pag-upload ng imahe</value>
+    <value>Mag-upload ng mga Imahe</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Restart App ay nangangailangan para sa mga pagbabago upang magkaroon ng epekto</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>shortcut key</value>
+    <value>Mga Shortcut</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>I-upload ang configuration</value>
+    <value>Mag upload ng Mga Setting</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Turn off para sa mas mabilis na tugon</value>
+    <value>Isara para sa mas mabilis na tugon</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Animation ng window</value>
+    <value>Mga animation ng window</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Ang menu bar ay lilitaw sa parehong linya ng header</value>
+    <value>Menu Bar at pamagat sa parehong hilera</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,27 +522,27 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Piliin ang tema ng app na nais mong ipakita</value>
+    <value>Piliin kung aling tema ng app ang ipapakita</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>liwanag</value>
+    <value>Liwanag</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Mag apply ng isang tema</value>
+    <value>Tema ng app</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Magdagdag ng "./" bago ang mga relatibong landas</value>
+    <value>Prepend "./" sa mga relatibong landas</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Awtomatikong kopyahin ang mga larawan na gumagamit ng mga relatibong landas kapag nagse save bilang isang file</value>
+    <value>Awtomatikong kopyahin ang mga imahe na ginagamit sa mga relatibong landas kapag nagse save bilang file</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Awtomatikong kopyahin ang mga larawan</value>
+    <value>Awtomatikong kopyahin ang mga imahe</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
@@ -522,71 +550,71 @@
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Awtomatikong makatakas sa mga URL ng imahe kapag ipinasok</value>
+    <value>Awtomatikong makatakas sa mga URL ng imahe kapag nagsingit</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Ang mga hindi nai save na file o mga larawan ng clipboard ay gumagamit ng direktoryo ng ugat ng larawan bilang default</value>
+    <value>Default na direktoryo ng root ng imahe para sa mga hindi nai save na file o mga imahe ng clipboard</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Default na ugat ng imahe</value>
+    <value>Default na direktoryo ng root ng imahe</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Kopyahin ang larawan ng clipboard sa</value>
+    <value>Kopyahin ang mga imahe ng clipboard sa</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Ang mga file ng imahe ng clipboard at mga imahe ng web ay hindi kasama</value>
+    <value>Hindi kasama ang mga imahe ng clipboard o mga imahe sa web</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
-    <value>Larawan ng clipboard</value>
+    <value>Larawan ng Clipboard</value>
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Ang mga imahe ng clipboard ay naka configure gamit ang mga pag upload</value>
+    <value>Configuration ng pag upload ng imahe ng Clipboard</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Ang aksyon na dapat gawin kapag ang isang larawan ay ipinasok</value>
+    <value>Aksyon upang maisagawa kapag nagpasok ng mga imahe</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Kopyahin ang lokal na imahe sa</value>
+    <value>Kopyahin ang mga lokal na imahe sa</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Mga lokal na imahe</value>
+    <value>Lokal na Imahe</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Ginagamit ng mga lokal na imahe ang pagsasaayos ng pag upload</value>
+    <value>Lokal na configuration ng pag upload ng imahe</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Operasyon ng pagsingit ng larawan</value>
+    <value>Ipasok ang aksyon ng imahe</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Kopyahin ang larawan ng network sa</value>
+    <value>Kopyahin ang imahe ng web sa</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Mga imahe sa web</value>
+    <value>Imahe sa Web</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Ginagamit ng mga imahe ng web ang pagsasaayos ng pag upload</value>
+    <value>Pag upload ng imahe ng web configuration</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Ang mga relatibong landas ay mas gusto kapag nagsingit ng mga larawan</value>
+    <value>Mas gustong gumamit ng relatibong landas kapag nagpasok ng mga imahe</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Ang mga relatibong landas ay mas gusto</value>
+    <value>Unahin ang paggamit ng relatibong landas</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Nagdidispley ng sidebar</value>
+    <value>Ipakita ang Side Bar</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,31 +646,31 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Nagdidispley ng status bar</value>
+    <value>Ipakita ang Status Bar</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>hitsura</value>
+    <value>Hitsura</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Panatilihing laging nasa itaas ang bintana</value>
+    <value>Gawing laging nasa itaas ang window</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>hanggang sa tuktok na antas</value>
+    <value>Pinakatuktok</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Kapag nakabukas, ang background ng window ay may mica background effect</value>
+    <value>Paganahin ang mica background effect para sa window background</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Gumamit ng mga materyales sa mica</value>
+    <value>Gumamit ng mica material</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>bintana</value>
+    <value>Window</value>
     <comment>视图/窗口</comment>
   </data>
 </root>

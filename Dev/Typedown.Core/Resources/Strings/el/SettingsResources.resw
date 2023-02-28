@@ -122,7 +122,7 @@
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Σελίδα καταστήματος</value>
+    <value>Σελίδα καταστήματος της Microsoft</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -146,47 +146,47 @@
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Εκτιμούμε το περιεχόμενο που συμπληρώνετε</value>
+    <value>Λαμβάνουμε πολύ σοβαρά υπόψη τα σχόλιά σας</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>σχετικά με</value>
+    <value>Περίπου</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Τα εισαγωγικά κλεισίματος συμπληρώνονται αυτόματα κατά την εισαγωγή της αριστερής παρένθεσης</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Αυτόματη συμπλήρωση δεξιάς αγκύλης κατά την εισαγωγή αριστερής αγκύλης</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Παρενθέσεις αυτόματης συμπλήρωσης</value>
+    <value>Στηρίγματα αυτόματης συμπλήρωσης</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Αυτόματη συμπλήρωση ετικετών Markdown που ταιριάζουν</value>
+    <value>Αυτόματη συμπλήρωση ετικέτας σήμανσης που ταιριάζει</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Αυτόματη συμπλήρωση της ετικέτας Markdown</value>
+    <value>Αυτόματη συμπλήρωση ετικετών σήμανσης</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Τα εισαγωγικά κλεισίματος συμπληρώνονται αυτόματα κατά την εισαγωγή εισαγωγικών ανοίγματος</value>
+    <value>Αυτόματη συμπλήρωση δεξιάς προσφοράς κατά την εισαγωγή αριστερής προσφοράς</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Εισαγωγικά αυτόματης συμπλήρωσης</value>
+    <value>Αυτόματη συμπλήρωση προσφορών</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Επιλογή προεπιλεγμένου περιεχομένου αντιγραφής/αποκοπής</value>
+    <value>Επιλέξτε προεπιλεγμένο περιεχόμενο αντιγραφής / αποκοπής</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Αντιγραφή/αποκοπή περιεχομένου από προεπιλογή</value>
+    <value>Προεπιλεγμένο περιεχόμενο αντιγραφής/αποκοπής</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>Το μέγιστο πλάτος του περιεχομένου του προγράμματος επεξεργασίας</value>
+    <value>Μέγιστο πλάτος περιεχομένου προγράμματος επεξεργασίας</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>παρατείνω</value>
+    <value>Επεκτάσεις</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Προεπιλεγμένο μέγεθος γραμματοσειράς προγράμματος επεξεργασίας</value>
+    <value>Προεπιλεγμένο μέγεθος γραμματοσειράς του προγράμματος επεξεργασίας.</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Γραμμή επεξεργαστή υψηλό πολλαπλάσιο</value>
+    <value>Πολλαπλάσια ύψος γραμμής επεξεργαστή</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
@@ -230,11 +230,11 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>ύφος</value>
+    <value>Ύφος</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Προσαρμογή του προεπιλεγμένου χώρου εσοχής για αναφορές και λίστες</value>
+    <value>Προσαρμογή προεπιλεγμένου χώρου εσοχής για εισαγωγικά και λίστες</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
@@ -242,7 +242,7 @@
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>συντάκτης</value>
+    <value>Συντάκτης</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -254,35 +254,39 @@
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Εξαγωγή της ρύθμισης παραμέτρων</value>
+    <value>Εξαγωγή διαμορφώσεων</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Τύπος αρχείου εξαγωγής</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Όταν ολοκληρωθεί η εξαγωγή, ανοίξτε το φάκελο όπου βρίσκεται</value>
+    <value>Ανοίξτε το φάκελο μετά την εξαγωγή</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Εγκάρσιος</value>
+    <value>Τοπίο</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Διαμήκη</value>
+    <value>Προσωπογραφία</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>υποσέλιδο σελίδας</value>
+    <value>Υποσέλιδο</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>Κορυφή</value>
+    <value>Κεφαλίδα</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Επάνω και υποσέλιδο</value>
+    <value>Κεφαλίδα και υποσέλιδο</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>υπό</value>
+    <value>Πυθμένας</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>πάνω</value>
+    <value>Κορυφή</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>κατεύθυνση</value>
+    <value>Κατεύθυνση</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>ψηλός</value>
+    <value>Ύψος</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,7 +318,7 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>ευρύς</value>
+    <value>Πλάτος</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>.HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,15 +338,15 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>.PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>εφαρμόζω</value>
+    <value>Εφαρμογή</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Μόλις ανοιχτεί, η εφαρμογή αποθηκεύεται αυτόματα όταν τροποποιείται το αρχείο</value>
+    <value>Αυτόματη αποθήκευση όταν τροποποιείται το αρχείο</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,15 +354,15 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Προσαρμογής</value>
+    <value>Συνήθεια</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>δεδομένα</value>
+    <value>Δεδομένα</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Η διατήρηση της διαδικασίας μετά το κλείσιμο του παραθύρου επιταχύνει την επόμενη εκκίνηση</value>
+    <value>Διατήρηση της διαδικασίας σε λειτουργία μετά το κλείσιμο του παραθύρου</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
@@ -366,7 +370,7 @@
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>Η γλώσσα στην οποία εμφανίζεται η εφαρμογή</value>
+    <value>Γλώσσα εφαρμογής</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,47 +378,47 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Επαναφορά των προεπιλεγμένων ρυθμίσεων της εφαρμογής</value>
+    <value>Επαναφορά προεπιλεγμένων ρυθμίσεων εφαρμογής</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>Επαναφορά της εφαρμογής</value>
+    <value>Επαναφορά εφαρμογής</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Προσαρμοσμένα πλήκτρα συντόμευσης</value>
+    <value>Προσαρμοσμένες συντομεύσεις</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>πλήκτρο συντόμευσης</value>
+    <value>Συντομεύσεις</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Η ενέργεια που πραγματοποιείται κατά την εκκίνηση της εφαρμογής</value>
+    <value>Ενέργεια κατά την εκκίνηση της εφαρμογής</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Δημιουργία νέου αρχείου</value>
+    <value>Άνοιγμα νέου αρχείου</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Άνοιγμα του τελευταίου χρησιμοποιημένου αρχείου</value>
+    <value>Επαναφορά τελευταίου κλειστού αρχείου</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Ανοίγει τον καθορισμένο φάκελο</value>
+    <value>Άνοιγμα προσαρμοσμένου φακέλου</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Άνοιγμα του τελευταίου φακέλου που χρησιμοποιήθηκε</value>
+    <value>Επαναφορά τελευταίου κλειστού φακέλου</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Ξεκινήστε τη δράση</value>
+    <value>Εκκίνησης</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>ρουτίνα</value>
+    <value>Γενικά</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
@@ -422,7 +426,7 @@
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Ανεβάστε μια εικόνα</value>
+    <value>Ανεβάστε εικόνα</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -434,8 +438,16 @@
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Ανεβάστε τη διαμόρφωση</value>
+    <value>Μεταφόρτωση διαμορφώσεων</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Διαγραφή ρύθμισης παραμέτρων</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Εισαγωγή από αρχείο</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Μέθοδος μεταφόρτωσης</value>
@@ -461,28 +473,44 @@
     <value>ΠΣΣ</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Αρχείο επιλογέα</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Αποθήκευση σε αρχείο</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Δοκιμαστική μεταφόρτωση</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Μεταφόρτωση εικόνας</value>
+    <value>Ανεβάστε εικόνες</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Απαιτείται επανεκκίνηση εφαρμογής για να εφαρμοστούν οι αλλαγές</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>πλήκτρο συντόμευσης</value>
+    <value>Συντομεύσεις</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Ανεβάστε τη διαμόρφωση</value>
+    <value>Ρυθμίσεις μεταφόρτωσης</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Απενεργοποίηση για ταχύτερη απόκριση</value>
+    <value>Κλείσιμο για ταχύτερη απόκριση</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Κινούμενη εικόνα παραθύρου</value>
+    <value>Κινούμενες εικόνες παραθύρων</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>Η γραμμή μενού εμφανίζεται στην ίδια γραμμή με την κεφαλίδα</value>
+    <value>Γραμμή μενού και τίτλος στην ίδια σειρά</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -494,23 +522,23 @@
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Επιλέξτε το θέμα εφαρμογής που θέλετε να εμφανίσετε</value>
+    <value>Επιλέξτε το θέμα εφαρμογής που θα εμφανίζεται</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>φως</value>
+    <value>Φως</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Εφαρμογή θέματος</value>
+    <value>Θέμα εφαρμογής</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Προσθήκη "./" πριν από σχετικές διαδρομές</value>
+    <value>Prepend "./" σε σχετικές διαδρομές</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Αυτόματη αντιγραφή εικόνων που χρησιμοποιούν σχετικές διαδρομές κατά την αποθήκευση ως αρχείο</value>
+    <value>Αυτόματη αντιγραφή εικόνων που χρησιμοποιούνται σε σχετικές διαδρομές κατά την αποθήκευση ως αρχείο</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
@@ -526,19 +554,19 @@
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>Τα μη αποθηκευμένα αρχεία ή οι εικόνες του Προχείρου χρησιμοποιούν τον ριζικό κατάλογο εικόνας από προεπιλογή</value>
+    <value>Προεπιλεγμένος ριζικός κατάλογος εικόνας για μη αποθηκευμένα αρχεία ή εικόνες προχείρου</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Προεπιλεγμένη ρίζα εικόνας</value>
+    <value>Προεπιλεγμένος ριζικός κατάλογος εικόνας</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Αντιγράψτε την εικόνα του προχείρου σε</value>
+    <value>Αντιγραφή εικόνων προχείρου σε</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Τα αρχεία εικόνας του Προχείρου και οι εικόνες web δεν περιλαμβάνονται</value>
+    <value>Δεν περιλαμβάνει εικόνες προχείρου ή εικόνες ιστού</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,47 +574,47 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Οι παράμετροι των εικόνων του Προχείρου ρυθμίζονται χρησιμοποιώντας μεταφορτώσεις</value>
+    <value>Ρύθμιση παραμέτρων μεταφόρτωσης εικόνας προχείρου</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Η ενέργεια που πρέπει να εκτελέσετε κατά την εισαγωγή μιας εικόνας</value>
+    <value>Ενέργεια που εκτελείται κατά την εισαγωγή εικόνων</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Αντιγράψτε την τοπική εικόνα σε</value>
+    <value>Αντιγράψτε τοπικές εικόνες σε</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Τοπικές εικόνες</value>
+    <value>Τοπική εικόνα</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Οι τοπικές εικόνες χρησιμοποιούν τη διαμόρφωση μεταφόρτωσης</value>
+    <value>Διαμόρφωση τοπικής μεταφόρτωσης εικόνων</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Λειτουργία εισαγωγής εικόνας</value>
+    <value>Ενέργεια εισαγωγής εικόνας</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Αντιγράψτε την εικόνα δικτύου σε</value>
+    <value>Αντιγραφή εικόνας ιστού σε</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Εικόνες ιστού</value>
+    <value>Εικόνα ιστού</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Οι εικόνες web χρησιμοποιούν τη ρύθμιση παραμέτρων μεταφόρτωσης</value>
+    <value>Διαμόρφωση μεταφόρτωσης εικόνων ιστού</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>Οι σχετικές διαδρομές προτιμώνται κατά την εισαγωγή εικόνων</value>
+    <value>Προτιμήστε να χρησιμοποιείτε σχετική διαδρομή κατά την εισαγωγή εικόνων</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>Προτιμώνται σχετικές διαδρομές</value>
+    <value>Ιεράρχηση με χρήση σχετικής διαδρομής</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
@@ -594,7 +622,7 @@
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Ορισμός της μεθόδου μεταφόρτωσης εικόνας</value>
+    <value>Ορισμός μεθόδου μεταφόρτωσης εικόνας</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
@@ -602,7 +630,7 @@
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>διάταξη</value>
+    <value>Διάταξη</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
@@ -610,7 +638,7 @@
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Εμφανίζει την πλαϊνή στήλη</value>
+    <value>Εμφάνιση πλαϊνής γραμμής</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
@@ -618,31 +646,31 @@
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Εμφανίζει τη γραμμή κατάστασης</value>
+    <value>Εμφάνιση γραμμής κατάστασης</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>εμφάνιση</value>
+    <value>Εμφάνιση</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Κρατήστε το παράθυρο πάντα στην κορυφή</value>
+    <value>Κάντε το παράθυρο πάντα στην κορυφή</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>στο ανώτερο επίπεδο</value>
+    <value>Ανώτερο</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Όταν είναι ενεργοποιημένο, το φόντο του παραθύρου έχει εφέ φόντου μαρμαρυγία</value>
+    <value>Ενεργοποίηση του εφέ φόντου μαρμαρυγία για το φόντο του παραθύρου</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Χρησιμοποιήστε υλικά μαρμαρυγίας</value>
+    <value>Χρησιμοποιήστε υλικό μαρμαρυγίας</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>παράθυρο</value>
+    <value>Παράθυρο</value>
     <comment>视图/窗口</comment>
   </data>
 </root>
