@@ -122,7 +122,7 @@
     <comment>未保存对话框/您有未保存的更改</comment>
   </data>
   <data name="AsKToSaveTitle" xml:space="preserve">
-    <value>Voulez-vous enregistrer vos modifications ?</value>
+    <value>Voulez-vous enregistrer les modifications ?</value>
     <comment>未保存对话框/是否要保存更改？</comment>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>对话框/取消</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Es-tu sûr</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
   <data name="ContentCanNotBeBlank" xml:space="preserve">
@@ -138,11 +138,11 @@
     <comment>对话框/内容不能为空</comment>
   </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
-    <value>Echec de la création du nouveau document</value>
+    <value>Échec de la création d'un nouveau document</value>
     <comment>创建文件对话框/新建文档失败</comment>
   </data>
   <data name="CreateFolderErrorTitle" xml:space="preserve">
-    <value>Echec de la création du nouveau dossier</value>
+    <value>Échec de la création d'un nouveau dossier</value>
     <comment>创建文件夹对话框/新建文件夹失败</comment>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -154,19 +154,19 @@
     <comment>未保存对话框/不保存</comment>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>erreur</value>
+    <value>Erreur</value>
     <comment>对话框/错误</comment>
   </data>
   <data name="ExportErrorTitle" xml:space="preserve">
-    <value>Echec de l’exportation</value>
+    <value>Échec de l'exportation</value>
     <comment>文件导出对话框/导出失败</comment>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>rétroaction</value>
+    <value>Commentaires</value>
     <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
-    <value>Echec de l’importation</value>
+    <value>Échec de l'importation</value>
     <comment>文件导入对话框/导入失败</comment>
   </data>
   <data name="InsertTableTitle" xml:space="preserve">
@@ -178,51 +178,75 @@
     <comment>环境检查对话框/立即安装</comment>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Es-tu sûr</value>
+    <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
+  <data name="PleasePressTheKeyCombination" xml:space="preserve">
+    <value>Veuillez appuyer sur la combinaison de touches</value>
+    <comment>请按下组合键</comment>
+  </data>
   <data name="ReadErrorTitle" xml:space="preserve">
-    <value>Échec de la lecture</value>
+    <value>Échec du chargement</value>
     <comment>打开文件对话框/读取失败</comment>
   </data>
   <data name="Recover" xml:space="preserve">
-    <value>guérir</value>
+    <value>Récupérer</value>
     <comment>恢复文件对话框/恢复</comment>
   </data>
   <data name="RecoverContent" xml:space="preserve">
-    <value>Vous n’avez pas enregistré ce fichier</value>
+    <value>Vous n'avez pas enregistré ce fichier</value>
     <comment>恢复文件对话框/您尚未保存此文件</comment>
   </data>
   <data name="RecoverTitle" xml:space="preserve">
-    <value>Voulez-vous récupérer des fichiers?</value>
+    <value>Voulez-vous restaurer le fichier ?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
   <data name="ResizeTableTitle" xml:space="preserve">
-    <value>Ajuster le tableau</value>
+    <value>Redimensionner le tableau</value>
     <comment>表格对话框/调整表格</comment>
   </data>
+  <data name="RestoreSettingsContent" xml:space="preserve">
+    <value>OK pour restaurer les paramètres par défaut de l'application</value>
+    <comment>确定恢复应用默认设置？</comment>
+  </data>
   <data name="Save" xml:space="preserve">
-    <value>Sauvegarder</value>
+    <value>Enregistrer</value>
     <comment>文件保存对话框/保存</comment>
   </data>
   <data name="SaveErrorTitle" xml:space="preserve">
-    <value>Echec de l’enregistrement</value>
+    <value>Enregistrement échoué</value>
     <comment>文件保存对话框/保存失败</comment>
   </data>
+  <data name="SetShortcutKeyTitle" xml:space="preserve">
+    <value>Définir une touche de raccourci</value>
+    <comment>设置快捷键</comment>
+  </data>
+  <data name="ShortcutKeyIsOccupied" xml:space="preserve">
+    <value>La touche de raccourci est occupée</value>
+    <comment>快捷键已被占用</comment>
+  </data>
   <data name="Submit" xml:space="preserve">
-    <value>Envoyer</value>
+    <value>Soumettre</value>
     <comment>反馈对话框/提交</comment>
   </data>
   <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>La soumission a été acceptée</value>
+    <value>Soumission réussie</value>
     <comment>反馈对话框/提交成功</comment>
   </data>
+  <data name="UploadFailedTitle" xml:space="preserve">
+    <value>Échec de la mise en ligne</value>
+    <comment>上传失败</comment>
+  </data>
+  <data name="UploadSuccessfulTitle" xml:space="preserve">
+    <value>Téléchargement réussi</value>
+    <comment>上传成功</comment>
+  </data>
   <data name="WebView2RuntimeNotInstalledContent" xml:space="preserve">
-    <value>Vous devez installer le runtime WebView2 pour exécuter le logiciel correctement.</value>
+    <value>Vous devez installer le runtime WebView2 pour exécuter ce logiciel correctement.</value>
     <comment>环境检查对话框/您需要安装 WebView2 运行时才能正常运行该软件。</comment>
   </data>
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
-    <value>Le runtime WebView2 n’est pas installé</value>
+    <value>Runtime WebView2 non installé</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
   </data>
 </root>
