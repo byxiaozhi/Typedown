@@ -196,7 +196,7 @@ namespace Typedown.Windows
                 if (Locale.SupportedLangs.ContainsKey(settingLanguage))
                     ApplicationLanguages.PrimaryLanguageOverride = settingLanguage;
                 else
-                    ApplicationLanguages.PrimaryLanguageOverride = null;
+                    ApplicationLanguages.PrimaryLanguageOverride = string.Empty;
             }
             catch
             {

@@ -254,7 +254,7 @@
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Export configuration</value>
+    <value>Export configurations</value>
     <comment>导出/导出配置</comment>
   </data>
   <data name="Export.ExportFileType" xml:space="preserve">
@@ -438,7 +438,7 @@
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Upload configuration</value>
+    <value>Upload configurations</value>
     <comment>图片/上传配置</comment>
   </data>
   <data name="ImageUpload.DeleteConfig" xml:space="preserve">
