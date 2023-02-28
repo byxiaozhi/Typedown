@@ -489,6 +489,10 @@
     <value>画像をアップロードする</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>変更を有効にするには、アプリを再起動する必要があります。</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
     <value>ショートカット</value>
     <comment>快捷键</comment>

@@ -71,17 +71,33 @@
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.KeepRun, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
-        <controls:NormalSettingItem Title="{u:LocaleString Key=General.Language.Title}" Description="{u:LocaleString Key=General.Language.Description}">
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.Language.Title}" Description="{u:LocaleString Key=General.Language.Description}" HorizontalActionAlignment="Stretch">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xf2b7;"/>
             </controls:NormalSettingItem.Icon>
-            <ComboBox ItemsSource="{x:Bind utils:Locale.LangsOptions.Keys}" Width="200" SelectedItem="{Binding SettingsViewModel.Language, Mode=TwoWay}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate x:DataType="x:String">
-                        <TextBlock Text="{x:Bind utils:Locale.GetLangOptionDisplayName((x:String))}"/>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <Grid ColumnSpacing="4" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock 
+                    TextWrapping="Wrap" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center" 
+                    Margin="0,0,16,0" 
+                    x:Name="LangChangedTextBlock" 
+                    Text="{u:LocaleString Key=RestartAppIsRequireForChangesToTakeEffect}" 
+                    FontSize="14" 
+                    Foreground="{ThemeResource SystemErrorTextColor}" 
+                    x:Load="{x:Bind IsLangChanged(Settings.Language), Mode=OneWay}"/>
+                <ComboBox Grid.Column="1" VerticalAlignment="Center" ItemsSource="{x:Bind utils:Locale.LangsOptions.Keys}" Width="200" SelectedItem="{Binding SettingsViewModel.Language, Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <TextBlock Text="{x:Bind utils:Locale.GetLangOptionDisplayName((x:String))}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
         </controls:NormalSettingItem>
 
         <TextBlock Text="{u:LocaleString Key=General.Custom}" Margin="0,16,0,4"/>
@@ -98,6 +114,6 @@
             </controls:NormalSettingItem.Icon>
             <Button MinWidth="120" Command="{x:Bind Settings.ResetSettingsCommand}" Content="{u:LocaleString Key=Restore}"/>
         </controls:NormalSettingItem>
-        
+
     </StackPanel>
 </UserControl>
