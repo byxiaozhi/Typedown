@@ -122,7 +122,7 @@
     <comment>关于/关于应用程序</comment>
   </data>
   <data name="About.AppStorePage" xml:space="preserve">
-    <value>Pagina del negozio</value>
+    <value>Pagina del Microsoft Store</value>
     <comment>关于/应用商店页面</comment>
   </data>
   <data name="About.BasedOnOpenSourceSoftware" xml:space="preserve">
@@ -130,7 +130,7 @@
     <comment>关于/基于开源软件</comment>
   </data>
   <data name="About.Introduction" xml:space="preserve">
-    <value>Un editor WYSIWYG Markdown</value>
+    <value>Un editor Markdown WYSIWYG</value>
     <comment>关于/一款所见即所得 Markdown 编辑器</comment>
   </data>
   <data name="About.SendFeedback" xml:space="preserve">
@@ -138,55 +138,55 @@
     <comment>关于/发送反馈</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Contatto</value>
+    <value>Contatti</value>
     <comment>关于/联系方式</comment>
   </data>
   <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>E-mail</value>
+    <value>Email</value>
     <comment>关于/Email</comment>
   </data>
   <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Apprezziamo i contenuti che inserisci</value>
+    <value>Prendiamo molto seriamente il tuo feedback</value>
     <comment>关于/我们会非常重视您填写的内容</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
-    <value>riguardante</value>
+    <value>Informazioni su</value>
     <comment>关于/关于</comment>
   </data>
   <data name="Editor.AutoPairBracket.Description" xml:space="preserve">
-    <value>Le virgolette di chiusura vengono completate automaticamente quando si immette la parentesi di apertura</value>
-    <comment>编辑器/输入左括号时自动补全右引号</comment>
+    <value>Completa automaticamente la parentesi destra quando viene inserita la parentesi sinistra</value>
+    <comment>编辑器/输入左括号时自动补全右括号</comment>
   </data>
   <data name="Editor.AutoPairBracket.Title" xml:space="preserve">
-    <value>Parentesi di completamento automatico</value>
+    <value>Completa automaticamente le parentesi</value>
     <comment>编辑器/自动补全括号</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Description" xml:space="preserve">
-    <value>Completamento automatico dei tag Markdown corrispondenti</value>
+    <value>Completa automaticamente il tag Markdown corrispondente</value>
     <comment>编辑器/自动补全匹配的 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairMarkdownSyntax.Title" xml:space="preserve">
-    <value>Completamento automatico del tag Markdown</value>
+    <value>Completa automaticamente i tag Markdown</value>
     <comment>编辑器/自动补全 Markdown 标记</comment>
   </data>
   <data name="Editor.AutoPairQuote.Description" xml:space="preserve">
-    <value>Le virgolette di chiusura vengono completate automaticamente quando vengono immesse le virgolette di apertura</value>
+    <value>Completa automaticamente il virgolettato destro quando viene inserito il virgolettato sinistro</value>
     <comment>编辑器/输入左引号时自动补全右引号</comment>
   </data>
   <data name="Editor.AutoPairQuote.Title" xml:space="preserve">
-    <value>Completamento automatico delle virgolette</value>
+    <value>Completa automaticamente i virgolettati</value>
     <comment>编辑器/自动补全引号</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Description" xml:space="preserve">
-    <value>Selezionare il contenuto predefinito di copia/taglio</value>
+    <value>Seleziona il contenuto di copia/taglia predefinito</value>
     <comment>编辑器/选择默认的复制/剪切内容</comment>
   </data>
   <data name="Editor.DefaultCopyCutFormat.Title" xml:space="preserve">
-    <value>Copia/taglia il contenuto per impostazione predefinita</value>
+    <value>Contenuto di copia/taglia predefinito</value>
     <comment>编辑器/默认复制/剪切内容</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Description" xml:space="preserve">
-    <value>La larghezza massima del contenuto dell'editor</value>
+    <value>Larghezza massima del contenuto dell'editor</value>
     <comment>编辑器/编辑器内容最大宽度</comment>
   </data>
   <data name="Editor.EditorAreaWidth.Title" xml:space="preserve">
@@ -194,11 +194,11 @@
     <comment>编辑器/内容宽度</comment>
   </data>
   <data name="Editor.Extension" xml:space="preserve">
-    <value>estendere</value>
+    <value>Estensioni</value>
     <comment>编辑器/扩展</comment>
   </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
-    <value>Dimensione del carattere predefinita dell'editor</value>
+    <value>Dimensione predefinita del carattere dell'editor</value>
     <comment>编辑器/编辑器默认字号</comment>
   </data>
   <data name="Editor.FontSize.Title" xml:space="preserve">
@@ -206,19 +206,19 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
-    <value>Linea editor multiplo alto</value>
+    <value>Multiplo dell'altezza della riga dell'editor</value>
     <comment>编辑器/编辑器行高倍数</comment>
   </data>
   <data name="Editor.LineHeight.Title" xml:space="preserve">
-    <value>Altezza della linea</value>
+    <value>Altezza della riga</value>
     <comment>编辑器/行高</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Description" xml:space="preserve">
-    <value>Trovare ed evidenziare errori di sintassi</value>
+    <value>Trova e evidenzia gli errori di sintassi</value>
     <comment>编辑器/查找并高亮语法错误</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Auto" xml:space="preserve">
-    <value>Rilevamento automatico della lingua</value>
+    <value>Rilevamento automatico lingua</value>
     <comment>编辑器/自动检测语言</comment>
   </data>
   <data name="Editor.SpellcheckEnabled.Language.Title" xml:space="preserve">
@@ -230,19 +230,19 @@
     <comment>编辑器/拼写检查</comment>
   </data>
   <data name="Editor.Style" xml:space="preserve">
-    <value>stile</value>
+    <value>Stile</value>
     <comment>编辑器/样式</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
-    <value>Regolare lo spazio di rientro predefinito per riferimenti ed elenchi</value>
+    <value>Regolazione dello spazio di indentazione predefinito per citazioni e elenchi</value>
     <comment>编辑器/调整引用和列表的默认缩进空格</comment>
   </data>
   <data name="Editor.TabSize.Title" xml:space="preserve">
-    <value>Rientro predefinito</value>
+    <value>Indentazione predefinita</value>
     <comment>编辑器/默认缩进</comment>
   </data>
   <data name="Editor.Title" xml:space="preserve">
-    <value>Editore</value>
+    <value>Editor</value>
     <comment>编辑器/编辑器</comment>
   </data>
   <data name="Export.AddConfig.Description" xml:space="preserve">
@@ -250,47 +250,51 @@
     <comment>导出/自定义导出格式、样式</comment>
   </data>
   <data name="Export.AddConfig.Title" xml:space="preserve">
-    <value>Aggiungere una configurazione di esportazione</value>
+    <value>Aggiungi configurazione di esportazione</value>
     <comment>导出/添加导出配置</comment>
   </data>
   <data name="Export.Configs" xml:space="preserve">
-    <value>Esportare la configurazione</value>
+    <value>Configurazioni di esportazione</value>
     <comment>导出/导出配置</comment>
   </data>
+  <data name="Export.ExportFileType" xml:space="preserve">
+    <value>Tipo di file di esportazione</value>
+    <comment>导出文件类型</comment>
+  </data>
   <data name="Export.OpenFolderAfterExport.Title" xml:space="preserve">
-    <value>Al termine dell'esportazione, aprire la cartella in cui si trova</value>
+    <value>Apri la cartella dopo l'esportazione</value>
     <comment>导出/导出完成后打开所在文件夹</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Landscape" xml:space="preserve">
-    <value>Trasversale</value>
+    <value>Paesaggio</value>
     <comment>导出/横向</comment>
   </data>
   <data name="Export.PDFConfig.Orientations.Portrait" xml:space="preserve">
-    <value>Longitudinale</value>
+    <value>Verticale</value>
     <comment>导出/纵向</comment>
   </data>
   <data name="Export.PDFConfigModel.Footer" xml:space="preserve">
-    <value>piè di pagina</value>
+    <value>Piè di pagina</value>
     <comment>导出/页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Header" xml:space="preserve">
-    <value>In alto</value>
+    <value>Intestazione</value>
     <comment>导出/页首</comment>
   </data>
   <data name="Export.PDFConfigModel.HeaderAndFooter.Text" xml:space="preserve">
-    <value>Inizio e piè di pagina</value>
+    <value>Intestazione e piè di pagina</value>
     <comment>导出/页首和页脚</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Bottom" xml:space="preserve">
-    <value>sotto</value>
+    <value>Inferiore</value>
     <comment>导出/下</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Left" xml:space="preserve">
-    <value>A sinistra</value>
+    <value>Sinistro</value>
     <comment>导出/左</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Right" xml:space="preserve">
-    <value>A destra</value>
+    <value>Destro</value>
     <comment>导出/右</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Text" xml:space="preserve">
@@ -298,15 +302,15 @@
     <comment>导出/边距</comment>
   </data>
   <data name="Export.PDFConfigModel.Margins.Top" xml:space="preserve">
-    <value>sopra</value>
+    <value>Superiore</value>
     <comment>导出/上</comment>
   </data>
   <data name="Export.PDFConfigModel.Orientation.Text" xml:space="preserve">
-    <value>direzione</value>
+    <value>Direzione</value>
     <comment>导出/方向</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Height" xml:space="preserve">
-    <value>alto</value>
+    <value>Altezza</value>
     <comment>导出/高</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Text" xml:space="preserve">
@@ -314,11 +318,11 @@
     <comment>导出/页面大小</comment>
   </data>
   <data name="Export.PDFConfigModel.PageSize.Width" xml:space="preserve">
-    <value>largo</value>
+    <value>Larghezza</value>
     <comment>导出/宽</comment>
   </data>
   <data name="Export.Title" xml:space="preserve">
-    <value>Esportazione</value>
+    <value>Esporta</value>
     <comment>导出/导出</comment>
   </data>
   <data name="Export.Type" xml:space="preserve">
@@ -326,7 +330,7 @@
     <comment>导出/导出格式</comment>
   </data>
   <data name="Export.Types.HTML" xml:space="preserve">
-    <value>..HTML</value>
+    <value>HTML</value>
     <comment>导出/HTML</comment>
   </data>
   <data name="Export.Types.Image" xml:space="preserve">
@@ -334,15 +338,15 @@
     <comment>导出/Image</comment>
   </data>
   <data name="Export.Types.PDF" xml:space="preserve">
-    <value>..PDF</value>
+    <value>PDF</value>
     <comment>导出/PDF</comment>
   </data>
   <data name="General.Application" xml:space="preserve">
-    <value>applicare</value>
+    <value>Applicazione</value>
     <comment>通用/应用</comment>
   </data>
   <data name="General.AutoSave.Description" xml:space="preserve">
-    <value>Una volta aperta, l'app viene salvata automaticamente quando il file viene modificato</value>
+    <value>Salva automaticamente quando il file viene modificato</value>
     <comment>通用/打开后应用会在文件发生修改时自动保存</comment>
   </data>
   <data name="General.AutoSave.Title" xml:space="preserve">
@@ -350,23 +354,23 @@
     <comment>通用/自动保存</comment>
   </data>
   <data name="General.Custom" xml:space="preserve">
-    <value>Personalizzazione</value>
+    <value>Personalizza</value>
     <comment>通用/自定义</comment>
   </data>
   <data name="General.Data" xml:space="preserve">
-    <value>dati</value>
+    <value>Dati</value>
     <comment>通用/数据</comment>
   </data>
   <data name="General.KeepRun.Description" xml:space="preserve">
-    <value>Se mantenere il processo dopo aver chiuso la finestra accelera il prossimo avvio</value>
+    <value>Mantieni il processo in esecuzione dopo la chiusura della finestra</value>
     <comment>通用/关闭窗口后是否保留进程加速下次启动</comment>
   </data>
   <data name="General.KeepRun.Title" xml:space="preserve">
-    <value>Continua a correre</value>
+    <value>Mantieni in esecuzione</value>
     <comment>通用/保持运行</comment>
   </data>
   <data name="General.Language.Description" xml:space="preserve">
-    <value>La lingua in cui viene visualizzata l'app</value>
+    <value>Lingua dell'applicazione</value>
     <comment>通用/应用显示的语言</comment>
   </data>
   <data name="General.Language.Title" xml:space="preserve">
@@ -374,55 +378,55 @@
     <comment>通用/语言</comment>
   </data>
   <data name="General.RestoreDefault.Description" xml:space="preserve">
-    <value>Ripristinare le impostazioni predefinite dell'app</value>
+    <value>Ripristina le impostazioni predefinite dell'applicazione</value>
     <comment>通用/还原应用默认设置</comment>
   </data>
   <data name="General.RestoreDefault.Title" xml:space="preserve">
-    <value>Reimpostare l'app</value>
+    <value>Reset App</value>
     <comment>通用/重置应用</comment>
   </data>
   <data name="General.ShortcutKeys.Description" xml:space="preserve">
-    <value>Tasti di scelta rapida personalizzati</value>
+    <value>Scorciatoie personalizzate</value>
     <comment>通用/自定义快捷键</comment>
   </data>
   <data name="General.ShortcutKeys.Title" xml:space="preserve">
-    <value>tasto di scelta rapida</value>
+    <value>Scorciatoie</value>
     <comment>通用/快捷键</comment>
   </data>
   <data name="General.StartupAction.Description" xml:space="preserve">
-    <value>Azione che si verifica all'avvio dell'app</value>
+    <value>Azione all'avvio dell'applicazione</value>
     <comment>通用/当应用启动时进行的操作</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.NewFile" xml:space="preserve">
-    <value>Creare un nuovo file</value>
+    <value>Apri nuovo file</value>
     <comment>通用/新建文件</comment>
   </data>
   <data name="General.StartupAction.FileStartupAction.OpenLast" xml:space="preserve">
-    <value>Aprire l'ultimo file utilizzato</value>
+    <value>Ripristina l'ultimo file chiuso</value>
     <comment>通用/打开上次使用的文件</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenFolder" xml:space="preserve">
-    <value>Apre la cartella specificata</value>
+    <value>Apri cartella personalizzata</value>
     <comment>通用/打开指定文件夹</comment>
   </data>
   <data name="General.StartupAction.FolderStartupAction.OpenLast" xml:space="preserve">
-    <value>Aprire l'ultima cartella utilizzata</value>
+    <value>Ripristina l'ultima cartella chiusa</value>
     <comment>通用/打开上次使用的文件夹</comment>
   </data>
   <data name="General.StartupAction.Title" xml:space="preserve">
-    <value>Avvia l'azione</value>
+    <value>Avvio</value>
     <comment>通用/启动操作</comment>
   </data>
   <data name="General.Title" xml:space="preserve">
-    <value>routine</value>
+    <value>Generale</value>
     <comment>通用/常规</comment>
   </data>
   <data name="Image.InsertActions.CopyToPath" xml:space="preserve">
-    <value>Copia nel percorso</value>
+    <value>Copia nella cartella</value>
     <comment>图片/复制到路径</comment>
   </data>
   <data name="Image.InsertActions.Upload" xml:space="preserve">
-    <value>Carica un'immagine</value>
+    <value>Carica immagine</value>
     <comment>图片/上传图片</comment>
   </data>
   <data name="Image.Title" xml:space="preserve">
@@ -430,12 +434,20 @@
     <comment>图片/图片</comment>
   </data>
   <data name="ImageUpload.AddConfig.Title" xml:space="preserve">
-    <value>Aggiungere una configurazione di caricamento</value>
+    <value>Aggiungi configurazione di caricamento</value>
     <comment>图片/添加上传配置</comment>
   </data>
   <data name="ImageUpload.Configs" xml:space="preserve">
-    <value>Carica la configurazione</value>
+    <value>Configurazioni di caricamento</value>
     <comment>图片/上传配置</comment>
+  </data>
+  <data name="ImageUpload.DeleteConfig" xml:space="preserve">
+    <value>Elimina configurazione</value>
+    <comment>删除此配置</comment>
+  </data>
+  <data name="ImageUpload.ImportFromFile" xml:space="preserve">
+    <value>Importa da file</value>
+    <comment>从文件导入</comment>
   </data>
   <data name="ImageUpload.Method" xml:space="preserve">
     <value>Metodo di caricamento</value>
@@ -461,28 +473,44 @@
     <value>SCP</value>
     <comment>图片/SCP</comment>
   </data>
+  <data name="ImageUpload.PickerFile" xml:space="preserve">
+    <value>Seleziona file</value>
+    <comment>选择文件</comment>
+  </data>
+  <data name="ImageUpload.SaveToFile" xml:space="preserve">
+    <value>Salva su file</value>
+    <comment>保存到文件</comment>
+  </data>
+  <data name="ImageUpload.TestUpload" xml:space="preserve">
+    <value>Caricamento di prova</value>
+    <comment>测试上传</comment>
+  </data>
   <data name="ImageUpload.Title" xml:space="preserve">
-    <value>Caricamento immagini</value>
+    <value>Carica immagini</value>
     <comment>图片/图片上传</comment>
   </data>
+  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+    <value>Riavviare l'applicazione è necessario per rendere effettive le modifiche</value>
+    <comment>重启应用后生效</comment>
+  </data>
   <data name="Shortcut.Title" xml:space="preserve">
-    <value>tasto di scelta rapida</value>
+    <value>Scorciatoie</value>
     <comment>快捷键</comment>
   </data>
   <data name="UploadConfig.Title" xml:space="preserve">
-    <value>Carica la configurazione</value>
+    <value>Impostazioni di caricamento</value>
     <comment>上传配置</comment>
   </data>
   <data name="View.AnimationEnable.Description" xml:space="preserve">
-    <value>Spegni per una risposta più rapida</value>
+    <value>Chiudi per una risposta più rapida</value>
     <comment>视图/关闭可获得更快的响应速度</comment>
   </data>
   <data name="View.AnimationEnable.Title" xml:space="preserve">
-    <value>Animazione della finestra</value>
+    <value>Animazioni della finestra</value>
     <comment>视图/窗口动画</comment>
   </data>
   <data name="View.AppCompactMode.Description" xml:space="preserve">
-    <value>La barra dei menu viene visualizzata sulla stessa riga dell'intestazione</value>
+    <value>Barra dei menu e titolo nella stessa riga</value>
     <comment>视图/菜单栏与标题在同一行显示</comment>
   </data>
   <data name="View.AppCompactMode.Title" xml:space="preserve">
@@ -490,55 +518,55 @@
     <comment>视图/紧凑模式</comment>
   </data>
   <data name="View.AppTheme.Dark" xml:space="preserve">
-    <value>Oscuro</value>
+    <value>Scuro</value>
     <comment>视图/深色</comment>
   </data>
   <data name="View.AppTheme.Description" xml:space="preserve">
-    <value>Seleziona il tema dell'app che desideri visualizzare</value>
+    <value>Selezionare quale tema dell'app visualizzare</value>
     <comment>视图/选择要显示的应用主题</comment>
   </data>
   <data name="View.AppTheme.Light" xml:space="preserve">
-    <value>Leggero</value>
+    <value>Luce</value>
     <comment>视图/浅色</comment>
   </data>
   <data name="View.AppTheme.Title" xml:space="preserve">
-    <value>Applicare un tema</value>
+    <value>Tema dell'app</value>
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Aggiungere "./" prima dei percorsi relativi</value>
+    <value>Aggiungi "./" ai percorsi relativi</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
-    <value>Copia automaticamente le immagini che utilizzano percorsi relativi durante il salvataggio come file</value>
+    <value>Copia automaticamente le immagini utilizzate nei percorsi relativi durante il salvataggio come file</value>
     <comment>图片/另存为文件时自动复制使用相对路径的图片</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Title" xml:space="preserve">
-    <value>Copia automatica delle immagini</value>
+    <value>Copia automaticamente le immagini</value>
     <comment>图片/自动复制图片</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Description" xml:space="preserve">
-    <value>Codifica automatica dei caratteri speciali negli URL</value>
+    <value>Codifica automaticamente i caratteri speciali negli URL</value>
     <comment>图片/自动对URL中的特殊字符进行编码</comment>
   </data>
   <data name="View.Image.AutoEncodeImageURL.Title" xml:space="preserve">
-    <value>Escape automatico degli URL delle immagini quando vengono inseriti</value>
+    <value>Esci automaticamente dagli URL delle immagini durante l'inserimento</value>
     <comment>图片/插入时自动转义图片URL</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Description" xml:space="preserve">
-    <value>I file non salvati o le immagini degli Appunti utilizzano la directory principale dell'immagine per impostazione predefinita</value>
+    <value>Directory radice predefinita delle immagini per file non salvati o immagini degli appunti</value>
     <comment>图片/未保存文件或剪贴板图片默认使用的图片根目录</comment>
   </data>
   <data name="View.Image.DefaultImageBasePath.Title" xml:space="preserve">
-    <value>Radice predefinita dell'immagine</value>
+    <value>Directory radice predefinita delle immagini</value>
     <comment>图片/默认图片根目录</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.CopyPath.Title" xml:space="preserve">
-    <value>Copiare l'immagine degli appunti in</value>
+    <value>Copia le immagini degli appunti in</value>
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>I file di immagine degli Appunti e le immagini Web non sono inclusi</value>
+    <value>Non include immagini degli appunti o immagini web</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
@@ -546,103 +574,103 @@
     <comment>图片/剪贴板图片</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Le immagini degli Appunti vengono configurate utilizzando i caricamenti</value>
+    <value>Configurazione di caricamento immagine degli appunti</value>
     <comment>图片/剪贴板图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
-    <value>Azione da eseguire quando viene inserita un'immagine</value>
+    <value>Azione da eseguire durante l'inserimento di immagini</value>
     <comment>图片/当插入图片时执行的操作</comment>
   </data>
   <data name="View.Image.InsertAction.Local.CopyPath.Title" xml:space="preserve">
-    <value>Copiare l'immagine locale in</value>
+    <value>Copia le immagini locali in</value>
     <comment>图片/复制本地图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Local.Title" xml:space="preserve">
-    <value>Immagini locali</value>
+    <value>Immagine locale</value>
     <comment>图片/本地图片</comment>
   </data>
   <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Le immagini locali utilizzano la configurazione di caricamento</value>
+    <value>Configurazione di caricamento immagine locale</value>
     <comment>图片/本地图片使用上传配置</comment>
   </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
-    <value>Operazione di inserimento immagini</value>
+    <value>Azione di inserimento immagine</value>
     <comment>图片/图片插入操作</comment>
   </data>
   <data name="View.Image.InsertAction.Web.CopyPath.Title" xml:space="preserve">
-    <value>Copiare l'immagine di rete in</value>
+    <value>Copia l'immagine web in</value>
     <comment>图片/复制网络图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
-    <value>Immagini Web</value>
+    <value>Immagine web</value>
     <comment>图片/网络图片</comment>
   </data>
   <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Le immagini Web utilizzano la configurazione di caricamento</value>
+    <value>Configurazione di caricamento immagine web</value>
     <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
-    <value>I percorsi relativi sono preferiti quando si inseriscono immagini</value>
+    <value>Preferisci utilizzare il percorso relativo durante l'inserimento di immagini</value>
     <comment>图片/插入图片时优先采用相对路径</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Title" xml:space="preserve">
-    <value>I percorsi relativi sono preferiti</value>
+    <value>Dare priorità all'utilizzo del percorso relativo</value>
     <comment>图片/优先使用相对路径</comment>
   </data>
   <data name="View.Image.Upload" xml:space="preserve">
-    <value>Caricamento immagini</value>
+    <value>Caricamento immagine</value>
     <comment>图片/图片上传</comment>
   </data>
   <data name="View.Image.UploadConfigs.Description" xml:space="preserve">
-    <value>Impostare il metodo di caricamento dell'immagine</value>
+    <value>Imposta il metodo di caricamento immagini</value>
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
-    <value>Configurazione del caricamento delle immagini</value>
+    <value>Configurazione di caricamento immagini</value>
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
-    <value>impaginazione</value>
+    <value>Layout</value>
     <comment>视图/布局</comment>
   </data>
   <data name="View.SidePaneOpen.Description" xml:space="preserve">
-    <value>Scegliere se visualizzare la barra laterale</value>
+    <value>Scegli se visualizzare la barra laterale</value>
     <comment>视图/选择是否显示侧栏</comment>
   </data>
   <data name="View.SidePaneOpen.Title" xml:space="preserve">
-    <value>Visualizza la barra laterale</value>
+    <value>Mostra la barra laterale</value>
     <comment>视图/显示侧栏</comment>
   </data>
   <data name="View.StatusBarOpen.Description" xml:space="preserve">
-    <value>Scegliere se visualizzare la barra di stato inferiore</value>
+    <value>Scegli se visualizzare la barra di stato inferiore</value>
     <comment>视图/选择是否显示底部状态栏</comment>
   </data>
   <data name="View.StatusBarOpen.Title" xml:space="preserve">
-    <value>Visualizza la barra di stato</value>
+    <value>Mostra la barra di stato</value>
     <comment>视图/显示状态栏</comment>
   </data>
   <data name="View.Title" xml:space="preserve">
-    <value>apparenza</value>
+    <value>Aspetto</value>
     <comment>视图/外观</comment>
   </data>
   <data name="View.Topmost.Description" xml:space="preserve">
-    <value>Mantieni la finestra sempre in primo piano</value>
+    <value>Rendi la finestra sempre in primo piano</value>
     <comment>视图/使窗口始终在顶部</comment>
   </data>
   <data name="View.Topmost.Title" xml:space="preserve">
-    <value>al livello più alto</value>
+    <value>In cima</value>
     <comment>视图/置于顶层</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Quando è attivato, lo sfondo della finestra ha un effetto di sfondo mica</value>
+    <value>Abilita l'effetto di sfondo della mica per lo sfondo della finestra</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
-    <value>Utilizzare materiali di mica</value>
+    <value>Utilizza il materiale di mica</value>
     <comment>视图/使用云母材质</comment>
   </data>
   <data name="View.Window" xml:space="preserve">
-    <value>finestra</value>
+    <value>Finestra</value>
     <comment>视图/窗口</comment>
   </data>
 </root>
