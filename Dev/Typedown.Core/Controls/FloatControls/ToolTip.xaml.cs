@@ -84,5 +84,10 @@ namespace Typedown.Core.Controls.FloatControls
             OpacityAnimation.To = 0;
             OpacityStoryboard.Begin();
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

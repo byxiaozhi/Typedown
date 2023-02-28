@@ -9,6 +9,7 @@
     BorderThickness="{ThemeResource ExpanderHeaderBorderThickness}"
     BorderBrush="{ThemeResource ExpanderHeaderBorderBrush}" 
     CornerRadius="{ThemeResource ControlCornerRadius}"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">

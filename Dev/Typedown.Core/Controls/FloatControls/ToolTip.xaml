@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="ToolTipControl"
     mc:Ignorable="d"
+    Unloaded="OnUnloaded"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>

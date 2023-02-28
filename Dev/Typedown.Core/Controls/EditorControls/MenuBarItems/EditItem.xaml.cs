@@ -79,6 +79,7 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
+            Bindings.StopTracking();
         }
     }
 }

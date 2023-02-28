@@ -13,6 +13,7 @@
     Title="{u:LocaleString Key=Export.AddConfig.Title}"
     PrimaryButtonText="{u:LocaleString Key=Add}"
     CloseButtonText = "{u:LocaleString Key=Cancel}"
+    Unloaded="OnUnloaded"
     DefaultButton="Primary"
     mc:Ignorable="d">
     <StackPanel>

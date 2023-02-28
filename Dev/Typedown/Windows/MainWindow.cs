@@ -23,11 +23,11 @@ namespace Typedown.Windows
 {
     public class MainWindow : XamlWindow
     {
-        public IServiceScope ServiceScope { get; } = Injection.ServiceProvider.CreateScope();
+        public IServiceScope ServiceScope { get; private set; } = Injection.ServiceProvider.CreateScope();
 
         public AppViewModel AppViewModel => ServiceProvider.GetService<AppViewModel>();
 
-        public RootControl RootControl { get; } = new();
+        public RootControl RootControl { get; private set; } = new();
 
         public IServiceProvider ServiceProvider => ServiceScope?.ServiceProvider;
 
@@ -145,8 +145,12 @@ namespace Typedown.Windows
         private void OnClosed(object sender, ClosedEventArgs e)
         {
             var keepRun = AppViewModel.SettingsViewModel.KeepRun;
-            ServiceScope?.Dispose();
             checkActiveTimer?.Dispose();
+            checkActiveTimer = null;
+            ServiceScope?.Dispose();
+            ServiceScope = null;
+            RootControl = null;
+            Content = null;
             if (!AppViewModel.GetInstances().Any())
             {
                 if (keepRun)

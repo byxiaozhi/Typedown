@@ -1,16 +1,16 @@
 ﻿using System;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Typedown.Core.Utilities;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System.Numerics;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
-using System.Threading;
-using System.Runtime.CompilerServices;
-using Windows.UI.Xaml.Input;
-using Typedown.Core.Utilities;
 
 namespace Typedown.Core.Controls
 {

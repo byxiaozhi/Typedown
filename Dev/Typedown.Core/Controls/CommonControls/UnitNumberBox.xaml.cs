@@ -65,5 +65,10 @@ namespace Typedown.Core.Controls
                 SelectedUnit = DimNumberValue.Unit;
             }
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

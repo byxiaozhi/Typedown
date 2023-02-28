@@ -8,6 +8,7 @@
     xmlns:converters="using:Typedown.Core.Converters"
     xmlns:controls="using:Typedown.Core.Controls"
     xmlns:u="using:Typedown.Core.Utilities"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     FontSize="12"
     d:DesignHeight="300"
@@ -43,6 +44,7 @@
                 </ToggleButton.Resources>
                 <FontIcon Glyph="{x:Bind Settings.SidePaneOpen, Converter={StaticResource SidePaneIconConverter}, Mode=OneWay}" FontSize="14"/>
             </ToggleButton>
+            <Button Click="Button_Click">GC</Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
             <Grid>

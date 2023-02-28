@@ -3,7 +3,6 @@ using System.Linq;
 using System.Reactive.Linq;
 using Typedown.Core.Models;
 using Typedown.Core.Utilities;
-using Typedown.Core.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -70,6 +69,16 @@ namespace Typedown.Core.Controls
         public static bool HasShortcutKeyReverse(ShortcutKey key)
         {
             return !HasShortcutKey(key);
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
         }
     }
 }

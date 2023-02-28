@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reflection;
@@ -68,6 +66,7 @@ namespace Typedown.Core.Controls
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
+            Bindings.StopTracking();
         }
 
         private void OnKeyEvent(object sender, KeyEventArgs args)

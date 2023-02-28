@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="using:Typedown.Core.Utilities"
     Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d">
     <MenuFlyoutItem x:Name="NewFileItem" Text="{u:LocaleString Key=New}" Command="{x:Bind File.NewFileCommand}"/>
     <MenuFlyoutItem x:Name="NewWindowItem" Text="{u:LocaleString Key=NewWindow}" Command="{x:Bind File.NewWindowCommand}"/>

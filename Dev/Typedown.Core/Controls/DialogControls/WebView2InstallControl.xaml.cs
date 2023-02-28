@@ -24,5 +24,10 @@ namespace Typedown.Core.Controls
         {
             InstallButtonClick?.Invoke(this, EventArgs.Empty);
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

@@ -1,11 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using Typedown.Core.Interfaces;
 using Typedown.Core.Pages;
-using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -17,8 +14,6 @@ namespace Typedown.Core.Controls
         public AppViewModel ViewModel => DataContext as AppViewModel;
 
         public SettingsViewModel Settings => ViewModel?.SettingsViewModel;
-
-        private IWindowService WindowService => ViewModel.ServiceProvider.GetService<IWindowService>();
 
         private readonly CompositeDisposable disposables = new();
 
@@ -37,6 +32,7 @@ namespace Typedown.Core.Controls
         private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             disposables.Clear();
+            Bindings.StopTracking();
         }
 
         private void Navigate(string args)

@@ -1,4 +1,5 @@
 ﻿using Typedown.Core.ViewModels;
+using Windows.UI.Xaml;
 
 namespace Typedown.Core.Controls.EditorControls.MenuBarItems
 {
@@ -11,6 +12,7 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
         public ParagraphItem()
         {
             InitializeComponent();
+            Unloaded += OnUnloaded;
         }
 
         protected override void OnRegisterShortcut()
@@ -43,6 +45,11 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             RegisterEditorShortcut(Settings.ShortcutHorizontalLine, HorizontalLineItem);
             //RegisterEditorShortcut(Settings.ShortcutToc, TocItem);
             RegisterEditorShortcut(Settings.ShortcutYAMLFrontMatter, YAMLFrontMatterItem);
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
         }
     }
 }

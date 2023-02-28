@@ -9,6 +9,7 @@
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" 
     xmlns:controls="using:Typedown.Core.Controls"
     xmlns:u="using:Typedown.Core.Utilities"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">

@@ -1,15 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
-using System;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using Typedown.Core.Models;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
 {

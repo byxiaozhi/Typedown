@@ -1,4 +1,5 @@
 ﻿using Windows.ApplicationModel;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Core.Controls
@@ -27,6 +28,11 @@ namespace Typedown.Core.Controls
         private async void FeedBackButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             await FeedbackDialog.OpenFeedbackDialog(XamlRoot);
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
         }
     }
 }

@@ -15,7 +15,6 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using muxc = Microsoft.UI.Xaml.Controls;
 
@@ -70,6 +69,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             WorkFolderExplorerItem?.Dispose();
             WorkFolderExplorerItem = null;
             disposables.Clear();
+            Bindings.StopTracking();
         }
 
         private void OnItemContextFlyoutOpened(object sender, object e)

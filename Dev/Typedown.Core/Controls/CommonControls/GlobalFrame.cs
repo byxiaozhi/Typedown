@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reactive.Disposables;
-using System.Text;
-using System.Threading.Tasks;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
 using Windows.UI.Xaml.Controls;

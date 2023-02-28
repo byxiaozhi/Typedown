@@ -74,5 +74,10 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
         {
             UpdateExportItem();
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

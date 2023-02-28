@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="using:Typedown.Core.Utilities"
     mc:Ignorable="d"
+    Unloaded="OnUnloaded"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Spacing="16">

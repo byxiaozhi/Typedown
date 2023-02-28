@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Typedown.Core.Utilities;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Core.Controls
 {
@@ -54,6 +42,11 @@ namespace Typedown.Core.Controls
             var content = new InsertTableDialog();
             var dialog = AppContentDialog.Create(title, content, Locale.GetDialogString("Cancel"), Locale.GetDialogString("Ok"));
             return (dialog, content);
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

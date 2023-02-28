@@ -1,8 +1,5 @@
-﻿using System;
-using System.Reactive.Disposables;
-using Typedown.Core.Utilities;
+﻿using System.Reactive.Disposables;
 using Typedown.Core.ViewModels;
-using Typedown.XamlUI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -53,6 +50,7 @@ namespace Typedown.Core.Controls
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Dispose();
+            Bindings.StopTracking();
         }
     }
 }

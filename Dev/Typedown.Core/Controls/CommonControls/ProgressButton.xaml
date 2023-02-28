@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    Unloaded="OnUnloaded"
     mc:Ignorable="d">
     <Grid>
         <ContentPresenter x:Name="ButtonContent" Content="{x:Bind Content, Mode=OneWay}" x:Load="{x:Bind IsLoading, Mode=OneWay, Converter={StaticResource BoolReverseConverter}}"/>

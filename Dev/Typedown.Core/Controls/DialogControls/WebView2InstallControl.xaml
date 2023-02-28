@@ -8,6 +8,7 @@
     xmlns:ui="using:Typedown.XamlUI"
     xmlns:u="using:Typedown.Core.Utilities"
     mc:Ignorable="d"
+    Unloaded="OnUnloaded"
     d:DesignHeight="300"
     d:DesignWidth="400">
 

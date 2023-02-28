@@ -469,31 +469,38 @@ namespace Typedown.Core.ViewModels
 
         private async void OnStartup()
         {
-            if (string.IsNullOrEmpty(WorkFolder))
+            try
             {
-                switch (SettingsViewModel.FolderStartupAction)
+                if (string.IsNullOrEmpty(WorkFolder))
                 {
-                    case Enums.FolderStartupAction.OpenLast:
-                        await AccessHistory.EnsureInitialized();
-                        if (AccessHistory.FolderRecentlyOpened.FirstOrDefault() is string lastFolder && Directory.Exists(lastFolder))
-                            await LoadFolder(lastFolder);
-                        break;
-                    case Enums.FolderStartupAction.OpenFolder:
-                        if (Directory.Exists(SettingsViewModel.StartupOpenFolder))
-                            await LoadFolder(SettingsViewModel.StartupOpenFolder);
-                        break;
+                    switch (SettingsViewModel.FolderStartupAction)
+                    {
+                        case Enums.FolderStartupAction.OpenLast:
+                            await AccessHistory.EnsureInitialized();
+                            if (AccessHistory.FolderRecentlyOpened.FirstOrDefault() is string lastFolder && Directory.Exists(lastFolder))
+                                await LoadFolder(lastFolder);
+                            break;
+                        case Enums.FolderStartupAction.OpenFolder:
+                            if (Directory.Exists(SettingsViewModel.StartupOpenFolder))
+                                await LoadFolder(SettingsViewModel.StartupOpenFolder);
+                            break;
+                    }
+                }
+                if (string.IsNullOrEmpty(FilePath))
+                {
+                    switch (SettingsViewModel.FileStartupAction)
+                    {
+                        case Enums.FileStartupAction.OpenLast:
+                            await AccessHistory.EnsureInitialized();
+                            if (AccessHistory.FileRecentlyOpened.FirstOrDefault() is string lastFile && !TryGetOpenedWindow(lastFile, out _) && File.Exists(lastFile))
+                                await LoadFile(lastFile, true);
+                            break;
+                    }
                 }
             }
-            if (string.IsNullOrEmpty(FilePath))
+            catch
             {
-                switch (SettingsViewModel.FileStartupAction)
-                {
-                    case Enums.FileStartupAction.OpenLast:
-                        await AccessHistory.EnsureInitialized();
-                        if (AccessHistory.FileRecentlyOpened.FirstOrDefault() is string lastFile && !TryGetOpenedWindow(lastFile, out _) && File.Exists(lastFile))
-                            await LoadFile(lastFile, true);
-                        break;
-                }
+                // Ignore
             }
         }
 

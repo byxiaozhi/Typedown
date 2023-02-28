@@ -26,5 +26,10 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             RegisterEditorShortcut(Settings.ShortcutImage, ImageItem);
             RegisterEditorShortcut(Settings.ShortcutClearFormat, ClearFormatItem);
         }
+
+        private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

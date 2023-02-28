@@ -338,10 +338,17 @@ namespace Typedown.Core.ViewModels
 
         public void SavedOrAutoSavedSuccChanged()
         {
-            var fileViewModel = ServiceProvider.GetService<FileViewModel>();
-            DisplaySaved = Saved || (Settings.AutoSave && fileViewModel.FilePath != null && AutoSavedSucc);
-            if (Saved)
-                AutoBackup.DeleteBackup(fileViewModel.FilePath);
+            try
+            {
+                var fileViewModel = ServiceProvider.GetService<FileViewModel>();
+                DisplaySaved = Saved || (Settings.AutoSave && fileViewModel.FilePath != null && AutoSavedSucc);
+                if (Saved)
+                    AutoBackup.DeleteBackup(fileViewModel.FilePath);
+            }
+            catch
+            {
+                // Ignore
+            }
         }
 
         public void Settings_AutoSaveChanged(bool autoSave)

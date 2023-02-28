@@ -83,6 +83,11 @@ namespace Typedown.Controls
             {
                 WebViewController = new();
                 await WebViewController.InitializeAsync(this, XamlWindow.GetWindow(this).XamlSourceHandle);
+                if (disposables.IsDisposed)
+                {
+                    WebViewController.Dispose();
+                    return;
+                }
                 SetChromeWidgetWindowTransparent();
                 OnCoreWebView2Initialized();
             }
@@ -170,7 +175,7 @@ namespace Typedown.Controls
 
         public void Dispose()
         {
-            WebViewController.Dispose();
+            WebViewController?.Dispose();
             disposables.Dispose();
         }
 
@@ -190,21 +195,28 @@ namespace Typedown.Controls
             return dummyRectangle;
         }
 
-        private void SetChromeWidgetWindowTransparent()
+        private async void SetChromeWidgetWindowTransparent()
         {
-            var processId = (int)WebViewController.CoreWebView2.BrowserProcessId;
-            Task.Run(() =>
+            try
             {
-                foreach (var window in PInvoke.EnumProcessWindow(processId))
+                var processId = (int)WebViewController.CoreWebView2.BrowserProcessId;
+                await Task.Run(() =>
                 {
-                    var str = "Chrome_WidgetWin_1";
-                    if (PInvoke.GetClassName(window, str.Length + 1) == str)
+                    foreach (var window in PInvoke.EnumProcessWindow(processId))
                     {
-                        var styleEx = PInvoke.GetWindowLong(window, PInvoke.WindowLongFlags.GWL_EXSTYLE);
-                        PInvoke.SetWindowLong(window, PInvoke.WindowLongFlags.GWL_EXSTYLE, styleEx | (int)PInvoke.WindowStylesEx.WS_EX_TRANSPARENT);
+                        var str = "Chrome_WidgetWin_1";
+                        if (PInvoke.GetClassName(window, str.Length + 1) == str)
+                        {
+                            var styleEx = PInvoke.GetWindowLong(window, PInvoke.WindowLongFlags.GWL_EXSTYLE);
+                            PInvoke.SetWindowLong(window, PInvoke.WindowLongFlags.GWL_EXSTYLE, styleEx | (int)PInvoke.WindowStylesEx.WS_EX_TRANSPARENT);
+                        }
                     }
-                }
-            });
+                });
+            }
+            catch
+            {
+                // Ignore
+            }
         }
     }
 }

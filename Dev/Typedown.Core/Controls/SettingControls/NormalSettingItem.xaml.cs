@@ -26,5 +26,10 @@ namespace Typedown.Core.Controls
         {
             InitializeComponent();
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

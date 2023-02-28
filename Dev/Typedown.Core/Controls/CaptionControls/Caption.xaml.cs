@@ -40,6 +40,7 @@ namespace Typedown.Core.Controls
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
+            Bindings.StopTracking();
         }
     }
 }

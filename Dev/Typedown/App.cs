@@ -7,6 +7,7 @@ using System.Threading;
 using Typedown.Core.Utilities;
 using Typedown.Windows;
 using Typedown.XamlUI;
+using Windows.UI.Core;
 using Windows.UI.Xaml.Markup;
 
 namespace Typedown
@@ -43,12 +44,11 @@ namespace Typedown
             var window = new MainWindow();
             var hasStartupPlacement = window.AppViewModel.SettingsViewModel.StartupPlacement.HasValue;
             window.Show(hasStartupPlacement ? ShowWindowCommand.SW_HIDE : ShowWindowCommand.SW_NORMAL);
-            ListenPipe();
+            ListenPipe(window.Dispatcher);
         }
 
-        private static async void ListenPipe()
+        private static async void ListenPipe(CoreDispatcher dispatcher)
         {
-            var dispatcher = Dispatcher.Current;
             while (true)
             {
                 try
@@ -58,7 +58,8 @@ namespace Typedown
                     using var reader = new StreamReader(server);
                     using var writer = new StreamWriter(server);
                     var args = (await reader.ReadLineAsync()).Split("\0");
-                    var handle = await dispatcher.RunAsync(() => Utilities.Common.OpenNewWindow(args));
+                    var handle = IntPtr.Zero;
+                    await dispatcher.RunIdleAsync(_ => handle = Utilities.Common.OpenNewWindow(args));
                     await writer.WriteLineAsync(handle.ToString());
                     await writer.FlushAsync();
                 }

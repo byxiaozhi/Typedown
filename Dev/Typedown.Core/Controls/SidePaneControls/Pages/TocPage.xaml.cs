@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Typedown.Core.ViewModels;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using Typedown.Core.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Core.Controls.SidePanelControls.Pages
 {
@@ -25,6 +13,12 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
         public TocPage()
         {
             InitializeComponent();
+            Unloaded += OnUnloaded;
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
         }
     }
 }

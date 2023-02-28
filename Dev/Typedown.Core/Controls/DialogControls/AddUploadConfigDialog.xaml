@@ -14,6 +14,7 @@
     PrimaryButtonText="{u:LocaleString Key=Add}"
     SecondaryButtonText="{u:LocaleString Key=Cancel}"
     DefaultButton="Primary"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d">
     <StackPanel>
         <TextBlock Text="{u:LocaleString Key=Name}"/>

@@ -13,6 +13,8 @@
     xmlns:utils="using:Typedown.Core.Utilities"
     Click="OnClick"
     mc:Ignorable="d"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <Button.Resources>

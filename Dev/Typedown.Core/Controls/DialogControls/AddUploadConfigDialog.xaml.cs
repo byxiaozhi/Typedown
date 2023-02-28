@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Typedown.Core.Enums;
-using Typedown.Core.Services;
 using Typedown.Core.Utilities;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace Typedown.Core.Controls.DialogControls
 {
@@ -57,6 +45,11 @@ namespace Typedown.Core.Controls.DialogControls
             if (result == ContentDialogResult.Primary)
                 return new Result() { ConfigName = dialog.ConfigName, UploadMethod = dialog.UploadMethod };
             return null;
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
         }
     }
 }

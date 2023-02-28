@@ -53,6 +53,7 @@ namespace Typedown.Core.Pages.SettingPages
             if (ExportConfig != null)
                 await ExportService.Value.SaveExportConfig(ExportConfig);
             disposables.Clear();
+            Bindings.StopTracking();
         }
 
         private void UpdateTitle(string title)

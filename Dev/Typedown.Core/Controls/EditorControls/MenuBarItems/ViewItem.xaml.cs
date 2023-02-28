@@ -15,5 +15,10 @@
             RegisterWindowShortcut(Settings.ShortcutTypewriterMode, TypewriterModeItem);
             RegisterWindowShortcut(Settings.ShortcutStatusBar, StatusBarItem);
         }
+
+        private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

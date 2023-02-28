@@ -37,5 +37,10 @@ namespace Typedown.Core.Controls
                 ContentPresenter_Expander.Width = (sender as Expander).ActualWidth;
             }
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

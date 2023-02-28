@@ -106,5 +106,10 @@ namespace Typedown.Core.Controls.FloatControls
             if (!flyout.IsOpen)
                 flyout.ShowAt(MarkdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }
