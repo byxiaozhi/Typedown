@@ -589,6 +589,10 @@
     <value>Имя</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>Имя не может быть пустым</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
     <value>Новый</value>
     <comment>文件/新建</comment>

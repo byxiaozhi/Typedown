@@ -589,6 +589,10 @@
     <value>이름</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>이름은 비워 둘 수 없습니다.</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
     <value>새로 만들기</value>
     <comment>文件/新建</comment>

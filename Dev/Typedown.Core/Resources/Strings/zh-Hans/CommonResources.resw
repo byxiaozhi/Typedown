@@ -589,6 +589,10 @@
     <value>名称</value>
     <comment>名称</comment>
   </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>名称不能为空</value>
+    <comment>名称不能为空</comment>
+  </data>
   <data name="New" xml:space="preserve">
     <value>新建</value>
     <comment>文件/新建</comment>

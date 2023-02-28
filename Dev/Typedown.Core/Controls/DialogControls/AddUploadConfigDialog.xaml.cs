@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Typedown.Core.Enums;
 using Typedown.Core.Services;
+using Typedown.Core.Utilities;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -49,7 +50,7 @@ namespace Typedown.Core.Controls.DialogControls
                 if (string.IsNullOrEmpty(dialog.ConfigName))
                 {
                     e.Cancel = true;
-                    dialog.ErrMsg = "名称不能为空";
+                    dialog.ErrMsg = Locale.GetString("NameCannotBeEmpty");
                 }
             };
             var result = await dialog.ShowAsync();

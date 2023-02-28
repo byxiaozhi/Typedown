@@ -43,11 +43,11 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems
                 if (file == null)
                     return;
                 var res = await ImageUploadConfig.LoadUploadConfig().Upload(this.GetService<IServiceProvider>(), file.Path);
-                await AppContentDialog.Create("上传成功", res, "Ok").ShowAsync(XamlRoot);
+                await AppContentDialog.Create(Locale.GetDialogString("UploadSuccessfulTitle"), res, "Ok").ShowAsync(XamlRoot);
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create("上传失败", ex.Message, "Ok").ShowAsync(XamlRoot);
+                await AppContentDialog.Create(Locale.GetDialogString("UploadFailedTitle"), ex.Message, "Ok").ShowAsync(XamlRoot);
             }
             finally
             {
