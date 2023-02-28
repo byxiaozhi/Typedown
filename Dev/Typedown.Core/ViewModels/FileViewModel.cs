@@ -119,7 +119,11 @@ namespace Typedown.Core.ViewModels
             if (!await AskToSave()) return;
             FilePath = null;
             EditorViewModel.FileHash = Common.SimpleHash(Common.DefaultMarkdwn);
-            var backup = await CheckBackup(FilePath, EditorViewModel.FileHash);
+            string backup = null;
+            if (AppViewModel.GetInstances().Any(x => !string.IsNullOrEmpty(x.FileViewModel.FilePath)))
+            {
+                backup = await CheckBackup(FilePath, EditorViewModel.FileHash);
+            }
             if (backup == null)
             {
                 EditorViewModel.Markdown = Common.DefaultMarkdwn;
@@ -145,10 +149,10 @@ namespace Typedown.Core.ViewModels
 
         public async Task<bool> OpenFile(string filePath = null)
         {
-            if (!await AskToSave()) 
+            if (!await AskToSave())
                 return false;
             filePath ??= await AppViewModel.MainWindow.PickMarkdownFileAsync();
-            if (filePath == null) 
+            if (filePath == null)
                 return false;
             return await LoadFile(filePath, true);
         }
