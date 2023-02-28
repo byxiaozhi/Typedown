@@ -566,7 +566,7 @@
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Klipbord rasmlari yoki veb-rasmlarni o'z ichiga olmaydi</value>
+    <value>Klipbordga rasm fayllari va veb-rasmlar kiritilmaydi</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">

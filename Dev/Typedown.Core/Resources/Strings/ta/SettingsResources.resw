@@ -566,7 +566,7 @@
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>கிளிப்போர்டு படங்கள் அல்லது வலை படங்களை உள்ளடக்காது</value>
+    <value>கிளிப்போர்டில் பட கோப்புகள் மற்றும் வலை படங்களை சேர்க்காது</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">

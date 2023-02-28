@@ -566,7 +566,7 @@
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>क्लिपबोर्ड प्रतिमा किंवा वेब प्रतिमा समाविष्ट नाही</value>
+    <value>क्लिपबोर्डमध्ये इमेज फाइल्स आणि वेब इमेजेस समाविष्ट करत नाही</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">

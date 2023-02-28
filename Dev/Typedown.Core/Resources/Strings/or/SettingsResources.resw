@@ -566,7 +566,7 @@
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>କ୍ଲିପ୍ ବୋର୍ଡ ଫଟୋ କିମ୍ବା ୱେବ୍ ଫଟୋ ଅନ୍ତର୍ଭୁକ୍ତ କରେ ନାହିଁ</value>
+    <value>କ୍ଲିପ୍ ବୋର୍ଡରେ ଫଟୋ ଫାଇଲ୍ ଏବଂ ୱେବ୍ ଫଟୋ ଅନ୍ତର୍ଭୁକ୍ତ କରେ ନାହିଁ</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">

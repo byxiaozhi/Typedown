@@ -566,7 +566,7 @@
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>క్లిప్ బోర్డ్ ఇమేజ్ లు లేదా వెబ్ ఇమేజ్ లు చేర్చబడవు</value>
+    <value>క్లిప్ బోర్డ్ లో ఇమేజ్ ఫైళ్లు మరియు వెబ్ ఇమేజ్ లను చేర్చదు</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">

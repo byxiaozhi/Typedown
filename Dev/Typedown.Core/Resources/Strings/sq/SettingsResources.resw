@@ -566,7 +566,7 @@
     <comment>图片/复制剪贴板图片到</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Description" xml:space="preserve">
-    <value>Nuk përfshin imazhe me dërrasa ose imazhe në ueb</value>
+    <value>Nuk përfshin skedarët e imazheve dhe imazhet në ueb në dërrasë</value>
     <comment>图片/不包括剪贴板图片文件</comment>
   </data>
   <data name="View.Image.InsertAction.Clipboard.Title" xml:space="preserve">
