@@ -66,5 +66,10 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         {
             return configs.Any() ? Visibility.Visible : Visibility.Collapsed;
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

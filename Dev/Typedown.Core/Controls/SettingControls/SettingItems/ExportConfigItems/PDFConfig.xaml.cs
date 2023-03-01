@@ -49,6 +49,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems
         {
             ExportConfig.StoreExportConfig(PDFConfigModel);
             disposables.Clear();
+            Bindings.StopTracking();
         }
 
         private void OnPageSizeComboxSelectionChanged(object sender, SelectionChangedEventArgs e)

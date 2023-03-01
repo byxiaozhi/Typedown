@@ -55,5 +55,10 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems
             if (file != null)
                 File.WriteAllText(file.Path, PowerShellConfigModel.Script);
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

@@ -9,6 +9,7 @@
     xmlns:enums="using:Typedown.Core.Enums" 
     xmlns:u="using:Typedown.Core.Utilities"
     xmlns:models="using:Typedown.Core.Models"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">

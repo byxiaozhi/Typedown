@@ -11,6 +11,7 @@
     xmlns:viewmodels="using:Typedown.Core.ViewModels" 
     xmlns:u="using:Typedown.Core.Utilities"
     d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">

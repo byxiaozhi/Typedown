@@ -8,6 +8,7 @@
     xmlns:controls="using:Typedown.Core.Controls" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:u="using:Typedown.Core.Utilities"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">

@@ -79,6 +79,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         {
             disposables.Clear();
             ImageUploadConfigsDisposables.Clear();
+            Bindings.StopTracking();
         }
     }
 

@@ -54,5 +54,10 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems
                 button.IsEnabled = true;
             }
         }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
+        }
     }
 }

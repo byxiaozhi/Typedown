@@ -1,4 +1,5 @@
 ﻿using Typedown.Core.Models;
+using Typedown.Core.Models.UploadConfigModels;
 using Typedown.Core.Pages.SettingPages;
 using Typedown.Core.Utilities;
 using Windows.UI.Xaml;
@@ -24,6 +25,11 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems
         private void OnDeleteButtonClick(object sender, RoutedEventArgs e)
         {
             this.GetAncestor<ExportConfigPage>()?.DeleteConfigAsync();
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
         }
     }
 }

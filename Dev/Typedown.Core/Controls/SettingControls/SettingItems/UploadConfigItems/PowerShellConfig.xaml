@@ -9,6 +9,7 @@
     xmlns:models="using:Typedown.Core.Models.UploadConfigModels"
     xmlns:u="using:Typedown.Core.Utilities"
     Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">

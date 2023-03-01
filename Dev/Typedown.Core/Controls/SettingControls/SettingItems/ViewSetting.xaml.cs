@@ -1,4 +1,5 @@
 ﻿using Typedown.Core.ViewModels;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Core.Controls.SettingControls.SettingItems
@@ -12,6 +13,11 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         public ViewSetting()
         {
             InitializeComponent();
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Bindings.StopTracking();
         }
     }
 }
