@@ -31,8 +31,8 @@
         <muxc:MenuBar x:Name="MenuBarControl">
             <items:FileItem/>
             <items:EditItem/>
-            <items:ParagraphItem/>
-            <items:FormatItem/>
+            <items:ParagraphItem Visibility="{x:Bind IsCollapsed(Settings.SourceCode), Mode=OneWay}"/>
+            <items:FormatItem Visibility="{x:Bind IsCollapsed(Settings.SourceCode), Mode=OneWay}"/>
             <items:ViewItem/>
         </muxc:MenuBar>
         <Grid x:Name="TitleGrid" Grid.Column="1" x:Load="{x:Bind Settings.AppCompactMode, Mode=OneWay}">

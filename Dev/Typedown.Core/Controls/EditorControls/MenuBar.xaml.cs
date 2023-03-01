@@ -52,5 +52,7 @@ namespace Typedown.Core.Controls
             disposables.Dispose();
             Bindings.StopTracking();
         }
+
+        private Visibility IsCollapsed(bool boolean) => boolean ? Visibility.Collapsed : Visibility.Visible;
     }
 }
