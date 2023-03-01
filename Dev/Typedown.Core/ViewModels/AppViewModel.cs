@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Disposables;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
 using Windows.UI.Xaml;
@@ -45,10 +46,12 @@ namespace Typedown.Core.ViewModels
 
         private static readonly List<WeakReference<AppViewModel>> instances = new();
 
+        private readonly CompositeDisposable disposables = new();
+
         public AppViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            GoBackCommand.OnExecute.Subscribe(_ => GoBack());
+            disposables.Add(GoBackCommand.OnExecute.Subscribe(_ => GoBack()));
             lock (instances) 
                 instances.Add(new(this));
         }
@@ -62,6 +65,7 @@ namespace Typedown.Core.ViewModels
         {
             lock (instances) 
                 instances.RemoveAll(x => !x.TryGetTarget(out var target) || target == this);
+            disposables.Dispose();
         }
 
         ~AppViewModel()

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Typedown.Core.Enums;
@@ -14,7 +15,7 @@ using Typedown.Utilities;
 
 namespace Typedown.Services
 {
-    public class FileExport : IFileExport
+    public class FileExport : IFileExport, IDisposable
     {
         public ObservableCollection<ExportConfig> ExportConfigs { get; } = new();
 
@@ -22,11 +23,13 @@ namespace Typedown.Services
 
         public IFileConverter FileConverter { get; }
 
+        private readonly CompositeDisposable disposables = new();
+
         public FileExport(AppViewModel viewModel, SettingsViewModel settings, IFileConverter fileConverter)
         {
             ViewModel = viewModel;
             FileConverter = fileConverter;
-            settings.ResetSettingsCommand.OnExecute.Subscribe(async _ => await ResetDefaultConfigs());
+            disposables.Add(settings.ResetSettingsCommand.OnExecute.Subscribe(async _ => await ResetDefaultConfigs()));
             Initialize(settings);
         }
 
@@ -108,6 +111,11 @@ namespace Typedown.Services
         {
             using var stream = await FileConverter.HtmlToPdf(html);
             await PrintHelper.PrintPDF(ViewModel.MainWindow, stream, documentName);
+        }
+
+        public void Dispose()
+        {
+            disposables.Dispose();
         }
     }
 }

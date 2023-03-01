@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Typedown.Core;
 using Typedown.Core.Controls;
 using Typedown.Core.Converters;
+using Typedown.Core.Enums;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
@@ -17,6 +18,7 @@ using Typedown.Utilities;
 using Typedown.XamlUI;
 using Windows.Globalization;
 using Windows.UI;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 
@@ -70,11 +72,26 @@ namespace Typedown.Windows
 
         public void InitializeBinding()
         {
-            BindingOperations.SetBinding(this, RequestedThemeProperty, new Binding() { Source = AppViewModel.SettingsViewModel, Path = new(nameof(SettingsViewModel.AppTheme)), Converter = new ElementThemeConverter() });
-            BindingOperations.SetBinding(this, TitleProperty, new Binding() { Source = AppViewModel.UIViewModel, Path = new(nameof(UIViewModel.MainWindowTitle)) });
+            disposables.Add(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme)).Cast<AppTheme>().StartWith(AppViewModel.SettingsViewModel.AppTheme).Subscribe(SetTheme));
+            disposables.Add(AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.MainWindowTitle)).Cast<string>().StartWith(AppViewModel.UIViewModel.MainWindowTitle).Subscribe(SetTitle));
             disposables.Add(AppViewModel.FileViewModel.NewWindowCommand.OnExecute.Subscribe(path => Utilities.Common.OpenNewWindow(new string[] { path })));
             disposables.Add(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.UseMicaEffect)).Cast<bool>().StartWith(AppViewModel.SettingsViewModel.UseMicaEffect).Subscribe(EnableMicaEffect));
             disposables.Add(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.Topmost)).Cast<bool>().StartWith(AppViewModel.SettingsViewModel.Topmost).Subscribe(SetTopmost));
+        }
+
+        private void SetTheme(AppTheme theme)
+        {
+            RequestedTheme = theme switch
+            {
+                AppTheme.Light => ElementTheme.Light,
+                AppTheme.Dark => ElementTheme.Dark,
+                _ => ElementTheme.Default,
+            };
+        }
+
+        private void SetTitle(string title)
+        {
+            Title = title;
         }
 
         private void EnableMicaEffect(bool enable)
@@ -154,6 +171,7 @@ namespace Typedown.Windows
             ServiceScope = null;
             RootControl = null;
             Content = null;
+            DataContext = null;
             disposables.Dispose();
             if (!AppViewModel.GetInstances().Any())
             {
