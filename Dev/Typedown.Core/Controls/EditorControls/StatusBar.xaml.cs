@@ -23,11 +23,6 @@ namespace Typedown.Core.Controls
 
         private string WordUnit(int number) => number != 1 ? Locale.GetString("Words") : Locale.GetString("Word");
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            GC.Collect();
-        }
-
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             Bindings.StopTracking();
