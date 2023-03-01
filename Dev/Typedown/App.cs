@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
+using System.Threading.Tasks;
 using Typedown.Core.Utilities;
 using Typedown.Windows;
 using Typedown.XamlUI;
@@ -20,15 +21,23 @@ namespace Typedown
 
         public static void Launch()
         {
-            if (mutex.WaitOne(TimeSpan.Zero, true))
+            try
             {
-                var providers = new List<IXamlMetadataProvider>() { new Core.Typedown_Core_XamlTypeInfo.XamlMetaDataProvider() };
-                var xamlApp = new App(providers) { Resources = new Core.Resources() };
-                xamlApp.Run();
+                if (mutex.WaitOne(TimeSpan.Zero, true))
+                {
+                    var providers = new List<IXamlMetadataProvider>() { new Core.Typedown_Core_XamlTypeInfo.XamlMetaDataProvider() };
+                    var xamlApp = new App(providers) { Resources = new Core.Resources() };
+                    xamlApp.Run();
+                }
+                else
+                {
+                    OpenNewWindow();
+                }
             }
-            else
+            catch (AbandonedMutexException)
             {
-                OpenNewWindow();
+                mutex.ReleaseMutex();
+                Launch();
             }
         }
 
@@ -63,9 +72,9 @@ namespace Typedown
                     await writer.WriteLineAsync(handle.ToString());
                     await writer.FlushAsync();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Trace.WriteLine(ex.Message);
+                    await Task.Delay(1000);
                 }
             }
         }
