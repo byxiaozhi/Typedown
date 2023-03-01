@@ -49,6 +49,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         {
             disposables.Clear();
             Bindings.StopTracking();
+            SettingItems.Clear();
         }
 
         public void LoadAllShortcutSettingItems()
@@ -67,11 +68,18 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
 
         public void UpdateFilteredSettingItems()
         {
-            var newItems = AllSettingItems
+            if (IsLoaded)
+            {
+                var newItems = AllSettingItems
                 .Where(x => string.IsNullOrEmpty(FliterCategory?.Category) || x.Category == FliterCategory.Category)
                 .Where(x => string.IsNullOrEmpty(SearchText) || x.DisplayName.ToLower().Contains(SearchText.ToLower()) || x.Description.ToLower().Contains(SearchText.ToLower()))
                 .ToList();
-            SettingItems.UpdateCollection(newItems, (a, b) => a == b);
+                SettingItems.UpdateCollection(newItems, (a, b) => a == b);
+            }
+            else
+            {
+                SettingItems.Clear();
+            }
         }
     }
 
@@ -91,10 +99,6 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
 
         public ShortcutSettingItemModel(SettingsViewModel target, PropertyInfo property)
         {
-            if(property.Name == nameof(target.ShortcutParagraph))
-            {
-
-            }
             Target = target;
             Property = property;
             var texts = Property.GetCustomAttribute<LocaleAttribute>()?.Texts.ToList();
