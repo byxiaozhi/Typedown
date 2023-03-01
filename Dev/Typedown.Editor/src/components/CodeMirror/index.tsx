@@ -128,8 +128,9 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     }, [editor])
 
     const replace = useCallback(({ value, opt }) => {
-        if (!matchsRef.current[matchIndexRef.current]) return;
         if (opt.isSingle) {
+            if (!matchsRef.current[matchIndexRef.current])
+                return;
             const offset = replaceOne(matchsRef.current[matchIndexRef.current], value)
             matchsRef.current = matchsRef.current.map((e, i) => {
                 if (i < matchIndexRef.current) return e;
@@ -139,6 +140,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             matchIndexRef.current--;
             find({ action: 'next' })
         } else {
+            if (!matchsRef.current)
+                return;
             let offset = 0;
             for (const match of matchsRef.current) {
                 offset += replaceOne(match, value, offset)
