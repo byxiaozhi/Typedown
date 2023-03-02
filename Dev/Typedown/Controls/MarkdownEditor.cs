@@ -60,9 +60,9 @@ namespace Typedown.Controls
             disposables.Add(AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme)).Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged))).Subscribe(_ => OnThemeChanged()));
         }
 
-        private async void OnThemeChanged()
+        private void OnThemeChanged()
         {
-            await Dispatcher.RunIdleAsync(_ => PostMessage("ThemeChanged", ServiceProvider.GetCurrentTheme()));
+            _ = Dispatcher.RunIdleAsync(() => PostMessage("ThemeChanged", ServiceProvider.GetCurrentTheme()));
         }
 
         private void OnContentLoaded()

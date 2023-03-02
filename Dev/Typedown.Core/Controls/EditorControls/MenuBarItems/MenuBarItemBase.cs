@@ -24,9 +24,9 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             Loaded += OnLoaded;
         }
 
-        private async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await Dispatcher.RunIdleAsync(_ => { if (IsLoaded) OnRegisterShortcut(); });
+            _ = Dispatcher.RunIdleAsync(() => { if (IsLoaded) OnRegisterShortcut(); });
         }
 
         protected abstract void OnRegisterShortcut();

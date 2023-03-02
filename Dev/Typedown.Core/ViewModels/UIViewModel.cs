@@ -47,7 +47,7 @@ namespace Typedown.Core.ViewModels
             dispatcher = CoreApplication.GetCurrentView().CoreWindow.Dispatcher;
             ServiceProvider = serviceProvider;
             disposables.Add(RemoteInvoke.Handle<JToken, object>("GetStringResources", GetStringResources));
-            _ = CoreApplication.GetCurrentView().CoreWindow.Dispatcher.RunIdleAsync(_ => InitializeBinding());
+            _ = dispatcher.RunIdleAsync(() => InitializeBinding());
         }
 
         private void InitializeBinding()
@@ -73,9 +73,9 @@ namespace Typedown.Core.ViewModels
             }
         }
 
-        private async void UpdateActualTheme()
+        private void UpdateActualTheme()
         {
-            await dispatcher?.TryRunIdleAsync(_ =>
+            _ = dispatcher?.TryRunIdleAsync(_ =>
             {
                 try
                 {

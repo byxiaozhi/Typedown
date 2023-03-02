@@ -1,4 +1,5 @@
 ﻿using System;
+using Typedown.Core.Utilities;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -15,7 +16,7 @@ namespace Typedown.Core.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            _ = Dispatcher.RunIdleAsync(_ => SearchTextBox.Focus(FocusState.Programmatic));
+            _ = Dispatcher.RunIdleAsync(() => SearchTextBox.Focus(FocusState.Programmatic));
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

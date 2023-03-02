@@ -8,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Typedown.Core;
 using Typedown.Core.Controls;
-using Typedown.Core.Converters;
 using Typedown.Core.Enums;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
@@ -19,7 +18,6 @@ using Typedown.XamlUI;
 using Windows.Globalization;
 using Windows.UI;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 
 namespace Typedown.Windows
@@ -102,7 +100,7 @@ namespace Typedown.Windows
         private void OnLoaded(object sender, EventArgs e)
         {
             this.ShowWindowWithSavedPlacement();
-            SaveWindowPlacementWithOffset();
+            SaveWindowPlacementWithOffset(false);
             AppViewModel.MainWindow = Handle;
         }
 
@@ -184,15 +182,15 @@ namespace Typedown.Windows
 
         private bool isPlacementSaving = false;
 
-        private async void SaveWindowPlacementWithOffset()
+        private async void SaveWindowPlacementWithOffset(bool throttle = true)
         {
             if (!isPlacementSaving && !isCloseable && !isClosing)
             {
                 isPlacementSaving = true;
                 try
                 {
-                    await Task.Delay(100);
-                    await Dispatcher.RunIdleAsync(_ => this.TrySaveWindowPlacement(new(8, 8)));
+                    if (throttle) await Task.Delay(100);
+                    await Dispatcher.RunAsync(() => this.TrySaveWindowPlacement(new(8, 8)));
                 }
                 finally
                 {
@@ -201,9 +199,9 @@ namespace Typedown.Windows
             }
         }
 
-        private async void CheckActiveTimerCallback(object state)
+        private void CheckActiveTimerCallback(object state)
         {
-            await Dispatcher.RunIdleAsync(_ =>
+            _ = Dispatcher.RunIdleAsync(() =>
             {
                 if (Handle != 0)
                 {

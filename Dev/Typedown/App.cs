@@ -67,8 +67,7 @@ namespace Typedown
                     using var reader = new StreamReader(server);
                     using var writer = new StreamWriter(server);
                     var args = (await reader.ReadLineAsync()).Split("\0");
-                    var handle = IntPtr.Zero;
-                    await dispatcher.RunIdleAsync(_ => handle = Utilities.Common.OpenNewWindow(args));
+                    var handle = await dispatcher.RunIdleAsync(() => Utilities.Common.OpenNewWindow(args));
                     await writer.WriteLineAsync(handle.ToString());
                     await writer.FlushAsync();
                 }

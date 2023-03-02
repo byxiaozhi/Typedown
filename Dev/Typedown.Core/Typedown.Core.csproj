@@ -417,6 +417,7 @@
     <Compile Include="Utilities\CommandLine.cs" />
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Utilities\ControlExtensions.cs" />
+    <Compile Include="Utilities\CoreDispatcherExtensions.cs" />
     <Compile Include="Utilities\ExportMarkdown.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\FileTypeHelper.cs" />

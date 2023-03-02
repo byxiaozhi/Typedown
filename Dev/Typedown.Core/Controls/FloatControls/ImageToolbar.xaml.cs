@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using Typedown.Core.Interfaces;
+using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
 using Windows.Foundation;
 using Windows.System;
@@ -88,7 +89,7 @@ namespace Typedown.Core.Controls.FloatControls
         {
             disposables.Add(KeyboardAccelerator.GetObservable().Where(e => e.Key == VirtualKey.Back || e.Key == VirtualKey.Delete).Subscribe(e =>
             {
-                _ = Dispatcher.RunIdleAsync(_ => DeleteClick(null, null));
+                _ = Dispatcher.RunIdleAsync(() => DeleteClick(null, null));
                 e.Handled = true;
             }));
         }

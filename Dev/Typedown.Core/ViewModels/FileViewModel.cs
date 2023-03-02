@@ -83,7 +83,7 @@ namespace Typedown.Core.ViewModels
             saveFileTimer.Interval = TimeSpan.FromSeconds(5);
             saveFileTimer.Tick += SaveFileTimerTick;
             saveFileTimer.Start();
-            _ = CoreApplication.GetCurrentView().CoreWindow.Dispatcher.RunIdleAsync(_ => OnStartup());
+            _ = CoreApplication.GetCurrentView().CoreWindow.Dispatcher.RunIdleAsync(() => OnStartup());
         }
 
         private async void SaveFileTimerTick(object sender, object e)
