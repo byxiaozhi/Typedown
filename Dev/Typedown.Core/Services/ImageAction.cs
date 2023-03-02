@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Typedown.Core.Controls;
+using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
 
@@ -87,7 +88,7 @@ namespace Typedown.Core.Services
             }
         }
 
-        public async Task<string> DoClipboardAction(byte[] image)
+        public async Task<string> DoClipboardAction(IClipboardImage image)
         {
             try
             {
@@ -95,7 +96,7 @@ namespace Typedown.Core.Services
                 switch (Settings.InsertClipboardImageAction)
                 {
                     case Enums.InsertImageAction.Upload:
-                        result = await Upload(InsertImageSource.Clipboard, image);
+                        result = await Upload(InsertImageSource.Clipboard, image.GetBytes());
                         break;
                     default:
                         result = await Task.Run(() => SaveImage(InsertImageSource.Clipboard, image));
@@ -136,6 +137,20 @@ namespace Typedown.Core.Services
             {
                 new FileInfo(destFilePath).Directory?.Create();
                 await File.WriteAllBytesAsync(destFilePath, bytes);
+            }
+            return Path.Combine(GetDestFolder(source), fileName);
+        }
+
+        public string SaveImage(InsertImageSource source, IClipboardImage image, string fileName = null)
+        {
+            fileName ??= $"{Guid.NewGuid()}.png";
+            var destFilePath = Path.Combine(GetAbsoluteDestFolder(source), fileName);
+            for (int i = 2; File.Exists(destFilePath) && !Common.FileContentEqual(destFilePath, image.GetBytes()); i++)
+                destFilePath = Path.Combine(GetAbsoluteDestFolder(source), $"{Path.GetFileNameWithoutExtension(destFilePath)} ({i}){Path.GetExtension(destFilePath)}");
+            if (!File.Exists(destFilePath))
+            {
+                new FileInfo(destFilePath).Directory?.Create();
+                image.SaveAsPng(destFilePath);
             }
             return Path.Combine(GetDestFolder(source), fileName);
         }

@@ -26,6 +26,13 @@ namespace Typedown.Core.Interfaces
 
         void SetFileDropList(StringCollection fileDropList);
 
-        byte[] GetImage();
+        IClipboardImage GetImage();
+    }
+
+    public interface IClipboardImage
+    {
+        void SaveAsPng(string path);
+
+        byte[] GetBytes();
     }
 }

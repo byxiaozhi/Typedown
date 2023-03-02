@@ -1,7 +1,6 @@
 ﻿using System.Collections.Specialized;
-using System.IO;
-using System.Windows.Media.Imaging;
 using Typedown.Core.Interfaces;
+using Typedown.Utilities;
 
 namespace Typedown.Services
 {
@@ -27,17 +26,10 @@ namespace Typedown.Services
             return System.Windows.Clipboard.GetFileDropList();
         }
 
-        public byte[] GetImage()
+        public IClipboardImage GetImage()
         {
-            var image = System.Windows.Clipboard.GetImage();
-            if (image == null) return null;
-            using var memoryStream = new MemoryStream();
-            var encoder = new PngBitmapEncoder()
-            {
-                Frames = { BitmapFrame.Create(image) }
-            };
-            encoder.Save(memoryStream);
-            return memoryStream.GetBuffer();
+            var image = System.Windows.Forms.Clipboard.GetImage();
+            return new ClipboardImage(image);
         }
 
         public void SetText(string text, TextDataFormat format)

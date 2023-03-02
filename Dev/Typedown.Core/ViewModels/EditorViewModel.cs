@@ -271,7 +271,7 @@ namespace Typedown.Core.ViewModels
                     MarkdownEditor?.PostMessage("InsertImage", new HtmlImgTag(src: files[0], alt: Path.GetFileNameWithoutExtension(files[0])));
                 }
             }
-            else if (Clipboard.GetImage() is byte[] image)
+            else if (Clipboard.GetImage() is IClipboardImage image)
             {
                 try
                 {
