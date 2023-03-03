@@ -70,6 +70,7 @@ namespace Typedown.Core.Controls
         {
             var folderPicker = new FolderPicker();
             folderPicker.SetOwnerWindow(Window);
+            folderPicker.FileTypeFilter.Add("*");
             var folder = await folderPicker.PickSingleFolderAsync();
             var isCancel = folder is null;
             if (!isCancel) Path = folder.Path;

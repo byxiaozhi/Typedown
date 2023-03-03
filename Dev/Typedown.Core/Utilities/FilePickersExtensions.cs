@@ -35,7 +35,7 @@ namespace Typedown.Core.Utilities
         {
             var folderPicker = new FolderPicker();
             folderPicker.SetOwnerWindow(window);
-            FileTypeHelper.Markdown.ToList().ForEach(folderPicker.FileTypeFilter.Add);
+            folderPicker.FileTypeFilter.Add("*");
             var folder = await folderPicker.PickSingleFolderAsync();
             return folder?.Path;
         }
