@@ -534,7 +534,7 @@
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>"./" सापेक्ष मार्गांवर अवलंबून रहा</value>
+    <value>सापेक्ष मार्गापूर्वी "./" जोडा</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">

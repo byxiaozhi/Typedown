@@ -534,7 +534,7 @@
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Prepend "./" ke laluan relatif</value>
+    <value>Tambah "./" sebelum laluan relatif</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">

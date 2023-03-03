@@ -534,7 +534,7 @@
     <comment>视图/应用主题</comment>
   </data>
   <data name="View.Image.AddSymbolBeforeRelativePath.Title" xml:space="preserve">
-    <value>Підготовка "./" до відносних шляхів</value>
+    <value>Додавання "./" перед відносним шляхом</value>
     <comment>图片/相对路径前添加 "./"</comment>
   </data>
   <data name="View.Image.AutoCopyRelativePathImage.Description" xml:space="preserve">
@@ -626,7 +626,7 @@
     <comment>图片/设置图片上传方式</comment>
   </data>
   <data name="View.Image.UploadConfigs.Title" xml:space="preserve">
-    <value>Конфігурація завантаження зображень</value>
+    <value>Конфігурації завантаження зображень</value>
     <comment>图片/图片上传配置</comment>
   </data>
   <data name="View.Layout" xml:space="preserve">
