@@ -237,6 +237,10 @@
     <value>ഉള്ളടക്കം പകർത്തുക</value>
     <comment>复制内容</comment>
   </data>
+  <data name="CopyImageTo" xml:space="preserve">
+    <value>ഇമേജ് പകർത്തുക...</value>
+    <comment>复制图片到...</comment>
+  </data>
   <data name="CopyPasteAs" xml:space="preserve">
     <value>കോപ്പി/ ഒട്ടിക്കുക...</value>
     <comment>编辑/复制/粘贴为...</comment>
@@ -284,6 +288,10 @@
   <data name="Delete" xml:space="preserve">
     <value>ഡിലീറ്റ് ചെയ്യുക</value>
     <comment>删除</comment>
+  </data>
+  <data name="DeleteImageFile" xml:space="preserve">
+    <value>ഇമേജ് ഫയൽ ഇല്ലാതാക്കുക</value>
+    <comment>删除图片文件</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
     <value>പട്ടിക ഇല്ലാതാക്കുക</value>
@@ -457,6 +465,10 @@
     <value>Alt</value>
     <comment>Img标签Alt属性</comment>
   </data>
+  <data name="ImageUploadSettings" xml:space="preserve">
+    <value>ഇമേജ് അപ് ലോഡ് ക്രമീകരണം</value>
+    <comment>图片上传设置</comment>
+  </data>
   <data name="Import" xml:space="preserve">
     <value>Import</value>
     <comment>文件/导入</comment>
@@ -585,6 +597,10 @@
     <value>കൂടുതൽ ഓപ്ഷനുകൾ</value>
     <comment>更多选项</comment>
   </data>
+  <data name="MoveImageTo" xml:space="preserve">
+    <value>ഇമേജ് ഇതിലേക്ക് മാറ്റുക...</value>
+    <comment>移动图片到...</comment>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>നാമം</value>
     <comment>名称</comment>
@@ -616,6 +632,10 @@
   <data name="NoExportConfigs" xml:space="preserve">
     <value>കയറ്റുമതി കോൺഫിഗറേഷൻ ഇല്ല</value>
     <comment>无导出配置</comment>
+  </data>
+  <data name="NoImageUploadConfiguration" xml:space="preserve">
+    <value>ഇമേജ് അപ് ലോഡ് കോൺഫിഗറേഷൻ ഇല്ല</value>
+    <comment>无图片上传配置</comment>
   </data>
   <data name="None" xml:space="preserve">
     <value>ഒന്നുമില്ല.</value>
@@ -757,6 +777,10 @@
     <value>രക്ഷപെട്ടു</value>
     <comment>文件/已保存</comment>
   </data>
+  <data name="SaveImageAs" xml:space="preserve">
+    <value>ഇമേജ് സേവ് ചെയ്യുക...</value>
+    <comment>图片另存为</comment>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>തിരയുക</value>
     <comment>搜索</comment>
@@ -852,6 +876,10 @@
   <data name="Update" xml:space="preserve">
     <value>അപ് ഡേറ്റ്</value>
     <comment>应用程序更新</comment>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>ചിത്രം അപ് ലോഡ് ചെയ്യുക</value>
+    <comment>上传图片</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
     <value>പതിവ് എക്സ്പ്രഷൻ മാച്ച്</value>

@@ -237,6 +237,10 @@
     <value>შინაარსის კოპირება</value>
     <comment>复制内容</comment>
   </data>
+  <data name="CopyImageTo" xml:space="preserve">
+    <value>სურათის კოპირება...</value>
+    <comment>复制图片到...</comment>
+  </data>
   <data name="CopyPasteAs" xml:space="preserve">
     <value>დააკოპირეთ / ჩასვით როგორც...</value>
     <comment>编辑/复制/粘贴为...</comment>
@@ -284,6 +288,10 @@
   <data name="Delete" xml:space="preserve">
     <value>წაშლა</value>
     <comment>删除</comment>
+  </data>
+  <data name="DeleteImageFile" xml:space="preserve">
+    <value>სურათის ფაილის წაშლა</value>
+    <comment>删除图片文件</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
     <value>ცხრილის წაშლა</value>
@@ -457,6 +465,10 @@
     <value>ალტ</value>
     <comment>Img标签Alt属性</comment>
   </data>
+  <data name="ImageUploadSettings" xml:space="preserve">
+    <value>სურათის ატვირთვის პარამეტრები</value>
+    <comment>图片上传设置</comment>
+  </data>
   <data name="Import" xml:space="preserve">
     <value>იმპორტი</value>
     <comment>文件/导入</comment>
@@ -585,6 +597,10 @@
     <value>დამატებითი დეტალები</value>
     <comment>更多选项</comment>
   </data>
+  <data name="MoveImageTo" xml:space="preserve">
+    <value>სურათის გადატანა ...</value>
+    <comment>移动图片到...</comment>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>სახელი</value>
     <comment>名称</comment>
@@ -616,6 +632,10 @@
   <data name="NoExportConfigs" xml:space="preserve">
     <value>ექსპორტის კონფიგურაცია არ არის</value>
     <comment>无导出配置</comment>
+  </data>
+  <data name="NoImageUploadConfiguration" xml:space="preserve">
+    <value>სურათის ატვირთვის კონფიგურაცია არ არის</value>
+    <comment>无图片上传配置</comment>
   </data>
   <data name="None" xml:space="preserve">
     <value>არცერთი</value>
@@ -757,6 +777,10 @@
     <value>შენახულია</value>
     <comment>文件/已保存</comment>
   </data>
+  <data name="SaveImageAs" xml:space="preserve">
+    <value>სურათის შენახვა როგორც...</value>
+    <comment>图片另存为</comment>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>ძიება</value>
     <comment>搜索</comment>
@@ -852,6 +876,10 @@
   <data name="Update" xml:space="preserve">
     <value>განახლება</value>
     <comment>应用程序更新</comment>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>ატვირთეთ სურათი</value>
+    <comment>上传图片</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
     <value>რეგულარული გამოხატვის მატჩი</value>

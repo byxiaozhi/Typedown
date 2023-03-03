@@ -237,6 +237,10 @@
     <value>সমল প্ৰতিলিপি কৰক</value>
     <comment>复制内容</comment>
   </data>
+  <data name="CopyImageTo" xml:space="preserve">
+    <value>ছবিক প্ৰতিলিপি কৰক...</value>
+    <comment>复制图片到...</comment>
+  </data>
   <data name="CopyPasteAs" xml:space="preserve">
     <value>কপি/পেষ্ট কৰক...</value>
     <comment>编辑/复制/粘贴为...</comment>
@@ -284,6 +288,10 @@
   <data name="Delete" xml:space="preserve">
     <value>মচি পেলাওক</value>
     <comment>删除</comment>
+  </data>
+  <data name="DeleteImageFile" xml:space="preserve">
+    <value>ছবি ফাইল মচি পেলাওক</value>
+    <comment>删除图片文件</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
     <value>তালিকা মচি পেলাওক</value>
@@ -457,6 +465,10 @@
     <value>অল্ট</value>
     <comment>Img标签Alt属性</comment>
   </data>
+  <data name="ImageUploadSettings" xml:space="preserve">
+    <value>ছবি আপলোড ছেটিংছ</value>
+    <comment>图片上传设置</comment>
+  </data>
   <data name="Import" xml:space="preserve">
     <value>আমদানি</value>
     <comment>文件/导入</comment>
@@ -585,6 +597,10 @@
     <value>অধিক বিকল্প</value>
     <comment>更多选项</comment>
   </data>
+  <data name="MoveImageTo" xml:space="preserve">
+    <value>ছবিলৈ স্থানান্তৰ কৰক...</value>
+    <comment>移动图片到...</comment>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>নাম</value>
     <comment>名称</comment>
@@ -616,6 +632,10 @@
   <data name="NoExportConfigs" xml:space="preserve">
     <value>কোনো ৰপ্তানি বিন্যাস নাই</value>
     <comment>无导出配置</comment>
+  </data>
+  <data name="NoImageUploadConfiguration" xml:space="preserve">
+    <value>কোনো ছবি আপলোড বিন্যাস নাই</value>
+    <comment>无图片上传配置</comment>
   </data>
   <data name="None" xml:space="preserve">
     <value>একো নহয়</value>
@@ -757,6 +777,10 @@
     <value>সংৰক্ষিত</value>
     <comment>文件/已保存</comment>
   </data>
+  <data name="SaveImageAs" xml:space="preserve">
+    <value>ছবি সংৰক্ষণ কৰক...</value>
+    <comment>图片另存为</comment>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>অনুসন্ধান</value>
     <comment>搜索</comment>
@@ -852,6 +876,10 @@
   <data name="Update" xml:space="preserve">
     <value>আপডেট কৰক</value>
     <comment>应用程序更新</comment>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>ছবি আপলোড কৰক</value>
+    <comment>上传图片</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
     <value>নিয়মীয়া অভিব্যক্তি মিল</value>

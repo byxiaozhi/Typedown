@@ -237,6 +237,10 @@
     <value>ትሕዝቶ ቐዲሕካ</value>
     <comment>复制内容</comment>
   </data>
+  <data name="CopyImageTo" xml:space="preserve">
+    <value>ምስሊ ናብ ...</value>
+    <comment>复制图片到...</comment>
+  </data>
   <data name="CopyPasteAs" xml:space="preserve">
     <value>ቅዳሕ/ለቕሊቕካ ከም...</value>
     <comment>编辑/复制/粘贴为...</comment>
@@ -284,6 +288,10 @@
   <data name="Delete" xml:space="preserve">
     <value>ኣወግድ</value>
     <comment>删除</comment>
+  </data>
+  <data name="DeleteImageFile" xml:space="preserve">
+    <value>ፋይል ምስሊ ኣወግድ</value>
+    <comment>删除图片文件</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
     <value>ሰሌዳ ኣወግድ</value>
@@ -457,6 +465,10 @@
     <value>ኣልት</value>
     <comment>Img标签Alt属性</comment>
   </data>
+  <data name="ImageUploadSettings" xml:space="preserve">
+    <value>ምስሊ ኣራግፍ</value>
+    <comment>图片上传设置</comment>
+  </data>
   <data name="Import" xml:space="preserve">
     <value>import</value>
     <comment>文件/导入</comment>
@@ -585,6 +597,10 @@
     <value>ተወሳኺ ኣማራጺታት</value>
     <comment>更多选项</comment>
   </data>
+  <data name="MoveImageTo" xml:space="preserve">
+    <value>ምስሊ ናብ ...</value>
+    <comment>移动图片到...</comment>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>ስም</value>
     <comment>名称</comment>
@@ -616,6 +632,10 @@
   <data name="NoExportConfigs" xml:space="preserve">
     <value>ናብ ወጻኢ ዚስደድ ነገር የልቦን</value>
     <comment>无导出配置</comment>
+  </data>
+  <data name="NoImageUploadConfiguration" xml:space="preserve">
+    <value>ምስሊ ኣየራግፍን ኢዩ</value>
+    <comment>无图片上传配置</comment>
   </data>
   <data name="None" xml:space="preserve">
     <value>ዋላ ሓደ የለን</value>
@@ -753,6 +773,10 @@
     <value>ዝደሓነ</value>
     <comment>文件/已保存</comment>
   </data>
+  <data name="SaveImageAs" xml:space="preserve">
+    <value>ምስሊ ኸም...</value>
+    <comment>图片另存为</comment>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>ድለ</value>
     <comment>搜索</comment>
@@ -848,6 +872,10 @@
   <data name="Update" xml:space="preserve">
     <value>እዋናዊ ሓበሬታ</value>
     <comment>应用程序更新</comment>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>ምስሊ ኣራግፍ</value>
+    <comment>上传图片</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
     <value>ስሩዕ መግለጺ</value>

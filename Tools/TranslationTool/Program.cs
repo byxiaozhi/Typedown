@@ -4,7 +4,7 @@ using TranslationTool;
 Console.OutputEncoding = Encoding.Unicode;
 Console.InputEncoding = Encoding.Unicode;
 
-string projectPath = @"C:\GitHub\Typedown";
+string projectPath = @"C:\Users\12283\Documents\GitHub\Typedown";
 
 var manualLangs = new List<string>() { "en", "ja", "ko", "ru", "fr", "de", "es", "it", "nl", "ar" };
 var batch = 30;

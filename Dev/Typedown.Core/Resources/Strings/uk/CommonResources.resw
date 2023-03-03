@@ -237,6 +237,10 @@
     <value>Копіювати вміст</value>
     <comment>复制内容</comment>
   </data>
+  <data name="CopyImageTo" xml:space="preserve">
+    <value>Скопіювати зображення в...</value>
+    <comment>复制图片到...</comment>
+  </data>
   <data name="CopyPasteAs" xml:space="preserve">
     <value>Копіювати/вставляти як...</value>
     <comment>编辑/复制/粘贴为...</comment>
@@ -284,6 +288,10 @@
   <data name="Delete" xml:space="preserve">
     <value>Видалити</value>
     <comment>删除</comment>
+  </data>
+  <data name="DeleteImageFile" xml:space="preserve">
+    <value>Видалити файл зображення</value>
+    <comment>删除图片文件</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
     <value>Видалити таблицю</value>
@@ -457,6 +465,10 @@
     <value>Alt</value>
     <comment>Img标签Alt属性</comment>
   </data>
+  <data name="ImageUploadSettings" xml:space="preserve">
+    <value>Налаштування завантаження зображень</value>
+    <comment>图片上传设置</comment>
+  </data>
   <data name="Import" xml:space="preserve">
     <value>Імпорт</value>
     <comment>文件/导入</comment>
@@ -585,6 +597,10 @@
     <value>Додаткові параметри</value>
     <comment>更多选项</comment>
   </data>
+  <data name="MoveImageTo" xml:space="preserve">
+    <value>Перемістити зображення до...</value>
+    <comment>移动图片到...</comment>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Ім'я</value>
     <comment>名称</comment>
@@ -616,6 +632,10 @@
   <data name="NoExportConfigs" xml:space="preserve">
     <value>Немає конфігурації експорту</value>
     <comment>无导出配置</comment>
+  </data>
+  <data name="NoImageUploadConfiguration" xml:space="preserve">
+    <value>Немає конфігурації завантаження зображень</value>
+    <comment>无图片上传配置</comment>
   </data>
   <data name="None" xml:space="preserve">
     <value>Ніхто</value>
@@ -757,6 +777,10 @@
     <value>Збережені</value>
     <comment>文件/已保存</comment>
   </data>
+  <data name="SaveImageAs" xml:space="preserve">
+    <value>Зберегти зображення як...</value>
+    <comment>图片另存为</comment>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Шукати</value>
     <comment>搜索</comment>
@@ -852,6 +876,10 @@
   <data name="Update" xml:space="preserve">
     <value>Оновлювати</value>
     <comment>应用程序更新</comment>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>Завантажити зображення</value>
+    <comment>上传图片</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
     <value>Збіг регулярних виразів</value>

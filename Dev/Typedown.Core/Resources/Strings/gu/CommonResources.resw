@@ -237,6 +237,10 @@
     <value>સમાવિષ્ટોની નકલ કરો</value>
     <comment>复制内容</comment>
   </data>
+  <data name="CopyImageTo" xml:space="preserve">
+    <value>ચિત્રની આમાં નકલ કરો...</value>
+    <comment>复制图片到...</comment>
+  </data>
   <data name="CopyPasteAs" xml:space="preserve">
     <value>આ રીતે નકલ કરો/ચોંટાડો...</value>
     <comment>编辑/复制/粘贴为...</comment>
@@ -284,6 +288,10 @@
   <data name="Delete" xml:space="preserve">
     <value>કાઢી નાંખો</value>
     <comment>删除</comment>
+  </data>
+  <data name="DeleteImageFile" xml:space="preserve">
+    <value>ચિત્ર ફાઈલ કાઢી નાંખો</value>
+    <comment>删除图片文件</comment>
   </data>
   <data name="DeleteTable" xml:space="preserve">
     <value>કોષ્ટક કાઢી નાંખો</value>
@@ -457,6 +465,10 @@
     <value>Alt</value>
     <comment>Img标签Alt属性</comment>
   </data>
+  <data name="ImageUploadSettings" xml:space="preserve">
+    <value>ચિત્ર અપલોડ સુયોજનો</value>
+    <comment>图片上传设置</comment>
+  </data>
   <data name="Import" xml:space="preserve">
     <value>આયાત કરો</value>
     <comment>文件/导入</comment>
@@ -585,6 +597,10 @@
     <value>વધારે વિકલ્પો</value>
     <comment>更多选项</comment>
   </data>
+  <data name="MoveImageTo" xml:space="preserve">
+    <value>ચિત્રને આમાં ખસેડો...</value>
+    <comment>移动图片到...</comment>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>નામ</value>
     <comment>名称</comment>
@@ -616,6 +632,10 @@
   <data name="NoExportConfigs" xml:space="preserve">
     <value>કોઈ નિકાસ રૂપરેખાંકન નથી</value>
     <comment>无导出配置</comment>
+  </data>
+  <data name="NoImageUploadConfiguration" xml:space="preserve">
+    <value>ચિત્ર અપલોડ રૂપરેખાંકન નથી</value>
+    <comment>无图片上传配置</comment>
   </data>
   <data name="None" xml:space="preserve">
     <value>કંઇ નહિં</value>
@@ -757,6 +777,10 @@
     <value>સંગ્રહાયેલ</value>
     <comment>文件/已保存</comment>
   </data>
+  <data name="SaveImageAs" xml:space="preserve">
+    <value>આ રીતે ચિત્રનો સંગ્રહ કરો...</value>
+    <comment>图片另存为</comment>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>શોધવું</value>
     <comment>搜索</comment>
@@ -852,6 +876,10 @@
   <data name="Update" xml:space="preserve">
     <value>સુધારો</value>
     <comment>应用程序更新</comment>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>ચિત્રને અપલોડ કરો</value>
+    <comment>上传图片</comment>
   </data>
   <data name="UseRegexp" xml:space="preserve">
     <value>નિયમિત સમીકરણ મેળ ખાય છે</value>

@@ -10,13 +10,13 @@
     xmlns:viewmodels="using:Typedown.Core.ViewModels" 
     mc:Ignorable="d">
     <MenuFlyoutItem x:Name="OpenImageLocationItem" Text="{u:LocaleString Key=OpenImageLocation}" Click="OnOpenImageLocationClick" Loaded="OnOpenImageLocationItemLoaded"/>
-    <MenuFlyoutItem Text="复制图片到..." Click="OnCopyImageToClick"/>
-    <MenuFlyoutItem x:Name="MoveImageItem" Text="移动图片到..." Click="OnMoveImageToClick"/>
-    <MenuFlyoutSubItem x:Name="UploadSubMenu" Text="上传图片">
-        <MenuFlyoutItem x:Name="NoUploadConfigItem" Text="无图片上传配置" IsEnabled="False"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=CopyImageTo}" Click="OnCopyImageToClick"/>
+    <MenuFlyoutItem x:Name="MoveImageItem" Text="{u:LocaleString Key=MoveImageTo}" Click="OnMoveImageToClick"/>
+    <MenuFlyoutSubItem x:Name="UploadSubMenu" Text="{u:LocaleString Key=UploadImage}">
+        <MenuFlyoutItem x:Name="NoUploadConfigItem" Text="{u:LocaleString Key=NoImageUploadConfiguration}" IsEnabled="False"/>
         <MenuFlyoutSeparator/>
-        <MenuFlyoutItem Text="图片设置" Click="OnImageUploadSettingsClick"/>
+        <MenuFlyoutItem Text="{u:LocaleString Key=ImageUploadSettings}" Click="OnImageUploadSettingsClick"/>
     </MenuFlyoutSubItem>
-    <MenuFlyoutItem Text="图片另存为" Click="OnSaveImageClick"/>
-    <MenuFlyoutItem x:Name="DeleteImageItem" Text="删除图片文件" Click="OnDeleteImageFileClick"/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=SaveImageAs}" Click="OnSaveImageClick"/>
+    <MenuFlyoutItem x:Name="DeleteImageItem" Text="{u:LocaleString Key=DeleteImageFile}" Click="OnDeleteImageFileClick"/>
 </controls:MenuItemCollection>
