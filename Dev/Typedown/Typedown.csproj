@@ -31,7 +31,6 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.30" />
-		<PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.7" />
 		<PackageReference Include="Microsoft.VCRTForwarders.140" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1587.40" />
 		<PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.22621.755" />
