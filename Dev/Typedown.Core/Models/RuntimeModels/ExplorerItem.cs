@@ -195,21 +195,25 @@ namespace Typedown.Core.Models
             var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
             fileSystemWatcher.Created += async (s, e) =>
             {
+                if (e.Name == null) return;
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
                 if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileCreated(e, attr.Value));
             };
             fileSystemWatcher.Renamed += async (s, e) =>
             {
+                if (e.Name == null) return;
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
                 if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileRenamed(e, attr.Value));
             };
             fileSystemWatcher.Changed += async (s, e) =>
             {
+                if (e.Name == null) return;
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
                 if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileChanged(e, attr.Value));
             };
             fileSystemWatcher.Deleted += (s, e) =>
             {
+                if (e.Name == null) return;
                 dispatcherQueue.TryEnqueue(() => OnFileDeleted(e));
             };
             fileSystemWatcher.Path = FullPath;
