@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Typedown.Core.Controls;
 using Typedown.Core.Interfaces;
@@ -36,10 +38,10 @@ namespace Typedown.Core.Services
                 switch (Settings.InsertLocalImageAction)
                 {
                     case Enums.InsertImageAction.CopyToPath:
-                        result = await Task.Run(() => CopyImage(InsertImageSource.Local, filePath));
+                        result = await Task.Run(() => CopyImage(InsertImageSource.Local, AppViewModel.GetImageAbsolutePath(filePath)));
                         break;
                     case Enums.InsertImageAction.Upload:
-                        result = await Upload(InsertImageSource.Local, filePath);
+                        result = await Upload(InsertImageSource.Local, AppViewModel.GetImageAbsolutePath(filePath));
                         break;
                     default:
                         if (UriHelper.IsAbsolutePath(filePath) && Settings.PreferRelativeImagePaths)
@@ -113,46 +115,49 @@ namespace Typedown.Core.Services
             }
         }
 
-        public string CopyImage(InsertImageSource source, string filePath)
+        public string CopyImage(InsertImageSource source, string sourceFile, string destFolder = null)
         {
-            var fileName = Path.GetFileName(filePath);
-            var destFilePath = Path.Combine(GetAbsoluteDestFolder(source), fileName);
-            for (int i = 2; File.Exists(destFilePath) && !Common.FileContentEqual(destFilePath, filePath); i++)
-                destFilePath = Path.Combine(GetAbsoluteDestFolder(source), $"{Path.GetFileNameWithoutExtension(destFilePath)} ({i}){Path.GetExtension(destFilePath)}");
+            var fileName = Path.GetFileName(sourceFile);
+            destFolder ??= GetDefaultDestFolder(source);
+            var destFilePath = AppViewModel.GetImageAbsolutePath(Path.Combine(destFolder, fileName));
+            for (int i = 2; File.Exists(destFilePath) && !Common.FileContentEqual(destFilePath, sourceFile); i++)
+                destFilePath = AppViewModel.GetImageAbsolutePath(Path.Combine(destFolder, $"{Path.GetFileNameWithoutExtension(destFilePath)} ({i}){Path.GetExtension(destFilePath)}"));
             if (!File.Exists(destFilePath))
             {
                 new FileInfo(destFilePath).Directory?.Create();
-                File.Copy(filePath, destFilePath);
+                File.Copy(sourceFile, destFilePath);
             }
-            return Path.Combine(GetDestFolder(source), fileName);
+            return Path.Combine(destFolder, fileName);
         }
 
-        public async Task<string> SaveImage(InsertImageSource source, byte[] bytes, string fileName = null)
+        public async Task<string> SaveImage(InsertImageSource source, byte[] bytes, string fileName = null, string destFolder = null)
         {
-            fileName ??= $"{Guid.NewGuid()}.png";
-            var destFilePath = Path.Combine(GetAbsoluteDestFolder(source), fileName);
+            fileName ??= $"{Guid.NewGuid()}.{GetImageType(bytes, "png")}";
+            destFolder ??= GetDefaultDestFolder(source);
+            var destFilePath = AppViewModel.GetImageAbsolutePath(Path.Combine(destFolder, fileName));
             for (int i = 2; File.Exists(destFilePath) && !Common.FileContentEqual(destFilePath, bytes); i++)
-                destFilePath = Path.Combine(GetAbsoluteDestFolder(source), $"{Path.GetFileNameWithoutExtension(destFilePath)} ({i}){Path.GetExtension(destFilePath)}");
+                destFilePath = AppViewModel.GetImageAbsolutePath(Path.Combine(destFolder, $"{Path.GetFileNameWithoutExtension(destFilePath)} ({i}){Path.GetExtension(destFilePath)}"));
             if (!File.Exists(destFilePath))
             {
                 new FileInfo(destFilePath).Directory?.Create();
                 await File.WriteAllBytesAsync(destFilePath, bytes);
             }
-            return Path.Combine(GetDestFolder(source), fileName);
+            return Path.Combine(destFolder, fileName);
         }
 
-        public string SaveImage(InsertImageSource source, IClipboardImage image, string fileName = null)
+        public string SaveImage(InsertImageSource source, IClipboardImage image, string fileName = null, string destFolder = null)
         {
             fileName ??= $"{Guid.NewGuid()}.png";
-            var destFilePath = Path.Combine(GetAbsoluteDestFolder(source), fileName);
+            destFolder ??= GetDefaultDestFolder(source);
+            var destFilePath = AppViewModel.GetImageAbsolutePath(Path.Combine(destFolder, fileName));
             for (int i = 2; File.Exists(destFilePath) && !Common.FileContentEqual(destFilePath, image.GetBytes()); i++)
-                destFilePath = Path.Combine(GetAbsoluteDestFolder(source), $"{Path.GetFileNameWithoutExtension(destFilePath)} ({i}){Path.GetExtension(destFilePath)}");
+                destFilePath = AppViewModel.GetImageAbsolutePath(Path.Combine(destFolder, $"{Path.GetFileNameWithoutExtension(destFilePath)} ({i}){Path.GetExtension(destFilePath)}"));
             if (!File.Exists(destFilePath))
             {
                 new FileInfo(destFilePath).Directory?.Create();
                 image.SaveAsPng(destFilePath);
             }
-            return Path.Combine(GetDestFolder(source), fileName);
+            return Path.Combine(destFolder, fileName);
         }
 
         public async Task<byte[]> GetWebImage(Uri uri)
@@ -160,7 +165,7 @@ namespace Typedown.Core.Services
             return await Task.Run(() => new WebClient().DownloadData(uri));
         }
 
-        public string GetDestFolder(InsertImageSource source)
+        public string GetDefaultDestFolder(InsertImageSource source)
         {
             return source switch
             {
@@ -169,11 +174,6 @@ namespace Typedown.Core.Services
                 InsertImageSource.Web => Settings.InsertWebImageAction == Enums.InsertImageAction.CopyToPath ? Settings.InsertWebImageCopyPath : Settings.DefaultImageBasePath,
                 _ => throw new NotImplementedException()
             };
-        }
-
-        public string GetAbsoluteDestFolder(InsertImageSource source)
-        {
-            return Path.GetFullPath(Path.Combine(FileViewModel.ImageBasePath, GetDestFolder(source)));
         }
 
         public async Task<string> Upload(InsertImageSource source, string filePath)
@@ -196,5 +196,43 @@ namespace Typedown.Core.Services
         }
 
         public enum InsertImageSource { Clipboard, Local, Web };
+
+        public static string GetImageType(byte[] bytes, string defaultType)
+        {
+            string headerCode = GetHeaderInfo(bytes).ToUpper();
+
+            if (headerCode.StartsWith("FFD8FFE0"))
+            {
+                return "jpg";
+            }
+            else if (headerCode.StartsWith("49492A"))
+            {
+                return "tiff";
+            }
+            else if (headerCode.StartsWith("424D"))
+            {
+                return "bmp";
+            }
+            else if (headerCode.StartsWith("474946"))
+            {
+                return "gif";
+            }
+            else if (headerCode.StartsWith("89504E470D0A1A0A"))
+            {
+                return "png";
+            }
+            else
+            {
+                return defaultType; //UnKnown
+            }
+        }
+
+        public static string GetHeaderInfo(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            foreach (byte b in bytes.Take(8))
+                sb.Append(b.ToString("X2"));
+            return sb.ToString();
+        }
     }
 }

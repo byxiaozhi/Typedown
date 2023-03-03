@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using Typedown.Core.ViewModels;
 
 namespace Typedown.Core.Utilities
 {
@@ -65,6 +66,20 @@ namespace Typedown.Core.Utilities
             }
             path = null;
             return false;
+        }
+
+        public static string GetImageAbsolutePath(this AppViewModel viewModel, string path)
+        {
+            try
+            {
+                if (IsAbsolutePath(path))
+                    return path;
+                return Path.GetFullPath(Path.Combine(viewModel.FileViewModel.ImageBasePath, path));
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

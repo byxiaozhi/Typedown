@@ -98,7 +98,6 @@ namespace Typedown.Core.Controls.FloatControls
                 }
                 MarkdownEditor.PostMessage("ReplaceImage", new HtmlImgTag(src, alt, title));
             }
-
         }
 
         private void OnImagePickerButtonPicked(object sender, PickedEventArgs e)
