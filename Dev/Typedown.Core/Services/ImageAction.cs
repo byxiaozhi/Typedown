@@ -44,12 +44,7 @@ namespace Typedown.Core.Services
                         result = await Upload(InsertImageSource.Local, AppViewModel.GetImageAbsolutePath(filePath));
                         break;
                     default:
-                        if (UriHelper.IsAbsolutePath(filePath) && Settings.PreferRelativeImagePaths)
-                        {
-                            result = Path.GetRelativePath(FileViewModel.ImageBasePath, filePath);
-                            if (Settings.AddSymbolBeforeRelativePath)
-                                result = "./" + result;
-                        }
+                        result = ConvertImagePath(filePath);
                         break;
                 }
                 if (UriHelper.IsAbsolutePath(result))
@@ -233,6 +228,17 @@ namespace Typedown.Core.Services
             foreach (byte b in bytes.Take(8))
                 sb.Append(b.ToString("X2"));
             return sb.ToString();
+        }
+
+        public string ConvertImagePath(string filePath)
+        {
+            if (UriHelper.IsAbsolutePath(filePath) && Settings.PreferRelativeImagePaths)
+            {
+                filePath = Path.GetRelativePath(FileViewModel.ImageBasePath, filePath);
+                if (Settings.AddSymbolBeforeRelativePath)
+                    filePath = "./" + filePath;
+            }
+            return filePath.Replace('\\', '/');
         }
     }
 }

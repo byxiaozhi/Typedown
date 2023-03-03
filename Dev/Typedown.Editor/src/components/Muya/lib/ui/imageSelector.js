@@ -26,16 +26,17 @@ class ImageSelector {
     transport.addListener('ReplaceImage', this.replaceImageAsync);
   }
 
-  replaceImageAsync = async ({ alt, src, title }) => {
+  replaceImageAsync = async ({ alt, src, title, isReplaceSelected }) => {
+    const imageInfo = isReplaceSelected ? this.muya.contentState.selectedImage : this.imageInfo
     if (!this.muya.options.imageAction || URL_REG.test(src)) {
-      const { alt: oldAlt, src: oldSrc, title: oldTitle } = this.imageInfo.token.attrs
+      const { alt: oldAlt, src: oldSrc, title: oldTitle } = imageInfo.token.attrs
       if (alt !== oldAlt || src !== oldSrc || title !== oldTitle) {
-        this.muya.contentState.replaceImage(this.imageInfo, { alt, src, title })
+        this.muya.contentState.replaceImage(imageInfo, { alt, src, title })
       }
     } else {
       if (src) {
         const id = `loading-${getUniqueId()}`
-        this.muya.contentState.replaceImage(this.imageInfo, {
+        this.muya.contentState.replaceImage(imageInfo, {
           alt: id,
           src,
           title

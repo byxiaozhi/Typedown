@@ -112,5 +112,10 @@ namespace Typedown.Core.Services
             }
             return await config.LoadUploadConfig().Upload(serviceProvider, filePath);
         }
+
+        public async Task<string> Upload(ImageUploadConfig config, string filePath)
+        {
+            return await config.LoadUploadConfig().Upload(serviceProvider, filePath);
+        }
     }
 }

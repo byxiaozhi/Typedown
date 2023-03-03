@@ -43,32 +43,32 @@ namespace Typedown.Core.Controls.FloatControls
 
         private void EditClick(object sender, RoutedEventArgs e)
         {
-            PostEditTableMessage(new { type = "edit" });
+            PostEditImageMessage(new { type = "edit" });
         }
 
         private void InlineClick(object sender, RoutedEventArgs e)
         {
-            PostEditTableMessage(new { type = "inline" });
+            PostEditImageMessage(new { type = "inline" });
         }
 
         private void LeftClick(object sender, RoutedEventArgs e)
         {
-            PostEditTableMessage(new { type = "left" });
+            PostEditImageMessage(new { type = "left" });
         }
 
         private void CenterClick(object sender, RoutedEventArgs e)
         {
-            PostEditTableMessage(new { type = "center" });
+            PostEditImageMessage(new { type = "center" });
         }
 
         private void RightClick(object sender, RoutedEventArgs e)
         {
-            PostEditTableMessage(new { type = "right" });
+            PostEditImageMessage(new { type = "right" });
         }
 
         private void DeleteClick(object sender, RoutedEventArgs e)
         {
-            PostEditTableMessage(new { type = "delete" });
+            PostEditImageMessage(new { type = "delete" });
         }
 
         private void ZoomClick(object sender, RoutedEventArgs e)
@@ -76,10 +76,10 @@ namespace Typedown.Core.Controls.FloatControls
             var zoom = (sender as MenuFlyoutItem).Tag as string;
             var style = (attrs["style"]?.ToString() ?? "").Split(';').Where(x => !x.StartsWith("zoom:") && !string.IsNullOrWhiteSpace(x)).ToList();
             style.Add($"zoom:{zoom}");
-            PostEditTableMessage(new { type = "updateImage", attrName = "style", attrValue = $"{string.Join(';', style)};" });
+            PostEditImageMessage(new { type = "updateImage", attrName = "style", attrValue = $"{string.Join(';', style)};" });
         }
 
-        private void PostEditTableMessage(object args)
+        private void PostEditImageMessage(object args)
         {
             MarkdownEditor.PostMessage("ImageEditToolbarClick", args);
             Hide();
