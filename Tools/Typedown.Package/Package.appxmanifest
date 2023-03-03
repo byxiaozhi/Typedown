@@ -9,7 +9,7 @@
 	<Identity
 	  Name="62082Surprise.Typedown"
 	  Publisher="CN=70DB4128-9F7D-4D9C-ADFC-7B5988F89237"
-	  Version="1.2.3.0" />
+	  Version="1.2.4.0" />
 
 	<Properties>
 		<DisplayName>Typedown</DisplayName>
