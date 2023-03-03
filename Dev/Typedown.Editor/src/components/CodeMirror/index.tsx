@@ -180,10 +180,10 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     useEffect(() => {
         if (markdownRef.current != props.markdown && editor) {
             markdownRef.current = props.markdown
-            const { anchor, focus } = cursorRef.current ?? {}
+            const { anchor, head } = cursorRef.current ?? {}
             editor.setValue(markdownRef.current)
-            if (anchor && focus)
-                editor.setSelection(anchor, focus, { scroll: true })
+            if (anchor && head)
+                editor.setSelection(anchor, head, { scroll: true })
             window.scrollTo(window.scrollX, props.scrollTopRef.current)
             if (searchArgRef.current?.value != "" && searchArgRef.current?.opt?.selection) {
                 const { value, opt } = searchArgRef.current
