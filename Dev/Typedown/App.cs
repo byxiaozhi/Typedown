@@ -51,8 +51,7 @@ namespace Typedown
                 return;
             }
             var window = new MainWindow();
-            var hasStartupPlacement = window.AppViewModel.SettingsViewModel.StartupPlacement.HasValue;
-            window.Show(hasStartupPlacement ? ShowWindowCommand.SW_HIDE : ShowWindowCommand.SW_NORMAL);
+            window.Show(ShowWindowCommand.SW_HIDE);
             ListenPipe(window.Dispatcher);
         }
 

@@ -72,7 +72,7 @@ namespace Typedown.Utilities
             if (string.IsNullOrEmpty(filePath) || !FileViewModel.TryGetOpenedWindow(filePath, out var windowHWnd))
             {
                 var newWindow = new MainWindow();
-                newWindow.Show();
+                newWindow.Show(ShowWindowCommand.SW_HIDE);
                 newWindow.AppViewModel.CommandLineArgs = args;
                 return newWindow.Handle;
             }
