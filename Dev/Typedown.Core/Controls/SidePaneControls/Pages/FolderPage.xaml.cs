@@ -275,7 +275,14 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             await source.Task;
             textblock.Visibility = Visibility.Visible;
             if (source.Task.Result != Path.GetFileName(item.FullPath))
-                FileOperation.Rename(item.FullPath, Path.Combine(Path.GetDirectoryName(item.FullPath), source.Task.Result));
+            {
+                var newPath = Path.Combine(Path.GetDirectoryName(item.FullPath), source.Task.Result);
+                if (item.FullPath == ViewModel.FileViewModel.FilePath)
+                    ViewModel.FileViewModel.RenameFile(newPath);
+                else
+                    FileOperation.Rename(item.FullPath, newPath);
+                _ = Dispatcher.RunIdleAsync(() => UpdateSelectedItem(WorkFolderExplorerItem));
+            }
         }
 
         internal static void OnTreeViewItemLoaded(object sender, RoutedEventArgs e)
@@ -314,12 +321,22 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         private async void OnTreeViewItemPointerReleased(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
-            var kind = e.GetCurrentPoint(sender as UIElement).Properties.PointerUpdateKind;
-            if (kind == Windows.UI.Input.PointerUpdateKind.LeftButtonReleased &&
-                (sender as muxc.TreeViewItem).DataContext is ExplorerItem item &&
-                item.Type == ExplorerItem.ExplorerItemType.File)
-                await ViewModel.FileViewModel.OpenFile(item.FullPath);
-            UpdateSelectedItem(WorkFolderExplorerItem);
+            try
+            {
+                var kind = e.GetCurrentPoint(sender as UIElement).Properties.PointerUpdateKind;
+                if (kind == Windows.UI.Input.PointerUpdateKind.LeftButtonReleased &&
+                    (sender as muxc.TreeViewItem).DataContext is ExplorerItem item &&
+                    item.Type == ExplorerItem.ExplorerItemType.File)
+                {
+                    if (item.FullPath != ViewModel.FileViewModel.FilePath)
+                        await ViewModel.FileViewModel.OpenFile(item.FullPath);
+                }
+                UpdateSelectedItem(WorkFolderExplorerItem);
+            }
+            catch
+            {
+                // Ignore
+            }
         }
 
         private async void OnOpenClick(object sender, RoutedEventArgs e)

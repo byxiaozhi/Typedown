@@ -14,6 +14,7 @@ using Typedown.Core.Models;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
 using Windows.ApplicationModel.Core;
+using Windows.Devices.Geolocation;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -513,6 +514,19 @@ namespace Typedown.Core.ViewModels
             }
             window = AppViewModel.GetInstances().Where(x => x.FileViewModel.FilePath?.ToLower() == filePath.ToLower()).FirstOrDefault()?.MainWindow ?? default;
             return window != default;
+        }
+
+        public bool RenameFile(string to)
+        {
+            if (!File.Exists(FilePath))
+                return false;
+            var fileOperation = ServiceProvider.GetService<IFileOperation>();
+            if(fileOperation.Rename(FilePath, to))
+            {
+                FilePath = to;
+                return true;
+            }
+            return false;
         }
 
         public void Dispose()
