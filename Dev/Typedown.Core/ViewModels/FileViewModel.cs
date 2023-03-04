@@ -299,6 +299,7 @@ namespace Typedown.Core.ViewModels
                 {
                     EditorViewModel.FileHash = EditorViewModel.CurrentHash;
                     EditorViewModel.Saved = true;
+                    AutoBackup.DeleteBackup(FilePath);
                     _ = AccessHistory.RecordFileHistory(FilePath);
                 }
                 return result;

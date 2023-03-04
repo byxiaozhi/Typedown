@@ -42,7 +42,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            WorkFolderExplorerItem = new ExplorerItem() { IsExpanded = true };
+            WorkFolderExplorerItem = new ExplorerItem(FileViewModel) { IsExpanded = true };
             disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.WorkFolder)).Cast<string>().StartWith(FileViewModel.WorkFolder).Subscribe(UpdateWorkFolder));
             disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FilePath)).Cast<string>().StartWith(FileViewModel.FilePath).Subscribe(_ => UpdateSelectedItem(WorkFolderExplorerItem)));
         }

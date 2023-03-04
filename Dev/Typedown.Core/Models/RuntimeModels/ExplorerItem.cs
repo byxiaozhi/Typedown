@@ -6,8 +6,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Typedown.Core.Utilities;
+using Typedown.Core.ViewModels;
 using Windows.System;
 
 namespace Typedown.Core.Models
@@ -42,14 +44,21 @@ namespace Typedown.Core.Models
 
         private FileSystemWatcher fileSystemWatcher;
 
-        private static readonly HashSet<string> expandedFolder = new();
+        private FileViewModel ViewModel { get; }
+
+        private static readonly ConditionalWeakTable<FileViewModel, HashSet<string>> expandedFolder = new();
+
+        public ExplorerItem(FileViewModel viewModel)
+        {
+            ViewModel = viewModel;
+        }
 
         private void OnFullPathChanged()
         {
             UpdateName();
             UpdateType();
             UpdateChildren();
-            var isExpanded = expandedFolder.Contains(FullPath);
+            var isExpanded = expandedFolder.GetOrCreateValue(ViewModel).Contains(FullPath);
             if (isExpanded) IsExpanded = true;
         }
 
@@ -87,7 +96,7 @@ namespace Typedown.Core.Models
                 IsWatching = true;
                 foreach (var item in Children)
                     item.IsWatching = true;
-                expandedFolder.Add(FullPath);
+                expandedFolder.GetOrCreateValue(ViewModel).Add(FullPath);
             }
             else
             {
@@ -96,7 +105,7 @@ namespace Typedown.Core.Models
                     item.IsExpanded = false;
                     item.IsWatching = false;
                 }
-                expandedFolder.Remove(FullPath);
+                expandedFolder.GetOrCreateValue(ViewModel).Remove(FullPath);
             }
         }
 
@@ -163,7 +172,7 @@ namespace Typedown.Core.Models
 
         private ExplorerItem CreateChild(string name)
         {
-            return new() { FullPath = Path.Combine(FullPath, name), Comparer = Comparer, IsWatching = IsExpanded };
+            return new(ViewModel) { FullPath = Path.Combine(FullPath, name), Comparer = Comparer, IsWatching = IsExpanded };
         }
 
         private bool ContainsChildren(string name)
