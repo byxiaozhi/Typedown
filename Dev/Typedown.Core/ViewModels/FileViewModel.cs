@@ -178,7 +178,7 @@ namespace Typedown.Core.ViewModels
             {
                 if (TryGetOpenedWindow(path, out var window) && window != AppViewModel.MainWindow)
                 {
-                    PInvoke.SetForegroundWindow(window);
+                    _ = AppViewModel.XamlRoot?.Content?.Dispatcher?.RunIdleAsync(() => PInvoke.SetForegroundWindow(window));
                     return false;
                 }
                 if (!File.Exists(path))
