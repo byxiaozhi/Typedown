@@ -42,11 +42,15 @@ namespace Typedown.Core.Models
 
         private FileSystemWatcher fileSystemWatcher;
 
+        private static readonly HashSet<string> expandedFolder = new();
+
         private void OnFullPathChanged()
         {
             UpdateName();
             UpdateType();
             UpdateChildren();
+            var isExpanded = expandedFolder.Contains(FullPath);
+            if (isExpanded) IsExpanded = true;
         }
 
         private void OnIsWatchingChanged()
@@ -83,6 +87,7 @@ namespace Typedown.Core.Models
                 IsWatching = true;
                 foreach (var item in Children)
                     item.IsWatching = true;
+                expandedFolder.Add(FullPath);
             }
             else
             {
@@ -91,6 +96,7 @@ namespace Typedown.Core.Models
                     item.IsExpanded = false;
                     item.IsWatching = false;
                 }
+                expandedFolder.Remove(FullPath);
             }
         }
 

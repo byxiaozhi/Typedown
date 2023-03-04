@@ -110,7 +110,7 @@ namespace Typedown.Core.ViewModels
 
         private async Task<bool> AutoBackupFile()
         {
-            if ((EditorViewModel.FileHash != EditorViewModel.CurrentHash) && !string.IsNullOrEmpty(EditorViewModel.Markdown))
+            if ((EditorViewModel.FileHash != EditorViewModel.CurrentHash) && !string.IsNullOrWhiteSpace(EditorViewModel.Markdown))
                 return await AutoBackup.Backup(FilePath, EditorViewModel.Markdown);
             return true;
         }
