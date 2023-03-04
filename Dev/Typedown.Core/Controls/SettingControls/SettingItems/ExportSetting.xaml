@@ -15,7 +15,7 @@
 
     <UserControl.Resources>
         <SolidColorBrush x:Key="SystemFillColorCriticalBrush" Color="{ThemeResource SystemFillColorCritical}"/>
-        <MenuFlyout x:Key="ConfigItemMenuFlyout">
+        <MenuFlyout x:Key="ConfigItemMenuFlyout" x:Name="ConfigItemMenuFlyout">
             <MenuFlyoutItem Text="{u:LocaleString Key=Delete}" Click="OnDeleteClick"/>
         </MenuFlyout>
     </UserControl.Resources>
@@ -66,7 +66,7 @@
                         Title="{x:Bind Name, Mode=OneWay}" 
                         Description="{x:Bind local:ExportSetting.GetConfigItemDescription(Type), Mode=OneWay}"
                         Tag="{x:Bind}" 
-                        Click="OnConfigItemClick" 
+                        Click="{x:Bind local:ExportSetting.OnConfigItemClick}" 
                         ContextFlyout="{StaticResource ConfigItemMenuFlyout}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>

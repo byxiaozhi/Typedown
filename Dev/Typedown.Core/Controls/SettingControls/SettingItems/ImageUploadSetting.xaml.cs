@@ -40,10 +40,13 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
             await ImageUpload.AddImageUploadConfig(result.ConfigName, result.UploadMethod);
         }
 
-        private void OnConfigItemClick(object sender, EventArgs e)
+        internal static void OnConfigItemClick(object sender, EventArgs e)
         {
+            var buttonItem = sender as ButtonSettingItem;
+            if (buttonItem?.GetAncestor<ImageUploadSetting>() is not ImageUploadSetting uploadSetting)
+                return;
             var config = (sender as ButtonSettingItem).Tag as ImageUploadConfig;
-            ViewModel.NavigateCommand.Execute($"Settings/UploadConfig?{config.Id}");
+            uploadSetting.ViewModel.NavigateCommand.Execute($"Settings/UploadConfig?{config.Id}");
         }
 
         private async void OnDeleteClick(object sender, RoutedEventArgs e)
@@ -71,6 +74,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             Bindings.StopTracking();
+            ConfigItemMenuFlyout.Items.Clear();
         }
     }
 }

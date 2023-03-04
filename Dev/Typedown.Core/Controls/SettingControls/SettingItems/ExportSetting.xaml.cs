@@ -40,10 +40,13 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
             await FileExport.AddExportConfig(result.ConfigName, result.ExportType);
         }
 
-        private void OnConfigItemClick(object sender, EventArgs e)
+        internal static void OnConfigItemClick(object sender, EventArgs e)
         {
-            var config = (sender as ButtonSettingItem).Tag as ExportConfig;
-            ViewModel.NavigateCommand.Execute($"Settings/ExportConfig?{config.Id}");
+            var buttonItem = sender as ButtonSettingItem;
+            if (buttonItem?.GetAncestor<ExportSetting>() is not ExportSetting exportSetting)
+                return;
+            var config = buttonItem.DataContext as ExportConfig;
+            exportSetting.ViewModel.NavigateCommand.Execute($"Settings/ExportConfig?{config.Id}");
         }
 
         private async void OnDeleteClick(object sender, RoutedEventArgs e)
@@ -70,6 +73,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             Bindings.StopTracking();
+            ConfigItemMenuFlyout.Items.Clear();
         }
     }
 }
