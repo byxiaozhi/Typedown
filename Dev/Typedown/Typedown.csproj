@@ -14,7 +14,7 @@
 		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
 		<PublishTrimmed>true</PublishTrimmed>
 		<_SuppressWpfTrimError>true</_SuppressWpfTrimError>
-		<Version>1.2.4</Version>
+		<Version>1.2.5</Version>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 	</PropertyGroup>
 

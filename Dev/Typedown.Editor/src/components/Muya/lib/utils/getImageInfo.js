@@ -14,7 +14,12 @@ export const getImageInfo = image => {
   }
   return {
     key: paragraph.id,
-    token,
+    token: {
+      src: token?.attrs?.src,
+      alt: token?.attrs?.alt,
+      title: token?.attrs?.title,
+      ...token,
+    },
     imageId: image.id
   }
 }
