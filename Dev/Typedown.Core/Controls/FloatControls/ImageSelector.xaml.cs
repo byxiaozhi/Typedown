@@ -103,7 +103,11 @@ namespace Typedown.Core.Controls.FloatControls
         private void OnImagePickerButtonPicked(object sender, PickedEventArgs e)
         {
             if (!flyout.IsOpen)
+            {
                 flyout.ShowAt(MarkdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));
+                if (!e.IsCancel)
+                    TextBoxSrc.Text = e.Path;
+            }
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
