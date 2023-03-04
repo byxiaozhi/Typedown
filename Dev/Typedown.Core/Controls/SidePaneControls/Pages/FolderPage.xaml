@@ -65,18 +65,18 @@
         </MenuFlyout>
 
         <DataTemplate x:Key="FolderTemplate" x:DataType="models:ExplorerItem">
-            <muxc:TreeViewItem ItemsSource="{x:Bind Children}" IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}" 
+            <muxc:TreeViewItem ItemsSource="{Binding Children}" IsExpanded="{Binding IsExpanded, Mode=TwoWay}" 
                                ContextFlyout="{StaticResource FolderContextFlyout}" BorderThickness="1" Margin="-1" 
-                               Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded"
-                               CanDrag="True" DragStarting="OnItemDragStarting" DragOver="OnItemDragOver" 
-                               Background="Transparent" AllowDrop="True" Drop="OnFolderItemDrop">
+                               Loaded="{x:Bind local:FolderPage.OnTreeViewItemLoaded}"
+                               CanDrag="True" DragStarting="{x:Bind local:FolderPage.OnItemDragStarting}" DragOver="{x:Bind local:FolderPage.OnItemDragOver}" 
+                               Background="Transparent" AllowDrop="True" Drop="{x:Bind local:FolderPage.OnFolderItemDrop}">
                 <Grid ColumnSpacing="8" Height="32">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <FontIcon FontSize="14" Glyph="&#xf12b;" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="NameTextBlock" Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,0,1"/>
+                    <TextBlock x:Name="NameTextBlock" Grid.Column="1" Text="{Binding Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,0,1"/>
                     <ContentPresenter Grid.Column="1" x:Name="TextBoxContainer" VerticalAlignment="Center"/>
                 </Grid>
             </muxc:TreeViewItem>
@@ -84,17 +84,17 @@
 
         <DataTemplate x:Key="FileTemplate" x:DataType="models:ExplorerItem">
             <muxc:TreeViewItem ContextFlyout="{StaticResource FileContextFlyout}" BorderThickness="1" Margin="-1" 
-                               Loaded="OnTreeViewItemLoaded" Unloaded="OnTreeViewItemUnloaded"
-                               IsSelected="{x:Bind IsSelected, Mode=TwoWay}"
-                               CanDrag="True" DragStarting="OnItemDragStarting" DragOver="OnItemDragOver" 
-                               Background="Transparent" AllowDrop="True" Drop="OnFolderItemDrop">
+                               Loaded="{x:Bind local:FolderPage.OnTreeViewItemLoaded}"
+                               IsSelected="{Binding IsSelected, Mode=TwoWay}"
+                               CanDrag="True" DragStarting="{x:Bind local:FolderPage.OnItemDragStarting}" DragOver="{x:Bind local:FolderPage.OnItemDragOver}" 
+                               Background="Transparent" AllowDrop="True" Drop="{x:Bind local:FolderPage.OnFolderItemDrop}">
                 <Grid ColumnSpacing="8" Height="32">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <FontIcon FontSize="14" Glyph="&#xe8a5;" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="NameTextBlock" Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                    <TextBlock x:Name="NameTextBlock" Grid.Column="1" Text="{Binding Name, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
                     <ContentPresenter Grid.Column="1" x:Name="TextBoxContainer" VerticalAlignment="Center"/>
                 </Grid>
             </muxc:TreeViewItem>

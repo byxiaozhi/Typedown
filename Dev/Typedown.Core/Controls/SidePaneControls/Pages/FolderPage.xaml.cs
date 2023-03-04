@@ -15,6 +15,7 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using muxc = Microsoft.UI.Xaml.Controls;
 
@@ -32,16 +33,10 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         public ExplorerItem WorkFolderExplorerItem { get; private set; }
 
-        private readonly Windows.UI.Xaml.Input.PointerEventHandler TreeViewItemPointerPressedEventHandler;
-
-        private readonly Windows.UI.Xaml.Input.PointerEventHandler TreeViewItemPointerReleasedEventHandler;
-
         private readonly CompositeDisposable disposables = new();
 
         public FolderPage()
         {
-            TreeViewItemPointerPressedEventHandler = new(OnTreeViewItemPointerPressed);
-            TreeViewItemPointerReleasedEventHandler = new(OnTreeViewItemPointerReleased);
             InitializeComponent();
         }
 
@@ -69,7 +64,10 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             WorkFolderExplorerItem?.Dispose();
             WorkFolderExplorerItem = null;
             disposables.Clear();
-            Bindings.StopTracking();
+            TreeView.DataContext = null;
+            TreeView.ItemTemplateSelector = null;
+            TreeView.ItemsSource = null;
+            TreeView.ContextFlyout = null;
         }
 
         private void OnItemContextFlyoutOpened(object sender, object e)
@@ -280,22 +278,25 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
                 FileOperation.Rename(item.FullPath, Path.Combine(Path.GetDirectoryName(item.FullPath), source.Task.Result));
         }
 
-        private void OnTreeViewItemLoaded(object sender, RoutedEventArgs e)
+        internal static void OnTreeViewItemLoaded(object sender, RoutedEventArgs e)
         {
-            if (sender is not muxc.TreeViewItem item || VisualTreeHelper.GetChild(item, 0) is not UIElement grid)
+            if (sender is not muxc.TreeViewItem item || !item.IsLoaded || VisualTreeHelper.GetChild(item, 0) is not UIElement grid || item.GetAncestor<FolderPage>() is not FolderPage page)
                 return;
-            grid.AddHandler(PointerPressedEvent, TreeViewItemPointerPressedEventHandler, true);
-            item.AddHandler(PointerReleasedEvent, TreeViewItemPointerReleasedEventHandler, true);
+            var treeViewItemPointerPressedEventHandler = new PointerEventHandler(OnTreeViewItemPointerPressed);
+            var treeViewItemPointerReleasedEventHandler = new PointerEventHandler(page.OnTreeViewItemPointerReleased);
+            grid.AddHandler(PointerPressedEvent, treeViewItemPointerPressedEventHandler, true);
+            item.AddHandler(PointerReleasedEvent, treeViewItemPointerReleasedEventHandler, true);
             if (item.DataContext is ExplorerItem explorerItem)
-                UpdateSelectedItem(explorerItem);
-        }
+                page.UpdateSelectedItem(explorerItem);
 
-        private void OnTreeViewItemUnloaded(object sender, RoutedEventArgs e)
-        {
-            if (sender is not muxc.TreeViewItem item || VisualTreeHelper.GetChild(item, 0) is not UIElement grid)
-                return;
-            grid.RemoveHandler(PointerPressedEvent, TreeViewItemPointerPressedEventHandler);
-            item.RemoveHandler(PointerReleasedEvent, TreeViewItemPointerReleasedEventHandler);
+            item.Unloaded += OnTreeViewItemUnloaded;
+            void OnTreeViewItemUnloaded(object sender, RoutedEventArgs e)
+            {
+                item.Unloaded -= OnTreeViewItemUnloaded;
+                var page = item.GetAncestor<FolderPage>();
+                grid.RemoveHandler(PointerPressedEvent, treeViewItemPointerPressedEventHandler);
+                item.RemoveHandler(PointerReleasedEvent, treeViewItemPointerReleasedEventHandler);
+            }
         }
 
         private static void OnTreeViewItemPointerPressed(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
@@ -314,8 +315,8 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
         private async void OnTreeViewItemPointerReleased(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             var kind = e.GetCurrentPoint(sender as UIElement).Properties.PointerUpdateKind;
-            if (kind == Windows.UI.Input.PointerUpdateKind.LeftButtonReleased && 
-                (sender as muxc.TreeViewItem).DataContext is ExplorerItem item && 
+            if (kind == Windows.UI.Input.PointerUpdateKind.LeftButtonReleased &&
+                (sender as muxc.TreeViewItem).DataContext is ExplorerItem item &&
                 item.Type == ExplorerItem.ExplorerItemType.File)
                 await ViewModel.FileViewModel.OpenFile(item.FullPath);
             UpdateSelectedItem(WorkFolderExplorerItem);
@@ -336,9 +337,11 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
                 ViewModel.FileViewModel.NewWindowCommand.Execute(item.FullPath);
         }
 
-        private async void OnItemDragStarting(UIElement sender, DragStartingEventArgs args)
+        internal static async void OnItemDragStarting(UIElement sender, DragStartingEventArgs args)
         {
-            var item = GetExplorerItemFromTreeViewItem(sender);
+            if (sender is not muxc.TreeViewItem treeViewItem || treeViewItem.GetAncestor<FolderPage>() is not FolderPage page)
+                return;
+            var item = page.GetExplorerItemFromTreeViewItem(sender);
             if (item?.Type == ExplorerItem.ExplorerItemType.File)
             {
                 var file = await StorageFile.GetFileFromPathAsync(item.FullPath);
@@ -351,9 +354,11 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             }
         }
 
-        private void OnItemDragOver(object sender, DragEventArgs e)
+        internal static void OnItemDragOver(object sender, DragEventArgs e)
         {
-            var target = GetExplorerItemFromTreeViewItem(sender);
+            if (sender is not muxc.TreeViewItem treeViewItem || treeViewItem.GetAncestor<FolderPage>() is not FolderPage page)
+                return;
+            var target = page.GetExplorerItemFromTreeViewItem(sender);
             if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
                 target.Type == ExplorerItem.ExplorerItemType.Folder)
             {
@@ -361,9 +366,11 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             }
         }
 
-        private async void OnFolderItemDrop(object sender, DragEventArgs e)
+        internal static async void OnFolderItemDrop(object sender, DragEventArgs e)
         {
-            var target = GetExplorerItemFromTreeViewItem(sender);
+            if (sender is not muxc.TreeViewItem treeViewItem || treeViewItem.GetAncestor<FolderPage>() is not FolderPage page)
+                return;
+            var target = page.GetExplorerItemFromTreeViewItem(sender);
             if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
                 target?.Type == ExplorerItem.ExplorerItemType.Folder)
             {
@@ -371,7 +378,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
                 e.AcceptedOperation = DataPackageOperation.Move;
                 var collection = new StringCollection();
                 items.ToList().ForEach(x => collection.Add(x.Path));
-                FileOperation.Move(collection, target.FullPath);
+                page.FileOperation.Move(collection, target.FullPath);
             }
         }
 
