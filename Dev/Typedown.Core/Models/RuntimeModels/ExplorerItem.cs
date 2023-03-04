@@ -243,7 +243,7 @@ namespace Typedown.Core.Models
 
         private void OnFileCreated(FileSystemEventArgs e, FileAttributes attr)
         {
-            if (Filter(attr, e.Name))
+            if (Filter(attr, e.Name) && !Children.Any(x => x.Name == e.Name))
                 AddChild(e.Name);
         }
 

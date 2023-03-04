@@ -318,11 +318,8 @@ namespace Typedown.Core.ViewModels
                 var result = await WriteAllText(file.Path, EditorViewModel.Markdown);
                 if (result)
                 {
-                    if (FilePath == null)
-                    {
-                        FilePath = file.Path;
-                        AutoBackup.DeleteBackup(null);
-                    }
+                    AutoBackup.DeleteBackup(FilePath);
+                    FilePath = file.Path;
                     EditorViewModel.FileHash = EditorViewModel.CurrentHash;
                     EditorViewModel.Saved = true;
                     _ = AccessHistory.RecordFileHistory(FilePath);
