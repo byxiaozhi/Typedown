@@ -254,8 +254,12 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
 
     useEffect(() => editor?.on('contentChange', ({ markdown, wordCount, cursor, toc: { toc, cur } }: any) => {
         markdownRef.current = markdown;
+
+        // 同步内容与光标
         props.onMarkdownChange(markdown)
         props.onCursorChange(cursor)
+
+        // StateChange 必须在 onMarkdownChange、onCursorChange 之后发送，否则会导致编辑器内容/光标不同步
         transport.postMessage('StateChange', { state: { wordCount, toc, cur }, muya: true });
     }), [editor, props])
 

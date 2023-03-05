@@ -65,6 +65,8 @@ namespace Typedown.Core.ViewModels
 
         private readonly CompositeDisposable disposables = new();
 
+        private bool contentUpdating = false;
+
         public EditorViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
@@ -127,6 +129,7 @@ namespace Typedown.Core.ViewModels
 
         public void OnCodeMirrorSelectionChange(JToken arg)
         {
+            contentUpdating = false;
             CodeMirrorSelection = arg["cursor"];
             var anchorLine = CodeMirrorSelection["anchor"]["line"].ToObject<int>();
             var headLine = CodeMirrorSelection["head"]["line"].ToObject<int>();
@@ -146,7 +149,7 @@ namespace Typedown.Core.ViewModels
         public async void OnMarkdownChange(string markdown)
         {
             Markdown = markdown;
-            History.ContentChange(Markdown);
+            if (!contentUpdating) History.ContentChange(Markdown);
             CurrentHash = Common.SimpleHash(Markdown);
             if (!FileLoaded) await Task.Delay(100);
             Saved = FileHash == CurrentHash;
@@ -178,6 +181,7 @@ namespace Typedown.Core.ViewModels
 
         public void OnStateChange(JToken arg)
         {
+            contentUpdating = false;
             ContentState = arg["state"].ToObject<ContentState>();
             if (ContentState.Cur != null)
             {
@@ -215,6 +219,7 @@ namespace Typedown.Core.ViewModels
                 return;
             }
             OnMarkdownChange(state.Text);
+            contentUpdating = true;
             MarkdownEditor?.PostMessage("SetMarkdown", new
             {
                 text = state.Text,
@@ -231,6 +236,7 @@ namespace Typedown.Core.ViewModels
                 return;
             }
             OnMarkdownChange(state.Text);
+            contentUpdating = true;
             MarkdownEditor?.PostMessage("SetMarkdown", new
             {
                 text = state.Text,
