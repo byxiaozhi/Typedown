@@ -64,7 +64,7 @@ const Editor: React.FC = () => {
 
     useEffect(() => transport.addListener<{ text: string, basePath: string }>('LoadFile', ({ text, basePath }) => {
         window.basePath = basePath
-        setCursor({ anchor: { line: 0, ch: 0 }, focus: { line: 0, ch: 0 } })
+        setCursor(undefined)
         setMarkdown(text)
         markdownRef.current = text
         OnFileLoaded();
