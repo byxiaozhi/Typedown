@@ -6,7 +6,7 @@ import { splitCells, rtrim, getUniqueId } from './utils'
  * Block Lexer
  */
 
-function Lexer (opts) {
+function Lexer(opts) {
   this.tokens = []
   this.tokens.links = Object.create(null)
   this.tokens.footnotes = Object.create(null)
@@ -114,16 +114,29 @@ Lexer.prototype.token = function (src, top) {
     this.checkFrontmatter = false
   }
 
+  // 首部加两个回车代表新一段的开始
+  src = '\n\n' + src;
+
   while (src) {
+
     // newline
     cap = this.rules.newline.exec(src)
     if (cap) {
       src = src.substring(cap[0].length)
-      if (cap[0].length > 1) {
+
+      // 修复无法显示空行的问题
+      for (let i = 0; i < parseInt(cap[0].length / 2 - 1); i++) {
         this.tokens.push({
-          type: 'space'
+          type: 'paragraph',
+          text: ''
         })
       }
+
+      // if (cap[0].length > 1) {
+      //   this.tokens.push({
+      //     type: 'space'
+      //   })
+      // }
     }
 
     // code
@@ -639,7 +652,7 @@ Lexer.prototype.token = function (src, top) {
   }
 }
 
-function indentCodeCompensation (raw, text) {
+function indentCodeCompensation(raw, text) {
   const matchIndentToCode = raw.match(/^(\s+)(?:```)/)
 
   if (matchIndentToCode === null) {

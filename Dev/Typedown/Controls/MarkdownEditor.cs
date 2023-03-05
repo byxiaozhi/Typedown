@@ -112,16 +112,16 @@ namespace Typedown.Controls
 #if DEBUG
             CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
             CoreWebView2.WebResourceRequested += OnWebResourceRequested;
-            // CoreWebView2.OpenDevToolsWindow();
+            CoreWebView2.OpenDevToolsWindow();
 #endif
         }
 
         private void LoadStaticResources()
         {
 # if DEBUG
-            // WebViewController.CoreWebView2.Navigate("http://localhost:3000");
-            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
-            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
+            WebViewController.CoreWebView2.Navigate("http://localhost:3000");
+            // var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
+            // WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
