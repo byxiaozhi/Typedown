@@ -70,6 +70,8 @@ Lexer.prototype.token = function (src, top) {
     isGitlabCompatibilityEnabled,
     math
   } = this.options
+
+  // 移除首行缩进
   src = src.replace(/^ +$/gm, '')
 
   let loose
@@ -115,7 +117,8 @@ Lexer.prototype.token = function (src, top) {
   }
 
   // 首部加两个回车代表新一段的开始
-  src = '\n\n' + src;
+  if (!src.startsWith('\n'))
+    src = '\n\n' + src;
 
   while (src) {
 
@@ -275,7 +278,7 @@ Lexer.prototype.token = function (src, top) {
       }
 
       if (item.header.length === item.align.length) {
-        src = src.substring(cap[0].length)
+        src = src.substring(cap[0].replace(/\n*$/g, '').length)
 
         for (i = 0; i < item.align.length; i++) {
           if (/^ *-+: *$/.test(item.align[i])) {
@@ -560,7 +563,7 @@ Lexer.prototype.token = function (src, top) {
       }
 
       if (item.header.length === item.align.length) {
-        src = src.substring(cap[0].length)
+        src = src.substring(cap[0].replace(/\n*$/g, '').length)
 
         for (i = 0; i < item.align.length; i++) {
           if (/^ *-+: *$/.test(item.align[i])) {

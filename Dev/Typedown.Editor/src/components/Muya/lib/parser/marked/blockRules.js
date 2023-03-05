@@ -8,11 +8,11 @@ import { edit, noop } from './utils'
 
 export const block = {
   newline: /^\n+/,
-  code: /^( {4}[^\n]+\n*)+/,
-  fences: /^ {0,3}(`{3,}(?=[^`\n]*\n)|~{3,})([^\n]*)\n(?:|([\s\S]*?)\n)(?: {0,3}\1[~`]* *(?:\n+|$)|$)/,
-  hr: /^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n+|$)/,
-  heading: /^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/,
-  blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,
+  code: /^( {4}[^\n]+\n*)*( {4}[^\n]+(?=\n+|$)*)/,
+  fences: /^ {0,3}(`{3,}(?=[^`\n]*\n)|~{3,})([^\n]*)\n(?:|([\s\S]*?)\n)(?: {0,3}\1[~`]* *(?=\n+|$)|$)/,
+  hr: /^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?=\n+|$)/,
+  heading: /^ {0,3}(#{1,6})(?=\s|$)(.*)(?=\n+|$)/,
+  blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))*( {0,3}> ?(paragraph|[^\n]*)(?=\n|$))/,
   list: /^( {0,3})(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,
   html: '^ {0,3}(?:' + // optional indentation
     '<(script|pre|style)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)' + // (1)
@@ -24,10 +24,10 @@ export const block = {
     '|<(?!script|pre|style)([a-z][\\w-]*)(?:attribute)*? */?>(?=\\h*\\n)[\\s\\S]*?(?:\\n{2,}|$)' + // (7) open tag
     '|</(?!script|pre|style)[a-z][\\w-]*\\s*>(?=\\h*\\n)[\\s\\S]*?(?:\\n{2,}|$)' + // (7) closing tag
     ')',
-  def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n+|$)/,
+  def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?=\n+|$)/,
   nptable: noop,
   table: noop,
-  lheading: /^([^\n]+)\n {0,3}(=+|-+) *(?:\n+|$)/,
+  lheading: /^([^\n]+)\n {0,3}(=+|-+) *(?=\n+|$)/,
   // regex template, placeholders will be replaced according to different paragraph
   // interruption rules of commonmark and the original markdown spec:
   _paragraph: /^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html)[^\n]+)*)/,
@@ -35,8 +35,8 @@ export const block = {
 
   // extra
   frontmatter: /^(?:(?:---\n([\s\S]+?)---)|(?:\+\+\+\n([\s\S]+?)\+\+\+)|(?:;;;\n([\s\S]+?);;;)|(?:\{\n([\s\S]+?)\}))(?:\n{2,}|\n{1,2}$)/,
-  multiplemath: /^\$\$\n([\s\S]+?)\n\$\$(?:\n+|$)/,
-  multiplemathGitlab: /^ {0,3}(`{3,})math\n(?:(|[\s\S]*?)\n)(?: {0,3}\1`* *(?:\n+|$)|$)/, // Math inside a code block (GitLab display math)
+  multiplemath: /^\$\$\n([\s\S]+?)\n\$\$(?=\n+|$)/,
+  multiplemathGitlab: /^ {0,3}(`{3,})math\n(?:(|[\s\S]*?)\n)(?: {0,3}\1`* *(?=\n+|$)|$)/, // Math inside a code block (GitLab display math)
   footnote: /^\[\^([^\^\[\]\s]+?)(?<!\\)\]:[\s\S]+?(?=\n *\n {0,3}[^ ]+|$)/
 }
 
@@ -146,8 +146,8 @@ export const pedantic = Object.assign({}, normal, {
       '|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)' +
       '\\b)\\w+(?!:|[^\\w\\s@]*@)\\b')
     .getRegex(),
-  def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,
-  heading: /^(#{1,6})(.*)(?:\n+|$)/,
+  def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?=\n+|$)/,
+  heading: /^(#{1,6})(.*)(?=\n+|$)/,
   fences: noop, // fences not supported
   paragraph: edit(normal._paragraph)
     .replace('hr', block.hr)
