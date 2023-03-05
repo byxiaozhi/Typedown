@@ -214,7 +214,6 @@ namespace Typedown.Core.ViewModels
                 EditorViewModel.History.InitHistory(EditorViewModel.Markdown);
                 if (postMessage)
                 {
-
                     MarkdownEditor?.PostMessage("LoadFile", new { text = EditorViewModel.Markdown, basePath = ImageBasePath });
                 }
                 return true;

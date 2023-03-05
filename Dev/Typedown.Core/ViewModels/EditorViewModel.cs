@@ -159,6 +159,7 @@ namespace Typedown.Core.ViewModels
                 FileLoaded = true;
                 var newText = arg["text"].ToString();
                 FileHash = Common.SimpleHash(newText);
+                History.InitHistory(newText);
                 OnMarkdownChange(newText);
                 if (FloatViewModel.FindReplaceDialogOpen > 0)
                     OnSearch();
