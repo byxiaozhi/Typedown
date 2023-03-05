@@ -459,6 +459,8 @@ const importRegister = ContentState => {
 
     // 注入 anchor
     if (!anchor || !lines[anchor.line]) {
+      if (lines.length > 0 && lines[lines.length - 1] != '')
+        lines.push('')
       lines.push(CURSOR_ANCHOR_DNA)
     } else {
       const anchorText = lines[anchor.line]
