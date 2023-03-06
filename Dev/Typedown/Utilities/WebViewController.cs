@@ -586,10 +586,17 @@ namespace Typedown.Utilities
 
         private void UpdateCursor()
         {
-            if (isMouseEntered || hasMouseCapture)
+            try
             {
-                coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor);
-                CoreWindow.GetForCurrentThread().PointerCursor = cursor?.Value ?? new(0, 0);
+                if (isMouseEntered || hasMouseCapture)
+                {
+                    coreCursorTypeDic.TryGetValue(CoreWebView2CompositionController.Cursor, out var cursor);
+                    CoreWindow.GetForCurrentThread().PointerCursor = cursor?.Value ?? new(0, 0);
+                }
+            }
+            catch
+            {
+                // Ignore
             }
         }
 
