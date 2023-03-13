@@ -60,7 +60,7 @@ namespace Typedown.Core.Controls.FloatControls
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
-            Bindings.StopTracking();
+             Bindings?.StopTracking();
         }
 
         private void OnCloseButtonClick(object sender, RoutedEventArgs e)

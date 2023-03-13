@@ -26,7 +26,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             ImageUploadConfig.StoreUploadConfig(GitConfigModel);
-            Bindings.StopTracking();
+             Bindings?.StopTracking();
         }
     }
 }

@@ -87,7 +87,7 @@ namespace Typedown.Core.Controls.FloatControls
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            Bindings.StopTracking();
+             Bindings?.StopTracking();
         }
     }
 }

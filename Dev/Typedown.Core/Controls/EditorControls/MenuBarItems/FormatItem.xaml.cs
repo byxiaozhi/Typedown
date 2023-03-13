@@ -29,7 +29,7 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
 
         private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Bindings.StopTracking();
+             Bindings?.StopTracking();
         }
     }
 }

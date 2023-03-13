@@ -54,7 +54,7 @@ namespace Typedown.Core.Controls
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Dispose();
-            Bindings.StopTracking();
+             Bindings?.StopTracking();
         }
 
         private Visibility IsCollapsed(bool boolean) => boolean ? Visibility.Collapsed : Visibility.Visible;

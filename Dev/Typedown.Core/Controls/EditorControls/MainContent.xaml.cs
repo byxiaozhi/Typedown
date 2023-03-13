@@ -50,7 +50,7 @@ namespace Typedown.Core.Controls
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
-            Bindings.StopTracking();
+             Bindings?.StopTracking();
         }
 
         public static double GetColumnWidthNegative(GridLength length)

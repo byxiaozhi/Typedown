@@ -58,7 +58,7 @@ namespace Typedown.Core.Controls
         {
             MarkdownEditorPresenter.Content = null;
             disposables.Clear();
-            Bindings.StopTracking();
+             Bindings?.StopTracking();
         }
 
         private void UpdateFindReplaceState(FloatViewModel.FindReplaceDialogState findReplaceOpen, bool useTransitions = true)

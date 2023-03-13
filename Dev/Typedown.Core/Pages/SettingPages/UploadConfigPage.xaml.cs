@@ -52,7 +52,7 @@ namespace Typedown.Core.Pages.SettingPages
             if (ImageUploadConfig != null)
                 await UploadService.Value.SaveImageUploadConfig(ImageUploadConfig);
             disposables.Clear();
-            Bindings.StopTracking();
+             Bindings?.StopTracking();
         }
 
         private void UpdateTitle(string title)
