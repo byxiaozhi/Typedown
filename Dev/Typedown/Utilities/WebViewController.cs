@@ -291,16 +291,23 @@ namespace Typedown.Utilities
 
         private void OnPointerExited(PointerRoutedEventArgs args)
         {
-            isMouseEntered = false;
-            CoreWindow.GetForCurrentThread().PointerCursor = new(0, 0);
-            if (args.Pointer.PointerDeviceType == PointerDeviceType.Mouse)
+            try
             {
-                OnXamlPointerMessage(PInvoke.WindowMessage.WM_MOUSELEAVE, args);
-                if (!hasMouseCapture) ResetMouseInputState();
+                isMouseEntered = false;
+                CoreWindow.GetForCurrentThread().PointerCursor = new(0, 0);
+                if (args.Pointer.PointerDeviceType == PointerDeviceType.Mouse)
+                {
+                    OnXamlPointerMessage(PInvoke.WindowMessage.WM_MOUSELEAVE, args);
+                    if (!hasMouseCapture) ResetMouseInputState();
+                }
+                else
+                {
+                    OnXamlPointerMessage(PInvoke.WindowMessage.WM_POINTERLEAVE, args);
+                }
             }
-            else
+            catch
             {
-                OnXamlPointerMessage(PInvoke.WindowMessage.WM_POINTERLEAVE, args);
+                // Ignore
             }
         }
 
@@ -326,30 +333,51 @@ namespace Typedown.Utilities
 
         private void OnContainerGotFocus(RoutedEventArgs e)
         {
-            if (CoreWebView2 != null && xamlFocusChangeInfo.isPending)
+            try
             {
-                MoveFocusIntoCoreWebView(xamlFocusChangeInfo.storedMoveFocusReason);
-                xamlFocusChangeInfo.isPending = false;
+                if (CoreWebView2 != null && xamlFocusChangeInfo.isPending)
+                {
+                    MoveFocusIntoCoreWebView(xamlFocusChangeInfo.storedMoveFocusReason);
+                    xamlFocusChangeInfo.isPending = false;
+                }
+            }
+            catch
+            {
+                // Ignore
             }
         }
 
         public void UpdateBounds()
         {
-            if (CoreWebView2Controller != null)
+            try
             {
-                var p = Container.TransformToVisual(Container.XamlRoot.Content).TransformPoint(new());
-                var s = Container.ActualSize;
-                CoreWebView2Controller.Bounds = new(new((int)(p.X * WindowScale), (int)(p.Y * WindowScale)), new((int)(s.X * WindowScale), (int)(s.Y * WindowScale)));
+                if (CoreWebView2Controller != null)
+                {
+                    var p = Container.TransformToVisual(Container.XamlRoot.Content).TransformPoint(new());
+                    var s = Container.ActualSize;
+                    CoreWebView2Controller.Bounds = new(new((int)(p.X * WindowScale), (int)(p.Y * WindowScale)), new((int)(s.X * WindowScale), (int)(s.Y * WindowScale)));
+                }
+            }
+            catch
+            {
+                // Ignore
             }
         }
 
         public void UpdataWindowScale()
         {
-            if (webViewVisual != null)
+            try
             {
-                var scale = (float)(1 / WindowScale);
-                webViewVisual.Scale = new(scale, scale, 1);
-                UpdateBounds();
+                if (webViewVisual != null)
+                {
+                    var scale = (float)(1 / WindowScale);
+                    webViewVisual.Scale = new(scale, scale, 1);
+                    UpdateBounds();
+                }
+            }
+            catch
+            {
+                // Ignore
             }
         }
 
