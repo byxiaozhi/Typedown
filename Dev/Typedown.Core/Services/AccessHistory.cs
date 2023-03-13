@@ -74,7 +74,7 @@ namespace Typedown.Core.Services
             }
             if (FileRecentlyOpened.Count < maxCount)
             {
-                await foreach (var item in model.OrderByDescending(x => x.AccessTime).AsAsyncEnumerable())
+                await foreach (var item in model.OrderByDescending(x => x.AccessTime).Take(maxCount).AsAsyncEnumerable())
                 {
                     if (!FileRecentlyOpened.Contains(item.FilePath))
                         FileRecentlyOpened.Add(item.FilePath);
@@ -134,7 +134,7 @@ namespace Typedown.Core.Services
             }
             if (FolderRecentlyOpened.Count < maxCount)
             {
-                await foreach (var item in model.OrderByDescending(x => x.AccessTime).AsAsyncEnumerable())
+                await foreach (var item in model.OrderByDescending(x => x.AccessTime).Take(maxCount).AsAsyncEnumerable())
                 {
                     if (!FolderRecentlyOpened.Contains(item.FolderPath))
                         FolderRecentlyOpened.Add(item.FolderPath);
