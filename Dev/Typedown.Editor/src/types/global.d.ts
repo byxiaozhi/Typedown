@@ -8,5 +8,6 @@ export declare global {
             }
         }
         basePath: string
+        actualTheme: string
     }
 }

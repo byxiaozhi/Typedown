@@ -9,18 +9,32 @@ remote.getCurrentTheme().then(arg => {
 })
 
 function onThemeChanged({ theme, color, background }: any) {
-    const editorStyleDocument = document.createElement("link");
-    const prismjsStyleDocument = document.createElement("link");
-    const codemirrorStyleDocument = document.createElement("link");
-    editorStyleDocument.rel = "stylesheet";
-    editorStyleDocument.type = "text/css"
-    prismjsStyleDocument.rel = "stylesheet";
-    prismjsStyleDocument.type = "text/css"
-    codemirrorStyleDocument.rel = "stylesheet";
-    codemirrorStyleDocument.type = "text/css"
-    document.head.appendChild(editorStyleDocument)
-    document.head.appendChild(prismjsStyleDocument)
-    document.head.appendChild(codemirrorStyleDocument)
+    
+    let editorStyleDocument = document.getElementById("link_style_editor") as HTMLLinkElement;
+    let prismjsStyleDocument = document.getElementById("link_style_prismjs") as HTMLLinkElement;
+    let codemirrorStyleDocument = document.getElementById("link_style_codemirror") as HTMLLinkElement;
+
+    if (!editorStyleDocument) {
+        editorStyleDocument = document.createElement("link");
+        editorStyleDocument.rel = "stylesheet";
+        editorStyleDocument.id = "link_style_editor";
+        document.head.appendChild(editorStyleDocument)
+    }
+
+    if (!prismjsStyleDocument) {
+        prismjsStyleDocument = document.createElement("link");
+        prismjsStyleDocument.rel = "stylesheet";
+        prismjsStyleDocument.id = "link_style_prismjs";
+        document.head.appendChild(prismjsStyleDocument)
+    }
+
+    if (!codemirrorStyleDocument) {
+        codemirrorStyleDocument = document.createElement("link");
+        codemirrorStyleDocument.rel = "stylesheet";
+        codemirrorStyleDocument.id = "link_style_codemirror";
+        document.head.appendChild(codemirrorStyleDocument)
+    }
+
     switch (theme) {
         case "Light":
             editorStyleDocument.href = "theme/editor/light.theme.css"
@@ -41,4 +55,6 @@ function onThemeChanged({ theme, color, background }: any) {
     document.documentElement.style.setProperty('--themeColor', `rgba(${r}, ${g}, ${b}, ${a})`)
     themeColorAlphas.forEach(e => document.body.style.setProperty(`--themeColor${e}`, `rgba(${r}, ${g}, ${b}, ${a * (e / 100)})`))
     document.documentElement.style.background = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`
+
+    window.actualTheme = theme
 }
