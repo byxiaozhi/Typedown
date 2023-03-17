@@ -742,6 +742,7 @@ figure.ag-active.ag-container-block > div.ag-container-preview {
   padding: .5rem;
   background: var(--floatBgColor);
   border: 1px solid var(--floatBorderColor);
+  background-clip: padding-box;
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
 }

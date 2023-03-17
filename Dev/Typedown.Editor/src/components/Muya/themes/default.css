@@ -115,6 +115,7 @@ kbd {
   color: var(--editorColor);
   background: var(--floatBgColor);
   border: 1px solid var(--floatBorderColor);
+  background-clip: padding-box;
   border-radius: 4px;
   display: inline-block;
   font-size: .8em;

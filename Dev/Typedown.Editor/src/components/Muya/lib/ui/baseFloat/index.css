@@ -10,6 +10,7 @@
   box-shadow: var(--floatShadow);
   border: var(--floatBorderColor) 1px solid;
   background-color: var(--floatBgColor);
+  background-clip: padding-box;
   transition: opacity .25s ease-in-out;
   transform-origin: top;
   box-sizing: content-box;
