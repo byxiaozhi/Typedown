@@ -661,6 +661,14 @@
     <value>항상 위로</value>
     <comment>视图/置于顶层</comment>
   </data>
+  <data name="View.UseEditorMicaMaterial.Description" xml:space="preserve">
+    <value>편집 영역에 유사한 효과가 있는 마이카 배경을 활성화하십시오</value>
+    <comment>视图/开启后编辑区域具有云母背景效果</comment>
+  </data>
+  <data name="View.UseEditorMicaMaterial.Title" xml:space="preserve">
+    <value>편집 영역에서 마이카 재질을 사용하십시오</value>
+    <comment>视图/编辑区域使用云母材质</comment>
+  </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
     <value>창 배경에 마이카 효과 활성화</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>

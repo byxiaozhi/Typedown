@@ -661,6 +661,14 @@
     <value>កំពូល បំផុត</value>
     <comment>视图/置于顶层</comment>
   </data>
+  <data name="View.UseEditorMicaMaterial.Description" xml:space="preserve">
+    <value>អនុញ្ញាត ឲ្យ មាន ប្រសិទ្ធិ ភាព ផ្ទៃ ខាង ក្រោយ mica សម្រាប់ ផ្ទៃ កែ សម្រួល ផ្ទៃ</value>
+    <comment>视图/开启后编辑区域具有云母背景效果</comment>
+  </data>
+  <data name="View.UseEditorMicaMaterial.Title" xml:space="preserve">
+    <value>ប្រើ ប្រាស់ សម្ភារៈ mica នៅ តំបន់ កែ សម្រួល</value>
+    <comment>视图/编辑区域使用云母材质</comment>
+  </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
     <value>អនុញ្ញាត ឲ្យ មាន ប្រសិទ្ធិ ភាព ផ្ទៃ ខាង ក្រោយ mica សម្រាប់ ផ្ទៃ ខាង ក្រោយ បង្អួច</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>

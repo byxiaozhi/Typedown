@@ -661,6 +661,14 @@
     <value>Topmost</value>
     <comment>视图/置于顶层</comment>
   </data>
+  <data name="View.UseEditorMicaMaterial.Description" xml:space="preserve">
+    <value>Washa athari ya usuli wa mica kwa usuli wa eneo la uhariri</value>
+    <comment>视图/开启后编辑区域具有云母背景效果</comment>
+  </data>
+  <data name="View.UseEditorMicaMaterial.Title" xml:space="preserve">
+    <value>Tumia vifaa vya mica katika eneo la uhariri</value>
+    <comment>视图/编辑区域使用云母材质</comment>
+  </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
     <value>Washa athari ya usuli wa mica kwa usuli wa dirisha</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>

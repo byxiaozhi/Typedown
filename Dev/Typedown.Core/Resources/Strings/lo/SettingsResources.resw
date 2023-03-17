@@ -661,6 +661,14 @@
     <value>Topmost</value>
     <comment>视图/置于顶层</comment>
   </data>
+  <data name="View.UseEditorMicaMaterial.Description" xml:space="preserve">
+    <value>ເຮັດໃຫ້ຜົນກະທົບພູມຫຼັງຂອງ mica ສໍາລັບພູມຫຼັງຂອງພື້ນທີ່ແກ້ໄຂ</value>
+    <comment>视图/开启后编辑区域具有云母背景效果</comment>
+  </data>
+  <data name="View.UseEditorMicaMaterial.Title" xml:space="preserve">
+    <value>ໃຊ້ວັດສະດຸ mica ໃນພື້ນທີ່ແກ້ໄຂ</value>
+    <comment>视图/编辑区域使用云母材质</comment>
+  </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
     <value>ເຮັດໃຫ້ຜົນກະທົບດ້ານພູມຫຼັງ mica ສໍາລັບພູມຫຼັງຂອງປ່ອງຢ້ຽມ</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>

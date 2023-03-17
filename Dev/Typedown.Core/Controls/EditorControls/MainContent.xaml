@@ -17,8 +17,10 @@
     <UserControl.Resources>
         <converters:GridLengthToDoubleConverter x:Key="GridLengthToDoubleConverter"/>
         <TranslateTransform x:Key="LeftPaneTransform" x:Name="LeftPaneTransform" />
+        <SolidColorBrush x:Key="MicaContentBackgroundBrush" Color="{ThemeResource LayerFillColorDefault}"/>
+        <SolidColorBrush x:Key="SolidContentBackgroundBrush" Color="{ThemeResource SolidBackgroundFillColorTertiary}"/>
     </UserControl.Resources>
-    <Grid Background="{ThemeResource SolidBackgroundFillColorTertiary}">
+    <Grid Background="{ThemeResource SolidBackgroundFillColorTertiary}" x:Name="MainContentGrid">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SidePaneStates">
                 <VisualStateGroup.Transitions>

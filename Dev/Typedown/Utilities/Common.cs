@@ -26,10 +26,10 @@ namespace Typedown.Utilities
         public static object GetCurrentTheme(this IServiceProvider provider)
         {
             var ui = provider.GetService<UIViewModel>();
-            var isDarkMode = ui.ActualTheme == global::Windows.UI.Xaml.ElementTheme.Dark;
-            var color = new UISettings().GetColorValue(UIColorType.Accent);
-            var background = isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
-            return new { theme = isDarkMode ? "Dark" : "Light", color, background };
+            var isDarkMode = ui.ActualTheme == ElementTheme.Dark;
+            var accentColor = new UISettings().GetColorValue(UIColorType.Accent);
+            var background = Colors.Transparent;
+            return new { theme = isDarkMode ? "Dark" : "Light", accentColor, background };
         }
 
         public static bool GetUseLightTheme()

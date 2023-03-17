@@ -37,12 +37,20 @@
                 </muxc:RadioButtons>
             </StackPanel>
         </controls:ExpanderSettingItem>
-        <controls:NormalSettingItem Title="{u:LocaleString Key=View.UseMicaMaterial.Title}" Description="{u:LocaleString Key=View.UseMicaMaterial.Description}">
-            <controls:NormalSettingItem.Icon>
+        <controls:ExpanderSettingItem Title="{u:LocaleString Key=View.UseMicaMaterial.Title}" Description="{u:LocaleString Key=View.UseMicaMaterial.Description}">
+            <controls:ExpanderSettingItem.Icon>
                 <FontIcon Glyph="&#xf4a5;"/>
-            </controls:NormalSettingItem.Icon>
-            <ToggleSwitch IsOn="{x:Bind Settings.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
-        </controls:NormalSettingItem>
+            </controls:ExpanderSettingItem.Icon>
+            <controls:ExpanderSettingItem.State>
+                <ToggleSwitch IsOn="{x:Bind Settings.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
+            </controls:ExpanderSettingItem.State>
+            <controls:NormalSettingItem Title="{u:LocaleString Key=View.UseEditorMicaMaterial.Title}" Description="{u:LocaleString Key=View.UseEditorMicaMaterial.Description}">
+                <controls:NormalSettingItem.Icon>
+                    <FontIcon Glyph="&#xf4a5;"/>
+                </controls:NormalSettingItem.Icon>
+                <ToggleSwitch IsOn="{x:Bind Settings.UseEditorMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind Settings.UseMicaEffect, Mode=OneWay}"/>
+            </controls:NormalSettingItem>
+        </controls:ExpanderSettingItem>
         <controls:NormalSettingItem Title="{u:LocaleString Key=View.AnimationEnable.Title}" Description="{u:LocaleString Key=View.AnimationEnable.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe8be;"/>

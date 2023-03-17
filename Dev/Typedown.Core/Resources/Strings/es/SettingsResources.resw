@@ -661,6 +661,14 @@
     <value>En la parte superior</value>
     <comment>视图/置于顶层</comment>
   </data>
+  <data name="View.UseEditorMicaMaterial.Description" xml:space="preserve">
+    <value>Activar el efecto de fondo de mica para el área de edición</value>
+    <comment>视图/开启后编辑区域具有云母背景效果</comment>
+  </data>
+  <data name="View.UseEditorMicaMaterial.Title" xml:space="preserve">
+    <value>Usar material de mica en el área de edición</value>
+    <comment>视图/编辑区域使用云母材质</comment>
+  </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
     <value>Habilitar el efecto de fondo de mica para el fondo de la ventana</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>

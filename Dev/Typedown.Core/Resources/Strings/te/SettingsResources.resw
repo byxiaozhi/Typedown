@@ -661,6 +661,14 @@
     <value>టాప్ మోస్ట్</value>
     <comment>视图/置于顶层</comment>
   </data>
+  <data name="View.UseEditorMicaMaterial.Description" xml:space="preserve">
+    <value>ఎడిటింగ్ ఏరియా బ్యాక్ గ్రౌండ్ కొరకు మైకా బ్యాక్ గ్రౌండ్ ఎఫెక్ట్ ని ఎనేబుల్ చేయండి</value>
+    <comment>视图/开启后编辑区域具有云母背景效果</comment>
+  </data>
+  <data name="View.UseEditorMicaMaterial.Title" xml:space="preserve">
+    <value>ఎడిటింగ్ ప్రాంతంలో మైకా మెటీరియల్ ఉపయోగించండి</value>
+    <comment>视图/编辑区域使用云母材质</comment>
+  </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
     <value>విండో బ్యాక్ గ్రౌండ్ కొరకు మైకా బ్యాక్ గ్రౌండ్ ఎఫెక్ట్ ని ఎనేబుల్ చేయండి</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>

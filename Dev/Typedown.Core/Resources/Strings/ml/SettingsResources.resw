@@ -661,6 +661,14 @@
     <value>Topmost</value>
     <comment>视图/置于顶层</comment>
   </data>
+  <data name="View.UseEditorMicaMaterial.Description" xml:space="preserve">
+    <value>എഡിറ്റിംഗ് ഏരിയ പശ്ചാത്തലത്തിനായി മൈക്ക പശ്ചാത്തല പ്രഭാവം പ്രവർത്തനക്ഷമമാക്കുക</value>
+    <comment>视图/开启后编辑区域具有云母背景效果</comment>
+  </data>
+  <data name="View.UseEditorMicaMaterial.Title" xml:space="preserve">
+    <value>എഡിറ്റിംഗ് ഏരിയയിൽ മൈക്ക മെറ്റീരിയൽ ഉപയോഗിക്കുക</value>
+    <comment>视图/编辑区域使用云母材质</comment>
+  </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
     <value>ജാലക പശ്ചാത്തലത്തിനായി മൈക്ക പശ്ചാത്തല പ്രഭാവം പ്രവർത്തനക്ഷമമാക്കുക</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>

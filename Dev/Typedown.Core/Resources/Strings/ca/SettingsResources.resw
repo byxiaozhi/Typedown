@@ -661,6 +661,14 @@
     <value>El més alt</value>
     <comment>视图/置于顶层</comment>
   </data>
+  <data name="View.UseEditorMicaMaterial.Description" xml:space="preserve">
+    <value>Habiliteu l'efecte de fons mica per al fons de l'àrea d'edició</value>
+    <comment>视图/开启后编辑区域具有云母背景效果</comment>
+  </data>
+  <data name="View.UseEditorMicaMaterial.Title" xml:space="preserve">
+    <value>Utilitzar material mica a l'àrea d'edició</value>
+    <comment>视图/编辑区域使用云母材质</comment>
+  </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
     <value>Activeu l'efecte de fons mica per al fons de la finestra</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>

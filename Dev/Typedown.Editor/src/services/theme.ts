@@ -8,7 +8,7 @@ remote.getCurrentTheme().then(arg => {
     setTimeout(() => remote.contentLoaded(), 0);
 })
 
-function onThemeChanged({ theme, color, background }: any) {
+function onThemeChanged({ theme, accentColor, background }: any) {
     
     let editorStyleDocument = document.getElementById("link_style_editor") as HTMLLinkElement;
     let prismjsStyleDocument = document.getElementById("link_style_prismjs") as HTMLLinkElement;
@@ -49,7 +49,7 @@ function onThemeChanged({ theme, color, background }: any) {
     }
 
     const themeColorAlphas = [10, 20, 30, 40, 50, 60, 70, 80, 90]
-    const { r, g, b, a } = color
+    const { r, g, b, a } = accentColor
     const { R: bgR, G: bgG, B: bgB, A: bgA } = background
 
     document.documentElement.style.setProperty('--themeColor', `rgba(${r}, ${g}, ${b}, ${a})`)
