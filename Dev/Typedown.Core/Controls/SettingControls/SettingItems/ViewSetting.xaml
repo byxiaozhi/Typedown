@@ -45,9 +45,6 @@
                 <ToggleSwitch IsOn="{x:Bind Settings.UseMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind app:Config.IsMicaSupported}"/>
             </controls:ExpanderSettingItem.State>
             <controls:NormalSettingItem Title="{u:LocaleString Key=View.UseEditorMicaMaterial.Title}" Description="{u:LocaleString Key=View.UseEditorMicaMaterial.Description}">
-                <controls:NormalSettingItem.Icon>
-                    <FontIcon Glyph="&#xf4a5;"/>
-                </controls:NormalSettingItem.Icon>
                 <ToggleSwitch IsOn="{x:Bind Settings.UseEditorMicaEffect, Mode=TwoWay}" IsEnabled="{x:Bind Settings.UseMicaEffect, Mode=OneWay}"/>
             </controls:NormalSettingItem>
         </controls:ExpanderSettingItem>
