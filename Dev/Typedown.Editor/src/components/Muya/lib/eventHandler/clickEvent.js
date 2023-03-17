@@ -224,14 +224,15 @@ class ClickEvent {
       const link = event.target.closest('a')
       if (link) {
         event.preventDefault();
-        if (!(event.metaKey || event.ctrlKey)) {
-          return;
-        }
-        const href = link.getAttribute('href');
-        if (href?.startsWith('#')) {
-          document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
-        } else {
-          remote.openNewWindow(href)
+        if (event.metaKey || event.ctrlKey) {
+          const href = link.getAttribute('href');
+          if (href) {
+            if (href.startsWith('#')) {
+              document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
+            } else {
+              remote.openNewWindow(href)
+            }
+          }
         }
       }
 
