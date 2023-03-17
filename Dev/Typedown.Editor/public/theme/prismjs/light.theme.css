@@ -30,7 +30,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: var(--editorColor50);
+	color: var(--editorColor60);
 	font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
 	direction: ltr;
 	text-align: left;
