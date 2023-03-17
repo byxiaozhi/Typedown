@@ -10,6 +10,7 @@ const remote = {
     getSettings: remoteFunction<undefined, unknown>('GetSettings'),
     setClipboard: remoteFunction<{ type: string, data: unknown }, boolean>('SetClipboard'),
     getStringResources: remoteFunction<{ names: string[] }, { [name: string]: string }>('GetStringResources'),
+    openNewWindow: remoteFunction<string, undefined>('OpenNewWindow'),
 }
 
 export default remote;

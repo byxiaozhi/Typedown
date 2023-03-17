@@ -57,6 +57,7 @@ namespace Typedown.Controls
             IsTabStop = true;
             disposables.Add(RemoteInvoke.Handle("ContentLoaded", OnContentLoaded));
             disposables.Add(RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme()));
+            disposables.Add(RemoteInvoke.Handle<string>("OpenNewWindow", OpenNewWindow));
             disposables.Add(AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme)).Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged))).Subscribe(_ => OnThemeChanged()));
         }
 
@@ -171,6 +172,35 @@ namespace Typedown.Controls
             args.Handled = true;
             if (PInvoke.GetIsKeyDown(VirtualKey.Control))
                 Core.Utilities.Common.OpenUrl(args.Uri);
+        }
+
+        private void OpenNewWindow(string uri)
+        {
+            try
+            {
+                if (!UriHelper.IsWebUrl(uri) && UriHelper.TryGetLocalPath(uri, out var path))
+                {
+                    var filePath = AppViewModel.FileViewModel.FilePath;
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        var fullPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(filePath), path));
+                        if (File.Exists(fullPath))
+                        {
+                            if (FileTypeHelper.IsMarkdownFile(fullPath))
+                                AppViewModel.FileViewModel.NewWindowCommand.Execute(fullPath);
+                            else
+                                Core.Utilities.Common.OpenUrl(fullPath);
+                            return;
+                        }
+                    }
+                }
+                Core.Utilities.Common.OpenUrl(uri);
+            }
+            catch
+            {
+                // Ignore
+                // TODO: 添加提示框
+            }
         }
 
         public void Dispose()

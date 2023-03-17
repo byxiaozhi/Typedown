@@ -3,7 +3,7 @@ import { isLengthEven, snakeToCamel } from '../../../utils'
 import { sanitizeHyperlink } from '../../../utils/url'
 
 // 'link': /^(\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*?)(\\*)\]\((.*?)(\\*)\)/, // can nest
-export default function link (h, cursor, block, token, outerClass) {
+export default function link(h, cursor, block, token, outerClass) {
   const className = this.getClassName(outerClass, block, token, cursor)
   const linkClassName = className === CLASS_OR_ID.AG_HIDE ? className : CLASS_OR_ID.AG_LINK_IN_BRACKET
   const { start, end } = token.range

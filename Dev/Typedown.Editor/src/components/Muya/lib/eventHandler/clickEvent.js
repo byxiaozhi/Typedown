@@ -2,6 +2,7 @@ import { operateClassName } from '../utils/domManipulate'
 import { getImageInfo } from '../utils/getImageInfo'
 import { CLASS_OR_ID } from '../config'
 import selection from '../selection'
+import remote from 'services/remote/common'
 
 class ClickEvent {
   constructor(muya) {
@@ -223,8 +224,15 @@ class ClickEvent {
       const link = event.target.closest('a')
       if (link) {
         event.preventDefault();
-        if ((event.metaKey || event.ctrlKey))
-          window.open(link.href)
+        if (!(event.metaKey || event.ctrlKey)) {
+          return;
+        }
+        const href = link.getAttribute('href');
+        if (href?.startsWith('#')) {
+          document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
+        } else {
+          remote.openNewWindow(href)
+        }
       }
 
       contentState.clickHandler(event)
