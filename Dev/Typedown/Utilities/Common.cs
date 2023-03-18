@@ -26,9 +26,11 @@ namespace Typedown.Utilities
         public static object GetCurrentTheme(this IServiceProvider provider)
         {
             var ui = provider.GetService<UIViewModel>();
+            var settings = provider.GetService<SettingsViewModel>();
             var isDarkMode = ui.ActualTheme == ElementTheme.Dark;
             var accentColor = new UISettings().GetColorValue(UIColorType.Accent);
-            var background = Colors.Transparent;
+            var solidBackground = isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
+            var background = settings.UseEditorMicaEffect ? Colors.Transparent : solidBackground;
             return new { theme = isDarkMode ? "Dark" : "Light", accentColor, background };
         }
 
