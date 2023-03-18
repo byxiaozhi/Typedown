@@ -2,6 +2,9 @@
 var path = require("path")
 var webpack = require("webpack")
 
+const paths = require('react-scripts/config/paths')
+paths.appBuild = path.join(path.dirname(paths.appBuild),'../Typedown/Resources/Statics')
+
 module.exports = function override(config, env) {
     const overrideConfig = {
         ...config,
