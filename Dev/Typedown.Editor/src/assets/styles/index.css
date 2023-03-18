@@ -3,6 +3,7 @@
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
@@ -51,7 +52,7 @@ mark::after {
   background: var(--highlightColor);
 }
 
-div.ag-show-quick-insert-hint p.ag-paragraph.ag-active > span.ag-paragraph-content:first-of-type:empty::after {
+div.ag-show-quick-insert-hint p.ag-paragraph.ag-active>span.ag-paragraph-content:first-of-type:empty::after {
   /* content: 'Type @ to insert'; */
   color: var(--editorColor10);
 }
@@ -92,13 +93,13 @@ div.ag-show-quick-insert-hint p.ag-paragraph.ag-active > span.ag-paragraph-conte
 }
 
 .ag-code-content::-webkit-scrollbar {
-    /* Show scroll bars to deal with unwrapped lines in code blocks,
+  /* Show scroll bars to deal with unwrapped lines in code blocks,
        regardless of the preference for hiding scroll bars
        generally. */
-    display: block;
+  display: block;
 
-    height: 3px;
-    width: 3px;
+  height: 3px;
+  width: 3px;
 }
 
 .ag-selected {
@@ -131,7 +132,8 @@ div.ag-show-quick-insert-hint p.ag-paragraph.ag-active > span.ag-paragraph-conte
   display: block;
 }
 
-*:not(.ag-hide)::selection, .ag-selection {
+*:not(.ag-hide)::selection,
+.ag-selection {
   background: var(--selectionColor);
   color: var(--editorColor);
   border-radius: 1px;
@@ -142,7 +144,7 @@ div.ag-show-quick-insert-hint p.ag-paragraph.ag-active > span.ag-paragraph-conte
   color: transparent;
 }
 
-figure.ag-container-block > pre {
+figure.ag-container-block>pre {
   width: 0;
   height: 0;
   opacity: 0;
@@ -171,7 +173,7 @@ figure[data-role="HTML"] .ag-html-preview {
   display: block;
 }
 
-figure[data-role="HTML"] .ag-html-preview > pre{
+figure[data-role="HTML"] .ag-html-preview>pre {
   border: 0;
   background: inherit;
   padding: 0 1rem;
@@ -192,7 +194,7 @@ figure[data-role="FOOTNOTE"] {
   opacity: .8;
 }
 
-figure[data-role="FOOTNOTE"] > p:first-of-type .ag-paragraph-content:empty::after {
+figure[data-role="FOOTNOTE"]>p:first-of-type .ag-paragraph-content:empty::after {
   content: var(--inputFootnoteDefine);
   color: var(--editorColor30);
 }
@@ -258,6 +260,7 @@ span.ag-ruby {
   position: relative;
   vertical-align: bottom;
 }
+
 span.ag-math {
   position: relative;
   color: var(--editorColor);
@@ -266,8 +269,8 @@ span.ag-math {
   vertical-align: top;
 }
 
-.ag-math > .ag-math-render,
-.ag-ruby > .ag-ruby-render {
+.ag-math>.ag-math-render,
+.ag-ruby>.ag-ruby-render {
   display: inline-block;
   padding: .3em .5em;
   border-radius: 8px;
@@ -278,7 +281,7 @@ span.ag-math {
   z-index: 1;
 }
 
-.ag-ruby > .ag-ruby-render {
+.ag-ruby>.ag-ruby-render {
   padding-bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -293,7 +296,7 @@ div.ag-empty {
 }
 
 div.ag-math-error,
-span.ag-math > .ag-math-render.ag-math-error {
+span.ag-math>.ag-math-render.ag-math-error {
   color: var(--deleteColor);
   font-size: 14px;
   font-style: italic;
@@ -302,12 +305,12 @@ span.ag-math > .ag-math-render.ag-math-error {
 
 /* (Preview) math block */
 /* TODO: DOM path should be wrong. Correct path should be: 'ag-container-preview > .katex-display'. */
-.ag-math > .ag-math-render .katex-display {
+.ag-math>.ag-math-render .katex-display {
   margin: 0;
 }
 
 /* Inline math */
-.ag-math > .ag-math-render .katex {
+.ag-math>.ag-math-render .katex {
   vertical-align: middle;
   white-space: nowrap;
 }
@@ -317,15 +320,17 @@ span.ag-math > .ag-math-render.ag-math-error {
   width: auto;
   height: auto;
 }
-.ag-hide.ag-ruby > .ag-ruby-text,
-.ag-hide.ag-math > .ag-math-text {
+
+.ag-hide.ag-ruby>.ag-ruby-text,
+.ag-hide.ag-math>.ag-math-text {
   display: inline-block;
   width: 0;
   height: 0;
   overflow: hidden;
 }
-.ag-hide.ag-ruby > .ag-ruby-render,
-.ag-hide.ag-math > .ag-math-render {
+
+.ag-hide.ag-ruby>.ag-ruby-render,
+.ag-hide.ag-math>.ag-math-render {
   padding: 0;
   top: 0;
   position: relative;
@@ -335,15 +340,14 @@ span.ag-math > .ag-math-render.ag-math-error {
   user-select: auto;
 }
 
-.ag-ruby:not(.ag-hide) > .ag-ruby-render,
-.ag-math:not(.ag-hide) > .ag-math-render {
+.ag-ruby:not(.ag-hide)>.ag-ruby-render,
+.ag-math:not(.ag-hide)>.ag-math-render {
   z-index: 100;
   box-shadow: var(--floatShadow);
   border: var(--floatBorderColor) 1px solid;
 }
 
-.ag-gray.ag-ruby > .ag-ruby-render::before
-.ag-gray.ag-math > .ag-math-render::before {
+.ag-gray.ag-ruby>.ag-ruby-render::before .ag-gray.ag-math>.ag-math-render::before {
   border-width: 5px;
   border-style: solid;
   border-color: transparent;
@@ -354,8 +358,7 @@ span.ag-math > .ag-math-render.ag-math-error {
   content: "";
 }
 
-.ag-hide.ag-ruby > .ag-ruby-render::before
-.ag-hide.ag-math > .ag-math-render::before {
+.ag-hide.ag-ruby>.ag-ruby-render::before .ag-hide.ag-math>.ag-math-render::before {
   content: none;
 }
 
@@ -374,6 +377,7 @@ figure {
   left: 0;
   display: none;
 }
+
 .ag-tool-bar ul {
   height: 20px;
   list-style: none;
@@ -382,6 +386,7 @@ figure {
   display: flex;
   width: 100%;
 }
+
 .ag-tool-bar ul li {
   box-sizing: border-box;
   display: flex;
@@ -485,36 +490,40 @@ li.ag-task-list-item {
   position: relative;
 }
 
-li.ag-task-list-item > [type=checkbox] {
+li.ag-task-list-item>[type=checkbox] {
   position: absolute;
   width: 12px;
   height: 12px;
-  top: .2em !important;
+  margin-top: .2em !important;
   left: -23px;
   transform-origin: center;
   transition: all .2s ease;
 }
 
-li.ag-task-list-item > input.ag-checkbox-checked ~ * {
+li.ag-task-list-item>input.ag-checkbox-checked~* {
   color: var(--editorColor50);
 }
 
-li.ag-task-list-item > input[type=checkbox]::before {
+li.ag-task-list-item>input[type=checkbox]::before {
   content: '';
   width: 18px;
   height: 18px;
   display: inline-block;
   border: 2px solid var(--editorColor50);
-  border-radius: 50%;
+  border-radius: 4px;
   background-color: var(--editorBgColor);
   position: absolute;
-  top: -2px;
+  top: -3px;
   left: -2px;
   box-sizing: border-box;
   transition: all .2s ease;
 }
 
-li.ag-task-list-item > input::after {
+li.ag-task-list-item>input[type=checkbox]:hover:before {
+  filter: brightness(1.3);
+}
+
+li.ag-task-list-item>input::after {
   content: '';
   transform: rotate(-45deg) scale(0);
   width: 8px;
@@ -530,11 +539,11 @@ li.ag-task-list-item > input::after {
   transition: all .2s ease;
 }
 
-li.ag-task-list-item > input.ag-checkbox-checked::after {
-  transform: rotate(-45deg)  scale(1);
+li.ag-task-list-item>input.ag-checkbox-checked::after {
+  transform: rotate(-45deg) scale(1);
 }
 
-li.ag-task-list-item > input.ag-checkbox-checked::before {
+li.ag-task-list-item>input.ag-checkbox-checked::before {
   background: var(--themeColor);
   border-color: var(--themeColor);
   box-shadow: 0 3px 12px 0 var(--selectionColor);
@@ -573,6 +582,7 @@ pre.ag-front-matter {
   font-size: 14px;
   margin: 0;
 }
+
 pre.ag-front-matter {
   margin: 1rem 0;
 }
@@ -595,22 +605,22 @@ pre.ag-multiple-math span.ag-code-content:first-of-type:empty::after {
 pre.ag-html-block,
 pre.ag-fence-code,
 pre.ag-indent-code,
-li.ag-list-item > p.ag-paragraph {
+li.ag-list-item>p.ag-paragraph {
   position: relative;
   display: inline-flex;
   box-sizing: border-box;
   width: 100%;
 }
 
-li.ag-list-item > p.ag-paragraph {
+li.ag-list-item>p.ag-paragraph {
   display: block;
 }
 
-li.ag-task-list-item > p.ag-paragraph {
+li.ag-task-list-item>p.ag-paragraph {
   margin-top: 0;
 }
 
-li.ag-list-item > p.ag-paragraph > span {
+li.ag-list-item>p.ag-paragraph>span {
   width: 100%;
 }
 
@@ -618,8 +628,9 @@ pre.ag-fence-code,
 pre.ag-indent-code {
   margin: 1rem 0;
 }
-pre.ag-indent-code > code::before,
-pre.ag-fence-code > code::before {
+
+pre.ag-indent-code>code::before,
+pre.ag-fence-code>code::before {
   content: '';
   position: absolute;
   bottom: -1em;
@@ -628,15 +639,15 @@ pre.ag-fence-code > code::before {
   font-size: 12px;
 }
 
-pre.ag-active.ag-fence-code > code::before {
+pre.ag-active.ag-fence-code>code::before {
   content: '';
 }
 
-pre.ag-active.ag-indent-code > code::before {
+pre.ag-active.ag-indent-code>code::before {
   content: '';
 }
 
-pre > code {
+pre>code {
   width: 100%;
   display: block;
 }
@@ -730,11 +741,11 @@ figure.ag-container-block div.ag-container-preview {
   text-align: center;
 }
 
-figure.ag-container-block div.ag-container-preview > svg {
+figure.ag-container-block div.ag-container-preview>svg {
   width: 100%;
 }
 
-figure.ag-active.ag-container-block > div.ag-container-preview {
+figure.ag-active.ag-container-block>div.ag-container-preview {
   position: absolute;
   top: calc(100% + 20px);
   left: 50%;
@@ -848,7 +859,9 @@ pre.ag-active .ag-language-input {
   font-family: monospace;
 }
 
-span.ag-image-marked-text, span.ag-link-in-bracket, span.ag-link-in-bracket .ag-backlash {
+span.ag-image-marked-text,
+span.ag-link-in-bracket,
+span.ag-link-in-bracket .ag-backlash {
   color: var(--editorColor50);
   font-size: 16px;
   text-decoration: none;
@@ -859,12 +872,15 @@ span.ag-image-marked-text, span.ag-link-in-bracket, span.ag-link-in-bracket .ag-
   text-decoration: none;
   color: rgb(51, 51, 51);
 }
+
 span.ag-warn.ag-emoji-marked-text {
   color: var(--deleteColor);
   text-decoration: none;
 }
 
-.ag-hide, .ag-hide .ag-highlight, .ag-hide .ag-selection {
+.ag-hide,
+.ag-hide .ag-highlight,
+.ag-hide .ag-selection {
   display: inline-block;
   width: 0;
   height: 0;
@@ -1054,7 +1070,7 @@ span.ag-warn.ag-emoji-marked-text {
   animation: loading 1.1s infinite linear;
 }
 
-.ag-image-marked-text ~ img {
+.ag-image-marked-text~img {
   display: block;
   margin: 0 auto;
 }
@@ -1069,7 +1085,9 @@ span.ag-warn.ag-emoji-marked-text {
   vertical-align: sub;
 }
 
-span[data-role="link"], a[data-role="link"], span[data-role="link"] .ag-backlash {
+span[data-role="link"],
+a[data-role="link"],
+span[data-role="link"] .ag-backlash {
   color: var(--themeColor);
   text-decoration: none;
 }
@@ -1193,14 +1211,14 @@ pre:not(.ag-active):hover .ag-code-copy {
 }
 
 pre.ag-paragraph.line-numbers {
-	position: relative;
-	padding-left: 2.5em;
-	counter-reset: linenumber;
+  position: relative;
+  padding-left: 2.5em;
+  counter-reset: linenumber;
 }
 
-pre.ag-paragraph.line-numbers > code {
-	position: relative;
-	white-space: inherit;
+pre.ag-paragraph.line-numbers>code {
+  position: relative;
+  white-space: inherit;
 }
 
 figure:not(.ag-active) pre.ag-paragraph.line-numbers {
@@ -1208,15 +1226,16 @@ figure:not(.ag-active) pre.ag-paragraph.line-numbers {
 }
 
 .line-numbers .line-numbers-rows {
-	position: absolute;
-	pointer-events: none;
-	top: 0;
-	font-size: 100%;
-	left: -2.5em;
-	width: 2.5em; /* works for line-numbers below 1000 lines */
-	letter-spacing: -1px;
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -2.5em;
+  width: 2.5em;
+  /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
 
-	user-select: none;
+  user-select: none;
 
 }
 
@@ -1225,17 +1244,17 @@ figure:not(.ag-active) pre.ag-paragraph.line-numbers {
   word-break: break-all;
 }
 
-.line-numbers-rows > span {
-	pointer-events: none;
-	display: block;
-	counter-increment: linenumber;
+.line-numbers-rows>span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
 }
 
-.line-numbers-rows > span:before {
-	content: counter(linenumber);
-	color: var(--editorColor30);
-	display: block;
-	padding-right: .8em;
+.line-numbers-rows>span:before {
+  content: counter(linenumber);
+  color: var(--editorColor30);
+  display: block;
+  padding-right: .8em;
   text-align: right;
   transform: scale(.8);
   position: relative;
