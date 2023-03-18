@@ -73,6 +73,7 @@ Lexer.prototype.token = function (src, top) {
 
   // 移除首行缩进
   src = src.replace(/^ +$/gm, '')
+  const totalLength = src.length
 
   let loose
   let cap
@@ -117,7 +118,7 @@ Lexer.prototype.token = function (src, top) {
   }
 
   // 首部加两个回车代表新一段的开始
-  if (!src.startsWith('\n'))
+  if (src.length == totalLength)
     src = '\n\n' + src;
 
   while (src) {
