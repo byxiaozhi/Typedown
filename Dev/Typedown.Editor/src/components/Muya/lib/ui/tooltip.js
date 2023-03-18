@@ -4,8 +4,8 @@ class Tooltip {
   constructor(muya) {
     this.muya = muya
     this.cache = new WeakMap()
-    const { container, eventCenter } = this.muya
-    eventCenter.attachDOMEvent(container, 'mouseover', this.mouseOver.bind(this))
+    const { eventCenter } = this.muya
+    eventCenter.attachDOMEvent(document, 'mouseover', this.mouseOver.bind(this))
   }
 
   mouseOver(event) {
