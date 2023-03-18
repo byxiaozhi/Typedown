@@ -301,6 +301,7 @@ span.ag-math>.ag-math-render.ag-math-error {
   font-size: 14px;
   font-style: italic;
   font-family: monospace;
+  white-space: nowrap;
 }
 
 /* (Preview) math block */

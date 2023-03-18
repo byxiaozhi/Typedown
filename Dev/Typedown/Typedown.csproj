@@ -55,7 +55,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="Resources\Statics\**" CopyToOutputDirectory="PreserveNewest" Link="Resources\Statics\%(RecursiveDir)\%(Filename)%(Extension)" />
+		<None Include="Resources\Statics\**" CopyToOutputDirectory="Always" Link="Resources\Statics\%(RecursiveDir)\%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
