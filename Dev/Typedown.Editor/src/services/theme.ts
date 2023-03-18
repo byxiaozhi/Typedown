@@ -35,13 +35,15 @@ function onThemeChanged({ theme, accentColor, background }: any) {
         document.head.appendChild(codemirrorStyleDocument)
     }
 
+    theme = theme?.toLowerCase()
+
     switch (theme) {
-        case "Light":
+        case "light":
             editorStyleDocument.href = "theme/editor/light.theme.css"
             prismjsStyleDocument.href = "theme/prismjs/light.theme.css"
             codemirrorStyleDocument.href = "theme/codemirror/light.theme.css"
             break;
-        case "Dark":
+        case "dark":
             editorStyleDocument.href = "theme/editor/dark.theme.css"
             prismjsStyleDocument.href = "theme/prismjs/dark.theme.css"
             codemirrorStyleDocument.href = "theme/codemirror/dark.theme.css"
@@ -55,6 +57,7 @@ function onThemeChanged({ theme, accentColor, background }: any) {
     document.documentElement.style.setProperty('--themeColor', `rgba(${r}, ${g}, ${b}, ${a})`)
     themeColorAlphas.forEach(e => document.body.style.setProperty(`--themeColor${e}`, `rgba(${r}, ${g}, ${b}, ${a * (e / 100)})`))
     document.documentElement.style.background = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`
+    document.documentElement.style.setProperty('color-scheme', theme)
 
     window.actualTheme = theme
 }

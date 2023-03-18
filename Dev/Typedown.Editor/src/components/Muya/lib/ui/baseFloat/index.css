@@ -18,21 +18,6 @@
   overflow: hidden;
 }
 
-.ag-float-container::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-
-.ag-float-container::-webkit-scrollbar-track,
-.ag-float-container::-webkit-scrollbar-corner {
-  background-color: var(--scrollbarTrack);
-}
-
-.ag-float-container::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbarThumb);
-  border-radius: 2px;
-}
-
 [x-placement] {
   opacity: 1;
 }
