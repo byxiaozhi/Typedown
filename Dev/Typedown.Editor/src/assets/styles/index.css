@@ -505,14 +505,17 @@ li.ag-task-list-item>input.ag-checkbox-checked~* {
   color: var(--editorColor50);
 }
 
+li.ag-task-list-item>input[type=checkbox] {
+  -webkit-appearance: none;
+}
+
 li.ag-task-list-item>input[type=checkbox]::before {
   content: '';
   width: 18px;
   height: 18px;
   display: inline-block;
   border: 2px solid var(--editorColor50);
-  border-radius: 4px;
-  background-color: var(--editorBgColor);
+  border-radius: 50%;
   position: absolute;
   top: -3px;
   left: -2px;
@@ -520,8 +523,9 @@ li.ag-task-list-item>input[type=checkbox]::before {
   transition: all .2s ease;
 }
 
-li.ag-task-list-item>input[type=checkbox]:hover:before {
-  filter: brightness(1.3);
+li.ag-task-list-item>input[type=checkbox]:hover::before {
+  background-color: var(--floatBgColor);
+  filter: brightness(1.2);
 }
 
 li.ag-task-list-item>input::after {
@@ -544,7 +548,8 @@ li.ag-task-list-item>input.ag-checkbox-checked::after {
   transform: rotate(-45deg) scale(1);
 }
 
-li.ag-task-list-item>input.ag-checkbox-checked::before {
+li.ag-task-list-item>input.ag-checkbox-checked::before,
+li.ag-task-list-item>input.ag-checkbox-checked:hover:before {
   background: var(--themeColor);
   border-color: var(--themeColor);
   box-shadow: 0 3px 12px 0 var(--selectionColor);
