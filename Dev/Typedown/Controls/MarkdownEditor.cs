@@ -125,8 +125,8 @@ namespace Typedown.Controls
         {
 # if DEBUG
             WebViewController.CoreWebView2.Navigate("http://localhost:3000");
-            var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
-            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
+            // var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
+            // WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
