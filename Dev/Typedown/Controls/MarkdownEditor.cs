@@ -60,6 +60,7 @@ namespace Typedown.Controls
             disposables.Add(RemoteInvoke.Handle<string>("OpenNewWindow", OpenNewWindow));
             disposables.Add(AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme))
                 .Merge(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.UseEditorMicaEffect)))
+                .Merge(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.UseMicaEffect)))
                 .Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged)))
                 .Subscribe(_ => OnThemeChanged()));
         }

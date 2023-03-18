@@ -388,7 +388,7 @@ figure {
   width: 20px;
   height: 20px;
   margin-right: 6px;
-  cursor: pointer;
+  cursor: default;
   border-radius: 3px;
   color: var(--iconColor);
   justify-content: center;
@@ -437,6 +437,10 @@ figure {
   color: var(--themeColor);
 }
 
+.ag-tool-bar ul li:hover {
+  background-color: var(--floatHoverColor);
+}
+
 .ag-tool-bar ul li[data-label=delete] span.icon {
   color: var(--iconColor);
 }
@@ -483,7 +487,6 @@ li.ag-task-list-item {
 
 li.ag-task-list-item > [type=checkbox] {
   position: absolute;
-  cursor: pointer;
   width: 12px;
   height: 12px;
   top: .2em !important;
@@ -879,7 +882,7 @@ span.ag-warn.ag-emoji-marked-text {
   display: inline-block;
   position: relative;
   background: var(--codeBlockBgColor);
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .ag-inline-image.left,
@@ -930,10 +933,13 @@ span.ag-warn.ag-emoji-marked-text {
 .ag-inline-image a.ag-image-icon-fail,
 .ag-inline-image a.ag-image-icon-close {
   display: none;
-  /* width: 20px;
-  height: 20px; */
   position: absolute;
   top: 13px;
+}
+
+.ag-inline-image a.ag-image-icon-close {
+  padding: 0px 0px 4px 4px;
+  border-radius: 4px;
 }
 
 .ag-inline-image a.ag-image-icon-success,
@@ -1000,12 +1006,17 @@ span.ag-warn.ag-emoji-marked-text {
 
 .ag-inline-image.ag-empty-image:hover a.ag-image-icon-close,
 .ag-inline-image.ag-image-fail:hover a.ag-image-icon-close {
-  opacity: .5;
+  opacity: .8;
   display: block;
   align-items: center;
   justify-content: space-around;
   z-index: 1;
   right: 15px;
+}
+
+.ag-inline-image.ag-empty-image:hover a.ag-image-icon-close:hover,
+.ag-inline-image.ag-image-fail:hover a.ag-image-icon-close:hover {
+  background-color: var(--floatHoverColor);
 }
 
 .ag-inline-image.ag-image-success.ag-inline-image-selected .ag-image-container img {
@@ -1103,7 +1114,7 @@ span.ag-reference-link {
   top: 0.2em;
   left: -30px;
   display: none;
-  cursor: pointer;
+  cursor: default;
   opacity: .6;
   user-select: none;
 }
@@ -1156,7 +1167,7 @@ span.ag-reference-link {
   width: 20px;
   height: 20px;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: default;
   opacity: 0;
   z-index: 1;
   transition: opacity .2s ease-in-out;

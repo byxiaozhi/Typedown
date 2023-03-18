@@ -30,7 +30,7 @@
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-  cursor: pointer;
+  cursor: default;
   display: flex;
   justify-content: space-around;
   align-items: center;

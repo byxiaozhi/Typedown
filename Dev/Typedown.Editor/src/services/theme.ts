@@ -33,10 +33,10 @@ function onThemeChanged({ theme, accentColor, background }: any) {
     const { r, g, b, a } = accentColor
     const { R: bgR, G: bgG, B: bgB, A: bgA } = background
 
+    document.body.style.backgroundColor = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`;
+    document.documentElement.style.setProperty('--actualTheme', theme)
     document.documentElement.style.setProperty('--themeColor', `rgba(${r}, ${g}, ${b}, ${a})`)
-    themeColorAlphas.forEach(e => document.body.style.setProperty(`--themeColor${e}`, `rgba(${r}, ${g}, ${b}, ${a * (e / 100)})`))
-    document.documentElement.style.background = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`
-    document.documentElement.style.setProperty('color-scheme', theme)
+    themeColorAlphas.forEach(e => document.documentElement.style.setProperty(`--themeColor${e}`, `rgba(${r}, ${g}, ${b}, ${a * (e / 100)})`))
 
     window.actualTheme = theme
 }

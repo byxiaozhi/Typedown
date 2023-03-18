@@ -16,6 +16,7 @@
   box-sizing: content-box;
   z-index: 10000;
   overflow: hidden;
+  color-scheme: var(--actualTheme);
 }
 
 [x-placement] {

@@ -30,13 +30,13 @@ namespace Typedown.Utilities
             var isDarkMode = ui.ActualTheme == ElementTheme.Dark;
             var accentColor = new UISettings().GetColorValue(UIColorType.Accent);
             var solidBackground = isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
-            var background = settings.UseEditorMicaEffect ? Colors.Transparent : solidBackground;
+            var background = settings.UseMicaEffect && settings.UseEditorMicaEffect ? Colors.Transparent : solidBackground;
             return new { theme = isDarkMode ? "Dark" : "Light", accentColor, background };
         }
 
         public static bool GetUseLightTheme()
         {
-            return Application.Current.RequestedTheme == global::Windows.UI.Xaml.ApplicationTheme.Light;
+            return Application.Current.RequestedTheme == ApplicationTheme.Light;
         }
 
         public static void TrySaveWindowPlacement(this MainWindow window, Point offset = default)
