@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Debug;Release;Debug_Local</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

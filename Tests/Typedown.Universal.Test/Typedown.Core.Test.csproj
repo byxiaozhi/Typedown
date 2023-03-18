@@ -8,6 +8,7 @@
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
 		<IsPackable>false</IsPackable>
 		<Platforms>x64;x86</Platforms>
+		<Configurations>Debug;Release;Debug_Local</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup>

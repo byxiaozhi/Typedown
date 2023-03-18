@@ -16,6 +16,7 @@
 		<_SuppressWpfTrimError>true</_SuppressWpfTrimError>
 		<Version>1.2.11</Version>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<Configurations>Debug;Release;Debug_Local</Configurations>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Platform)' == 'x64'">
