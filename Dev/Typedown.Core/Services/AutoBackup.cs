@@ -10,9 +10,8 @@ namespace Typedown.Core.Services
 
         public string GetBackupFilePath(string sourcePath)
         {
-            var dir = Path.GetDirectoryName(sourcePath);
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
+            if (!Directory.Exists(backupPath))
+                Directory.CreateDirectory(backupPath);
             sourcePath ??= "";
             var pathHash = Common.SimpleHash2(sourcePath);
             var pathFilename = Path.GetFileName(sourcePath);
