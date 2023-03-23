@@ -1,151 +1,55 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
+using Typedown.Core.Utilities;
 
 namespace Typedown.Core.Services
 {
     public class AutoBackup
     {
-        public class Content
-        {
-            public string Text { get; set; }
-        }
-
-        public class Metadata
-        {
-            public string File { get; set; }
-        }
-
-        Dictionary<string, Metadata> Metadatas { get; set; }
-
         private readonly string backupPath = Path.Combine(Config.GetLocalFolderPath(), "Backup");
 
-        private readonly string metadataFilePath;
-
-        private readonly string metadataFilePath2;
-
-        public AutoBackup()
+        public string GetBackupFilePath(string sourcePath)
         {
-            metadataFilePath = Path.Combine(backupPath, "metadata");
-            metadataFilePath2 = Path.Combine(backupPath, "metadata2");
+            sourcePath ??= "";
+            var pathHash = Common.SimpleHash2(sourcePath);
+            var pathFilename = Path.GetFileName(sourcePath);
+            return Path.Combine(backupPath, $"{pathHash}_{pathFilename}");
         }
 
-        public async void WriteMetadata()
+        public async Task<bool> Backup(string path, string markdown)
         {
-            if (Metadatas == null) return;
             try
             {
-                await File.WriteAllTextAsync(metadataFilePath2, JsonConvert.SerializeObject(Metadatas));
-                File.Delete(metadataFilePath);
-                File.Move(metadataFilePath2, metadataFilePath);
-            }
-            catch { }
-        }
-
-        public async Task LoadMetadata()
-        {
-            Metadatas = null;
-            try
-            {
-                if (File.Exists(metadataFilePath2))
-                    Metadatas = JsonConvert.DeserializeObject<Dictionary<string, Metadata>>(await File.ReadAllTextAsync(metadataFilePath2));
-            }
-            catch { }
-            if (Metadatas == null)
-            {
-                try
-                {
-                    if (File.Exists(metadataFilePath))
-                        Metadatas = JsonConvert.DeserializeObject<Dictionary<string, Metadata>>(await File.ReadAllTextAsync(metadataFilePath));
-                }
-                catch { }
-            }
-            if (Metadatas == null)
-            {
-                if (!Directory.Exists(backupPath))
-                {
-                    Directory.CreateDirectory(backupPath);
-                }
-                Metadatas = new Dictionary<string, Metadata>();
-            }
-        }
-
-        private async Task EnsureMetadataLoaded()
-        {
-            if (Metadatas == null)
-            {
-                await LoadMetadata();
-            }
-        }
-
-        public async Task<bool> Backup(string path, string Markdown)
-        {
-            await EnsureMetadataLoaded();
-            if (path == null) path = "";
-            try
-            {
-                string filename;
-                if (Metadatas.ContainsKey(path))
-                {
-                    filename = Metadatas[path].File;
-                }
-                else
-                {
-                    filename = Guid.NewGuid().ToString();
-                    var metadata = new Metadata
-                    {
-                        File = filename
-                    };
-                    Metadatas.Add(path, metadata);
-                    WriteMetadata();
-                }
-                var content = new Content()
-                {
-                    Text = Markdown
-                };
-                await File.WriteAllTextAsync(Path.Combine(backupPath, filename), JsonConvert.SerializeObject(content));
+                await File.WriteAllTextAsync(GetBackupFilePath(path), markdown);
                 return true;
             }
-            catch { }
-            return false;
+            catch
+            {
+                return false;
+            }
         }
 
         public async Task<string> GetBackup(string path)
         {
-            await EnsureMetadataLoaded();
-            if (path == null) path = "";
-            if (Metadatas.ContainsKey(path))
+            try
             {
-                var filename = Metadatas[path].File;
-                try
-                {
-                    var content = JsonConvert.DeserializeObject<Content>(await File.ReadAllTextAsync(Path.Combine(backupPath, filename)));
-                    return content.Text;
-                }
-                catch
-                {
-                    DeleteBackup(path);
-                }
+                return await File.ReadAllTextAsync(GetBackupFilePath(path));
             }
-            return null;
+            catch
+            {
+                return null;
+            }
         }
 
-        public async void DeleteBackup(string path)
+        public void DeleteBackup(string path)
         {
-            await EnsureMetadataLoaded();
-            if (path == null) path = "";
-            if (Metadatas.ContainsKey(path))
+            try
             {
-                try
-                {
-                    var filename = Metadatas[path].File;
-                    Metadatas.Remove(path);
-                    File.Delete(Path.Combine(backupPath, Path.Combine(backupPath, filename)));
-                }
-                catch { }
-                WriteMetadata();
+                File.Delete(GetBackupFilePath(path));
+            }
+            catch
+            {
+                // Ignore
             }
         }
     }

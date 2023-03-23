@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Numerics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -53,6 +55,26 @@ namespace Typedown.Core.Utilities
                 hashedValue *= 3074457345618258799ul;
             }
             return hashedValue;
+        }
+
+        public static string SimpleHash2(string str)
+        {
+            var hash = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(str));
+            var result = hash.ToBase36String();
+            return result.Substring(0, Math.Min(6, result.Length));
+        }
+
+        public static string ToBase36String(this byte[] toConvert)
+        {
+            const string alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
+            var dividend = new BigInteger(toConvert);
+            var builder = new StringBuilder();
+            while (dividend != 0)
+            {
+                dividend = BigInteger.DivRem(dividend, 36, out var remainder);
+                builder.Insert(0, alphabet[Math.Abs(((int)remainder))]);
+            }
+            return builder.ToString();
         }
 
         public static string DefaultMarkdwn { get => "\n"; }

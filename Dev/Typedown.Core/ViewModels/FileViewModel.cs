@@ -14,7 +14,6 @@ using Typedown.Core.Models;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
 using Windows.ApplicationModel.Core;
-using Windows.Devices.Geolocation;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -123,7 +122,7 @@ namespace Typedown.Core.ViewModels
             FilePath = null;
             EditorViewModel.FileHash = Common.SimpleHash(Common.DefaultMarkdwn);
             string backup = null;
-            if (AppViewModel.GetInstances().Any(x => !string.IsNullOrEmpty(x.FileViewModel.FilePath)))
+            if (AppViewModel.GetInstances().Where(x => x != AppViewModel).All(x => !string.IsNullOrEmpty(x.FileViewModel.FilePath)))
             {
                 backup = await CheckBackup(FilePath, EditorViewModel.FileHash);
             }
@@ -414,7 +413,17 @@ namespace Typedown.Core.ViewModels
             }
             else
             {
-                await NewFileFun(false);
+                switch (SettingsViewModel.FileStartupAction)
+                {
+                    case Enums.FileStartupAction.OpenLast:
+                        await AccessHistory.EnsureInitialized();
+                        if (AccessHistory.FileRecentlyOpened.FirstOrDefault() is string lastFile && !TryGetOpenedWindow(lastFile, out _) && File.Exists(lastFile))
+                            await LoadFile(lastFile, true);
+                        break;
+                    default:
+                        await NewFileFun(false);
+                        break;
+                }
             }
         }
 
@@ -486,17 +495,6 @@ namespace Typedown.Core.ViewModels
                             break;
                     }
                 }
-                if (string.IsNullOrEmpty(FilePath))
-                {
-                    switch (SettingsViewModel.FileStartupAction)
-                    {
-                        case Enums.FileStartupAction.OpenLast:
-                            await AccessHistory.EnsureInitialized();
-                            if (AccessHistory.FileRecentlyOpened.FirstOrDefault() is string lastFile && !TryGetOpenedWindow(lastFile, out _) && File.Exists(lastFile))
-                                await LoadFile(lastFile, true);
-                            break;
-                    }
-                }
             }
             catch
             {
@@ -520,7 +518,7 @@ namespace Typedown.Core.ViewModels
             if (!File.Exists(FilePath))
                 return false;
             var fileOperation = ServiceProvider.GetService<IFileOperation>();
-            if(fileOperation.Rename(FilePath, to))
+            if (fileOperation.Rename(FilePath, to))
             {
                 FilePath = to;
                 return true;
