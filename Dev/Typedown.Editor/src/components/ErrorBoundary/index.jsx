@@ -13,7 +13,7 @@ class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        remote.unhandledException(error + '\n\n' + errorInfo);
+        remote.unhandledException(error + '\n\n' + JSON.stringify(errorInfo));
     }
 
     render() {
