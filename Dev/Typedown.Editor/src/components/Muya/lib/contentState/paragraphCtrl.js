@@ -332,13 +332,18 @@ const paragraphCtrl = ContentState => {
         })
 
         const { isGitlabCompatibilityEnabled, listIndentation } = this
-        const markdown = new ExportMarkdown(
-          children.slice(startIndex, endIndex + 1),
-          listIndentation,
-          isGitlabCompatibilityEnabled
-        ).generate()
+        let markdown = ''
+        try {
+          markdown = new ExportMarkdown(
+            children.slice(startIndex, endIndex + 1),
+            listIndentation,
+            isGitlabCompatibilityEnabled
+          ).generate()
+        } catch (e) {
+          console.log(e)
+        }
         const codeContent = this.createBlock('span', {
-          text: markdown ?? this.muya.markdown,
+          text: markdown,
           lang,
           functionType: 'codeContent'
         })

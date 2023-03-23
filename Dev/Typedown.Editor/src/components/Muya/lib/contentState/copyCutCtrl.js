@@ -260,9 +260,13 @@ const copyCutCtrl = ContentState => {
         const table = this.createTableInFigure({ rows: row, columns: column }, tableContents)
         this.appendChild(figureBlock, table)
         const { isGitlabCompatibilityEnabled, listIndentation } = this
-        const markdown = new ExportMarkdown([figureBlock], listIndentation, isGitlabCompatibilityEnabled).generate()
-        remote.setClipboard({ type: 'text/html', data: '' })
-        remote.setClipboard({ type: 'text/plain', data: markdown ?? this.muya.markdown })
+        try {
+          const markdown = new ExportMarkdown([figureBlock], listIndentation, isGitlabCompatibilityEnabled).generate()
+          remote.setClipboard({ type: 'text/html', data: '' })
+          remote.setClipboard({ type: 'text/plain', data: markdown })
+        } catch (e) {
+          console.log(e)
+        }
       }
     }
   }
@@ -314,9 +318,13 @@ const copyCutCtrl = ContentState => {
         if (!block) return
         const anchor = this.getAnchor(block)
         const { isGitlabCompatibilityEnabled, listIndentation } = this
-        const markdown = new ExportMarkdown([anchor], listIndentation, isGitlabCompatibilityEnabled).generate()
-        remote.setClipboard({ type: 'text/html', data: '' })
-        remote.setClipboard({ type: 'text/plain', data: markdown ?? this.muya.markdown })
+        try {
+          const markdown = new ExportMarkdown([anchor], listIndentation, isGitlabCompatibilityEnabled).generate()
+          remote.setClipboard({ type: 'text/html', data: '' })
+          remote.setClipboard({ type: 'text/plain', data: markdown })
+        } catch (e) {
+          console.log(e)
+        }
         break
       }
 

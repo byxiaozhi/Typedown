@@ -115,11 +115,15 @@ class Muya {
   }
 
   dispatchChangeContentChange = () => {
-    const { markdown, cursor } = this.getMarkdownAndCursor()
-    const wordCount = this.getWordCount(markdown)
-    this.markdown = markdown
-    const toc = this.getTOC()
-    this.eventCenter.dispatch('contentChange', { markdown: this.markdown, wordCount, cursor, toc })
+    try {
+      const { markdown, cursor } = this.getMarkdownAndCursor()
+      const wordCount = this.getWordCount(markdown)
+      this.markdown = markdown
+      const toc = this.getTOC()
+      this.eventCenter.dispatch('contentChange', { markdown, wordCount, cursor, toc })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   dispatchSelectionChange = () => {
@@ -138,8 +142,7 @@ class Muya {
     }
     const blocks = this.contentState.getBlocks()
     const { isGitlabCompatibilityEnabled, listIndentation } = this.contentState
-    const markdown = new ExportMarkdown(blocks, listIndentation, isGitlabCompatibilityEnabled).generate();
-    return markdown ?? this.markdown
+    return new ExportMarkdown(blocks, listIndentation, isGitlabCompatibilityEnabled).generate();
   }
 
   getTOC() {
@@ -181,10 +184,15 @@ class Muya {
   }
 
   setCursor(cursor) {
-    const markdown = this.getMarkdown()
-    const isRenderCursor = true
-
-    return this.setMarkdown(markdown, cursor, isRenderCursor)
+    try {
+      const markdown = this.getMarkdown()
+      const isRenderCursor = true
+      this.setMarkdown(markdown, cursor, isRenderCursor)
+      return true
+    } catch (err) {
+      console.log(err)
+      return false
+    }
   }
 
   createTable(tableChecker) {

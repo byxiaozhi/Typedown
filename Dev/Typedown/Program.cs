@@ -15,20 +15,21 @@ namespace Typedown
         [STAThread]
         public static void Main()
         {
-            try
-            {
-                App.Launch();
-            }
-            catch (Exception ex)
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
+            App.Launch();
+        }
+
+        private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (e.IsTerminating)
             {
                 Task.Run(() => Common.Post("https://typedown.ownbox.cn/report", new
                 {
                     version = AboutApp.GetAppVersion(),
                     system = Environment.OSVersion.VersionString,
-                    type = "crash",
-                    content = ex.ToString(),
+                    type = "UnhandledException",
+                    content = e.ExceptionObject.ToString(),
                 })).Wait();
-                throw ex;
             }
         }
     }

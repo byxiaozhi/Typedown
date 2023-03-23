@@ -30,12 +30,7 @@ class ExportMarkdown {
   }
 
   generate() {
-    try {
-      return this.translateBlocks2Markdown(this.blocks)
-    } catch (e) {
-      console.log(e)
-      return null;
-    }
+    return this.translateBlocks2Markdown(this.blocks)
   }
 
   translateBlocks2Markdown(blocks, indent = '', listIndent = '') {
