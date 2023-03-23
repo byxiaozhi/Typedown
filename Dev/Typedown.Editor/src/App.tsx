@@ -1,5 +1,6 @@
 import React from 'react';
 import Editor from 'components/Editor';
+import ErrorBoundary from 'components/ErrorBoundary';
 import 'services/theme'
 import 'services/scrollbar'
 import 'services/localization'
@@ -9,7 +10,9 @@ document.oncontextmenu = () => false;
 
 function App() {
   return (
-    <Editor />
+    <ErrorBoundary>
+      <Editor />
+    </ErrorBoundary>
   );
 }
 

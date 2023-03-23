@@ -56,6 +56,7 @@ namespace Typedown.Controls
             Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent), Children = { dummyRectangle } };
             IsTabStop = true;
             disposables.Add(RemoteInvoke.Handle("ContentLoaded", OnContentLoaded));
+            disposables.Add(RemoteInvoke.Handle<string>("UnhandledException", OnUnhandledException));
             disposables.Add(RemoteInvoke.Handle("GetCurrentTheme", () => ServiceProvider.GetCurrentTheme()));
             disposables.Add(RemoteInvoke.Handle<string>("OpenNewWindow", OpenNewWindow));
             disposables.Add(AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme))
@@ -63,6 +64,12 @@ namespace Typedown.Controls
                 .Merge(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.UseMicaEffect)))
                 .Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged)))
                 .Subscribe(_ => OnThemeChanged()));
+        }
+
+        private void OnUnhandledException(string error)
+        {
+            CoreWebView2.Reload();
+            Log.Report("WebViewUnhandledException", error);
         }
 
         private void OnThemeChanged()

@@ -23,13 +23,7 @@ namespace Typedown
         {
             if (e.IsTerminating)
             {
-                Task.Run(() => Common.Post("https://typedown.ownbox.cn/report", new
-                {
-                    version = AboutApp.GetAppVersion(),
-                    system = Environment.OSVersion.VersionString,
-                    type = "UnhandledException",
-                    content = e.ExceptionObject.ToString(),
-                })).Wait();
+                Log.Report("UnhandledException", e.ExceptionObject.ToString()).Wait();
             }
         }
     }

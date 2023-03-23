@@ -11,6 +11,7 @@ const remote = {
     setClipboard: remoteFunction<{ type: string, data: unknown }, boolean>('SetClipboard'),
     getStringResources: remoteFunction<{ names: string[] }, { [name: string]: string }>('GetStringResources'),
     openNewWindow: remoteFunction<string, undefined>('OpenNewWindow'),
+    unhandledException: remoteFunction<string, undefined>('UnhandledException'),
 }
 
 export default remote;

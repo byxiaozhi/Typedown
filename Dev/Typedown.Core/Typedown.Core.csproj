@@ -423,6 +423,7 @@
     <Compile Include="Utilities\FileTypeHelper.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />
     <Compile Include="Utilities\Locale.cs" />
+    <Compile Include="Utilities\Log.cs" />
     <Compile Include="Utilities\NumberUnit.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.DwmApi.cs" />
     <Compile Include="Utilities\PInvoke\PInvoke.Kernel32.cs" />
