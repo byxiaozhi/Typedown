@@ -94,7 +94,11 @@ namespace Typedown.Controls
             if (WebViewController == null)
             {
                 WebViewController = new();
-                await WebViewController.InitializeAsync(this, XamlWindow.GetWindow(this).XamlSourceHandle);
+                if (!await WebViewController.InitializeAsync(this, XamlWindow.GetWindow(this).XamlSourceHandle))
+                {
+                    WebViewController.Dispose();
+                    return;
+                }
                 if (disposables.IsDisposed)
                 {
                     WebViewController.Dispose();

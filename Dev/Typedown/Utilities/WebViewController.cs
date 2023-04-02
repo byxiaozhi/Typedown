@@ -71,8 +71,13 @@ namespace Typedown.Utilities
                     SetMaxWorkingSetSize();
                     return true;
                 }
-                catch (Exception)
+                catch (ObjectDisposedException)
                 {
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    _ = Log.Report("WebViewInitializeException", ex.ToString());
                     return false;
                 }
             }
