@@ -12,7 +12,7 @@ namespace Typedown.Core.Utilities
             {
                 version = AboutApp.GetAppVersion(),
                 system = Environment.OSVersion.VersionString,
-                type = "UnhandledException",
+                type,
                 content,
             }));
         }
