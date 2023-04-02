@@ -25,9 +25,7 @@ namespace Typedown
             {
                 if (mutex.WaitOne(TimeSpan.Zero, true))
                 {
-                    var providers = new List<IXamlMetadataProvider>() { new Core.Typedown_Core_XamlTypeInfo.XamlMetaDataProvider() };
-                    var xamlApp = new App(providers) { Resources = new Core.Resources() };
-                    xamlApp.Run();
+                    LaunchNewApplication();
                 }
                 else
                 {
@@ -39,6 +37,13 @@ namespace Typedown
                 mutex.ReleaseMutex();
                 Launch();
             }
+        }
+
+        public static void LaunchNewApplication()
+        {
+            var providers = new List<IXamlMetadataProvider>() { new Core.Typedown_Core_XamlTypeInfo.XamlMetaDataProvider() };
+            var xamlApp = new App(providers) { Resources = new Core.Resources() };
+            xamlApp.Run();
         }
 
         protected override async void OnLaunched()
@@ -79,14 +84,28 @@ namespace Typedown
 
         internal static void OpenNewWindow()
         {
-            using var client = new NamedPipeClientStream(".", "Typedown.App.PiPe", PipeDirection.InOut);
-            client.Connect();
-            using var reader = new StreamReader(client);
-            using var writer = new StreamWriter(client);
-            writer.WriteLine(string.Join("\0", Environment.GetCommandLineArgs()));
-            writer.Flush();
-            if (long.TryParse(reader.ReadLine(), out var handle))
-                PInvoke.SetForegroundWindow((nint)handle);
+            try
+            {
+                using var client = new NamedPipeClientStream(".", "Typedown.App.PiPe", PipeDirection.InOut);
+                client.Connect();
+                using var reader = new StreamReader(client);
+                using var writer = new StreamWriter(client);
+                writer.WriteLine(string.Join("\0", Environment.GetCommandLineArgs()));
+                writer.Flush();
+                try
+                {
+                    if (long.TryParse(reader.ReadLine(), out var handle))
+                        PInvoke.SetForegroundWindow((nint)handle);
+                }
+                catch
+                {
+                    // Ignore
+                }
+            }
+            catch
+            {
+                LaunchNewApplication();
+            }
         }
     }
 }
