@@ -88,6 +88,10 @@ namespace Typedown.Core.ViewModels
 
         private async void SaveFileTimerTick(object sender, object e)
         {
+            if (disposables.IsDisposed)
+            {
+                return;
+            }
             if (SettingsViewModel.AutoSave)
             {
                 EditorViewModel.AutoSavedSucc = await AutoSaveFile();
