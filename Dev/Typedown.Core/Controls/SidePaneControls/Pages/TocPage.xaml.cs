@@ -18,7 +18,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-             Bindings?.StopTracking();
+            Bindings?.StopTracking();
         }
     }
 }

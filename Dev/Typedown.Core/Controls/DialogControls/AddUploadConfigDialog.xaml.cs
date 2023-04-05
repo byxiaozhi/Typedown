@@ -49,7 +49,7 @@ namespace Typedown.Core.Controls.DialogControls
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-             Bindings?.StopTracking();
+            Bindings?.StopTracking();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Typedown.Core.Controls
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void OnSearchTextBoxLostFocus(object sender, RoutedEventArgs e)

@@ -26,7 +26,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             ExportConfig.StoreExportConfig(ImageConfigModel);
-             Bindings?.StopTracking();
+            Bindings?.StopTracking();
         }
     }
 }

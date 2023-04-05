@@ -142,7 +142,7 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
                     ReplaceImage(new(uri, ImageAlt, ImageTitle));
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await AppContentDialog.Create(Locale.GetDialogString("UploadFailedTitle"), ex.Message, "Ok").ShowAsync(ViewModel.XamlRoot);
             }

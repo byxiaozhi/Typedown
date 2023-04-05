@@ -32,7 +32,7 @@ namespace Typedown.Core.Controls
         private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             disposables.Clear();
-             Bindings?.StopTracking();
+            Bindings?.StopTracking();
         }
 
         private void Navigate(string args)

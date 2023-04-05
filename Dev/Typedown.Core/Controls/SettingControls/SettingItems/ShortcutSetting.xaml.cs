@@ -48,7 +48,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
-             Bindings?.StopTracking();
+            Bindings?.StopTracking();
             SettingItems.Clear();
         }
 

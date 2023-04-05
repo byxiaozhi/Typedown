@@ -62,7 +62,7 @@ namespace Typedown.Core.Controls
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             disposables.Clear();
-             Bindings?.StopTracking();
+            Bindings?.StopTracking();
         }
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
