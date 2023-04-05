@@ -6,7 +6,7 @@ namespace Typedown.Core.Interfaces
 {
     public interface IMarkdownEditor : IDisposable
     {
-        void PostMessage(string name, object arg);
+        bool PostMessage(string name, object arg);
 
         Rectangle GetDummyRectangle(Rect rect);
 
