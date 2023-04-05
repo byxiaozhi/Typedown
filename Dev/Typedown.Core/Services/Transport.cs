@@ -26,7 +26,7 @@ namespace Typedown.Services
 
         public async void EmitWebViewMessage(IMarkdownEditor sender, string json)
         {
-            var msg = JsonConvert.DeserializeObject<EditorMessage>(json);
+            var msg = JsonConvert.DeserializeObject<EditorMessage>(json, Core.Config.EditorJsonSerializerSettings);
             switch (msg.Type)
             {
                 case "invoke":

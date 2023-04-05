@@ -32,7 +32,8 @@ namespace Typedown.Core
             ContractResolver = new DefaultContractResolver()
             {
                 NamingStrategy = new CamelCaseNamingStrategy(true, true)
-            }
+            },
+            MaxDepth = 256
         };
 
         public static string GetLocalFolderPath()
