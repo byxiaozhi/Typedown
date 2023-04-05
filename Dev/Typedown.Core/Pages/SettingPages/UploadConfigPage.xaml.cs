@@ -47,12 +47,15 @@ namespace Typedown.Core.Pages.SettingPages
                 disposables.Add(ImageUploadConfig.WhenPropertyChanged(nameof(ImageUploadConfig.Name)).Cast<string>().StartWith(ImageUploadConfig.Name).Subscribe(UpdateTitle));
         }
 
-        private async void OnUnloaded(object sender, RoutedEventArgs e)
+        private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            if (ImageUploadConfig != null)
-                await UploadService.Value.SaveImageUploadConfig(ImageUploadConfig);
+            _ = Dispatcher.RunIdleAsync(async () =>
+            {
+                if (ImageUploadConfig != null)
+                    await UploadService.Value.SaveImageUploadConfig(ImageUploadConfig);
+            });
             disposables.Clear();
-             Bindings?.StopTracking();
+            Bindings?.StopTracking();
         }
 
         private void UpdateTitle(string title)

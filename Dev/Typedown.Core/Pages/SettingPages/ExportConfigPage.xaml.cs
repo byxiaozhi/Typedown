@@ -48,12 +48,15 @@ namespace Typedown.Core.Pages.SettingPages
                 disposables.Add(ExportConfig.WhenPropertyChanged(nameof(ExportConfig.Name)).Cast<string>().StartWith(ExportConfig.Name).Subscribe(UpdateTitle));
         }
 
-        private async void OnUnloaded(object sender, RoutedEventArgs e)
+        private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            if (ExportConfig != null)
-                await ExportService.Value.SaveExportConfig(ExportConfig);
+            _ = Dispatcher.RunIdleAsync(async () =>
+            {
+                if (ExportConfig != null)
+                    await ExportService.Value.SaveExportConfig(ExportConfig);
+            });
             disposables.Clear();
-             Bindings?.StopTracking();
+            Bindings?.StopTracking();
         }
 
         private void UpdateTitle(string title)
