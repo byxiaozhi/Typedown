@@ -657,7 +657,7 @@ namespace Typedown.Utilities
 
         ~WebViewController()
         {
-            _ = Dispatcher.TryRunIdleAsync(_ => Dispose());
+            _ = Dispatcher?.TryRunIdleAsync(_ => Dispose());
         }
     }
 }

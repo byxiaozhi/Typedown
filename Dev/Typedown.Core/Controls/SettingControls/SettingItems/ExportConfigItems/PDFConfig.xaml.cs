@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems
              Bindings?.StopTracking();
         }
 
+        [SuppressPropertyChangedWarnings]
         private void OnPageSizeComboxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selected = ((sender as ComboBox).SelectedItem as PDFConfigPageSizeItem);
@@ -62,6 +64,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems
             }
         }
 
+        [SuppressPropertyChangedWarnings]
         private void OnPageMarginComboxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selected = ((sender as ComboBox).SelectedItem as PDFConfigPageMarginItem);
@@ -74,6 +77,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems
             }
         }
 
+        [SuppressPropertyChangedWarnings]
         private void OnPageSizeChanged()
         {
             var customItem = PageSizeComboxItems.Where(x => x.PageSize == null).FirstOrDefault();
@@ -93,6 +97,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems
             PageSizeComboxSelectedItem = selectItem;
         }
 
+        [SuppressPropertyChangedWarnings]
         private void OnPageMarginChanged()
         {
             var customItem = PageMarginComboxItems.Where(x => x.PageMargin == null).FirstOrDefault();

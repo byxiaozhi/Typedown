@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
+using PropertyChanged;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -27,7 +29,7 @@ using Windows.UI.Xaml.Shapes;
 
 namespace Typedown.Controls
 {
-    public class MarkdownEditor : UserControl, IMarkdownEditor, IDisposable
+    public partial class MarkdownEditor : UserControl, IMarkdownEditor, IDisposable, INotifyPropertyChanged
     {
         public WebViewController WebViewController { get; private set; }
 
@@ -41,9 +43,13 @@ namespace Typedown.Controls
 
         public Transport Transport => ServiceProvider.GetService<Transport>();
 
+        public bool IsLoadFailed { get; set; }
+
         public IServiceProvider ServiceProvider { get; }
 
         private readonly Rectangle dummyRectangle = new();
+
+        private readonly Canvas canvas = new() { Background = new SolidColorBrush(Colors.Transparent) };
 
         private readonly UISettings uiSettings = new();
 
@@ -53,7 +59,8 @@ namespace Typedown.Controls
         {
             ServiceProvider = serviceProvider;
             Loaded += OnLoaded;
-            Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent), Children = { dummyRectangle } };
+            canvas.Children.Add(dummyRectangle);
+            Content = canvas;
             IsTabStop = true;
             disposables.Add(RemoteInvoke.Handle("ContentLoaded", OnContentLoaded));
             disposables.Add(RemoteInvoke.Handle<string>("UnhandledException", OnUnhandledException));
@@ -72,6 +79,7 @@ namespace Typedown.Controls
             Log.Report("WebViewUnhandledException", error);
         }
 
+        [SuppressPropertyChangedWarnings]
         private void OnThemeChanged()
         {
             _ = Dispatcher.RunIdleAsync(() => PostMessage("ThemeChanged", ServiceProvider.GetCurrentTheme()));
@@ -91,21 +99,35 @@ namespace Typedown.Controls
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
             Opacity = 0;
+            IsLoadFailed = false;
             if (WebViewController == null)
             {
-                WebViewController = new();
-                if (!await WebViewController.InitializeAsync(this, XamlWindow.GetWindow(this).XamlSourceHandle))
+                var webViewController = new WebViewController();
+                if (!await webViewController.InitializeAsync(this, XamlWindow.GetWindow(this).XamlSourceHandle))
                 {
-                    WebViewController.Dispose();
+                    webViewController.Dispose();
+                    IsLoadFailed = true;
                     return;
                 }
                 if (disposables.IsDisposed)
                 {
-                    WebViewController.Dispose();
+                    webViewController.Dispose();
+                    IsLoadFailed = true;
                     return;
                 }
-                SetChromeWidgetWindowTransparent();
-                OnCoreWebView2Initialized();
+                try
+                {
+                    WebViewController = webViewController;
+                    OnCoreWebView2Initialized();
+                }
+                catch
+                {
+                    webViewController.Dispose();
+                    WebViewController = null;
+                    IsLoadFailed = true;
+                    return;
+                }
+                _ = TrySetChromeWidgetWindowTransparent(webViewController);
             }
             LoadStaticResources();
         }
@@ -197,7 +219,7 @@ namespace Typedown.Controls
                 Core.Utilities.Common.OpenUrl(args.Uri);
         }
 
-        private void OpenNewWindow(string uri)
+        private async void OpenNewWindow(string uri)
         {
             try
             {
@@ -219,16 +241,16 @@ namespace Typedown.Controls
                 }
                 Core.Utilities.Common.OpenUrl(uri);
             }
-            catch
+            catch (Exception ex)
             {
-                // Ignore
-                // TODO: 添加提示框
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
             }
         }
 
         public void Dispose()
         {
             WebViewController?.Dispose();
+            canvas?.Children.Clear();
             disposables.Dispose();
         }
 
@@ -248,11 +270,11 @@ namespace Typedown.Controls
             return dummyRectangle;
         }
 
-        private async void SetChromeWidgetWindowTransparent()
+        private async static Task<bool> TrySetChromeWidgetWindowTransparent(WebViewController webViewController)
         {
             try
             {
-                var processId = (int)WebViewController.CoreWebView2.BrowserProcessId;
+                var processId = (int)webViewController.CoreWebView2.BrowserProcessId;
                 await Task.Run(() =>
                 {
                     foreach (var window in PInvoke.EnumProcessWindow(processId))
@@ -265,10 +287,11 @@ namespace Typedown.Controls
                         }
                     }
                 });
+                return true;
             }
             catch
             {
-                // Ignore
+                return false;
             }
         }
     }

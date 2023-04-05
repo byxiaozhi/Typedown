@@ -63,7 +63,7 @@
                         ItemsSource="{x:Bind UploadConfigOptions}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="local:UploadConfigOption">
-                                <TextBlock Text="{x:Bind Name, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind Name}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -107,7 +107,7 @@
                         ItemsSource="{x:Bind UploadConfigOptions}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="local:UploadConfigOption">
-                                <TextBlock Text="{x:Bind Name, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind Name}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -151,7 +151,7 @@
                         ItemsSource="{x:Bind UploadConfigOptions}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="local:UploadConfigOption">
-                                <TextBlock Text="{x:Bind Name, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind Name}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
