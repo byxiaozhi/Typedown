@@ -25,7 +25,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Spacing="4">
-            <ToggleButton Padding="6" BorderThickness="0" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}" controls:ToolTip.TextResource="SidePane">
+            <ToggleButton Padding="6" BorderThickness="0" IsChecked="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}" IsEnabled="{x:Bind ViewModel.MarkdownEditor.IsLoadFailed.Equals(x:False), Mode=OneWay}" controls:ToolTip.TextResource="SidePane">
                 <ToggleButton.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ToggleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
@@ -47,7 +47,7 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
             <Grid>
-                <ComboBox SelectedIndex="{x:Bind Settings.WordCountMethod}" MinWidth="80" VerticalAlignment="Stretch" Foreground="{ThemeResource TextFillColorSecondary}" local:ToolTip.TextResource="WordCount">
+                <ComboBox SelectedIndex="{x:Bind Settings.WordCountMethod}" MinWidth="80" VerticalAlignment="Stretch" Foreground="{ThemeResource TextFillColorSecondary}" local:ToolTip.TextResource="WordCount" IsEnabled="{x:Bind ViewModel.MarkdownEditor.IsLoadFailed.Equals(x:False), Mode=OneWay}">
                     <ComboBox.Resources>
                         <ResourceDictionary>
                             <SolidColorBrush x:Key="ComboBoxBackground" Color="{ThemeResource SubtleFillColorTransparent}"/>
@@ -55,6 +55,7 @@
                             <SolidColorBrush x:Key="ComboBoxBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}"/>
                             <SolidColorBrush x:Key="ComboBoxBackgroundDisabled" Color="{ThemeResource SubtleFillColorDisabled}"/>
                             <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground" Color="Transparent"/>
+                            <SolidColorBrush x:Key="ComboBoxDropDownGlyphForegroundDisabled" Color="Transparent"/>
                             <SolidColorBrush x:Key="ComboBoxDropDownGlyphForegroundFocused" Color="Transparent"/>
                             <SolidColorBrush x:Key="ComboBoxDropDownGlyphForegroundFocusedPressed" Color="Transparent"/>
                             <Thickness x:Key="ComboBoxPadding">8,0,0,0</Thickness>

@@ -28,7 +28,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <muxc:MenuBar x:Name="MenuBarControl" PointerPressed="OnMenuBarPointerEvent" PointerReleased="OnMenuBarPointerEvent">
+        <muxc:MenuBar x:Name="MenuBarControl" PointerPressed="OnMenuBarPointerEvent" PointerReleased="OnMenuBarPointerEvent" IsEnabled="{x:Bind ViewModel.MarkdownEditor.IsLoadFailed.Equals(x:False), Mode=OneWay}">
             <items:FileItem/>
             <items:EditItem/>
             <items:ParagraphItem Visibility="{x:Bind IsCollapsed(Settings.SourceCode), Mode=OneWay}"/>

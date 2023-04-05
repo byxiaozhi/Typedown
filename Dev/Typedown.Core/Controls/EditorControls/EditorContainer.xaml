@@ -114,6 +114,12 @@
                 </MenuFlyout>
             </ContentPresenter.ContextFlyout>
         </ContentPresenter>
+        <ScrollViewer x:Name="EditorInitErrorView" x:Load="{x:Bind ViewModel.MarkdownEditor.IsLoadFailed, Mode=OneWay}">
+            <StackPanel Margin="24" Spacing="8">
+                <TextBlock TextWrapping="Wrap" Text="{u:LocaleString Key=EditorInitErrorMessage}"/>
+                <HyperlinkButton Content="Microsoft WebView2 Runtime" NavigateUri="https://developer.microsoft.com/microsoft-edge/webview2/" Margin="-12,0,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
         <ScrollBar 
             x:Name="HorizontalScrollBar" 
             Orientation="Horizontal" 
