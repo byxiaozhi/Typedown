@@ -356,30 +356,44 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         internal static async void OnItemDragStarting(UIElement sender, DragStartingEventArgs args)
         {
-            if (sender is not muxc.TreeViewItem treeViewItem || treeViewItem.GetAncestor<FolderPage>() is not FolderPage page)
-                return;
-            var item = page.GetExplorerItemFromTreeViewItem(sender);
-            if (item?.Type == ExplorerItem.ExplorerItemType.File)
+            try
             {
-                var file = await StorageFile.GetFileFromPathAsync(item.FullPath);
-                args.Data.SetStorageItems(new List<IStorageItem>() { file });
+                if (sender is not muxc.TreeViewItem treeViewItem || treeViewItem.GetAncestor<FolderPage>() is not FolderPage page)
+                    return;
+                var item = page.GetExplorerItemFromTreeViewItem(sender);
+                if (item?.Type == ExplorerItem.ExplorerItemType.File)
+                {
+                    var file = await StorageFile.GetFileFromPathAsync(item.FullPath);
+                    args.Data.SetStorageItems(new List<IStorageItem>() { file });
+                }
+                if (item?.Type == ExplorerItem.ExplorerItemType.Folder)
+                {
+                    var folder = await StorageFolder.GetFolderFromPathAsync(item.FullPath);
+                    args.Data.SetStorageItems(new List<IStorageItem>() { folder });
+                }
             }
-            if (item?.Type == ExplorerItem.ExplorerItemType.Folder)
+            catch
             {
-                var folder = await StorageFolder.GetFolderFromPathAsync(item.FullPath);
-                args.Data.SetStorageItems(new List<IStorageItem>() { folder });
+                // Ignore
             }
         }
 
         internal static void OnItemDragOver(object sender, DragEventArgs e)
         {
-            if (sender is not muxc.TreeViewItem treeViewItem || treeViewItem.GetAncestor<FolderPage>() is not FolderPage page)
-                return;
-            var target = page.GetExplorerItemFromTreeViewItem(sender);
-            if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
-                target.Type == ExplorerItem.ExplorerItemType.Folder)
+            try
             {
-                e.AcceptedOperation = DataPackageOperation.Move;
+                if (sender is not muxc.TreeViewItem treeViewItem || treeViewItem.GetAncestor<FolderPage>() is not FolderPage page)
+                    return;
+                var target = page.GetExplorerItemFromTreeViewItem(sender);
+                if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
+                    target.Type == ExplorerItem.ExplorerItemType.Folder)
+                {
+                    e.AcceptedOperation = DataPackageOperation.Move;
+                }
+            }
+            catch
+            {
+                e.AcceptedOperation = DataPackageOperation.None;
             }
         }
 
@@ -387,15 +401,22 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
         {
             if (sender is not muxc.TreeViewItem treeViewItem || treeViewItem.GetAncestor<FolderPage>() is not FolderPage page)
                 return;
-            var target = page.GetExplorerItemFromTreeViewItem(sender);
-            if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
-                target?.Type == ExplorerItem.ExplorerItemType.Folder)
+            try
             {
-                var items = await e.DataView.GetStorageItemsAsync();
-                e.AcceptedOperation = DataPackageOperation.Move;
-                var collection = new StringCollection();
-                items.ToList().ForEach(x => collection.Add(x.Path));
-                page.FileOperation.Move(collection, target.FullPath);
+                var target = page.GetExplorerItemFromTreeViewItem(sender);
+                if (e.DataView.Contains(StandardDataFormats.StorageItems) &&
+                    target?.Type == ExplorerItem.ExplorerItemType.Folder)
+                {
+                    var items = await e.DataView.GetStorageItemsAsync();
+                    e.AcceptedOperation = DataPackageOperation.Move;
+                    var collection = new StringCollection();
+                    items.ToList().ForEach(x => collection.Add(x.Path));
+                    page.FileOperation.Move(collection, target.FullPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(page.XamlRoot);
             }
         }
 
