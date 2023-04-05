@@ -43,7 +43,9 @@ namespace Typedown.Controls
 
         public Transport Transport => ServiceProvider.GetService<Transport>();
 
-        public bool IsLoadFailed { get; set; }
+        public bool IsEditorLoadFailed { get; set; }
+
+        public bool IsEditorLoaded { get; set; }
 
         public IServiceProvider ServiceProvider { get; }
 
@@ -88,6 +90,7 @@ namespace Typedown.Controls
         private void OnContentLoaded()
         {
             Opacity = 1;
+            IsEditorLoaded = true;
         }
 
         protected override void OnPointerPressed(PointerRoutedEventArgs e)
@@ -99,20 +102,21 @@ namespace Typedown.Controls
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
             Opacity = 0;
-            IsLoadFailed = false;
+            IsEditorLoaded = false;
+            IsEditorLoadFailed = false;
             if (WebViewController == null)
             {
                 var webViewController = new WebViewController();
                 if (!await webViewController.InitializeAsync(this, XamlWindow.GetWindow(this).XamlSourceHandle))
                 {
                     webViewController.Dispose();
-                    IsLoadFailed = true;
+                    IsEditorLoadFailed = true;
                     return;
                 }
                 if (disposables.IsDisposed)
                 {
                     webViewController.Dispose();
-                    IsLoadFailed = true;
+                    IsEditorLoadFailed = true;
                     return;
                 }
                 try
@@ -124,7 +128,7 @@ namespace Typedown.Controls
                 {
                     webViewController.Dispose();
                     WebViewController = null;
-                    IsLoadFailed = true;
+                    IsEditorLoadFailed = true;
                     return;
                 }
                 _ = TrySetChromeWidgetWindowTransparent(webViewController);

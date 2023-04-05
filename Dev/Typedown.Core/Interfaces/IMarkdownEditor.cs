@@ -13,6 +13,8 @@ namespace Typedown.Core.Interfaces
 
         Rectangle MoveDummyRectangle(Point offset);
 
-        bool IsLoadFailed { get; }
+        bool IsEditorLoadFailed { get; }
+
+        bool IsEditorLoaded { get; }
     }
 }
