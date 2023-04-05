@@ -172,9 +172,17 @@ namespace Typedown.Controls
             await AppContentDialog.Create("Message", args.Message, Locale.GetString("Ok")).ShowAsync();
         }
 
-        public void PostMessage(string name, object args)
+        public bool PostMessage(string name, object args)
         {
-            CoreWebView2?.PostWebMessageAsString(JsonConvert.SerializeObject(new { name, args }, Core.Config.EditorJsonSerializerSettings));
+            try
+            {
+                CoreWebView2?.PostWebMessageAsString(JsonConvert.SerializeObject(new { name, args }, Core.Config.EditorJsonSerializerSettings));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
