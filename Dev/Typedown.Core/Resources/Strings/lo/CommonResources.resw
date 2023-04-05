@@ -313,6 +313,10 @@
     <value>ບັນນາທິການ</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>ຜູ້ບັນນາທິການບໍ່ໄດ້ເລີ້ມຕົ້ນ. ກະລຸນາລອງປັບປຸງ Microsoft WebView2 Runtime ເປັນລຸ້ນຫຼ້າສຸດ. ຖ້າຫາກວ່າທ່ານຍັງບໍ່ສາມາດນໍາໃຊ້ມັນໄດ້ຢ່າງຖືກຕ້ອງ, ທ່ານສາມາດສົ່ງຄໍາຕອບມາໃຫ້ພວກເຮົາ.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Embed Link</value>
     <comment>嵌入链接</comment>

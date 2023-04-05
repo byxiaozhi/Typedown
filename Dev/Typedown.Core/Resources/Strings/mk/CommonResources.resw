@@ -313,6 +313,10 @@
     <value>Уредник</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>Уредникот не успеа да се инициализира. Ве молиме обидете се да го ажурате Microsoft WebView2 Runtime до најновата верзија. Ако сеуште не можете да го користите како што треба, можете да ни поднесете повратни информации.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Вдлабнат линк</value>
     <comment>嵌入链接</comment>

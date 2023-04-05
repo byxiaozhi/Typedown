@@ -313,6 +313,10 @@
     <value>บรรณาธิการ</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>ตัวแก้ไขไม่สามารถเตรียมใช้งานได้ โปรดลองอัปเดต Microsoft WebView2 Runtime เป็นเวอร์ชันล่าสุด หากคุณยังใช้งานไม่ถูกต้องคุณสามารถส่งความคิดเห็นมาให้เรา</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>ฝังลิงก์</value>
     <comment>嵌入链接</comment>

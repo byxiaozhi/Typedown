@@ -313,6 +313,10 @@
     <value>Editor</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>Editor gagal memulakannya. Sila cuba kemas kini Microsoft WebView2 Runtime kepada versi terkini. Jika anda masih tidak dapat menggunakannya dengan betul, anda boleh menyerahkan maklum balas kepada kami.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Embed Link</value>
     <comment>嵌入链接</comment>

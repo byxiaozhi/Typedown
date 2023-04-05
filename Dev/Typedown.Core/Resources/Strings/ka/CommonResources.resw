@@ -313,6 +313,10 @@
     <value>რედაქტორი</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>რედაქტორმა ვერ შეძლო ინიციალიზაცია. გთხოვთ, სცადოთ Microsoft WebView2 Runtime- ის განახლება უახლეს ვერსიამდე. თუ თქვენ ჯერ კიდევ ვერ გამოიყენებთ მას სწორად, შეგიძლიათ გამოგვიგზავნოთ გამოხმაურება.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>ჩასვით ბმული</value>
     <comment>嵌入链接</comment>

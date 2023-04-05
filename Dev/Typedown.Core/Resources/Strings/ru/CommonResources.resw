@@ -313,6 +313,10 @@
     <value>Редактор</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>Не удалось инициализировать редактор. Пожалуйста, попробуйте обновить Microsoft WebView2 Runtime до последней версии. Если вы все еще не можете использовать его нормально, вы можете отправить нам отзыв.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Встроить ссылку</value>
     <comment>嵌入链接</comment>

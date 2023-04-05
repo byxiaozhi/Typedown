@@ -313,6 +313,10 @@
     <value>Éditeur</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>Échec de l'initialisation de l'éditeur. Veuillez essayer de mettre à jour Microsoft WebView2 Runtime à la dernière version. Si vous ne pouvez toujours pas l'utiliser normalement, vous pouvez nous soumettre vos commentaires.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Intégrer le lien</value>
     <comment>嵌入链接</comment>

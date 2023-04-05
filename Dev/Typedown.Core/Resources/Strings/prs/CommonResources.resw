@@ -313,6 +313,10 @@
     <value>ویراستار</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>سردبیر موفق به حروف اول اسم نشد. لطفاً سعی کنید زمان اجرای Microsoft WebView2 را به آخرین نسخه به روز کنید. اگر شما هنوز هم می توانید آن را به درستی استفاده کنید، شما می توانید بازخورد به ما ارسال کنید.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>پیوند جا داده شده</value>
     <comment>嵌入链接</comment>

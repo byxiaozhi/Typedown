@@ -313,6 +313,10 @@
     <value>Kaiwhakatika</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>I rahua te arawhiti i te kaiwhakatika. Ngana koa ki te whakahōu i te Wāhaere o Microsoft WebView2 ki te putanga hōu rawa. Ki te kore tonu e taea e koe te whakamahi tika, ka taea e koe te tuku urupare ki a mātou.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Hono Embed</value>
     <comment>嵌入链接</comment>

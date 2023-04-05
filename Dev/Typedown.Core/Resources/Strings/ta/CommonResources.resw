@@ -313,6 +313,10 @@
     <value>பதிப்பாசிரியர்</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>எடிட்டர் துவக்கத் தவறிவிட்டார். மைக்ரோசாஃப்ட் வெப்வியூ 2 ரன்டைமை சமீபத்திய பதிப்பிற்கு புதுப்பிக்க முயற்சிக்கவும். நீங்கள் இன்னும் அதை சரியாகப் பயன்படுத்த முடியாவிட்டால், நீங்கள் எங்களுக்கு கருத்துக்களைச் சமர்ப்பிக்கலாம்.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>இணைப்பை உட்பொதிக்கவும்</value>
     <comment>嵌入链接</comment>

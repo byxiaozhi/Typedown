@@ -313,6 +313,10 @@
     <value>អ្នក និពន្ធ</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>អ្នក និពន្ធ មិន បាន ចាប់ ផ្តើម ទេ &amp; # 160; ។ សូមសាកល្បងធ្វើបច្ចុប្បន្នភាព Microsoft WebView2 Runtime ទៅកំណែចុងក្រោយបំផុត។ បើ អ្នក នៅ តែ មិន អាច ប្រើ វា បាន ត្រឹមត្រូវ អ្នក អាច ដាក់ ជូន មតិ យោបល់ មក យើង បាន។</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>តំណ Embed</value>
     <comment>嵌入链接</comment>

@@ -313,6 +313,10 @@
     <value>עורך</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>העורך נכשל באתחול. נסה לעדכן את Microsoft WebView2 Runtime לגירסה העדכנית ביותר. אם עדיין אינך מצליח להשתמש בו כראוי, תוכל לשלוח לנו משוב.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>קישור הטמעה</value>
     <comment>嵌入链接</comment>

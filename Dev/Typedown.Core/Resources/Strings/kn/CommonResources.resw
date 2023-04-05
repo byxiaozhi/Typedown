@@ -313,6 +313,10 @@
     <value>ಸಂಪಾದಕ</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>ಸಂಪಾದಕರು ಪ್ರಾರಂಭಿಸಲು ವಿಫಲರಾದರು. ದಯವಿಟ್ಟು Microsoft WebView2 ರನ್ ಟೈಮ್ ಅನ್ನು ಇತ್ತೀಚಿನ ಆವೃತ್ತಿಗೆ ನವೀಕರಿಸಲು ಪ್ರಯತ್ನಿಸಿ. ನೀವು ಇನ್ನೂ ಅದನ್ನು ಸರಿಯಾಗಿ ಬಳಸಲು ಸಾಧ್ಯವಾಗದಿದ್ದರೆ, ನೀವು ನಮಗೆ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಸಲ್ಲಿಸಬಹುದು.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>ಎಂಬೆಡ್ ಲಿಂಕ್</value>
     <comment>嵌入链接</comment>

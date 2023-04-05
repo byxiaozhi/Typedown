@@ -313,6 +313,10 @@
     <value>Patnugot</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>Nabigo ang editor na magsimula. Mangyaring subukang i-update ang Microsoft WebView2 Runtime sa pinakabagong bersyon. Kung hindi mo pa rin ito magagamit nang maayos, maaari kang magsumite ng feedback sa amin.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Mag-embed ng Link</value>
     <comment>嵌入链接</comment>

@@ -313,6 +313,10 @@
     <value>المحرر</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>فشل تهيئة المحرر. يرجى محاولة تحديث Microsoft WebView2 Runtime إلى أحدث إصدار. إذا كنت لا تزال غير قادر على استخدامه بشكل طبيعي، يمكنك إرسال تعليقاتك إلينا.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>تضمين الرابط</value>
     <comment>嵌入链接</comment>

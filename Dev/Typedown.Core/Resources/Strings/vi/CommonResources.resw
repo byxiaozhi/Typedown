@@ -313,6 +313,10 @@
     <value>Biên tập viên</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>Trình chỉnh sửa không thể khởi tạo. Vui lòng thử cập nhật Microsoft WebView2 Runtime lên phiên bản mới nhất. Nếu bạn vẫn không thể sử dụng đúng cách, bạn có thể gửi phản hồi cho chúng tôi.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Nhúng liên kết</value>
     <comment>嵌入链接</comment>

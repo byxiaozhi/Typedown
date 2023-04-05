@@ -313,6 +313,10 @@
     <value>సంపాదకుడు</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>ఎడిటర్ ప్రారంభించడంలో విఫలమయ్యాడు. దయచేసి మైక్రోసాఫ్ట్ వెబ్ వ్యూ2 రన్ టైమ్ ను తాజా వెర్షన్ కు అప్ డేట్ చేయడానికి ప్రయత్నించండి. ఒకవేళ మీరు దానిని సరిగ్గా ఉపయోగించలేకపోతే, మీరు మాకు ఫీడ్ బ్యాక్ సమర్పించవచ్చు.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>ఎంబెడ్ లింక్</value>
     <comment>嵌入链接</comment>

@@ -313,6 +313,10 @@
     <value>Uređivač</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>Pokretanje uređivača nije uspelo. Pokušajte da ažurirate Microsoft WebView2 Izvršavanje na najnoviju verziju. Ako i dalje ne možete pravilno da ga koristite, možete da nam prosledite povratne informacije.</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>Ugradi vezu</value>
     <comment>嵌入链接</comment>

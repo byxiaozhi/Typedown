@@ -313,6 +313,10 @@
     <value>সম্পাদক</value>
     <comment>编辑器</comment>
   </data>
+  <data name="EditorInitErrorMessage" xml:space="preserve">
+    <value>সম্পাদকআৰম্ভ কৰিবলৈ ব্যৰ্থ হৈছে। অনুগ্ৰহ কৰি শেহতীয়া সংস্কৰণলৈ মাইক্ৰছফ্ট ৱেবভিউ2 ৰানটাইম আপডেট কৰিবলৈ চেষ্টা কৰক। যদি আপুনি এতিয়াও ইয়াক সঠিকভাৱে ব্যৱহাৰ কৰিব নোৱাৰে, আপুনি আমাক মতামত দাখিল কৰিব পাৰে।</value>
+    <comment>编辑器初始化失败，请尝试更新 Microsoft WebView2 Runtime 到最新版本，如果仍然无法正常使用，可以向我们提交反馈。</comment>
+  </data>
   <data name="EmbedLink" xml:space="preserve">
     <value>লিংক এম্বেড কৰক</value>
     <comment>嵌入链接</comment>
