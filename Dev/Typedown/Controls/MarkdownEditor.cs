@@ -3,6 +3,7 @@ using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using PropertyChanged;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Reactive.Disposables;
@@ -75,10 +76,24 @@ namespace Typedown.Controls
                 .Subscribe(_ => OnThemeChanged()));
         }
 
+        private static readonly HashSet<ulong> reported = new();
+
         private void OnUnhandledException(string error)
         {
             CoreWebView2.Reload();
-            Log.Report("WebViewUnhandledException", error);
+            try
+            {
+                var hash = Core.Utilities.Common.SimpleHash(error);
+                if (!reported.Contains(hash))
+                {
+                    reported.Add(hash);
+                    Log.Report("WebViewUnhandledException", error);
+                }
+            }
+            catch
+            {
+                // Ignore
+            }
         }
 
         [SuppressPropertyChangedWarnings]
