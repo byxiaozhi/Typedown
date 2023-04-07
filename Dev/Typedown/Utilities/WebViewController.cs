@@ -68,6 +68,7 @@ namespace Typedown.Utilities
                     var window = XamlWindow.GetWindow(container);
                     disposables.Add(Observable.FromEventPattern(window, nameof(XamlWindow.LocationChanged)).Subscribe(_ => UpdateBounds()));
                     disposables.Add(Observable.FromEventPattern(window, nameof(XamlWindow.DpiChanged)).Subscribe(_ => UpdataWindowScale()));
+                    disposables.Add(Observable.FromEventPattern(window, nameof(XamlWindow.IsActiveChanged)).Select(_ => window).Subscribe(WindowIsActiveChanged));
                     SetMaxWorkingSetSize();
                     return true;
                 }
@@ -350,6 +351,17 @@ namespace Typedown.Utilities
             {
                 // Ignore
             }
+        }
+
+        private void WindowIsActiveChanged(XamlWindow xamlWindow)
+        {
+            _ = Container.Dispatcher.RunIdleAsync(() =>
+            {
+                if (xamlWindow.IsActive && !webHasFocus && FocusManager.GetFocusedElement(Container.XamlRoot) == Container)
+                {
+                    MoveFocusIntoCoreWebView(CoreWebView2MoveFocusReason.Programmatic);
+                }
+            });
         }
 
         public void UpdateBounds()
