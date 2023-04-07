@@ -133,7 +133,14 @@ namespace Typedown.Controls
                 }
                 _ = TrySetChromeWidgetWindowTransparent(webViewController);
             }
-            LoadStaticResources();
+            try
+            {
+                LoadStaticResources();
+            }
+            catch
+            {
+                IsEditorLoadFailed = true;
+            }
         }
 
         private void OnCoreWebView2Initialized()
