@@ -57,24 +57,38 @@ namespace Typedown.Core.Controls
 
         private async Task PickFile()
         {
-            var filePicker = new FileOpenPicker();
-            FileTypeFilter.ToList().ForEach(filePicker.FileTypeFilter.Add);
-            filePicker.SetOwnerWindow(Window);
-            var file = await filePicker.PickSingleFileAsync();
-            var isCancel = file is null;
-            if (!isCancel) Path = file.Path;
-            Picked?.Invoke(this, new(isCancel, file?.Path));
+            try
+            {
+                var filePicker = new FileOpenPicker();
+                FileTypeFilter.ToList().ForEach(filePicker.FileTypeFilter.Add);
+                filePicker.SetOwnerWindow(Window);
+                var file = await filePicker.PickSingleFileAsync();
+                var isCancel = file is null;
+                if (!isCancel) Path = file.Path;
+                Picked?.Invoke(this, new(isCancel, file?.Path));
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
+            }
         }
 
         private async Task PickFolder()
         {
-            var folderPicker = new FolderPicker();
-            folderPicker.SetOwnerWindow(Window);
-            folderPicker.FileTypeFilter.Add("*");
-            var folder = await folderPicker.PickSingleFolderAsync();
-            var isCancel = folder is null;
-            if (!isCancel) Path = folder.Path;
-            Picked?.Invoke(this, new(isCancel, folder?.Path));
+            try
+            {
+                var folderPicker = new FolderPicker();
+                folderPicker.SetOwnerWindow(Window);
+                folderPicker.FileTypeFilter.Add("*");
+                var folder = await folderPicker.PickSingleFolderAsync();
+                var isCancel = folder is null;
+                if (!isCancel) Path = folder.Path;
+                Picked?.Invoke(this, new(isCancel, folder?.Path));
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
+            }
         }
 
         public enum PathPickMode
