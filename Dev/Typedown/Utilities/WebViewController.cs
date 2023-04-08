@@ -357,7 +357,7 @@ namespace Typedown.Utilities
         {
             _ = Container.Dispatcher.RunIdleAsync(() =>
             {
-                if (xamlWindow.IsActive && !webHasFocus && FocusManager.GetFocusedElement(Container.XamlRoot) == Container)
+                if (xamlWindow.IsActive && !webHasFocus && FocusManager.GetFocusedElement(Container.XamlRoot) == Container && CoreWebView2Controller != null)
                 {
                     MoveFocusIntoCoreWebView(CoreWebView2MoveFocusReason.Programmatic);
                 }
