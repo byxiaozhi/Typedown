@@ -146,7 +146,6 @@ namespace Typedown.Controls
                     IsEditorLoadFailed = true;
                     return;
                 }
-                _ = TrySetChromeWidgetWindowTransparent(webViewController);
             }
             try
             {
@@ -294,31 +293,6 @@ namespace Typedown.Controls
             Canvas.SetLeft(dummyRectangle, Canvas.GetLeft(dummyRectangle) + offset.X);
             Canvas.SetTop(dummyRectangle, Canvas.GetTop(dummyRectangle) + offset.Y);
             return dummyRectangle;
-        }
-
-        private async static Task<bool> TrySetChromeWidgetWindowTransparent(WebViewController webViewController)
-        {
-            try
-            {
-                var processId = (int)webViewController.CoreWebView2.BrowserProcessId;
-                await Task.Run(() =>
-                {
-                    foreach (var window in PInvoke.EnumProcessWindow(processId))
-                    {
-                        var str = "Chrome_WidgetWin_1";
-                        if (PInvoke.GetClassName(window, str.Length + 1) == str)
-                        {
-                            var styleEx = PInvoke.GetWindowLong(window, PInvoke.WindowLongFlags.GWL_EXSTYLE);
-                            PInvoke.SetWindowLong(window, PInvoke.WindowLongFlags.GWL_EXSTYLE, styleEx | (int)PInvoke.WindowStylesEx.WS_EX_TRANSPARENT);
-                        }
-                    }
-                });
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
     }
 }
