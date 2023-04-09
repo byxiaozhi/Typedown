@@ -69,7 +69,6 @@ namespace Typedown.Utilities
                     disposables.Add(Observable.FromEventPattern(window, nameof(XamlWindow.LocationChanged)).Subscribe(_ => UpdateBounds()));
                     disposables.Add(Observable.FromEventPattern(window, nameof(XamlWindow.DpiChanged)).Subscribe(_ => UpdataWindowScale()));
                     disposables.Add(Observable.FromEventPattern(window, nameof(XamlWindow.IsActiveChanged)).Select(_ => window).Subscribe(WindowIsActiveChanged));
-                    SetMaxWorkingSetSize();
                     return true;
                 }
                 catch (ObjectDisposedException)
@@ -642,19 +641,6 @@ namespace Typedown.Utilities
             catch
             {
                 // Ignore
-            }
-        }
-
-        private void SetMaxWorkingSetSize()
-        {
-            if (CoreWebView2 != null)
-            {
-                if (webView2ProcessId != CoreWebView2.BrowserProcessId)
-                {
-                    webView2ProcessId = CoreWebView2.BrowserProcessId;
-                    if (Process.GetProcessById((int)webView2ProcessId) is Process process)
-                        process.MaxWorkingSet = process.MinWorkingSet;
-                }
             }
         }
 

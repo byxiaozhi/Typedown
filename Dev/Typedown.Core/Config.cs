@@ -19,7 +19,6 @@ namespace Typedown.Core
 
         public static IReadOnlyList<string> WebView2Args { get; } = new List<string>()
         {
-            "--single-process",
             "--disable-web-security",
             "--allow-file-access-from-files",
             "--flag-switches-begin",
