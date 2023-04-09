@@ -107,7 +107,8 @@ namespace Typedown.Windows
         private void OnStateChanged(object sender, StateChangedEventArgs e)
         {
             WindowService?.RaiseWindowStateChanged(Handle);
-            SaveWindowPlacementWithOffset();
+            if (RootControl?.IsLoaded ?? false)
+                SaveWindowPlacementWithOffset();
         }
 
         private void OnIsActiveChanged(object sender, IsActiveChangedEventArgs e)
@@ -118,12 +119,14 @@ namespace Typedown.Windows
 
         private void OnLocationChanged(object sender, LocationChangedEventArgs e)
         {
-            SaveWindowPlacementWithOffset();
+            if (RootControl?.IsLoaded ?? false)
+                SaveWindowPlacementWithOffset();
         }
 
         private void OnSizeChanged(object sender, XamlUI.SizeChangedEventArgs e)
         {
-            SaveWindowPlacementWithOffset();
+            if (RootControl?.IsLoaded ?? false)
+                SaveWindowPlacementWithOffset();
         }
 
         private bool isCloseable = false;
