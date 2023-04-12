@@ -106,9 +106,16 @@ namespace Typedown.Core.ViewModels
 
         public async Task<bool> AutoSaveFile()
         {
-            if (SettingsViewModel.AutoSave && (EditorViewModel.FileHash != EditorViewModel.CurrentHash) && FilePath != null)
-                return await Save(false);
-            return FilePath != null;
+            try
+            {
+                if (SettingsViewModel.AutoSave && EditorViewModel.FileLoaded && (EditorViewModel.FileHash != EditorViewModel.CurrentHash) && FilePath != null)
+                    return await Save(false);
+                return FilePath != null;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private async Task<bool> AutoBackupFile()
