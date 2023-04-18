@@ -317,25 +317,33 @@ namespace Typedown.Core.ViewModels
 
         private async Task<string> SaveAs()
         {
-            var filePicker = new FileSavePicker();
-            filePicker.SetOwnerWindow(AppViewModel.MainWindow);
-            filePicker.FileTypeChoices.Add("Markdown Files", FileTypeHelper.Markdown.ToList());
-            filePicker.SuggestedFileName = FileName ?? "untitled";
-            var file = await filePicker.PickSaveFileAsync();
-            if (file != null)
+            try
             {
-                var result = await WriteAllText(file.Path, EditorViewModel.Markdown);
-                if (result)
+                var filePicker = new FileSavePicker();
+                filePicker.SetOwnerWindow(AppViewModel.MainWindow);
+                filePicker.FileTypeChoices.Add("Markdown Files", FileTypeHelper.Markdown.ToList());
+                filePicker.SuggestedFileName = FileName ?? "untitled";
+                var file = await filePicker.PickSaveFileAsync();
+                if (file != null)
                 {
-                    AutoBackup.DeleteBackup(FilePath);
-                    FilePath = file.Path;
-                    EditorViewModel.FileHash = EditorViewModel.CurrentHash;
-                    EditorViewModel.Saved = true;
-                    _ = AccessHistory.RecordFileHistory(FilePath);
-                    return file.Path;
+                    var result = await WriteAllText(file.Path, EditorViewModel.Markdown);
+                    if (result)
+                    {
+                        AutoBackup.DeleteBackup(FilePath);
+                        FilePath = file.Path;
+                        EditorViewModel.FileHash = EditorViewModel.CurrentHash;
+                        EditorViewModel.Saved = true;
+                        _ = AccessHistory.RecordFileHistory(FilePath);
+                        return file.Path;
+                    }
                 }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                return null;
+            }
         }
 
         private async Task<bool> PrintHTML(JToken args)

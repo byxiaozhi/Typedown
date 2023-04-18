@@ -160,7 +160,8 @@ namespace Typedown.Windows
             this.TrySaveWindowPlacement();
             isCloseable = true;
             await Task.Yield();
-            Close();
+            if (Handle != default)
+                Close();
         }
 
         private void OnClosed(object sender, ClosedEventArgs e)

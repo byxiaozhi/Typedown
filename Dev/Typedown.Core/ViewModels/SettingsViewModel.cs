@@ -121,7 +121,14 @@ namespace Typedown.Core.ViewModels
 
         private async void SaveAllSettings()
         {
-            await File.WriteAllTextAsync(settingsFile, store.ToString());
+            try
+            {
+                await File.WriteAllTextAsync(settingsFile, store.ToString());
+            }
+            catch
+            {
+                // Ignore
+            }
         }
 
         public T GetSettingValue<T>(T defaultValue = default, [CallerMemberName] string propertyName = null)
