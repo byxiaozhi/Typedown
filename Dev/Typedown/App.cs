@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
@@ -49,7 +48,6 @@ namespace Typedown
         protected override async void OnLaunched()
         {
             base.OnLaunched();
-            SignalWindow.Initialize();
             if (!await EnvCheck.EnsureWebView2Installed())
             {
                 Exit();
