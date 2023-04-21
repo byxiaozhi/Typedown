@@ -81,7 +81,7 @@
                 <MenuFlyout x:Name="Flyout" OverlayInputPassThroughElement="{Binding XamlRoot.Content}" AreOpenCloseAnimationsEnabled="{Binding SettingsViewModel.AnimationEnable}">
                     <items:FormatItem x:Name="MenuFormatItem" x:Load="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}" ItemClick="OnFormatItemClick"/>
                     <MenuFlyoutSeparator x:Name="MenuFormatItemSeparator" x:Load="{x:Bind Editor.ParagraphState.FormatIsEnable, Mode=OneWay}"/>
-                    <MenuFlyoutSubItem x:Name="MenuImageItem" Text="{u:LocaleString Key=Image}" x:Load="{x:Bind Format.FormatState.Image, Mode=OneWay}">
+                    <MenuFlyoutSubItem x:Name="MenuImageItem" Text="{u:LocaleString Key=Image}" x:Load="{x:Bind local:EditorContainer.IsLoadImageMenu(Format.FormatState.Image, Editor.Selection), Mode=OneWay}">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xe91b;"/>
                         </MenuFlyoutSubItem.Icon>
@@ -89,7 +89,7 @@
                             <items:ImageItem/>
                         </local:MenuItemCollection.Value>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutSeparator x:Name="MenuImageItemSeparator" x:Load="{x:Bind Format.FormatState.Image, Mode=OneWay}"/>
+                    <MenuFlyoutSeparator x:Name="MenuImageItemSeparator" x:Load="{x:Bind local:EditorContainer.IsLoadImageMenu(Format.FormatState.Image, Editor.Selection), Mode=OneWay}"/>
                     <!--<MenuFlyoutSubItem x:Name="MenuCodeFencesItem" Text="{u:LocaleString Key=CodeFences}" x:Load="{x:Bind Editor.ParagraphState.CodeFences.IsChecked, Mode=OneWay}">
                         <local:MenuItemCollection.Value>
                             <items:CodeFencesItem/>

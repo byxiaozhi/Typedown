@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
 using System.Reactive.Disposables;
@@ -175,6 +176,11 @@ namespace Typedown.Core.Controls
                     editor.MoveDummyRectangle(new(oldValue.ScrollX - newValue.ScrollX, oldValue.ScrollY - newValue.ScrollY));
                 }
             }
+        }
+
+        public static bool IsLoadImageMenu(bool isImageFormat, JToken selection)
+        {
+            return isImageFormat && (selection["selectedImage"]?.HasValues ?? false);
         }
     }
 }
