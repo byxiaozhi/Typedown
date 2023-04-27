@@ -93,11 +93,26 @@ namespace Typedown.Utilities
 #endif
                 var options = new CoreWebView2EnvironmentOptions(string.Join(" ", commandLineArgs));
                 coreWebView2EnvironmentTask = CoreWebView2Environment.CreateAsync(null, null, options);
-                return await coreWebView2EnvironmentTask;
+                var environment = await coreWebView2EnvironmentTask;
+                environment.BrowserProcessExited += OnEnvironmentBrowserProcessExited;
+                return environment;
             }
             else
             {
                 return await coreWebView2EnvironmentTask;
+            }
+        }
+
+        private static void OnEnvironmentBrowserProcessExited(object sender, CoreWebView2BrowserProcessExitedEventArgs e)
+        {
+            if (coreWebView2EnvironmentTask.IsCompleted)
+            {
+                var environment = coreWebView2EnvironmentTask.Result;
+                if (environment == sender)
+                {
+                    coreWebView2EnvironmentTask = null;
+                    environment.BrowserProcessExited -= OnEnvironmentBrowserProcessExited;
+                }
             }
         }
 
