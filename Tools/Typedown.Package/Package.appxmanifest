@@ -119,9 +119,13 @@
 						<uap:SupportedFileTypes>
 							<uap:FileType ContentType="text/markdown">.md</uap:FileType>
 							<uap:FileType ContentType="text/markdown">.markdown</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.markdn</uap:FileType>
 							<uap:FileType ContentType="text/markdown">.mdown</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.mdwn</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.mkd</uap:FileType>
 							<uap:FileType ContentType="text/markdown">.mkdn</uap:FileType>
 							<uap:FileType ContentType="text/markdown">.mdtext</uap:FileType>
+							<uap:FileType ContentType="text/markdown">.mdtxt</uap:FileType>
 							<uap:FileType ContentType="text/markdown">.rmd</uap:FileType>
 						</uap:SupportedFileTypes>
 						<uap:DisplayName>Typedown</uap:DisplayName>
