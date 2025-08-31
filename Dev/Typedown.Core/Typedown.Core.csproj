@@ -19,6 +19,7 @@
     <LangVersion>latest</LangVersion>
     <DisableEmbeddedXbf>false</DisableEmbeddedXbf>
     <IntermediateOutputPath>obj\</IntermediateOutputPath>
+    <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Platform)' == 'x64'">
     <SelfContained>false</SelfContained>
