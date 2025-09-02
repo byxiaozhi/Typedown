@@ -5,7 +5,7 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<UseWPF>True</UseWPF>
 		<LangVersion>latest</LangVersion>
-		<Platforms>x64;x86</Platforms>
+		<Platforms>x64;x86;ARM64</Platforms>
 		<AssetTargetFallback>uap10.0.19041</AssetTargetFallback>
 		<TargetPlatformVersion>10.0.22000.0</TargetPlatformVersion>
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
@@ -20,12 +20,17 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Platform)' == 'x64'">
-		<SelfContained>false</SelfContained>
+		<SelfContained>true</SelfContained>
 		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Platform)'=='ARM64'">
+	  <SelfContained>true</SelfContained>
+	  <RuntimeIdentifier>win10-arm64</RuntimeIdentifier>
+	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Platform)' == 'x86'">
-		<SelfContained>false</SelfContained>
+		<SelfContained>true</SelfContained>
 		<RuntimeIdentifier>win10-x86</RuntimeIdentifier>
 	</PropertyGroup>
 
