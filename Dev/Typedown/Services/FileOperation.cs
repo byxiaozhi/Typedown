@@ -1,11 +1,14 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
+using System.Threading.Tasks;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
 
 namespace Typedown.Services
 {
-    internal class FileOperation: IFileOperation
+    internal class FileOperation : IFileOperation
     {
         public bool Delete(StringCollection files)
         {
@@ -69,43 +72,61 @@ namespace Typedown.Services
             return PInvoke.SHFileOperation(ref shf) == 0;
         }
 
-        public void CutToClipboard(StringCollection files)
+        public async Task CutToClipboardAsync(StringCollection files)
         {
-            byte[] moveEffect = new byte[] { 2, 0, 0, 0 };
-            MemoryStream dropEffect = new();
-            dropEffect.Write(moveEffect, 0, moveEffect.Length);
-            System.Windows.DataObject data = new();
-            data.SetFileDropList(files);
-            data.SetData("Preferred DropEffect", dropEffect);
-            System.Windows.Clipboard.Clear();
-            System.Windows.Clipboard.SetDataObject(data, true);
+            var dataPackage = new global::Windows.ApplicationModel.DataTransfer.DataPackage();
+            var storageItems = new List<global::Windows.Storage.IStorageItem>();
+
+            foreach (string filePath in files)
+            {
+                var file = await global::Windows.Storage.StorageFile.GetFileFromPathAsync(filePath);
+                storageItems.Add(file);
+            }
+
+            dataPackage.SetStorageItems(storageItems);
+            dataPackage.RequestedOperation = global::Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
+            global::Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
         }
 
-        public void CopyToClipboard(StringCollection files)
+        public async Task CopyToClipboardAsync(StringCollection files)
         {
-            byte[] moveEffect = new byte[] { 5, 0, 0, 0 };
-            MemoryStream dropEffect = new();
-            dropEffect.Write(moveEffect, 0, moveEffect.Length);
-            System.Windows.DataObject data = new();
-            data.SetFileDropList(files);
-            data.SetData("Preferred DropEffect", dropEffect);
-            System.Windows.Clipboard.Clear();
-            System.Windows.Clipboard.SetDataObject(data, true);
+            var dataPackage = new global::Windows.ApplicationModel.DataTransfer.DataPackage();
+            var storageItems = new List<global::Windows.Storage.IStorageItem>();
+
+            foreach (string filePath in files)
+            {
+                var file = await global::Windows.Storage.StorageFile.GetFileFromPathAsync(filePath);
+                storageItems.Add(file);
+            }
+
+            dataPackage.SetStorageItems(storageItems);
+            dataPackage.RequestedOperation = global::Windows.ApplicationModel.DataTransfer.DataPackageOperation.Copy;
+            global::Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
         }
 
         public bool IsPasteEnabled
         {
-            get => System.Windows.Clipboard.ContainsData("Preferred DropEffect") && System.Windows.Clipboard.ContainsFileDropList();
+            get
+            {
+                var view = global::Windows.ApplicationModel.DataTransfer.Clipboard.GetContent();
+                return view.Contains(global::Windows.ApplicationModel.DataTransfer.StandardDataFormats.StorageItems);
+            }
         }
 
         public void PasteFromClipboard(string to)
         {
             if (IsPasteEnabled)
             {
-                var files = System.Windows.Clipboard.GetFileDropList();
-                var stream = (Stream)System.Windows.Clipboard.GetData("Preferred DropEffect");
-                var effects = (System.Windows.DragDropEffects)stream.ReadByte();
-                if (effects.HasFlag(System.Windows.DragDropEffects.Move))
+                var view = global::Windows.ApplicationModel.DataTransfer.Clipboard.GetContent();
+                var storageItems = view.GetStorageItemsAsync().GetResults();
+                var files = new StringCollection();
+
+                foreach (var item in storageItems)
+                {
+                    files.Add(item.Path);
+                }
+
+                if (view.RequestedOperation.HasFlag(global::Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move))
                 {
                     Move(files, to);
                 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.Threading.Tasks;
 
 namespace Typedown.Core.Interfaces
 {
@@ -12,9 +13,9 @@ namespace Typedown.Core.Interfaces
 
         bool Rename(string from, string to);
 
-        void CutToClipboard(StringCollection files);
+        Task CutToClipboardAsync(StringCollection files);
 
-        void CopyToClipboard(StringCollection files);
+        Task CopyToClipboardAsync(StringCollection files);
 
         bool IsPasteEnabled { get; }
 

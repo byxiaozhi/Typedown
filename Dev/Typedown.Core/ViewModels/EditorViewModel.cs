@@ -255,8 +255,8 @@ namespace Typedown.Core.ViewModels
             {
                 if (Clipboard.ContainsText(TextDataFormat.UnicodeText) || Clipboard.ContainsText(TextDataFormat.Html))
                 {
-                    var text = Clipboard.GetText(TextDataFormat.UnicodeText);
-                    var html = Clipboard.GetText(TextDataFormat.Html);
+                    var text = await Clipboard.GetTextAsync(TextDataFormat.UnicodeText);
+                    var html = await Clipboard.GetTextAsync(TextDataFormat.Html);
                     if (Common.MatchHtmlImg(html) is HtmlImgTag img)
                     {
                         if (UriHelper.IsWebUrl(img.Src))
@@ -273,14 +273,14 @@ namespace Typedown.Core.ViewModels
                     }
                     MarkdownEditor?.PostMessage("Paste", new { type, text, html });
                 }
-                else if (Clipboard.GetFileDropList() is StringCollection files && files.Count == 1)
+                else if (await Clipboard.GetFileDropListAsync() is StringCollection files && files.Count == 1)
                 {
                     if (FileTypeHelper.IsImageFile(files[0]))
                     {
                         MarkdownEditor?.PostMessage("InsertImage", new HtmlImgTag(src: files[0], alt: Path.GetFileNameWithoutExtension(files[0])));
                     }
                 }
-                else if (Clipboard.GetImage() is IClipboardImage image)
+                else if (await Clipboard.GetImageAsync() is IClipboardImage image)
                 {
 
                     var src = await ServiceProvider.GetService<ImageAction>().DoClipboardAction(image);

@@ -206,13 +206,13 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
         private void OnCutClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            FileOperation.CutToClipboard(new StringCollection() { item?.FullPath });
+            FileOperation.CutToClipboardAsync(new StringCollection() { item?.FullPath });
         }
 
         private void OnCopyClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            FileOperation.CopyToClipboard(new StringCollection() { item?.FullPath });
+            FileOperation.CopyToClipboardAsync(new StringCollection() { item?.FullPath });
         }
 
         private void OnPasteClick(object sender, RoutedEventArgs e)
