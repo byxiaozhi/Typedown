@@ -1,7 +1,8 @@
-﻿using PdfiumViewer;
+﻿using System;
+using System.Drawing.Printing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-//using System.Windows.Forms;
 
 namespace Typedown.Utilities
 {
@@ -9,19 +10,7 @@ namespace Typedown.Utilities
     {
         public static async Task PrintPDF(nint hWnd, Stream stream, string documentName = null)
         {
-            throw new System.NotImplementedException();
-            //await Task.Run(() =>
-            //{
-            //    using var pdfDoc = PdfDocument.Load(stream);
-            //    using var printDoc = pdfDoc.CreatePrintDocument();
-            //    printDoc.DocumentName = documentName;
-            //    using var dialog = new PrintDialog() { Document = printDoc, UseEXDialog = true };
-            //    var result = dialog.ShowDialog(new Win32Window(hWnd));
-            //    if (result == DialogResult.OK)
-            //        printDoc.Print();
-            //});
+            throw new NotImplementedException();
         }
-
-        //private record Win32Window(nint Handle) : IWin32Window;
     }
 }

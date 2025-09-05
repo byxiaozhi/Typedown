@@ -1,18 +1,35 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
-		<AssetTargetFallback>uap10.0.19041</AssetTargetFallback>
-		<TargetPlatformVersion>10.0.22000.0</TargetPlatformVersion>
+		<TargetPlatformVersion>10.0.26100.0</TargetPlatformVersion>
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+		<AssetTargetFallback>uap10.0.26100</AssetTargetFallback>
+		<UseUwp>true</UseUwp>
 		<IsPackable>false</IsPackable>
 		<Platforms>x64;x86;ARM64</Platforms>
 		<Configurations>Debug;Release;Debug_Local</Configurations>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Platform)' == 'x64'">
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)'=='ARM64'">
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>win-arm64</RuntimeIdentifier>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)' == 'x86'">
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
 		<PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
 		<PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
 		<PackageReference Include="coverlet.collector" Version="3.2.0">

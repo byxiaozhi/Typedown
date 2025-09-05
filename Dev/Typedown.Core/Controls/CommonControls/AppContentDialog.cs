@@ -11,6 +11,9 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
+using FocusManager = Windows.UI.Xaml.Input.FocusManager;
+using FocusNavigationDirection = Windows.UI.Xaml.Input.FocusNavigationDirection;
+using KeyEventHandler = Windows.UI.Xaml.Input.KeyEventHandler;
 
 namespace Typedown.Core.Controls
 {

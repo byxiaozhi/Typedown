@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Typedown.Core.Controls;
 using Typedown.Core.Utilities;
-
-namespace System.Runtime.CompilerServices
-{
-    public static class IsExternalInit { }
-}
 
 namespace Typedown
 {
