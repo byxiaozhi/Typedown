@@ -94,7 +94,7 @@ namespace Typedown.Windows
 
         private void EnableMicaEffect(bool enable)
         {
-            RootControl.Background = enable ? new SystemBackdropBrush(this) : new SolidColorBrush(Colors.Transparent);
+            RootControl.Background = new SolidColorBrush(Colors.Transparent);
         }
 
         private void OnLoaded(object sender, EventArgs e)
