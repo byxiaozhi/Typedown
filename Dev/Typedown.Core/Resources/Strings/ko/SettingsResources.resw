@@ -206,11 +206,11 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.FontFamily.Description" xml:space="preserve">
-    <value>Font used in the editor</value>
+    <value>편집기에 사용되는 글꼴</value>
     <comment>编辑器/编辑器使用的字体</comment>
   </data>
   <data name="Editor.FontFamily.Title" xml:space="preserve">
-    <value>Font family</value>
+    <value>글꼴 패밀리</value>
     <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">

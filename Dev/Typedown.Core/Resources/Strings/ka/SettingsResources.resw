@@ -206,11 +206,11 @@
     <comment>编辑器/字体大小</comment>
   </data>
   <data name="Editor.FontFamily.Description" xml:space="preserve">
-    <value>Font used in the editor</value>
+    <value>რედაქტორში გამოყენებული ფონტი</value>
     <comment>编辑器/编辑器使用的字体</comment>
   </data>
   <data name="Editor.FontFamily.Title" xml:space="preserve">
-    <value>Font family</value>
+    <value>ფონტის ოჯახი</value>
     <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
