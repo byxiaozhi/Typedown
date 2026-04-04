@@ -283,6 +283,14 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     }, [props.options?.editorAreaWidth])
 
     useEffect(() => {
+        if (props.options?.fontFamily) {
+            document.body.style.setProperty('--editorFontFamily', props.options.fontFamily)
+        } else {
+            document.body.style.removeProperty('--editorFontFamily')
+        }
+    }, [props.options?.fontFamily])
+
+    useEffect(() => {
         try {
             editor?.focus()
         } catch (err) {

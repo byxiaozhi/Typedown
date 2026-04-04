@@ -205,6 +205,14 @@
     <value>글꼴 크기</value>
     <comment>编辑器/字体大小</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font used in the editor</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Font family</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>에디터 라인 높이 배수</value>
     <comment>编辑器/编辑器行高倍数</comment>

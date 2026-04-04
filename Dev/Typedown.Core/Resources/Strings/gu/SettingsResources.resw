@@ -205,6 +205,14 @@
     <value>ફોન્ટ માપ</value>
     <comment>编辑器/字体大小</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font used in the editor</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Font family</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>સંપાદક લીટી ઊંચાઈ ઘણાબધા</value>
     <comment>编辑器/编辑器行高倍数</comment>
