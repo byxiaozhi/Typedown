@@ -205,6 +205,14 @@
     <value>Kích thước phông chữ</value>
     <comment>编辑器/字体大小</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Phông chữ được sử dụng trong trình soạn thảo</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Họ phông chữ</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Chiều cao dòng trình chỉnh sửa nhiều</value>
     <comment>编辑器/编辑器行高倍数</comment>

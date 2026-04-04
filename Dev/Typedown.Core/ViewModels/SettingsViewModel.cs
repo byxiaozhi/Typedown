@@ -32,6 +32,7 @@ namespace Typedown.Core.ViewModels
         public int SidePaneIndex { get => GetSettingValue(0); set => SetSettingValue(value); }
         public double FontSize { get => GetSettingValue(16d); set => SetSettingValue(value); }
         public double LineHeight { get => GetSettingValue(1.6d); set => SetSettingValue(value); }
+        public string FontFamily { get => GetSettingValue(""); set => SetSettingValue(value); }
         public bool AutoPairBracket { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool AutoPairQuote { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool TrimUnnecessaryCodeBlockEmptyLines { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -92,6 +93,7 @@ namespace Typedown.Core.ViewModels
             "SearchIsWholeWord",
             "FontSize",
             "LineHeight",
+            "FontFamily",
             "AutoPairBracket",
             "AutoPairQuote",
             "TrimUnnecessaryCodeBlockEmptyLines",

@@ -205,6 +205,14 @@
     <value>ਫੋਂਟ ਆਕਾਰ</value>
     <comment>编辑器/字体大小</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>ਸੰਪਾਦਕ ਵਿੱਚ ਵਰਤਿਆ ਗਿਆ ਫੌਂਟ</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>ਫੌਂਟ ਪਰਿਵਾਰ</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>ਐਡੀਟਰ ਲਾਈਨ ਉਚਾਈ ਕਈ</value>
     <comment>编辑器/编辑器行高倍数</comment>

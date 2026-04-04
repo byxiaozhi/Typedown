@@ -205,6 +205,14 @@
     <value>Fonta lielums</value>
     <comment>编辑器/字体大小</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Redaktorā izmantotais fonts</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Fontu saime</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Redaktora līnijas augstums ir daudzkārt</value>
     <comment>编辑器/编辑器行高倍数</comment>

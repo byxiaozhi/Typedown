@@ -20,6 +20,12 @@
             </controls:NormalSettingItem.Icon>
             <muxc:NumberBox MinWidth="200" SpinButtonPlacementMode="Inline" SmallChange="1" NumberFormatter="{x:Bind FontSizeFormatter}" Value="{x:Bind Settings.FontSize, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.FontFamily.Title}" Description="{u:LocaleString Key=Editor.FontFamily.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8e3;"/>
+            </controls:NormalSettingItem.Icon>
+            <TextBox MinWidth="200" Text="{x:Bind Settings.FontFamily, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.LineHeight.Title}" Description="{u:LocaleString Key=Editor.LineHeight.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe94e;"/>
