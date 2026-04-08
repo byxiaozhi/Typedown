@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typedown Editor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3/dist/index.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow: hidden; }
+        #vditor-container { width: 100%; height: 100%; }
+        /* Hide Vditor toolbar — we use C# menu bar */
+        .vditor-toolbar { display: none !important; }
+    </style>
+</head>
+<body>
+    <div id="vditor-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vditor@3/dist/index.min.js"></script>
+    <script>
+        // ========== Native Bridge ==========
+        // Send message from JS to C# host
+        function sendToNative(type, data) {
+            const msg = JSON.stringify({ type: type, data: data });
+            // Avalonia NativeWebView injects invokeCSharpAction() on all platforms
+            if (typeof invokeCSharpAction === 'function') {
+                invokeCSharpAction(msg);
+            } else if (window.chrome && window.chrome.webview) {
+                // WebView2 fallback (direct WebView2 usage)
+                window.chrome.webview.postMessage(msg);
+            } else {
+                // Fallback: log to console for debugging
+                console.log('[Bridge→Native]', msg);
+            }
+        }
+
+        // Receive message from C# host
+        // C# calls: webview.InvokeScript("receiveFromNative(json)")
+        function receiveFromNative(jsonStr) {
+            try {
+                const msg = typeof jsonStr === 'string' ? JSON.parse(jsonStr) : jsonStr;
+                handleNativeMessage(msg);
+            } catch (e) {
+                console.error('[Bridge] Failed to parse native message:', e);
+            }
+        }
+
+        // ========== Vditor Instance ==========
+        let vditor = null;
+
+        function initVditor(mode) {
+            if (vditor) {
+                vditor.destroy();
+            }
+
+            vditor = new Vditor('vditor-container', {
+                mode: mode || 'wysiwyg',  // 'wysiwyg' | 'ir' | 'sv'
+                toolbar: [],               // Empty toolbar — use C# menu bar
+                counter: { enable: false },
+                outline: { enable: false, position: 'left' },
+                cache: { enable: false },
+                placeholder: 'Start writing...',
+                height: '100%',
+                width: '100%',
+
+                // Callbacks
+                input: function(value) {
+                    sendToNative('contentChanged', {
+                        markdown: value,
+                        wordCount: value.length
+                    });
+                },
+                focus: function(value) {
+                    sendToNative('editorFocus', {});
+                },
+                blur: function(value) {
+                    sendToNative('editorBlur', {});
+                },
+                after: function() {
+                    sendToNative('editorReady', {
+                        mode: vditor.getCurrentMode()
+                    });
+                },
+                select: function(value) {
+                    sendToNative('selectionChanged', {
+                        text: value || ''
+                    });
+                }
+            });
+        }
+
+        // ========== Handle messages from C# ==========
+        function handleNativeMessage(msg) {
+            if (!vditor) {
+                console.warn('[Bridge] Vditor not ready, ignoring:', msg.type);
+                return;
+            }
+
+            switch (msg.type) {
+                case 'setMarkdown':
+                    vditor.setValue(msg.data.markdown || '');
+                    sendToNative('setMarkdownDone', {});
+                    break;
+
+                case 'getMarkdown':
+                    sendToNative('markdownContent', {
+                        markdown: vditor.getValue()
+                    });
+                    break;
+
+                case 'switchMode':
+                    // Reinitialize with new mode
+                    const currentContent = vditor.getValue();
+                    initVditor(msg.data.mode);
+                    // After init, set content back
+                    setTimeout(() => {
+                        if (vditor) vditor.setValue(currentContent);
+                    }, 500);
+                    break;
+
+                case 'insertText':
+                    vditor.insertValue(msg.data.text || '');
+                    break;
+
+                case 'focus':
+                    vditor.focus();
+                    break;
+
+                case 'format':
+                    // Execute toolbar action programmatically
+                    // e.g. bold, italic, heading, etc.
+                    applyFormat(msg.data.action);
+                    break;
+
+                case 'ping':
+                    sendToNative('pong', { timestamp: Date.now() });
+                    break;
+
+                default:
+                    console.warn('[Bridge] Unknown message type:', msg.type);
+            }
+        }
+
+        function applyFormat(action) {
+            if (!vditor) return;
+            switch (action) {
+                case 'bold':
+                    vditor.insertValue('**bold**');
+                    break;
+                case 'italic':
+                    vditor.insertValue('*italic*');
+                    break;
+                case 'heading1':
+                    vditor.insertValue('\n# ');
+                    break;
+                case 'heading2':
+                    vditor.insertValue('\n## ');
+                    break;
+                case 'code':
+                    vditor.insertValue('`code`');
+                    break;
+                case 'codeblock':
+                    vditor.insertValue('\n```\n\n```\n');
+                    break;
+                case 'link':
+                    vditor.insertValue('[text](url)');
+                    break;
+                case 'image':
+                    vditor.insertValue('![alt](url)');
+                    break;
+                default:
+                    console.warn('[Format] Unknown action:', action);
+            }
+        }
+
+        // ========== Initialize ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            initVditor('wysiwyg');
+            sendToNative('domReady', {});
+        });
+    </script>
+</body>
+</html>

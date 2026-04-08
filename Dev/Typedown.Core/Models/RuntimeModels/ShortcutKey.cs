@@ -1,4 +1,4 @@
-﻿using Windows.System;
+using Typedown.Core.Enums;
 
 namespace Typedown.Core.Models
 {

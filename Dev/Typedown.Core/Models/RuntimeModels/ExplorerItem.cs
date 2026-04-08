@@ -1,4 +1,4 @@
-﻿using PropertyChanged;
+using PropertyChanged;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,10 +7,10 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
-using Windows.System;
 
 namespace Typedown.Core.Models
 {
@@ -207,29 +207,29 @@ namespace Typedown.Core.Models
             if (Type != ExplorerItemType.Folder) return;
             fileSystemWatcher?.Dispose();
             fileSystemWatcher = new() { NotifyFilter = NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Attributes };
-            var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+            var syncContext = SynchronizationContext.Current;
             fileSystemWatcher.Created += async (s, e) =>
             {
                 if (e?.Name == null) return;
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileCreated(e, attr.Value));
+                if (attr.HasValue) syncContext?.Post(_ => OnFileCreated(e, attr.Value), null);
             };
             fileSystemWatcher.Renamed += async (s, e) =>
             {
                 if (e?.Name == null) return;
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileRenamed(e, attr.Value));
+                if (attr.HasValue) syncContext?.Post(_ => OnFileRenamed(e, attr.Value), null);
             };
             fileSystemWatcher.Changed += async (s, e) =>
             {
                 if (e?.Name == null) return;
                 var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileChanged(e, attr.Value));
+                if (attr.HasValue) syncContext?.Post(_ => OnFileChanged(e, attr.Value), null);
             };
             fileSystemWatcher.Deleted += (s, e) =>
             {
                 if (e?.Name == null) return;
-                dispatcherQueue.TryEnqueue(() => OnFileDeleted(e));
+                syncContext?.Post(_ => OnFileDeleted(e), null);
             };
             fileSystemWatcher.Path = FullPath;
             fileSystemWatcher.EnableRaisingEvents = true;

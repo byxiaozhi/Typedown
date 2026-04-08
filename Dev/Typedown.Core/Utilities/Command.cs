@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Windows.Input;
-using Windows.UI.Xaml.Markup;
 
 namespace Typedown.Core.Utilities
 {
@@ -31,8 +30,10 @@ namespace Typedown.Core.Utilities
             {
                 if (parameter == null)
                     executeSubject.OnNext(default);
+                else if (parameter is T typedParam)
+                    executeSubject.OnNext(typedParam);
                 else
-                    executeSubject.OnNext((T)XamlBindingHelper.ConvertValue(typeof(T), parameter));
+                    executeSubject.OnNext((T)Convert.ChangeType(parameter, typeof(T)));
             }
         }
 

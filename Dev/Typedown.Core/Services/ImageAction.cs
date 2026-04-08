@@ -1,11 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using Typedown.Core.Controls;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
@@ -53,7 +52,8 @@ namespace Typedown.Core.Services
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                var dlg = ServiceProvider.GetService<IDialogService>();
+                if (dlg != null) await dlg.ShowAsync(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok"));
                 return src;
             }
         }
@@ -80,7 +80,8 @@ namespace Typedown.Core.Services
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                var dlg = ServiceProvider.GetService<IDialogService>();
+                if (dlg != null) await dlg.ShowAsync(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok"));
                 return src;
             }
         }
@@ -105,7 +106,8 @@ namespace Typedown.Core.Services
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                var dlg = ServiceProvider.GetService<IDialogService>();
+                if (dlg != null) await dlg.ShowAsync(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok"));
                 return string.Empty;
             }
         }

@@ -1,6 +1,6 @@
-﻿using System;
+using System;
+using Typedown.Core.Enums;
 using Typedown.Core.Models;
-using Windows.System;
 
 namespace Typedown.Core.Interfaces
 {

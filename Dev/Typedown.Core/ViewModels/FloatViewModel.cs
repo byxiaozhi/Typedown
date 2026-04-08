@@ -1,15 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
 using System.ComponentModel;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using Typedown.Core.Controls.FloatControls;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Models;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
-using Windows.Foundation;
 
 namespace Typedown.Core.ViewModels
 {
@@ -60,53 +58,32 @@ namespace Typedown.Core.ViewModels
 
         public void OnOpenImageToolbar(JToken args)
         {
-            var imageToolbar = ServiceProvider.GetService<ImageToolbar>();
-            var rect = args["boundingClientRect"].ToObject<Rect>();
-            var attrs = args["attrs"];
-            imageToolbar.Open(rect, attrs);
+            // TODO: Phase 3 — Avalonia float panel implementation
         }
 
         public void OnOpenFrontMenu(JToken args)
         {
-            var frontMenu = ServiceProvider.GetService<FrontMenu>();
-            var rect = args["boundingClientRect"].ToObject<Rect>();
-            frontMenu.Open(rect);
+            // TODO: Phase 3 — Avalonia float panel implementation
         }
 
         public void OnOpenFormatPicker(JToken args)
         {
-            throw new NotImplementedException();
+            // TODO: Phase 3 — Avalonia float panel implementation
         }
 
         public void OnOpenImageSelector(JToken args)
         {
-            var selector = ServiceProvider.GetService<ImageSelector>();
-            var rect = args["boundingClientRect"].ToObject<Rect>();
-            var info = args["imageInfo"];
-            selector.Open(rect, info);
+            // TODO: Phase 3 — Avalonia float panel implementation
         }
 
         public void OnOpenTableTools(JToken args)
         {
-            var tableTools = ServiceProvider.GetService<TableTools>();
-            var rect = args["boundingClientRect"].ToObject<Rect>();
-            var type = args["tableInfo"]["barType"].ToString();
-            tableTools.Open(rect, type);
+            // TODO: Phase 3 — Avalonia float panel implementation
         }
-
-        private ToolTip openedToolTip;
 
         public void OnOpenToolTip(JToken args)
         {
-            openedToolTip?.Hide();
-            openedToolTip = null;
-            if (args["open"].ToObject<bool>())
-            {
-                openedToolTip = ServiceProvider.GetService<ToolTip>();
-                var name = args["tooltip"].ToString();
-                var text = Locale.GetString(name) ?? name;
-                openedToolTip.Open(text);
-            }
+            // TODO: Phase 3 — Avalonia tooltip implementation
         }
 
         public void Dispose()

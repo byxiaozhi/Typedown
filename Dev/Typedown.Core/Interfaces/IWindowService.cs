@@ -1,19 +1,16 @@
-﻿using System.Reactive.Subjects;
-using Windows.Foundation;
-using Windows.UI.Xaml;
+using System;
+using System.Reactive.Subjects;
 
 namespace Typedown.Core.Interfaces
 {
+    /// <summary>
+    /// Cross-platform window service interface.
+    /// Platform implementations handle native window operations.
+    /// </summary>
     public interface IWindowService
     {
         Subject<nint> WindowStateChanged { get; }
 
         Subject<nint> WindowIsActivedChanged { get; }
-
-        nint GetWindow(UIElement element);
-
-        nint GetXamlSourceHandle(UIElement element);
-
-        Point GetCursorPos(UIElement relativeTo);
     }
 }

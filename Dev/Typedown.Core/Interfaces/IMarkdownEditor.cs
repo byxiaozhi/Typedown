@@ -1,17 +1,15 @@
-﻿using System;
+using System;
 using System.ComponentModel;
-using Windows.Foundation;
-using Windows.UI.Xaml.Shapes;
 
 namespace Typedown.Core.Interfaces
 {
+    /// <summary>
+    /// Cross-platform interface for the Markdown editor control.
+    /// Platform implementations will wrap WebView-based Vditor editor.
+    /// </summary>
     public interface IMarkdownEditor : IDisposable, INotifyPropertyChanged
     {
         bool PostMessage(string name, object arg);
-
-        Rectangle GetDummyRectangle(Rect rect);
-
-        Rectangle MoveDummyRectangle(Point offset);
 
         bool IsEditorLoadFailed { get; }
 

@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using Windows.UI.Xaml;
 
 namespace Typedown.Core.Models
 {
@@ -18,15 +17,15 @@ namespace Typedown.Core.Models
         readonly List<HistoryModel> histories = new();
         HistoryModel pending = new();
         int index = -1;
-        private readonly DispatcherTimer commitTimer = new();
+        private System.Threading.Timer commitTimer;
 
         public bool Undoable { get; set; }
         public bool Redoable { get; set; }
-        public bool IsPending { get => pending.Text != null && pending.Cursor != null; }
+        public bool IsPending => pending.Text != null && pending.Cursor != null;
 
         public ContentHistory()
         {
-            commitTimer.Tick += (s, e) => CommitPending();
+            commitTimer = new System.Threading.Timer(_ => CommitPending());
         }
 
         public HistoryModel Undo()
@@ -55,7 +54,7 @@ namespace Typedown.Core.Models
             {
                 if (index < histories.Count - 1)
                 {
-                    commitTimer.Stop();
+                    StopTimer();
                     pending = new();
                     index++;
                     Redoable = index < histories.Count - 1;
@@ -75,7 +74,7 @@ namespace Typedown.Core.Models
             try
             {
                 histories.Clear();
-                commitTimer.Stop();
+                StopTimer();
                 pending = new();
                 index = -1;
                 Redoable = false;
@@ -92,7 +91,7 @@ namespace Typedown.Core.Models
             try
             {
                 if (!IsPending) return;
-                commitTimer.Stop();
+                StopTimer();
                 histories.RemoveRange(index + 1, histories.Count - (index + 1));
                 histories.Add(pending);
                 if (histories.Count > deep)
@@ -113,11 +112,15 @@ namespace Typedown.Core.Models
             }
         }
 
+        private void StopTimer()
+        {
+            commitTimer?.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+        }
+
         private void ResetTimer()
         {
-            commitTimer.Stop();
-            commitTimer.Interval = TimeSpan.FromSeconds(3);
-            commitTimer.Start();
+            StopTimer();
+            commitTimer?.Change(TimeSpan.FromSeconds(3), System.Threading.Timeout.InfiniteTimeSpan);
         }
 
         public void CursorChange(CursorState cursor)

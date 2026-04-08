@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Specialized;
@@ -8,7 +8,6 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Typedown.Core.Controls;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Models;
 using Typedown.Core.Models.RuntimeModels;
@@ -62,6 +61,7 @@ namespace Typedown.Core.ViewModels
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
         public IClipboard Clipboard => ServiceProvider.GetService<IClipboard>();
         public AutoBackup AutoBackup => ServiceProvider.GetService<AutoBackup>();
+        private IDialogService DialogService => ServiceProvider.GetService<IDialogService>();
 
         private readonly CompositeDisposable disposables = new();
 
@@ -282,16 +282,15 @@ namespace Typedown.Core.ViewModels
                 }
                 else if (await Clipboard.GetImageAsync() is IClipboardImage image)
                 {
-
                     var src = await ServiceProvider.GetService<ImageAction>().DoClipboardAction(image);
                     src = src.Replace('\\', '/');
                     MarkdownEditor?.PostMessage("InsertImage", new HtmlImgTag(src));
-
                 }
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(AppViewModel.XamlRoot);
+                if (DialogService != null)
+                    await DialogService.ShowAsync(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok"));
             }
         }
 

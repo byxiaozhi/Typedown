@@ -1,7 +1,7 @@
-﻿using Typedown.Core.Models;
+using Typedown.Core.Models;
 using Typedown.Core.Utilities;
-using Key = Windows.System.VirtualKey;
-using Mod = Windows.System.VirtualKeyModifiers;
+using Key = Typedown.Core.Enums.VirtualKey;
+using Mod = Typedown.Core.Enums.VirtualKeyModifiers;
 
 namespace Typedown.Core.ViewModels
 {

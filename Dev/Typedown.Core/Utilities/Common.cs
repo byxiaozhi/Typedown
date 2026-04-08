@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Typedown.Core.Enums;
 using Typedown.Core.Models;
 using Typedown.Core.Models.RuntimeModels;
-using Windows.System;
 
 namespace Typedown.Core.Utilities
 {
@@ -33,17 +33,24 @@ namespace Typedown.Core.Utilities
         {
             try
             {
-                Process.Start(url);
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
             }
             catch
             {
-                Process.Start(new ProcessStartInfo(url.Replace("&", "^&")) { UseShellExecute = true });
+                // Ignore
             }
         }
 
         public static void OpenFileLocation(string filePath)
         {
-            Process.Start("explorer.exe", $"/select, \"{filePath}\"");
+            try
+            {
+                Process.Start(new ProcessStartInfo("explorer.exe", $"/select, \"{filePath}\"") { UseShellExecute = true });
+            }
+            catch
+            {
+                // Ignore on non-Windows
+            }
         }
 
         public static ulong SimpleHash(string str)
@@ -99,28 +106,30 @@ namespace Typedown.Core.Utilities
             if (key == null) return new();
             var result = new List<string>();
             if (key.Modifiers.HasFlag(VirtualKeyModifiers.Control))
-                result.Add(GetVirtualKeyNameText(VirtualKey.Control));
+                result.Add("Ctrl");
             if (key.Modifiers.HasFlag(VirtualKeyModifiers.Menu))
-                result.Add(GetVirtualKeyNameText(VirtualKey.Menu));
+                result.Add("Alt");
             if (key.Modifiers.HasFlag(VirtualKeyModifiers.Shift))
-                result.Add(GetVirtualKeyNameText(VirtualKey.Shift));
-            if (key.Modifiers.HasFlag(VirtualKeyModifiers.Windows))
-                result.Add("Win");
+                result.Add("Shift");
             result.Add(GetVirtualKeyNameText(key.Key));
             return result;
         }
 
         public static string GetVirtualKeyNameText(this VirtualKey key)
         {
-            if (key == VirtualKey.Delete)
-                return "Delete";
-            if (key == VirtualKey.LeftWindows || key == VirtualKey.RightWindows)
-                return "Win";
-            var buffer = new StringBuilder(32);
-            var scanCode = PInvoke.MapVirtualKey((uint)key, PInvoke.MapVirtualKeyMapTypes.MAPVK_VK_TO_VSC);
-            var lParam = scanCode << 16;
-            PInvoke.GetKeyNameText(lParam, buffer, buffer.Capacity);
-            return buffer.ToString();
+            return key switch
+            {
+                VirtualKey.Delete => "Delete",
+                VirtualKey.Enter => "Enter",
+                VirtualKey.Back => "Backspace",
+                VirtualKey.Tab => "Tab",
+                VirtualKey.Space => "Space",
+                VirtualKey.Escape => "Esc",
+                >= VirtualKey.F1 and <= VirtualKey.F12 => key.ToString(),
+                >= VirtualKey.Number0 and <= VirtualKey.Number9 => ((char)('0' + (int)key - (int)VirtualKey.Number0)).ToString(),
+                >= VirtualKey.A and <= VirtualKey.Z => key.ToString(),
+                _ => key.ToString()
+            };
         }
 
         public static void CopyProperties<T>(this T source, T target)

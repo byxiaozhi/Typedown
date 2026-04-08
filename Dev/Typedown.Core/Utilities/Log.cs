@@ -1,16 +1,17 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
-using Typedown.Core.Controls;
 
 namespace Typedown.Core.Utilities
 {
     public static class Log
     {
+        public static string AppVersion { get; set; } = "0.0.0";
+
         public static Task Report(string type, string content)
         {
             return Task.Run(() => Common.Post("https://typedown.ownbox.cn/report", new
             {
-                version = AboutApp.GetAppVersion(),
+                version = AppVersion,
                 system = Environment.OSVersion.VersionString,
                 type,
                 content,

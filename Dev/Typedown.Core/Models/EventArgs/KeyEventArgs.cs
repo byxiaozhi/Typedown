@@ -1,5 +1,5 @@
-﻿using System;
-using Windows.System;
+using System;
+using Typedown.Core.Enums;
 
 namespace Typedown.Core.Models
 {

@@ -1,0 +1,219 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+        x:Class="Typedown.App.Views.MainWindow"
+        Title="Typedown"
+        Width="1000" Height="700"
+        MinWidth="480" MinHeight="300"
+        WindowStartupLocation="CenterScreen"
+        TransparencyLevelHint="AcrylicBlur"
+        SystemDecorations="Full">
+
+    <Window.Styles>
+        <!-- ═══ Light Theme ═══ -->
+        <Style Selector="Window">
+            <Setter Property="Background" Value="#FAFAFA"/>
+        </Style>
+        <Style Selector="Menu">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style Selector="MenuItem">
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <!-- Menu bar border -->
+        <Style Selector="Border.menuBar">
+            <Setter Property="Padding" Value="8,2"/>
+        </Style>
+
+        <!-- Bottom bar -->
+        <Style Selector="Border.bottomBar">
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="BorderThickness" Value="0,1,0,0"/>
+        </Style>
+
+        <!-- Bottom bar buttons -->
+        <Style Selector="Button.bottomBtn">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style Selector="Button.bottomBtn:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#10000000"/>
+        </Style>
+
+        <!-- Settings gear button -->
+        <Style Selector="Button.settingsBtn">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Opacity" Value="0.5"/>
+        </Style>
+        <Style Selector="Button.settingsBtn:pointerover">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        <Style Selector="Button.settingsBtn:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#10000000"/>
+        </Style>
+    </Window.Styles>
+
+    <!-- ═══════════ Root Layout ═══════════ -->
+    <DockPanel>
+
+        <!-- ═══ Menu Bar (matches original: clean, flush with title bar) ═══ -->
+        <Border DockPanel.Dock="Top" Classes="menuBar">
+            <DockPanel>
+                <!-- Right: Settings gear -->
+                <Button DockPanel.Dock="Right" Classes="settingsBtn" Content="⚙"
+                        x:Name="MenuSettings" HorizontalAlignment="Right"
+                        Margin="4,0"/>
+
+                <!-- Left: Menu items -->
+                <Menu Background="Transparent" FontSize="13">
+                    <!-- File -->
+                    <MenuItem Header="文件">
+                        <MenuItem x:Name="MenuNewFile" Header="新建" InputGesture="Ctrl+N"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuOpenFile" Header="打开文件..." InputGesture="Ctrl+O"/>
+                        <MenuItem x:Name="MenuOpenFolder" Header="打开文件夹..." InputGesture="Ctrl+Shift+O"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuSave" Header="保存" InputGesture="Ctrl+S"/>
+                        <MenuItem x:Name="MenuSaveAs" Header="另存为..." InputGesture="Ctrl+Shift+S"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuExit" Header="退出" InputGesture="Alt+F4"/>
+                    </MenuItem>
+
+                    <!-- Edit -->
+                    <MenuItem Header="编辑">
+                        <MenuItem x:Name="MenuUndo" Header="撤销" InputGesture="Ctrl+Z"/>
+                        <MenuItem x:Name="MenuRedo" Header="重做" InputGesture="Ctrl+Shift+Z"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuCut" Header="剪切" InputGesture="Ctrl+X"/>
+                        <MenuItem x:Name="MenuCopy" Header="复制" InputGesture="Ctrl+C"/>
+                        <MenuItem x:Name="MenuPaste" Header="粘贴" InputGesture="Ctrl+V"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuSelectAll" Header="全选" InputGesture="Ctrl+A"/>
+                        <MenuItem x:Name="MenuFind" Header="查找替换" InputGesture="Ctrl+F"/>
+                    </MenuItem>
+
+                    <!-- Paragraph -->
+                    <MenuItem Header="段落">
+                        <MenuItem x:Name="MenuH1" Header="标题 1" InputGesture="Ctrl+1"/>
+                        <MenuItem x:Name="MenuH2" Header="标题 2" InputGesture="Ctrl+2"/>
+                        <MenuItem x:Name="MenuH3" Header="标题 3" InputGesture="Ctrl+3"/>
+                        <MenuItem x:Name="MenuH4" Header="标题 4" InputGesture="Ctrl+4"/>
+                        <MenuItem x:Name="MenuH5" Header="标题 5" InputGesture="Ctrl+5"/>
+                        <MenuItem x:Name="MenuH6" Header="标题 6" InputGesture="Ctrl+6"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuUpgradeParagraph" Header="升级标题"/>
+                        <MenuItem x:Name="MenuDegradeParagraph" Header="降级标题"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuTable" Header="表格"/>
+                        <MenuItem x:Name="MenuCodeBlock" Header="代码块" InputGesture="Ctrl+Shift+K"/>
+                        <MenuItem x:Name="MenuQuote" Header="引用" InputGesture="Ctrl+Shift+Q"/>
+                        <MenuItem x:Name="MenuMathBlock" Header="公式块" InputGesture="Ctrl+Shift+M"/>
+                        <MenuItem x:Name="MenuHorizontalRule" Header="水平线"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuOrderedList" Header="有序列表"/>
+                        <MenuItem x:Name="MenuBulletList" Header="无序列表"/>
+                        <MenuItem x:Name="MenuTaskList" Header="任务列表"/>
+                    </MenuItem>
+
+                    <!-- Format -->
+                    <MenuItem Header="格式">
+                        <MenuItem x:Name="MenuBold" Header="加粗" InputGesture="Ctrl+B"/>
+                        <MenuItem x:Name="MenuItalic" Header="斜体" InputGesture="Ctrl+I"/>
+                        <MenuItem x:Name="MenuUnderline" Header="下划线" InputGesture="Ctrl+U"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuStrikethrough" Header="删除线" InputGesture="Ctrl+D"/>
+                        <MenuItem x:Name="MenuInlineCode" Header="行内代码"/>
+                        <MenuItem x:Name="MenuInlineMath" Header="行内公式" InputGesture="Ctrl+Shift+E"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuHyperlink" Header="超链接" InputGesture="Ctrl+L"/>
+                        <MenuItem x:Name="MenuImage" Header="图片" InputGesture="Ctrl+Shift+I"/>
+                        <Separator/>
+                        <MenuItem x:Name="MenuClearFormat" Header="清除格式" InputGesture="Ctrl+Shift+R"/>
+                    </MenuItem>
+
+                    <!-- View -->
+                    <MenuItem Header="查看">
+                        <MenuItem x:Name="MenuSourceCode" Header="源代码模式" InputGesture="Ctrl+E"/>
+                        <MenuItem x:Name="MenuSidebarToggle" Header="侧边栏" InputGesture="Ctrl+Shift+B"/>
+                    </MenuItem>
+
+                    <!-- Help -->
+                    <MenuItem Header="帮助">
+                        <MenuItem x:Name="MenuAbout" Header="关于 Typedown"/>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+        </Border>
+
+        <!-- ═══ Bottom Bar (matches original: ≡ + </> left, word count right) ═══ -->
+        <Border DockPanel.Dock="Bottom" Classes="bottomBar"
+                BorderBrush="#20000000">
+            <DockPanel>
+                <!-- Left side: hamburger + source code toggle -->
+                <StackPanel Orientation="Horizontal" Spacing="2" DockPanel.Dock="Left">
+                    <Button x:Name="BtnHamburger" Classes="bottomBtn" Content="≡"
+                            Click="OnToggleSidebar"/>
+                    <Button x:Name="BtnSourceMode" Classes="bottomBtn" Content="&lt;/&gt;"
+                            Click="OnToggleSourceMode"/>
+                </StackPanel>
+
+                <!-- Right side: word count -->
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
+                            HorizontalAlignment="Right">
+                    <TextBlock x:Name="StatusWordCount" Text="" FontSize="12"
+                               Opacity="0.5" VerticalAlignment="Center"
+                               Margin="8,0"/>
+                </StackPanel>
+
+                <!-- Center: empty -->
+                <Border/>
+            </DockPanel>
+        </Border>
+
+        <!-- ═══ Main Editor Area (full width, no sidebar by default) ═══ -->
+        <Grid x:Name="MainGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar (hidden by default, same as original) -->
+            <Border x:Name="SidebarBorder" Grid.Column="0"
+                    BorderBrush="#15000000" BorderThickness="0,0,1,0">
+                <DockPanel>
+                    <Border DockPanel.Dock="Top" Padding="12,8"
+                            BorderBrush="#10000000" BorderThickness="0,0,0,1">
+                        <DockPanel>
+                            <TextBlock Text="文件" FontSize="12" FontWeight="SemiBold"
+                                       Opacity="0.5" VerticalAlignment="Center"/>
+                            <Button DockPanel.Dock="Right" Content="×"
+                                    Background="Transparent" Opacity="0.5"
+                                    HorizontalAlignment="Right" Padding="6,2"
+                                    Click="OnToggleSidebar"/>
+                        </DockPanel>
+                    </Border>
+                    <TreeView x:Name="FileExplorer" Background="Transparent"
+                              FontSize="13" Padding="4"/>
+                </DockPanel>
+            </Border>
+
+            <!-- Splitter -->
+            <GridSplitter Grid.Column="1" Width="1" Background="#10000000"
+                          ResizeBehavior="PreviousAndNext"/>
+
+            <!-- Editor WebView -->
+            <NativeWebView x:Name="EditorWebView" Grid.Column="2"/>
+        </Grid>
+    </DockPanel>
+</Window>

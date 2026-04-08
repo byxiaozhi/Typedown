@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -8,17 +8,14 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Runtime.CompilerServices;
-using Typedown.Core.Controls;
 using Typedown.Core.Enums;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
-using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Core.ViewModels
 {
     public sealed partial class SettingsViewModel : INotifyPropertyChanged, IDisposable
     {
-        public PInvoke.WINDOWPLACEMENT? StartupPlacement { get => GetSettingValue<PInvoke.WINDOWPLACEMENT?>(null); set => SetSettingValue(value); }
         public bool SidePaneOpen { get => GetSettingValue(false); set => SetSettingValue(value); }
         public double SidePaneWidth { get => GetSettingValue(300d); set => SetSettingValue(value); }
         public bool StatusBarOpen { get => GetSettingValue(true); set => SetSettingValue(value); }
@@ -45,10 +42,7 @@ namespace Typedown.Core.ViewModels
         public int TabSize { get => GetSettingValue(4); set => SetSettingValue(value); }
         public bool SpellcheckEnabled { get => GetSettingValue(false); set => SetSettingValue(value); }
         public string SpellcheckLang { get => GetSettingValue(""); set => SetSettingValue(value); }
-        public bool KeepRun { get => GetSettingValue(Config.IsPackaged); set => SetSettingValue(value); }
         public bool AnimationEnable { get => GetSettingValue(true); set => SetSettingValue(value); }
-        public bool UseMicaEffect { get => GetSettingValue(Config.IsMicaSupported); set => SetSettingValue(value); }
-        public bool UseEditorMicaEffect { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool Topmost { get => GetSettingValue(false); set => SetSettingValue(value); }
         public FileStartupAction FileStartupAction { get => GetSettingValue(FileStartupAction.None); set => SetSettingValue(value); }
         public FolderStartupAction FolderStartupAction { get => GetSettingValue(FolderStartupAction.OpenLast); set => SetSettingValue(value); }
@@ -147,24 +141,35 @@ namespace Typedown.Core.ViewModels
             SaveAllSettings();
         }
 
-        public void OnPropertyChanged(string propertyName, object before, object after)
+        public void OnSettingChanged(string propertyName, object before, object after)
         {
             PropertyChanged?.Invoke(this, new(propertyName));
             if (notifySet.Contains(propertyName))
-                MarkdownEditor.PostMessage("SettingsChanged", new Dictionary<string, object>() { { propertyName, after } });
+                MarkdownEditor?.PostMessage("SettingsChanged", new Dictionary<string, object>() { { propertyName, after } });
         }
 
         public async void ResetSetting()
         {
-            var dialog = AppContentDialog.Create(Locale.GetString("General.RestoreDefault.Title"), Locale.GetDialogString("RestoreSettingsContent"), Locale.GetString("Cancel"), Locale.GetString("Ok"));
-            dialog.DefaultButton = ContentDialogButton.Close;
-            var result = await dialog.ShowAsync(ServiceProvider.GetService<AppViewModel>().XamlRoot);
-            if (result != ContentDialogResult.Primary)
-                return;
+            var dialogService = ServiceProvider.GetService<IDialogService>();
+            if (dialogService != null)
+            {
+                var result = await dialogService.ShowAsync(
+                    Locale.GetString("General.RestoreDefault.Title"),
+                    Locale.GetDialogString("RestoreSettingsContent"),
+                    Locale.GetString("Cancel"),
+                    Locale.GetString("Ok"));
+                if (result != DialogResult.Primary)
+                    return;
+            }
             store = new JObject();
             SaveAllSettings();
             foreach (var item in GetType().GetProperties().Where(x => x.GetSetMethod() != null).Select(x => x.Name))
-                OnPropertyChanged(item);
+                NotifyPropertyChanged(item);
+        }
+
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new(propertyName));
         }
 
         public void Dispose()

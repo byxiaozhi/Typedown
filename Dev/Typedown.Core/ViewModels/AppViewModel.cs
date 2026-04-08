@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,8 +7,6 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 namespace Typedown.Core.ViewModels
 {
@@ -30,8 +28,6 @@ namespace Typedown.Core.ViewModels
 
         public UIViewModel UIViewModel => ServiceProvider.GetService<UIViewModel>();
 
-        public IReadOnlyList<Frame> FrameStack { get; set; } = new List<Frame>();
-
         public Command<Unit> GoBackCommand { get; } = new(false);
 
         public Command<string> NavigateCommand { get; } = new();
@@ -42,7 +38,18 @@ namespace Typedown.Core.ViewModels
 
         public IntPtr MainWindow { get; set; }
 
-        public XamlRoot XamlRoot { get; set; }
+        /// <summary>
+        /// Gets the absolute path for an image, relative to the current file's directory.
+        /// </summary>
+        public string GetImageAbsolutePath(string relativePath)
+        {
+            var basePath = FileViewModel?.ImageBasePath;
+            if (string.IsNullOrEmpty(basePath))
+                return relativePath;
+            if (System.IO.Path.IsPathRooted(relativePath))
+                return relativePath;
+            return System.IO.Path.GetFullPath(System.IO.Path.Combine(basePath, relativePath));
+        }
 
         private static readonly List<WeakReference<AppViewModel>> instances = new();
 
@@ -51,19 +58,13 @@ namespace Typedown.Core.ViewModels
         public AppViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            disposables.Add(GoBackCommand.OnExecute.Subscribe(_ => GoBack()));
-            lock (instances) 
+            lock (instances)
                 instances.Add(new(this));
-        }
-
-        public void GoBack()
-        {
-            FrameStack.Where(x => x.CanGoBack).Last().GoBack();
         }
 
         public void Dispose()
         {
-            lock (instances) 
+            lock (instances)
                 instances.RemoveAll(x => !x.TryGetTarget(out var target) || target == this);
             disposables.Dispose();
         }

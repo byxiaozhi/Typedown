@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -7,12 +7,10 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Text;
+using Typedown.Core.Enums;
+using Typedown.Core.Interfaces;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
-using Windows.ApplicationModel.Core;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
 
 namespace Typedown.Core.ViewModels
 {
@@ -32,22 +30,20 @@ namespace Typedown.Core.ViewModels
 
         public string MainWindowTitle { get; private set; }
 
-        public ElementTheme ActualTheme { get; private set; }
+        /// <summary>
+        /// Cross-platform theme enum: Light or Dark.
+        /// </summary>
+        public AppTheme ActualTheme { get; private set; } = Enums.AppTheme.Default;
 
         public double CaptionHeight { get; set; } = 32;
 
         private readonly CompositeDisposable disposables = new();
 
-        private readonly UISettings uiSettings = new();
-
-        private readonly CoreDispatcher dispatcher;
-
         public UIViewModel(IServiceProvider serviceProvider)
         {
-            dispatcher = CoreApplication.GetCurrentView().CoreWindow.Dispatcher;
             ServiceProvider = serviceProvider;
             disposables.Add(RemoteInvoke.Handle<JToken, object>("GetStringResources", GetStringResources));
-            _ = dispatcher.RunIdleAsync(() => InitializeBinding());
+            InitializeBinding();
         }
 
         private void InitializeBinding()
@@ -56,7 +52,7 @@ namespace Typedown.Core.ViewModels
                 return;
             disposables.Add(EditorViewModel.WhenPropertyChanged(nameof(EditorViewModel.DisplaySaved)).Subscribe(_ => UpdateTitle()));
             disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FileName)).Subscribe(_ => UpdateTitle()));
-            disposables.Add(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged)).Merge(SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme))).Subscribe(_ => UpdateActualTheme()));
+            disposables.Add(SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme)).Subscribe(_ => UpdateActualTheme()));
             UpdateTitle();
             UpdateActualTheme();
         }
@@ -75,20 +71,14 @@ namespace Typedown.Core.ViewModels
 
         private void UpdateActualTheme()
         {
-            _ = dispatcher?.TryRunIdleAsync(_ =>
+            try
             {
-                try
-                {
-                    if (SettingsViewModel.AppTheme == Enums.AppTheme.Default)
-                        ActualTheme = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
-                    else
-                        ActualTheme = SettingsViewModel.AppTheme == Enums.AppTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
-                }
-                catch
-                {
-                    // Ignore
-                }
-            });
+                ActualTheme = SettingsViewModel.AppTheme;
+            }
+            catch
+            {
+                // Ignore
+            }
         }
 
         private void UpdateTitle()

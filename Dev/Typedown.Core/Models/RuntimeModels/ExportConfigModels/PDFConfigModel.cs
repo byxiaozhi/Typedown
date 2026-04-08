@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,16 +31,7 @@ namespace Typedown.Core.Models.ExportConfigModels
         public override async Task Export(IServiceProvider serviceProvider, string html, string filePath)
         {
             var converter = serviceProvider.GetService<IFileConverter>();
-            var settings = new PdfPrintSettings()
-            {
-                Orientation = Orientation,
-                PageSize = new(PageSize.Width.GetValue(Units.Inch), PageSize.Height.GetValue(Units.Inch)),
-                Margin = new(Margins.Left.GetValue(Units.Inch), Margins.Top.GetValue(Units.Inch), Margins.Right.GetValue(Units.Inch), Margins.Bottom.GetValue(Units.Inch)),
-                ShouldPrintHeaderAndFooter = ShouldPrintHeaderAndFooter,
-                Header = Header,
-                Footer = Footer
-            };
-            var pdf = await converter.HtmlToPdf(html, settings);
+            var pdf = await converter.HtmlToPdf(html);
             await File.WriteAllBytesAsync(filePath, pdf.ToArray());
         }
     }
