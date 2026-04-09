@@ -1,6 +1,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using System.ComponentModel;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;

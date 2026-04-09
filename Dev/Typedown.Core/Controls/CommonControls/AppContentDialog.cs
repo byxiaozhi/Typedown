@@ -1,89 +1,97 @@
-﻿using System;
+using Avalonia.Interactivity;
+using System;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Typedown.Core.Utilities;
-using Windows.Foundation;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Shapes;
-using FocusManager = Windows.UI.Xaml.Input.FocusManager;
-using FocusNavigationDirection = Windows.UI.Xaml.Input.FocusNavigationDirection;
-using KeyEventHandler = Windows.UI.Xaml.Input.KeyEventHandler;
+using Avalonia.Utilities;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Markup.Xaml.Templates;
+using Avalonia.Input;
+using Avalonia.Media;
+using Avalonia.Controls.Shapes;
+using Avalonia.Styling;
+using Avalonia.VisualTree;
+
+
+
 
 namespace Typedown.Core.Controls
 {
     public class AppContentDialog : ContentControl
     {
-        public static DependencyProperty TitleTemplateProperty { get; } = DependencyProperty.Register(nameof(TitleTemplate), typeof(DataTemplate), typeof(AppContentDialog), null);
+        public static AvaloniaProperty TitleTemplateProperty { get; } = AvaloniaProperty.Register<AppContentDialog, DataTemplate>(nameof(TitleTemplate), null);
         public DataTemplate TitleTemplate { get => (DataTemplate)GetValue(TitleTemplateProperty); set => SetValue(TitleTemplateProperty, value); }
 
-        public static DependencyProperty TitleProperty { get; } = DependencyProperty.Register(nameof(Title), typeof(object), typeof(AppContentDialog), null);
+        public static AvaloniaProperty TitleProperty { get; } = AvaloniaProperty.Register<AppContentDialog, object>(nameof(Title), null);
         public object Title { get => GetValue(TitleProperty); set => SetValue(TitleProperty, value); }
 
-        public static DependencyProperty SecondaryButtonTextProperty { get; } = DependencyProperty.Register(nameof(SecondaryButtonText), typeof(string), typeof(AppContentDialog), null);
+        public static AvaloniaProperty SecondaryButtonTextProperty { get; } = AvaloniaProperty.Register<AppContentDialog, string>(nameof(SecondaryButtonText), null);
         public string SecondaryButtonText { get => (string)GetValue(SecondaryButtonTextProperty); set => SetValue(SecondaryButtonTextProperty, value); }
 
-        public static DependencyProperty SecondaryButtonCommandParameterProperty { get; } = DependencyProperty.Register(nameof(SecondaryButtonCommandParameter), typeof(object), typeof(AppContentDialog), null);
+        public static AvaloniaProperty SecondaryButtonCommandParameterProperty { get; } = AvaloniaProperty.Register<AppContentDialog, object>(nameof(SecondaryButtonCommandParameter), null);
         public object SecondaryButtonCommandParameter { get => GetValue(SecondaryButtonCommandParameterProperty); set => SetValue(SecondaryButtonCommandParameterProperty, value); }
 
-        public static DependencyProperty SecondaryButtonCommandProperty { get; } = DependencyProperty.Register(nameof(SecondaryButtonCommand), typeof(ICommand), typeof(AppContentDialog), null);
+        public static AvaloniaProperty SecondaryButtonCommandProperty { get; } = AvaloniaProperty.Register<AppContentDialog, ICommand>(nameof(SecondaryButtonCommand), null);
         public ICommand SecondaryButtonCommand { get => (ICommand)GetValue(SecondaryButtonCommandProperty); set => SetValue(SecondaryButtonCommandProperty, value); }
 
-        public static DependencyProperty PrimaryButtonTextProperty { get; } = DependencyProperty.Register(nameof(PrimaryButtonText), typeof(string), typeof(AppContentDialog), null);
+        public static AvaloniaProperty PrimaryButtonTextProperty { get; } = AvaloniaProperty.Register<AppContentDialog, string>(nameof(PrimaryButtonText), null);
         public string PrimaryButtonText { get => (string)GetValue(PrimaryButtonTextProperty); set => SetValue(PrimaryButtonTextProperty, value); }
 
-        public static DependencyProperty PrimaryButtonCommandParameterProperty { get; } = DependencyProperty.Register(nameof(PrimaryButtonCommandParameter), typeof(object), typeof(AppContentDialog), null);
+        public static AvaloniaProperty PrimaryButtonCommandParameterProperty { get; } = AvaloniaProperty.Register<AppContentDialog, object>(nameof(PrimaryButtonCommandParameter), null);
         public object PrimaryButtonCommandParameter { get => GetValue(PrimaryButtonCommandParameterProperty); set => SetValue(PrimaryButtonCommandParameterProperty, value); }
 
-        public static DependencyProperty PrimaryButtonCommandProperty { get; } = DependencyProperty.Register(nameof(PrimaryButtonCommand), typeof(ICommand), typeof(AppContentDialog), null);
+        public static AvaloniaProperty PrimaryButtonCommandProperty { get; } = AvaloniaProperty.Register<AppContentDialog, ICommand>(nameof(PrimaryButtonCommand), null);
         public ICommand PrimaryButtonCommand { get => (ICommand)GetValue(PrimaryButtonCommandProperty); set => SetValue(PrimaryButtonCommandProperty, value); }
 
-        public static DependencyProperty IsSecondaryButtonEnabledProperty { get; } = DependencyProperty.Register(nameof(IsSecondaryButtonEnabled), typeof(bool), typeof(AppContentDialog), new(true));
+        public static AvaloniaProperty IsSecondaryButtonEnabledProperty { get; } = AvaloniaProperty.Register<AppContentDialog, bool>(nameof(IsSecondaryButtonEnabled), true);
         public bool IsSecondaryButtonEnabled { get => (bool)GetValue(IsSecondaryButtonEnabledProperty); set => SetValue(IsSecondaryButtonEnabledProperty, value); }
 
-        public static DependencyProperty IsPrimaryButtonEnabledProperty { get; } = DependencyProperty.Register(nameof(IsPrimaryButtonEnabled), typeof(bool), typeof(AppContentDialog), new(true));
+        public static AvaloniaProperty IsPrimaryButtonEnabledProperty { get; } = AvaloniaProperty.Register<AppContentDialog, bool>(nameof(IsPrimaryButtonEnabled), true);
         public bool IsPrimaryButtonEnabled { get => (bool)GetValue(IsPrimaryButtonEnabledProperty); set => SetValue(IsPrimaryButtonEnabledProperty, value); }
 
-        public static DependencyProperty FullSizeDesiredProperty { get; } = DependencyProperty.Register(nameof(FullSizeDesired), typeof(bool), typeof(AppContentDialog), null);
+        public static AvaloniaProperty FullSizeDesiredProperty { get; } = AvaloniaProperty.Register<AppContentDialog, bool>(nameof(FullSizeDesired), false);
         public bool FullSizeDesired { get => (bool)GetValue(FullSizeDesiredProperty); set => SetValue(FullSizeDesiredProperty, value); }
 
-        public static DependencyProperty SecondaryButtonStyleProperty { get; } = DependencyProperty.Register(nameof(SecondaryButtonStyle), typeof(Style), typeof(AppContentDialog), null);
+        public static AvaloniaProperty SecondaryButtonStyleProperty { get; } = AvaloniaProperty.Register<AppContentDialog, Style>(nameof(SecondaryButtonStyle), null);
         public Style SecondaryButtonStyle { get => (Style)GetValue(SecondaryButtonStyleProperty); set => SetValue(SecondaryButtonStyleProperty, value); }
 
-        public static DependencyProperty PrimaryButtonStyleProperty { get; } = DependencyProperty.Register(nameof(PrimaryButtonStyle), typeof(Style), typeof(AppContentDialog), null);
+        public static AvaloniaProperty PrimaryButtonStyleProperty { get; } = AvaloniaProperty.Register<AppContentDialog, Style>(nameof(PrimaryButtonStyle), null);
         public Style PrimaryButtonStyle { get => (Style)GetValue(PrimaryButtonStyleProperty); set => SetValue(PrimaryButtonStyleProperty, value); }
 
-        public static DependencyProperty DefaultButtonProperty { get; } = DependencyProperty.Register(nameof(DefaultButton), typeof(ContentDialogButton), typeof(AppContentDialog), null);
-        public ContentDialogButton DefaultButton { get => (ContentDialogButton)GetValue(DefaultButtonProperty); set => SetValue(DefaultButtonProperty, value); }
+        public static AvaloniaProperty DefaultButtonProperty { get; } = AvaloniaProperty.Register<AppContentDialog, Typedown.Core.Controls.ContentDialogButton>(nameof(DefaultButton), Typedown.Core.Controls.ContentDialogButton.None);
+        public Typedown.Core.Controls.ContentDialogButton DefaultButton { get => (Typedown.Core.Controls.ContentDialogButton)GetValue(DefaultButtonProperty); set => SetValue(DefaultButtonProperty, value); }
 
-        public static DependencyProperty CloseButtonTextProperty { get; } = DependencyProperty.Register(nameof(CloseButtonText), typeof(string), typeof(AppContentDialog), null);
+        public static AvaloniaProperty CloseButtonTextProperty { get; } = AvaloniaProperty.Register<AppContentDialog, string>(nameof(CloseButtonText), null);
         public string CloseButtonText { get => (string)GetValue(CloseButtonTextProperty); set => SetValue(CloseButtonTextProperty, value); }
 
-        public static DependencyProperty CloseButtonStyleProperty { get; } = DependencyProperty.Register(nameof(CloseButtonStyle), typeof(Style), typeof(AppContentDialog), null);
+        public static AvaloniaProperty CloseButtonStyleProperty { get; } = AvaloniaProperty.Register<AppContentDialog, Style>(nameof(CloseButtonStyle), null);
         public Style CloseButtonStyle { get => (Style)GetValue(CloseButtonStyleProperty); set => SetValue(CloseButtonStyleProperty, value); }
 
-        public static DependencyProperty CloseButtonCommandParameterProperty { get; } = DependencyProperty.Register(nameof(CloseButtonCommandParameter), typeof(object), typeof(AppContentDialog), null);
+        public static AvaloniaProperty CloseButtonCommandParameterProperty { get; } = AvaloniaProperty.Register<AppContentDialog, object>(nameof(CloseButtonCommandParameter), null);
         public object CloseButtonCommandParameter { get => GetValue(CloseButtonCommandParameterProperty); set => SetValue(CloseButtonCommandParameterProperty, value); }
 
-        public static DependencyProperty CloseButtonCommandProperty { get; } = DependencyProperty.Register(nameof(CloseButtonCommand), typeof(ICommand), typeof(AppContentDialog), null);
+        public static AvaloniaProperty CloseButtonCommandProperty { get; } = AvaloniaProperty.Register<AppContentDialog, ICommand>(nameof(CloseButtonCommand), null);
         public ICommand CloseButtonCommand { get => (ICommand)GetValue(CloseButtonCommandProperty); set => SetValue(CloseButtonCommandProperty, value); }
 
-        public event TypedEventHandler<AppContentDialog, AppContentDialogClosedEventArgs> Closed;
+        public event EventHandler<AppContentDialog, AppContentDialogClosedEventArgs> Closed;
 
-        public event TypedEventHandler<AppContentDialog, AppContentDialogClosingEventArgs> Closing;
+        public event EventHandler<AppContentDialog, AppContentDialogClosingEventArgs> Closing;
 
-        public event TypedEventHandler<AppContentDialog, AppContentDialogOpenedEventArgs> Opened;
+        public event EventHandler<AppContentDialog, AppContentDialogOpenedEventArgs> Opened;
 
-        public event TypedEventHandler<AppContentDialog, AppContentDialogButtonClickEventArgs> PrimaryButtonClick;
+        public event EventHandler<AppContentDialog, AppContentDialogButtonClickEventArgs> PrimaryButtonClick;
 
-        public event TypedEventHandler<AppContentDialog, AppContentDialogButtonClickEventArgs> SecondaryButtonClick;
+        public event EventHandler<AppContentDialog, AppContentDialogButtonClickEventArgs> SecondaryButtonClick;
 
-        public event TypedEventHandler<AppContentDialog, AppContentDialogButtonClickEventArgs> CloseButtonClick;
+        public event EventHandler<AppContentDialog, AppContentDialogButtonClickEventArgs> CloseButtonClick;
 
         public Button PrimaryButton => GetTemplateChild("PrimaryButton") as Button;
 
@@ -105,66 +113,45 @@ namespace Typedown.Core.Controls
         {
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
-            AddHandler(KeyDownEvent, new KeyEventHandler(OnKeyDown), true);
+            AddHandler(KeyDownEvent, new EventHandler<Avalonia.Input.KeyEventArgs>(OnKeyDown), Avalonia.Interactivity.RoutingStrategies.Tunnel | Avalonia.Interactivity.RoutingStrategies.Bubble, true);
+        }
+
+        private Control GetTemplateChild(string name)
+        {
+            foreach (var child in this.GetVisualDescendants())
+            {
+                if (child is Control c && c.Name == name) return c;
+            }
+            return null;
         }
 
         private void SetButtonState()
         {
-            var primaryVisible = !string.IsNullOrEmpty(PrimaryButtonText);
-            var secondaryVisible = !string.IsNullOrEmpty(SecondaryButtonText);
-            var closeVisible = !string.IsNullOrEmpty(CloseButtonText);
-            if (primaryVisible && secondaryVisible && closeVisible)
-                VisualStateManager.GoToState(this, "AllVisible", false);
-            else if (primaryVisible && secondaryVisible)
-                VisualStateManager.GoToState(this, "PrimaryAndSecondaryVisible", false);
-            else if (primaryVisible && closeVisible)
-                VisualStateManager.GoToState(this, "PrimaryAndCloseVisible", false);
-            else if (secondaryVisible && closeVisible)
-                VisualStateManager.GoToState(this, "SecondaryAndCloseVisible", false);
-            else if (primaryVisible)
-                VisualStateManager.GoToState(this, "PrimaryVisible", false);
-            else if (secondaryVisible)
-                VisualStateManager.GoToState(this, "SecondaryVisible", false);
-            else if (closeVisible)
-                VisualStateManager.GoToState(this, "CloseVisible", false);
-            else
-                VisualStateManager.GoToState(this, "NoneVisible", false);
-            switch (DefaultButton)
-            {
-                case ContentDialogButton.Primary:
-                    VisualStateManager.GoToState(this, "PrimaryAsDefaultButton", false);
-                    break;
-                case ContentDialogButton.Secondary:
-                    VisualStateManager.GoToState(this, "SecondaryAsDefaultButton", false);
-                    break;
-                case ContentDialogButton.Close:
-                    VisualStateManager.GoToState(this, "CloseAsDefaultButton", false);
-                    break;
-                default:
-                    VisualStateManager.GoToState(this, "NoDefaultButton", false);
-                    break;
-            }
+            // var primaryVisible = !string.IsNullOrEmpty(PrimaryButtonText);
+            // var secondaryVisible = !string.IsNullOrEmpty(SecondaryButtonText);
+            // var closeVisible = !string.IsNullOrEmpty(CloseButtonText);
+            // Ignore VisualState for now
         }
 
         private async void SetFocusButton()
         {
             bool success = false;
-            prevFocusedElement = FocusManager.GetFocusedElement(XamlRoot);
+            prevFocusedElement = TopLevel.GetTopLevel(this)?.FocusManager?.GetFocusedElement();
             for (int i = 0; i < 10 && !success; i++)
             {
                 await Task.Delay(100);
-                if (DefaultButton == ContentDialogButton.Primary && PrimaryButton.Visibility == Visibility.Visible)
-                    success = PrimaryButton.Focus(FocusState.Programmatic);
-                else if (DefaultButton == ContentDialogButton.Secondary && SecondaryButton.Visibility == Visibility.Visible)
-                    success = SecondaryButton.Focus(FocusState.Programmatic);
-                else if (DefaultButton == ContentDialogButton.Close && CloseButton.Visibility == Visibility.Visible)
-                    success = CloseButton.Focus(FocusState.Programmatic);
-                else if (PrimaryButton.Visibility == Visibility.Visible)
-                    success = PrimaryButton.Focus(FocusState.Programmatic);
-                else if (SecondaryButton.Visibility == Visibility.Visible)
-                    success = SecondaryButton.Focus(FocusState.Programmatic);
-                else if (CloseButton.Visibility == Visibility.Visible)
-                    success = CloseButton.Focus(FocusState.Programmatic);
+                if (DefaultButton == ContentDialogButton.Primary && PrimaryButton.IsVisible)
+                    success = PrimaryButton.Focus();
+                else if (DefaultButton == ContentDialogButton.Secondary && SecondaryButton.IsVisible)
+                    success = SecondaryButton.Focus();
+                else if (DefaultButton == ContentDialogButton.Close && CloseButton.IsVisible)
+                    success = CloseButton.Focus();
+                else if (PrimaryButton.IsVisible)
+                    success = PrimaryButton.Focus();
+                else if (SecondaryButton.IsVisible)
+                    success = SecondaryButton.Focus();
+                else if (CloseButton.IsVisible)
+                    success = CloseButton.Focus();
                 else
                     success = true;
             }
@@ -172,10 +159,6 @@ namespace Typedown.Core.Controls
 
         public void SetShadow()
         {
-            var sharedShadow = new ThemeShadow();
-            BackgroundElement.Shadow = sharedShadow;
-            sharedShadow.Receivers.Add(SmokeLayerBackground);
-            BackgroundElement.Translation = new Vector3(0, 0, 128);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -183,41 +166,45 @@ namespace Typedown.Core.Controls
             SetButtonState();
             SetFocusButton();
             SetShadow();
-            VisualStateManager.GoToState(this, "DialogShowing", true);
+            // VisualStateManager.GoToState(this, "DialogShowing", true);
             PrimaryButton.Click += OnPrimaryButtonClick;
             SecondaryButton.Click += OnSecondaryButtonClick;
             CloseButton.Click += OnCloseButtonClick;
             Opened?.Invoke(this, new());
-            FocusManager.GettingFocus += OnFocusManagerGettingFocus;
+            // FocusManager.GettingFocus += OnFocusManagerGettingFocus;
         }
 
         private async void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            VisualStateManager.GoToState(this, "DialogHidden", true);
+            // VisualStateManager.GoToState(this, "DialogHidden", true);
             PrimaryButton.Click -= OnPrimaryButtonClick;
             SecondaryButton.Click -= OnSecondaryButtonClick;
             CloseButton.Click -= OnCloseButtonClick;
             Closed?.Invoke(this, new(result.Task.Result));
-            FocusManager.GettingFocus -= OnFocusManagerGettingFocus;
-            if (prevFocusedElement is FrameworkElement ele && ele.IsLoaded)
-                await FocusManager.TryFocusAsync(ele, FocusState.Programmatic);
+            // FocusManager.GettingFocus -= OnFocusManagerGettingFocus;
+            if (prevFocusedElement is Control ele && ele.IsLoaded)
+                ele.Focus(); // TryFocusAsync replaced by Focus
         }
 
-        private void OnFocusManagerGettingFocus(object sender, GettingFocusEventArgs e)
-        {
-            if (e.NewFocusedElement is FrameworkElement ele)
-            {
-                if (ele != this && ele.GetAncestor<AppContentDialog>() == null)
-                {
-                    if (e.Direction == FocusNavigationDirection.Next)
-                        e.TrySetNewFocusedElement(FocusManager.FindFirstFocusableElement(this));
-                    else if (e.Direction == FocusNavigationDirection.Previous)
-                        e.TrySetNewFocusedElement(FocusManager.FindLastFocusableElement(this));
-                }
-            }
-        }
+        // private void OnFocusManagerGettingFocus(object sender, GettingFocusEventArgs e)
+        // {
+        //     if (e.NewFocusedElement is FrameworkElement ele)
+        //     {
+        //         if (ele != this && ele.GetAncestor<AppContentDialog>() == null)
+        //         {
+        //             if (e.Direction == FocusNavigationDirection.Next)
+        //                 e.TrySetNewFocusedElement(this);
+        //             else
+        //                 e.TryCancel();
+        //         }
+        //     }
+        //     else
+        //     {
+        //         e.TrySetNewFocusedElement(this);
+        //     }
+        // }
 
-        private void OnPrimaryButtonClick(object sender, RoutedEventArgs e)
+        private void OnPrimaryButtonClick(object? sender, RoutedEventArgs e)
         {
             var clickEventArgs = new AppContentDialogButtonClickEventArgs();
             PrimaryButtonClick?.Invoke(this, clickEventArgs);
@@ -226,7 +213,7 @@ namespace Typedown.Core.Controls
             SetResult(ContentDialogResult.Primary);
         }
 
-        private void OnSecondaryButtonClick(object sender, RoutedEventArgs e)
+        private void OnSecondaryButtonClick(object? sender, RoutedEventArgs e)
         {
             var clickEventArgs = new AppContentDialogButtonClickEventArgs();
             SecondaryButtonClick?.Invoke(this, clickEventArgs);
@@ -235,7 +222,7 @@ namespace Typedown.Core.Controls
             SetResult(ContentDialogResult.Secondary);
         }
 
-        private void OnCloseButtonClick(object sender, RoutedEventArgs e)
+        private void OnCloseButtonClick(object? sender, RoutedEventArgs e)
         {
             var clickEventArgs = new AppContentDialogButtonClickEventArgs();
             CloseButtonClick?.Invoke(this, clickEventArgs);
@@ -244,10 +231,10 @@ namespace Typedown.Core.Controls
             SetResult(ContentDialogResult.None);
         }
 
-        private void OnKeyDown(object sender, KeyRoutedEventArgs e)
+        private void OnKeyDown(object? sender, KeyEventArgs e)
         {
-            if (IsLoaded && CloseButton.Visibility == Visibility.Visible && e.Key == Windows.System.VirtualKey.Escape)
-                OnCloseButtonClick(this, null);
+            if (IsLoaded && CloseButton.IsVisible && e.Key == Avalonia.Input.Key.Escape)
+                OnCloseButtonClick(this, null!);
         }
 
         private void SetResult(ContentDialogResult result)
@@ -262,15 +249,17 @@ namespace Typedown.Core.Controls
 
         public void Hide()
         {
-            if (XamlRoot.Content is Grid grid && IsLoaded)
+            if (XamlRoot?.Parent is Grid grid && IsLoaded)
                 grid.Children.Remove(this);
         }
 
-        private readonly ConditionalWeakTable<XamlRoot, SemaphoreSlim> showSemaphores = new();
+        private readonly ConditionalWeakTable<Control, SemaphoreSlim> showSemaphores = new();
+
+        public Control XamlRoot { get; set; }
 
         public async Task<ContentDialogResult> ShowAsync()
         {
-            if (XamlRoot.Content is not Grid grid || IsLoaded)
+            if (XamlRoot == null || IsLoaded)
                 throw new InvalidOperationException();
             if (!showSemaphores.TryGetValue(XamlRoot, out var semaphore))
                 showSemaphores.Add(XamlRoot, semaphore = new(1));
@@ -278,7 +267,10 @@ namespace Typedown.Core.Controls
             try
             {
                 result = new();
-                grid.Children.Add(this);
+                if (XamlRoot.Parent is Panel panel)
+                {
+                    panel.Children.Add(this);
+                }
                 return await result.Task;
             }
             finally
@@ -287,7 +279,7 @@ namespace Typedown.Core.Controls
             }
         }
 
-        public async Task<ContentDialogResult> ShowAsync(XamlRoot xamlRoot)
+        public async Task<ContentDialogResult> ShowAsync(Control xamlRoot)
         {
             XamlRoot = xamlRoot;
             return await ShowAsync();
@@ -331,6 +323,21 @@ namespace Typedown.Core.Controls
         }
     }
 
+    public enum ContentDialogButton
+    {
+        None = 0,
+        Primary,
+        Secondary,
+        Close
+    }
+
+    public enum ContentDialogResult
+    {
+        None,
+        Primary,
+        Secondary
+    }
+
     public class AppContentDialogClosedEventArgs
     {
         public ContentDialogResult Result { get; }
@@ -362,3 +369,4 @@ namespace Typedown.Core.Controls
         public bool Cancel { get; set; } = false;
     }
 }
+

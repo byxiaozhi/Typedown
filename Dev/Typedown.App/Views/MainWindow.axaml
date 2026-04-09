@@ -8,75 +8,104 @@
         Width="1000" Height="700"
         MinWidth="480" MinHeight="300"
         WindowStartupLocation="CenterScreen"
-        TransparencyLevelHint="AcrylicBlur"
-        SystemDecorations="Full">
+        TransparencyLevelHint="Mica,AcrylicBlur"
+        Background="Transparent"
+        Icon="avares://Typedown.App/Assets/logo.png">
 
     <Window.Styles>
-        <!-- ═══ Light Theme ═══ -->
-        <Style Selector="Window">
-            <Setter Property="Background" Value="#FAFAFA"/>
-        </Style>
-        <Style Selector="Menu">
+        <!-- ══ CRITICAL: Make FluentTheme window internals transparent for Mica ══ -->
+        <!-- Force the Window template's layout root and background elements to be transparent -->
+        <Style Selector="Window /template/ Panel#LayoutRoot">
             <Setter Property="Background" Value="Transparent"/>
         </Style>
-        <Style Selector="MenuItem">
+        <Style Selector="Window /template/ Border#PART_TransparencyFallback">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style Selector="Window /template/ Panel#BackgroundLayer">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <!-- ══ Top-level menu items ══ -->
+        <Style Selector="Menu > MenuItem">
             <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="1,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style Selector="Menu > MenuItem:pointerover /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="#15000000"/>
+        </Style>
+        <Style Selector="Menu > MenuItem:pressed /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="#20000000"/>
         </Style>
 
-        <!-- Menu bar border -->
-        <Style Selector="Border.menuBar">
-            <Setter Property="Padding" Value="8,2"/>
-        </Style>
-
-        <!-- Bottom bar -->
-        <Style Selector="Border.bottomBar">
-            <Setter Property="Padding" Value="8,4"/>
-            <Setter Property="BorderThickness" Value="0,1,0,0"/>
-        </Style>
-
-        <!-- Bottom bar buttons -->
+        <!-- ══ Bottom bar buttons ══ -->
         <Style Selector="Button.bottomBtn">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="Padding" Value="5,3"/>
             <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Opacity" Value="0.55"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="MinHeight" Value="0"/>
+            <Setter Property="MinWidth" Value="0"/>
         </Style>
-        <Style Selector="Button.bottomBtn:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#10000000"/>
-        </Style>
-
-        <!-- Settings gear button -->
-        <Style Selector="Button.settingsBtn">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Padding" Value="6,4"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Opacity" Value="0.5"/>
-        </Style>
-        <Style Selector="Button.settingsBtn:pointerover">
+        <Style Selector="Button.bottomBtn:pointerover">
             <Setter Property="Opacity" Value="1"/>
         </Style>
+        <Style Selector="Button.bottomBtn:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#15000000"/>
+        </Style>
+
+        <!-- ══ Settings gear ══ -->
+        <Style Selector="Button.settingsBtn">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
         <Style Selector="Button.settingsBtn:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#10000000"/>
+            <Setter Property="Background" Value="#15000000"/>
+        </Style>
+        <Style Selector="Button.settingsBtn:pressed /template/ ContentPresenter">
+            <Setter Property="Background" Value="#20000000"/>
+        </Style>
+
+        <!-- ══ Sidebar tab styling ══ -->
+        <Style Selector="Border.tabActive">
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+        </Style>
+        <Style Selector="Border.tabInactive">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
         </Style>
     </Window.Styles>
 
-    <!-- ═══════════ Root Layout ═══════════ -->
+    <!-- ═══════════════════════════════════════ -->
+    <!--  Root Layout                            -->
+    <!-- ═══════════════════════════════════════ -->
     <DockPanel>
 
-        <!-- ═══ Menu Bar (matches original: clean, flush with title bar) ═══ -->
-        <Border DockPanel.Dock="Top" Classes="menuBar">
+        <!-- ╔══ Row 2: Toolbar / Menu Bar ══╗ -->
+        <Border DockPanel.Dock="Top" Padding="6,4,6,4" Background="#eff4f9">
             <DockPanel>
-                <!-- Right: Settings gear -->
-                <Button DockPanel.Dock="Right" Classes="settingsBtn" Content="⚙"
-                        x:Name="MenuSettings" HorizontalAlignment="Right"
-                        Margin="4,0"/>
-
-                <!-- Left: Menu items -->
-                <Menu Background="Transparent" FontSize="13">
-                    <!-- File -->
+                <Button DockPanel.Dock="Right" Classes="settingsBtn" x:Name="MenuSettings"
+                        ToolTip.Tip="设置" VerticalAlignment="Center" Margin="4,0,4,0">
+                    <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
+                               Text="&#xE713;" FontSize="14"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <Menu Background="Transparent" VerticalAlignment="Center">
                     <MenuItem Header="文件">
                         <MenuItem x:Name="MenuNewFile" Header="新建" InputGesture="Ctrl+N"/>
                         <Separator/>
@@ -88,8 +117,6 @@
                         <Separator/>
                         <MenuItem x:Name="MenuExit" Header="退出" InputGesture="Alt+F4"/>
                     </MenuItem>
-
-                    <!-- Edit -->
                     <MenuItem Header="编辑">
                         <MenuItem x:Name="MenuUndo" Header="撤销" InputGesture="Ctrl+Z"/>
                         <MenuItem x:Name="MenuRedo" Header="重做" InputGesture="Ctrl+Shift+Z"/>
@@ -101,8 +128,6 @@
                         <MenuItem x:Name="MenuSelectAll" Header="全选" InputGesture="Ctrl+A"/>
                         <MenuItem x:Name="MenuFind" Header="查找替换" InputGesture="Ctrl+F"/>
                     </MenuItem>
-
-                    <!-- Paragraph -->
                     <MenuItem Header="段落">
                         <MenuItem x:Name="MenuH1" Header="标题 1" InputGesture="Ctrl+1"/>
                         <MenuItem x:Name="MenuH2" Header="标题 2" InputGesture="Ctrl+2"/>
@@ -110,9 +135,6 @@
                         <MenuItem x:Name="MenuH4" Header="标题 4" InputGesture="Ctrl+4"/>
                         <MenuItem x:Name="MenuH5" Header="标题 5" InputGesture="Ctrl+5"/>
                         <MenuItem x:Name="MenuH6" Header="标题 6" InputGesture="Ctrl+6"/>
-                        <Separator/>
-                        <MenuItem x:Name="MenuUpgradeParagraph" Header="升级标题"/>
-                        <MenuItem x:Name="MenuDegradeParagraph" Header="降级标题"/>
                         <Separator/>
                         <MenuItem x:Name="MenuTable" Header="表格"/>
                         <MenuItem x:Name="MenuCodeBlock" Header="代码块" InputGesture="Ctrl+Shift+K"/>
@@ -124,8 +146,6 @@
                         <MenuItem x:Name="MenuBulletList" Header="无序列表"/>
                         <MenuItem x:Name="MenuTaskList" Header="任务列表"/>
                     </MenuItem>
-
-                    <!-- Format -->
                     <MenuItem Header="格式">
                         <MenuItem x:Name="MenuBold" Header="加粗" InputGesture="Ctrl+B"/>
                         <MenuItem x:Name="MenuItalic" Header="斜体" InputGesture="Ctrl+I"/>
@@ -140,14 +160,10 @@
                         <Separator/>
                         <MenuItem x:Name="MenuClearFormat" Header="清除格式" InputGesture="Ctrl+Shift+R"/>
                     </MenuItem>
-
-                    <!-- View -->
                     <MenuItem Header="查看">
                         <MenuItem x:Name="MenuSourceCode" Header="源代码模式" InputGesture="Ctrl+E"/>
                         <MenuItem x:Name="MenuSidebarToggle" Header="侧边栏" InputGesture="Ctrl+Shift+B"/>
                     </MenuItem>
-
-                    <!-- Help -->
                     <MenuItem Header="帮助">
                         <MenuItem x:Name="MenuAbout" Header="关于 Typedown"/>
                     </MenuItem>
@@ -155,65 +171,78 @@
             </DockPanel>
         </Border>
 
-        <!-- ═══ Bottom Bar (matches original: ≡ + </> left, word count right) ═══ -->
-        <Border DockPanel.Dock="Bottom" Classes="bottomBar"
-                BorderBrush="#20000000">
+        <!-- ═══ Separator: toolbar → content ═══ -->
+        <Border DockPanel.Dock="Top" Height="0.5"
+                Background="{DynamicResource SystemControlForegroundBaseLowBrush}"/>
+
+        <!-- ╔══ Bottom Status Bar ══╗ -->
+        <Border DockPanel.Dock="Bottom" Padding="4,2" Background="#D8F3F3F3"
+                BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                BorderThickness="0,0.5,0,0">
             <DockPanel>
-                <!-- Left side: hamburger + source code toggle -->
-                <StackPanel Orientation="Horizontal" Spacing="2" DockPanel.Dock="Left">
-                    <Button x:Name="BtnHamburger" Classes="bottomBtn" Content="≡"
-                            Click="OnToggleSidebar"/>
-                    <Button x:Name="BtnSourceMode" Classes="bottomBtn" Content="&lt;/&gt;"
-                            Click="OnToggleSourceMode"/>
+                <StackPanel Orientation="Horizontal" Spacing="1" DockPanel.Dock="Left"
+                            VerticalAlignment="Center">
+                    <Button x:Name="BtnHamburger" Classes="bottomBtn" Click="OnToggleSidebar"
+                            ToolTip.Tip="切换侧边栏">
+                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
+                                   Text="&#xE700;" FontSize="14"/>
+                    </Button>
+                    <Button x:Name="BtnSourceMode" Classes="bottomBtn" Click="OnToggleSourceMode"
+                            ToolTip.Tip="源代码模式">
+                        <TextBlock Text="&lt;/&gt;" FontSize="11" FontFamily="Consolas, monospace"/>
+                    </Button>
                 </StackPanel>
-
-                <!-- Right side: word count -->
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
-                            HorizontalAlignment="Right">
-                    <TextBlock x:Name="StatusWordCount" Text="" FontSize="12"
-                               Opacity="0.5" VerticalAlignment="Center"
-                               Margin="8,0"/>
-                </StackPanel>
-
-                <!-- Center: empty -->
+                <TextBlock x:Name="StatusWordCount" Text="0 字" FontSize="11.5"
+                           Opacity="0.5" VerticalAlignment="Center"
+                           DockPanel.Dock="Right" Margin="0,0,6,0"/>
                 <Border/>
             </DockPanel>
         </Border>
 
-        <!-- ═══ Main Editor Area (full width, no sidebar by default) ═══ -->
+        <!-- ╔══ Main Content (2-column: sidebar+border | editor) ══╗ -->
         <Grid x:Name="MainGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="0" MinWidth="0" MaxWidth="400"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Sidebar (hidden by default, same as original) -->
-            <Border x:Name="SidebarBorder" Grid.Column="0"
-                    BorderBrush="#15000000" BorderThickness="0,0,1,0">
-                <DockPanel>
-                    <Border DockPanel.Dock="Top" Padding="12,8"
-                            BorderBrush="#10000000" BorderThickness="0,0,0,1">
-                        <DockPanel>
-                            <TextBlock Text="文件" FontSize="12" FontWeight="SemiBold"
-                                       Opacity="0.5" VerticalAlignment="Center"/>
-                            <Button DockPanel.Dock="Right" Content="×"
-                                    Background="Transparent" Opacity="0.5"
-                                    HorizontalAlignment="Right" Padding="6,2"
-                                    Click="OnToggleSidebar"/>
-                        </DockPanel>
+            <!-- Sidebar: solid background + thin right border as separator -->
+            <Border Grid.Column="0"
+                    Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                    BorderThickness="0,0,0.5,0">
+                <DockPanel x:Name="SidebarPanel">
+                    <!-- Tab row -->
+                    <Border DockPanel.Dock="Top" Padding="14,0"
+                            BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                            BorderThickness="0,0,0,0.5">
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <Border x:Name="TabFiles" Classes="tabActive" Padding="0,10,0,6"
+                                    Cursor="Hand" Tapped="OnTabFilesClick">
+                                <TextBlock Text="文件" FontSize="13" Opacity="0.9"/>
+                            </Border>
+                            <Border x:Name="TabOutline" Classes="tabInactive" Padding="0,10,0,6"
+                                    Cursor="Hand" Tapped="OnTabOutlineClick">
+                                <TextBlock Text="大纲" FontSize="13" Opacity="0.5"/>
+                            </Border>
+                        </StackPanel>
                     </Border>
+                    <!-- File tree -->
                     <TreeView x:Name="FileExplorer" Background="Transparent"
-                              FontSize="13" Padding="4"/>
+                              FontSize="13" Padding="4,8"/>
                 </DockPanel>
             </Border>
 
-            <!-- Splitter -->
-            <GridSplitter Grid.Column="1" Width="1" Background="#10000000"
-                          ResizeBehavior="PreviousAndNext"/>
+            <!-- GridSplitter: thin transparent drag handle at column boundary -->
+            <GridSplitter x:Name="SidebarSplitter" Grid.Column="0"
+                          HorizontalAlignment="Right" Width="4"
+                          Background="Transparent" ResizeDirection="Columns"
+                          IsVisible="False" Margin="0" Padding="0"/>
 
-            <!-- Editor WebView -->
-            <NativeWebView x:Name="EditorWebView" Grid.Column="2"/>
+            <!-- Editor -->
+            <Border Grid.Column="1" Background="Transparent">
+                <NativeWebView x:Name="EditorWebView"/>
+            </Border>
         </Grid>
     </DockPanel>
 </Window>

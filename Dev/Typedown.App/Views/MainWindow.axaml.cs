@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reactive;
 using System.Reactive.Disposables;
@@ -6,12 +7,13 @@ using System.Reactive.Linq;
 using System.Reflection;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Linq;
 using Typedown.App.Services;
 using Typedown.Core.Enums;
-using Typedown.Core.Interfaces;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
@@ -35,6 +37,11 @@ public partial class MainWindow : Window
     private bool _isCloseable;
     private bool _isClosing;
 
+    // Sidebar state
+    private bool _showOutline;
+    private TreeView? _outlineTree;
+    private TreeView? _fileExplorer;
+
     public MainWindow()
     {
         InitializeComponent();
@@ -51,6 +58,18 @@ public partial class MainWindow : Window
         _eventCenter = sp.GetRequiredService<EventCenter>();
         _markdownEditor = sp.GetRequiredService<AvaloniaMarkdownEditor>();
 
+        // Grab references
+        _fileExplorer = this.FindControl<TreeView>("FileExplorer");
+
+        // Create outline TreeView for the 大纲 tab
+        _outlineTree = new TreeView
+        {
+            Background = Avalonia.Media.Brushes.Transparent,
+            FontSize = 13,
+            Padding = new Thickness(4, 8),
+        };
+        _outlineTree.DoubleTapped += OnOutlineItemDoubleTapped;
+
         SetupBindings();
         WireMenuCommands();
     }
@@ -59,42 +78,26 @@ public partial class MainWindow : Window
 
     private void SetupBindings()
     {
-        // Window title (matches original: "FileName - Typedown")
+        // Window title
         _disposables.Add(_uiVm.WhenPropertyChanged(nameof(UIViewModel.MainWindowTitle))
             .Cast<string>().StartWith(_uiVm.MainWindowTitle)
             .Subscribe(t => Dispatcher.UIThread.Post(() => Title = t ?? "Typedown")));
 
-        // Save status — show * prefix in title (original behavior)
-        _disposables.Add(_editorVm.WhenPropertyChanged(nameof(EditorViewModel.Saved))
-            .Cast<bool>().StartWith(_editorVm.Saved)
-            .Subscribe(_ => { })); // Title already managed by UIViewModel
-
-        // Theme switching
+        // Theme switching + sync to editor
         _disposables.Add(_settingsVm.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme))
             .Cast<AppTheme>().StartWith(_settingsVm.AppTheme)
-            .Subscribe(theme => Dispatcher.UIThread.Post(() => SetTheme(theme))));
-
-        // Word count in bottom bar (matches original: "114 字")
-        _disposables.Add(_eventCenter.GetObservable<Typedown.Core.Models.EditorEventArgs>("StateChange")
-            .Subscribe(args =>
+            .Subscribe(theme => Dispatcher.UIThread.Post(() =>
             {
-                Dispatcher.UIThread.Post(() =>
-                {
-                    try
-                    {
-                        var wordCount = (int)(args.Args?["wordCount"] ?? 0);
-                        SetStatus("StatusWordCount", $"{wordCount} 字");
-                    }
-                    catch { }
-                });
-            }));
+                SetTheme(theme);
+                SyncEditorTheme(theme);
+            })));
     }
 
-    // ═══════════ Menu Command Wiring ═══════════
+    // ═══════════ Menu → Vditor Commands ═══════════
 
     private void WireMenuCommands()
     {
-        // File
+        // File (via Core ViewModels)
         Bind("MenuNewFile", () => _fileVm.NewFileCommand.Execute(Unit.Default));
         Bind("MenuOpenFile", () => _fileVm.OpenFileCommand.Execute(null));
         Bind("MenuOpenFolder", () => _fileVm.OpenFolderCommand.Execute(null));
@@ -102,63 +105,65 @@ public partial class MainWindow : Window
         Bind("MenuSaveAs", () => _fileVm.SaveAsCommand.Execute(Unit.Default));
         Bind("MenuExit", () => Close());
 
-        // Edit
-        Bind("MenuUndo", () => _editorVm.UndoCommand.Execute(Unit.Default));
-        Bind("MenuRedo", () => _editorVm.RedoCommand.Execute(Unit.Default));
-        Bind("MenuCut", () => _editorVm.CutCommand.Execute("cut"));
-        Bind("MenuCopy", () => _editorVm.CopyCommand.Execute("copy"));
-        Bind("MenuPaste", () => _editorVm.PasteCommand.Execute("paste"));
-        Bind("MenuSelectAll", () => _editorVm.SelectAllCommand.Execute(Unit.Default));
-        Bind("MenuFind", () => _editorVm.FindCommand.Execute(null));
+        // Edit → Vditor
+        BindVditor("MenuUndo", "Undo");
+        BindVditor("MenuRedo", "Redo");
+        BindVditor("MenuCut", "Cut");
+        BindVditor("MenuCopy", "Copy");
+        BindVditor("MenuPaste", "Paste");
+        BindVditor("MenuSelectAll", "SelectAll");
+        BindVditor("MenuFind", "Find", new { action = "open" });
 
-        // Paragraph
-        Bind("MenuH1", () => _paragraphVm.UpdateParagraphCommand.Execute("atx-heading 1"));
-        Bind("MenuH2", () => _paragraphVm.UpdateParagraphCommand.Execute("atx-heading 2"));
-        Bind("MenuH3", () => _paragraphVm.UpdateParagraphCommand.Execute("atx-heading 3"));
-        Bind("MenuH4", () => _paragraphVm.UpdateParagraphCommand.Execute("atx-heading 4"));
-        Bind("MenuH5", () => _paragraphVm.UpdateParagraphCommand.Execute("atx-heading 5"));
-        Bind("MenuH6", () => _paragraphVm.UpdateParagraphCommand.Execute("atx-heading 6"));
-        Bind("MenuUpgradeParagraph", () => _paragraphVm.UpdateParagraphCommand.Execute("upgrade heading"));
-        Bind("MenuDegradeParagraph", () => _paragraphVm.UpdateParagraphCommand.Execute("degrade heading"));
-        Bind("MenuTable", () => _paragraphVm.InsertTableCommand.Execute(Unit.Default));
-        Bind("MenuCodeBlock", () => _paragraphVm.InsertParagraphCommand.Execute("pre"));
-        Bind("MenuQuote", () => _paragraphVm.InsertParagraphCommand.Execute("block-quote"));
-        Bind("MenuMathBlock", () => _paragraphVm.InsertParagraphCommand.Execute("mathblock"));
-        Bind("MenuHorizontalRule", () => _paragraphVm.InsertParagraphCommand.Execute("thematic-break"));
-        Bind("MenuOrderedList", () => _paragraphVm.InsertParagraphCommand.Execute("order-list"));
-        Bind("MenuBulletList", () => _paragraphVm.InsertParagraphCommand.Execute("bullet-list"));
-        Bind("MenuTaskList", () => _paragraphVm.InsertParagraphCommand.Execute("task-list"));
+        // Paragraph → Vditor
+        BindVditor("MenuH1", "Heading", new { level = 1 });
+        BindVditor("MenuH2", "Heading", new { level = 2 });
+        BindVditor("MenuH3", "Heading", new { level = 3 });
+        BindVditor("MenuH4", "Heading", new { level = 4 });
+        BindVditor("MenuH5", "Heading", new { level = 5 });
+        BindVditor("MenuH6", "Heading", new { level = 6 });
+        BindVditor("MenuTable", "InsertTable", new { rows = 3, columns = 3 });
+        BindVditor("MenuCodeBlock", "InsertBlock", new { type = "code-block" });
+        BindVditor("MenuQuote", "InsertBlock", new { type = "blockquote" });
+        BindVditor("MenuMathBlock", "InsertBlock", new { type = "math-block" });
+        BindVditor("MenuHorizontalRule", "InsertBlock", new { type = "hr" });
+        BindVditor("MenuOrderedList", "InsertBlock", new { type = "ordered-list" });
+        BindVditor("MenuBulletList", "InsertBlock", new { type = "bullet-list" });
+        BindVditor("MenuTaskList", "InsertBlock", new { type = "task-list" });
 
-        // Format
-        Bind("MenuBold", () => _formatVm.SetFormatCommand.Execute("strong"));
-        Bind("MenuItalic", () => _formatVm.SetFormatCommand.Execute("em"));
-        Bind("MenuUnderline", () => _formatVm.SetFormatCommand.Execute("u"));
-        Bind("MenuStrikethrough", () => _formatVm.SetFormatCommand.Execute("del"));
-        Bind("MenuInlineCode", () => _formatVm.SetFormatCommand.Execute("inline_code"));
-        Bind("MenuInlineMath", () => _formatVm.SetFormatCommand.Execute("inline_math"));
-        Bind("MenuHyperlink", () => _formatVm.SetFormatCommand.Execute("a"));
-        Bind("MenuImage", () => _formatVm.SetFormatCommand.Execute("image"));
-        Bind("MenuClearFormat", () => _formatVm.SetFormatCommand.Execute("clear"));
+        // Format → Vditor toolbar actions
+        BindVditor("MenuBold", "ToolbarAction", new { action = "bold" });
+        BindVditor("MenuItalic", "ToolbarAction", new { action = "italic" });
+        BindVditor("MenuUnderline", "ToolbarAction", new { action = "underline" });
+        BindVditor("MenuStrikethrough", "ToolbarAction", new { action = "strike" });
+        BindVditor("MenuInlineCode", "ToolbarAction", new { action = "inline-code" });
+        BindVditor("MenuInlineMath", "ToolbarAction", new { action = "inline-math" });
+        BindVditor("MenuHyperlink", "ToolbarAction", new { action = "link" });
+        BindVditor("MenuImage", "ToolbarAction", new { action = "image" });
+        BindVditor("MenuClearFormat", "ToolbarAction", new { action = "clear" });
 
         // View
-        Bind("MenuSourceCode", () => _markdownEditor?.PostMessage("SwitchSourceCodeMode", null));
+        BindVditor("MenuSourceCode", "SwitchMode", new { mode = "sv" });
         Bind("MenuSidebarToggle", () => ToggleSidebar());
 
-        // Settings gear
+        // Settings
         Bind("MenuSettings", () => { /* TODO: Open settings page */ });
+    }
+
+    private void BindVditor(string menuName, string command, object? data = null)
+    {
+        Bind(menuName, () => _markdownEditor?.PostMessage(command, data));
     }
 
     private void Bind(string menuName, Action action)
     {
-        // Use non-generic approach to avoid type mismatch when name is found as wrong type
-        var control = this.GetControl<Control>(menuName);
-        if (control is MenuItem menuItem)
-            menuItem.Click += (_, _) => action();
-        else if (control is Button button)
-            button.Click += (_, _) => action();
+        var control = SafeFindControl<Control>(menuName);
+        if (control is MenuItem mi)
+            mi.Click += (_, _) => action();
+        else if (control is Button btn)
+            btn.Click += (_, _) => action();
     }
 
-    private T? GetControl<T>(string name) where T : Control
+    private T? SafeFindControl<T>(string name) where T : Control
     {
         try { return this.FindControl<T>(name); }
         catch { return null; }
@@ -183,7 +188,7 @@ public partial class MainWindow : Window
             Dispatcher.UIThread.Post(() =>
             {
                 try { HandleEditorMessage(message); }
-                catch (Exception ex) { System.Diagnostics.Trace.WriteLine($"JS error: {ex.Message}"); }
+                catch (Exception ex) { System.Diagnostics.Trace.WriteLine($"[JS→C#] {ex.Message}"); }
             });
         };
 
@@ -191,27 +196,58 @@ public partial class MainWindow : Window
         {
             Dispatcher.UIThread.Post(() =>
             {
-                if (args.IsSuccess) _markdownEditor.SetEditorLoaded(true);
+                if (args.IsSuccess)
+                {
+                    _markdownEditor.SetEditorLoaded(true);
+                    SyncEditorTheme(_settingsVm.AppTheme);
+                }
                 else _markdownEditor.SetEditorFailed(true);
             });
         };
 
         LoadEditorPage();
+
+        // Force Mica through by clearing opaque backgrounds in FluentTheme window template
+        Console.WriteLine($"[Typedown] ActualTransparencyLevel = {ActualTransparencyLevel}");
+        ClearTemplateBackgrounds(this);
     }
 
+    /// <summary>
+    /// Central JS→C# message router.
+    /// Handles UI-specific events directly, then forwards the rest to Core services.
+    /// </summary>
     private void HandleEditorMessage(string json)
     {
         try
         {
-            var doc = Newtonsoft.Json.Linq.JObject.Parse(json);
-            var name = doc["name"]?.ToString() ?? doc["type"]?.ToString();
-            var arg = doc["arg"] ?? doc["data"];
+            var doc = JObject.Parse(json);
+            var name = doc["type"]?.ToString() ?? doc["name"]?.ToString();
+            var data = doc["data"] ?? doc["arg"];
             if (string.IsNullOrEmpty(name)) return;
 
-            try { _ = _remoteInvoke.Invoke(name, arg); return; }
+            // ★ Handle UI events directly (word count, outline, etc.)
+            switch (name)
+            {
+                case "StateChange":
+                    OnStateChange(data);
+                    break;
+                case "WordCountUpdate":
+                    OnWordCountUpdate(data);
+                    break;
+                case "TocUpdate":
+                    OnTocUpdate(data);
+                    break;
+                case "contentChanged":
+                    OnContentChanged(data);
+                    break;
+            }
+
+            // Forward to Core RemoteInvoke
+            try { _ = _remoteInvoke.Invoke(name, data); }
             catch { /* not a registered handler */ }
 
-            _eventCenter.EmitEvent(name, new Typedown.Core.Models.EditorEventArgs(name, arg));
+            // Also emit to EventCenter (for Core ViewModel subscribers)
+            _eventCenter.EmitEvent(name, new Typedown.Core.Models.EditorEventArgs(name, data));
         }
         catch (Exception ex)
         {
@@ -219,10 +255,48 @@ public partial class MainWindow : Window
         }
     }
 
-    private void SetStatus(string name, string text)
+    // ═══════════ JS Event Handlers ═══════════
+
+    private void OnWordCountUpdate(JToken? data)
     {
-        var el = this.FindControl<TextBlock>(name);
-        if (el != null) el.Text = text;
+        if (data == null) return;
+        var wc = data["WordCount"];
+        if (wc == null) return;
+        var words = (int)(wc["Word"] ?? 0);
+        var el = this.FindControl<TextBlock>("StatusWordCount");
+        if (el != null) el.Text = $"{words} 字";
+    }
+
+    private void OnTocUpdate(JToken? data)
+    {
+        if (data == null) return;
+        var toc = data["Toc"] as JArray;
+        if (toc != null) UpdateOutlineTree(toc);
+    }
+
+    private void OnStateChange(JToken? data)
+    {
+        if (data == null) return;
+        var state = data["state"];
+        if (state == null) return;
+
+        // Word count (backward-compat)
+        var wc = state["WordCount"];
+        if (wc != null)
+        {
+            var words = (int)(wc["Word"] ?? 0);
+            var el = this.FindControl<TextBlock>("StatusWordCount");
+            if (el != null) el.Text = $"{words} 字";
+        }
+
+        // Outline / TOC (backward-compat)
+        var toc = state["Toc"] as JArray;
+        if (toc != null) UpdateOutlineTree(toc);
+    }
+
+    private void OnContentChanged(JToken? data)
+    {
+        // Could update save state indicator etc.
     }
 
     private void LoadEditorPage()
@@ -236,7 +310,61 @@ public partial class MainWindow : Window
             _webView.Navigate(new Uri($"file:///{htmlPath.Replace('\\', '/')}"));
     }
 
-    // ═══════════ UI Handlers ═══════════
+    // ═══════════ Mica Transparency Fix ═══════════
+
+    /// <summary>
+    /// Walk top-level visual tree (3 levels) and clear opaque backgrounds
+    /// that FluentTheme injects, so the Mica backdrop shines through.
+    /// </summary>
+    private void ClearTemplateBackgrounds(Avalonia.Visual root)
+    {
+        foreach (var child in Avalonia.VisualTree.VisualExtensions.GetVisualChildren(root))
+        {
+            // Template panels (LayoutRoot, BackgroundLayer)
+            if (child is Avalonia.Controls.Panel panel
+                && panel.Background != null
+                && panel.Background != Avalonia.Media.Brushes.Transparent)
+            {
+                panel.Background = Avalonia.Media.Brushes.Transparent;
+            }
+
+            // Only recurse into template layers, not our content
+            if (child is Avalonia.Visual v)
+            {
+                foreach (var grandchild in Avalonia.VisualTree.VisualExtensions.GetVisualChildren(v))
+                {
+                    if (grandchild is Avalonia.Controls.Panel p2
+                        && p2.Background != null
+                        && p2.Background != Avalonia.Media.Brushes.Transparent)
+                    {
+                        p2.Background = Avalonia.Media.Brushes.Transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    // ═══════════ Theme ═══════════
+
+    private void SetTheme(AppTheme theme)
+    {
+        RequestedThemeVariant = theme switch
+        {
+            AppTheme.Light => Avalonia.Styling.ThemeVariant.Light,
+            AppTheme.Dark => Avalonia.Styling.ThemeVariant.Dark,
+            _ => Avalonia.Styling.ThemeVariant.Default,
+        };
+    }
+
+    private void SyncEditorTheme(AppTheme theme)
+    {
+        var isDark = theme == AppTheme.Dark;
+        if (theme == AppTheme.Default)
+            isDark = ActualThemeVariant == Avalonia.Styling.ThemeVariant.Dark;
+        _markdownEditor?.PostMessage("SetTheme", new { theme = isDark ? "dark" : "classic" });
+    }
+
+    // ═══════════ Sidebar Toggle ═══════════
 
     private void OnToggleSidebar(object? sender, RoutedEventArgs e) => ToggleSidebar();
 
@@ -248,22 +376,99 @@ public partial class MainWindow : Window
     private void ToggleSidebar()
     {
         var grid = this.FindControl<Grid>("MainGrid");
-        if (grid != null && grid.ColumnDefinitions.Count > 0)
+        if (grid == null) return;
+
+        var col = grid.ColumnDefinitions[0]; // SidebarColumn
+        bool isCollapsed = col.Width == new GridLength(0);
+        col.Width = isCollapsed ? new GridLength(240) : new GridLength(0);
+
+        var splitter = this.FindControl<GridSplitter>("SidebarSplitter");
+        if (splitter != null) splitter.IsVisible = isCollapsed;
+    }
+
+    // ═══════════ Sidebar Tabs ═══════════
+
+    private void OnTabFilesClick(object? sender, TappedEventArgs e)
+    {
+        _showOutline = false;
+        RefreshSidebarContent();
+    }
+
+    private void OnTabOutlineClick(object? sender, TappedEventArgs e)
+    {
+        _showOutline = true;
+        RefreshSidebarContent();
+    }
+
+    private void RefreshSidebarContent()
+    {
+        // Update visual state of tabs
+        var tabFiles = this.FindControl<Border>("TabFiles");
+        var tabOutline = this.FindControl<Border>("TabOutline");
+        if (tabFiles != null)
         {
-            var col = grid.ColumnDefinitions[0];
-            col.Width = col.Width == new GridLength(0)
-                ? new GridLength(240) : new GridLength(0);
+            tabFiles.Classes.Clear();
+            tabFiles.Classes.Add(_showOutline ? "tabInactive" : "tabActive");
+            if (tabFiles.Child is TextBlock tbf) tbf.Opacity = _showOutline ? 0.5 : 0.9;
+        }
+        if (tabOutline != null)
+        {
+            tabOutline.Classes.Clear();
+            tabOutline.Classes.Add(_showOutline ? "tabActive" : "tabInactive");
+            if (tabOutline.Child is TextBlock tbo) tbo.Opacity = _showOutline ? 0.9 : 0.5;
+        }
+
+        // Swap content in the sidebar panel
+        var panel = this.FindControl<DockPanel>("SidebarPanel");
+        if (panel == null) return;
+
+        // Keep the tab header (child 0), remove everything else
+        while (panel.Children.Count > 1)
+            panel.Children.RemoveAt(panel.Children.Count - 1);
+
+        if (_showOutline && _outlineTree != null)
+        {
+            // Detach from previous parent if needed
+            if (_outlineTree.Parent != null)
+                ((Panel)_outlineTree.Parent).Children.Remove(_outlineTree);
+            panel.Children.Add(_outlineTree);
+        }
+        else if (_fileExplorer != null)
+        {
+            if (_fileExplorer.Parent != null)
+                ((Panel)_fileExplorer.Parent).Children.Remove(_fileExplorer);
+            panel.Children.Add(_fileExplorer);
         }
     }
 
-    private void SetTheme(AppTheme theme)
+    // ═══════════ Outline Tree ═══════════
+
+    private void UpdateOutlineTree(JArray toc)
     {
-        RequestedThemeVariant = theme switch
+        if (_outlineTree == null) return;
+        _outlineTree.Items.Clear();
+
+        foreach (var item in toc)
         {
-            AppTheme.Light => Avalonia.Styling.ThemeVariant.Light,
-            AppTheme.Dark => Avalonia.Styling.ThemeVariant.Dark,
-            _ => Avalonia.Styling.ThemeVariant.Default,
-        };
+            var level = (int)(item["Lvl"] ?? 1);
+            var content = item["Content"]?.ToString() ?? "";
+            var slug = item["Slug"]?.ToString() ?? "";
+
+            _outlineTree.Items.Add(new TreeViewItem
+            {
+                Header = content,
+                Tag = slug,
+                Padding = new Thickness(4 + (level - 1) * 16, 3, 4, 3),
+                FontSize = level <= 2 ? 13 : 12,
+                Opacity = level == 1 ? 1.0 : level == 2 ? 0.85 : 0.7,
+            });
+        }
+    }
+
+    private void OnOutlineItemDoubleTapped(object? sender, TappedEventArgs e)
+    {
+        if (_outlineTree?.SelectedItem is TreeViewItem tvi && tvi.Tag is string slug)
+            _markdownEditor?.PostMessage("ScrollTo", new { slug });
     }
 
     // ═══════════ Window Lifecycle ═══════════

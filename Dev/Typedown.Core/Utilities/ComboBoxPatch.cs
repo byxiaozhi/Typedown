@@ -1,6 +1,6 @@
 ﻿using Typedown.Core.ViewModels;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Avalonia.Controls;
+using Avalonia.Controls;
 
 namespace Typedown.Core.Utilities
 {
@@ -10,7 +10,7 @@ namespace Typedown.Core.Utilities
         public static bool GetApply(ComboBox target) => (bool)target.GetValue(ApplyProperty);
         public static void SetApply(ComboBox target, bool value) => target.SetValue(ApplyProperty, value);
 
-        private static void OnDependencyPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnDependencyPropertyChanged(AvaloniaObject d, DependencyPropertyChangedEventArgs e)
         {
             var target = d as ComboBox;
             if ((bool)e.NewValue)

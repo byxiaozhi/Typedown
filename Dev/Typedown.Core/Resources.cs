@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml;
+using Avalonia.Controls;
 
 namespace Typedown.Core
 {

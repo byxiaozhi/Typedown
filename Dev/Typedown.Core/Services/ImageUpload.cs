@@ -1,6 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;

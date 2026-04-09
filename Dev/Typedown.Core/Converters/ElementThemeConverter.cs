@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using Typedown.Core.Enums;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
+using Avalonia.Controls;
+using Avalonia.Controls;
 
 namespace Typedown.Core.Converters
 {

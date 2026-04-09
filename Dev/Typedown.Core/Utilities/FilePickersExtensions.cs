@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Windows.Storage.Pickers;
+using Avalonia.Platform.Storage;
 
 namespace Typedown.Core.Utilities
 {

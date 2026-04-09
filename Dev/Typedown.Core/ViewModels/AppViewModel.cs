@@ -1,5 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -35,6 +41,8 @@ namespace Typedown.Core.ViewModels
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
 
         public string[] CommandLineArgs { get; set; } = Environment.GetCommandLineArgs();
+
+        public IReadOnlyList<Typedown.Core.Controls.GlobalFrame> FrameStack { get; set; } = new List<Typedown.Core.Controls.GlobalFrame>();
 
         public IntPtr MainWindow { get; set; }
 

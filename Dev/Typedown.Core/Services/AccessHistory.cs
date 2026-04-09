@@ -1,5 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;

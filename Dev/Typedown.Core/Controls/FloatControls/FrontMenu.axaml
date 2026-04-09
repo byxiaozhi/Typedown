@@ -1,0 +1,117 @@
+﻿<MenuFlyout
+    x:Class="Typedown.Core.Controls.FloatControls.FrontMenu"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.FloatControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Core.Utilities"
+    Placement="Bottom"
+    Closed="OnClosed"
+    mc:Ignorable="d">
+    <MenuItem Header="{u:LocaleString Key=Duplicate}" Command="{Binding ParagraphViewModel.DuplicateCommand}"/>
+    <MenuItem Header="{u:LocaleString Key=TurnInto}">
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=Paragraph}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutParagraph, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.Paragraph.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.Paragraph.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" 
+            CommandParameter="paragraph"/>
+        <Separator/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=Heading1}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutHeading1, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.Heading1.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.Heading1.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" 
+            CommandParameter="heading 1"/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=Heading2}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutHeading2, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.Heading2.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.Heading2.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}"  
+            CommandParameter="heading 2"/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=Heading3}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutHeading3, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.Heading3.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.Heading3.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}"  
+            CommandParameter="heading 3"/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=Heading4}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutHeading4, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.Heading4.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.Heading4.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}"  
+            CommandParameter="heading 4"/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=Heading5}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutHeading5, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.Heading5.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.Heading5.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}"  
+            CommandParameter="heading 5"/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=Heading6}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutHeading6, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.Heading6.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.Heading6.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" 
+            CommandParameter="heading 6" />
+
+        <Separator/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=OrderedList}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutOrderedList, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.OrderList.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.OrderList.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" 
+            CommandParameter="ol-order"/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=UnorderedList}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutUnordered, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.BulletList.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.BulletList.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" 
+            CommandParameter="ul-bullet"/>
+
+        <MenuItem ToggleType="CheckBox" 
+            Header="{u:LocaleString Key=TaskList}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutTaskList, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            IsEnabled="{Binding EditorViewModel.ParagraphState.TaskList.IsEnable, Mode=OneWay}" 
+            IsChecked="{Binding EditorViewModel.ParagraphState.TaskList.IsChecked, Mode=TwoWay}" 
+            Command="{Binding ParagraphViewModel.UpdateParagraphCommand}" 
+            CommandParameter="ul-task"/>
+
+    </MenuItem>
+
+    <MenuItem 
+            Header="{u:LocaleString Key=InsertParagraphBefore}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutInsertParagraphBefore, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            Command="{Binding ParagraphViewModel.InsertParagraphCommand}" 
+            CommandParameter="before"/>
+
+    <MenuItem 
+            Header="{u:LocaleString Key=InsertParagraphAfter}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutInsertParagraphAfter, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            Command="{Binding ParagraphViewModel.InsertParagraphCommand}" 
+            CommandParameter="after"/>
+
+    <MenuItem 
+            Header="{u:LocaleString Key=Delete}" 
+            InputGesture="{Binding SettingsViewModel.ShortcutDelete, Converter={StaticResource ShortcutKeyToStringConverter}}" 
+            Command="{Binding ParagraphViewModel.DeleteParagraphCommand}"/>
+</MenuFlyout>
+
+

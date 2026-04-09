@@ -3,7 +3,7 @@ using System;
 namespace Typedown.Core.Enums
 {
     /// <summary>
-    /// Cross-platform virtual key codes. Maps 1:1 with Windows.System.VirtualKey values
+    /// Cross-platform virtual key codes. Maps 1:1 with Avalonia.Input.Key values
     /// for serialization compatibility, but no longer depends on WinRT.
     /// </summary>
     public enum VirtualKey
@@ -49,7 +49,7 @@ namespace Typedown.Core.Enums
 
     /// <summary>
     /// Cross-platform keyboard modifier flags.
-    /// Maps 1:1 with Windows.System.VirtualKeyModifiers.
+    /// Maps 1:1 with Avalonia.Input.KeyModifiers.
     /// </summary>
     [Flags]
     public enum VirtualKeyModifiers

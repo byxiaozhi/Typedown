@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using System.Reactive.Disposables;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Models;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
+using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 using muxc = Microsoft.UI.Xaml.Controls;
 
 namespace Typedown.Core.Controls.EditorControls.MenuBarItems
@@ -31,17 +36,17 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
 
         protected abstract void OnRegisterShortcut();
 
-        protected void RegisterWindowShortcut(ShortcutKey key, MenuFlyoutItem item)
+        protected void RegisterWindowShortcut(ShortcutKey key, MenuItem item)
         {
             RegisterMenuItemShortcut(OnWindowShortcutEvent, key, item);
         }
 
-        protected void RegisterEditorShortcut(ShortcutKey key, MenuFlyoutItem item)
+        protected void RegisterEditorShortcut(ShortcutKey key, MenuItem item)
         {
             RegisterMenuItemShortcut(OnEditorShortcutEvent, key, item);
         }
 
-        private void RegisterMenuItemShortcut(Func<MenuFlyoutItem, bool> handler, ShortcutKey key, MenuFlyoutItem item)
+        private void RegisterMenuItemShortcut(Func<MenuItem, bool> handler, ShortcutKey key, MenuItem item)
         {
             var acc = this.GetService<IKeyboardAccelerator>();
             item.KeyboardAcceleratorTextOverride = acc.GetShortcutKeyText(key);
@@ -52,29 +57,29 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             }));
         }
 
-        private bool OnWindowShortcutEvent(MenuFlyoutItem item)
+        private bool OnWindowShortcutEvent(MenuItem item)
         {
             var focused = PInvoke.GetForegroundWindow();
             if (focused != ViewModel.MainWindow)
                 return false;
-            _ = Dispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => TriggerMenuFlyoutItem(item));
+            _ = Dispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => TriggerMenuItem(item));
             return true;
         }
 
-        private bool OnEditorShortcutEvent(MenuFlyoutItem item)
+        private bool OnEditorShortcutEvent(MenuItem item)
         {
             var editor = this.GetService<IMarkdownEditor>();
             var focused = FocusManager.GetFocusedElement(XamlRoot);
             if (focused != editor)
                 return false;
-            _ = Dispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => TriggerMenuFlyoutItem(item));
+            _ = Dispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => TriggerMenuItem(item));
             return true;
         }
 
-        private void TriggerMenuFlyoutItem(MenuFlyoutItem item)
+        private void TriggerMenuItem(MenuItem item)
         {
             item.Command?.Execute(item.CommandParameter);
-            if (item is ToggleMenuFlyoutItem toggle)
+            if (item is ToggleMenuItem toggle)
                 toggle.IsChecked = !toggle.IsChecked;
         }
 

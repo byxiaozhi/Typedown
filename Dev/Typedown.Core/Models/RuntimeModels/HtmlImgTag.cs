@@ -1,4 +1,4 @@
-﻿namespace Typedown.Core.Models.RuntimeModels
+namespace Typedown.Core.Models.RuntimeModels
 {
     public class HtmlImgTag
     {
@@ -8,10 +8,10 @@
 
         public string Alt { get; set; }
 
-        public HtmlImgTag(string src, string alt = null, string title = null)
+        public HtmlImgTag(string src, string? alt = null, string? title = null)
         {
             Src = src;
-            Alt = alt;
+            Alt = alt ?? string.Empty;
             Title = title;
         }
     }

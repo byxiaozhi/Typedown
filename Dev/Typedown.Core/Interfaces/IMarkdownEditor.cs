@@ -11,6 +11,8 @@ namespace Typedown.Core.Interfaces
     {
         bool PostMessage(string name, object arg);
 
+        Avalonia.Controls.Control GetDummyRectangle(Avalonia.Rect rect);
+
         bool IsEditorLoadFailed { get; }
 
         bool IsEditorLoaded { get; }

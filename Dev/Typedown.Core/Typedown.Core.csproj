@@ -10,11 +10,14 @@
 	<!-- Phase 1: Exclude WinUI-dependent code — will be rewritten as Avalonia Views (Phase 3) -->
 	<ItemGroup>
 		<!-- UI code → Phase 3 Avalonia rewrite -->
-		<Compile Remove="Controls\**" />
+		<Compile Remove="Controls\CaptionControls\**" />
+		<Compile Remove="Controls\DialogControls\**" />
+		<Compile Remove="Controls\EditorControls\**" />
+		<Compile Remove="Controls\SettingControls\**" />
+		<Compile Remove="Controls\SidePaneControls\**" />
 		<Compile Remove="Pages\**" />
 		<Compile Remove="Converters\**" />
 		<!-- WinUI-only utilities → replaced with Avalonia equivalents -->
-		<Compile Remove="Utilities\InjectionExtensions.cs" />
 		<Compile Remove="Utilities\CoreDispatcherExtensions.cs" />
 		<Compile Remove="Utilities\ComboBoxPatch.cs" />
 		<Compile Remove="Utilities\ControlExtensions.cs" />
@@ -25,17 +28,26 @@
 		<!-- WinUI ResourceDictionary → Avalonia Styles (Phase 3) -->
 		<Compile Remove="Resources.cs" />
 		<!-- Strip XAML residue -->
-		<None Remove="Controls\**" />
+		<None Remove="Controls\CaptionControls\**" />
+		<None Remove="Controls\DialogControls\**" />
+		<None Remove="Controls\EditorControls\**" />
+		<None Remove="Controls\SettingControls\**" />
+		<None Remove="Controls\SidePaneControls\**" />
 		<None Remove="Pages\**" />
 		<None Remove="Converters\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="12.0.0" />
+		<PackageReference Include="Avalonia.Controls.WebView" Version="12.0.0" />
+		<PackageReference Include="Avalonia.Desktop" Version="12.0.0" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.8" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
-		<PackageReference Include="ReactiveUI" Version="22.1.1" />
+		<PackageReference Include="ReactiveUI" Version="22.2.1" />
+		<PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
 		<PackageReference Include="System.Reactive" Version="6.1.0" />
 	</ItemGroup>
 </Project>

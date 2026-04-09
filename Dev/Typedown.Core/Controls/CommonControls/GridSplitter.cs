@@ -1,37 +1,40 @@
-﻿using System;
-using Windows.UI;
-using Windows.UI.Core;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Avalonia.Interactivity;
+using System;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Media;
+using Avalonia.Input;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Media;
 
 namespace Typedown.Core.Controls
 {
     public class GridSplitter : UserControl
     {
-        public static DependencyProperty ColumnWidthProperty = DependencyProperty.Register(nameof(ColumnWidth), typeof(double), typeof(GridSplitter), null);
-        public double ColumnWidth { get => (double)GetValue(ColumnWidthProperty); set => SetValue(ColumnWidthProperty, value); }
+        public static readonly StyledProperty<double> ColumnWidthProperty = AvaloniaProperty.Register<GridSplitter, double>(nameof(ColumnWidth), 0);
+        public double ColumnWidth { get => GetValue(ColumnWidthProperty); set => SetValue(ColumnWidthProperty, value); }
 
-        public static DependencyProperty ColumnExpectWidthProperty = DependencyProperty.Register(nameof(ColumnExpectWidth), typeof(double), typeof(GridSplitter), new(0d, OnPropertyChanged));
-        public double ColumnExpectWidth { get => (double)GetValue(ColumnExpectWidthProperty); set => SetValue(ColumnExpectWidthProperty, value); }
+        public static readonly StyledProperty<double> ColumnExpectWidthProperty = AvaloniaProperty.Register<GridSplitter, double>(nameof(ColumnExpectWidth), 0d);
+        public double ColumnExpectWidth { get => GetValue(ColumnExpectWidthProperty); set => SetValue(ColumnExpectWidthProperty, value); }
 
-        public static DependencyProperty ColumnMinWidthProperty = DependencyProperty.Register(nameof(ColumnMinWidth), typeof(double), typeof(GridSplitter), new(0d, OnPropertyChanged));
-        public double ColumnMinWidth { get => (double)GetValue(ColumnMinWidthProperty); set => SetValue(ColumnMinWidthProperty, value); }
+        public static readonly StyledProperty<double> ColumnMinWidthProperty = AvaloniaProperty.Register<GridSplitter, double>(nameof(ColumnMinWidth), 0d);
+        public double ColumnMinWidth { get => GetValue(ColumnMinWidthProperty); set => SetValue(ColumnMinWidthProperty, value); }
 
-        public static DependencyProperty ColumnMaxWidthProperty = DependencyProperty.Register(nameof(ColumnMaxWidth), typeof(double), typeof(GridSplitter), new(double.PositiveInfinity, OnPropertyChanged));
-        public double ColumnMaxWidth { get => (double)GetValue(ColumnMaxWidthProperty); set => SetValue(ColumnMaxWidthProperty, value); }
+        public static readonly StyledProperty<double> ColumnMaxWidthProperty = AvaloniaProperty.Register<GridSplitter, double>(nameof(ColumnMaxWidth), double.PositiveInfinity);
+        public double ColumnMaxWidth { get => GetValue(ColumnMaxWidthProperty); set => SetValue(ColumnMaxWidthProperty, value); }
 
-        public static DependencyProperty DeltaScaleProperty = DependencyProperty.Register(nameof(DeltaScale), typeof(double), typeof(GridSplitter), new(1d));
-        public double DeltaScale { get => (double)GetValue(DeltaScaleProperty); set => SetValue(DeltaScaleProperty, value); }
+        public static readonly StyledProperty<double> DeltaScaleProperty = AvaloniaProperty.Register<GridSplitter, double>(nameof(DeltaScale), 1d);
+        public double DeltaScale { get => GetValue(DeltaScaleProperty); set => SetValue(DeltaScaleProperty, value); }
 
         private readonly Border border = new();
 
         private double columnWidth;
-
         private bool manipulating;
-
-        private bool entered;
+        private Point _startPoint;
 
         public GridSplitter()
         {
@@ -39,54 +42,55 @@ namespace Typedown.Core.Controls
             border.Width = 9;
             Margin = new Thickness(-4, 0, -4, 0);
             Content = border;
-            ManipulationMode = ManipulationModes.TranslateX;
+            Cursor = new Cursor(StandardCursorType.SizeWestEast);
         }
 
-        protected override void OnPointerEntered(PointerRoutedEventArgs e)
+        protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
-            base.OnPointerEntered(e);
-            entered = true;
-            Window.Current.CoreWindow.PointerCursor = new(CoreCursorType.SizeWestEast, 1);
-
-        }
-
-        protected override void OnPointerExited(PointerRoutedEventArgs e)
-        {
-            base.OnPointerExited(e);
-            entered = false;
-            if (!manipulating)
-                Window.Current.CoreWindow.PointerCursor = new(CoreCursorType.Arrow, 1);
-        }
-
-        protected override void OnManipulationStarted(ManipulationStartedRoutedEventArgs e)
-        {
-            base.OnManipulationStarted(e);
+            base.OnPointerPressed(e);
             columnWidth = ColumnWidth;
             manipulating = true;
+            _startPoint = e.GetPosition(this.Parent as Visual);
+            e.Pointer.Capture(this);
+            e.Handled = true;
         }
 
-        protected override void OnManipulationDelta(ManipulationDeltaRoutedEventArgs e)
+        protected override void OnPointerMoved(PointerEventArgs e)
         {
-            base.OnManipulationDelta(e);
-            var scale = Windows.Graphics.Display.DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
-            columnWidth += DeltaScale * e.Delta.Translation.X * scale;
+            base.OnPointerMoved(e);
+            if (!manipulating) return;
+
+            var currentPoint = e.GetPosition(this.Parent as Visual);
+            var deltaX = currentPoint.X - _startPoint.X;
+
+            columnWidth += DeltaScale * deltaX; // scale isn't strictly necessary with Avalonia DIPs unless handling DPI explicitly
             ColumnExpectWidth = Math.Min(Math.Max(ColumnMinWidth, columnWidth), ColumnMaxWidth);
+            
+            _startPoint = currentPoint;
+            e.Handled = true;
         }
 
-        protected override void OnManipulationCompleted(ManipulationCompletedRoutedEventArgs e)
+        protected override void OnPointerReleased(PointerReleasedEventArgs e)
         {
-            base.OnManipulationCompleted(e);
-            manipulating = false;
-            if (!entered)
-                Window.Current.CoreWindow.PointerCursor = new(CoreCursorType.Arrow, 1);
+            base.OnPointerReleased(e);
+            if (manipulating)
+            {
+                manipulating = false;
+                e.Pointer.Capture(null);
+                e.Handled = true;
+            }
         }
 
-        public static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
-            var target = d as GridSplitter;
-            var limitedWidth = Math.Min(Math.Max(target.ColumnMinWidth, target.ColumnExpectWidth), target.ColumnMaxWidth);
-            if (limitedWidth != target.ColumnWidth)
-                target.ColumnWidth = limitedWidth;
+            base.OnPropertyChanged(change);
+            if (change.Property == ColumnExpectWidthProperty || change.Property == ColumnMinWidthProperty || change.Property == ColumnMaxWidthProperty)
+            {
+                var limitedWidth = Math.Min(Math.Max(ColumnMinWidth, ColumnExpectWidth), ColumnMaxWidth);
+                if (limitedWidth != ColumnWidth)
+                    ColumnWidth = limitedWidth;
+            }
         }
     }
 }
+

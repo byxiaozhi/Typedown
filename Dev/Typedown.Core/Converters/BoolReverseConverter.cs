@@ -1,5 +1,11 @@
 ﻿using System;
-using Windows.UI.Xaml.Data;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
+using Avalonia.Controls;
 
 namespace Typedown.Core.Converters
 {

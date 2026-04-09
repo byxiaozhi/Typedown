@@ -1,58 +1,55 @@
-﻿using System;
+using Avalonia.Controls.Primitives;
+using System;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
+using Avalonia.Interactivity;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using Typedown.Core.Utilities;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Markup;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 
 namespace Typedown.Core.Controls
 {
-    [ContentProperty(Name = nameof(Items))]
-    public class MenuItemCollection : DependencyObject
+    public class MenuItemCollection : AvaloniaObject
     {
-        public static DependencyProperty ValueProperty { get; } = DependencyProperty.Register("Value", typeof(MenuItemCollection), typeof(MenuItemCollection), new(null, OnValuePropertyChanged));
-        public static MenuItemCollection GetValue(DependencyObject target) => (MenuItemCollection)target.GetValue(ValueProperty);
-        public static void SetValue(DependencyObject target, MenuItemCollection value) => target.SetValue(ValueProperty, value);
+        public static readonly AttachedProperty<MenuItemCollection> ValueProperty = AvaloniaProperty.RegisterAttached<MenuItemCollection, AvaloniaObject, MenuItemCollection>("Value");
+        public static MenuItemCollection GetValue(AvaloniaObject target) => target.GetValue(ValueProperty);
+        public static void SetValue(AvaloniaObject target, MenuItemCollection value) => target.SetValue(ValueProperty, value);
 
-        private static readonly ConditionalWeakTable<DependencyObject, IDisposable> valuePropertyDisposables = new();
-
-        private static void OnValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
+        static MenuItemCollection()
         {
-            if (target is MenuFlyoutSubItem subItem)
+            ValueProperty.Changed.Subscribe(e => OnValuePropertyChanged(e.Sender, e));
+        }
+
+
+        private static void OnValuePropertyChanged(AvaloniaObject target, AvaloniaPropertyChangedEventArgs e)
+        {
+            if (target is MenuItem subItem)
             {
-                UpdateMenuFlyoutSubItemValue(subItem, e.NewValue as MenuItemCollection);
+                UpdateMenuItemValue(subItem, e.NewValue as MenuItemCollection);
             }
         }
 
-        private static void UpdateMenuFlyoutSubItemValue(MenuFlyoutSubItem target, MenuItemCollection collection)
+        private static void UpdateMenuItemValue(MenuItem target, MenuItemCollection collection)
         {
-            if (valuePropertyDisposables.TryGetValue(target, out var disposable))
-            {
-                disposable.Dispose();
-                valuePropertyDisposables.Remove(target);
-            }
-            if (collection != null)
-            {
-                var disposables = new CompositeDisposable();
-                valuePropertyDisposables.Add(target, disposables);
-                disposables.Add(collection.Binding(new(nameof(Items))).Subscribe(_ => UpdateMenuFlyoutSubItemValue(target, collection)));
-                if (collection.Items is ObservableCollection<MenuFlyoutItemBase> obsCollection)
-                    disposables.Add(obsCollection.GetCollectionObservable().Subscribe(_ => UpdateMenuFlyoutSubItemValue(target, collection)));
-                target.Items.UpdateList(collection.Items);
-            }
+            target.ItemsSource = collection?.Items;
         }
 
-        public static DependencyProperty ItemsProperty { get; } = DependencyProperty.Register(nameof(Items), typeof(IList<MenuFlyoutItemBase>), typeof(DependencyObject), null);
+        public static AvaloniaProperty ItemsProperty { get; } = AvaloniaProperty.Register<AvaloniaObject, IList<MenuItem>>(nameof(Items), null);
 
-        public IList<MenuFlyoutItemBase> Items { get => (IList<MenuFlyoutItemBase>)GetValue(ItemsProperty); set => SetValue(ItemsProperty, value); }
+        [Content]
+        public IList<MenuItem> Items { get => (IList<MenuItem>)GetValue(ItemsProperty); set => SetValue(ItemsProperty, value); }
 
         public MenuItemCollection()
         {
-            Items = new ObservableCollection<MenuFlyoutItemBase>();
+            Items = new ObservableCollection<MenuItem>();
         }
     }
 }
+

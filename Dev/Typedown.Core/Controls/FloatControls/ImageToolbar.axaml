@@ -1,0 +1,53 @@
+<Flyout
+    x:Class="Typedown.Core.Controls.FloatControls.ImageToolbar"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.FloatControls"
+    xmlns:controls="using:Typedown.Core.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Placement="TopEdgeAlignedLeft"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="EditButton" Grid.Column="2" Width="32" Height="32" Theme="{DynamicResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="Edit">
+                <TextBlock FontSize="14" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE70F;"/>
+            </Button>
+            <Separator Width="1" Height="20" Margin="4,0" Background="{DynamicResource ButtonBorderThemeBrush}"/>
+            <Button x:Name="InlineButton" Grid.Column="2" Width="32" Height="32" Theme="{DynamicResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="Inline">
+                <TextBlock FontSize="14" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xe8a1;"/>
+            </Button>
+            <Button x:Name="LeftButton" Grid.Column="2" Width="32" Height="32" Theme="{DynamicResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="AlignLeft">
+                <TextBlock FontSize="14" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE8E4;"/>
+            </Button>
+            <Button x:Name="CenterButton" Grid.Column="2" Width="32" Height="32" Theme="{DynamicResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="AlignCenter">
+                <TextBlock FontSize="14" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE8E3;"/>
+            </Button>
+            <Button x:Name="RightButton" Grid.Column="2" Width="32" Height="32" Theme="{DynamicResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="AlignRight">
+                <TextBlock FontSize="14" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE8E2;"/>
+            </Button>
+            <Separator Width="1" Height="20" Margin="4,0" Background="{DynamicResource ButtonBorderThemeBrush}"/>
+            <Button x:Name="ZoomButton" Grid.Column="3" Width="32" Height="32" Theme="{DynamicResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="Zoom">
+                <TextBlock FontSize="14" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xe9a6;"/>
+                <Button.Flyout>
+                    <MenuFlyout Placement="Top">
+                        <MenuItem Header="25%" Tag="25%" x:Name="Zoom25Button"/>
+                        <MenuItem Header="33%" Tag="33%" x:Name="Zoom33Button"/>
+                        <MenuItem Header="50%" Tag="50%" x:Name="Zoom50Button"/>
+                        <MenuItem Header="67%" Tag="67%" x:Name="Zoom67Button"/>
+                        <MenuItem Header="80%" Tag="80%" x:Name="Zoom80Button"/>
+                        <Separator/>
+                        <MenuItem Header="100%" Tag="100%" x:Name="Zoom100Button"/>
+                        <MenuItem Header="150%" Tag="150%" x:Name="Zoom150Button"/>
+                        <Separator/>
+                        <MenuItem Header="200%" Tag="200%" x:Name="Zoom200Button"/>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <Separator Width="1" Height="20" Margin="4,0" Background="{DynamicResource ButtonBorderThemeBrush}"/>
+            <Button x:Name="DeleteButton" Grid.Column="2" Width="32" Height="32" Theme="{DynamicResource EllipsisIconButtonStyle}" controls:ToolTip.TextResource="Delete">
+                <TextBlock FontSize="14" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE74D;"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Flyout>

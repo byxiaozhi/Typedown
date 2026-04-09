@@ -4,70 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typedown Editor</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3/dist/index.css" />
+    <link rel="stylesheet" href="./vditor/dist/index.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; height: 100%; overflow: hidden; }
+        body { background: transparent; }
         #vditor-container { width: 100%; height: 100%; }
+
         /* Hide Vditor toolbar — we use C# menu bar */
         .vditor-toolbar { display: none !important; }
+
+        /* Remove Vditor borders for seamless integration */
+        .vditor { border: none !important; border-radius: 0 !important; }
+
+        /* IR mode: Typora-like inline editing refinements */
+        .vditor-ir .vditor-ir__marker { opacity: 0.4; }
+        .vditor-ir .vditor-ir__marker--bi { color: inherit; }
+
+        /* Smooth transitions for IR marker expansion */
+        .vditor-ir .vditor-ir__node--expand .vditor-ir__marker {
+            opacity: 0.6;
+            transition: opacity 0.15s ease;
+        }
+
+        /* Better cursor/caret visibility */
+        .vditor-ir pre.vditor-reset:focus { outline: none; }
+
+        /* Make content area fill entire height */
+        .vditor-ir, .vditor-wysiwyg, .vditor-sv {
+            min-height: 100% !important;
+        }
+        .vditor-ir pre.vditor-reset,
+        .vditor-wysiwyg pre.vditor-reset {
+            min-height: calc(100vh - 20px) !important;
+            padding: 24px 60px !important;
+        }
     </style>
 </head>
 <body>
     <div id="vditor-container"></div>
-    <script src="https://cdn.jsdelivr.net/npm/vditor@3/dist/index.min.js"></script>
+    <script src="./vditor/dist/index.min.js"></script>
     <script>
         // ========== Native Bridge ==========
-        // Send message from JS to C# host
         function sendToNative(type, data) {
-            const msg = JSON.stringify({ type: type, data: data });
-            // Avalonia NativeWebView injects invokeCSharpAction() on all platforms
-            if (typeof invokeCSharpAction === 'function') {
-                invokeCSharpAction(msg);
-            } else if (window.chrome && window.chrome.webview) {
-                // WebView2 fallback (direct WebView2 usage)
+            const msg = JSON.stringify({ type, data: data || {} });
+            if (window.chrome && window.chrome.webview) {
                 window.chrome.webview.postMessage(msg);
+            } else if (typeof invokeCSharpAction === 'function') {
+                invokeCSharpAction(msg);
             } else {
-                // Fallback: log to console for debugging
                 console.log('[Bridge→Native]', msg);
             }
         }
 
-        // Receive message from C# host
-        // C# calls: webview.InvokeScript("receiveFromNative(json)")
         function receiveFromNative(jsonStr) {
             try {
                 const msg = typeof jsonStr === 'string' ? JSON.parse(jsonStr) : jsonStr;
                 handleNativeMessage(msg);
             } catch (e) {
-                console.error('[Bridge] Failed to parse native message:', e);
+                console.error('[Bridge] Parse error:', e);
             }
+        }
+        window.postMessageFromNative = receiveFromNative;
+
+        // ========== Utilities ==========
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, arguments), wait);
+            };
+        }
+
+        function getWordCount(text) {
+            const clean = text.replace(/([_*~`#>|]|\[|\]|\(|\))/g, '');
+            const words = clean.split(/\s+/).filter(w => w.length > 0).length;
+            const cjk = (clean.match(/[\u4e00-\u9fa5\u3040-\u30ff\uac00-\ud7a3]/g) || []).length;
+            return { Word: words + cjk, Character: text.length };
+        }
+
+        function getSlug(text) {
+            return text.toLowerCase()
+                .replace(/[^a-z0-9\u4e00-\u9fa5]/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+
+        function parseToc(markdown) {
+            const toc = [];
+            let inCode = false;
+            markdown.split('\n').forEach((line, idx) => {
+                if (line.startsWith('```')) inCode = !inCode;
+                if (!inCode) {
+                    const m = line.match(/^(#{1,6})\s+(.+)/);
+                    if (m) toc.push({
+                        Lvl: m[1].length,
+                        Content: m[2].trim(),
+                        Slug: getSlug(m[2].trim()),
+                        Line: idx
+                    });
+                }
+            });
+            return toc;
         }
 
         // ========== Vditor Instance ==========
         let vditor = null;
 
         function initVditor(mode) {
-            if (vditor) {
-                vditor.destroy();
-            }
+            if (vditor) vditor.destroy();
+
+            const cdnBase = window.location.origin +
+                window.location.pathname.replace(/index\.html$/, 'vditor');
 
             vditor = new Vditor('vditor-container', {
-                mode: mode || 'wysiwyg',  // 'wysiwyg' | 'ir' | 'sv'
-                toolbar: [],               // Empty toolbar — use C# menu bar
-                counter: { enable: false },
-                outline: { enable: false, position: 'left' },
-                cache: { enable: false },
-                placeholder: 'Start writing...',
+                // ★ IR mode = Typora-like inline rendering
+                mode: mode || 'ir',
+                toolbar: [],
+                toolbarConfig: { hide: true },
+                cdn: cdnBase,
+                lang: 'zh_CN',
+                placeholder: '开始写作...',
                 height: '100%',
                 width: '100%',
 
-                // Callbacks
+                // Disable caching (C# manages file state)
+                cache: { enable: false },
+                counter: { enable: false },
+
+                // IR / WYSIWYG preview settings
+                preview: {
+                    math: { engine: 'KaTeX' },
+                    markdown: {
+                        codeBlockPreview: true,
+                        mathBlockPreview: true,
+                        toc: true,
+                        mark: true,
+                    },
+                    hljs: {
+                        lineNumber: true,
+                        style: 'github',
+                    },
+                },
+
+                // Typewriter mode for better writing UX
+                typewriterMode: false,
+
+                // ★ Callbacks ==========
                 input: function(value) {
-                    sendToNative('contentChanged', {
-                        markdown: value,
-                        wordCount: value.length
-                    });
+                    debouncedStateNotify(value);
+                    sendToNative('contentChanged', { markdown: value });
                 },
                 focus: function(value) {
                     sendToNative('editorFocus', {});
@@ -76,105 +162,296 @@
                     sendToNative('editorBlur', {});
                 },
                 after: function() {
-                    sendToNative('editorReady', {
-                        mode: vditor.getCurrentMode()
-                    });
+                    sendToNative('editorReady', { mode: vditor.getCurrentMode() });
+                    // Initial state
+                    debouncedStateNotify(vditor.getValue());
                 },
                 select: function(value) {
-                    sendToNative('selectionChanged', {
-                        text: value || ''
-                    });
-                }
+                    sendToNative('SelectionChange', { selectionText: value || '' });
+                },
             });
         }
 
-        // ========== Handle messages from C# ==========
-        function handleNativeMessage(msg) {
-            if (!vditor) {
-                console.warn('[Bridge] Vditor not ready, ignoring:', msg.type);
-                return;
-            }
+        // ========== State Synchronization ==========
+        // Word count: lightweight, fires quickly (50ms)
+        const debouncedWordCount = debounce((markdown) => {
+            if (!vditor) return;
+            const wordCount = getWordCount(markdown);
+            sendToNative('WordCountUpdate', { WordCount: wordCount });
+        }, 50);
 
-            switch (msg.type) {
+        // TOC/Outline: heavier parse, slightly slower (150ms)
+        const debouncedTocUpdate = debounce((markdown) => {
+            if (!vditor) return;
+            const toc = parseToc(markdown);
+            sendToNative('TocUpdate', { Toc: toc });
+        }, 150);
+
+        // Combined trigger for both
+        function debouncedStateNotify(markdown) {
+            debouncedWordCount(markdown);
+            debouncedTocUpdate(markdown);
+        }
+
+        // ========== Command Handler from C# ==========
+        function handleNativeMessage(msg) {
+            if (!vditor) return;
+            const type = msg.name || msg.type;
+            const data = msg.arg || msg.data || {};
+
+            switch (type) {
+                // ── Content ──
                 case 'setMarkdown':
-                    vditor.setValue(msg.data.markdown || '');
+                case 'SetMarkdown':
+                    vditor.setValue(data.text || data.markdown || '', true);
+                    debouncedStateNotify(data.text || data.markdown || '');
                     sendToNative('setMarkdownDone', {});
                     break;
 
                 case 'getMarkdown':
-                    sendToNative('markdownContent', {
-                        markdown: vditor.getValue()
-                    });
+                    sendToNative('markdownContent', { markdown: vditor.getValue() });
                     break;
 
-                case 'switchMode':
-                    // Reinitialize with new mode
-                    const currentContent = vditor.getValue();
-                    initVditor(msg.data.mode);
-                    // After init, set content back
-                    setTimeout(() => {
-                        if (vditor) vditor.setValue(currentContent);
-                    }, 500);
+                // ── Mode switching ──
+                case 'SwitchMode':
+                case 'switchMode': {
+                    const targetMode = data.mode || 'ir';
+                    const content = vditor.getValue();
+                    initVditor(targetMode);
+                    setTimeout(() => { if (vditor) vditor.setValue(content, true); }, 500);
+                    break;
+                }
+                case 'SwitchSourceCodeMode':
+                    const curMode = vditor.getCurrentMode();
+                    const content2 = vditor.getValue();
+                    initVditor(curMode === 'sv' ? 'ir' : 'sv');
+                    setTimeout(() => { if (vditor) vditor.setValue(content2, true); }, 500);
                     break;
 
+                // ── Edit commands ──
+                case 'Undo':  document.execCommand('undo'); break;
+                case 'Redo':  document.execCommand('redo'); break;
+                case 'Cut':   document.execCommand('cut'); break;
+                case 'Copy':  document.execCommand('copy'); break;
+                case 'Paste': document.execCommand('paste'); break;
+                case 'SelectAll': document.execCommand('selectAll'); break;
+                case 'DeleteSelection': document.execCommand('delete'); break;
+
+                // ── Heading ──
+                case 'Heading': {
+                    const level = data.level || 1;
+                    const prefix = '#'.repeat(level) + ' ';
+                    // In IR mode, replace current line with heading prefix
+                    const sel = window.getSelection();
+                    if (sel.rangeCount > 0) {
+                        const range = sel.getRangeAt(0);
+                        let node = range.startContainer;
+                        // Find the block-level parent
+                        while (node && node.parentNode && node.id !== 'vditor-container') {
+                            if (node.nodeType === 1 && node.hasAttribute('data-node-id')) break;
+                            node = node.parentNode;
+                        }
+                        if (node && node.textContent !== undefined) {
+                            // Remove existing heading markers
+                            const cleanText = node.textContent.replace(/^#+\s*/, '');
+                            vditor.insertValue('\n' + prefix + cleanText + '\n', true);
+                        }
+                    } else {
+                        vditor.insertValue('\n' + prefix, true);
+                    }
+                    break;
+                }
+
+                // ── Insert blocks ──
+                case 'InsertBlock': {
+                    const blockType = data.type || '';
+                    switch (blockType) {
+                        case 'code-block':
+                            vditor.insertValue('\n```\n\n```\n');
+                            break;
+                        case 'blockquote':
+                            vditor.insertValue('\n> ');
+                            break;
+                        case 'math-block':
+                            vditor.insertValue('\n$$\n\n$$\n');
+                            break;
+                        case 'hr':
+                            vditor.insertValue('\n---\n');
+                            break;
+                        case 'ordered-list':
+                            vditor.insertValue('\n1. ');
+                            break;
+                        case 'bullet-list':
+                            vditor.insertValue('\n- ');
+                            break;
+                        case 'task-list':
+                            vditor.insertValue('\n- [ ] ');
+                            break;
+                        default:
+                            vditor.insertValue('\n');
+                    }
+                    break;
+                }
+
+                // ── Insert table ──
+                case 'InsertTable': {
+                    const rows = data.rows || 3;
+                    const cols = data.columns || 3;
+                    let md = '\n|';
+                    for (let c = 0; c < cols; c++) md += '   |';
+                    md += '\n|';
+                    for (let c = 0; c < cols; c++) md += '---|';
+                    for (let r = 1; r < rows; r++) {
+                        md += '\n|';
+                        for (let c = 0; c < cols; c++) md += '   |';
+                    }
+                    md += '\n';
+                    vditor.insertValue(md);
+                    break;
+                }
+
+                // ── Toolbar format actions (Bold/Italic/etc.) ──
+                // These work by simulating the keyboard shortcuts that Vditor handles natively
+                case 'ToolbarAction': {
+                    const action = data.action || '';
+                    applyToolbarAction(action);
+                    break;
+                }
+                case 'Format':
+                case 'format':
+                    applyToolbarAction(data.action || data);
+                    break;
+
+                // ── Theme ──
+                case 'SetTheme': {
+                    const theme = data.theme || 'classic';
+                    vditor.setTheme(theme, theme === 'dark' ? 'dark' : 'light');
+                    document.body.style.background = theme === 'dark' ? '#1e1e1e' : 'transparent';
+                    break;
+                }
+
+                // ── Scroll to heading ──
+                case 'ScrollTo':
+                    scrollBySlug(data.slug);
+                    break;
+
+                // ── Search ──
+                case 'Search':
+                    if (data.value) {
+                        window.getSelection().removeAllRanges();
+                        window.find(data.value, false, false, true, false, false, false);
+                    }
+                    break;
+                case 'Find':
+                    if (data.action === 'next' || data.action === 'previous') {
+                        const backwards = (data.action === 'previous');
+                        const selText = window.getSelection().toString();
+                        if (selText) window.find(selText, false, backwards, true, false, false, false);
+                    }
+                    break;
+
+                // ── Image ──
+                case 'InsertImage':
+                    const src = typeof data === 'string' ? data : data.src || data.Src;
+                    if (src) vditor.insertValue(`![](${src})`);
+                    break;
                 case 'insertText':
-                    vditor.insertValue(msg.data.text || '');
+                case 'InsertText':
+                    vditor.insertValue(data.text || '');
                     break;
 
+                // ── Focus / Ping ──
                 case 'focus':
                     vditor.focus();
                     break;
-
-                case 'format':
-                    // Execute toolbar action programmatically
-                    // e.g. bold, italic, heading, etc.
-                    applyFormat(msg.data.action);
-                    break;
-
                 case 'ping':
                     sendToNative('pong', { timestamp: Date.now() });
                     break;
-
-                default:
-                    console.warn('[Bridge] Unknown message type:', msg.type);
             }
         }
 
-        function applyFormat(action) {
+        // ========== Format Actions via Keyboard Simulation ==========
+        // Vditor's IR/WYSIWYG mode handles these hotkeys natively.
+        // We dispatch synthetic keyboard events to trigger them.
+        function applyToolbarAction(action) {
             if (!vditor) return;
+
+            const keyMap = {
+                'bold':        { key: 'b', ctrl: true },
+                'strong':      { key: 'b', ctrl: true },
+                'italic':      { key: 'i', ctrl: true },
+                'em':          { key: 'i', ctrl: true },
+                'underline':   { key: 'u', ctrl: true },
+                'u':           { key: 'u', ctrl: true },
+                'strike':      { key: 'd', ctrl: true },
+                'del':         { key: 'd', ctrl: true },
+                'inline-code': { key: 'e', ctrl: true, shift: true },
+                'inline_code': { key: 'e', ctrl: true, shift: true },
+                'link':        { key: 'k', ctrl: true },
+                'a':           { key: 'k', ctrl: true },
+            };
+
+            const km = keyMap[action];
+            if (km) {
+                // Dispatch keyboard event to the editor element
+                const editorEl = document.querySelector('.vditor-ir pre.vditor-reset') ||
+                                 document.querySelector('.vditor-wysiwyg pre.vditor-reset') ||
+                                 document.querySelector('.vditor-sv pre.vditor-reset');
+                if (editorEl) {
+                    const ev = new KeyboardEvent('keydown', {
+                        key: km.key,
+                        code: 'Key' + km.key.toUpperCase(),
+                        ctrlKey: !!km.ctrl,
+                        shiftKey: !!km.shift,
+                        altKey: false,
+                        metaKey: false,
+                        bubbles: true,
+                        cancelable: true,
+                    });
+                    editorEl.focus();
+                    editorEl.dispatchEvent(ev);
+                }
+                return;
+            }
+
+            // Fallback: insert markdown syntax directly
             switch (action) {
-                case 'bold':
-                    vditor.insertValue('**bold**');
-                    break;
-                case 'italic':
-                    vditor.insertValue('*italic*');
-                    break;
-                case 'heading1':
-                    vditor.insertValue('\n# ');
-                    break;
-                case 'heading2':
-                    vditor.insertValue('\n## ');
-                    break;
-                case 'code':
-                    vditor.insertValue('`code`');
-                    break;
-                case 'codeblock':
-                    vditor.insertValue('\n```\n\n```\n');
-                    break;
-                case 'link':
-                    vditor.insertValue('[text](url)');
+                case 'inline-math':
+                case 'inline_math':
+                    vditor.insertValue('$', false);
                     break;
                 case 'image':
                     vditor.insertValue('![alt](url)');
                     break;
-                default:
-                    console.warn('[Format] Unknown action:', action);
+                case 'clear':
+                    // Remove formatting from selected text
+                    const selText = vditor.getSelection();
+                    if (selText) {
+                        const clean = selText.replace(/[*_~`]/g, '');
+                        vditor.updateValue(clean);
+                    }
+                    break;
+            }
+        }
+
+        // ========== Scroll by Slug ==========
+        function scrollBySlug(slug) {
+            if (!slug) return;
+            const headers = document.querySelectorAll(
+                '#vditor-container h1, #vditor-container h2, #vditor-container h3, ' +
+                '#vditor-container h4, #vditor-container h5, #vditor-container h6');
+            for (let i = 0; i < headers.length; i++) {
+                const text = headers[i].textContent.replace(/^#+\s*/, '').trim();
+                if (getSlug(text) === slug || headers[i].id === slug) {
+                    headers[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break;
+                }
             }
         }
 
         // ========== Initialize ==========
         document.addEventListener('DOMContentLoaded', function() {
-            initVditor('wysiwyg');
+            initVditor('ir');
             sendToNative('domReady', {});
         });
     </script>

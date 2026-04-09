@@ -1,21 +1,29 @@
-﻿using Typedown.Core.Utilities;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using System;
+using Typedown.Core.Utilities;
+using Avalonia;
+using Avalonia.Controls;
 
 namespace Typedown.Core.Controls
 {
     public class ToolTip
     {
-        public static DependencyProperty TextResourceProperty { get; } = DependencyProperty.Register("TextResource", typeof(string), typeof(ToolTip), new(null, OnResourcePropertyChanged));
-        public static string GetTextResource(DependencyObject target) => (string)target.GetValue(TextResourceProperty);
-        public static void SetTextResource(DependencyObject target, string value) => target.SetValue(TextResourceProperty, value);
+        public static readonly AttachedProperty<string> TextResourceProperty = AvaloniaProperty.RegisterAttached<ToolTip, Control, string>("TextResource", null);
+        public static string GetTextResource(Control target) => target.GetValue(TextResourceProperty);
+        public static void SetTextResource(Control target, string value) => target.SetValue(TextResourceProperty, value);
 
-        private static void OnResourcePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
+        static ToolTip()
         {
-            if (e.NewValue is string resource && !string.IsNullOrEmpty(resource))
-                ToolTipService.SetToolTip(target, Locale.GetString(resource));
-            else
-                ToolTipService.SetToolTip(target, null);
+            TextResourceProperty.Changed.Subscribe(e =>
+            {
+                if (e.Sender is Control target)
+                {
+                    if (e.NewValue.HasValue && e.NewValue.Value is string resource && !string.IsNullOrEmpty(resource))
+                        Avalonia.Controls.ToolTip.SetTip(target, Locale.GetString(resource));
+                    else
+                        Avalonia.Controls.ToolTip.SetTip(target, null);
+                }
+            });
         }
     }
 }
+

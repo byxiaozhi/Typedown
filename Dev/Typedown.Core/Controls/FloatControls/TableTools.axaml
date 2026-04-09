@@ -1,0 +1,19 @@
+<MenuFlyout
+    x:Class="Typedown.Core.Controls.FloatControls.TableTools"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.FloatControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Core.Utilities"
+    Placement="RightEdgeAlignedTop"
+    mc:Ignorable="d">
+    <MenuItem Header="{u:LocaleString Key=InsertRowAbove}" x:Name="InsertPreviousRow" />
+    <MenuItem Header="{u:LocaleString Key=InsertRowBelow}" x:Name="InsertNextRow" />
+    <MenuItem Header="{u:LocaleString Key=RemoveRow}" x:Name="RemoveNurrentRow" />
+    <MenuItem Header="{u:LocaleString Key=InsertColumnLeft}" x:Name="InsertLeftColumn" />
+    <MenuItem Header="{u:LocaleString Key=InsertColumnRight}" x:Name="InsertRightColumn" />
+    <MenuItem Header="{u:LocaleString Key=RemoveColumn}" x:Name="RemoveCurrentColumn" />
+</MenuFlyout>
+
+

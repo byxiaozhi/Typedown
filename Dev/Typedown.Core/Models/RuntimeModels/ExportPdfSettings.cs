@@ -1,6 +1,6 @@
 ﻿using Typedown.Core.Enums;
-using Windows.Foundation;
-using Windows.UI.Xaml;
+using System.Collections.Generic;
+using Avalonia.Controls;
 
 namespace Typedown.Core.Models
 {

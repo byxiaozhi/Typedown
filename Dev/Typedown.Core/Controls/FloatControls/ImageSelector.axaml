@@ -1,0 +1,63 @@
+﻿<UserControl
+    x:Class="Typedown.Core.Controls.FloatControls.ImageSelector"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.FloatControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Typedown.Core.Controls"
+    xmlns:u="using:Typedown.Core.Utilities"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid Width="400" RowSpacing="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock FontWeight="SemiBold" FontSize="20" Text="{u:LocaleString Key=EditImage}"/>
+        <StackPanel Grid.Row="1" Spacing="8">
+            <TextBlock Text="{u:LocaleString Key=Path}"/>
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="TextBoxSrc"/>
+                <controls:PathPickerButton Picked="OnImagePickerButtonPicked" Path="{Binding TextBoxSrc.Text, Mode=TwoWay}" x:Name="ImagePickerButton" MinWidth="80" Grid.Column="1" FileTypeFilter="{Binding u:FileTypeHelper.Image}" Content="{u:LocaleString Key=Browse}"/>
+            </Grid>
+            <Grid Margin="0,8,0,0" RowSpacing="8" ColumnSpacing="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{u:LocaleString Key=ImageAlt}"/>
+                <TextBox x:Name="TextBoxAlt" Grid.Row="1"/>
+                <TextBlock Grid.Column="1" Text="{u:LocaleString Key=Title}"/>
+                <TextBox x:Name="TextBoxTitle" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Row="2" ColumnSpacing="8" Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Margin="0,0,4,0" Style="{ThemeResource EllipsisIconButtonStyle}" Command="{Binding ViewModel.NavigateCommand}" CommandParameter="Settings/Image" controls:ToolTip.TextResource="Settings">
+                <PathIcon Data="M20.5 13.9241C20.5 13.5659 20.4682 13.2144 20.4074 12.8727C21.4398 12.28 21.7824 10.9632 21.1711 9.94073L19.4627 7.0805C18.847 6.05051 17.5255 5.71966 16.4965 6.32626C15.9329 5.86438 15.2974 5.48512 14.6074 5.20593C14.3986 4.02049 13.3712 3.1416 ..."/>
+            </Button>
+            <controls:ProgressButton x:Name="SaveButton" Content="{u:LocaleString Key=Ok}" Grid.Column="1" MinWidth="100" Click="OnSaveButtonClick" Style="{ThemeResource AccentButtonStyle}"/>
+            <Button Grid.Column="2" Content="{u:LocaleString Key=Cancel}" MinWidth="100" Click="OnCancelButtonClick"/>
+        </Grid>
+    </Grid>
+</UserControl>
+
+
+

@@ -1,35 +1,41 @@
-﻿using System;
+using Avalonia.Interactivity;
+using System;
+using System.Collections.ObjectModel;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Metadata;
+using Avalonia.Data.Converters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Utilities;
-using Windows.Storage.Pickers;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Avalonia.Platform.Storage;
+using Avalonia;
+using Avalonia.Controls;
 
 namespace Typedown.Core.Controls
 {
     public class PathPickerButton : Button
     {
-        public static DependencyProperty PathProperty = DependencyProperty.Register(nameof(Path), typeof(string), typeof(PathPickerButton), new(""));
+        public static AvaloniaProperty PathProperty = AvaloniaProperty.Register<PathPickerButton, string>(nameof(Path), "");
         public string Path { get => (string)GetValue(PathProperty); set => SetValue(PathProperty, value.Replace("\\", "/")); }
 
-        public static DependencyProperty ModeProperty = DependencyProperty.Register(nameof(Mode), typeof(PathPickMode), typeof(PathPickerButton), new(PathPickMode.File));
+        public static AvaloniaProperty ModeProperty = AvaloniaProperty.Register<PathPickerButton, PathPickMode>(nameof(Mode), PathPickMode.File);
         public PathPickMode Mode { get => (PathPickMode)GetValue(ModeProperty); set => SetValue(ModeProperty, value); }
 
-        public static DependencyProperty FileTypeFilterProperty = DependencyProperty.Register(nameof(FileTypeFilter), typeof(IEnumerable<string>), typeof(PathPickerButton), new(PathPickMode.File));
+        public static AvaloniaProperty FileTypeFilterProperty = AvaloniaProperty.Register<PathPickerButton, IEnumerable<string>>(nameof(FileTypeFilter), null);
         public IEnumerable<string> FileTypeFilter { get => (IEnumerable<string>)GetValue(FileTypeFilterProperty); set => SetValue(FileTypeFilterProperty, value); }
 
         public event EventHandler<PickedEventArgs> Picked;
 
-        private nint Window => this.GetService<IWindowService>().GetWindow(this);
+
 
         public bool IsPicking { get; private set; }
 
         public PathPickerButton()
         {
-            Style = Application.Current.Resources["DefaultButtonStyle"] as Style;
+            Classes.Add("DefaultButtonStyle");
             FileTypeFilter = new List<string>();
             Click += OnPathPickerButtonClick;
         }
@@ -59,17 +65,22 @@ namespace Typedown.Core.Controls
         {
             try
             {
-                var filePicker = new FileOpenPicker();
-                FileTypeFilter.ToList().ForEach(filePicker.FileTypeFilter.Add);
-                filePicker.SetOwnerWindow(Window);
-                var file = await filePicker.PickSingleFileAsync();
+                var topLevel = TopLevel.GetTopLevel(this);
+                if (topLevel == null) return;
+                var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+                {
+                    AllowMultiple = false
+                });
+                var file = files.FirstOrDefault();
                 var isCancel = file is null;
-                if (!isCancel) Path = file.Path;
-                Picked?.Invoke(this, new(isCancel, file?.Path));
+                if (!isCancel) Path = file.TryGetLocalPath() ?? file.Path.ToString();
+                Picked?.Invoke(this, new(isCancel, isCancel ? null : Path));
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
+                var dialog = AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok"));
+                dialog.XamlRoot = this;
+                await dialog.ShowAsync();
             }
         }
 
@@ -77,17 +88,22 @@ namespace Typedown.Core.Controls
         {
             try
             {
-                var folderPicker = new FolderPicker();
-                folderPicker.SetOwnerWindow(Window);
-                folderPicker.FileTypeFilter.Add("*");
-                var folder = await folderPicker.PickSingleFolderAsync();
+                var topLevel = TopLevel.GetTopLevel(this);
+                if (topLevel == null) return;
+                var folders = await topLevel.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
+                {
+                    AllowMultiple = false
+                });
+                var folder = folders.FirstOrDefault();
                 var isCancel = folder is null;
-                if (!isCancel) Path = folder.Path;
-                Picked?.Invoke(this, new(isCancel, folder?.Path));
+                if (!isCancel) Path = folder.TryGetLocalPath() ?? folder.Path.ToString();
+                Picked?.Invoke(this, new(isCancel, isCancel ? null : Path));
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
+                var dialog = AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok"));
+                dialog.XamlRoot = this;
+                await dialog.ShowAsync();
             }
         }
 
@@ -111,3 +127,4 @@ namespace Typedown.Core.Controls
         }
     }
 }
+

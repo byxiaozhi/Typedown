@@ -1,0 +1,31 @@
+<UserControl
+    x:Class="Typedown.Core.Controls.RootControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="ContentFrameBackgroundBrush" Color="Transparent"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="RootGrid" Background="{Binding Background, RelativeSource={RelativeSource AncestorType=UserControl}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="4"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- <local:Caption x:Name="Caption" IsVisible="False"/> -->
+        <local:GlobalFrame x:Name="Frame" Background="{DynamicResource ContentFrameBackgroundBrush}" Grid.Row="1"/>
+    </Grid>
+</UserControl>
+
