@@ -34,7 +34,7 @@ export const inlineRules = {
   backlash: /^(\\)([\\`*{}\[\]()#+\-.!_>~:\|\<\>$]{1})/,
 
   // Markdown extensions (not belongs to GFM and Commonmark)
-  inline_math: /^(\$)([^\$]*?[^\$\\])(\\*)\1(?!\1)/
+  inline_math: /^(\$)(?!\s)([^\$]*?[^\s\$\\])(\\*)\1(?![\d$])/
 }
 
 // Markdown extensions (not belongs to GFM and Commonmark)
