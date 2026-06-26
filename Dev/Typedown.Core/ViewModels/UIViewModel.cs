@@ -36,6 +36,12 @@ namespace Typedown.Core.ViewModels
 
         public double CaptionHeight { get; set; } = 32;
 
+        public bool IsPrintPreviewOpen { get; private set; }
+
+        public object PrintPreviewContent { get; private set; }
+
+        public string PrintPreviewTitle { get; private set; }
+
         private readonly CompositeDisposable disposables = new();
 
         private readonly UISettings uiSettings = new();
@@ -109,8 +115,26 @@ namespace Typedown.Core.ViewModels
             }
         }
 
+        public void ShowPrintPreview(object content, string title = null)
+        {
+            ClosePrintPreview();
+            PrintPreviewTitle = title;
+            PrintPreviewContent = content;
+            IsPrintPreviewOpen = true;
+        }
+
+        public void ClosePrintPreview()
+        {
+            IsPrintPreviewOpen = false;
+            var oldContent = PrintPreviewContent;
+            PrintPreviewContent = null;
+            PrintPreviewTitle = null;
+            (oldContent as IDisposable)?.Dispose();
+        }
+
         public void Dispose()
         {
+            ClosePrintPreview();
             disposables.Dispose();
         }
     }
