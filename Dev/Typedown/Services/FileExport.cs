@@ -11,7 +11,7 @@ using Typedown.Core.Models;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
-using Typedown.Utilities;
+using Typedown.Controls;
 
 namespace Typedown.Services
 {
@@ -107,10 +107,10 @@ namespace Typedown.Services
             ExportConfigs.UpdateCollection(newItems, (a, b) => a.Id == b.Id);
         }
 
-        public async Task Print(string basePath, string html, string documentName = null)
+        public Task Print(string basePath, string html, string documentName = null)
         {
-            using var stream = await FileConverter.HtmlToPdf(html);
-            await PrintHelper.PrintPDF(ViewModel.MainWindow, stream, documentName);
+            ViewModel.UIViewModel.ShowPrintPreview(new PrintPreviewControl(html, documentName), documentName);
+            return Task.CompletedTask;
         }
 
         public void Dispose()

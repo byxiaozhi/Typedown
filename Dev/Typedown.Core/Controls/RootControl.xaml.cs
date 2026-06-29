@@ -55,5 +55,10 @@ namespace Typedown.Core.Controls
         {
             return !compactMode || currentPage != typeof(MainPage);
         }
+
+        private void OnClosePrintPreviewClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel?.UIViewModel?.ClosePrintPreview();
+        }
     }
 }
