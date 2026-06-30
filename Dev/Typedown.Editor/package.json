@@ -4,7 +4,9 @@
   "private": true,
   "homepage": ".",
   "scripts": {
+    "prestart": "node scripts/copy-mermaid.js",
     "start": "set BROWSER=none&&react-app-rewired start",
+    "prebuild": "node scripts/copy-mermaid.js",
     "build": "set GENERATE_SOURCEMAP=false&&react-app-rewired build",
     "test": "react-app-rewired test"
   },
@@ -33,7 +35,7 @@
     "imports-loader": "^0.8.0",
     "joplin-turndown-plugin-gfm": "^1.0.12",
     "katex": "^0.15.2",
-    "mermaid": "^8.13.10",
+    "mermaid": "^11.16.0",
     "minizlib": "^2.1.2",
     "path-browserify": "^1.0.1",
     "prismjs": "^1.26.0",

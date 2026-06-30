@@ -1,4 +1,23 @@
 const rendererCache = new Map()
+
+// Wait for a global injected by a <script> tag to become available.
+const waitForGlobal = (prop, timeout = 15000) => new Promise((resolve, reject) => {
+  if (window[prop]) {
+    resolve(window[prop])
+    return
+  }
+  const start = Date.now()
+  const timer = setInterval(() => {
+    if (window[prop]) {
+      clearInterval(timer)
+      resolve(window[prop])
+    } else if (Date.now() - start > timeout) {
+      clearInterval(timer)
+      reject(new Error(`Global "${prop}" was not loaded`))
+    }
+  }, 50)
+})
+
 /**
  *
  * @param {string} name the renderer name: katex, sequence, plantuml, flowchart, mermaid, vega-lite
@@ -20,8 +39,9 @@ const loadRenderer = async (name) => {
         rendererCache.set(name, m.default)
         break
       case 'mermaid':
-        m = await import('mermaid/dist/mermaid.core.js')
-        rendererCache.set(name, m.default)
+        // Mermaid v11 is loaded as a global UMD script (see public/index.html)
+        // because bundling its UMD build through webpack fails to evaluate over file://.
+        rendererCache.set(name, await waitForGlobal('mermaid'))
         break
       case 'vega-lite':
         m = await import('vega-embed')

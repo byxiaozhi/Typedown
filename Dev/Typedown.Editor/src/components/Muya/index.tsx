@@ -238,6 +238,14 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         }
     }), [editor, scrollToCursor]);
 
+    useEffect(() => transport.addListener('ThemeChanged', () => {
+        if (editor) {
+            // Defer so the theme service's listener has updated window.actualTheme first,
+            // then re-render so mermaid diagrams recolor to the new theme.
+            setTimeout(() => (editor as any).contentState.render(true), 0)
+        }
+    }), [editor]);
+
     useEffect(() => editor?.on('selectionChange', (selection: any) => {
         const menuState = createApplicationMenuState(selection)
         const selectionText = window.getSelection()?.toString();

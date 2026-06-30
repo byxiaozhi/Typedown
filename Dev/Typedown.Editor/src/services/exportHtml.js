@@ -39,18 +39,14 @@ class ExportHtml {
       preEle.replaceWith(mermaidContainer)
     }
     const mermaid = await loadRenderer('mermaid')
-    // We only export light theme, so set mermaid theme to `default`, in the future, we can choose whick theme to export.
+    // The live preview follows the app theme, but HTML export is always light:
+    // render with the `default` theme. (Could be made configurable in the future.)
     mermaid.initialize({
+      startOnLoad: false,
       securityLevel: 'strict',
       theme: 'default'
     })
-    mermaid.init(undefined, this.exportContainer.querySelectorAll('div.mermaid'))
-    if (this.options) {
-      mermaid.initialize({
-        securityLevel: 'strict',
-        theme: this.options.mermaidTheme
-      })
-    }
+    await mermaid.run({ nodes: [...this.exportContainer.querySelectorAll('div.mermaid')] })
   }
 
   async renderDiagram() {
