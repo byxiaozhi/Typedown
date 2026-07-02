@@ -1,10 +1,12 @@
 import loadRenderer from '../../renderers'
-import { CLASS_OR_ID, PREVIEW_DOMPURIFY_CONFIG } from '../../config'
-import { conflict, mixins, camelToSnake, sanitize } from '../../utils'
+import { CLASS_OR_ID } from '../../config'
+import { conflict, mixins, camelToSnake } from '../../utils'
 import { patch, toVNode, toHTML, h } from './snabbdom'
 import { beginRules } from '../rules'
 import renderInlines from './renderInlines'
 import renderBlock from './renderBlock'
+
+let mermaidRenderId = 0
 
 class StateRender {
   constructor(muya) {
@@ -14,6 +16,8 @@ class StateRender {
     this.loadImageMap = new Map()
     this.loadMathMap = new Map()
     this.mermaidCache = new Map()
+    this.mermaidRenderCache = new Map()
+    this.mermaidRenderTargets = new WeakMap()
     this.diagramCache = new Map()
     this.tokenCache = new Map()
     this.labels = new Map()
@@ -97,21 +101,47 @@ class StateRender {
 
   async renderMermaid() {
     if (this.mermaidCache.size) {
-      const mermaid = await loadRenderer('mermaid')
-      mermaid.initialize({
-        securityLevel: 'strict',
-        theme: window.actualTheme == 'dark' ? 'dark' : 'default'
-      })
+      let mermaid
+      const theme = window.actualTheme == 'dark' ? 'dark' : 'default'
+      try {
+        mermaid = await loadRenderer('mermaid')
+        mermaid.initialize({
+          startOnLoad: false,
+          securityLevel: 'strict',
+          theme
+        })
+      } catch (err) {
+        console.error('Failed to load mermaid renderer', err)
+        for (const [key] of this.mermaidCache.entries()) {
+          const target = document.querySelector(key)
+          if (target) {
+            target.innerHTML = '< Invalid Mermaid Codes >'
+            target.classList.add(CLASS_OR_ID.AG_MATH_ERROR)
+          }
+        }
+        this.mermaidCache.clear()
+        return
+      }
       for (const [key, value] of this.mermaidCache.entries()) {
         const { code } = value
         const target = document.querySelector(key)
         if (!target) {
           continue
         }
+        const cacheKey = `${theme}\n${code}`
+        // Already showing this exact diagram - don't re-parse the SVG (avoids flicker).
+        if (this.mermaidRenderTargets.get(target) === cacheKey && target.querySelector('svg')) {
+          continue
+        }
         try {
-          mermaid.parse(code)
-          target.innerHTML = sanitize(code, PREVIEW_DOMPURIFY_CONFIG, true)
-          mermaid.init(undefined, target)
+          let svg = this.mermaidRenderCache.get(cacheKey)
+          if (svg == null) {
+            const result = await mermaid.render(`mermaid-render-${mermaidRenderId++}`, code)
+            svg = result.svg
+            this.mermaidRenderCache.set(cacheKey, svg)
+          }
+          target.innerHTML = svg
+          this.mermaidRenderTargets.set(target, cacheKey)
         } catch (err) {
           target.innerHTML = '< Invalid Mermaid Codes >'
           target.classList.add(CLASS_OR_ID.AG_MATH_ERROR)
