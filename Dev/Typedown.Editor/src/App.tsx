@@ -1,6 +1,6 @@
 import React from 'react';
-import Editor from 'components/Editor';
 import ErrorBoundary from 'components/ErrorBoundary';
+import TabCoordinator from 'components/Tabs/TabCoordinator';
 import 'services/theme'
 import 'services/scrollbar'
 import 'services/localization'
@@ -11,7 +11,7 @@ document.oncontextmenu = () => false;
 function App() {
   return (
     <ErrorBoundary>
-      <Editor />
+      <TabCoordinator />
     </ErrorBoundary>
   );
 }

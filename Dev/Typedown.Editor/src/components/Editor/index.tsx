@@ -9,11 +9,20 @@ import { htmlToMarkdown } from "services/importHtml";
 import { DEFAULT_TURNDOWN_CONFIG } from "components/Muya/lib/config";
 import { getHtmlToc, getTOC } from "services/common";
 
-const Editor: React.FC = () => {
-    const [markdown, setMarkdown] = useState<string>();
-    const markdownRef = useRef<string>();
-    const [cursor, setCursor] = useState<any>();
-    const [options, setOptions] = useState<any>();
+interface IEditorProps {
+    markdown: string
+    cursor?: any
+    basePath: string | null
+    options: any
+    onMarkdownChange?: (markdown: string) => void
+    onCursorChange?: (cursor: any) => void
+}
+
+const Editor: React.FC<IEditorProps> = (props) => {
+    const [markdown, setMarkdown] = useState<string>(props.markdown);
+    const markdownRef = useRef<string>(props.markdown);
+    const [cursor, setCursor] = useState<any>(props.cursor);
+    const [options, setOptions] = useState<any>(props.options);
     const optionsRef = useRef<any>();
     const [searchOpen, setSearchOpen] = useState(0);
     const [searchArg, setSearchArg] = useState<{ value: string, opt: any }>();
@@ -23,13 +32,7 @@ const Editor: React.FC = () => {
     const OnFileLoaded = useCallback(() => setTimeout(() => transport.postMessage('FileLoaded', { text: markdownRef.current }), 100), [])
 
     useEffect(() => {
-        remote.getSettings().then(({ markdown, basePath, ...opt }: any) => {
-            window.basePath = basePath
-            setOptions(opt)
-            setMarkdown(markdown)
-            markdownRef.current = markdown
-            OnFileLoaded();
-        })
+        OnFileLoaded();
     }, [OnFileLoaded]);
 
     useEffect(() => {
@@ -37,15 +40,33 @@ const Editor: React.FC = () => {
     }, [options])
 
     useEffect(() => {
+        setOptions(props.options)
+    }, [props.options])
+
+    useEffect(() => {
+        window.basePath = props.basePath ?? ''
+    }, [props.basePath])
+
+    useEffect(() => {
+        if (props.markdown != undefined && props.markdown !== markdownRef.current) {
+            markdownRef.current = props.markdown
+            setCursor(props.cursor)
+            setMarkdown(props.markdown)
+        }
+    }, [props.cursor, props.markdown])
+
+    useEffect(() => {
         if (markdown != undefined && markdownRef.current != markdown) {
+            props.onMarkdownChange?.(markdown)
             transport.postMessage('MarkdownChange', { text: markdown });
             markdownRef.current = markdown
         }
-    }, [markdown])
+    }, [markdown, props])
 
     useEffect(() => {
+        props.onCursorChange?.(cursor)
         transport.postMessage('CursorChange', { cursor })
-    }, [cursor])
+    }, [cursor, props])
 
     useEffect(() => transport.addListener<IExportArgs>('Export', async ({ type, context, basePath, title, options }) => {
         const generateOption = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc), ...options }
@@ -63,7 +84,7 @@ const Editor: React.FC = () => {
     }), [options]);
 
     useEffect(() => transport.addListener<{ text: string, basePath: string }>('LoadFile', ({ text, basePath }) => {
-        window.basePath = basePath
+        window.basePath = basePath ?? ''
         setCursor(undefined)
         setMarkdown(text)
         markdownRef.current = text
@@ -71,7 +92,7 @@ const Editor: React.FC = () => {
     }), [OnFileLoaded]);
 
     useEffect(() => transport.addListener<{ text: string, cursor: string, basePath: string }>('SetMarkdown', ({ text, cursor, basePath }) => {
-        window.basePath = basePath
+        window.basePath = basePath ?? ''
         setCursor(cursor)
         setTimeout(() => setMarkdown(text))
         markdownRef.current = text

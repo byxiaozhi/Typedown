@@ -88,11 +88,11 @@ namespace Typedown.Core.ViewModels
         public FileViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            NewFileCommand.OnExecute.Subscribe(async _ => await NewFileFun());
-            OpenFileCommand.OnExecute.Subscribe(async x => await OpenFile(x));
+            NewFileCommand.OnExecute.Subscribe(async _ => await RequestNewTab());
+            OpenFileCommand.OnExecute.Subscribe(async x => await OpenFileInTabs(x));
             OpenFolderCommand.OnExecute.Subscribe(async x => await OpenFolder(x));
-            SaveAsCommand.OnExecute.Subscribe(async _ => await SaveAs());
-            SaveCommand.OnExecute.Subscribe(async _ => await Save());
+            SaveAsCommand.OnExecute.Subscribe(_ => RequestSave(true));
+            SaveCommand.OnExecute.Subscribe(_ => RequestSave(false));
             ExitCommand.OnExecute.Subscribe(_ => Exit());
             ClearHistoryCommand.OnExecute.Subscribe(x => { _ = AccessHistory.ClearHistory(); });
             ExportCommand.OnExecute.Subscribe(Export);
@@ -150,9 +150,9 @@ namespace Typedown.Core.ViewModels
             return true;
         }
 
-        private async Task NewFileFun(bool postMessage = true)
+        private async Task NewFileFun(bool postMessage = true, bool askToSave = true)
         {
-            if (!await AskToSave()) return;
+            if (askToSave && !await AskToSave()) return;
             FilePath = null;
             EditorViewModel.FileHash = Common.SimpleHash(Common.DefaultMarkdwn);
             string backup = null;
@@ -183,6 +183,17 @@ namespace Typedown.Core.ViewModels
             }
         }
 
+        private async Task RequestNewTab()
+        {
+            await NewFileFun(false, false);
+            MarkdownEditor?.PostMessage("NewTabRequested", new
+            {
+                text = EditorViewModel.Markdown,
+                basePath = ImageBasePath,
+                dirty = !EditorViewModel.Saved
+            });
+        }
+
         public async Task<bool> OpenFile(string filePath = null)
         {
             if (!await AskToSave())
@@ -191,6 +202,24 @@ namespace Typedown.Core.ViewModels
             if (filePath == null)
                 return false;
             return await LoadFile(filePath, true);
+        }
+
+        private async Task<bool> OpenFileInTabs(string filePath = null)
+        {
+            filePath ??= await AppViewModel.MainWindow.PickMarkdownFileAsync();
+            if (filePath == null)
+                return false;
+            var loaded = await LoadFile(filePath, true, false);
+            if (!loaded)
+                return false;
+            MarkdownEditor?.PostMessage("DocumentLoaded", new
+            {
+                path = FilePath,
+                text = EditorViewModel.Markdown,
+                basePath = ImageBasePath,
+                dirty = !EditorViewModel.Saved
+            });
+            return true;
         }
 
         public async Task<bool> OpenFolder(string folderPath = null)
@@ -373,6 +402,11 @@ namespace Typedown.Core.ViewModels
                 return null;
             ApplySavedState(result, EditorViewModel.Markdown);
             return result;
+        }
+
+        private void RequestSave(bool saveAs)
+        {
+            MarkdownEditor?.PostMessage("SaveRequested", new { saveAs });
         }
 
         private async Task<bool> PrintHTML(JToken args)
@@ -590,6 +624,11 @@ namespace Typedown.Core.ViewModels
             EditorViewModel.CurrentHash = currentHash;
             EditorViewModel.FileHash = args?.Dirty == true ? currentHash ^ 1UL : currentHash;
             EditorViewModel.Saved = args?.Dirty != true;
+            EditorViewModel.AutoSavedSucc = true;
+            EditorViewModel.FileLoaded = true;
+            EditorViewModel.History.InitHistory(text);
+            if (!string.IsNullOrEmpty(FilePath))
+                _ = AccessHistory.RecordFileHistory(FilePath);
         }
 
         private async Task<SaveTabResult> SaveTab(SaveTabArgs args)
