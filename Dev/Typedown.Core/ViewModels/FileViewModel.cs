@@ -65,14 +65,34 @@ namespace Typedown.Core.ViewModels
 
         private readonly CompositeDisposable disposables = new();
 
+        private sealed class ActivateTabArgs
+        {
+            public string Path { get; set; }
+            public string Text { get; set; }
+            public bool Dirty { get; set; }
+        }
+
+        private sealed class SaveTabArgs
+        {
+            public string Path { get; set; }
+            public string Text { get; set; }
+            public bool SaveAs { get; set; }
+        }
+
+        private sealed class SaveTabResult
+        {
+            public string Path { get; set; }
+            public string BasePath { get; set; }
+        }
+
         public FileViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            NewFileCommand.OnExecute.Subscribe(async _ => await NewFileFun());
+            NewFileCommand.OnExecute.Subscribe(_ => RequestNewTab());
             OpenFileCommand.OnExecute.Subscribe(async x => await OpenFile(x));
             OpenFolderCommand.OnExecute.Subscribe(async x => await OpenFolder(x));
-            SaveAsCommand.OnExecute.Subscribe(async _ => await SaveAs());
-            SaveCommand.OnExecute.Subscribe(async _ => await Save());
+            SaveAsCommand.OnExecute.Subscribe(_ => RequestSave(true));
+            SaveCommand.OnExecute.Subscribe(_ => RequestSave(false));
             ExitCommand.OnExecute.Subscribe(_ => Exit());
             ClearHistoryCommand.OnExecute.Subscribe(x => { _ = AccessHistory.ClearHistory(); });
             ExportCommand.OnExecute.Subscribe(Export);
@@ -80,6 +100,9 @@ namespace Typedown.Core.ViewModels
             ImportCommand.OnExecute.Subscribe(_ => Import());
             RemoteInvoke.Handle<JToken, bool>("ExportCallback", ExportCallback);
             RemoteInvoke.Handle<JToken, bool>("PrintHTML", PrintHTML);
+            RemoteInvoke.Handle<ActivateTabArgs>("ActivateTab", ActivateTab);
+            RemoteInvoke.Handle<SaveTabArgs, SaveTabResult>("SaveTab", SaveTab);
+            RemoteInvoke.Handle("CloseWindow", CloseWindow);
             saveFileTimer.Interval = TimeSpan.FromSeconds(5);
             saveFileTimer.Tick += SaveFileTimerTick;
             saveFileTimer.Start();
@@ -162,8 +185,6 @@ namespace Typedown.Core.ViewModels
 
         public async Task<bool> OpenFile(string filePath = null)
         {
-            if (!await AskToSave())
-                return false;
             filePath ??= await AppViewModel.MainWindow.PickMarkdownFileAsync();
             if (filePath == null)
                 return false;
@@ -224,7 +245,12 @@ namespace Typedown.Core.ViewModels
                 EditorViewModel.History.InitHistory(EditorViewModel.Markdown);
                 if (postMessage)
                 {
-                    MarkdownEditor?.PostMessage("LoadFile", new { text = EditorViewModel.Markdown, basePath = ImageBasePath });
+                    MarkdownEditor?.PostMessage("DocumentLoaded", new
+                    {
+                        path = FilePath,
+                        text = EditorViewModel.Markdown,
+                        basePath = ImageBasePath
+                    });
                 }
                 return true;
             }
@@ -294,28 +320,7 @@ namespace Typedown.Core.ViewModels
             }
         }
 
-        private async Task<bool> Save(bool alert = true)
-        {
-            if (FilePath == null)
-            {
-                var result = await SaveAs();
-                return result != null;
-            }
-            else
-            {
-                var result = await WriteAllText(FilePath, EditorViewModel.Markdown, alert);
-                if (result)
-                {
-                    EditorViewModel.FileHash = EditorViewModel.CurrentHash;
-                    EditorViewModel.Saved = true;
-                    AutoBackup.DeleteBackup(FilePath);
-                    _ = AccessHistory.RecordFileHistory(FilePath);
-                }
-                return result;
-            }
-        }
-
-        private async Task<string> SaveAs()
+        private async Task<string> PickSaveFilePath()
         {
             try
             {
@@ -324,26 +329,53 @@ namespace Typedown.Core.ViewModels
                 filePicker.FileTypeChoices.Add("Markdown Files", FileTypeHelper.Markdown.ToList());
                 filePicker.SuggestedFileName = FileName ?? "untitled";
                 var file = await filePicker.PickSaveFileAsync();
-                if (file != null)
-                {
-                    var result = await WriteAllText(file.Path, EditorViewModel.Markdown);
-                    if (result)
-                    {
-                        AutoBackup.DeleteBackup(FilePath);
-                        FilePath = file.Path;
-                        EditorViewModel.FileHash = EditorViewModel.CurrentHash;
-                        EditorViewModel.Saved = true;
-                        _ = AccessHistory.RecordFileHistory(FilePath);
-                        return file.Path;
-                    }
-                }
-                return null;
+                return file?.Path;
             }
             catch (Exception ex)
             {
                 await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(AppViewModel.XamlRoot);
                 return null;
             }
+        }
+
+        private async Task<string> SaveText(string path, string text, bool saveAs, bool alert = true)
+        {
+            var targetPath = saveAs || path == null ? await PickSaveFilePath() : path;
+            if (targetPath == null)
+                return null;
+            return await WriteAllText(targetPath, text, alert) ? targetPath : null;
+        }
+
+        private void ApplySavedState(string path, string text)
+        {
+            var previousPath = FilePath;
+            AutoBackup.DeleteBackup(previousPath);
+            FilePath = path;
+            EditorViewModel.Markdown = text;
+            EditorViewModel.CurrentHash = Common.SimpleHash(text);
+            EditorViewModel.FileHash = EditorViewModel.CurrentHash;
+            EditorViewModel.Saved = true;
+            EditorViewModel.AutoSavedSucc = true;
+            AutoBackup.DeleteBackup(FilePath);
+            _ = AccessHistory.RecordFileHistory(FilePath);
+        }
+
+        private async Task<bool> Save(bool alert = true)
+        {
+            var result = await SaveText(FilePath, EditorViewModel.Markdown, FilePath == null, alert);
+            if (result == null)
+                return false;
+            ApplySavedState(result, EditorViewModel.Markdown);
+            return true;
+        }
+
+        private async Task<string> SaveAs()
+        {
+            var result = await SaveText(FilePath, EditorViewModel.Markdown, true);
+            if (result == null)
+                return null;
+            ApplySavedState(result, EditorViewModel.Markdown);
+            return result;
         }
 
         private async Task<bool> PrintHTML(JToken args)
@@ -437,7 +469,7 @@ namespace Typedown.Core.ViewModels
                     case Enums.FileStartupAction.OpenLast:
                         await AccessHistory.EnsureInitialized();
                         if (AccessHistory.FileRecentlyOpened.FirstOrDefault() is string lastFile && !TryGetOpenedWindow(lastFile, out _) && File.Exists(lastFile))
-                            await LoadFile(lastFile, true);
+                            await LoadFile(lastFile, true, false);
                         break;
                     default:
                         await NewFileFun(false);
@@ -549,6 +581,43 @@ namespace Typedown.Core.ViewModels
         {
             saveFileTimer.Stop();
             disposables.Dispose();
+        }
+
+        private void RequestNewTab()
+        {
+            MarkdownEditor?.PostMessage("NewTabRequested", null);
+        }
+
+        private void RequestSave(bool saveAs)
+        {
+            MarkdownEditor?.PostMessage("SaveRequested", new { saveAs });
+        }
+
+        private void ActivateTab(ActivateTabArgs args)
+        {
+            var text = args?.Text ?? string.Empty;
+            var currentHash = Common.SimpleHash(text);
+
+            FilePath = args?.Path;
+            EditorViewModel.Markdown = text;
+            EditorViewModel.CurrentHash = currentHash;
+            EditorViewModel.FileHash = args?.Dirty == true ? currentHash ^ 1UL : currentHash;
+            EditorViewModel.Saved = args?.Dirty != true;
+        }
+
+        private async Task<SaveTabResult> SaveTab(SaveTabArgs args)
+        {
+            var text = args?.Text ?? string.Empty;
+            var result = await SaveText(args?.Path, text, args?.SaveAs == true || args?.Path == null);
+            if (result == null)
+                return null;
+            ApplySavedState(result, text);
+            return new SaveTabResult() { Path = result, BasePath = ImageBasePath };
+        }
+
+        private void CloseWindow()
+        {
+            Exit();
         }
 
         private void Exit()

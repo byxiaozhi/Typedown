@@ -14,6 +14,20 @@ const createState = (...tabs: ReturnType<typeof createUntitledTab>[]) => ({
   activeTabId: tabs[0]?.id ?? null,
 });
 
+const loadRemoteCommon = () => {
+  jest.resetModules();
+  Object.defineProperty(window, 'chrome', {
+    configurable: true,
+    value: {
+      webview: {
+        addEventListener: jest.fn(),
+        postMessage: jest.fn(),
+      },
+    },
+  });
+  return require('../../services/remote/common') as typeof import('../../services/remote/common');
+};
+
 test('canonicalizePath normalizes Windows casing and redundant segments', () => {
   expect(canonicalizePath('C:\\Docs\\Folder\\..\\Draft.md')).toBe('c:\\docs\\draft.md');
 });
@@ -30,6 +44,47 @@ test('createUntitledTab creates unique untitled tabs with clean state', () => {
   expect(first.path).toBeNull();
   expect(first.displayName).toBe('\u672a\u547d\u540d');
   expect(first.dirty).toBe(false);
+});
+
+test('buildActivateTabPayload keeps the nullable path current text and dirty flag', () => {
+  const { buildActivateTabPayload } = loadRemoteCommon();
+
+  expect(buildActivateTabPayload(null, 'draft', true)).toEqual({
+    path: null,
+    text: 'draft',
+    dirty: true,
+  });
+});
+
+test('buildSaveTabPayload keeps the nullable path current text and saveAs flag', () => {
+  const { buildSaveTabPayload } = loadRemoteCommon();
+
+  expect(buildSaveTabPayload('C:\\Docs\\Draft.md', 'draft', false)).toEqual({
+    path: 'C:\\Docs\\Draft.md',
+    text: 'draft',
+    saveAs: false,
+  });
+});
+
+test('unconfirmed save results are rejected so React keeps the tab dirty', () => {
+  const { isConfirmedSaveResult } = loadRemoteCommon();
+  const tab = {
+    ...createUntitledTab(),
+    text: 'draft',
+    dirty: true,
+    path: null,
+    displayName: '未命名',
+    basePath: null,
+  };
+  const state = createState(tab);
+  const unconfirmedResult = { basePath: 'C:\\Docs' };
+
+  const nextState = isConfirmedSaveResult(unconfirmedResult)
+    ? markTabSaved(state, tab.id, { success: true, path: unconfirmedResult.path })
+    : state;
+
+  expect(isConfirmedSaveResult(unconfirmedResult)).toBe(false);
+  expect(nextState).toEqual(state);
 });
 
 test('openDocument reuses the existing tab when the path only differs by case or segments', () => {
