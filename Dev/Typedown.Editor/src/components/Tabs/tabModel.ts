@@ -37,20 +37,16 @@ const UNTITLED_NAME = '\u672a\u547d\u540d';
 
 export const canonicalizePath = (path: string): string => {
   const normalized = path.replace(/\//g, '\\');
+  const isUnc = normalized.startsWith('\\\\');
+  if (isUnc) {
+    return `\\\\${normalizeParts(normalized.slice(2).split('\\'), 2).join('\\')}`;
+  }
+
   const driveMatch = normalized.match(/^([a-zA-Z]:)(.*)$/);
   const prefix = driveMatch ? driveMatch[1].toLowerCase() : '';
   const rest = driveMatch ? driveMatch[2] : normalized;
   const absolute = rest.startsWith('\\');
-  const parts: string[] = [];
-
-  rest.split('\\').forEach((part) => {
-    if (!part || part === '.') return;
-    if (part === '..') {
-      parts.pop();
-      return;
-    }
-    parts.push(part.toLowerCase());
-  });
+  const parts = normalizeParts(rest.split('\\'), 0);
 
   const separator = prefix || absolute ? '\\' : '';
   return `${prefix}${separator}${parts.join('\\')}`;
@@ -181,7 +177,34 @@ export const closeTab = (
 const getFileName = (path: string): string => path.split('\\').pop() ?? path;
 
 const getBasePath = (path: string): string | null => {
+  if (path.startsWith('\\\\')) {
+    const parts = path.slice(2).split('\\');
+    parts.pop();
+    return parts.length >= 2 ? `\\\\${parts.join('\\')}` : null;
+  }
+
+  if (/^[a-z]:\\[^\\]+$/i.test(path)) {
+    return `${path.slice(0, 2)}\\`;
+  }
+
   const parts = path.split('\\');
   parts.pop();
   return parts.length > 0 ? parts.join('\\') : null;
+};
+
+const normalizeParts = (parts: string[], rootLength: number): string[] => {
+  const normalized: string[] = [];
+
+  parts.forEach((part) => {
+    if (!part || part === '.') return;
+    if (part === '..') {
+      if (normalized.length > rootLength) {
+        normalized.pop();
+      }
+      return;
+    }
+    normalized.push(part.toLowerCase());
+  });
+
+  return normalized;
 };

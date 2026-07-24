@@ -18,6 +18,10 @@ test('canonicalizePath normalizes Windows casing and redundant segments', () => 
   expect(canonicalizePath('C:\\Docs\\Folder\\..\\Draft.md')).toBe('c:\\docs\\draft.md');
 });
 
+test('canonicalizePath preserves UNC roots while normalizing redundant segments', () => {
+  expect(canonicalizePath('\\\\Server\\Share\\Folder\\..\\File.md')).toBe('\\\\server\\share\\file.md');
+});
+
 test('createUntitledTab creates unique untitled tabs with clean state', () => {
   const first = createUntitledTab();
   const second = createUntitledTab();
@@ -136,6 +140,46 @@ test('markTabSaved updates path name and base path only after a successful save 
     path: 'c:\\docs\\saved.md',
     displayName: 'saved.md',
     basePath: 'c:\\docs',
+    dirty: false,
+  });
+});
+
+test('markTabSaved keeps drive root as the base path for files at the drive root', () => {
+  const tab = {
+    ...createUntitledTab(),
+    dirty: true,
+  };
+  const state = createState(tab);
+
+  const saved = markTabSaved(state, tab.id, {
+    success: true,
+    path: 'C:\\File.md',
+  });
+
+  expect(saved.tabs[0]).toMatchObject({
+    path: 'c:\\file.md',
+    displayName: 'file.md',
+    basePath: 'c:\\',
+    dirty: false,
+  });
+});
+
+test('markTabSaved keeps the UNC share root as the base path for files at the share root', () => {
+  const tab = {
+    ...createUntitledTab(),
+    dirty: true,
+  };
+  const state = createState(tab);
+
+  const saved = markTabSaved(state, tab.id, {
+    success: true,
+    path: '\\\\Server\\Share\\File.md',
+  });
+
+  expect(saved.tabs[0]).toMatchObject({
+    path: '\\\\server\\share\\file.md',
+    displayName: 'file.md',
+    basePath: '\\\\server\\share',
     dirty: false,
   });
 });
