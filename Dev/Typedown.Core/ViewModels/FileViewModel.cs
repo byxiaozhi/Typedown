@@ -88,11 +88,11 @@ namespace Typedown.Core.ViewModels
         public FileViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            NewFileCommand.OnExecute.Subscribe(_ => RequestNewTab());
+            NewFileCommand.OnExecute.Subscribe(async _ => await NewFileFun());
             OpenFileCommand.OnExecute.Subscribe(async x => await OpenFile(x));
             OpenFolderCommand.OnExecute.Subscribe(async x => await OpenFolder(x));
-            SaveAsCommand.OnExecute.Subscribe(_ => RequestSave(true));
-            SaveCommand.OnExecute.Subscribe(_ => RequestSave(false));
+            SaveAsCommand.OnExecute.Subscribe(async _ => await SaveAs());
+            SaveCommand.OnExecute.Subscribe(async _ => await Save());
             ExitCommand.OnExecute.Subscribe(_ => Exit());
             ClearHistoryCommand.OnExecute.Subscribe(x => { _ = AccessHistory.ClearHistory(); });
             ExportCommand.OnExecute.Subscribe(Export);
@@ -185,6 +185,8 @@ namespace Typedown.Core.ViewModels
 
         public async Task<bool> OpenFile(string filePath = null)
         {
+            if (!await AskToSave())
+                return false;
             filePath ??= await AppViewModel.MainWindow.PickMarkdownFileAsync();
             if (filePath == null)
                 return false;
@@ -245,12 +247,7 @@ namespace Typedown.Core.ViewModels
                 EditorViewModel.History.InitHistory(EditorViewModel.Markdown);
                 if (postMessage)
                 {
-                    MarkdownEditor?.PostMessage("DocumentLoaded", new
-                    {
-                        path = FilePath,
-                        text = EditorViewModel.Markdown,
-                        basePath = ImageBasePath
-                    });
+                    MarkdownEditor?.PostMessage("LoadFile", new { text = EditorViewModel.Markdown, basePath = ImageBasePath });
                 }
                 return true;
             }
@@ -581,16 +578,6 @@ namespace Typedown.Core.ViewModels
         {
             saveFileTimer.Stop();
             disposables.Dispose();
-        }
-
-        private void RequestNewTab()
-        {
-            MarkdownEditor?.PostMessage("NewTabRequested", null);
-        }
-
-        private void RequestSave(bool saveAs)
-        {
-            MarkdownEditor?.PostMessage("SaveRequested", new { saveAs });
         }
 
         private void ActivateTab(ActivateTabArgs args)
