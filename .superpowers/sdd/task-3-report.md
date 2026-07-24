@@ -88,3 +88,57 @@ Observed environment blockers:
 - stayed on the existing IPC surfaces (`transport` + `RemoteInvoke`), with no second channel or new dependency;
 - preserved existing editor behaviors for search, export/import, settings listeners, Muya, and CodeMirror;
 - kept C# build status honest: attempted, blocked by environment, not reported as passing.
+
+## Review Fix Follow-up
+
+### Issues addressed
+
+1. `Editor/index.tsx` no longer feeds externally synchronized markdown/cursor back into parent tab state as if they were user edits.
+2. `TabCoordinator.tsx` no longer posts `LoadFile` from React during tab switches; the active document now changes through the existing controlled `Editor` props path, while `ActivateTab` remains the host-side state sync.
+3. Added a focused `Editor` test that renders the real `Editor` component with thin Muya/CodeMirror mocks and verifies external prop changes do not call parent edit callbacks. The failed-save coordinator test now explicitly asserts the tab remains dirty.
+
+### RED
+
+After adding the new focused tests and tightening the coordinator expectation, this command failed as expected:
+
+```powershell
+node node_modules/react-app-rewired/bin/index.js test --watchAll=false --testMatch "**/tabModel.test.ts" --testMatch "**/TabCoordinator.test.tsx" --testMatch "**/Editor/index.test.tsx"
+```
+
+Meaningful failures observed:
+
+- `external markdown and cursor sync does not call parent edit callbacks` failed because `onMarkdownChange` was called during external prop sync.
+- `switching calls activateTab before loading the target document into the editor` failed because the coordinator still emitted `post:LoadFile`.
+
+### GREEN
+
+Minimal fixes applied:
+
+- added callback-suppression refs in `Dev/Typedown.Editor/src/components/Editor/index.tsx` so external prop sync does not trigger parent edit callbacks;
+- kept user-edit callbacks intact after the external sync completes;
+- removed the invalid coordinator-side `LoadFile` post and kept the tab switch path as `TabCoordinator -> Editor props` plus `remote.activateTab`.
+
+### Verification evidence
+
+Focused tests passed:
+
+```powershell
+node node_modules/react-app-rewired/bin/index.js test --watchAll=false --testMatch "**/tabModel.test.ts" --testMatch "**/TabCoordinator.test.tsx" --testMatch "**/Editor/index.test.tsx"
+```
+
+Result: `3` suites passed, `24` tests passed.
+
+Frontend build passed:
+
+```powershell
+node node_modules/react-app-rewired/bin/index.js build
+```
+
+Result: production build completed successfully with only pre-existing vendor/library warnings.
+
+### Files updated in review fix
+
+- `Dev/Typedown.Editor/src/components/Editor/index.tsx`
+- `Dev/Typedown.Editor/src/components/Editor/index.test.tsx`
+- `Dev/Typedown.Editor/src/components/Tabs/TabCoordinator.tsx`
+- `Dev/Typedown.Editor/src/components/Tabs/TabCoordinator.test.tsx`

@@ -19,11 +19,15 @@ interface IEditorProps {
 }
 
 const Editor: React.FC<IEditorProps> = (props) => {
-    const [markdown, setMarkdown] = useState<string>(props.markdown);
-    const markdownRef = useRef<string>(props.markdown);
-    const [cursor, setCursor] = useState<any>(props.cursor);
-    const [options, setOptions] = useState<any>(props.options);
+    const { markdown: externalMarkdown, cursor: externalCursor, basePath, options: externalOptions, onMarkdownChange, onCursorChange } = props
+    const [markdown, setMarkdown] = useState<string>(externalMarkdown);
+    const markdownRef = useRef<string>(externalMarkdown);
+    const [cursor, setCursor] = useState<any>(externalCursor);
+    const cursorRef = useRef<any>(externalCursor);
+    const [options, setOptions] = useState<any>(externalOptions);
     const optionsRef = useRef<any>();
+    const skipMarkdownCallbackRef = useRef(false);
+    const skipCursorCallbackRef = useRef(true);
     const [searchOpen, setSearchOpen] = useState(0);
     const [searchArg, setSearchArg] = useState<{ value: string, opt: any }>();
     const muyaScrollTopRef = useRef(0);
@@ -40,33 +44,50 @@ const Editor: React.FC<IEditorProps> = (props) => {
     }, [options])
 
     useEffect(() => {
-        setOptions(props.options)
-    }, [props.options])
+        setOptions(externalOptions)
+    }, [externalOptions])
 
     useEffect(() => {
-        window.basePath = props.basePath ?? ''
-    }, [props.basePath])
+        window.basePath = basePath ?? ''
+    }, [basePath])
 
     useEffect(() => {
-        if (props.markdown != undefined && props.markdown !== markdownRef.current) {
-            markdownRef.current = props.markdown
-            setCursor(props.cursor)
-            setMarkdown(props.markdown)
+        if (externalMarkdown != undefined && externalMarkdown !== markdownRef.current) {
+            skipMarkdownCallbackRef.current = true
+            markdownRef.current = externalMarkdown
+            setMarkdown(externalMarkdown)
         }
-    }, [props.cursor, props.markdown])
+
+        if (externalCursor !== cursorRef.current) {
+            skipCursorCallbackRef.current = true
+            cursorRef.current = externalCursor
+            setCursor(externalCursor)
+        }
+    }, [externalCursor, externalMarkdown])
 
     useEffect(() => {
+        if (skipMarkdownCallbackRef.current) {
+            skipMarkdownCallbackRef.current = false
+            return
+        }
+
         if (markdown != undefined && markdownRef.current != markdown) {
-            props.onMarkdownChange?.(markdown)
             transport.postMessage('MarkdownChange', { text: markdown });
+            onMarkdownChange?.(markdown)
             markdownRef.current = markdown
         }
-    }, [markdown, props])
+    }, [markdown, onMarkdownChange])
 
     useEffect(() => {
-        props.onCursorChange?.(cursor)
+        if (skipCursorCallbackRef.current) {
+            skipCursorCallbackRef.current = false
+            return
+        }
+
+        cursorRef.current = cursor
+        onCursorChange?.(cursor)
         transport.postMessage('CursorChange', { cursor })
-    }, [cursor, props])
+    }, [cursor, onCursorChange])
 
     useEffect(() => transport.addListener<IExportArgs>('Export', async ({ type, context, basePath, title, options }) => {
         const generateOption = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc), ...options }

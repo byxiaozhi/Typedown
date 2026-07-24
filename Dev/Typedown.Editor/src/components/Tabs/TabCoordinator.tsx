@@ -99,12 +99,8 @@ const TabCoordinator: React.FC = () => {
     };
   }, []);
 
-  const activateAndLoad = useCallback((tab: TabDocument) => {
+  const activateTab = useCallback((tab: TabDocument) => {
     void remote.activateTab(buildActivateTabPayload(tab.path, tab.text, tab.dirty));
-    transport.postMessage('LoadFile', {
-      text: tab.text,
-      basePath: tab.basePath,
-    });
   }, []);
 
   const handleTabSwitch = useCallback((tabId: string) => {
@@ -115,8 +111,8 @@ const TabCoordinator: React.FC = () => {
     }
 
     setTabState((state) => switchTab(state, tabId));
-    activateAndLoad(targetTab);
-  }, [activateAndLoad]);
+    activateTab(targetTab);
+  }, [activateTab]);
 
   const handleMarkdownChange = useCallback((markdown: string) => {
     setTabState((state) => ({
@@ -153,8 +149,8 @@ const TabCoordinator: React.FC = () => {
       activeTabId: tab.id,
     }));
 
-    activateAndLoad(tab);
-  }, [activateAndLoad]);
+    activateTab(tab);
+  }, [activateTab]);
 
   useEffect(() => transport.addListener<DocumentLoadedArgs>('DocumentLoaded', (document) => {
     const currentState = tabStateRef.current;
@@ -181,9 +177,9 @@ const TabCoordinator: React.FC = () => {
     setTabState(normalizedState);
     const activeDocument = getActiveTab(normalizedState);
     if (activeDocument) {
-      activateAndLoad(activeDocument);
+      activateTab(activeDocument);
     }
-  }), [activateAndLoad]);
+  }), [activateTab]);
 
   useEffect(() => transport.addListener<NewTabRequestedArgs | undefined>('NewTabRequested', (args) => {
     void handleNewTab(args);
@@ -223,9 +219,9 @@ const TabCoordinator: React.FC = () => {
 
     const nextActiveTab = getActiveTab(result.nextState);
     if (nextActiveTab && nextActiveTab.id !== targetTab.id) {
-      activateAndLoad(nextActiveTab);
+      activateTab(nextActiveTab);
     }
-  }, [activateAndLoad]);
+  }, [activateTab]);
 
   const activeTab = useMemo(() => getActiveTab(tabState), [tabState]);
 

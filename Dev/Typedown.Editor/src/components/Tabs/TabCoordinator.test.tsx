@@ -182,16 +182,13 @@ test('switching calls activateTab before loading the target document into the ed
 
   fireEvent.click(screen.getByText('start.md'));
 
-  await waitFor(() => expect(mockEventLog).toEqual(['activateTab', 'post:LoadFile']));
+  await waitFor(() => expect(mockEventLog).toEqual(['activateTab']));
   expect(mockActivateTab).toHaveBeenCalledWith({
     path: 'c:\\docs\\start.md',
     text: 'start markdown',
     dirty: false,
   });
-  expect(mockPostMessage).toHaveBeenCalledWith('LoadFile', {
-    text: 'start markdown',
-    basePath: 'c:\\docs',
-  });
+  expect(mockPostMessage).not.toHaveBeenCalledWith('LoadFile', expect.anything());
 });
 
 test('a failed saveTab call leaves the tab dirty and active', async () => {
@@ -204,6 +201,7 @@ test('a failed saveTab call leaves the tab dirty and active', async () => {
   await emit('SaveRequested', { saveAs: false });
 
   await waitFor(() => expect(mockSaveTab).toHaveBeenCalled());
+  expect(screen.getByText('* start.md')).toBeInTheDocument();
   expect(screen.getByText('* start.md').closest('button')).toHaveAttribute('aria-selected', 'true');
 });
 
