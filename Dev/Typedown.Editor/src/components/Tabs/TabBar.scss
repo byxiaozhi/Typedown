@@ -1,0 +1,120 @@
+.tab-bar {
+  display: flex;
+  align-items: stretch;
+  background-color: var(--editor-bg, #1e1e1e);
+  border-bottom: 1px solid var(--editor-border, #333);
+  height: 36px;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.tab-bar__tabs {
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    height: 0;
+    display: none;
+  }
+}
+
+.tab-bar__tab {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+  padding: 0 4px;
+  border-right: 1px solid var(--editor-border, #333);
+  background-color: var(--editor-tab-inactive-bg, #2d2d2d);
+  cursor: default;
+  transition: background-color 0.15s ease;
+
+  &--active {
+    background-color: var(--editor-bg, #1e1e1e);
+    border-bottom: 2px solid var(--themeColor, #007acc);
+  }
+
+  &:hover {
+    background-color: var(--editor-tab-hover-bg, #383838);
+  }
+
+  &--active:hover {
+    background-color: var(--editor-bg, #1e1e1e);
+  }
+}
+
+.tab-bar__tab-button {
+  background: none;
+  border: none;
+  color: var(--editor-fg, #ccc);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  line-height: 36px;
+  font-family: inherit;
+  outline: none;
+
+  &:focus-visible {
+    outline: 1px solid var(--themeColor, #007acc);
+    outline-offset: -2px;
+  }
+
+  .tab-bar__tab--active & {
+    color: var(--editor-fg-active, #fff);
+  }
+}
+
+.tab-bar__close-button {
+  background: none;
+  border: none;
+  color: var(--editor-fg, #999);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  outline: none;
+
+  &:hover {
+    background-color: var(--editor-close-hover-bg, rgba(255, 255, 255, 0.1));
+    color: var(--editor-fg, #ccc);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--themeColor, #007acc);
+  }
+}
+
+.tab-bar__new-button {
+  background: none;
+  border: none;
+  color: var(--editor-fg, #999);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 12px;
+  line-height: 36px;
+  flex-shrink: 0;
+  outline: none;
+
+  &:hover {
+    background-color: var(--editor-tab-hover-bg, #383838);
+    color: var(--editor-fg, #ccc);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--themeColor, #007acc);
+    outline-offset: -2px;
+  }
+}

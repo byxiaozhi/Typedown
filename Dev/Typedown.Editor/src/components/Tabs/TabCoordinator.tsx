@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Editor from 'components/Editor';
+import TabBar from './TabBar';
 import { remote } from 'services/remote';
 import transport from 'services/transport';
 import {
@@ -12,6 +13,7 @@ import {
   createUntitledTab,
   openDocument,
   markTabSaved,
+  reorderTabs,
   switchTab,
   type TabDocument,
   type TabState,
@@ -202,13 +204,10 @@ const TabCoordinator: React.FC = () => {
     }));
   }), []);
 
-  const handleClose = useCallback(async (tabId: string) => {
-    const currentState = tabStateRef.current;
-    const targetTab = currentState.tabs.find((tab) => tab.id === tabId);
-    if (!targetTab || targetTab.dirty) {
-      return;
-    }
+  // --- tab-bar handlers ---
 
+  const handleCloseClean = useCallback(async (tabId: string) => {
+    const currentState = tabStateRef.current;
     const result = closeTab(currentState, tabId, 'dont-save');
     setTabState(result.nextState);
 
@@ -217,11 +216,62 @@ const TabCoordinator: React.FC = () => {
       return;
     }
 
-    const nextActiveTab = getActiveTab(result.nextState);
-    if (nextActiveTab && nextActiveTab.id !== targetTab.id) {
+    const nextActiveTab = result.nextState.tabs.find((tab) => tab.id === result.nextState.activeTabId);
+    if (nextActiveTab) {
       activateTab(nextActiveTab);
     }
   }, [activateTab]);
+
+  const handleDirtyCloseSave = useCallback(async (tabId: string) => {
+    const currentState = tabStateRef.current;
+    const targetTab = currentState.tabs.find((tab) => tab.id === tabId);
+    if (!targetTab) {
+      return;
+    }
+
+    const saveResult = await remote.saveTab(buildSaveTabPayload(targetTab.path, targetTab.text, false));
+    if (!isConfirmedSaveResult(saveResult)) {
+      return;
+    }
+
+    const result = closeTab(currentState, tabId, 'save', {
+      success: true,
+      path: saveResult.path,
+    });
+    setTabState(result.nextState);
+
+    if (result.shouldCloseWindow) {
+      await remote.closeWindow();
+      return;
+    }
+
+    const nextActiveTab = result.nextState.tabs.find((tab) => tab.id === result.nextState.activeTabId);
+    if (nextActiveTab) {
+      activateTab(nextActiveTab);
+    }
+  }, [activateTab]);
+
+  const handleDirtyCloseDontSave = useCallback(async (tabId: string) => {
+    const currentState = tabStateRef.current;
+    const result = closeTab(currentState, tabId, 'dont-save');
+    setTabState(result.nextState);
+
+    if (result.shouldCloseWindow) {
+      await remote.closeWindow();
+      return;
+    }
+
+    const nextActiveTab = result.nextState.tabs.find((tab) => tab.id === result.nextState.activeTabId);
+    if (nextActiveTab) {
+      activateTab(nextActiveTab);
+    }
+  }, [activateTab]);
+
+  const handleReorderTabs = useCallback((fromIndex: number, toIndex: number) => {
+    setTabState((state) => reorderTabs(state, fromIndex, toIndex));
+  }, []);
+
+  // --- render ---
 
   const activeTab = useMemo(() => getActiveTab(tabState), [tabState]);
 
@@ -230,46 +280,17 @@ const TabCoordinator: React.FC = () => {
   }
 
   return (
-    <div>
-      <div aria-label="Tabs" role="tablist">
-        {tabState.tabs.map((tab) => {
-          const label = `${tab.dirty ? '* ' : ''}${tab.displayName}`;
-
-          return (
-            <span key={tab.id}>
-              <button
-                aria-selected={tab.id === tabState.activeTabId}
-                onClick={() => {
-                  void handleTabSwitch(tab.id);
-                }}
-                role="tab"
-                title={tab.path ?? tab.displayName}
-                type="button"
-              >
-                {label}
-              </button>
-              <button
-                aria-label={`close ${tab.displayName}`}
-                onClick={() => {
-                  void handleClose(tab.id);
-                }}
-                type="button"
-              >
-                ×
-              </button>
-            </span>
-          );
-        })}
-      </div>
-      <button
-        aria-label="new tab"
-        onClick={() => {
-          void handleNewTab();
-        }}
-        type="button"
-      >
-        +
-      </button>
+    <div className="app-layout">
+      <TabBar
+        activeTabId={tabState.activeTabId}
+        onCloseTab={handleCloseClean}
+        onDirtyCloseDontSave={handleDirtyCloseDontSave}
+        onDirtyCloseSave={handleDirtyCloseSave}
+        onNewTab={() => { void handleNewTab(); }}
+        onReorderTabs={handleReorderTabs}
+        onSelectTab={(tabId) => { void handleTabSwitch(tabId); }}
+        tabs={tabState.tabs}
+      />
       <Editor
         basePath={activeTab.basePath}
         cursor={activeTab.cursor}

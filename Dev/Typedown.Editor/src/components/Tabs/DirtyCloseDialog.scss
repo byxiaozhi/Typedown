@@ -1,0 +1,79 @@
+.dirty-close-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dirty-close-dialog {
+  background-color: var(--editor-bg, #1e1e1e);
+  border: 1px solid var(--editor-border, #333);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  max-width: 400px;
+  width: calc(100vw - 48px);
+  padding: 20px 24px;
+  color: var(--editor-fg, #ccc);
+  outline: none;
+}
+
+.dirty-close-dialog__message {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--editor-fg, #ccc);
+}
+
+.dirty-close-dialog__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.dirty-close-dialog__button {
+  padding: 6px 16px;
+  font-size: 13px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+
+  &:focus-visible {
+    outline: 1px solid var(--themeColor, #007acc);
+    outline-offset: 1px;
+  }
+
+  &--save {
+    background-color: var(--themeColor, #007acc);
+    color: #fff;
+    border-color: var(--themeColor, #007acc);
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &--dont-save {
+    background-color: transparent;
+    color: var(--editor-fg, #ccc);
+    border-color: var(--editor-border, #555);
+
+    &:hover {
+      background-color: var(--editor-tab-hover-bg, #383838);
+    }
+  }
+
+  &--cancel {
+    background-color: transparent;
+    color: var(--editor-fg, #ccc);
+    border-color: var(--editor-border, #555);
+
+    &:hover {
+      background-color: var(--editor-tab-hover-bg, #383838);
+    }
+  }
+}
