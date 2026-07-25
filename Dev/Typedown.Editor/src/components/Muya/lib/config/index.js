@@ -250,6 +250,9 @@ export const EXPORT_DOMPURIFY_CONFIG = Object.freeze({
 export const MUYA_DEFAULT_OPTION = Object.freeze({
   fontSize: 16,
   lineHeight: 1.6,
+  fontFamily: '',
+  // 'auto' detects direction per block from its own text, 'ltr'/'rtl' force it.
+  textDirection: 'auto',
   focusMode: false,
   markdown: '',
   // Whether to trim the beginning and ending empty line in code block when open markdown.

@@ -38,6 +38,8 @@ namespace Typedown.Core.ViewModels
         public bool PreferLooseListItem { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool AutoPairMarkdownSyntax { get => GetSettingValue(true); set => SetSettingValue(value); }
         public string EditorAreaWidth { get => GetSettingValue("1200px"); set => SetSettingValue(value); }
+        public string FontFamily { get => GetSettingValue(""); set => SetSettingValue(value); }
+        public string TextDirection { get => GetSettingValue("auto"); set => SetSettingValue(value); }
         public bool AutoSave { get => GetSettingValue(false); set => SetSettingValue(value); }
         public AppTheme AppTheme { get => GetSettingValue(AppTheme.Default); set => SetSettingValue(value); }
         public string Language { get => GetSettingValue("default"); set => SetSettingValue(value); }
@@ -97,7 +99,9 @@ namespace Typedown.Core.ViewModels
             "TrimUnnecessaryCodeBlockEmptyLines",
             "PreferLooseListItem",
             "AutoPairMarkdownSyntax",
-            "EditorAreaWidth"
+            "EditorAreaWidth",
+            "FontFamily",
+            "TextDirection"
         };
 
         public SettingsViewModel(IServiceProvider serviceProvider)

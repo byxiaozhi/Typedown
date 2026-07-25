@@ -197,6 +197,18 @@
     <value>الامتدادات</value>
     <comment>编辑器/扩展</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>الخط المستخدم في محتوى المحرر. اتركه فارغًا لاستخدام الخط الافتراضي.</value>
+    <comment>编辑器/编辑器内容使用的字体，留空则使用默认字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>افتراضي</value>
+    <comment>编辑器/默认</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>الخط</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
     <value>حجم الخط الافتراضي للمحرر</value>
     <comment>编辑器/编辑器默认字号</comment>
@@ -232,6 +244,26 @@
   <data name="Editor.Style" xml:space="preserve">
     <value>النمط</value>
     <comment>编辑器/样式</comment>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>اكتشاف تلقائي لكل فقرة</value>
+    <comment>编辑器/按段落自动检测</comment>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>اتجاه النص في محتوى المحرر، مفيد للغة العربية والعبرية وغيرها من اللغات التي تُكتب من اليمين إلى اليسار</value>
+    <comment>编辑器/编辑器内容的文字方向，适用于阿拉伯语、希伯来语等从右到左书写的语言</comment>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>من اليسار إلى اليمين</value>
+    <comment>编辑器/从左到右</comment>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>من اليمين إلى اليسار</value>
+    <comment>编辑器/从右到左</comment>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>اتجاه النص</value>
+    <comment>编辑器/文字方向</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
     <value>ضبط المسافة الافتراضية للمقتبسات والقوائم</value>

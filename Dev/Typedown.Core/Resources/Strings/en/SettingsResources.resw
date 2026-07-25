@@ -197,6 +197,18 @@
     <value>Extensions</value>
     <comment>编辑器/扩展</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font used for editor content. Leave empty to use the default font.</value>
+    <comment>编辑器/编辑器内容使用的字体，留空则使用默认字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Default</value>
+    <comment>编辑器/默认</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Font family</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
     <value>Default font size of editor.</value>
     <comment>编辑器/编辑器默认字号</comment>
@@ -232,6 +244,26 @@
   <data name="Editor.Style" xml:space="preserve">
     <value>Style</value>
     <comment>编辑器/样式</comment>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Auto detect per paragraph</value>
+    <comment>编辑器/按段落自动检测</comment>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Text direction of editor content, useful for Arabic, Hebrew and other right-to-left languages</value>
+    <comment>编辑器/编辑器内容的文字方向，适用于阿拉伯语、希伯来语等从右到左书写的语言</comment>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Left to right</value>
+    <comment>编辑器/从左到右</comment>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Right to left</value>
+    <comment>编辑器/从右到左</comment>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Text direction</value>
+    <comment>编辑器/文字方向</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
     <value>Adjust default indentation space for quotes and lists</value>

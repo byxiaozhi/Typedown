@@ -228,6 +228,11 @@ class Muya {
     this.contentState.render(false)
   }
 
+  setTextDirection(textDirection) {
+    this.options.textDirection = textDirection === 'ltr' || textDirection === 'rtl' ? textDirection : 'auto'
+    this.contentState.render(false)
+  }
+
   setTabSize(tabSize) {
     if (!tabSize || typeof tabSize !== 'number') {
       tabSize = 4
