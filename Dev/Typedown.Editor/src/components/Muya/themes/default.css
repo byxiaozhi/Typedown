@@ -343,7 +343,7 @@ kbd {
 
   ul,
   ol {
-    padding-left: 30px;
+    padding-inline-start: 30px;
   }
 
   ul:first-child,
@@ -368,13 +368,13 @@ kbd {
     height: 100%;
     width: 2px;
     position: absolute;
-    left: 15px;
+    inset-inline-start: 15px;
     top: 0;
     background: var(--themeColor);
   }
 
   blockquote blockquote {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 
   table {
@@ -394,14 +394,14 @@ kbd {
 
   table tr th {
     font-weight: bold;
-    text-align: left;
+    text-align: start;
     margin: 0;
     padding: 6px 13px;
     position: relative;
   }
 
   table tr td {
-    text-align: left;
+    text-align: start;
     margin: 0;
     padding: 6px 13px;
     position: relative;

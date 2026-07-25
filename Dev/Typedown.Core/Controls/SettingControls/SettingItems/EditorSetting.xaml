@@ -32,6 +32,30 @@
             </controls:NormalSettingItem.Icon>
             <TextBox MinWidth="200" Text="{x:Bind Settings.EditorAreaWidth, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.FontFamily.Title}" Description="{u:LocaleString Key=Editor.FontFamily.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8d2;"/>
+            </controls:NormalSettingItem.Icon>
+            <AutoSuggestBox MinWidth="200"
+                Text="{x:Bind Settings.FontFamily, Mode=OneWay}"
+                PlaceholderText="{u:LocaleString Key=Editor.FontFamily.Placeholder}"
+                ItemsSource="{x:Bind FontFamilySuggestions}"
+                TextChanged="OnFontFamilyTextChanged"
+                SuggestionChosen="OnFontFamilySuggestionChosen"
+                QuerySubmitted="OnFontFamilyQuerySubmitted"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.TextDirection.Title}" Description="{u:LocaleString Key=Editor.TextDirection.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8ab;"/>
+            </controls:NormalSettingItem.Icon>
+            <ComboBox MinWidth="200" ItemsSource="{x:Bind local:EditorSetting.TextDirectionOptions.Keys}" SelectedItem="{x:Bind Settings.TextDirection, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Text="{x:Bind local:EditorSetting.GetTextDirectionDisplayName((x:String))}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </controls:NormalSettingItem>
         <TextBlock Text="Markdown" Margin="0,16,0,4"/>
         <controls:NormalSettingItem Title="{u:LocaleString Key=Editor.TabSize.Title}" Description="{u:LocaleString Key=Editor.TabSize.Description}">
             <controls:NormalSettingItem.Icon>

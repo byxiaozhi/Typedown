@@ -278,7 +278,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
                 paddingLeft: 14,
                 paddingRight: 14,
                 fontSize: props.options?.fontSize,
-                lineHeight: props.options?.lineHeight
+                lineHeight: props.options?.lineHeight,
+                fontFamily: props.options?.fontFamily ? `${props.options.fontFamily}, "Open Sans", "Segoe UI", sans-serif` : undefined
             }}>
             <CodeMirror
                 ref={(ref: any) => ref && setEditor(ref.editor)}

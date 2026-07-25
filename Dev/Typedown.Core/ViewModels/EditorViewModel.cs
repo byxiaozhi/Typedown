@@ -112,6 +112,8 @@ namespace Typedown.Core.ViewModels
                 Settings.PreferLooseListItem,
                 Settings.AutoPairMarkdownSyntax,
                 Settings.EditorAreaWidth,
+                Settings.FontFamily,
+                Settings.TextDirection,
                 Settings.TabSize,
                 Markdown,
                 BasePath = FileViewModel.ImageBasePath,
