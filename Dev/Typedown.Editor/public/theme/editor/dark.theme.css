@@ -27,4 +27,21 @@
     --maskColor: rgba(0, 0, 0, .7);
     --editorAreaWidth: 750px;
     --floatShadow: 0 8px 12px 0 rgba(0, 0, 0, .2);
+    /* review marks (CriticMarkup): added, deleted and highlighted text; every text/background pair is at least 4.5:1 on --editorBgColor */
+    --criticAddBg: rgba(46, 160, 67, .28);
+    --criticAddText: #7ee787;
+    --criticAddLine: rgba(126, 231, 135, .6);
+    --criticDelBg: rgba(248, 81, 73, .26);
+    --criticDelText: #ff9992;
+    --criticMarkBg: rgba(210, 153, 34, .38);
+    /* the image icon in front of an image's source text is a grey glyph in the light set and a white one in the dark set */
+    --imageIconFilter: brightness(0) invert(1);
+  /* speech marks (docs/speech-marks-design.md): chips, stressed text, tone bands */
+  --speechChipBg: rgba(140, 175, 255, .2);
+  --speechChipText: #bcd0ff;
+  --speechNoteBg: rgba(255, 190, 90, .16);
+  --speechNoteText: #ffd596;
+  --speechNoteRing: rgba(255, 190, 90, .5);
+  --speechEmphasis: #a9c4ff;
+  --speechToneBg: rgba(210, 153, 34, .3);
 }

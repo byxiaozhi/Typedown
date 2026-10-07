@@ -1,0 +1,157 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<RootNamespace>Typedown.WinUI</RootNamespace>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+		<Platforms>x64;x86;ARM64</Platforms>
+		<UseWinUI>true</UseWinUI>
+		<!-- Opts into the Windows App SDK's single-project MSIX packaging targets at all — without
+		     this, WindowsPackageType=MSIX below is a no-op: the packaging targets (manifest
+		     generation, MakeAppx, signing) simply never get imported, and a "Release" build silently
+		     produces a normal unpackaged output with no error. Safe to leave on for every
+		     configuration — it only makes the machinery available; WindowsPackageType is still what
+		     decides whether a given build actually packages. -->
+		<EnableMsixTooling>true</EnableMsixTooling>
+		<!-- Unpackaged by default (Debug/Debug_Local) — that's the fast inner-loop build/run this
+		     whole port has been verified against all along. Packaging only turns on for Release, so
+		     day-to-day dev builds are unaffected by MSIX. -->
+		<WindowsPackageType>None</WindowsPackageType>
+		<SelfContained>false</SelfContained>
+		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+		<Nullable>disable</Nullable>
+		<!-- The COM source generators behind File Explorer's right-click menu (Services/ExplorerCommandServer.cs) emit unsafe code. -->
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Configurations>Debug;Release;Debug_Local</Configurations>
+		<!-- Turns off the WinUI 3 SDK-generated Program/Main (see the #if in the generated App.g.i.cs)
+		     so Program.cs's own Main can run AppInstance single-instance redirection before an
+		     Application or window ever gets created. -->
+		<DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<WindowsPackageType>MSIX</WindowsPackageType>
+		<AppxManifest>Package.appxmanifest</AppxManifest>
+		<AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+		<AppxBundle>Never</AppxBundle>
+		<!-- The packaging pipeline's _GenerateAppxSymbolPackage step shells out to mspdbcmf.exe (a
+		     native VC++ tool) to bundle .NET 8's portable PDBs into an .appxsym diagnostic package —
+		     it fails outright on this project's PDBs (MSB6006, exit code 1106) rather than producing
+		     a broken symbol package. Not needed for a working, installable MSIX: DebugType=None means
+		     no PDBs are produced at all, so that step has nothing to process and is skipped instead of
+		     failing. -->
+		<DebugType>None</DebugType>
+		<UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
+		<!-- The package carries its own .NET runtime. Framework-dependent (the default above) only ran on
+		     PCs that happened to have the .NET 8 Desktop Runtime installed; anyone else downloading the
+		     MSIX got an app that silently failed to start. Dev builds stay framework-dependent. -->
+		<SelfContained>true</SelfContained>
+		<!-- Local sideload-testing certificate only — self-signed, password-less, gitignored (*.pfx).
+		     Its Subject (CN=Caret) must match Package.appxmanifest's Identity/Publisher exactly, or
+		     MakeAppx's signing step rejects the package. Real distribution (Store submission or
+		     signed sideload outside it) needs a real code-signing certificate or Store-managed
+		     signing — this one only proves the package builds, installs, and runs. -->
+		<PackageCertificateKeyFile>CaretDevCert.pfx</PackageCertificateKeyFile>
+	</PropertyGroup>
+
+	<!-- Microsoft Store package: -p:StoreBuild=true (with Configuration=Release). The Store assigns its
+	     own identity (Partner Center → Product identity) and signs the package itself, so this build
+	     stamps that identity and the reserved name into a copy of Package.appxmanifest and leaves the
+	     package unsigned. Package.appxmanifest itself keeps the GitHub identity (CN=Caret), which has to
+	     match the self-signed certificate the GitHub releases are signed with. See docs/store. -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(StoreBuild)' == 'true'">
+		<StoreIdentityName>FerencWorks.CaretMarkdownDocumentConverter</StoreIdentityName>
+		<StorePublisher>CN=5B5605EC-AA08-41C3-8C90-78B9E7C00DEF</StorePublisher>
+		<StorePublisherDisplayName>Ferenc Works</StorePublisherDisplayName>
+		<StoreDisplayName>Caret – Markdown &amp; Document Converter</StoreDisplayName>
+		<!-- XmlPoke parses an element's new value as XML, so "&" needs escaping there (not in attributes),
+		     and the ";" of "&amp;" needs MSBuild's own escape (%3B) or it splits the value in two. -->
+		<StoreDisplayNameXml>Caret – Markdown &amp;amp%3B Document Converter</StoreDisplayNameXml>
+		<StoreManifestPath>$(MSBuildProjectDirectory)\obj\StoreManifest\Package.appxmanifest</StoreManifestPath>
+		<AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Release' And '$(StoreBuild)' == 'true'">
+		<AppxManifest Include="$(StoreManifestPath)" />
+	</ItemGroup>
+	<Target Name="WriteStoreManifest" BeforeTargets="PrepareForBuild" Condition="'$(Configuration)' == 'Release' And '$(StoreBuild)' == 'true'">
+		<PropertyGroup>
+			<_StoreNs>&lt;Namespace Prefix='m' Uri='http://schemas.microsoft.com/appx/manifest/foundation/windows10' /&gt;&lt;Namespace Prefix='uap' Uri='http://schemas.microsoft.com/appx/manifest/uap/windows10' /&gt;</_StoreNs>
+		</PropertyGroup>
+		<Copy SourceFiles="Package.appxmanifest" DestinationFiles="$(StoreManifestPath)" />
+		<XmlPoke XmlInputPath="$(StoreManifestPath)" Namespaces="$(_StoreNs)" Query="/m:Package/m:Identity/@Name" Value="$(StoreIdentityName)" />
+		<XmlPoke XmlInputPath="$(StoreManifestPath)" Namespaces="$(_StoreNs)" Query="/m:Package/m:Identity/@Publisher" Value="$(StorePublisher)" />
+		<XmlPoke XmlInputPath="$(StoreManifestPath)" Namespaces="$(_StoreNs)" Query="/m:Package/m:Properties/m:PublisherDisplayName" Value="$(StorePublisherDisplayName)" />
+		<XmlPoke XmlInputPath="$(StoreManifestPath)" Namespaces="$(_StoreNs)" Query="/m:Package/m:Properties/m:DisplayName" Value="$(StoreDisplayNameXml)" />
+		<XmlPoke XmlInputPath="$(StoreManifestPath)" Namespaces="$(_StoreNs)" Query="/m:Package/m:Applications/m:Application/uap:VisualElements/@DisplayName" Value="$(StoreDisplayName)" />
+	</Target>
+
+	<PropertyGroup Condition="'$(Platform)' == 'x64'">
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)' == 'x86'">
+		<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)' == 'ARM64'">
+		<RuntimeIdentifier>win-arm64</RuntimeIdentifier>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.250402" />
+		<PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.250602001" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4129.50" />
+		<PackageReference Include="MimeKitLite" Version="4.18.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="OpenMcdf" Version="3.3.0" />
+		<PackageReference Include="PdfPig" Version="0.1.16" />
+		<PackageReference Include="ReverseMarkdown" Version="6.2.1" />
+		<PackageReference Include="System.Reactive" Version="6.0.1" />
+		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Email conversion (Services\Conversion\Email) uses the markitdown-caret-email plugin's own rule
+		     files, so the phrase lists and patterns are maintained in one place for both tools. -->
+		<EmbeddedResource Include="..\..\plugins\markitdown-email\src\markitdown_caret_email\rules\*.json" LogicalName="EmailRules.%(Filename)%(Extension)" Link="Services\Conversion\Email\rules\%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- The editor bundle. `yarn build` in Dev\Typedown.Editor writes it here (config-overrides.js);
+		     it's build output, so it's gitignored (Resources\.gitignore) and has to be built once first. -->
+		<None Update="Resources\Statics\**" CopyToOutputDirectory="PreserveNewest" />
+		<!-- Licence texts ship with the app (MIT requires the notice in copies; Apache 2.0, for PdfPig,
+		     requires the licence itself). -->
+		<Content Include="..\..\LICENSE" Link="LICENSE.txt" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="..\..\THIRD-PARTY-NOTICES.md" Link="THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+
+	<!-- Utilities/Locale.cs reads Strings\<lang>\*.resw as plain XML at runtime, but as PRIResource items
+	     they were only compiled into resources.pri, never copied: the dev output's Strings\en was empty
+	     and the MSIX had no Strings folder, so every Locale.GetString returned null (the editor's own UI
+	     strings via GetStringResources included). A static <None>/<Content> item for them doesn't work —
+	     the Windows App SDK targets strip any non-PRIResource item pointing at a .resw — so they're added
+	     as content here, during the build, after that cleanup. -->
+	<Target Name="CopyLocaleStringsToOutput" BeforeTargets="AssignTargetPaths">
+		<ItemGroup>
+			<Content Include="@(PRIResource)" Condition="'%(Extension)' == '.resw'" CopyToOutputDirectory="PreserveNewest" Link="%(Identity)" />
+		</ItemGroup>
+	</Target>
+
+	<!-- MSIX tile/logo assets referenced by Package.appxmanifest — only need to be part of the build
+	     when packaging is actually happening (Release; see the Configuration-conditioned
+	     WindowsPackageType above). logo.ico is excluded: it's the unpackaged .exe's icon
+	     (ApplicationIcon), unrelated to the package tiles. -->
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<Content Include="Assets\Square44x44Logo*.png" />
+		<Content Include="Assets\Square150x150Logo*.png" />
+		<Content Include="Assets\Wide310x150Logo*.png" />
+		<Content Include="Assets\StoreLogo*.png" />
+		<Content Include="Assets\SplashScreen*.png" />
+	</ItemGroup>
+
+</Project>

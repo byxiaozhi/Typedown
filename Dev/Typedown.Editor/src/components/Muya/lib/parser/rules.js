@@ -37,6 +37,18 @@ export const inlineRules = {
   inline_math: /^(\$)([^\$]*?[^\$\\])(\\*)\1(?!\1)/
 }
 
+// CriticMarkup (https://criticmarkup.com), the plain-text way to show a review in Markdown: an addition, a
+// deletion, a replacement, a comment and a highlight. A change or comment is followed by `{>>@Name date<<}`
+// (or `{>>@Name date: the note<<}`) saying who wrote it. The text stays as it is in the file: this only decides
+// how it is drawn.
+export const criticRules = [
+  { kind: 'add', open: '{++', close: '++}', exec: /^\{\+\+([\s\S]*?)\+\+\}/ },
+  { kind: 'del', open: '{--', close: '--}', exec: /^\{--([\s\S]*?)--\}/ },
+  { kind: 'sub', open: '{~~', close: '~~}', middle: '~>', exec: /^\{~~([\s\S]*?)~>([\s\S]*?)~~\}/ },
+  { kind: 'mark', open: '{==', close: '==}', exec: /^\{==([\s\S]*?)==\}/ },
+  { kind: 'comment', open: '{>>', close: '<<}', exec: /^\{>>([\s\S]*?)<<\}/ }
+]
+
 // Markdown extensions (not belongs to GFM and Commonmark)
 export const inlineExtensionRules = {
   // This is not the best regexp, because it not support `2^2\\^`.

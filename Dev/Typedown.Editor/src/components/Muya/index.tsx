@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import transport from "services/transport";
+import { speechLabels } from "services/localization";
 import Muya from 'components/Muya/lib'
 import TablePicker from 'components/Muya/lib/ui/tablePicker'
 import CodePicker from 'components/Muya/lib/ui/codePicker'
@@ -36,6 +37,24 @@ Muya.use(TableBarTools)
 Muya.use(FootnoteTool)
 
 const STANDAR_Y = 320
+
+// Double-clicking a word on Windows selects it with its trailing space, and formatting that
+// selection produced "**word **", which isn't valid bold/italic markdown and showed up as literal
+// asterisks. Before a Format command, drop trailing whitespace from a selection that ends inside a
+// text node (the double-click case); anything else is left as is.
+const trimSelectionTrailingSpace = () => {
+    const sel = window.getSelection()
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return
+    const range = sel.getRangeAt(0)
+    const { endContainer, endOffset } = range
+    if (endContainer.nodeType !== Node.TEXT_NODE) return
+    const before = (endContainer.textContent ?? '').substring(0, endOffset)
+    const trailing = before.length - before.trimEnd().length
+    if (trailing === 0 || trailing >= range.toString().length) return
+    range.setEnd(endContainer, endOffset - trailing)
+    sel.removeAllRanges()
+    sel.addRange(range)
+}
 
 const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     const [editor, setEditor] = useState<Muya>();
@@ -135,6 +154,29 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         editor && Object.assign(editor.options, props.options)
     }, [editor, props.options])
 
+    // Speech mode (View menu) switched on or off: the marks are read or not, so everything is drawn again.
+    const speechModeRef = useRef<boolean>(!!props.options?.speechMode)
+    useEffect(() => {
+        const on = !!props.options?.speechMode
+        if (!editor || speechModeRef.current === on) return
+        speechModeRef.current = on
+        editor.setOptions({}, true)
+        // the outline and the word count follow the mode (after this render: the listener that sends them is set again in it)
+        setTimeout(() => editor.dispatchChangeContentChange(), 0)
+    }, [editor, props.options?.speechMode])
+
+    // The words on the chips ("pause 2 s") in the language of the interface.
+    useEffect(() => {
+        if (!editor) return
+        let cancelled = false
+        speechLabels.then(labels => {
+            if (cancelled) return
+            editor.options.speechLabels = labels
+            if (editor.options.speechMode) editor.setOptions({}, true)
+        })
+        return () => { cancelled = true }
+    }, [editor])
+
     useEffect(() => {
         editor?.setFocusMode(props.options.focusMode)
     }, [editor, props.options.focusMode])
@@ -164,6 +206,7 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     }), [editor]);
 
     useEffect(() => transport.addListener('Format', type => {
+        trimSelectionTrailingSpace()
         editor?.format(type)
     }), [editor]);
 

@@ -85,6 +85,27 @@ const clearFormat = (token, { start, end }) => {
   }
 }
 
+// The text of a line is written from the `raw` of its tokens. A token inside another one (the `*` of `***text***`)
+// cannot be taken out without the outer `raw` following, so the part around the inner text of each token is kept
+// after tokenizing and the text is written again from the tokens as they are now.
+const keepFrames = tokens => {
+  for (const token of tokens) {
+    if (!Array.isArray(token.children) || !token.children.length) continue
+    const inner = generator(token.children)
+    const prefix = token.children[0].range.start - token.range.start
+    if (prefix >= 0 && token.raw.substr(prefix, inner.length) === inner) {
+      token.frame = { prefix: token.raw.substring(0, prefix), suffix: token.raw.substring(prefix + inner.length) }
+    }
+    keepFrames(token.children)
+  }
+}
+
+const regenerate = tokens => tokens.map(token => {
+  return token.frame && Array.isArray(token.children)
+    ? token.frame.prefix + regenerate(token.children) + token.frame.suffix
+    : token.raw
+}).join('')
+
 const addFormat = (type, block, { start, end }) => {
   if (
     block.type !== 'span' ||
@@ -136,11 +157,56 @@ const addFormat = (type, block, { start, end }) => {
   }
 }
 
+// The part of the line between the two offsets without the spaces at its edges and without the `##` of a heading:
+// a format around them would not show (`** word **` is no bold text).
+const trimToText = (block, from, to) => {
+  const { text } = block
+  const prefix = block.functionType === 'atxLine' ? /^ {0,3}#{1,6}[ \u00A0]*/.exec(text) : null
+  from = Math.max(from, prefix ? prefix[0].length : 0)
+  to = Math.min(to, text.length)
+  while (from < to && /\s/.test(text[from])) from++
+  while (to > from && /\s/.test(text[to - 1])) to--
+  // the closing hashes of `# Title #` are a marker too (the parser's `tail_header`), not text to format
+  const tail = block.functionType === 'atxLine' ? /\s+#+\s*$/.exec(text) : null
+  if (tail) to = Math.min(to, tail.index)
+  return [from, to]
+}
+
 const checkTokenIsInlineFormat = token => {
   const { type, tag } = token
   if (FORMAT_TYPES.includes(type)) return true
   if (type === 'html_tag' && /^(?:u|sub|sup|mark|img)$/i.test(tag)) return true
   return false
+}
+
+// When a format starts or ends exactly at the edge of the range (a whole line of `**text**`, or of `***text***`), the
+// range is moved in to the text inside it, so that the formats around count as covering the range.
+const insideFormats = (tokens, from, to) => {
+  const all = []
+  ;(function collect (list) {
+    for (const token of list) {
+      all.push(token)
+      if (Array.isArray(token.children)) collect(token.children)
+    }
+  })(tokens)
+  let moved = true
+  while (moved) {
+    moved = false
+    for (const token of all) {
+      if (!token.frame || !checkTokenIsInlineFormat(token)) continue
+      const innerStart = token.range.start + token.frame.prefix.length
+      const innerEnd = token.range.end - token.frame.suffix.length
+      if (token.range.start === from && innerStart < to) {
+        from = innerStart
+        moved = true
+      }
+      if (token.range.end === to && innerEnd > from) {
+        to = innerEnd
+        moved = true
+      }
+    }
+  }
+  return [from, to]
 }
 
 const formatCtrl = ContentState => {
@@ -158,6 +224,7 @@ const formatCtrl = ContentState => {
       tokens = tokenizer(text, {
         options: this.muya.options
       })
+      keepFrames(tokens)
       ;(function iterator (tks) {
         for (const token of tks) {
           if (
@@ -225,12 +292,13 @@ const formatCtrl = ContentState => {
       })
       : neighbors
 
-    for (const neighbor of neighbors) {
+    // inner formats first: a format taken out of a token that is gone already is not taken out of the line
+    for (const neighbor of [...neighbors].reverse()) {
       clearFormat(neighbor, { start, end })
     }
     start.offset += start.delata
     end.offset += end.delata
-    block.text = generator(tokens)
+    block.text = regenerate(tokens)
   }
 
   ContentState.prototype.format = function (type) {
@@ -254,19 +322,20 @@ const formatCtrl = ContentState => {
       }).reverse()
       // cache delata
       if (type === 'clear') {
-        for (const neighbor of neighbors) {
+        // inner formats first, see clearBlockFormat
+        for (const neighbor of [...neighbors].reverse()) {
           clearFormat(neighbor, { start, end })
         }
         start.offset += start.delata
         end.offset += end.delata
-        startBlock.text = generator(tokens)
+        startBlock.text = regenerate(tokens)
       } else if (currentFormats.length) {
         for (const token of currentFormats) {
           clearFormat(token, { start, end })
         }
         start.offset += start.delata
         end.offset += end.delata
-        startBlock.text = generator(tokens)
+        startBlock.text = regenerate(tokens)
       } else {
         if (currentNeightbors.length) {
           for (const neighbor of currentNeightbors) {
@@ -275,7 +344,7 @@ const formatCtrl = ContentState => {
         }
         start.offset += start.delata
         end.offset += end.delata
-        startBlock.text = generator(tokens)
+        startBlock.text = regenerate(tokens)
         addFormat(type, startBlock, { start, end })
         if (type === 'image') {
           // Show image selector when create a inline image by menu/shortcut/or just input `![]()`
@@ -297,36 +366,59 @@ const formatCtrl = ContentState => {
       }
       this.cursor = { start, end }
       this.partialRender()
+      // the host keeps its own copy of the text: without this it has the old text until the next click or key
+      this.muya.dispatchChange()
     } else {
-      let nextBlock = startBlock
-      const formatType = type !== 'clear' ? type : undefined
-      while (nextBlock && nextBlock !== endBlock) {
-        this.clearBlockFormat(nextBlock, { start, end }, formatType)
-        nextBlock = this.findNextBlockInLocation(nextBlock)
-      }
-      this.clearBlockFormat(endBlock, { start, end }, formatType)
-
-      if (type !== 'clear') {
-        addFormat(type, startBlock, {
-          start,
-          end: { offset: startBlock.text.length }
-        })
-        nextBlock = this.findNextBlockInLocation(startBlock)
-        while (nextBlock && nextBlock !== endBlock) {
-          addFormat(type, nextBlock, {
-            start: { offset: 0 },
-            end: { offset: nextBlock.text.length }
-          })
-          nextBlock = this.findNextBlockInLocation(nextBlock)
+      // The selection covers several blocks (lines). Every line takes the same steps as a selection inside one block,
+      // on its own part of the selection: from the start to the end of the first line, whole lines in between, and the
+      // beginning of the last line up to the end.
+      const parts = []
+      for (let next = startBlock; next; next = this.findNextBlockInLocation(next)) {
+        if (next.type === 'span' && /paragraphContent|cellContent|atxLine/.test(next.functionType)) {
+          const [from, to] = trimToText(next, next === startBlock ? start.offset : 0, next === endBlock ? end.offset : next.text.length)
+          // empty lines and lines of spaces are left alone, they would only get the bare markers
+          if (from < to) {
+            const edges = { start: { key: next.key, offset: from, delata: 0 }, end: { key: next.key, offset: to, delata: 0 } }
+            const [innerFrom, innerTo] = insideFormats(this.selectionFormats(edges).tokens, from, to)
+            const range = { start: { key: next.key, offset: innerFrom, delata: 0 }, end: { key: next.key, offset: innerTo, delata: 0 } }
+            parts.push({ block: next, ...range, ...this.selectionFormats(range) })
+          }
         }
-        addFormat(type, endBlock, {
-          start: { offset: 0 },
-          end
-        })
+        if (next === endBlock) break
+      }
+      if (!parts.length) {
+        return
       }
 
-      this.cursor = { start, end }
+      const isType = format => format.type === type || (format.type === 'html_tag' && format.tag === type)
+      // like inside one block, a format that already covers every line is taken off, otherwise it is put on every line
+      const remove = type !== 'clear' && parts.every(part => part.formats.some(isType))
+      for (const { block, start: from, end: to, formats, tokens, neighbors } of parts) {
+        // inner formats first, see clearBlockFormat
+        const affected = (type === 'clear' ? [...neighbors] : (remove ? formats : neighbors).filter(isType)).reverse()
+        for (const token of affected) {
+          clearFormat(token, { start: from, end: to })
+        }
+        from.offset += from.delata
+        to.offset += to.delata
+        block.text = regenerate(tokens)
+        if (type !== 'clear' && !remove) {
+          addFormat(type, block, { start: from, end: to })
+        }
+      }
+
+      const first = parts[0]
+      const last = parts[parts.length - 1]
+      // drawn with the cursor over all the lines changed, so that every one of them is drawn again
+      this.cursor = { start: first.start, end: last.end }
       this.partialRender()
+      if (type === 'link' || type === 'image') {
+        // a link or an image leaves the cursor between the `()` of the last one; the lines were all drawn just now
+        // and the next range comes from the cursor of that render
+        this.cursor = { start: last.end, end: last.end }
+        this.partialRender()
+      }
+      this.muya.dispatchChange()
     }
   }
 }

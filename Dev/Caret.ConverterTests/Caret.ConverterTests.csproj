@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Regression tests for the document converters (Word, Excel, PowerPoint, PDF, CSV, emails).
+	     The converters are plain .NET, so their source files are compiled straight into this project:
+	     no WinUI, no Windows App SDK, nothing to install. `dotnet test` from this folder runs them.
+	     See README.md for how the sample documents and their expected Markdown work. -->
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+		<RootNamespace>Caret.ConverterTests</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- The converters, as they are in the app -->
+		<Compile Include="..\Typedown.WinUI\Services\Conversion\**\*.cs" Link="Converters\%(RecursiveDir)%(Filename)%(Extension)" />
+		<Compile Include="..\Typedown.WinUI\Utilities\TextFileEncoding.cs" Link="Converters\TextFileEncoding.cs" />
+		<!-- Spell checking (Windows' own checker; plain .NET) -->
+		<Compile Include="..\Typedown.WinUI\Services\SpellChecking.cs" Link="Converters\SpellChecking.cs" />
+		<!-- The text of a review comment (CriticMarkup with the author and the day) -->
+		<Compile Include="..\Typedown.WinUI\Services\ReviewMarks.cs" Link="Converters\ReviewMarks.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewMarks.Resolve.cs" Link="Converters\ReviewMarks.Resolve.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewDiff.cs" Link="Converters\ReviewDiff.cs" />
+		<Compile Include="..\Typedown.WinUI\Utilities\ImageStyle.cs" Link="Converters\ImageStyle.cs" />
+		<EmbeddedResource Include="..\..\plugins\markitdown-email\src\markitdown_caret_email\rules\*.json" LogicalName="EmailRules.%(Filename)%(Extension)" Link="Converters\rules\%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- The same versions as the app -->
+		<PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
+		<PackageReference Include="MimeKitLite" Version="4.18.1" />
+		<PackageReference Include="OpenMcdf" Version="3.3.0" />
+		<PackageReference Include="PdfPig" Version="0.1.16" />
+		<PackageReference Include="ReverseMarkdown" Version="6.2.1" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+		<PackageReference Include="xunit" Version="2.9.2" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+  xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5"
+  IgnorableNamespaces="uap rescap com desktop4 desktop5">
+
+  <Identity
+    Name="Caret"
+    Publisher="CN=Caret"
+    Version="1.7.0.0" />
+
+  <Properties>
+    <DisplayName>Caret</DisplayName>
+    <PublisherDisplayName>fegyenc</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="$targetentrypoint$">
+      <uap:VisualElements
+        DisplayName="Caret"
+        Description="A native Markdown editor for Windows, built with WinUI 3."
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+      <!-- Without this, Windows doesn't know Caret opens markdown: it was missing from "Open with" /
+           "Select an app to open this .md file", and a packaged app can't be picked by browsing to its
+           exe either. Markdown extensions only (FileTypeHelper.Markdown minus the generic .txt/.text,
+           so Caret doesn't put itself forward for every text file). -->
+      <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="markdown">
+            <uap:DisplayName>Markdown document</uap:DisplayName>
+            <uap:Logo>Assets\Square44x44Logo.png</uap:Logo>
+            <uap:EditFlags OpenIsSafe="true" />
+            <uap:SupportedFileTypes>
+              <uap:FileType>.md</uap:FileType>
+              <uap:FileType>.markdown</uap:FileType>
+              <uap:FileType>.mdown</uap:FileType>
+              <uap:FileType>.mkdn</uap:FileType>
+              <uap:FileType>.mkd</uap:FileType>
+              <uap:FileType>.mdwn</uap:FileType>
+              <uap:FileType>.mdtxt</uap:FileType>
+              <uap:FileType>.mdtext</uap:FileType>
+              <uap:FileType>.rmd</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+        <!-- "Convert to Markdown" in File Explorer's right-click menu (Windows 11's short menu too) for the
+             files Caret converts, and for folders. Explorer asks the COM class below whether to show it and
+             what to call it; the class lives in Caret's own exe (Services/ExplorerCommandServer.cs), which
+             Windows starts with -ExplorerCommandServer. One verb id for every type, so a selection of mixed
+             types still shows it. -->
+        <desktop4:Extension Category="windows.fileExplorerContextMenus">
+          <desktop4:FileExplorerContextMenus>
+            <desktop5:ItemType Type=".docx">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".docm">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".dotx">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".xlsx">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".xlsm">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".pptx">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".pptm">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".pdf">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".csv">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".msg">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type=".eml">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+            <desktop5:ItemType Type="Directory">
+              <desktop5:Verb Id="CaretConvertToMarkdown" Clsid="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" />
+            </desktop5:ItemType>
+          </desktop4:FileExplorerContextMenus>
+        </desktop4:Extension>
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:ExeServer Executable="Typedown.WinUI.exe" Arguments="-ExplorerCommandServer" DisplayName="Caret: Convert to Markdown">
+              <com:Class Id="6B0F7A2E-4C1D-4E39-9E5B-3D8A1C7F52A4" DisplayName="Caret: Convert to Markdown" />
+            </com:ExeServer>
+          </com:ComServer>
+        </com:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

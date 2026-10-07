@@ -5,7 +5,10 @@ import sanitize, { isValidAttribute } from '../../../utils/dompurify'
 export default function htmlTag (h, cursor, block, token, outerClass) {
   const { tag, openTag, closeTag, children, attrs } = token
   const className = children ? this.getClassName(outerClass, block, token, cursor) : CLASS_OR_ID.AG_GRAY
-  const tagClassName = className === CLASS_OR_ID.AG_HIDE ? className : CLASS_OR_ID.AG_HTML_TAG
+  // The tags the Format menu and Ctrl+U write (underline, highlight, sub- and superscript) are never drawn in the
+  // text: long tags around the caret's line look like an error, the Code view shows them.
+  const isFormatTag = children && /^(?:u|mark|sub|sup)$/i.test(tag)
+  const tagClassName = isFormatTag || className === CLASS_OR_ID.AG_HIDE ? CLASS_OR_ID.AG_HIDE : CLASS_OR_ID.AG_HTML_TAG
   const { start, end } = token.range
   const openContent = this.highlight(h, block, start, start + openTag.length, token)
   const closeContent = closeTag

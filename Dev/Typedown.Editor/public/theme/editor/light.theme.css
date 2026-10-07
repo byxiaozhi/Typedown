@@ -26,4 +26,20 @@
   --maskColor: rgba(232, 232, 232, .8);
   --editorAreaWidth: 750px;
   --floatShadow: 0 8px 12px 0 rgba(0, 0, 0, .12);
+  /* review marks (CriticMarkup): added, deleted and highlighted text */
+  --criticAddBg: rgba(46, 160, 67, .18);
+  --criticAddText: #116329;
+  --criticAddLine: rgba(46, 160, 67, .6);
+  --criticDelBg: rgba(248, 81, 73, .16);
+  --criticDelText: #a40e26;
+  --criticMarkBg: rgba(255, 213, 0, .38);
+  --imageIconFilter: none;
+  /* speech marks (docs/speech-marks-design.md): chips, stressed text, tone bands */
+  --speechChipBg: rgba(27, 74, 160, .12);
+  --speechChipText: #1b4aa0;
+  --speechNoteBg: rgba(133, 79, 11, .12);
+  --speechNoteText: #7a4a09;
+  --speechNoteRing: rgba(133, 79, 11, .45);
+  --speechEmphasis: #1b4aa0;
+  --speechToneBg: rgba(255, 213, 0, .22);
 }

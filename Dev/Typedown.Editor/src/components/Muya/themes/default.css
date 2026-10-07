@@ -144,6 +144,153 @@ kbd {
     text-decoration: none;
   }
 
+  /* Review marks (CriticMarkup): added text green, deleted text red and struck through, comments and highlights yellow */
+  .ag-critic-add {
+    background: var(--criticAddBg, rgba(46, 160, 67, .18));
+    color: var(--criticAddText, #116329);
+    text-decoration: underline;
+    text-decoration-color: var(--criticAddLine, rgba(46, 160, 67, .6));
+  }
+
+  .ag-critic-del {
+    background: var(--criticDelBg, rgba(248, 81, 73, .16));
+    color: var(--criticDelText, #a40e26);
+    text-decoration: line-through;
+  }
+
+  .ag-critic-mark,
+  .ag-critic-comment {
+    background: var(--criticMarkBg, rgba(255, 213, 0, .38));
+    color: inherit;
+  }
+
+  .ag-critic-comment {
+    font-size: .92em;
+    font-style: italic;
+    border-radius: 3px;
+    padding: 0 .3em;
+  }
+
+  /* who made a change, and when: small and quiet next to it */
+  .ag-critic-comment.ag-critic-stamp {
+    background: transparent;
+    font-size: .7em;
+    font-style: normal;
+    opacity: .65;
+    padding: 0 .15em;
+    vertical-align: super;
+  }
+
+  /* Speech marks (docs/speech-marks-design.md). A single mark is a chip drawn from data-chip: the raw text stays in
+     the line, hidden (font-size 0), so the caret offsets are those of the file. While the caret is inside, the raw
+     text shows in gray (.ag-gray) and the chip is not drawn. A pair hides its marks like bold and styles its text. */
+  .ag-speech-chip.ag-hide {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    font-size: 0;
+    line-height: 1;
+    vertical-align: baseline;
+    margin: 0 .2em;
+    padding: 0 .55em 0 .5em;
+    border-radius: 999px;
+    background: var(--speechChipBg);
+    color: var(--speechChipText);
+    white-space: nowrap;
+  }
+
+  .ag-speech-chip.ag-hide::before,
+  .ag-speech-chip.ag-hide::after {
+    font-size: .78rem;
+    line-height: 1.5;
+    vertical-align: baseline;
+  }
+
+  .ag-speech-chip.ag-hide::before {
+    content: '\E769';
+    font-family: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
+    margin-right: .4em;
+  }
+
+  .ag-speech-chip.ag-hide::after {
+    content: attr(data-chip);
+    display: inline-block;
+    max-width: 22em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+  }
+
+  .ag-speech-chip.ag-hide.ag-speech-note {
+    background: var(--speechNoteBg);
+    color: var(--speechNoteText);
+    box-shadow: inset 0 0 0 1px var(--speechNoteRing);
+  }
+
+  .ag-speech-chip.ag-hide.ag-speech-note::before { content: '\E7C1'; }
+  .ag-speech-chip.ag-hide.ag-speech-setting::before { content: '\E916'; }
+
+  .ag-speech-chip.ag-hide.ag-speech-define {
+    background: transparent;
+    color: var(--editorColor60);
+    box-shadow: inset 0 0 0 1px var(--editorColor30);
+    font-style: italic;
+  }
+
+  .ag-speech-chip.ag-hide.ag-speech-define::before { content: '\E70F'; }
+
+  .ag-speech-pair {
+    border-radius: 3px;
+  }
+
+  .ag-speech-slower { text-decoration: underline dotted; text-underline-offset: .22em; }
+  .ag-speech-faster { text-decoration: underline dashed; text-underline-offset: .22em; }
+
+  .ag-speech-loud {
+    font-size: 1.12em;
+    font-weight: 600;
+  }
+
+  .ag-speech-soft {
+    font-size: .92em;
+    color: var(--editorColor60);
+  }
+
+  .ag-speech-emphasis {
+    color: var(--speechEmphasis);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: .22em;
+  }
+
+  .ag-speech-tone,
+  .ag-speech-user[data-label] {
+    background: var(--speechToneBg);
+    padding: 0 .25em;
+  }
+
+  .ag-speech-tone::before,
+  .ag-speech-user[data-label]::before {
+    content: attr(data-label);
+    font-size: .72em;
+    font-style: italic;
+    margin-right: .45em;
+    color: var(--editorColor60);
+  }
+
+  @media (forced-colors: active) {
+    .ag-speech-chip.ag-hide,
+    .ag-speech-chip.ag-hide.ag-speech-note,
+    .ag-speech-chip.ag-hide.ag-speech-define {
+      background: Canvas;
+      color: CanvasText;
+      box-shadow: inset 0 0 0 1px CanvasText;
+    }
+    .ag-speech-tone,
+    .ag-speech-user[data-label] { background: Canvas; box-shadow: inset 0 -2px 0 CanvasText; }
+  }
+
   .ag-header-tight-space {
     margin-left: -.3em;
   }
@@ -605,6 +752,7 @@ kbd {
   .ag-image-marked-text::before {
     background: url(../../../assets/icons/image_light.png);
     background-size: cover;
+    filter: var(--imageIconFilter, none);
   }
 
   .ag-image-marked-text.ag-image-fail::before {
@@ -618,16 +766,6 @@ kbd {
   }
 
   .ag-inline-image.ag-image-success .ag-image-marked-text.ag-image-fail::before {
-    background-image: url(../../../assets/icons/image_dark_fail.png);
-    background-size: cover;
-  }
-
-  body.dark .ag-image-marked-text::before {
-    background: url(../../../assets/icons/image_dark.png);
-    background-size: cover;
-  }
-
-  body.dark .ag-image-marked-text.ag-image-fail::before {
     background-image: url(../../../assets/icons/image_dark_fail.png);
     background-size: cover;
   }

@@ -1,0 +1,1708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NewFile" xml:space="preserve">
+    <value>New File</value>
+  </data>
+  <data name="NewFolder" xml:space="preserve">
+    <value>New Folder</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="CopyAsPath" xml:space="preserve">
+    <value>Copy as Path</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="RevealInFileExplorer" xml:space="preserve">
+    <value>Reveal in File Explorer</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="OpenInNewWindow" xml:space="preserve">
+    <value>Open in New Window</value>
+  </data>
+  <data name="ToggleFavorite" xml:space="preserve">
+    <value>Toggle Favorite</value>
+  </data>
+  <data name="ViewModeViewButton_Content" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ViewModeViewButton_ToolTip" xml:space="preserve">
+    <value>Formatted editor</value>
+  </data>
+  <data name="ViewModeCodeButton_Content" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="ViewModeCodeButton_ToolTip" xml:space="preserve">
+    <value>Markdown source</value>
+  </data>
+  <data name="ViewModeSplitButton_Content" xml:space="preserve">
+    <value>Split</value>
+  </data>
+  <data name="ViewModeSplitButton_ToolTip" xml:space="preserve">
+    <value>Markdown source with a live preview</value>
+  </data>
+  <data name="FavoriteButton_ToolTip" xml:space="preserve">
+    <value>Add to Favorites</value>
+  </data>
+  <data name="QuickOpenButton_ToolTip" xml:space="preserve">
+    <value>Go to File... (Ctrl+K)</value>
+  </data>
+  <data name="ThemeToggleButton_ToolTip" xml:space="preserve">
+    <value>Toggle theme</value>
+  </data>
+  <data name="TitleSettingsButton_ToolTip" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="NewMenuItem_Text" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="OpenMenuItem_Text" xml:space="preserve">
+    <value>Open...</value>
+  </data>
+  <data name="OpenFolderMenuItem_Text" xml:space="preserve">
+    <value>Open Folder...</value>
+  </data>
+  <data name="QuickOpenMenuItem_Text" xml:space="preserve">
+    <value>Go to File...</value>
+  </data>
+  <data name="NewWindowMenuItem_Text" xml:space="preserve">
+    <value>New Window</value>
+  </data>
+  <data name="OpenRecentMenu_Text" xml:space="preserve">
+    <value>Open Recent</value>
+  </data>
+  <data name="NoRecentFiles" xml:space="preserve">
+    <value>No Recent Files</value>
+  </data>
+  <data name="ImportMarkItDownMenuItem_Text" xml:space="preserve">
+    <value>Import Document as Markdown...</value>
+  </data>
+  <data name="SaveMenuItem_Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveAsMenuItem_Text" xml:space="preserve">
+    <value>Save As...</value>
+  </data>
+  <data name="ExportMenu_Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportHtmlMenuItem_Text" xml:space="preserve">
+    <value>HTML...</value>
+  </data>
+  <data name="ExportPdfMenuItem_Text" xml:space="preserve">
+    <value>PDF...</value>
+  </data>
+  <data name="ExportTextMenuItem_Text" xml:space="preserve">
+    <value>Plain Text...</value>
+  </data>
+  <data name="PrintMenuItem_Text" xml:space="preserve">
+    <value>Print...</value>
+  </data>
+  <data name="SettingsMenuItem_Text" xml:space="preserve">
+    <value>Settings...</value>
+  </data>
+  <data name="ExitMenuItem_Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="UndoMenuItem_Text" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="RedoMenuItem_Text" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="CopyMenuItem_Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="PasteMenuItem_Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="SelectAllMenuItem_Text" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="FindMenuItem_Text" xml:space="preserve">
+    <value>Find &amp; Replace</value>
+  </data>
+  <data name="InsertImageMenuItem_Text" xml:space="preserve">
+    <value>Insert Image...</value>
+  </data>
+  <data name="InsertTableMenuItem_Text" xml:space="preserve">
+    <value>Insert Table...</value>
+  </data>
+  <data name="ParagraphMenu_Title" xml:space="preserve">
+    <value>Paragraph</value>
+  </data>
+  <data name="Heading1" xml:space="preserve">
+    <value>Heading 1</value>
+  </data>
+  <data name="Heading2" xml:space="preserve">
+    <value>Heading 2</value>
+  </data>
+  <data name="Heading3" xml:space="preserve">
+    <value>Heading 3</value>
+  </data>
+  <data name="Heading4" xml:space="preserve">
+    <value>Heading 4</value>
+  </data>
+  <data name="Heading5" xml:space="preserve">
+    <value>Heading 5</value>
+  </data>
+  <data name="Heading6" xml:space="preserve">
+    <value>Heading 6</value>
+  </data>
+  <data name="Paragraph" xml:space="preserve">
+    <value>Paragraph</value>
+  </data>
+  <data name="IncreaseHeadingLevel" xml:space="preserve">
+    <value>Increase heading level</value>
+  </data>
+  <data name="DecreaseHeadingLevel" xml:space="preserve">
+    <value>Decrease heading level</value>
+  </data>
+  <data name="BulletedList" xml:space="preserve">
+    <value>Bulleted list</value>
+  </data>
+  <data name="NumberedList" xml:space="preserve">
+    <value>Numbered list</value>
+  </data>
+  <data name="TaskList" xml:space="preserve">
+    <value>Task list</value>
+  </data>
+  <data name="Quote" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="CodeBlock" xml:space="preserve">
+    <value>Code block</value>
+  </data>
+  <data name="MathBlock" xml:space="preserve">
+    <value>Math block</value>
+  </data>
+  <data name="TableMenu" xml:space="preserve">
+    <value>Table...</value>
+  </data>
+  <data name="HorizontalLine" xml:space="preserve">
+    <value>Horizontal line</value>
+  </data>
+  <data name="FootnoteMenu" xml:space="preserve">
+    <value>Footnote</value>
+  </data>
+  <data name="TableOfContents" xml:space="preserve">
+    <value>Table of contents</value>
+  </data>
+  <data name="YAMLFrontMatter" xml:space="preserve">
+    <value>YAML front matter</value>
+  </data>
+  <data name="Diagram" xml:space="preserve">
+    <value>Diagram</value>
+  </data>
+  <data name="Mermaid" xml:space="preserve">
+    <value>Mermaid</value>
+  </data>
+  <data name="Flowchart" xml:space="preserve">
+    <value>Flowchart</value>
+  </data>
+  <data name="SequenceDiagram" xml:space="preserve">
+    <value>Sequence diagram</value>
+  </data>
+  <data name="PlantUML" xml:space="preserve">
+    <value>PlantUML</value>
+  </data>
+  <data name="VegaLiteChart" xml:space="preserve">
+    <value>Vega-Lite chart</value>
+  </data>
+  <data name="InsertParagraphBefore" xml:space="preserve">
+    <value>Insert paragraph before</value>
+  </data>
+  <data name="InsertParagraphAfter" xml:space="preserve">
+    <value>Insert paragraph after</value>
+  </data>
+  <data name="FormatMenu_Title" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="Bold" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="Italic" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="Underline" xml:space="preserve">
+    <value>Underline</value>
+  </data>
+  <data name="Strikethrough" xml:space="preserve">
+    <value>Strikethrough</value>
+  </data>
+  <data name="Highlight" xml:space="preserve">
+    <value>Highlight</value>
+  </data>
+  <data name="InlineCode" xml:space="preserve">
+    <value>Inline code</value>
+  </data>
+  <data name="InlineMath" xml:space="preserve">
+    <value>Inline math</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="ImageMenu" xml:space="preserve">
+    <value>Image...</value>
+  </data>
+  <data name="ClearFormatting" xml:space="preserve">
+    <value>Clear formatting</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="TocMenuItem_Text" xml:space="preserve">
+    <value>Sidebar</value>
+  </data>
+  <data name="StatusBarMenuItem_Text" xml:space="preserve">
+    <value>Status Bar</value>
+  </data>
+  <data name="ViewModeViewMenuItem_Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ViewModeCodeMenuItem_Text" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="ViewModeSplitMenuItem_Text" xml:space="preserve">
+    <value>Split (code + preview)</value>
+  </data>
+  <data name="NewNote" xml:space="preserve">
+    <value>New Note</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>All Files</value>
+  </data>
+  <data name="Templates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="Trash" xml:space="preserve">
+    <value>Trash</value>
+  </data>
+  <data name="WelcomeToCaret" xml:space="preserve">
+    <value>Welcome to Caret</value>
+  </data>
+  <data name="WritePreviewOrganize" xml:space="preserve">
+    <value>Write. Preview. Organize.</value>
+  </data>
+  <data name="FavoritesEmptyText_Text" xml:space="preserve">
+    <value>No favorites yet. Use File &gt; Favorite, right-click a tab, or right-click a file in the folder tree.</value>
+  </data>
+  <data name="SaveCurrentDocumentAsTemplate" xml:space="preserve">
+    <value>Save current document as template...</value>
+  </data>
+  <data name="TrashEmptyText_Text" xml:space="preserve">
+    <value>Nothing deleted from Caret yet.</value>
+  </data>
+  <data name="IdeasGrowHere" xml:space="preserve">
+    <value>Ideas grow here.</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="SkipThisVersion" xml:space="preserve">
+    <value>Skip this version</value>
+  </data>
+  <data name="Heading1Ctrl1" xml:space="preserve">
+    <value>Heading 1 (Ctrl+1)</value>
+  </data>
+  <data name="Heading2Ctrl2" xml:space="preserve">
+    <value>Heading 2 (Ctrl+2)</value>
+  </data>
+  <data name="Heading3Ctrl3" xml:space="preserve">
+    <value>Heading 3 (Ctrl+3)</value>
+  </data>
+  <data name="BoldCtrlB" xml:space="preserve">
+    <value>Bold (Ctrl+B)</value>
+  </data>
+  <data name="ItalicCtrlI" xml:space="preserve">
+    <value>Italic (Ctrl+I)</value>
+  </data>
+  <data name="TaskListCtrlShiftX" xml:space="preserve">
+    <value>Task list (Ctrl+Shift+X)</value>
+  </data>
+  <data name="QuoteCtrlShiftQ" xml:space="preserve">
+    <value>Quote (Ctrl+Shift+Q)</value>
+  </data>
+  <data name="CodeBlockCtrlShiftK" xml:space="preserve">
+    <value>Code block (Ctrl+Shift+K)</value>
+  </data>
+  <data name="InsertTableCtrlShiftT" xml:space="preserve">
+    <value>Insert table (Ctrl+Shift+T)</value>
+  </data>
+  <data name="Table2" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="InsertImage" xml:space="preserve">
+    <value>Insert image</value>
+  </data>
+  <data name="FindTextBox_Placeholder" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="FindNext" xml:space="preserve">
+    <value>Find next</value>
+  </data>
+  <data name="FindPrevious" xml:space="preserve">
+    <value>Find previous</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ReplaceTextBox_Placeholder" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="Replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="ReplaceAll" xml:space="preserve">
+    <value>Replace All</value>
+  </data>
+  <data name="CaseSensitiveCheck_Content" xml:space="preserve">
+    <value>Case sensitive</value>
+  </data>
+  <data name="WholeWordCheck_Content" xml:space="preserve">
+    <value>Whole word</value>
+  </data>
+  <data name="RegexCheck_Content" xml:space="preserve">
+    <value>Regex</value>
+  </data>
+  <data name="Markdown" xml:space="preserve">
+    <value>Markdown</value>
+  </data>
+  <data name="StatusBarWordCountButton_Content" xml:space="preserve">
+    <value>0 characters</value>
+  </data>
+  <data name="StatusBarWordCountButton_ToolTip" xml:space="preserve">
+    <value>Click to switch between characters and words</value>
+  </data>
+  <data name="QuickOpenTextBox_Placeholder" xml:space="preserve">
+    <value>Go to file...</value>
+  </data>
+  <data name="SettingsDialog_Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsDialog_Primary" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="UseSystemSetting" xml:space="preserve">
+    <value>Use system setting</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="AutoSaveToggle_Header" xml:space="preserve">
+    <value>Auto save</value>
+  </data>
+  <data name="AnimationToggle_Header" xml:space="preserve">
+    <value>Animations</value>
+  </data>
+  <data name="UseMicaToggle_Header" xml:space="preserve">
+    <value>Use Mica material</value>
+  </data>
+  <data name="UseEditorMicaToggle_Header" xml:space="preserve">
+    <value>Use Mica behind editor content</value>
+  </data>
+  <data name="SpellcheckToggle_Header" xml:space="preserve">
+    <value>Spellcheck</value>
+  </data>
+  <data name="SpellcheckToggle_ToolTip" xml:space="preserve">
+    <value>Underlines misspelled words in red. Right-click one for suggestions. Uses Windows' own spell checker, offline.</value>
+  </data>
+  <data name="SpellcheckLanguage_Header" xml:space="preserve">
+    <value>Spellcheck language</value>
+  </data>
+  <data name="SpellcheckLanguageAutomatic" xml:space="preserve">
+    <value>Automatic (your Windows languages)</value>
+  </data>
+  <data name="SpellcheckLanguageUsing" xml:space="preserve">
+    <value>Checking in: {0}</value>
+  </data>
+  <data name="SpellcheckNoDictionary" xml:space="preserve">
+    <value>Windows has no spelling dictionary for your languages. Add a language in Windows Settings > Time &amp; language &gt; Language &amp; region.</value>
+  </data>
+  <data name="SpellcheckNoSuggestions" xml:space="preserve">
+    <value>No spelling suggestions</value>
+  </data>
+  <data name="SpellcheckIgnoreAll" xml:space="preserve">
+    <value>Ignore all</value>
+  </data>
+  <data name="SpellcheckAddToDictionary" xml:space="preserve">
+    <value>Add to dictionary</value>
+  </data>
+  <data name="ReviewAddComment" xml:space="preserve">
+    <value>Add comment</value>
+  </data>
+  <data name="ReviewCommentTitle" xml:space="preserve">
+    <value>Add a comment</value>
+  </data>
+  <data name="ReviewCommentNote" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="ReviewCommentAuthor" xml:space="preserve">
+    <value>Your name</value>
+  </data>
+  <data name="ReviewCommentHint" xml:space="preserve">
+    <value>The name and today's date are written into the document, next to the comment.</value>
+  </data>
+  <data name="ReviewAcceptChange" xml:space="preserve">
+    <value>Accept change</value>
+  </data>
+  <data name="ReviewRejectChange" xml:space="preserve">
+    <value>Reject change</value>
+  </data>
+  <data name="ReviewDeleteComment" xml:space="preserve">
+    <value>Delete comment</value>
+  </data>
+  <data name="ReviewAcceptAll" xml:space="preserve">
+    <value>Accept all changes</value>
+  </data>
+  <data name="ReviewRejectAll" xml:space="preserve">
+    <value>Reject all changes</value>
+  </data>
+  <data name="ReviewDeleteAllComments" xml:space="preserve">
+    <value>Delete all comments</value>
+  </data>
+  <data name="ReviewNoChanges" xml:space="preserve">
+    <value>There are no changes in this document.</value>
+  </data>
+  <data name="ReviewNoComments" xml:space="preserve">
+    <value>There are no comments in this document.</value>
+  </data>
+  <data name="ReviewCompare" xml:space="preserve">
+    <value>Compare with another file...</value>
+  </data>
+  <data name="ReviewCompareTitle" xml:space="preserve">
+    <value>Compare with another version</value>
+  </data>
+  <data name="ReviewCompareExplain" xml:space="preserve">
+    <value>The differences between {0} (before) and this document (after) are written as a review into a new tab. This document is not changed.</value>
+  </data>
+  <data name="ReviewCompareAuthor" xml:space="preserve">
+    <value>Name of the person who made the changes</value>
+  </data>
+  <data name="ReviewCompareSame" xml:space="preserve">
+    <value>The two versions are the same.</value>
+  </data>
+  <data name="ReviewCompareFailed" xml:space="preserve">
+    <value>The comparison failed: {0}</value>
+  </data>
+  <data name="ReviewCodeChanged" xml:space="preserve">
+    <value>the code above changed</value>
+  </data>
+  <data name="ReviewCompareExplainNoTabs" xml:space="preserve">
+    <value>The differences between {0} (before) and this document (after) are written as a review that takes the place of this document in this window. Save this document first if you want to keep it as it is.</value>
+  </data>
+  <data name="ReviewCompareUnmarked" xml:space="preserve">
+    <value>{0} difference(s) could not be marked, because the text contains characters that mark a review. Those places show the document as it is.</value>
+  </data>
+  <data name="TopmostToggle_Header" xml:space="preserve">
+    <value>Always on top</value>
+  </data>
+  <data name="SavePastedImagesTo" xml:space="preserve">
+    <value>Save pasted images to</value>
+  </data>
+  <data name="PicturesCaret" xml:space="preserve">
+    <value>Pictures\Caret</value>
+  </data>
+  <data name="AnImagesFolderNextToThe" xml:space="preserve">
+    <value>An images folder next to the note</value>
+  </data>
+  <data name="OnStartupOpen" xml:space="preserve">
+    <value>On startup, open</value>
+  </data>
+  <data name="ANewBlankNote" xml:space="preserve">
+    <value>A new blank note</value>
+  </data>
+  <data name="TheLastFileYouHadOpen" xml:space="preserve">
+    <value>The last file you had open</value>
+  </data>
+  <data name="Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="DonTReopenAFolder" xml:space="preserve">
+    <value>Don't reopen a folder</value>
+  </data>
+  <data name="TheLastFolderYouHadOpen" xml:space="preserve">
+    <value>The last folder you had open</value>
+  </data>
+  <data name="AlwaysThisFolder" xml:space="preserve">
+    <value>Always this folder:</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="FontSize" xml:space="preserve">
+    <value>Font size</value>
+  </data>
+  <data name="LineHeight" xml:space="preserve">
+    <value>Line height</value>
+  </data>
+  <data name="TabSize" xml:space="preserve">
+    <value>Tab size</value>
+  </data>
+  <data name="EditorAreaWidthCSSValueE" xml:space="preserve">
+    <value>Editor area width (CSS value, e.g. 1200px)</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+    <value>Keyboard shortcuts</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="CtrlN" xml:space="preserve">
+    <value>Ctrl+N</value>
+  </data>
+  <data name="NewWindow" xml:space="preserve">
+    <value>New Window</value>
+  </data>
+  <data name="CtrlShiftN" xml:space="preserve">
+    <value>Ctrl+Shift+N</value>
+  </data>
+  <data name="CtrlO" xml:space="preserve">
+    <value>Ctrl+O</value>
+  </data>
+  <data name="GoToFile" xml:space="preserve">
+    <value>Go to File...</value>
+  </data>
+  <data name="CtrlK" xml:space="preserve">
+    <value>Ctrl+K</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CtrlS" xml:space="preserve">
+    <value>Ctrl+S</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="CtrlShiftS" xml:space="preserve">
+    <value>Ctrl+Shift+S</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="CtrlP" xml:space="preserve">
+    <value>Ctrl+P</value>
+  </data>
+  <data name="FindReplace" xml:space="preserve">
+    <value>Find &amp; Replace</value>
+  </data>
+  <data name="CtrlF" xml:space="preserve">
+    <value>Ctrl+F</value>
+  </data>
+  <data name="CloseWindow" xml:space="preserve">
+    <value>Close Window</value>
+  </data>
+  <data name="CtrlW" xml:space="preserve">
+    <value>Ctrl+W</value>
+  </data>
+  <data name="StandardTextEditingUndoRedoCut" xml:space="preserve">
+    <value>Standard text editing (Undo, Redo, Cut, Copy, Paste, Select All) uses your usual Windows shortcuts — the editor is a normal text surface, nothing custom to list.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AMarkdownEditorForkedFromTypedown" xml:space="preserve">
+    <value>A markdown editor, forked from Typedown and ported to WinUI 3.</value>
+  </data>
+  <data name="ViewSourceOnGitHub" xml:space="preserve">
+    <value>View source on GitHub</value>
+  </data>
+  <data name="CheckForUpdatesToggle_Header" xml:space="preserve">
+    <value>Check for updates automatically</value>
+  </data>
+  <data name="OnceADayCaretAsksGitHub" xml:space="preserve">
+    <value>Once a day, Caret asks GitHub whether a newer version has been released. Nothing about you or your notes is sent.</value>
+  </data>
+  <data name="CheckUpdatesNowButton_Content" xml:space="preserve">
+    <value>Check now</value>
+  </data>
+  <data name="TextInputDialog_Primary" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TextInputDialog_Close" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="PdfExportOptionsDialog_Title" xml:space="preserve">
+    <value>PDF Export Options</value>
+  </data>
+  <data name="PdfExportOptionsDialog_Primary" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="PdfExportOptionsDialog_Close" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>Orientation</value>
+  </data>
+  <data name="Portrait" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
+  <data name="Landscape" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="PageSize" xml:space="preserve">
+    <value>Page size</value>
+  </data>
+  <data name="Letter85X11In" xml:space="preserve">
+    <value>Letter (8.5 x 11 in)</value>
+  </data>
+  <data name="A4827X1169" xml:space="preserve">
+    <value>A4 (8.27 x 11.69 in)</value>
+  </data>
+  <data name="Legal85X14In" xml:space="preserve">
+    <value>Legal (8.5 x 14 in)</value>
+  </data>
+  <data name="PdfBackgroundsToggle_Header" xml:space="preserve">
+    <value>Print background colors and images</value>
+  </data>
+  <data name="PdfHeaderFooterToggle_Header" xml:space="preserve">
+    <value>Include page header and footer</value>
+  </data>
+  <data name="RemoveFromFavorites" xml:space="preserve">
+    <value>Remove from Favorites</value>
+  </data>
+  <data name="UnsavedChanges" xml:space="preserve">
+    <value>Unsaved changes</value>
+  </data>
+  <data name="SaveWouldEraseFile" xml:space="preserve">
+    <value>{0} is now empty in the editor. Saving will erase its contents on disk. Choose Don't Save to keep the file as it was.</value>
+  </data>
+  <data name="SaveChangesPrompt" xml:space="preserve">
+    <value>Do you want to save changes to {0}?</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DontSave" xml:space="preserve">
+    <value>Don't Save</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="RecoverUnsavedChanges" xml:space="preserve">
+    <value>Recover unsaved changes?</value>
+  </data>
+  <data name="RecoverUntitledPrompt" xml:space="preserve">
+    <value>A backup of an untitled document from a previous session was never saved. Recover it?</value>
+  </data>
+  <data name="RecoverFilePrompt" xml:space="preserve">
+    <value>A backup of {0} from a previous session was never saved. Recover it?</value>
+  </data>
+  <data name="Recover" xml:space="preserve">
+    <value>Recover</value>
+  </data>
+  <data name="Discard" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="ResizeTable" xml:space="preserve">
+    <value>Resize table</value>
+  </data>
+  <data name="InsertTableTitle" xml:space="preserve">
+    <value>Insert table</value>
+  </data>
+  <data name="Rows" xml:space="preserve">
+    <value>Rows</value>
+  </data>
+  <data name="Columns" xml:space="preserve">
+    <value>Columns</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="PlainText" xml:space="preserve">
+    <value>Plain Text</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="ClearRecentFiles" xml:space="preserve">
+    <value>Clear Recent Files</value>
+  </data>
+  <data name="CouldntOpenTemplate" xml:space="preserve">
+    <value>Couldn't open template</value>
+  </data>
+  <data name="CouldntSaveTemplate" xml:space="preserve">
+    <value>Couldn't save template</value>
+  </data>
+  <data name="CouldntCreateFile" xml:space="preserve">
+    <value>Couldn't create file</value>
+  </data>
+  <data name="CouldntCreateFolder" xml:space="preserve">
+    <value>Couldn't create folder</value>
+  </data>
+  <data name="CouldntRename" xml:space="preserve">
+    <value>Couldn't rename</value>
+  </data>
+  <data name="CouldntDelete" xml:space="preserve">
+    <value>Couldn't delete</value>
+  </data>
+  <data name="CouldntPaste" xml:space="preserve">
+    <value>Couldn't paste</value>
+  </data>
+  <data name="CouldntMove" xml:space="preserve">
+    <value>Couldn't move</value>
+  </data>
+  <data name="SaveAsTemplate" xml:space="preserve">
+    <value>Save as Template</value>
+  </data>
+  <data name="ConvertingWithMarkItDown" xml:space="preserve">
+    <value>Converting with MarkItDown...</value>
+  </data>
+  <data name="MarkItDownStillNotFound" xml:space="preserve">
+    <value>MarkItDown still not found</value>
+  </data>
+  <data name="MarkItDownStillNotFoundDetail" xml:space="preserve">
+    <value>MarkItDown was installed, but Caret still can't find it. Try closing and reopening Caret, or install it manually with:
+
+    pip install markitdown[all]</value>
+  </data>
+  <data name="MarkItDownConversionFailed" xml:space="preserve">
+    <value>MarkItDown conversion failed</value>
+  </data>
+  <data name="MarkItDownNoOutput" xml:space="preserve">
+    <value>MarkItDown produced no output.</value>
+  </data>
+  <data name="MarkItDownTimedOut" xml:space="preserve">
+    <value>MarkItDown timed out after 2 minutes.</value>
+  </data>
+  <data name="MarkItDownNotFound" xml:space="preserve">
+    <value>MarkItDown not found</value>
+  </data>
+  <data name="MarkItDownInstallPrompt" xml:space="preserve">
+    <value>Caret can install MarkItDown (Microsoft's document-to-Markdown converter) for you now. It runs "pip install --user markitdown[all]" using Python on this computer, needs an internet connection and can take a few minutes.
+
+Install it now?</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="NotNow" xml:space="preserve">
+    <value>Not now</value>
+  </data>
+  <data name="PythonNotFound" xml:space="preserve">
+    <value>Python not found</value>
+  </data>
+  <data name="PythonNotFoundDetail" xml:space="preserve">
+    <value>Caret couldn't find Python on this computer, which MarkItDown needs to run. Install Python from python.org (select "Add python.exe to PATH" during setup), then try importing again.</value>
+  </data>
+  <data name="OpenPythonOrg" xml:space="preserve">
+    <value>Open python.org</value>
+  </data>
+  <data name="InstallingMarkItDown" xml:space="preserve">
+    <value>Installing MarkItDown (this can take a few minutes)...</value>
+  </data>
+  <data name="MarkItDownInstallFailed" xml:space="preserve">
+    <value>MarkItDown install failed</value>
+  </data>
+  <data name="MarkItDownInstallTimedOut" xml:space="preserve">
+    <value>Installing MarkItDown timed out after 10 minutes.</value>
+  </data>
+  <data name="PipNoOutput" xml:space="preserve">
+    <value>pip install markitdown[all] failed with no output.</value>
+  </data>
+  <data name="UpdateAvailableTitle" xml:space="preserve">
+    <value>Caret {0} is available</value>
+  </data>
+  <data name="UpdateRunningVersion" xml:space="preserve">
+    <value>You're using {0}.</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>Checking…</value>
+  </data>
+  <data name="UpdateCheckFailed" xml:space="preserve">
+    <value>Couldn't reach GitHub. Check your connection and try again.</value>
+  </data>
+  <data name="UpdateAvailableStatus" xml:space="preserve">
+    <value>Caret {0} is available.</value>
+  </data>
+  <data name="DownloadCaretVersion" xml:space="preserve">
+    <value>Download Caret {0}</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>You're using the latest version.</value>
+  </data>
+  <data name="WordCountOne" xml:space="preserve">
+    <value>{0} word</value>
+  </data>
+  <data name="WordCountMany" xml:space="preserve">
+    <value>{0} words</value>
+  </data>
+  <data name="CharacterCountOne" xml:space="preserve">
+    <value>{0} character</value>
+  </data>
+  <data name="CharacterCountMany" xml:space="preserve">
+    <value>{0} characters</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="TurnInto" xml:space="preserve">
+    <value>Turn into</value>
+  </data>
+  <data name="InsertRowAbove" xml:space="preserve">
+    <value>Insert row above</value>
+  </data>
+  <data name="InsertRowBelow" xml:space="preserve">
+    <value>Insert row below</value>
+  </data>
+  <data name="RemoveRow" xml:space="preserve">
+    <value>Remove row</value>
+  </data>
+  <data name="InsertColumnLeft" xml:space="preserve">
+    <value>Insert column left</value>
+  </data>
+  <data name="InsertColumnRight" xml:space="preserve">
+    <value>Insert column right</value>
+  </data>
+  <data name="RemoveColumn" xml:space="preserve">
+    <value>Remove column</value>
+  </data>
+  <data name="EditImageMenu" xml:space="preserve">
+    <value>Edit...</value>
+  </data>
+  <data name="ImageInline" xml:space="preserve">
+    <value>Inline</value>
+  </data>
+  <data name="ImageAlignLeft" xml:space="preserve">
+    <value>Align left</value>
+  </data>
+  <data name="ImageAlignCenter" xml:space="preserve">
+    <value>Align center</value>
+  </data>
+  <data name="ImageAlignRight" xml:space="preserve">
+    <value>Align right</value>
+  </data>
+  <data name="ImageSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="ImagePathOrUrl" xml:space="preserve">
+    <value>Image path or URL</value>
+  </data>
+  <data name="AltText" xml:space="preserve">
+    <value>Alt text</value>
+  </data>
+  <data name="ImageTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="EditImage" xml:space="preserve">
+    <value>Edit image</value>
+  </data>
+  <data name="DeleteFolderTitle" xml:space="preserve">
+    <value>Delete folder?</value>
+  </data>
+  <data name="DeleteFileTitle" xml:space="preserve">
+    <value>Delete file?</value>
+  </data>
+  <data name="MoveToRecycleBin" xml:space="preserve">
+    <value>"{0}" will be moved to the Recycle Bin.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="UseSystemLanguage" xml:space="preserve">
+    <value>Use Windows display language</value>
+  </data>
+  <data name="LanguageRestartNote" xml:space="preserve">
+    <value>Restart Caret to see the new language.</value>
+  </data>
+  <data name="ShortcutCtrlShiftX" xml:space="preserve">
+    <value>Ctrl+Shift+X</value>
+  </data>
+  <data name="ShortcutCtrlShiftQ" xml:space="preserve">
+    <value>Ctrl+Shift+Q</value>
+  </data>
+  <data name="ShortcutCtrlShiftK" xml:space="preserve">
+    <value>Ctrl+Shift+K</value>
+  </data>
+  <data name="ShortcutCtrlShiftT" xml:space="preserve">
+    <value>Ctrl+Shift+T</value>
+  </data>
+  <data name="ToggleOn" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="ToggleOff" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="ConvertNav" xml:space="preserve">
+    <value>Convert to Markdown</value>
+  </data>
+  <data name="HomeConvertTitle" xml:space="preserve">
+    <value>Convert documents to Markdown</value>
+  </data>
+  <data name="HomeConvertSubtitle" xml:space="preserve">
+    <value>Word, Excel, PowerPoint and PDF → AI-ready text</value>
+  </data>
+  <data name="ConvertMenuItem" xml:space="preserve">
+    <value>Convert to Markdown...</value>
+  </data>
+  <data name="ImportFailed" xml:space="preserve">
+    <value>Couldn't import the document</value>
+  </data>
+  <data name="ConvertBackToEditor" xml:space="preserve">
+    <value>Back to the editor</value>
+  </data>
+  <data name="ConvertTitle" xml:space="preserve">
+    <value>Convert to Markdown</value>
+  </data>
+  <data name="ConvertIntro" xml:space="preserve">
+    <value>Turn Word, Excel, PowerPoint and PDF files and Outlook emails into clean Markdown. The result is usually much smaller, keeps headings, lists and tables, and uses far fewer tokens when you share it with an AI assistant.</value>
+  </data>
+  <data name="ConvertDropHere" xml:space="preserve">
+    <value>Drop files or folders here</value>
+  </data>
+  <data name="ConvertChooseFiles" xml:space="preserve">
+    <value>Choose files...</value>
+  </data>
+  <data name="ConvertChooseFolder" xml:space="preserve">
+    <value>Choose a folder...</value>
+  </data>
+  <data name="ConvertFormats" xml:space="preserve">
+    <value>Word (.docx) · Excel (.xlsx) · PowerPoint (.pptx) · PDF · CSV · Outlook emails (.msg, .eml). Converted on this PC, nothing is uploaded.</value>
+  </data>
+  <data name="ConvertSaveTo" xml:space="preserve">
+    <value>Save Markdown files</value>
+  </data>
+  <data name="ConvertSaveNextTo" xml:space="preserve">
+    <value>Next to the original files</value>
+  </data>
+  <data name="ConvertSaveToFolder" xml:space="preserve">
+    <value>In a folder I choose...</value>
+  </data>
+  <data name="ConvertSaveToFolderPath" xml:space="preserve">
+    <value>In {0}</value>
+  </data>
+  <data name="ExplorerMenuTitle" xml:space="preserve">
+    <value>Convert to Markdown</value>
+  </data>
+  <data name="ConvertExplorerMenu" xml:space="preserve">
+    <value>Right-click menu in File Explorer</value>
+  </data>
+  <data name="ConvertExplorerMenuTip" xml:space="preserve">
+    <value>Adds Convert to Markdown when you right-click Word, Excel, PowerPoint, PDF, CSV and email files, or a folder.</value>
+  </data>
+  <data name="ConvertExtractImages" xml:space="preserve">
+    <value>Extract images</value>
+  </data>
+  <data name="ConvertCopyAll" xml:space="preserve">
+    <value>Copy all for AI</value>
+  </data>
+  <data name="ConvertCopyAllTip" xml:space="preserve">
+    <value>Copies every converted document as one Markdown text, ready to paste into Copilot, ChatGPT or another assistant.</value>
+  </data>
+  <data name="ConvertCopied" xml:space="preserve">
+    <value>Copied!</value>
+  </data>
+  <data name="ConvertClear" xml:space="preserve">
+    <value>Clear list</value>
+  </data>
+  <data name="ConvertWhyTitle" xml:space="preserve">
+    <value>Why Markdown?</value>
+  </data>
+  <data name="ConvertWhyTokensTitle" xml:space="preserve">
+    <value>Fewer tokens</value>
+  </data>
+  <data name="ConvertWhyTokensText" xml:space="preserve">
+    <value>AI assistants read Markdown directly, without the layout, fonts and file structure of the original, so the same content costs less and more of it fits into a conversation.</value>
+  </data>
+  <data name="ConvertWhyStructureTitle" xml:space="preserve">
+    <value>Structure kept</value>
+  </data>
+  <data name="ConvertWhyStructureText" xml:space="preserve">
+    <value>Headings, lists, tables, links and footnotes stay intact, so the meaning survives, for people and for AI.</value>
+  </data>
+  <data name="ConvertWhyPrivateTitle" xml:space="preserve">
+    <value>Private and offline</value>
+  </data>
+  <data name="ConvertWhyPrivateText" xml:space="preserve">
+    <value>Conversion happens on this PC. Your documents are never uploaded anywhere.</value>
+  </data>
+  <data name="ConvertDropCaption" xml:space="preserve">
+    <value>Convert to Markdown</value>
+  </data>
+  <data name="ConvertWaiting" xml:space="preserve">
+    <value>Waiting…</value>
+  </data>
+  <data name="ConvertConverting" xml:space="preserve">
+    <value>Converting…</value>
+  </data>
+  <data name="ConvertLegacyFormat" xml:space="preserve">
+    <value>Older Office format. Open it in Word, Excel or PowerPoint, save it as .docx, .xlsx or .pptx, then convert it again.</value>
+  </data>
+  <data name="ConvertUnsupported" xml:space="preserve">
+    <value>This file type can't be converted.</value>
+  </data>
+  <data name="ConvertPdfNoText" xml:space="preserve">
+    <value>No text found. This PDF is probably a scan, and Caret can't read text inside images.</value>
+  </data>
+  <data name="ConvertNoContent" xml:space="preserve">
+    <value>The file has no content to convert.</value>
+  </data>
+  <data name="ConvertResultDetail" xml:space="preserve">
+    <value>{0} → {1} · ≈{2} tokens</value>
+  </data>
+  <data name="ConvertSmaller" xml:space="preserve">
+    <value>{0}% smaller</value>
+  </data>
+  <data name="ConvertSkippedImages" xml:space="preserve">
+    <value>some images in unsupported formats were left out</value>
+  </data>
+  <data name="ConvertNoWriteAccess" xml:space="preserve">
+    <value>Caret can't save in this folder. Choose another one under Save Markdown files.</value>
+  </data>
+  <data name="ConvertFileMissing" xml:space="preserve">
+    <value>The file no longer exists.</value>
+  </data>
+  <data name="ConvertFileLocked" xml:space="preserve">
+    <value>The file is locked by another program.</value>
+  </data>
+  <data name="ConvertDamagedOrProtected" xml:space="preserve">
+    <value>The file is damaged or password-protected.</value>
+  </data>
+  <data name="ConvertFailed" xml:space="preserve">
+    <value>Couldn't convert: {0}</value>
+  </data>
+  <data name="ConvertSlideHeading" xml:space="preserve">
+    <value>Slide {0}: {1}</value>
+  </data>
+  <data name="ConvertSlideHeadingUntitled" xml:space="preserve">
+    <value>Slide {0}</value>
+  </data>
+  <data name="ConvertNotesLabel" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="UnitKB" xml:space="preserve">
+    <value>KB</value>
+  </data>
+  <data name="UnitMB" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="ConvertSummaryWorking" xml:space="preserve">
+    <value>Converting… {0} of {1} done</value>
+  </data>
+  <data name="ConvertSummaryOne" xml:space="preserve">
+    <value>{0} document converted</value>
+  </data>
+  <data name="ConvertSummaryMany" xml:space="preserve">
+    <value>{0} documents converted</value>
+  </data>
+  <data name="ConvertSummaryDetail" xml:space="preserve">
+    <value>{0} of documents became {1} of Markdown, about {2} tokens.</value>
+  </data>
+  <data name="ConvertSummaryFailed" xml:space="preserve">
+    <value>Not converted: {0}.</value>
+  </data>
+  <data name="ThirdPartyNotices" xml:space="preserve">
+    <value>Third-party notices</value>
+  </data>
+  <data name="MarkItDownManualInstall" xml:space="preserve">
+    <value>This format is converted by Microsoft's MarkItDown, which isn't installed. To use it, install Python and run "pip install markitdown[all]", then try again.
+
+Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them itself.</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="StoreUpdatesNote" xml:space="preserve">
+    <value>Updates are delivered by the Microsoft Store.</value>
+  </data>
+  <data name="PolicyUpdatesNote" xml:space="preserve">
+    <value>Updates are managed by your organization.</value>
+  </data>
+  <data name="StatusLegacyEncoding" xml:space="preserve">
+    <value>Markdown · {0}</value>
+  </data>
+  <data name="StatusLegacyEncodingTip" xml:space="preserve">
+    <value>This file isn't saved as UTF-8, so Caret read it with Windows' {0} encoding. Saving it converts it to UTF-8, which every Markdown tool expects.</value>
+  </data>
+  <data name="ConvertChooseEmails" xml:space="preserve">
+    <value>Choose emails...</value>
+  </data>
+  <data name="ConvertChooseEmailsTip" xml:space="preserve">
+    <value>Convert emails saved from Outlook (.msg) or other mail apps (.eml). Drag messages from Outlook into a folder to save them. The whole thread becomes one clean Markdown file, oldest message first, without signatures and disclaimers.</value>
+  </data>
+  <data name="ConvertMaskPersonalData" xml:space="preserve">
+    <value>Mask personal data</value>
+  </data>
+  <data name="ConvertMaskPersonalDataTip" xml:space="preserve">
+    <value>Replaces names, email addresses, phone numbers, IBANs, card numbers and ID numbers with placeholders such as [PERSON-1] before you paste the text into an AI assistant. Rule-based and done on this PC; no AI is used. Names are found from the email's senders and recipients, and in greetings and sign-offs.</value>
+  </data>
+  <data name="ConvertPersonalDataMasked" xml:space="preserve">
+    <value>personal data masked</value>
+  </data>
+  <data name="ConvertEmailsNav" xml:space="preserve">
+    <value>Outlook emails</value>
+  </data>
+  <data name="ConvertEmailCardTitle" xml:space="preserve">
+    <value>Outlook emails to Markdown</value>
+  </data>
+  <data name="ConvertEmailCardText" xml:space="preserve">
+    <value>Turn a whole email thread into one clean file for AI: every reply as its own message, oldest first, without signatures, disclaimers or banners, attachments included. Names, addresses and phone numbers are masked. No AI, and nothing leaves this PC.</value>
+  </data>
+  <data name="NewBadge" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="HomeEmailsTitle" xml:space="preserve">
+    <value>Convert Outlook emails</value>
+  </data>
+  <data name="HomeEmailsSubtitle" xml:space="preserve">
+    <value>Clean threads, personal data masked → AI-ready text</value>
+  </data>
+  <data name="ConvertEmailsMenuItem" xml:space="preserve">
+    <value>Convert Outlook emails...</value>
+  </data>
+  <data name="NotSavedYet" xml:space="preserve">
+    <value>Not saved yet</value>
+  </data>
+  <data name="CloseDocumentMenuItem" xml:space="preserve">
+    <value>Close document</value>
+  </data>
+  <data name="CloseOtherDocuments" xml:space="preserve">
+    <value>Close other documents</value>
+  </data>
+  <data name="CloseDocumentsToTheRight" xml:space="preserve">
+    <value>Close documents to the right</value>
+  </data>
+  <data name="MoveToNewWindow" xml:space="preserve">
+    <value>Move to new window</value>
+  </data>
+  <data name="MoveToWindow" xml:space="preserve">
+    <value>Move to window</value>
+  </data>
+  <data name="CloseWindowMenuItem" xml:space="preserve">
+    <value>Close window</value>
+  </data>
+  <data name="CtrlShiftW" xml:space="preserve">
+    <value>Ctrl+Shift+W</value>
+  </data>
+  <data name="UnsavedDocumentsPrompt" xml:space="preserve">
+    <value>These documents have unsaved changes:
+{0}</value>
+  </data>
+  <data name="SaveAll" xml:space="preserve">
+    <value>Save all</value>
+  </data>
+  <data name="RecoverUntitledMany" xml:space="preserve">
+    <value>{0} untitled documents from a previous session were never saved. Recover them?</value>
+  </data>
+  <data name="StartPageTitle" xml:space="preserve">
+    <value>What's next?</value>
+  </data>
+  <data name="StartPageSubtitle" xml:space="preserve">
+    <value>Start a note, open a file, or turn documents and Outlook emails into Markdown.</value>
+  </data>
+  <data name="StartNewNote" xml:space="preserve">
+    <value>New note</value>
+  </data>
+  <data name="StartNewNoteText" xml:space="preserve">
+    <value>A blank Markdown document</value>
+  </data>
+  <data name="StartOpenFile" xml:space="preserve">
+    <value>Open a file</value>
+  </data>
+  <data name="StartOpenFileText" xml:space="preserve">
+    <value>Markdown files on this PC</value>
+  </data>
+  <data name="StartPageRecent" xml:space="preserve">
+    <value>Recent files</value>
+  </data>
+  <data name="UseTabsToggle" xml:space="preserve">
+    <value>Open documents in tabs</value>
+  </data>
+  <data name="RestoreTabsToggle" xml:space="preserve">
+    <value>Reopen your documents when Caret starts</value>
+  </data>
+  <data name="NavCreateHeader" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="NavLibraryHeader" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="OutlineHeader" xml:space="preserve">
+    <value>Outline</value>
+  </data>
+  <data name="FavoriteMenuItem" xml:space="preserve">
+    <value>Favorite</value>
+  </data>
+  <data name="ThemeMenu" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="SettingsGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="SettingsAppearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="SettingsLayout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="SettingsEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="SettingsTabsWindows" xml:space="preserve">
+    <value>Tabs and windows</value>
+  </data>
+  <data name="SettingsConvert" xml:space="preserve">
+    <value>Convert</value>
+  </data>
+  <data name="SettingsImages" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="SettingsKeyboard" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>
+  <data name="SearchSettings" xml:space="preserve">
+    <value>Search settings</value>
+  </data>
+  <data name="SettingsNoResults" xml:space="preserve">
+    <value>No settings found</value>
+  </data>
+  <data name="OnStartupHeader" xml:space="preserve">
+    <value>On startup</value>
+  </data>
+  <data name="ThemeDescription" xml:space="preserve">
+    <value>Light, dark, or the same as Windows</value>
+  </data>
+  <data name="ColorScheme" xml:space="preserve">
+    <value>Color scheme</value>
+  </data>
+  <data name="ColorSchemeDescription" xml:space="preserve">
+    <value>Colors for the whole window. Use the arrow keys to try each one.</value>
+  </data>
+  <data name="SchemeCopper" xml:space="preserve">
+    <value>Copper</value>
+  </data>
+  <data name="SchemePaper" xml:space="preserve">
+    <value>Paper</value>
+  </data>
+  <data name="SchemeSage" xml:space="preserve">
+    <value>Sage</value>
+  </data>
+  <data name="SchemeHarbour" xml:space="preserve">
+    <value>Harbor</value>
+  </data>
+  <data name="SchemeGraphite" xml:space="preserve">
+    <value>Graphite</value>
+  </data>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="AccentColorDescription" xml:space="preserve">
+    <value>Buttons, switches, selection and links</value>
+  </data>
+  <data name="AccentScheme" xml:space="preserve">
+    <value>From the color scheme</value>
+  </data>
+  <data name="AccentWindows" xml:space="preserve">
+    <value>Windows accent color</value>
+  </data>
+  <data name="WindowMaterial" xml:space="preserve">
+    <value>Window material</value>
+  </data>
+  <data name="WindowMaterialDescription" xml:space="preserve">
+    <value>Mica lets your desktop tint the window's frame. The page stays solid.</value>
+  </data>
+  <data name="WindowMaterialUnsupported" xml:space="preserve">
+    <value>Mica needs Windows 11.</value>
+  </data>
+  <data name="MaterialSolid" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="ContrastThemeActive" xml:space="preserve">
+    <value>A contrast theme is on in Windows, so Caret uses its colors. The color scheme and accent come back when it's off.</value>
+  </data>
+  <data name="DecorativeCard" xml:space="preserve">
+    <value>Sidebar illustration</value>
+  </data>
+  <data name="DecorativeCardDescription" xml:space="preserve">
+    <value>The illustrated card at the bottom of the sidebar. It's hidden in a short window anyway.</value>
+  </data>
+  <data name="PageWidth" xml:space="preserve">
+    <value>Page width</value>
+  </data>
+  <data name="PageWidthDescription" xml:space="preserve">
+    <value>How wide the text column can grow</value>
+  </data>
+  <data name="PageWidthNarrow" xml:space="preserve">
+    <value>Narrow (720 px)</value>
+  </data>
+  <data name="PageWidthMedium" xml:space="preserve">
+    <value>Medium (900 px)</value>
+  </data>
+  <data name="PageWidthWide" xml:space="preserve">
+    <value>Wide (1200 px)</value>
+  </data>
+  <data name="PageWidthFull" xml:space="preserve">
+    <value>Full window</value>
+  </data>
+  <data name="PageWidthCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="TypewriterToggle" xml:space="preserve">
+    <value>Typewriter mode</value>
+  </data>
+  <data name="TypewriterToggleDescription" xml:space="preserve">
+    <value>Keeps the line you're typing in the middle of the window</value>
+  </data>
+  <data name="FocusModeToggle" xml:space="preserve">
+    <value>Focus mode</value>
+  </data>
+  <data name="FocusModeToggleDescription" xml:space="preserve">
+    <value>Dims every paragraph except the one you're writing</value>
+  </data>
+  <data name="ConvertSettingsDescription" xml:space="preserve">
+    <value>The output folder, images and personal-data masking are set on the Convert page.</value>
+  </data>
+  <data name="OpenConvertPage" xml:space="preserve">
+    <value>Open the Convert page</value>
+  </data>
+  <data name="NextPreviousTab" xml:space="preserve">
+    <value>Next / previous tab</value>
+  </data>
+  <data name="ViewModeMenu" xml:space="preserve">
+    <value>View / Code / Split</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="StartPagePinnedRecent" xml:space="preserve">
+    <value>Favorites and recent files</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="WindowLayout" xml:space="preserve">
+    <value>Window layout</value>
+  </data>
+  <data name="WindowLayoutDescription" xml:space="preserve">
+    <value>Classic keeps the menu and the toolbar on separate rows. Streamlined puts them on one. Distraction-free hides them until you need them (F11).</value>
+  </data>
+  <data name="LayoutClassic" xml:space="preserve">
+    <value>Classic</value>
+  </data>
+  <data name="LayoutStreamlined" xml:space="preserve">
+    <value>Streamlined</value>
+  </data>
+  <data name="LayoutDistraction" xml:space="preserve">
+    <value>Distraction-free</value>
+  </data>
+  <data name="Density" xml:space="preserve">
+    <value>Density</value>
+  </data>
+  <data name="DensityDescription" xml:space="preserve">
+    <value>Compact fits more on screen. Applies the next time Caret starts.</value>
+  </data>
+  <data name="DensityStandard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="DensityCompact" xml:space="preserve">
+    <value>Compact</value>
+  </data>
+  <data name="SidebarPosition" xml:space="preserve">
+    <value>Sidebar position</value>
+  </data>
+  <data name="SideLeft" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="SideRight" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="SidebarRail" xml:space="preserve">
+    <value>Narrow sidebar</value>
+  </data>
+  <data name="SidebarRailDescription" xml:space="preserve">
+    <value>Icons only. Choosing a list widens it again.</value>
+  </data>
+  <data name="ExpandSidebar" xml:space="preserve">
+    <value>Widen the sidebar</value>
+  </data>
+  <data name="CollapseSidebar" xml:space="preserve">
+    <value>Narrow the sidebar</value>
+  </data>
+  <data name="MoveBetweenAreas" xml:space="preserve">
+    <value>Move between areas of the window</value>
+  </data>
+  <data name="HeadingMenu" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="FormattingToolbar" xml:space="preserve">
+    <value>Formatting</value>
+  </data>
+  <data name="AccessKeyFile" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="AccessKeyEdit" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="AccessKeyParagraph" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="AccessKeyFormat" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="AccessKeyView" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="SectionColors" xml:space="preserve">
+    <value>Section colors</value>
+  </data>
+  <data name="SectionColorsDescription" xml:space="preserve">
+    <value>Change one area at a time. Colors that would be hard to read aren't offered.</value>
+  </data>
+  <data name="SectionBand" xml:space="preserve">
+    <value>Title bar and tabs</value>
+  </data>
+  <data name="SectionSidebar" xml:space="preserve">
+    <value>Sidebar</value>
+  </data>
+  <data name="SectionPage" xml:space="preserve">
+    <value>Editor page</value>
+  </data>
+  <data name="SectionStatus" xml:space="preserve">
+    <value>Status bar</value>
+  </data>
+  <data name="SwatchDefault" xml:space="preserve">
+    <value>From the color scheme</value>
+  </data>
+  <data name="SwatchWarmSand" xml:space="preserve">
+    <value>Warm sand</value>
+  </data>
+  <data name="SwatchMist" xml:space="preserve">
+    <value>Mist</value>
+  </data>
+  <data name="SwatchStone" xml:space="preserve">
+    <value>Stone</value>
+  </data>
+  <data name="SwatchLavender" xml:space="preserve">
+    <value>Lavender</value>
+  </data>
+  <data name="SwatchEspresso" xml:space="preserve">
+    <value>Espresso</value>
+  </data>
+  <data name="SwatchUmber" xml:space="preserve">
+    <value>Umber</value>
+  </data>
+  <data name="SwatchMoss" xml:space="preserve">
+    <value>Moss</value>
+  </data>
+  <data name="SwatchNight" xml:space="preserve">
+    <value>Night</value>
+  </data>
+  <data name="SwatchCharcoal" xml:space="preserve">
+    <value>Charcoal</value>
+  </data>
+  <data name="SwatchPlum" xml:space="preserve">
+    <value>Plum</value>
+  </data>
+  <data name="TooLittleContrast" xml:space="preserve">
+    <value>Too little contrast</value>
+  </data>
+  <data name="TabColorMenu" xml:space="preserve">
+    <value>Tab color</value>
+  </data>
+  <data name="ColorNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ColorRed" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="ColorOrange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="ColorYellow" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="ColorGreen" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="ColorTeal" xml:space="preserve">
+    <value>Teal</value>
+  </data>
+  <data name="ColorBlue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="ColorPurple" xml:space="preserve">
+    <value>Purple</value>
+  </data>
+  <data name="ColorPink" xml:space="preserve">
+    <value>Pink</value>
+  </data>
+  <data name="SpeechModeMenuItem_Text" xml:space="preserve">
+    <value>Speech mode</value>
+  </data>
+  <data name="SpeechLabelBeat" xml:space="preserve">
+    <value>beat</value>
+  </data>
+  <data name="SpeechLabelPause" xml:space="preserve">
+    <value>pause</value>
+  </data>
+  <data name="SpeechLabelWait" xml:space="preserve">
+    <value>audience</value>
+  </data>
+  <data name="SpeechLabelCue" xml:space="preserve">
+    <value>cue</value>
+  </data>
+  <data name="SpeechLabelWpmUnit" xml:space="preserve">
+    <value>words/min</value>
+  </data>
+  <data name="SpeechLabelBudget" xml:space="preserve">
+    <value>time</value>
+  </data>
+  <data name="SpeechLabelPace" xml:space="preserve">
+    <value>pace</value>
+  </data>
+  <data name="SpeechLabelSpan" xml:space="preserve">
+    <value>style</value>
+  </data>
+</root>

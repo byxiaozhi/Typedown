@@ -8,6 +8,7 @@ import Resize from './eventHandler/resize'
 import ClickEvent from './eventHandler/clickEvent'
 import { CLASS_OR_ID, MUYA_DEFAULT_OPTION } from './config'
 import { wordCount } from './utils'
+import { stripMarks } from './parser/speech'
 import ExportMarkdown from './utils/exportMarkdown'
 import ExportHtml from '../../../services/exportHtml'
 import ToolTip from './ui/tooltip'
@@ -160,7 +161,8 @@ class Muya {
   }
 
   getWordCount(markdown) {
-    return wordCount(markdown)
+    // in Speech mode the marks are not words of the talk
+    return wordCount(this.options.speechMode ? stripMarks(markdown, this.options.speechDefs) : markdown)
   }
 
   getMarkdownAndCursor() {

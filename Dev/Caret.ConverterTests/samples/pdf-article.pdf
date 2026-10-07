@@ -1,0 +1,112 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Producer (Caret converter tests) >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1571 >>
+stream
+BT /F2 9 Tf 72 805 Td (ACME Research Notes) Tj ET
+BT /F2 22 Tf 72 720 Td (Coffee Supply Report) Tj ET
+BT /F1 11 Tf 72 690 Td (This report looks at how the supply of coffee changed during the last year and what) Tj ET
+BT /F1 11 Tf 72 675 Td (buyers can do about it. The main finding is that prices are set by a few large exam-) Tj ET
+BT /F1 11 Tf 72 660 Td (ple markets, while the smaller producers follow them with a delay of several weeks.) Tj ET
+BT /F2 15 Tf 72 625 Td (Main findings) Tj ET
+BT /F1 11 Tf 72 600 Td (\225) Tj ET
+BT /F1 11 Tf 90 600 Td (Prices rose in every region except the north) Tj ET
+BT /F1 11 Tf 72 585 Td (\225) Tj ET
+BT /F1 11 Tf 90 585 Td (Shipping times are back to normal) Tj ET
+BT /F1 11 Tf 72 570 Td (\225) Tj ET
+BT /F1 11 Tf 90 570 Td (Stocks are still lower than a year ago) Tj ET
+BT /F2 15 Tf 72 530 Td (Prices by region) Tj ET
+BT /F1 11 Tf 72 505 Td (Region) Tj ET
+BT /F1 11 Tf 250 505 Td (Price) Tj ET
+BT /F1 11 Tf 400 505 Td (Change) Tj ET
+BT /F1 11 Tf 72 490 Td (North) Tj ET
+BT /F1 11 Tf 250 490 Td (3.10) Tj ET
+BT /F1 11 Tf 400 490 Td (-2%) Tj ET
+BT /F1 11 Tf 72 475 Td (South) Tj ET
+BT /F1 11 Tf 250 475 Td (3.80) Tj ET
+BT /F1 11 Tf 400 475 Td (+9%) Tj ET
+BT /F1 11 Tf 72 460 Td (East) Tj ET
+BT /F1 11 Tf 250 460 Td (3.55) Tj ET
+BT /F1 11 Tf 400 460 Td (+4%) Tj ET
+BT /F1 11 Tf 72 420 Td (The tables above show the average price paid by buyers in each region, and the paragraph) Tj ET
+BT /F1 11 Tf 72 405 Td (that follows carries on to the next page without any closing punctuation so that it) Tj ET
+BT /F1 9 Tf 300 40 Td (1) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 403 >>
+stream
+BT /F2 9 Tf 72 805 Td (ACME Research Notes) Tj ET
+BT /F1 11 Tf 72 720 Td (continues here, in lower case, and ends with a full stop.) Tj ET
+BT /F2 15 Tf 72 685 Td (Conclusion) Tj ET
+BT /F1 11 Tf 72 660 Td (Buyers should sign longer contracts with small producers. Smaller producers) Tj ET
+BT /F1 11 Tf 72 645 Td (react slowly, so a fixed price protects both sides.) Tj ET
+BT /F1 9 Tf 300 40 Td (2) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 1254 >>
+stream
+BT /F2 9 Tf 72 805 Td (ACME Research Notes) Tj ET
+BT /F2 15 Tf 72 750 Td (Appendix: the harvest) Tj ET
+BT /F1 11 Tf 72 715 Td (The first column tells how the harvest) Tj ET
+BT /F1 11 Tf 330 715 Td (The second column explains what came) Tj ET
+BT /F1 11 Tf 72 700 Td (began in the spring and how the early) Tj ET
+BT /F1 11 Tf 330 700 Td (next: the bags travelled by truck and) Tj ET
+BT /F1 11 Tf 72 685 Td (rains helped the plants grow well before) Tj ET
+BT /F1 11 Tf 330 685 Td (then by ship, and the whole trip took) Tj ET
+BT /F1 11 Tf 72 670 Td (the summer heat arrived in the valley.) Tj ET
+BT /F1 11 Tf 330 670 Td (about five weeks when the weather was) Tj ET
+BT /F1 11 Tf 72 655 Td (Workers picked the beans by hand and) Tj ET
+BT /F1 11 Tf 330 655 Td (good. Buyers in the north received the) Tj ET
+BT /F1 11 Tf 72 640 Td (sorted them on long tables, one by one,) Tj ET
+BT /F1 11 Tf 330 640 Td (coffee first, while the southern markets) Tj ET
+BT /F1 11 Tf 72 625 Td (so that only the ripest fruit went into) Tj ET
+BT /F1 11 Tf 330 625 Td (waited a little longer for the same) Tj ET
+BT /F1 11 Tf 72 610 Td (the bags that were sent to the port.) Tj ET
+BT /F1 11 Tf 330 610 Td (shipment because of the port queues.) Tj ET
+BT /F1 9 Tf 300 40 Td (3) Tj ET
+endstream
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000128 00000 n 
+0000000225 00000 n 
+0000000327 00000 n 
+0000000382 00000 n 
+0000000518 00000 n 
+0000002140 00000 n 
+0000002276 00000 n 
+0000002729 00000 n 
+0000002867 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R /Info 5 0 R >>
+startxref
+4173
+%%EOF
