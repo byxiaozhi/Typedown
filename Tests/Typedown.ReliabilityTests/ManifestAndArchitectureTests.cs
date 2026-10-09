@@ -20,7 +20,8 @@ namespace Typedown.ReliabilityTests
 
             CollectionAssert.AreEqual(expected.OrderBy(value => value).ToArray(), actual);
             Assert.IsNotNull(manifest.Descendants(rescap + "Capability").SingleOrDefault(node => (string)node.Attribute("Name") == "runFullTrust"));
-            Assert.IsNotNull(manifest.Descendants(foundation + "Application").SingleOrDefault());
+            Assert.IsNotNull(manifest.Descendants(foundation + "Application").SingleOrDefault(node => (string)node.Attribute("Id") == "App"));
+            Assert.IsNotNull(manifest.Descendants(foundation + "Application").SingleOrDefault(node => (string)node.Attribute("Id") == "Cli"));
         }
 
         [TestMethod]
