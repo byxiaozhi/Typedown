@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Typedown.Core.Utilities;
+using Typedown.Core.ViewModels;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -94,6 +95,55 @@ namespace Typedown.Core.Controls
 
         private Border BackgroundElement => GetTemplateChild("BackgroundElement") as Border;
 
+        private Grid ContentTopOverlay => GetTemplateChild("ContentTopOverlay") as Grid;
+
+        private bool themed;
+
+        /// <summary>
+        /// A custom theme's colours, as the main content and the status bar take them: the dialogs went by light and
+        /// dark only and looked like another program under a custom theme. Without a custom theme, the colours the
+        /// template gives are put back (only those this set; a caller's own stay).
+        /// </summary>
+        private void ApplyThemeColours()
+        {
+            try
+            {
+                var theme = ThemeFiles.Find(this.GetService<SettingsViewModel>()?.CustomTheme);
+                var surface = ThemeFiles.Brush(theme?.Surface) ?? ThemeFiles.Brush(theme?.Background);
+                var foreground = ThemeFiles.Brush(theme?.Foreground) ?? ThemeFiles.Readable(theme?.Surface ?? theme?.Background);
+                var border = ThemeFiles.Brush(theme?.Border);
+                if (surface == null && foreground == null && border == null && !themed) return;
+                void Set(DependencyProperty property, Brush brush)
+                {
+                    if (brush != null) SetValue(property, brush);
+                    else if (themed) ClearValue(property);
+                }
+                Set(BackgroundProperty, surface);
+                Set(ForegroundProperty, foreground);
+                Set(BorderBrushProperty, border);
+                // The template lays a translucent system tint over the content part; on a theme's colour it would
+                // show as a lighter or darker band above the buttons.
+                if (ContentTopOverlay != null)
+                {
+                    if (surface != null) ContentTopOverlay.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+                    else ContentTopOverlay.ClearValue(Panel.BackgroundProperty);
+                }
+                themed = surface != null || foreground != null || border != null;
+            }
+            catch (Exception ex)
+            {
+                Log.Debug($"dialog: theme colours: {ex.Message}");
+            }
+        }
+
+        private SettingsViewModel watchedSettings;
+
+        // A theme switched while the dialog is open recolours it too.
+        private void OnSettingsChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SettingsViewModel.CustomTheme)) ApplyThemeColours();
+        }
+
         private TaskCompletionSource<ContentDialogResult> result;
 
         private object prevFocusedElement;
@@ -177,6 +227,9 @@ namespace Typedown.Core.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            ApplyThemeColours();
+            watchedSettings = this.GetService<SettingsViewModel>();
+            if (watchedSettings != null) watchedSettings.PropertyChanged += OnSettingsChanged;
             SetButtonState();
             SetFocusButton();
             SetShadow();
@@ -190,6 +243,8 @@ namespace Typedown.Core.Controls
 
         private async void OnUnloaded(object sender, RoutedEventArgs e)
         {
+            if (watchedSettings != null) watchedSettings.PropertyChanged -= OnSettingsChanged;
+            watchedSettings = null;
             VisualStateManager.GoToState(this, "DialogHidden", true);
             PrimaryButton.Click -= OnPrimaryButtonClick;
             SecondaryButton.Click -= OnSecondaryButtonClick;
