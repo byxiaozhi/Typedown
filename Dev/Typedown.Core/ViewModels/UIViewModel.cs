@@ -167,6 +167,12 @@ namespace Typedown.Core.ViewModels
         /// </summary>
         public static bool ShowTestHostMarker { get; set; } = true;
 
+        /// <summary>
+        /// The test host only: the E2E case running now and what it checks ("MN02 ..."), shown after the test host's
+        /// marker in every window's title, so whoever watches the screen sees what should be happening.
+        /// </summary>
+        public static string TestCaseLabel { get; set; }
+
         /// <summary>The title worked out again (after <see cref="ShowTestHostMarker"/> changed).</summary>
         public void RefreshTitle() => UpdateTitle();
 
@@ -181,7 +187,7 @@ namespace Typedown.Core.ViewModels
                     title.Append(AppViewModel.FileViewModel.FileName + " - ");
                 title.Append(Config.AppName);
                 if (Config.IsAutomationTestHost && ShowTestHostMarker)
-                    title.Insert(0, "AUTOMATION TEST HOST \u00b7 ");
+                    title.Insert(0, "AUTOMATION TEST HOST \u00b7 " + (string.IsNullOrEmpty(TestCaseLabel) ? "" : TestCaseLabel + " \u00b7 "));
                 // Reading mode swallows every keystroke, and without a word about it that looks like the editor
                 // has stopped responding. The status bar says so too, but it can be switched off — the title
                 // cannot, and it is what the taskbar shows.

@@ -467,6 +467,15 @@ namespace Typedown.Services.Automation
                 })));
             // The test host's title markers ("AUTOMATION TEST HOST ·" and the connected client's note) on (show: true)
             // or off in every window, for screenshots that are to look like the app.
+            // The running E2E case and its purpose, shown in every window's title after the test host's marker (label
+            // empty: none). Not tied to a window: a case sets it before it has one.
+            methods.Add(new MethodDescriptor("test.app.caseLabel", null, "test.app.caseLabel/1", async (c, ct) =>
+            {
+                Core.ViewModels.UIViewModel.TestCaseLabel = c.Params.OptionalString("label");
+                foreach (var window in Core.Services.AutomationWindows.Registry.Snapshot())
+                    await Core.Services.AutomationWindows.Registry.OnWindowAsync(window.WindowId, app => { app.UIViewModel.RefreshTitle(); return true; });
+                return (Newtonsoft.Json.Linq.JToken?)new Newtonsoft.Json.Linq.JObject();
+            }));
             methods.Add(new MethodDescriptor("test.app.titleMarker", null, "test.app.titleMarker/1", (c, ct) =>
             {
                 Core.ViewModels.UIViewModel.ShowTestHostMarker = c.Params.OptionalBoolean("show", true);

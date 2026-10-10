@@ -98,7 +98,7 @@ internal static partial class Program
         fixtures = Arg("--fixtures");
         var output = Arg("--out");
         outputDir = Path.GetDirectoryName(Path.GetFullPath(output))!;
-        only = args.Contains("--only") ? Arg("--only").Split(',') : null;
+        only = args.Contains("--only") ? CaseCatalog.Expand(Arg("--only").Split(',')) : null;
         var started = DateTime.UtcNow;
         var environmentError = (string?)null;
         try
@@ -252,6 +252,13 @@ internal static partial class Program
         // A person's mouse or keys a moment ago would be in the case's way: it waits for the desktop to be left alone.
         var quiet = await WaitForQuietDesktop(1000);
         if (quiet != null) notes.Add(quiet);
+        // The case and its purpose in the test window's title for the whole case.
+        try
+        {
+            using var labeller = await Session("e2e label").WaitAsync(TimeSpan.FromSeconds(5));
+            await labeller.Call("test.app.caseLabel", new { label = CaseCatalog.Label(name.Split(' ')[0]) }).WaitAsync(TimeSpan.FromSeconds(10));
+        }
+        catch (Exception) { /* no test host yet */ }
         var watch = Stopwatch.StartNew();
         try
         {
