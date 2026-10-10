@@ -362,7 +362,13 @@ const Editor: React.FC = () => {
     // dropped their reports as stale, and the reader waited a minute for the last to come round. Only the
     // load the host still wants can matter, and the host's stale-report rule already says which that is.
     const pendingLoadRef = useRef<{ text: string, basePath: string, cursor?: any, scrollTop?: number | null, loadId?: number } | null>(null)
+    // A load older than the one the page holds is stale: the page asked for its document (getSettings) while the
+    // host was posting one - a window recovering untitled backups at startup did both within a millisecond - and
+    // the host's answer, the newer load, came first. Taking the older one after it left the page reporting a load
+    // the host had dropped, and nothing the page said was heard again (R04).
+    const isStaleLoad = (loadId?: number) => typeof loadId === 'number' && typeof loadIdRef.current === 'number' && loadId < loadIdRef.current
     useEffect(() => transport.addListener<{ text: string, basePath: string, cursor?: any, scrollTop?: number | null, loadId?: number }>('LoadFile', (load) => {
+        if (isStaleLoad(load.loadId)) return
         // A load replaces whatever an automation edit was applying (the host restoring it, or a tab switch): that
         // edit's outcome is unknown to the host, which then restores from its own copy.
         const edit = pendingEditRef.current
@@ -376,7 +382,7 @@ const Editor: React.FC = () => {
         requestAnimationFrame(() => {
             const pending = pendingLoadRef.current
             pendingLoadRef.current = null
-            if (!pending) return
+            if (!pending || isStaleLoad(pending.loadId)) return
             const { text, basePath, cursor, scrollTop, loadId } = pending
             window.basePath = basePath
             loadIdRef.current = loadId
