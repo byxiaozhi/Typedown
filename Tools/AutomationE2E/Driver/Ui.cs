@@ -100,6 +100,35 @@ internal static partial class Program
             Send(new INPUT { type = 0, u = new InputUnion { mi = new MOUSEINPUT { dwFlags = down } } }, new INPUT { type = 0, u = new InputUnion { mi = new MOUSEINPUT { dwFlags = up } } });
     }
 
+    /// <summary>
+    /// A real click on an item of an open menu. WinUI 3 shows a menu in a popup window of its own, not in the test
+    /// window: the point must be in a window of the test window's process. The window is not activated first - that
+    /// would close the menu.
+    /// </summary>
+    private static async Task ClickInPopup(IntPtr window, AutomationElement element)
+    {
+        var (x, y) = CenterOf(element);
+        var under = WindowFromPoint(new POINT { X = x, Y = y });
+        GetWindowThreadProcessId(window, out var windowProcess);
+        GetWindowThreadProcessId(under, out var underProcess);
+        if (windowProcess != underProcess)
+        {
+            var name = new System.Text.StringBuilder(256);
+            GetClassName(under, name, 256);
+            throw new CaseFailed($"the menu item at ({x}, {y}) is not in the test window's process: {name} is there");
+        }
+        // Moved there as a mouse moves (SendInput), not placed (SetCursorPos sends no pointer move): a menu item that
+        // had not seen the pointer come in took the press now and then as nothing, and the command did not run.
+        int screenW = GetSystemMetrics(0), screenH = GetSystemMetrics(1);
+        foreach (var dx in new[] { -6, -3, 0 })
+        {
+            Send(new INPUT { type = 0, u = new InputUnion { mi = new MOUSEINPUT { dx = (x + dx) * 65535 / (screenW - 1), dy = y * 65535 / (screenH - 1), dwFlags = 0x0001 | 0x8000 } } });
+            await Task.Delay(40);
+        }
+        await Task.Delay(100);
+        Send(new INPUT { type = 0, u = new InputUnion { mi = new MOUSEINPUT { dwFlags = 0x0002 } } }, new INPUT { type = 0, u = new InputUnion { mi = new MOUSEINPUT { dwFlags = 0x0004 } } });
+    }
+
     /// <summary>A press at one point, a move to another in steps, and the release there.</summary>
     private static async Task Drag(IntPtr window, (int X, int Y) from, (int X, int Y) to, int steps = 12)
     {

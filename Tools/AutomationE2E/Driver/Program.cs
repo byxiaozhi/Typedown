@@ -168,6 +168,9 @@ internal static partial class Program
             await Case("TH02 View > Theme > Reload themes finds a new theme file and a renamed one; the window draws in the custom theme's base whatever the built-in setting says", TH02);
             await Case("WP01 a web page pasted: headings with #, code fenced with its language and without line numbers, Google Docs bold and italic, late-loaded and relative pictures by their real addresses; with Insert web image copying, its pictures are copied beside the document and their addresses replaced", WP01);
             await Case("ER01 a page message handler that throws stays subscribed and the message still reaches the other handlers; an exception out of an event handler XAML calls is logged and the app goes on", ER01);
+            await Case("DG01 a dialog wears the custom theme (its surface and text colours), and the system's colours again without it", DG01);
+            await Case("PM01 the Paragraph menu's checks follow the caret: Table stays unchecked after its dialog is cancelled, Quote and Table are checked with the caret in a quote and a table", PM01);
+            await Case("OL02 two long documents scrolled to their middle, switched between: the outline does not mark another heading of the document being left", OL02);
             await Case("LD01 a load the editor gives back rewritten is loaded once more and keeps the file's text; one rewritten again is taken after that one retry, not retried without end", LD01);
             // An edition's own cases (Edition.<name>.cs beside this file, in the edition's repository); none here.
             var editionCases = new List<(string Name, Func<List<string>, Task> Run)>();
@@ -2553,12 +2556,19 @@ internal static partial class Program
     /// Invokes a menu bar command by its automation id (x:Name): each menu is opened until the one holding it. A
     /// disabled item is not invoked (UI Automation refuses it), which is fine for a check that it changes nothing.
     /// </summary>
-    private static async Task InvokeMenuBarItem(IntPtr window, string automationId)
+    /// <summary>Why the last InvokeMenuBarItem did not invoke its item ("disabled", "not found"), or null when it did.</summary>
+    private static string? lastMenuBarItemSkipped;
+
+    private static async Task InvokeMenuBarItem(IntPtr window, string automationId, bool escapeAfter = true)
     {
+        var invoked = false;
+        lastMenuBarItemSkipped = null;
         var root = System.Windows.Automation.AutomationElement.FromHandle(window);
         var menuItem = new System.Windows.Automation.PropertyCondition(System.Windows.Automation.AutomationElement.ControlTypeProperty, System.Windows.Automation.ControlType.MenuItem);
-        var bar = root.FindFirst(System.Windows.Automation.TreeScope.Descendants,
-            new System.Windows.Automation.PropertyCondition(System.Windows.Automation.AutomationElement.ControlTypeProperty, System.Windows.Automation.ControlType.MenuBar))
+        var bar = Deep.First(root, new System.Windows.Automation.AndCondition(
+            new System.Windows.Automation.PropertyCondition(System.Windows.Automation.AutomationElement.ControlTypeProperty, System.Windows.Automation.ControlType.MenuBar),
+            // Not the window's system menu bar (one item, System), which a WinUI 3 window also shows.
+            new System.Windows.Automation.PropertyCondition(System.Windows.Automation.AutomationElement.FrameworkIdProperty, "XAML")))
             ?? throw new CaseFailed("no menu bar in the window");
         try
         {
@@ -2567,23 +2577,32 @@ internal static partial class Program
                 if (!top.TryGetCurrentPattern(System.Windows.Automation.ExpandCollapsePattern.Pattern, out var topPattern)) continue;
                 ((System.Windows.Automation.ExpandCollapsePattern)topPattern).Expand();
                 await Task.Delay(400);
-                var item = root.FindFirst(System.Windows.Automation.TreeScope.Descendants,
-                    new System.Windows.Automation.PropertyCondition(System.Windows.Automation.AutomationElement.AutomationIdProperty, automationId));
+                var item = Deep.First(root, new System.Windows.Automation.PropertyCondition(System.Windows.Automation.AutomationElement.AutomationIdProperty, automationId));
                 if (item == null)
                 {
                     ((System.Windows.Automation.ExpandCollapsePattern)topPattern).Collapse();
                     await Task.Delay(200);
                     continue;
                 }
-                if (item.Current.IsEnabled) ((System.Windows.Automation.InvokePattern)item.GetCurrentPattern(System.Windows.Automation.InvokePattern.Pattern)).Invoke();
+                if (item.Current.IsEnabled)
+                {
+                    // A toggle item (the Paragraph menu's Table, Quote) has no Invoke pattern: clicked, as a person does.
+                    if (item.TryGetCurrentPattern(System.Windows.Automation.InvokePattern.Pattern, out var invoke)) ((System.Windows.Automation.InvokePattern)invoke).Invoke();
+                    else await ClickInPopup(window, item);
+                    invoked = true;
+                }
+                else lastMenuBarItemSkipped = "disabled";
                 return;
             }
+            lastMenuBarItemSkipped = "not found";
             throw new CaseFailed($"no menu holds {automationId}");
         }
         finally
         {
             await Task.Delay(200);
-            for (var i = 0; i < 2; i++) { Send(Key(0x1B, false), Key(0x1B, true)); await Task.Delay(150); }
+            // Menus left open are closed - unless the caller wants what the command opened (a dialog) left alone.
+            if (escapeAfter || !invoked)
+                for (var i = 0; i < 2; i++) { Send(Key(0x1B, false), Key(0x1B, true)); await Task.Delay(150); }
         }
     }
 

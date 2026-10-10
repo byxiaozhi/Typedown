@@ -529,6 +529,29 @@ namespace Typedown.Services.Automation
                 })));
             // The colours the side pane marks what is chosen with: every selection indicator drawn in it (the bar under
             // Files/Outline, the pill of each outline and folder-tree row), by where it is, with its fill.
+            // The open dialog's colours and the custom theme's, to tell whether the dialog wears the theme.
+            methods.Add(new MethodDescriptor("test.dialog.colours", null, "test.dialog.colours/1", (c, ct) =>
+                Core.Services.AutomationWindows.Registry.OnWindowAsync(c.Params.RequiredString("windowId"), app =>
+                {
+                    // The dialog showing now: loaded and visible. One left in the window's grid after it closed is
+                    // counted, not read.
+                    var all = (app.XamlRoot?.Content as global::Windows.UI.Xaml.Controls.Panel)?.Children.OfType<Core.Controls.AppContentDialog>().ToList()
+                        ?? new System.Collections.Generic.List<Core.Controls.AppContentDialog>();
+                    var dialog = all.LastOrDefault(d => d.IsLoaded && d.Visibility == global::Windows.UI.Xaml.Visibility.Visible);
+                    string Colour(global::Windows.UI.Xaml.Media.Brush brush) => (brush as global::Windows.UI.Xaml.Media.SolidColorBrush)?.Color.ToString();
+                    var theme = Core.Utilities.ThemeFiles.Find(app.SettingsViewModel?.CustomTheme);
+                    return (Newtonsoft.Json.Linq.JToken?)new Newtonsoft.Json.Linq.JObject
+                    {
+                        ["open"] = dialog != null,
+                        ["inGrid"] = all.Count,
+                        ["background"] = Colour(dialog?.Background),
+                        ["foreground"] = Colour(dialog?.Foreground),
+                        ["border"] = Colour(dialog?.BorderBrush),
+                        ["theme"] = app.SettingsViewModel?.CustomTheme,
+                        ["themeSurface"] = Colour(Core.Utilities.ThemeFiles.Brush(theme?.Surface) ?? Core.Utilities.ThemeFiles.Brush(theme?.Background)),
+                        ["themeForeground"] = Colour(Core.Utilities.ThemeFiles.Brush(theme?.Foreground) ?? Core.Utilities.ThemeFiles.Readable(theme?.Surface ?? theme?.Background)),
+                    };
+                })));
             methods.Add(new MethodDescriptor("test.pane.accent", null, "test.pane.accent/1", (c, ct) =>
                 Core.Services.AutomationWindows.Registry.OnWindowAsync(c.Params.RequiredString("windowId"), app =>
                 {
