@@ -64,8 +64,21 @@ internal static partial class Program
         Check(table == ToggleState.On, "Table is checked with the caret in a table");
     }
 
-    // A click on the middle of the editor's paragraph holding the text, as a person clicks it.
+    // A click on the middle of the editor's paragraph holding the text, as a person clicks it - again (up to three times)
+    // until the caret is in that paragraph and the page has the focus: a click now and then left both where they were.
     private static async Task ClickEditorText(Client c, string windowId, IntPtr window, string text)
+    {
+        var literal = Newtonsoft.Json.JsonConvert.ToString(text);
+        for (var attempt = 0; attempt < 3; attempt++)
+        {
+            await ClickEditorTextOnce(c, windowId, window, text);
+            await Task.Delay(300);
+            var landed = (bool?)(await c.Call("test.editor.eval", new { windowId, script = "(() => { const n = getSelection().anchorNode; const e = n && (n.nodeType === 1 ? n : n.parentElement); const block = e && e.closest('p, h1, h2, h3, td, th, li'); return !!block && block.textContent.includes(" + literal + ") && document.hasFocus() })()" }))["result"];
+            if (landed == true) return;
+        }
+    }
+
+    private static async Task ClickEditorTextOnce(Client c, string windowId, IntPtr window, string text)
     {
         await Activate(window);
         var at = (await c.Call("test.editor.eval", new { windowId, script = "(() => { const p = [...document.querySelectorAll('#ag-editor-id p, #ag-editor-id h1, #ag-editor-id td, #ag-editor-id span.ag-paragraph')].find(x => x.textContent.includes(" + Newtonsoft.Json.JsonConvert.ToString(text) + ")); if (!p) return null; const r = p.getBoundingClientRect(); return { x: Math.round(r.left + Math.min(40, r.width / 2)), y: Math.round(r.top + r.height / 2) } })()" }))["result"];
