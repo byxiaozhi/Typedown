@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Typedown.WinUI.Models;
+using Typedown.WinUI.Services;
 using Typedown.WinUI.Utilities;
 using Typedown.WinUI.ViewModels;
 using Windows.ApplicationModel.DataTransfer;
@@ -293,6 +294,9 @@ namespace Typedown.WinUI
         private void DocumentTabView_Loaded(object sender, RoutedEventArgs e)
         {
             DocumentTabView.XamlRoot.Changed += (root, args) => UpdateTabStripInputRegion();
+            AppTitleBar.SizeChanged += (s, args) => UpdateTabStripMaxWidth();
+            TitleRightPanel.SizeChanged += (s, args) => UpdateTabStripMaxWidth();
+            UpdateTabStripMaxWidth();
             UpdateTabStripInputRegion();
             // Even when a tab handles the press itself (selecting it, starting a drag)
             DocumentTabView.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler(DocumentTabView_PointerPressed), true);
@@ -312,6 +316,16 @@ namespace Typedown.WinUI
         }
 
         private void DocumentTabView_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
+
+        // The strip never takes the whole title bar: a part is left free to press and drag, which moves the window. With many tabs
+        // the strip used to reach the buttons and nothing of the bar could move the window; now the tabs scroll instead.
+        private void UpdateTabStripMaxWidth()
+        {
+            var right = TitleRightPanel.ActualWidth + TitleRightPanel.Margin.Left + TitleRightPanel.Margin.Right;
+            var margins = DocumentTabView.Margin.Left + DocumentTabView.Margin.Right;
+            if (TitleBarLayout.TabStripMaxWidth(AppTitleBar.ActualWidth, right, margins) is double max && DocumentTabView.MaxWidth != max)
+                DocumentTabView.MaxWidth = max;
+        }
 
         private void UpdateTabStripInputRegion()
         {
