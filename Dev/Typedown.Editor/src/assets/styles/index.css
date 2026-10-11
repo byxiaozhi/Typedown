@@ -774,7 +774,8 @@ figure.ag-container-block div.ag-container-preview {
   text-align: center;
 }
 
-figure.ag-container-block div.ag-container-preview>svg {
+figure.ag-container-block div.ag-container-preview>svg,
+figure.ag-container-block div.ag-container-preview>div.ag-diagram-drawing>svg {
   width: 100%;
 }
 

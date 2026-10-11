@@ -224,8 +224,15 @@ class StateRender {
         const render = renderers[functionType]
         if (functionType === 'flowchart' || functionType === 'sequence') {
           const diagram = render.parse(code)
-          target.innerHTML = ''
-          diagram.drawSVG(target, options)
+          // A container of its own for each drawing, in place of whatever the block held. The sequence library waits
+          // for its font the first time and only then adds its picture: every draw in that wait (a document with many
+          // diagrams draws a block again while the other renderers load) added one more to the same block - ten copies
+          // of the showcase's sequence diagram (DG02). A drawing that ends after a newer one began now lands in a
+          // container no longer on the page.
+          const drawing = document.createElement('div')
+          drawing.className = 'ag-diagram-drawing'
+          target.replaceChildren(drawing)
+          diagram.drawSVG(drawing, options)
         } else if (functionType === 'plantuml') {
           target.innerHTML = ''
           if (this.muya.options.renderPlantUml) {

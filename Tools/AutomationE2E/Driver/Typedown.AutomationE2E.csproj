@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <!-- The Windows end-to-end driver (docs/automation-api-analysis-plan.md, 10.6/10.7). Run by run-windows-e2e.ps1 in
        the logged-on desktop session against the automation test host. -->
   <PropertyGroup>
@@ -17,5 +17,9 @@
     <ProjectReference Include="..\..\..\Dev\Typedown.Automation\Typedown.Automation.csproj" />
     <!-- IU02 makes its bucket and reads the object back with the application's own signing. -->
     <Compile Include="..\..\..\Dev\Typedown.Core\Services\S3Uploader.cs" Link="S3Uploader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The document with every kind of block the editor draws (Tools/EditorBench), for cases that need it all at once. -->
+    <EmbeddedResource Include="..\..\EditorBench\fixtures\showcase\showcase.md" LogicalName="showcase.md" />
   </ItemGroup>
 </Project>
