@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 /// <summary>
 /// RD02: a menu entry disabled while its menu is closed is drawn disabled in the window's theme: in reading mode the View
-/// menu's Focus mode and Typewriter mode, and Edit > Undo once undone, their text fainter than the entries that work, in
+/// menu's Focus mode and Typewriter mode, Edit > Undo once undone and the editor's Cut once nothing is selected, their text fainter than the entries that work, in
 /// Dark and in Light, whether the menu had been opened before or not. A reader saw them in white on a light menu.
 /// </summary>
 internal static partial class Program
@@ -55,6 +55,41 @@ internal static partial class Program
                         await c.Call("window.setView", new { windowId, mode = "visual" });
                         PostMessage(window, 0x0010, IntPtr.Zero, IntPtr.Zero);
                         await Task.Delay(1000);
+                    }
+                }
+                // The editor's context menu as well: Cut and Copy disabled once the selection is gone, after the menu
+                // was shown with them enabled.
+                {
+                    var step = $"{themeId}, Cut disabled with the context menu closed";
+                    var docId = await Open(c, Fixture("rd02.md", "# RD02\n\nSome text to select.\n"));
+                    var windowId = await WindowIdOf(c, docId);
+                    var window = await WindowOf(windowId, c);
+                    await ClickEditorText(c, windowId, window, "Some text");
+                    Keys(("ctrl", (ushort)0x41));
+                    await Task.Delay(600);
+                    var before = await ContextMenuAt(c, windowId, window, "#ag-editor-id p");
+                    var wasEnabled = before.TryGetValue("CutItem", out var cutBefore) && cutBefore.Current.IsEnabled;
+                    Send(Key(0x1B, false), Key(0x1B, true));
+                    await Task.Delay(600);
+                    await ClickEditorText(c, windowId, window, "Some text");
+                    await Task.Delay(600);
+                    var after = await ContextMenuAt(c, windowId, window, "#ag-editor-id p");
+                    try
+                    {
+                        if (!after.TryGetValue("CutItem", out var cut) || !after.TryGetValue("SelectAllItem", out var all)) failures.Add($"{step}: no Cut or Select all in the context menu");
+                        else
+                        {
+                            double cutText = TextContrast(cut.Current.BoundingRectangle), working = TextContrast(all.Current.BoundingRectangle);
+                            notes.Add($"{step}: Cut {(wasEnabled ? "enabled" : "disabled")} with the text selected, {(cut.Current.IsEnabled ? "enabled" : "disabled")} {cutText:0} without; Select all {working:0}");
+                            if (!wasEnabled || cut.Current.IsEnabled) failures.Add($"{step}: Cut was not enabled with a selection and disabled without");
+                            else if (Math.Sign(cutText) != Math.Sign(working) || Math.Abs(cutText) > Math.Abs(working) * 0.75 || Math.Abs(cutText) < Math.Abs(working) * 0.25)
+                                failures.Add($"{step}: Cut is drawn {cutText:0} from the menu's background, where an entry that works is {working:0}");
+                        }
+                    }
+                    finally
+                    {
+                        Send(Key(0x1B, false), Key(0x1B, true));
+                        await Task.Delay(600);
                     }
                 }
                 // Not only those two: Edit > Undo, enabled through a binding, undone with its menu closed after the

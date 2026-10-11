@@ -40,6 +40,7 @@ namespace Typedown.Core.Controls
         public EditorContainer()
         {
             InitializeComponent();
+            DisabledMenuLook.Watch(Flyout);
             AddHandler(PointerMovedEvent, new PointerEventHandler(OnPointerPointerMoved), true);
             AddHandler(PointerWheelChangedEvent, new PointerEventHandler(OnPointerWheelChanged), true);
         }

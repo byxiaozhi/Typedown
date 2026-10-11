@@ -437,6 +437,7 @@
     <Compile Include="Utilities\CommandLine.cs" />
     <Compile Include="Utilities\Common.cs" />
     <Compile Include="Utilities\ControlExtensions.cs" />
+    <Compile Include="Utilities\DisabledMenuLook.cs" />
     <Compile Include="Utilities\EditionHooks.cs" />
     <Compile Include="Utilities\CoreDispatcherExtensions.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />

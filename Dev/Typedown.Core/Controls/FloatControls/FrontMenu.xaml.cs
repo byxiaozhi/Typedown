@@ -14,6 +14,7 @@ namespace Typedown.Core.Controls.FloatControls
         {
             ViewModel = viewModel;
             InitializeComponent();
+            Utilities.DisabledMenuLook.Watch(this);
         }
 
         private void OnClosed(object sender, object e)

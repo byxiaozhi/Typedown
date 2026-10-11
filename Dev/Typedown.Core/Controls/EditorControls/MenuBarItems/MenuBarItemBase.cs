@@ -56,24 +56,12 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
         {
             if (watching && items == Items) return;
             if (items == Items) watching = true;
+            DisabledMenuLook.Watch(items);
             foreach (var item in items)
             {
-                item.Loaded += RefreshDisabledLook;
                 if (item is MenuFlyoutSubItem sub) WatchCommands(sub.Items);
                 else if (item is MenuFlyoutItem command) command.Click += OnCommandClick;
             }
-        }
-
-        // An entry disabled while its menu was closed (Focus mode as reading mode comes on, say) takes its disabled
-        // colours from Windows' theme on XAML islands, not the window's: white on a light menu under dark Windows, next
-        // to invisible on a dark one under light Windows. Each disabled entry is put into its disabled state again as its
-        // menu opens, where it takes the window's (RD02).
-        private static void RefreshDisabledLook(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            if (sender is not Control item || item.IsEnabled)
-                return;
-            Windows.UI.Xaml.VisualStateManager.GoToState(item, "Normal", false);
-            Windows.UI.Xaml.VisualStateManager.GoToState(item, "Disabled", false);
         }
 
         private void OnCommandClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
