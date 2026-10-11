@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Automation;
@@ -43,8 +43,16 @@ internal static partial class Program
             for (var i = 0; i < 20 && !opened; i++) { await Task.Delay(150); opened = (bool)(await c.Call("test.dialog.colours", new { windowId }))["open"]!; }
         }
         Check(opened, $"Table opened the insert-table dialog (last try: {lastMenuBarItemSkipped ?? "Table was clicked"})");
-        Send(Key(0x1B, false), Key(0x1B, true)); // Esc: the insert-table dialog cancelled
-        await Task.Delay(1000);
+        // Esc: the insert-table dialog cancelled - pressed again, with the window brought forward, while the dialog is still
+        // open: an Esc that missed the dialog left it over the editor, and the clicks below (and the next cases') with it.
+        for (var i = 0; i < 3 && opened; i++)
+        {
+            if (i > 0) { notes.Add("the insert-table dialog was still open after Esc: Esc again"); await Activate(window); }
+            Send(Key(0x1B, false), Key(0x1B, true));
+            await Task.Delay(1000);
+            opened = (bool)(await c.Call("test.dialog.colours", new { windowId }))["open"]!;
+        }
+        Check(!opened, "Esc closed the insert-table dialog");
         var tableAfter = await MenuToggle(window, "TableItem");
         notes.Add($"Table after its dialog was cancelled: {tableAfter}");
         Check(tableAfter == ToggleState.Off, "Table is still not checked after its dialog was cancelled");

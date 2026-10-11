@@ -536,6 +536,26 @@ namespace Typedown.Services.Automation
                     if (file == null) throw new AutomationException(AutomationErrorKind.editor_not_ready, "no File menu in this window");
                     return (Newtonsoft.Json.Linq.JToken?)new Newtonsoft.Json.Linq.JObject { ["entries"] = new Newtonsoft.Json.Linq.JArray(file.ExportMenu()) };
                 })));
+            // Every dialog left open in any window, closed as its close button would: the driver asks before each case, so
+            // one case's dialog (an insert-table dialog an Esc did not reach, an unsaved document's "save?") does not
+            // hold the next cases' clicks back.
+            methods.Add(new MethodDescriptor("test.dialogs.dismiss", null, "test.dialogs.dismiss/1", async (c, ct) =>
+            {
+                var closed = new Newtonsoft.Json.Linq.JArray();
+                foreach (var window in Core.Services.AutomationWindows.Registry.Snapshot())
+                    await Core.Services.AutomationWindows.Registry.OnWindowAsync(window.WindowId, app =>
+                    {
+                        var open = (app.XamlRoot?.Content as global::Windows.UI.Xaml.Controls.Panel)?.Children.OfType<Core.Controls.AppContentDialog>()
+                            .Where(d => d.IsLoaded && d.Visibility == global::Windows.UI.Xaml.Visibility.Visible).ToList();
+                        foreach (var dialog in open ?? new System.Collections.Generic.List<Core.Controls.AppContentDialog>())
+                        {
+                            closed.Add(dialog.Title?.ToString() ?? dialog.GetType().Name);
+                            dialog.Close();
+                        }
+                        return true;
+                    });
+                return (Newtonsoft.Json.Linq.JToken?)new Newtonsoft.Json.Linq.JObject { ["closed"] = closed };
+            }));
             // The open dialog's colours and the custom theme's, to tell whether the dialog wears the theme.
             methods.Add(new MethodDescriptor("test.dialog.colours", null, "test.dialog.colours/1", (c, ct) =>
                 Core.Services.AutomationWindows.Registry.OnWindowAsync(c.Params.RequiredString("windowId"), app =>

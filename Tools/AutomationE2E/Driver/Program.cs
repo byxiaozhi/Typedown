@@ -253,13 +253,16 @@ internal static partial class Program
         // A person's mouse or keys a moment ago would be in the case's way: it waits for the desktop to be left alone.
         var quiet = await WaitForQuietDesktop(1000);
         if (quiet != null) notes.Add(quiet);
-        // The case and its purpose in the test window's title for the whole case.
+        // Dialogs left open closed, and the case and its purpose in the test window's title for the whole case.
         try
         {
             using var labeller = await Session("e2e label").WaitAsync(TimeSpan.FromSeconds(5));
+            // A dialog an earlier case left open holds every click back: closed first, and noted.
+            var closed = (JArray?)(await labeller.Call("test.dialogs.dismiss", new { }).WaitAsync(TimeSpan.FromSeconds(10)))["closed"];
+            if (closed != null && closed.Count > 0) notes.Add("closed a dialog an earlier case left open: " + string.Join(", ", closed));
             await labeller.Call("test.app.caseLabel", new { label = CaseCatalog.Label(name.Split(' ')[0]) }).WaitAsync(TimeSpan.FromSeconds(10));
         }
-        catch (Exception) { /* no test host yet */ }
+        catch (Exception) { /* no test host yet, or one without the hooks */ }
         var watch = Stopwatch.StartNew();
         try
         {
