@@ -212,6 +212,8 @@ _pkginfo.txt
 *.appx
 *.appxbundle
 *.appxupload
+# Packages a local MSIX build writes (CI puts them in the same folder)
+AppxPackages/
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
