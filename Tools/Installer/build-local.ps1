@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Builds the Windows app and packs it into the Inno Setup installer, the same way CI does, on a machine with
     the Build Tools installed.
@@ -161,7 +161,12 @@ if (-not $SkipBuild) {
         # An array built up, not "if (...) { @(...) }": PowerShell unwraps a one-element array to its string, and
         # splatting a string passes it character by character.
         $publishArgs = @()
-        if (-not $AutomationTestHost) { $publishArgs += "/p:PublishDir=$(Join-Path $repo "Dev\Typedown\bin\$Platform\$Configuration\publish")\" }
+        if (-not $AutomationTestHost) {
+            # Emptied first: publish only adds, and a checkout the WinUI 3 build also uses kept that build's files
+            # beside these (assert-application-build.ps1 refuses such a folder).
+            Remove-Item (Join-Path $repo "Dev\Typedown\bin\$Platform\$Configuration\publish") -Recurse -Force -ErrorAction SilentlyContinue
+            $publishArgs += "/p:PublishDir=$(Join-Path $repo "Dev\Typedown\bin\$Platform\$Configuration\publish")\"
+        }
         & $msbuild 'Dev\Typedown\Typedown.csproj' /restore $target /m /v:m `
             /p:Configuration=$Configuration /p:Platform=$Platform `
             /p:ManifestTool=$($sdk.ManifestTool) /p:MakePri=$($sdk.MakePri) @hostArgs @publishArgs

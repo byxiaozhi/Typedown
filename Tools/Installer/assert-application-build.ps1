@@ -1,4 +1,4 @@
-<#
+﻿<#
     Refuses to package anything that is not the application: an automation test host build (the test.* methods,
     edit barriers and its own data directory; see docs/automation-api-analysis-plan.md) must never reach an
     installer, MSIX or portable zip. Called by build-local.ps1 and the CI packaging step on the folder about to be
@@ -14,6 +14,12 @@ if ($found) {
     $list = ($found | ForEach-Object { $_.FullName }) -join "`n  "
     throw "Refusing to package an automation test host build. Found:`n  $list"
 }
+# Files of the WinUI 3 build in this XAML Islands one: a publish folder that build had written to before kept them.
+$stray = @('Microsoft.WinUI.dll', 'Microsoft.WindowsAppRuntime.dll', 'Microsoft.WindowsAppRuntime.Bootstrap.dll') |
+    ForEach-Object { Get-ChildItem $Path -Recurse -File -Filter $_ -ErrorAction SilentlyContinue } |
+    ForEach-Object { $_.FullName.Substring($Path.Length).TrimStart('\\') }
+if ($stray) { throw "Refusing to package files of another build (the publish folder was not emptied):`n  $($stray -join "`n  ")" }
+
 # The test host's methods must not be in an application build's binaries either (spec 5.1: not only hidden at run
 # time). Their names are string literals: UTF-16 in .NET metadata, UTF-8 anywhere else.
 $names = @('test.barrier', 'test.editor.pageText', 'test.window.open', 'test.settings.set', 'test.backup.run')
