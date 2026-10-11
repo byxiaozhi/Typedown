@@ -11,8 +11,10 @@ namespace Typedown.WinUI.Services
         // The free part, in device-independent pixels: wide enough to put the pointer on and drag.
         internal const double FreeDragWidth = 96;
 
-        // The least a strip is given, however narrow the window: a few tabs and the buttons to scroll them.
-        internal const double LeastTabStripWidth = 120;
+        // The least a strip is given when the window is so narrow that even this much is not left: a scroll
+        // button, a sliver of a tab and the add button, so the tabs never disappear altogether. Above it the
+        // free part is kept and the strip gives way.
+        internal const double LeastTabStripWidth = 48;
 
         // barWidth: the whole title bar. rightWidth: what the buttons at the right take (their margin included).
         // stripMargins: the strip's own margins at left and right. Returns the width the strip may not pass, or

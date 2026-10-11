@@ -21,9 +21,16 @@ namespace Caret.ConverterTests
         }
 
         [Fact]
-        public void A_narrow_window_still_gives_the_strip_its_least_width()
+        public void A_narrow_window_keeps_the_free_part_and_the_strip_gives_way()
         {
-            Assert.Equal(TitleBarLayout.LeastTabStripWidth, TitleBarLayout.TabStripMaxWidth(500, 300, 42));
+            // 62 of room is left after the buttons, the margins and the free part: the strip may not pass it.
+            Assert.Equal(500 - 300 - 42 - TitleBarLayout.FreeDragWidth, TitleBarLayout.TabStripMaxWidth(500, 300, 42));
+        }
+
+        [Fact]
+        public void A_window_too_narrow_for_even_that_still_shows_the_tabs()
+        {
+            Assert.Equal(TitleBarLayout.LeastTabStripWidth, TitleBarLayout.TabStripMaxWidth(300, 300, 42));
         }
 
         [Fact]
