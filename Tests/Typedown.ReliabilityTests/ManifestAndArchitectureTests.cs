@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Typedown.Core.Utilities;
@@ -21,7 +21,27 @@ namespace Typedown.ReliabilityTests
             CollectionAssert.AreEqual(expected.OrderBy(value => value).ToArray(), actual);
             Assert.IsNotNull(manifest.Descendants(rescap + "Capability").SingleOrDefault(node => (string)node.Attribute("Name") == "runFullTrust"));
             Assert.IsNotNull(manifest.Descendants(foundation + "Application").SingleOrDefault(node => (string)node.Attribute("Id") == "App"));
-            Assert.IsNotNull(manifest.Descendants(foundation + "Application").SingleOrDefault(node => (string)node.Attribute("Id") == "Cli"));
+        }
+
+        /// <summary>
+        /// The Store takes one application, shown in the Start menu: a second one kept out of it (AppListEntry="none") is
+        /// a headless app, which Partner Center refuses without a waiver. The command line is an execution alias of the app
+        /// instead, starting its own exe.
+        /// </summary>
+        [TestMethod]
+        public void PackageHasOneVisibleApplicationWithTheCommandLineAsItsAlias()
+        {
+            var manifest = XDocument.Load(Path.Combine(Repository.Root, "Tools", "Typedown.Package", "Package.appxmanifest"));
+            XNamespace foundation = "http://schemas.microsoft.com/appx/manifest/foundation/windows10";
+            XNamespace uap5 = "http://schemas.microsoft.com/appx/manifest/uap/windows10/5";
+            var applications = manifest.Descendants(foundation + "Application").ToList();
+
+            Assert.AreEqual(1, applications.Count, "one application");
+            Assert.IsFalse(manifest.Descendants().Any(node => (string)node.Attribute("AppListEntry") == "none"), "no application kept out of the Start menu");
+            var alias = applications[0].Descendants(uap5 + "Extension").SingleOrDefault(node => (string)node.Attribute("Category") == "windows.appExecutionAlias");
+            Assert.IsNotNull(alias, "the app carries an execution alias");
+            StringAssert.EndsWith((string)alias.Attribute("Executable"), "ctl.exe");
+            StringAssert.EndsWith((string)alias.Descendants(uap5 + "ExecutionAlias").Single().Attribute("Alias"), "ctl.exe");
         }
 
         [TestMethod]

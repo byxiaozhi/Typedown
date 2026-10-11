@@ -134,21 +134,9 @@
 						<uap:InfoTip>Markdown</uap:InfoTip>
 					</uap:FileTypeAssociation>
 				</uap:Extension>
-			</Extensions>
-		</Application>
-		<!-- The automation command line, beside the app's exe (Typedown.csproj publishes it there): typed in a terminal by
-		     its name, and started that way by an AI tool as an MCP server ("typedownctl mcp"). Not in the Start menu. -->
-		<Application Id="Cli"
-		  Executable="Typedown\typedownctl.exe"
-		  EntryPoint="Windows.FullTrustApplication">
-			<uap:VisualElements
-			  DisplayName="typedownctl"
-			  Description="Typedown automation command line and MCP server"
-			  BackgroundColor="transparent"
-			  Square150x150Logo="Assets\Square150x150Logo.png"
-			  Square44x44Logo="Assets\Square44x44Logo.png"
-			  AppListEntry="none" />
-			<Extensions>
+				<!-- The automation command line, beside the app's exe (Typedown.csproj publishes it there): typed in a terminal
+				     by its name, and started that way by an AI tool as an MCP server ("typedownctl mcp"). An alias of the app, not
+				     an application of its own: the Store refuses a second one kept out of the Start menu (a "headless app"). -->
 				<uap5:Extension Category="windows.appExecutionAlias" Executable="Typedown\typedownctl.exe" EntryPoint="Windows.FullTrustApplication">
 					<uap5:AppExecutionAlias>
 						<uap5:ExecutionAlias Alias="typedownctl.exe" />
