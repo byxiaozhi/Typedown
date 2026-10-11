@@ -172,7 +172,7 @@
                      ToolTipService.ToolTip="{x:Null}"/>
             <!-- Only Search and Settings (interface review D2): the view mode lives in the status bar,
                  Favorite in the File menu and the tab's menu, the theme in View > Theme. -->
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,140,0" Spacing="4">
+            <StackPanel x:Name="TitleRightPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,140,0" Spacing="4">
                 <!-- Classic keeps the View / Code / Split switch here; the other layouts show it in the status bar. -->
                 <Border x:Name="TitleViewModeHost" VerticalAlignment="Center" Margin="0,0,8,0"/>
                 <Button x:Name="QuickOpenButton" Click="QuickOpenButton_Click" Background="Transparent" BorderThickness="0"
