@@ -134,6 +134,9 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
 - `link-image-check.js` — a picture inside a link (`[![alt](src)](url)`) is drawn inside the link, in its own box.
   Its icons were `<a>` elements inside the link's `<a>`, so a small document built from the HTML closed the link
   early and left the box empty (a big document is drawn in pieces and was spared).
+- `diagram-picture-check.js` — diagrams rendered as pictures (RenderXhtml with diagramsAsPictures): a 9000×9000
+  diagram still becomes a picture (drawn at twice its size it passed the canvas limits and came out empty), and each
+  picture's text is the diagram's kind and the start of its source.
 - `export-pdf-check.js` — the exported HTML carries what the PDF is made from: images by absolute path (so
   they survive being opened from a temp file) and KaTeX fonts by real address (so a formula keeps its font).
   A PDF is then produced from that HTML with a document outline, and the outline is checked to have an entry

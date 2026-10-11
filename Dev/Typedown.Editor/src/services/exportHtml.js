@@ -80,6 +80,7 @@ class ExportHtml {
       const mermaidContainer = document.createElement('div')
       mermaidContainer.innerHTML = sanitize(unescapeHTML(code.innerHTML), EXPORT_DOMPURIFY_CONFIG, true)
       mermaidContainer.classList.add('mermaid')
+      if (this.options?.diagramsAsPictures) mermaidContainer.dataset.diagramSource = 'Mermaid: ' + unescapeHTML(code.innerHTML)
       preEle.replaceWith(mermaidContainer)
     }
     // The live preview follows the app theme, but HTML export is always light:
@@ -115,6 +116,7 @@ class ExportHtml {
   }
 
   async renderDiagram() {
+    const DIAGRAM_NAMES = { sequence: 'Sequence diagram', plantuml: 'PlantUML', flowchart: 'Flowchart', 'vega-lite': 'Vega-Lite' }
     const selector = 'code.language-vega-lite, code.language-flowchart, code.language-sequence, code.language-plantuml'
     const codes = this.exportContainer.querySelectorAll(selector)
     // Each renderer loaded when a diagram of its kind is there, and one that cannot be loaded leaves only its diagrams
@@ -151,6 +153,8 @@ class ExportHtml {
       const preParent = code.parentNode
       const diagramContainer = document.createElement('div')
       diagramContainer.classList.add(functionType)
+      // The picture made of it (diagramsAsPictures) says what it was: its kind and the start of its source.
+      if (this.options?.diagramsAsPictures) diagramContainer.dataset.diagramSource = DIAGRAM_NAMES[functionType] + ': ' + rawCode
       preParent.replaceWith(diagramContainer)
       const options = {}
       if (functionType === 'sequence') {

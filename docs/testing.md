@@ -58,6 +58,7 @@ CI 的“Test editor integration”一步运行这些：
 - `renderer-failure-check.js`: What the page does when a part of it fails: a renderer that cannot be loaded (Mermaid's script refused), and an error nothing catches.
 - `spec-check.js`: Drives every CommonMark 0.31.2 example through the editor and locks what comes back out.
 - `link-image-check.js`: A picture inside a link ([![alt](src)](url)) is drawn inside the link, in its own box.
+- `diagram-picture-check.js`: Diagrams rendered as pictures (RenderXhtml with diagramsAsPictures, what a host turning the document into another format asks for): a big diagram still becomes a picture - drawn at twice its size it went past the browser's canvas limits and came out empty ("data:,") - and each picture's text says what it was: the diagram's kind and the start of its source, not just "diagram".
 <!-- END generated: editor-checks -->
 
 ## Windows 端到端测试
