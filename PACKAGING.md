@@ -82,7 +82,7 @@ ARM64 把 `-Platform x64` 改为 `-Platform ARM64`。`-SkipBuild` 只适用于�
 
 ## 微软商店上传包
 
-`Branding.props` 的 `BrandStoreUpload` 为 `true` 的版本（Typeleaf），CI 每个平台在旁加载 MSIX 之后再按 `StoreUpload` 模式打一次包：不签名（商店会重新签名），得到 `<BrandName>_<版本>_<平台>.msixupload`（内含 `.msix` 和符号 `.appxsym`），作为 `store-upload-x64` / `store-upload-ARM64` 产物保留 30 天，不进 GitHub Release。在合作伙伴中心的提交里把两个平台的 `.msixupload` 都上传。包身份（`Identity` 的 `Name`、`Publisher`，以及 `PublisherDisplayName`）取自 `Tools/Typedown.Package/Package.appxmanifest`，必须与合作伙伴中心为该名称保留的值一致；版本号的第四段保持 0（商店保留它）。Typedown 本身没有商店身份，`BrandStoreUpload` 为 `false`。
+`Branding.props` 的 `BrandStoreUpload` 为 `true` 的版本（Typeleaf），CI 每个平台在旁加载 MSIX 之后再按 `StoreUpload` 模式打一次包：不签名（商店会重新签名），得到 `<BrandName>_<版本>_<平台>.msixupload`（内含 `.msix` 和符号 `.appxsym`），作为 `store-upload-x64` / `store-upload-ARM64` 产物交给发布任务，打标签的构建把它们放进 GitHub Release；产物本身只保留 1 天（各产物都是，私有仓库的产物占账户的 Actions 存储额度），手动运行、不打标签的构建要在一天内从运行页面下载。在合作伙伴中心的提交里把两个平台的 `.msixupload` 都上传。包身份（`Identity` 的 `Name`、`Publisher`，以及 `PublisherDisplayName`）取自 `Tools/Typedown.Package/Package.appxmanifest`，必须与合作伙伴中心为该名称保留的值一致；版本号的第四段保持 0（商店保留它）。Typedown 本身没有商店身份，`BrandStoreUpload` 为 `false`。
 
 本机生成（需要 Visual Studio Build Tools 的 MSIX 打包组件）：
 

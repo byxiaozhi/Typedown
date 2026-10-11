@@ -62,7 +62,7 @@ jobs:
           name: reliability-test-results
           path: Tests/Typedown.ReliabilityTests/TestResults/reliability.trx
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 1
 
   editor:
     name: Build editor (JS)
@@ -281,7 +281,7 @@ jobs:
           path: StoreUpload/*.msixupload
           if-no-files-found: error
           compression-level: 0
-          retention-days: 30
+          retention-days: 1
 
       - name: Diagnose MakeAppx failure
         if: steps.build.outcome == 'failure'
@@ -366,7 +366,7 @@ jobs:
           name: Typedown-installer-${{ steps.ver.outputs.arch }}
           path: out-installer/
           compression-level: 0
-          retention-days: 3
+          retention-days: 1
 
       # Full set (installer, MSIX, certificate, portable zip) only on release tags; feeds the release job.
       - uses: actions/upload-artifact@v4
@@ -375,7 +375,7 @@ jobs:
           name: Typedown-${{ steps.ver.outputs.arch }}
           path: out/
           compression-level: 0
-          retention-days: 7
+          retention-days: 1
 
   release:
     name: Publish GitHub Release
