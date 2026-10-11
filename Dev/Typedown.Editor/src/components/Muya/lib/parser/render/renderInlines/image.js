@@ -1,8 +1,11 @@
 import { CLASS_OR_ID } from '../../../config'
 import { getImageInfo } from '../../../utils'
 
+// The icons are spans, not anchors: a picture inside a link ([![alt](src)](url)) put them in an <a> of their own inside
+// the link's <a>, and the page built from the HTML closed the link at the first of them - the picture's box came out
+// empty and the picture never showed (IM02).
 const renderIcon = (h, className, icon) => {
-  const selector = `a.${className}`
+  const selector = `span.${className}`
 
   const iconVnode = h(`span.icon`, {
     style: {

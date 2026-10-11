@@ -131,6 +131,9 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
 - `reference-image-check.js` — a reference-style picture (`![alt][ref]`) loads when the document opens: its source
   text is not left marked failed once the picture is drawn, and a reference to a missing file is still marked
   failed.
+- `link-image-check.js` — a picture inside a link (`[![alt](src)](url)`) is drawn inside the link, in its own box.
+  Its icons were `<a>` elements inside the link's `<a>`, so a small document built from the HTML closed the link
+  early and left the box empty (a big document is drawn in pieces and was spared).
 - `export-pdf-check.js` — the exported HTML carries what the PDF is made from: images by absolute path (so
   they survive being opened from a temp file) and KaTeX fonts by real address (so a formula keeps its font).
   A PDF is then produced from that HTML with a document outline, and the outline is checked to have an entry

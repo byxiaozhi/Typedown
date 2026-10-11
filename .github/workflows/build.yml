@@ -118,6 +118,7 @@ jobs:
           node export-mermaid-error-check.js
           node renderer-failure-check.js
           node spec-check.js
+          node link-image-check.js
 
       - uses: actions/upload-artifact@v4
         with:
