@@ -155,9 +155,13 @@ powershell -ExecutionPolicy Bypass -File Tools\AutomationE2E\start-interactive.p
 | RD01 | reading mode: the context menu offers copying and selecting only, Copy works on a selection, copy as plain text leaves the Markdown out, Ctrl+Z changes nothing |
 | CP01 | Copy pasted into Word: pictures at absolute file:/// addresses, a name and an alt text with brackets, an SVG sized in pt, a JPEG |
 | TH03 | the side pane marks what is chosen (the bar under Files/Outline, the outline's and the folder tree's row pill) in a custom theme's accent, and in the system accent again without one |
+| TH06 | a custom theme switched back to Light or Dark: the editor page, the line beside the side pane, the side pane and the status bar are drawn as before, and the editor is dark under Dark |
 | TH02 | View > Theme > Reload themes finds a new theme file and a renamed one; the window draws in the custom theme's base whatever the built-in setting says |
 | WP01 | a web page pasted: headings with #, code fenced with its language and without line numbers, Google Docs bold and italic, late-loaded and relative pictures by their real addresses; with Insert web image copying, its pictures are copied beside the document and their addresses replaced |
 | ER01 | a page message handler that throws stays subscribed and the message still reaches the other handlers; an exception out of an event handler XAML calls is logged and the app goes on |
+| DG01 | a dialog wears the custom theme (its surface and text colours), and the system's colours again without it |
+| PM01 | the Paragraph menu's checks follow the caret: Table stays unchecked after its dialog is cancelled, Quote and Table are checked with the caret in a quote and a table |
+| OL02 | two long documents scrolled to their middle, switched between: the outline does not mark another heading of the document being left |
 | LD01 | a load the editor gives back rewritten is loaded once more and keeps the file's text; one rewritten again is taken after that one retry, not retried without end |
 | Q01 | two windows closed one after the other: the process exits (it stayed, headless) |
 <!-- END generated: e2e-cases -->
@@ -204,11 +208,14 @@ powershell -ExecutionPolicy Bypass -File Tools\AutomationE2E\start-interactive.p
 | `test.events.throwingHandler` | `windowId` | The window's editor messages with a handler that throws on the first one: how many each of two handlers got of two messages (a handler that threw was detached for good, and the message went no further). | TestHostHooks.cs |
 | `test.app.throwUnhandled` | `windowId` | An exception out of an event handler XAML calls (a timer's, as a click handler's would be): the process stays (it ended the app), and the exception is in the log. | TestHostHooks.cs |
 | `test.window.popups` | `windowId` | The popups open in a window (menus, flyouts, a number box's buttons...), by the type of what they show. | TestHostHooks.cs |
+| `test.app.caseLabel` | `label?` | The running E2E case and its purpose, shown in every window's title after the test host's marker (label empty: none). Not tied to a window: a case sets it before it has one. | TestHostHooks.cs |
 | `test.app.titleMarker` | `show?`, `windowId` | The test host's title markers ("AUTOMATION TEST HOST ·" and the connected client's note) on (show: true) or off in every window, for screenshots that are to look like the app. | TestHostHooks.cs |
 | `test.file.saveAs` | `path`, `windowId` | The window's active document saved as the path, as File > Save as with that file picked (an untitled one's first save too); the path back, or null when it was not saved. | TestHostHooks.cs |
 | `test.export.run` | `type?`, `path`, `windowId` | The window's document exported to a file, as File > Export > <type> with that file picked in the save dialog (html or pdf: the first export configuration of that type); answers once the export is asked for, not done. | TestHostHooks.cs |
 | `test.export.notice` | `windowId` | The notice an export leaves (Settings > Export > After export): the file it names, or null when none shows. | TestHostHooks.cs |
 | `test.export.menu` | `windowId` | The entries of a window's File > Export submenu, as shown. | TestHostHooks.cs |
+| `test.dialog.colours` | `windowId` | The open dialog's colours and the custom theme's, to tell whether the dialog wears the theme. | TestHostHooks.cs |
+| `test.theme.chrome` | `windowId` | The colours a custom theme changes around the editor, as they are now: the line between the side pane and the editor, the side pane, the menu bar and the status bar. A theme switched off has to put back what the built-in theme draws (TH06). | TestHostHooks.cs |
 | `test.pane.accent` | `windowId` | The colours the side pane marks what is chosen with: every selection indicator drawn in it (the bar under Files/Outline, the pill of each outline and folder-tree row), by where it is, with its fill. | TestHostHooks.cs |
 | `test.images.uploadAll` | `windowId` | File > Upload local images on the window's active document, without its dialogs; returns the result. | TestHostHooks.cs |
 <!-- END generated: test-methods -->
