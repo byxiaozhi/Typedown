@@ -1917,6 +1917,18 @@ internal static partial class Program
         {
             await c.Call("window.setView", new { windowId, sidePane = new { open = true, page } });
             await Task.Delay(1500);
+            // The pointer over a row, as a hand leaves it: a row under the pointer draws its mark from keys of its own
+            // (the selected heading turned the system blue whenever the mouse was over it).
+            if (page == "outline" && Deep.First(System.Windows.Automation.AutomationElement.FromHandle(await WindowOf(windowId, c)),
+                    new System.Windows.Automation.PropertyCondition(System.Windows.Automation.AutomationElement.NameProperty, "One")) is { } row)
+            {
+                SetProcessDpiAwarenessContext(new IntPtr(-4));
+                var r = row.Current.BoundingRectangle;
+                SetCursorPos((int)(r.Left + r.Width / 2) - 3, (int)(r.Top + r.Height / 2));
+                for (var i = 0; i < 3; i++) { await Task.Delay(60); Send(new INPUT { type = 0, u = new InputUnion { mi = new MOUSEINPUT { dx = 1, dy = 0, dwFlags = 0x0001 } } }); }
+                await Task.Delay(500);
+            }
+            else if (page == "outline") notes.Add($"{when}: no outline row named One to hover");
             var found = ((JArray)(await c.Call("test.pane.accent", new { windowId }))["indicators"]!).Select(x => ((string)x["where"]!, (string?)x["fill"])).ToList();
             notes.Add($"{when}, {page}: " + string.Join(", ", found.GroupBy(x => x).Select(g => $"{g.Key.Item1} {g.Key.Item2} x{g.Count()}")));
             return found;

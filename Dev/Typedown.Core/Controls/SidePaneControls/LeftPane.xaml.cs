@@ -59,6 +59,14 @@ namespace Typedown.Core.Controls
         // theme without one leaves the system accent. Each window has its own pane and so its own brush.
         private static readonly string[] AccentKeys = { "NavigationViewSelectionIndicatorForeground", "TreeViewItemSelectionIndicatorForeground" };
 
+        // A row under the pointer or pressed draws its pill from keys of its own: the current heading turned the system
+        // blue whenever the mouse was over it. The same colour there, a little lighter, as WinUI's own are.
+        private static readonly (string Key, double Opacity)[] TreeStateKeys =
+        {
+            ("TreeViewItemSelectionIndicatorForegroundPointerOver", 0.9),
+            ("TreeViewItemSelectionIndicatorForegroundPressed", 0.8),
+        };
+
         private void UpdateAccent()
         {
             var accent = ThemeFiles.Brush(ThemeFiles.Find(Settings?.CustomTheme)?.Accent);
@@ -66,6 +74,11 @@ namespace Typedown.Core.Controls
             {
                 if (accent == null) Resources.Remove(key);
                 else Resources[key] = accent;
+            }
+            foreach (var (key, opacity) in TreeStateKeys)
+            {
+                if (accent is not Windows.UI.Xaml.Media.SolidColorBrush solid) Resources.Remove(key);
+                else Resources[key] = new Windows.UI.Xaml.Media.SolidColorBrush(solid.Color) { Opacity = opacity };
             }
             // What is already on screen looked its brushes up when it was built; flipping the theme and back makes
             // it look them up again (as in the tab bar).
