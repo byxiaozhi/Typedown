@@ -483,10 +483,10 @@ const backspaceCtrl = ContentState => {
         figure.type = 'p'
         key = paragraphContent.key
         offset = 0
-      } else if (preBlock) {
-        key = preBlock.key
-        offset = preBlock.text.length
       }
+      // Otherwise Backspace at the start of a cell stays in it. It used to go to the end of the cell before, and the
+      // next Backspace deleted that cell's text: one Backspace too many after emptying a cell went on into its
+      // neighbour, and what was typed next landed there. Another cell is reached with the arrow keys or Shift+Tab.
 
       if (key !== undefined && offset !== undefined) {
         this.cursor = {

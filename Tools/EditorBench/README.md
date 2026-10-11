@@ -137,6 +137,9 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
 - `diagram-picture-check.js` — diagrams rendered as pictures (RenderXhtml with diagramsAsPictures): a 9000×9000
   diagram still becomes a picture (drawn at twice its size it passed the canvas limits and came out empty), and each
   picture's text is the diagram's kind and the start of its source.
+- `table-backspace-check.js` — Backspace in a table cell stays in that cell: one too many after emptying a cell went on
+  into the cell before (or out of the table into the heading above), deleted its text, and the typing landed there. An
+  empty table still becomes a paragraph with Backspace in its first cell.
 - `export-pdf-check.js` — the exported HTML carries what the PDF is made from: images by absolute path (so
   they survive being opened from a temp file) and KaTeX fonts by real address (so a formula keeps its font).
   A PDF is then produced from that HTML with a document outline, and the outline is checked to have an entry
