@@ -15,22 +15,6 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             InitializeComponent();
             // The event is static: a closed window's menu must not stay reachable through it.
             Unloaded += (_, _) => ThemeFiles.Changed -= OnThemesChanged;
-            FocusModeItem.Loaded += RefreshDisabledLook;
-            TypewriterModeItem.Loaded += RefreshDisabledLook;
-        }
-
-        /// <summary>
-        /// Draws a disabled entry again as the menu opens. These two are disabled from code when the mode changes, often
-        /// with the menu closed, and an entry out of the window's tree then takes its disabled colours from Windows'
-        /// theme, not the window's: white on a light menu under dark Windows, next to invisible on a dark one under light
-        /// Windows (RD02).
-        /// </summary>
-        private static void RefreshDisabledLook(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            if (sender is not Control item || item.IsEnabled)
-                return;
-            Windows.UI.Xaml.VisualStateManager.GoToState(item, "Normal", false);
-            Windows.UI.Xaml.VisualStateManager.GoToState(item, "Disabled", false);
         }
 
         /// <summary>The theme entries, so a change can tick the right one without rebuilding the open menu.</summary>

@@ -6,9 +6,9 @@ using System.Windows.Automation;
 using Newtonsoft.Json.Linq;
 
 /// <summary>
-/// RD02: in reading mode the View menu's Focus mode and Typewriter mode are disabled and drawn so: their text fainter
-/// than the entries that work, in Dark and in Light, whether the window was put in reading mode before its View menu was
-/// first opened or after. A reader saw disabled entries in white, like the ones that work.
+/// RD02: a menu entry disabled while its menu is closed is drawn disabled in the window's theme: in reading mode the View
+/// menu's Focus mode and Typewriter mode, and Edit > Undo once undone, their text fainter than the entries that work, in
+/// Dark and in Light, whether the menu had been opened before or not. A reader saw them in white on a light menu.
 /// </summary>
 internal static partial class Program
 {
@@ -57,6 +57,37 @@ internal static partial class Program
                         await Task.Delay(1000);
                     }
                 }
+                // Not only those two: Edit > Undo, enabled through a binding, undone with its menu closed after the
+                // menu was opened.
+                {
+                    var step = $"{themeId}, Undo disabled with the Edit menu closed";
+                    var windowId = (string)(await c.Call("test.window.open"))["windowId"]!;
+                    var window = await WindowOf(windowId, c);
+                    try
+                    {
+                        await Task.Delay(1500);
+                        await Activate(window);
+                        TypeChar('Q');
+                        await Task.Delay(800);
+                        var (before, wasEnabled) = await MenuContrast(window, "UndoItem", "SelectAllItem");
+                        // Undone through the API: a key could find the focus still on the menu bar the menu was closed into.
+                        var doc = (string)((JArray)(await c.Call("document.list", new { windowId }))["documents"]!)[0]["documentId"]!;
+                        for (var i = 0; i < 5 && ((string?)(await Get(c, doc))["text"] ?? "").Contains('Q'); i++)
+                            await c.Call("document.undo", new { documentId = doc, baseRevision = await Revision(c, doc), reveal = "document" });
+                        await Task.Delay(1000);
+                        var (after, enabled) = await MenuContrast(window, "UndoItem", "SelectAllItem");
+                        double undo = after["UndoItem"], working = after["SelectAllItem"];
+                        notes.Add($"{step}: Undo {(wasEnabled["UndoItem"] ? "enabled" : "disabled")} {before["UndoItem"]:0} after typing, {(enabled["UndoItem"] ? "enabled" : "disabled")} {undo:0} after undoing; Select all {working:0}");
+                        if (!wasEnabled["UndoItem"] || enabled["UndoItem"]) failures.Add($"{step}: Undo was not enabled after typing and disabled once undone");
+                        else if (Math.Sign(undo) != Math.Sign(working) || Math.Abs(undo) > Math.Abs(working) * 0.75 || Math.Abs(undo) < Math.Abs(working) * 0.25)
+                            failures.Add($"{step}: Undo is drawn {undo:0} from the menu's background, where an entry that works is {working:0}");
+                    }
+                    finally
+                    {
+                        PostMessage(window, 0x0010, IntPtr.Zero, IntPtr.Zero);
+                        await Task.Delay(1000);
+                    }
+                }
             }
         }
         finally
@@ -69,6 +100,14 @@ internal static partial class Program
     // The View menu opened, and how far each entry's text stands out from the menu's background (the largest difference
     // in brightness over the left of the entry, where its text is, signed: lighter is positive), with whether UI Automation reports it enabled.
     private static async Task<(double Focus, double Typewriter, double Reading, Dictionary<string, bool> Enabled)> ViewMenuContrast(IntPtr window)
+    {
+        var (contrast, enabled) = await MenuContrast(window, "FocusModeItem", "TypewriterModeItem", "ReadOnlyModeItem");
+        return (contrast["FocusModeItem"], contrast["TypewriterModeItem"], contrast["ReadOnlyModeItem"], enabled);
+    }
+
+    // The menu holding these entries opened, and how far each one's text stands out from the menu's background, with
+    // whether UI Automation reports it enabled.
+    private static async Task<(Dictionary<string, double> Contrast, Dictionary<string, bool> Enabled)> MenuContrast(IntPtr window, params string[] ids)
     {
         await Activate(window);
         SetProcessDpiAwarenessContext(new IntPtr(-4));
@@ -83,12 +122,10 @@ internal static partial class Program
             await Task.Delay(600);
             try
             {
-                var items = new[] { "FocusModeItem", "TypewriterModeItem", "ReadOnlyModeItem" }
-                    .Select(id => (id, element: Deep.First(root, new PropertyCondition(AutomationElement.AutomationIdProperty, id)))).ToList();
+                var items = ids.Select(id => (id, element: Deep.First(root, new PropertyCondition(AutomationElement.AutomationIdProperty, id)))).ToList();
                 if (items.Any(i => i.element == null)) continue;
-                var contrast = items.ToDictionary(i => i.id, i => TextContrast(i.element!.Current.BoundingRectangle));
-                var enabled = items.ToDictionary(i => i.id, i => i.element!.Current.IsEnabled);
-                return (contrast["FocusModeItem"], contrast["TypewriterModeItem"], contrast["ReadOnlyModeItem"], enabled);
+                return (items.ToDictionary(i => i.id, i => TextContrast(i.element!.Current.BoundingRectangle)),
+                    items.ToDictionary(i => i.id, i => i.element!.Current.IsEnabled));
             }
             finally
             {
@@ -96,7 +133,7 @@ internal static partial class Program
                 await Task.Delay(300);
             }
         }
-        throw new CaseFailed("no View menu with Focus mode, Typewriter mode and Reading mode");
+        throw new CaseFailed("no menu with " + string.Join(", ", ids));
     }
 
     // A real click on an entry of the View menu, as a person picks it.
