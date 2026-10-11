@@ -166,6 +166,8 @@ powershell -ExecutionPolicy Bypass -File Tools\AutomationE2E\start-interactive.p
 | PM01 | the Paragraph menu's checks follow the caret: Table stays unchecked after its dialog is cancelled, Quote and Table are checked with the caret in a quote and a table |
 | OL02 | two long documents scrolled to their middle, switched between: the outline does not mark another heading of the document being left |
 | LD01 | a load the editor gives back rewritten is loaded once more and keeps the file's text; one rewritten again is taken after that one retry, not retried without end |
+| PF01 | measured: a 300 KB document opened, typed into and saved; the memory with two windows |
+| PF02 | measured: a cold start with a document on the command line, then the window closed |
 | Q01 | two windows closed one after the other: the process exits (it stayed, headless) |
 <!-- END generated: e2e-cases -->
 

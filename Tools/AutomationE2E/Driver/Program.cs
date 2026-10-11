@@ -180,6 +180,9 @@ internal static partial class Program
             var editionCases = new List<(string Name, Func<List<string>, Task> Run)>();
             EditionCases(editionCases);
             foreach (var (name, run) in editionCases) await Case(name, run);
+            // Measured, and last: they start and end test hosts of their own (only when named, as in the WinUI 3 build).
+            await Case("PF01 measured: a 300 KB document opened, typed into and saved; the memory with two windows", PF01);
+            await Case("PF02 measured: a cold start with a document on the command line, then the window closed", PF02);
             // Last: it ends the test host.
             await Case("Q01 two windows closed one after the other: the process exits (it stayed, headless)", Q01);
         }
@@ -251,7 +254,7 @@ internal static partial class Program
     {
         if (only != null && !only.Any(o => name.StartsWith(o + " "))) return;
         // Pictures (SHOT...) are taken only when asked for by name: never part of a run of every case.
-        if (name.StartsWith("SHOT") && only == null) return;
+        if ((name.StartsWith("SHOT") || name.StartsWith("PF")) && only == null) return;
         var notes = new List<string>();
         // A person's mouse or keys a moment ago would be in the case's way: it waits for the desktop to be left alone.
         var quiet = await WaitForQuietDesktop(1000);
