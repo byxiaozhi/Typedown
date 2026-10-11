@@ -21,5 +21,6 @@
   <ItemGroup>
     <!-- The document with every kind of block the editor draws (Tools/EditorBench), for cases that need it all at once. -->
     <EmbeddedResource Include="..\..\EditorBench\fixtures\showcase\showcase.md" LogicalName="showcase.md" />
+    <EmbeddedResource Include="..\..\EditorBench\fixtures\showcase\images\*" LogicalName="showcase-images/%(Filename)%(Extension)" />
   </ItemGroup>
 </Project>

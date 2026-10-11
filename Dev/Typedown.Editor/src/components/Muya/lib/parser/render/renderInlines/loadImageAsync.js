@@ -47,22 +47,10 @@ export default function loadImageAsync (imageInfo, attrs, className, imageClass)
           img.classList.add(imageClass)
         }
 
-        if (imageText) {
-          if (imageText.classList.contains('ag-inline-image')) {
-            const imageContainer = imageText.querySelector('.ag-image-container')
-            const oldImage = imageContainer.querySelector('img')
-            if (oldImage) {
-              oldImage.remove()
-            }
-            imageContainer.appendChild(img)
-            imageText.classList.remove('ag-image-loading')
-            imageText.classList.add('ag-image-success')
-          } else {
-            insertAfter(img, imageText)
-            operateClassName(imageText, 'remove', CLASS_OR_ID.AG_IMAGE_FAIL)
-            operateClassName(imageText, 'add', className)
-          }
-        }
+        // The picture loaded: that is recorded first. Putting it on the page comes after and cannot undo it - an
+        // exception there (a picture inside a link had no image container) used to land in the catch below, which
+        // cached the file as failed, and every other picture of that file was then drawn failed when re-rendered (the
+        // showcase's checkerboard, clicked after source mode and back, IM01).
         if (this.urlMap.has(src)) {
           this.urlMap.delete(src)
         }
@@ -75,6 +63,29 @@ export default function loadImageAsync (imageInfo, attrs, className, imageClass)
           touchMsec,
           domsrc
         })
+        try {
+          if (imageText) {
+            if (imageText.classList.contains('ag-inline-image')) {
+              // A picture inside a link has no container of its own here: its state changes, nothing is added.
+              const imageContainer = imageText.querySelector('.ag-image-container')
+              if (imageContainer) {
+                const oldImage = imageContainer.querySelector('img')
+                if (oldImage) {
+                  oldImage.remove()
+                }
+                imageContainer.appendChild(img)
+              }
+              imageText.classList.remove('ag-image-loading')
+              imageText.classList.add('ag-image-success')
+            } else {
+              insertAfter(img, imageText)
+              operateClassName(imageText, 'remove', CLASS_OR_ID.AG_IMAGE_FAIL)
+              operateClassName(imageText, 'add', className)
+            }
+          }
+        } catch (err) {
+          console.log('image: the picture loaded but could not be put on the page', err)
+        }
       })
       .catch(() => {
         const imageText = document.querySelector(`#${id}`)
