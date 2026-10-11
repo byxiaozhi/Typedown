@@ -13,6 +13,7 @@ import { getHtmlToc, getTOC } from "services/common";
 import { resetUserIntent, takeChangeOrigin } from "services/changeOrigin";
 import { sha256Hex } from "services/sha256";
 import { classifierVersion } from "services/normalization";
+import { applyHostBackground } from "services/theme";
 
 /** The style element with this id, appended to the head on first use. */
 // Each SVG drawing in the element (a diagram) replaced by a PNG of it, drawn at twice its size on white. The drawing is
@@ -293,6 +294,7 @@ const Editor: React.FC = () => {
         // The host paints the body to match the window chrome; a theme that sets its own page colour should win.
         // Clearing it lets the next ThemeChanged from the host paint it again when the theme is switched off.
         if (css) document.body.style.backgroundColor = 'var(--editorBgColor)'
+        else applyHostBackground()
     }, [options?.themeCss])
 
     useEffect(() => {

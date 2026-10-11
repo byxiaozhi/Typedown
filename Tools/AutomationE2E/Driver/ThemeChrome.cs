@@ -53,6 +53,10 @@ internal static partial class Program
             await c.Call("test.theme.apply", new { windowId, builtIn = "Dark" });
             var dark = await State("dark");
             if (Luminance((string?)dark["page"]) is int l1 && l1 > 128) failures.Add($"dark: the editor page is light ({dark["page"]})");
+            // Dark draws its own colours, not Light's kept on (a colour fixed when the window was built would compare equal
+            // after a switch back and pass the checks above).
+            foreach (var key in new[] { "splitter", "statusBar", "sidePaneText" })
+                if (light[key] is JToken was && (string?)was != "none" && JToken.DeepEquals(was, dark[key])) failures.Add($"dark, {key}: still Light's {was}");
             await c.Call("test.theme.apply", new { windowId, customTheme = "dracula" });
             await State("dracula again");
             await c.Call("test.theme.apply", new { windowId, builtIn = "Dark" });
@@ -60,6 +64,16 @@ internal static partial class Program
             if (Luminance((string?)darkAgain["page"]) is int l2 && l2 > 128) failures.Add($"dark after dracula: the editor page is light ({darkAgain["page"]})");
             foreach (var key in new[] { "splitter", "sidePane", "statusBar", "menuBar" })
                 if (!JToken.DeepEquals(dark[key], darkAgain[key])) failures.Add($"dark, {key}: {dark[key]} at first, {darkAgain[key]} after dracula");
+            // The custom theme entered from Dark and left for Light: what the built-in theme draws changed while the theme
+            // was on.
+            await c.Call("test.theme.apply", new { windowId, customTheme = "dracula" });
+            await State("dracula from dark");
+            await c.Call("test.theme.apply", new { windowId, builtIn = "Light" });
+            var lightLast = await State("light after dark and dracula");
+            foreach (var key in new[] { "splitter", "sidePane", "statusBar", "menuBar" })
+                if (!JToken.DeepEquals(light[key], lightLast[key])) failures.Add($"light after dark and dracula, {key}: {light[key]} at first, {lightLast[key]} now");
+            if (Luminance((string?)light["page"]) != Luminance((string?)lightLast["page"]))
+                failures.Add($"light after dark and dracula, editor page: '{light["page"]}' at first, '{lightLast["page"]}' now");
         }
         finally
         {

@@ -23,6 +23,18 @@ function getorCreateStyle(id: string) {
     return style;
 }
 
+let hostBackground = ''
+
+/**
+ * The page colour the host asks for (the theme's, or transparent over Mica). A custom theme paints the page itself
+ * (var(--editorBgColor), set when its CSS arrives) and is left alone; the editor calls this again when a custom theme
+ * is switched off, so the order the two messages arrive in does not matter.
+ */
+export function applyHostBackground() {
+    if (hostBackground && !document.getElementById('typedown-theme-css')?.textContent)
+        document.body.style.backgroundColor = hostBackground
+}
+
 function onThemeChanged(arg: any) {
     let { theme } = arg ?? {};
     const { accentColor, background } = arg ?? {};
@@ -37,9 +49,12 @@ function onThemeChanged(arg: any) {
 
     const themeColorAlphas = [10, 20, 30, 40, 50, 60, 70, 80, 90]
     const { r, g, b, a } = accentColor
-    const { R: bgR, G: bgG, B: bgB, A: bgA } = background
+    // The host's colours arrive camel-cased (r, g, b, a) like the accent; upper case is read too, for an older host.
+    const bgR = background?.r ?? background?.R, bgG = background?.g ?? background?.G
+    const bgB = background?.b ?? background?.B, bgA = (background?.a ?? background?.A) / 255
 
-    document.body.style.backgroundColor = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`;
+    hostBackground = `rgba(${bgR}, ${bgG}, ${bgB}, ${bgA})`
+    applyHostBackground()
     document.documentElement.style.setProperty('--actualTheme', theme)
     document.documentElement.style.setProperty('--themeColor', `rgba(${r}, ${g}, ${b}, ${a})`)
     themeColorAlphas.forEach(e => document.documentElement.style.setProperty(`--themeColor${e}`, `rgba(${r}, ${g}, ${b}, ${a * (e / 100)})`))
