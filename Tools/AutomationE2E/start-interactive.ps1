@@ -25,6 +25,9 @@ schtasks /Create /TN $task /TR "`"$launcher`"" /SC ONCE /ST 23:59 /IT /F | Out-N
 if ($LASTEXITCODE -ne 0) { Write-Output "ENVIRONMENT ERROR: could not register the scheduled task"; exit 3 }
 schtasks /Run /TN $task | Out-Null
 if ($LASTEXITCODE -ne 0) { Write-Output "ENVIRONMENT ERROR: could not start the scheduled task"; exit 3 }
+# The task goes when this script does, however it ends: its trigger (once, at 23:59 today - schtasks needs one) stayed
+# behind and ran the day's last run again at 23:59, unasked.
+try {
 $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
 $run = $null
 $started = Get-Date
@@ -48,3 +51,6 @@ if (Test-Path $result) { Get-Content $result -Raw -Encoding utf8 } else { Get-Co
 $exit = [int]((Get-Content (Join-Path $run.FullName 'done.txt')) -replace 'exit=', '')
 Write-Output "artifacts: $($run.FullName)"
 exit $exit
+} finally {
+    schtasks /Delete /TN $task /F 2>&1 | Out-Null
+}
