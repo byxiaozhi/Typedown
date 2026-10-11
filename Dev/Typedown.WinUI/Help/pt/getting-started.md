@@ -9,6 +9,7 @@ O Caret é um editor de Markdown tranquilo para Windows. Ele também transforma 
 - **Biblioteca > Modelos** guarda os seus modelos. **Adicionar modelos iniciais** traz um conjunto no idioma da interface: carta, currículo, relatório, ata, discurso e apresentação.
 - A ortografia é verificada pelo corretor do próprio Windows, off-line. Clique com o botão direito em uma palavra sublinhada para ver sugestões.
 - Seu trabalho é salvo conforme você avança (Configurações > Geral > Salvamento automático) e recuperado após uma falha.
+- Onde está o arquivo? Clique com o botão direito em um arquivo em **Recentes**, em **Favoritos** ou na página inicial, ou use o menu **Arquivo** para o arquivo aberto: **Mostrar no Explorador de Arquivos** abre a pasta dele com o arquivo selecionado, e **Copiar como caminho** e **Copiar o link do arquivo** copiam onde ele está.
 
 ## Converter
 

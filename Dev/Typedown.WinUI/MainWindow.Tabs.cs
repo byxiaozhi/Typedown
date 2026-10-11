@@ -246,13 +246,9 @@ namespace Typedown.WinUI
             menu.Items.Add(favorite);
             var colorMenu = BuildTabColorMenu(doc);
             menu.Items.Add(colorMenu);
-            var copyPath = Item("CopyAsPath", () =>
-            {
-                var package = new DataPackage();
-                package.SetText(doc.Path);
-                Clipboard.SetContent(package);
-            });
-            var reveal = Item("RevealInFileExplorer", () => System.Diagnostics.Process.Start("explorer.exe", $"/select,\"{doc.Path}\""));
+            var copyPath = Item("CopyAsPath", () => CopyFilePath(doc.Path));
+            var copyLink = Item("CopyFileLink", () => CopyFileLink(doc.Path));
+            var reveal = Item("RevealInFileExplorer", () => RevealFile(doc.Path));
             menu.Opening += (s, e) =>
             {
                 // The other windows that take tabs, by what they show: Move to window > name.
@@ -264,7 +260,7 @@ namespace Typedown.WinUI
                     moveToWindow.Items.Add(item);
                 }
                 moveToWindow.Visibility = moveToWindow.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-                copyPath.IsEnabled = reveal.IsEnabled = favorite.IsEnabled = colorMenu.IsEnabled = !string.IsNullOrEmpty(doc.Path);
+                copyPath.IsEnabled = copyLink.IsEnabled = reveal.IsEnabled = favorite.IsEnabled = colorMenu.IsEnabled = !string.IsNullOrEmpty(doc.Path);
                 var current = TabColorOf(doc);
                 foreach (var item in colorMenu.Items.OfType<RadioMenuFlyoutItem>()) item.IsChecked = (string)item.Tag == current;
                 favorite.IsChecked = favoritesService.Contains(doc.Path);

@@ -9,6 +9,7 @@ Caret to spokojny edytor Markdown dla Windows. Zamienia też dokumenty Word, Exc
 - **Biblioteka > Szablony** przechowuje Twoje szablony. **Dodaj szablony startowe** wprowadza zestaw w języku interfejsu: pisma, CV, raport, protokół, przemówienie i prezentację.
 - Pisownia jest sprawdzana wbudowanym sprawdzaniem pisowni systemu Windows, bez połączenia z internetem. Kliknij prawym przyciskiem myszy podkreślony wyraz, aby zobaczyć propozycje.
 - Twoja praca jest zapisywana na bieżąco (**Ustawienia > Ogólne > Zapisywanie automatyczne**) i odzyskiwana po awarii.
+- Gdzie jest plik? Kliknij plik prawym przyciskiem w **Ostatnie**, w **Ulubione** lub na stronie startowej albo użyj menu **Plik** dla otwartego pliku: **Pokaż w Eksploratorze plików** otwiera jego folder z zaznaczonym plikiem, a **Kopiuj jako ścieżkę** i **Kopiuj łącze do pliku** kopiują jego położenie.
 
 ## Konwersja
 

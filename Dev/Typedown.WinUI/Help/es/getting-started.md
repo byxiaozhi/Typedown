@@ -9,6 +9,7 @@ Caret es un editor de Markdown tranquilo para Windows. También convierte docume
 - **Biblioteca > Plantillas** guarda tus plantillas. **Agregar plantillas iniciales** trae un conjunto en el idioma de la interfaz: cartas, un currículum, un informe, actas, un discurso y una presentación.
 - La ortografía se revisa con el corrector de Windows, sin conexión. Haz clic derecho en una palabra subrayada para ver sugerencias.
 - Tu trabajo se guarda sobre la marcha (Configuración > General > Guardado automático) y se recupera después de un fallo.
+- ¿Dónde está el archivo? Haz clic derecho en un archivo de **Recientes**, de **Favoritos** o de la página de inicio, o usa el menú **Archivo** para el archivo abierto: **Mostrar en el Explorador de archivos** abre su carpeta con el archivo seleccionado, y **Copiar como ruta de acceso** y **Copiar el vínculo del archivo** copian dónde está.
 
 ## Convierte
 

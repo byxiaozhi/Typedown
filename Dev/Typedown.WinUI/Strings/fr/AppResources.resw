@@ -135,6 +135,24 @@
   <data name="CopyAsPath" xml:space="preserve">
     <value>Copier en tant que chemin d'accès</value>
   </data>
+  <data name="CopyFileLink" xml:space="preserve">
+    <value>Copier le lien du fichier</value>
+  </data>
+  <data name="FileLocationPathCopied" xml:space="preserve">
+    <value>Chemin copié</value>
+  </data>
+  <data name="FileLocationLinkCopied" xml:space="preserve">
+    <value>Lien du fichier copié</value>
+  </data>
+  <data name="FileLocationFolderOnly" xml:space="preserve">
+    <value>Le fichier n’est plus là. Son dossier a été ouvert.</value>
+  </data>
+  <data name="FileLocationNothing" xml:space="preserve">
+    <value>Le fichier et son dossier n’existent plus.</value>
+  </data>
+  <data name="FileLocationCopyFailed" xml:space="preserve">
+    <value>Le texte n’a pas pu être copié : un autre programme utilise le presse-papiers. Réessayez.</value>
+  </data>
   <data name="Rename" xml:space="preserve">
     <value>Renommer</value>
   </data>

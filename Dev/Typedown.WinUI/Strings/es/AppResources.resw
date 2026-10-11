@@ -135,6 +135,24 @@
   <data name="CopyAsPath" xml:space="preserve">
     <value>Copiar como ruta de acceso</value>
   </data>
+  <data name="CopyFileLink" xml:space="preserve">
+    <value>Copiar el vínculo del archivo</value>
+  </data>
+  <data name="FileLocationPathCopied" xml:space="preserve">
+    <value>Ruta copiada</value>
+  </data>
+  <data name="FileLocationLinkCopied" xml:space="preserve">
+    <value>Vínculo del archivo copiado</value>
+  </data>
+  <data name="FileLocationFolderOnly" xml:space="preserve">
+    <value>El archivo ya no está. Se abrió su carpeta.</value>
+  </data>
+  <data name="FileLocationNothing" xml:space="preserve">
+    <value>El archivo y su carpeta ya no existen.</value>
+  </data>
+  <data name="FileLocationCopyFailed" xml:space="preserve">
+    <value>No se pudo copiar el texto: otro programa está usando el portapapeles. Inténtalo de nuevo.</value>
+  </data>
   <data name="Rename" xml:space="preserve">
     <value>Cambiar nombre</value>
   </data>

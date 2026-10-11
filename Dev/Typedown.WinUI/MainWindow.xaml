@@ -245,6 +245,10 @@
                 </MenuFlyoutItem>
                 <ToggleMenuFlyoutItem x:Name="FavoriteMenuItem" Text="{u:Loc Key=FavoriteMenuItem}" Click="FavoriteMenuItem_Click" IsEnabled="False"/>
                 <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Name="FileRevealMenuItem" Text="{u:Loc Key=RevealInFileExplorer}" Click="FileRevealMenuItem_Click" IsEnabled="False"/>
+                <MenuFlyoutItem x:Name="FileCopyPathMenuItem" Text="{u:Loc Key=CopyAsPath}" Click="FileCopyPathMenuItem_Click" IsEnabled="False"/>
+                <MenuFlyoutItem x:Name="FileCopyLinkMenuItem" Text="{u:Loc Key=CopyFileLink}" Click="FileCopyLinkMenuItem_Click" IsEnabled="False"/>
+                <MenuFlyoutSeparator/>
                 <MenuFlyoutSubItem x:Name="ExportMenu" Text="{u:Loc Key=ExportMenu_Text}">
                     <MenuFlyoutItem x:Name="ExportHtmlMenuItem" Text="{u:Loc Key=ExportHtmlMenuItem_Text}" Click="ExportHtmlMenuItem_Click"/>
                     <MenuFlyoutItem x:Name="ExportPdfMenuItem" Text="{u:Loc Key=ExportPdfMenuItem_Text}" Click="ExportPdfMenuItem_Click"/>

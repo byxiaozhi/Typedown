@@ -36,6 +36,8 @@
 		<Compile Include="..\Typedown.WinUI\Services\WhatsAppFormat.cs" Link="Converters\WhatsAppFormat.cs" />
 		<!-- What Settings > Appearance > Section colors offers and what a stored choice means -->
 		<Compile Include="..\Typedown.WinUI\Utilities\SectionColorChoice.cs" Link="Converters\SectionColorChoice.cs" />
+		<!-- Where a file is: reveal it in Explorer, copy its path and its link -->
+		<Compile Include="..\Typedown.WinUI\Services\FileLocation.cs" Link="Converters\FileLocation.cs" />
 		<!-- File > Export > Word -->
 		<Compile Include="..\Typedown.WinUI\Services\Export\*.cs" Link="Export\%(Filename)%(Extension)" />
 		<EmbeddedResource Include="..\..\plugins\markitdown-email\src\markitdown_caret_email\rules\*.json" LogicalName="EmailRules.%(Filename)%(Extension)" Link="Converters\rules\%(Filename)%(Extension)" />

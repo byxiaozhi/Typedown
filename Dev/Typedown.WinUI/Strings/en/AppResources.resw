@@ -135,6 +135,24 @@
   <data name="CopyAsPath" xml:space="preserve">
     <value>Copy as Path</value>
   </data>
+  <data name="CopyFileLink" xml:space="preserve">
+    <value>Copy file link</value>
+  </data>
+  <data name="FileLocationPathCopied" xml:space="preserve">
+    <value>Path copied</value>
+  </data>
+  <data name="FileLocationLinkCopied" xml:space="preserve">
+    <value>File link copied</value>
+  </data>
+  <data name="FileLocationFolderOnly" xml:space="preserve">
+    <value>The file is not there any more. Its folder was opened.</value>
+  </data>
+  <data name="FileLocationNothing" xml:space="preserve">
+    <value>The file and its folder are not there any more.</value>
+  </data>
+  <data name="FileLocationCopyFailed" xml:space="preserve">
+    <value>The text could not be copied: another program is using the clipboard. Try again.</value>
+  </data>
   <data name="Rename" xml:space="preserve">
     <value>Rename</value>
   </data>

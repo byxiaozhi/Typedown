@@ -174,6 +174,7 @@ namespace Typedown.WinUI
             this.startupFilePath = startupFilePath;
             startupTransfer = transfer;
             InitializeComponent();
+            InitFileLocationMenus();
             // The saved colour scheme, once per process, when the first window has loaded (see
             // ColorSchemes.Apply for why not earlier); Refresh makes the window read it.
             if (!appearanceApplied)
@@ -352,6 +353,8 @@ namespace Typedown.WinUI
         private void UpdateFavoriteButton()
         {
             FavoriteMenuItem.IsEnabled = !startPageShown && !string.IsNullOrEmpty(file.FilePath);
+            // where the file is: the same rule, a document that has been saved
+            FileRevealMenuItem.IsEnabled = FileCopyPathMenuItem.IsEnabled = FileCopyLinkMenuItem.IsEnabled = FavoriteMenuItem.IsEnabled;
             FavoriteMenuItem.IsChecked = !startPageShown && favoritesService.Contains(file.FilePath);
             foreach (var doc in documents)
                 if (doc.FavoriteStar != null) doc.FavoriteStar.Visibility = favoritesService.Contains(doc.Path) ? Visibility.Visible : Visibility.Collapsed;
@@ -1314,7 +1317,7 @@ namespace Typedown.WinUI
             }
             foreach (var path in recentFiles.Files)
             {
-                var item = new MenuFlyoutItem { Text = path };
+                var item = new MenuFlyoutItem { Text = path, ContextFlyout = BuildFileLocationMenu(path) };
                 item.Click += async (s, args) => await OpenRecentFile(path);
                 OpenRecentMenu.Items.Add(item);
             }

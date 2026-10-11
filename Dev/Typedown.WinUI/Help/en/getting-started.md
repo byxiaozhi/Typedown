@@ -9,6 +9,7 @@ Caret is a calm Markdown editor for Windows. It also turns Word, Excel, PowerPoi
 - **Library > Templates** keeps your templates. **Add starter templates** brings a set in the language of the interface: letters, a CV, a report, minutes, a speech and a presentation.
 - Spelling is checked with Windows' own checker, offline. Right-click an underlined word for suggestions.
 - Your work is saved as you go (Settings > General > Auto-save) and recovered after a crash.
+- Where is the file? Right-click a file in **Recent**, in **Favorites** or on the start page, or use the **File** menu for the open file: **Reveal in File Explorer** opens its folder with the file selected, and **Copy as Path** and **Copy file link** copy where it is.
 
 ## Convert
 

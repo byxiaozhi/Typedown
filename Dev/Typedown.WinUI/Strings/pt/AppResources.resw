@@ -135,6 +135,24 @@
   <data name="CopyAsPath" xml:space="preserve">
     <value>Copiar como caminho</value>
   </data>
+  <data name="CopyFileLink" xml:space="preserve">
+    <value>Copiar o link do arquivo</value>
+  </data>
+  <data name="FileLocationPathCopied" xml:space="preserve">
+    <value>Caminho copiado</value>
+  </data>
+  <data name="FileLocationLinkCopied" xml:space="preserve">
+    <value>Link do arquivo copiado</value>
+  </data>
+  <data name="FileLocationFolderOnly" xml:space="preserve">
+    <value>O arquivo não está mais lá. A pasta dele foi aberta.</value>
+  </data>
+  <data name="FileLocationNothing" xml:space="preserve">
+    <value>O arquivo e a pasta dele não existem mais.</value>
+  </data>
+  <data name="FileLocationCopyFailed" xml:space="preserve">
+    <value>Não foi possível copiar o texto: outro programa está usando a área de transferência. Tente novamente.</value>
+  </data>
   <data name="Rename" xml:space="preserve">
     <value>Renomear</value>
   </data>
