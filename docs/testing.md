@@ -60,6 +60,8 @@ CI 的“Test editor integration”一步运行这些：
 - `link-image-check.js`: A picture inside a link ([![alt](src)](url)) is drawn inside the link, in its own box.
 - `diagram-picture-check.js`: Diagrams rendered as pictures (RenderXhtml with diagramsAsPictures, what a host turning the document into another format asks for): a big diagram still becomes a picture - drawn at twice its size it went past the browser's canvas limits and came out empty ("data:,") - and each picture's text says what it was: the diagram's kind and the start of its source, not just "diagram".
 - `table-backspace-check.js`: Backspace in a table cell stays in that cell: one Backspace too many after emptying a cell went to the end of the cell before, the next deleted that cell's text and what was typed next landed there - a reader saw "a cell emptied takes no typing" and lost its neighbour's text.
+- `xhtml-footnote-check.js`: The document rendered as XHTML for another format (RenderXhtml) carries its footnotes as section.footnotes and a.footnote-ref, as the HTML export does: the host sends no footnote option, and the export uses the editor's own default (footnotes on) - [^1] stayed literal Markdown there.
+- `export-anchors-check.js`: The HTML that becomes the PDF must link its contents to the headings the parser actually rendered.
 <!-- END generated: editor-checks -->
 
 ## Windows 端到端测试
@@ -120,6 +122,7 @@ powershell -ExecutionPolicy Bypass -File Tools\AutomationE2E\start-interactive.p
 | K01 | a font size changed through the API while the reader types: the keys still reach the page |
 | B02 | an open settings page shows a font size changed from elsewhere |
 | F01 | a written document with protected payloads keeps every one of them through a real first keystroke |
+| F02 | the first-edit warning for unsafe HTML stays briefly, then closes by itself |
 | M01 | a written text survives visual, reading and source mode switches byte for byte, then saves exactly |
 | P01 | awaitPresentation: a revealed write in a background tab of a minimized window reports it drawn; it needs reveal |
 | W01 | the editor page reloads after it applied a write and before the commit: nothing is committed, host and page agree |

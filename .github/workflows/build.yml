@@ -121,6 +121,8 @@ jobs:
           node link-image-check.js
           node diagram-picture-check.js
           node table-backspace-check.js
+          node xhtml-footnote-check.js
+          node export-anchors-check.js
 
       - uses: actions/upload-artifact@v4
         with:

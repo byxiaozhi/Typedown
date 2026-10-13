@@ -2,6 +2,35 @@
   text-decoration: none;
 }
 
+/* Keep separate fenced code blocks visibly separate in HTML and PDF exports, even
+   when another stylesheet resets the generic pre margins. */
+.markdown-body pre + pre {
+  margin-top: 16px;
+}
+
+@media print {
+  /* Keep a heading and the start of its section on the same PDF page. Chromium otherwise
+     sometimes records the heading's link destination below the page's bottom edge. */
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    break-after: avoid-page;
+    break-inside: avoid-page;
+  }
+
+  .markdown-body h1 + *,
+  .markdown-body h2 + *,
+  .markdown-body h3 + *,
+  .markdown-body h4 + *,
+  .markdown-body h5 + *,
+  .markdown-body h6 + * {
+    break-inside: avoid-page;
+  }
+}
+
 .footnotes {
   font-size: .85em;
   opacity: .8;

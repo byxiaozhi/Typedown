@@ -127,6 +127,7 @@ internal static partial class Program
             await Case("K01 a font size changed through the API while the reader types: the keys still reach the page", K01);
             await Case("B02 an open settings page shows a font size changed from elsewhere", B02);
             await Case("F01 a written document with protected payloads keeps every one of them through a real first keystroke", F01);
+            await Case("F02 the first-edit warning for unsafe HTML stays briefly, then closes by itself", F02);
             await Case("M01 a written text survives visual, reading and source mode switches byte for byte, then saves exactly", M01);
             await Case("P01 awaitPresentation: a revealed write in a background tab of a minimized window reports it drawn; it needs reveal", P01);
             await Case("W01 the editor page reloads after it applied a write and before the commit: nothing is committed, host and page agree", W01);
@@ -3084,6 +3085,26 @@ internal static partial class Program
         Check(latest == after, "latest read is what the page holds");
         var lost = keep.Where(k => !latest.Contains(k)).ToList();
         Check(lost.Count == 0, $"every protected payload survives the first edit (lost: {JsonConvert.SerializeObject(lost)}; text {JsonConvert.SerializeObject(latest)})");
+    }
+
+    private static async Task F02(List<string> notes)
+    {
+        using var c = await Session("e2e F02");
+        // CommonMark example 31: Muya rewrites the entity in this HTML block on the first visual edit.
+        var id = await Open(c, Fixture("f02.md", "<a href=\"&ouml;&ouml;.html\">\n\nEDITHERE\n"));
+        var windowId = await WindowIdOf(c, id);
+        async Task<bool> Warning() => (bool?)(await c.Call("test.editor.eval", new
+        {
+            windowId,
+            script = "!!document.querySelector('.td-first-edit-warning')"
+        }))["result"] ?? false;
+
+        Check(await Warning(), "unsafe raw HTML shows the first-edit warning");
+        await Task.Delay(5000);
+        Check(await Warning(), "the warning remains visible long enough to read");
+        await Task.Delay(6000);
+        Check(!await Warning(), "the warning closes after about 10 seconds without a click");
+        notes.Add("warning was visible after 5 seconds and gone after 11 seconds");
     }
 
     private static async Task M01(List<string> notes)

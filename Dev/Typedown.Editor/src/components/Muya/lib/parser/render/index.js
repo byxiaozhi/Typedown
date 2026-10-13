@@ -232,7 +232,7 @@ class StateRender {
           const drawing = document.createElement('div')
           drawing.className = 'ag-diagram-drawing'
           target.replaceChildren(drawing)
-          diagram.drawSVG(drawing, options)
+          await diagram.drawSVG(drawing, options)
         } else if (functionType === 'plantuml') {
           target.innerHTML = ''
           if (this.muya.options.renderPlantUml) {

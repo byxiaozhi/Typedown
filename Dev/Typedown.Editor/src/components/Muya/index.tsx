@@ -86,6 +86,19 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     // still exports to its initial value, including after an undo back to that value.
     const importedRef = useRef<{ source: string, normalized: string }>();
     const [firstEditWarning, setFirstEditWarning] = useState(false)
+    const firstEditWarningTimerRef = useRef<number | null>(null)
+    const showFirstEditWarning = useCallback((show: boolean) => {
+        if (firstEditWarningTimerRef.current !== null) window.clearTimeout(firstEditWarningTimerRef.current)
+        firstEditWarningTimerRef.current = null
+        setFirstEditWarning(show)
+        if (show) firstEditWarningTimerRef.current = window.setTimeout(() => {
+            firstEditWarningTimerRef.current = null
+            setFirstEditWarning(false)
+        }, 10000)
+    }, [])
+    useEffect(() => () => {
+        if (firstEditWarningTimerRef.current !== null) window.clearTimeout(firstEditWarningTimerRef.current)
+    }, [])
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
     const optionsRef = useRef<any>(props.options);
@@ -806,7 +819,7 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         if (editor.getMarkdown() === props.markdown) {
             markdownRef.current = props.markdown
             importedRef.current = { source: props.markdown, normalized: props.markdown }
-            setFirstEditWarning(false)
+            showFirstEditWarning(false)
             props.onContentApplied?.()
             return
         }
@@ -823,7 +836,7 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         importedRef.current = { source: props.markdown, normalized: editor.getMarkdown() }
         // Text the first visual edit would change in a way that loses something (today: some raw HTML) gets a notice
         // that does not block editing; source mode keeps it exactly.
-        setFirstEditWarning(classifyNormalization(props.markdown, importedRef.current.normalized).pendingNormalization === 'unsafe')
+        showFirstEditWarning(classifyNormalization(props.markdown, importedRef.current.normalized).pendingNormalization === 'unsafe')
         // reveal: "change": the first changed block into view unless the reader can already see it. Measured in page
         // coordinates against where the page is (a local edit) or is about to be put back (a whole new document).
         let changeY: number | null = null
@@ -844,7 +857,7 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         else settleScroll(props.scrollTopRef.current, !!props.scrollFromHostRef?.current)
         props.onContentApplied?.()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [editor, props.markdown, props.contentVersion, props.scrollTopRef, settleScroll, markLongDocument])
+    }, [editor, props.markdown, props.contentVersion, props.scrollTopRef, settleScroll, markLongDocument, showFirstEditWarning])
 
     useEffect(() => {
         try {
@@ -885,7 +898,7 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
                 {firstEditWarning && !props.options?.readOnly &&
                     <div className="td-first-edit-warning" role="status">
                         <span className="td-first-edit-warning-text" />
-                        <button className="td-first-edit-warning-close" aria-label="Close" onClick={() => setFirstEditWarning(false)}>×</button>
+                        <button className="td-first-edit-warning-close" aria-label="Close" onClick={() => showFirstEditWarning(false)}>×</button>
                     </div>}
             </div>
             <div id="editor" />

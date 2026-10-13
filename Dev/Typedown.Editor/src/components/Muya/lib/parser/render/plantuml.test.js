@@ -21,6 +21,12 @@ test('a server of the person\'s own draws it instead', () => {
   expect(div.querySelector('img').getAttribute('src')).toBe('http://192.168.1.5:8080/plantuml/svg/~h41202d3e2042')
 })
 
+test('an export as pictures requests PNG from the configured server', () => {
+  const div = document.createElement('div')
+  Diagram.parse('A -> B').insertImgElement(div, 'http://192.168.1.5:8080/plantuml/', 'png')
+  expect(div.querySelector('img').getAttribute('src')).toBe('http://192.168.1.5:8080/plantuml/png/~h41202d3e2042')
+})
+
 test('an address that is not http(s) is the default server', () => {
   for (const value of ['', '  ', 'javascript:alert(1)', 'file:///C:/x', 'plantuml.local']) {
     expect(plantUmlServer(value)).toBe('https://www.plantuml.com/plantuml')

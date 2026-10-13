@@ -23,6 +23,149 @@ const DIAGRAM_TYPE = [
   'vega-lite'
 ]
 
+// Use the actual exported heading IDs for the HTML/PDF contents. A second pass over Markdown lines
+// misses setext headings, reads hashes in code fences, and disagrees with the parser about trailing hashes.
+const fillExportToc = (container, options = {}) => {
+  const placeholders = container.querySelectorAll('.export-toc-placeholder')
+  if (!placeholders.length) return
+  const headings = [...container.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]')]
+    .filter(heading => heading.id && heading.textContent.trim())
+  if (!options.tocIncludeTopHeading && headings[0]?.tagName === 'H1') headings.shift()
+  for (const placeholder of placeholders) {
+    if (!headings.length) {
+      placeholder.remove()
+      continue
+    }
+    const toc = document.createElement('div')
+    toc.className = 'toc-container'
+    const title = document.createElement('p')
+    title.className = 'toc-title'
+    title.textContent = options.tocTitle || 'Table of Contents'
+    toc.appendChild(title)
+    const root = document.createElement('ul')
+    root.className = 'toc-list'
+    toc.appendChild(root)
+    const levels = [{ level: Number(headings[0].tagName[1]), list: root, lastItem: null }]
+    for (const heading of headings) {
+      const level = Number(heading.tagName[1])
+      while (levels.length > 1 && level < levels[levels.length - 1].level) levels.pop()
+      if (levels.length === 1 && level < levels[0].level) levels[0].level = level
+      if (level > levels[levels.length - 1].level && levels[levels.length - 1].lastItem) {
+        const nested = document.createElement('ul')
+        levels[levels.length - 1].lastItem.appendChild(nested)
+        levels.push({ level, list: nested, lastItem: null })
+      }
+      const item = document.createElement('li')
+      const line = document.createElement('span')
+      const link = document.createElement('a')
+      link.className = `toc-h${level}`
+      link.setAttribute('href', `#${heading.id}`)
+      link.textContent = heading.textContent.trim()
+      const dots = document.createElement('span')
+      dots.className = 'dots'
+      line.append(link, dots)
+      item.appendChild(line)
+      levels[levels.length - 1].list.appendChild(item)
+      levels[levels.length - 1].lastItem = item
+    }
+    placeholder.replaceWith(toc)
+  }
+}
+
+// Give dense exported tables room where the text needs it. Equal columns make a long API name
+// or prose column almost unreadable; the same proportions go into the PDF and into the XHTML rendered for other formats.
+const sizeWideTables = container => {
+  const textWidth = text => [...text].reduce((sum, character) => sum + (character.codePointAt(0) >= 0x2e80 ? 2 : character === ' ' ? 0.5 : 1), 0)
+  for (const table of container.querySelectorAll('table')) {
+    if (table.querySelector(':scope > colgroup')) continue
+    const rows = [...table.rows]
+    if (table.hasAttribute('width') || table.style.width || rows.some(row => [...row.cells].some(cell => cell.hasAttribute('width') || cell.style.width))) continue
+    const columns = Math.max(0, ...rows.map(row => [...row.cells].reduce((count, cell) => count + cell.colSpan, 0)))
+    if (columns < 3 || columns > 32) continue
+    const scores = Array(columns).fill(3)
+    const numericWidths = Array(columns).fill(0)
+    const numericOnly = Array(columns).fill(true)
+    let bodyRows = 0
+    let denseRows = 0
+    for (const row of rows) {
+      const bodyRow = [...row.cells].some(cell => cell.tagName === 'TD')
+      if (bodyRow) bodyRows++
+      let denseRow = false
+      let column = 0
+      for (const cell of row.cells) {
+        const span = Math.min(cell.colSpan, columns - column)
+        if (span === 1) {
+          const value = cell.textContent.replace(/\s+/g, ' ').trim()
+          let longestWord = 0
+          for (const word of value.split(/\s+/)) {
+            // CJK text can wrap between characters; a long URL can wrap with overflow-wrap.
+            const pieces = word.split(/([\u2e80-\u9fff])/)
+            for (const piece of pieces) longestWord = Math.max(longestWord, textWidth(piece))
+          }
+          // A short table can still wrap badly when a cell contains one long identifier,
+          // URL or path, even if the whole cell has fewer than 45 characters.
+          if (bodyRow && longestWord >= 24) denseRow = true
+          longestWord = Math.min(18, longestWord)
+          const measuredLength = textWidth(value)
+          const length = Math.min(70, measuredLength)
+          if (bodyRow && measuredLength >= 45) denseRow = true
+          // A paragraph needs room for several words, not just its longest word. In a
+          // narrow paper table the old 0.4 factor gave the Notes column only ~19%.
+          scores[column] = Math.max(scores[column], longestWord + 0.85 * Math.max(0, length - longestWord))
+          if (cell.tagName === 'TD' && value) {
+            if (/^[+\-−]?\d[\d.,%]*$/u.test(value)) {
+              const width = [...value].reduce((sum, character) => sum + (/\d/u.test(character) ? 7.2 : character === '.' || character === ',' ? 4.5 : 9.5), 0)
+              numericWidths[column] = Math.max(numericWidths[column], width)
+            }
+            else numericOnly[column] = false
+          }
+        }
+        column += span
+      }
+      if (denseRow) denseRows++
+    }
+    // A short 3–5 column table reads well at the normal size. Compact layout is for tables where
+    // several rows contain long identifiers, URLs or descriptions, as well as tables with 6+ columns.
+    if (columns < 6 && (bodyRows < 2 || denseRows / bodyRows < 0.4)) continue
+    const widths = Array(columns).fill(0)
+    const remaining = new Set(scores.map((_, index) => index))
+    // At A4's default PDF margins the table has about 537 CSS pixels. Give numeric
+    // cells enough width for the longest value before sharing the remaining room.
+    const minimum = Math.max(4.2, 100 / (2.35 * columns))
+    const minimums = scores.map((_, index) => numericOnly[index] && numericWidths[index]
+      ? Math.max(minimum, 100 * (numericWidths[index] + 8) / 537)
+      : minimum)
+    const minimumTotal = minimums.reduce((sum, width) => sum + width, 0)
+    if (minimumTotal > 85) minimums.forEach((width, index) => { minimums[index] = width * 85 / minimumTotal })
+    const maximum = Math.max(30, Math.min(45, 420 / columns))
+    let available = 100
+    while (remaining.size) {
+      const total = [...remaining].reduce((sum, index) => sum + scores[index], 0)
+      const below = [...remaining].find(index => available * scores[index] / total < minimums[index])
+      const above = [...remaining].find(index => available * scores[index] / total > maximum)
+      const limited = below ?? above
+      if (limited === undefined) {
+        for (const index of remaining) widths[index] = available * scores[index] / total
+        break
+      }
+      widths[limited] = below !== undefined ? minimums[limited] : maximum
+      available -= widths[limited]
+      remaining.delete(limited)
+    }
+    const units = widths.map(width => Math.round(width * 100))
+    units[units.length - 1] += 10000 - units.reduce((sum, width) => sum + width, 0)
+    const colgroup = document.createElement('colgroup')
+    for (const width of units) {
+      const col = document.createElement('col')
+      col.style.width = `${width / 100}%`
+      colgroup.appendChild(col)
+    }
+    table.prepend(colgroup)
+    table.classList.add('export-wide-table')
+    table.setAttribute('data-export-col-widths', units.join(','))
+  }
+}
+
 // The KaTeX stylesheet, taken raw, points its fonts at `fonts/…` next to a stylesheet the export does not
 // have: an exported page, and a PDF made from one, fell back to whatever font the browser had — "the formula
 // font is different in the PDF" (a Store review). This page has the same fonts bundled under hashed names;
@@ -171,12 +314,14 @@ class ExportHtml {
         if (functionType === 'flowchart' || functionType === 'sequence') {
           const diagram = render.parse(rawCode)
           diagramContainer.innerHTML = ''
-          diagram.drawSVG(diagramContainer, options)
+          await diagram.drawSVG(diagramContainer, options)
         }
         if (functionType === 'plantuml') {
           const diagram = render.parse(rawCode)
           diagramContainer.innerHTML = ''
-          diagram.insertImgElement(diagramContainer)
+          // A format that takes pictures gets a PNG, while the editor and HTML export keep the sharper SVG.
+          // Use the same PlantUML server as the live preview in either case.
+          diagram.insertImgElement(diagramContainer, this.options?.plantUmlServer, this.options?.diagramsAsPictures ? 'png' : 'svg')
         }
         if (functionType === 'vega-lite') {
           await render(diagramContainer, JSON.parse(rawCode), options)
@@ -202,11 +347,13 @@ class ExportHtml {
   }
 
   // render pure html by marked
-  async renderHtml(toc) {
+  async renderHtml(toc, tocOptions) {
     this.mathRendererCalled = false
     let html = marked(this.markdown, {
       superSubScript: this.options?.superSubScript ?? false,
-      footnote: this.options?.footnote ?? false,
+      // The editor enables footnotes by default. The host does not send this option, so keep the same default
+      // when rendering for HTML and PDF exports and for other formats; otherwise [^id] stays literal Markdown there.
+      footnote: this.options?.footnote ?? true,
       isGitlabCompatibilityEnabled: this.options?.isGitlabCompatibilityEnabled ?? false,
       baseUrl: this.options?.baseUrl,
       highlight(code, lang) {
@@ -249,6 +396,8 @@ class ExportHtml {
     exportContainer.classList.add('ag-render-container')
     exportContainer.innerHTML = html
     document.body.appendChild(exportContainer)
+    fillExportToc(exportContainer, tocOptions)
+    sizeWideTables(exportContainer)
 
     // render only render the light theme of mermaid and diragram...
     // The container goes whatever happens: one left behind showed the rendered document under the editor, in every mode.
@@ -287,7 +436,7 @@ class ExportHtml {
 
     // WORKAROUND: Hide Prism.js style when exporting or printing. Otherwise the background color is white in the dark theme.
     const highlightCssStyle = printOptimization ? `@media print { ${highlightCss} }` : highlightCss
-    const html = this._prepareHtml(await this.renderHtml(options.toc), options)
+    const html = this._prepareHtml(await this.renderHtml(options.toc, options), options)
     const katexCssStyle = this.mathRendererCalled ? withAbsoluteKatexFonts(katexCss) : ''
     this.mathRendererCalled = false
 
@@ -355,6 +504,17 @@ class ExportHtml {
     }
     .markdown-body table {
       display: table;
+    }
+    .markdown-body table.export-wide-table {
+      table-layout: fixed;
+      width: 100%;
+      font-size: 0.8em;
+    }
+    .markdown-body table.export-wide-table td,
+    .markdown-body table.export-wide-table th {
+      overflow-wrap: anywhere;
+      padding-left: 3px;
+      padding-right: 3px;
     }
     .markdown-body img[data-align="center"] {
       display: block;

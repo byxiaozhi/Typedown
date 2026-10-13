@@ -140,6 +140,11 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
 - `table-backspace-check.js` — Backspace in a table cell stays in that cell: one too many after emptying a cell went on
   into the cell before (or out of the table into the heading above), deleted its text, and the typing landed there. An
   empty table still becomes a paragraph with Backspace in its first cell.
+- `xhtml-footnote-check.js` — RenderXhtml turns numbered, named and multi-paragraph footnotes into references and
+  note content for a host writing another format, even though the host does not send a footnote setting.
+- `export-anchors-check.js` — the HTML that becomes the PDF links its contents to the headings the parser rendered
+  (not to a scan of the source lines, which found headings inside code fences and missed setext ones), and a dense
+  table gets column widths by its content.
 - `export-pdf-check.js` — the exported HTML carries what the PDF is made from: images by absolute path (so
   they survive being opened from a temp file) and KaTeX fonts by real address (so a formula keeps its font).
   A PDF is then produced from that HTML with a document outline, and the outline is checked to have an entry

@@ -1584,9 +1584,22 @@ Diagram.prototype.drawSVG = function(container, options) {
   }
 
   var Theme = Diagram.themes[options.theme];
-  new Theme(this, options, function(drawing) {
-      drawing.draw(div);
-    });
+  // The theme may wait for its web font before drawing. Let callers that serialize the
+  // result wait until the SVG exists in the container.
+  return new Promise((resolve, reject) => {
+    try {
+      new Theme(this, options, function(drawing) {
+        try {
+          drawing.draw(div);
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
 }; // end of drawSVG
 
 

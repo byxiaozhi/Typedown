@@ -9,11 +9,11 @@ import ExportHtml from "services/exportHtml";
 import { errorText } from "services/errorText";
 import { htmlToMarkdown } from "services/importHtml";
 import { DEFAULT_TURNDOWN_CONFIG } from "components/Muya/lib/config";
-import { getHtmlToc, getTOC } from "services/common";
 import { resetUserIntent, takeChangeOrigin } from "services/changeOrigin";
 import { sha256Hex } from "services/sha256";
 import { classifierVersion } from "services/normalization";
 import { applyHostBackground } from "services/theme";
+import { absoluteImageUrls, svgImagesAsPng } from "services/localPaths";
 
 /** The style element with this id, appended to the head on first use. */
 // Each SVG drawing in the element (a diagram) replaced by a PNG of it, drawn at twice its size on white - less for a big
@@ -34,6 +34,12 @@ const diagramsToPictures = async (root: HTMLElement) => {
             copy.setAttribute('width', String(width))
             copy.setAttribute('height', String(height))
             copy.style.maxWidth = ''
+            // Mermaid's live stylesheet centres a mind-map root label, but that CSS is
+            // absent when this SVG is loaded as an image for rasterization. Give its text
+            // an explicit anchor so the white label stays centred in the blue circle.
+            if (copy.classList.contains('mindmapDiagram')) {
+                copy.querySelector('.section-root g.label text')?.setAttribute('text-anchor', 'middle')
+            }
             const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(copy)], { type: 'image/svg+xml' }))
             try {
                 const image = new Image()
@@ -149,7 +155,12 @@ const Editor: React.FC = () => {
         try {
             const html = await new ExportHtml(markdownRef.current ?? '', { ...optionsRef.current, diagramsAsPictures }).renderHtml(undefined)
             const body = new DOMParser().parseFromString(`<!DOCTYPE html><html><body>${html}</body></html>`, 'text/html').body
-            if (diagramsAsPictures) await diagramsToPictures(body)
+            if (diagramsAsPictures) {
+                // Local SVGs already visible in the editor are drawn into PNGs for a format that takes no SVG,
+                // as they are when copied to the clipboard. Resolve relative paths first.
+                body.innerHTML = svgImagesAsPng(absoluteImageUrls(body.innerHTML))
+                await diagramsToPictures(body)
+            }
             transport.postMessage('RenderedXhtml', { token, xhtml: new XMLSerializer().serializeToString(body) })
         } catch (e) {
             transport.postMessage('RenderedXhtml', { token, error: errorText(e) })
@@ -319,7 +330,9 @@ const Editor: React.FC = () => {
         // The theme and the user's own CSS style the editor, so the exported file should carry them too —
         // otherwise a document looks different the moment it leaves the app.
         const styling = [optionsRef.current?.themeCss, optionsRef.current?.editionCss, optionsRef.current?.customCss].filter(Boolean).join('\n')
-        const generateOption: any = { printOptimization: false, title, toc: getHtmlToc(getTOC(markdownRef.current ?? '').toc), ...options }
+        // Build the export TOC from the headings the Markdown parser actually rendered. Scanning source
+        // lines mistakes code fences for headings and gives different IDs to formatted headings.
+        const generateOption: any = { printOptimization: false, title, toc: '<div class="export-toc-placeholder"></div>', ...options }
         if (styling) generateOption.extraCss = [generateOption.extraCss, styling].filter(Boolean).join('\n')
         const baseUrl = basePath ? `file:///${basePath.replaceAll('\\', '/')}/` : undefined
         if (type == 'print') {
