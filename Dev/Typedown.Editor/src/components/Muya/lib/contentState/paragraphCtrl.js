@@ -536,6 +536,10 @@ const paragraphCtrl = ContentState => {
 
   ContentState.prototype.updateParagraph = function (paraType, insertMode = false) {
     this.trimBlockSelection()
+    // The blocks re-rendered afterwards are those around the selection as it is now. The range kept from the last
+    // render is where the caret was then: a selection extended with the keyboard since renders nothing, so the range
+    // could end inside the selection, in a block the command is about to take away.
+    this.setNextRenderRange()
     const { start, end } = this.cursor
     const block = this.getBlock(start.key)
     const { text, type } = block

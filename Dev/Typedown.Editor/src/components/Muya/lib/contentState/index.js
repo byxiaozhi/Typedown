@@ -202,16 +202,24 @@ class ContentState {
     })
 
     // The `endKey` may already be removed from blocks if range was selected via keyboard (GH#1854).
+    // A key no longer among the top-level blocks is dropped for the page as well as for the blocks rendered: the
+    // page replaces its elements from startKey to endKey with what is rendered here, and rendering to the end of the
+    // document while replacing only up to a stale endKey left the old elements after it on the page a second time
+    // (a paragraph command on a selection made with the keyboard drew the block after the selection twice).
     let startIndex = startKey ? blocks.findIndex(block => block.key === startKey) : 0
+    let renderStartKey = startKey
     if (startIndex === -1) {
       startIndex = 0
+      renderStartKey = null
     }
 
     let endIndex = blocks.length
+    let renderEndKey = null
     if (endKey) {
       const tmpEndIndex = blocks.findIndex(block => block.key === endKey)
       if (tmpEndIndex >= 0) {
         endIndex = tmpEndIndex + 1
+        renderEndKey = endKey
       }
     }
 
@@ -219,7 +227,7 @@ class ContentState {
 
     this.setNextRenderRange()
     this.stateRender.collectLabels(blocks)
-    this.stateRender.partialRender(blocksToRender, activeBlocks, matches, startKey, endKey)
+    this.stateRender.partialRender(blocksToRender, activeBlocks, matches, renderStartKey, renderEndKey)
     if (isRenderCursor) {
       this.setCursor()
     } else {
