@@ -3,7 +3,7 @@ import { insertAfter, operateClassName } from '../../../utils/domManipulate'
 import { CLASS_OR_ID } from '../../../config'
 
 export default function loadImageAsync (imageInfo, attrs, className, imageClass) {
-  const { src, isUnknownType } = imageInfo
+  const { src } = imageInfo
   let id
   let isSuccess
   let w
@@ -22,7 +22,11 @@ export default function loadImageAsync (imageInfo, attrs, className, imageClass)
   }
   if (reload) {
     id = getUniqueId()
-    loadImage(src, isUnknownType)
+    // The picture itself is the test of whether an address is one, also when it has no picture extension: a HEAD
+    // request asked first refused shields.io badges ("image/svg+xml;charset=utf-8"), servers that answer HEAD with
+    // 403 (signed storage links), BMPs and pictures sent as application/octet-stream - all drawn fine by the browser
+    // (todo #18, remote-image-check.js). A page or a missing file still fails to load as a picture.
+    loadImage(src)
       .then(({ url, width, height }) => {
         const imageText = document.querySelector(`#${id}`)
         const img = document.createElement('img')

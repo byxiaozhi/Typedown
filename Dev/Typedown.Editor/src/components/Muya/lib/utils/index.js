@@ -230,7 +230,8 @@ export const checkImageContentType = url => {
     if (req.readyState === XMLHttpRequest.DONE) {
       if (req.status === 200) {
         const contentType = req.getResponseHeader('Content-Type')
-        if (/^image\/(?:jpeg|png|gif|svg\+xml|webp)$/.test(contentType)) {
+        // Any picture type, with or without parameters ("image/svg+xml;charset=utf-8").
+        if (/^image\/[\w.+-]+\s*(?:;|$)/i.test(contentType || '')) {
           settle(true)
         } else {
           settle(false)

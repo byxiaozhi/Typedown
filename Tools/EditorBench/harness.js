@@ -54,8 +54,9 @@ const firstDifference = (expected, actual) => {
 };
 
 /** Serves the built editor and opens it in headless Chrome behind a stub host. `window.__deliver(name, args)`
- *  sends a host message; `window.__last[name]` holds the latest page message of each kind. */
-async function openEditor() {
+ *  sends a host message; `window.__last[name]` holds the latest page message of each kind. `browserArgs`: more
+ *  Chrome switches (the host's own, Config.WebView2Args, where a check depends on them). */
+async function openEditor({ browserArgs = [] } = {}) {
   const server = http.createServer((req, res) => {
     const p = decodeURIComponent(req.url.split('?')[0]);
     const f = path.join(statics, p === '/' ? 'index.html' : p);
@@ -63,7 +64,7 @@ async function openEditor() {
     fs.createReadStream(f).pipe(res);
   });
   await new Promise(r => server.listen(0, '127.0.0.1', r));
-  const browser = await puppeteer.launch({ executablePath: process.env.CHROME || '/opt/google/chrome/chrome', headless: true, args: ['--no-sandbox'] });
+  const browser = await puppeteer.launch({ executablePath: process.env.CHROME || '/opt/google/chrome/chrome', headless: true, args: ['--no-sandbox', ...browserArgs] });
   const close = async () => { await browser.close(); server.close(); };
   const page = await browser.newPage();
   const settings = { markdown: '', sourceCode: true, readOnly: false, fontSize: 16, lineHeight: 1.6, editorAreaWidth: '900px', tabSize: 4, textDirection: 'auto', preferLooseListItem: true, listIndentation: '1', tableAlignColumns: false, basePath: '/tmp', loadId: 1 };

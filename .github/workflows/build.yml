@@ -119,6 +119,7 @@ jobs:
           node renderer-failure-check.js
           node spec-check.js
           node link-image-check.js
+          node remote-image-check.js
           node diagram-picture-check.js
           node table-backspace-check.js
           node xhtml-footnote-check.js

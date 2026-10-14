@@ -58,6 +58,7 @@ CI 的“Test editor integration”一步运行这些：
 - `renderer-failure-check.js`: What the page does when a part of it fails: a renderer that cannot be loaded (Mermaid's script refused), and an error nothing catches.
 - `spec-check.js`: Drives every CommonMark 0.31.2 example through the editor and locks what comes back out.
 - `link-image-check.js`: A picture inside a link ([![alt](src)](url)) is drawn inside the link, in its own box.
+- `remote-image-check.js`: Pictures on the web (todo #18, "network images do not show").
 - `diagram-picture-check.js`: Diagrams rendered as pictures (RenderXhtml with diagramsAsPictures, what a host turning the document into another format asks for): a big diagram still becomes a picture - drawn at twice its size it went past the browser's canvas limits and came out empty ("data:,") - and each picture's text says what it was: the diagram's kind and the start of its source, not just "diagram".
 - `table-backspace-check.js`: Backspace in a table cell stays in that cell: one Backspace too many after emptying a cell went to the end of the cell before, the next deleted that cell's text and what was typed next landed there - a reader saw "a cell emptied takes no typing" and lost its neighbour's text.
 - `xhtml-footnote-check.js`: The document rendered as XHTML for another format (RenderXhtml) carries its footnotes as section.footnotes and a.footnote-ref, as the HTML export does: the host sends no footnote option, and the export uses the editor's own default (footnotes on) - [^1] stayed literal Markdown there.

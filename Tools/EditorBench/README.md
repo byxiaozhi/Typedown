@@ -132,6 +132,9 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
   text is not left marked failed once the picture is drawn, and a reference to a missing file is still marked
   failed.
 - `link-image-check.js` — a picture inside a link (`[![alt](src)](url)`) is drawn inside the link, in its own box.
+- `remote-image-check.js` — pictures on the web (stubbed, no network) are drawn whatever their address looks like:
+  a badge sent as `image/svg+xml;charset=utf-8`, a server that refuses HEAD, a BMP, a picture sent as
+  `application/octet-stream`, http, a redirect; a page or a missing file is still marked failed (todo #18).
   Its icons were `<a>` elements inside the link's `<a>`, so a small document built from the HTML closed the link
   early and left the box empty (a big document is drawn in pieces and was spared).
 - `diagram-picture-check.js` — diagrams rendered as pictures (RenderXhtml with diagramsAsPictures): a 9000×9000
