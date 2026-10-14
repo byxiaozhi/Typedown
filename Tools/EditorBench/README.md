@@ -145,6 +145,8 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
 - `export-anchors-check.js` — the HTML that becomes the PDF links its contents to the headings the parser rendered
   (not to a scan of the source lines, which found headings inside code fences and missed setext ones), and a dense
   table gets column widths by its content.
+- `wordcount-mode-check.js` — the word count is the same in the visual editor and in source mode (source mode counted
+  every character and split words at spaces only, so a mode switch moved the count with nothing written).
 - `export-pdf-check.js` — the exported HTML carries what the PDF is made from: images by absolute path (so
   they survive being opened from a temp file) and KaTeX fonts by real address (so a formula keeps its font).
   A PDF is then produced from that HTML with a document outline, and the outline is checked to have an entry

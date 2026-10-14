@@ -7,6 +7,7 @@ import { getTOC } from "services/common";
 import { minimalChange } from "services/minimalChange";
 import { EXTERNAL_CHANGE_CLASS, EXTERNAL_CHANGE_MS, scrollTargetForChange } from "services/externalChange";
 import { setVimState, vimCommand } from "services/vim";
+import { wordCount as countWords } from 'components/Muya/lib/utils';
 require('codemirror/mode/markdown/markdown');
 require('codemirror/keymap/vim');
 require('codemirror/addon/dialog/dialog.css');
@@ -278,7 +279,10 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     }, [editor, props.cursor])
 
     const handleCodeMirrorState = useCallback((value: string) => {
-        const wordCount = { character: value.length, word: value.split(' ').length }
+        // Counted as the visual editor counts (Muya's wordCount): source mode had its own count (every character,
+        // words split at spaces only), so a mode switch moved the count with nothing written - and what follows the
+        // count, as edits, took the jump for writing.
+        const wordCount = countWords(value)
         const { toc } = getTOC(value)
         const state = { wordCount, toc, cur: toc[0] }
         onStateChange(state)

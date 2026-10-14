@@ -62,6 +62,7 @@ CI 的“Test editor integration”一步运行这些：
 - `table-backspace-check.js`: Backspace in a table cell stays in that cell: one Backspace too many after emptying a cell went to the end of the cell before, the next deleted that cell's text and what was typed next landed there - a reader saw "a cell emptied takes no typing" and lost its neighbour's text.
 - `xhtml-footnote-check.js`: The document rendered as XHTML for another format (RenderXhtml) carries its footnotes as section.footnotes and a.footnote-ref, as the HTML export does: the host sends no footnote option, and the export uses the editor's own default (footnotes on) - [^1] stayed literal Markdown there.
 - `export-anchors-check.js`: The HTML that becomes the PDF must link its contents to the headings the parser actually rendered.
+- `wordcount-mode-check.js`: The word count is the same in the visual editor and in source mode: source mode counted every character and split words at spaces only, so a mode switch moved the count with nothing written, and what follows the count's changes as edits took the jump for writing.
 <!-- END generated: editor-checks -->
 
 ## Windows 端到端测试
