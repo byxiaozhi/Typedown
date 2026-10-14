@@ -79,6 +79,26 @@ const samples = [
     expect: ['# TitleMore'],
     absent: ['# Title\n\nMore'],
   },
+  // Plain text (no HTML on the clipboard: Notepad, a chat window) is read as Markdown. Indentation that every line shares
+  // is not structure: a passage whose paragraphs are indented came in as an indented code block.
+  {
+    name: 'plain text with tab-indented paragraphs is text, not a code block',
+    text: '\t第一段文字，开头缩进。\r\n\r\n\t第二段文字。\r\n',
+    expect: ['第一段文字，开头缩进。\n\n第二段文字。'],
+    absent: ['```', '    第一段'],
+  },
+  {
+    name: 'plain text indented by four spaces, pasted as plain text, is text',
+    type: 'pasteAsPlainText',
+    text: '    The first paragraph.\n\n    The second one.',
+    expect: ['The first paragraph.\n\nThe second one.'],
+    absent: ['```', '    The first'],
+  },
+  {
+    name: 'plain Markdown whose fenced code is indented inside keeps it',
+    text: 'Run this:\n\n```\n    x()\n```\n',
+    expect: ['```\n    x()\n```'],
+  },
   {
     name: 'a javascript: address in a late-load attribute is not made a picture address',
     html: `<p>x</p><p><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-original="javascript:window.__typedownXss.push('lazy')" alt="bad"></p><p><img src="missing://x" onerror="window.__typedownXss.push('onerror')" alt="ev"></p>`,
@@ -102,7 +122,7 @@ const samples = [
         await page.keyboard.press('End');
         await pause(200);
       }
-      await page.evaluate(html => window.__deliver('Paste', { type: 'normal', text: '', html }), sample.html);
+      await page.evaluate(s => window.__deliver('Paste', { type: s.type || 'normal', text: s.text || '', html: s.html || '' }), sample);
       await pause(1200);
       const md = (await flush()).replace(/\r\n/g, '\n');
       // A string is looked for as it is; a pattern where only the meaning is fixed (a table's padding is the editor's).

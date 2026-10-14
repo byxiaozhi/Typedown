@@ -2,6 +2,7 @@
 import { PARAGRAPH_TYPES, PREVIEW_DOMPURIFY_CONFIG, HAS_TEXT_BLOCK_REG, IMAGE_EXT_REG, URL_REG } from '../config'
 import { sanitize, getUniqueId, getImageInfo as getImageSrc, getPageTitle } from '../utils'
 import { getImageInfo } from '../utils/getImageInfo'
+import { dedentPastedText } from '../utils/pastedText'
 
 const LIST_REG = /ul|ol/
 const LINE_BREAKS_REG = /\n/
@@ -432,7 +433,7 @@ const pasteCtrl = ContentState => {
     }
 
     const stateFragments = type === 'pasteAsPlainText' || copyType === 'copyAsMarkdown'
-      ? this.markdownToState(text)
+      ? this.markdownToState(dedentPastedText(text))
       : this.html2State(html)
 
     if (stateFragments.length <= 0) {
