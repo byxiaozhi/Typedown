@@ -386,7 +386,7 @@
  },
  "97": {
   "section": "Setext headings",
-  "out": "====\n"
+  "out": "\n====\n"
  },
  "98": {
   "section": "Setext headings",
@@ -450,7 +450,7 @@
  },
  "113": {
   "section": "Indented code blocks",
-  "out": "Foo\n    bar\n"
+  "out": "Foo\n    bar\n\n"
  },
  "114": {
   "section": "Indented code blocks",
@@ -466,8 +466,7 @@
  },
  "117": {
   "section": "Indented code blocks",
-  "out": "\n    foo\n",
-  "drift": "    foo\n"
+  "out": "\n    foo\n"
  },
  "118": {
   "section": "Indented code blocks",
@@ -883,7 +882,7 @@
  },
  "221": {
   "section": "Paragraphs",
-  "out": "aaa\n\nbbb\n"
+  "out": "aaa\n\n\nbbb\n"
  },
  "222": {
   "section": "Paragraphs",
@@ -907,19 +906,19 @@
  },
  "227": {
   "section": "Blank lines",
-  "out": "\n\naaa\n\n# aaa\n"
+  "out": "\n\naaa\n\n\n# aaa\n\n\n"
  },
  "228": {
   "section": "Block quotes",
-  "out": "> # Foo\n> \n> bar\n> baz\n"
+  "out": "> # Foo\n>\n> bar\n> baz\n"
  },
  "229": {
   "section": "Block quotes",
-  "out": "> # Foo\n> \n> bar\n> baz\n"
+  "out": "> # Foo\n>\n> bar\n> baz\n"
  },
  "230": {
   "section": "Block quotes",
-  "out": "> # Foo\n> \n> bar\n> baz\n"
+  "out": "> # Foo\n>\n> bar\n> baz\n"
  },
  "231": {
   "section": "Block quotes",
@@ -927,7 +926,7 @@
  },
  "232": {
   "section": "Block quotes",
-  "out": "> # Foo\n> \n> bar\n\nbaz\n"
+  "out": "> # Foo\n>\n> bar\n\nbaz\n"
  },
  "233": {
   "section": "Block quotes",
@@ -963,7 +962,7 @@
  },
  "241": {
   "section": "Block quotes",
-  "out": "> foo\n"
+  "out": ">\n> foo\n"
  },
  "242": {
   "section": "Block quotes",
@@ -975,7 +974,7 @@
  },
  "244": {
   "section": "Block quotes",
-  "out": "> foo\n> \n> bar\n"
+  "out": "> foo\n>\n> bar\n"
  },
  "245": {
   "section": "Block quotes",
@@ -1003,7 +1002,7 @@
  },
  "251": {
   "section": "Block quotes",
-  "out": "> > > foo\n> > \n> > bar\n> > baz\n"
+  "out": "> > > foo\n> >\n> > bar\n> > baz\n"
  },
  "252": {
   "section": "Block quotes",
@@ -1035,11 +1034,11 @@
  },
  "259": {
   "section": "List items",
-  "out": "> > 1. one\n> >    \n> >    two\n"
+  "out": "> > 1. one\n> >\n> >    two\n"
  },
  "260": {
   "section": "List items",
-  "out": "> > - one\n> > \n> > two\n"
+  "out": "> > - one\n> >\n> > two\n"
  },
  "261": {
   "section": "List items",
@@ -1047,7 +1046,7 @@
  },
  "262": {
   "section": "List items",
-  "out": "- foo\n\n  bar\n"
+  "out": "- foo\n\n\n  bar\n"
  },
  "263": {
   "section": "List items",
@@ -1227,7 +1226,7 @@
  },
  "307": {
   "section": "Lists",
-  "out": "- foo\n\n  - bar\n\n    - baz\n\n      bim\n"
+  "out": "- foo\n\n  - bar\n\n    - baz\n\n\n      bim\n"
  },
  "308": {
   "section": "Lists",

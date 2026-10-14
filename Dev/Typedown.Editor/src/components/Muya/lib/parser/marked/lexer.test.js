@@ -102,3 +102,42 @@ describe('GFM table rows with more cells than the header', () => {
     expect(cells).toEqual([['1', '2']])
   })
 })
+
+describe('blank lines between blocks are counted exactly', () => {
+  const blocks = markdown => new Lexer({ gfm: true, disableInline: true }).lex(markdown)
+    .filter(t => !/_end$/.test(t.type) && !/item_start$/.test(t.type))
+    .map(t => [t.text === '' ? 'empty' : t.type, t.blankLinesBefore, t.blankLinesAfter])
+
+  test.each([1, 2, 3, 4, 5, 6])('%i blank lines between two paragraphs', n => {
+    const empties = Math.floor((n - 1) / 2)
+    expect(blocks(`a\n${'\n'.repeat(n)}b\n`)).toEqual([
+      ['paragraph', undefined, undefined],
+      ...Array(empties).fill(['empty', undefined, undefined]),
+      ['paragraph', n, undefined]
+    ])
+  })
+
+  test('at the start and at the end of the text', () => {
+    expect(blocks('\n\n\na\n')).toEqual([['empty', undefined, undefined], ['paragraph', 3, undefined]])
+    expect(blocks('a\n\n\n\n')).toEqual([['paragraph', undefined, 3], ['empty', undefined, undefined]])
+  })
+
+  test('blank lines a list or an HTML block takes with it are a gap after it, not part of it', () => {
+    expect(blocks('- a\n\n\n\nb\n')).toEqual([['list_start', undefined, undefined], ['text', undefined, undefined],
+      ['empty', undefined, undefined], ['paragraph', 3, undefined]])
+    expect(blocks('<div>x</div>\n\n\n\nb\n')).toEqual([['html', undefined, undefined],
+      ['empty', undefined, undefined], ['paragraph', 3, undefined]])
+  })
+
+  test('two lists of different kinds keep the gap between them and stay tight', () => {
+    const tokens = new Lexer({ gfm: true, disableInline: true }).lex('- a\n- b\n\n\n- [ ] c\n')
+    expect(tokens.filter(t => t.type === 'loose_item_start')).toEqual([])
+    expect(tokens.filter(t => t.type === 'list_start').map(t => t.blankLinesBefore)).toEqual([undefined, 2])
+  })
+
+  test('the start and end of a list item are its own lines, not counted', () => {
+    const tokens = new Lexer({ gfm: true, disableInline: true }).lex('- a\n\n\n  b\n\n- c\n')
+    expect(tokens.filter(t => t.blankLinesBefore || t.blankLinesAfter).map(t => [t.text, t.blankLinesBefore, t.blankLinesAfter]))
+      .toEqual([['b', 2, undefined]])
+  })
+})

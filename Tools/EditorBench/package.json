@@ -3,7 +3,7 @@
   "private": true,
   "description": "Drives the built editor bundle in headless Chrome for regression checks and benchmarks.",
   "scripts": {
-    "check:source": "node source-stability-check.js && node first-edit-check.js && node protected-payload-check.js && node origin-check.js && node apply-edit-check.js && node reading-source-check.js && node handshake-check.js"
+    "check:source": "node source-stability-check.js && node first-edit-check.js && node protected-payload-check.js && node origin-check.js && node apply-edit-check.js && node reading-source-check.js && node handshake-check.js && node blanklines-check.js"
   },
   "devDependencies": {
     "puppeteer-core": "23.11.1",

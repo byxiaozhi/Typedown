@@ -10,6 +10,7 @@
  */
 
 import { CURSOR_ANCHOR_DNA, CURSOR_FOCUS_DNA } from '../config'
+import { isEmptyParagraph, visibleEmptyParagraphs } from './blankLines'
 
 class ExportMarkdown {
   constructor(blocks, listIndentation = 1, isGitlabCompatibilityEnabled = false, { alignTableColumns = true } = {}) {
@@ -55,6 +56,11 @@ class ExportMarkdown {
     }
     // helper for CommonMark 264
     let lastListBullet = ''
+    // Exact blank-line counts read with the document (utils/blankLines.js): where the last block with content
+    // ended in `result`, and how many empty paragraphs have followed it.
+    let lastContent = null
+    let contentEnd = 0
+    let emptyRun = 0
 
     for (const block of blocks) {
       if (block.type !== 'ul' && block.type !== 'ol') {
@@ -65,7 +71,13 @@ class ExportMarkdown {
         case 'p':
         case 'hr': {
           separate(result, indent, block)
-          result.push(this.translateBlocks2Markdown(block.children, indent))
+          if (result.length && isEmptyParagraph(block)) {
+            // A blank line, written like the ones between blocks: no trailing spaces, and only the quotation marker
+            // inside a quotation. (The text is empty, or only the caret markers of an export with a cursor.)
+            result.push(`${indent.trimEnd()}${block.children[0].text}\n`)
+          } else {
+            result.push(this.translateBlocks2Markdown(block.children, indent))
+          }
           break
         }
         case 'span': {
@@ -183,15 +195,43 @@ class ExportMarkdown {
         }
       }
       previous = block.type
+      if (isEmptyParagraph(block)) {
+        emptyRun++
+      } else {
+        const n = block.blankLinesBefore
+        if (n != null && block.blankLinesParent === block.parent && emptyRun === visibleEmptyParagraphs(n, lastContent ? 'middle' : 'start')) {
+          const lines = result.slice(contentEnd).join('').split('\n')
+          let written = 0
+          while (written < lines.length - 1 && this.isBlankLine(lines[written], indent)) written++
+          this.insertBlankLines(result, contentEnd, n - written, indent)
+        }
+        lastContent = block
+        contentEnd = result.length
+        emptyRun = 0
+      }
+    }
+    const n = lastContent && lastContent.blankLinesAfter
+    if (n != null && lastContent.blankLinesParent === lastContent.parent && emptyRun === visibleEmptyParagraphs(n, 'end')) {
+      this.insertBlankLines(result, contentEnd, n - (result.slice(contentEnd).join('').split('\n').length - 1), indent)
     }
     return result.join('')
+  }
+
+  isBlankLine(line, indent) {
+    return line.trim() === '' || line.trim() === indent.trim()
+  }
+
+  // Blank lines the empty paragraphs and the gaps around them did not write, put back where the run starts.
+  insertBlankLines(result, at, count, indent) {
+    if (count <= 0) return
+    result.splice(at, 0, ...new Array(count).fill(`${indent.trimEnd()}\n`))
   }
 
   insertLineBreak(result, indent) {
     if (!result.length) return
     // Inside a quotation the marker has to be repeated or the quotation ends; list indentation is only
     // spaces, and a line of trailing spaces is no better than an empty one — it just shows up in diffs.
-    result.push(/^ *$/.test(indent) ? '\n' : `${indent}\n`)
+    result.push(`${indent.trimEnd()}\n`)
   }
 
   normalizeParagraphText(block, indent) {

@@ -50,6 +50,11 @@ const importRegister = ContentState => {
     const parentList = [rootState]
 
     while ((token = tokens.shift())) {
+      block = null
+      // The exact blank-line counts around this block (utils/blankLines.js); a paragraph made of several text
+      // tokens takes the count after it from its last one.
+      const { blankLinesBefore } = token
+      let { blankLinesAfter } = token
       switch (token.type) {
         case 'frontmatter': {
           const { lang, style } = token
@@ -268,6 +273,7 @@ const importRegister = ContentState => {
           while (tokens[0] && tokens[0].type === 'text' && !token.followedByBlankLine) {
             token = tokens.shift()
             value += `\n${token.text}`
+            if (token.blankLinesAfter != null) blankLinesAfter = token.blankLinesAfter
           }
           block = this.createBlock('p')
           const contentBlock = this.createBlock('span', {
@@ -376,6 +382,12 @@ const importRegister = ContentState => {
         default:
           console.warn(`Unknown type ${token.type}`)
           break
+      }
+      if (block && (blankLinesBefore != null || blankLinesAfter != null)) {
+        if (blankLinesBefore != null) block.blankLinesBefore = blankLinesBefore
+        if (blankLinesAfter != null) block.blankLinesAfter = blankLinesAfter
+        // The counts hold where they were read: a block moved into a quotation or a list item leaves them behind.
+        block.blankLinesParent = block.parent
       }
     }
 

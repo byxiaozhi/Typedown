@@ -217,10 +217,8 @@
     "reasons": []
   },
   "commonmark-221": {
-    "pendingNormalization": "unknown",
-    "reasons": [
-      "formatting-changed"
-    ]
+    "pendingNormalization": "none",
+    "reasons": []
   },
   "commonmark-231": {
     "pendingNormalization": "none",

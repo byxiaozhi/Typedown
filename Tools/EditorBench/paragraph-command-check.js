@@ -28,7 +28,7 @@ const cases = [
     cmd: 'heading 2', expect: '## one\n\ntwo\n' },
   { name: 'quoting two paragraphs selected with Shift+Down leaves the third alone',
     doc: 'one\n\ntwo\n\nthree\n', click: '#ag-editor-id p.ag-paragraph', keys: ['Home', 'Shift+ArrowDown', 'Shift+ArrowDown'],
-    cmd: 'blockquote', expect: '> one\n> \n> two\n\nthree\n' },
+    cmd: 'blockquote', expect: '> one\n>\n> two\n\nthree\n' },
   { name: 'a selection starting at the very end of a paragraph does not take that paragraph in',
     doc: 'one\n\ntwo\n\nthree\n', click: '#ag-editor-id p.ag-paragraph', keys: ['End', 'Shift+ArrowDown', 'Shift+End'],
     cmd: 'blockquote', expect: 'one\n\n> two\n\nthree\n' },
@@ -56,7 +56,7 @@ const cases = [
   // drawn once).
   { name: 'quote on two paragraphs selected with Shift+Down (Chinese text)',
     doc: '第一段：要加引用。\n\n第二段：也要加引用。\n\n第三段：不该被改。\n', click: '#ag-editor-id p.ag-paragraph', keys: ['Control+Home', 'Shift+ArrowDown', 'Shift+ArrowDown'],
-    cmd: 'blockquote', expect: '> 第一段：要加引用。\n> \n> 第二段：也要加引用。\n\n第三段：不该被改。\n' },
+    cmd: 'blockquote', expect: '> 第一段：要加引用。\n>\n> 第二段：也要加引用。\n\n第三段：不该被改。\n' },
   { name: 'ordered list on a paragraph and a list, a quote after them',
     doc: '前言\n\n- 苹果\n- 香蕉\n\n> 后面的引用：不该变\n', click: '#ag-editor-id > p.ag-paragraph', keys: ['Control+Home', 'Shift+ArrowDown', 'Shift+ArrowDown', 'Shift+End'],
     cmd: 'ol-order', expect: '1. 前言\n2. 苹果\n3. 香蕉\n\n> 后面的引用：不该变\n' },

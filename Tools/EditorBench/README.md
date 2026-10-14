@@ -66,19 +66,30 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
   first must equal `spec-known.json`, the recorded behaviour of this editor. Muya is not a CommonMark renderer,
   so the baseline records what we do, not what the spec says; its point is that no editor change can quietly
   alter the document model of 652 documents. `--update` re-records, `--section <name>` or example numbers narrow
-  the run. Two examples still do not survive a second import; they are marked in the baseline and are left
-  alone on purpose, because none of them loses text and each settles after one more round:
+  the run. One example still does not survive a second import; it is marked in the baseline and is left
+  alone on purpose, because it loses no text and settles after one more round:
 
   - **7 (Tabs)** `-\t\tfoo` — tabs indenting content into a code block inside a list item. Everyday tab use is
     fine (tab-indented nested lists, `-` followed by a tab, a tab-indented second paragraph all round-trip with
     the tabs turned into spaces, once). Fixing this one means expanding tabs by column width in the parser,
     which touches every indentation decision there is.
-  - **117 (Indented code blocks)** an indented code block padded with blank lines; one leading blank line is
-    dropped. The code itself is untouched.
+
+  (117, an indented code block padded with blank lines, used to drop a leading blank line; it has been stable
+  since blank lines are counted exactly, see `blanklines-check.js`.)
 
   Example 96 (`---`, `Foo`, `---`, `Bar` ...) is read as front matter holding `Foo`: a document that opens with
   `---`, lines and a closing `---` is a front matter header, as Hugo and Jekyll read it, also with no
   blank line after it.
+- `blanklines-check.js` — N blank lines in a file are N blank lines after the first visual edit. Extra blank
+  lines show as empty paragraphs, fewer of them than there are lines (an empty paragraph is written back as two),
+  and an even run used to lose a line: 2 came back as 1, 4 as 3. The lexer now records each exact count on the
+  block after the run (or the last block, for a run at the end) and the export writes it back while the empty
+  paragraphs there are still the ones read (`Muya/lib/utils/blankLines.js`). The check imports and exports every
+  pair of block kinds (paragraph, heading, three kinds of list, quote, code, table, maths, HTML, rule) with 1-6
+  blank lines between them, the same runs at the start and the end of a document, inside a quotation and inside a
+  list item; types one key in visual mode on a sample of them; and pins what an edit of the blank lines saves
+  (Enter adds an empty paragraph, two lines; Backspace in one removes it, and the run is then written the ordinary
+  way). It failed on 679 of 1053 documents before the change.
 - `style-check.js` — lays out `style-fixture.md` (headings, lists, tables, code, quote, maths, footnote, raw
   html) and measures every element: position, size, font, weight, colour, background. A block passes if it is
   within 2px of where it was and within 1px of its size; fonts and colours must match exactly. `--update`

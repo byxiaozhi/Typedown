@@ -13,9 +13,10 @@ import ExportHtml from '../../../services/exportHtml'
 import ToolTip from './ui/tooltip'
 import '../../../assets/styles/index.css'
 
-// A top-level block's content without its identity (keys and links to its neighbours), for comparing two parses.
+// A top-level block's content without its identity (keys and links to its neighbours, and the parent a blank-line
+// count was read in), for comparing two parses.
 const blockSignature = block => JSON.stringify(block, (name, value) =>
-  name === 'key' || name === 'parent' || name === 'preSibling' || name === 'nextSibling' ? undefined : value)
+  name === 'key' || name === 'parent' || name === 'preSibling' || name === 'nextSibling' || name === 'blankLinesParent' ? undefined : value)
 
 // How many top-level blocks at the start (head) and at the end (tail) two block lists share.
 function unchangedEnds(oldBlocks, newBlocks) {
