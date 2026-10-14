@@ -405,7 +405,14 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
                     lineNumbers: true,
                     lineWrapping: true,
                     readOnly: !!props.options?.readOnly,
-                    keyMap: vim ? 'vim' : 'default'
+                    keyMap: vim ? 'vim' : 'default',
+                    // CodeMirror's own history is not the document's: these ask the host for its undo and redo (Vim keeps
+                    // its own keys).
+                    extraKeys: vim ? {} : {
+                        'Ctrl-Z': () => transport.postMessage('HistoryRequested', { redo: false }),
+                        'Ctrl-Y': () => transport.postMessage('HistoryRequested', { redo: true }),
+                        'Shift-Ctrl-Z': () => transport.postMessage('HistoryRequested', { redo: true }),
+                    }
                 }}
                 onChange={handleCodeMirrorContent}
                 onSelection={handleCodeMirrorSelection}

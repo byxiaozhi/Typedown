@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+/// <summary>
+/// KY01: Ctrl+Z and Ctrl+Y are the host's undo and redo, however close Ctrl and the letter come. The keyboard hook read
+/// Ctrl as the web view's thread had it: a chord sent at once (a fast hand, a busy page, a macro key) was taken for a
+/// plain Z, and the page made its own undo (the browser's in the visual editor, CodeMirror's in source mode), apart from
+/// the host's history. And a Ctrl let go outside the window is not still down when it comes back.
+/// </summary>
+internal static partial class Program
+{
+    private static async Task KY01(List<string> notes)
+    {
+        using var c = await Session("e2e KY01");
+        var id = await Open(c, Fixture("ky01.md", "# KY01\n\nSome text.\n"));
+        var windowId = await WindowIdOf(c, id);
+        var window = await WindowOf(windowId, c);
+        // What the page's own keydown listeners and its history saw: a key the host took never reaches it.
+        const string install = "(() => { window.__ky = []; if (!window.__kyOn) { window.__kyOn = 1; " +
+            "document.addEventListener('keydown', e => window.__ky.push('kd:' + e.key), true); " +
+            "document.addEventListener('beforeinput', e => { if (e.inputType.startsWith('history')) window.__ky.push('bi:' + e.inputType) }, true); } return 'ok' })()";
+        async Task<string> Text() => (string?)(await Get(c, id))["text"] ?? "";
+        async Task<string> PageSaw() => (string?)(await c.Call("test.editor.eval", new { windowId, script = "JSON.stringify(window.__ky)" }))["result"] ?? "";
+        async Task Ready()
+        {
+            await Activate(window);
+            await c.Call("test.editor.focus", new { windowId });
+            await Task.Delay(200);
+            await c.Call("test.editor.eval", new { windowId, script = install });
+        }
+        string? other = null;
+        try
+        {
+            foreach (var (mode, letter) in new[] { ("visual", 'Q'), ("source", 'W') })
+            {
+                await c.Call("window.setView", new { windowId, mode });
+                await Task.Delay(1000);
+                await TypeInto(c, id, letter.ToString());
+                await WaitForPage(c, id, t => t.Contains(letter), "the keystroke");
+                await Task.Delay(500);
+                // Ctrl and Z in one go, as a tool sends them.
+                await Ready();
+                Keys(("ctrl", (ushort)0x5A));
+                await Task.Delay(1000);
+                var undoSaw = await PageSaw();
+                var undone = await Text();
+                notes.Add($"{mode}: Ctrl+Z at once - page saw {undoSaw}; text '{undone.Replace("\n", "\\n")}'");
+                Check(!undoSaw.Contains("kd:z"), $"{mode}: the host takes Ctrl+Z sent at once (the page saw {undoSaw})");
+                Check(!undone.Contains(letter), $"{mode}: and undoes the letter");
+                await Ready();
+                Keys(("ctrl", (ushort)0x59));
+                await Task.Delay(1000);
+                var redoSaw = await PageSaw();
+                var redone = await Text();
+                notes.Add($"{mode}: Ctrl+Y at once - page saw {redoSaw}; text '{redone.Replace("\n", "\\n")}'");
+                Check(!redoSaw.Contains("kd:y"), $"{mode}: the host takes Ctrl+Y sent at once (the page saw {redoSaw})");
+                Check(redone.Contains(letter), $"{mode}: and its redo brings the letter back, from the same history");
+            }
+            await c.Call("window.setView", new { windowId, mode = "visual" });
+            await Task.Delay(1000);
+            // Ctrl pressed here, let go in another window: back here, S is a letter, not Ctrl+S.
+            await Ready();
+            Send(Key(0x11, false));
+            other = (string)(await c.Call("test.window.open"))["windowId"]!;
+            await Task.Delay(1500);
+            Send(Key(0x11, true));
+            await Task.Delay(300);
+            await Ready();
+            Keys("s");
+            await Task.Delay(1000);
+            var after = await Text();
+            notes.Add($"Ctrl let go in another window, then S here: text '{after.Replace("\n", "\\n")}'");
+            Check(after.Contains('s'), "a Ctrl let go in another window is not still down here: S types an s");
+        }
+        finally
+        {
+            try { Send(Key(0x11, true)); } catch { }
+            if (other != null) try { PostMessage(await WindowOf(other, c), 0x0010, IntPtr.Zero, IntPtr.Zero); } catch { }
+            try { await c.Call("window.setView", new { windowId, mode = "visual" }); } catch { }
+        }
+    }
+}

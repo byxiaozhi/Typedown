@@ -973,6 +973,16 @@ namespace Typedown.Core.Utilities
         public static bool GetIsKeyDown(VirtualKey key) => (GetKeyState((int)key) & 0x80) > 0;
 
         [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern short GetAsyncKeyState(int vKey);
+
+        /// <summary>
+        /// Whether the key is down for the system, now (GetAsyncKeyState), not for this thread's message queue (GetKeyState).
+        /// A low-level keyboard hook sees every key before any thread has read it: there a key read through GetKeyState is
+        /// as the thread last read it, while the system has already taken in every key before the one being hooked.
+        /// </summary>
+        public static bool GetIsKeyDownNow(VirtualKey key) => (GetAsyncKeyState((int)key) & 0x8000) != 0;
+
+        [DllImport("user32.dll", ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool IsIconic(IntPtr Hwnd);
 

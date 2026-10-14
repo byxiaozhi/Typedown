@@ -169,6 +169,22 @@ const Editor: React.FC = () => {
 
     // Host -> editor: how the editor is drawn right now (the settings it applied), for checking that a setting reached
     // the page and not only the host.
+    // The document has one history, the host's. An undo or redo the browser would make itself (a Ctrl+Z the host's
+    // shortcut did not take, Ctrl+Shift+Z) is not made: the host is asked for its own instead. The browser's undo put
+    // the text back apart from the host's history, which a redo then brought back again.
+    useEffect(() => {
+        const onBeforeInput = (e: InputEvent) => {
+            // In the document only: a box of the page's own (a link's address, a picture's title) keeps its undo.
+            const inDocument = (e.target as Element | null)?.closest?.('#ag-editor-id')
+            if (inDocument && (e.inputType === 'historyUndo' || e.inputType === 'historyRedo')) {
+                e.preventDefault()
+                transport.postMessage('HistoryRequested', { redo: e.inputType === 'historyRedo' })
+            }
+        }
+        document.addEventListener('beforeinput', onBeforeInput, true)
+        return () => document.removeEventListener('beforeinput', onBeforeInput, true)
+    }, [])
+
     useEffect(() => transport.addListener<{ token: number }>('QueryEditorStyle', ({ token }) => {
         const element = document.querySelector('#ag-editor-id') || document.querySelector('.CodeMirror')
         const style = element ? getComputedStyle(element) : null
