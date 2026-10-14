@@ -278,13 +278,29 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         cursorRef.current = { anchor, head }
     }, [editor, props.cursor])
 
+    const countRef = useRef<{ time: number, value: any, timer?: any }>({ time: 0, value: null })
+
     const handleCodeMirrorState = useCallback((value: string) => {
         // Counted as the visual editor counts (Muya's wordCount): source mode had its own count (every character,
         // words split at spaces only), so a mode switch moved the count with nothing written - and what follows the
-        // count, as edits, took the jump for writing.
-        const wordCount = countWords(value)
+        // count, as edits, took the jump for writing. On a long document at most every 300 ms while typing, and once
+        // more when it stops, as the visual editor does: counting it is a share of every keystroke.
+        const counted = countRef.current
+        clearTimeout(counted.timer)
+        const now = Date.now()
+        if (value.length < 50000 || !counted.value || now - counted.time >= 300) {
+            counted.time = now
+            counted.value = countWords(value)
+        } else {
+            counted.timer = setTimeout(() => {
+                counted.time = Date.now()
+                counted.value = countWords(value)
+                const { toc } = getTOC(value)
+                onStateChange({ wordCount: counted.value, toc, cur: toc[0] })
+            }, 300)
+        }
         const { toc } = getTOC(value)
-        const state = { wordCount, toc, cur: toc[0] }
+        const state = { wordCount: counted.value, toc, cur: toc[0] }
         onStateChange(state)
     }, [onStateChange])
 
