@@ -6,6 +6,13 @@ import { edit, noop } from './utils'
  * Block-Level Rules
  */
 
+// Front matter at the top of a document: YAML between --- lines, TOML between +++, JSON between ;;; or { }. A closing
+// fence is a line of its own (trailing spaces allowed) and may be followed directly by the document's first block, as
+// Hugo, Jekyll and most templates write it; requiring a blank line after it made such a header a rule and a setext
+// heading of its last line ("---" under "title: x"). The { } form still needs the blank line: a lone "}" line is too
+// ordinary to end a header on.
+export const FRONT_MATTER = /^(?:(?:---[ \t]*\n([\s\S]*?\n)---[ \t]*(?=\n|$))|(?:\+\+\+[ \t]*\n([\s\S]*?\n)\+\+\+[ \t]*(?=\n|$))|(?:;;;[ \t]*\n([\s\S]*?\n);;;[ \t]*(?=\n|$))|(?:\{\n([\s\S]+?)\}(?=\n{2,}|\n{1,2}$)))/
+
 export const block = {
   newline: /^\n+/,
   code: /^( {4}[^\n]+\n*)*( {4}[^\n]+(?=\n+|$)*)/,
@@ -37,7 +44,7 @@ export const block = {
   text: /^[^\n]+/,
 
   // extra
-  frontmatter: /^(?:(?:---\n([\s\S]+?)---)|(?:\+\+\+\n([\s\S]+?)\+\+\+)|(?:;;;\n([\s\S]+?);;;)|(?:\{\n([\s\S]+?)\}))(?=\n{2,}|\n{1,2}$)/,
+  frontmatter: FRONT_MATTER,
   multiplemath: /^\$\$\n([\s\S]+?)\n\$\$(?=\n+|$)/,
   // A whole line of the form `$$ ... $$` is display math too (Typora/Obsidian/KaTeX behaviour, upstream #26).
   multiplemathSingleLine: /^\$\$([^\n$]+?)\$\$ *(?=\n+|$)/,

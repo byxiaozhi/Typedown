@@ -382,8 +382,7 @@
  },
  "96": {
   "section": "Setext headings",
-  "out": "---\n\nFoo\n---\n\nBar\n---\n\nBaz\n",
-  "drift": "---\nFoo\n---\n\nBar\n---\n\nBaz\n"
+  "out": "---\nFoo\n---\n\nBar\n---\n\nBaz\n"
  },
  "97": {
   "section": "Setext headings",

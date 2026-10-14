@@ -7,6 +7,7 @@ import StateRender from '../parser/render'
 import { tokenizer } from '../parser'
 import { getImageInfo } from '../utils'
 import { Lexer } from '../parser/marked'
+import { FRONT_MATTER } from '../parser/marked/blockRules'
 import { loadLanguage } from '../prism/index'
 import { htmlToMarkdown } from '../../../../services/importHtml'
 import { adjustCursor } from '../../../../services/cursor'
@@ -467,7 +468,7 @@ const importRegister = ContentState => {
     // 调整光标位置，防止影响解析
     // The fences of a front matter block (found the way the lexer finds it) take no marker either, including the
     // JSON "{" and "}" that adjustCursor cannot tell from ordinary text.
-    const frontMatter = /^(?:(?:---\n([\s\S]+?)---)|(?:\+\+\+\n([\s\S]+?)\+\+\+)|(?:;;;\n([\s\S]+?);;;)|(?:\{\n([\s\S]+?)\}))(?=\n{2,}|\n{1,2}$)/.exec(markdown.replace(/^ +$/gm, ''))
+    const frontMatter = FRONT_MATTER.exec(markdown.replace(/^ +$/gm, ''))
     const fenceLines = frontMatter ? [0, frontMatter[0].split('\n').length - 1] : []
     const adjust = c => fenceLines.includes(c.line) ? null : adjustCursor(c, lines[c.line - 1], lines[c.line], lines[c.line + 1])
     // adjustCursor 对空行/HTML 行返回 null。以前的做法是把光标挪到文档末尾并追加一行放标记，
