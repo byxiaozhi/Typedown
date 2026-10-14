@@ -133,10 +133,6 @@
     <value>موافق</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>لا يمكن أن يكون المحتوى فارغًا</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>فشل إنشاء مستند جديد</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>فشل التصدير</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>تقديم ملاحظات</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>فشل الاستيراد</value>
@@ -225,14 +217,6 @@
     <value>المفتاح الاختصاري محجوز</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>إرسال</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>تم الإرسال بنجاح</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>فشل الرفع</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>برنامج تشغيل WebView2 غير مثبت</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>تمت مشاركة هذا المستند من قبل لكنه تغيّر منذ ذلك الحين. لا يستطيع HedgeDoc 1.x تحديث ملاحظة موجودة، لذا سينشئ الرفع من جديد ملاحظة جديدة برابط جديد.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>نسخ الرابط</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>رابط قابل للتحرير</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>يمكن لأي شخص لديه هذا الرابط تحرير الملاحظة.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>اضبط عنوان خادم HedgeDoc أولًا في الإعدادات ← التصدير.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>فتح في المتصفح</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>ارفع مجددًا (رابط جديد)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>رابط للقراءة فقط</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>تمت المشاركة إلى HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>لم يتغيّر المستند منذ آخر مشاركة؛ هذه هي الروابط الحالية.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>استخدام الرابط السابق</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>إبقاء</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>إعادة تحميل</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>تغيّر الملف على القرص. ستؤدي إعادة التحميل إلى تجاهل التغييرات غير المحفوظة.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>تغيّر الملف على القرص. هل تريد إعادة تحميله؟</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>تغيّر الملف على القرص</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>رفع الصور المحلية</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>جارٍ رفع الصورة {0} من {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>تم رفع {0} من {1} من الصور. تشير عناوينها في المستند الآن إلى النسخ المرفوعة؛ ويعيد "تراجع" المسارات المحلية.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>تم الإلغاء. رُفعت {0} من {1} من الصور، وتم تغيير عناوينها في المستند.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>لم يتغير:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>لا يحتوي هذا المستند على صور محلية.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>لم يتم اختيار تكوين للرفع. اختر واحدًا من الإعدادات &gt; صورة &gt; الرفع باستخدام.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>فتح الإعدادات</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>لم يتم العثور على الملف.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>لم يُرجع الرفع أي عنوان.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>تم إغلاق المستند أثناء الرفع.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>تعذّر تغيير المستند. الصورة متاحة على الإنترنت على</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>يحتوي هذا المستند على {0} من الصور المحلية. إنها ملفات على هذا الكمبيوتر، لذا لن يراها قراء الملاحظة. هل تريد رفعها أولاً؟</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>الرفع أولاً</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>المشاركة على أي حال</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} منها سبق رفعها بهذا التكوين، لذا استُخدمت عناوينها السابقة.</value>
   </data>
 </root>

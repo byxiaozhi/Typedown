@@ -137,18 +137,6 @@
     <value>發送反饋</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>聯繫方式</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Email</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>我們會非常重視您填寫的內容</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>關於</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>字體大小</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>編輯器使用的字體</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>字體</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>編輯器行高倍數</value>
@@ -353,6 +349,22 @@
     <value>自動保存</value>
     <comment>通用/自动保存</comment>
   </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>監視目前開啟的檔案，被其他程式修改後重新整理</value>
+    <comment>通用/外部修改时自动刷新</comment>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>外部修改時自動重新整理</value>
+    <comment>通用/外部修改时自动刷新</comment>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>關閉後僅在有未儲存變更時詢問，否則直接重新載入</value>
+    <comment>通用/外部修改时询问</comment>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>重新載入前詢問</value>
+    <comment>通用/外部修改时询问</comment>
+  </data>
   <data name="General.Custom" xml:space="preserve">
     <value>自訂</value>
     <comment>通用/自定义</comment>
@@ -462,7 +474,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +585,6 @@
     <value>剪貼板圖片</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>剪貼板圖片使用上傳配置</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>當插入圖片時執行的操作</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +597,6 @@
     <value>本地圖片</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>本地圖片使用上傳配置</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>圖片插入操作</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +608,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>網路圖片</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>網路圖片使用上傳配置</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>插入圖片時優先採用相對路徑</value>
@@ -670,7 +670,7 @@
     <comment>视图/编辑区域使用云母材质</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>開啟後視窗背景具有雲母背景效果</value>
+    <value>開啟後視窗背景具有雲母背景效果（需要 Windows 11）</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
@@ -680,5 +680,248 @@
   <data name="View.Window" xml:space="preserve">
     <value>視窗</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>列表縮進</value>
+    <comment>编辑器/列表缩进</comment>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>嵌套列表項寫入原始碼時的縮進；4 個空格與 Obsidian 等編輯器一致</value>
+    <comment>编辑器/嵌套列表项写入源码时的缩进；4 个空格与 Obsidian 等编辑器一致</comment>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>標記後 1 個空格</value>
+    <comment>编辑器/标记后 1 个空格</comment>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>標記後 2 個空格</value>
+    <comment>编辑器/标记后 2 个空格</comment>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>標記後 4 個空格</value>
+    <comment>编辑器/标记后 4 个空格</comment>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 空格縮進（Markdown 標準）</value>
+    <comment>编辑器/4 空格缩进（Markdown 标准）</comment>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>寬鬆列表</value>
+    <comment>编辑器/宽松列表</comment>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>新建列表項時在原始碼中用空行分隔</value>
+    <comment>编辑器/新建列表项时在源码中用空行分隔</comment>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>對齊表格列</value>
+    <comment>编辑器/对齐表格列</comment>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>在 Markdown 原始碼中用空格填充儲存格使各列對齊；關閉則保持緊湊（餵給 AI 時佔用更少 token）</value>
+    <comment>编辑器/对齐表格列说明</comment>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>段落標記</value>
+    <comment>编辑器/段落标记</comment>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>在目前段落左側顯示區塊類型（P、H1 …）</value>
+    <comment>编辑器/在当前段落旁显示块类型</comment>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>純黑</value>
+    <comment>外观/纯黑</comment>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>側邊欄預設頁</value>
+    <comment>外观/侧边栏默认页</comment>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>啟動時側邊欄顯示「檔案」還是「大綱」</value>
+    <comment>外观/启动时侧边栏显示的页面</comment>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>例如 ./${filename}.assets，可用變數：${filename} ${filedir} ${year} ${month} ${day}</value>
+    <comment>图片/路径变量说明</comment>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>記住游標位置</value>
+    <comment>常规/记住光标位置</comment>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>重新開啟文件時回到上次編輯的位置</value>
+    <comment>常规/重新打开文档时回到上次位置</comment>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>自訂樣式（CSS）</value>
+    <comment>外观/自定义样式</comment>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>附加到編輯器和匯出的 HTML/PDF 的樣式</value>
+    <comment>外观/编辑器和导出的额外样式</comment>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>例如 .markdown-body h1 { color: #c00; }  或  :root { --editorBgColor: #111; }</value>
+    <comment>外观/自定义样式示例</comment>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>總是顯示標籤列</value>
+    <comment>外观/总是显示标签栏</comment>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>只開啟一個文件時也顯示標籤列</value>
+    <comment>外观/只有一个文档时也显示标签栏</comment>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>在標籤頁中開啟檔案</value>
+    <comment>常规/在标签页中打开文件</comment>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>從檔案總管開啟的檔案進入目前視窗的新標籤頁；關閉則每次開啟新視窗</value>
+    <comment>常规/从资源管理器打开的文件进入当前窗口的标签页</comment>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>分享到 HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>伺服器</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x 位址，例如 https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>電子郵件（選填）</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>留空則匿名建立筆記；填寫帳號後筆記歸你所有</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>同時產生唯讀連結</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>發布筆記（/s/…），分享出去的連結無法被編輯</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>測試連線</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>測試</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>恢復上次開啟的所有文件</value>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>預設</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>依段落自動偵測</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>編輯器內容的文字方向，適用於阿拉伯文、希伯來文等由右至左的語言</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>由左至右</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>由右至左</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>文字方向</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>如何編寫主題</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>主題是這個資料夾裡的 CSS 檔案，寫法見隨附文件。</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>自訂主題</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>主題是主題資料夾裡的一個 CSS 檔案，寫法見 docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>（無）</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>開啟主題資料夾</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>重新載入主題</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>允許本機自動化</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>本機上以你的身分執行的程式可以讀取和編輯已開啟的文件。有程式連線時，視窗標題會顯示。</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>醒目提示程式所做的變更</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>短暫醒目提示已連線的程式修改過的文字，讓你看清哪裡變了。</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>繪製 PlantUML 圖表</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>將圖表原始碼傳送到 plantuml.com，由其繪製</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>上傳方式</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>用於插入動作為「上傳圖片」的圖片，以及 檔 &gt; 上傳本地圖片 的上傳配置</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Bucket 中的資料夾</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>公開 URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>路徑樣式位址（MinIO 及部分服務商）</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 配置不完整：請填寫 Endpoint、Bucket、Access Key ID 和 Secret Access Key。</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>上傳記錄</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>已用相同配置上傳過的圖片不會再次上傳，而是沿用之前的位址（已記錄 {0} 筆）。刪除已上傳的檔案後請清除此記錄。</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML 伺服器</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>繪製圖表的 PlantUML 伺服器（plantuml-server）位址。留空：plantuml.com。使用自己的伺服器時，圖表原始碼不會離開你手中。</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim 按鍵</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>原始碼模式下使用 Vim（:w 儲存，:q 關閉索引標籤）；閱讀模式下用 j/k、gg/G、]] 和 / 移動。視覺化編輯器中無法使用。</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>開啟記錄檔資料夾</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>匯出完成後</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>提示儲存位置</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>開啟檔案</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>開啟所在資料夾</value>
   </data>
 </root>

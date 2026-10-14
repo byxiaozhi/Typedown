@@ -21,10 +21,13 @@ const inline = {
   reflink: /^!?\[(label)\]\[(?!\s*\])((?:\\[\[\]]?|[^\[\]\\])+)\]/,
   nolink: /^!?\[(?!\s*\])((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\](?:\[\])?/,
   strong: /^__([^\s_])__(?!_)|^\*\*([^\s*])\*\*(?!\*)|^__([^\s][\s\S]*?[^\s])__(?!_)|^\*\*([^\s][\s\S]*?[^\s])\*\*(?!\*)/,
-  em: /^_([^\s_])_(?!_)|^\*([^\s*<\[])\*(?!\*)|^_([^\s<][\s\S]*?[^\s_])_(?!_|[^\spunctuation])|^_([^\s_<][\s\S]*?[^\s])_(?!_|[^\spunctuation])|^\*([^\s<"][\s\S]*?[^\s\*])\*(?!\*|[^\spunctuation])|^\*([^\s*"<\[][\s\S]*?[^\s])\*(?!\*)/,
+  // `"` is allowed right after the opening `*` (CommonMark: `(*"Share"*)` is emphasis, and the live editor
+  // already renders it that way); the old exclusion made HTML/PDF export differ from the editor (upstream #48).
+  em: /^_([^\s_])_(?!_)|^\*([^\s*<\[])\*(?!\*)|^_([^\s<][\s\S]*?[^\s_])_(?!_|[^\spunctuation])|^_([^\s_<][\s\S]*?[^\s])_(?!_|[^\spunctuation])|^\*([^\s<][\s\S]*?[^\s\*])\*(?!\*|[^\spunctuation])|^\*([^\s*<\[][\s\S]*?[^\s])\*(?!\*)/,
   code: /^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,
   br: /^( {2,}|\\)\n(?!\s*$)/,
   del: noop,
+  mark: noop,
 
   // ------------------------
   // patched
@@ -37,7 +40,7 @@ const inline = {
   emoji: noop,
 
   // TODO: make math optional GH#740
-  math: /^\$([^$]*?[^\$\\])\$(?!\$)/,
+  math: /^\$(?!\s)([^$]*?[^\s$\\])\$(?![\d$])/,
 
   // superscript and subScript
   superscript: /^(\^)((?:[^\^\s]|(?<=\\)\1|(?<=\\) )+?)(?<!\\)\1(?!\1)/,
@@ -114,13 +117,17 @@ export const gfm = Object.assign({}, normal, {
   _extended_email: /[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/,
   url: /^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/,
   _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,
-  del: /^(~~?)(?=[^\s~])([\s\S]*?[^\s~])\1(?=[^~]|$)/,
+  // Strikethrough is ~~text~~, two tildes, matching the editor. A single ~ (a range like 1~6, or a
+  // subscript) is not strikethrough — exporting it as one struck through Chinese number ranges in PDFs.
+  del: /^(~~)(?=[^\s~])([\s\S]*?[^\s~])\1(?=[^~]|$)/,
+  // ==highlight==, the same shape as del; also in the editor's own rules (parser/rules.js)
+  mark: /^(==)(?=[^\s=])([\s\S]*?[^\s=])\1(?=[^=]|$)/,
 
   // ------------------------
   // patched
 
-  // allow inline math "$" and emoji ":" and superscrpt "^" ("?=[\\<!\[`*~]|" to "?=[\\<!\[`*~:\$^]|")
-  text: /^([`~]+|[^`~])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*~:\$^]|\b_|https?:\/\/|ftp:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))|(?= {2,}\n|[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))/,
+  // allow inline math "$", emoji ":", superscript "^" and highlight "=" ("?=[\\<!\[`*~]|" to "?=[\\<!\[`*~:\$^=]|")
+  text: /^([`~]+|[^`~])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*~:\$^=]|\b_|https?:\/\/|ftp:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))|(?= {2,}\n|[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))/,
 
   // ------------------------
   // extra

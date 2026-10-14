@@ -137,17 +137,9 @@
     <value>Send Feedback</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Contact</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Email</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>We take your feedback very seriously</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Open Log Folder</value>
+    <comment>关于/打开日志文件夹</comment>
   </data>
   <data name="About.Title" xml:space="preserve">
     <value>About</value>
@@ -197,6 +189,18 @@
     <value>Extensions</value>
     <comment>编辑器/扩展</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font used for editor content. Leave empty to use the default font.</value>
+    <comment>编辑器/编辑器内容使用的字体，留空则使用默认字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Default</value>
+    <comment>编辑器/默认</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Font family</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
     <value>Default font size of editor.</value>
     <comment>编辑器/编辑器默认字号</comment>
@@ -232,6 +236,26 @@
   <data name="Editor.Style" xml:space="preserve">
     <value>Style</value>
     <comment>编辑器/样式</comment>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Auto detect per paragraph</value>
+    <comment>编辑器/按段落自动检测</comment>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Text direction of editor content, useful for Arabic, Hebrew and other right-to-left languages</value>
+    <comment>编辑器/编辑器内容的文字方向，适用于阿拉伯语、希伯来语等从右到左书写的语言</comment>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Left to right</value>
+    <comment>编辑器/从左到右</comment>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Right to left</value>
+    <comment>编辑器/从右到左</comment>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Text direction</value>
+    <comment>编辑器/文字方向</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
     <value>Adjust default indentation space for quotes and lists</value>
@@ -353,6 +377,22 @@
     <value>Auto save</value>
     <comment>通用/自动保存</comment>
   </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Watch the open file and refresh it when another program changes it</value>
+    <comment>通用/外部修改时自动刷新</comment>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Auto reload on external change</value>
+    <comment>通用/外部修改时自动刷新</comment>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>If off, reload silently unless there are unsaved changes</value>
+    <comment>通用/外部修改时询问</comment>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Ask before reload</value>
+    <comment>通用/外部修改时询问</comment>
+  </data>
   <data name="General.Custom" xml:space="preserve">
     <value>Custom</value>
     <comment>通用/自定义</comment>
@@ -462,7 +502,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -489,7 +529,7 @@
     <value>Upload Images</value>
     <comment>图片/图片上传</comment>
   </data>
-  <data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
+<data name="RestartAppIsRequireForChangesToTakeEffect" xml:space="preserve">
     <value>Restart App is require for changes to take effect</value>
     <comment>重启应用后生效</comment>
   </data>
@@ -573,10 +613,6 @@
     <value>Clipboard Image</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Clipboard image upload configuration</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Action to execute when inserting images</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +625,6 @@
     <value>Local Image</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Local image upload configuration</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Insert image action</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +636,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Web Image</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Web image upload configuration</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Prefer to use relative path when inserting images</value>
@@ -670,7 +698,7 @@
     <comment>视图/编辑区域使用云母材质</comment>
   </data>
   <data name="View.UseMicaMaterial.Description" xml:space="preserve">
-    <value>Enable the mica background effect for the window background</value>
+    <value>Give the window a Mica backdrop (requires Windows 11)</value>
     <comment>视图/开启后窗口背景具有云母背景效果</comment>
   </data>
   <data name="View.UseMicaMaterial.Title" xml:space="preserve">
@@ -680,5 +708,231 @@
   <data name="View.Window" xml:space="preserve">
     <value>Window</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>List indentation</value>
+    <comment>编辑器/列表缩进</comment>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Indentation written for nested list items. 4 spaces matches Obsidian and most other editors</value>
+    <comment>编辑器/嵌套列表项写入源码时的缩进；4 个空格与 Obsidian 等编辑器一致</comment>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 space after the marker</value>
+    <comment>编辑器/标记后 1 个空格</comment>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 spaces after the marker</value>
+    <comment>编辑器/标记后 2 个空格</comment>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 spaces after the marker</value>
+    <comment>编辑器/标记后 4 个空格</comment>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4-space indentation (Markdown standard)</value>
+    <comment>编辑器/4 空格缩进（Markdown 标准）</comment>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Loose list items</value>
+    <comment>编辑器/宽松列表</comment>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Insert a blank line between new list items in the source</value>
+    <comment>编辑器/新建列表项时在源码中用空行分隔</comment>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Align table columns</value>
+    <comment>编辑器/对齐表格列</comment>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Pad table cells so columns line up in the Markdown source. Turn off to keep tables compact (fewer tokens for AI tools)</value>
+    <comment>编辑器/对齐表格列说明</comment>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Paragraph marker</value>
+    <comment>编辑器/段落标记</comment>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Show the block type (P, H1, ...) next to the current paragraph</value>
+    <comment>编辑器/在当前段落旁显示块类型</comment>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Black (OLED)</value>
+    <comment>外观/纯黑</comment>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Side pane default page</value>
+    <comment>外观/侧边栏默认页</comment>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Which page the side pane shows when the app starts</value>
+    <comment>外观/启动时侧边栏显示的页面</comment>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>e.g. ./${filename}.assets — variables: ${filename} ${filedir} ${year} ${month} ${day}</value>
+    <comment>图片/路径变量说明</comment>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Remember cursor position</value>
+    <comment>常规/记住光标位置</comment>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Reopen documents where you left off</value>
+    <comment>常规/重新打开文档时回到上次位置</comment>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Custom CSS</value>
+    <comment>外观/自定义样式</comment>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Extra styles for the editor and exported HTML/PDF</value>
+    <comment>外观/编辑器和导出的额外样式</comment>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>e.g. .markdown-body h1 { color: #c00; }  or  :root { --editorBgColor: #111; }</value>
+    <comment>外观/自定义样式示例</comment>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Always show tabs</value>
+    <comment>外观/总是显示标签栏</comment>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Show the document tab strip even when only one document is open</value>
+    <comment>外观/只有一个文档时也显示标签栏</comment>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Open files in tabs</value>
+    <comment>常规/在标签页中打开文件</comment>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Files opened from Explorer open as a tab in the current window; off opens a new window</value>
+    <comment>常规/从资源管理器打开的文件进入当前窗口的标签页</comment>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Share to HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x address, e.g. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Email (optional)</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Leave empty to create notes anonymously; with an account the note belongs to you</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Also publish a read-only link</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Publishes the note (/s/…) so the shared link cannot be edited</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Test connection</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Restore all documents of the last session</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Custom theme</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>A theme is one CSS file in the themes folder; see docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(none)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Open the themes folder</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Themes are CSS files in this folder; the document explains the format.</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>How to write one</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Reload themes</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Allow local automation</value>
+    <comment>通用/允许本机自动化</comment>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Programs you run on this computer can read and edit open documents. The window title shows when one is connected.</value>
+    <comment>通用/允许本机自动化说明</comment>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Highlight changes made by programs</value>
+    <comment>通用/高亮程序所做的更改</comment>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Briefly highlights the text a connected program changed, so you can see what moved.</value>
+    <comment>通用/高亮程序所做的更改说明</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Draw PlantUML diagrams</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Sends the diagram's source to plantuml.com, which draws it</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Upload with</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>The upload configuration used for inserted images whose action is Upload, and by File &gt; Upload local images</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Folder in bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Public URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Path-style addresses (MinIO and some providers)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>The S3 configuration is incomplete: fill in Endpoint, Bucket, Access Key ID and Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Upload history</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>A picture already uploaded with the same configuration is not uploaded again; its earlier address is used ({0} remembered). Clear it after deleting uploaded files.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML server</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Address of the PlantUML server (plantuml-server) that draws the diagrams. Empty: plantuml.com. With a server of your own, the diagrams' source stays with you.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim keys</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim in source mode (:w saves, :q closes the tab); j/k, gg/G, ]] and / to move around in reading mode. Not in the visual editor.</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>After export</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Show where it was saved</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Open the file</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Open its folder</value>
   </data>
 </root>

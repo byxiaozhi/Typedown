@@ -25,16 +25,22 @@
                 <FontIcon Glyph="&#xe790;"/>
             </controls:ExpanderSettingItem.Icon>
             <controls:ExpanderSettingItem.State>
-                <controls:EnumNameBlock Value="{x:Bind Settings.AppTheme, Mode=OneWay}"/>
+                <!-- One list: the built-in themes and the ones from the themes folder, picked the same way. -->
+                <ComboBox x:Name="ThemeBox" MinWidth="180" SelectionChanged="OnThemeChanged"/>
             </controls:ExpanderSettingItem.State>
             <StackPanel Padding="48,16,16,16">
-                <muxc:RadioButtons ItemsSource="{x:Bind enums:Enumerable.AppThemes}" SelectedItem="{Binding SettingsViewModel.AppTheme, Mode=TwoWay}">
-                    <muxc:RadioButtons.ItemTemplate>
-                        <DataTemplate>
-                            <controls:EnumNameBlock Value="{Binding}"/>
-                        </DataTemplate>
-                    </muxc:RadioButtons.ItemTemplate>
-                </muxc:RadioButtons>
+                <TextBlock Text="{u:LocaleString Key=View.CustomTheme.Description}" TextWrapping="Wrap" Opacity="0.7"/>
+            </StackPanel>
+        </controls:ExpanderSettingItem>
+        <controls:ExpanderSettingItem Title="{u:LocaleString Key=View.CustomTheme.Title}" Description="{u:LocaleString Key=View.CustomTheme.Folder}">
+            <controls:ExpanderSettingItem.Icon>
+                <FontIcon Glyph="&#xe771;"/>
+            </controls:ExpanderSettingItem.Icon>
+            <StackPanel Padding="48,16,16,16" Orientation="Horizontal" Spacing="8">
+                <Button Content="{u:LocaleString Key=View.CustomTheme.Title}" Click="OnOpenThemeDesigner"/>
+                <Button Content="{u:LocaleString Key=View.CustomTheme.OpenFolder}" Click="OnOpenThemeFolder"/>
+                <Button Content="{u:LocaleString Key=View.CustomTheme.Refresh}" Click="OnRefreshThemes"/>
+                <Button Content="{u:LocaleString Key=View.CustomTheme.Document}" Click="OnOpenThemeDocument"/>
             </StackPanel>
         </controls:ExpanderSettingItem>
         <controls:ExpanderSettingItem Title="{u:LocaleString Key=View.UseMicaMaterial.Title}" Description="{u:LocaleString Key=View.UseMicaMaterial.Description}">
@@ -61,6 +67,18 @@
             <ToggleSwitch IsOn="{x:Bind Settings.Topmost, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
 
+        <controls:ExpanderSettingItem Title="{u:LocaleString Key=View.CustomCss.Title}" Description="{u:LocaleString Key=View.CustomCss.Description}">
+            <controls:ExpanderSettingItem.Icon>
+                <FontIcon Glyph="&#xe943;"/>
+            </controls:ExpanderSettingItem.Icon>
+            <StackPanel Padding="48,16,16,16" Spacing="8">
+                <TextBox AcceptsReturn="True" TextWrapping="NoWrap" MinHeight="140" FontFamily="Consolas"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         PlaceholderText="{u:LocaleString Key=View.CustomCss.Placeholder}"
+                         Text="{x:Bind Settings.CustomCss, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+            </StackPanel>
+        </controls:ExpanderSettingItem>
+
         <TextBlock Text="{u:LocaleString Key=View.Layout}" Margin="0,16,0,4"/>
         <controls:NormalSettingItem Title="{u:LocaleString Key=View.AppCompactMode.Title}" Description="{u:LocaleString Key=View.AppCompactMode.Description}">
             <controls:NormalSettingItem.Icon>
@@ -79,6 +97,21 @@
                 <FontIcon Glyph="&#xea4b;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.SidePaneOpen, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.AlwaysShowTabBar.Title}" Description="{u:LocaleString Key=View.AlwaysShowTabBar.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8a5;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.AlwaysShowTabBar, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=View.SidePaneDefaultPage.Title}" Description="{u:LocaleString Key=View.SidePaneDefaultPage.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8a4;"/>
+            </controls:NormalSettingItem.Icon>
+            <ComboBox MinWidth="200" SelectedIndex="{x:Bind Settings.SidePaneIndex, Mode=TwoWay}">
+                <ComboBoxItem Content="{u:LocaleString Key=Files}"/>
+                <ComboBoxItem Content="{u:LocaleString Key=Outline}"/>
+            </ComboBox>
         </controls:NormalSettingItem>
         
     </StackPanel>

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- typedownctl ($(BrandCliName)): the reference client of the local automation API (docs/automation-api-spec.md, section 3.5). -->
+  <Import Project="..\..\Branding.props" />
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- net8.0 for Linux, macOS and development; netcoreapp3.1 is what the Windows installer ships, beside the app,
+         where it runs on the .NET Core 3.1 runtime the app already carries (Tools/Installer/add-cli.ps1). -->
+    <TargetFrameworks>net8.0;netcoreapp3.1</TargetFrameworks>
+    <RollForward>Major</RollForward>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>$(BrandCliName)</AssemblyName>
+    <RootNamespace>Typedown.Cli</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Dev\Typedown.Automation\Unix\UnixSocketListener.cs" Link="Unix\UnixSocketListener.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dev\Typedown.Automation\Typedown.Automation.csproj" />
+    <ProjectReference Include="..\Typedown.Mcp\Typedown.Mcp.csproj" />
+  </ItemGroup>
+</Project>

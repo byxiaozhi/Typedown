@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:app="using:Typedown.Core"
     xmlns:u="using:Typedown.Core.Utilities"
+    Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     mc:Ignorable="d"
     d:DesignHeight="300"
@@ -25,13 +26,19 @@
         </StackPanel>
 
         <StackPanel Margin="-12,8,0,0">
-            <HyperlinkButton Content="{u:LocaleString Key=About.BasedOnOpenSourceSoftware}" NavigateUri="https://typedown.ownbox.cn/credits" />
-            <HyperlinkButton Content="{u:LocaleString Key=About.AppStorePage}" NavigateUri="https://www.microsoft.com/store/apps/9P8TCW4H2HB4" />
+            <!-- A fork: the original app's store page and credits site are not ours. The link is the edition's own
+                 (Typedown.Automation.Brand): where this build is developed, or what it is built on. -->
+            <HyperlinkButton Content="{x:Bind local:AboutApp.LinkText}" NavigateUri="{x:Bind local:AboutApp.LinkUrl}" />
         </StackPanel>
 
-        <StackPanel Margin="0,8,0,0" Spacing="16">
+        <StackPanel Margin="0,8,0,0" Spacing="8" Orientation="Horizontal">
             <Button MinWidth="100" Name="FeedBackButton" Content="{u:LocaleString Key=About.SendFeedback}" Click="FeedBackButton_Click"/>
+            <!-- The local logs (debug.log and the error reports), to attach to a report. -->
+            <Button MinWidth="100" Name="OpenLogFolderButton" Content="{u:LocaleString Key=About.OpenLogFolder}" Click="OpenLogFolderButton_Click"/>
         </StackPanel>
+
+        <!-- What an edition adds to the page (AboutApp.EditionSection); empty unless an edition sets it. -->
+        <ContentPresenter x:Name="EditionSectionPresenter" Margin="0,16,0,0"/>
 
     </StackPanel>
 </UserControl>

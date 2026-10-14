@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Core.Controls"
+    xmlns:u="using:Typedown.Core.Utilities"
+    Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     mc:Ignorable="d">
     <Grid>
@@ -14,8 +16,36 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <controls:MenuBar/>
         <controls:MainContent Grid.Row="1"/>
+        <!-- An export written: where it is, and buttons to open it (Settings > Export > After export). Goes by itself. -->
+        <Border x:Name="ExportNotice" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="16" MaxWidth="560"
+                Padding="16,10,8,10" CornerRadius="8" BorderThickness="1"
+                Background="{ThemeResource SolidBackgroundFillColorTertiary}" BorderBrush="{ThemeResource CardStrokeColorDefault}"
+                AutomationProperties.AutomationId="ExportNotice"
+                x:Load="{x:Bind AppViewModel.UIViewModel.ExportedNoticeOpen, Mode=OneWay}">
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" IsTextSelectionEnabled="True"
+                           AutomationProperties.AutomationId="ExportNoticeText" Text="{x:Bind AppViewModel.UIViewModel.ExportedNotice, Mode=OneWay}"/>
+                <Button Grid.Column="1" AutomationProperties.AutomationId="ExportNoticeOpen" Content="{u:LocaleString Key=Open}" Click="OnExportNoticeOpenClick"/>
+                <Button Grid.Column="2" AutomationProperties.AutomationId="ExportNoticeFolder" Content="{u:LocaleString Key=OpenFileLocation}" Click="OnExportNoticeFolderClick"/>
+                <Button Grid.Column="3" AutomationProperties.AutomationId="ExportNoticeClose" Background="Transparent" BorderThickness="0" Click="OnExportNoticeCloseClick">
+                    <FontIcon Glyph="&#xE711;" FontSize="12"/>
+                </Button>
+            </Grid>
+        </Border>
         <controls:StatusBar x:Name="StatusBar" Grid.Row="2" x:Load="{x:Bind AppViewModel.SettingsViewModel.StatusBarOpen, Mode=OneWay}"/>
+        <!-- Kept loaded (not x:Load) in full screen so its menu shortcuts (F11 included) stay registered; only collapsed. -->
+        <controls:MenuBar x:Name="MenuBarHost" PointerEntered="OnMenuBarPointerEntered" PointerExited="OnMenuBarPointerExited"/>
+        <!-- Full screen: resting the pointer on the very top edge reveals the hidden menu bar. Two pixels, not more:
+             the tabs are right below, and a taller strip revealed the menu on the way to a tab and took their clicks. -->
+        <Grid x:Name="FullScreenRevealStrip" Grid.RowSpan="3" Height="2" VerticalAlignment="Top" Background="Transparent"
+              x:Load="{x:Bind AppViewModel.UIViewModel.IsFullScreen, Mode=OneWay}"
+              PointerEntered="OnRevealStripPointerEntered" PointerExited="OnRevealStripPointerExited"/>
     </Grid>
 </Page>

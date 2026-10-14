@@ -729,10 +729,6 @@
     <value>Kwotazzjoni</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Klassifikazzjoni</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Irrepeti</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Iżżumja</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>L-ebda kartella miftuħa. Iftaħ fajl jew kartella biex tibbrawżjaha hawn.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Din il-kartella fiha {0} oġġetti — wisq biex jiġu elenkati hawn.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>L-ebda fajl Markdown f'din il-kartella.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Din il-kartella m'għadhiex teżisti.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Uri l-kartella tal-fajl attwali</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Fittex fil-kartella…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(l-isem tal-fajl jaqbel)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} fajl(s) jaqblu minn {1} imfittxija</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Qed ifittex…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Skrin sħiħ</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>L-aħħar tab użat</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>It-tab li jmiss</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>It-tab ta' qabel</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Naqqas il-livell tal-kwotazzjoni</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Żid il-livell tal-kwotazzjoni</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Modalità ta' qari</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Fittex fil-kartella</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Aqsam ma' HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Agħlaq kollox</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Iftaħ kollox</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Bla titlu</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Awtomazzjoni konnessa</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} editja {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>L-editjar ta’ dan id-dokument fil-modalità viżwali jista’ jerġa’ jikteb parti mill-HTML tiegħu. Biex iżżommu eżatt kif inhu, editjah fil-modalità tas-sors.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>Id-dijagrammi PlantUML huma mitfija (id-disinn jibgħat is-sors lil plantuml.com). Ixgħelhom f'Issettjar &gt; Editur.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Tella' l-immaġnijiet lokali</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Esportat lejn {0}</value>
   </data>
 </root>

@@ -35,6 +35,7 @@ namespace Typedown.Core.Controls
         {
             disposables.Add(Settings.WhenPropertyChanged(nameof(Settings.SidePaneOpen)).Cast<bool>().Subscribe(x => UpdateSidePaneState(x, true)));
             disposables.Add(Settings.WhenPropertyChanged(nameof(Settings.UseEditorMicaEffect)).Cast<bool>().StartWith(Settings.UseEditorMicaEffect).Subscribe(x => UpdateBackground(x)));
+            disposables.Add(Settings.WhenPropertyChanged(nameof(Settings.CustomTheme)).StartWith(Settings.CustomTheme).Subscribe(_ => UpdateThemeColours()));
             UpdateSidePaneState(Settings.SidePaneOpen, false);
         }
 
@@ -45,7 +46,39 @@ namespace Typedown.Core.Controls
 
         private void UpdateBackground(bool useMica)
         {
+            if (themedBackground != null) return; // a custom theme paints this instead
             MainContentGrid.Background = Resources[useMica ? "MicaContentBackgroundBrush" : "SolidContentBackgroundBrush"] as Brush;
+        }
+
+        private Brush themedBackground;
+
+        /// <summary>
+        /// A custom theme may colour the window around the editor as well; what it leaves out keeps the colours
+        /// of the built-in theme it builds on. Clearing a value puts the resource-driven colour back.
+        /// </summary>
+        private void UpdateThemeColours()
+        {
+            var theme = ThemeFiles.Find(Settings.CustomTheme);
+            themedBackground = ThemeFiles.Brush(theme?.Background);
+            var surface = ThemeFiles.Brush(theme?.Surface) ?? themedBackground;
+            if (themedBackground != null)
+                MainContentGrid.Background = themedBackground;
+            else
+                UpdateBackground(Settings.UseEditorMicaEffect);
+            if (SplitterLine != null)
+            {
+                var border = ThemeFiles.Brush(theme?.Border);
+                if (border != null) SplitterLine.Background = border;
+                else SplitterLine.ClearValue(Border.BackgroundProperty);
+            }
+            if (LeftPane != null)
+            {
+                var foreground = ThemeFiles.Brush(theme?.Foreground) ?? ThemeFiles.Readable(theme?.Surface ?? theme?.Background);
+                if (surface != null) LeftPane.Background = surface;
+                else LeftPane.ClearValue(Control.BackgroundProperty);
+                if (foreground != null) LeftPane.Foreground = foreground;
+                else LeftPane.ClearValue(Control.ForegroundProperty);
+            }
         }
 
         [SuppressPropertyChangedWarnings]
@@ -59,6 +92,8 @@ namespace Typedown.Core.Controls
             disposables.Clear();
             Bindings?.StopTracking();
         }
+
+        public static bool IsTabBarLoad(int tabCount, bool alwaysShow) => alwaysShow || tabCount > 1;
 
         public static double GetColumnWidthNegative(GridLength length)
         {

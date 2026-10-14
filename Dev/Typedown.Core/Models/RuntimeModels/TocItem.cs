@@ -67,6 +67,30 @@ namespace Typedown.Core.Models
             close();
         }
 
+        public void SetExpandedRecursive(bool expanded)
+        {
+            foreach (var child in Children)
+            {
+                child.IsExpanded = expanded;
+                child.SetExpandedRecursive(expanded);
+            }
+        }
+
+        /// <summary>Expands every ancestor of the selected heading so the highlight is visible (upstream #35).</summary>
+        public bool ExpandToSelected()
+        {
+            var found = false;
+            foreach (var child in Children)
+            {
+                if (child.TocItem?.IsSelected == true || child.ExpandToSelected())
+                {
+                    child.IsExpanded = true;
+                    found = true;
+                }
+            }
+            return found;
+        }
+
         public (Func<TocItem, TocTreeItem>, Action) GetTocTreeItemGenerator()
         {
             var index = 0;

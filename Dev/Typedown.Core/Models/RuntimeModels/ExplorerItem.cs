@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
@@ -18,7 +19,7 @@ namespace Typedown.Core.Models
     {
         public enum ExplorerItemType { None, Folder, File };
 
-        public string Name { get; private set; }
+        public string Name { get; internal set; }
 
         [OnChangedMethod(nameof(OnFullPathChanged))]
         public string FullPath { get; set; }
@@ -43,15 +44,24 @@ namespace Typedown.Core.Models
         private bool IsWatching { get; set; } = false;
 
         private FileSystemWatcher fileSystemWatcher;
+        private bool disposed;
+        private int childrenUpdateVersion;
 
         private FileViewModel ViewModel { get; }
 
         private static readonly ConditionalWeakTable<FileViewModel, HashSet<string>> expandedFolder = new();
 
+        // Expanding a folder marks every child for watching, so a folder with hundreds of subfolders would
+        // start hundreds of directory listings at once and saturate the disk. Bound how many run together.
+        private static readonly SemaphoreSlim enumerationGate = new(Math.Max(2, Environment.ProcessorCount));
+
         public ExplorerItem(FileViewModel viewModel)
         {
             ViewModel = viewModel;
         }
+
+        /// <summary>True for a row that only carries a message, such as "this folder has too many items".</summary>
+        public bool IsNotice => Notice != null;
 
         private void OnFullPathChanged()
         {
@@ -72,8 +82,16 @@ namespace Typedown.Core.Models
             Reorder();
         }
 
+        /// <summary>Set when the entry came from a folder listing, which already said what it is.</summary>
+        private ExplorerItemType? knownType;
+
         private void UpdateType()
         {
+            if (knownType is { } known)
+            {
+                Type = known;
+                return;
+            }
             if (string.IsNullOrEmpty(FullPath))
                 Type = ExplorerItemType.None;
             else if (Directory.Exists(FullPath))
@@ -84,9 +102,12 @@ namespace Typedown.Core.Models
                 Type = ExplorerItemType.None;
         }
 
+        /// <summary>Set on a row that stands in for content, such as a folder too large to list.</summary>
+        public string Notice { get; init; }
+
         private void UpdateName()
         {
-            Name = Path.GetFileName(FullPath);
+            Name = Notice ?? Path.GetFileName(FullPath);
         }
 
         private void OnIsExpandedChanged()
@@ -111,14 +132,68 @@ namespace Typedown.Core.Models
 
         private async void UpdateChildren()
         {
+            if (disposed) return;
+            if (Type == ExplorerItemType.File)
+            {
+                // A file has nothing to enumerate; saying so here keeps tens of thousands of entries out of the
+                // asynchronous path below.
+                ClearChildren();
+                return;
+            }
+            var updateVersion = ++childrenUpdateVersion;
+            var path = FullPath;
+            var filter = Filter;
             StopWatchFolder();
+            Exception = null;
             try
             {
                 if (IsWatching && Type == ExplorerItemType.Folder)
                 {
-                    var files = await Task.Run(() => EnumerateFilteredFileSystemInfos().ToList());
-                    SetChildren(files.Select(x => CreateChild(x.Name)).ToList());
-                    StartWatchFolder();
+                    List<FileSystemInfo> files;
+                    await enumerationGate.WaitAsync();
+                    try
+                    {
+                        // The request may have waited in the queue while this node was collapsed or navigated
+                        // away from; skip the scan entirely rather than read a directory that is no longer shown.
+                        if (disposed || updateVersion != childrenUpdateVersion)
+                            return;
+                        files = await Task.Run(() => new DirectoryInfo(path).EnumerateFileSystemInfos()
+                            .Where(info => filter(info.Attributes, info.Name)).ToList());
+                    }
+                    finally
+                    {
+                        // Release before the UI update below so the slot is not held while children are built.
+                        enumerationGate.Release();
+                    }
+                    // A previous folder enumeration can finish after navigation,
+                    // collapse or disposal. It must not repopulate this node.
+                    if (disposed || updateVersion != childrenUpdateVersion)
+                    {
+                        Log.Debug($"ExplorerItem.UpdateChildren: stale result for '{path}' (disposed={disposed}, v{updateVersion} != v{childrenUpdateVersion})");
+                        return;
+                    }
+                    Log.Debug($"ExplorerItem.UpdateChildren: '{path}' -> {files.Count} entries");
+                    if (files.Count > TooManyEntries)
+                    {
+                        // Tens of thousands of entries cost more than they are worth: every one of them is a
+                        // view model the tree keeps, and on a synced folder the listing alone takes minutes,
+                        // with everything else — opening a document included — waiting behind it.
+                        SetChildren(new List<ExplorerItem> { CreateNotice(string.Format(Locale.GetString("FolderPane.TooManyEntries") ?? "{0} items", files.Count)) });
+                        StopWatchFolder();
+                        return;
+                    }
+                    SetChildren(files.Select(x => CreateChild(x.Name,
+                        x.Attributes.HasFlag(FileAttributes.Directory) ? ExplorerItemType.Folder : ExplorerItemType.File)).ToList());
+                    try
+                    {
+                        StartWatchFolder();
+                    }
+                    catch (Exception ex)
+                    {
+                        // A watcher failure must not hide successfully read files.
+                        StopWatchFolder();
+                        Exception = ex;
+                    }
                 }
                 else
                 {
@@ -127,11 +202,13 @@ namespace Typedown.Core.Models
             }
             catch (Exception ex)
             {
-                Exception = ex;
+                Log.Debug($"ExplorerItem.UpdateChildren: '{path}' failed: {ex.GetType().Name}: {ex.Message}");
+                if (disposed || updateVersion != childrenUpdateVersion) return;
                 IsWatching = false;
                 IsExpanded = false;
                 StopWatchFolder();
                 ClearChildren();
+                Exception = ex;
             }
         }
 
@@ -151,7 +228,11 @@ namespace Typedown.Core.Models
 
         private void SetChildren(List<ExplorerItem> children)
         {
-            ClearChildren();
+            // Reordering passes existing nodes back in; keep their watchers alive.
+            var retained = new HashSet<ExplorerItem>(children);
+            foreach (var item in Children)
+                if (!retained.Contains(item)) item.Dispose();
+            Children.Clear();
             foreach (var item in children.OrderBy(x => x, Comparer))
                 Children.Add(item);
         }
@@ -170,9 +251,19 @@ namespace Typedown.Core.Models
             Children.InsertByOrder(CreateChild(name), Comparer.Compare);
         }
 
-        private ExplorerItem CreateChild(string name)
+        /// <summary>Beyond this many entries a folder is described rather than listed.</summary>
+        private const int TooManyEntries = 2000;
+
+        /// <summary>A row that only says something; it has no path, so nothing opens it.</summary>
+        private ExplorerItem CreateNotice(string text)
         {
-            return new(ViewModel) { FullPath = Path.Combine(FullPath, name), Comparer = Comparer, IsWatching = IsExpanded };
+            // No path, so nothing sets the name from one: the row carries its own text.
+            return new(ViewModel) { knownType = ExplorerItemType.File, Notice = text, Comparer = Comparer, Name = text };
+        }
+
+        private ExplorerItem CreateChild(string name, ExplorerItemType? type = null)
+        {
+            return new(ViewModel) { knownType = type, FullPath = Path.Combine(FullPath, name), Comparer = Comparer, IsWatching = IsExpanded };
         }
 
         private bool ContainsChildren(string name)
@@ -207,29 +298,42 @@ namespace Typedown.Core.Models
             if (Type != ExplorerItemType.Folder) return;
             fileSystemWatcher?.Dispose();
             fileSystemWatcher = new() { NotifyFilter = NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Attributes };
+            var watcher = fileSystemWatcher;
             var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
             fileSystemWatcher.Created += async (s, e) =>
             {
                 if (e?.Name == null) return;
-                var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileCreated(e, attr.Value));
+                var attr = await GetFileAttributes(e.FullPath);
+                if (attr.HasValue) dispatcherQueue?.TryEnqueue(() =>
+                {
+                    if (!disposed && fileSystemWatcher == watcher) OnFileCreated(e, attr.Value);
+                });
             };
             fileSystemWatcher.Renamed += async (s, e) =>
             {
                 if (e?.Name == null) return;
-                var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileRenamed(e, attr.Value));
+                var attr = await GetFileAttributes(e.FullPath);
+                if (attr.HasValue) dispatcherQueue?.TryEnqueue(() =>
+                {
+                    if (!disposed && fileSystemWatcher == watcher) OnFileRenamed(e, attr.Value);
+                });
             };
             fileSystemWatcher.Changed += async (s, e) =>
             {
                 if (e?.Name == null) return;
-                var attr = await GetFileAttributes(Path.Combine(FullPath, e.Name));
-                if (attr.HasValue) dispatcherQueue.TryEnqueue(() => OnFileChanged(e, attr.Value));
+                var attr = await GetFileAttributes(e.FullPath);
+                if (attr.HasValue) dispatcherQueue?.TryEnqueue(() =>
+                {
+                    if (!disposed && fileSystemWatcher == watcher) OnFileChanged(e, attr.Value);
+                });
             };
             fileSystemWatcher.Deleted += (s, e) =>
             {
                 if (e?.Name == null) return;
-                dispatcherQueue.TryEnqueue(() => OnFileDeleted(e));
+                dispatcherQueue?.TryEnqueue(() =>
+                {
+                    if (!disposed && fileSystemWatcher == watcher) OnFileDeleted(e);
+                });
             };
             fileSystemWatcher.Path = FullPath;
             fileSystemWatcher.EnableRaisingEvents = true;
@@ -271,22 +375,11 @@ namespace Typedown.Core.Models
 
         public void Dispose()
         {
+            if (disposed) return;
+            disposed = true;
+            childrenUpdateVersion++;
             StopWatchFolder();
             ClearChildren();
-        }
-
-        private IEnumerable<FileSystemInfo> EnumerateFilteredFileSystemInfos()
-        {
-            try
-            {
-                if (Type == ExplorerItemType.Folder)
-                    return new DirectoryInfo(FullPath).EnumerateFileSystemInfos().Where(info => Filter(info.Attributes, info.Name));
-                return new List<FileSystemInfo>();
-            }
-            catch
-            {
-                return new List<FileSystemInfo>();
-            }
         }
 
         private static bool DefaultFilter(FileAttributes attr, string name)
@@ -295,7 +388,7 @@ namespace Typedown.Core.Models
                 return false;
             if (attr.HasFlag(FileAttributes.Directory))
                 return true;
-            return FileTypeHelper.IsMarkdownFile(name);
+            return FileTypeHelper.IsEditableTextFile(name);
         }
 
         private class DefaultComparer : Comparer<ExplorerItem>

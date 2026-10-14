@@ -137,18 +137,6 @@
     <value>Tagasiside saatmine</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontakt</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Meil</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Võtame teie tagasisidet väga tõsiselt</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Umbes</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Fondi suurus</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Redaktoris kasutatud font</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Fondipere</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Redaktori rea kõrgus mitu</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Lõikelaua pilt</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Lõikelaua pildi üleslaadimise konfiguratsioon</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Piltide lisamisel käivitatav toiming</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Kohalik pilt</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Kohaliku pildi üleslaadimise konfiguratsioon</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Toiming Pildi lisamine</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Veebipilt</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Veebipildi üleslaadimise konfiguratsioon</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Eelistage piltide lisamisel kasutada suhtelist teed</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Aken</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Vaikimisi</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Taane, mis kirjutatakse pesastatud loendiüksustele. 4 tühikut vastab Obsidianile ja enamikule teistele redaktoritele</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 tühiku taane (Markdowni standard)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 tühik pärast märgist</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 tühikut pärast märgist</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 tühikut pärast märgist</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Loendi taane</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Lisa lähtekoodis uute loendiüksuste vahele tühi rida</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Hõredad loendiüksused</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Näita ploki tüüpi (P, H1, ...) praeguse lõigu kõrval</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Lõigumärk</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Täida tabeli lahtrid, et veerud Markdowni lähtekoodis joonduksid. Lülita välja, et tabelid jääksid kompaktseks (vähem märke tehisintellekti tööriistadele)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Joonda tabeli veerud</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Tuvasta automaatselt lõikude kaupa</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Redaktori teksti suund; kasulik araabia, heebrea ja teiste paremalt vasakule kirjutatavate keelte puhul</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Vasakult paremale</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Paremalt vasakule</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Teksti suund</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Kui välja lülitatud, laadi uuesti küsimata, kui pole salvestamata muudatusi</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Küsi enne uuesti laadimist</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Jälgi avatud faili ja värskenda seda, kui mõni teine programm seda muudab</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Automaatne uuesti laadimine välise muudatuse korral</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Explorerist avatud failid avanevad praeguses aknas vahekaardina; väljas avab uue akna</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Ava failid vahekaartidel</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Ava dokumendid sealt, kus pooleli jäid</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Jäta kursori asukoht meelde</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Taasta kõik eelmise seansi dokumendid</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Jäta tühjaks anonüümsete märkmete loomiseks; kontoga kuulub märge sulle</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>E-post (valikuline)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Parool</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Avaldab märkme (/s/…), nii et jagatud linki ei saa redigeerida</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Avalda ka ainult lugemiseks mõeldud link</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Jaga HedgeDoci</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x aadress, nt https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Testi</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Testi ühendust</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Näita vahekaartide riba ka siis, kui avatud on ainult üks dokument</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Näita vahekaarte alati</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Must (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Lisastiilid redaktorile ja eksporditud HTML/PDF-ile</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>nt .markdown-body h1 { color: #c00; }  või  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Kohandatud CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Teema on üks CSS-fail teemade kaustas; vaata docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Kuidas seda kirjutada</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Teemad on CSS-failid selles kaustas; vormingut selgitab dokument.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(puudub)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Ava teemade kaust</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Laadi teemad uuesti</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Kohandatud teema</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>nt ./${filename}.assets — muutujad: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Millist lehte külgpaan rakenduse käivitamisel näitab</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Külgpaani vaikeleht</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Luba kohalik automatiseerimine</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Programmid, mida selles arvutis käivitate, saavad avatud dokumente lugeda ja muuta. Akna pealkiri näitab, kui mõni on ühendatud.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Tõsta esile programmide tehtud muudatused</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Tõstab korraks esile teksti, mida ühendatud programm muutis, et näeksite, mis muutus.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Joonista PlantUML-diagramme</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Saadab diagrammi lähtekoodi joonistamiseks saidile plantuml.com</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Üleslaadimise viis</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Üleslaadimise konfiguratsioon, mida kasutatakse lisatud piltide puhul, mille toiming on Üleslaadimine, ning käsu Fail &gt; Laadi kohalikud pildid üles puhul</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Kaust bucketis</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Avalik URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Teestiilis aadressid (MinIO ja mõned teenusepakkujad)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 konfiguratsioon on puudulik: täitke Endpoint, Bucket, Access Key ID ja Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Üleslaadimise ajalugu</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Sama konfiguratsiooniga juba üles laaditud pilti uuesti üles ei laadita; kasutatakse selle varasemat aadressi ({0} meeles). Tühjenda ajalugu pärast üleslaaditud failide kustutamist.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML-server</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Diagramme joonistava PlantUML-serveri (plantuml-server) aadress. Tühi: plantuml.com. Oma serveriga jääb diagrammide lähtekood sinu juurde.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vimi klahvid</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim lähtekoodi režiimis (:w salvestab, :q sulgeb vahekaardi); j/k, gg/G, ]] ja / lugemisrežiimis liikumiseks. Mitte visuaalses redaktoris.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Ava logikaust</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Pärast eksportimist</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Näita, kuhu see salvestati</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Ava fail</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Ava selle kaust</value>
   </data>
 </root>

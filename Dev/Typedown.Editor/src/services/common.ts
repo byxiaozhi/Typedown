@@ -1,6 +1,6 @@
 import { EXPORT_DOMPURIFY_CONFIG } from 'components/Muya/lib/config';
 import Slugger from 'components/Muya/lib/parser/marked/slugger';
-import { sanitize } from 'components/Muya/lib/utils';
+import { sanitize, getHeadingPlainText } from 'components/Muya/lib/utils';
 import execAll from 'execall'
 
 export const getTOC = (markdown: string) => {
@@ -10,7 +10,7 @@ export const getTOC = (markdown: string) => {
         const test1 = /^ {0,3}(#{1,6})\s.+/.test(line);
         const test2 = /^ {0,3}(#{1,6})$/.test(line);
         if (test1 || test2) {
-            const content = test2 ? line.trim() : line.replace(/^\s*#{1,6}\s{1,}/, '').trim();
+            const content = getHeadingPlainText(test2 ? line.trim() : line.replace(/^\s*#{1,6}\s{1,}/, '').trim());
             let lvl = 0;
             for (let i = line.indexOf('#'); line[i] == '#'; i++) {
                 lvl++;

@@ -1,3 +1,4 @@
+using System;
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
@@ -40,8 +41,15 @@ namespace Typedown.Windows
         {
             Show(ShowWindowCommand.SW_HIDE);
             var runDir = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-            var process = Process.Start(Path.Combine(runDir, "MicrosoftEdgeWebview2Setup.exe"));
-            await Task.Run(() => process.WaitForExit());
+            try
+            {
+                var process = Process.Start(Path.Combine(runDir, "MicrosoftEdgeWebview2Setup.exe"));
+                await Task.Run(() => process.WaitForExit());
+            }
+            catch (Exception ex)
+            {
+                Log.WriteLocal("WebViewInstall", ex.ToString());
+            }
             Close();
         }
     }

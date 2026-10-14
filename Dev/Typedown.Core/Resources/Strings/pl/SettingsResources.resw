@@ -137,18 +137,6 @@
     <value>Wyślij opinię</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontakt</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>E-mail</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Traktujemy Twoją opinię bardzo poważnie</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Około</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Rozmiar czcionki</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Czcionka używana w edytorze</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Rodzina czcionek</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Wielokrotność wysokości linii edytora</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Obraz schowka</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Konfiguracja przesyłania obrazów ze schowka</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Czynność wykonywana podczas wstawiania obrazów</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Obraz lokalny</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Konfiguracja przesyłania obrazów lokalnych</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Akcja Wstaw obraz</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Obraz internetowy</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Konfiguracja przesyłania obrazów internetowych</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Preferuj używanie ścieżki względnej podczas wstawiania obrazów</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Okno</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Domyślna</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Wcięcie zapisywane dla zagnieżdżonych elementów listy. 4 spacje odpowiadają Obsidianowi i większości innych edytorów</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Wcięcie 4 spacji (standard Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 spacja po znaczniku</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 spacje po znaczniku</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 spacje po znaczniku</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Wcięcie list</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Wstawiaj pustą linię między nowymi elementami listy w źródle</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Luźne elementy listy</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Pokazuj typ bloku (P, H1, ...) obok bieżącego akapitu</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Znacznik akapitu</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Dopełniaj komórki tabeli, aby kolumny były wyrównane w źródle Markdown. Wyłącz, aby tabele pozostały zwarte (mniej tokenów dla narzędzi AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Wyrównuj kolumny tabeli</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Wykrywaj automatycznie dla akapitu</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Kierunek tekstu w edytorze, przydatny dla arabskiego, hebrajskiego i innych języków pisanych od prawej do lewej</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Od lewej do prawej</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Od prawej do lewej</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Kierunek tekstu</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Jeśli wyłączone, przeładowuj po cichu, chyba że są niezapisane zmiany</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Pytaj przed przeładowaniem</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Obserwuj otwarty plik i odśwież go, gdy zmieni go inny program</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Automatyczne przeładowanie po zmianie zewnętrznej</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Pliki otwierane z Eksploratora pojawiają się jako karta w bieżącym oknie; wyłączone otwiera nowe okno</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Otwieraj pliki w kartach</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Otwieraj dokumenty w miejscu, w którym skończyłeś</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Zapamiętuj pozycję kursora</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Przywróć wszystkie dokumenty z ostatniej sesji</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Zostaw puste, aby tworzyć notatki anonimowo; z kontem notatka należy do Ciebie</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>E-mail (opcjonalnie)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Publikuje notatkę (/s/…), więc udostępnionego linku nie można edytować</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Opublikuj też link tylko do odczytu</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Udostępnij w HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Adres HedgeDoc 1.x, np. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Serwer</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Testuj</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Testuj połączenie</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Pokazuj pasek kart nawet wtedy, gdy otwarty jest tylko jeden dokument</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Zawsze pokazuj karty</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Czarny (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Dodatkowe style dla edytora oraz eksportowanego HTML/PDF</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>np. .markdown-body h1 { color: #c00; }  lub  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Własny CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Motyw to jeden plik CSS w folderze motywów; zobacz docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Jak go napisać</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Motywy to pliki CSS w tym folderze; dokument wyjaśnia format.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(brak)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Otwórz folder motywów</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Przeładuj motywy</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Własny motyw</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>np. ./${filename}.assets — zmienne: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Którą stronę panel boczny pokazuje po uruchomieniu</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Domyślna strona panelu bocznego</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Zezwalaj na lokalną automatyzację</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Programy uruchamiane przez Ciebie na tym komputerze mogą odczytywać i edytować otwarte dokumenty. Tytuł okna pokazuje, gdy któryś jest połączony.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Wyróżniaj zmiany wprowadzone przez programy</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Krótko wyróżnia tekst zmieniony przez podłączony program, aby było widać, co się zmieniło.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Rysuj diagramy PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Wysyła kod źródłowy diagramu do plantuml.com, aby go narysować</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Przesyłaj za pomocą</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Konfiguracja przesyłania używana dla wstawianych obrazów z akcją „Prześlij obraz” oraz przez Plik &gt; Prześlij obrazy lokalne</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Folder w Bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Publiczny URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Adresy w stylu ścieżki (MinIO i niektórzy dostawcy)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Konfiguracja S3 jest niekompletna: wypełnij Endpoint, Bucket, Access Key ID i Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Historia przesyłania</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Obraz już przesłany z tą samą konfiguracją nie jest przesyłany ponownie; używany jest jego wcześniejszy adres (zapamiętano: {0}). Wyczyść historię po usunięciu przesłanych plików.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Serwer PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Adres serwera PlantUML (plantuml-server), który rysuje diagramy. Puste: plantuml.com. Z własnym serwerem kod źródłowy diagramów zostaje u Ciebie.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Klawisze Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim w trybie źródłowym (:w zapisuje, :q zamyka kartę); j/k, gg/G, ]] i / do poruszania się w trybie czytania. Nie w edytorze wizualnym.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Otwórz folder dzienników</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Po eksporcie</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Pokaż, gdzie zapisano</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Otwórz plik</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Otwórz jego folder</value>
   </data>
 </root>

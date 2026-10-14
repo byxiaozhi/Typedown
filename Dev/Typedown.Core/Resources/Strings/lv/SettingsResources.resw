@@ -137,18 +137,6 @@
     <value>Sūtīt atsauksmes</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontaktpersonu</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>E-pasts</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Mēs ļoti nopietni uztveram jūsu atsauksmes</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Par</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Fonta lielums</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Redaktorā izmantotais fonts</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Fontu saime</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Redaktora līnijas augstums ir daudzkārt</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Starpliktuves attēls</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Starpliktuves attēlu augšupielādes konfigurācija</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Izpildāmā darbība, ievietojot attēlus</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Vietējais attēls</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Lokālā attēla augšupielādes konfigurācija</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Darbība Ievietot attēlu</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Tīmekļa attēls</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Tīmekļa attēlu augšupielādes konfigurācija</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Vēlams izmantot relatīvo ceļu, ievietojot attēlus</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Logs</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Noklusējums</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Atkāpe, kas tiek rakstīta ligzdotiem saraksta elementiem. 4 atstarpes atbilst Obsidian un lielākajai daļai citu redaktoru</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 atstarpju atkāpe (Markdown standarts)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 atstarpe pēc marķiera</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 atstarpes pēc marķiera</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 atstarpes pēc marķiera</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Sarakstu atkāpe</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Ievietot tukšu rindu starp jauniem saraksta elementiem pirmkodā</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Brīvi saraksta elementi</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Rādīt bloka veidu (P, H1, ...) blakus pašreizējai rindkopai</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Rindkopas marķieris</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Aizpildīt tabulas šūnas, lai kolonnas izlīdzinātos Markdown pirmkodā. Izslēdziet, lai tabulas paliktu kompaktas (mazāk marķieru MI rīkiem)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Izlīdzināt tabulas kolonnas</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Noteikt automātiski katrai rindkopai</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Teksta virziens redaktorā; noder arābu, ebreju un citām no labās uz kreiso rakstītām valodām</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>No kreisās uz labo</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>No labās uz kreiso</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Teksta virziens</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Ja izslēgts, pārlādēt bez jautājuma, ja vien nav nesaglabātu izmaiņu</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Jautāt pirms pārlādes</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Sekot atvērtajam failam un atsvaidzināt to, kad to maina cita programma</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Automātiska pārlāde pie ārējām izmaiņām</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>No Explorer atvērtie faili tiek atvērti kā cilne pašreizējā logā; izslēgts atver jaunu logu</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Atvērt failus cilnēs</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Atvērt dokumentus tur, kur beidzāt</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Atcerēties kursora pozīciju</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Atjaunot visus pēdējās sesijas dokumentus</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Atstājiet tukšu, lai veidotu anonīmas piezīmes; ar kontu piezīme pieder jums</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>E-pasts (neobligāti)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Parole</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Publicē piezīmi (/s/…), lai kopīgoto saiti nevarētu rediģēt</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Publicēt arī tikai lasāmu saiti</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Kopīgot pakalpojumā HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x adrese, piem., https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Serveris</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Pārbaudīt</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Pārbaudīt savienojumu</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Rādīt cilņu joslu pat tad, ja atvērts tikai viens dokuments</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Vienmēr rādīt cilnes</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Melns (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Papildu stili redaktoram un eksportētajam HTML/PDF</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>piem., .markdown-body h1 { color: #c00; }  vai  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Pielāgots CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Motīvs ir viens CSS fails motīvu mapē; skatiet docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Kā to uzrakstīt</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Motīvi ir CSS faili šajā mapē; formātu skaidro dokuments.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(nav)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Atvērt motīvu mapi</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Pārlādēt motīvus</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Pielāgots motīvs</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>piem., ./${filename}.assets — mainīgie: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Kuru lapu sānu rūts rāda, startējot lietotni</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Sānu rūts noklusējuma lapa</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Atļaut lokālo automatizāciju</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Programmas, ko palaižat šajā datorā, var lasīt un rediģēt atvērtos dokumentus. Loga virsraksts rāda, kad kāda ir savienota.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Izcelt programmu veiktās izmaiņas</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Uz brīdi izceļ tekstu, ko mainīja pievienota programma, lai jūs redzētu, kas mainījies.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Zīmēt PlantUML diagrammas</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Nosūta diagrammas avotu uz plantuml.com, lai to uzzīmētu</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Augšupielādēt ar</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Augšupielādes konfigurācija, ko izmanto ievietotajiem attēliem ar darbību “Augšupielādēt attēlu” un komandai Fails &gt; Augšupielādēt lokālos attēlus</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Mape Bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Publiskais URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Ceļa stila adreses (MinIO un daži pakalpojumu sniedzēji)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 konfigurācija nav pilnīga: aizpildiet Endpoint, Bucket, Access Key ID un Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Augšupielādes vēsture</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Attēls, kas jau augšupielādēts ar to pašu konfigurāciju, netiek augšupielādēts atkārtoti; tiek izmantota tā iepriekšējā adrese (atcerēti: {0}). Notīriet vēsturi pēc augšupielādēto failu dzēšanas.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML serveris</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>PlantUML servera (plantuml-server) adrese, kas zīmē diagrammas. Tukšs: plantuml.com. Ar savu serveri diagrammu avots paliek pie jums.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim taustiņi</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim avota režīmā (:w saglabā, :q aizver cilni); j/k, gg/G, ]] un / pārvietošanās lasīšanas režīmā. Ne vizuālajā redaktorā.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Atvērt žurnālu mapi</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Pēc eksportēšanas</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Rādīt, kur saglabāts</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Atvērt failu</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Atvērt tā mapi</value>
   </data>
 </root>

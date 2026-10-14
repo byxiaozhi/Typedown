@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.32" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.6.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.6.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Compile the production implementations rather than maintaining test copies. -->
+    <Compile Include="../../Dev/Typedown.Core/Services/AutoBackup.cs" Link="Production/AutoBackup.cs" />
+    <Compile Include="../../Dev/Typedown.Core/Services/JsonSettingsStore.cs" Link="Production/JsonSettingsStore.cs" />
+    <Compile Include="../../Dev/Typedown.Core/Utilities/SafeFile.cs" Link="Production/SafeFile.cs" />
+    <Compile Include="../../Dev/Typedown.Core/Utilities/ThemeDesignerPage.cs" Link="Production/ThemeDesignerPage.cs" />
+    <Compile Include="../../Dev/Typedown.Core/Migrations/*.cs" Link="Production/Migrations/%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Fixtures/*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures/*.sql" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

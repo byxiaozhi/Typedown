@@ -137,18 +137,6 @@
     <value>Pošalji povratne informacije</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontakt</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>E-pošta</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Vaše povratne informacije shvatamo veoma ozbiljno.</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Otprilike</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Veličina fonta</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font korišten u uređivaču</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Porodica fontova</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Visina linije urednika višestruka</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Slika međuspremnika</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Konfiguracija otpremanja slike međuspremnika</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Akcija za izvršavanje prilikom umetanja slika</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Lokalna slika</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Konfiguracija lokalnog uploada slika</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Umetni akciju slike</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Web slika</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Konfiguracija otpremanja web slika</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Radije koristite relativnu putanju prilikom umetanja slika</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Prozor</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Zadano</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Uvlaka koja se upisuje za ugniježđene stavke liste. 4 razmaka odgovaraju Obsidianu i većini drugih uređivača</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Uvlaka od 4 razmaka (Markdown standard)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 razmak nakon oznake</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 razmaka nakon oznake</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 razmaka nakon oznake</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Uvlaka listi</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Umetni prazan red između novih stavki liste u izvoru</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Razmaknute stavke liste</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Prikaži vrstu bloka (P, H1, ...) pored trenutnog pasusa</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Oznaka pasusa</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Popuni ćelije tabele da se kolone poravnaju u Markdown izvoru. Isključi da tabele ostanu kompaktne (manje tokena za AI alate)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Poravnaj kolone tabele</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Automatski prepoznaj po pasusu</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Smjer teksta u uređivaču; korisno za arapski, hebrejski i druge jezike koji se pišu zdesna nalijevo</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Slijeva nadesno</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Zdesna nalijevo</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Smjer teksta</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Ako je isključeno, ponovo učitaj bez pitanja osim ako ima nesačuvanih izmjena</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Pitaj prije ponovnog učitavanja</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Prati otvorenu datoteku i osvježi je kada je drugi program promijeni</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Automatsko ponovno učitavanje pri vanjskoj promjeni</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Datoteke otvorene iz Explorera otvaraju se kao kartica u trenutnom prozoru; isključeno otvara novi prozor</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Otvaraj datoteke u karticama</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Otvori dokumente tamo gdje ste stali</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Zapamti položaj kursora</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Vrati sve dokumente prošle sesije</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Ostavite prazno za anonimne bilješke; s računom bilješka pripada vama</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>E-pošta (opcionalno)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Lozinka</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Objavljuje bilješku (/s/…) tako da se dijeljeni link ne može uređivati</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Objavi i link samo za čitanje</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Podijeli na HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Adresa HedgeDoc 1.x, npr. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Testiraj</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Testiraj vezu</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Prikaži traku kartica čak i kada je otvoren samo jedan dokument</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Uvijek prikazuj kartice</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Crna (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Dodatni stilovi za uređivač i izvezeni HTML/PDF</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>npr. .markdown-body h1 { color: #c00; }  ili  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Prilagođeni CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Tema je jedna CSS datoteka u folderu tema; vidi docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Kako je napisati</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Teme su CSS datoteke u ovom folderu; dokument objašnjava format.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(nijedna)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Otvori folder tema</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Ponovo učitaj teme</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Prilagođena tema</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>npr. ./${filename}.assets — varijable: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Koju stranicu bočna ploča prikazuje pri pokretanju</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Zadana stranica bočne ploče</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Dozvoli lokalnu automatizaciju</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Programi koje pokrećete na ovom računaru mogu čitati i uređivati otvorene dokumente. Naslov prozora pokazuje kada je neki povezan.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Istakni promjene koje su napravili programi</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Kratko ističe tekst koji je promijenio povezani program kako biste vidjeli šta se promijenilo.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Crtaj PlantUML dijagrame</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Šalje izvor dijagrama na plantuml.com da ga nacrta</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Uploaduj pomoću</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Upload konfiguracija koja se koristi za umetnute slike čija je akcija Upload, kao i za Fajl &gt; Uploaduj lokalne slike</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Folder u Bucketu</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Javni URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Adrese u stilu putanje (MinIO i neki provajderi)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 konfiguracija nije potpuna: popunite Endpoint, Bucket, Access Key ID i Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Historija uploada</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Slika koja je već uploadovana s istom konfiguracijom ne uploaduje se ponovo; koristi se njena ranija adresa ({0} zapamćeno). Očistite historiju nakon brisanja uploadovanih datoteka.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML server</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Adresa PlantUML servera (plantuml-server) koji crta dijagrame. Prazno: plantuml.com. S vlastitim serverom izvor dijagrama ostaje kod vas.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim tipke</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim u načinu izvornog koda (:w sprema, :q zatvara karticu); j/k, gg/G, ]] i / za kretanje u načinu čitanja. Ne u vizuelnom uređivaču.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Otvori mapu zapisnika</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Nakon izvoza</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Prikaži gdje je spremljeno</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Otvori datoteku</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Otvori njen folder</value>
   </data>
 </root>

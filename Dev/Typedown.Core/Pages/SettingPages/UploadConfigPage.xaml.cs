@@ -7,6 +7,7 @@ using Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems;
 using Typedown.Core.Enums;
 using Typedown.Core.Models;
 using Typedown.Core.Services;
+using Typedown.Core.Controls;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
 using Windows.UI.Xaml;
@@ -42,17 +43,29 @@ namespace Typedown.Core.Pages.SettingPages
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            ImageUploadConfig = await UploadService.Value.GetImageUploadConfig(configId);
+            try
+            {
+                ImageUploadConfig = await UploadService.Value.GetImageUploadConfig(configId);
+            }
+            catch (Exception ex)
+            {
+                // The database could not be read: the page stays empty rather than taking the window down.
+                Log.WriteLocal("ImageUploadConfigLoad", ex.ToString());
+                return;
+            }
             if (ImageUploadConfig != null)
                 disposables.Add(ImageUploadConfig.WhenPropertyChanged(nameof(ImageUploadConfig.Name)).Cast<string>().StartWith(ImageUploadConfig.Name).Subscribe(UpdateTitle));
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
+            // The window's own root: this page is gone by the time the save answers.
+            var root = this.GetService<AppViewModel>()?.XamlRoot;
             _ = Dispatcher.RunIdleAsync(async () =>
             {
-                if (ImageUploadConfig != null)
-                    await UploadService.Value.SaveImageUploadConfig(ImageUploadConfig);
+                // A configuration that could not be saved (the database locked) says so: the edits were lost silently.
+                if (ImageUploadConfig != null && !await UploadService.Value.SaveImageUploadConfig(ImageUploadConfig) && root != null)
+                    await AppContentDialog.Create(Locale.GetDialogString("SaveErrorTitle"), ImageUploadConfig.Name, Locale.GetString("Ok")).ShowAsync(root);
             });
             disposables.Clear();
             Bindings?.StopTracking();

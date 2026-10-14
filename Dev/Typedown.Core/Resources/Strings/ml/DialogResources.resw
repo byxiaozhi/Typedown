@@ -133,10 +133,6 @@
     <value>ശരി</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>ഉള്ളടക്കം ശൂന്യമായിരിക്കാൻ പാടില്ല</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>പുതിയ രേഖ സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>കയറ്റുമതി പരാജയപ്പെട്ടു</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Feedback</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>ഇറക്കുമതി പരാജയപ്പെട്ടു</value>
@@ -225,14 +217,6 @@
     <value>കുറുക്കുവഴി കീ കൈവശമുണ്ട്</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>സമർപ്പിക്കുക</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>സമര് പ്പണം വിജയകരം</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>അപ് ലോഡ് പരാജയപ്പെട്ടു</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime Install ചെയ്തിട്ടില്ല</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>ഈ പ്രമാണം മുമ്പ് പങ്കിട്ടിരുന്നു, പക്ഷേ അതിനുശേഷം മാറിയിട്ടുണ്ട്. HedgeDoc 1.x-ന് നിലവിലുള്ള കുറിപ്പ് പുതുക്കാനാകില്ല, അതിനാൽ വീണ്ടും അപ്‌ലോഡ് ചെയ്താൽ പുതിയ ലിങ്കോടെ പുതിയ കുറിപ്പുണ്ടാകും.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>ലിങ്ക് പകർത്തുക</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>തിരുത്താവുന്ന ലിങ്ക്</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>ഈ ലിങ്കുള്ള ആർക്കും കുറിപ്പ് തിരുത്താം.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>ആദ്യം ക്രമീകരണങ്ങൾ → കയറ്റുമതി എന്നതിൽ HedgeDoc സെർവർ വിലാസം നൽകുക.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>ബ്രൗസറിൽ തുറക്കുക</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>വീണ്ടും അപ്‌ലോഡ് ചെയ്യുക (പുതിയ ലിങ്ക്)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>വായിക്കാൻ മാത്രമുള്ള ലിങ്ക്</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc-ൽ പങ്കിട്ടു</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>അവസാനം പങ്കിട്ടതിനുശേഷം പ്രമാണം മാറിയിട്ടില്ല; ഇവയാണ് നിലവിലുള്ള ലിങ്കുകൾ.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>മുൻ ലിങ്ക് ഉപയോഗിക്കുക</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>നിലനിർത്തുക</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>വീണ്ടും ലോഡ് ചെയ്യുക</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>ഡിസ്കിൽ ഫയൽ മാറിയിട്ടുണ്ട്. വീണ്ടും ലോഡ് ചെയ്താൽ സേവ് ചെയ്യാത്ത മാറ്റങ്ങൾ നഷ്ടമാകും.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>ഡിസ്കിൽ ഫയൽ മാറിയിട്ടുണ്ട്. വീണ്ടും ലോഡ് ചെയ്യണോ?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>ഡിസ്കിൽ ഫയൽ മാറിയിട്ടുണ്ട്</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>പ്രാദേശിക ചിത്രങ്ങൾ അപ്‌ലോഡ് ചെയ്യുക</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{1}-ൽ {0}-ാമത്തെ ചിത്രം അപ്‌ലോഡ് ചെയ്യുന്നു…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1}-ൽ {0} ചിത്രങ്ങൾ അപ്‌ലോഡ് ചെയ്തു. ഡോക്യുമെന്റിലെ അവയുടെ വിലാസങ്ങൾ ഇപ്പോൾ അപ്‌ലോഡ് ചെയ്ത പകർപ്പുകളിലേക്ക് ചൂണ്ടുന്നു; റദ്ദാക്കുക പ്രാദേശിക പാതകൾ തിരികെ വയ്ക്കുന്നു.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>റദ്ദാക്കി. {1}-ൽ {0} ചിത്രങ്ങൾ അപ്‌ലോഡ് ചെയ്തു, ഡോക്യുമെന്റിലെ അവയുടെ വിലാസങ്ങൾ മാറ്റി.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>മാറ്റിയിട്ടില്ല:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>ഈ ഡോക്യുമെന്റിൽ പ്രാദേശിക ചിത്രങ്ങളൊന്നുമില്ല.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>അപ്‌ലോഡ് കോൺഫിഗറേഷനൊന്നും തിരഞ്ഞെടുത്തിട്ടില്ല. ക്രമീകരണങ്ങൾ &gt; ചിത്രം &gt; ഇതുപയോഗിച്ച് അപ്‌ലോഡ് ചെയ്യുക എന്നതിൽ ഒന്ന് തിരഞ്ഞെടുക്കുക.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>ക്രമീകരണങ്ങൾ തുറക്കുക</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>ഫയൽ കണ്ടെത്തിയില്ല.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>അപ്‌ലോഡ് ഒരു വിലാസവും നൽകിയില്ല.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>അപ്‌ലോഡിനിടെ ഡോക്യുമെന്റ് അടച്ചു.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>ഡോക്യുമെന്റ് മാറ്റാനായില്ല. ചിത്രം ഓൺലൈനിൽ ഇവിടെയുണ്ട്</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>ഈ ഡോക്യുമെന്റിൽ {0} പ്രാദേശിക ചിത്രങ്ങളുണ്ട്. അവ ഈ കമ്പ്യൂട്ടറിലെ ഫയലുകളാണ്, അതിനാൽ കുറിപ്പിന്റെ വായനക്കാർക്ക് അവ കാണാനാവില്ല. ആദ്യം അവ അപ്‌ലോഡ് ചെയ്യണോ?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>ആദ്യം അപ്‌ലോഡ് ചെയ്യുക</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>എന്തായാലും പങ്കിടുക</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>അവയിൽ {0} എണ്ണം ഈ കോൺഫിഗറേഷൻ ഉപയോഗിച്ച് മുമ്പ് അപ്‌ലോഡ് ചെയ്തിരുന്നതിനാൽ അവയുടെ മുൻ വിലാസങ്ങൾ ഉപയോഗിച്ചു.</value>
   </data>
 </root>

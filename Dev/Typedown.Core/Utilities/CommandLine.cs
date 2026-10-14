@@ -6,7 +6,7 @@ namespace Typedown.Core.Utilities
     {
         public static string GetOpenFilePath(string[] commandLineArgs)
         {
-            return commandLineArgs?.Where(FileTypeHelper.IsMarkdownFile).FirstOrDefault();
+            return commandLineArgs?.Where(FileTypeHelper.IsEditableTextFile).FirstOrDefault();
         }
     }
 }

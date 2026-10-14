@@ -16,7 +16,7 @@
     <UserControl.Resources>
         <converters:BoolToObjectConverter x:Key="SidePaneIconConverter" TrueValue="&#xea49;" FalseValue="&#xea5b;"/>
     </UserControl.Resources>
-    <Grid BorderThickness="0,1,0,0" Padding="4,2,4,3" BorderBrush="{ThemeResource CardStrokeColorDefault}">
+    <Grid x:Name="RootGrid" BorderThickness="0,1,0,0" Padding="4,2,4,3" BorderBrush="{ThemeResource CardStrokeColorDefault}">
         <Grid.Background>
             <SolidColorBrush Color="{ThemeResource SolidBackgroundFillColorBase}" Opacity="0.5"/>
         </Grid.Background>
@@ -44,6 +44,30 @@
                 </ToggleButton.Resources>
                 <FontIcon Glyph="{x:Bind Settings.SidePaneOpen, Converter={StaticResource SidePaneIconConverter}, Mode=OneWay}" FontSize="14"/>
             </ToggleButton>
+            <!-- Reading mode ignores every keystroke; say so where it can be seen, and let the label switch it off. -->
+            <Button
+                x:Name="ReadOnlyBadge"
+                x:Load="{x:Bind Settings.ReadOnly, Mode=OneWay}"
+                Padding="8,2,8,2"
+                BorderThickness="0"
+                VerticalAlignment="Stretch"
+                Click="OnLeaveReadOnlyClick"
+                controls:ToolTip.TextResource="ReadOnlyMode">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <SolidColorBrush x:Key="ButtonBackground" Color="{ThemeResource SubtleFillColorSecondary}"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorTertiary}"/>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorSecondary}"/>
+                        <SolidColorBrush x:Key="ButtonForeground" Color="{ThemeResource TextFillColorSecondary}"/>
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource TextFillColorPrimary}"/>
+                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource TextFillColorSecondary}"/>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                    <FontIcon Glyph="&#xE890;" FontSize="12"/>
+                    <TextBlock FontSize="12" Text="{u:LocaleString Key=ReadOnlyMode}"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
             <Grid>

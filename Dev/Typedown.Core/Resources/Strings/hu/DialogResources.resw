@@ -133,10 +133,6 @@
     <value>OKÉ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>A tartalom nem lehet üres</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Nem sikerült új dokumentumot létrehozni</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Az exportálás sikertelen</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Visszacsatolás</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Az importálás sikertelen</value>
@@ -225,14 +217,6 @@
     <value>A gyorsbillentyű foglalva van</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Előterjeszt</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>A benyújtás sikeres</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>A feltöltés sikertelen</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>A WebView2 futtatókörnyezet nincs telepítve</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Ezt a dokumentumot korábban megosztották, de azóta megváltozott. A HedgeDoc 1.x nem tud meglévő jegyzetet frissíteni, ezért az újbóli feltöltés új jegyzetet hoz létre új hivatkozással.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Hivatkozás másolása</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Szerkeszthető hivatkozás</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Bárki szerkesztheti a jegyzetet, akinek megvan ez a hivatkozás.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Először állítsa be a HedgeDoc-kiszolgáló címét a Beállítások → Exportálás alatt.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Megnyitás böngészőben</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Feltöltés újra (új hivatkozás)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Csak olvasható hivatkozás</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Megosztva a HedgeDocra</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>A dokumentum a legutóbbi megosztás óta nem változott; ezek a meglévő hivatkozások.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Előző hivatkozás használata</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Megtartás</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Újratöltés</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>A fájl megváltozott a lemezen. Az újratöltés elveti a mentetlen módosításokat.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>A fájl megváltozott a lemezen. Újratölti?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>A fájl megváltozott a lemezen</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Helyi képek feltöltése</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{0}/{1}. kép feltöltése…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} képből {0} feltöltve. A dokumentumban lévő címük most a feltöltött másolatokra mutat; a Kigombol visszaállítja a helyi elérési utakat.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Megszakítva. {1} képből {0} feltöltődött, és a dokumentumban lévő címük megváltozott.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Nem változott:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Ebben a dokumentumban nincsenek helyi képek.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Nincs kiválasztva feltöltési konfiguráció. Válasszon egyet itt: Beállítások &gt; Kép &gt; Feltöltés ezzel.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Beállítások megnyitása</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>A fájl nem található.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>A feltöltés nem adott vissza címet.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>A dokumentumot bezárták a feltöltés közben.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>A dokumentumot nem sikerült módosítani. A kép online elérhető itt:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Ez a dokumentum {0} helyi képet tartalmaz. Ezek fájlok ezen a számítógépen, így a jegyzet olvasói nem fogják látni őket. Feltölti őket előbb?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Előbb feltöltés</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Megosztás mégis</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>Közülük {0} már korábban fel lett töltve ezzel a konfigurációval, ezért a korábbi címük lett felhasználva.</value>
   </data>
 </root>

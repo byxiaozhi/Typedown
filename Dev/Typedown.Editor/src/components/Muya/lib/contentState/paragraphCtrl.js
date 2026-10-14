@@ -13,6 +13,14 @@ const getCurrentLevel = type => {
   }
 }
 
+// Whether a heading command turns a paragraph into a heading (`upgrade heading` from a paragraph makes an h6).
+const newTypeIsHeading = (paraType, parent) => {
+  if (/\d/.test(paraType)) return true
+  if (paraType === 'upgrade heading') return true
+  if (paraType === 'degrade heading') return getCurrentLevel(parent.type) !== 0
+  return false
+}
+
 const paragraphCtrl = ContentState => {
   ContentState.prototype.selectionChange = function (cursor) {
     const { start, end } = cursor || selection.getCursorRange()
@@ -54,8 +62,9 @@ const paragraphCtrl = ContentState => {
     }
   }
 
+  // From the cursor the command works on (trimmed by trimBlockSelection), not from the page's selection.
   ContentState.prototype.getCommonParent = function () {
-    const { start, end, affiliation } = this.selectionChange()
+    const { start, end, affiliation } = this.selectionChange(this.cursor)
     const parent = affiliation.length ? affiliation[0] : null
     const startBlock = this.getBlock(start.key)
     const endBlock = this.getBlock(end.key)
@@ -202,20 +211,61 @@ const paragraphCtrl = ContentState => {
         const { parent, startIndex, endIndex } = this.getCommonParent()
         const children = parent ? parent.children : this.blocks
         const referBlock = children[endIndex]
+        const selected = children.slice(startIndex, endIndex + 1)
+        const isList = b => b.type === 'ul' || b.type === 'ol'
+
+        // Everything selected is already this kind of list: the command takes the list away, as it does for the
+        // list the caret is in.
+        if (selected.every(b => isList(b) && b.listType === listType)) {
+          for (const list of selected) {
+            for (const item of list.children) {
+              for (const itemChild of item.children) {
+                if (itemChild.type !== 'input') this.insertBefore(itemChild, list)
+              }
+            }
+            this.removeBlock(list)
+          }
+          return true
+        }
+
         const listWrapper = this.createBlock(listType === 'order' ? 'ol' : 'ul')
         listWrapper.listType = listType
         if (listType === 'order') listWrapper.start = 1
+        const marker = listType === 'order' ? orderListDelimiter : bulletListMarker
+        // One list is either tight or loose: a list in the selection decides, so adding a paragraph to a tight list
+        // does not leave a blank line before the new item alone.
+        const firstList = selected.find(isList)
+        const loose = firstList ? firstList.children.some(item => item.isLooseListItem) : preferLooseListItem
 
-        children.slice(startIndex, endIndex + 1).forEach(child => {
+        selected.forEach(child => {
           if (child !== referBlock) {
             this.removeBlock(child, children)
           } else {
             this.insertAfter(listWrapper, child)
             this.removeBlock(child, children)
           }
+          // A list in the selection lends its items to the new list instead of becoming one item holding a whole
+          // list: selecting a list and the paragraph after it and choosing "ordered list" gave "1. - a" with the
+          // paragraph as item 2.
+          if (isList(child)) {
+            for (const item of child.children.splice(0)) {
+              const first = item.children[0]
+              if (first && first.type === 'input' && listType !== 'task') this.removeBlock(first, item)
+              if (listType === 'task' && !(first && first.type === 'input')) {
+                const checkbox = this.createBlock('input')
+                checkbox.checked = false
+                this.insertBefore(checkbox, item.children[0])
+              }
+              item.listItemType = listType
+              item.bulletMarkerOrDelimiter = marker
+              item.isLooseListItem = loose
+              this.appendChild(listWrapper, item)
+            }
+            return
+          }
           const listItem = this.createBlock('li')
           listItem.listItemType = listType
-          listItem.isLooseListItem = preferLooseListItem
+          listItem.isLooseListItem = loose
           this.appendChild(listWrapper, listItem)
           if (listType === 'task') {
             const checkbox = this.createBlock('input')
@@ -464,11 +514,52 @@ const paragraphCtrl = ContentState => {
     }
   }
 
+  // A selection made with Shift+Down, or by dragging to the start of the next line, ends at offset 0 of the block
+  // after the one the reader meant; one started at the very end of a block begins in the block before. Neither of
+  // those blocks has any of its text selected, so a paragraph command must leave it alone: quoting two paragraphs
+  // quoted the third as well, and turning a paragraph into a heading did nothing at all.
+  ContentState.prototype.trimBlockSelection = function () {
+    const cursor = this.cursor || {}
+    let { start, end } = cursor
+    if (!start || !end || start.key === end.key) return
+    if (end.offset === 0) {
+      const prev = this.findPreBlockInLocation(this.getBlock(end.key))
+      if (prev) end = { key: prev.key, offset: prev.text.length }
+    }
+    const startBlock = this.getBlock(start.key)
+    if (start.key !== end.key && startBlock && start.offset === startBlock.text.length) {
+      const next = this.findNextBlockInLocation(startBlock)
+      if (next) start = { key: next.key, offset: 0 }
+    }
+    if (start !== cursor.start || end !== cursor.end) this.cursor = { start, end }
+  }
+
   ContentState.prototype.updateParagraph = function (paraType, insertMode = false) {
+    this.trimBlockSelection()
+    // The blocks re-rendered afterwards are those around the selection as it is now. The range kept from the last
+    // render is where the caret was then: a selection extended with the keyboard since renders nothing, so the range
+    // could end inside the selection, in a block the command is about to take away.
+    this.setNextRenderRange()
     const { start, end } = this.cursor
     const block = this.getBlock(start.key)
     const { text, type } = block
     let needDispatchChange = true
+
+    // Nested blockquotes (upstream #43): "increase" always wraps in one more level, "decrease" removes the
+    // innermost level; both map onto the existing quote handler.
+    if (paraType === 'blockquote-increase' || paraType === 'blockquote-decrease') {
+      const increase = paraType === 'blockquote-increase'
+      if (!increase) {
+        const { affiliation } = this.selectionChange(this.cursor)
+        if (!affiliation.slice(0, 2).some(b => /blockquote/.test(b.type))) return
+      } else if (!this.isAllowedTransformation(block, 'blockquote', start.key !== end.key)) {
+        return
+      }
+      this.handleQuoteMenu(increase)
+      this.partialRender()
+      this.muya.dispatchChange()
+      return
+    }
 
     // Only allow valid transformations.
     if (!this.isAllowedTransformation(block, paraType, start.key !== end.key)) {
@@ -548,6 +639,22 @@ const paragraphCtrl = ContentState => {
 
         const headingStyle = DEFAULT_TURNDOWN_CONFIG.headingStyle
         const parent = this.getParent(block)
+        // A paragraph can hold several lines (single line breaks). A heading is one line, so only the lines the
+        // selection touches become the heading; the lines above and below stay paragraphs of their own. Turning
+        // the whole paragraph into the heading changed the text around what the reader had selected.
+        let text = block.text
+        let lineStart = 0
+        let lineEnd = text.length
+        if (parent.type === 'p' && newTypeIsHeading(paraType, parent) && text.includes('\n')) {
+          lineStart = text.lastIndexOf('\n', start.offset - 1) + 1
+          const nl = text.indexOf('\n', end.offset)
+          lineEnd = nl === -1 ? text.length : nl
+          text = text.slice(lineStart, lineEnd)
+        }
+        const linesBefore = lineStart > 0 ? block.text.slice(0, lineStart - 1) : null
+        const linesAfter = lineEnd < block.text.length ? block.text.slice(lineEnd + 1) : null
+        start.offset -= lineStart
+        end.offset -= lineStart
         // \u00A0 is &nbsp;
         const [, hash, partText] = /(^ {0,3}#*[ \u00A0]*)([\s\S]*)/.exec(text)
         let newLevel = 0 // 1, 2, 3, 4, 5, 6
@@ -606,6 +713,8 @@ const paragraphCtrl = ContentState => {
           key = headerContent.key
 
           this.insertBefore(header, parent)
+          if (linesBefore !== null) this.insertBefore(this.createBlockP(linesBefore), header)
+          if (linesAfter !== null) this.insertAfter(this.createBlockP(linesAfter), header)
           this.removeBlock(parent)
         } else {
           const pBlock = this.createBlockP(newText)

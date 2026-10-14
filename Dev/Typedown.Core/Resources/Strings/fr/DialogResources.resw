@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Le contenu ne peut pas être vide</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Échec de la création d'un nouveau document</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Échec de l'exportation</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Commentaires</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Échec de l'importation</value>
@@ -225,14 +217,6 @@
     <value>La touche de raccourci est occupée</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Soumettre</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Soumission réussie</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Échec de la mise en ligne</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Runtime WebView2 non installé</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Recharger</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Le fichier a été modifié sur le disque. Le recharger abandonnera les modifications non enregistrées.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Le fichier a été modifié sur le disque. Le recharger ?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Le fichier a été modifié sur le disque</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Conserver</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Partagé sur HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Lien en lecture seule</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Lien modifiable</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Toute personne disposant de ce lien peut modifier la note.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Copier le lien</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Ouvrir dans le navigateur</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Renseignez d'abord l'adresse du serveur HedgeDoc dans Paramètres → Exporter.</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Le document n'a pas changé depuis le dernier partage ; voici les liens existants.</value>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Ce document a déjà été partagé mais a changé depuis. HedgeDoc 1.x ne peut pas mettre à jour une note existante : un nouvel envoi crée une nouvelle note avec un nouveau lien.</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Envoyer à nouveau (nouveau lien)</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Utiliser le lien précédent</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Mettre en ligne les images locales</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Mise en ligne de l'image {0} sur {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} images sur {1} mises en ligne. Leurs adresses dans le document pointent désormais vers les copies en ligne ; Annuler rétablit les chemins locaux.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Annulé. {0} images sur {1} ont été mises en ligne et leurs adresses dans le document ont été modifiées.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Non modifiées :</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Ce document ne contient aucune image locale.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Aucune configuration de mise en ligne n'est choisie. Choisissez-en une dans Paramètres &gt; Image &gt; Mettre en ligne avec.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Ouvrir les paramètres</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Le fichier est introuvable.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>La mise en ligne n'a renvoyé aucune adresse.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Le document a été fermé pendant la mise en ligne.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Le document n'a pas pu être modifié. L'image est en ligne à l'adresse</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Ce document contient {0} images locales. Ce sont des fichiers sur cet ordinateur : les lecteurs de la note ne les verront pas. Les mettre en ligne d'abord ?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Mettre en ligne d'abord</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Partager quand même</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} d'entre elles avaient déjà été mises en ligne avec cette configuration ; leurs adresses précédentes ont donc été utilisées.</value>
   </data>
 </root>

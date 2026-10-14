@@ -133,10 +133,6 @@
     <value>确定</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>内容不能为空</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>新建文档失败</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>导出失败</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>反馈</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>导入失败</value>
@@ -201,6 +193,26 @@
     <value>是否要恢复文件？</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
+  <data name="Reload" xml:space="preserve">
+    <value>重新加载</value>
+    <comment>外部修改对话框/重新加载</comment>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>磁盘上的文件已更改。重新加载将丢失当前未保存的更改。</value>
+    <comment>外部修改对话框/磁盘上的文件已更改</comment>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>磁盘上的文件已更改，是否重新加载？</value>
+    <comment>外部修改对话框/无未保存更改时询问</comment>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>文件已在外部被修改</value>
+    <comment>外部修改对话框/文件已在外部被修改</comment>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>保留</value>
+    <comment>外部修改对话框/保留</comment>
+  </data>
   <data name="ResizeTableTitle" xml:space="preserve">
     <value>调整表格</value>
     <comment>表格对话框/调整表格</comment>
@@ -225,14 +237,6 @@
     <value>快捷键已被占用</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>提交</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>提交成功</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>上传失败</value>
     <comment>上传失败</comment>
@@ -248,5 +252,86 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 运行时未安装</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>已分享到 HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>只读链接</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>可编辑链接</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>拿到此链接的人都可以编辑这篇笔记。</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>复制链接</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>在浏览器打开</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>请先在 设置 → 导出 中填写 HedgeDoc 服务器地址。</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>文档自上次分享后没有变化，以下是已有的链接。</value>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>这篇文档之前分享过，但内容已更改。HedgeDoc 1.x 无法更新已有笔记，重新上传会生成新的笔记和新链接。</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>重新上传（新链接）</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>使用旧链接</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>上传本地图片</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>正在上传第 {0} 张图片，共 {1} 张…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>已上传 {0}/{1} 张图片。文档中这些图片的地址现在指向上传后的副本；撤销可恢复本地路径。</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>已取消。已上传 {0}/{1} 张图片，文档中这些图片的地址已更改。</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>未更改：</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>此文档没有本地图片。</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>未选择上传配置。请在 设置 &gt; 图片 &gt; 上传方式 中选择一个。</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>打开设置</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>找不到文件。</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>上传未返回地址。</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>上传期间文档已关闭。</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>无法更改文档。图片的在线地址为</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>此文档有 {0} 张本地图片。它们是这台电脑上的文件，笔记的读者看不到。先上传它们吗？</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>先上传</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>仍然分享</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>其中 {0} 张之前已用此配置上传过，因此沿用了它们之前的地址。</value>
   </data>
 </root>

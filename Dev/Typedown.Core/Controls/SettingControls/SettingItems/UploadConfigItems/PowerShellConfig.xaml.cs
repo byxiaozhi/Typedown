@@ -40,9 +40,9 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems
             var filePicker = new FileOpenPicker();
             filePicker.FileTypeFilter.Add(".ps1");
             filePicker.SetOwnerWindow(this.GetService<IWindowService>().GetWindow(this));
-            var file = await filePicker.PickSingleFileAsync();
+            var file = await FilePickersExtensions.ShowAsync(() => filePicker.PickSingleFileAsync());
             if (file != null)
-                PowerShellConfigModel.Script = File.ReadAllText(file.Path);
+                await Guarded(() => PowerShellConfigModel.Script = File.ReadAllText(file.Path));
         }
 
         private async void OnExportButtonClick(object sender, RoutedEventArgs e)
@@ -51,9 +51,23 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems
             filePicker.SuggestedFileName = ImageUploadConfig.Name;
             filePicker.FileTypeChoices.Add("PowerShell Cmdlet File", new List<string>() { ".ps1" });
             filePicker.SetOwnerWindow(this.GetService<IWindowService>().GetWindow(this));
-            var file = await filePicker.PickSaveFileAsync();
+            var file = await FilePickersExtensions.ShowAsync(() => filePicker.PickSaveFileAsync());
             if (file != null)
-                File.WriteAllText(file.Path, PowerShellConfigModel.Script);
+                await Guarded(() => File.WriteAllText(file.Path, PowerShellConfigModel.Script));
+        }
+
+        // A script file that cannot be read or written (locked, no access) says why, rather than ending the app.
+        private async System.Threading.Tasks.Task Guarded(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception ex)
+            {
+                Utilities.Log.Debug($"PowerShell script file: {ex}");
+                await AppContentDialog.Create(Utilities.Locale.GetString("Error"), ex.Message, Utilities.Locale.GetString("Ok")).ShowAsync(XamlRoot);
+            }
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

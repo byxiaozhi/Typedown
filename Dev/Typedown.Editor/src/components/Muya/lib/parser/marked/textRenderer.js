@@ -15,6 +15,11 @@ TextRenderer.prototype.text = function (text) {
   return text
 }
 
+TextRenderer.prototype.mark =
+TextRenderer.prototype.text = function (text) {
+  return text
+}
+
 TextRenderer.prototype.html = function (html) {
   return html
 }

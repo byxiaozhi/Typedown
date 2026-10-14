@@ -137,18 +137,6 @@
     <value>Odeslat zpětnou vazbu</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontakt</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>E-mail</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Vaši zpětnou vazbu bereme velmi vážně</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Asi</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Velikost písma</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Písmo použité v editoru</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Rodina písem</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Násobek výšky řádku editoru</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Obrázek schránky</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurace nahrávání obrázků schránky</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Akce, která se má provést při vkládání obrázků</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Místní obrázek</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurace místního nahrávání obrázků</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Akce vložení obrázku</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Obrázek webu</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurace nahrávání webových obrázků</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Preferovat použití relativní cesty při vkládání obrazů</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Okno</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Odsazení zapsané pro vnořené položky seznamu. 4 mezery odpovídají Obsidianu a většině dalších editorů</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Odsazení 4 mezerami (standard Markdownu)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 mezera za značkou</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 mezery za značkou</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 mezery za značkou</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Odsazení seznamů</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Vkládat prázdný řádek mezi nové položky seznamu ve zdroji</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Volné položky seznamu</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Zobrazovat typ bloku (P, H1, ...) vedle aktuálního odstavce</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Značka odstavce</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Doplnit buňky tabulky, aby sloupce lícovaly ve zdroji Markdownu. Vypněte, aby tabulky zůstaly kompaktní (méně tokenů pro nástroje AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Zarovnat sloupce tabulky</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Rozpoznat automaticky podle odstavce</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Směr textu v editoru, hodí se pro arabštinu, hebrejštinu a další jazyky psané zprava doleva</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Zleva doprava</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Zprava doleva</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Směr textu</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Pokud je vypnuto, načíst znovu bez ptaní, pokud nejsou neuložené změny</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Zeptat se před znovunačtením</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Sledovat otevřený soubor a obnovit jej, když jej změní jiný program</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Automaticky načíst při vnější změně</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Soubory otevřené z Průzkumníka se otevřou jako karta v aktuálním okně; vypnuto otevře nové okno</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Otevírat soubory v kartách</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Otevírat dokumenty tam, kde jste skončili</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Pamatovat si pozici kurzoru</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Obnovit všechny dokumenty z minulé relace</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Nechte prázdné pro anonymní poznámky; s účtem poznámka patří vám</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>E-mail (volitelné)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Poznámku publikuje (/s/…), takže sdílený odkaz nelze upravovat</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Publikovat i odkaz jen pro čtení</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Sdílet do HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Adresa HedgeDoc 1.x, např. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Otestovat</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Otestovat připojení</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Zobrazovat pruh karet, i když je otevřen jen jeden dokument</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Vždy zobrazovat karty</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Černá (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Doplňkové styly pro editor a exportované HTML/PDF</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>např. .markdown-body h1 { color: #c00; }  nebo  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Vlastní CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Motiv je jeden soubor CSS ve složce motivů; viz docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Jak jej napsat</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Motivy jsou soubory CSS v této složce; formát vysvětluje dokument.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(žádný)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Otevřít složku motivů</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Znovu načíst motivy</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Vlastní motiv</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>např. ./${filename}.assets — proměnné: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Kterou stránku zobrazí boční panel po spuštění</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Výchozí stránka bočního panelu</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Povolit místní automatizaci</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Programy, které na tomto počítači spouštíte, mohou číst a upravovat otevřené dokumenty. Název okna ukazuje, kdy je některý připojen.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Zvýraznit změny provedené programy</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Krátce zvýrazní text změněný připojeným programem, abyste viděli, co se změnilo.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Kreslit diagramy PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Odešle zdroj diagramu na plantuml.com, který ho nakreslí</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Nahrát pomocí</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Konfigurace nahrávání použitá pro vložené obrázky s akcí Nahrát a příkazem Soubor &gt; Nahrát místní obrázky</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Složka v bucketu</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Veřejná URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Adresy ve stylu cesty (MinIO a někteří poskytovatelé)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Konfigurace S3 není úplná: vyplňte Endpoint, Bucket, Access Key ID a Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Historie nahrávání</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Obrázek již nahraný se stejnou konfigurací se znovu nenahrává; použije se jeho dřívější adresa (zapamatováno: {0}). Po odstranění nahraných souborů historii vymažte.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Server PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Adresa serveru PlantUML (plantuml-server), který kreslí diagramy. Prázdné: plantuml.com. S vlastním serverem zůstane zdroj diagramů u vás.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Klávesy Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim v režimu zdrojového kódu (:w uloží, :q zavře kartu); j/k, gg/G, ]] a / pro pohyb v režimu čtení. Ne ve vizuálním editoru.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Otevřít složku protokolů</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Po exportu</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Ukázat, kam byl uložen</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Otevřít soubor</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Otevřít jeho složku</value>
   </data>
 </root>

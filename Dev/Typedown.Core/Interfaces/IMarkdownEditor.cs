@@ -16,5 +16,8 @@ namespace Typedown.Core.Interfaces
         bool IsEditorLoadFailed { get; }
 
         bool IsEditorLoaded { get; }
+
+        /// <summary>The keyboard to the editor page: the control focused, and the page given the keys.</summary>
+        void FocusEditor();
     }
 }

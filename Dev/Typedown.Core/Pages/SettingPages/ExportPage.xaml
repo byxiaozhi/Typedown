@@ -9,5 +9,8 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <settingitems:ExportSetting/>
+    <StackPanel>
+        <settingitems:ExportSetting/>
+        <settingitems:HedgeDocSetting/>
+    </StackPanel>
 </Page>

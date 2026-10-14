@@ -133,10 +133,6 @@
     <value>సరే</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>కంటెంట్ ఖాళీగా ఉండరాదు</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>కొత్త డాక్యుమెంట్ సృష్టించడం విఫలమైంది</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>ఎగుమతి విఫలమైంది</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>ఫీడ్ బ్యాక్</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>దిగుమతి విఫలమైంది</value>
@@ -225,14 +217,6 @@
     <value>షార్ట్ కట్ కీ ఆక్రమించబడింది</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>సమర్పించు</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>సమర్పణ విజయవంతమైంది</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>అప్ లోడ్ విఫలమైంది</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>వెబ్ వ్యూ2 రన్ టైమ్ స్థాపించబడలేదు</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>ఈ పత్రం గతంలో పంచబడింది కానీ అప్పటి నుండి మారింది. HedgeDoc 1.x ఇప్పటికే ఉన్న నోట్‌ను నవీకరించలేదు, కాబట్టి మళ్లీ అప్‌లోడ్ చేస్తే కొత్త లింక్‌తో కొత్త నోట్ సృష్టించబడుతుంది.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>లింక్‌ను కాపీ చేయి</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>సవరించగల లింక్</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>ఈ లింక్ ఉన్న ఎవరైనా నోట్‌ను సవరించగలరు.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>ముందుగా సెట్టింగ్‌లు → ఎగుమతిలో HedgeDoc సర్వర్ చిరునామాను సెట్ చేయండి.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>బ్రౌజర్‌లో తెరువు</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>మళ్లీ అప్‌లోడ్ చేయి (కొత్త లింక్)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>చదవడానికి మాత్రమే లింక్</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDocకు పంచబడింది</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>చివరిసారి పంచినప్పటి నుండి పత్రం మారలేదు; ఇవి ఇప్పటికే ఉన్న లింక్‌లు.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>మునుపటి లింక్‌ను వాడు</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>ఉంచు</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>మళ్లీ లోడ్ చేయి</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>డిస్క్‌లో ఫైల్ మారింది. మళ్లీ లోడ్ చేస్తే సేవ్ చేయని మార్పులు పోతాయి.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>డిస్క్‌లో ఫైల్ మారింది. మళ్లీ లోడ్ చేయాలా?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>డిస్క్‌లో ఫైల్ మారింది</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>స్థానిక ఇమేజ్ లను అప్ లోడ్ చేయండి</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{1} లో ఇమేజ్ {0} ని అప్ లోడ్ చేస్తోంది…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} లో {0} ఇమేజ్ లు అప్ లోడ్ అయ్యాయి. డాక్యుమెంట్ లో వాటి చిరునామాలు ఇప్పుడు అప్ లోడ్ చేసిన కాపీలను సూచిస్తాయి; Undo చేస్తే స్థానిక పాత్ లు తిరిగి వస్తాయి.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>రద్దు చేయబడింది. {1} లో {0} ఇమేజ్ లు అప్ లోడ్ అయ్యాయి, డాక్యుమెంట్ లో వాటి చిరునామాలు మార్చబడ్డాయి.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>మారలేదు:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>ఈ డాక్యుమెంట్ లో స్థానిక ఇమేజ్ లు లేవు.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>అప్ లోడ్ కాన్ఫిగరేషన్ ఏదీ ఎంచుకోలేదు. సెట్టింగ్ లు &gt; విగ్రహం &gt; దీనితో అప్ లోడ్ చేయండి లో ఒకదాన్ని ఎంచుకోండి.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>సెట్టింగ్ లను తెరవండి</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>ఫైల్ కనుగొనబడలేదు.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>అప్ లోడ్ చిరునామాను తిరిగి ఇవ్వలేదు.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>అప్ లోడ్ సమయంలో డాక్యుమెంట్ మూసివేయబడింది.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>డాక్యుమెంట్ ను మార్చలేకపోయాము. ఇమేజ్ ఈ చిరునామాలో ఆన్ లైన్ లో ఉంది:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>ఈ డాక్యుమెంట్ లో {0} స్థానిక ఇమేజ్ లు ఉన్నాయి. అవి ఈ కంప్యూటర్ లోని ఫైల్ లు, కాబట్టి నోట్ పాఠకులకు అవి కనిపించవు. ముందుగా వాటిని అప్ లోడ్ చేయాలా?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>ముందుగా అప్ లోడ్ చేయండి</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>అయినా పంచు</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>వాటిలో {0} ఈ కాన్ఫిగరేషన్ తో ఇంతకుముందే అప్ లోడ్ అయ్యాయి, కాబట్టి వాటి పాత చిరునామాలు ఉపయోగించబడ్డాయి.</value>
   </data>
 </root>

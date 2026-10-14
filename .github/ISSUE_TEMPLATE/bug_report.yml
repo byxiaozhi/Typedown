@@ -1,0 +1,122 @@
+name: "Bug 反馈 / Bug report"
+description: "程序崩溃、显示错误、功能不正常 / Crash, wrong behaviour, broken feature"
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **本仓库的 issue 由 AI（Claude Code）负责分析和修复，维护者只做验收。**
+        > AI 看不到你的屏幕，只能依据你写的内容和日志来定位问题，所以请尽量写清楚：
+        > 精确的版本号、复现步骤（按什么、点哪里、顺序）、实际结果与期望结果、相关日志和触发问题的 Markdown 片段。
+        > 描述越具体，修复越快；含糊的描述通常会被追问一轮。
+        >
+        > **Issues in this repository are triaged and fixed by an AI (Claude Code); the maintainer only reviews.**
+        > It cannot see your screen, so precise versions, exact steps, actual vs. expected results, logs and a
+        > minimal Markdown sample are what make a fix possible. Vague reports get a round of follow-up questions.
+
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请尽量填写完整，尤其是版本号和日志，这样才能定位问题。
+        Thanks for the report. Version and logs matter most for tracking it down.
+
+  - type: input
+    id: version
+    attributes:
+      label: "Typedown 版本 / Version"
+      description: "设置 → 关于 中显示的版本号，测试版请带上 test.xx 标识 / From Settings → About, include the test.xx label for test builds"
+      placeholder: "1.2.22 (test.61.1+2bce7ad)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: "安装方式 / Install type"
+      options:
+        - "安装包 .exe / Installer"
+        - "便携版 .zip / Portable"
+        - "MSIX"
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: "Windows 版本 / Windows version"
+      description: "设置 → 系统 → 关于，或运行 winver / e.g. Windows 11 24H2 (26100), Windows 10 22H2 (19045)"
+      placeholder: "Windows 11 24H2 (26100.xxxx)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: arch
+    attributes:
+      label: "CPU 架构 / Architecture"
+      options:
+        - "x64"
+        - "ARM64"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: "发生了什么 / What happened"
+      description: "实际现象，和你期望的行为 / What you saw, and what you expected instead"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "复现步骤 / Steps to reproduce"
+      placeholder: |
+        1. 打开文件夹 …
+        2. 单击文件树里的 …
+        3. 按 F11 …
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: "复现频率 / How often"
+      options:
+        - "每次 / Always"
+        - "经常 / Often"
+        - "偶尔 / Sometimes"
+        - "只出现过一次 / Once"
+
+  - type: textarea
+    id: sample
+    attributes:
+      label: "触发问题的 Markdown（如相关）/ Markdown that triggers it (if relevant)"
+      description: "表格、列表、公式等内容相关问题请贴出最小片段 / A minimal snippet for table/list/math issues"
+      render: markdown
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: "日志 / Logs"
+      description: |
+        日志目录：`%LOCALAPPDATA%\Typedown\logs\`
+        - 崩溃：`*-XamlUnhandledException.log` / `*-UnhandledException.log`
+        - 其他问题：`debug.log` 中相关时间段的内容
+        Logs live in `%LOCALAPPDATA%\Typedown\logs\` (crash logs and `debug.log`). Paste the relevant part or attach the file.
+      render: text
+
+  - type: textarea
+    id: media
+    attributes:
+      label: "截图 / 录屏 / Screenshots"
+      description: "直接拖进来即可 / Drag files here"
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: "确认 / Checklist"
+      options:
+        - label: "已经在最新的 Release 上试过 / Reproduced on the latest release"
+        - label: "搜索过已有 issue，没有重复 / Searched existing issues"

@@ -133,10 +133,6 @@
     <value>ໂອເຄ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>ເນື້ອຫາບໍ່ສາມາດເປົ່າ</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>ບໍ່ໄດ້ສ້າງເອກະສານໃຫມ່</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>ການສົ່ງອອກບໍ່ສໍາເລັດ</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>ຄໍາຄິດເຫັນ</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>ການນໍາເຂົ້າບໍ່ສໍາເລັດ</value>
@@ -225,14 +217,6 @@
     <value>ກະ ແຈ ສັ້ນ ແມ່ນ ອາ ໄສ ຢູ່</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>ຍື່ນສະເໜີ</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>ການ ຍິນ ຍອມ ປະ ສົບ ຄວາມ ສໍາ ເລັດ</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>ອັບໂຫຼດຫຼົ້ມ</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime ບໍ່ຕິດຕັ້ງ</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>ເອກະສານນີ້ເຄີຍແບ່ງປັນມາກ່ອນ ແຕ່ໄດ້ປ່ຽນແປງຫຼັງຈາກນັ້ນ. HedgeDoc 1.x ບໍ່ສາມາດອັບເດດບັນທຶກທີ່ມີຢູ່ ດັ່ງນັ້ນການອັບໂຫຼດໃໝ່ຈະສ້າງບັນທຶກໃໝ່ພ້ອມລິ້ງໃໝ່.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>ສຳເນົາລິ້ງ</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>ລິ້ງທີ່ແກ້ໄຂໄດ້</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>ຜູ້ໃດກໍ່ຕາມທີ່ມີລິ້ງນີ້ສາມາດແກ້ໄຂບັນທຶກໄດ້.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>ກະລຸນາຕັ້ງທີ່ຢູ່ເຊີບເວີ HedgeDoc ໃນ ການຕັ້ງຄ່າ → ສົ່ງອອກ ກ່ອນ.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>ເປີດໃນບຣາວເຊີ</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>ອັບໂຫຼດໃໝ່ (ລິ້ງໃໝ່)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>ລິ້ງອ່ານຢ່າງດຽວ</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>ແບ່ງປັນໄປ HedgeDoc ແລ້ວ</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>ເອກະສານບໍ່ໄດ້ປ່ຽນແປງນັບແຕ່ການແບ່ງປັນຄັ້ງລ່າສຸດ; ນີ້ແມ່ນລິ້ງທີ່ມີຢູ່.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>ໃຊ້ລິ້ງກ່ອນໜ້າ</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>ເກັບໄວ້</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>ໂຫຼດຄືນ</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>ໄຟລ໌ປ່ຽນແປງຢູ່ດິສກ໌. ການໂຫຼດຄືນຈະຍົກເລີກການປ່ຽນແປງທີ່ຍັງບໍ່ໄດ້ບັນທຶກ.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>ໄຟລ໌ປ່ຽນແປງຢູ່ດິສກ໌. ໂຫຼດຄືນບໍ?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>ໄຟລ໌ປ່ຽນແປງຢູ່ດິສກ໌</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>ອັບໂຫຼດຮູບພາບໃນເຄື່ອງ</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>ກຳລັງອັບໂຫຼດຮູບທີ {0} ຈາກ {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>ອັບໂຫຼດແລ້ວ {0} ຈາກ {1} ຮູບ. ທີ່ຢູ່ຂອງພວກມັນໃນເອກະສານຕອນນີ້ຊີ້ໄປຫາສຳເນົາທີ່ອັບໂຫຼດແລ້ວ; Undo ຈະນຳເສັ້ນທາງໃນເຄື່ອງກັບຄືນມາ.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>ຍົກເລີກແລ້ວ. ອັບໂຫຼດແລ້ວ {0} ຈາກ {1} ຮູບ, ແລະ ທີ່ຢູ່ຂອງພວກມັນໃນເອກະສານຖືກປ່ຽນແລ້ວ.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>ບໍ່ໄດ້ປ່ຽນ:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>ເອກະສານນີ້ບໍ່ມີຮູບພາບໃນເຄື່ອງ.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>ຍັງບໍ່ໄດ້ເລືອກການຕັ້ງຄ່າການອັບໂຫຼດ. ເລືອກໜຶ່ງອັນໃນ ການຕັ້ງຄ່າ &gt; ຮູບພາບ &gt; ອັບໂຫຼດດ້ວຍ.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>ເປີດການຕັ້ງຄ່າ</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>ບໍ່ພົບໄຟລ໌.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>ການອັບໂຫຼດບໍ່ໄດ້ສົ່ງທີ່ຢູ່ກັບມາ.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>ເອກະສານຖືກປິດໃນລະຫວ່າງການອັບໂຫຼດ.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>ບໍ່ສາມາດປ່ຽນເອກະສານໄດ້. ຮູບພາບຢູ່ອອນລາຍທີ່</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>ເອກະສານນີ້ມີຮູບພາບໃນເຄື່ອງ {0} ຮູບ. ພວກມັນເປັນໄຟລ໌ໃນຄອມພິວເຕີນີ້, ສະນັ້ນຜູ້ອ່ານບັນທຶກຈະບໍ່ເຫັນພວກມັນ. ອັບໂຫຼດພວກມັນກ່ອນບໍ?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>ອັບໂຫຼດກ່ອນ</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>ແບ່ງປັນຢູ່ດີ</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>ໃນນັ້ນ {0} ຮູບເຄີຍຖືກອັບໂຫຼດດ້ວຍການຕັ້ງຄ່ານີ້ມາກ່ອນແລ້ວ, ຈຶ່ງໃຊ້ທີ່ຢູ່ເດີມຂອງພວກມັນ.</value>
   </data>
 </root>

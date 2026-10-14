@@ -729,10 +729,6 @@
     <value>Athfhriotal</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Rátáil</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Redo</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Zúmáil</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Níl fillteán ar bith oscailte. Oscail comhad nó fillteán chun brabhsáil anseo.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Tá {0} mír san fhillteán seo — an iomarca le liostáil anseo.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>Níl comhaid Markdown sa fhillteán seo.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Níl an fillteán seo ann a thuilleadh.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Taispeáin fillteán an chomhaid reatha</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Cuardaigh san fhillteán…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(meaitseálann ainm an chomhaid)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} comhad meaitseála as {1} a cuardaíodh</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Ag cuardach…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Lánscáileán</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>An cluaisín a úsáideadh go deireanach</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>An chéad chluaisín eile</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>An cluaisín roimhe seo</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Laghdaigh leibhéal an athfhriotail</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Méadaigh leibhéal an athfhriotail</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Mód léitheoireachta</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Cuardaigh san fhillteán</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Roinn le HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Laghdaigh gach rud</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Leathnaigh gach rud</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Gan teideal</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Uathoibriú ceangailte</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>Chuir {0} {1} in eagar</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>D’fhéadfadh cuid den HTML a athscríobh má chuirtear an doiciméad seo in eagar sa mhód amhairc. Chun é a choinneáil díreach mar atá, cuir in eagar sa mhód foinse é.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>Tá léaráidí PlantUML múchta (seolann an tarraingt an fhoinse chuig plantuml.com). Cas air iad i Socruithe &gt; Eagarthóir.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Uaslódáil íomhánna áitiúla</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Easpórtáilte go {0}</value>
   </data>
 </root>

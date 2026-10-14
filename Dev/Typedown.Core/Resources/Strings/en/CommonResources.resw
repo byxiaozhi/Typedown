@@ -729,10 +729,6 @@
     <value>Quote</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Rating</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Redo</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,107 @@
   <data name="Zoom" xml:space="preserve">
     <value>Zoom</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Full Screen</value>
+    <comment>全屏</comment>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Reading Mode</value>
+    <comment>阅读模式</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>No folder is open. Open a file or a folder to browse it here.</value>
+    <comment>文件栏/未打开文件夹</comment>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>This folder no longer exists.</value>
+    <comment>文件栏/文件夹不存在</comment>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>This folder has {0} items — too many to list here.</value>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>No Markdown files in this folder.</value>
+    <comment>文件栏/没有 Markdown 文件</comment>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Search in folder…</value>
+    <comment>搜索/在文件夹中搜索</comment>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Searching…</value>
+    <comment>搜索/搜索中</comment>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} matching file(s) of {1} searched</value>
+    <comment>搜索/结果统计</comment>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Expand all</value>
+    <comment>大纲/全部展开</comment>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Collapse all</value>
+    <comment>大纲/全部折叠</comment>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Increase Quote Level</value>
+    <comment>段落/增加引用层级</comment>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Decrease Quote Level</value>
+    <comment>段落/减少引用层级</comment>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
+    <comment>未命名</comment>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Last Used Tab</value>
+    <comment>上次使用的标签页</comment>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Next Tab</value>
+    <comment>下一个标签页</comment>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Previous Tab</value>
+    <comment>上一个标签页</comment>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Show the current file's folder</value>
+    <comment>文件栏/定位到当前文件所在目录</comment>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Share to HedgeDoc…</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Search in folder</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(file name matches)</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Automation connected</value>
+    <comment>窗口标题：自动化已连接</comment>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} edited {1}</value>
+    <comment>窗口标题：{0} 客户端名，{1} 文档标题</comment>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Editing this document in visual mode may rewrite some of its raw HTML. To keep it exactly as it is, edit it in source mode.</value>
+    <comment>可视编辑提示：首次可视编辑可能改写原始 HTML</comment>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>PlantUML diagrams are off (drawing sends the source to plantuml.com). Turn them on in Settings &gt; Editor.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Upload local images</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Exported to {0}</value>
   </data>
 </root>

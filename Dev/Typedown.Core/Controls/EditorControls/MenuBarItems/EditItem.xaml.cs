@@ -47,7 +47,7 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
                     new(Mod.Control, Key.A),
                     // new(Mod.None, Key.Delete),
                 };
-                if (handledKey.Contains(new(e.Modifiers, e.Key)))
+                if (handledKey.Contains(new(e.Modifiers, e.Key)) && !VimWants(e))
                 {
                     var editor = this.GetService<IMarkdownEditor>();
                     var focused = FocusManager.GetFocusedElement(XamlRoot);
@@ -74,6 +74,7 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             RegisterWindowShortcut(Settings.ShortcutFindNext, FindNextItem);
             RegisterWindowShortcut(Settings.ShortcutFindPrevious, FindPreviousItem);
             RegisterWindowShortcut(Settings.ShortcutReplace, ReplaceItem);
+            RegisterWindowShortcut(Settings.ShortcutSearchInFolder, SearchInFolderItem);
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

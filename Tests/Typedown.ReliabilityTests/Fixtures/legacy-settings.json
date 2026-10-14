@@ -1,0 +1,9 @@
+{
+  "FontSize": 18.5,
+  "AutoSave": true,
+  "Language": "zh-Hans",
+  "FutureFeature": {
+    "token": "keep-me",
+    "enabled": true
+  }
+}

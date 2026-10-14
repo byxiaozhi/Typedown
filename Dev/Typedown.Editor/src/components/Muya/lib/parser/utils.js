@@ -92,6 +92,13 @@ export const getAttributes = html => {
 }
 
 export const parseSrcAndTitle = (text = '') => {
+  // <a b.png> "title": a destination in angle brackets may hold spaces (CommonMark 6.3). It was split at its first
+  // space and kept its brackets, so ![pic](<a b.png>) was an empty picture and [doc](<a b.md>) went nowhere.
+  const angled = /^\s*<((?:\\.|[^<>\\\n])*)>(?:\s+(?:"((?:\\.|[^"\\])*)"|'((?:\\.|[^'\\])*)'))?\s*$/.exec(text)
+  if (angled) {
+    const unescape = value => value.replace(/\\([!-/:-@[-`{-~])/g, '$1')
+    return { src: unescape(angled[1]), title: unescape(angled[2] ?? angled[3] ?? '') }
+  }
   const parts = text.split(/\s+/)
   if (parts.length === 1) {
     return {

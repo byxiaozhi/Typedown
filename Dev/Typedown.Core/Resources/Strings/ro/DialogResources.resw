@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Conținutul nu poate fi gol</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Nu s-a reușit crearea unui document nou</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Exportul nu a reușit</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Feedback</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Importul nu a reușit</value>
@@ -225,14 +217,6 @@
     <value>Tasta de comenzi rapide este ocupată</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Prezinte</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Depunerea cu succes</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Încărcarea nu a reușit</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime nu este instalat</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Acest document a mai fost partajat, dar s-a modificat între timp. HedgeDoc 1.x nu poate actualiza o notă existentă, deci o nouă încărcare creează o notă nouă cu un link nou.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Copiază linkul</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Link editabil</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Oricine are acest link poate edita nota.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Setează mai întâi adresa serverului HedgeDoc în Setări → Export.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Deschide în browser</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Încarcă din nou (link nou)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Link doar pentru citire</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Partajat pe HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Documentul nu s-a schimbat de la ultima partajare; acestea sunt linkurile existente.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Folosește linkul anterior</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Păstrează</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Reîncarcă</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Fișierul a fost modificat pe disc. Reîncărcarea va renunța la modificările nesalvate.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Fișierul a fost modificat pe disc. Îl reîncarci?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Fișierul a fost modificat pe disc</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Încărcați imaginile locale</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Se încarcă imaginea {0} din {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Au fost încărcate {0} din {1} imagini. Adresele lor din document indică acum copiile încărcate; Desface readuce căile locale.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Anulat. Au fost încărcate {0} din {1} imagini, iar adresele lor din document au fost modificate.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Nemodificate:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Acest document nu are imagini locale.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Nu este aleasă nicio configurație de încărcare. Alegeți una în Setări &gt; Imagine &gt; Încărcare cu.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Deschideți setările</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Fișierul nu a fost găsit.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Încărcarea nu a returnat nicio adresă.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Documentul a fost închis în timpul încărcării.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Documentul nu a putut fi modificat. Imaginea este online la</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Acest document are {0} imagini locale. Sunt fișiere de pe acest computer, așa că cititorii notiței nu le vor vedea. Le încărcați mai întâi?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Încărcați mai întâi</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Partajați oricum</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} dintre ele fuseseră deja încărcate cu această configurație, așa că s-au folosit adresele lor anterioare.</value>
   </data>
 </root>

@@ -137,18 +137,6 @@
     <value>ಪ್ರತಿಕ್ರಿಯೆ ಕಳುಹಿಸಿ</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>ಸಂಪರ್ಕ</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>ಇಮೇಲ್</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ನಾವು ಬಹಳ ಗಂಭೀರವಾಗಿ ಪರಿಗಣಿಸುತ್ತೇವೆ</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>ನಮ್ಮ ಬಗ್ಗೆ</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>ಫಾಂಟ್ ಗಾತ್ರ</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>ಸಂಪಾದಕದಲ್ಲಿ ಬಳಸಿದ ಅಕ್ಷರಶೈಲಿ</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>ಅಕ್ಷರಶೈಲಿ ಕುಟುಂಬ</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>ಎಡಿಟರ್ ಲೈನ್ ಎತ್ತರ ಬಹು</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>ಕ್ಲಿಪ್ ಬೋರ್ಡ್ ಇಮೇಜ್</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>ಕ್ಲಿಪ್ ಬೋರ್ಡ್ ಇಮೇಜ್ ಅಪ್ ಲೋಡ್ ಕಾನ್ಫಿಗರೇಶನ್</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>ಇಮೇಜ್ ಗಳನ್ನು ಸೇರಿಸುವಾಗ ಕಾರ್ಯಗತಗೊಳಿಸುವ ಕ್ರಿಯೆ</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>ಸ್ಥಳೀಯ ಚಿತ್ರ</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>ಸ್ಥಳೀಯ ಇಮೇಜ್ ಅಪ್ ಲೋಡ್ ಕಾನ್ಫಿಗರೇಶನ್</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>ಇಮೇಜ್ ಕ್ರಿಯೆಯನ್ನು ಸೇರಿಸಿ</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>ವೆಬ್ ಇಮೇಜ್</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>ವೆಬ್ ಇಮೇಜ್ ಅಪ್ಲೋಡ್ ಕಾನ್ಫಿಗರೇಶನ್</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>ಇಮೇಜ್ ಗಳನ್ನು ಸೇರಿಸುವಾಗ ಸಾಪೇಕ್ಷ ಪಥವನ್ನು ಬಳಸಲು ಆದ್ಯತೆ ನೀಡಿ</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>ಕಿಟಕಿ</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>ಪೂರ್ವನಿಯೋಜಿತ</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>ನೆಸ್ಟೆಡ್ ಪಟ್ಟಿ ಐಟಂಗಳಿಗೆ ಬರೆಯುವ ಇಂಡೆಂಟ್. 4 ಸ್ಪೇಸ್‌ಗಳು Obsidian ಮತ್ತು ಇತರ ಹೆಚ್ಚಿನ ಸಂಪಾದಕಗಳಿಗೆ ಹೊಂದುತ್ತವೆ</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 ಸ್ಪೇಸ್ ಇಂಡೆಂಟ್ (Markdown ಮಾನದಂಡ)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>ಗುರುತಿನ ನಂತರ 1 ಸ್ಪೇಸ್</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>ಗುರುತಿನ ನಂತರ 2 ಸ್ಪೇಸ್</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>ಗುರುತಿನ ನಂತರ 4 ಸ್ಪೇಸ್</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>ಪಟ್ಟಿ ಇಂಡೆಂಟ್</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>ಮೂಲದಲ್ಲಿ ಹೊಸ ಪಟ್ಟಿ ಐಟಂಗಳ ನಡುವೆ ಖಾಲಿ ಸಾಲು ಸೇರಿಸಿ</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>ಸಡಿಲ ಪಟ್ಟಿ ಐಟಂಗಳು</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>ಪ್ರಸ್ತುತ ಪ್ಯಾರಾಗ್ರಾಫ್ ಪಕ್ಕದಲ್ಲಿ ಬ್ಲಾಕ್ ಪ್ರಕಾರವನ್ನು (P, H1, ...) ತೋರಿಸಿ</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>ಪ್ಯಾರಾಗ್ರಾಫ್ ಗುರುತು</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Markdown ಮೂಲದಲ್ಲಿ ಕಾಲಂಗಳು ಸಾಲಾಗಿರಲು ಕೋಷ್ಟಕದ ಕೋಶಗಳನ್ನು ತುಂಬಿಸಿ. ಕೋಷ್ಟಕಗಳನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿಡಲು ಆಫ್ ಮಾಡಿ (AI ಪರಿಕರಗಳಿಗೆ ಕಡಿಮೆ ಟೋಕನ್‌ಗಳು)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>ಕೋಷ್ಟಕ ಕಾಲಂಗಳನ್ನು ಜೋಡಿಸಿ</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>ಪ್ರತಿ ಪ್ಯಾರಾಗ್ರಾಫ್‌ಗೆ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪತ್ತೆಮಾಡಿ</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>ಸಂಪಾದಕದ ಪಠ್ಯ ದಿಕ್ಕು; ಅರೇಬಿಕ್, ಹೀಬ್ರೂ ಮತ್ತು ಬಲದಿಂದ ಎಡಕ್ಕೆ ಬರೆಯುವ ಇತರ ಭಾಷೆಗಳಿಗೆ ಉಪಯುಕ್ತ</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>ಎಡದಿಂದ ಬಲಕ್ಕೆ</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>ಬಲದಿಂದ ಎಡಕ್ಕೆ</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>ಪಠ್ಯ ದಿಕ್ಕು</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>ಆಫ್ ಆಗಿದ್ದರೆ, ಉಳಿಸದ ಬದಲಾವಣೆಗಳಿಲ್ಲದಿದ್ದಾಗ ಕೇಳದೆ ಮರುಲೋಡ್ ಮಾಡಿ</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>ಮರುಲೋಡ್ ಮಾಡುವ ಮೊದಲು ಕೇಳಿ</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>ತೆರೆದ ಫೈಲ್ ಅನ್ನು ಗಮನಿಸಿ ಮತ್ತು ಬೇರೆ ಪ್ರೋಗ್ರಾಂ ಬದಲಾಯಿಸಿದಾಗ ರಿಫ್ರೆಶ್ ಮಾಡಿ</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>ಹೊರಗಿನ ಬದಲಾವಣೆಗೆ ಸ್ವಯಂ ಮರುಲೋಡ್</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Explorer ನಿಂದ ತೆರೆದ ಫೈಲ್‌ಗಳು ಪ್ರಸ್ತುತ ವಿಂಡೋದಲ್ಲಿ ಟ್ಯಾಬ್ ಆಗಿ ತೆರೆಯುತ್ತವೆ; ಆಫ್ ಆಗಿದ್ದರೆ ಹೊಸ ವಿಂಡೋ ತೆರೆಯುತ್ತದೆ</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>ಫೈಲ್‌ಗಳನ್ನು ಟ್ಯಾಬ್‌ಗಳಲ್ಲಿ ತೆರೆಯಿರಿ</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>ನೀವು ನಿಲ್ಲಿಸಿದಲ್ಲಿಂದ ದಾಖಲೆಗಳನ್ನು ತೆರೆಯಿರಿ</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>ಕರ್ಸರ್ ಸ್ಥಾನವನ್ನು ನೆನಪಿಡಿ</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>ಕೊನೆಯ ಅವಧಿಯ ಎಲ್ಲಾ ದಾಖಲೆಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಿ</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>ಅನಾಮಧೇಯ ಟಿಪ್ಪಣಿಗಳಿಗಾಗಿ ಖಾಲಿ ಬಿಡಿ; ಖಾತೆಯಿದ್ದರೆ ಟಿಪ್ಪಣಿ ನಿಮ್ಮದಾಗಿರುತ್ತದೆ</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>ಇಮೇಲ್ (ಐಚ್ಛಿಕ)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>ಪಾಸ್‌ವರ್ಡ್</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>ಟಿಪ್ಪಣಿಯನ್ನು ಪ್ರಕಟಿಸುತ್ತದೆ (/s/…) ಆದ್ದರಿಂದ ಹಂಚಿದ ಲಿಂಕ್ ಸಂಪಾದಿಸಲಾಗದು</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>ಓದಲು-ಮಾತ್ರ ಲಿಂಕ್ ಅನ್ನೂ ಪ್ರಕಟಿಸಿ</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>HedgeDoc ಗೆ ಹಂಚಿ</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x ವಿಳಾಸ, ಉದಾ. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>ಸರ್ವರ್</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>ಪರೀಕ್ಷಿಸಿ</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>ಸಂಪರ್ಕ ಪರೀಕ್ಷಿಸಿ</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>ಒಂದೇ ದಾಖಲೆ ತೆರೆದಿದ್ದರೂ ಟ್ಯಾಬ್ ಪಟ್ಟಿ ತೋರಿಸಿ</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>ಯಾವಾಗಲೂ ಟ್ಯಾಬ್‌ಗಳನ್ನು ತೋರಿಸಿ</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>ಕಪ್ಪು (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>ಸಂಪಾದಕ ಮತ್ತು ರಫ್ತು ಮಾಡಿದ HTML/PDF ಗಾಗಿ ಹೆಚ್ಚುವರಿ ಶೈಲಿಗಳು</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>ಉದಾ. .markdown-body h1 { color: #c00; }  ಅಥವಾ  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>ಕಸ್ಟಮ್ CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>ಥೀಮ್ ಎಂದರೆ ಥೀಮ್ ಫೋಲ್ಡರ್‌ನಲ್ಲಿರುವ ಒಂದು CSS ಫೈಲ್; docs/custom-theme.md ನೋಡಿ</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>ಒಂದನ್ನು ಹೇಗೆ ಬರೆಯುವುದು</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>ಥೀಮ್‌ಗಳು ಈ ಫೋಲ್ಡರ್‌ನಲ್ಲಿರುವ CSS ಫೈಲ್‌ಗಳು; ಸ್ವರೂಪವನ್ನು ದಾಖಲೆ ವಿವರಿಸುತ್ತದೆ.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ಯಾವುದೂ ಇಲ್ಲ)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>ಥೀಮ್ ಫೋಲ್ಡರ್ ತೆರೆಯಿರಿ</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>ಥೀಮ್‌ಗಳನ್ನು ಮರುಲೋಡ್ ಮಾಡಿ</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>ಕಸ್ಟಮ್ ಥೀಮ್</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>ಉದಾ. ./${filename}.assets — ಚರಗಳು: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>ಆ್ಯಪ್ ಪ್ರಾರಂಭವಾದಾಗ ಪಕ್ಕದ ಫಲಕ ತೋರಿಸುವ ಪುಟ</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>ಪಕ್ಕದ ಫಲಕದ ಪೂರ್ವನಿಯೋಜಿತ ಪುಟ</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>ಸ್ಥಳೀಯ ಸ್ವಯಂಚಾಲನೆಯನ್ನು ಅನುಮತಿಸಿ</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>ಈ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ನೀವು ಚಲಾಯಿಸುವ ಪ್ರೋಗ್ರಾಂಗಳು ತೆರೆದ ದಾಖಲೆಗಳನ್ನು ಓದಬಹುದು ಮತ್ತು ಸಂಪಾದಿಸಬಹುದು. ಯಾವುದಾದರೂ ಸಂಪರ್ಕಗೊಂಡಾಗ ವಿಂಡೋ ಶೀರ್ಷಿಕೆಯಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತದೆ.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>ಪ್ರೋಗ್ರಾಂಗಳು ಮಾಡಿದ ಬದಲಾವಣೆಗಳನ್ನು ಹೈಲೈಟ್ ಮಾಡಿ</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>ಸಂಪರ್ಕಿತ ಪ್ರೋಗ್ರಾಂ ಬದಲಾಯಿಸಿದ ಪಠ್ಯವನ್ನು ಸ್ವಲ್ಪ ಸಮಯ ಹೈಲೈಟ್ ಮಾಡುತ್ತದೆ, ಇದರಿಂದ ಏನು ಬದಲಾಗಿದೆ ಎಂದು ನೀವು ನೋಡಬಹುದು.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>PlantUML ರೇಖಾಚಿತ್ರಗಳನ್ನು ಬಿಡಿಸಿ</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>ಬಿಡಿಸಲು ರೇಖಾಚಿತ್ರದ ಮೂಲವನ್ನು plantuml.com ಗೆ ಕಳುಹಿಸುತ್ತದೆ</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>ಇದರೊಂದಿಗೆ ಅಪ್ ಲೋಡ್ ಮಾಡಿ</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>"ಇಮೇಜ್ ಅಪ್ ಲೋಡ್ ಮಾಡಿ" ಕ್ರಿಯೆಯಿರುವ ಸೇರಿಸಿದ ಚಿತ್ರಗಳಿಗೆ ಮತ್ತು ಫೈಲ್ &gt; ಸ್ಥಳೀಯ ಚಿತ್ರಗಳನ್ನು ಅಪ್ ಲೋಡ್ ಮಾಡಿ ಗೆ ಬಳಸುವ ಅಪ್ ಲೋಡ್ ಕಾನ್ಫಿಗರೇಶನ್</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Bucket ನಲ್ಲಿನ ಫೋಲ್ಡರ್</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>ಸಾರ್ವಜನಿಕ URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>ಪಾತ್-ಶೈಲಿಯ ವಿಳಾಸಗಳು (MinIO ಮತ್ತು ಕೆಲವು ಪೂರೈಕೆದಾರರು)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 ಕಾನ್ಫಿಗರೇಶನ್ ಅಪೂರ್ಣವಾಗಿದೆ: Endpoint, Bucket, Access Key ID ಮತ್ತು Secret Access Key ಅನ್ನು ಭರ್ತಿ ಮಾಡಿ.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>ಅಪ್ ಲೋಡ್ ಇತಿಹಾಸ</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>ಅದೇ ಕಾನ್ಫಿಗರೇಶನ್‌ನೊಂದಿಗೆ ಈಗಾಗಲೇ ಅಪ್ ಲೋಡ್ ಮಾಡಿದ ಚಿತ್ರವನ್ನು ಮತ್ತೆ ಅಪ್ ಲೋಡ್ ಮಾಡಲಾಗುವುದಿಲ್ಲ; ಅದರ ಹಿಂದಿನ ವಿಳಾಸವನ್ನು ಬಳಸಲಾಗುತ್ತದೆ ({0} ನೆನಪಿನಲ್ಲಿದೆ). ಅಪ್ ಲೋಡ್ ಮಾಡಿದ ಫೈಲ್‌ಗಳನ್ನು ಅಳಿಸಿದ ನಂತರ ಇದನ್ನು ತೆರವುಗೊಳಿಸಿ.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML ಸರ್ವರ್</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>ರೇಖಾಚಿತ್ರಗಳನ್ನು ಬಿಡಿಸುವ PlantUML ಸರ್ವರ್‌ನ (plantuml-server) ವಿಳಾಸ. ಖಾಲಿ: plantuml.com. ನಿಮ್ಮದೇ ಸರ್ವರ್ ಇದ್ದರೆ ರೇಖಾಚಿತ್ರಗಳ ಮೂಲ ನಿಮ್ಮ ಬಳಿಯೇ ಇರುತ್ತದೆ.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim ಕೀಗಳು</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>ಮೂಲ ಮೋಡ್‌ನಲ್ಲಿ Vim (:w ಉಳಿಸುತ್ತದೆ, :q ಟ್ಯಾಬ್ ಮುಚ್ಚುತ್ತದೆ); ಓದುವ ಮೋಡ್‌ನಲ್ಲಿ ಚಲಿಸಲು j/k, gg/G, ]] ಮತ್ತು /. ದೃಶ್ಯ ಸಂಪಾದಕದಲ್ಲಿ ಇಲ್ಲ.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>ಲಾಗ್ ಫೋಲ್ಡರ್ ತೆರೆಯಿರಿ</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>ರಫ್ತಿನ ನಂತರ</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>ಎಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ ಎಂದು ತೋರಿಸಿ</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>ಫೈಲ್ ತೆರೆಯಿರಿ</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>ಅದರ ಫೋಲ್ಡರ್ ತೆರೆಯಿರಿ</value>
   </data>
 </root>

@@ -137,18 +137,6 @@
     <value>Senda endurgjöf</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Samband</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Tölvupóstur</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Við tökum athugasemdir þínar mjög alvarlega</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Um</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Leturstærð</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Letur notað í ritli</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Leturfjölskylda</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Hæð ritstjóralínu margfeldi</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Klippiborðsmynd</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Stillingar fyrir upphleðslu klippispjalds myndar</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Aðgerð sem á að framkvæma þegar myndir eru settar inn</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Staðbundin mynd</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Stillingar fyrir upphleðslu mynda á staðnum</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Setja inn myndaðgerð</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Vefmynd</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Stillingar fyrir upphleðslu vefmynda</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Viltu frekar nota afstæða slóð þegar þú setur inn myndir</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Gluggi</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Sjálfgefið</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Inndráttur sem er skrifaður fyrir hreiðraða listaliði. 4 bil samsvara Obsidian og flestum öðrum ritlum</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 bila inndráttur (Markdown staðall)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 bil á eftir merkinu</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 bil á eftir merkinu</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 bil á eftir merkinu</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Inndráttur lista</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Setja auða línu milli nýrra listaliða í frumkóðanum</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Gisnir listaliðir</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Sýna gerð blokkar (P, H1, ...) við hlið núverandi málsgreinar</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Málsgreinamerki</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Fylla reiti töflunnar svo dálkar stillist af í Markdown frumkóðanum. Slökktu á þessu til að halda töflum þéttum (færri tákn fyrir gervigreindartól)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Jafna dálka töflu</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Greina sjálfkrafa fyrir hverja málsgrein</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Textastefna ritilsins; gagnleg fyrir arabísku, hebresku og önnur mál sem eru skrifuð frá hægri til vinstri</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Frá vinstri til hægri</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Frá hægri til vinstri</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Textastefna</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Ef slökkt, endurhlaða án þess að spyrja nema óvistaðar breytingar séu til staðar</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Spyrja fyrir endurhleðslu</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Fylgjast með opinni skrá og endurnýja hana þegar annað forrit breytir henni</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Sjálfvirk endurhleðsla við utanaðkomandi breytingu</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Skrár sem opnaðar eru úr Explorer opnast sem flipi í núverandi glugga; slökkt opnar nýjan glugga</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Opna skrár í flipum</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Opna skjöl þar sem frá var horfið</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Muna staðsetningu bendils</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Endurheimta öll skjöl síðustu lotu</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Skildu eftir autt til að búa til nafnlausa minnispunkta; með reikningi tilheyrir hann þér</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Netfang (valfrjálst)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Lykilorð</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Birtir minnispunktinn (/s/…) svo ekki sé hægt að breyta deilda hlekknum</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Birta einnig hlekk sem aðeins er hægt að lesa</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Deila á HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x vistfang, t.d. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Þjónn</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Prófa</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Prófa tenginguna</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Sýna flipastikuna jafnvel þótt aðeins eitt skjal sé opið</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Sýna flipa alltaf</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Svart (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Auka stílar fyrir ritilinn og útflutt HTML/PDF</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>t.d. .markdown-body h1 { color: #c00; }  eða  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Sérsniðið CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Þema er ein CSS skrá í þemamöppunni; sjá docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Hvernig á að skrifa þema</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Þemu eru CSS skrár í þessari möppu; skjalið útskýrir sniðið.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ekkert)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Opna þemamöppuna</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Endurhlaða þemu</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Sérsniðið þema</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>t.d. ./${filename}.assets — breytur: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Hvaða síðu hliðarstikan sýnir við ræsingu</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Sjálfgefin síða hliðarstiku</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Leyfa staðbundna sjálfvirkni</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Forrit sem þú keyrir á þessari tölvu geta lesið og breytt opnum skjölum. Titill gluggans sýnir þegar eitt er tengt.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Auðkenna breytingar sem forrit gera</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Auðkennir í stutta stund textann sem tengt forrit breytti, svo þú sjáir hvað breyttist.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Teikna PlantUML-skýringarmyndir</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Sendir frumkóða myndarinnar á plantuml.com til að teikna hana</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Hlaða upp með</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Upphleðslustillingarnar sem notaðar eru fyrir innsettar myndir þar sem aðgerðin er Hlaða upp mynd, og af Skrá &gt; Hlaða upp staðbundnum myndum</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Mappa í bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Opinber vefslóð</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Vistföng á slóðarsniði (MinIO og sumar þjónustur)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3-stillingarnar eru ófullgerðar: fylltu út Endpoint, Bucket, Access Key ID og Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Upphleðsluferill</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Myndum sem þegar hefur verið hlaðið upp með sömu stillingum er ekki hlaðið upp aftur; fyrra vistfang þeirra er notað ({0} í minni). Hreinsaðu ferilinn eftir að hafa eytt upphlöðnum skrám.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML-þjónn</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Vistfang PlantUML-þjónsins (plantuml-server) sem teiknar myndirnar. Autt: plantuml.com. Með eigin þjóni helst frumkóði myndanna hjá þér.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim-lyklar</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim í frumkóðaham (:w vistar, :q lokar flipanum); j/k, gg/G, ]] og / til að fara um í lestrarham. Ekki í sjónræna ritlinum.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Opna annálamöppu</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Eftir útflutning</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Sýna hvar það var vistað</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Opna skrána</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Opna möppu hennar</value>
   </data>
 </root>

@@ -133,10 +133,6 @@
     <value>OUKEI</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Inhoud kan nie leeg wees nie</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Kon nie nuwe dokument skep nie</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Uitvoer het misluk</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Terugvoer</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Invoer het misluk</value>
@@ -225,14 +217,6 @@
     <value>Kortpadsleutel is beset</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Dien in</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Voorlegging suksesvol</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Oplaai misluk</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime nie geïnstalleer nie</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Hierdie dokument is voorheen gedeel, maar het sedertdien verander. HedgeDoc 1.x kan nie 'n bestaande nota opdateer nie, dus skep 'n nuwe oplaai 'n nuwe nota met 'n nuwe skakel.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopieer skakel</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Redigeerbare skakel</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Enigiemand met hierdie skakel kan die nota redigeer.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Stel eers die HedgeDoc-bedieneradres in Instellings → Uitvoer.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Maak in blaaier oop</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Laai weer op (nuwe skakel)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Leesalleen-skakel</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Gedeel na HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Die dokument het nie verander sedert dit laas gedeel is nie; hier is die bestaande skakels.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Gebruik vorige skakel</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Hou</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Herlaai</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Die lêer het op die skyf verander. Herlaai sal ongestoorde veranderinge weggooi.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Die lêer het op die skyf verander. Herlaai dit?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Die lêer het op die skyf verander</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Laai plaaslike prente op</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Laai tans prent {0} van {1} op…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} van {1} prente is opgelaai. Hul adresse in die dokument wys nou na die opgelaaide kopieë; Ontdoen sit die plaaslike paaie terug.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Gekanselleer. {0} van {1} prente is opgelaai, en hul adresse in die dokument is verander.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Nie verander nie:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Hierdie dokument het geen plaaslike prente nie.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Geen oplaaikonfigurasie is gekies nie. Kies een onder Instellings &gt; Beeld &gt; Laai op met.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Maak instellings oop</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Die lêer is nie gevind nie.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Die oplaai het geen adres teruggegee nie.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Die dokument is tydens die oplaai gesluit.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Die dokument kon nie verander word nie. Die prent is aanlyn by</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Hierdie dokument het {0} plaaslike prente. Dit is lêers op hierdie rekenaar, so lesers van die nota sal dit nie sien nie. Laai hulle eers op?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Laai eers op</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Deel tog</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} daarvan is reeds voorheen met hierdie konfigurasie opgelaai, dus is hul vorige adresse gebruik.</value>
   </data>
 </root>

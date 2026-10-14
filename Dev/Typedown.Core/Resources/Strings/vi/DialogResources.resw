@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Nội dung không được để trống</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Không thể tạo tài liệu mới</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Xuất không thành công</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Phản hồi</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Nhập không thành công</value>
@@ -225,14 +217,6 @@
     <value>Phím tắt bị chiếm dụng</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Trình</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Gửi bài thành công</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Tải lên không thành công</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Thời gian chạy WebView2 chưa được cài đặt</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Tài liệu này đã được chia sẻ trước đây nhưng đã thay đổi. HedgeDoc 1.x không thể cập nhật ghi chú sẵn có, nên tải lên lại sẽ tạo ghi chú mới với liên kết mới.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Sao chép liên kết</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Liên kết có thể sửa</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Bất kỳ ai có liên kết này đều có thể sửa ghi chú.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Hãy đặt địa chỉ máy chủ HedgeDoc trong Cài đặt → Xuất trước.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Mở trong trình duyệt</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Tải lên lại (liên kết mới)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Liên kết chỉ đọc</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Đã chia sẻ lên HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Tài liệu không thay đổi kể từ lần chia sẻ trước; đây là các liên kết hiện có.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Dùng liên kết trước</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Giữ</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Tải lại</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Tệp đã thay đổi trên đĩa. Tải lại sẽ bỏ các thay đổi chưa lưu.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Tệp đã thay đổi trên đĩa. Tải lại chứ?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Tệp đã thay đổi trên đĩa</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Tải lên ảnh cục bộ</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Đang tải lên ảnh {0}/{1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Đã tải lên {0}/{1} ảnh. Địa chỉ của chúng trong tài liệu giờ trỏ tới các bản đã tải lên; Hoàn tác sẽ khôi phục đường dẫn cục bộ.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Đã hủy. Đã tải lên {0}/{1} ảnh và địa chỉ của chúng trong tài liệu đã được thay đổi.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Không thay đổi:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Tài liệu này không có ảnh cục bộ.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Chưa chọn cấu hình tải lên. Hãy chọn một cấu hình trong Cài đặt &gt; Ảnh &gt; Tải lên bằng.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Mở cài đặt</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Không tìm thấy tệp.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Quá trình tải lên không trả về địa chỉ.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Tài liệu đã bị đóng trong khi tải lên.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Không thể thay đổi tài liệu. Ảnh đã có trực tuyến tại</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Tài liệu này có {0} ảnh cục bộ. Đó là các tệp trên máy tính này nên người đọc ghi chú sẽ không thấy chúng. Tải chúng lên trước?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Tải lên trước</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Vẫn chia sẻ</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} ảnh trong số đó đã được tải lên trước đây bằng cấu hình này, nên địa chỉ cũ của chúng được dùng lại.</value>
   </data>
 </root>

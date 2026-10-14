@@ -3,9 +3,12 @@ import { CLASS_OR_ID } from '../config'
 import { escapeHTML } from '../utils'
 import ExportMarkdown from '../utils/exportMarkdown'
 import marked from '../parser/marked'
-import { sanitize } from '../utils'
+import { sanitize, absoluteImageUrls } from '../utils'
+import { svgImagesAsPng } from 'services/localPaths'
+import { tokenizer } from '../parser'
 import { EXPORT_DOMPURIFY_CONFIG } from '../config'
 import remote from 'services/remote/common'
+import { selectionToPlainText } from 'services/plainText'
 
 const getSanitizeHtml = (markdown, options) => {
   const html = marked(markdown, options)
@@ -56,9 +59,15 @@ const copyCutCtrl = ContentState => {
   ContentState.prototype.getClipBoardData = function () {
     const { start, end } = selection.getCursorRange()
     if (!start || !end) {
-      return { html: '', text: '' }
-    }
-    if (start.key === end.key) {
+      // Reading mode's select-all selects the editor's whole content, which is no cursor range Muya knows; the
+      // copy below works from the page's selection, so it goes on when there is one in the editor.
+      const domSelection = window.getSelection()
+      const inEditor = domSelection && !domSelection.isCollapsed && domSelection.rangeCount > 0 &&
+        this.muya.container.contains(domSelection.getRangeAt(0).commonAncestorContainer)
+      if (!inEditor) {
+        return { html: '', text: '', plainText: '' }
+      }
+    } else if (start.key === end.key) {
       const startBlock = this.getBlock(start.key)
       const { type, text, functionType } = startBlock
       // Fix issue #942
@@ -66,7 +75,8 @@ const copyCutCtrl = ContentState => {
         const selectedText = text.substring(start.offset, end.offset)
         return {
           html: marked(selectedText, this.muya.options),
-          text: selectedText
+          text: selectedText,
+          plainText: selectedText
         }
       }
     }
@@ -108,6 +118,24 @@ const copyCutCtrl = ContentState => {
 
         item.insertBefore(input, firstChild)
       }
+    }
+
+    // A picture is copied as its Markdown source says, not as drawn: one that did not load has no <img> and the
+    // conversion to Markdown dropped it, and a drawn one has the resolved absolute path, which the lookup below did not
+    // always map back (the Markdown then held C:/... for a relative picture). Pictures written as HTML keep that way.
+    // The source is read by the editor's own parser: a pattern of its own missed an alt text with brackets
+    // (![ja-dark[1]](...)) and a path with a space, and those were copied at the page's address (encoded, with a
+    // ?msec= cache key), which Word could not load.
+    for (const placeholder of wrapper.querySelectorAll('span.ag-inline-image')) {
+      const raw = placeholder.getAttribute('data-raw') || ''
+      let token = null
+      try { token = tokenizer(raw, { options: this.muya.options })[0] } catch (e) { }
+      if (!token || token.type !== 'image' || token.raw !== raw || !token.src) continue
+      const img = document.createElement('img')
+      img.setAttribute('alt', token.alt || '')
+      img.setAttribute('src', token.src)
+      if (token.title) img.setAttribute('title', token.title)
+      placeholder.replaceWith(img)
     }
 
     const images = wrapper.querySelectorAll('span.ag-inline-image img')
@@ -222,8 +250,9 @@ const copyCutCtrl = ContentState => {
 
     let htmlData = wrapper.innerHTML
     const textData = this.htmlToMarkdown(htmlData)
-    htmlData = marked(textData)
-    let plainText = window.getSelection().toString();
+    htmlData = svgImagesAsPng(absoluteImageUrls(marked(textData)))
+    // What the selection reads as, without Markdown (services/plainText).
+    const plainText = selectionToPlainText()
 
     return { html: htmlData, text: textData, plainText }
   }
@@ -278,8 +307,9 @@ const copyCutCtrl = ContentState => {
     }
     const { selectedImage } = this
     if (selectedImage) {
+      // The picture itself for Word and mail (its Markdown source as HTML showed as text there), the Markdown as text.
       const { token } = selectedImage
-      remote.setClipboard({ type: 'text/html', data: token.raw })
+      remote.setClipboard({ type: 'text/html', data: type === 'normal' ? svgImagesAsPng(absoluteImageUrls(marked(token.raw))) : '' })
       remote.setClipboard({ type: 'text/plain', data: token.raw })
       return
     }

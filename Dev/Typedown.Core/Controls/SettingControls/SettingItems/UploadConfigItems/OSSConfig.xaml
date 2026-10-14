@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Typedown.Core.Controls" 
+    xmlns:u="using:Typedown.Core.Utilities"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     mc:Ignorable="d"
@@ -18,7 +19,7 @@
             <Grid RowSpacing="12" ColumnSpacing="16" Margin="-16,2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="100"/>
-                    <ColumnDefinition Width="1e10*" MaxWidth="300"/>
+                    <ColumnDefinition Width="1e10*" MaxWidth="500"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -29,17 +30,17 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="AccessKey" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind OSSConfigModel.AccessKey, Mode=TwoWay}"/>
-                <TextBlock Grid.Row="1" Text="SecretKey" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind OSSConfigModel.SecretKey, Mode=TwoWay}"/>
-                <TextBlock Grid.Row="2" Text="BucketName" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind OSSConfigModel.BucketName, Mode=TwoWay}"/>
-                <TextBlock Grid.Row="3" Text="ServiceURL" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind OSSConfigModel.ServiceURL, Mode=TwoWay}"/>
-                <TextBlock Grid.Row="4" Text="RegionEndpoint" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="4" Grid.Column="1" Text="{x:Bind OSSConfigModel.RegionEndpoint, Mode=TwoWay}"/>
-                <Button Grid.Row="5" Grid.Column="1" Content="测试连接"/>
+                <TextBlock Grid.Row="0" Text="Endpoint" VerticalAlignment="Center"/>
+                <TextBox x:Name="EndpointBox" Grid.Row="0" Grid.Column="1" PlaceholderText="https://&lt;account&gt;.r2.cloudflarestorage.com" Text="{x:Bind OSSConfigModel.ServiceURL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Row="1" Text="Region" VerticalAlignment="Center"/>
+                <TextBox x:Name="RegionBox" Grid.Row="1" Grid.Column="1" PlaceholderText="us-east-1 / auto" Text="{x:Bind OSSConfigModel.RegionEndpoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Row="2" Text="Bucket" VerticalAlignment="Center"/>
+                <TextBox x:Name="BucketBox" Grid.Row="2" Grid.Column="1" Text="{x:Bind OSSConfigModel.BucketName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Row="3" Text="Access Key ID" VerticalAlignment="Center"/>
+                <TextBox x:Name="AccessKeyBox" Grid.Row="3" Grid.Column="1" Text="{x:Bind OSSConfigModel.AccessKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Row="4" Text="Secret Access Key" VerticalAlignment="Center"/>
+                <PasswordBox x:Name="SecretKeyBox" Grid.Row="4" Grid.Column="1" Password="{x:Bind OSSConfigModel.SecretKey, Mode=TwoWay}"/>
+                <CheckBox x:Name="PathStyleBox" Grid.Row="5" Grid.Column="1" Content="{u:LocaleString Key=ImageUpload.S3.PathStyle}" IsChecked="{x:Bind OSSConfigModel.PathStyle, Mode=TwoWay}"/>
             </Grid>
         </controls:NormalSettingItem>
 
@@ -53,13 +54,11 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="上传路径" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind OSSConfigModel.UploadPath, Mode=TwoWay}"/>
-                <TextBlock Grid.Row="1" Text="外部URL" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind OSSConfigModel.ExternalURL, Mode=TwoWay}"/>
-                <Button Grid.Row="4" Grid.Column="1" Content="测试上传"/>
+                <TextBlock Grid.Row="0" Text="{u:LocaleString Key=ImageUpload.S3.KeyPrefix}" VerticalAlignment="Center"/>
+                <TextBox x:Name="KeyPrefixBox" Grid.Row="0" Grid.Column="1" PlaceholderText="images/${year}/${month}" Text="{x:Bind OSSConfigModel.UploadPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Row="1" Text="{u:LocaleString Key=ImageUpload.S3.PublicUrl}" VerticalAlignment="Center"/>
+                <TextBox x:Name="PublicUrlBox" Grid.Row="1" Grid.Column="1" PlaceholderText="https://img.example.com" Text="{x:Bind OSSConfigModel.ExternalURL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </controls:NormalSettingItem>
 

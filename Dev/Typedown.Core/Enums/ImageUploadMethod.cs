@@ -30,6 +30,6 @@ namespace Typedown.Core.Enums
     {
         public static IReadOnlyList<ImageUploadMethod> ImageUploadMethods { get; } = Enum.GetValues(typeof(ImageUploadMethod)).Cast<ImageUploadMethod>().ToList();
 
-        public static IReadOnlyList<ImageUploadMethod> AvailableImageUploadMethods { get; } = new List<ImageUploadMethod>() { ImageUploadMethod.PowerShell };
+        public static IReadOnlyList<ImageUploadMethod> AvailableImageUploadMethods { get; } = new List<ImageUploadMethod>() { ImageUploadMethod.OSS, ImageUploadMethod.PowerShell };
     }
 }

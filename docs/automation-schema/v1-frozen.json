@@ -1,0 +1,1752 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://typedown.local/automation/v1.json",
+  "title": "Typedown automation API v1",
+  "description": "Params and results of every v1 method, and the error object (docs/automation-api-spec.md). Method params accept unknown fields (section 1.2); results may gain fields in later versions. Referenced as #/$defs/<method>.params and #/$defs/<method>.result.",
+  "$defs": {
+    "revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991,
+      "description": "Advances only when the text really changes; read together with instanceId."
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "hex32": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "documentId": {
+      "$ref": "#/$defs/hex32"
+    },
+    "windowId": {
+      "type": "string",
+      "pattern": "^w[0-9a-f]{32}$"
+    },
+    "contentHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 of the exact text's UTF-8 bytes."
+    },
+    "text": {
+      "type": "string",
+      "pattern": "^[^\\r]*$",
+      "description": "Document text; \"\\n\" line endings only."
+    },
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "app.read",
+        "document.read",
+        "document.write",
+        "document.save",
+        "window.focus",
+        "settings.read",
+        "settings.write"
+      ]
+    },
+    "lineEnding": {
+      "enum": [
+        "lf",
+        "crlf",
+        "cr"
+      ]
+    },
+    "reveal": {
+      "enum": [
+        "none",
+        "document"
+      ],
+      "default": "none"
+    },
+    "origin": {
+      "enum": [
+        "user",
+        "automation",
+        "filesystem",
+        "restore",
+        "system"
+      ]
+    },
+    "normalization": {
+      "type": "object",
+      "required": [
+        "pendingNormalization",
+        "sourceHash",
+        "normalizedHash",
+        "reasons",
+        "classifierVersion"
+      ],
+      "properties": {
+        "pendingNormalization": {
+          "enum": [
+            "none",
+            "knownFormatting",
+            "unknown",
+            "unsafe"
+          ]
+        },
+        "sourceHash": {
+          "$ref": "#/$defs/contentHash"
+        },
+        "normalizedHash": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/contentHash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Stable English reasons, e.g. notEvaluated, fence-lost, formatting-changed."
+        },
+        "classifierVersion": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "documentSummary": {
+      "type": "object",
+      "required": [
+        "documentId",
+        "windowId",
+        "path",
+        "title",
+        "revision",
+        "saved",
+        "active",
+        "lineEnding"
+      ],
+      "properties": {
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Absolute path; null for an untitled document."
+        },
+        "title": {
+          "type": "string"
+        },
+        "revision": {
+          "$ref": "#/$defs/revision"
+        },
+        "saved": {
+          "type": "boolean"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "The active tab of its window."
+        },
+        "lineEnding": {
+          "$ref": "#/$defs/lineEnding"
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "required": [
+        "windowVisible",
+        "tabActive",
+        "pageFramesPassed",
+        "hostRenderPassed"
+      ],
+      "properties": {
+        "windowVisible": {
+          "type": "boolean"
+        },
+        "tabActive": {
+          "type": "boolean"
+        },
+        "pageFramesPassed": {
+          "type": "boolean"
+        },
+        "hostRenderPassed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "system.initialize.params": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "integer"
+        },
+        "client": {
+          "type": "object",
+          "required": [
+            "id",
+            "name"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/uuid"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "requestedScopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "capabilities": {
+          "type": "object",
+          "properties": {
+            "presentationAcknowledgement": {
+              "type": "boolean"
+            },
+            "serverRequests": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "required": [
+        "apiVersion",
+        "client"
+      ]
+    },
+    "system.initialize.result": {
+      "type": "object",
+      "required": [
+        "apiVersion",
+        "server",
+        "instanceId",
+        "clientSessionId",
+        "grantedScopes",
+        "deniedScopes",
+        "maxMessageBytes",
+        "methods",
+        "capabilities"
+      ],
+      "properties": {
+        "apiVersion": {
+          "const": 1
+        },
+        "server": {
+          "type": "object",
+          "required": [
+            "name",
+            "version",
+            "commit",
+            "platform",
+            "buildType"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "commit": {
+              "type": "string"
+            },
+            "platform": {
+              "type": "string"
+            },
+            "buildType": {
+              "enum": [
+                "application",
+                "automationTestHost"
+              ]
+            }
+          }
+        },
+        "instanceId": {
+          "$ref": "#/$defs/hex32"
+        },
+        "clientSessionId": {
+          "$ref": "#/$defs/hex32"
+        },
+        "grantedScopes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scope"
+          }
+        },
+        "deniedScopes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "scope",
+              "reason"
+            ],
+            "properties": {
+              "scope": {
+                "type": "string"
+              },
+              "reason": {
+                "enum": [
+                  "unknown",
+                  "notAvailable"
+                ]
+              }
+            }
+          }
+        },
+        "maxMessageBytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "methods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "scope",
+              "schema"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "scope": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/scope"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "capabilities": {
+          "type": "object",
+          "required": [
+            "replaceText",
+            "presentationAcknowledgement",
+            "events",
+            "offsetEdits",
+            "selectionEdits",
+            "serverRequests"
+          ],
+          "properties": {
+            "replaceText": {
+              "type": "boolean"
+            },
+            "presentationAcknowledgement": {
+              "type": "boolean"
+            },
+            "events": {
+              "type": "boolean"
+            },
+            "offsetEdits": {
+              "type": "boolean"
+            },
+            "selectionEdits": {
+              "type": "boolean"
+            },
+            "serverRequests": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "system.ping.params": {
+      "type": "object",
+      "properties": {}
+    },
+    "system.ping.result": {
+      "type": "object",
+      "required": [
+        "apiVersion",
+        "instanceId"
+      ],
+      "properties": {
+        "apiVersion": {
+          "const": 1
+        },
+        "instanceId": {
+          "$ref": "#/$defs/hex32"
+        }
+      }
+    },
+    "app.getState.params": {
+      "type": "object",
+      "properties": {}
+    },
+    "app.getState.result": {
+      "type": "object",
+      "required": [
+        "instanceId",
+        "version",
+        "activeWindowId",
+        "windowCount"
+      ],
+      "properties": {
+        "instanceId": {
+          "$ref": "#/$defs/hex32"
+        },
+        "version": {
+          "type": "string"
+        },
+        "activeWindowId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/windowId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "windowCount": {
+          "$ref": "#/$defs/count"
+        }
+      }
+    },
+    "window.list.params": {
+      "type": "object",
+      "properties": {}
+    },
+    "window.list.result": {
+      "type": "object",
+      "required": [
+        "windows"
+      ],
+      "properties": {
+        "windows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "windowId",
+              "active",
+              "documentCount",
+              "activeDocumentId"
+            ],
+            "properties": {
+              "windowId": {
+                "$ref": "#/$defs/windowId"
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "documentCount": {
+                "$ref": "#/$defs/count"
+              },
+              "activeDocumentId": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/documentId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "window.focus.params": {
+      "type": "object",
+      "properties": {
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        }
+      },
+      "required": [
+        "windowId"
+      ]
+    },
+    "window.focus.result": {
+      "type": "object",
+      "required": [
+        "windowId"
+      ],
+      "properties": {
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        }
+      }
+    },
+    "document.list.params": {
+      "type": "object",
+      "properties": {
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        }
+      }
+    },
+    "document.list.result": {
+      "type": "object",
+      "required": [
+        "documents"
+      ],
+      "properties": {
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/documentSummary"
+          }
+        }
+      }
+    },
+    "document.get.params": {
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "consistency": {
+          "enum": [
+            "snapshot",
+            "latest"
+          ]
+        },
+        "include": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "text",
+              "headings"
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "documentId",
+        "consistency"
+      ]
+    },
+    "document.get.result": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/documentSummary"
+        },
+        {
+          "type": "object",
+          "required": [
+            "contentHash",
+            "isCurrent",
+            "normalization"
+          ],
+          "properties": {
+            "contentHash": {
+              "$ref": "#/$defs/contentHash"
+            },
+            "isCurrent": {
+              "type": "boolean",
+              "description": "Always true for consistency latest."
+            },
+            "normalization": {
+              "$ref": "#/$defs/normalization"
+            },
+            "text": {
+              "$ref": "#/$defs/text"
+            },
+            "headings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "index",
+                  "level",
+                  "text",
+                  "slug"
+                ],
+                "properties": {
+                  "index": {
+                    "$ref": "#/$defs/count"
+                  },
+                  "level": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 6
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "document.open.params": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        },
+        "reveal": {
+          "$ref": "#/$defs/reveal"
+        }
+      },
+      "required": [
+        "path"
+      ]
+    },
+    "document.open.result": {
+      "type": "object",
+      "required": [
+        "windowId",
+        "documentId",
+        "revision"
+      ],
+      "properties": {
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        },
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "revision": {
+          "$ref": "#/$defs/revision"
+        }
+      }
+    },
+    "document.create.params": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/text"
+        },
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        },
+        "reveal": {
+          "$ref": "#/$defs/reveal"
+        },
+        "normalizationPolicy": {
+          "enum": [
+            "requireKnownSafe",
+            "allowUnknown"
+          ],
+          "default": "requireKnownSafe"
+        }
+      }
+    },
+    "document.create.result": {
+      "type": "object",
+      "required": [
+        "windowId",
+        "documentId",
+        "revision",
+        "contentHash"
+      ],
+      "properties": {
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        },
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "revision": {
+          "$ref": "#/$defs/revision"
+        },
+        "contentHash": {
+          "$ref": "#/$defs/contentHash"
+        },
+        "normalization": {
+          "$ref": "#/$defs/normalization"
+        }
+      }
+    },
+    "document.focus.params": {
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        }
+      },
+      "required": [
+        "documentId"
+      ]
+    },
+    "document.focus.result": {
+      "type": "object",
+      "required": [
+        "windowId",
+        "documentId"
+      ],
+      "properties": {
+        "windowId": {
+          "$ref": "#/$defs/windowId"
+        },
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        }
+      }
+    },
+    "writeResult": {
+      "type": "object",
+      "required": [
+        "operationId",
+        "revision",
+        "contentHash",
+        "saved",
+        "origin",
+        "normalization"
+      ],
+      "properties": {
+        "operationId": {
+          "$ref": "#/$defs/hex32"
+        },
+        "revision": {
+          "$ref": "#/$defs/revision"
+        },
+        "contentHash": {
+          "$ref": "#/$defs/contentHash"
+        },
+        "saved": {
+          "type": "boolean"
+        },
+        "origin": {
+          "const": "automation"
+        },
+        "normalization": {
+          "$ref": "#/$defs/normalization"
+        },
+        "presentation": {
+          "$ref": "#/$defs/presentation"
+        }
+      }
+    },
+    "document.replace.params": {
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "baseRevision": {
+          "$ref": "#/$defs/revision"
+        },
+        "clientOperationId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "normalizationPolicy": {
+          "enum": [
+            "requireKnownSafe",
+            "allowUnknown"
+          ],
+          "default": "requireKnownSafe"
+        },
+        "save": {
+          "type": "boolean",
+          "default": false
+        },
+        "reveal": {
+          "$ref": "#/$defs/reveal"
+        },
+        "awaitPresentation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Only with reveal: document."
+        },
+        "text": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "documentId",
+        "baseRevision",
+        "text"
+      ]
+    },
+    "document.replace.result": {
+      "$ref": "#/$defs/writeResult"
+    },
+    "document.replaceText.params": {
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "baseRevision": {
+          "$ref": "#/$defs/revision"
+        },
+        "clientOperationId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "normalizationPolicy": {
+          "enum": [
+            "requireKnownSafe",
+            "allowUnknown"
+          ],
+          "default": "requireKnownSafe"
+        },
+        "save": {
+          "type": "boolean",
+          "default": false
+        },
+        "reveal": {
+          "$ref": "#/$defs/reveal"
+        },
+        "awaitPresentation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Only with reveal: document."
+        },
+        "find": {
+          "type": "string",
+          "minLength": 1
+        },
+        "replacement": {
+          "type": "string",
+          "pattern": "^[^\\r]*$"
+        },
+        "expectedCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "documentId",
+        "baseRevision",
+        "find",
+        "replacement",
+        "expectedCount"
+      ]
+    },
+    "document.replaceText.result": {
+      "$ref": "#/$defs/writeResult"
+    },
+    "document.undo.params": {
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "baseRevision": {
+          "$ref": "#/$defs/revision"
+        },
+        "clientOperationId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "save": {
+          "type": "boolean",
+          "default": false
+        },
+        "reveal": {
+          "$ref": "#/$defs/reveal"
+        },
+        "awaitPresentation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Only with reveal: document."
+        }
+      },
+      "required": [
+        "documentId",
+        "baseRevision"
+      ]
+    },
+    "document.undo.result": {
+      "$ref": "#/$defs/writeResult"
+    },
+    "document.redo.params": {
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "baseRevision": {
+          "$ref": "#/$defs/revision"
+        },
+        "clientOperationId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "save": {
+          "type": "boolean",
+          "default": false
+        },
+        "reveal": {
+          "$ref": "#/$defs/reveal"
+        },
+        "awaitPresentation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Only with reveal: document."
+        }
+      },
+      "required": [
+        "documentId",
+        "baseRevision"
+      ]
+    },
+    "document.redo.result": {
+      "$ref": "#/$defs/writeResult"
+    },
+    "document.save.params": {
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "$ref": "#/$defs/documentId"
+        },
+        "baseRevision": {
+          "$ref": "#/$defs/revision"
+        }
+      },
+      "required": [
+        "documentId"
+      ]
+    },
+    "document.save.result": {
+      "type": "object",
+      "required": [
+        "revision",
+        "contentHash",
+        "saved",
+        "path"
+      ],
+      "properties": {
+        "revision": {
+          "$ref": "#/$defs/revision"
+        },
+        "contentHash": {
+          "$ref": "#/$defs/contentHash"
+        },
+        "saved": {
+          "const": true
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message",
+        "data"
+      ],
+      "description": "error.code and error.data.kind always agree; x-codes lists the pairs.",
+      "x-codes": {
+        "not_initialized": -32001,
+        "unsupported_version": -32002,
+        "scope_required": -32003,
+        "method_not_found": -32601,
+        "invalid_params": -32602,
+        "window_not_found": -32010,
+        "document_not_found": -32011,
+        "revision_conflict": -32012,
+        "editor_not_ready": -32013,
+        "content_sync_timeout": -32014,
+        "read_only": -32015,
+        "path_required": -32016,
+        "save_failed": -32017,
+        "content_not_roundtrippable": -32018,
+        "match_count_mismatch": -32019,
+        "setting_not_exposed": -32020,
+        "setting_invalid": -32021,
+        "persistence_failed": -32022,
+        "presentation_timeout": -32023,
+        "editor_inconsistent": -32024,
+        "normalization_unclassified": -32025,
+        "message_too_large": -32030,
+        "busy": -32031,
+        "request_cancelled": -32032,
+        "parse_error": -32700,
+        "invalid_request": -32600,
+        "internal_error": -32603
+      },
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string",
+          "description": "For people; may be localized. Programs read code and data.kind."
+        },
+        "data": {
+          "type": "object",
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "busy",
+                "content_not_roundtrippable",
+                "content_sync_timeout",
+                "document_not_found",
+                "editor_inconsistent",
+                "editor_not_ready",
+                "internal_error",
+                "invalid_params",
+                "invalid_request",
+                "match_count_mismatch",
+                "message_too_large",
+                "method_not_found",
+                "normalization_unclassified",
+                "not_initialized",
+                "parse_error",
+                "path_required",
+                "persistence_failed",
+                "presentation_timeout",
+                "read_only",
+                "request_cancelled",
+                "revision_conflict",
+                "save_failed",
+                "scope_required",
+                "setting_invalid",
+                "setting_not_exposed",
+                "unsupported_version",
+                "window_not_found"
+              ]
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "busy"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32031
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "content_not_roundtrippable"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32018
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "content_sync_timeout"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32014
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "document_not_found"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32011
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "editor_inconsistent"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32024
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "editor_not_ready"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32013
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "internal_error"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32603
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "invalid_params"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32602
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "invalid_request"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32600
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "match_count_mismatch"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32019
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "message_too_large"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32030
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "method_not_found"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32601
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "normalization_unclassified"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32025
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "not_initialized"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32001
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "parse_error"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32700
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "path_required"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32016
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "persistence_failed"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32022
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "presentation_timeout"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32023
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "read_only"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32015
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "request_cancelled"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32032
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "revision_conflict"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32012
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "save_failed"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32017
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "scope_required"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32003
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "setting_invalid"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32021
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "setting_not_exposed"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32020
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "unsupported_version"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32002
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "kind": {
+                    "const": "window_not_found"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "const": -32010
+              }
+            }
+          }
+        }
+      ]
+    },
+    "response": {
+      "type": "object",
+      "required": [
+        "jsonrpc",
+        "id"
+      ],
+      "properties": {
+        "jsonrpc": {
+          "const": "2.0"
+        },
+        "id": {
+          "type": [
+            "string",
+            "integer",
+            "null"
+          ]
+        },
+        "error": {
+          "$ref": "#/$defs/error"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "result"
+          ]
+        },
+        {
+          "required": [
+            "error"
+          ]
+        }
+      ]
+    },
+    "settings.describe.params": {
+      "type": "object",
+      "properties": {}
+    },
+    "settings.describe.result": {
+      "type": "object",
+      "required": [
+        "settingsRevision",
+        "settings"
+      ],
+      "properties": {
+        "settingsRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "settings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "key",
+              "scope",
+              "type",
+              "visibleIn",
+              "restartRequired"
+            ],
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[a-z]+\\.[a-zA-Z]+$"
+              },
+              "scope": {
+                "const": "application"
+              },
+              "type": {
+                "type": "object"
+              },
+              "visibleIn": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "restartRequired": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "settings.get.params": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "settings.get.result": {
+      "type": "object",
+      "required": [
+        "settingsRevision",
+        "values"
+      ],
+      "properties": {
+        "settingsRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "values": {
+          "type": "object"
+        }
+      }
+    },
+    "settings.set.params": {
+      "type": "object",
+      "required": [
+        "key",
+        "value",
+        "baseSettingsRevision"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {},
+        "baseSettingsRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "clientOperationId": {
+          "type": "string",
+          "maxLength": 256
+        }
+      }
+    },
+    "settings.set.result": {
+      "type": "object",
+      "required": [
+        "settingsRevision",
+        "operationId",
+        "key",
+        "value"
+      ],
+      "properties": {
+        "settingsRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "operationId": {
+          "$ref": "#/$defs/hex32"
+        },
+        "key": {
+          "type": "string"
+        },
+        "value": {}
+      }
+    }
+  }
+}

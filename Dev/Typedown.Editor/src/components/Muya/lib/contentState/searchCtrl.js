@@ -102,13 +102,15 @@ const searchCtrl = ContentState => {
     const travel = blocks => {
       for (const block of blocks) {
         let { text, key } = block
-        if (selection?.start.key == key)
+        // A caller with no selection (the search bar drawn by the page, for instance) means "from the top":
+        // reading through it must not throw, or the whole search — and a replace that ends with one — is lost.
+        if (selection?.start?.key == key)
           overCursor = true
         if (text && typeof text === 'string') {
           const strMatches = matchString(text, value, options)
           if (overCursor == true && !firstMatchAfterCursor) {
             firstMatchAfterCursor = strMatches
-              .filter(({ index }) => index >= selection?.start.offset || key != selection?.start.key)
+              .filter(({ index }) => index >= (selection?.start?.offset ?? 0) || key != selection?.start?.key)
               .map(({ index }) => ({ key, start: index }))[0]
           }
           matches.push(...strMatches.map(({ index, match, subMatches }) => {

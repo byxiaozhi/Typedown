@@ -137,18 +137,6 @@
     <value>Tuma Maoni</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Wasiliana</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Barua pepe</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Tunachukua maoni yako kwa umakini mkubwa</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Kuhusu</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Ukubwa wa fonti</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Fonti inayotumiwa kwenye kihariri</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Familia ya fonti</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Urefu wa mstari wa mhariri nyingi</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Picha ya clipboard</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Usanidi wa kupakia picha ya clipboard</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Hatua ya kutekeleza wakati wa kuingiza picha</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Picha ya ndani</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Usanidi wa kupakia picha ya ndani</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Ingiza hatua ya picha</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Picha ya Wavuti</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Usanidi wa kupakia picha ya wavuti</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Pendelea kutumia njia ya jamaa wakati wa kuingiza picha</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Dirisha</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Chaguo-msingi</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Nafasi ya kuanzia inayoandikwa kwa vipengee vya orodha vilivyowekwa ndani. Nafasi 4 zinalingana na Obsidian na wahariri wengine wengi</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Nafasi ya kuanzia ya nafasi 4 (kiwango cha Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>Nafasi 1 baada ya alama</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>Nafasi 2 baada ya alama</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>Nafasi 4 baada ya alama</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Nafasi ya kuanzia ya orodha</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Weka mstari tupu kati ya vipengee vipya vya orodha katika chanzo</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Vipengee vya orodha vilivyoachanishwa</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Onyesha aina ya kizuizi (P, H1, ...) karibu na aya ya sasa</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Alama ya aya</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Jaza visanduku vya jedwali ili safuwima zilingane katika chanzo cha Markdown. Zima ili majedwali yabaki mafupi (tokeni chache kwa zana za AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Panga safuwima za jedwali</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Tambua kiotomatiki kwa kila aya</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Mwelekeo wa maandishi ya kihariri; hufaa kwa Kiarabu, Kiebrania na lugha nyingine zinazoandikwa kutoka kulia kwenda kushoto</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Kushoto kwenda kulia</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Kulia kwenda kushoto</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Mwelekeo wa maandishi</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Ikiwa imezimwa, pakia upya bila kuuliza isipokuwa kuna mabadiliko ambayo hayajahifadhiwa</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Uliza kabla ya kupakia upya</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Fuatilia faili iliyofunguliwa na uionyeshe upya programu nyingine inapoibadilisha</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Pakia upya kiotomatiki mabadiliko ya nje yanapotokea</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Faili zinazofunguliwa kutoka Explorer hufunguka kama kichupo katika dirisha la sasa; ikiwa imezimwa hufungua dirisha jipya</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Fungua faili katika vichupo</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Fungua hati pale ulipoishia</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Kumbuka nafasi ya kiashiria</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Rejesha hati zote za kipindi kilichopita</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Acha wazi ili kuunda noti bila jina; ukiwa na akaunti noti ni yako</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Barua pepe (si lazima)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Nenosiri</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Huchapisha noti (/s/…) ili kiungo kilichoshirikiwa kisiharirike</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Chapisha pia kiungo cha kusoma tu</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Shiriki kwenye HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Anwani ya HedgeDoc 1.x, k.m. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Seva</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Jaribu</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Jaribu muunganisho</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Onyesha upau wa vichupo hata wakati hati moja tu imefunguliwa</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Onyesha vichupo kila wakati</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Nyeusi (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Mitindo ya ziada kwa kihariri na HTML/PDF iliyohamishwa</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>k.m. .markdown-body h1 { color: #c00; }  au  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS maalum</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Mandhari ni faili moja ya CSS katika folda ya mandhari; angalia docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Jinsi ya kuandika moja</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Mandhari ni faili za CSS katika folda hii; hati inaeleza muundo.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(hakuna)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Fungua folda ya mandhari</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Pakia upya mandhari</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Mandhari maalum</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>k.m. ./${filename}.assets — vigezo: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Ukurasa ambao kidirisha cha kando huonyesha programu inapoanza</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Ukurasa chaguo-msingi wa kidirisha cha kando</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Ruhusu uendeshaji otomatiki wa ndani</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Programu unazoendesha kwenye kompyuta hii zinaweza kusoma na kuhariri hati zilizo wazi. Kichwa cha dirisha kinaonyesha moja inapounganishwa.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Angazia mabadiliko yaliyofanywa na programu</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Huangazia kwa muda mfupi maandishi yaliyobadilishwa na programu iliyounganishwa, ili uone kilichobadilika.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Chora michoro ya PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Hutuma chanzo cha mchoro kwa plantuml.com ili kuuchora</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Pakia kwa kutumia</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Usanidi wa kupakia unaotumika kwa picha zilizoingizwa ambazo kitendo chake ni Pakia picha, na kwa Faili &gt; Pakia picha za ndani</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Folda katika bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL ya umma</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Anwani za mtindo wa njia (MinIO na baadhi ya watoa huduma)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Usanidi wa S3 haujakamilika: jaza Endpoint, Bucket, Access Key ID na Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Historia ya upakiaji</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Picha iliyokwisha kupakiwa kwa usanidi uleule haipakiwi tena; anwani yake ya awali hutumika ({0} zimekumbukwa). Futa historia baada ya kufuta faili zilizopakiwa.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Seva ya PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Anwani ya seva ya PlantUML (plantuml-server) inayochora michoro. Tupu: plantuml.com. Ukiwa na seva yako mwenyewe, chanzo cha michoro hubaki kwako.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vitufe vya Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim katika hali ya chanzo (:w huhifadhi, :q hufunga kichupo); j/k, gg/G, ]] na / kusogea katika hali ya kusoma. Si katika kihariri cha kuona.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Fungua Folda ya Kumbukumbu</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Baada ya kuhamisha</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Onyesha mahali ilipohifadhiwa</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Fungua faili</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Fungua folda yake</value>
   </data>
 </root>

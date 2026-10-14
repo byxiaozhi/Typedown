@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Typedown.Core.Interfaces;
@@ -26,6 +28,9 @@ namespace Typedown.Core.Controls.FloatControls
 
         private Rect rect;
 
+        // The other files of a multi-file pick: inserted after this image, each in a paragraph of its own.
+        private List<string> morePaths = new();
+
         public ImageSelector(AppViewModel viewModel, IMarkdownEditor markdownEditor)
         {
             ViewModel = viewModel;
@@ -44,6 +49,7 @@ namespace Typedown.Core.Controls.FloatControls
             flyout.Content = this;
             flyout.ShowAt(MarkdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));
             currentSrc = TextBoxSrc.Text;
+            morePaths = new();
         }
 
         private void OnFlyoutClosing(FlyoutBase sender, FlyoutBaseClosingEventArgs args)
@@ -62,7 +68,17 @@ namespace Typedown.Core.Controls.FloatControls
             }
             catch (Exception ex)
             {
-                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
+                // This runs from an async void handler, so anything thrown here escapes with nothing above it
+                // to catch it and takes the process down without leaving a report. Showing the error is worth
+                // trying — a second dialog while one is already open is not worth the app for.
+                try
+                {
+                    await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetDialogString("Ok")).ShowAsync(XamlRoot);
+                }
+                catch (Exception dialogEx)
+                {
+                    Log.WriteLocal("ImageSaveError", $"{ex}\n--- while reporting it ---\n{dialogEx}");
+                }
             }
             finally
             {
@@ -96,12 +112,21 @@ namespace Typedown.Core.Controls.FloatControls
                 {
                     // TODO
                 }
-                MarkdownEditor.PostMessage("ReplaceImage", new HtmlImgTag(src, alt, title));
+                var more = new List<HtmlImgTag>();
+                foreach (var path in morePaths)
+                    more.Add(await ViewModel.EditorViewModel.LocalImageAsync(path));
+                morePaths = new();
+                if (more.Count == 0)
+                    MarkdownEditor.PostMessage("ReplaceImage", new HtmlImgTag(src, alt, title));
+                else
+                    MarkdownEditor.PostMessage("ReplaceImage", new { src, alt, title, more });
             }
         }
 
         private void OnImagePickerButtonPicked(object sender, PickedEventArgs e)
         {
+            if (!e.IsCancel)
+                morePaths = e.Paths.Skip(1).ToList();
             if (!flyout.IsOpen)
             {
                 flyout.ShowAt(MarkdownEditor.GetDummyRectangle(new(rect.X, rect.Y, rect.Width, 0)));

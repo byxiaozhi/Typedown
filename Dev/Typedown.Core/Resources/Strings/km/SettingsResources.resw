@@ -137,18 +137,6 @@
     <value>ផ្ញើមតិ</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>ទំនាក់ទំនង</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>អ៊ីម៉ែល</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>យើង យក ចិត្ត ទុក ដាក់ នឹង មតិ យោបល់ របស់ អ្នក ខ្លាំង ណាស់</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>អំពី</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>ទំហំ ពុម្ពអក្សរ</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>ពុម្ពអក្សរដែលប្រើក្នុងកម្មវិធីនិពន្ធ</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>គ្រួសារពុម្ពអក្សរ</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>កម្ពស់ បន្ទាត់ កម្មវិធី និពន្ធ ច្រើន</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>រូបភាពផ្ទាំង Clipboard</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>ការ កំណត់ រចនា សម្ព័ន្ធ ការ ផ្ទុក រូបភាព ផ្ទាំង</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>សកម្មភាព ដើម្បី អនុវត្ត ពេល បញ្ចូល រូបភាព</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>រូបភាពមូលដ្ឋាន</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>ការ កំណត់ រចនា សម្ព័ន្ធ ការ ផ្ទុក រូបភាព ក្នុង មូលដ្ឋាន</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>បញ្ចូល សកម្មភាព រូបភាព</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>រូបភាពគេហទំព័រ</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>ការ កំណត់ រចនា សម្ព័ន្ធ ការ ផ្ទុក រូបភាព បណ្ដាញ</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>ចូលចិត្តប្រើផ្លូវដែលទាក់ទងនឹងពេលបញ្ចូលរូបភាព</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>បង្អួច</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>លំនាំដើម</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>ការចូលបន្ទាត់ដែលសរសេរសម្រាប់ធាតុបញ្ជីដែលដាក់ជាន់គ្នា។ ចន្លោះ ៤ ស្របនឹង Obsidian និងកម្មវិធីនិពន្ធភាគច្រើនផ្សេងទៀត</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>ការចូលបន្ទាត់ ៤ ចន្លោះ (ស្តង់ដារ Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>១ ចន្លោះបន្ទាប់ពីសញ្ញា</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>២ ចន្លោះបន្ទាប់ពីសញ្ញា</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>៤ ចន្លោះបន្ទាប់ពីសញ្ញា</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>ការចូលបន្ទាត់បញ្ជី</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>បញ្ចូលបន្ទាត់ទទេរវាងធាតុបញ្ជីថ្មីក្នុងប្រភព</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>ធាតុបញ្ជីរលុង</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>បង្ហាញប្រភេទប្លុក (P, H1, ...) នៅជាប់កថាខណ្ឌបច្ចុប្បន្ន</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>សញ្ញាកថាខណ្ឌ</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>បំពេញក្រឡាតារាងដើម្បីឲ្យជួរឈរត្រង់គ្នាក្នុងប្រភព Markdown។ បិទដើម្បីរក្សាតារាងឲ្យខ្លី (តិចថូខិនសម្រាប់ឧបករណ៍ AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>តម្រឹមជួរឈរតារាង</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>រកឃើញដោយស្វ័យប្រវត្តិតាមកថាខណ្ឌ</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>ទិសអក្សរក្នុងកម្មវិធីនិពន្ធ មានប្រយោជន៍សម្រាប់ភាសាអារ៉ាប់ ហេប្រិ និងភាសាដែលសរសេរពីស្ដាំទៅឆ្វេង</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>ពីឆ្វេងទៅស្ដាំ</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>ពីស្ដាំទៅឆ្វេង</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>ទិសអក្សរ</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>បើបិទ ផ្ទុកឡើងវិញដោយមិនសួរ លុះត្រាតែមានការផ្លាស់ប្ដូរមិនទាន់រក្សាទុក</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>សួរមុនពេលផ្ទុកឡើងវិញ</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>តាមដានឯកសារដែលបើក ហើយធ្វើឲ្យស្រស់នៅពេលកម្មវិធីផ្សេងផ្លាស់ប្ដូរវា</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>ផ្ទុកឡើងវិញដោយស្វ័យប្រវត្តិពេលមានការផ្លាស់ប្ដូរពីខាងក្រៅ</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>ឯកសារដែលបើកពី Explorer បើកជាផ្ទាំងក្នុងបង្អួចបច្ចុប្បន្ន បើបិទនឹងបើកបង្អួចថ្មី</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>បើកឯកសារជាផ្ទាំង</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>បើកឯកសារនៅកន្លែងដែលអ្នកឈប់</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>ចងចាំទីតាំងទស្សន៍ទ្រនិច</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>ស្ដារឯកសារទាំងអស់ពីវគ្គមុន</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>ទុកទទេដើម្បីបង្កើតកំណត់ត្រាអនាមិក បើមានគណនី កំណត់ត្រាជារបស់អ្នក</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>អ៊ីមែល (ស្រេចចិត្ត)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>ពាក្យសម្ងាត់</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>បោះពុម្ពកំណត់ត្រា (/s/…) ដើម្បីកុំឲ្យតំណដែលចែករំលែកអាចកែបាន</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>បោះពុម្ពតំណអានតែប៉ុណ្ណោះផងដែរ</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>ចែករំលែកទៅ HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>អាសយដ្ឋាន HedgeDoc 1.x ឧ. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>ម៉ាស៊ីនបម្រើ</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>សាកល្បង</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>សាកល្បងការតភ្ជាប់</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>បង្ហាញរបារផ្ទាំង ទោះបីមានឯកសារតែមួយបើកក៏ដោយ</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>បង្ហាញផ្ទាំងជានិច្ច</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>ខ្មៅ (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>រចនាបថបន្ថែមសម្រាប់កម្មវិធីនិពន្ធ និង HTML/PDF ដែលនាំចេញ</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>ឧ. .markdown-body h1 { color: #c00; }  ឬ  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS ផ្ទាល់ខ្លួន</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>រូបរាងគឺជាឯកសារ CSS មួយក្នុងថតរូបរាង សូមមើល docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>របៀបសរសេរមួយ</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>រូបរាងគឺជាឯកសារ CSS ក្នុងថតនេះ ឯកសារពន្យល់ពីទម្រង់។</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(គ្មាន)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>បើកថតរូបរាង</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>ផ្ទុករូបរាងឡើងវិញ</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>រូបរាងផ្ទាល់ខ្លួន</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>ឧ. ./${filename}.assets — អថេរ៖ ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>ទំព័រណាដែលផ្ទាំងចំហៀងបង្ហាញពេលកម្មវិធីចាប់ផ្ដើម</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>ទំព័រលំនាំដើមនៃផ្ទាំងចំហៀង</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>អនុញ្ញាតស្វ័យប្រវត្តិកម្មមូលដ្ឋាន</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>កម្មវិធីដែលអ្នកដំណើរការលើកុំព្យូទ័រនេះអាចអាន និងកែសម្រួលឯកសារដែលកំពុងបើក។ ចំណងជើងបង្អួចបង្ហាញពេលមានការតភ្ជាប់។</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>បន្លិចការផ្លាស់ប្ដូរដែលកម្មវិធីបានធ្វើ</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>បន្លិចមួយរយៈខ្លីនូវអត្ថបទដែលកម្មវិធីដែលបានភ្ជាប់បានផ្លាស់ប្ដូរ ដើម្បីឱ្យអ្នកឃើញអ្វីដែលបានផ្លាស់ប្ដូរ។</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>គូរដ្យាក្រាម PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>ផ្ញើកូដប្រភពរបស់ដ្យាក្រាមទៅ plantuml.com ដើម្បីគូរ</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>ផ្ទុកឡើងដោយប្រើ</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>ការកំណត់រចនាសម្ព័ន្ធផ្ទុកឡើងដែលប្រើសម្រាប់រូបភាពដែលបានបញ្ចូលដែលមានសកម្មភាពជាការផ្ទុកឡើង និងដោយ ឯកសារ &gt; ផ្ទុករូបភាពមូលដ្ឋានឡើង</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>ថតនៅក្នុង bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL សាធារណៈ</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>អាសយដ្ឋានតាមរចនាប័ទ្មផ្លូវ (MinIO និងអ្នកផ្ដល់សេវាមួយចំនួន)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>ការកំណត់រចនាសម្ព័ន្ធ S3 មិនពេញលេញ៖ សូមបំពេញ Endpoint, Bucket, Access Key ID និង Secret Access Key។</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>ប្រវត្តិផ្ទុកឡើង</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>រូបភាពដែលបានផ្ទុកឡើងរួចហើយដោយប្រើការកំណត់រចនាសម្ព័ន្ធដដែល នឹងមិនត្រូវបានផ្ទុកឡើងម្តងទៀតទេ; អាសយដ្ឋានពីមុនរបស់វាត្រូវបានប្រើ (បានចងចាំ {0})។ សម្អាតប្រវត្តិនេះបន្ទាប់ពីលុបឯកសារដែលបានផ្ទុកឡើង។</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>ម៉ាស៊ីនមេ PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>អាសយដ្ឋានម៉ាស៊ីនមេ PlantUML (plantuml-server) ដែលគូរដ្យាក្រាម។ ទទេ៖ plantuml.com។ ជាមួយម៉ាស៊ីនមេផ្ទាល់ខ្លួន កូដប្រភពរបស់ដ្យាក្រាមនៅជាមួយអ្នក។</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>គ្រាប់ចុច Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim ក្នុងរបៀបកូដប្រភព (:w រក្សាទុក, :q បិទផ្ទាំង); j/k, gg/G, ]] និង / ដើម្បីផ្លាស់ទីក្នុងរបៀបអាន។ មិនមែនក្នុងកម្មវិធីកែសម្រួលមើលឃើញទេ។</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>បើក​ថត​កំណត់​ហេតុ</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>បន្ទាប់ពីនាំចេញ</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>បង្ហាញកន្លែងដែលបានរក្សាទុក</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>បើកឯកសារ</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>បើកថតរបស់វា</value>
   </data>
 </root>

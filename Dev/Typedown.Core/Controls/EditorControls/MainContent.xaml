@@ -77,12 +77,26 @@
             x:Name="LeftPane" 
             x:Load="{x:Bind IsLeftPaneLoad, Mode=OneWay}" 
             RenderTransform="{StaticResource LeftPaneTransform}"/>
-        <local:EditorContainer Grid.Column="2" />
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:DocumentTabBar x:Name="DocumentTabBar" x:Load="{x:Bind local:MainContent.IsTabBarLoad(ViewModel.TabsViewModel.Tabs.Count, Settings.AlwaysShowTabBar), Mode=OneWay}"/>
+            <local:EditorContainer Grid.Row="1" />
+        </Grid>
         <Border 
             x:Name="SplitterLine" Grid.Column="1" Width="1" 
             x:Load="{x:Bind IsLeftPaneLoad, Mode=OneWay}"
-            RenderTransform="{StaticResource LeftPaneTransform}"
-            Background="{ThemeResource CardStrokeColorDefault}"/>
+            RenderTransform="{StaticResource LeftPaneTransform}">
+            <!-- In a style, not set on the line: a custom theme sets its own colour and clears it when switched off,
+                 which would take a colour set here with it and leave no line (TH06). -->
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Background" Value="{ThemeResource CardStrokeColorDefault}"/>
+                </Style>
+            </Border.Style>
+        </Border>
         <local:GridSplitter 
             x:Name="Splitter" Grid.Column="1" ColumnMinWidth="40" 
             x:Load="{x:Bind IsLeftPaneLoad, Mode=OneWay}" 

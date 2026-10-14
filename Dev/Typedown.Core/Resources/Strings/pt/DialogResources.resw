@@ -133,10 +133,6 @@
     <value>OKEY</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>O conteúdo não pode estar vazio</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Falha ao criar um novo documento</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Falha na exportação</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Realimentação</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Falha na importação</value>
@@ -225,14 +217,6 @@
     <value>A tecla de atalho está ocupada</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Enviar</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Submissão bem-sucedida</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Falha no carregamento</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Tempo de execução do WebView2 não instalado</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Recarregar</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>O arquivo foi alterado no disco. Recarregar descartará as alterações não salvas.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>O arquivo foi alterado no disco. Recarregar?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>O arquivo foi alterado no disco</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Manter</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Compartilhado no HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Link somente leitura</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Link editável</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Qualquer pessoa com este link pode editar a nota.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Copiar link</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Abrir no navegador</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Primeiro defina o endereço do servidor HedgeDoc em Configurações → Exportar.</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>O documento não mudou desde o último compartilhamento; estes são os links existentes.</value>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Este documento já foi compartilhado, mas mudou desde então. O HedgeDoc 1.x não consegue atualizar uma nota existente, então enviar de novo cria uma nota nova com um link novo.</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Enviar novamente (novo link)</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Usar o link anterior</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Carregar imagens locais</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Carregando imagem {0} de {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} de {1} imagens carregadas. Os endereços delas no documento agora apontam para as cópias carregadas; Desfazer restaura os caminhos locais.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Cancelado. {0} de {1} imagens foram carregadas, e os endereços delas no documento foram alterados.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Não alteradas:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Este documento não tem imagens locais.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Nenhuma configuração de upload foi escolhida. Escolha uma em Configurações &gt; Imagem &gt; Carregar com.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Abrir configurações</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>O arquivo não foi encontrado.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>O upload não retornou um endereço.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>O documento foi fechado durante o upload.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Não foi possível alterar o documento. A imagem está online em</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Este documento tem {0} imagens locais. Elas são arquivos deste computador, então os leitores da nota não as verão. Carregá-las primeiro?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Carregar primeiro</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Compartilhar mesmo assim</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} delas já tinham sido carregadas antes com esta configuração, então seus endereços anteriores foram usados.</value>
   </data>
 </root>

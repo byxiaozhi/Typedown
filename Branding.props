@@ -1,0 +1,17 @@
+<Project>
+  <!-- The product's names for MSBuild and the build scripts (Tools/Installer/*.ps1, the CI workflow, the E2E scripts);
+       the same names for C# are in Dev/Typedown.Automation/Brand.cs and for Inno Setup in Tools/Installer/brand.iss.
+       Tools/Branding/check-brand.py checks that the three agree. -->
+  <PropertyGroup>
+    <BrandName>Typedown</BrandName>
+    <!-- Typedown.exe -->
+    <BrandExeName>Typedown</BrandExeName>
+    <BrandCliName>typedownctl</BrandCliName>
+    <!-- Whether the edition has a Linux build: the automation documents shipped with typedownctl keep their Linux
+         parts (between <!- - linux - -> and <!- - /linux - -> markers) only when it does. -->
+    <BrandHasLinux>true</BrandHasLinux>
+    <!-- Whether CI also makes the Microsoft Store upload (.msixupload, unsigned: the Store signs it). Only an edition
+         with its own Partner Center identity in the package manifest has a use for it. -->
+    <BrandStoreUpload>false</BrandStoreUpload>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,1322 @@
+[
+ {
+  "step": "initialize",
+  "method": "system.initialize",
+  "params": {
+   "apiVersion": 1,
+   "client": {
+    "id": "7a6f3b5e-9f0e-4d2c-8a1b-3c4d5e6f7a8b",
+    "name": "equivalence",
+    "version": "1"
+   },
+   "requestedScopes": [
+    "app.read",
+    "document.read",
+    "document.write",
+    "document.save",
+    "window.focus",
+    "settings.read",
+    "settings.write"
+   ]
+  },
+  "result": {
+   "apiVersion": 1,
+   "server": {
+    "name": "Typedown",
+    "version": "1.2.30.0 (local.78ac7bc2, Unpackaged)",
+    "commit": "local.78ac7bc2",
+    "platform": "windows",
+    "buildType": "automationTestHost"
+   },
+   "instanceId": "cb06b94631ca48928ecff75e09cb690a",
+   "clientSessionId": "0d4f6bf2e1b7466ca039e298f40275db",
+   "grantedScopes": [
+    "app.read",
+    "document.read",
+    "document.save",
+    "document.write",
+    "settings.read",
+    "settings.write",
+    "window.focus"
+   ],
+   "deniedScopes": [],
+   "maxMessageBytes": 33554432,
+   "methods": [
+    {
+     "name": "app.getState",
+     "scope": "app.read",
+     "schema": "app.getState/1"
+    },
+    {
+     "name": "document.create",
+     "scope": "document.write",
+     "schema": "document.create/1"
+    },
+    {
+     "name": "document.focus",
+     "scope": "window.focus",
+     "schema": "document.focus/1"
+    },
+    {
+     "name": "document.get",
+     "scope": "document.read",
+     "schema": "document.get/1"
+    },
+    {
+     "name": "document.list",
+     "scope": "document.read",
+     "schema": "document.list/1"
+    },
+    {
+     "name": "document.open",
+     "scope": "document.write",
+     "schema": "document.open/1"
+    },
+    {
+     "name": "document.redo",
+     "scope": "document.write",
+     "schema": "document.redo/1"
+    },
+    {
+     "name": "document.replace",
+     "scope": "document.write",
+     "schema": "document.replace/1"
+    },
+    {
+     "name": "document.replaceText",
+     "scope": "document.write",
+     "schema": "document.replaceText/1"
+    },
+    {
+     "name": "document.save",
+     "scope": "document.save",
+     "schema": "document.save/1"
+    },
+    {
+     "name": "document.undo",
+     "scope": "document.write",
+     "schema": "document.undo/1"
+    },
+    {
+     "name": "settings.describe",
+     "scope": "settings.read",
+     "schema": "settings.describe/1"
+    },
+    {
+     "name": "settings.get",
+     "scope": "settings.read",
+     "schema": "settings.get/1"
+    },
+    {
+     "name": "settings.set",
+     "scope": "settings.write",
+     "schema": "settings.set/1"
+    },
+    {
+     "name": "test.backup.run",
+     "scope": null,
+     "schema": "test.backup.run/1"
+    },
+    {
+     "name": "test.barrier.arm",
+     "scope": null,
+     "schema": "test.barrier.arm/1"
+    },
+    {
+     "name": "test.barrier.release",
+     "scope": null,
+     "schema": "test.barrier.release/1"
+    },
+    {
+     "name": "test.barrier.waitHit",
+     "scope": null,
+     "schema": "test.barrier.waitHit/1"
+    },
+    {
+     "name": "test.editor.eval",
+     "scope": null,
+     "schema": "test.editor.eval/1"
+    },
+    {
+     "name": "test.editor.focus",
+     "scope": null,
+     "schema": "test.editor.focus/1"
+    },
+    {
+     "name": "test.editor.pageText",
+     "scope": null,
+     "schema": "test.editor.pageText/1"
+    },
+    {
+     "name": "test.editor.reload",
+     "scope": null,
+     "schema": "test.editor.reload/1"
+    },
+    {
+     "name": "test.editor.style",
+     "scope": null,
+     "schema": "test.editor.style/1"
+    },
+    {
+     "name": "test.settings.get",
+     "scope": null,
+     "schema": "test.settings.get/1"
+    },
+    {
+     "name": "test.settings.set",
+     "scope": null,
+     "schema": "test.settings.set/1"
+    },
+    {
+     "name": "test.window.handle",
+     "scope": null,
+     "schema": "test.window.handle/1"
+    },
+    {
+     "name": "test.window.navigate",
+     "scope": null,
+     "schema": "test.window.navigate/1"
+    },
+    {
+     "name": "test.window.open",
+     "scope": null,
+     "schema": "test.window.open/1"
+    },
+    {
+     "name": "window.focus",
+     "scope": "window.focus",
+     "schema": "window.focus/1"
+    },
+    {
+     "name": "window.getView",
+     "scope": "app.read",
+     "schema": "window.getView/1"
+    },
+    {
+     "name": "window.list",
+     "scope": "app.read",
+     "schema": "window.list/1"
+    },
+    {
+     "name": "window.setView",
+     "scope": "window.view",
+     "schema": "window.setView/1"
+    }
+   ],
+   "capabilities": {
+    "replaceText": true,
+    "presentationAcknowledgement": true,
+    "events": false,
+    "offsetEdits": false,
+    "selectionEdits": false,
+    "serverRequests": false
+   }
+  }
+ },
+ {
+  "step": "open",
+  "method": "document.open",
+  "params": {
+   "path": "C:\\Users\\huanggj\\AppData\\Local\\Typedown-AutomationTests\\20260930-210055-f17d73\\fixtures\\equivalence\\eq-a.md",
+   "reveal": "document"
+  },
+  "result": {
+   "windowId": "w766bc85f7b3c4a5fbdf9f626767d5868",
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "revision": 0
+  }
+ },
+ {
+  "step": "get latest with text and headings",
+  "method": "document.get",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "consistency": "latest",
+   "include": [
+    "text",
+    "headings"
+   ]
+  },
+  "result": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "windowId": "w766bc85f7b3c4a5fbdf9f626767d5868",
+   "path": "C:\\Users\\huanggj\\AppData\\Local\\Typedown-AutomationTests\\20260930-210055-f17d73\\fixtures\\equivalence\\eq-a.md",
+   "title": "eq-a.md",
+   "revision": 0,
+   "saved": true,
+   "active": true,
+   "lineEnding": "lf",
+   "contentHash": "a329d8e5dc3a72fc785b2b49630a215a42042e15703407c69d79e9ca8b55371d",
+   "isCurrent": true,
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "a329d8e5dc3a72fc785b2b49630a215a42042e15703407c69d79e9ca8b55371d",
+    "normalizedHash": "a329d8e5dc3a72fc785b2b49630a215a42042e15703407c69d79e9ca8b55371d",
+    "reasons": [],
+    "classifierVersion": 3
+   },
+   "text": "# Equivalence\n\nThe quick brown fox.\n\n- one\n- two\n",
+   "headings": [
+    {
+     "index": 0,
+     "level": 1,
+     "text": "Equivalence",
+     "slug": "equivalence"
+    }
+   ]
+  }
+ },
+ {
+  "step": "get without consistency",
+  "method": "document.get",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2"
+  },
+  "error": {
+   "code": -32602,
+   "message": "Invalid parameter 'consistency': required.",
+   "data": {
+    "kind": "invalid_params",
+    "field": "consistency",
+    "reason": "required"
+   }
+  }
+ },
+ {
+  "step": "replace",
+  "method": "document.replace",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 0,
+   "text": "# Equivalence\n\nThe quick red fox.\n\n- one\n- two\n"
+  },
+  "result": {
+   "operationId": "026535cd64e14535a03e8c626fcdadf5",
+   "revision": 1,
+   "contentHash": "1353f4662de42b2290a4606a0a19e1df12a86a526585e86421f363d9f0077531",
+   "saved": false,
+   "origin": "automation",
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "1353f4662de42b2290a4606a0a19e1df12a86a526585e86421f363d9f0077531",
+    "normalizedHash": "1353f4662de42b2290a4606a0a19e1df12a86a526585e86421f363d9f0077531",
+    "reasons": [],
+    "classifierVersion": 3
+   }
+  }
+ },
+ {
+  "step": "replace on a stale revision",
+  "method": "document.replace",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 0,
+   "text": "stale\n"
+  },
+  "error": {
+   "code": -32012,
+   "message": "The document changed since baseRevision.",
+   "data": {
+    "kind": "revision_conflict",
+    "revision": 1
+   }
+  }
+ },
+ {
+  "step": "replaceText with the wrong count",
+  "method": "document.replaceText",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 1,
+   "find": "o",
+   "replacement": "0",
+   "expectedCount": 1
+  },
+  "error": {
+   "code": -32019,
+   "message": "Expected 1 match(es), found 3.",
+   "data": {
+    "kind": "match_count_mismatch",
+    "expectedCount": 1,
+    "actualCount": 3
+   }
+  }
+ },
+ {
+  "step": "replaceText",
+  "method": "document.replaceText",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 1,
+   "find": "red",
+   "replacement": "green",
+   "expectedCount": 1
+  },
+  "result": {
+   "operationId": "9e1ad2d2c6f145308f1e8fae35a6e54e",
+   "revision": 2,
+   "contentHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+   "saved": false,
+   "origin": "automation",
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+    "normalizedHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+    "reasons": [],
+    "classifierVersion": 3
+   }
+  }
+ },
+ {
+  "step": "replaceText of nothing is no change",
+  "method": "document.replaceText",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 2,
+   "find": "absent",
+   "replacement": "x",
+   "expectedCount": 0
+  },
+  "result": {
+   "operationId": "fdab82c475134525b2566e7ccbe64c26",
+   "revision": 2,
+   "contentHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+   "saved": false,
+   "origin": "automation",
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+    "normalizedHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+    "reasons": [],
+    "classifierVersion": 3
+   }
+  }
+ },
+ {
+  "step": "text with a carriage return",
+  "method": "document.replace",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 2,
+   "text": "a\r\nb\n"
+  },
+  "error": {
+   "code": -32602,
+   "message": "'text' contains \"\\r\"; document text uses \"\\n\" line endings only.",
+   "data": {
+    "kind": "invalid_params",
+    "field": "text",
+    "reason": "carriageReturn"
+   }
+  }
+ },
+ {
+  "step": "formatting the editor would rewrite",
+  "method": "document.replace",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 2,
+   "text": "Title\n=====\n\n* star\n"
+  },
+  "result": {
+   "operationId": "eb379004e41c4eef950f6ecf6da1f6db",
+   "revision": 3,
+   "contentHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+   "saved": false,
+   "origin": "automation",
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+    "normalizedHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+    "reasons": [],
+    "classifierVersion": 3
+   }
+  }
+ },
+ {
+  "step": "the same, accepted",
+  "method": "document.replace",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 2,
+   "text": "Title\n=====\n\n* star\n",
+   "normalizationPolicy": "allowUnknown"
+  },
+  "error": {
+   "code": -32012,
+   "message": "The document changed since baseRevision.",
+   "data": {
+    "kind": "revision_conflict",
+    "revision": 3
+   }
+  }
+ },
+ {
+  "step": "text the editor would lose",
+  "method": "document.replace",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 3,
+   "text": "<div>\n&copy; kept\n</div>\n",
+   "normalizationPolicy": "allowUnknown"
+  },
+  "error": {
+   "code": -32018,
+   "message": "The first visual edit would lose content from this text; the document was restored.",
+   "data": {
+    "kind": "content_not_roundtrippable",
+    "pendingNormalization": "unsafe",
+    "sourceHash": "f0cd2311b224fb21a07831cc10f15da97c3fd0a010b57e020d3853b1479db65c",
+    "normalizedHash": "d485b20c61c7e6b6b314d3ec42fc99131f2955a7628a24cea52c57176ce16f74",
+    "reasons": [
+     "word-lost"
+    ],
+    "classifierVersion": 3
+   }
+  }
+ },
+ {
+  "step": "awaitPresentation without reveal",
+  "method": "document.replace",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 3,
+   "text": "x\n",
+   "awaitPresentation": true
+  },
+  "error": {
+   "code": -32602,
+   "message": "awaitPresentation needs reveal: \"document\".",
+   "data": {
+    "kind": "invalid_params",
+    "field": "awaitPresentation",
+    "reason": "requiresReveal"
+   }
+  }
+ },
+ {
+  "step": "undo",
+  "method": "document.undo",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 3
+  },
+  "result": {
+   "operationId": "d76a31312f564013adcdbb2f029da0b1",
+   "revision": 4,
+   "contentHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+   "saved": false,
+   "origin": "automation",
+   "normalization": {
+    "pendingNormalization": "unknown",
+    "sourceHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+    "normalizedHash": null,
+    "reasons": [
+     "notEvaluated"
+    ],
+    "classifierVersion": 3
+   }
+  }
+ },
+ {
+  "step": "get after undo",
+  "method": "document.get",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "consistency": "latest",
+   "include": [
+    "text"
+   ]
+  },
+  "result": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "windowId": "w766bc85f7b3c4a5fbdf9f626767d5868",
+   "path": "C:\\Users\\huanggj\\AppData\\Local\\Typedown-AutomationTests\\20260930-210055-f17d73\\fixtures\\equivalence\\eq-a.md",
+   "title": "eq-a.md",
+   "revision": 4,
+   "saved": false,
+   "active": true,
+   "lineEnding": "lf",
+   "contentHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+   "isCurrent": true,
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+    "normalizedHash": "fa44128bee21b4e56b4e0b41c89f3151f98039bda71bb016fe184299b3e2ab6b",
+    "reasons": [],
+    "classifierVersion": 3
+   },
+   "text": "# Equivalence\n\nThe quick green fox.\n\n- one\n- two\n"
+  }
+ },
+ {
+  "step": "redo",
+  "method": "document.redo",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 4
+  },
+  "result": {
+   "operationId": "98ac5b964bcc4947944d639bbc7cc7a7",
+   "revision": 5,
+   "contentHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+   "saved": false,
+   "origin": "automation",
+   "normalization": {
+    "pendingNormalization": "unknown",
+    "sourceHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+    "normalizedHash": null,
+    "reasons": [
+     "notEvaluated"
+    ],
+    "classifierVersion": 3
+   }
+  }
+ },
+ {
+  "step": "get after redo",
+  "method": "document.get",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "consistency": "latest",
+   "include": [
+    "text"
+   ]
+  },
+  "result": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "windowId": "w766bc85f7b3c4a5fbdf9f626767d5868",
+   "path": "C:\\Users\\huanggj\\AppData\\Local\\Typedown-AutomationTests\\20260930-210055-f17d73\\fixtures\\equivalence\\eq-a.md",
+   "title": "eq-a.md",
+   "revision": 5,
+   "saved": false,
+   "active": true,
+   "lineEnding": "lf",
+   "contentHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+   "isCurrent": true,
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+    "normalizedHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+    "reasons": [],
+    "classifierVersion": 3
+   },
+   "text": "Title\n=====\n\n* star\n"
+  }
+ },
+ {
+  "step": "save",
+  "method": "document.save",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 5
+  },
+  "result": {
+   "revision": 5,
+   "contentHash": "250cac01bdedc93cb0721eb2906ba78a6acb2e82a3d08d6e3ccb96e51d55a6d0",
+   "saved": true,
+   "path": "C:\\Users\\huanggj\\AppData\\Local\\Typedown-AutomationTests\\20260930-210055-f17d73\\fixtures\\equivalence\\eq-a.md"
+  }
+ },
+ {
+  "step": "file on disk",
+  "disk": "Title\n=====\n\n* star\n"
+ },
+ {
+  "step": "save on a stale revision",
+  "method": "document.save",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 0
+  },
+  "error": {
+   "code": -32012,
+   "message": "The document changed since baseRevision.",
+   "data": {
+    "kind": "revision_conflict",
+    "revision": 5
+   }
+  }
+ },
+ {
+  "step": "create",
+  "method": "document.create",
+  "params": {
+   "text": "# New\n",
+   "normalizationPolicy": "allowUnknown"
+  },
+  "result": {
+   "windowId": "w766bc85f7b3c4a5fbdf9f626767d5868",
+   "documentId": "756ca1474ddf41da83a79933bf83416f",
+   "revision": 1,
+   "contentHash": "f676b43bd55f91451babc1663739064abb7e11e2b5f4a7efe62c29e4eeb0d117",
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "f676b43bd55f91451babc1663739064abb7e11e2b5f4a7efe62c29e4eeb0d117",
+    "normalizedHash": "f676b43bd55f91451babc1663739064abb7e11e2b5f4a7efe62c29e4eeb0d117",
+    "reasons": [],
+    "classifierVersion": 3
+   }
+  }
+ },
+ {
+  "step": "get the new document",
+  "method": "document.get",
+  "params": {
+   "documentId": "756ca1474ddf41da83a79933bf83416f",
+   "consistency": "latest",
+   "include": [
+    "text"
+   ]
+  },
+  "result": {
+   "documentId": "756ca1474ddf41da83a79933bf83416f",
+   "windowId": "w766bc85f7b3c4a5fbdf9f626767d5868",
+   "path": null,
+   "title": "δ����",
+   "revision": 1,
+   "saved": false,
+   "active": true,
+   "lineEnding": "crlf",
+   "contentHash": "f676b43bd55f91451babc1663739064abb7e11e2b5f4a7efe62c29e4eeb0d117",
+   "isCurrent": true,
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "f676b43bd55f91451babc1663739064abb7e11e2b5f4a7efe62c29e4eeb0d117",
+    "normalizedHash": "f676b43bd55f91451babc1663739064abb7e11e2b5f4a7efe62c29e4eeb0d117",
+    "reasons": [],
+    "classifierVersion": 3
+   },
+   "text": "# New\n"
+  }
+ },
+ {
+  "step": "save an untitled document",
+  "method": "document.save",
+  "params": {
+   "documentId": "756ca1474ddf41da83a79933bf83416f"
+  },
+  "error": {
+   "code": -32016,
+   "message": "The document has no file yet; the API does not open a Save As dialog.",
+   "data": {
+    "kind": "path_required"
+   }
+  }
+ },
+ {
+  "step": "a document that does not exist",
+  "method": "document.get",
+  "params": {
+   "documentId": "0123456789abcdef0123456789abcdef",
+   "consistency": "snapshot"
+  },
+  "error": {
+   "code": -32011,
+   "message": "The document is closed or the id is not valid.",
+   "data": {
+    "kind": "document_not_found",
+    "documentId": "0123456789abcdef0123456789abcdef"
+   }
+  }
+ },
+ {
+  "step": "missing documentId",
+  "method": "document.replace",
+  "params": {
+   "baseRevision": 0,
+   "text": "x\n"
+  },
+  "error": {
+   "code": -32602,
+   "message": "Invalid parameter 'documentId': required.",
+   "data": {
+    "kind": "invalid_params",
+    "field": "documentId",
+    "reason": "required"
+   }
+  }
+ },
+ {
+  "step": "unknown method",
+  "method": "document.teleport",
+  "params": {},
+  "error": {
+   "code": -32601,
+   "message": "No method 'document.teleport'.",
+   "data": {
+    "kind": "method_not_found",
+    "method": "document.teleport"
+   }
+  }
+ },
+ {
+  "step": "focus A",
+  "method": "document.focus",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2"
+  },
+  "result": {
+   "windowId": "w766bc85f7b3c4a5fbdf9f626767d5868",
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2"
+  }
+ },
+ {
+  "step": "revealed write, presentation awaited",
+  "method": "document.replaceText",
+  "params": {
+   "documentId": "77b5a27ac7fa42228342390a2a52b3e2",
+   "baseRevision": 5,
+   "find": "star",
+   "replacement": "starry",
+   "expectedCount": 1,
+   "reveal": "document",
+   "awaitPresentation": true,
+   "normalizationPolicy": "allowUnknown"
+  },
+  "result": {
+   "operationId": "4d4a3e4ffc824a678cec1af075dcf2b3",
+   "revision": 6,
+   "contentHash": "d0cb93573c0119ff7ca8fed5c05a6bcc0ccbd2d22a86b1a4e29900df0e73b018",
+   "saved": false,
+   "origin": "automation",
+   "normalization": {
+    "pendingNormalization": "none",
+    "sourceHash": "d0cb93573c0119ff7ca8fed5c05a6bcc0ccbd2d22a86b1a4e29900df0e73b018",
+    "normalizedHash": "d0cb93573c0119ff7ca8fed5c05a6bcc0ccbd2d22a86b1a4e29900df0e73b018",
+    "reasons": [],
+    "classifierVersion": 3
+   },
+   "presentation": {
+    "windowVisible": true,
+    "tabActive": true,
+    "pageFramesPassed": true,
+    "hostRenderPassed": true
+   }
+  }
+ },
+ {
+  "step": "settings.describe",
+  "method": "settings.describe",
+  "params": {},
+  "result": {
+   "settingsRevision": 49,
+   "settings": [
+    {
+     "key": "appearance.theme",
+     "scope": "application",
+     "type": {
+      "type": "object",
+      "oneOf": [
+       {
+        "properties": {
+         "kind": {
+          "const": "builtIn"
+         },
+         "id": {
+          "enum": [
+           "system",
+           "light",
+           "dark",
+           "black"
+          ]
+         }
+        },
+        "required": [
+         "kind",
+         "id"
+        ]
+       },
+       {
+        "properties": {
+         "kind": {
+          "const": "custom"
+         },
+         "id": {
+          "type": "string",
+          "minLength": 1
+         }
+        },
+        "required": [
+         "kind",
+         "id"
+        ]
+       }
+      ]
+     },
+     "visibleIn": [
+      "every window",
+      "every editor page",
+      "menu theme checks",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.fontSize",
+     "scope": "application",
+     "type": {
+      "type": "integer",
+      "minimum": 8,
+      "maximum": 48
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.lineHeight",
+     "scope": "application",
+     "type": {
+      "type": "number",
+      "minimum": 1.0,
+      "maximum": 3.0
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.textDirection",
+     "scope": "application",
+     "type": {
+      "enum": [
+       "auto",
+       "ltr",
+       "rtl"
+      ]
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "ui.language",
+     "scope": "application",
+     "type": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16,
+      "pattern": "^(system|[a-z]{2,3}(-[A-Za-z]{2,4})?)$"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page",
+      "every editor page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.fontFamily",
+     "scope": "application",
+     "type": {
+      "type": "string",
+      "maxLength": 200,
+      "pattern": "^[^;{}<>\\\\]*$"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.areaWidth",
+     "scope": "application",
+     "type": {
+      "type": "string",
+      "pattern": "^([1-9][0-9]{2,3}px|([1-9][0-9]?|100)%)$"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.tabSize",
+     "scope": "application",
+     "type": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.paragraphMarkers",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.autoPairBrackets",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.autoPairQuotes",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "editor.autoPairMarkdown",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "markdown.alignTableColumns",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "markdown.listIndentation",
+     "scope": "application",
+     "type": {
+      "enum": [
+       "1",
+       "2",
+       "4",
+       "dfm",
+       "tab"
+      ]
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "markdown.looseListItems",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "markdown.trimCodeBlockBlankLines",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "spellcheck.enabled",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "spellcheck.language",
+     "scope": "application",
+     "type": {
+      "type": "string",
+      "maxLength": 16,
+      "pattern": "^([a-z]{2,3}(-[A-Za-z0-9]{2,8})*)?$"
+     },
+     "visibleIn": [
+      "every editor page",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "tabs.alwaysShow",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "outline.autoExpand",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "status.wordCount",
+     "scope": "application",
+     "type": {
+      "enum": [
+       "characters",
+       "words",
+       "paragraphs"
+      ]
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "images.preferRelativePaths",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "images.copyRelativePath",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "images.dotSlashPrefix",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "images.encodeUrls",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "appearance.compactMode",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "appearance.mica",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "appearance.editorMica",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "appearance.animations",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "every window",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    },
+    {
+     "key": "app.keepRunning",
+     "scope": "application",
+     "type": {
+      "type": "boolean"
+     },
+     "visibleIn": [
+      "the next time the last window closes",
+      "an open settings page"
+     ],
+     "restartRequired": false
+    }
+   ]
+  }
+ },
+ {
+  "step": "settings.set fontSize",
+  "method": "settings.set",
+  "params": {
+   "key": "editor.fontSize",
+   "value": 20,
+   "baseSettingsRevision": 49
+  },
+  "result": {
+   "settingsRevision": 50,
+   "operationId": "06937fae6e0142ceb134d1aa43fa9bfd",
+   "key": "editor.fontSize",
+   "value": 20
+  }
+ },
+ {
+  "step": "settings.set on a stale revision",
+  "method": "settings.set",
+  "params": {
+   "key": "editor.fontSize",
+   "value": 22,
+   "baseSettingsRevision": 49
+  },
+  "error": {
+   "code": -32012,
+   "message": "The settings changed since baseSettingsRevision.",
+   "data": {
+    "kind": "revision_conflict",
+    "settingsRevision": 50
+   }
+  }
+ },
+ {
+  "step": "settings.set out of range",
+  "method": "settings.set",
+  "params": {
+   "key": "editor.fontSize",
+   "value": 99,
+   "baseSettingsRevision": 50
+  },
+  "error": {
+   "code": -32021,
+   "message": "The value for 'editor.fontSize' is not valid: doesNotMatch.",
+   "data": {
+    "kind": "setting_invalid",
+    "key": "editor.fontSize",
+    "reason": "doesNotMatch",
+    "allowed": {
+     "type": "integer",
+     "minimum": 8,
+     "maximum": 48
+    }
+   }
+  }
+ },
+ {
+  "step": "settings.set not exposed",
+  "method": "settings.set",
+  "params": {
+   "key": "editor.customCss",
+   "value": "x",
+   "baseSettingsRevision": 50
+  },
+  "error": {
+   "code": -32020,
+   "message": "'editor.customCss' is not an external setting.",
+   "data": {
+    "kind": "setting_not_exposed",
+    "key": "editor.customCss"
+   }
+  }
+ },
+ {
+  "step": "settings.get after",
+  "method": "settings.get",
+  "params": {
+   "keys": [
+    "editor.fontSize"
+   ]
+  },
+  "result": {
+   "settingsRevision": 50,
+   "values": {
+    "editor.fontSize": 20
+   }
+  }
+ }
+]

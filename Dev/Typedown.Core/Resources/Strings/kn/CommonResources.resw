@@ -729,10 +729,6 @@
     <value>ಉಲ್ಲೇಖ</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>ರೇಟಿಂಗ್</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>ಮತ್ತೆ ನೋಡಿ</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>ಜೂಮ್</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>ಯಾವುದೇ ಫೋಲ್ಡರ್ ತೆರೆದಿಲ್ಲ. ಇಲ್ಲಿ ಬ್ರೌಸ್ ಮಾಡಲು ಫೈಲ್ ಅಥವಾ ಫೋಲ್ಡರ್ ತೆರೆಯಿರಿ.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>ಈ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ {0} ಐಟಂಗಳಿವೆ — ಇಲ್ಲಿ ಪಟ್ಟಿ ಮಾಡಲು ತುಂಬಾ ಹೆಚ್ಚು.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>ಈ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ Markdown ಫೈಲ್‌ಗಳಿಲ್ಲ.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>ಈ ಫೋಲ್ಡರ್ ಇನ್ನು ಇಲ್ಲ.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>ಪ್ರಸ್ತುತ ಫೈಲ್‌ನ ಫೋಲ್ಡರ್ ತೋರಿಸಿ</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>ಫೋಲ್ಡರ್‌ನಲ್ಲಿ ಹುಡುಕಿ…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(ಫೈಲ್ ಹೆಸರು ಹೊಂದಿಕೆಯಾಗಿದೆ)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>ಹುಡುಕಿದ {1} ಫೈಲ್‌ಗಳಲ್ಲಿ {0} ಹೊಂದಿಕೆಯಾದವು</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>ಹುಡುಕಲಾಗುತ್ತಿದೆ…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>ಪೂರ್ಣ ಪರದೆ</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>ಕೊನೆಯದಾಗಿ ಬಳಸಿದ ಟ್ಯಾಬ್</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>ಮುಂದಿನ ಟ್ಯಾಬ್</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>ಹಿಂದಿನ ಟ್ಯಾಬ್</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>ಉದ್ಧರಣ ಮಟ್ಟ ಕಡಿಮೆ ಮಾಡಿ</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>ಉದ್ಧರಣ ಮಟ್ಟ ಹೆಚ್ಚಿಸಿ</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>ಓದುವ ಮೋಡ್</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>ಫೋಲ್ಡರ್‌ನಲ್ಲಿ ಹುಡುಕಿ</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>HedgeDoc ಗೆ ಹಂಚಿ…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>ಎಲ್ಲವನ್ನೂ ಮಡಚಿ</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>ಎಲ್ಲವನ್ನೂ ವಿಸ್ತರಿಸಿ</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>ಶೀರ್ಷಿಕೆಯಿಲ್ಲದ</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>ಸ್ವಯಂಚಾಲನೆ ಸಂಪರ್ಕಗೊಂಡಿದೆ</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} {1} ಅನ್ನು ಸಂಪಾದಿಸಿದೆ</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>ಈ ದಾಖಲೆಯನ್ನು ದೃಶ್ಯ ಮೋಡ್‌ನಲ್ಲಿ ಸಂಪಾದಿಸಿದರೆ ಅದರ ಕೆಲವು HTML ಮರುಬರೆಯಲ್ಪಡಬಹುದು. ಇದ್ದಂತೆಯೇ ಇಡಲು ಮೂಲ ಮೋಡ್‌ನಲ್ಲಿ ಸಂಪಾದಿಸಿ.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>PlantUML ರೇಖಾಚಿತ್ರಗಳು ಆಫ್ ಆಗಿವೆ (ಬಿಡಿಸುವಾಗ ಮೂಲವನ್ನು plantuml.com ಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ). ಸೆಟ್ಟಿಂಗ್‌ಗಳು &gt; ಸಂಪಾದಕದಲ್ಲಿ ಆನ್ ಮಾಡಿ.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>ಸ್ಥಳೀಯ ಚಿತ್ರಗಳನ್ನು ಅಪ್ ಲೋಡ್ ಮಾಡಿ</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>{0} ಗೆ ರಫ್ತು ಮಾಡಲಾಗಿದೆ</value>
   </data>
 </root>

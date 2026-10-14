@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Kandungan tidak boleh kosong</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Gagal mencipta dokumen baru</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Eksport gagal</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Maklum balas</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Import gagal</value>
@@ -225,14 +217,6 @@
     <value>Kekunci pintasan diduduki</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Hantar</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Penyerahan berjaya</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Muat naik gagal</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Masa Jalan WebView2 Tidak Dipasang</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Dokumen ini pernah dikongsi tetapi telah berubah sejak itu. HedgeDoc 1.x tidak boleh mengemas kini nota sedia ada, jadi muat naik semula akan mencipta nota baharu dengan pautan baharu.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Salin pautan</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Pautan boleh sunting</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Sesiapa yang mempunyai pautan ini boleh menyunting nota.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Tetapkan alamat pelayan HedgeDoc dahulu dalam Tetapan → Eksport.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Buka dalam pelayar</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Muat naik semula (pautan baharu)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Pautan baca sahaja</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Dikongsi ke HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokumen tidak berubah sejak kali terakhir dikongsi; ini pautan sedia ada.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Guna pautan sebelumnya</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Muat semula</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Fail telah berubah pada cakera. Memuat semula akan membuang perubahan yang belum disimpan.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Fail telah berubah pada cakera. Muat semula?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Fail telah berubah pada cakera</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Muat naik imej tempatan</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Memuat naik imej {0} daripada {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} daripada {1} imej dimuat naik. Alamatnya dalam dokumen kini menghala ke salinan yang dimuat naik; Buat asal mengembalikan laluan tempatan.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Dibatalkan. {0} daripada {1} imej telah dimuat naik, dan alamatnya dalam dokumen telah diubah.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Tidak diubah:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Dokumen ini tiada imej tempatan.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Tiada konfigurasi muat naik dipilih. Pilih satu di bawah Seting &gt; Imej &gt; Muat naik dengan.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Buka seting</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Fail tidak ditemui.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Muat naik tidak mengembalikan alamat.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokumen ditutup semasa muat naik.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Dokumen tidak dapat diubah. Imej berada dalam talian di</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Dokumen ini mempunyai {0} imej tempatan. Imej itu ialah fail pada komputer ini, jadi pembaca nota tidak akan melihatnya. Muat naik dahulu?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Muat naik dahulu</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Kongsi juga</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} daripadanya telah dimuat naik sebelum ini dengan konfigurasi ini, jadi alamat terdahulunya digunakan.</value>
   </data>
 </root>

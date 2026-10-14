@@ -6,6 +6,9 @@ import { getAttributes, parseSrcAndTitle, validateEmphasize, lowerPriority } fro
 // const CAN_NEST_RULES = ['strong', 'em', 'link', 'del', 'a_link', 'reference_link', 'html_tag']
 // disallowed html tags in https://github.github.com/gfm/#raw-html
 const disallowedHtmlTag = /(?:title|textarea|style|xmp|iframe|noembed|noframes|script|plaintext)/i
+// Void elements have no content and no close tag. `<br></br>` is a `<br>` followed by a stray `</br>`,
+// not an open/close pair — pairing them dropped a character and, on the next render, tore the editor apart.
+const voidHtmlTag = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'])
 const validateRules = Object.assign({}, inlineRules)
 delete validateRules.em
 delete validateRules.strong
@@ -176,8 +179,8 @@ const tokenizerFac = (src, beginRules, inlineRules, pos = 0, top, labels, option
     }
     if (inChunk) continue
 
-    // strong | em | emoji | inline_code | del | inline_math
-    const chunks = ['inline_code', 'del', 'emoji', 'inline_math']
+    // strong | em | emoji | inline_code | del | mark | inline_math
+    const chunks = ['inline_code', 'del', 'mark', 'emoji', 'inline_math']
     for (const rule of chunks) {
       const to = inlineRules[rule].exec(src)
       if (to && isLengthEven(to[3])) {
@@ -464,20 +467,26 @@ const tokenizerFac = (src, beginRules, inlineRules, pos = 0, top, labels, option
       continue
     } else if (htmlTo && !(disallowedHtmlTag.test(htmlTo[3])) && (attrs = getAttributes(htmlTo[0]))) {
       const tag = htmlTo[3]
-      const html = htmlTo[0]
-      const len = htmlTo[0].length
+      // A void element takes only its open tag, whatever the regex paired after it: the `</br>` in
+      // `<br></br>` is left in the stream to be read as its own literal text, not swallowed as a close tag.
+      const isVoid = voidHtmlTag.has(tag.toLowerCase())
+      const openTag = htmlTo[2]
+      const html = isVoid ? openTag : htmlTo[0]
+      const closeTag = isVoid ? undefined : htmlTo[5]
+      const content = isVoid ? '' : htmlTo[4]
+      const len = html.length
 
       pushPending()
       tokens.push({
         type: 'html_tag',
         raw: html,
         tag,
-        openTag: htmlTo[2],
-        closeTag: htmlTo[5],
+        openTag,
+        closeTag,
         parent: tokens,
         attrs,
-        content: htmlTo[4],
-        children: htmlTo[4] ? tokenizerFac(htmlTo[4], undefined, inlineRules, pos + htmlTo[2].length, false, labels, options) : '',
+        content,
+        children: content ? tokenizerFac(content, undefined, inlineRules, pos + openTag.length, false, labels, options) : '',
         range: {
           start: pos,
           end: pos + len

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <!-- Compiles the real SafeFile, not a copy (see SafeFileCheck). -->
+  <ItemGroup>
+    <Compile Include="../../Dev/Typedown.Core/Utilities/SafeFile.cs" />
+  </ItemGroup>
+</Project>

@@ -133,10 +133,6 @@
     <value>Kollox sew</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Il-kontenut ma jistax ikun vojt</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Ma rnexxilux joħloq dokument ġdid</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>L-esportazzjoni ma rnexxietx</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Feedback</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>L-importazzjoni ma rnexxietx</value>
@@ -225,14 +217,6 @@
     <value>Iċ-ċavetta tax-shortcut hija okkupata</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Jissottomettu</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Sottomissjoni b'suċċess</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>It-tlugħ ma rnexxiex</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime Mhux Installat</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Dan id-dokument diġà kien maqsum imma nbidel minn dakinhar. HedgeDoc 1.x ma jistax jaġġorna nota eżistenti, għalhekk tagħbija ġdida toħloq nota ġdida b'link ġdid.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Ikkopja l-link</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Link li jista' jiġi editjat</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Kull min għandu dan il-link jista' jeditja n-nota.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>L-ewwel issettja l-indirizz tas-server HedgeDoc f'Settings → Esporta.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Iftaħ fil-brawżer</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Erġa' tella' (link ġdid)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Link għall-qari biss</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Maqsum ma' HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Id-dokument ma nbidilx minn meta nqasam l-aħħar; dawn huma l-links eżistenti.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Uża l-link ta' qabel</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Żomm</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Erġa' agħbi</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Il-fajl inbidel fuq id-diska. It-tagħbija mill-ġdid tarmi l-bidliet mhux salvati.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Il-fajl inbidel fuq id-diska. Terġa' tagħbih?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Il-fajl inbidel fuq id-diska</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Tella' l-immaġnijiet lokali</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Qed titla' l-immaġni {0} minn {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Telgħu {0} minn {1} immaġnijiet. L-indirizzi tagħhom fid-dokument issa jippuntaw lejn il-kopji li telgħu; il-kmand Erġa jerġa' jdaħħal il-mogħdijiet lokali.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Ikkanċellat. Telgħu {0} minn {1} immaġnijiet, u l-indirizzi tagħhom fid-dokument inbidlu.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Mhux mibdula:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Dan id-dokument m'għandux immaġnijiet lokali.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Ma ntgħażlet l-ebda konfigurazzjoni tat-tlugħ. Agħżel waħda taħt Issettjar &gt; Immaġni &gt; Tella' bi.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Iftaħ l-issettjar</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Il-fajl ma nstabx.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>It-tlugħ ma rritornax indirizz.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Id-dokument ingħalaq waqt it-tlugħ.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Id-dokument ma setax jinbidel. L-immaġni hija online fuq</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Dan id-dokument għandu {0} immaġnijiet lokali. Huma fajls fuq dan il-kompjuter, għalhekk il-qarrejja tan-nota ma jarawhomx. Ittellagħhom l-ewwel?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Tella' l-ewwel</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Aqsam xorta waħda</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} minnhom kienu diġà telgħu qabel b'din il-konfigurazzjoni, għalhekk intużaw l-indirizzi preċedenti tagħhom.</value>
   </data>
 </root>

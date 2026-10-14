@@ -729,10 +729,6 @@
     <value>Παραθέτω</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Βαθμολογία</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Ξανακάνω</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Μεγένθυνση</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Δεν υπάρχει ανοιχτός φάκελος. Ανοίξτε ένα αρχείο ή φάκελο για περιήγηση εδώ.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Αυτός ο φάκελος έχει {0} στοιχεία — πάρα πολλά για να εμφανιστούν εδώ.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>Δεν υπάρχουν αρχεία Markdown σε αυτόν τον φάκελο.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Αυτός ο φάκελος δεν υπάρχει πλέον.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Εμφάνιση του φακέλου του τρέχοντος αρχείου</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Αναζήτηση στον φάκελο…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(ταιριάζει το όνομα αρχείου)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} αρχείο(α) με αντιστοιχία από {1} που αναζητήθηκαν</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Αναζήτηση…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Πλήρης οθόνη</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Τελευταία χρησιμοποιημένη καρτέλα</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Επόμενη καρτέλα</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Προηγούμενη καρτέλα</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Μείωση επιπέδου παράθεσης</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Αύξηση επιπέδου παράθεσης</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Λειτουργία ανάγνωσης</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Αναζήτηση στον φάκελο</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Κοινοποίηση στο HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Σύμπτυξη όλων</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Ανάπτυξη όλων</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Χωρίς τίτλο</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Ο αυτοματισμός συνδέθηκε</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0}: επεξεργασία του {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Η επεξεργασία σε οπτική λειτουργία μπορεί να αναδιατυπώσει μέρος του HTML αυτού του εγγράφου. Για να μείνει αμετάβλητο, επεξεργαστείτε το σε λειτουργία πηγαίου κώδικα.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>Τα διαγράμματα PlantUML είναι απενεργοποιημένα (η σχεδίαση στέλνει τον κώδικα στο plantuml.com). Ενεργοποιήστε τα στις Ρυθμίσεις &gt; Επεξεργαστής.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Μεταφόρτωση τοπικών εικόνων</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Εξήχθη στο {0}</value>
   </data>
 </root>

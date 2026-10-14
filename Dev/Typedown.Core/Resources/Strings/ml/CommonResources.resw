@@ -729,10 +729,6 @@
     <value>Quote</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>റേറ്റിംഗ്</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>റെഡോ</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Zoom</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>ഒരു ഫോൾഡറും തുറന്നിട്ടില്ല. ഇവിടെ ബ്രൗസ് ചെയ്യാൻ ഒരു ഫയലോ ഫോൾഡറോ തുറക്കുക.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>ഈ ഫോൾഡറിൽ {0} ഇനങ്ങൾ ഉണ്ട് — ഇവിടെ പട്ടികപ്പെടുത്താൻ വളരെ കൂടുതലാണ്.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>ഈ ഫോൾഡറിൽ Markdown ഫയലുകളില്ല.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>ഈ ഫോൾഡർ ഇപ്പോൾ നിലവിലില്ല.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>നിലവിലെ ഫയലിന്റെ ഫോൾഡർ കാണിക്കുക</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>ഫോൾഡറിൽ തിരയുക…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(ഫയലിന്റെ പേര് യോജിക്കുന്നു)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>തിരഞ്ഞ {1} ഫയലുകളിൽ {0} എണ്ണം യോജിച്ചു</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>തിരയുന്നു…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>പൂർണ്ണ സ്ക്രീൻ</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>അവസാനം ഉപയോഗിച്ച ടാബ്</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>അടുത്ത ടാബ്</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>മുൻ ടാബ്</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>ഉദ്ധരണി നില കുറയ്ക്കുക</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>ഉദ്ധരണി നില കൂട്ടുക</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>വായനാ മോഡ്</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>ഫോൾഡറിൽ തിരയുക</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>HedgeDoc-ൽ പങ്കിടുക…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>എല്ലാം ചുരുക്കുക</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>എല്ലാം വികസിപ്പിക്കുക</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>തലക്കെട്ടില്ലാത്തത്</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>ഓട്ടോമേഷൻ ബന്ധിപ്പിച്ചു</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} {1} എഡിറ്റ് ചെയ്തു</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>ഈ പ്രമാണം ദൃശ്യ മോഡിൽ എഡിറ്റ് ചെയ്താൽ അതിലെ ചില HTML മാറ്റിയെഴുതപ്പെടാം. അതേപടി നിലനിർത്താൻ സോഴ്സ് മോഡിൽ എഡിറ്റ് ചെയ്യുക.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>PlantUML ഡയഗ്രാമുകൾ ഓഫാണ് (വരയ്ക്കുമ്പോൾ ഉറവിടം plantuml.com-ലേക്ക് അയയ്ക്കും). ക്രമീകരണങ്ങൾ &gt; എഡിറ്ററിൽ ഓണാക്കുക.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>പ്രാദേശിക ചിത്രങ്ങൾ അപ്‌ലോഡ് ചെയ്യുക</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>{0} ലേക്ക് എക്സ്പോർട്ട് ചെയ്തു</value>
   </data>
 </root>

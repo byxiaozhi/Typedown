@@ -133,10 +133,6 @@
     <value>ಸರಿ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>ವಿಷಯವು ಖಾಲಿಯಾಗಿರಬಾರದು</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>ಹೊಸ ದಾಖಲೆಯನ್ನು ರಚಿಸಲು ವಿಫಲವಾಗಿದೆ</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>ರಫ್ತು ವಿಫಲವಾಗಿದೆ</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>ಪ್ರತಿಕ್ರಿಯೆ</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>ಆಮದು ವಿಫಲವಾಗಿದೆ</value>
@@ -225,14 +217,6 @@
     <value>ಶಾರ್ಟ್ ಕಟ್ ಕೀಲಿಯನ್ನು ಆಕ್ರಮಿಸಲಾಗಿದೆ</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>ಸಲ್ಲಿಸು</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>ಸಲ್ಲಿಕೆ ಯಶಸ್ವಿಯಾಗಿದೆ</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>ಅಪ್ ಲೋಡ್ ವಿಫಲವಾಗಿದೆ</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 ರನ್ ಟೈಮ್ ಸ್ಥಾಪಿತವಾಗಿಲ್ಲ</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>ಈ ದಾಖಲೆಯನ್ನು ಮೊದಲು ಹಂಚಲಾಗಿತ್ತು ಆದರೆ ಅಂದಿನಿಂದ ಬದಲಾಗಿದೆ. HedgeDoc 1.x ಈಗಿರುವ ಟಿಪ್ಪಣಿಯನ್ನು ನವೀಕರಿಸಲಾರದು, ಆದ್ದರಿಂದ ಮತ್ತೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿದರೆ ಹೊಸ ಲಿಂಕ್‌ನೊಂದಿಗೆ ಹೊಸ ಟಿಪ್ಪಣಿ ರಚನೆಯಾಗುತ್ತದೆ.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>ಲಿಂಕ್ ನಕಲಿಸಿ</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>ಸಂಪಾದಿಸಬಹುದಾದ ಲಿಂಕ್</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>ಈ ಲಿಂಕ್ ಇರುವ ಯಾರಾದರೂ ಟಿಪ್ಪಣಿಯನ್ನು ಸಂಪಾದಿಸಬಹುದು.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>ಮೊದಲು ಸೆಟ್ಟಿಂಗ್‌ಗಳು → ರಫ್ತು ನಲ್ಲಿ HedgeDoc ಸರ್ವರ್ ವಿಳಾಸವನ್ನು ಹೊಂದಿಸಿ.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>ಬ್ರೌಸರ್‌ನಲ್ಲಿ ತೆರೆಯಿರಿ</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>ಮತ್ತೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ (ಹೊಸ ಲಿಂಕ್)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>ಓದಲು-ಮಾತ್ರ ಲಿಂಕ್</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc ಗೆ ಹಂಚಲಾಗಿದೆ</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>ಕೊನೆಯ ಬಾರಿ ಹಂಚಿದ ನಂತರ ದಾಖಲೆ ಬದಲಾಗಿಲ್ಲ; ಇವು ಈಗಿರುವ ಲಿಂಕ್‌ಗಳು.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>ಹಿಂದಿನ ಲಿಂಕ್ ಬಳಸಿ</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>ಇರಿಸಿ</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>ಮರುಲೋಡ್</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಫೈಲ್ ಬದಲಾಗಿದೆ. ಮರುಲೋಡ್ ಮಾಡಿದರೆ ಉಳಿಸದ ಬದಲಾವಣೆಗಳು ಹೋಗುತ್ತವೆ.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಫೈಲ್ ಬದಲಾಗಿದೆ. ಮರುಲೋಡ್ ಮಾಡಬೇಕೇ?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಫೈಲ್ ಬದಲಾಗಿದೆ</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>ಸ್ಥಳೀಯ ಚಿತ್ರಗಳನ್ನು ಅಪ್ ಲೋಡ್ ಮಾಡಿ</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{1} ರಲ್ಲಿ ಚಿತ್ರ {0} ಅನ್ನು ಅಪ್ ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} ರಲ್ಲಿ {0} ಚಿತ್ರಗಳನ್ನು ಅಪ್ ಲೋಡ್ ಮಾಡಲಾಗಿದೆ. ಡಾಕ್ಯುಮೆಂಟ್‌ನಲ್ಲಿನ ಅವುಗಳ ವಿಳಾಸಗಳು ಈಗ ಅಪ್ ಲೋಡ್ ಮಾಡಿದ ಪ್ರತಿಗಳನ್ನು ಸೂಚಿಸುತ್ತವೆ; "ರದ್ದುಮಾಡು" ಸ್ಥಳೀಯ ಪಾತ್‌ಗಳನ್ನು ಮರಳಿ ತರುತ್ತದೆ.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ. {1} ರಲ್ಲಿ {0} ಚಿತ್ರಗಳನ್ನು ಅಪ್ ಲೋಡ್ ಮಾಡಲಾಗಿದೆ, ಮತ್ತು ಡಾಕ್ಯುಮೆಂಟ್‌ನಲ್ಲಿನ ಅವುಗಳ ವಿಳಾಸಗಳನ್ನು ಬದಲಾಯಿಸಲಾಗಿದೆ.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>ಬದಲಾಗಿಲ್ಲ:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>ಈ ಡಾಕ್ಯುಮೆಂಟ್‌ನಲ್ಲಿ ಸ್ಥಳೀಯ ಚಿತ್ರಗಳಿಲ್ಲ.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>ಯಾವುದೇ ಅಪ್ ಲೋಡ್ ಕಾನ್ಫಿಗರೇಶನ್ ಆಯ್ಕೆಯಾಗಿಲ್ಲ. ಸೆಟ್ಟಿಂಗ್ ಗಳು &gt; ಚಿತ್ರ &gt; ಇದರೊಂದಿಗೆ ಅಪ್ ಲೋಡ್ ಮಾಡಿ ಅಡಿಯಲ್ಲಿ ಒಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>ಸೆಟ್ಟಿಂಗ್ ಗಳನ್ನು ತೆರೆಯಿರಿ</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>ಫೈಲ್ ಕಂಡುಬಂದಿಲ್ಲ.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>ಅಪ್ ಲೋಡ್ ಯಾವುದೇ ವಿಳಾಸವನ್ನು ಹಿಂತಿರುಗಿಸಲಿಲ್ಲ.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>ಅಪ್ ಲೋಡ್ ಸಮಯದಲ್ಲಿ ಡಾಕ್ಯುಮೆಂಟ್ ಅನ್ನು ಮುಚ್ಚಲಾಗಿದೆ.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>ಡಾಕ್ಯುಮೆಂಟ್ ಅನ್ನು ಬದಲಾಯಿಸಲಾಗಲಿಲ್ಲ. ಚಿತ್ರವು ಈ ವಿಳಾಸದಲ್ಲಿ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿದೆ:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>ಈ ಡಾಕ್ಯುಮೆಂಟ್‌ನಲ್ಲಿ {0} ಸ್ಥಳೀಯ ಚಿತ್ರಗಳಿವೆ. ಅವು ಈ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿರುವ ಫೈಲ್‌ಗಳು, ಆದ್ದರಿಂದ ಟಿಪ್ಪಣಿಯ ಓದುಗರು ಅವುಗಳನ್ನು ನೋಡುವುದಿಲ್ಲ. ಮೊದಲು ಅವುಗಳನ್ನು ಅಪ್ ಲೋಡ್ ಮಾಡಬೇಕೇ?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>ಮೊದಲು ಅಪ್ ಲೋಡ್ ಮಾಡಿ</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>ಹಾಗಿದ್ದರೂ ಹಂಚಿ</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>ಅವುಗಳಲ್ಲಿ {0} ಅನ್ನು ಈ ಕಾನ್ಫಿಗರೇಶನ್‌ನೊಂದಿಗೆ ಈ ಹಿಂದೆಯೇ ಅಪ್ ಲೋಡ್ ಮಾಡಲಾಗಿತ್ತು, ಆದ್ದರಿಂದ ಅವುಗಳ ಹಿಂದಿನ ವಿಳಾಸಗಳನ್ನು ಬಳಸಲಾಗಿದೆ.</value>
   </data>
 </root>

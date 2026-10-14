@@ -60,6 +60,10 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
 
         private void UpdateImageUploadConfigItem()
         {
+            // The window's upload service reads its configurations when first asked: the first menu after a start
+            // would list none, so it fills in once they are read.
+            if (!ImageUpload.Ready.IsCompleted)
+                _ = ImageUpload.Ready.ContinueWith(_ => UpdateImageUploadConfigItem(), System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext());
             var configs = ImageUpload.ImageUploadConfigs.Where(x => x.IsEnable).ToList();
             while (UploadSubMenu.Items[1] is not MenuFlyoutSeparator)
                 UploadSubMenu.Items.RemoveAt(1);
@@ -80,9 +84,9 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
                 var fullPath = Path.GetFullPath(Path.Combine(ViewModel.FileViewModel.ImageBasePath, path));
                 Common.OpenFileLocation(fullPath);
             }
-            catch
+            catch (Exception ex)
             {
-
+                ShowError(ex);
             }
         }
 
@@ -100,9 +104,9 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
                 file = ImageAction.ConvertImagePath(file);
                 ReplaceImage(new(file, ImageAlt, ImageTitle));
             }
-            catch
+            catch (Exception ex)
             {
-
+                ShowError(ex);
             }
         }
 
@@ -125,9 +129,9 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
                     File.Delete(path);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                ShowError(ex);
             }
         }
 
@@ -165,9 +169,9 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
                     return;
                 await File.WriteAllBytesAsync(file, bytes);
             }
-            catch
+            catch (Exception ex)
             {
-                // Ignore
+                ShowError(ex);
             }
         }
 
@@ -184,10 +188,18 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // Ignore
+                ShowError(ex);
             }
+        }
+
+        // A picture operation that failed (the file gone or locked, a folder not writable) says why: these were silent.
+        private async void ShowError(Exception ex)
+        {
+            Log.Debug($"picture menu: {ex}");
+            try { await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(ViewModel?.XamlRoot); }
+            catch { }
         }
 
         private void ReplaceImage(HtmlImgTag htmlImgTag)
@@ -208,7 +220,7 @@ namespace Typedown.Core.Controls.EditorControls.ContextMenuItems
             filePicker.FileTypeChoices.Add(type, new List<string>() { $".{type}" });
             filePicker.SuggestedFileName = ImageAlt;
             filePicker.SetOwnerWindow(ViewModel.MainWindow);
-            var file = await filePicker.PickSaveFileAsync();
+            var file = await FilePickersExtensions.ShowAsync(() => filePicker.PickSaveFileAsync());
             return file?.Path;
         }
 

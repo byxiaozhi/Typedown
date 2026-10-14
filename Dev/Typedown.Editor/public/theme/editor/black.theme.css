@@ -1,0 +1,32 @@
+:root {
+    /* Pure black variant of the dark theme (upstream #12): OLED-friendly, slightly dimmed text. */
+    color: #bbbbbb;
+    --highlightColor: rgba(102, 177, 255, .6);
+    --selectionColor: rgba(102, 177, 255, .3);
+    --editorColor: rgb(187, 187, 187);
+    --editorColor80: rgba(255, 255, 255, .8);
+    --editorColor60: rgba(255, 255, 255, .6);
+    --editorColor50: rgba(255, 255, 255, .5);
+    --editorColor40: rgba(255, 255, 255, .4);
+    --editorColor30: rgba(255, 255, 255, .3);
+    --editorColor10: rgba(255, 255, 255, .1);
+    --editorColor04: rgba(255, 255, 255, .04);
+    --editorBgColor: #000000;
+    --deleteColor: #409eff;
+    --iconColor: rgba(255, 255, 255, .56);
+    --codeBgColor: #FFFFFF0D;
+    --codeBlockBgColor: #FFFFFF0D;
+    --inlineCodeBgColor: rgba(255, 255, 255, .1);
+    --footnoteBgColor: rgba(66, 67, 68, .3);
+    --inputBgColor: #161616;
+    --focusColor: var(--themeColor);
+    --tableBorderColor: rgba(255, 255, 255, .18);
+    --itemBgColor: #141414;
+    --floatBgColor: #141414;
+    --floatHoverColor: #FFFFFF0F;
+    --floatBorderColor: #00000030;
+    --floatShadow: rgba(0, 0, 0, 0.2);
+    --maskColor: rgba(0, 0, 0, .7);
+    --editorAreaWidth: 750px;
+    --floatShadow: 0 8px 12px 0 rgba(0, 0, 0, .2);
+}

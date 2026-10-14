@@ -100,6 +100,15 @@ class Keyboard {
   keydownBinding() {
     const { container, eventCenter, contentState } = this.muya
     const docHandler = event => {
+      // A document kept in memory while another is shown is still an editor with these handlers bound, and
+      // it still holds whatever was selected in it when it was left — an image selected there would be
+      // deleted by a Backspace meant for the document actually on screen. Only the one in the page answers.
+      if (!this.muya.container.isConnected) {
+        return
+      }
+      if (this.muya.options.readOnly) {
+        return
+      }
       switch (event.code) {
         case EVENT_KEYS.Enter:
           return contentState.docEnterHandler(event)
@@ -133,6 +142,12 @@ class Keyboard {
       if (!this.isControlDown && (event.metaKey || event.ctrlKey)) {
         this.isControlDown = true
         container.classList.add('ag-meta-or-ctrl')
+      }
+
+      // Reading mode: the container is not editable, so nothing below can apply — but Backspace/Enter/Tab would
+      // still run their content handlers against the last cursor. Arrow keys and shortcuts are left alone.
+      if (this.muya.options.readOnly) {
+        return
       }
 
       if (

@@ -1,0 +1,24 @@
+{
+  "description": "What changes a document's documentId and revision. Windows implements it in DocumentTab (Typedown.Core); the Uno port must reproduce the same rows. Each row starts from a document at revision r with id d.",
+  "cases": [
+    { "action": "type one character in visual or source mode", "documentId": "same", "revision": "r+1" },
+    { "action": "undo, then redo", "documentId": "same", "revision": "r+2" },
+    { "action": "load into the editor with no edit (FileLoaded handshake returns the source)", "documentId": "same", "revision": "r" },
+    { "action": "FileLoaded handshake returns text other than the source", "documentId": "same", "revision": "r+1" },
+    { "action": "switch to another tab and back", "documentId": "same", "revision": "r" },
+    { "action": "switch reading / visual / source mode", "documentId": "same", "revision": "r" },
+    { "action": "save; save as (path changes)", "documentId": "same", "revision": "r" },
+    { "action": "reload from disk with different text", "documentId": "same", "revision": "r+1" },
+    { "action": "reload from disk with the same text", "documentId": "same", "revision": "r" },
+    { "action": "open a file into a new tab", "documentId": "new", "revision": "0" },
+    { "action": "open a file into a reused preview or blank tab", "documentId": "new", "revision": "0" },
+    { "action": "open a file into a reused tab, reading the file fails", "documentId": "same", "revision": "r" },
+    { "action": "new untitled document, in a new tab or the reused blank tab", "documentId": "new", "revision": "0" },
+    { "action": "close the tab", "documentId": "gone", "revision": "-" }
+  ],
+  "notes": [
+    "revision is interpreted with the process instanceId; it restarts with the process.",
+    "loadId is the host/WebView staleness tag and changes on every load and tab switch; it is never exposed as revision.",
+    "A MarkdownChange whose origin is \"editor\" (services/changeOrigin.ts) still changes the text and so still advances revision; origin decides attribution, not whether the text changed."
+  ]
+}

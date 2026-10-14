@@ -133,10 +133,6 @@
     <value>ٹھيک ہے</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>مواد خالی نہیں ہو سکتا</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>نئی دستاویز بنانے میں ناکام</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>برآمد ناکام</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>رائے</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>درآمد ناکام</value>
@@ -225,14 +217,6 @@
     <value>شارٹ کٹ کلید پر قبضہ کر لیا گیا ہے</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>پیش کریں</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>پیش کرنے میں کامیابی</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>اپ لوڈ ناکام</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 رن ٹائم انسٹال نہیں</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>یہ دستاویز پہلے شیئر کی گئی تھی مگر اس کے بعد بدل گئی ہے۔ HedgeDoc 1.x موجودہ نوٹ کو اپ ڈیٹ نہیں کر سکتا، اس لیے دوبارہ اپ لوڈ کرنے پر نئے لنک کے ساتھ نیا نوٹ بنے گا۔</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>لنک کاپی کریں</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>قابلِ ترمیم لنک</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>اس لنک والا کوئی بھی شخص نوٹ میں ترمیم کر سکتا ہے۔</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>پہلے ترتیبات ← برآمد میں HedgeDoc سرور کا پتہ درج کریں۔</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>براؤزر میں کھولیں</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>دوبارہ اپ لوڈ کریں (نیا لنک)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>صرف پڑھنے والا لنک</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc پر شیئر کیا گیا</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>آخری بار شیئر کرنے کے بعد دستاویز نہیں بدلی؛ یہ موجودہ لنکس ہیں۔</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>پچھلا لنک استعمال کریں</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>رکھیں</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>دوبارہ لوڈ کریں</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>فائل ڈسک پر بدل گئی ہے۔ دوبارہ لوڈ کرنے سے غیر محفوظ تبدیلیاں ضائع ہو جائیں گی۔</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>فائل ڈسک پر بدل گئی ہے۔ دوبارہ لوڈ کریں؟</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>فائل ڈسک پر بدل گئی ہے</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>مقامی تصاویر اپ لوڈ کریں</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>تصویر {0} از {1} اپ لوڈ ہو رہی ہے…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} میں سے {0} تصاویر اپ لوڈ ہو گئیں۔ دستاویز میں ان کے پتے اب اپ لوڈ شدہ نقول کی طرف اشارہ کرتے ہیں؛ کالعدم کرنے سے مقامی راستے واپس آ جاتے ہیں۔</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>منسوخ کر دیا گیا۔ {1} میں سے {0} تصاویر اپ لوڈ ہوئیں، اور دستاویز میں ان کے پتے بدل دیے گئے۔</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>تبدیل نہیں ہوئے:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>اس دستاویز میں کوئی مقامی تصویر نہیں ہے۔</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>کوئی اپ لوڈ ترتیب منتخب نہیں ہے۔ سیٹنگیں &gt; روپ &gt; اس کے ذریعے اپ لوڈ کریں میں سے ایک منتخب کریں۔</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>سیٹنگیں کھولیں</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>فائل نہیں ملی۔</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>اپ لوڈ نے کوئی پتہ واپس نہیں کیا۔</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>اپ لوڈ کے دوران دستاویز بند کر دی گئی۔</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>دستاویز تبدیل نہیں کی جا سکی۔ تصویر اس پتے پر آن لائن ہے:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>اس دستاویز میں {0} مقامی تصاویر ہیں۔ یہ اس کمپیوٹر پر موجود فائلیں ہیں، اس لیے نوٹ کے قارئین انہیں نہیں دیکھ پائیں گے۔ پہلے انہیں اپ لوڈ کریں؟</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>پہلے اپ لوڈ کریں</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>پھر بھی شیئر کریں</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>ان میں سے {0} اس کنفیگریشن کے ساتھ پہلے ہی اپ لوڈ کی جا چکی تھیں، اس لیے ان کے پچھلے پتے استعمال کیے گئے۔</value>
   </data>
 </root>

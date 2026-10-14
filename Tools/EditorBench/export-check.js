@@ -1,0 +1,16 @@
+const puppeteer = require('puppeteer-core'); const http = require('http'); const fs = require('fs'); const path = require('path');
+const statics = path.resolve(process.env.STATICS || '../../Dev/Typedown/Resources/Statics');
+const server = http.createServer((req, res) => { let p = decodeURIComponent(req.url.split('?')[0]); if (p === '/') p = '/index.html'; const f = path.join(statics, p); if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.statusCode = 404; return res.end(); } fs.createReadStream(f).pipe(res); });
+(async () => { await new Promise(r => server.listen(0, r)); const port = server.address().port;
+  const browser = await puppeteer.launch({ executablePath: '/opt/google/chrome/chrome', headless: 'new', args: ['--no-sandbox'] }); const page = await browser.newPage();
+  const settings = { fontSize: 16, lineHeight: 1.6, editorAreaWidth: '1200px', tabSize: 4, textDirection: 'auto', preferLooseListItem: true, listIndentation: '1', markdown: 'x\n', basePath: 'C:\\tmp' };
+  await page.evaluateOnNewDocument(`(()=>{const ls=[];window.__marks={};window.__export=null;const deliver=(n,a)=>ls.forEach(l=>l({data:JSON.stringify({name:n,args:a})}));window.__deliver=deliver;const resp={GetSettings:${JSON.stringify(settings)},GetCurrentTheme:{theme:'Light',accentColor:{r:0,g:120,b:212,a:1},background:{R:249,G:249,B:249,A:1}},ContentLoaded:'',GetStringResources:{},ExportCallback:true};window.chrome={webview:{addEventListener:(t,l)=>ls.push(l),postMessage:(raw)=>{const m=JSON.parse(raw);window.__marks[m.name]=1;if(m.type==='invoke'){if(m.name==='ExportCallback')window.__export=m.args.html;setTimeout(()=>deliver(m.id,{code:0,data:m.name in resp?resp[m.name]:null}),0);}}}}})()`);
+  await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'load' }); await page.waitForFunction(() => window.__marks.FileLoaded, { timeout: 30000 });
+  const md = process.argv[2] ? JSON.parse(process.argv[2]) : '- **"Share" vs. "Now" vs. "Once"**\n  Sharing is good (*"Share"*), sharing often is encouraged (*"Now"*)\n\n- **"Once" vs. "Simplify"**\n  *"Simplify"* is subjective and can mislead us into making quick.\n\nHello.\n';
+  await page.evaluate((md) => window.__deliver('LoadFile', { text: md, basePath: 'C:\\tmp' }), md); await new Promise(r => setTimeout(r, 500));
+  await page.evaluate(() => window.__deliver('Export', { type: 'html', context: 1, basePath: 'C:\\tmp', title: 't', options: {} }));
+  await page.waitForFunction(() => window.__export, { timeout: 30000 });
+  const html = await page.evaluate(() => window.__export);
+  const body = html.replace(/[\s\S]*<body[^>]*>/, '').replace(/<\/body>[\s\S]*/, '').replace(/<script[\s\S]*?<\/script>/g, '');
+  console.log(body.replace(/\n\s*\n/g, '\n').trim().slice(0, 1500));
+  await browser.close(); server.close(); })().catch(e => { console.error(e); process.exit(1); });

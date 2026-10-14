@@ -133,10 +133,6 @@
     <value>OKE</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Konten tidak boleh kosong</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Gagal membuat dokumen baru</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Ekspor gagal</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Umpan balik</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Impor gagal</value>
@@ -225,14 +217,6 @@
     <value>Tombol pintasan ditempati</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Tunduk</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Pengiriman berhasil</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Upload gagal</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime Tidak Diinstal</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Dokumen ini pernah dibagikan tetapi sudah berubah sejak itu. HedgeDoc 1.x tidak dapat memperbarui catatan yang ada, jadi unggah ulang membuat catatan baru dengan tautan baru.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Salin tautan</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Tautan yang dapat disunting</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Siapa pun dengan tautan ini dapat menyunting catatan.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Atur alamat server HedgeDoc dulu di Pengaturan → Ekspor.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Buka di peramban</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Unggah lagi (tautan baru)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Tautan hanya-baca</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Dibagikan ke HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokumen tidak berubah sejak terakhir dibagikan; ini tautan yang sudah ada.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Gunakan tautan sebelumnya</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Muat ulang</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Berkas telah berubah di disk. Memuat ulang akan membuang perubahan yang belum disimpan.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Berkas telah berubah di disk. Muat ulang?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Berkas telah berubah di disk</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Unggah gambar lokal</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Mengunggah gambar {0} dari {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} dari {1} gambar diunggah. Alamatnya di dokumen kini mengarah ke salinan yang diunggah; Urungkan mengembalikan jalur lokal.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Dibatalkan. {0} dari {1} gambar telah diunggah, dan alamatnya di dokumen telah diubah.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Tidak diubah:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Dokumen ini tidak memiliki gambar lokal.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Belum ada konfigurasi unggahan yang dipilih. Pilih satu di Pengaturan &gt; Citra &gt; Unggah dengan.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Buka pengaturan</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>File tidak ditemukan.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Unggahan tidak mengembalikan alamat.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokumen ditutup selama pengunggahan.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Dokumen tidak dapat diubah. Gambar sudah online di</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Dokumen ini memiliki {0} gambar lokal. Gambar tersebut adalah file di komputer ini, sehingga pembaca catatan tidak akan melihatnya. Unggah terlebih dahulu?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Unggah dulu</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Tetap bagikan</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} di antaranya sudah pernah diunggah dengan konfigurasi ini, jadi alamat sebelumnya digunakan.</value>
   </data>
 </root>

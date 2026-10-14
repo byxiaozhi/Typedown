@@ -1,0 +1,415 @@
+{
+  "repo-branches": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "gfm-table": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "gfm-table-ragged": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "html-block": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "html-inline": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "footnote": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "math-inline": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "math-block": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "mermaid": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "code-fence-lang": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "emoji": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "combining": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "no-final-newline": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "trailing-spaces": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "task-list": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "front-matter": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "links-images": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "nested-lists": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "blockquote": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "setext-and-rules": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "escapes": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "blank-lines": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "empty": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-1": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-11": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-21": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-31": {
+    "pendingNormalization": "unsafe",
+    "reasons": [
+      "html-lost",
+      "word-lost"
+    ]
+  },
+  "commonmark-41": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-51": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-61": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-71": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-81": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-91": {
+    "pendingNormalization": "unsafe",
+    "reasons": [
+      "html-lost"
+    ]
+  },
+  "commonmark-101": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-111": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-121": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-131": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-141": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-151": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-161": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-171": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-181": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-191": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-201": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-211": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-221": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-231": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-241": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-251": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-261": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-271": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-281": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-291": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-301": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-311": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-321": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-331": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-341": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-351": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-361": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-371": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-381": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-391": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-401": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-411": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-421": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-431": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-441": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-451": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-461": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-471": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-481": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-491": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-501": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-511": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-521": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-531": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-541": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-551": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-561": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-571": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  },
+  "commonmark-581": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-591": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-601": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-611": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-621": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-631": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-641": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "commonmark-651": {
+    "pendingNormalization": "none",
+    "reasons": []
+  },
+  "large-doc": {
+    "pendingNormalization": "unknown",
+    "reasons": [
+      "formatting-changed"
+    ]
+  }
+}

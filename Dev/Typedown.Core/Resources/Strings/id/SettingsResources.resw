@@ -137,18 +137,6 @@
     <value>Kirim Umpan Balik</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontak</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Email</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Kami menanggapi umpan balik Anda dengan sangat serius</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Sekitar</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Ukuran font</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font yang digunakan di editor</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Keluarga font</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Editor tinggi garis beberapa</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Gambar Clipboard</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurasi unggahan gambar clipboard</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Tindakan yang harus dijalankan saat menyisipkan gambar</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Gambar Lokal</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurasi unggahan gambar lokal</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Tindakan sisipkan gambar</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Gambar Web</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurasi unggahan gambar web</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Lebih suka menggunakan jalur relatif saat menyisipkan gambar</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Jendela</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Bawaan</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Indentasi yang ditulis untuk item daftar bersarang. 4 spasi sesuai dengan Obsidian dan kebanyakan editor lain</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Indentasi 4 spasi (standar Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 spasi setelah penanda</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 spasi setelah penanda</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 spasi setelah penanda</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Indentasi daftar</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Sisipkan baris kosong di antara item daftar baru pada sumber</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Item daftar longgar</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Tampilkan jenis blok (P, H1, ...) di samping paragraf saat ini</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Penanda paragraf</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Isi sel tabel agar kolom sejajar pada sumber Markdown. Matikan agar tabel tetap ringkas (lebih sedikit token untuk alat AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Sejajarkan kolom tabel</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Deteksi otomatis per paragraf</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Arah teks editor, berguna untuk bahasa Arab, Ibrani, dan bahasa lain yang ditulis dari kanan ke kiri</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Kiri ke kanan</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Kanan ke kiri</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Arah teks</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Jika mati, muat ulang tanpa bertanya kecuali ada perubahan yang belum disimpan</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Tanya sebelum memuat ulang</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Pantau berkas yang terbuka dan segarkan saat program lain mengubahnya</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Muat ulang otomatis saat ada perubahan dari luar</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Berkas yang dibuka dari Explorer terbuka sebagai tab di jendela saat ini; mati membuka jendela baru</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Buka berkas dalam tab</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Buka dokumen dari tempat Anda berhenti</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Ingat posisi kursor</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Pulihkan semua dokumen dari sesi terakhir</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Biarkan kosong untuk membuat catatan anonim; dengan akun, catatan menjadi milik Anda</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Email (opsional)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Kata sandi</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Menerbitkan catatan (/s/…) sehingga tautan yang dibagikan tidak dapat disunting</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Terbitkan juga tautan hanya-baca</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Bagikan ke HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Alamat HedgeDoc 1.x, mis. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Uji</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Uji koneksi</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Tampilkan bilah tab meski hanya satu dokumen terbuka</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Selalu tampilkan tab</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Hitam (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Gaya tambahan untuk editor dan HTML/PDF hasil ekspor</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>mis. .markdown-body h1 { color: #c00; }  atau  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS khusus</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Tema adalah satu berkas CSS di folder tema; lihat docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Cara menulisnya</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Tema adalah berkas CSS di folder ini; dokumen menjelaskan formatnya.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(tidak ada)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Buka folder tema</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Muat ulang tema</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Tema khusus</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>mis. ./${filename}.assets — variabel: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Halaman yang ditampilkan panel samping saat aplikasi dimulai</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Halaman bawaan panel samping</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Izinkan otomatisasi lokal</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Program yang Anda jalankan di komputer ini dapat membaca dan mengedit dokumen yang terbuka. Judul jendela menunjukkan saat ada yang terhubung.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Sorot perubahan yang dibuat oleh program</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Menyorot sebentar teks yang diubah oleh program yang terhubung, agar Anda dapat melihat apa yang berubah.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Gambar diagram PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Mengirim sumber diagram ke plantuml.com untuk menggambarnya</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Unggah dengan</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Konfigurasi unggahan yang digunakan untuk gambar yang disisipkan dengan tindakan Unggah, dan oleh Arsip &gt; Unggah gambar lokal</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Folder di bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL publik</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Alamat gaya jalur (MinIO dan beberapa penyedia)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Konfigurasi S3 belum lengkap: isi Endpoint, Bucket, Access Key ID, dan Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Riwayat unggahan</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Gambar yang sudah diunggah dengan konfigurasi yang sama tidak diunggah lagi; alamat sebelumnya digunakan ({0} diingat). Bersihkan riwayat setelah menghapus file yang diunggah.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Server PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Alamat server PlantUML (plantuml-server) yang menggambar diagram. Kosong: plantuml.com. Dengan server sendiri, sumber diagram tetap di tangan Anda.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Tombol Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim dalam mode sumber (:w menyimpan, :q menutup tab); j/k, gg/G, ]] dan / untuk berpindah dalam mode baca. Tidak di editor visual.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Buka Folder Log</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Setelah ekspor</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Tampilkan lokasi penyimpanan</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Buka file</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Buka foldernya</value>
   </data>
 </root>

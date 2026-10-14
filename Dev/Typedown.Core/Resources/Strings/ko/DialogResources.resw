@@ -133,10 +133,6 @@
     <value>확인</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>내용을 비울 수 없습니다</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>새 문서 만들기 실패</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>내보내기 실패</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>피드백</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>가져오기 실패</value>
@@ -225,14 +217,6 @@
     <value>바로 가기 키가 사용 중입니다</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>제출</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>제출 성공</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>업로드 실패</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 런타임이 설치되어 있지 않습니다</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>다시 불러오기</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>디스크에서 파일이 변경되었습니다. 다시 불러오면 저장하지 않은 변경 내용이 사라집니다.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>디스크에서 파일이 변경되었습니다. 다시 불러올까요?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>디스크에서 파일이 변경됨</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>유지</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc에 공유됨</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>읽기 전용 링크</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>편집 가능한 링크</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>이 링크를 가진 사람은 누구나 노트를 편집할 수 있습니다.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>링크 복사</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>브라우저에서 열기</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>먼저 설정 → 내보내기에서 HedgeDoc 서버 주소를 입력하세요.</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>마지막으로 공유한 후 문서가 변경되지 않았습니다. 기존 링크는 다음과 같습니다.</value>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>이 문서는 이전에 공유되었지만 그 후 변경되었습니다. HedgeDoc 1.x는 기존 노트를 수정할 수 없으므로 다시 업로드하면 새 링크의 새 노트가 만들어집니다.</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>다시 업로드(새 링크)</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>이전 링크 사용</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>로컬 이미지 업로드</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>이미지 {0}/{1} 업로드 중…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>이미지 {1}개 중 {0}개를 업로드했습니다. 문서의 이미지 주소가 이제 업로드된 사본을 가리킵니다. 실행 취소하면 로컬 경로로 되돌아갑니다.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>취소되었습니다. 이미지 {1}개 중 {0}개가 업로드되었고 문서의 해당 주소가 변경되었습니다.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>변경되지 않음:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>이 문서에는 로컬 이미지가 없습니다.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>선택된 업로드 구성이 없습니다. 설정 &gt; 이미지 &gt; 업로드 방법에서 선택하세요.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>설정 열기</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>파일을 찾을 수 없습니다.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>업로드 결과로 주소가 반환되지 않았습니다.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>업로드 중에 문서가 닫혔습니다.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>문서를 변경할 수 없습니다. 이미지는 다음 주소에 온라인으로 있습니다:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>이 문서에는 로컬 이미지가 {0}개 있습니다. 이 컴퓨터에 있는 파일이므로 노트를 읽는 사람은 볼 수 없습니다. 먼저 업로드할까요?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>먼저 업로드</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>그대로 공유</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>그중 {0}개는 이 구성으로 이미 업로드된 적이 있어 이전 주소를 사용했습니다.</value>
   </data>
 </root>

@@ -7,6 +7,7 @@ using Typedown.Core.Controls.SettingControls.SettingItems.ExportConfigItems;
 using Typedown.Core.Enums;
 using Typedown.Core.Interfaces;
 using Typedown.Core.Models;
+using Typedown.Core.Controls;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
 using Windows.UI.Xaml;
@@ -43,17 +44,29 @@ namespace Typedown.Core.Pages.SettingPages
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            ExportConfig = await ExportService.Value.GetExportConfig(configId);
+            try
+            {
+                ExportConfig = await ExportService.Value.GetExportConfig(configId);
+            }
+            catch (Exception ex)
+            {
+                // The database could not be read: the page stays empty rather than taking the window down.
+                Log.WriteLocal("ExportConfigLoad", ex.ToString());
+                return;
+            }
             if (ExportConfig != null)
                 disposables.Add(ExportConfig.WhenPropertyChanged(nameof(ExportConfig.Name)).Cast<string>().StartWith(ExportConfig.Name).Subscribe(UpdateTitle));
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
+            // The window's own root: this page is gone by the time the save answers.
+            var root = this.GetService<AppViewModel>()?.XamlRoot;
             _ = Dispatcher.RunIdleAsync(async () =>
             {
-                if (ExportConfig != null)
-                    await ExportService.Value.SaveExportConfig(ExportConfig);
+                // A configuration that could not be saved (the database locked) says so: the edits were lost silently.
+                if (ExportConfig != null && !await ExportService.Value.SaveExportConfig(ExportConfig) && root != null)
+                    await AppContentDialog.Create(Locale.GetDialogString("SaveErrorTitle"), ExportConfig.Name, Locale.GetString("Ok")).ShowAsync(root);
             });
             disposables.Clear();
             Bindings?.StopTracking();

@@ -80,16 +80,21 @@ namespace Typedown.Services
             return eventArgs.Handled;
         }
 
+        // The modifiers as the system has them when this key arrives (GetIsKeyDownNow). Read as this thread had them
+        // (GetKeyState), Ctrl was not down yet whenever the web view's thread had not read its press before Z came: Ctrl
+        // and Z close together (a fast chord, a busy page, a tool sending the whole chord at once) were taken for a plain Z,
+        // which went on to the page - the browser's own undo, apart from the host's history (and so Ctrl+B, Ctrl+1...).
+        // The system's state is also right after a key let go elsewhere (another window, the lock screen).
         private VirtualKeyModifiers GetVirtualKeyModifiers()
         {
             var modifiers = VirtualKeyModifiers.None;
-            if (PInvoke.GetIsKeyDown(VirtualKey.Menu))
+            if (PInvoke.GetIsKeyDownNow(VirtualKey.Menu))
                 modifiers |= VirtualKeyModifiers.Menu;
-            if (PInvoke.GetIsKeyDown(VirtualKey.Control))
+            if (PInvoke.GetIsKeyDownNow(VirtualKey.Control))
                 modifiers |= VirtualKeyModifiers.Control;
-            if (PInvoke.GetIsKeyDown(VirtualKey.Shift))
+            if (PInvoke.GetIsKeyDownNow(VirtualKey.Shift))
                 modifiers |= VirtualKeyModifiers.Shift;
-            if (PInvoke.GetIsKeyDown(VirtualKey.LeftWindows) || PInvoke.GetIsKeyDown(VirtualKey.RightWindows))
+            if (PInvoke.GetIsKeyDownNow(VirtualKey.LeftWindows) || PInvoke.GetIsKeyDownNow(VirtualKey.RightWindows))
                 modifiers |= VirtualKeyModifiers.Windows;
             return modifiers;
         }

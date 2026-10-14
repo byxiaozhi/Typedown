@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using Typedown.Core.Pages.SettingPages;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
@@ -92,6 +93,31 @@ namespace Typedown.Core.Pages
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             disposables.Add(ViewModel.NavigateCommand.OnExecute.Subscribe(args => Navigate(args)));
+            // The settings are a page of their own, so they have to take the theme from the settings as well:
+            // opening them under a custom theme would otherwise drop back to the built-in colours.
+            disposables.Add(Settings.WhenPropertyChanged(nameof(Settings.CustomTheme)).StartWith(Settings.CustomTheme).Subscribe(_ => UpdateThemeColours()));
+        }
+
+        /// <summary>
+        /// Paints the page from a custom theme; what the theme does not name keeps the built-in colour, and
+        /// clearing the value puts that colour back.
+        /// </summary>
+        private void UpdateThemeColours()
+        {
+            try
+            {
+                var theme = ThemeFiles.Find(Settings?.CustomTheme);
+                var background = ThemeFiles.Brush(theme?.Background) ?? ThemeFiles.Brush(theme?.Surface);
+                var foreground = ThemeFiles.Brush(theme?.Foreground) ?? ThemeFiles.Readable(theme?.Surface ?? theme?.Background);
+                if (background != null) NavigationView.Background = background;
+                else NavigationView.ClearValue(BackgroundProperty);
+                if (foreground != null) Foreground = foreground;
+                else ClearValue(ForegroundProperty);
+            }
+            catch (Exception ex)
+            {
+                Log.Debug($"settings theme: {ex.Message}");
+            }
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

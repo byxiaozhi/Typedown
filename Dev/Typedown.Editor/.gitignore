@@ -11,6 +11,9 @@
 # production
 /build
 
+# mermaid Universal Module Definition (UMD) copied from node_modules at build time
+/public/mermaid.min.js
+
 # misc
 .DS_Store
 .env.local

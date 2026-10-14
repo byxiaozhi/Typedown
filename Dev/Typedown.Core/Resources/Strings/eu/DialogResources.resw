@@ -133,10 +133,6 @@
     <value>Ados</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Edukia ezin da hutsik egon</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Akatsa dokumentu berri bat sortzean</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Esportazio-akatsa</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Atzera-alimentazioa</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Inportazio-akatsa</value>
@@ -225,14 +217,6 @@
     <value>Metodo-tekla laburtua okupatuta</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Bidali</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Bidalketa arrakastatsua</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Karga-akatsa</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Web-a egiteko denbora Instalatu gabeko WebView2</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Dokumentu hau lehenago partekatu zen, baina ordutik aldatu egin da. HedgeDoc 1.x-ek ezin du lehendik dagoen oharra eguneratu; beraz, berriro igotzeak ohar berri bat sortzen du esteka berriarekin.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopiatu esteka</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Esteka editagarria</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Esteka hau duen edonork edita dezake oharra.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Ezarri lehenik HedgeDoc zerbitzariaren helbidea Ezarpenak → Esportatu atalean.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Ireki nabigatzailean</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Igo berriro (esteka berria)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Irakurtzeko soilik den esteka</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc-en partekatuta</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokumentua ez da aldatu azkenekoz partekatu zenetik; hauek dira lehendik dauden estekak.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Erabili aurreko esteka</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Mantendu</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Kargatu berriro</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Fitxategia diskoan aldatu da. Birkargatzeak gorde gabeko aldaketak baztertuko ditu.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Fitxategia diskoan aldatu da. Birkargatu nahi duzu?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Fitxategia diskoan aldatu da</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Igo irudi lokalak</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{0}/{1} irudia igotzen…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} irudietatik {0} igo dira. Dokumentuko haien helbideek igotako kopiak seinalatzen dituzte orain; Desegin aukerak bide lokalak berrezartzen ditu.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Bertan behera utzi da. {1} irudietatik {0} igo dira, eta dokumentuko haien helbideak aldatu dira.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Aldatu gabe:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Dokumentu honek ez du irudi lokalik.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Ez da igotzeko konfiguraziorik aukeratu. Aukeratu bat hemen: Konfigurazioa &gt; Irudia &gt; Igotzeko modua.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Ireki konfigurazioa</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Ez da fitxategia aurkitu.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Igoerak ez du helbiderik itzuli.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokumentua itxi egin da igoeran zehar.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Ezin izan da dokumentua aldatu. Irudia linean dago helbide honetan:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Dokumentu honek {0} irudi lokal ditu. Ordenagailu honetako fitxategiak dira; beraz, oharraren irakurleek ez dituzte ikusiko. Lehenik igo nahi dituzu?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Igo lehenik</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Partekatu hala ere</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>Horietatik {0} konfigurazio honekin igo ziren lehenago; beraz, haien aurreko helbideak erabili dira.</value>
   </data>
 </root>

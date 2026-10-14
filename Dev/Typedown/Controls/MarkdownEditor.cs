@@ -72,14 +72,34 @@ namespace Typedown.Controls
             disposables.Add(AppViewModel.UIViewModel.WhenPropertyChanged(nameof(UIViewModel.ActualTheme))
                 .Merge(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.UseEditorMicaEffect)))
                 .Merge(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.UseMicaEffect)))
+                .Merge(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.AppTheme)))
+                .Merge(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.CustomTheme)))
                 .Merge(Observable.FromEventPattern(uiSettings, nameof(uiSettings.ColorValuesChanged)))
                 .Subscribe(_ => OnThemeChanged()));
+            // The editor holds a few strings of its own (the placeholders in footnotes, code fences and images),
+            // fetched once when it starts. A language change is the one thing that leaves them behind.
+            disposables.Add(AppViewModel.SettingsViewModel.WhenPropertyChanged(nameof(SettingsViewModel.Language))
+                .Subscribe(_ => _ = Dispatcher.RunIdleAsync(() => PostMessage("LanguageChanged", null))));
         }
 
         private static readonly HashSet<ulong> reported = new();
 
+        // When the page fell over: three times in a minute is a document the visual editor cannot draw, and reloading it
+        // again only fell over again, without end.
+        private readonly Queue<DateTime> crashes = new();
+
         private void OnUnhandledException(string error)
         {
+            var now = DateTime.UtcNow;
+            crashes.Enqueue(now);
+            while (crashes.Count > 0 && now - crashes.Peek() > TimeSpan.FromMinutes(1)) crashes.Dequeue();
+            if (crashes.Count >= 3 && AppViewModel?.SettingsViewModel is { SourceCode: false } settings)
+            {
+                // Source mode does not go through what fell over: the document stays there to be edited.
+                Log.Debug($"editor page: fell over {crashes.Count} times in a minute; reloading in source mode");
+                crashes.Clear();
+                settings.SourceCode = true;
+            }
             CoreWebView2.Reload();
             try
             {
@@ -106,6 +126,17 @@ namespace Typedown.Controls
         {
             Opacity = 1;
             IsEditorLoaded = true;
+            if (AppViewModel.EditorViewModel.FocusWhenLoaded)
+            {
+                AppViewModel.EditorViewModel.FocusWhenLoaded = false;
+                FocusEditor();
+            }
+        }
+
+        public void FocusEditor()
+        {
+            Focus(FocusState.Programmatic);
+            WebViewController?.EnsureFocus();
         }
 
         protected override void OnPointerPressed(PointerRoutedEventArgs e)
@@ -172,6 +203,21 @@ namespace Typedown.Controls
             CoreWebView2.ScriptDialogOpening += OnScriptDialogOpening;
             CoreWebView2.WebMessageReceived += OnWebMessageReceived;
             CoreWebView2.NewWindowRequested += OnNewWindowRequested;
+            // The editor page is loaded again (leaving the settings page, a page error, a crashed web process): until
+            // the new page confirms a load, what the host knows the old page confirmed says nothing about it.
+            CoreWebView2.NavigationStarting += (s, args) =>
+            {
+                if (IsEditorPage(args.Uri)) AppViewModel.EditorViewModel.OnEditorPageNavigating();
+            };
+            // The browser process can die under the editor (a GPU driver, a renderer bug). Left alone that is a
+            // blank editor until the app is restarted; reloading the page brings the document back through the
+            // usual start-up handshake, and the log says what happened.
+            CoreWebView2.ProcessFailed += (s, args) =>
+            {
+                Core.Utilities.Log.Debug($"editor: web view process failed: {args.ProcessFailedKind} {args.Reason} exit={args.ExitCode}");
+                if (args.ProcessFailedKind == CoreWebView2ProcessFailedKind.BrowserProcessExited || args.ProcessFailedKind == CoreWebView2ProcessFailedKind.RenderProcessExited || args.ProcessFailedKind == CoreWebView2ProcessFailedKind.RenderProcessUnresponsive)
+                    _ = Dispatcher.RunIdleAsync(_ => { try { CoreWebView2.Reload(); } catch (Exception ex) { Core.Utilities.Log.Debug($"editor: reload after process failure failed: {ex.Message}"); } });
+            };
 #if DEBUG
             CoreWebView2.AddWebResourceRequestedFilter("http://local-file-access/*", CoreWebView2WebResourceContext.All);
             CoreWebView2.WebResourceRequested += OnWebResourceRequested;
@@ -179,15 +225,28 @@ namespace Typedown.Controls
 #endif
         }
 
+        private static bool IsEditorPage(string uri)
+        {
+#if DEBUG
+            if (uri != null && uri.StartsWith("http://localhost:3000", StringComparison.OrdinalIgnoreCase)) return true;
+#endif
+            var index = new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics", "index.html")).AbsoluteUri;
+            return uri != null && uri.StartsWith(index, StringComparison.OrdinalIgnoreCase);
+        }
+
         private void LoadStaticResources()
         {
+            // At once, not only when the web view raises NavigationStarting a moment later: a read in between would
+            // still trust the page this navigation replaces.
+            AppViewModel.EditorViewModel.OnEditorPageNavigating();
 # if DEBUG
             WebViewController.CoreWebView2.Navigate("http://localhost:3000");
             // var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
             // WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
 #else
             var staticsFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Statics");
-            WebViewController.CoreWebView2.Navigate($"file:///{staticsFolder}/index.html");
+            var htmlPath = System.IO.Path.Combine(staticsFolder, "index.html");
+            WebViewController.CoreWebView2.Navigate(new Uri(htmlPath).AbsoluteUri);
 #endif
         }
 
@@ -216,7 +275,14 @@ namespace Typedown.Controls
 
         private async void OnScriptDialogOpening(object sender, CoreWebView2ScriptDialogOpeningEventArgs args)
         {
-            await AppContentDialog.Create("Message", args.Message, Locale.GetString("Ok")).ShowAsync();
+            try
+            {
+                await AppContentDialog.Create("Message", args.Message, Locale.GetString("Ok")).ShowAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.WriteLocal("ScriptDialog", ex.ToString());
+            }
         }
 
         public bool PostMessage(string name, object args)

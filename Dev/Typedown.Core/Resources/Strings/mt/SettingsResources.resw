@@ -137,18 +137,6 @@
     <value>Ibgħat Feedback</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kuntatt</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Email</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Aħna nieħdu l-feedback tiegħek bis-serjetà ħafna</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Dwar</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Daqs tal-font</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font użat fl-editur</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Familja ta' font</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Għoli tal-linja tal-editur multiplu</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Immaġni tal-Klibbord</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurazzjoni tat-tlugħ tal-immaġni tal-klibbord</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Azzjoni għall-eżekuzzjoni meta jiddaħħlu stampi</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Immaġni Lokali</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurazzjoni tat-tlugħ tal-immaġni lokali</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Daħħal l-azzjoni tal-immaġni</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Immaġni tal-Web</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurazzjoni tat-tlugħ tal-immaġni tal-web</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Tippreferi tuża mogħdija relattiva meta ddaħħal l-immaġnijiet</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Tieqa</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Impostazzjoni awtomatika</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>L-indentazzjoni miktuba għall-elementi ta' lista nnestjati. 4 spazji jaqblu ma' Obsidian u mal-biċċa l-kbira tal-edituri l-oħra</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Indentazzjoni ta' 4 spazji (standard ta' Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 spazju wara l-markatur</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 spazji wara l-markatur</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 spazji wara l-markatur</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Indentazzjoni tal-listi</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Daħħal linja vojta bejn elementi ġodda tal-lista fis-sors</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Elementi ta' lista mifruxa</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Uri t-tip ta' blokk (P, H1, ...) ħdejn il-paragrafu attwali</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Markatur ta' paragrafu</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Imla ċ-ċelloli tat-tabella biex il-kolonni jallinjaw fis-sors Markdown. Itfih biex it-tabelli jibqgħu kompatti (inqas tokens għall-għodod tal-IA)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Allinja l-kolonni tat-tabella</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Aqbad awtomatikament għal kull paragrafu</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Id-direzzjoni tat-test fl-editur; utli għall-Għarbi, l-Ebrajk u lingwi oħra miktuba mil-lemin għax-xellug</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Mix-xellug għal-lemin</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Mil-lemin għax-xellug</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Direzzjoni tat-test</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Jekk mitfi, erġa' agħbi mingħajr ma tistaqsi sakemm ma jkunx hemm bidliet mhux salvati</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Staqsi qabel ma terġa' tagħbi</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Osserva l-fajl miftuħ u aġġornah meta programm ieħor ibiddlu</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Tagħbija mill-ġdid awtomatika fuq bidla esterna</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Fajls miftuħa minn Explorer jinfetħu bħala tab fit-tieqa attwali; mitfi jiftaħ tieqa ġdida</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Iftaħ il-fajls f'tabs</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Iftaħ id-dokumenti minn fejn waqaft</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Ftakar il-pożizzjoni tal-kursur</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Irkupra d-dokumenti kollha tas-sessjoni ta' qabel</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Ħalli vojt biex toħloq noti anonimi; b'kont in-nota tkun tiegħek</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Email (mhux obbligatorju)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Jippubblika n-nota (/s/…) biex il-link maqsum ma jkunx jista' jiġi editjat</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Ippubblika wkoll link għall-qari biss</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Aqsam ma' HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Indirizz ta' HedgeDoc 1.x, eż. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Ittestja</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Ittestja l-konnessjoni</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Uri l-istrixxa tat-tabs anke meta jkun miftuħ dokument wieħed biss</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Dejjem uri t-tabs</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Iswed (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Stili addizzjonali għall-editur u għall-HTML/PDF esportat</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>eż. .markdown-body h1 { color: #c00; }  jew  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS personalizzat</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Tema hija fajl CSS wieħed fil-kartella tat-temi; ara docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Kif tikteb waħda</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>It-temi huma fajls CSS f'din il-kartella; id-dokument jispjega l-format.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ebda)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Iftaħ il-kartella tat-temi</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Erġa' agħbi t-temi</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Tema personalizzata</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>eż. ./${filename}.assets — varjabbli: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Liema paġna turi l-pannell tal-ġenb meta tibda l-app</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Paġna awtomatika tal-pannell tal-ġenb</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Ħalli l-awtomazzjoni lokali</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Il-programmi li tħaddem fuq dan il-kompjuter jistgħu jaqraw u jeditjaw dokumenti miftuħa. It-titlu tat-tieqa juri meta wieħed ikun konness.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Enfasizza l-bidliet magħmula minn programmi</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Jenfasizza għal ftit żmien it-test li biddel programm konness, biex tara x'inbidel.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Iddisinja d-dijagrammi PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Jibgħat is-sors tad-dijagramma lil plantuml.com biex jiddisinjaha</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Tella' bi</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Il-konfigurazzjoni tat-tlugħ użata għall-immaġnijiet imdaħħla li l-azzjoni tagħhom hija Tella' l-immaġni, u minn Fajl &gt; Tella' l-immaġnijiet lokali</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Folder fil-bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL pubbliku</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Indirizzi bi stil ta' mogħdija (MinIO u xi fornituri)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Il-konfigurazzjoni S3 mhix kompluta: imla Endpoint, Bucket, Access Key ID u Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Storja tat-tlugħ</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Immaġni li diġà telgħet bl-istess konfigurazzjoni ma tittellax mill-ġdid; jintuża l-indirizz preċedenti tagħha ({0} mfakkra). Battal l-istorja wara li tħassar fajls li telgħu.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Server ta' PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>L-indirizz tas-server ta' PlantUML (plantuml-server) li jiddisinja d-dijagrammi. Vojt: plantuml.com. B'server tiegħek, is-sors tad-dijagrammi jibqa' għandek.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Tasti Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim fil-modalità tas-sors (:w jissejvja, :q jagħlaq it-tab); j/k, gg/G, ]] u / biex tiċċaqlaq fil-modalità ta' qari. Mhux fl-editur viżwali.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Iftaħ il-folder tal-logs</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Wara l-esportazzjoni</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Uri fejn ġie salvat</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Iftaħ il-fajl</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Iftaħ il-folder tiegħu</value>
   </data>
 </root>

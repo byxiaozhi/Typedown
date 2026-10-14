@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Content cannot be empty</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Failed to create new document</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Export failed</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Feedback</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Import failed</value>
@@ -201,6 +193,26 @@
     <value>Do you want to restore the file?</value>
     <comment>恢复文件对话框/是否要恢复文件？</comment>
   </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Reload</value>
+    <comment>外部修改对话框/重新加载</comment>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>The file has been changed on disk. Reloading will discard unsaved changes.</value>
+    <comment>外部修改对话框/磁盘上的文件已更改</comment>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>The file has been changed on disk. Reload it?</value>
+    <comment>外部修改对话框/无未保存更改时询问</comment>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>The file has been changed on disk</value>
+    <comment>外部修改对话框/文件已在外部被修改</comment>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Keep</value>
+    <comment>外部修改对话框/保留</comment>
+  </data>
   <data name="ResizeTableTitle" xml:space="preserve">
     <value>Resize Table</value>
     <comment>表格对话框/调整表格</comment>
@@ -225,14 +237,6 @@
     <value>Shortcut key is occupied</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Submit</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Submission successful</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Upload failed</value>
     <comment>上传失败</comment>
@@ -248,5 +252,86 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime Not Installed</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Shared to HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Read-only link</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Editable link</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Anyone with this link can edit the note.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Copy link</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Open in browser</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Set the HedgeDoc server address in Settings → Export first.</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>The document has not changed since it was last shared; these are the existing links.</value>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>This document was shared before but has changed since. HedgeDoc 1.x cannot update an existing note, so uploading again creates a new note with a new link.</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Upload again (new link)</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Use previous link</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Upload local images</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Uploading image {0} of {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} of {1} images uploaded. Their addresses in the document now point to the uploaded copies; Undo puts the local paths back.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Cancelled. {0} of {1} images were uploaded, and their addresses in the document were changed.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Not changed:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>This document has no local images.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>No upload configuration is chosen. Choose one under Settings &gt; Image &gt; Upload with.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Open settings</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>The file was not found.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>The upload did not return an address.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>The document was closed during the upload.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>The document could not be changed. The image is online at</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>This document has {0} local images. They are files on this computer, so readers of the note will not see them. Upload them first?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Upload first</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Share anyway</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} of them had been uploaded before with this configuration, so their earlier addresses were used.</value>
   </data>
 </root>

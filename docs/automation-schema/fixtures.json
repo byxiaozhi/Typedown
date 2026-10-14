@@ -1,0 +1,35 @@
+{
+  "description": "Instances every implementation must accept (valid) or refuse (invalid) for the named definition in v1.json. Tests: Dev/Typedown.Automation.Tests/SchemaTests.cs.",
+  "valid": [
+    { "def": "system.initialize.params", "instance": { "apiVersion": 1, "client": { "id": "5c05cf79-35ef-4ff5-9dce-cf3fcb63b42c", "name": "typedownctl", "version": "1.0.0" }, "requestedScopes": ["app.read", "document.read"], "capabilities": { "serverRequests": false } } },
+    { "def": "system.initialize.params", "instance": { "apiVersion": 1, "client": { "id": "5c05cf79-35ef-4ff5-9dce-cf3fcb63b42c", "name": "x" }, "someFutureField": true } },
+    { "def": "document.get.params", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "consistency": "latest", "include": ["text", "headings"] } },
+    { "def": "document.replace.params", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "baseRevision": 42, "text": "# 新正文\n", "normalizationPolicy": "requireKnownSafe", "save": false, "reveal": "document", "awaitPresentation": true, "clientOperationId": "agent-step-23" } },
+    { "def": "document.replaceText.params", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "baseRevision": 0, "find": "旧", "replacement": "", "expectedCount": 3 } },
+    { "def": "document.replace.result", "instance": { "operationId": "0123456789abcdef0123456789abcdef", "revision": 43, "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "saved": false, "origin": "automation",
+      "normalization": { "pendingNormalization": "none", "sourceHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "normalizedHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "reasons": [], "classifierVersion": 2 } } },
+    { "def": "document.get.result", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "windowId": "w0123456789abcdef0123456789abcdef", "path": null, "title": "Untitled", "revision": 0, "saved": true, "active": false, "lineEnding": "crlf",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "isCurrent": false, "text": "",
+      "normalization": { "pendingNormalization": "unknown", "sourceHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "normalizedHash": null, "reasons": ["notEvaluated"], "classifierVersion": 2 } } },
+    { "def": "error", "instance": { "code": -32012, "message": "版本已过期", "data": { "kind": "revision_conflict", "revision": 44 } } },
+    { "def": "error", "instance": { "code": -32700, "message": "x", "data": { "kind": "parse_error" } } },
+    { "def": "response", "instance": { "jsonrpc": "2.0", "id": 18, "result": null } }
+  ],
+  "invalid": [
+    { "def": "system.initialize.params", "why": "client.id is not a UUID", "instance": { "apiVersion": 1, "client": { "id": "typedownctl", "name": "x" } } },
+    { "def": "system.initialize.params", "why": "apiVersion missing", "instance": { "client": { "id": "5c05cf79-35ef-4ff5-9dce-cf3fcb63b42c", "name": "x" } } },
+    { "def": "document.get.params", "why": "consistency is required: no implicit consistency", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12" } },
+    { "def": "document.get.params", "why": "unknown include value", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "consistency": "snapshot", "include": ["html"] } },
+    { "def": "document.replace.params", "why": "text with CRLF", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "baseRevision": 1, "text": "a\r\nb" } },
+    { "def": "document.replace.params", "why": "baseRevision missing", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "text": "a" } },
+    { "def": "document.replace.params", "why": "revision beyond the JavaScript safe range", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "baseRevision": 9007199254740992, "text": "a" } },
+    { "def": "document.replace.params", "why": "unknown normalizationPolicy", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "baseRevision": 1, "text": "a", "normalizationPolicy": "trustMe" } },
+    { "def": "document.replaceText.params", "why": "empty find", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "baseRevision": 1, "find": "", "replacement": "x", "expectedCount": 0 } },
+    { "def": "document.replaceText.params", "why": "expectedCount missing", "instance": { "documentId": "a67c0f4e8b2d4c1f9e3a5b7d6c8e0f12", "baseRevision": 1, "find": "a", "replacement": "x" } },
+    { "def": "document.replace.result", "why": "origin of an automation write is always automation", "instance": { "operationId": "0123456789abcdef0123456789abcdef", "revision": 43, "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "saved": false, "origin": "user",
+      "normalization": { "pendingNormalization": "none", "sourceHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "normalizedHash": null, "reasons": [], "classifierVersion": 2 } } },
+    { "def": "error", "why": "code and kind disagree", "instance": { "code": -32011, "message": "x", "data": { "kind": "revision_conflict" } } },
+    { "def": "error", "why": "unknown kind", "instance": { "code": -32099, "message": "x", "data": { "kind": "exploded" } } },
+    { "def": "response", "why": "both result and error", "instance": { "jsonrpc": "2.0", "id": 1, "result": 1, "error": { "code": -32603, "message": "x", "data": { "kind": "internal_error" } } } }
+  ]
+}

@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Sisu ei saa olla tühi</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Uue dokumendi loomine nurjus</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Eksport ebaõnnestus</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Tagasiside</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Importimine nurjus</value>
@@ -225,14 +217,6 @@
     <value>Kiirklahv on hõivatud</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Esitada</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Esitamine õnnestus</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Üleslaadimine nurjus</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 käitusaeg pole installitud</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Seda dokumenti on varem jagatud, kuid see on pärast seda muutunud. HedgeDoc 1.x ei saa olemasolevat märkmet uuendada, seega uus üleslaadimine loob uue märkme uue lingiga.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopeeri link</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Redigeeritav link</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Igaüks, kellel on see link, saab märget redigeerida.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Määra esmalt HedgeDoci serveri aadress jaotises Sätted → Eksport.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Ava brauseris</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Laadi uuesti üles (uus link)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Ainult lugemiseks link</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Jagatud HedgeDoci</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokument pole pärast viimast jagamist muutunud; need on olemasolevad lingid.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Kasuta eelmist linki</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Säilita</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Laadi uuesti</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Faili on kettal muudetud. Uuesti laadimine loobub salvestamata muudatustest.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Faili on kettal muudetud. Kas laadida see uuesti?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Faili on kettal muudetud</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Laadi kohalikud pildid üles</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Pildi {0}/{1} üleslaadimine…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0}/{1} pilti üles laaditud. Nende aadressid dokumendis viitavad nüüd üleslaaditud koopiatele; Võta taastab kohalikud teed.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Tühistatud. {0}/{1} pilti laaditi üles ja nende aadressid dokumendis muudeti.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Muutmata:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Selles dokumendis pole kohalikke pilte.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Üleslaadimise konfiguratsiooni pole valitud. Valige see jaotises Seaded &gt; Piltide &gt; Üleslaadimise viis.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Ava seaded</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Faili ei leitud.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Üleslaadimine ei tagastanud aadressi.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokument suleti üleslaadimise ajal.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Dokumenti ei saanud muuta. Pilt on veebis aadressil</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Selles dokumendis on {0} kohalikku pilti. Need on failid selles arvutis, seega märkme lugejad neid ei näe. Kas laadida need enne üles?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Laadi enne üles</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Jaga ikkagi</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} neist oli selle konfiguratsiooniga juba varem üles laaditud, seega kasutati nende varasemaid aadresse.</value>
   </data>
 </root>

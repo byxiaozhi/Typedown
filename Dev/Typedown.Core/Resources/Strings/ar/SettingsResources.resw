@@ -137,18 +137,6 @@
     <value>إرسال ملاحظات</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>الاتصال</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>البريد الإلكتروني</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>نحن نأخذ ملاحظاتك على محمل الجد</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>حول</value>
     <comment>关于/关于</comment>
@@ -197,6 +185,18 @@
     <value>الامتدادات</value>
     <comment>编辑器/扩展</comment>
   </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>الخط المستخدم في محتوى المحرر. اتركه فارغًا لاستخدام الخط الافتراضي.</value>
+    <comment>编辑器/编辑器内容使用的字体，留空则使用默认字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>افتراضي</value>
+    <comment>编辑器/默认</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>الخط</value>
+    <comment>编辑器/字体</comment>
+  </data>
   <data name="Editor.FontSize.Description" xml:space="preserve">
     <value>حجم الخط الافتراضي للمحرر</value>
     <comment>编辑器/编辑器默认字号</comment>
@@ -232,6 +232,26 @@
   <data name="Editor.Style" xml:space="preserve">
     <value>النمط</value>
     <comment>编辑器/样式</comment>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>اكتشاف تلقائي لكل فقرة</value>
+    <comment>编辑器/按段落自动检测</comment>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>اتجاه النص في محتوى المحرر، مفيد للغة العربية والعبرية وغيرها من اللغات التي تُكتب من اليمين إلى اليسار</value>
+    <comment>编辑器/编辑器内容的文字方向，适用于阿拉伯语、希伯来语等从右到左书写的语言</comment>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>من اليسار إلى اليمين</value>
+    <comment>编辑器/从左到右</comment>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>من اليمين إلى اليسار</value>
+    <comment>编辑器/从右到左</comment>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>اتجاه النص</value>
+    <comment>编辑器/文字方向</comment>
   </data>
   <data name="Editor.TabSize.Description" xml:space="preserve">
     <value>ضبط المسافة الافتراضية للمقتبسات والقوائم</value>
@@ -462,7 +482,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +593,6 @@
     <value>صورة الحافظة</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>تكوين الرفع لصورة الحافظة</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>الإجراء المطلوب تنفيذه عند إدراج الصور</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +605,6 @@
     <value>صورة محلية</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>تكوين الرفع لصورة محلية</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>إجراء إدراج الصور</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +616,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>صورة الويب</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>تكوين الرفع لصورة الويب</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>الأولوية في استخدام المسار النسبي عند إدراج الصور</value>
@@ -680,5 +688,217 @@
   <data name="View.Window" xml:space="preserve">
     <value>نافذة</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>المسافة البادئة المكتوبة لعناصر القوائم المتداخلة. أربع مسافات تطابق Obsidian ومعظم المحررات الأخرى</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>مسافة بادئة من 4 مسافات (معيار Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>مسافة واحدة بعد العلامة</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>مسافتان بعد العلامة</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>أربع مسافات بعد العلامة</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>المسافة البادئة للقوائم</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>إدراج سطر فارغ بين عناصر القائمة الجديدة في المصدر</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>عناصر قائمة متباعدة</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>إظهار نوع الكتلة (P, H1, ...) بجانب الفقرة الحالية</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>علامة الفقرة</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>ملء خلايا الجدول لتصطف الأعمدة في مصدر Markdown. أوقفه لإبقاء الجداول مضغوطة (رموز أقل لأدوات الذكاء الاصطناعي)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>محاذاة أعمدة الجدول</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>عند الإيقاف، أعد التحميل دون سؤال ما لم تكن هناك تغييرات غير محفوظة</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>السؤال قبل إعادة التحميل</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>مراقبة الملف المفتوح وتحديثه عندما يغيّره برنامج آخر</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>إعادة التحميل التلقائي عند التغيير الخارجي</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>الملفات المفتوحة من مستكشف الملفات تُفتح كعلامة تبويب في النافذة الحالية؛ عند الإيقاف تُفتح نافذة جديدة</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>فتح الملفات في علامات تبويب</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>افتح المستندات من حيث توقفت</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>تذكّر موضع المؤشر</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>استعادة جميع مستندات الجلسة السابقة</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>اتركه فارغًا لإنشاء ملاحظات مجهولة؛ مع حساب تصبح الملاحظة ملكك</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>البريد الإلكتروني (اختياري)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>ينشر الملاحظة (/s/…) بحيث لا يمكن تحرير الرابط المشترك</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>نشر رابط للقراءة فقط أيضًا</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>المشاركة إلى HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>عنوان HedgeDoc 1.x، مثل https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>الخادم</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>اختبار</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>اختبار الاتصال</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>إظهار شريط علامات التبويب حتى عند فتح مستند واحد فقط</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>إظهار علامات التبويب دائمًا</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>أسود (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>أنماط إضافية للمحرر ولملفات HTML/PDF المصدَّرة</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>مثل .markdown-body h1 { color: #c00; }  أو  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS مخصص</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>السمة هي ملف CSS واحد في مجلد السمات؛ راجع docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>كيف تكتب واحدة</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>السمات هي ملفات CSS في هذا المجلد؛ يشرح المستند تنسيقها.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(بدون)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>فتح مجلد السمات</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>إعادة تحميل السمات</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>سمة مخصصة</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>مثل ./${filename}.assets — المتغيرات: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>الصفحة التي يعرضها الجزء الجانبي عند بدء التشغيل</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>الصفحة الافتراضية للجزء الجانبي</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>السماح بالأتمتة المحلية</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>يمكن للبرامج التي تشغلها على هذا الكمبيوتر قراءة المستندات المفتوحة وتحريرها. يظهر ذلك في عنوان النافذة عند اتصال أحدها.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>تمييز التغييرات التي أجرتها البرامج</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>يميّز لفترة وجيزة النص الذي غيّره برنامج متصل، لترى ما الذي تغيّر.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>رسم مخططات PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>يرسل مصدر المخطط إلى plantuml.com لرسمه</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>الرفع باستخدام</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>تكوين الرفع المستخدم للصور المدرجة التي يكون إجراؤها هو الرفع، وبواسطة الملف &gt; رفع الصور المحلية</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>المجلد داخل الـ Bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL العام</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>عناوين بنمط المسار (MinIO وبعض المزودين)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>تكوين S3 غير مكتمل: املأ Endpoint وBucket وAccess Key ID وSecret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>سجل الرفع</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>لا يُعاد رفع صورة سبق رفعها بالتكوين نفسه، بل يُستخدم عنوانها السابق ({0} محفوظة). امسح السجل بعد حذف الملفات المرفوعة.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>خادم PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>عنوان خادم PlantUML ‏(plantuml-server) الذي يرسم المخططات. فارغ: plantuml.com. مع خادمك الخاص يبقى مصدر المخططات لديك.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>مفاتيح Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim في وضع المصدر (:w للحفظ، :q لإغلاق علامة التبويب)؛ j/k وgg/G و]] و/ للتنقل في وضع القراءة. غير متاح في المحرر المرئي.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>فتح مجلد السجلات</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>بعد التصدير</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>إظهار مكان الحفظ</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>فتح الملف</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>فتح المجلد الذي يحتويه</value>
   </data>
 </root>

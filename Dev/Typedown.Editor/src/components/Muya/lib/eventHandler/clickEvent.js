@@ -3,12 +3,55 @@ import { getImageInfo } from '../utils/getImageInfo'
 import { CLASS_OR_ID } from '../config'
 import selection from '../selection'
 import remote from 'services/remote/common'
+import Slugger from '../parser/marked/slugger'
+import { getHeadingPlainText } from '../utils'
 
 class ClickEvent {
   constructor(muya) {
     this.muya = muya
     this.clickBinding()
     this.contextClickBingding()
+  }
+
+  /**
+   * A link to a place in this document: `#fragment`. Headings in the editor carry their block key as id, not
+   * a slug of their text, so `document.querySelector('#some-heading')` found nothing and the link did nothing
+   * (five Store reviews). The fragment is matched the way the export names headings — the same slugger, in
+   * document order, so duplicates number the same way — and the heading lands at the top, as from the outline.
+   */
+  scrollToAnchor(href) {
+    let fragment = href.slice(1)
+    try { fragment = decodeURIComponent(fragment) } catch (e) { }
+    let target = fragment ? document.getElementById(fragment) : null
+    if (!target) {
+      // Headings carry a block key as id, not a slug, so match the fragment against each heading. Tools and
+      // people write the fragment differently — with the dots kept (#1.1-x), dropped (#11-x), or spaces left
+      // in — so besides the exact slug this also compares a loose form with every non-letter/digit/CJK
+      // character removed, which brings "1.1-研究" and "11 研究" to the same thing.
+      const slugger = new Slugger()
+      const wanted = fragment.toLowerCase()
+      const loose = t => t.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '')
+      const wantedLoose = loose(fragment)
+      let looseHit = null
+      for (const block of this.muya.contentState.blocks) {
+        if (!/^h\d$/.test(block.type)) continue
+        const { headingStyle, key } = block
+        const text = block.children[0].text
+        const plain = getHeadingPlainText(headingStyle === 'setext' ? text.trim() : text.replace(/^\s*#{1,6}\s{1,}/, '').trim())
+        const slug = slugger.slug(plain)
+        if (slug === wanted || plain.toLowerCase() === wanted) {
+          target = document.querySelector(`#${key}`)
+          break
+        }
+        if (!looseHit && wantedLoose && (loose(slug) === wantedLoose || loose(plain) === wantedLoose)) {
+          looseHit = key
+        }
+      }
+      if (!target && looseHit) target = document.querySelector(`#${looseHit}`)
+    }
+    if (!target) return
+    const top = target.getBoundingClientRect().top
+    window.scrollTo(window.scrollX, window.scrollY + top - 16)
   }
 
   contextClickBingding() {
@@ -64,11 +107,15 @@ class ClickEvent {
     const { container, eventCenter, contentState } = this.muya
     const clickHandler = event => {
       const { target } = event
+      // Reading mode is display only: everything that would start an edit (table tools, image tools, switching a
+      // math/HTML block back to its source, ticking a task box) is skipped. Links, the code copy button and the
+      // footnote back link still work because they only navigate or copy.
+      const readOnly = !!this.muya.options.readOnly
       // handler table click
       const toolItem = getToolItem(target)
       contentState.selectedImage = null
       contentState.selectedTableCells = null
-      if (toolItem) {
+      if (toolItem && !readOnly) {
         event.preventDefault()
         event.stopPropagation()
         const type = toolItem.getAttribute('data-label')
@@ -78,7 +125,7 @@ class ClickEvent {
         }
       }
       // Handle table drag bar click
-      if (target.classList.contains('ag-drag-handler')) {
+      if (target.classList.contains('ag-drag-handler') && !readOnly) {
         event.preventDefault()
         event.stopPropagation()
         const rect = target.getBoundingClientRect()
@@ -106,7 +153,9 @@ class ClickEvent {
       const imageDelete = target.closest('.ag-image-icon-delete') || target.closest('.ag-image-icon-close')
       const mathText = mathRender && mathRender.previousElementSibling
       const rubyText = rubyRender && rubyRender.previousElementSibling
-      if (markedImageText && markedImageText.classList.contains(CLASS_OR_ID.AG_IMAGE_MARKED_TEXT)) {
+      if (readOnly) {
+        // nothing below selects or reveals source text in reading mode
+      } else if (markedImageText && markedImageText.classList.contains(CLASS_OR_ID.AG_IMAGE_MARKED_TEXT)) {
         eventCenter.dispatch('format-click', {
           event,
           formatType: 'image',
@@ -124,7 +173,7 @@ class ClickEvent {
         return this.muya.contentState.copyCodeBlock(event)
       }
       // Handle delete inline iamge by click delete icon.
-      if (imageDelete && imageWrapper) {
+      if (imageDelete && imageWrapper && !readOnly) {
         const imageInfo = getImageInfo(imageWrapper)
         event.preventDefault()
         event.stopPropagation()
@@ -148,7 +197,7 @@ class ClickEvent {
       }
 
       // Handle image click, to select the current image
-      if (target.tagName === 'IMG' && imageWrapper) {
+      if (target.tagName === 'IMG' && imageWrapper && !readOnly) {
         // Handle select image
         const imageInfo = getImageInfo(imageWrapper)
         event.preventDefault()
@@ -174,11 +223,11 @@ class ClickEvent {
 
       // Handle click imagewrapper when it's empty or image load failed.
       if (
-        (imageWrapper &&
-          (
-            imageWrapper.classList.contains('ag-empty-image') ||
-            imageWrapper.classList.contains('ag-image-fail')
-          ))
+        !readOnly && imageWrapper &&
+        (
+          imageWrapper.classList.contains('ag-empty-image') ||
+          imageWrapper.classList.contains('ag-image-fail')
+        )
       ) {
         const rect = imageWrapper.getBoundingClientRect()
         const reference = {
@@ -198,7 +247,7 @@ class ClickEvent {
 
       if (target.closest('div.ag-container-preview') || target.closest('div.ag-html-preview')) {
         event.stopPropagation()
-        if (target.closest('div.ag-container-preview')) {
+        if (target.closest('div.ag-container-preview') && !readOnly) {
           event.preventDefault()
           const figureEle = target.closest('figure')
           contentState.handleContainerBlockClick(figureEle)
@@ -207,7 +256,7 @@ class ClickEvent {
       }
       // handler container preview click
       const editIcon = target.closest('.ag-container-icon')
-      if (editIcon) {
+      if (editIcon && !readOnly) {
         event.preventDefault()
         event.stopPropagation()
         if (editIcon.parentNode.classList.contains('ag-container-block')) {
@@ -216,24 +265,17 @@ class ClickEvent {
       }
 
       // handler to-do checkbox click
-      if (target.tagName === 'INPUT' && target.classList.contains(CLASS_OR_ID.AG_TASK_LIST_ITEM_CHECKBOX)) {
+      if (target.tagName === 'INPUT' && target.classList.contains(CLASS_OR_ID.AG_TASK_LIST_ITEM_CHECKBOX) && !readOnly) {
         contentState.listItemCheckBoxClick(target)
       }
 
-      // handler open link
+      // Links are followed on mousedown (below). The click that follows must not place the caret either:
+      // the page has just been scrolled to the anchor, and a caret put back into the link's paragraph
+      // would be above the window, which the caret-follow rule answers by scrolling right back up.
       const link = event.target.closest('a')
       if (link) {
         event.preventDefault();
-        if (event.metaKey || event.ctrlKey) {
-          const href = link.getAttribute('href');
-          if (href) {
-            if (href.startsWith('#')) {
-              document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
-            } else {
-              remote.openNewWindow(href)
-            }
-          }
-        }
+        if (event.metaKey || event.ctrlKey || readOnly) return
       }
 
       contentState.clickHandler(event)
@@ -243,6 +285,27 @@ class ClickEvent {
       setTimeout(() => contentState.mouseupHandler(event))
     }
 
+    // Following a link has to happen on mousedown, not click: while editing, the mousedown puts the caret
+    // into the link's block, the block re-renders as raw Markdown, and by the time the click arrives the
+    // <a> is gone — "Ctrl+click says it will open the link and does nothing" (Store reviews). Ctrl+click
+    // follows a link while editing; in reading mode a plain click does, there being nothing else a click
+    // on a link could mean there.
+    const linkMousedownHandler = event => {
+      if (event.button !== 0) return
+      const readOnly = !!this.muya.options.readOnly
+      if (!(event.metaKey || event.ctrlKey || readOnly)) return
+      const link = event.target.closest('a')
+      const href = link && link.getAttribute('href')
+      if (!href) return
+      event.preventDefault()
+      event.stopPropagation()
+      if (href.startsWith('#')) {
+        this.scrollToAnchor(href)
+      } else {
+        remote.openNewWindow(href)
+      }
+    }
+    eventCenter.attachDOMEvent(container, 'mousedown', linkMousedownHandler)
     eventCenter.attachDOMEvent(window, 'mouseup', mouseupHandler)
     eventCenter.attachDOMEvent(container, 'click', clickHandler)
     eventCenter.attachDOMEvent(container, 'contextmenu', clickHandler)

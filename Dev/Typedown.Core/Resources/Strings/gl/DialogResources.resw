@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>O contido non pode quedar baleiro</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Non crear novo documento</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>A exportación fracasou</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Comentarios</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>A importación fallou</value>
@@ -225,14 +217,6 @@
     <value>A tecla de atallo está ocupada</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Enviar</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Envío exitoso</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Subida fracasada</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Tempo de execución de WebView2 Non instalado</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Este documento xa se compartira pero cambiou desde entón. HedgeDoc 1.x non pode actualizar unha nota existente, así que subilo de novo crea unha nota nova cunha ligazón nova.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Copiar a ligazón</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Ligazón editable</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Calquera persoa con esta ligazón pode editar a nota.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Primeiro configura o enderezo do servidor HedgeDoc en Configuración → Exportar.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Abrir no navegador</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Subir de novo (ligazón nova)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Ligazón só de lectura</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Compartido en HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>O documento non cambiou desde a última vez que se compartiu; estas son as ligazóns existentes.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Usar a ligazón anterior</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Conservar</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Recargar</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>O ficheiro cambiou no disco. Recargalo descartará os cambios sen gardar.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>O ficheiro cambiou no disco. Queres recargalo?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>O ficheiro cambiou no disco</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Cargar imaxes locais</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Cargando a imaxe {0} de {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Cargáronse {0} de {1} imaxes. Os seus enderezos no documento apuntan agora ás copias cargadas; Desfacer restaura as rutas locais.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Cancelado. Cargáronse {0} de {1} imaxes e cambiáronse os seus enderezos no documento.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Sen cambios:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Este documento non ten imaxes locais.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Non se escolleu ningunha configuración de carga. Escolle unha en Configuración &gt; Imaxe &gt; Cargar con.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Abrir a configuración</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Non se atopou o ficheiro.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>A carga non devolveu ningún enderezo.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>O documento pechouse durante a carga.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Non se puido modificar o documento. A imaxe está en liña en</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Este documento ten {0} imaxes locais. Son ficheiros deste ordenador, polo que os lectores da nota non as verán. Cargalas primeiro?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Cargar primeiro</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Compartir igualmente</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} delas xa se cargaran antes con esta configuración, así que se usaron os seus enderezos anteriores.</value>
   </data>
 </root>

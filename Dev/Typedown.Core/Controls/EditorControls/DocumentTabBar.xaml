@@ -1,0 +1,31 @@
+<UserControl
+    x:Class="Typedown.Core.Controls.DocumentTabBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:models="using:Typedown.Core.Models"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d">
+    <muxc:TabView
+        x:Name="TabView"
+        TabItemsSource="{x:Bind Tabs.Tabs, Mode=OneWay}"
+        SelectedItem="{x:Bind Tabs.ActiveTab, Mode=OneWay}"
+        SelectionChanged="OnSelectionChanged"
+        AddTabButtonClick="OnAddTabButtonClick"
+        TabCloseRequested="OnTabCloseRequested"
+        TabWidthMode="SizeToContent"
+        CanReorderTabs="True"
+        CanDragTabs="False"
+        IsAddTabButtonVisible="True"
+        Background="Transparent">
+        <muxc:TabView.TabItemTemplate>
+            <DataTemplate x:DataType="models:DocumentTab">
+                <muxc:TabViewItem Header="{x:Bind DisplayTitle, Mode=OneWay}" ToolTipService.ToolTip="{x:Bind ToolTip, Mode=OneWay}" IsClosable="True"/>
+            </DataTemplate>
+        </muxc:TabView.TabItemTemplate>
+    </muxc:TabView>
+</UserControl>

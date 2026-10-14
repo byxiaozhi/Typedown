@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>コンテンツが空であることはできません</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>新しいドキュメントの作成に失敗しました</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>エクスポートに失敗しました</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>フィードバック</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>インポートに失敗しました</value>
@@ -225,14 +217,6 @@
     <value>ショートカットキーが使用されています。</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>提出する</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>提出が成功しました</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>アップロード失敗</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2ランタイムがインストールされていません</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>再読み込み</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>ファイルがディスク上で変更されました。再読み込みすると未保存の変更は破棄されます。</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>ファイルがディスク上で変更されました。再読み込みしますか？</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>ファイルがディスク上で変更されました</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>保持</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc で共有しました</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>読み取り専用リンク</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>編集可能なリンク</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>このリンクを知っている人は誰でもノートを編集できます。</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>リンクをコピー</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>ブラウザーで開く</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>先に「設定 → エクスポート」で HedgeDoc サーバーのアドレスを設定してください。</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>前回の共有から文書は変更されていません。既存のリンクは次のとおりです。</value>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>この文書は以前に共有されましたが、その後変更されています。HedgeDoc 1.x は既存のノートを更新できないため、再アップロードすると新しいリンクの新しいノートが作成されます。</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>再アップロード（新しいリンク）</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>以前のリンクを使う</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>ローカル画像をアップロード</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>画像 {0} / {1} をアップロード中…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} 枚中 {0} 枚の画像をアップロードしました。文書内のアドレスはアップロードしたコピーを指すようになりました。アンドゥでローカルパスに戻せます。</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>キャンセルしました。{1} 枚中 {0} 枚の画像がアップロードされ、文書内のアドレスが変更されました。</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>未変更:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>この文書にはローカル画像がありません。</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>アップロード設定が選択されていません。設定 &gt; 画像 &gt; アップロード先 で選択してください。</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>設定を開く</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>ファイルが見つかりませんでした。</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>アップロード結果にアドレスが含まれていませんでした。</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>アップロード中に文書が閉じられました。</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>文書を変更できませんでした。画像のオンライン上のアドレス:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>この文書には {0} 枚のローカル画像があります。これらはこのコンピューター上のファイルのため、ノートの閲覧者には表示されません。先にアップロードしますか?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>先にアップロード</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>そのまま共有</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>そのうち {0} 枚はこの設定で以前にアップロード済みだったため、以前のアドレスを使用しました。</value>
   </data>
 </root>

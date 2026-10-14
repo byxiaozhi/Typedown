@@ -137,18 +137,6 @@
     <value>ສົ່ງFeedback</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>ຕິດຕໍ່</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>ອີເມລ໌</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>ພວກເຮົາຖືເອົາຄໍາຕອບຂອງທ່ານຢ່າງຈິງຈັງ</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>ກ່ຽວກັບ</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>ຂະຫນາດFont</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>ຕົວອັກສອນທີ່ໃຊ້ໃນຕົວແກ້ໄຂ</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>ຕະກູນຕົວອັກສອນ</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>ຄວາມສູງຂອງແຖວບັນນາທິການຫລາຍ</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>ຮູບພາບ Clipboard</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>ການຕັ້ງຄ່າການອັບໂຫລດຮູບພາບ Clipboard</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>ການກະທໍາທີ່ຈະດໍາເນີນການເມື່ອໃສ່ຮູບພາບ</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>ຮູບພາບທ້ອງຖິ່ນ</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>ການຕັ້ງຄ່າການອັບໂຫລດຮູບພາບທ້ອງຖິ່ນ</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>ການໃສ່ການກະທໍາຮູບພາບ</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Web Image</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>ການຕັ້ງຄ່າການອັບໂຫລດຮູບພາບເວັບໄຊ</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>ມັກໃຊ້ທາງຍາດພີ່ນ້ອງເມື່ອໃສ່ຮູບ</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>ປ່ອງຢ້ຽມ</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>ຄ່າເລີ່ມຕົ້ນ</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>ການຫຍໍ້ໜ້າທີ່ຂຽນສຳລັບລາຍການຍ່ອຍໃນບັນຊີ. 4 ຍະຫວ່າງກົງກັບ Obsidian ແລະ ໂປຣແກຣມແກ້ໄຂອື່ນໆສ່ວນໃຫຍ່</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>ຫຍໍ້ໜ້າ 4 ຍະຫວ່າງ (ມາດຕະຖານ Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 ຍະຫວ່າງຫຼັງເຄື່ອງໝາຍ</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 ຍະຫວ່າງຫຼັງເຄື່ອງໝາຍ</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 ຍະຫວ່າງຫຼັງເຄື່ອງໝາຍ</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>ການຫຍໍ້ໜ້າຂອງບັນຊີ</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>ເພີ່ມແຖວວ່າງລະຫວ່າງລາຍການໃໝ່ໃນຕົ້ນສະບັບ</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>ລາຍການບັນຊີແບບຫ່າງ</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>ສະແດງປະເພດບລັອກ (P, H1, ...) ຂ້າງຍໍ້ໜ້າປັດຈຸບັນ</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>ເຄື່ອງໝາຍຍໍ້ໜ້າ</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>ຕື່ມຊ່ອງຕາຕະລາງເພື່ອໃຫ້ຖັນຮຽງກັນໃນຕົ້ນສະບັບ Markdown. ປິດໄວ້ເພື່ອໃຫ້ຕາຕະລາງກະທັດຮັດ (ໃຊ້ໂທເຄັນໜ້ອຍລົງສຳລັບເຄື່ອງມື AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>ຈັດຖັນຕາຕະລາງໃຫ້ຊື່</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>ກວດຫາອັດຕະໂນມັດຕາມແຕ່ລະຍໍ້ໜ້າ</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>ທິດທາງຂໍ້ຄວາມຂອງໂປຣແກຣມແກ້ໄຂ; ເປັນປະໂຫຍດສຳລັບພາສາອາຣັບ ເຮັບເຣີ ແລະ ພາສາທີ່ຂຽນຈາກຂວາໄປຊ້າຍ</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>ຊ້າຍໄປຂວາ</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>ຂວາໄປຊ້າຍ</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>ທິດທາງຂໍ້ຄວາມ</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>ຖ້າປິດໄວ້, ໂຫຼດຄືນໂດຍບໍ່ຖາມ ເວັ້ນເສຍແຕ່ມີການປ່ຽນແປງທີ່ຍັງບໍ່ໄດ້ບັນທຶກ</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>ຖາມກ່ອນໂຫຼດຄືນ</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>ເຝົ້າເບິ່ງໄຟລ໌ທີ່ເປີດຢູ່ ແລະ ໂຫຼດໃໝ່ເມື່ອໂປຣແກຣມອື່ນປ່ຽນມັນ</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>ໂຫຼດຄືນອັດຕະໂນມັດເມື່ອມີການປ່ຽນແປງຈາກພາຍນອກ</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>ໄຟລ໌ທີ່ເປີດຈາກ Explorer ຈະເປີດເປັນແທັບໃນປ່ອງຢ້ຽມປັດຈຸບັນ; ຖ້າປິດຈະເປີດປ່ອງຢ້ຽມໃໝ່</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>ເປີດໄຟລ໌ເປັນແທັບ</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>ເປີດເອກະສານຈາກບ່ອນທີ່ທ່ານຢຸດໄວ້</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>ຈື່ຕຳແໜ່ງເຄີເຊີ</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>ກູ້ຄືນເອກະສານທັງໝົດຂອງເຊດຊັນກ່ອນ</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>ປະວ່າງໄວ້ເພື່ອສ້າງບັນທຶກແບບບໍ່ລະບຸຊື່; ຖ້າມີບັນຊີ ບັນທຶກຈະເປັນຂອງທ່ານ</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>ອີເມວ (ບໍ່ບັງຄັບ)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>ລະຫັດຜ່ານ</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>ເຜີຍແຜ່ບັນທຶກ (/s/…) ເພື່ອໃຫ້ລິ້ງທີ່ແບ່ງປັນບໍ່ສາມາດແກ້ໄຂໄດ້</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>ເຜີຍແຜ່ລິ້ງອ່ານຢ່າງດຽວນຳ</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>ແບ່ງປັນໄປ HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>ທີ່ຢູ່ HedgeDoc 1.x ເຊັ່ນ https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>ເຊີບເວີ</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>ທົດສອບ</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>ທົດສອບການເຊື່ອມຕໍ່</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>ສະແດງແຖບແທັບເຖິງແມ່ນເປີດເອກະສານດຽວ</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>ສະແດງແທັບສະເໝີ</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>ດຳ (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>ຮູບແບບເພີ່ມເຕີມສຳລັບໂປຣແກຣມແກ້ໄຂ ແລະ HTML/PDF ທີ່ສົ່ງອອກ</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>ເຊັ່ນ .markdown-body h1 { color: #c00; }  ຫຼື  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS ກຳນົດເອງ</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>ຊຸດຮູບແບບແມ່ນໄຟລ໌ CSS ໜຶ່ງໃນໂຟນເດີຊຸດຮູບແບບ; ເບິ່ງ docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>ວິທີຂຽນຊຸດໜຶ່ງ</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>ຊຸດຮູບແບບແມ່ນໄຟລ໌ CSS ໃນໂຟນເດີນີ້; ເອກະສານອະທິບາຍຮູບແບບໄວ້.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ບໍ່ມີ)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>ເປີດໂຟນເດີຊຸດຮູບແບບ</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>ໂຫຼດຊຸດຮູບແບບຄືນ</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>ຊຸດຮູບແບບກຳນົດເອງ</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>ເຊັ່ນ ./${filename}.assets — ຕົວແປ: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>ໜ້າທີ່ແຖບຂ້າງສະແດງເມື່ອເປີດແອັບ</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>ໜ້າເລີ່ມຕົ້ນຂອງແຖບຂ້າງ</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>ອະນຸຍາດລະບົບອັດຕະໂນມັດພາຍໃນ</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>ໂປຣແກຣມທີ່ທ່ານແລ່ນໃນຄອມພິວເຕີນີ້ສາມາດອ່ານ ແລະ ແກ້ໄຂເອກະສານທີ່ເປີດຢູ່ໄດ້. ຫົວຂໍ້ໜ້າຕ່າງຈະສະແດງເມື່ອມີການເຊື່ອມຕໍ່.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>ໄຮໄລທ໌ການປ່ຽນແປງທີ່ໂປຣແກຣມເຮັດ</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>ໄຮໄລທ໌ຂໍ້ຄວາມທີ່ໂປຣແກຣມທີ່ເຊື່ອມຕໍ່ປ່ຽນແປງຊົ່ວຄາວ ເພື່ອໃຫ້ທ່ານເຫັນວ່າມີຫຍັງປ່ຽນໄປ.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>ແຕ້ມແຜນວາດ PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>ສົ່ງຕົ້ນສະບັບຂອງແຜນວາດໄປຫາ plantuml.com ເພື່ອແຕ້ມ</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>ອັບໂຫຼດດ້ວຍ</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>ການຕັ້ງຄ່າການອັບໂຫຼດທີ່ໃຊ້ສຳລັບຮູບພາບທີ່ແຊກເຂົ້າເຊິ່ງມີການດຳເນີນການເປັນ ອັບໂຫຼດຮູບພາບ, ແລະ ໂດຍ ໄຟລ໌ &gt; ອັບໂຫຼດຮູບພາບໃນເຄື່ອງ</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>ໂຟນເດີໃນ bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL ສາທາລະນະ</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>ທີ່ຢູ່ແບບເສັ້ນທາງ (MinIO ແລະ ຜູ້ໃຫ້ບໍລິການບາງລາຍ)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>ການຕັ້ງຄ່າ S3 ບໍ່ຄົບຖ້ວນ: ກະລຸນາຕື່ມ Endpoint, Bucket, Access Key ID ແລະ Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>ປະຫວັດການອັບໂຫຼດ</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>ຮູບພາບທີ່ອັບໂຫຼດດ້ວຍການຕັ້ງຄ່າດຽວກັນແລ້ວຈະບໍ່ຖືກອັບໂຫຼດອີກ; ຈະໃຊ້ທີ່ຢູ່ເດີມຂອງມັນແທນ (ຈື່ໄວ້ {0}). ລ້າງປະຫວັດຫຼັງຈາກລຶບໄຟລ໌ທີ່ອັບໂຫຼດແລ້ວ.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>ເຊີບເວີ PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>ທີ່ຢູ່ຂອງເຊີບເວີ PlantUML (plantuml-server) ທີ່ແຕ້ມແຜນວາດ. ຫວ່າງ: plantuml.com. ດ້ວຍເຊີບເວີຂອງທ່ານເອງ ຕົ້ນສະບັບຂອງແຜນວາດຈະຢູ່ກັບທ່ານ.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>ປຸ່ມ Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim ໃນໂໝດຊອດ (:w ບັນທຶກ, :q ປິດແຖບ); j/k, gg/G, ]] ແລະ / ເພື່ອເລື່ອນໄປມາໃນໂໝດອ່ານ. ບໍ່ມີໃນຕົວແກ້ໄຂແບບພາບ.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>ເປີດໂຟນເດີບັນທຶກ</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>ຫຼັງຈາກສົ່ງອອກ</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>ສະແດງບ່ອນທີ່ບັນທຶກໄວ້</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>ເປີດໄຟລ໌</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>ເປີດໂຟນເດີຂອງມັນ</value>
   </data>
 </root>

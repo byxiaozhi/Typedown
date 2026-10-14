@@ -4,7 +4,10 @@ import sanitize, { isValidAttribute } from '../../../utils/dompurify'
 
 export default function htmlTag (h, cursor, block, token, outerClass) {
   const { tag, openTag, closeTag, children, attrs } = token
-  const className = children ? this.getClassName(outerClass, block, token, cursor) : CLASS_OR_ID.AG_GRAY
+  // Even an empty inline element (an anchor target like <a id="x"></a>) hides its source in reading mode,
+  // like every other marker. It used to be forced always-visible when it had no children, so the raw HTML
+  // of an anchor showed in the reader (a Store review).
+  const className = this.getClassName(outerClass, block, token, cursor)
   const tagClassName = className === CLASS_OR_ID.AG_HIDE ? className : CLASS_OR_ID.AG_HTML_TAG
   const { start, end } = token.range
   const openContent = this.highlight(h, block, start, start + openTag.length, token)
@@ -19,13 +22,17 @@ export default function htmlTag (h, cursor, block, token, outerClass) {
     }, [])
     : ''
 
-  switch (tag) {
+  switch (tag.toLowerCase()) {
     // Handle html img.
     case 'img': {
       return this.image(h, cursor, block, token, outerClass)
     }
     case 'br': {
-      return [h(`span.${CLASS_OR_ID.AG_HTML_TAG}`, [...openContent, h(tag)])]
+      // The <br> renders as an actual line break either way. Its source text goes in a marker span that is
+      // shown, greyed, only while the caret is in it, and hidden otherwise — so a reader sees the break,
+      // not the literal "<br>". Same rule as every other inline marker (getClassName).
+      const brMarker = this.getClassName(outerClass, block, token, cursor)
+      return [h(`span.${CLASS_OR_ID.AG_HTML_TAG}.${brMarker}`, openContent), h(tag)]
     }
     default:
       // handle void html tag

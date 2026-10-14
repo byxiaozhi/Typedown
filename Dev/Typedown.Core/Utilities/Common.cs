@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Typedown.Core.Models;
 using Typedown.Core.Models.RuntimeModels;
+using Config = Typedown.Core.Config;
 using Windows.System;
 
 namespace Typedown.Core.Utilities
@@ -44,6 +45,12 @@ namespace Typedown.Core.Utilities
         public static void OpenFileLocation(string filePath)
         {
             Process.Start("explorer.exe", $"/select, \"{filePath}\"");
+        }
+
+        /// <summary>The file opened in the program Windows has for it.</summary>
+        public static void OpenFile(string filePath)
+        {
+            Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
 
         public static ulong SimpleHash(string str)
@@ -78,16 +85,6 @@ namespace Typedown.Core.Utilities
         }
 
         public static string DefaultMarkdwn { get => "\n"; }
-
-        public static async Task<JObject> Post(string url, object obj)
-        {
-            var client = new HttpClient();
-            var content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
-            var result = await client.PostAsync(url, content);
-            if (result.StatusCode != HttpStatusCode.OK)
-                throw new Exception(result.ReasonPhrase);
-            return JObject.Parse(await result.Content.ReadAsStringAsync());
-        }
 
         public static string GetShortcutKeyText(this ShortcutKey key)
         {
@@ -165,13 +162,29 @@ namespace Typedown.Core.Utilities
             }
         }
 
+        /// <summary>
+        /// A temporary file of ours, in our own data folder rather than the user's %TEMP%: printing wrote the
+        /// page there and, under some accounts, got "access to the path is denied" for its trouble (a Store
+        /// review, non-administrator account). Falls back to %TEMP% only if our folder cannot be used.
+        /// </summary>
         public static string GetTempFileName(string extension)
         {
-            return Path.Combine(Path.GetTempPath(), Guid.NewGuid() + extension);
+            try
+            {
+                var folder = Path.Combine(Config.GetLocalFolderPath(), "temp");
+                Directory.CreateDirectory(folder);
+                return Path.Combine(folder, Guid.NewGuid() + extension);
+            }
+            catch (Exception)
+            {
+                return Path.Combine(Path.GetTempPath(), Guid.NewGuid() + extension);
+            }
         }
 
         public static HtmlImgTag MatchHtmlImg(string html)
         {
+            if (string.IsNullOrEmpty(html))
+                return null;
             var tagRegex = @"(?<=<!--StartFragment-->\s*)(<img)[^>]*(/>|>)(?=\s*<!--EndFragment-->)";
             var tagMatch = Regex.Match(html, tagRegex, RegexOptions.IgnoreCase);
             if (!tagMatch.Success)

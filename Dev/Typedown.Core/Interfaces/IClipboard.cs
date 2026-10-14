@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.Threading.Tasks;
 
 namespace Typedown.Core.Interfaces
 {
@@ -16,17 +17,20 @@ namespace Typedown.Core.Interfaces
     {
         bool ContainsText(TextDataFormat format);
 
-        string GetText(TextDataFormat format);
+        Task<string> GetTextAsync(TextDataFormat format);
 
         void SetText(string text, TextDataFormat format);
 
         void SetText(string text);
 
-        StringCollection GetFileDropList();
+        /// <summary>One copy in two forms: the text, and the same content formatted (HTML) for the programs that take it.</summary>
+        void SetTextAndHtml(string text, string html);
 
-        void SetFileDropList(StringCollection fileDropList);
+        Task<StringCollection> GetFileDropListAsync();
 
-        IClipboardImage GetImage();
+        Task SetFileDropListAsync(StringCollection fileDropList);
+
+        Task<IClipboardImage> GetImageAsync();
     }
 
     public interface IClipboardImage

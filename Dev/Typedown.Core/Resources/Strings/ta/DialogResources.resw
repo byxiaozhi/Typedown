@@ -133,10 +133,6 @@
     <value>சரி</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>உள்ளடக்கம் காலியாக இருக்க முடியாது</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>புதிய ஆவணத்தை உருவாக்குவதில் தோல்வியுற்றது</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>ஏற்றுமதி தோல்வியுற்றது</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>பின்னூட்டம்</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>இறக்குமதி தோல்வியுற்றது</value>
@@ -225,14 +217,6 @@
     <value>குறுக்குவழி விசை ஆக்கிரமிக்கப்பட்டுள்ளது</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>சமர்ப்பிக்க</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>சமர்ப்பிப்பு வெற்றிகரமாக இருந்தது</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>பதிவேற்றம் தோல்வியுற்றது</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>வெப்வியூ2 இயக்க நேரம் நிறுவப்படவில்லை</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>இந்த ஆவணம் முன்பு பகிரப்பட்டது, ஆனால் அதன்பிறகு மாறிவிட்டது. HedgeDoc 1.x ஏற்கனவே உள்ள குறிப்பைப் புதுப்பிக்க முடியாது, எனவே மீண்டும் பதிவேற்றினால் புதிய இணைப்புடன் புதிய குறிப்பு உருவாகும்.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>இணைப்பை நகலெடு</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>திருத்தக்கூடிய இணைப்பு</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>இந்த இணைப்பு உள்ள எவரும் குறிப்பைத் திருத்தலாம்.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>முதலில் அமைப்புகள் → ஏற்றுமதி இல் HedgeDoc சேவையக முகவரியை அமைக்கவும்.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>உலாவியில் திற</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>மீண்டும் பதிவேற்று (புதிய இணைப்பு)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>படிக்க மட்டும் இணைப்பு</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc இல் பகிரப்பட்டது</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>கடைசியாகப் பகிர்ந்ததிலிருந்து ஆவணம் மாறவில்லை; இவை ஏற்கனவே உள்ள இணைப்புகள்.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>முந்தைய இணைப்பைப் பயன்படுத்து</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>வைத்திரு</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>மீள்ஏற்று</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>வட்டில் கோப்பு மாறியுள்ளது. மீள்ஏற்றினால் சேமிக்கப்படாத மாற்றங்கள் நீக்கப்படும்.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>வட்டில் கோப்பு மாறியுள்ளது. மீள்ஏற்ற வேண்டுமா?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>வட்டில் கோப்பு மாறியுள்ளது</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>உள்ளூர் படங்களைப் பதிவேற்றவும்</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{1} இல் படம் {0} பதிவேற்றப்படுகிறது…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} இல் {0} படங்கள் பதிவேற்றப்பட்டன. ஆவணத்தில் அவற்றின் முகவரிகள் இப்போது பதிவேற்றிய நகல்களைச் சுட்டுகின்றன; கெடு உள்ளூர் பாதைகளை மீட்டமைக்கும்.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>ரத்துசெய்யப்பட்டது. {1} இல் {0} படங்கள் பதிவேற்றப்பட்டன, ஆவணத்தில் அவற்றின் முகவரிகள் மாற்றப்பட்டன.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>மாற்றப்படவில்லை:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>இந்த ஆவணத்தில் உள்ளூர் படங்கள் இல்லை.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>பதிவேற்ற உள்ளமைவு எதுவும் தேர்ந்தெடுக்கப்படவில்லை. அமைப்புகள் &gt; உருவம் &gt; இதைக் கொண்டு பதிவேற்று என்பதில் ஒன்றைத் தேர்ந்தெடுக்கவும்.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>அமைப்புகளைத் திற</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>கோப்பு கிடைக்கவில்லை.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>பதிவேற்றம் முகவரி எதையும் வழங்கவில்லை.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>பதிவேற்றத்தின்போது ஆவணம் மூடப்பட்டது.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>ஆவணத்தை மாற்ற முடியவில்லை. படம் இணையத்தில் இங்கே உள்ளது</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>இந்த ஆவணத்தில் {0} உள்ளூர் படங்கள் உள்ளன. அவை இந்தக் கணினியில் உள்ள கோப்புகள், எனவே குறிப்பின் வாசகர்கள் அவற்றைப் பார்க்க மாட்டார்கள். முதலில் அவற்றைப் பதிவேற்றவா?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>முதலில் பதிவேற்று</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>எப்படியும் பகிர்</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>அவற்றில் {0} இந்த உள்ளமைவுடன் ஏற்கனவே பதிவேற்றப்பட்டிருந்ததால், அவற்றின் முந்தைய முகவரிகள் பயன்படுத்தப்பட்டன.</value>
   </data>
 </root>

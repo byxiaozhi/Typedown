@@ -15,9 +15,16 @@ namespace Typedown.Core.Models
     public class ContentHistory : INotifyPropertyChanged
     {
         const int deep = 100;
+        // Snapshots are whole-document strings; also cap the total size so a multi-MB document cannot pin
+        // hundreds of MB of undo history (UTF-16: 32M chars ~= 64 MB).
+        const long maxTotalChars = 32L * 1024 * 1024;
+        long totalChars = 0;
         readonly List<HistoryModel> histories = new();
         HistoryModel pending = new();
         int index = -1;
+        // The caret last reported. Source mode reports it before the change it goes with: a change then had no caret, was
+        // never a step (a step needs both), and an undo went past it - the letter just typed and the step before (KY01).
+        CursorState lastCursor;
         private readonly DispatcherTimer commitTimer = new();
 
         public bool Undoable { get; set; }
@@ -74,7 +81,9 @@ namespace Typedown.Core.Models
         {
             try
             {
+                lastCursor = null;
                 histories.Clear();
+                totalChars = 0;
                 commitTimer.Stop();
                 pending = new();
                 index = -1;
@@ -93,15 +102,17 @@ namespace Typedown.Core.Models
             {
                 if (!IsPending) return;
                 commitTimer.Stop();
+                for (var i = index + 1; i < histories.Count; i++)
+                    totalChars -= histories[i].Text?.Length ?? 0;
                 histories.RemoveRange(index + 1, histories.Count - (index + 1));
                 histories.Add(pending);
-                if (histories.Count > deep)
+                totalChars += pending.Text?.Length ?? 0;
+                index++;
+                while (histories.Count > deep || (histories.Count > 1 && totalChars > maxTotalChars))
                 {
+                    totalChars -= histories[0].Text?.Length ?? 0;
                     histories.RemoveAt(0);
-                }
-                else
-                {
-                    index++;
+                    index--;
                 }
                 pending = new();
                 Redoable = false;
@@ -124,6 +135,7 @@ namespace Typedown.Core.Models
         {
             try
             {
+                if (cursor != null) lastCursor = cursor;
                 if (pending.Text == null && index > -1)
                 {
                     histories[index].Cursor = cursor;
@@ -153,17 +165,35 @@ namespace Typedown.Core.Models
             }
         }
 
+        // Compare ignoring trailing newlines without allocating trimmed copies: this runs on every keystroke
+        // with the whole document as input.
+        private static int LengthWithoutTrailingNewlines(string s)
+        {
+            var n = s.Length;
+            while (n > 0 && (s[n - 1] == '\n' || s[n - 1] == '\r')) n--;
+            return n;
+        }
+
+        private static bool EqualsIgnoringTrailingNewlines(string a, string b)
+        {
+            if (a == null || b == null) return a == b;
+            var la = LengthWithoutTrailingNewlines(a);
+            var lb = LengthWithoutTrailingNewlines(b);
+            return la == lb && string.CompareOrdinal(a, 0, b, 0, la) == 0;
+        }
+
         public void ContentChange(string content)
         {
             try
             {
-                content = content.TrimEnd('\r', '\n');
-                if ((pending.Text != null && pending.Text == content) ||
-                    (pending.Text == null && index > -1 && histories[index].Text.Trim('\r','\n') == content.Trim('\r', '\n')))
+                if (content == null) return;
+                if ((pending.Text != null && EqualsIgnoringTrailingNewlines(pending.Text, content)) ||
+                    (pending.Text == null && index > -1 && EqualsIgnoringTrailingNewlines(histories[index].Text, content)))
                 {
                     return;
                 }
                 pending.Text = content;
+                pending.Cursor ??= lastCursor;
                 if (pending.Cursor != null && histories.Count == 0)
                 {
                     CommitPending();

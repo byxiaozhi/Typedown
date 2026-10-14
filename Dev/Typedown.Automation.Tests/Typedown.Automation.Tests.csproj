@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Runs on Linux: `dotnet test Dev/Typedown.Automation.Tests`. -->
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="JsonSchema.Net" Version="9.4.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Plain .NET files of the Windows core, tested here because that project only builds on Windows. -->
+    <Compile Include="..\Typedown.Core\Services\JsonSettingsStore.cs" Link="Core\JsonSettingsStore.cs" />
+    <Compile Include="..\Typedown.Core\Services\SettingsScope.cs" Link="Core\SettingsScope.cs" />
+    <Compile Include="..\Typedown.Core\Utilities\SafeFile.cs" Link="Core\SafeFile.cs" />
+    <Compile Include="..\Typedown.Core\Utilities\MarkdownImages.cs" Link="Core\MarkdownImages.cs" />
+    <Compile Include="..\Typedown.Core\Services\S3Uploader.cs" Link="Core\S3Uploader.cs" />
+    <Compile Include="..\Typedown.Core\Services\UploadHistory.cs" Link="Core\UploadHistory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Typedown.Automation\Unix\UnixSocketListener.cs" Link="Unix\UnixSocketListener.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Typedown.Automation\Typedown.Automation.csproj" />
+    <ProjectReference Include="..\Typedown.Automation.TestHost\Typedown.Automation.TestHost.csproj" />
+    <ProjectReference Include="..\..\Tools\Typedown.Cli\Typedown.Cli.csproj" />
+    <ProjectReference Include="..\..\Tools\Typedown.Mcp\Typedown.Mcp.csproj" />
+  </ItemGroup>
+</Project>

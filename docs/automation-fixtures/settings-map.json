@@ -1,0 +1,916 @@
+{
+  "description": "External settings of the automation API (docs/automation-api-spec.md, section 3.3): the only settings settings.describe/get/set may touch, and for every other stored Windows setting the reason it is not exposed. Nothing is exposed by reflection; a new setting fails Dev/Typedown.Automation.Tests (SettingsMapTests) until it is listed here. The Uno names are recorded for the port and are not checked from this repository.",
+  "version": 1,
+  "exposed": [
+    {
+      "key": "appearance.theme",
+      "scope": "application",
+      "type": {
+        "type": "object",
+        "oneOf": [
+          {
+            "properties": {
+              "kind": {
+                "const": "builtIn"
+              },
+              "id": {
+                "enum": [
+                  "system",
+                  "light",
+                  "dark",
+                  "black"
+                ]
+              }
+            },
+            "required": [
+              "kind",
+              "id"
+            ]
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "custom"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "kind",
+              "id"
+            ]
+          }
+        ]
+      },
+      "windows": {
+        "properties": [
+          "AppTheme",
+          "CustomTheme"
+        ],
+        "apply": "builtIn: SettingsViewModel.ApplyBuiltInTheme (system -> AppTheme.Default); custom: ApplyCustomTheme(ThemeFiles.Find(id)), unknown id -> setting_invalid"
+      },
+      "uno": {
+        "properties": [
+          "Theme",
+          "CustomTheme"
+        ],
+        "apply": "builtIn: Theme + clear CustomTheme; custom: Theme from the theme's metadata + CustomTheme"
+      },
+      "visibleIn": [
+        "every window",
+        "every editor page",
+        "menu theme checks",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.fontSize",
+      "scope": "application",
+      "type": {
+        "type": "integer",
+        "minimum": 8,
+        "maximum": 48
+      },
+      "windows": {
+        "properties": [
+          "FontSize"
+        ],
+        "storedAs": "double",
+        "apply": "SettingsViewModel.FontSize; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "FontSize"
+        ],
+        "storedAs": "int",
+        "apply": "AppSettings.FontSize ([EditorOption])"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.lineHeight",
+      "scope": "application",
+      "type": {
+        "type": "number",
+        "minimum": 1.0,
+        "maximum": 3.0
+      },
+      "rounding": "to 0.1, the same on both platforms",
+      "windows": {
+        "properties": [
+          "LineHeight"
+        ],
+        "apply": "SettingsViewModel.LineHeight; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "LineHeight"
+        ],
+        "apply": "AppSettings.LineHeight ([EditorOption])"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.textDirection",
+      "scope": "application",
+      "type": {
+        "enum": [
+          "auto",
+          "ltr",
+          "rtl"
+        ]
+      },
+      "windows": {
+        "properties": [
+          "TextDirection"
+        ],
+        "apply": "SettingsViewModel.TextDirection; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "TextDirection"
+        ],
+        "apply": "AppSettings.TextDirection ([EditorOption])"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "ui.language",
+      "scope": "application",
+      "type": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 16,
+        "pattern": "^(system|[a-z]{2,3}(-[A-Za-z]{2,4})?)$"
+      },
+      "windows": {
+        "properties": [
+          "Language"
+        ],
+        "apply": "SettingsViewModel.Language (\"default\" is \"system\"); a code outside Locale.SupportedLangs is setting_invalid"
+      },
+      "uno": {
+        "properties": [
+          "Language"
+        ],
+        "apply": "AppSettings.Language (\"\" is \"system\"); a code outside LocaleTables is setting_invalid"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page",
+        "every editor page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.fontFamily",
+      "scope": "application",
+      "type": {
+        "type": "string",
+        "maxLength": 200,
+        "pattern": "^[^;{}<>\\\\]*$"
+      },
+      "windows": {
+        "properties": [
+          "FontFamily"
+        ],
+        "apply": "SettingsViewModel.FontFamily; editor pages via SettingsChanged (\"\" is the default font)"
+      },
+      "uno": {
+        "properties": [
+          "FontFamily"
+        ],
+        "apply": "AppSettings.FontFamily"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.areaWidth",
+      "scope": "application",
+      "type": {
+        "type": "string",
+        "pattern": "^([1-9][0-9]{2,3}px|([1-9][0-9]?|100)%)$"
+      },
+      "windows": {
+        "properties": [
+          "EditorAreaWidth"
+        ],
+        "apply": "SettingsViewModel.EditorAreaWidth; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "EditorAreaWidth"
+        ],
+        "apply": "AppSettings.EditorAreaWidth"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.tabSize",
+      "scope": "application",
+      "type": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 8
+      },
+      "windows": {
+        "properties": [
+          "TabSize"
+        ],
+        "apply": "SettingsViewModel.TabSize; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "TabSize"
+        ],
+        "apply": "AppSettings.TabSize"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.paragraphMarkers",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "ShowParagraphMarker"
+        ],
+        "apply": "SettingsViewModel.ShowParagraphMarker; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "ShowParagraphMarker"
+        ],
+        "apply": "AppSettings.ShowParagraphMarker"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.autoPairBrackets",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AutoPairBracket"
+        ],
+        "apply": "SettingsViewModel.AutoPairBracket; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "AutoPairBracket"
+        ],
+        "apply": "AppSettings.AutoPairBracket"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.autoPairQuotes",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AutoPairQuote"
+        ],
+        "apply": "SettingsViewModel.AutoPairQuote; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "AutoPairQuote"
+        ],
+        "apply": "AppSettings.AutoPairQuote"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "editor.autoPairMarkdown",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AutoPairMarkdownSyntax"
+        ],
+        "apply": "SettingsViewModel.AutoPairMarkdownSyntax; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "AutoPairMarkdownSyntax"
+        ],
+        "apply": "AppSettings.AutoPairMarkdownSyntax"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "markdown.alignTableColumns",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "TableAlignColumns"
+        ],
+        "apply": "SettingsViewModel.TableAlignColumns; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "TableAlignColumns"
+        ],
+        "apply": "AppSettings.TableAlignColumns"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "markdown.listIndentation",
+      "scope": "application",
+      "type": {
+        "enum": [
+          "1",
+          "2",
+          "4",
+          "dfm",
+          "tab"
+        ]
+      },
+      "windows": {
+        "properties": [
+          "ListIndentation"
+        ],
+        "apply": "SettingsViewModel.ListIndentation; editor pages via SettingsChanged; \"tab\" is setting_invalid here"
+      },
+      "uno": {
+        "properties": [
+          "ListIndentation"
+        ],
+        "apply": "AppSettings.ListIndentation; \"dfm\" is setting_invalid here"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "markdown.looseListItems",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "PreferLooseListItem"
+        ],
+        "apply": "SettingsViewModel.PreferLooseListItem; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "PreferLooseListItem"
+        ],
+        "apply": "AppSettings.PreferLooseListItem"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "markdown.trimCodeBlockBlankLines",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "TrimUnnecessaryCodeBlockEmptyLines"
+        ],
+        "apply": "SettingsViewModel.TrimUnnecessaryCodeBlockEmptyLines; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "TrimUnnecessaryCodeBlockEmptyLines"
+        ],
+        "apply": "AppSettings.TrimUnnecessaryCodeBlockEmptyLines"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "spellcheck.enabled",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "SpellcheckEnabled"
+        ],
+        "apply": "SettingsViewModel.SpellcheckEnabled; editor pages via SettingsChanged"
+      },
+      "uno": {
+        "properties": [
+          "SpellcheckEnabled"
+        ],
+        "apply": "AppSettings.SpellcheckEnabled"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "spellcheck.language",
+      "scope": "application",
+      "type": {
+        "type": "string",
+        "maxLength": 16,
+        "pattern": "^([a-z]{2,3}(-[A-Za-z0-9]{2,8})*)?$"
+      },
+      "windows": {
+        "properties": [
+          "SpellcheckLang"
+        ],
+        "apply": "SettingsViewModel.SpellcheckLang; editor pages via SettingsChanged (\"\" follows the system)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every editor page",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "tabs.alwaysShow",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AlwaysShowTabBar"
+        ],
+        "apply": "SettingsViewModel.AlwaysShowTabBar (the tab strip binds it)"
+      },
+      "uno": {
+        "properties": [
+          "AlwaysShowTabBar"
+        ],
+        "apply": "AppSettings.AlwaysShowTabBar"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "outline.autoExpand",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "TocAutoExpand"
+        ],
+        "apply": "SettingsViewModel.TocAutoExpand (read when the outline is built)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "status.wordCount",
+      "scope": "application",
+      "type": {
+        "enum": [
+          "characters",
+          "words",
+          "paragraphs"
+        ]
+      },
+      "windows": {
+        "properties": [
+          "WordCountMethod"
+        ],
+        "apply": "SettingsViewModel.WordCountMethod (0 characters, 1 words); \"paragraphs\" is setting_invalid here"
+      },
+      "uno": {
+        "properties": [
+          "WordCountMethod"
+        ],
+        "apply": "AppSettings.WordCountMethod (Words, Characters, Paragraphs)"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "images.preferRelativePaths",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "PreferRelativeImagePaths"
+        ],
+        "apply": "SettingsViewModel.PreferRelativeImagePaths (read when an image is inserted)"
+      },
+      "uno": {
+        "properties": [
+          "PreferRelativeImagePaths"
+        ],
+        "apply": "AppSettings.PreferRelativeImagePaths"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "images.copyRelativePath",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AutoCopyRelativePathImage"
+        ],
+        "apply": "SettingsViewModel.AutoCopyRelativePathImage (read when an image is inserted)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "images.dotSlashPrefix",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AddSymbolBeforeRelativePath"
+        ],
+        "apply": "SettingsViewModel.AddSymbolBeforeRelativePath (read when an image is inserted)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "images.encodeUrls",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AutoEncodeImageURL"
+        ],
+        "apply": "SettingsViewModel.AutoEncodeImageURL (read when an image is inserted)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "appearance.compactMode",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AppCompactMode"
+        ],
+        "apply": "SettingsViewModel.AppCompactMode (the menu bar binds it)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "appearance.mica",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "UseMicaEffect"
+        ],
+        "apply": "SettingsViewModel.UseMicaEffect (windows follow it; setting_invalid where Mica is not supported)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "appearance.editorMica",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "UseEditorMicaEffect"
+        ],
+        "apply": "SettingsViewModel.UseEditorMicaEffect (the editor area follows it)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "appearance.animations",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "AnimationEnable"
+        ],
+        "apply": "SettingsViewModel.AnimationEnable (read when a transition runs)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "every window",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    },
+    {
+      "key": "app.keepRunning",
+      "scope": "application",
+      "type": {
+        "type": "boolean"
+      },
+      "windows": {
+        "properties": [
+          "KeepRun"
+        ],
+        "apply": "SettingsViewModel.KeepRun (read when the last window closes)"
+      },
+      "uno": {
+        "properties": [],
+        "apply": "not on this platform"
+      },
+      "visibleIn": [
+        "the next time the last window closes",
+        "an open settings page"
+      ],
+      "sensitivity": "none",
+      "restartRequired": false
+    }
+  ],
+  "notExposed": [
+    {
+      "reason": "security: the automation switch itself; only the person at the settings page turns automation on or off",
+      "windows": [
+        "AllowLocalAutomation"
+      ]
+    },
+    {
+      "reason": "privacy: drawing PlantUML sends the document's diagram source to plantuml.com or the server set; only the person turns that on or chooses the server, not a program",
+      "windows": [
+        "RenderPlantUml",
+        "PlantUmlServer"
+      ],
+      "uno": [
+        "RenderPlantUml",
+        "PlantUmlServer"
+      ]
+    },
+    {
+      "reason": "security: shows the person what a program changed; a program must not be able to hide its own edits",
+      "windows": [
+        "HighlightAutomationChanges"
+      ]
+    },
+    {
+      "reason": "windowLocal: layout or mode of one window (Core/Services/SettingsScope.cs); becomes a view command, not a setting",
+      "windows": [
+        "StartupPlacement",
+        "SidePaneOpen",
+        "SidePaneWidth",
+        "SidePaneIndex",
+        "StatusBarOpen",
+        "FindReplaceDialogWidth",
+        "Topmost"
+      ]
+    },
+    {
+      "reason": "viewState: editing mode of a window; exposed later as explicit view commands once mode switches are serialized with writes (spec 3.3)",
+      "windows": [
+        "SourceCode",
+        "ReadOnly",
+        "Typewriter",
+        "FocusMode"
+      ]
+    },
+    {
+      "reason": "searchState: options of the find panel",
+      "windows": [
+        "SearchIsCaseSensitive",
+        "SearchIsRegexp",
+        "SearchIsWholeWord"
+      ]
+    },
+    {
+      "reason": "secret: never described, read or written through the API",
+      "windows": [
+        "HedgeDocPassword",
+        "HedgeDocEmail",
+        "HedgeDocServer"
+      ]
+    },
+    {
+      "reason": "internal: migration or database flags",
+      "windows": [
+        "FileExportDatabaseInitialized",
+        "ImageUploadDatabaseInitialized"
+      ]
+    },
+    {
+      "reason": "path: may point outside the user's documents or change where files are written; needs its own review",
+      "windows": [
+        "StartupOpenFolder",
+        "DefaultImageBasePath",
+        "InsertClipboardImageCopyPath",
+        "InsertLocalImageCopyPath",
+        "InsertWebImageCopyPath"
+      ]
+    },
+    {
+      "reason": "code: user CSS runs in every editor page; not exposed",
+      "windows": [
+        "CustomCss"
+      ]
+    },
+    {
+      "reason": "candidate: application preference not yet reviewed for exposure (type, range, apply path, multi-window test)",
+      "windows": [
+        "RememberCursorPosition",
+        "HedgeDocPublishReadOnly",
+        "OpenFilesInNewTab",
+        "AutoSave",
+        "AutoReload",
+        "AskBeforeReload",
+        "FileStartupAction",
+        "FolderStartupAction",
+        "InsertClipboardImageAction",
+        "InsertClipboardImageUseUploadConfigId",
+        "InsertLocalImageAction",
+        "InsertLocalImageUseUploadConfigId",
+        "InsertWebImageAction",
+        "InsertWebImageUseUploadConfigId",
+        "DefaultImageUploadConfigId",
+        "VimMode",
+        "OpenFolderAfterExport",
+        "AfterExport"
+      ]
+    }
+  ]
+}

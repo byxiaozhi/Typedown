@@ -76,6 +76,9 @@ namespace Typedown.Core.ViewModels
         [Locale("Edit", "FindAndReplace", "Find")]
         public ShortcutKey ShortcutFind { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.F)); set => SetSettingValue(value); }
 
+        [Locale("Edit", "FindAndReplace", "SearchInFolder")]
+        public ShortcutKey ShortcutSearchInFolder { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.F)); set => SetSettingValue(value); }
+
         [Locale("Edit", "FindAndReplace", "FindNext")]
         public ShortcutKey ShortcutFindNext { get => GetSettingValue<ShortcutKey>(new(Mod.None, Key.F3)); set => SetSettingValue(value); }
 
@@ -123,6 +126,12 @@ namespace Typedown.Core.ViewModels
 
         [Locale("Paragraph", "Quote")]
         public ShortcutKey ShortcutQuote { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.Q)); set => SetSettingValue(value); }
+
+        [Locale("Paragraph", "QuoteIncrease")]
+        public ShortcutKey ShortcutQuoteIncrease { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
+
+        [Locale("Paragraph", "QuoteDecrease")]
+        public ShortcutKey ShortcutQuoteDecrease { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
 
         [Locale("Paragraph", "OrderedList")]
         public ShortcutKey ShortcutOrderedList { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, (Key)219)); set => SetSettingValue(value); }
@@ -213,5 +222,17 @@ namespace Typedown.Core.ViewModels
 
         [Locale("View", "StatusBar")]
         public ShortcutKey ShortcutStatusBar { get => GetSettingValue<ShortcutKey>(null); set => SetSettingValue(value); }
+
+        [Locale("View", "FullScreen")]
+        public ShortcutKey ShortcutFullScreen { get => GetSettingValue<ShortcutKey>(new(Mod.None, Key.F11)); set => SetSettingValue(value); }
+
+        [Locale("View", "ReadOnlyMode")]
+        public ShortcutKey ShortcutReadOnlyMode { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.R)); set => SetSettingValue(value); }
+
+        [Locale("View", "NextTab")]
+        public ShortcutKey ShortcutNextTab { get => GetSettingValue<ShortcutKey>(new(Mod.Control, Key.Tab)); set => SetSettingValue(value); }
+
+        [Locale("View", "PreviousTab")]
+        public ShortcutKey ShortcutPreviousTab { get => GetSettingValue<ShortcutKey>(new(Mod.Control | Mod.Shift, Key.Tab)); set => SetSettingValue(value); }
     }
 }

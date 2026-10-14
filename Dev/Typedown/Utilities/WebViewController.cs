@@ -1,6 +1,7 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -92,7 +93,9 @@ namespace Typedown.Utilities
                 commandLineArgs.Add("--remote-debugging-port=9222");
 #endif
                 var options = new CoreWebView2EnvironmentOptions(string.Join(" ", commandLineArgs));
-                coreWebView2EnvironmentTask = CoreWebView2Environment.CreateAsync(null, null, options);
+                var userDataFolder = Path.Combine(Core.Config.LocalAppDataFolder, "WebView2");
+                Directory.CreateDirectory(userDataFolder);
+                coreWebView2EnvironmentTask = CoreWebView2Environment.CreateAsync(null, userDataFolder, options);
                 var environment = await coreWebView2EnvironmentTask;
                 environment.BrowserProcessExited += OnEnvironmentBrowserProcessExited;
                 return environment;
@@ -614,6 +617,18 @@ namespace Typedown.Utilities
         private void OnCoreWebView2LostFocus(object sender, object e)
         {
             webHasFocus = false;
+        }
+
+        /// <summary>
+        /// The page given the keyboard when the container holds the XAML focus and the page does not have it. Focusing
+        /// a control that already has the focus changes nothing - no GettingFocus, no GotFocus - so the hand-over into
+        /// the page never ran: the container could hold the focus from before the page existed (start-up), and the keys
+        /// then went to the XAML island until a click in the text.
+        /// </summary>
+        public void EnsureFocus()
+        {
+            if (CoreWebView2Controller != null && !webHasFocus && Container?.XamlRoot != null && FocusManager.GetFocusedElement(Container.XamlRoot) == Container)
+                MoveFocusIntoCoreWebView(CoreWebView2MoveFocusReason.Programmatic);
         }
 
         public void MoveFocusIntoCoreWebView(CoreWebView2MoveFocusReason reason)

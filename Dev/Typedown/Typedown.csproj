@@ -1,32 +1,66 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
+	<Import Project="..\..\Branding.props" />
+
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
+		<!-- $(BrandExeName).exe; the projects and namespaces keep their names in every edition. -->
+		<AssemblyName>$(BrandExeName)</AssemblyName>
+		<RootNamespace>Typedown</RootNamespace>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
-		<UseWPF>True</UseWPF>
 		<LangVersion>latest</LangVersion>
-		<Platforms>x64;x86</Platforms>
+		<Platforms>x64;x86;ARM64</Platforms>
 		<AssetTargetFallback>uap10.0.19041</AssetTargetFallback>
-		<TargetPlatformVersion>10.0.22000.0</TargetPlatformVersion>
+		<TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
 		<TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
 		<StartupObject>Typedown.Program</StartupObject>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
 		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
-		<PublishTrimmed>true</PublishTrimmed>
-		<_SuppressWpfTrimError>true</_SuppressWpfTrimError>
-		<Version>1.2.18</Version>
+		<!-- Trimming was a no-op upstream (framework-dependent). With SelfContained=true it strips reflection-used
+		     code (x:Bind, Fody, EF Core, WinRT projections) and the app crashes at runtime, so keep it off. -->
+		<PublishTrimmed>false</PublishTrimmed>
+		<Version>1.3.9</Version>
+		<!-- Shown as "File description" in Explorer and "Open with", and indexed by Start menu search (upstream #28): a search
+		     for "markdown" finds the installed app. An MSIX shows its manifest's DisplayName there instead, the Start menu's
+		     name, which stays the product's alone. -->
+		<AssemblyTitle>$(BrandName) - Markdown Editor</AssemblyTitle>
+		<Product>$(BrandName) Markdown Editor</Product>
+		<Description>$(BrandName) - Markdown Editor</Description>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Configurations>Debug;Release;Debug_Local</Configurations>
 	</PropertyGroup>
 
+	<!-- VCRTForwarders' UseDebugCRT task needs solution-provided ProjectReference Configuration metadata,
+	     which is absent when the packaging project is built directly (e.g. CI). Skip it outside Debug. -->
+	<PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+		<VCRTForwarders-IncludeDebugCRT>false</VCRTForwarders-IncludeDebugCRT>
+	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Platform)' == 'x64'">
-		<SelfContained>false</SelfContained>
+		<SelfContained>true</SelfContained>
 		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+		<RuntimeIdentifiers>win10-x64;win-x64</RuntimeIdentifiers>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)'=='ARM64'">
+	  <SelfContained>true</SelfContained>
+	  <RuntimeIdentifier>win10-arm64</RuntimeIdentifier>
+	  <RuntimeIdentifiers>win10-arm64;win-arm64</RuntimeIdentifiers>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Platform)' == 'x86'">
-		<SelfContained>false</SelfContained>
+		<SelfContained>true</SelfContained>
 		<RuntimeIdentifier>win10-x86</RuntimeIdentifier>
+		<RuntimeIdentifiers>win10-x86;win-x86</RuntimeIdentifiers>
+	</PropertyGroup>
+
+	<!-- A release is published precompiled (ReadyToRun): the app's own assemblies need no JIT at start. Measured on
+	     hp (x64, 2026-10-04): process start to the document shown 2.89-3.00 s -> 2.40-2.49 s, the app folder
+	     144 -> 152 MB (the .NET runtime ships precompiled already). The packaging project publishes (CI's MSIX,
+	     installer and portable zip); Tools\Installer\build-local.ps1 publishes too. Windows x64 also compiles ARM64.
+	     After the platform groups: the condition needs their RuntimeIdentifier. -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Release' and '$(RuntimeIdentifier)' != ''">
+		<PublishReadyToRun>true</PublishReadyToRun>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -36,10 +70,13 @@
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1661.34" />
 		<PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.22621.755" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="PdfiumViewer" Version="2.13.0" />
-		<PackageReference Include="PdfiumViewer.Native.x86_64.no_v8-no_xfa" Version="2018.4.8.256" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="all" />
-		<PackageReference Include="Typedown.XamlUI" Version="1.0.1" />
+		<PackageReference Include="System.Drawing.Common" Version="9.0.8" />
+		<PackageReference Include="System.Reactive" Version="5.0.0" />
+		<PackageReference Include="Typedown.XamlUI" Version="1.0.3" GeneratePathProperty="true" />
+		<!-- Typedown.XamlUI depends on Win2D with build assets excluded, and the packaging project publishes with RID win-x64,
+		     so Win2D's runtimes/win10-* native DLL is never selected. Reference it directly and copy the native DLL explicitly. -->
+		<PackageReference Include="Win2D.uwp" Version="1.26.0" GeneratePathProperty="true" ExcludeAssets="build" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -54,8 +91,23 @@
 		<Folder Include="Resources\" />
 	</ItemGroup>
 
+	<!-- An edition's own code and files, in Dev/Edition of the edition's repository (with Edition.<name>.cs here, they
+	     are what the edition adds through Edition.cs). Typedown has no such folder: these take nothing. -->
+	<ItemGroup Condition="Exists('..\Edition')">
+		<Compile Include="..\Edition\**\*.cs" Exclude="..\Edition\**\obj\**;..\Edition\**\bin\**" />
+		<None Include="..\Edition\Resources\**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="Resources\Edition\%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
 	<ItemGroup>
-		<None Include="Resources\Statics\**" CopyToOutputDirectory="Always" Link="Resources\Statics\%(RecursiveDir)\%(Filename)%(Extension)" />
+		<None Include="Resources\Statics\**" CopyToOutputDirectory="Always" Link="Resources\Statics\%(RecursiveDir)%(Filename)%(Extension)" />
+		<!-- The themes that ship with the app; the themes folder in %LOCALAPPDATA% is added to these at runtime. -->
+		<None Include="Resources\Themes\**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="Resources\Themes\%(RecursiveDir)%(Filename)%(Extension)" />
+		<!-- The theme document ships next to the themes, and a copy lands in the user's themes folder. -->
+		<!-- The MIT notice travels with the program (installer, portable zip and MSIX alike). -->
+		<None Include="..\..\LICENSE" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="LICENSE.txt" />
+		<None Include="..\..\docs\custom-theme.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="Resources\Themes\custom-theme.md" />
+		<!-- Standalone theme designer. Typedown embeds a snapshot of the installed themes when opening it. -->
+		<None Include="..\..\Tools\Themes\theme-designer.html" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="Resources\Themes\theme-designer.html" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -63,5 +115,56 @@
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
+
+	<PropertyGroup>
+		<_NativeRid Condition="'$(Platform)' == 'x64'">win10-x64</_NativeRid>
+		<_NativeRid Condition="'$(Platform)' == 'x86'">win10-x86</_NativeRid>
+		<_NativeRid Condition="'$(Platform)' == 'ARM64'">win10-arm64</_NativeRid>
+	</PropertyGroup>
+
+	<!-- Native WinRT components that only ship as runtimes/win10-* assets. Copied explicitly so they are present
+	     regardless of which RID the publish step uses (VS uses win10-x64, the packaging project uses win-x64). -->
+	<ItemGroup Condition="'$(_NativeRid)' != ''">
+		<None Include="$(PkgTypedown_XamlUI)\runtimes\$(_NativeRid)\native\Microsoft.UI.Xaml.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="Microsoft.UI.Xaml.dll" />
+		<None Include="$(PkgWin2D_uwp)\runtimes\$(_NativeRid)\native\Microsoft.Graphics.Canvas.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="Microsoft.Graphics.Canvas.dll" />
+		<None Include="$(PkgTypedown_XamlUI)\lib\netstandard2.0\Microsoft.UI.Xaml.pri" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="Microsoft.UI.Xaml.pri" />
+		<None Include="$(PkgTypedown_XamlUI)\lib\netstandard2.0\Typedown.XamlUI.pri" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="Typedown.XamlUI.pri" />
+	</ItemGroup>
 	
+	<!-- The automation test host (docs/automation-api-analysis-plan.md, 10.7): the same application built with
+	     /p:AutomationTestHost=true into its own folder, with the edit barriers and test.* methods, its own data root and
+	     single-instance names, and a marker file. Never packaged: build-local.ps1 and CI refuse it. -->
+	<PropertyGroup Condition="'$(AutomationTestHost)' == 'true'">
+		<DefineConstants>$(DefineConstants);AUTOMATION_TEST_HOST</DefineConstants>
+		<OutputPath>bin\AutomationTestHost\$(Platform)\$(Configuration)\</OutputPath>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(AutomationTestHost)' == 'true'">
+		<ProjectReference Include="..\Typedown.Automation.TestHost\Typedown.Automation.TestHost.csproj" />
+		<None Update="automation-test-host.marker" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+	</ItemGroup>
+	<!-- The automation command line ($(BrandCliName), and "$(BrandCliName) mcp", the MCP server) published with the app,
+	     so the MSIX has it too (the installer and the portable zip get it from add-cli.ps1, which then finds it there).
+	     Published for the app's runtime identifier and framework, self-contained like the app: only the files the app
+	     does not have already are added - the runtime and the shared libraries are the app's - beside the app's exe,
+	     where it starts on the app's runtime. Not for the automation test host, nor with /p:IncludeCli=false. -->
+	<Target Name="PublishCliAlongside" AfterTargets="ComputeResolvedFilesToPublishList"
+	        Condition="'$(RuntimeIdentifier)' != '' and '$(AutomationTestHost)' != 'true' and '$(IncludeCli)' != 'false'">
+		<PropertyGroup>
+			<_CliProject>$(MSBuildThisFileDirectory)..\..\Tools\Typedown.Cli\Typedown.Cli.csproj</_CliProject>
+			<_CliPublishDir>$(MSBuildProjectDirectory)\$(IntermediateOutputPath)cli-publish</_CliPublishDir>
+			<!-- win-x64 rather than win10-x64: the newer SDK the command line's net8.0 references build with does not know
+			     the win10 ones, and both name the same runtime pack (as add-cli.ps1 does). -->
+			<_CliRid>$(RuntimeIdentifier.Replace('win10-', 'win-'))</_CliRid>
+		</PropertyGroup>
+		<RemoveDir Directories="$(_CliPublishDir)" />
+		<Exec Command="dotnet publish &quot;$(_CliProject)&quot; -f netcoreapp3.1 -r $(_CliRid) --self-contained true -c $(Configuration) -o &quot;$(_CliPublishDir)&quot; -nologo -v q" />
+		<ItemGroup>
+			<_CliFile Include="$(_CliPublishDir)\**\*" Exclude="$(_CliPublishDir)\**\*.pdb" />
+			<_CliRelative Include="@(_CliFile->'%(RecursiveDir)%(Filename)%(Extension)')" Source="%(_CliFile.FullPath)" />
+			<_AppRelative Include="@(ResolvedFileToPublish->'%(RelativePath)')" />
+			<_CliRelative Remove="@(_AppRelative)" />
+			<ResolvedFileToPublish Include="%(_CliRelative.Source)" RelativePath="%(_CliRelative.Identity)" CopyToPublishDirectory="PreserveNewest" />
+		</ItemGroup>
+		<Message Importance="high" Text="$(BrandCliName): @(_CliRelative->Count()) file(s) published with the app: @(_CliRelative, ', ')" />
+	</Target>
 </Project>

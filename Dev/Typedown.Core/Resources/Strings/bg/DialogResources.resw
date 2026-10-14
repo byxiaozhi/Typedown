@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Съдържанието не може да бъде празно</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Неуспешно създаване на нов документ</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Неуспешно експортиране</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Обратна връзка</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Неуспешно импортиране</value>
@@ -225,14 +217,6 @@
     <value>Клавишната комбинация е заета</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Изпрати</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Подаването е успешно</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Неуспешно качване</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime не е инсталиран</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Този документ вече е споделян, но оттогава е променен. HedgeDoc 1.x не може да обнови съществуваща бележка, затова ново качване създава нова бележка с нова връзка.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Копирай връзката</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Връзка за редактиране</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Всеки с тази връзка може да редактира бележката.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Първо задайте адреса на сървъра HedgeDoc в Настройки → Експорт.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Отвори в браузър</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Качи отново (нова връзка)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Връзка само за четене</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Споделено в HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Документът не е променян след последното споделяне; това са съществуващите връзки.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Използвай предишната връзка</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Запази</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Презареди</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Файлът е променен на диска. Презареждането ще отхвърли незапазените промени.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Файлът е променен на диска. Да се презареди ли?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Файлът е променен на диска</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Качване на локалните изображения</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Качване на изображение {0} от {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Качени са {0} от {1} изображения. Адресите им в документа вече сочат към качените копия; „Отменям“ връща локалните пътища.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Отменено. Качени са {0} от {1} изображения и адресите им в документа бяха променени.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Непроменени:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Този документ няма локални изображения.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Не е избрана конфигурация за качване. Изберете такава в Настройки &gt; Изображение &gt; Качване чрез.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Отваряне на настройките</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Файлът не е намерен.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Качването не върна адрес.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Документът беше затворен по време на качването.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Документът не можа да бъде променен. Изображението е онлайн на адрес</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Този документ съдържа {0} локални изображения. Те са файлове на този компютър, така че читателите на бележката няма да ги виждат. Да бъдат ли качени първо?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Първо качване</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Споделяне въпреки това</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} от тях вече са били качени с тази конфигурация, затова са използвани предишните им адреси.</value>
   </data>
 </root>

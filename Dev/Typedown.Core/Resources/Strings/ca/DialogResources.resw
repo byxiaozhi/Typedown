@@ -133,10 +133,6 @@
     <value>D'ACORD</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>El contingut no pot estar buit</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>No s'ha pogut crear un document nou</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>S'ha produït un error en l'exportació</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Retroalimentació</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Importació fallida</value>
@@ -225,14 +217,6 @@
     <value>La tecla de drecera està ocupada</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Entregar</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Enviament correcte</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>S'ha produït un error en la càrrega</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Temps d'execució de WebView2 no instal·lat</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Aquest document ja s'havia compartit però ha canviat des d'aleshores. HedgeDoc 1.x no pot actualitzar una nota existent, així que tornar-lo a pujar crea una nota nova amb un enllaç nou.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Copia l'enllaç</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Enllaç editable</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Qualsevol persona amb aquest enllaç pot editar la nota.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Primer, configura l'adreça del servidor HedgeDoc a Configuració → Exporta.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Obre al navegador</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Torna a pujar (enllaç nou)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Enllaç de només lectura</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Compartit a HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>El document no ha canviat des de l'última vegada que es va compartir; aquests són els enllaços existents.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Fes servir l'enllaç anterior</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Conserva</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Torna a carregar</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>El fitxer ha canviat al disc. Tornar-lo a carregar descartarà els canvis sense desar.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>El fitxer ha canviat al disc. Vols tornar-lo a carregar?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>El fitxer ha canviat al disc</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Puja les imatges locals</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>S'està pujant la imatge {0} de {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>S'han pujat {0} de {1} imatges. Les seves adreces al document ara apunten a les còpies pujades; Desfer torna a posar els camins locals.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Cancel·lat. S'han pujat {0} de {1} imatges i se n'han canviat les adreces al document.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Sense canvis:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Aquest document no té imatges locals.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>No s'ha triat cap configuració de pujada. Trieu-ne una a Configuració &gt; Imatge &gt; Puja amb.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Obre la configuració</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>No s'ha trobat el fitxer.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>La pujada no ha retornat cap adreça.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>El document s'ha tancat durant la pujada.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>No s'ha pogut canviar el document. La imatge és en línia a</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Aquest document té {0} imatges locals. Són fitxers d'aquest ordinador, de manera que els lectors de la nota no les veuran. Voleu pujar-les primer?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Puja primer</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Comparteix igualment</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} ja s'havien pujat abans amb aquesta configuració, així que s'han fet servir les seves adreces anteriors.</value>
   </data>
 </root>

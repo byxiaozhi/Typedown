@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Sadržaj ne može biti prazan</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Stvaranje novog dokumenta nije uspjelo</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Izvoz nije uspio</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Povratna informacija</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Uvoz nije uspio</value>
@@ -225,14 +217,6 @@
     <value>Tipka prečaca je zauzeta</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Predati se</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Slanje je uspješno</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Prijenos nije uspio</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Vrijeme izvođenja nije instalirano</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Ovaj je dokument već dijeljen, ali se od tada promijenio. HedgeDoc 1.x ne može ažurirati postojeću bilješku, pa ponovno slanje stvara novu bilješku s novom poveznicom.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopiraj poveznicu</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Poveznica za uređivanje</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Svatko s ovom poveznicom može uređivati bilješku.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Najprije postavite adresu HedgeDoc poslužitelja u Postavke → Izvoz.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Otvori u pregledniku</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Pošalji ponovno (nova poveznica)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Poveznica samo za čitanje</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Podijeljeno na HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokument se nije promijenio od zadnjeg dijeljenja; ovo su postojeće poveznice.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Upotrijebi prethodnu poveznicu</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Zadrži</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Ponovno učitaj</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Datoteka je promijenjena na disku. Ponovno učitavanje odbacit će nespremljene promjene.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Datoteka je promijenjena na disku. Želite li je ponovno učitati?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Datoteka je promijenjena na disku</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Prenesi lokalne slike</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Prijenos slike {0} od {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Preneseno je {0} od {1} slika. Njihove adrese u dokumentu sada upućuju na prenesene kopije; Poništi vraća lokalne putanje.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Otkazano. Preneseno je {0} od {1} slika, a njihove adrese u dokumentu su promijenjene.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Nije promijenjeno:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Ovaj dokument nema lokalnih slika.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Nije odabrana konfiguracija prijenosa. Odaberite je pod Postavkama &gt; Slika &gt; Prenesi pomoću.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Otvori postavke</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Datoteka nije pronađena.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Prijenos nije vratio adresu.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokument je zatvoren tijekom prijenosa.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Dokument nije moguće promijeniti. Slika je na mreži na adresi</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Ovaj dokument ima {0} lokalnih slika. To su datoteke na ovom računalu pa ih čitatelji bilješke neće vidjeti. Najprije ih prenijeti?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Najprije prenesi</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Svejedno podijeli</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} od njih već je prije preneseno s ovom konfiguracijom, pa su upotrijebljene njihove ranije adrese.</value>
   </data>
 </root>

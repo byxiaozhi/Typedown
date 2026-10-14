@@ -133,10 +133,6 @@
     <value>ÓKEI</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Efni má ekki vera tómt</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Mistókst að búa til nýtt skjal</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Mistókst að flytja út</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Afturverkun</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Mistókst að flytja inn</value>
@@ -225,14 +217,6 @@
     <value>Flýtilykill er upptekinn</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Leggja inn</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Afhending tókst</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Mistókst að senda inn</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 keyrslutími ekki uppsett</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Þessu skjali hefur verið deilt áður en það hefur breyst síðan. HedgeDoc 1.x getur ekki uppfært fyrirliggjandi minnispunkt, svo ný upphleðsla býr til nýjan minnispunkt með nýjum hlekk.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Afrita hlekk</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Breytanlegur hlekkur</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Hver sem er með þennan hlekk getur breytt minnispunktinum.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Stilltu fyrst vistfang HedgeDoc þjóns í Stillingar → Flytja út.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Opna í vafra</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Hlaða upp aftur (nýr hlekkur)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Hlekkur til lesturs eingöngu</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Deilt á HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Skjalið hefur ekki breyst síðan því var síðast deilt; þetta eru núverandi hlekkir.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Nota fyrri hlekk</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Halda</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Endurhlaða</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Skránni hefur verið breytt á diski. Endurhleðsla hendir óvistuðum breytingum.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Skránni hefur verið breytt á diski. Á að endurhlaða hana?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Skránni hefur verið breytt á diski</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Hlaða upp staðbundnum myndum</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Hleð upp mynd {0} af {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} af {1} myndum hlaðið upp. Vistföng þeirra í skjalinu vísa nú á upphlöðnu afritin; Afturkalla setur staðbundnu slóðirnar aftur inn.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Hætt við. {0} af {1} myndum var hlaðið upp og vistföngum þeirra í skjalinu var breytt.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Ekki breytt:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Þetta skjal inniheldur engar staðbundnar myndir.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Engar upphleðslustillingar eru valdar. Veldu þær undir Stillingar &gt; Ímynd &gt; Hlaða upp með.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Opna stillingar</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Skráin fannst ekki.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Upphleðslan skilaði engu vistfangi.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Skjalinu var lokað meðan á upphleðslu stóð.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Ekki var hægt að breyta skjalinu. Myndin er á netinu á</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Þetta skjal inniheldur {0} staðbundnar myndir. Þær eru skrár á þessari tölvu, svo lesendur glósunnar sjá þær ekki. Hlaða þeim upp fyrst?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Hlaða upp fyrst</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Deila samt</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>Búið var að hlaða {0} þeirra upp áður með þessum stillingum, svo fyrri vistföng þeirra voru notuð.</value>
   </data>
 </root>

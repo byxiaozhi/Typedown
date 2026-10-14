@@ -137,18 +137,6 @@
     <value>Пікір жіберу</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Контакт</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Электрондық пошта</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Біз сіздердің пікірлеріңізді өте байыппен қабылдаймыз</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Шамамен</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Қаріп өлшемі</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Редакторда қолданылатын қаріп</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Қаріп тұқымдасы</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Өңдегіш жолының биіктігі еселігі</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>ОСС</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Аралық сақтағыш суреті</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Аралық сақтағыш суретінің кері жүктеу конфигурациясы</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Кескіндерді ендіру кезінде орындау әрекеті</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Жергілікті кескін</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Жергілікті кескінді кері жүктеу конфигурациясы</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Кескін әрекетін кірістіру</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Веб-кескін</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Веб-кескінді кері жүктеу конфигурациясы</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Суреттерді ендіргенде салыстырмалы жолды пайдаланғанды жөн көреді</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Терезе</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Әдепкі</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Кірістірілген тізім элементтері үшін жазылатын шегініс. 4 бос орын Obsidian және басқа көптеген редакторларға сәйкес келеді</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 бос орындық шегініс (Markdown стандарты)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>Белгіден кейін 1 бос орын</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>Белгіден кейін 2 бос орын</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>Белгіден кейін 4 бос орын</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Тізім шегінісі</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Бастапқы мәтінде жаңа тізім элементтерінің арасына бос жол қосу</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Бос аралықты тізім элементтері</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Ағымдағы абзац жанында блок түрін (P, H1, ...) көрсету</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Абзац белгісі</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Markdown бастапқы мәтінінде бағандар тураланатындай кесте ұяшықтарын толтыру. Кестелерді жинақы ұстау үшін өшіріңіз (AI құралдары үшін азырақ токен)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Кесте бағандарын туралау</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Әр абзац үшін автоматты анықтау</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Редактор мәтінінің бағыты; араб, иврит және оңнан солға жазылатын басқа тілдер үшін пайдалы</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Солдан оңға</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Оңнан солға</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Мәтін бағыты</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Өшірулі болса, сақталмаған өзгерістер болмаса сұрамай қайта жүктеу</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Қайта жүктеу алдында сұрау</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Ашық файлды бақылап, басқа бағдарлама өзгерткенде жаңарту</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Сыртқы өзгеріс кезінде автоматты қайта жүктеу</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Explorer арқылы ашылған файлдар ағымдағы терезеде қойынды ретінде ашылады; өшірулі болса жаңа терезе ашылады</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Файлдарды қойындыларда ашу</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Құжаттарды тоқтаған жеріңізден ашу</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Меңзер орнын есте сақтау</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Соңғы сеанстың барлық құжаттарын қалпына келтіру</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Жасырын жазбалар жасау үшін бос қалдырыңыз; тіркелгімен жазба сізге тиесілі</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Электрондық пошта (міндетті емес)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Құпия сөз</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Жазбаны жариялайды (/s/…), сондықтан бөлісілген сілтемені өңдеу мүмкін емес</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Тек оқуға арналған сілтемені де жариялау</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>HedgeDoc-қа бөлісу</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x мекенжайы, мыс. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Сервер</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Сынау</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Байланысты тексеру</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Тек бір құжат ашық болса да қойынды жолағын көрсету</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Қойындыларды әрқашан көрсету</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Қара (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Редактор мен экспортталған HTML/PDF үшін қосымша стильдер</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>мыс. .markdown-body h1 { color: #c00; }  немесе  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Теңшелмелі CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Тақырып — тақырыптар қалтасындағы бір CSS файлы; docs/custom-theme.md қараңыз</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Оны қалай жазуға болады</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Тақырыптар — осы қалтадағы CSS файлдары; пішімді құжат түсіндіреді.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(жоқ)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Тақырыптар қалтасын ашу</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Тақырыптарды қайта жүктеу</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Теңшелмелі тақырып</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>мыс. ./${filename}.assets — айнымалылар: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Қолданба іске қосылғанда бүйір тақта қай бетті көрсетеді</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Бүйір тақтаның әдепкі беті</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Жергілікті автоматтандыруға рұқсат беру</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Осы компьютерде сіз іске қосатын бағдарламалар ашық құжаттарды оқып, өңдей алады. Біреуі қосылғанда терезе тақырыбында көрсетіледі.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Бағдарламалар енгізген өзгерістерді ерекшелеу</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Қосылған бағдарлама өзгерткен мәтінді қысқа уақытқа ерекшелейді, не өзгергенін көре аласыз.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>PlantUML диаграммаларын салу</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Диаграмманың бастапқы кодын салу үшін plantuml.com-ға жібереді</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Кері жүктеу конфигурациясы</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Әрекеті «Суретті кері жүктеу» болатын кірістірілген суреттер үшін және Файл &gt; Жергілікті суреттерді кері жүктеу арқылы қолданылатын кері жүктеу конфигурациясы</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Bucket ішіндегі қалта</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Жалпыға ортақ URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Жол стиліндегі мекенжайлар (MinIO және кейбір провайдерлер)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 конфигурациясы толық емес: Endpoint, Bucket, Access Key ID және Secret Access Key өрістерін толтырыңыз.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Кері жүктеу тарихы</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Сол конфигурациямен бұрын кері жүктелген сурет қайта жүктелмейді; оның бұрынғы мекенжайы пайдаланылады ({0} есте сақталған). Кері жүктелген файлдарды жойғаннан кейін тарихты тазалаңыз.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML сервері</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Диаграммаларды салатын PlantUML серверінің (plantuml-server) мекенжайы. Бос: plantuml.com. Өз серверіңізбен диаграммалардың бастапқы коды өзіңізде қалады.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim пернелері</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Бастапқы код режимінде Vim (:w сақтайды, :q қойындыны жабады); оқу режимінде жылжу үшін j/k, gg/G, ]] және /. Көрнекі редакторда емес.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Журнал қалтасын ашу</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Экспорттан кейін</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Қайда сақталғанын көрсету</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Файлды ашу</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Оның қалтасын ашу</value>
   </data>
 </root>

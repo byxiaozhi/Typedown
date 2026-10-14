@@ -18,7 +18,8 @@ namespace Typedown.Core.Models.UploadConfigModels
             {
                 var powerShell = serviceProvider.GetService<IPowerShellService>();
                 var result = powerShell.Invoke(Script, "Upload-Image", filePath);
-                return result.First();
+                // What Upload-Image returns comes last; what the commands in it print comes before.
+                return result.Last();
             });
         }
     }

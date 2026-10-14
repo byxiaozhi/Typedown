@@ -42,7 +42,36 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             RegisterWindowShortcut(Settings.ShortcutPrint, PrintItem);
             RegisterWindowShortcut(Settings.ShortcutSettings, SettingItem);
             RegisterWindowShortcut(Settings.ShortcutClose, CloseItem);
+            AddEditionItems();
         }
+
+        private bool editionItemsAdded;
+
+        // Marks an edition's entries in the Export submenu, which the export configurations' rebuild leaves in place.
+        private static readonly object EditionEntry = new();
+
+        // An edition's own entries (EditionHooks.AddFileMenuItems, AddExportMenuItems): below Save As, and in Export
+        // after the export configurations; once per menu, as the View menu's.
+        private void AddEditionItems()
+        {
+            if (editionItemsAdded || ViewModel == null) return;
+            editionItemsAdded = true;
+            var index = Items.IndexOf(SaveAsItem);
+            if (index >= 0)
+                foreach (var item in EditionHooks.FileMenuItems(ViewModel))
+                    Items.Insert(++index, item);
+            var before = ExportSubMenu.Items.IndexOf(ExportSubMenu.Items.OfType<MenuFlyoutSeparator>().FirstOrDefault());
+            if (before >= 0)
+                foreach (var item in EditionHooks.ExportMenuItems(ViewModel))
+                {
+                    item.Tag = EditionEntry;
+                    ExportSubMenu.Items.Insert(before++, item);
+                }
+        }
+
+        /// <summary>The Export submenu's entries as shown (the automation test host reads them).</summary>
+        public System.Collections.Generic.IReadOnlyList<string> ExportMenu() =>
+            ExportSubMenu?.Items.OfType<MenuFlyoutItem>().Where(x => x.Visibility == Visibility.Visible).Select(x => x.Text).ToList() ?? new System.Collections.Generic.List<string>();
 
         private void UpdateOpenRecentItem()
         {
@@ -63,7 +92,7 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
         private void UpdateExportItem()
         {
             var configs = FileExport.ExportConfigs.ToList();
-            while (ExportSubMenu.Items[1] is not MenuFlyoutSeparator)
+            while (ExportSubMenu.Items[1] is not MenuFlyoutSeparator && ExportSubMenu.Items[1].Tag != EditionEntry)
                 ExportSubMenu.Items.RemoveAt(1);
             foreach (var config in configs.Reverse<ExportConfig>())
                 ExportSubMenu.Items.Insert(1, new MenuFlyoutItem() { Text = config.Name, Command = File.ExportCommand, CommandParameter = config });

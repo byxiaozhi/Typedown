@@ -133,10 +133,6 @@
     <value>બરાબર</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>સમાવિષ્ટ ખાલી રાખી શકાતો નથી</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>નવા દસ્તાવેજને બનાવવામાં નિષ્ફળતા</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>નિકાસ નિષ્ફળ</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>પ્રતિસાદ</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>આયાત નિષ્ફળ</value>
@@ -225,14 +217,6 @@
     <value>ટૂંકાણ કી કબજે થયેલ છે</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>મોકલો</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>રજૂઆત સફળ</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>અપલોડ નિષ્ફળ</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 રનટાઇમ સ્થાપિત થયેલ નથી</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>આ દસ્તાવેજ પહેલાં શેર થયો હતો પણ ત્યારથી બદલાયો છે. HedgeDoc 1.x હાલની નોંધ અપડેટ કરી શકતું નથી, તેથી ફરી અપલોડ કરવાથી નવી લિંક સાથે નવી નોંધ બનશે.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>લિંક કૉપિ કરો</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>સંપાદનયોગ્ય લિંક</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>આ લિંક ધરાવતું કોઈપણ નોંધ સંપાદિત કરી શકે છે.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>પહેલાં સેટિંગ્સ → નિકાસમાં HedgeDoc સર્વરનું સરનામું સેટ કરો.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>બ્રાઉઝરમાં ખોલો</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>ફરી અપલોડ કરો (નવી લિંક)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>ફક્ત-વાંચન લિંક</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc પર શેર કર્યું</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>છેલ્લે શેર કર્યા પછી દસ્તાવેજ બદલાયો નથી; આ હાલની લિંક છે.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>અગાઉની લિંક વાપરો</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>રાખો</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>ફરી લોડ કરો</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>ડિસ્ક પર ફાઇલ બદલાઈ છે. ફરી લોડ કરવાથી સાચવ્યા વિનાના ફેરફારો જતા રહેશે.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>ડિસ્ક પર ફાઇલ બદલાઈ છે. ફરી લોડ કરવી?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>ડિસ્ક પર ફાઇલ બદલાઈ છે</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>સ્થાનિક ઇમેજો અપલોડ કરો</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{1} માંથી ઇમેજ {0} અપલોડ થઈ રહી છે…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} માંથી {0} ઇમેજો અપલોડ થઈ. દસ્તાવેજમાં તેમના સરનામાં હવે અપલોડ થયેલી નકલો તરફ નિર્દેશ કરે છે; રદ કરો સ્થાનિક પાથ પાછા મૂકે છે.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>રદ કર્યું. {1} માંથી {0} ઇમેજો અપલોડ થઈ, અને દસ્તાવેજમાં તેમના સરનામાં બદલાયા.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>બદલાયું નથી:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>આ દસ્તાવેજમાં કોઈ સ્થાનિક ઇમેજ નથી.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>કોઈ અપલોડ રૂપરેખાંકન પસંદ કરેલ નથી. સુયોજનો &gt; ઇમેજ &gt; આના વડે અપલોડ કરો માં એક પસંદ કરો.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>સુયોજનો ખોલો</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>ફાઈલ મળી નથી.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>અપલોડે કોઈ સરનામું પરત કર્યું નથી.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>અપલોડ દરમિયાન દસ્તાવેજ બંધ થઈ ગયો.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>દસ્તાવેજ બદલી શકાયો નથી. ઇમેજ અહીં ઓનલાઇન છે</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>આ દસ્તાવેજમાં {0} સ્થાનિક ઇમેજો છે. તે આ કમ્પ્યુટર પરની ફાઈલો છે, તેથી નોંધના વાચકો તેમને જોઈ શકશે નહીં. પહેલા તેમને અપલોડ કરીએ?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>પહેલા અપલોડ કરો</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>તો પણ શેર કરો</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>તેમાંથી {0} આ રૂપરેખાંકન સાથે પહેલાં અપલોડ થઈ ચૂકી હતી, તેથી તેમના અગાઉના સરનામાં વપરાયા.</value>
   </data>
 </root>

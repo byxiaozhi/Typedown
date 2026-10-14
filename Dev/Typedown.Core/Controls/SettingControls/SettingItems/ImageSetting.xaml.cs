@@ -24,13 +24,38 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
 
         public ObservableCollection<UploadConfigOption> UploadConfigOptions { get; } = new();
 
-        public UploadConfigOption ClipboardImageUploadConfig { get; set; }
-
-        public UploadConfigOption LocalImageUploadConfig { get; set; }
-
-        public UploadConfigOption WebImageUploadConfig { get; set; }
+        /// <summary>Settings > Image > Upload with: the one configuration every upload uses.</summary>
+        public UploadConfigOption UploadConfig { get; set; }
 
         private readonly CompositeDisposable disposables = new();
+
+        /// <summary>Settings > Image > Upload history: what it does and how many pictures it holds.</summary>
+        public string UploadHistoryDescription { get; private set; }
+
+        private async void UpdateUploadHistoryDescription()
+        {
+            try
+            {
+                UploadHistoryDescription = string.Format(Locale.GetString("View.Image.UploadHistory.Description"), await Typedown.Core.Services.ImageUpload.History.CountAsync());
+            }
+            catch (Exception ex)
+            {
+                Log.Debug($"upload history: {ex.Message}");
+            }
+        }
+
+        private async void OnClearUploadHistoryClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await Typedown.Core.Services.ImageUpload.History.ClearAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Debug($"upload history: clearing failed: {ex.Message}");
+            }
+            UpdateUploadHistoryDescription();
+        }
 
         public ImageSetting()
         {
@@ -41,16 +66,12 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         {
             disposables.Add(ImageUpload.ImageUploadConfigs.GetCollectionObservable().Subscribe(_ => UpdateUploadConfigOptions()));
             UpdateUploadConfigOptions();
+            UpdateUploadHistoryDescription();
         }
 
         public Visibility IsCopyImagePathSettingItemVisibility(InsertImageAction action)
         {
             return action == InsertImageAction.CopyToPath ? Visibility.Visible : Visibility.Collapsed;
-        }
-
-        public Visibility IsSelectUploadConfigSettingItemVisibility(InsertImageAction action)
-        {
-            return action == InsertImageAction.Upload ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private readonly CompositeDisposable ImageUploadConfigsDisposables = new();
@@ -67,12 +88,8 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
                 .ToList(),
                 (a, b) => a.Id == b.Id);
             await Task.Yield();
-            ClipboardImageUploadConfig = UploadConfigOptions.Where(x => x.Id == Settings.InsertClipboardImageUseUploadConfigId).FirstOrDefault() ?? UploadConfigOption.None;
-            LocalImageUploadConfig = UploadConfigOptions.Where(x => x.Id == Settings.InsertLocalImageUseUploadConfigId).FirstOrDefault() ?? UploadConfigOption.None;
-            WebImageUploadConfig = UploadConfigOptions.Where(x => x.Id == Settings.InsertWebImageUseUploadConfigId).FirstOrDefault() ?? UploadConfigOption.None;
-            ImageUploadConfigsDisposables.Add(this.WhenPropertyChanged(nameof(ClipboardImageUploadConfig)).Cast<UploadConfigOption>().Subscribe(x => Settings.InsertClipboardImageUseUploadConfigId = x.Id));
-            ImageUploadConfigsDisposables.Add(this.WhenPropertyChanged(nameof(LocalImageUploadConfig)).Cast<UploadConfigOption>().Subscribe(x => Settings.InsertLocalImageUseUploadConfigId = x.Id));
-            ImageUploadConfigsDisposables.Add(this.WhenPropertyChanged(nameof(WebImageUploadConfig)).Cast<UploadConfigOption>().Subscribe(x => Settings.InsertWebImageUseUploadConfigId = x.Id));
+            UploadConfig = UploadConfigOptions.Where(x => x.Id == Settings.DefaultImageUploadConfigId).FirstOrDefault() ?? UploadConfigOption.None;
+            ImageUploadConfigsDisposables.Add(this.WhenPropertyChanged(nameof(UploadConfig)).Cast<UploadConfigOption>().Where(x => x != null).Subscribe(x => Settings.DefaultImageUploadConfigId = x.Id));
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

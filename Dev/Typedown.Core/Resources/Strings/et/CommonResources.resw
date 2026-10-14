@@ -729,10 +729,6 @@
     <value>Tsitaat</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Hinnang</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Tee</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Zoom</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Ühtegi kausta pole avatud. Ava fail või kaust, et seda siin sirvida.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Selles kaustas on {0} üksust — liiga palju siin loetlemiseks.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>Selles kaustas pole Markdowni faile.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Seda kausta enam ei ole.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Näita praeguse faili kausta</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Otsi kaustast…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(failinimi sobib)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} sobivat faili {1} otsitust</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Otsin…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Täisekraan</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Viimati kasutatud vahekaart</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Järgmine vahekaart</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Eelmine vahekaart</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Vähenda tsitaadi taset</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Suurenda tsitaadi taset</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Lugemisrežiim</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Otsi kaustast</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Jaga HedgeDoci…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Ahenda kõik</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Laienda kõik</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Pealkirjata</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Automatiseerimine ühendatud</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} muutis dokumenti {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Visuaalses režiimis muutmine võib osa selle dokumendi HTML-ist ümber kirjutada. Muutmata hoidmiseks muutke seda lähtekoodi režiimis.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>PlantUML-diagrammid on välja lülitatud (joonistamine saadab lähtekoodi saidile plantuml.com). Lülita need sisse: Sätted &gt; Redaktor.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Laadi kohalikud pildid üles</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Eksporditud asukohta {0}</value>
   </data>
 </root>

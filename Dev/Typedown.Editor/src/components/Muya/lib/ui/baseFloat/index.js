@@ -89,7 +89,7 @@ class BaseFloat {
       }
     }
 
-    eventCenter.attachDOMEvent(document, 'click', this.hide.bind(this))
+    eventCenter.attachDOMEvent(document, 'click', () => { if (this.muya.container.isConnected) this.hide() })
     eventCenter.attachDOMEvent(floatBox, 'click', event => {
       event.stopPropagation()
       event.preventDefault()

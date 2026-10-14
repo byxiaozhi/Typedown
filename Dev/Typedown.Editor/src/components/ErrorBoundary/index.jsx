@@ -1,5 +1,6 @@
 import React from "react";
 import { remote } from "services/remote";
+import { errorText } from "services/errorText";
 
 class ErrorBoundary extends React.Component {
 
@@ -13,7 +14,8 @@ class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        remote.unhandledException(error + '\n\n' + JSON.stringify(errorInfo));
+        // Readable whatever was thrown (an object is "[object Object]" as a string), with where React was.
+        remote.unhandledException(errorText(error) + '\n' + (error?.stack ?? '') + '\n\n' + JSON.stringify(errorInfo));
     }
 
     render() {

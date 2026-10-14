@@ -173,7 +173,7 @@ class ContentState {
     this.resizeLineNumber()
   }
 
-  render(isRenderCursor = true, clearCache = false) {
+  render(isRenderCursor = true, clearCache = false, fresh = false) {
     const { blocks, searchMatches: { matches, index } } = this
     const activeBlocks = this.getActiveBlocks()
     if (clearCache) {
@@ -184,7 +184,7 @@ class ContentState {
     })
     this.setNextRenderRange()
     this.stateRender.collectLabels(blocks)
-    this.stateRender.render(blocks, activeBlocks, matches)
+    this.stateRender.render(blocks, activeBlocks, matches, fresh)
     if (isRenderCursor) {
       this.setCursor()
     } else {
@@ -202,16 +202,24 @@ class ContentState {
     })
 
     // The `endKey` may already be removed from blocks if range was selected via keyboard (GH#1854).
+    // A key no longer among the top-level blocks is dropped for the page as well as for the blocks rendered: the
+    // page replaces its elements from startKey to endKey with what is rendered here, and rendering to the end of the
+    // document while replacing only up to a stale endKey left the old elements after it on the page a second time
+    // (a paragraph command on a selection made with the keyboard drew the block after the selection twice).
     let startIndex = startKey ? blocks.findIndex(block => block.key === startKey) : 0
+    let renderStartKey = startKey
     if (startIndex === -1) {
       startIndex = 0
+      renderStartKey = null
     }
 
     let endIndex = blocks.length
+    let renderEndKey = null
     if (endKey) {
       const tmpEndIndex = blocks.findIndex(block => block.key === endKey)
       if (tmpEndIndex >= 0) {
         endIndex = tmpEndIndex + 1
+        renderEndKey = endKey
       }
     }
 
@@ -219,7 +227,7 @@ class ContentState {
 
     this.setNextRenderRange()
     this.stateRender.collectLabels(blocks)
-    this.stateRender.partialRender(blocksToRender, activeBlocks, matches, startKey, endKey)
+    this.stateRender.partialRender(blocksToRender, activeBlocks, matches, renderStartKey, renderEndKey)
     if (isRenderCursor) {
       this.setCursor()
     } else {
@@ -299,23 +307,47 @@ class ContentState {
     return this.cursor
   }
 
+  // getBlock is called many times per keystroke; a linear search over the whole tree made it O(document) each time.
+  // Cache key -> block and verify the cached block is still attached (identity checks up the parent chain), so any
+  // structural edit (splice/replace/undo copies) simply causes a miss and a rebuild.
   getBlock(key) {
     if (!key) return null
+    const cached = this.blockCache ? this.blockCache.get(key) : undefined
+    if (cached && this.isBlockAttached(cached)) {
+      return cached
+    }
     let result = null
+    const cache = new Map()
     const travel = blocks => {
       for (const block of blocks) {
+        cache.set(block.key, block)
         if (block.key === key) {
           result = block
-          return
         }
         const { children } = block
-        if (children.length) {
+        if (children && children.length) {
           travel(children)
         }
       }
     }
     travel(this.blocks)
+    this.blockCache = cache
     return result
+  }
+
+  isBlockAttached(block) {
+    let current = block
+    for (let depth = 0; depth < 256; depth++) {
+      if (!current.parent) {
+        return this.blocks.includes(current)
+      }
+      const parent = this.blockCache.get(current.parent)
+      if (!parent || !parent.children || !parent.children.includes(current)) {
+        return false
+      }
+      current = parent
+    }
+    return false
   }
 
   copyBlock(origin) {
@@ -506,6 +538,12 @@ class ContentState {
 
   getActiveBlocks() {
     const result = []
+    // Reading mode shows the rendered document only: with no active block the renderer keeps every Markdown
+    // marker hidden and leaves out the editing affordances that hang off the active block (table drag bars and
+    // tool bar, the paragraph front icon, the code-fence language input).
+    if (this.muya.options.readOnly) {
+      return result
+    }
     let block = this.getBlock(this.cursor.start.key)
     if (block) {
       result.push(block)

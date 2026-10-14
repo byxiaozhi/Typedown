@@ -1,6 +1,5 @@
 import runSanitize from './dompurify'
 import { URL_REG, DATA_URL_REG, IMAGE_EXT_REG } from '../config'
-import path from 'path-browserify'
 import process from "process";
 
 const ID_PREFIX = 'ag-'
@@ -231,7 +230,8 @@ export const checkImageContentType = url => {
     if (req.readyState === XMLHttpRequest.DONE) {
       if (req.status === 200) {
         const contentType = req.getResponseHeader('Content-Type')
-        if (/^image\/(?:jpeg|png|gif|svg\+xml|webp)$/.test(contentType)) {
+        // Any picture type, with or without parameters ("image/svg+xml;charset=utf-8").
+        if (/^image\/[\w.+-]+\s*(?:;|$)/i.test(contentType || '')) {
           settle(true)
         } else {
           settle(false)
@@ -260,6 +260,9 @@ export const checkImageContentType = url => {
  * @param {string} src Image url
  * @param {string} basePath Base path; used on desktop to fix the relative image path.
  */
+import { resolveLocalPath, absoluteImageUrls } from 'services/localPaths'
+export { resolveLocalPath, absoluteImageUrls }
+
 export const getImageInfo = (src, basePath = window.basePath) => {
   const imageExtension = IMAGE_EXT_REG.test(src)
   const isUrl = URL_REG.test(src) || (imageExtension && /^file:\/\/.+/.test(src))
@@ -290,7 +293,7 @@ export const getImageInfo = (src, basePath = window.basePath) => {
       // NOTE: We don't need to convert Windows styled path to UNIX style because Chromium handels this internal.
       return {
         isUnknownType: false,
-        src: path.resolve(basePath, src)
+        src: resolveLocalPath(basePath, src)
       }
     }
   } else if (isUrl && !imageExtension) {
@@ -353,21 +356,27 @@ export const escapeHtmlTags = html => {
   return html.replace(/[&<>"']/g, x => { return HTML_TAG_REPLACEMENTS[x] })
 }
 
-export const wordCount = markdown => {
-  const paragraph = markdown.split(/\n{2,}/).filter(line => line).length
-  let word = 0
-  let character = 0
-  let all = 0
-
-  const removedChinese = markdown.replace(/[\u4e00-\u9fa5]/g, '')
-  const tokens = removedChinese.split(/[\s\n]+/).filter(t => t)
-  const chineseWordLength = markdown.length - removedChinese.length
-  word += chineseWordLength + tokens.length
-  character += tokens.reduce((acc, t) => acc + t.length, 0) + chineseWordLength
-  all += markdown.length
-
-  return { word, paragraph, character, all }
+/**
+ * Plain text of a heading for outlines: strips HTML tags and inline Markdown markers
+ * (emphasis, code, strikethrough, links, images) but keeps the visible text (upstream #41).
+ */
+export const getHeadingPlainText = content => {
+  return content
+    .replace(/<\/?[a-zA-Z][^>]*>/g, '')                    // HTML tags
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')               // images -> alt text
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')                // links -> link text
+    .replace(/(`+)([^`]+?)\1/g, '$2')                      // inline code
+    .replace(/(\*\*|__)(?=\S)([\s\S]*?\S)\1/g, '$2')        // bold
+    .replace(/(\*|_)(?=\S)([\s\S]*?\S)\1/g, '$2')           // italic
+    .replace(/~~(?=\S)([\s\S]*?\S)~~/g, '$1')              // strikethrough
+    .replace(/==(?=\S)([\s\S]*?\S)==/g, '$1')              // highlight
+    .replace(/\\([\\`*_{}[\]()#+\-.!~|])/g, '$1')          // escaped characters
+    .replace(/\s+/g, ' ')
+    .trim()
 }
+
+// Counted on the visible text: see wordCount.js (a module of its own, so that it can be tested alone).
+export { wordCount } from './wordCount'
 
 /**
  * [genUpper2LowerKeyHash generate constants map hash, the value is lowercase of the key,

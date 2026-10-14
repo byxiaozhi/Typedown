@@ -137,18 +137,6 @@
     <value>Visszajelzés küldése</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Érintkezés</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>E-mail</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Visszajelzését nagyon komolyan vesszük</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Körülbelül</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Betűméret</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>A szerkesztőben használt betűtípus</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Betűtípuscsalád</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Szerkesztő sor magassága többszörös</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Vágólap képe</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Vágólap képfeltöltési konfigurációja</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Képek beszúrásakor végrehajtandó művelet</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Helyi rendszerkép</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Helyi rendszerkép-feltöltési konfiguráció</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Kép beszúrása művelet</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Webes kép</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Webkép-feltöltési konfiguráció</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Inkább relatív elérési utat szeretne használni képek beszúrásakor</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Ablak</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Alapértelmezett</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>A beágyazott listaelemekhez írt behúzás. A 4 szóköz megegyezik az Obsidian és a legtöbb szerkesztő beállításával</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 szóköznyi behúzás (Markdown-szabvány)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 szóköz a jelölő után</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 szóköz a jelölő után</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 szóköz a jelölő után</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Listabehúzás</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Üres sor beszúrása az új listaelemek közé a forrásban</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Laza listaelemek</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>A blokk típusának (P, H1, ...) megjelenítése az aktuális bekezdés mellett</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Bekezdésjel</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Töltse ki a táblázatcellákat, hogy az oszlopok igazodjanak a Markdown-forrásban. Kikapcsolva a táblázatok tömörek maradnak (kevesebb token az MI-eszközöknek)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Táblázatoszlopok igazítása</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Automatikus felismerés bekezdésenként</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>A tartalom szövegiránya; arab, héber és más jobbról balra írt nyelvekhez hasznos</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Balról jobbra</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Jobbról balra</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Szövegirány</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Ha ki van kapcsolva, kérdés nélkül tölti újra, hacsak nincsenek mentetlen módosítások</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Kérdés újratöltés előtt</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>A megnyitott fájl figyelése és frissítése, ha másik program módosítja</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Automatikus újratöltés külső változáskor</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Az Intézőből megnyitott fájlok lapként nyílnak meg az aktuális ablakban; kikapcsolva új ablakot nyit</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Fájlok megnyitása lapokon</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>A dokumentumok ott nyíljanak meg, ahol abbahagyta</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Kurzorpozíció megjegyzése</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Az előző munkamenet összes dokumentumának visszaállítása</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Hagyja üresen a névtelen jegyzetekhez; fiókkal a jegyzet Önhöz tartozik</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>E-mail (nem kötelező)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Közzéteszi a jegyzetet (/s/…), így a megosztott hivatkozás nem szerkeszthető</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Csak olvasható hivatkozás közzététele is</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Megosztás a HedgeDocra</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x-cím, pl. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Kiszolgáló</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Teszt</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Kapcsolat tesztelése</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>A lapsáv megjelenítése akkor is, ha csak egy dokumentum van nyitva</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Lapok megjelenítése mindig</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Fekete (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>További stílusok a szerkesztőhöz és az exportált HTML/PDF-hez</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>pl. .markdown-body h1 { color: #c00; }  vagy  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Egyéni CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>A téma egyetlen CSS-fájl a témák mappájában; lásd docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Hogyan írjon egyet</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>A témák CSS-fájlok ebben a mappában; a formátumot a dokumentum ismerteti.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(nincs)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Témák mappájának megnyitása</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Témák újratöltése</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Egyéni téma</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>pl. ./${filename}.assets — változók: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Melyik oldalt mutassa az oldalsáv induláskor</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Az oldalsáv alapértelmezett oldala</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Helyi automatizálás engedélyezése</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Az ezen a számítógépen futtatott programok olvashatják és szerkeszthetik a megnyitott dokumentumokat. Az ablak címe jelzi, ha valamelyik csatlakozik.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Programok által végzett módosítások kiemelése</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Rövid ideig kiemeli a csatlakozott program által módosított szöveget, hogy lássa, mi változott.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>PlantUML-diagramok rajzolása</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>A diagram forrását elküldi a plantuml.com-nak, amely megrajzolja</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Feltöltés ezzel</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>A feltöltési konfiguráció, amelyet a Feltöltés műveletű beszúrt képekhez, valamint a Fájl &gt; Helyi képek feltöltése parancs használ</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Mappa a bucketben</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Nyilvános URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Útvonal-stílusú címek (MinIO és egyes szolgáltatók)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Az S3-konfiguráció hiányos: töltse ki az Endpoint, Bucket, Access Key ID és Secret Access Key mezőket.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Feltöltési előzmények</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Az ugyanazzal a konfigurációval már feltöltött kép nem töltődik fel újra; a korábbi címe lesz használva ({0} megjegyezve). Törölje az előzményeket a feltöltött fájlok törlése után.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML-kiszolgáló</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>A diagramokat megrajzoló PlantUML-kiszolgáló (plantuml-server) címe. Üres: plantuml.com. Saját kiszolgálóval a diagramok forrása nálad marad.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim-billentyűk</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim forrás módban (:w ment, :q bezárja a lapot); j/k, gg/G, ]] és / a mozgáshoz olvasási módban. A vizuális szerkesztőben nem.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Naplómappa megnyitása</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Exportálás után</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Mentés helyének megjelenítése</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Fájl megnyitása</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Mappa megnyitása</value>
   </data>
 </root>

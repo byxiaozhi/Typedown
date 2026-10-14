@@ -137,18 +137,6 @@
     <value>Lähetä palautetta</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontakti</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Sähköposti</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Otamme palautteesi erittäin vakavasti</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Noin</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Kirjasinkoko</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Editorissa käytetty fontti</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Fonttiperhe</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Editorin rivin korkeus useita</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Leikepöydän kuva</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Leikepöydän kuvan latausmääritykset</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Toiminto, joka suoritetaan kuvia lisättäessä</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Paikallinen kuva</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Paikallisen kuvan latausmääritykset</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Lisää kuva -toiminto</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Web-kuva</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Verkkokuvan latausmääritykset</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Käytä mieluummin suhteellista polkua kuvia lisättäessä</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Ikkuna</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Oletus</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Sisennys, joka kirjoitetaan sisäkkäisille luettelokohdille. 4 välilyöntiä vastaa Obsidiania ja useimpia muita editoreita</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 välilyönnin sisennys (Markdown-standardi)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 välilyönti merkin jälkeen</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 välilyöntiä merkin jälkeen</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 välilyöntiä merkin jälkeen</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Luettelon sisennys</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Lisää tyhjä rivi uusien luettelokohtien väliin lähteessä</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Väljät luettelokohdat</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Näytä lohkon tyyppi (P, H1, ...) nykyisen kappaleen vieressä</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Kappalemerkki</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Täytä taulukon solut niin, että sarakkeet kohdistuvat Markdown-lähteessä. Poista käytöstä pitääksesi taulukot tiiviinä (vähemmän tokeneita tekoälytyökaluille)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Kohdista taulukon sarakkeet</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Tunnista automaattisesti kappaleittain</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Sisällön tekstisuunta; hyödyllinen arabialle, hepreaksi ja muille oikealta vasemmalle kirjoitettaville kielille</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Vasemmalta oikealle</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Oikealta vasemmalle</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Tekstin suunta</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Jos pois päältä, lataa uudelleen kysymättä, ellei tallentamattomia muutoksia ole</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Kysy ennen uudelleenlatausta</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Tarkkaile avointa tiedostoa ja päivitä se, kun toinen ohjelma muuttaa sitä</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Lataa automaattisesti uudelleen ulkoisen muutoksen jälkeen</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Resurssienhallinnasta avatut tiedostot avautuvat välilehtenä nykyiseen ikkunaan; pois päältä avaa uuden ikkunan</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Avaa tiedostot välilehtiin</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Avaa asiakirjat siitä, mihin jäit</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Muista kohdistimen sijainti</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Palauta kaikki edellisen istunnon asiakirjat</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Jätä tyhjäksi luodaksesi muistiinpanoja nimettömänä; tilillä muistiinpano kuuluu sinulle</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Sähköposti (valinnainen)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Salasana</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Julkaisee muistiinpanon (/s/…), joten jaettua linkkiä ei voi muokata</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Julkaise myös vain luku -linkki</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Jaa HedgeDociin</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x -osoite, esim. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Palvelin</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Testaa</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Testaa yhteys</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Näytä välilehtipalkki, vaikka vain yksi asiakirja olisi auki</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Näytä välilehdet aina</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Musta (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Lisätyylit editorille ja viedylle HTML/PDF-tiedostolle</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>esim. .markdown-body h1 { color: #c00; }  tai  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Mukautettu CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Teema on yksi CSS-tiedosto teemakansiossa; katso docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Näin kirjoitat sellaisen</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Teemat ovat CSS-tiedostoja tässä kansiossa; asiakirja selittää muodon.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ei mitään)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Avaa teemakansio</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Lataa teemat uudelleen</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Mukautettu teema</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>esim. ./${filename}.assets — muuttujat: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Minkä sivun sivupaneeli näyttää sovelluksen käynnistyessä</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Sivupaneelin oletussivu</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Salli paikallinen automaatio</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Tällä tietokoneella suorittamasi ohjelmat voivat lukea ja muokata avoimia asiakirjoja. Ikkunan otsikko näyttää, kun jokin on yhdistetty.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Korosta ohjelmien tekemät muutokset</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Korostaa hetken tekstiä, jota yhdistetty ohjelma muutti, jotta näet, mikä muuttui.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Piirrä PlantUML-kaaviot</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Lähettää kaavion lähdekoodin piirrettäväksi palveluun plantuml.com</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Latausmääritys</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Latausmääritys, jota käytetään lisätyille kuville, joiden toiminto on Lataa kuva, sekä kohdassa Tiedosto &gt; Lataa paikalliset kuvat</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Kansio bucketissa</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Julkinen URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Polkutyyliset osoitteet (MinIO ja jotkin palveluntarjoajat)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3-määritys on puutteellinen: täytä Endpoint, Bucket, Access Key ID ja Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Lataushistoria</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Samalla määrityksellä jo ladattua kuvaa ei ladata uudelleen; sen aiempaa osoitetta käytetään ({0} muistissa). Tyhjennä historia, kun olet poistanut ladattuja tiedostoja.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML-palvelin</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Kaaviot piirtävän PlantUML-palvelimen (plantuml-server) osoite. Tyhjä: plantuml.com. Omaa palvelinta käytettäessä kaavioiden lähdekoodi pysyy sinulla.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim-näppäimet</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim lähdetilassa (:w tallentaa, :q sulkee välilehden); j/k, gg/G, ]] ja / liikkumiseen lukutilassa. Ei visuaalisessa editorissa.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Avaa lokikansio</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Viennin jälkeen</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Näytä tallennuspaikka</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Avaa tiedosto</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Avaa sen kansio</value>
   </data>
 </root>

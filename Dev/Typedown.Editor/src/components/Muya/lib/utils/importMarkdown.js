@@ -7,6 +7,7 @@ import StateRender from '../parser/render'
 import { tokenizer } from '../parser'
 import { getImageInfo } from '../utils'
 import { Lexer } from '../parser/marked'
+import { FRONT_MATTER } from '../parser/marked/blockRules'
 import { loadLanguage } from '../prism/index'
 import { htmlToMarkdown } from '../../../../services/importHtml'
 import { adjustCursor } from '../../../../services/cursor'
@@ -49,6 +50,11 @@ const importRegister = ContentState => {
     const parentList = [rootState]
 
     while ((token = tokens.shift())) {
+      block = null
+      // The exact blank-line counts around this block (utils/blankLines.js); a paragraph made of several text
+      // tokens takes the count after it from its last one.
+      const { blankLinesBefore } = token
+      let { blankLinesAfter } = token
       switch (token.type) {
         case 'frontmatter': {
           const { lang, style } = token
@@ -123,6 +129,9 @@ const importRegister = ContentState => {
 
           // GH#697, markedjs#1387
           const lang = (infostring || '').match(/\S*/)[0]
+          // The rest of the info string (`ts {title="x.ts"}`, `python linenos`) is kept as it was and written back:
+          // the first visual edit used to drop it.
+          const info = (infostring || '').slice(lang.length)
 
           value = text
           // Fix: #1265.
@@ -136,7 +145,8 @@ const importRegister = ContentState => {
           } else {
             block = this.createBlock('pre', {
               functionType: codeBlockStyle === 'fenced' ? 'fencecode' : 'indentcode',
-              lang
+              lang,
+              info
             })
             const codeBlock = this.createBlock('code', {
               lang
@@ -258,9 +268,12 @@ const importRegister = ContentState => {
 
         case 'text': {
           value = token.text
-          while (tokens[0].type === 'text') {
+          // Lines of one paragraph inside a list item arrive as separate text tokens and belong together —
+          // unless a blank line stood between them, in which case they are two paragraphs.
+          while (tokens[0] && tokens[0].type === 'text' && !token.followedByBlankLine) {
             token = tokens.shift()
             value += `\n${token.text}`
+            if (token.blankLinesAfter != null) blankLinesAfter = token.blankLinesAfter
           }
           block = this.createBlock('p')
           const contentBlock = this.createBlock('span', {
@@ -370,12 +383,23 @@ const importRegister = ContentState => {
           console.warn(`Unknown type ${token.type}`)
           break
       }
+      if (block && (blankLinesBefore != null || blankLinesAfter != null)) {
+        if (blankLinesBefore != null) block.blankLinesBefore = blankLinesBefore
+        if (blankLinesAfter != null) block.blankLinesAfter = blankLinesAfter
+        // The counts hold where they were read: a block moved into a quotation or a list item leaves them behind.
+        block.blankLinesParent = block.parent
+      }
     }
 
     return rootState.children.length ? rootState.children : [this.createBlockP()]
   }
 
-  ContentState.prototype.htmlToMarkdown = (html, keeps = []) => htmlToMarkdown(html, keeps, ContentState.turndownConfig)
+  // The editor's own Markdown style (headings with #, fenced code, its list marker: this.turndownConfig). An arrow
+  // function read ContentState.turndownConfig, which is not there, and turndown fell back on its defaults: a pasted
+  // heading underlined, a pasted code block indented and merged into the paragraph above, lists marked with *.
+  ContentState.prototype.htmlToMarkdown = function (html, keeps = []) {
+    return htmlToMarkdown(html, keeps, this.turndownConfig)
+  }
 
   // turn html to blocks
   ContentState.prototype.html2State = function (html) {
@@ -454,21 +478,47 @@ const importRegister = ContentState => {
     }
 
     // 调整光标位置，防止影响解析
-    anchor = adjustCursor(anchor, lines[anchor.line - 1], lines[anchor.line], lines[anchor.line + 1])
-    focus = adjustCursor(focus, lines[focus.line - 1], lines[focus.line], lines[focus.line + 1])
+    // The fences of a front matter block (found the way the lexer finds it) take no marker either, including the
+    // JSON "{" and "}" that adjustCursor cannot tell from ordinary text.
+    const frontMatter = FRONT_MATTER.exec(markdown.replace(/^ +$/gm, ''))
+    const fenceLines = frontMatter ? [0, frontMatter[0].split('\n').length - 1] : []
+    const adjust = c => fenceLines.includes(c.line) ? null : adjustCursor(c, lines[c.line - 1], lines[c.line], lines[c.line + 1])
+    // adjustCursor 对空行/HTML 行返回 null。以前的做法是把光标挪到文档末尾并追加一行放标记，
+    // 这会在每次切换源码模式时给文件末尾多加空行（#20 #61）。改为放到最近的非空行末尾/行首。
+    const nearest = c => {
+      for (let i = Math.min(c.line, lines.length - 1); i >= 0; i--) {
+        if (/\S/.test(lines[i])) {
+          const adjusted = adjust({ line: i, ch: lines[i].length })
+          if (adjusted) return adjusted
+        }
+      }
+      for (let i = c.line + 1; i < lines.length; i++) {
+        if (/\S/.test(lines[i])) {
+          const adjusted = adjust({ line: i, ch: 0 })
+          if (adjusted) return adjusted
+        }
+      }
+      return null
+    }
+    anchor = adjust(anchor) || nearest(anchor)
+    focus = adjust(focus) || nearest(focus)
+    if (anchor && focus && (anchor.line > focus.line || (anchor.line == focus.line && anchor.ch > focus.ch))) {
+      [anchor, focus] = [focus, anchor]
+    }
 
-    // 注入 anchor
-    if (!anchor || !lines[anchor.line]) {
-      if (lines.length > 0 && lines[lines.length - 1] != '')
-        lines.push('')
-      lines.push(CURSOR_ANCHOR_DNA)
+    // 注入 anchor（空行的内容是 ''，必须用 === undefined 判断行是否存在，否则光标在末尾空行时会
+    // 被当成"行不存在"而额外追加一行，切换源码模式时文件末尾不断增加空行）
+    if (!anchor || lines[anchor.line] === undefined) {
+      // Only reached when the document has no content line at all: mark the last line in place instead of
+      // appending lines, so an empty document stays empty across mode switches.
+      lines[lines.length - 1] += CURSOR_ANCHOR_DNA
     } else {
       const anchorText = lines[anchor.line]
       lines[anchor.line] = anchorText.substring(0, anchor.ch) + CURSOR_ANCHOR_DNA + anchorText.substring(anchor.ch)
     }
 
     // 注入 focus
-    if (!focus || !lines[focus.line]) {
+    if (!focus || lines[focus.line] === undefined) {
       lines[lines.length - 1] += CURSOR_FOCUS_DNA
     } else {
       const focusText = lines[focus.line]

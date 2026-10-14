@@ -15,10 +15,11 @@
     --iconColor: rgba(255, 255, 255, .56);
     --codeBgColor: #FFFFFF0D;
     --codeBlockBgColor: #FFFFFF0D;
+    --inlineCodeBgColor: rgba(255, 255, 255, .08);
     --footnoteBgColor: rgba(66, 67, 68, .3);
     --inputBgColor: #2f3336;
     --focusColor: var(--themeColor);
-    --tableBorderColor: #363839;
+    --tableBorderColor: rgba(255, 255, 255, .14);
     --itemBgColor: #2d2d2d;
     --floatBgColor: #2d2d2d;
     --floatHoverColor: #FFFFFF0F;

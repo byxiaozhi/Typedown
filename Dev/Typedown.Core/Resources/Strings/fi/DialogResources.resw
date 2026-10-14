@@ -133,10 +133,6 @@
     <value>OKEI</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Sisältö ei voi olla tyhjä</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Uuden asiakirjan luominen epäonnistui</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Vienti epäonnistui</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Palaute</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Tuonti epäonnistui</value>
@@ -225,14 +217,6 @@
     <value>Pikanäppäin on varattu</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Alistua</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Lähetys onnistui</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Lataus epäonnistui</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime ei ole asennettu</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Tämä asiakirja on jaettu aiemmin, mutta se on muuttunut sen jälkeen. HedgeDoc 1.x ei voi päivittää olemassa olevaa muistiinpanoa, joten uusi lataus luo uuden muistiinpanon ja uuden linkin.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopioi linkki</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Muokattava linkki</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Kuka tahansa, jolla on tämä linkki, voi muokata muistiinpanoa.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Aseta ensin HedgeDoc-palvelimen osoite kohdassa Asetukset → Vienti.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Avaa selaimessa</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Lataa uudelleen (uusi linkki)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Vain luku -linkki</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Jaettu HedgeDociin</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Asiakirja ei ole muuttunut sitten viime jaon; tässä ovat olemassa olevat linkit.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Käytä edellistä linkkiä</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Säilytä</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Lataa uudelleen</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Tiedosto on muuttunut levyllä. Uudelleenlataus hylkää tallentamattomat muutokset.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Tiedosto on muuttunut levyllä. Ladataanko uudelleen?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Tiedosto on muuttunut levyllä</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Lataa paikalliset kuvat</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Ladataan kuvaa {0}/{1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0}/{1} kuvaa ladattu. Niiden osoitteet asiakirjassa osoittavat nyt ladattuihin kopioihin; kumoaminen palauttaa paikalliset polut.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Peruttu. {0}/{1} kuvaa ladattiin, ja niiden osoitteet asiakirjassa muutettiin.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Ei muutettu:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Tässä asiakirjassa ei ole paikallisia kuvia.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Latausmääritystä ei ole valittu. Valitse se kohdassa Asetukset &gt; Kuva &gt; Latausmääritys.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Avaa asetukset</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Tiedostoa ei löytynyt.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Lataus ei palauttanut osoitetta.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Asiakirja suljettiin latauksen aikana.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Asiakirjaa ei voitu muuttaa. Kuva on verkossa osoitteessa</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Tässä asiakirjassa on {0} paikallista kuvaa. Ne ovat tämän tietokoneen tiedostoja, joten muistiinpanon lukijat eivät näe niitä. Ladataanko ne ensin?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Lataa ensin</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Jaa silti</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} niistä oli jo ladattu aiemmin tällä määrityksellä, joten niiden aiempia osoitteita käytettiin.</value>
   </data>
 </root>

@@ -31,7 +31,7 @@ module.exports = function override(config, env) {
                 maxChunks: 1
             }),
             new webpack.ProvidePlugin({
-                process: 'process/browser',
+                process: 'process/browser.js',
             }),
         ]
     }

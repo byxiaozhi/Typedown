@@ -20,7 +20,9 @@ namespace Typedown
                 RegisterViewModel(builder);
                 RegisterService(builder);
                 RegisterComponent(builder);
+                Edition.Register(builder); // nothing in Typedown (Edition.cs)
                 ServiceProvider = builder.BuildServiceProvider();
+                Edition.Start(ServiceProvider);
             }
         }
 
@@ -34,6 +36,7 @@ namespace Typedown
             builder.AddScoped<ParagraphViewModel>();
             builder.AddScoped<SettingsViewModel>();
             builder.AddScoped<UIViewModel>();
+            builder.AddScoped<TabsViewModel>();
         }
 
         private static void RegisterService(ServiceCollection builder)

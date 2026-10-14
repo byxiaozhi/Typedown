@@ -133,10 +133,6 @@
     <value>យល់ព្រម</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>មាតិកា មិន អាច ទទេ បាន ទេ</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>បាន បរាជ័យ ក្នុង ការ បង្កើត ឯកសារ ថ្មី</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>ការ នាំ ចេញ បាន បរាជ័យ</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>បញ្ចេញមតិ</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>ការ នាំ ចូល បាន បរាជ័យ</value>
@@ -225,14 +217,6 @@
     <value>កូនសោ កាត់ ត្រូវ បាន កាន់ កាប់</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>ដាក់ស្នើ</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>ការ ដាក់ ជូន ទទួល បាន ជោគជ័យ</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>ការ Upload បាន បរាជ័យ</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime មិនដំឡើង</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>ឯកសារនេះធ្លាប់ចែករំលែករួចហើយ ប៉ុន្តែបានផ្លាស់ប្ដូរតាំងពីពេលនោះ។ HedgeDoc 1.x មិនអាចធ្វើបច្ចុប្បន្នភាពកំណត់ត្រាដែលមានស្រាប់បានទេ ដូច្នេះការផ្ទុកឡើងម្ដងទៀតនឹងបង្កើតកំណត់ត្រាថ្មីជាមួយតំណថ្មី។</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>ចម្លងតំណ</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>តំណដែលកែបាន</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>អ្នកណាដែលមានតំណនេះអាចកែកំណត់ត្រាបាន។</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>សូមកំណត់អាសយដ្ឋានម៉ាស៊ីនបម្រើ HedgeDoc ក្នុង ការកំណត់ → នាំចេញ ជាមុនសិន។</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>បើកក្នុងកម្មវិធីរុករក</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>ផ្ទុកឡើងម្ដងទៀត (តំណថ្មី)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>តំណអានតែប៉ុណ្ណោះ</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>បានចែករំលែកទៅ HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>ឯកសារមិនបានផ្លាស់ប្ដូរតាំងពីការចែករំលែកចុងក្រោយ នេះជាតំណដែលមានស្រាប់។</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>ប្រើតំណមុន</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>រក្សាទុក</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>ផ្ទុកឡើងវិញ</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>ឯកសារបានផ្លាស់ប្ដូរនៅលើថាស។ ការផ្ទុកឡើងវិញនឹងបោះបង់ការផ្លាស់ប្ដូរដែលមិនទាន់រក្សាទុក។</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>ឯកសារបានផ្លាស់ប្ដូរនៅលើថាស។ ផ្ទុកឡើងវិញឬ?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>ឯកសារបានផ្លាស់ប្ដូរនៅលើថាស</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>ផ្ទុករូបភាពមូលដ្ឋានឡើង</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>កំពុងផ្ទុករូបភាព {0} នៃ {1} ឡើង…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>បានផ្ទុករូបភាព {0} នៃ {1} ឡើង។ អាសយដ្ឋានរបស់វានៅក្នុងឯកសារឥឡូវចង្អុលទៅច្បាប់ចម្លងដែលបានផ្ទុកឡើង; Undo ដាក់ផ្លូវមូលដ្ឋានវិញ។</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>បានបោះបង់។ រូបភាព {0} នៃ {1} ត្រូវបានផ្ទុកឡើង ហើយអាសយដ្ឋានរបស់វានៅក្នុងឯកសារត្រូវបានផ្លាស់ប្ដូរ។</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>មិនបានផ្លាស់ប្ដូរ៖</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>ឯកសារនេះគ្មានរូបភាពមូលដ្ឋានទេ។</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>មិនទាន់បានជ្រើសរើសការកំណត់រចនាសម្ព័ន្ធផ្ទុកឡើងទេ។ ជ្រើសរើសមួយនៅក្នុង ការកំណត់ &gt; រូបភាព &gt; ផ្ទុកឡើងដោយប្រើ។</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>បើកការកំណត់</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>រកមិនឃើញឯកសារទេ។</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>ការផ្ទុកឡើងមិនបានត្រឡប់អាសយដ្ឋានទេ។</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>ឯកសារត្រូវបានបិទអំឡុងពេលផ្ទុកឡើង។</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>មិនអាចផ្លាស់ប្ដូរឯកសារបានទេ។ រូបភាពមាននៅលើបណ្ដាញនៅ</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>ឯកសារនេះមានរូបភាពមូលដ្ឋាន {0}។ ពួកវាជាឯកសារនៅលើកុំព្យូទ័រនេះ ដូច្នេះអ្នកអានកំណត់ចំណាំនឹងមិនឃើញពួកវាទេ។ ផ្ទុកពួកវាឡើងជាមុនសិនទេ?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>ផ្ទុកឡើងជាមុន</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>ចែករំលែកទោះយ៉ាងណាក៏ដោយ</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>ក្នុងចំណោមនោះ {0} ត្រូវបានផ្ទុកឡើងពីមុនរួចហើយដោយប្រើការកំណត់រចនាសម្ព័ន្ធនេះ ដូច្នេះអាសយដ្ឋានពីមុនរបស់វាត្រូវបានប្រើ។</value>
   </data>
 </root>

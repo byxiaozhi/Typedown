@@ -49,7 +49,17 @@ namespace Typedown.Core.Controls.FloatControls
             flyout.OverlayInputPassThroughElement = ViewModel.XamlRoot.Content;
             flyout.FlyoutPresenterStyle = Resources["ToolTipFlyoutStyle"] as Style;
             flyout.Content = this;
-            flyout.ShowAt(editor, new() { Placement = FlyoutPlacementMode.Top, ShowMode = FlyoutShowMode.TransientWithDismissOnPointerMoveAway, Position = pos });
+            try
+            {
+                flyout.ShowAt(editor, new() { Placement = FlyoutPlacementMode.Top, ShowMode = FlyoutShowMode.TransientWithDismissOnPointerMoveAway, Position = pos });
+            }
+            catch (Exception ex)
+            {
+                // Not shown (the editor went meanwhile): the next tooltip may open (left open, none ever did again).
+                Log.Debug($"tooltip: {ex.Message}");
+                isOpen = false;
+                return;
+            }
             hideTimer.Start();
         }
 

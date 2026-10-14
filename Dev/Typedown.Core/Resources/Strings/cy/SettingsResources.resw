@@ -137,18 +137,6 @@
     <value>Anfon Adborth</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Cyswllt</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>E-bost</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Rydym yn cymryd eich adborth o ddifrif</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Ynghylch</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Maint ffont</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Ffont a ddefnyddir yn y golygydd</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Teulu ffont</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Lluosog uchder llinell golygydd</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Clipfwrdd Delwedd</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Clipboard image upload configuration</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Gweithredu i weithredu wrth fewnosod delweddau</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Delwedd Leol</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Cyfluniad uwchlwytho delweddau lleol</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Mewnosod camau delwedd</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Delwedd y We</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Cyfluniad uwchlwytho delwedd gwe</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Gwell ganddo ddefnyddio llwybr cymharol wrth fewnosod delweddau</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Ffenestr</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Rhagosodiad</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Y mewnoliad a ysgrifennir ar gyfer eitemau rhestr nythog. Mae 4 bwlch yn cyd-fynd ag Obsidian a'r rhan fwyaf o olygyddion eraill</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Mewnoliad 4 bwlch (safon Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 bwlch ar ôl y marc</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 fwlch ar ôl y marc</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 bwlch ar ôl y marc</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Mewnoliad rhestrau</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Mewnosod llinell wag rhwng eitemau rhestr newydd yn y ffynhonnell</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Eitemau rhestr llac</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Dangos math y bloc (P, H1, ...) wrth ymyl y paragraff cyfredol</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Marc paragraff</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Llenwi celloedd y tabl fel bod y colofnau'n cyd-fynd yn ffynhonnell Markdown. Diffoddwch i gadw tablau'n gryno (llai o docynnau ar gyfer offer DA)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Alinio colofnau'r tabl</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Canfod yn awtomatig fesul paragraff</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Cyfeiriad testun y golygydd; defnyddiol ar gyfer Arabeg, Hebraeg ac ieithoedd eraill a ysgrifennir o'r dde i'r chwith</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>O'r chwith i'r dde</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>O'r dde i'r chwith</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Cyfeiriad testun</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Os yw i ffwrdd, ail-lwytho'n dawel oni bai bod newidiadau heb eu cadw</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Gofyn cyn ail-lwytho</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Gwylio'r ffeil agored a'i hadnewyddu pan fydd rhaglen arall yn ei newid</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Ail-lwytho'n awtomatig pan fo newid allanol</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Mae ffeiliau a agorir o Explorer yn agor fel tab yn y ffenestr gyfredol; i ffwrdd yn agor ffenestr newydd</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Agor ffeiliau mewn tabiau</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Agor dogfennau lle gwnaethoch orffen</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Cofio safle'r cyrchwr</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Adfer holl ddogfennau'r sesiwn ddiwethaf</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Gadewch yn wag i greu nodiadau'n ddienw; gyda chyfrif mae'r nodyn yn eiddo i chi</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>E-bost (dewisol)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Cyfrinair</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Yn cyhoeddi'r nodyn (/s/…) fel na ellir golygu'r ddolen a rennir</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Cyhoeddi dolen darllen-yn-unig hefyd</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Rhannu i HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Cyfeiriad HedgeDoc 1.x, e.e. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Gweinydd</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Profi</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Profi'r cysylltiad</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Dangos y stribed tabiau hyd yn oed pan fo un ddogfen ar agor</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Dangos tabiau bob amser</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Du (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Arddulliau ychwanegol ar gyfer y golygydd a'r HTML/PDF a allforiwyd</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>e.e. .markdown-body h1 { color: #c00; }  neu  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS addasedig</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Ffeil CSS unigol yn y ffolder themâu yw thema; gweler docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Sut i ysgrifennu un</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Ffeiliau CSS yn y ffolder hwn yw themâu; mae'r ddogfen yn esbonio'r fformat.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(dim)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Agor y ffolder themâu</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Ail-lwytho themâu</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Thema addasedig</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>e.e. ./${filename}.assets — newidynnau: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Pa dudalen mae'r cwarel ochr yn ei dangos wrth gychwyn</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Tudalen ragosodedig y cwarel ochr</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Caniatáu awtomeiddio lleol</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Gall rhaglenni rydych chi'n eu rhedeg ar y cyfrifiadur hwn ddarllen a golygu dogfennau agored. Mae teitl y ffenestr yn dangos pan fydd un wedi'i gysylltu.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Amlygu newidiadau a wnaed gan raglenni</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Yn amlygu'n fyr y testun a newidiwyd gan raglen gysylltiedig, fel y gallwch weld beth sydd wedi newid.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Lluniadu diagramau PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Yn anfon ffynhonnell y diagram i plantuml.com i'w luniadu</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Uwchlwytho gyda</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Y cyfluniad uwchlwytho a ddefnyddir ar gyfer delweddau a fewnosodir â'r weithred Uwchlwytho delwedd, a gan Ffeil &gt; Uwchlwytho delweddau lleol</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Ffolder yn y bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL cyhoeddus</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Cyfeiriadau arddull llwybr (MinIO a rhai darparwyr)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Mae'r cyfluniad S3 yn anghyflawn: llenwch Endpoint, Bucket, Access Key ID a Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Hanes uwchlwytho</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Nid yw delwedd sydd eisoes wedi'i huwchlwytho gyda'r un cyfluniad yn cael ei huwchlwytho eto; defnyddir ei chyfeiriad blaenorol ({0} wedi'u cofio). Cliriwch yr hanes ar ôl dileu ffeiliau a uwchlwythwyd.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Gweinydd PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Cyfeiriad y gweinydd PlantUML (plantuml-server) sy'n lluniadu'r diagramau. Gwag: plantuml.com. Gyda'ch gweinydd eich hun, mae ffynhonnell y diagramau'n aros gyda chi.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Bysellau Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim yn y modd ffynhonnell (:w yn cadw, :q yn cau'r tab); j/k, gg/G, ]] a / i symud o gwmpas yn y modd darllen. Nid yn y golygydd gweledol.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Agor y ffolder logiau</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Ar ôl allforio</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Dangos ble cafodd ei gadw</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Agor y ffeil</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Agor ei ffolder</value>
   </data>
 </root>

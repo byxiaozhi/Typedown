@@ -2,24 +2,26 @@
 import { PARAGRAPH_TYPES, PREVIEW_DOMPURIFY_CONFIG, HAS_TEXT_BLOCK_REG, IMAGE_EXT_REG, URL_REG } from '../config'
 import { sanitize, getUniqueId, getImageInfo as getImageSrc, getPageTitle } from '../utils'
 import { getImageInfo } from '../utils/getImageInfo'
+import { dedentPastedText } from '../utils/pastedText'
 
 const LIST_REG = /ul|ol/
 const LINE_BREAKS_REG = /\n/
 
 const pasteCtrl = ContentState => {
   // check paste type: `MERGE` or `NEWLINE`
-  ContentState.prototype.checkPasteType = function (start, fragment) {
+  ContentState.prototype.checkPasteType = function (start, fragment, fragmentCount = 1) {
     const fragmentType = fragment.type
     const parent = this.getParent(start)
 
     if (fragmentType === 'p') {
+      // Several blocks (a web page) pasted on a heading's line start below it: merged, the page's first paragraph or
+      // picture became part of the heading ("# Title![picture](...)"). A few words pasted into a heading still join it.
+      if (fragmentCount > 1 && parent && /^h\d$/.test(parent.type)) return 'NEWLINE'
       return 'MERGE'
     } else if (/^h\d/.test(fragmentType)) {
-      if (start.text) {
-        return 'MERGE'
-      } else {
-        return 'NEWLINE'
-      }
+      // A heading is a block of its own: merged into the line the cursor is on, its marker came in as text ("# Title##
+      // Pasted"). The text before the cursor stays; the text after it follows the pasted blocks.
+      return 'NEWLINE'
     } else if (LIST_REG.test(fragmentType)) {
       const listItem = this.getParent(parent)
       const list = listItem && listItem.type === 'li' ? this.getParent(listItem) : null
@@ -65,13 +67,21 @@ const pasteCtrl = ContentState => {
   }
 
   ContentState.prototype.standardizeHTML = async function (rawHtml) {
+    // The page the HTML was copied from: Windows puts it in the clipboard's HTML header (CF_HTML's SourceURL).
+    const sourceMatch = /^SourceURL:(\S+)/m.exec(rawHtml || '')
+    const sourceUrl = sourceMatch ? sourceMatch[1] : null
+
     // Only extract the `body.innerHTML` when the `html` is a full HTML Document.
-    if (/<body>[\s\S]*<\/body>/.test(rawHtml)) {
-      const match = /<body>([\s\S]*)<\/body>/.exec(rawHtml)
+    if (/<body[^>]*>[\s\S]*<\/body>/.test(rawHtml)) {
+      const match = /<body[^>]*>([\s\S]*)<\/body>/.exec(rawHtml)
       if (match && typeof match[1] === 'string') {
         rawHtml = match[1]
       }
     }
+
+    // What web pages put around their content, made plain before it is sanitized (which drops the attributes this
+    // reads). Parsed inert: nothing in it runs or loads.
+    rawHtml = tidyWebHtml(rawHtml, sourceUrl)
 
     // Prevent XSS and sanitize HTML.
     const sanitizedHtml = sanitize(rawHtml, PREVIEW_DOMPURIFY_CONFIG, false)
@@ -423,7 +433,7 @@ const pasteCtrl = ContentState => {
     }
 
     const stateFragments = type === 'pasteAsPlainText' || copyType === 'copyAsMarkdown'
-      ? this.markdownToState(text)
+      ? this.markdownToState(dedentPastedText(text))
       : this.html2State(html)
 
     if (stateFragments.length <= 0) {
@@ -437,7 +447,7 @@ const pasteCtrl = ContentState => {
     // Step 2: when insert the fragments, check begin a new block, or insert into pre block.
     const firstFragment = stateFragments[0]
     const tailFragments = stateFragments.slice(1)
-    const pasteType = this.checkPasteType(startBlock, firstFragment)
+    const pasteType = this.checkPasteType(startBlock, firstFragment, stateFragments.length)
 
     const getLastBlock = blocks => {
       const len = blocks.length
@@ -564,3 +574,122 @@ const pasteCtrl = ContentState => {
 }
 
 export default pasteCtrl
+
+// ---- pasted web pages ----
+
+// A picture's address in a page that loads its pictures late: the real one is in an attribute, the src a placeholder.
+const LAZY_SRC_ATTRIBUTES = ['data-original', 'data-actualsrc', 'data-src', 'data-lazy-src', 'data-original-src', 'data-croporisrc']
+const isPlaceholderSrc = src => !src || /^data:image\/(svg\+xml|gif)/i.test(src) || /(^|\/)(blank|placeholder|loading|spacer|pixel)\.(gif|png|svg)$/i.test(src)
+
+// The language of a code block, from the class names pages use: language-x, lang-x, brush: x, highlight-source-x.
+const codeLanguage = element => {
+  for (const node of [element, ...element.querySelectorAll('code')]) {
+    const names = `${node.getAttribute('class') || ''} ${node.getAttribute('data-lang') || ''}`
+    const m = /(?:^|\s)(?:language|lang)-([\w#+-]+)/.exec(names) || /brush:\s*([\w#+-]+)/.exec(names) ||
+      /highlight-source-([\w#+-]+)/.exec(names) || /(?:^|\s)data-lang\s*([\w#+-]+)/.exec(names)
+    if (m) return m[1].toLowerCase()
+    const data = node.getAttribute('data-lang')
+    if (data) return data.toLowerCase()
+  }
+  return ''
+}
+
+/**
+ * HTML copied from a web page or an online editor, made into what the Markdown conversion understands:
+ * - Google Docs: the <b style="font-weight:normal"> around everything unwrapped; bold, italic and struck-out text given
+ *   by style made <strong>, <em>, <del>.
+ * - pictures loaded late: the real address instead of the placeholder (data-original, data-src..., srcset, <noscript>).
+ * - code blocks: their line numbers taken out (a list or a table column beside the code), the language kept, a block of
+ *   lines one <pre><code> however the page split it.
+ * - tables: a cell's alignment given by style made the align attribute the conversion reads.
+ * - addresses relative to the page (/wiki/..., ../img.png) made absolute with the page's own address.
+ */
+export const tidyWebHtml = (html, sourceUrl) => {
+  if (!html) return html
+  const doc = new DOMParser().parseFromString(`<!DOCTYPE html><html><body>${html}</body></html>`, 'text/html')
+  const body = doc.body
+
+  // Google Docs.
+  for (const wrapper of Array.from(body.querySelectorAll('b[id^="docs-internal-guid"]'))) {
+    if (/font-weight:\s*normal/i.test(wrapper.getAttribute('style') || '')) wrapper.replaceWith(...wrapper.childNodes)
+  }
+  for (const span of Array.from(body.querySelectorAll('span[style]'))) {
+    const style = span.getAttribute('style')
+    let node = span
+    const wrap = tag => {
+      const outer = doc.createElement(tag)
+      node.replaceWith(outer)
+      outer.appendChild(node)
+      node = outer
+    }
+    if (/font-weight:\s*(bold|[6-9]00)/i.test(style)) wrap('strong')
+    if (/font-style:\s*italic/i.test(style)) wrap('em')
+    if (/text-decoration[^;]*line-through/i.test(style)) wrap('del')
+  }
+
+  // Pictures loaded late.
+  for (const img of Array.from(body.querySelectorAll('img'))) {
+    const src = img.getAttribute('src')
+    if (!isPlaceholderSrc(src)) continue
+    let real = LAZY_SRC_ATTRIBUTES.map(a => img.getAttribute(a)).find(Boolean)
+    if (!real) {
+      const set = img.getAttribute('data-srcset') || img.getAttribute('srcset')
+      if (set) real = set.split(',').map(s => s.trim().split(/\s+/)[0]).filter(Boolean).pop()
+    }
+    if (real) img.setAttribute('src', real)
+  }
+  for (const noscript of Array.from(body.querySelectorAll('noscript'))) {
+    // The picture a page shows without scripts: kept when the one beside it is a placeholder, else dropped.
+    const inner = new DOMParser().parseFromString(noscript.textContent || noscript.innerHTML, 'text/html').querySelector('img')
+    const sibling = noscript.parentElement && noscript.parentElement.querySelector('img')
+    if (inner && (!sibling || isPlaceholderSrc(sibling.getAttribute('src')))) {
+      if (sibling) sibling.remove()
+      noscript.replaceWith(doc.importNode(inner, true))
+    } else {
+      noscript.remove()
+    }
+  }
+
+  // Code blocks: line numbers out, one <pre><code class="language-x"> each.
+  for (const numbers of Array.from(body.querySelectorAll('.pre-numbering, .line-numbers-rows, .hljs-ln-numbers, .linenodiv, td.gutter, .gutter, .lineno, .line-numbers'))) {
+    if (numbers.closest('pre') || numbers.closest('table')) numbers.remove()
+  }
+  for (const pre of Array.from(body.querySelectorAll('pre'))) {
+    const language = codeLanguage(pre) || (pre.parentElement ? codeLanguage(pre.parentElement) : '')
+    // A table of lines (hljs-ln, some blogs): each row's code cell is a line.
+    const rows = pre.querySelectorAll('tr')
+    let text
+    if (rows.length) {
+      text = Array.from(rows).map(row => (row.querySelector('.hljs-ln-code, td.code, td:last-child') || row).textContent).join('\n')
+    } else {
+      // A <br> or a block per line is a line break.
+      for (const br of Array.from(pre.querySelectorAll('br'))) br.replaceWith('\n')
+      for (const line of Array.from(pre.querySelectorAll('div, p, li'))) line.append('\n')
+      text = pre.textContent.replace(/\n$/, '')
+    }
+    const fresh = doc.createElement('pre')
+    const code = doc.createElement('code')
+    if (language) code.className = `language-${language}`
+    code.textContent = text
+    fresh.appendChild(code)
+    pre.replaceWith(fresh)
+  }
+
+  // Table cells aligned by style.
+  for (const cell of Array.from(body.querySelectorAll('th, td'))) {
+    const m = /text-align:\s*(left|center|right)/i.exec(cell.getAttribute('style') || '')
+    if (m && !cell.getAttribute('align')) cell.setAttribute('align', m[1].toLowerCase())
+  }
+
+  // Addresses relative to the page.
+  if (sourceUrl && /^https?:/i.test(sourceUrl)) {
+    for (const [selector, attribute] of [['a[href]', 'href'], ['img[src]', 'src']]) {
+      for (const element of Array.from(body.querySelectorAll(selector))) {
+        const value = element.getAttribute(attribute)
+        if (!value || /^(#|[a-z][a-z0-9+.-]*:)/i.test(value)) continue
+        try { element.setAttribute(attribute, new URL(value, sourceUrl).href) } catch (e) { /* left as it is */ }
+      }
+    }
+  }
+  return body.innerHTML
+}

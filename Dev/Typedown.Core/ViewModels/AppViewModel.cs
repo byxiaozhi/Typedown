@@ -30,6 +30,8 @@ namespace Typedown.Core.ViewModels
 
         public UIViewModel UIViewModel => ServiceProvider.GetService<UIViewModel>();
 
+        public TabsViewModel TabsViewModel => ServiceProvider.GetService<TabsViewModel>();
+
         public IReadOnlyList<Frame> FrameStack { get; set; } = new List<Frame>();
 
         public Command<Unit> GoBackCommand { get; } = new(false);
@@ -38,7 +40,7 @@ namespace Typedown.Core.ViewModels
 
         public IMarkdownEditor MarkdownEditor => ServiceProvider.GetService<IMarkdownEditor>();
 
-        public string[] CommandLineArgs { get; set; } = Environment.GetCommandLineArgs();
+        public string[] CommandLineArgs { get; set; } = Config.StripHostArguments(Environment.GetCommandLineArgs());
 
         public IntPtr MainWindow { get; set; }
 

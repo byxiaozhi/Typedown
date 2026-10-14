@@ -42,18 +42,147 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            Log.Debug($"FolderPage.OnLoaded: item={(WorkFolderExplorerItem != null)} vm={(FileViewModel != null)}");
+            if (WorkFolderExplorerItem != null || FileViewModel == null)
+                return;
             WorkFolderExplorerItem = new ExplorerItem(FileViewModel) { IsExpanded = true };
-            disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.WorkFolder)).Cast<string>().StartWith(FileViewModel.WorkFolder).Subscribe(UpdateWorkFolder));
-            disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FilePath)).Cast<string>().StartWith(FileViewModel.FilePath).Subscribe(_ => UpdateSelectedItem(WorkFolderExplorerItem)));
+            disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.WorkFolder)).Subscribe(_ => UpdateWorkFolder()));
+            disposables.Add(FileViewModel.WhenPropertyChanged(nameof(FileViewModel.FilePath)).Subscribe(_ =>
+            {
+                UpdateWorkFolder();
+                UpdateSelectedItem(WorkFolderExplorerItem);
+                RevealActiveFile();
+            }));
+            // A real (non-preview) open of a file outside the current root moves the tree there; previews never
+            // move it, so browsing the tree with single clicks cannot lose the folder.
+            // Capture the instance: by the time Unloaded runs the DataContext (and so FileViewModel) is already null.
+            var fileViewModel = FileViewModel;
+            fileViewModel.FileOpened += OnFileOpened;
+            disposables.Add(System.Reactive.Disposables.Disposable.Create(() => fileViewModel.FileOpened -= OnFileOpened));
+            UpdateWorkFolder();
+            Bindings.Update();
         }
 
-        private void UpdateWorkFolder(string workFolder)
+        // The folder the tree is currently rooted at. It is sticky: switching tabs or previewing files elsewhere must
+        // not yank the tree away (the user could not navigate back). It changes only when a folder is opened explicitly,
+        // when there is no root yet, or via the "reveal current file" button.
+        private string stickyRoot;
+
+        private void UpdateWorkFolder()
         {
+            var explicitFolder = FileViewModel.WorkFolderIsExplicit ? FileViewModel.WorkFolder : null;
+            var filePath = FileViewModel.FilePath;
+            string workFolder;
+            if (!string.IsNullOrEmpty(explicitFolder))
+                workFolder = explicitFolder;
+            // The tree follows the document in front of you whenever that document is somewhere else. Deciding
+            // it here rather than in a handler means it does not matter what triggered the update: a page that
+            // was on the outline while the tabs were switched, or one rebuilt since, lands on the same answer.
+            else if (!string.IsNullOrEmpty(filePath) && (string.IsNullOrEmpty(stickyRoot) || !IsInsideFolder(filePath, stickyRoot)))
+                workFolder = Path.GetDirectoryName(filePath);
+            else if (!string.IsNullOrEmpty(stickyRoot))
+                workFolder = stickyRoot;
+            else
+                workFolder = FileViewModel.WorkFolder;
+            if (!string.IsNullOrEmpty(workFolder))
+                stickyRoot = workFolder;
+            Log.Debug($"FolderPage.UpdateWorkFolder: WorkFolder='{FileViewModel.WorkFolder}' FilePath='{FileViewModel.FilePath}' -> '{workFolder}'");
             WorkFolderExplorerItem.FullPath = workFolder;
+            WorkFolderExplorerItem.IsExpanded = true;
+        }
+
+        private void OnFileOpened(string path, bool preview)
+        {
+            if (preview || FileViewModel == null || FileViewModel.WorkFolderIsExplicit || string.IsNullOrEmpty(path)) return;
+            UpdateWorkFolder();
+            UpdateSelectedItem(WorkFolderExplorerItem);
+            RevealActiveFile();
+        }
+
+        private void OnRevealCurrentFileClick(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(FileViewModel?.FilePath)) return;
+            stickyRoot = Path.GetDirectoryName(FileViewModel.FilePath);
+            UpdateWorkFolder();
+            UpdateSelectedItem(WorkFolderExplorerItem);
+        }
+
+        public static Visibility RevealVisibility(string filePath, string root)
+        {
+            return !string.IsNullOrEmpty(filePath) && !IsInsideFolder(filePath, root ?? "") ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private static bool IsInsideFolder(string filePath, string folder)
+        {
+            try
+            {
+                var full = Path.GetFullPath(filePath);
+                var root = Path.GetFullPath(folder).TrimEnd('\\', '/') + Path.DirectorySeparatorChar;
+                return full.StartsWith(root, StringComparison.OrdinalIgnoreCase);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static Visibility IsVisible(string path) => string.IsNullOrEmpty(path) ? Visibility.Collapsed : Visibility.Visible;
+
+        public static string GetStatusText(string path, int childCount, Exception exception)
+        {
+            if (exception != null) return exception.Message;
+            if (string.IsNullOrEmpty(path)) return Locale.GetString("FolderPane.NoFolderOpen");
+            if (!Directory.Exists(path)) return Locale.GetString("FolderPane.NotFound");
+            return childCount == 0 ? Locale.GetString("FolderPane.NoMarkdownFiles") : "";
+        }
+
+        /// <summary>
+        /// Opens the way down to the document in front of you and selects it. A document in a subfolder of the
+        /// root leaves the root where it is — that folder is the workspace — but a collapsed subfolder meant
+        /// nothing visibly happened on a tab switch, which read as "the tree did not follow".
+        /// </summary>
+        private async void RevealActiveFile()
+        {
+            try
+            {
+                var path = FileViewModel?.FilePath;
+                var root = WorkFolderExplorerItem?.FullPath;
+                if (string.IsNullOrEmpty(path) || string.IsNullOrEmpty(root) || !IsInsideFolder(path, root)) return;
+                var rootFull = Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                var relative = Path.GetFullPath(path).Substring(rootFull.Length).TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                var item = WorkFolderExplorerItem;
+                var current = rootFull;
+                foreach (var segment in relative.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar))
+                {
+                    if (item == null) return;
+                    item.IsExpanded = true;
+                    current = Path.Combine(current, segment);
+                    item = await FindChild(item, current);
+                }
+                UpdateSelectedItem(WorkFolderExplorerItem);
+            }
+            catch (Exception ex)
+            {
+                Log.Debug($"FolderPage.RevealActiveFile: {ex.Message}");
+            }
+        }
+
+        /// <summary>A folder is enumerated in the background, so the child may take a moment to appear.</summary>
+        private static async System.Threading.Tasks.Task<ExplorerItem> FindChild(ExplorerItem parent, string fullPath)
+        {
+            for (var attempt = 0; attempt < 20; attempt++)
+            {
+                var found = parent.Children.FirstOrDefault(x => string.Equals(x.FullPath, fullPath, StringComparison.OrdinalIgnoreCase));
+                if (found != null) return found;
+                await System.Threading.Tasks.Task.Delay(100);
+            }
+            return null;
         }
 
         private void UpdateSelectedItem(ExplorerItem item)
         {
+            if (item == null || FileViewModel == null)
+                return;
             item.IsSelected = FileViewModel.FilePath == item.FullPath;
             foreach (var next in item.Children)
                 UpdateSelectedItem(next);
@@ -61,13 +190,11 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
+            pendingSingleClickOpen?.Cancel();
+            disposables.Clear();
             WorkFolderExplorerItem?.Dispose();
             WorkFolderExplorerItem = null;
-            disposables.Clear();
-            TreeView.DataContext = null;
-            TreeView.ItemTemplateSelector = null;
-            TreeView.ItemsSource = null;
-            TreeView.ContextFlyout = null;
+            // Keep the XAML bindings, templates and flyouts for the next load.
         }
 
         private void OnItemContextFlyoutOpened(object sender, object e)
@@ -203,28 +330,43 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             Common.OpenFileLocation(item?.FullPath);
         }
 
+        // A file operation that fails (a file gone, the clipboard held by another program) says why, rather than ending
+        // the app (an exception out of a click handler) or doing nothing.
+        private async void Try(string what, Func<System.Threading.Tasks.Task> action)
+        {
+            try
+            {
+                await action();
+            }
+            catch (Exception ex)
+            {
+                Log.Debug($"folder pane: {what} failed: {ex}");
+                try { await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(XamlRoot); } catch { }
+            }
+        }
+
         private void OnCutClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            FileOperation.CutToClipboard(new StringCollection() { item?.FullPath });
+            Try("cut", () => FileOperation.CutToClipboardAsync(new StringCollection() { item?.FullPath }));
         }
 
         private void OnCopyClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            FileOperation.CopyToClipboard(new StringCollection() { item?.FullPath });
+            Try("copy", () => FileOperation.CopyToClipboardAsync(new StringCollection() { item?.FullPath }));
         }
 
         private void OnPasteClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            FileOperation.PasteFromClipboard(item?.FullPath);
+            Try("paste", () => FileOperation.PasteFromClipboardAsync(item?.FullPath));
         }
 
         private void OnCopyAsPathClick(object sender, RoutedEventArgs e)
         {
             var item = GetExplorerItemFromMenuFlyoutItem(sender);
-            Clipboard.SetText(item?.FullPath);
+            Try("copy as path", () => { Clipboard.SetText(item?.FullPath); return System.Threading.Tasks.Task.CompletedTask; });
         }
 
         private void OnRenameClick(object sender, RoutedEventArgs e)
@@ -276,11 +418,15 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             textblock.Visibility = Visibility.Visible;
             if (source.Task.Result != Path.GetFileName(item.FullPath))
             {
-                var newPath = Path.Combine(Path.GetDirectoryName(item.FullPath), source.Task.Result);
-                if (item.FullPath == ViewModel.FileViewModel.FilePath)
-                    ViewModel.FileViewModel.RenameFile(newPath);
-                else
-                    FileOperation.Rename(item.FullPath, newPath);
+                Try("rename", () =>
+                {
+                    var newPath = Path.Combine(Path.GetDirectoryName(item.FullPath), source.Task.Result);
+                    if (item.FullPath == ViewModel.FileViewModel.FilePath)
+                        ViewModel.FileViewModel.RenameFile(newPath);
+                    else
+                        FileOperation.Rename(item.FullPath, newPath);
+                    return System.Threading.Tasks.Task.CompletedTask;
+                });
                 _ = Dispatcher.RunIdleAsync(() => UpdateSelectedItem(WorkFolderExplorerItem));
             }
         }
@@ -293,6 +439,8 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             var treeViewItemPointerReleasedEventHandler = new PointerEventHandler(page.OnTreeViewItemPointerReleased);
             grid.AddHandler(PointerPressedEvent, treeViewItemPointerPressedEventHandler, true);
             item.AddHandler(PointerReleasedEvent, treeViewItemPointerReleasedEventHandler, true);
+            var treeViewItemDoubleTappedEventHandler = new Windows.UI.Xaml.Input.DoubleTappedEventHandler(page.OnTreeViewItemDoubleTapped);
+            item.AddHandler(DoubleTappedEvent, treeViewItemDoubleTappedEventHandler, true);
             if (item.DataContext is ExplorerItem explorerItem)
                 page.UpdateSelectedItem(explorerItem);
 
@@ -303,6 +451,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
                 var page = item.GetAncestor<FolderPage>();
                 grid.RemoveHandler(PointerPressedEvent, treeViewItemPointerPressedEventHandler);
                 item.RemoveHandler(PointerReleasedEvent, treeViewItemPointerReleasedEventHandler);
+                item.RemoveHandler(DoubleTappedEvent, treeViewItemDoubleTappedEventHandler);
             }
         }
 
@@ -319,6 +468,11 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
             }
         }
 
+        // Single click = open in the current tab, double click = open in a new tab. The single-click action is
+        // deferred by the system double-click interval so a double click can cancel it (otherwise the first click
+        // has already replaced the current document and the double click has nothing left to do).
+        private System.Threading.CancellationTokenSource pendingSingleClickOpen;
+
         private async void OnTreeViewItemPointerReleased(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             try
@@ -326,12 +480,41 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
                 var kind = e.GetCurrentPoint(sender as UIElement).Properties.PointerUpdateKind;
                 if (kind == Windows.UI.Input.PointerUpdateKind.LeftButtonReleased &&
                     (sender as muxc.TreeViewItem).DataContext is ExplorerItem item &&
-                    item.Type == ExplorerItem.ExplorerItemType.File)
+                    item.Type == ExplorerItem.ExplorerItemType.File && !item.IsNotice &&
+                    item.FullPath != ViewModel.FileViewModel.FilePath)
                 {
-                    if (item.FullPath != ViewModel.FileViewModel.FilePath)
-                        await ViewModel.FileViewModel.OpenFile(item.FullPath);
+                    pendingSingleClickOpen?.Cancel();
+                    var cts = pendingSingleClickOpen = new System.Threading.CancellationTokenSource();
+                    try
+                    {
+                        await Task.Delay((int)Math.Min(Math.Max(PInvoke.GetDoubleClickTime(), 150), 600), cts.Token);
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        return;
+                    }
+                    if (cts.IsCancellationRequested || ViewModel?.FileViewModel == null) return; // page may have unloaded meanwhile
+                    await ViewModel.FileViewModel.OpenFile(item.FullPath, preview: true);
                 }
                 UpdateSelectedItem(WorkFolderExplorerItem);
+            }
+            catch
+            {
+                // Ignore
+            }
+        }
+
+        private async void OnTreeViewItemDoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
+        {
+            try
+            {
+                if ((sender as muxc.TreeViewItem)?.DataContext is ExplorerItem item && item.Type == ExplorerItem.ExplorerItemType.File && ViewModel?.FileViewModel != null)
+                {
+                    e.Handled = true;
+                    pendingSingleClickOpen?.Cancel();
+                    await ViewModel.FileViewModel.OpenFile(item.FullPath, preview: false);
+                    UpdateSelectedItem(WorkFolderExplorerItem);
+                }
             }
             catch
             {
@@ -422,7 +605,7 @@ namespace Typedown.Core.Controls.SidePanelControls.Pages
 
         private void OnTreeViewContextFlyoutOpening(object sender, object e)
         {
-            if (!Directory.Exists(FileViewModel.WorkFolder) && sender is MenuFlyout flyout)
+            if (!Directory.Exists(WorkFolderExplorerItem?.FullPath) && sender is MenuFlyout flyout)
                 flyout.Hide();
         }
     }

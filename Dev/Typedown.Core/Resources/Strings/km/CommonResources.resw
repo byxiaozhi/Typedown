@@ -729,10 +729,6 @@
     <value>សម្រង់</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>អត្រា</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Redo</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>ពង្រីក</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>មិនមានថតត្រូវបានបើកទេ។ បើកឯកសារ ឬថតដើម្បីរុករកនៅទីនេះ។</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>ថតនេះមាន {0} ធាតុ — ច្រើនពេកមិនអាចរាយនៅទីនេះបានទេ។</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>មិនមានឯកសារ Markdown ក្នុងថតនេះទេ។</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>ថតនេះលែងមានទៀតហើយ។</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>បង្ហាញថតរបស់ឯកសារបច្ចុប្បន្ន</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>ស្វែងរកក្នុងថត…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(ឈ្មោះឯកសារត្រូវគ្នា)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>ឯកសារត្រូវគ្នា {0} ក្នុងចំណោម {1} ដែលបានស្វែងរក</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>កំពុងស្វែងរក…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>អេក្រង់ពេញ</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>ផ្ទាំងដែលប្រើចុងក្រោយ</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>ផ្ទាំងបន្ទាប់</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>ផ្ទាំងមុន</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>បន្ថយកម្រិតដកស្រង់</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>បង្កើនកម្រិតដកស្រង់</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>របៀបអាន</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>ស្វែងរកក្នុងថត</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>ចែករំលែកទៅ HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>បង្រួមទាំងអស់</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>ពង្រីកទាំងអស់</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>គ្មានចំណងជើង</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>ស្វ័យប្រវត្តិកម្មបានតភ្ជាប់</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} បានកែសម្រួល {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>ការកែសម្រួលឯកសារនេះក្នុងរបៀបមើលឃើញអាចសរសេរ HTML ខ្លះឡើងវិញ។ ដើម្បីរក្សាទុកដដែល សូមកែសម្រួលក្នុងរបៀបកូដប្រភព។</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>ដ្យាក្រាម PlantUML ត្រូវបានបិទ (ការគូរផ្ញើកូដប្រភពទៅ plantuml.com)។ បើកវានៅក្នុង ការកំណត់ &gt; កម្មវិធីកែសម្រួល។</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>ផ្ទុករូបភាពមូលដ្ឋានឡើង</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>បាននាំចេញទៅ {0}</value>
   </data>
 </root>

@@ -133,10 +133,6 @@
     <value>ГАРАЗД</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Вміст не може бути порожнім</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Не вдалося створити новий документ</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Експорт не вдалося</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Зворотний зв'язок</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Помилка імпорту</value>
@@ -225,14 +217,6 @@
     <value>Зайнято комбінацію клавіш</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Представити</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Подача успішно</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Помилка передавання</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Середовище виконання WebView2 не інстальовано</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Цей документ уже надсилали, але відтоді він змінився. HedgeDoc 1.x не може оновити наявну нотатку, тому повторне завантаження створить нову нотатку з новим посиланням.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Копіювати посилання</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Посилання для редагування</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Будь-хто з цим посиланням може редагувати нотатку.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Спочатку вкажіть адресу сервера HedgeDoc у Параметри → Експорт.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Відкрити у браузері</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Завантажити знову (нове посилання)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Посилання лише для читання</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Надіслано в HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Документ не змінювався з часу останнього надсилання; ось наявні посилання.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Використати попереднє посилання</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Залишити</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Перезавантажити</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Файл змінено на диску. Перезавантаження скасує незбережені зміни.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Файл змінено на диску. Перезавантажити його?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Файл змінено на диску</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Завантажити локальні зображення</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Завантаження зображення {0} з {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Завантажено зображень: {0} з {1}. Їхні адреси в документі тепер вказують на завантажені копії; «Скасувати» повертає локальні шляхи.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Скасовано. Завантажено зображень: {0} з {1}; їхні адреси в документі змінено.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Не змінено:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>У цьому документі немає локальних зображень.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Конфігурацію завантаження не вибрано. Виберіть її в розділі Параметри &gt; Образ &gt; Завантажувати за допомогою.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Відкрити параметри</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Файл не знайдено.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Завантаження не повернуло адресу.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Документ було закрито під час завантаження.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Не вдалося змінити документ. Зображення доступне онлайн за адресою</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>У цьому документі є локальні зображення ({0}). Це файли на цьому комп'ютері, тому читачі нотатки їх не побачать. Спершу завантажити їх?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Спершу завантажити</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Усе одно поділитися</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} з них уже завантажувалися раніше з цією конфігурацією, тому використано їхні попередні адреси.</value>
   </data>
 </root>

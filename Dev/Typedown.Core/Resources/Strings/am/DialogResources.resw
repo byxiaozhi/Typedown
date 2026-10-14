@@ -133,10 +133,6 @@
     <value>እሺ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>ይዘት ባዶ ሊሆን አይችልም</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>አዲስ ሰነድ መፍጠር አልተቻለም</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>ወደ ውጭ መላክ አልተሳካም</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>አስተያየት</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>ከውጭ ማስገባት አልተሳካም</value>
@@ -225,14 +217,6 @@
     <value>አቋራጭ ቁልፍ ተይዟል</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>አስረክብ</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>መገዛት ስኬታማ ነው</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>አውርድ አልተሳካም</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 ሩንታይም አልተገጠመም</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>ይህ ሰነድ ቀደም ብሎ ተጋርቷል ነገር ግን ከዚያ በኋላ ተቀይሯል። HedgeDoc 1.x ነባር ማስታወሻን ማዘመን ስለማይችል፣ እንደገና መጫን አዲስ አገናኝ ያለው አዲስ ማስታወሻ ይፈጥራል።</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>አገናኝ ቅዳ</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>ሊስተካከል የሚችል አገናኝ</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>ይህ አገናኝ ያለው ማንኛውም ሰው ማስታወሻውን ማስተካከል ይችላል።</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>በቅድሚያ የHedgeDoc አገልጋይ አድራሻን በቅንብሮች → ወደ ውጭ ላክ ያዘጋጁ።</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>በአሳሽ ክፈት</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>እንደገና ስቀል (አዲስ አገናኝ)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>ለንባብ ብቻ አገናኝ</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>ወደ HedgeDoc ተጋርቷል</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>ከመጨረሻው መጋራት ወዲህ ሰነዱ አልተቀየረም፤ እነዚህ ነባር አገናኞች ናቸው።</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>ቀዳሚውን አገናኝ ተጠቀም</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>አቆይ</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>እንደገና ጫን</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>ፋይሉ በዲስክ ላይ ተቀይሯል። እንደገና መጫን ያልተቀመጡ ለውጦችን ያስወግዳል።</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>ፋይሉ በዲስክ ላይ ተቀይሯል። እንደገና ይጫን?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>ፋይሉ በዲስክ ላይ ተቀይሯል</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>የአካባቢ ምስሎችን ስቀል</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>ምስል {0} ከ{1} በመስቀል ላይ…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>ከ{1} ምስሎች {0} ተሰቅለዋል። በሰነዱ ውስጥ ያሉት አድራሻዎቻቸው አሁን ወደ ተሰቀሉት ቅጂዎች ያመለክታሉ፤ መቀልበስ የአካባቢ ዱካዎችን ይመልሳል።</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>ተሰርዟል። ከ{1} ምስሎች {0} ተሰቅለዋል፣ በሰነዱ ውስጥ ያሉት አድራሻዎቻቸውም ተቀይረዋል።</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>ያልተቀየሩ:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>ይህ ሰነድ ምንም የአካባቢ ምስሎች የሉትም።</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>ምንም የመስቀያ ቅንብር አልተመረጠም። በምርጫዎች &gt; ምስል &gt; መስቀያ ውስጥ አንዱን ይምረጡ።</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>ምርጫዎችን ክፈት</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>ፋይሉ አልተገኘም።</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>መስቀሉ አድራሻ አልመለሰም።</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>ሰነዱ በመስቀል ላይ እያለ ተዘግቷል።</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>ሰነዱን መቀየር አልተቻለም። ምስሉ በመስመር ላይ የሚገኘው በ</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>ይህ ሰነድ {0} የአካባቢ ምስሎች አሉት። በዚህ ኮምፒውተር ላይ ያሉ ፋይሎች ስለሆኑ የማስታወሻው አንባቢዎች አያዩዋቸውም። መጀመሪያ ይሰቀሉ?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>መጀመሪያ ስቀል</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>ቢሆንም አጋራ</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>ከእነዚህ ውስጥ {0} በዚህ አውደ-ቅጥያ ቀደም ብለው ተሰቅለው ስለነበር የቀድሞ አድራሻዎቻቸው ጥቅም ላይ ውለዋል።</value>
   </data>
 </root>

@@ -137,18 +137,6 @@
     <value>שלח משוב</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>איש קשר</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>דואר אלקטרוני</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>אנו מתייחסים ברצינות רבה למשוב שלך</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>על</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>גודל גופן</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>הגופן המשמש בעורך</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>משפחת גופנים</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>גובה קו עורך מרובה</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>תמונת לוח</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>תצורת העלאת תמונות לוח</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>פעולה לביצוע בעת הוספת תמונות</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>תמונה מקומית</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>תצורת העלאת תמונות מקומית</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>פעולת 'הוסף תמונה'</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>תמונת אינטרנט</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>תצורת העלאת תמונות אינטרנט</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>מעדיף להשתמש בנתיב יחסי בעת הוספת תמונות</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>חלון</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>ברירת מחדל</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>ההזחה שנכתבת לפריטי רשימה מקוננים. 4 רווחים תואמים ל-Obsidian ולרוב העורכים האחרים</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>הזחה של 4 רווחים (תקן Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>רווח אחד אחרי הסימן</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 רווחים אחרי הסימן</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 רווחים אחרי הסימן</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>הזחת רשימות</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>הוספת שורה ריקה בין פריטי רשימה חדשים במקור</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>פריטי רשימה מרווחים</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>הצגת סוג הבלוק (P, H1, ...) ליד הפסקה הנוכחית</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>סמן פסקה</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>ריפוד תאי הטבלה כדי שהעמודות יתיישרו במקור ה-Markdown. כבה כדי לשמור על טבלאות קומפקטיות (פחות אסימונים לכלי בינה מלאכותית)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>יישור עמודות הטבלה</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>זיהוי אוטומטי לכל פסקה</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>כיוון הטקסט בעורך; שימושי לערבית, לעברית ולשפות נוספות הנכתבות מימין לשמאל</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>משמאל לימין</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>מימין לשמאל</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>כיוון הטקסט</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>אם כבוי, טען מחדש ללא שאלה אלא אם יש שינויים שלא נשמרו</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>שאל לפני טעינה מחדש</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>עקוב אחר הקובץ הפתוח ורענן אותו כשתוכנה אחרת משנה אותו</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>טעינה מחדש אוטומטית בשינוי חיצוני</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>קבצים שנפתחים מסייר הקבצים נפתחים כלשונית בחלון הנוכחי; כבוי פותח חלון חדש</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>פתיחת קבצים בלשוניות</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>פתח מסמכים במקום שבו הפסקת</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>זכור את מיקום הסמן</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>שחזר את כל המסמכים מההפעלה הקודמת</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>השאר ריק כדי ליצור פתקים אנונימיים; עם חשבון הפתק שייך לך</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>דוא"ל (אופציונלי)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>סיסמה</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>מפרסם את הפתק (/s/…) כך שלא ניתן לערוך את הקישור המשותף</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>פרסם גם קישור לקריאה בלבד</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>שתף ל-HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>כתובת HedgeDoc 1.x, למשל https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>שרת</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>בדיקה</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>בדוק את החיבור</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>הצג את שורת הלשוניות גם כשפתוח מסמך אחד בלבד</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>הצג תמיד לשוניות</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>שחור (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>סגנונות נוספים לעורך ול-HTML/PDF המיוצא</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>למשל .markdown-body h1 { color: #c00; }  או  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS מותאם אישית</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>ערכת נושא היא קובץ CSS אחד בתיקיית ערכות הנושא; ראה docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>כיצד לכתוב אחת</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>ערכות נושא הן קובצי CSS בתיקייה זו; המסמך מסביר את המבנה.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ללא)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>פתח את תיקיית ערכות הנושא</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>טען מחדש ערכות נושא</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>ערכת נושא מותאמת</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>למשל ./${filename}.assets — משתנים: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>איזה עמוד מציג הלוח הצדדי בהפעלה</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>עמוד ברירת המחדל של הלוח הצדדי</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>התרת אוטומציה מקומית</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>תוכניות שאתה מפעיל במחשב זה יכולות לקרוא ולערוך מסמכים פתוחים. כותרת החלון מציינת כשתוכנית מחוברת.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>הדגשת שינויים שבוצעו על ידי תוכניות</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>מדגיש לזמן קצר את הטקסט שתוכנית מחוברת שינתה, כדי שתראה מה השתנה.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>ציור תרשימי PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>שולח את קוד התרשים אל plantuml.com כדי לצייר אותו</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>העלה באמצעות</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>תצורת ההעלאה המשמשת לתמונות שהוכנסו עם הפעולה "העלה תמונה", ועל ידי קובץ &gt; העלה תמונות מקומיות</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>תיקייה ב-Bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL ציבורי</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>כתובות בסגנון נתיב (MinIO וספקים מסוימים)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>תצורת S3 אינה שלמה: מלא את Endpoint, Bucket, Access Key ID ו-Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>היסטוריית העלאות</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>תמונה שכבר הועלתה עם אותה תצורה לא מועלית שוב; נעשה שימוש בכתובת הקודמת שלה ({0} שמורות). נקה את ההיסטוריה לאחר מחיקת קבצים שהועלו.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>שרת PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>כתובת שרת PlantUML ‏(plantuml-server) שמצייר את התרשימים. ריק: plantuml.com. עם שרת משלך, קוד התרשימים נשאר אצלך.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>מקשי Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim במצב קוד מקור (:w שומר, :q סוגר את הכרטיסייה); j/k,‏ gg/G,‏ ]] ו-/ לניווט במצב קריאה. לא בעורך החזותי.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>פתיחת תיקיית היומנים</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>לאחר הייצוא</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>הצג היכן נשמר</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>פתח את הקובץ</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>פתח את התיקייה שלו</value>
   </data>
 </root>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <!-- Compiles the real TextFileFormat, not a copy, so this cannot drift from production (see SafeFileCheck). -->
+  <ItemGroup>
+    <Compile Include="../../Dev/Typedown.Core/Utilities/TextFileFormat.cs" />
+  </ItemGroup>
+</Project>

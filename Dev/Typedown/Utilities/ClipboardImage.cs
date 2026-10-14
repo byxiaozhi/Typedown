@@ -1,31 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Text;
+using System.Threading.Tasks;
 using Typedown.Core.Interfaces;
+using Windows.Graphics.Imaging;
+using Windows.Storage.Streams;
 
 namespace Typedown.Utilities
 {
     public class ClipboardImage : IClipboardImage
     {
-        private readonly System.Drawing.Image image;
+        private readonly RandomAccessStreamReference bitmapStreamRef;
 
-        public ClipboardImage(System.Drawing.Image image)
+        public ClipboardImage(RandomAccessStreamReference bitmapStreamRef)
         {
-            this.image = image;
+            this.bitmapStreamRef = bitmapStreamRef;
         }
 
         public byte[] GetBytes()
         {
-            using var stream = new MemoryStream();
-            image.Save(stream, ImageFormat.Png);
-            return stream.ToArray();
+            return GetBytesAsync().GetAwaiter().GetResult();
+        }
+
+        private async Task<byte[]> GetBytesAsync()
+        {
+            using var stream = await bitmapStreamRef.OpenReadAsync();
+            var decoder = await BitmapDecoder.CreateAsync(stream);
+            var pixelData = await decoder.GetPixelDataAsync();
+            var bytes = pixelData.DetachPixelData();
+
+            using var memoryStream = new InMemoryRandomAccessStream();
+            var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, memoryStream);
+            encoder.SetPixelData(
+                decoder.BitmapPixelFormat,
+                decoder.BitmapAlphaMode,
+                decoder.PixelWidth,
+                decoder.PixelHeight,
+                decoder.DpiX,
+                decoder.DpiY,
+                bytes);
+            await encoder.FlushAsync();
+
+            var result = new byte[memoryStream.Size];
+            await memoryStream.AsStream().ReadAsync(result, 0, result.Length);
+            return result;
         }
 
         public void SaveAsPng(string path)
         {
-            image.Save(path);
+            SaveAsPngAsync(path).GetAwaiter().GetResult();
+        }
+
+        private async Task SaveAsPngAsync(string path)
+        {
+            var bytes = await GetBytesAsync();
+            await File.WriteAllBytesAsync(path, bytes);
         }
     }
 }

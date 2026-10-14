@@ -137,18 +137,6 @@
     <value>Magpadala ng Feedback</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Makipag ugnay sa</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Mag-email</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Seryoso kami sa feedback mo</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Tungkol sa</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Laki ng font</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font na ginamit sa editor</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Pamilya ng font</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Taas ng linya ng editor maramihang</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Larawan ng Clipboard</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Configuration ng pag upload ng imahe ng Clipboard</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Aksyon upang maisagawa kapag nagpasok ng mga imahe</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Lokal na Imahe</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Lokal na configuration ng pag upload ng imahe</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Ipasok ang aksyon ng imahe</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Imahe sa Web</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Pag upload ng imahe ng web configuration</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Mas gustong gumamit ng relatibong landas kapag nagpasok ng mga imahe</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Window</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Ang indent na isinusulat para sa mga nested na item ng listahan. Ang 4 na espasyo ay tugma sa Obsidian at sa karamihan ng ibang editor</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4-espasyong indent (pamantayan ng Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 espasyo pagkatapos ng marka</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 espasyo pagkatapos ng marka</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 na espasyo pagkatapos ng marka</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Indent ng listahan</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Maglagay ng blangkong linya sa pagitan ng mga bagong item ng listahan sa source</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Maluwag na mga item ng listahan</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Ipakita ang uri ng block (P, H1, ...) katabi ng kasalukuyang talata</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Marka ng talata</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Punan ang mga cell ng talahanayan para pumantay ang mga hanay sa Markdown source. Patayin para manatiling siksik ang mga talahanayan (mas kaunting token para sa mga AI tool)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Ipantay ang mga hanay ng talahanayan</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Awtomatikong tukuyin bawat talata</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Direksyon ng teksto sa editor, kapaki-pakinabang para sa Arabic, Hebrew at iba pang wikang mula kanan pakaliwa</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Kaliwa pakanan</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Kanan pakaliwa</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Direksyon ng teksto</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Kung naka-off, mag-reload nang tahimik maliban kung may hindi pa nase-save na pagbabago</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Magtanong bago mag-reload</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Bantayan ang bukas na file at i-refresh kapag binago ito ng ibang programa</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Awtomatikong mag-reload kapag may panlabas na pagbabago</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Ang mga file na binuksan mula sa Explorer ay nagbubukas bilang tab sa kasalukuyang window; kapag naka-off, bagong window</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Buksan ang mga file sa tab</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Buksan ang mga dokumento kung saan ka huminto</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Tandaan ang posisyon ng cursor</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Ibalik ang lahat ng dokumento ng huling session</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Iwanang blangko para gumawa ng anonymous na note; kapag may account, sa iyo ang note</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Email (opsyonal)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Ini-publish ang note (/s/…) para hindi ma-edit ang ibinahaging link</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Mag-publish din ng read-only na link</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Ibahagi sa HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Address ng HedgeDoc 1.x, hal. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Subukan</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Subukan ang koneksyon</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Ipakita ang tab strip kahit isang dokumento lang ang bukas</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Laging ipakita ang mga tab</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Itim (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Karagdagang estilo para sa editor at sa na-export na HTML/PDF</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>hal. .markdown-body h1 { color: #c00; }  o  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Custom na CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Ang tema ay isang CSS file sa themes folder; tingnan ang docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Paano gumawa ng isa</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Ang mga tema ay CSS files sa folder na ito; ipinapaliwanag ng dokumento ang format.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(wala)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Buksan ang themes folder</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>I-reload ang mga tema</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Custom na tema</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>hal. ./${filename}.assets — mga variable: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Aling pahina ang ipinapakita ng side pane sa pagsisimula</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Default na pahina ng side pane</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Payagan ang lokal na automation</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Ang mga program na pinapatakbo mo sa computer na ito ay maaaring magbasa at mag-edit ng mga bukas na dokumento. Ipinapakita ng pamagat ng window kapag may nakakonekta.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>I-highlight ang mga pagbabagong ginawa ng mga program</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Panandaliang hina-highlight ang tekstong binago ng nakakonektang program, para makita mo kung ano ang nagbago.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Iguhit ang mga PlantUML diagram</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Ipinapadala ang source ng diagram sa plantuml.com para iguhit ito</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Mag-upload gamit ang</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Ang upload configuration na ginagamit para sa mga ipinasok na imahe na ang aksyon ay Upload, at ng Mag-file &gt; Mag-upload ng mga lokal na imahe</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Folder sa bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Pampublikong URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Mga path-style na address (MinIO at ilang provider)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Hindi kumpleto ang S3 configuration: punan ang Endpoint, Bucket, Access Key ID at Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>History ng pag-upload</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Hindi na muling ina-upload ang imaheng na-upload na gamit ang parehong configuration; ginagamit ang dati nitong address ({0} ang naaalala). I-clear ito pagkatapos magbura ng mga na-upload na file.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML server</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Address ng PlantUML server (plantuml-server) na gumuguhit ng mga diagram. Walang laman: plantuml.com. Kapag sarili mong server, sa iyo lang mananatili ang source ng mga diagram.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Mga Vim key</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim sa source mode (:w para mag-save, :q para isara ang tab); j/k, gg/G, ]] at / para gumalaw sa reading mode. Wala sa visual editor.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Buksan ang Log Folder</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Pagkatapos mag-export</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Ipakita kung saan ito na-save</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Buksan ang file</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Buksan ang folder nito</value>
   </data>
 </root>

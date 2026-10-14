@@ -1,0 +1,66 @@
+name: "功能建议 / Feature request"
+description: "希望增加或改进的功能 / Something you'd like added or changed"
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **本仓库的 issue 由 AI（Claude Code）负责评估和实现，维护者只做验收。**
+        > 请把"要解决的问题"和"期望的效果"写具体：在哪个界面、什么操作、结果是什么样；
+        > 有参考软件的话说明是哪一个、怎么做的。写得越清楚，实现越贴近你的想法。
+        >
+        > **Feature requests here are evaluated and implemented by an AI (Claude Code); the maintainer only reviews.**
+        > Be concrete about where the feature lives, how it is used and what the result looks like; name other
+        > editors that do it if any. The clearer the request, the closer the implementation.
+
+  - type: markdown
+    attributes:
+      value: |
+        先说清楚要解决的问题，再说你设想的做法；两者分开写更容易讨论。
+        Describe the problem first, then the solution you have in mind.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "想解决什么问题 / Problem"
+      description: "现在哪里不方便、绕不过去 / What is awkward or impossible today"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "期望的功能 / Proposed behaviour"
+      description: "具体怎么操作、在哪个菜单/设置里、效果是什么 / How it would work: menu, setting, result"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: "涉及的部分 / Area"
+      multiple: true
+      options:
+        - "编辑器 / Editor"
+        - "多标签 / Tabs"
+        - "文件树与侧栏 / File tree & side pane"
+        - "导出与分享 (PDF/HTML/HedgeDoc) / Export & share"
+        - "外观与主题 / Appearance & themes"
+        - "快捷键 / Shortcuts"
+        - "设置 / Settings"
+        - "安装与更新 / Install & update"
+        - "其他 / Other"
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "现在的替代做法 / Workarounds tried"
+      description: "有没有别的软件是这么做的，可以附截图 / Other editors that do this, screenshots welcome"
+
+  - type: input
+    id: upstream
+    attributes:
+      label: "上游 issue / Upstream issue"
+      description: "如果 byxiaozhi/Typedown 已有相关讨论，贴链接 / Link to the byxiaozhi/Typedown issue if one exists"
+      placeholder: "https://github.com/byxiaozhi/Typedown/issues/..."

@@ -10,7 +10,14 @@ namespace Typedown.Core.Utilities
             DWMWA_MICA_EFFECT = 1029,
             DWMWA_SYSTEMBACKDROP_TYPE = 38,
             DWMWA_CAPTION_COLOR = 35,
+            DWMWA_WINDOW_CORNER_PREFERENCE = 33,
+            DWMWA_BORDER_COLOR = 34,
         }
+
+        public const uint DWMWCP_DEFAULT = 0;
+        public const uint DWMWCP_DONOTROUND = 1;
+        public const uint DWMWA_COLOR_DEFAULT = 0xFFFFFFFF;
+        public const uint DWMWA_COLOR_NONE = 0xFFFFFFFE;
 
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS

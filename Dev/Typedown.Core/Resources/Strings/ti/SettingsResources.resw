@@ -137,18 +137,6 @@
     <value>መልሲ ለኣኽ</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>ርክብ</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>ኢ-መይል</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>ነቲ እተዋህበካ ርእይቶ ኣርዚንና ኢና እንርእዮ</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>ብዛዕባ</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>ግዝፊ ፊደላት</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>ኣብ ኣርትዖ ዝተጠቕመ ፊድ</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>ናይ ፊድ ቤተሰብ</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>ቍመት መስመር ኣሰናዳኢ</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>ስእሊ ክሊፕቦር</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>ምስሊ ክሊፕቦርድ ኣራጊፍካ</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>ምስልታት ክትኣቱ ኸለኻ እትፍጽሞ ስጕምቲ</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>ናይቲ ኸባቢ ምስሊ</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>ኣብቲ ኸባቢ ዘሎ ምስሊ ኣራጊፍካ</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>ስጕምቲ ምስሊ ኣእቱ</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>ምስሊ ወብ ሳይት</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>ናይ ወብ ሳይት ምስሊ ኣቃውማ ኣራጊፍካ</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>ምስልታት ክትኣቱ ኸለኻ ተዛማዲ መገዲ ኽትጥቀም ምረጽ</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>መስኰት</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>ነባሪ</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>ንዝተደራረቡ ዝርዝር ነገራት ዝጽሓፍ ምእታው። 4 ክፍተታት ምስ Obsidian ከምኡውን ምስ ብዙሓት ካልኦት ኣርትዓቲ ይሰማማዕ</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>ናይ 4 ክፍተት ምእታው (ናይ Markdown መዐቀኒ)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>ድሕሪ ምልክት 1 ክፍተት</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>ድሕሪ ምልክት 2 ክፍተታት</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>ድሕሪ ምልክት 4 ክፍተታት</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>ናይ ዝርዝር ምእታው</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>ኣብ ምንጪ ኣብ መንጎ ሓደስቲ ዝርዝር ነገራት ባዶ መስመር ኣእቱ</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>ልሕሉሓት ዝርዝር ነገራት</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>ኣብ ጎኒ እቲ ህሉው ሕጡበ-ጽሑፍ ዓይነት ብሎክ (P, H1, ...) ኣርኢ</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>ምልክት ሕጡበ-ጽሑፍ</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>ኣብ ምንጪ Markdown ዓምድታት ንኽስርዑ ናይ ሰንጠረዥ ቤቶች ምላእ። ሰንጠረዣት ሓጺር ንምግባር ኣጥፍእ (ንመሳርሒታት AI ውሑድ ቶከን)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>ናይ ሰንጠረዥ ዓምድታት ኣስርዕ</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>ንነፍሲ ወከፍ ሕጡበ-ጽሑፍ ብኣውቶማቲክ ኣለሊ</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>ናይ ኣርታዒ ኣንፈት ጽሑፍ፤ ንዓረብኛ፣ ንዕብራይስጢ ከምኡውን ካብ የማን ናብ ጸጋም ንዝጽሓፉ ካልኦት ቋንቋታት ይሕግዝ</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>ካብ ጸጋም ናብ የማን</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>ካብ የማን ናብ ጸጋም</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>ኣንፈት ጽሑፍ</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>እንተጠፊኡ፣ ዘይተዓቀቡ ለውጥታት እንተዘየለዉ ከይሓተተ እንደገና ጽዓን</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>ቅድሚ እንደገና ምጽዓን ሕተት</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>ነቲ ዝተኸፍተ ፋይል ተኸታተልን ካልእ መደብ ምስ ቀየሮ ኣሐድሶን</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>ኣብ ግዳማዊ ለውጢ ብኣውቶማቲክ እንደገና ምጽዓን</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>ካብ Explorer ዝተኸፍቱ ፋይላት ኣብቲ ህሉው መስኮት ከም ታብ ይኽፈቱ፤ እንተጠፊኡ ሓድሽ መስኮት ይኽፈት</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>ፋይላት ብታባት ክፈት</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>ሰነዳት ካብቲ ዝገደፍካዮ ቦታ ክፈት</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>ናይ መርኣዪ ቦታ ዘክር</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>ኩሎም ሰነዳት ናይ ዝሓለፈ ክፍለ ግዜ መልስ</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>ስም-ኣልቦ መዘክራት ንምፍጣር ባዶ ግደፎ፤ ብሕሳብ እቲ መዘክር ናትካ ይኸውን</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>ኢመይል (ኣማራጺ)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>መሕለፊ ቃል</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>ነቲ መዘክር የሕትሞ (/s/…) ስለዚ እቲ ዝተማቐለ መላግቦ ክእረም ኣይክእልን</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>ንንባብ ጥራይ ዝኸውን መላግቦ እውን ኣሕትም</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>ናብ HedgeDoc ኣማቒል</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>ኣድራሻ HedgeDoc 1.x፣ ንኣብነት https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>ሰርቨር</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>ፈትን</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>ርክብ ፈትን</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>ሓደ ሰነድ ጥራይ ተኸፊቱ እንከሎ እውን መስመር ታባት ኣርኢ</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>ኩሉ ግዜ ታባት ኣርኢ</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>ጸሊም (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>ንኣርታዒን ንዝተላእከ HTML/PDF ተወሳኺ ቅዲታት</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>ንኣብነት .markdown-body h1 { color: #c00; }  ወይ  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>ብሕታዊ CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>ገጽታ ኣብ ፎልደር ገጽታታት ዘሎ ሓደ ፋይል CSS እዩ፤ docs/custom-theme.md ርአ</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>ሓደ ከመይ ከም ዝጽሓፍ</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>ገጽታታት ኣብዚ ፎልደር ዘለዉ ፋይላት CSS እዮም፤ እቲ ቅርጺ ኣብቲ ሰነድ ተገሊጹ ኣሎ።</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ዋላ ሓደ)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>ፎልደር ገጽታታት ክፈት</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>ገጽታታት እንደገና ጽዓን</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>ብሕታዊ ገጽታ</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>ንኣብነት ./${filename}.assets — ተለዋወጥቲ፦ ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>እቲ ኣፕሊኬሽን ክጅምር እንከሎ እቲ ጎናዊ ፓነል ዘርእዮ ገጽ</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>ነባሪ ገጽ ናይ ጎናዊ ፓነል</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>ከባቢያዊ ኣውቶሜሽን ፍቐድ</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>ኣብዚ ኮምፒተር እተካይድዎም ፕሮግራማት ዝተኸፍቱ ሰነዳት ከንብቡን ከመሓይሹን ይኽእሉ። ሓደ ምስ ተራኸበ ኣርእስቲ መስኮት የርኢ።</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>ብፕሮግራማት ዝተገብሩ ለውጥታት ኣጉልሕ</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>ዝተራኸበ ፕሮግራም ዝቐየሮ ጽሑፍ ንሓጺር እዋን የጉልሕ፣ እንታይ ከም ዝተቐየረ ክትርእዩ።</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>ናይ PlantUML ስእላዊ መግለጺታት ስኣል</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>ንምስኣል ምንጪ ናይቲ ስእላዊ መግለጺ ናብ plantuml.com ይሰድድ</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>መስቀሊ</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>ተግባሮም "ምስሊ ኣራግፍ" ንዝኾነ ዝኣተዉ ምስልታትን ብፋይል &gt; ናይ ከባቢ ምስልታት ስቐልን ዝጥቀመሉ ናይ ምስቃል ውቅር</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>ኣብ bucket ዘሎ ፎልደር</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>ህዝባዊ URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>ናይ መንገዲ ቅዲ ኣድራሻታት (MinIO ከምኡ'ውን ገለ ኣቕረብቲ)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>ናይ S3 ውቅር ዘይተማልአ እዩ፦ Endpoint፣ Bucket፣ Access Key ID ከምኡ'ውን Secret Access Key ምልኣ።</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>ታሪኽ ምስቃል</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>ብተመሳሳሊ ኣቃውማ ድሮ ዝተሰቐለ ምስሊ ደጊሙ ኣይስቀልን፤ ናይ ቅድሚ ኣድራሻኡ ይጥቀመሉ ({0} ተዘኪሮም)። ዝተሰቐሉ ፋይላት ምስ ሰረዝካ ታሪኽ ኣጽርዮ።</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>ናይ PlantUML ሰርቨር</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>ኣድራሻ ናይቲ ስእላዊ መግለጺታት ዝስእል PlantUML ሰርቨር (plantuml-server)። ባዶ፦ plantuml.com። ብናይ ገዛእ ርእስኹም ሰርቨር ምንጪ ስእላዊ መግለጺታት ምሳኹም ይጸንሕ።</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>መፋትሕ Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim ብምንጪ ኩነታት (:w የዕቅብ፣ :q ነቲ ታብ ይዓጹ)፤ ኣብ ኩነታት ምንባብ ንምንቅስቓስ j/k፣ gg/G፣ ]] ከምኡ'ውን /። ኣብ ናይ ርእይቶ ኣርታዒ ኣይኮነን።</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>ናይ መዝገብ ማህደር ክፈት</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>ድሕሪ ምልኣኽ</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>ኣበይ ከም ዝተዓቀበ ኣርኢ</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>ፋይል ክፈት</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>ማህደሩ ክፈት</value>
   </data>
 </root>

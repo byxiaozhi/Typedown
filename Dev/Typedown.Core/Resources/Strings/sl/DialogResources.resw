@@ -133,10 +133,6 @@
     <value>V redu</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Vsebina ne more biti prazna</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Ustvarjanje novega dokumenta ni uspelo</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Izvoz ni uspel</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Povratne informacije</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Uvoz ni uspel</value>
@@ -225,14 +217,6 @@
     <value>Tipka bližnjice je zasedena</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Predložiti</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Predložitev uspešna</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Prenos ni uspel</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Čas zagona WebView2 ni nameščen</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Ta dokument je bil že deljen, a se je od takrat spremenil. HedgeDoc 1.x ne more posodobiti obstoječega zapiska, zato ponovno nalaganje ustvari nov zapisek z novo povezavo.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopiraj povezavo</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Povezava za urejanje</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Vsak s to povezavo lahko ureja zapisek.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Najprej nastavite naslov strežnika HedgeDoc v Nastavitve → Izvoz.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Odpri v brskalniku</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Naloži znova (nova povezava)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Povezava samo za branje</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Deljeno v HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokument se od zadnjega deljenja ni spremenil; to so obstoječe povezave.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Uporabi prejšnjo povezavo</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Ohrani</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Ponovno naloži</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Datoteka je bila spremenjena na disku. Ponovno nalaganje bo zavrglo neshranjene spremembe.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Datoteka je bila spremenjena na disku. Ali jo želite ponovno naložiti?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Datoteka je bila spremenjena na disku</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Naloži lokalne slike</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Nalaganje slike {0} od {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Naloženih je {0} od {1} slik. Njihovi naslovi v dokumentu zdaj kažejo na naložene kopije; Razveljavi vrne lokalne poti.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Preklicano. Naloženih je bilo {0} od {1} slik, njihovi naslovi v dokumentu pa so bili spremenjeni.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Nespremenjeno:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Ta dokument nima lokalnih slik.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Nobena konfiguracija nalaganja ni izbrana. Izberite jo v Nastavitve &gt; Podoba &gt; Naloži z.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Odpri nastavitve</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Datoteke ni bilo mogoče najti.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Nalaganje ni vrnilo naslova.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokument je bil med nalaganjem zaprt.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Dokumenta ni bilo mogoče spremeniti. Slika je na spletu na naslovu</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Ta dokument ima {0} lokalnih slik. To so datoteke v tem računalniku, zato jih bralci zapiska ne bodo videli. Jih najprej naložim?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Najprej naloži</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Vseeno deli</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} od njih je bilo s to konfiguracijo že naloženih prej, zato so bili uporabljeni njihovi prejšnji naslovi.</value>
   </data>
 </root>

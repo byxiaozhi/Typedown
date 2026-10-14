@@ -133,10 +133,6 @@
     <value>ठीक छ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>सामग्री खाली हुन सक्दैन</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>नयाँ कागजात सिर्जना गर्न असफल</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>निर्यात असफल भयो</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>प्रतिक्रिया</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>आयात असफल भयो</value>
@@ -225,14 +217,6 @@
     <value>सर्टकट कुञ्जी कब्जा गरिएको छ</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>पेश गर्नुहोस्</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>सबमिशन सफल भयो</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>अपलोड गर्न असफल भयो</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>वेबभ्यू२ रनटाइम स्थापना गरिएको छैन</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>यो कागजात पहिले साझा गरिएको थियो तर त्यसपछि बदलिएको छ। HedgeDoc 1.x ले भएको नोट अद्यावधिक गर्न सक्दैन, त्यसैले पुनः अपलोड गर्दा नयाँ लिङ्कसहित नयाँ नोट बन्छ।</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>लिङ्क प्रतिलिपि गर्नुहोस्</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>सम्पादनयोग्य लिङ्क</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>यो लिङ्क भएको जोसुकैले नोट सम्पादन गर्न सक्छ।</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>पहिले सेटिङ → निर्यात मा HedgeDoc सर्भरको ठेगाना राख्नुहोस्।</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>ब्राउजरमा खोल्नुहोस्</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>पुनः अपलोड गर्नुहोस् (नयाँ लिङ्क)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>पढ्न-मात्र लिङ्क</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc मा साझा गरियो</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>पछिल्लो पटक साझा गरेपछि कागजात बदलिएको छैन; यी हालका लिङ्क हुन्।</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>अघिल्लो लिङ्क प्रयोग गर्नुहोस्</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>राख्नुहोस्</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>पुनः लोड गर्नुहोस्</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>डिस्कमा फाइल बदलिएको छ। पुनः लोड गर्दा नबचाइएका परिवर्तन हराउँछन्।</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>डिस्कमा फाइल बदलिएको छ। पुनः लोड गर्ने?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>डिस्कमा फाइल बदलिएको छ</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>स्थानीय छविहरू अपलोड गर्नुहोस्</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{1} मध्ये छवि {0} अपलोड हुँदैछ…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} मध्ये {0} छविहरू अपलोड भए। कागजातमा तिनका ठेगानाहरूले अब अपलोड गरिएका प्रतिलिपिहरूलाई देखाउँछन्; "पूर्ववत् गर्नुहोस्" ले स्थानीय मार्गहरू फर्काउँछ।</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>रद्द गरियो। {1} मध्ये {0} छविहरू अपलोड भए, र कागजातमा तिनका ठेगानाहरू परिवर्तन गरिए।</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>परिवर्तन नगरिएका:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>यस कागजातमा कुनै स्थानीय छवि छैन।</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>कुनै अपलोड कन्फिगरेसन छानिएको छैन। सेटिङ &gt; छवि &gt; यसबाट अपलोड गर्नुहोस् मा एउटा छान्नुहोस्।</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>सेटिङ खोल्नुहोस्</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>फाइल फेला परेन।</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>अपलोडले कुनै ठेगाना फर्काएन।</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>अपलोडको क्रममा कागजात बन्द गरियो।</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>कागजात परिवर्तन गर्न सकिएन। छवि यस ठेगानामा अनलाइन छ:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>यस कागजातमा {0} स्थानीय छविहरू छन्। ती यस कम्प्युटरका फाइलहरू हुन्, त्यसैले नोटका पाठकहरूले ती देख्ने छैनन्। पहिले ती अपलोड गर्ने?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>पहिले अपलोड गर्नुहोस्</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>जे भए पनि साझा गर्नुहोस्</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>तीमध्ये {0} यो कन्फिगरेसनबाट पहिले नै अपलोड गरिएका थिए, त्यसैले तिनका अघिल्ला ठेगानाहरू प्रयोग गरियो।</value>
   </data>
 </root>

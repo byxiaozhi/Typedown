@@ -25,9 +25,11 @@ export default function referenceImage (h, cursor, block, token, outerClass) {
   }
   selector = id ? `span#${id}.${imageClass}` : `span.${imageClass}`
   selector += `.${CLASS_OR_ID.AG_OUTPUT_REMOVE}`
+  // While the picture loads (isSuccess undefined) its text is not marked failed: loadImageAsync marks it when the
+  // load ends. Marked failed from the first render, the text kept that mark after the picture was drawn beside it.
   if (isSuccess) {
     selector += `.${className}`
-  } else {
+  } else if (isSuccess === false || !src) {
     selector += `.${CLASS_OR_ID.AG_IMAGE_FAIL}`
   }
 

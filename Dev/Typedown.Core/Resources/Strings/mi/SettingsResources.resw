@@ -137,18 +137,6 @@
     <value>Tuku urupare</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Hoapā</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Ī-mēra</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>E tino āta tirohia ana e mātou ō urupare</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Mō</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Rahi momotuhi</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Te momotuhi ka whakamahia i roto i te etita</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Whānau momotuhi</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Teitei raina Kaiwhakatika maha</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Atahanga Papatopenga</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Whirihoranga tukuatu atahanga Papatopenga</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Hohenga hei kawe ina kōkuhu atahanga</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Atahanga Paetata</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Whirihoranga tukuatu atahanga paetata</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Kōkuhu hohenga atahanga</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Atahanga Tukutuku</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Whirihoranga tukuatu atahanga tukutuku</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>He pai ake ki te whakamahi i te ara pātahi ina kōkuhu atahanga</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Matapihi</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Taunoa</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Te nuku whakaroto mō ngā tūemi rārangi kōhanga. E rite ana ngā mokowā 4 ki a Obsidian me te nuinga o ētahi atu ētita</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Nuku whakaroto mokowā 4 (paerewa Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 mokowā i muri i te tohu</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 mokowā i muri i te tohu</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 mokowā i muri i te tohu</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Nuku whakaroto rārangi</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Whakaurua he rārangi wātea i waenga i ngā tūemi rārangi hou i te puna</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Ngā tūemi rārangi wātea</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Whakaatu i te momo poraka (P, H1, ...) i te taha o te kōwae o nāianei</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Tohu kōwae</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Whakakīa ngā pouaka ripanga kia hangai ngā tīwae i te puna Markdown. Whakawetohia kia poto tonu ngā ripanga (he iti ake ngā tohu mō ngā taputapu AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Whakahāngai i ngā tīwae ripanga</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Kimi aunoa mō ia kōwae</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Te ahunga kuputuhi o te ētita; he pai mō te Arapi, te Hiperu me ētahi atu reo e tuhia ana mai i te taha matau ki te maui</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Mai i te maui ki te matau</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Mai i te matau ki te maui</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Ahunga kuputuhi</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Ki te whakaweto, utaina anō mā te kore pātai mēnā kāore he huringa kāore anō kia tiakina</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Pātai i mua i te uta anō</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Mātakitaki i te kōnae tuwhera, ka whakahou ina whakarerekētia e tētahi atu papatono</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Uta anō aunoa i te huringa o waho</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Ka tuwhera ngā kōnae mai i a Explorer hei ripa i te matapihi o nāianei; ki te whakaweto ka tuwhera he matapihi hou</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Whakatuwherahia ngā kōnae ki ngā ripa</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Whakatuwherahia ngā tuhinga mai i te wāhi i mutu ai koe</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Maumahara ki te tūnga o te pointa</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Whakaorangia ngā tuhinga katoa o te wātū whakamutunga</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Waiho wātea kia hangaia ngā tuhipoka muna; me te pūkete nōu te tuhipoka</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Īmēra (kōwhiringa)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Kupuhipa</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Ka whakaputaina te tuhipoka (/s/…) kia kore ai e taea te whakatika i te hono i tiritiria</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Whakaputaina hoki he hono pānui-anake</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Tiritiria ki HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Wāhitau HedgeDoc 1.x, hei tauira https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Tūmau</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Whakamātau</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Whakamātauria te hononga</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Whakaatu i te paetaha ripa ahakoa kotahi anake te tuhinga e tuwhera ana</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Whakaatu ripa i ngā wā katoa</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Pango (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Ngā momo tāpiri mō te ētita me te HTML/PDF i kaweaketia</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>hei tauira .markdown-body h1 { color: #c00; }  , :root { --editorBgColor: #111; } rānei</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS ritenga</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>He kōnae CSS kotahi te kaupapa kei roto i te kōpaki kaupapa; tirohia docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Me pēhea te tuhi i tētahi</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>He kōnae CSS ngā kaupapa i tēnei kōpaki; ka whakamāramatia te whakatakotoranga e te tuhinga.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(kāore)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Whakatuwherahia te kōpaki kaupapa</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Utaina anō ngā kaupapa</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Kaupapa ritenga</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>hei tauira ./${filename}.assets — taurangi: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Ko tēhea whārangi ka whakaatuhia e te paepae taha ina tīmata te taupānga</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Whārangi taunoa o te paepae taha</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Tukua te aunoatanga ā-rohe</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Ka taea e ngā hōtaka e whakahaerehia ana e koe i tēnei rorohiko te pānui me te whakatika i ngā tuhinga tuwhera. Ka whakaatu te taitara matapihi ina hono tētahi.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Miramira ngā panoni nā ngā hōtaka</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Ka miramira poto i te kuputuhi i panonitia e tētahi hōtaka hono, kia kite ai koe i te mea i panoni.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Tuhia ngā hoahoa PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Ka tukuna te pūtake o te hoahoa ki plantuml.com hei tuhi</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Tukuatu mā</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Te whirihoranga tukuatu ka whakamahia mō ngā atahanga kua kōkuhuna ko Tukuatu tō rātou mahi, ā, e Kōnae &gt; Tukuatu atahanga paetata</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Kōpaki i te bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL tūmatanui</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Wāhitau momo ara (MinIO me ētahi kaiwhakarato)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Kāore i oti te whirihoranga S3: whakakīia te Endpoint, Bucket, Access Key ID me te Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Hītori tukuatu</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Kāore e tukuatuhia anō he atahanga kua tukuatuhia kētia ki te whirihoranga ōrite; ka whakamahia tōna wāhitau o mua ({0} kua maumaharatia). Ūkuia te hītori i muri i te muku i ngā kōnae kua tukuatuhia.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Tūmau PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Te wāhitau o te tūmau PlantUML (plantuml-server) e tuhi ana i ngā hoahoa. Kau: plantuml.com. Mā tōu ake tūmau, ka noho tonu te pūtake o ngā hoahoa ki a koe.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Ngā pātuhi Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim i te aratau pūtake (:w hei tiaki, :q hei kati i te ripa); j/k, gg/G, ]] me / hei neke haere i te aratau pānui. Kāore i te ētita ataata.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Whakatuwhera te kōpaki rangitaki</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Whai muri i te kaweake</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Whakaatuhia te wāhi i tiakina ai</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Huakina te kōnae</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Huakina tōna kōpaki</value>
   </data>
 </root>

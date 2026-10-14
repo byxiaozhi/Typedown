@@ -729,10 +729,6 @@
     <value>Nukuu</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Rating</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Rudia</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Kuza</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Hakuna folda iliyofunguliwa. Fungua faili au folda ili kuivinjari hapa.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Folda hii ina vipengee {0} — ni vingi mno kuorodheshwa hapa.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>Hakuna faili za Markdown katika folda hii.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Folda hii haipo tena.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Onyesha folda ya faili ya sasa</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Tafuta katika folda…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(jina la faili linalingana)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>Faili {0} zinazolingana kati ya {1} zilizotafutwa</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Inatafuta…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Skrini nzima</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Kichupo kilichotumika mwisho</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Kichupo kinachofuata</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Kichupo kilichotangulia</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Punguza kiwango cha nukuu</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Ongeza kiwango cha nukuu</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Hali ya kusoma</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Tafuta katika folda</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Shiriki kwenye HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Kunja vyote</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Panua vyote</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Bila kichwa</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Uendeshaji otomatiki umeunganishwa</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} alihariri {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Kuhariri hati hii katika hali ya kuona kunaweza kuandika upya sehemu ya HTML yake. Ili kuiacha kama ilivyo, ihariri katika hali ya chanzo.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>Michoro ya PlantUML imezimwa (kuchora hutuma chanzo kwa plantuml.com). Iwashe katika Mipangilio &gt; Kihariri.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Pakia picha za ndani</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Imehamishwa kwenda {0}</value>
   </data>
 </root>

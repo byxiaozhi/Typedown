@@ -40,6 +40,7 @@ namespace Typedown.Core.Controls
         public EditorContainer()
         {
             InitializeComponent();
+            DisabledMenuLook.Watch(Flyout);
             AddHandler(PointerMovedEvent, new PointerEventHandler(OnPointerPointerMoved), true);
             AddHandler(PointerWheelChangedEvent, new PointerEventHandler(OnPointerWheelChanged), true);
         }
@@ -47,6 +48,12 @@ namespace Typedown.Core.Controls
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             MarkdownEditorPresenter.Content = this.GetService<IMarkdownEditor>();
+            // Back in a window: the page went to the top while it had none (see EditorViewModel.EditorDetached).
+            if (Editor != null && Editor.EditorDetached)
+            {
+                Editor.EditorDetached = false;
+                Editor.RestoreScroll();
+            }
             disposables.Add(Float.WhenPropertyChanged(nameof(Float.FindReplaceDialogOpen))
                 .Cast<FloatViewModel.FindReplaceDialogState>()
                 .Subscribe(x => UpdateFindReplaceState(x, true)));
@@ -57,6 +64,7 @@ namespace Typedown.Core.Controls
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
+            if (Editor != null) Editor.EditorDetached = true;
             MarkdownEditorPresenter.Content = null;
             disposables.Clear();
             Bindings?.StopTracking();
@@ -93,26 +101,26 @@ namespace Typedown.Core.Controls
             var deferral = e.GetDeferral();
             try
             {
+                Log.Debug($"DragEnter: formats=[{string.Join(", ", e.DataView.AvailableFormats)}]");
                 if (e.DataView.Contains(StandardDataFormats.StorageItems))
                 {
                     var items = await e.DataView.GetStorageItemsAsync();
-                    if (items.Count != 1) return;
-                    var item = items.First();
-                    switch (FileTypeHelper.GetFileType(item.Path))
+                    Log.Debug($"DragEnter: {items.Count} storage item(s): {string.Join(", ", items.Select(x => x.Path))}");
+                    if (items.Any(x => FileTypeHelper.IsImageFile(x.Path)))
                     {
-                        case FileTypeHelper.FileType.Markdown:
-                            e.AcceptedOperation = DataPackageOperation.Link;
-                            e.DragUIOverride.Caption = Locale.GetString("Open");
-                            break;
-                        case FileTypeHelper.FileType.Image:
-                            e.AcceptedOperation = DataPackageOperation.Link;
-                            e.DragUIOverride.Caption = Locale.GetString("InsertImage");
-                            break;
+                        e.AcceptedOperation = DataPackageOperation.Link;
+                        e.DragUIOverride.Caption = Locale.GetString("InsertImage");
+                    }
+                    else if (items.Any(x => FileTypeHelper.IsMarkdownFile(x.Path)))
+                    {
+                        e.AcceptedOperation = DataPackageOperation.Link;
+                        e.DragUIOverride.Caption = Locale.GetString("Open");
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Debug($"DragEnter failed: {ex}");
                 e.AcceptedOperation = DataPackageOperation.None;
             }
             finally
@@ -123,18 +131,21 @@ namespace Typedown.Core.Controls
 
         private async void OnDrop(object sender, DragEventArgs e)
         {
+            Log.Debug($"Drop: formats=[{string.Join(", ", e.DataView.AvailableFormats)}]");
             if (e.DataView.Contains(StandardDataFormats.StorageItems))
             {
-                var items = await e.DataView.GetStorageItemsAsync();
-                if (items.Count != 1) return;
-                var item = items.First();
-                if (FileTypeHelper.IsMarkdownFile(item.Path))
+                try
                 {
-                    ViewModel.FileViewModel.OpenFileCommand.Execute(item.Path);
+                    var items = await e.DataView.GetStorageItemsAsync();
+                    // The pictures into this document first, in the drop's order; then the text files open.
+                    await ViewModel.EditorViewModel.InsertLocalImagesAsync(items.Select(x => x.Path).Where(FileTypeHelper.IsImageFile).ToList());
+                    foreach (var path in items.Select(x => x.Path).Where(FileTypeHelper.IsEditableTextFile))
+                        ViewModel.FileViewModel.OpenFileCommand.Execute(path);
                 }
-                if (FileTypeHelper.IsImageFile(item.Path))
+                catch (Exception ex)
                 {
-                    ViewModel.MarkdownEditor.PostMessage("InsertImage", new { src = item.Path });
+                    // async void: nothing above it would catch.
+                    Log.Debug($"Drop failed: {ex}");
                 }
             }
         }
@@ -182,5 +193,11 @@ namespace Typedown.Core.Controls
         {
             return isImageFormat && (selection["selectedImage"]?.HasValues ?? false);
         }
+
+        /// <summary>The bold/italic/... row: not in reading mode, where the page refuses every format.</summary>
+        public static bool IsLoadFormatMenu(bool formatIsEnable, bool readOnly) => formatIsEnable && !readOnly;
+
+        /// <summary>Paste as plain text: in the visual editor only (source mode has no paste-as, reading mode no paste).</summary>
+        public static Visibility IsPasteAsVisible(bool sourceCode, bool readOnly) => sourceCode || readOnly ? Visibility.Collapsed : Visibility.Visible;
     }
 }

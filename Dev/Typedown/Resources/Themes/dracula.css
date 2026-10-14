@@ -1,0 +1,59 @@
+/* Typedown theme
+ * name: Dracula
+ * base: dark
+ * accent: #bd93f9
+ * author: Typedown
+ *
+ * Shipped with Typedown. Copy this file into the themes folder and edit it there to make it your own: a file
+ * of your own with the same name takes the place of this one. See docs/custom-theme.md for the format.
+ * background: #282a36
+ * surface: #343746
+ * foreground: #f8f8f2
+ * border: #44475a
+ */
+:root {
+  --editorBgColor: #282a36;
+  --editorColor: #f8f8f2;
+  --editorColor80: rgba(248, 248, 242, .8);
+  --editorColor60: rgba(248, 248, 242, .6);
+  --editorColor50: rgba(248, 248, 242, .5);
+  --editorColor40: rgba(248, 248, 242, .4);
+  --editorColor30: rgba(248, 248, 242, .3);
+  --editorColor10: rgba(248, 248, 242, .1);
+  --editorColor04: rgba(248, 248, 242, .04);
+  --themeColor: #bd93f9;
+  --selectionColor: rgba(189, 147, 249, .22);
+  --highlightColor: rgba(241, 250, 140, .35);
+  --codeBgColor: #343746;
+  --codeBlockBgColor: #343746;
+  --footnoteBgColor: rgba(248, 248, 242, .04);
+  --inputBgColor: rgba(248, 248, 242, .1);
+  --tableBorderColor: #44475a;
+  --itemBgColor: #343746;
+  --floatBgColor: #343746;
+  --floatHoverColor: rgba(248, 248, 242, .1);
+  --floatBorderColor: rgba(248, 248, 242, .3);
+  --floatShadow: 0 2px 12px rgba(0, 0, 0, .35);
+  --maskColor: rgba(40, 42, 54, .8);
+  --iconColor: #8be9fd;
+  --deleteColor: #ff5555;
+}
+
+/* Code blocks (Prism) */
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6272a4; font-style: italic; }
+.token.keyword, .token.atrule, .token.important { color: #ff79c6; }
+.token.string, .token.char, .token.attr-value, .token.regex { color: #f1fa8c; }
+.token.number, .token.boolean, .token.constant, .token.symbol { color: #bd93f9; }
+.token.function, .token.class-name { color: #50fa7b; }
+.token.operator, .token.punctuation, .token.entity, .token.url { color: #ff79c6; }
+.token.tag, .token.selector, .token.attr-name, .token.property { color: #ff79c6; }
+
+/* Source mode (CodeMirror) */
+.CodeMirror { background: #282a36; color: #f8f8f2; }
+.CodeMirror-cursor { border-left-color: #f8f8f2; }
+.CodeMirror .cm-comment { color: #6272a4; }
+.CodeMirror .cm-header { color: #bd93f9; }
+.CodeMirror .cm-link, .CodeMirror .cm-url { color: #50fa7b; }
+.CodeMirror .cm-string { color: #f1fa8c; }
+.CodeMirror .cm-keyword { color: #ff79c6; }
+.CodeMirror .cm-quote { color: rgba(248, 248, 242, .6); }

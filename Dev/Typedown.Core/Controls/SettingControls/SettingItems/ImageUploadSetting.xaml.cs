@@ -34,10 +34,24 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
 
         private async void AddConfigItem()
         {
-            var result = await AddUploadConfigDialog.OpenAddUploadConfigDialog(XamlRoot);
-            if (result == null)
-                return;
-            await ImageUpload.AddImageUploadConfig(result.ConfigName, result.UploadMethod);
+            try
+            {
+                var result = await AddUploadConfigDialog.OpenAddUploadConfigDialog(XamlRoot);
+                if (result == null)
+                    return;
+                await ImageUpload.AddImageUploadConfig(result.ConfigName, result.UploadMethod);
+            }
+            catch (Exception ex)
+            {
+                await ShowError(ex);
+            }
+        }
+
+        // A configuration the database would not take (locked, damaged) says why, rather than ending the app.
+        private async System.Threading.Tasks.Task ShowError(Exception ex)
+        {
+            Log.WriteLocal("ImageUploadConfig", ex.ToString());
+            try { await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(XamlRoot); } catch { }
         }
 
         internal static void OnConfigItemClick(object sender, EventArgs e)
@@ -52,8 +66,15 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         private async void OnDeleteClick(object sender, RoutedEventArgs e)
         {
             var item = (sender as MenuFlyoutItem).DataContext as ImageUploadConfig;
-            if (item != null)
-                await ImageUpload.RemoveImageUploadConfig(item.Id);
+            try
+            {
+                if (item != null)
+                    await ImageUpload.RemoveImageUploadConfig(item.Id);
+            }
+            catch (Exception ex)
+            {
+                await ShowError(ex);
+            }
         }
 
         public static string GetConfigItemDescription(ImageUploadMethod method, bool isEnable)

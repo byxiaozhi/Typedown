@@ -11,7 +11,7 @@ using Typedown.Core.Models;
 using Typedown.Core.Services;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
-using Typedown.Utilities;
+using Typedown.Controls;
 
 namespace Typedown.Services
 {
@@ -29,21 +29,42 @@ namespace Typedown.Services
         {
             ViewModel = viewModel;
             FileConverter = fileConverter;
-            disposables.Add(settings.ResetSettingsCommand.OnExecute.Subscribe(async _ => await ResetDefaultConfigs()));
+            disposables.Add(settings.ResetSettingsCommand.OnExecute.Subscribe(async _ =>
+            {
+                try { await ResetDefaultConfigs(); }
+                catch (Exception ex) { Log.WriteLocal("FileExportReset", ex.ToString()); }
+            }));
             Initialize(settings);
         }
 
+        // The default configurations, written once for all windows; marked written only once they are (marked first, a
+        // failure left the database with none, never tried again).
+        private static Task seeding;
+
         private async void Initialize(SettingsViewModel settings)
         {
-            if (!settings.FileExportDatabaseInitialized)
+            try
             {
-                settings.FileExportDatabaseInitialized = true;
-                await ResetDefaultConfigs();
+                if (!settings.FileExportDatabaseInitialized)
+                {
+                    seeding ??= SeedAsync(settings);
+                    await seeding;
+                }
+                else
+                {
+                    await UpdateExportConfigs();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                await UpdateExportConfigs();
+                Log.WriteLocal("FileExportInitialize", ex.ToString());
             }
+        }
+
+        private async Task SeedAsync(SettingsViewModel settings)
+        {
+            await ResetDefaultConfigs();
+            settings.FileExportDatabaseInitialized = true;
         }
 
         private async Task ResetDefaultConfigs()
@@ -87,8 +108,9 @@ namespace Typedown.Services
                 await UpdateExportConfigs();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.WriteLocal("ExportConfigSave", ex.ToString());
                 return false;
             }
         }
@@ -107,10 +129,19 @@ namespace Typedown.Services
             ExportConfigs.UpdateCollection(newItems, (a, b) => a.Id == b.Id);
         }
 
-        public async Task Print(string basePath, string html, string documentName = null)
+        public Task Print(string basePath, string html, string documentName = null)
         {
-            using var stream = await FileConverter.HtmlToPdf(html);
-            await PrintHelper.PrintPDF(ViewModel.MainWindow, stream, documentName);
+            var preview = new PrintPreviewControl(html, documentName);
+            // The preview leaves with the print dialog; its close button stays for a dialog that never came.
+            preview.PrintDismissed += () => { if (ViewModel.UIViewModel.PrintPreviewContent == preview) ViewModel.UIViewModel.ClosePrintPreview(); };
+            preview.PrintFailed += async message =>
+            {
+                if (ViewModel.UIViewModel.PrintPreviewContent == preview) ViewModel.UIViewModel.ClosePrintPreview();
+                try { await Core.Controls.AppContentDialog.Create(Core.Utilities.Locale.GetString("Error"), message, Core.Utilities.Locale.GetString("Ok")).ShowAsync(ViewModel.XamlRoot); }
+                catch (Exception ex) { Core.Utilities.Log.Debug($"print: could not show the failure: {ex.Message}"); }
+            };
+            ViewModel.UIViewModel.ShowPrintPreview(preview, documentName);
+            return Task.CompletedTask;
         }
 
         public void Dispose()

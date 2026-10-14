@@ -133,10 +133,6 @@
     <value>درست است</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>محتوا نمی تواند خالی باشد</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>عدم ایجاد سند جدید</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>صادرات شکست خورد</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>بازخورد</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>واردات شکست خورده</value>
@@ -225,14 +217,6 @@
     <value>کلید میانبر اشغال شده است</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>ارسال کردن</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>ارسال موفقیت آمیز</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>ارسال ناموفق</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 زمان اجرا نصب نشده است</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>این سند پیش‌تر هم‌رسانی شده اما پس از آن تغییر کرده است. HedgeDoc 1.x نمی‌تواند یادداشت موجود را به‌روز کند، بنابراین بارگذاری دوباره یادداشت تازه‌ای با پیوند تازه می‌سازد.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>رونوشت پیوند</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>پیوند قابل ویرایش</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>هر کسی که این پیوند را داشته باشد می‌تواند یادداشت را ویرایش کند.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>نخست نشانی سرور HedgeDoc را در تنظیمات ← صادرات تعیین کنید.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>باز کردن در مرورگر</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>بارگذاری دوباره (پیوند تازه)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>پیوند فقط‌خواندنی</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>در HedgeDoc هم‌رسانی شد</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>سند از آخرین هم‌رسانی تغییر نکرده است؛ این‌ها پیوندهای موجود هستند.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>استفاده از پیوند پیشین</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>نگه داشتن</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>بارگیری دوباره</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>فایل روی دیسک تغییر کرده است. بارگیری دوباره تغییرات ذخیره‌نشده را از بین می‌برد.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>فایل روی دیسک تغییر کرده است. دوباره بارگیری شود؟</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>فایل روی دیسک تغییر کرده است</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>ارسال تصاویر محلی</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>در حال ارسال تصویر {0} از {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} از {1} تصویر ارسال شد. آدرس آن‌ها در سند اکنون به نسخه‌های ارسال‌شده اشاره می‌کند؛ با لغو آخرین عمل، مسیرهای محلی برمی‌گردند.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>لغو شد. {0} از {1} تصویر ارسال شد و آدرس آن‌ها در سند تغییر کرد.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>تغییر نکرد:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>این سند هیچ تصویر محلی ندارد.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>هیچ تنظیمات آپلودی انتخاب نشده است. یکی را در تنظیمات &gt; تصویر &gt; ارسال با انتخاب کنید.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>باز کردن تنظیمات</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>پرونده پیدا نشد.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>ارسال هیچ آدرسی برنگرداند.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>سند در جریان ارسال بسته شد.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>سند تغییر داده نشد. تصویر به‌صورت آنلاین در این آدرس است:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>این سند {0} تصویر محلی دارد. این‌ها پرونده‌هایی در این کمپیوتر هستند، بنابراین خوانندگان یادداشت آن‌ها را نمی‌بینند. اول ارسال شوند؟</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>اول ارسال</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>به هر حال اشتراک‌گذاری</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} مورد از آن‌ها قبلاً با همین تنظیمات ارسال شده بودند، بنابراین از آدرس‌های قبلی‌شان استفاده شد.</value>
   </data>
 </root>

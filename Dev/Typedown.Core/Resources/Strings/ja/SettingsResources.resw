@@ -137,18 +137,6 @@
     <value>フィードバックを送信する</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>連絡先</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>メール</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>お客様のフィードバックを真摯に受け止めます</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>アプリについて</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>フォントサイズ</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>エディタで使用するフォント</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>フォントファミリー</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>エディタ行の高さの倍数</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>クリップボードの画像</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>クリップボードの画像にアップロード設定を使用する</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>画像の挿入時に実行するアクション</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>ローカルの画像</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>ローカルの画像はアップロード構成を使用する</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>画像の挿入アクション</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>ネットワーク画像</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>ネットワーク画像はアップロード構成を使用する</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>画像の挿入時に相対パスを優先する</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>ウィンドウ</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>既定</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>段落ごとに自動判定</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>エディターの文字方向。アラビア語やヘブライ語など右から左に書く言語で使います</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>左から右</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>右から左</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>文字方向</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>開いているファイルを監視し、他のプログラムが変更したら読み込み直します</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>外部の変更を自動で再読み込み</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>オフの場合、未保存の変更がなければ確認せずに再読み込みします</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>再読み込み前に確認する</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>リストのインデント</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>入れ子のリスト項目に書き出すインデント。4 スペースは Obsidian や多くのエディターと同じです</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>マーカーの後に 1 スペース</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>マーカーの後に 2 スペース</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>マーカーの後に 4 スペース</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 スペースのインデント（Markdown 標準）</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>ルーズなリスト項目</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>ソース内で新しいリスト項目の間に空行を入れます</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>表の列をそろえる</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Markdown ソースで列がそろうようにセルを空白で埋めます。オフにすると表がコンパクトになります（AI ツールでのトークン数が減ります）</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>段落マーカー</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>現在の段落の横にブロックの種類（P、H1 など）を表示します</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>ブラック（OLED）</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>サイドパネルの既定ページ</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>起動時にサイドパネルが表示するページ</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>例: ./${filename}.assets — 変数: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>カーソル位置を記憶</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>文書を前回の位置から開き直します</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>カスタム CSS</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>エディターと書き出した HTML/PDF に適用する追加スタイル</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>例: .markdown-body h1 { color: #c00; } または :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>常にタブを表示</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>開いている文書が 1 つだけでもタブバーを表示します</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>ファイルをタブで開く</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>エクスプローラーから開いたファイルを現在のウィンドウのタブとして開きます。オフの場合は新しいウィンドウで開きます</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>HedgeDoc で共有</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>サーバー</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x のアドレス（例: https://md.example.com）</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>メールアドレス（任意）</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>空のままなら匿名でノートを作成します。アカウントを使うとノートは自分のものになります</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>読み取り専用リンクも公開する</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>ノートを公開（/s/…）して、共有したリンクを編集できないようにします</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>接続テスト</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>テスト</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>前回のセッションのすべての文書を復元</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>テーマの書き方</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>テーマはこのフォルダー内の CSS ファイルです。書き方は付属の文書を参照してください。</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>カスタムテーマ</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>テーマはテーマフォルダー内の CSS ファイル 1 つです。書き方は docs/custom-theme.md を参照してください</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>（なし）</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>テーマフォルダーを開く</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>テーマを再読み込み</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>ローカル自動化を許可</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>このコンピューターで実行するプログラムが、開いている文書を読み取り、編集できます。接続中はウィンドウのタイトルに表示されます。</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>プログラムによる変更を強調表示</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>接続中のプログラムが変更したテキストを一時的に強調表示し、どこが変わったかを確認できるようにします。</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>PlantUML 図を描画する</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>図のソースを plantuml.com に送信して描画します</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>アップロード先</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>動作が「画像をアップロード」の挿入画像と、ファイル &gt; ローカル画像をアップロード で使われるアップロード設定</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Bucket 内のフォルダー</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>公開 URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>パス形式のアドレス (MinIO および一部のプロバイダー)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 の設定が不完全です: Endpoint、Bucket、Access Key ID、Secret Access Key を入力してください。</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>アップロード履歴</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>同じ設定でアップロード済みの画像は再アップロードされず、以前のアドレスが使用されます (記録数: {0})。アップロードしたファイルを削除したら、履歴をクリアしてください。</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML サーバー</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>図を描画する PlantUML サーバー (plantuml-server) のアドレス。空欄: plantuml.com。自前のサーバーなら、図のソースは手元から出ません。</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim キー</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>ソースモードで Vim を使用 (:w で保存、:q でタブを閉じる)。読み取りモードでは j/k、gg/G、]]、/ で移動。ビジュアルエディターでは使えません。</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>ログ フォルダーを開く</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>エクスポート後</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>保存先を表示する</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>ファイルを開く</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>保存先のフォルダーを開く</value>
   </data>
 </root>

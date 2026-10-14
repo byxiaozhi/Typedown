@@ -31,6 +31,8 @@
         <MenuFlyoutItem x:Name="FindNextItem" Text="{u:LocaleString Key=FindNext}" Command="{x:Bind Editor.FindCommand}" CommandParameter="next"/>
         <MenuFlyoutItem x:Name="FindPreviousItem" Text="{u:LocaleString Key=FindPrevious}" Command="{x:Bind Editor.FindCommand}" CommandParameter="prev"/>
         <MenuFlyoutSeparator/>
+        <MenuFlyoutItem x:Name="SearchInFolderItem" Text="{u:LocaleString Key=SearchInFolder}" Command="{x:Bind ViewModel.UIViewModel.SearchInFolderCommand}"/>
+        <MenuFlyoutSeparator/>
         <MenuFlyoutItem x:Name="ReplaceItem" Text="{u:LocaleString Key=Replace}" Command="{x:Bind Float.SearchCommand}" CommandParameter="{x:Bind OpenReplace}"/>
     </MenuFlyoutSubItem>
 </local:MenuBarItemBase>

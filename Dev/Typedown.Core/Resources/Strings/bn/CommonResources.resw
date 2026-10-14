@@ -729,10 +729,6 @@
     <value>উদ্ধৃতি</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>রেটিং</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>পুনঃকরণ</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>দৃশ্যমান</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>কোনো ফোল্ডার খোলা নেই। এখানে ব্রাউজ করতে একটি ফাইল বা ফোল্ডার খুলুন।</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>এই ফোল্ডারে {0}টি আইটেম আছে — এখানে তালিকাভুক্ত করার জন্য অনেক বেশি।</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>এই ফোল্ডারে কোনো Markdown ফাইল নেই।</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>এই ফোল্ডারটি আর নেই।</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>বর্তমান ফাইলের ফোল্ডার দেখান</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>ফোল্ডারে খুঁজুন…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(ফাইলের নাম মিলেছে)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>অনুসন্ধান করা {1}টি ফাইলের মধ্যে {0}টি মিলেছে</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>খোঁজা হচ্ছে…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>পূর্ণ পর্দা</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>সর্বশেষ ব্যবহৃত ট্যাব</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>পরবর্তী ট্যাব</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>পূর্ববর্তী ট্যাব</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>উদ্ধৃতির স্তর কমান</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>উদ্ধৃতির স্তর বাড়ান</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>পঠন মোড</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>ফোল্ডারে খুঁজুন</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>HedgeDoc-এ ভাগ করুন…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>সব সংকুচিত করুন</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>সব প্রসারিত করুন</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>শিরোনামহীন</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>স্বয়ংক্রিয়তা সংযুক্ত</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} {1} সম্পাদনা করেছে</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>ভিজ্যুয়াল মোডে এই নথি সম্পাদনা করলে এর কিছু HTML পুনর্লিখিত হতে পারে। হুবহু রাখতে সোর্স মোডে সম্পাদনা করুন।</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>PlantUML ডায়াগ্রাম বন্ধ আছে (আঁকতে উৎস plantuml.com-এ পাঠানো হয়)। সেটিংস &gt; এডিটর থেকে চালু করুন।</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>লোকাল ছবি আপলোড করুন</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>{0}-এ রপ্তানি করা হয়েছে</value>
   </data>
 </root>

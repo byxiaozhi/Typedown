@@ -1,0 +1,473 @@
+name: Build
+
+# A repository whose variable BUILD_ON_PUSH is 'false' (both editions) builds on a version tag, when run by hand
+# (Actions > Build > Run workflow), for a pull request, or for a push whose last commit message says [ci] - not on
+# every push to a branch. The variable is a repository setting, so this file stays the same in every edition.
+on:
+  push:
+    branches: [ main, integrate-upstream-prs ]
+    tags: [ 'v*' ]
+    # Docs, issue templates, and the standalone theme designer never need an application build.
+    paths-ignore: [ '**.md', '.github/ISSUE_TEMPLATE/**', '.github/workflows/pages.yml', 'Tools/Themes/**' ]
+  pull_request:
+    paths-ignore: [ '**.md', '.github/ISSUE_TEMPLATE/**', '.github/workflows/pages.yml', 'Tools/Themes/**' ]
+  workflow_dispatch:
+
+# Read only, but for the job that publishes the release.
+permissions:
+  contents: read
+
+jobs:
+  strings:
+    name: Check translations
+    if: github.event_name != 'push' || github.ref_type == 'tag' || vars.BUILD_ON_PUSH != 'false' || contains(github.event.head_commit.message, '[ci]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # A key a language does not have falls back to English, so a gap is invisible until someone sees one
+      # English line in the middle of their own language. This is what makes it fail before that.
+      - run: python3 Tools/Translations/check.py --strict
+
+  brand:
+    name: Check brand names
+    if: github.event_name != 'push' || github.ref_type == 'tag' || vars.BUILD_ON_PUSH != 'false' || contains(github.event.head_commit.message, '[ci]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # The product's names come from the brand files only (Tools/Branding/check-brand.py).
+      - run: python3 Tools/Branding/check-brand.py
+      # The case, test.* method and editor check lists of docs/testing.md come from the code (Tools/Docs/testing-index.py).
+      - run: python3 Tools/Docs/testing-index.py
+      # An edition that keeps a case list of its own (docs/edition-testing.md) checks it the same way.
+      - run: if [ -f Tools/Docs/edition-testing-index.py ]; then python3 Tools/Docs/edition-testing-index.py; fi
+
+  reliability:
+    name: Test persistence and packaging
+    if: github.event_name != 'push' || github.ref_type == 'tag' || vars.BUILD_ON_PUSH != 'false' || contains(github.event.head_commit.message, '[ci]')
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Run reliability tests
+        run: dotnet test Tests/Typedown.ReliabilityTests/Typedown.ReliabilityTests.csproj --configuration Release --results-directory Tests/Typedown.ReliabilityTests/TestResults --logger "trx;LogFileName=reliability.trx"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reliability-test-results
+          path: Tests/Typedown.ReliabilityTests/TestResults/reliability.trx
+          if-no-files-found: error
+          retention-days: 1
+
+  editor:
+    name: Build editor (JS)
+    # A release pushes the version bump to main and then the tag, which used to start the same build twice.
+    # The tag run is the one that publishes, so the branch run for a version commit is skipped. The explicit
+    # marker is for infrastructure-only commits that must update this workflow without rebuilding the app.
+    # Tags always build, even if their target commit contains the marker.
+    if: (github.event_name != 'push' || github.ref_type == 'tag' || vars.BUILD_ON_PUSH != 'false' || contains(github.event.head_commit.message, '[ci]')) && (github.ref_type == 'tag' || (!startsWith(github.event.head_commit.message, 'Version ') && !contains(github.event.head_commit.message, '[skip app build]')))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: yarn
+          cache-dependency-path: Dev/Typedown.Editor/yarn.lock
+
+      - name: yarn install
+        working-directory: Dev/Typedown.Editor
+        run: yarn install --frozen-lockfile --network-timeout 600000
+
+      - name: Test editor
+        working-directory: Dev/Typedown.Editor
+        env:
+          CI: 'true'
+        run: yarn test --watchAll=false --runInBand
+
+      - name: yarn build
+        working-directory: Dev/Typedown.Editor
+        env:
+          CI: 'false'
+          GENERATE_SOURCEMAP: 'false'
+        run: yarn build
+
+      # These exercise the built application in Chrome. They caught source rewriting and parser-boundary bugs
+      # that unit tests cannot see because those bugs only appear while loading and switching editor modes.
+      - name: Test editor integration
+        working-directory: Tools/EditorBench
+        env:
+          NODE_PATH: ${{ github.workspace }}/Dev/Typedown.Editor/node_modules
+        run: |
+          export CHROME="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -x "$CHROME"
+          node handshake-check.js
+          node reading-source-check.js
+          node mermaid-lazy-check.js
+          node mermaid-edit-check.js
+          node mermaid-typed-check.js
+          node security-check.js
+          node reading-copy-check.js
+          node paste-web-check.js
+          node export-mermaid-error-check.js
+          node renderer-failure-check.js
+          node spec-check.js
+          node link-image-check.js
+          node remote-image-check.js
+          node diagram-picture-check.js
+          node table-backspace-check.js
+          node xhtml-footnote-check.js
+          node export-anchors-check.js
+          node wordcount-mode-check.js
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: editor-statics
+          path: Dev/Typedown/Resources/Statics/
+          if-no-files-found: error
+          retention-days: 1
+
+  app:
+    name: Build app (${{ matrix.platform }})
+    needs: [strings, brand, editor, reliability]
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ x64, ARM64 ]
+    env:
+      Configuration: Release
+      Platform: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: editor-statics
+          path: Dev/Typedown/Resources/Statics/
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '3.1.x'
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - name: Read version
+        id: ver
+        shell: pwsh
+        run: |
+          $v = ([xml](Get-Content Dev/Typedown/Typedown.csproj)).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1
+          "version=$v" >> $env:GITHUB_OUTPUT
+          "arch=$('${{ matrix.platform }}'.ToLower())" >> $env:GITHUB_OUTPUT
+          Write-Host "Version: $v"
+
+      - name: Validate release versions
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: |
+          $version = "${{ steps.ver.outputs.version }}"
+          $tag = "${{ github.ref_name }}"
+          if ($tag -notmatch ("^v" + [regex]::Escape($version) + "(?:-|$)")) {
+            throw "release tag $tag does not match project version $version"
+          }
+          $fourPart = "$version.0"
+          $manifest = ([xml](Get-Content Tools/Typedown.Package/Package.appxmanifest)).Package.Identity.Version
+          if ($manifest -ne $fourPart) { throw "MSIX version $manifest does not match $fourPart" }
+          $assembly = Get-Content Dev/Typedown.Core/Properties/AssemblyInfo.cs -Raw
+          if (-not $assembly.Contains("AssemblyVersion(`"$fourPart`")") -or -not $assembly.Contains("AssemblyFileVersion(`"$fourPart`")")) {
+            throw "Typedown.Core assembly versions do not match $fourPart"
+          }
+          $installer = Get-Content Tools/Installer/Typedown.iss -Raw
+          if (-not $installer.Contains("#define MyAppVersion `"$version`"")) {
+            throw "installer version does not match $version"
+          }
+          Write-Host "Release versions agree: $tag / $version / $fourPart"
+
+      - name: Stamp build label
+        shell: pwsh
+        run: |
+          $stableRelease = "${{ github.ref_type }}" -eq "tag" -and "${{ github.ref_name }}" -notmatch "-"
+          $label = if ($stableRelease) { "" } else { "test.$env:GITHUB_RUN_NUMBER.$env:GITHUB_RUN_ATTEMPT+$($env:GITHUB_SHA.Substring(0, 8))" }
+          $path = "Dev/Typedown.Core/Config.cs"
+          $source = Get-Content $path -Raw
+          $pattern = 'public const string TestBuild = "[^"]*";'
+          if ($source -notmatch $pattern) { throw "TestBuild declaration not found" }
+          $source = $source -replace $pattern, "public const string TestBuild = `"$label`";"
+          Set-Content $path $source -Encoding utf8
+          Write-Host $(if ($label) { "Test build: $label" } else { "Stable release: no test label" })
+
+      # Uses the repo's signing certificate (secrets TYPEDOWN_PFX_BASE64 / TYPEDOWN_PFX_PASSWORD) when present,
+      # otherwise a throwaway self-signed one. The subject must match Package.appxmanifest's Publisher.
+      - name: Prepare signing certificate
+        id: cert
+        shell: pwsh
+        env:
+          PFX_BASE64: ${{ secrets.TYPEDOWN_PFX_BASE64 }}
+          PFX_PASSWORD: ${{ secrets.TYPEDOWN_PFX_PASSWORD }}
+        run: |
+          $pfx = Join-Path $env:RUNNER_TEMP "Typedown_Signing.pfx"
+          $cer = Join-Path $env:RUNNER_TEMP "Typedown_Signing.cer"
+          if ($env:PFX_BASE64) {
+            [IO.File]::WriteAllBytes($pfx, [Convert]::FromBase64String($env:PFX_BASE64))
+            $password = $env:PFX_PASSWORD
+            $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($pfx, $password)
+            [IO.File]::WriteAllBytes($cer, $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert))
+            Write-Host "Using repository signing certificate: $($cert.Subject)"
+          } else {
+            $publisher = ([xml](Get-Content Tools/Typedown.Package/Package.appxmanifest)).Package.Identity.Publisher
+            $cert = New-SelfSignedCertificate -Type Custom -Subject $publisher -KeyUsage DigitalSignature `
+              -FriendlyName "Typedown CI" -CertStoreLocation "Cert:\CurrentUser\My" `
+              -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3", "2.5.29.19={text}")
+            $password = "ci"
+            Export-PfxCertificate -Cert $cert -FilePath $pfx -Password (ConvertTo-SecureString $password -Force -AsPlainText) | Out-Null
+            Export-Certificate -Cert $cert -FilePath $cer | Out-Null
+            Write-Host "No TYPEDOWN_PFX_BASE64 secret; using a throwaway self-signed certificate"
+          }
+          "pfx=$pfx" >> $env:GITHUB_OUTPUT
+          "cer=$cer" >> $env:GITHUB_OUTPUT
+          "password=$password" >> $env:GITHUB_OUTPUT
+
+      # Whether this edition makes a Store upload too (Branding.props).
+      - name: Brand
+        id: brand
+        shell: pwsh
+        run: |
+          $brand = ([xml](Get-Content Branding.props)).Project.PropertyGroup
+          "store=$($brand.BrandStoreUpload)" >> $env:GITHUB_OUTPUT
+
+      - name: Restore
+        run: >
+          msbuild Tools/Typedown.Package/Typedown.Package.wapproj /t:Restore /m
+          /p:Configuration=${{ env.Configuration }} /p:Platform=${{ env.Platform }}
+
+      - name: Build MSIX
+        id: build
+        continue-on-error: true
+        run: >
+          msbuild Tools/Typedown.Package/Typedown.Package.wapproj /m
+          /p:Configuration=${{ env.Configuration }} /p:Platform=${{ env.Platform }}
+          /p:AppxBundle=Never
+          /p:UapAppxPackageBuildMode=SideloadOnly
+          /p:AppxPackageSigningEnabled=true
+          /p:PackageCertificateKeyFile=${{ steps.cert.outputs.pfx }}
+          /p:PackageCertificatePassword=${{ steps.cert.outputs.password }}
+          /p:AppxPackageDir=${{ github.workspace }}\AppxPackages\
+
+      # The Microsoft Store upload: the same package, unsigned (the Store signs it), as .msixupload with its symbols.
+      - name: Build Store upload
+        if: steps.brand.outputs.store == 'true' && steps.build.outcome == 'success'
+        run: >
+          msbuild Tools/Typedown.Package/Typedown.Package.wapproj /m
+          /p:Configuration=${{ env.Configuration }} /p:Platform=${{ env.Platform }}
+          /p:AppxBundle=Never
+          /p:UapAppxPackageBuildMode=StoreUpload
+          /p:AppxPackageSigningEnabled=false
+          /p:AppxPackageDir=${{ github.workspace }}\StoreUpload\
+
+      # MSBuild names it <name>.msixupload whatever the platform: version and platform in the name, so the two
+      # platforms' uploads do not overwrite each other where they are downloaded.
+      - name: Name the Store upload
+        if: steps.brand.outputs.store == 'true' && steps.build.outcome == 'success'
+        shell: pwsh
+        run: |
+          $upload = Get-ChildItem StoreUpload -Filter *.msixupload | Select-Object -First 1
+          if (-not $upload) { throw "no .msixupload in StoreUpload" }
+          Rename-Item $upload.FullName ("{0}_{1}_{2}.msixupload" -f $upload.BaseName, "${{ steps.ver.outputs.version }}", "${{ steps.ver.outputs.arch }}")
+          Get-ChildItem StoreUpload -Filter *.msixupload | ForEach-Object { "$($_.Name)  $($_.Length) bytes" }
+
+      - uses: actions/upload-artifact@v4
+        if: steps.brand.outputs.store == 'true' && steps.build.outcome == 'success'
+        with:
+          name: store-upload-${{ env.Platform }}
+          path: StoreUpload/*.msixupload
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+
+      - name: Diagnose MakeAppx failure
+        if: steps.build.outcome == 'failure'
+        shell: pwsh
+        run: |
+          $map = "Tools/Typedown.Package/obj/${{ env.Platform }}/${{ env.Configuration }}/package.map.txt"
+          if (Test-Path $map) {
+            Write-Host "===== package.map.txt ====="; Get-Content $map
+            $makeappx = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe"
+            Push-Location Tools/Typedown.Package
+            & $makeappx pack /v /l /h sha256 /f "obj/${{ env.Platform }}/${{ env.Configuration }}/package.map.txt" /o /p "$env:RUNNER_TEMP\diag.msix"
+            Pop-Location
+          } else { Write-Host "no package.map.txt" ; Get-ChildItem -Recurse Tools/Typedown.Package/obj | Select-Object -First 50 }
+          exit 1
+
+      # The wapproj already published a self-contained app layout; reuse it for the unpackaged installer and portable zip.
+      - name: Locate published app
+        id: pub
+        shell: pwsh
+        run: |
+          $dir = Get-ChildItem Dev/Typedown/bin -Recurse -Directory -Filter msixpublish | Select-Object -First 1
+          if (-not $dir) { throw "msixpublish folder not found" }
+          # The edition's names (Branding.props).
+          $brand = ([xml](Get-Content Branding.props)).Project.PropertyGroup
+          "exe=$($brand.BrandExeName).exe" >> $env:GITHUB_OUTPUT
+          "name=$($brand.BrandName)" >> $env:GITHUB_OUTPUT
+          foreach ($f in "$($brand.BrandExeName).exe","Microsoft.UI.Xaml.dll","Microsoft.Graphics.Canvas.dll","msvcp140_app.dll","vcruntime140_app.dll","e_sqlite3.dll","Resources\Statics\index.html") {
+            if (-not (Test-Path (Join-Path $dir.FullName $f))) { throw "$f missing in $($dir.FullName)" }
+          }
+          $arch = "${{ steps.ver.outputs.arch }}"
+          if (-not ((Test-Path "$($dir.FullName)\WebView2Loader.dll") -or (Test-Path "$($dir.FullName)\runtimes\win-$arch\native\WebView2Loader.dll"))) { throw "WebView2Loader.dll missing" }
+          "dir=$($dir.FullName)" >> $env:GITHUB_OUTPUT
+          Write-Host "Published app: $($dir.FullName)"
+
+      - name: Sign the app's exe
+        shell: pwsh
+        run: |
+          $signtool = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\signtool.exe"
+          & $signtool sign /fd SHA256 /f "${{ steps.cert.outputs.pfx }}" /p "${{ steps.cert.outputs.password }}" "${{ steps.pub.outputs.dir }}\${{ steps.pub.outputs.exe }}"
+
+      - name: Build installer (Inno Setup) and portable zip
+        shell: pwsh
+        run: |
+          $ver = "${{ steps.ver.outputs.version }}"
+          $pub = "${{ steps.pub.outputs.dir }}"
+          New-Item -ItemType Directory -Force out, out-installer | Out-Null
+          $arch = "${{ steps.ver.outputs.arch }}"
+          ./Tools/Installer/assert-application-build.ps1 -Path $pub
+          # The app folder the installer and the portable zip carry: the published app plus the CLI (on the
+          # app's runtime) and the automation documents.
+          New-Item -ItemType Directory -Force Tools/Installer/publish | Out-Null
+          Copy-Item "$pub\*" Tools/Installer/publish -Recurse -Force
+          ./Tools/Installer/add-cli.ps1 -AppFolder Tools/Installer/publish -RuntimeIdentifier "win10-$arch"
+          ./Tools/Installer/assert-application-build.ps1 -Path Tools/Installer/publish
+          # The portable zip is only produced for releases; day-to-day test artifacts stay small.
+          if ("${{ github.ref }}".StartsWith("refs/tags/")) {
+            Compress-Archive -Path "Tools/Installer/publish\*" -DestinationPath "out\${{ steps.pub.outputs.name }}-portable-$arch-v$ver.zip" -CompressionLevel Optimal
+          }
+          # installer
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          & $iscc /DMyAppVersion=$ver /DMyArch=$arch Tools/Installer/Typedown.iss
+          $setup = Get-ChildItem Tools/Installer/Output/*.exe | Select-Object -First 1
+          $signtool = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\signtool.exe"
+          & $signtool sign /fd SHA256 /f "${{ steps.cert.outputs.pfx }}" /p "${{ steps.cert.outputs.password }}" $setup.FullName
+          Copy-Item $setup.FullName out
+          Copy-Item $setup.FullName out-installer
+
+      - name: Collect MSIX
+        shell: pwsh
+        run: |
+          # Named by version and platform: MSBuild names the package after the product alone, so the x64 and ARM64
+          # packages had the same name and the release kept only one of them.
+          Get-ChildItem AppxPackages -Recurse -Include *.msix,*.msixbundle | ForEach-Object {
+            Copy-Item $_.FullName ("out\{0}_{1}_{2}{3}" -f "${{ steps.pub.outputs.name }}", "${{ steps.ver.outputs.version }}", "${{ env.Platform }}", $_.Extension)
+          }
+          Copy-Item "${{ steps.cert.outputs.cer }}" out/${{ steps.pub.outputs.name }}-signing-certificate.cer
+          Get-ChildItem out
+
+      # Small artifact for everyday testing: just the installer.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Typedown-installer-${{ steps.ver.outputs.arch }}
+          path: out-installer/
+          compression-level: 0
+          retention-days: 1
+
+      # Full set (installer, MSIX, certificate, portable zip) only on release tags; feeds the release job.
+      - uses: actions/upload-artifact@v4
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: Typedown-${{ steps.ver.outputs.arch }}
+          path: out/
+          compression-level: 0
+          retention-days: 1
+
+  release:
+    name: Publish GitHub Release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: app
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # Only for the edition's names (Branding.props).
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: Branding.props
+          sparse-checkout-cone-mode: false
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Typedown-x64
+          merge-multiple: true
+          path: dist
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Typedown-arm64
+          merge-multiple: true
+          path: dist
+      # The Microsoft Store uploads (an edition that is in the Store only): in the release, beside the other files,
+      # instead of only in the run's artifacts.
+      - uses: actions/download-artifact@v4
+        continue-on-error: true # an edition that is not in the Store has none
+        with:
+          pattern: store-upload-*
+          merge-multiple: true
+          path: dist
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls -la dist
+          name=$(sed -n 's:.*<BrandName>\(.*\)</BrandName>.*:\1:p' Branding.props)
+          exe=$(sed -n 's:.*<BrandExeName>\(.*\)</BrandExeName>.*:\1:p' Branding.props)
+          # The user guide beside the downloads: the copy in the portable zip, which add-cli.ps1 has given the
+          # edition's names.
+          python3 - dist/"$name"-portable-x64-v*.zip "dist/$name-guide-zh-CN.md" <<'PY'
+          import sys, zipfile
+          z = zipfile.ZipFile(sys.argv[1])
+          names = [n for n in z.namelist() if n.replace("\\", "/").lower() == "docs/user-guide.md"]
+          if not names:
+              sys.exit("no docs/user-guide.md in " + sys.argv[1])
+          open(sys.argv[2], "wb").write(z.read(names[0]))
+          PY
+          # Release notes = the annotated tag's message (what changed) + the file table below.
+          ref=$(gh api "repos/${{ github.repository }}/git/refs/tags/${{ github.ref_name }}")
+          if [ "$(jq -r .object.type <<<"$ref")" = "tag" ]; then
+            gh api "repos/${{ github.repository }}/git/tags/$(jq -r .object.sha <<<"$ref")" -q .message | sed "1{/^$name /d}" > notes.md
+            printf '\n---\n\n' >> notes.md
+          else
+            : > notes.md
+          fi
+          cat >> notes.md <<'MD'
+          Built by GitHub Actions from tag `${{ github.ref_name }}`.
+
+          | File | What it is |
+          |---|---|
+          | `@NAME@-windows-x64-v*.exe` / `-arm64-` | Installer (Inno Setup) for x64 / ARM64 Windows. Installs WebView2 Runtime if missing, registers `.md` associations. |
+          | `@NAME@-portable-x64-v*.zip` / `-arm64-` | Portable build – unzip and run `@EXE@.exe`. |
+          | `@NAME@_*_x64.msix` / `_ARM64.msix` | MSIX packages for sideloading. |
+          | `@NAME@-guide-zh-CN.md` | User guide (Simplified Chinese): files, modes, shortcuts, pictures and picture upload, themes, export. Also in the app folder as `docs\user-guide.md`. |
+          | `@NAME@-signing-certificate.cer` | Self-signed certificate used to sign the above. To install the MSIX, first import this into **Local Machine → Trusted People** (or Trusted Root). The .exe/.zip run without it (SmartScreen may warn). |
+          MD
+          if compgen -G "dist/*.msixupload" >/dev/null; then
+            echo '| `*_x64.msixupload` / `*_arm64.msixupload` | Microsoft Store upload (unsigned, with symbols): submit both in Partner Center. |' >> notes.md
+          fi
+          sed -i "s/@NAME@/$name/g; s/@EXE@/$exe/g" notes.md
+          # A tag with a suffix (v1.2.24-test.1) publishes as a pre-release, so "Latest" keeps pointing at the
+          # last stable build while a fix is being tried out.
+          prerelease=""
+          case "${{ github.ref_name }}" in *-*) prerelease="--prerelease";; esac
+          # Re-pushing a tag replaces the existing release in place (notes + assets) instead of failing.
+          if gh release view "${{ github.ref_name }}" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            gh release edit "${{ github.ref_name }}" --repo "${{ github.repository }}" \
+              --title "$name ${{ github.ref_name }}" --notes-file notes.md ${prerelease:+--prerelease}
+            gh release upload "${{ github.ref_name }}" dist/* --repo "${{ github.repository }}" --clobber
+          else
+            gh release create "${{ github.ref_name }}" dist/* \
+              --repo "${{ github.repository }}" \
+              --title "$name ${{ github.ref_name }}" \
+              --notes-file notes.md $prerelease
+          fi

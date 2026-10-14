@@ -21,12 +21,23 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             OSSConfigModel = ImageUploadConfig.LoadUploadConfig() as OSSConfigModel;
+            // Stored as typed, as the PowerShell page does: Test upload reads the configuration, not this page.
+            OSSConfigModel.PropertyChanged += OnOSSConfigModelPropertyChanged;
+        }
+
+        private void OnOSSConfigModelPropertyChanged(object sender, global::System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            ImageUploadConfig.StoreUploadConfig(OSSConfigModel);
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            ImageUploadConfig.StoreUploadConfig(OSSConfigModel);
-             Bindings?.StopTracking();
+            if (OSSConfigModel != null)
+            {
+                OSSConfigModel.PropertyChanged -= OnOSSConfigModelPropertyChanged;
+                ImageUploadConfig.StoreUploadConfig(OSSConfigModel);
+            }
+            Bindings?.StopTracking();
         }
     }
 }

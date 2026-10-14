@@ -21,6 +21,10 @@ const deleteCtrl = ContentState => {
     if (!start || !end) {
       return
     }
+
+    if (this.deleteSelectionInCell(event, start, end)) {
+      return
+    }
     const startBlock = this.getBlock(start.key)
     const nextBlock = this.findNextBlockInLocation(startBlock)
 
@@ -47,6 +51,11 @@ const deleteCtrl = ContentState => {
       start.offset === text.length
     ) {
       event?.preventDefault()
+      // Each table cell is a block of its own, so merging one into the next would take a cell off the row and
+      // leave the table short a column. A forward delete at the end of a cell does nothing instead.
+      if (startBlock.functionType === 'cellContent' || nextBlock?.functionType === 'cellContent') {
+        return
+      }
       if (nextBlock && /h\d|span/.test(nextBlock.type)) {
         // if cursor at the end of code block-language input, do nothing!
         if (nextBlock.functionType === 'codeContent' && startBlock.functionType === 'languageInput') {

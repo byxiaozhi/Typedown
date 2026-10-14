@@ -133,10 +133,6 @@
     <value>TAMAM</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>İçerik boş olamaz</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Yeni belge oluşturulamadı</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Dışa aktarma başarısız oldu</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Geri besleme</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>İçe aktarma başarısız oldu</value>
@@ -225,14 +217,6 @@
     <value>Kısayol tuşu dolu</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Gönder</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Gönderim başarılı</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Yükleme başarısız oldu</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime Yüklü Değil</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Bu belge daha önce paylaşıldı ama o zamandan beri değişti. HedgeDoc 1.x mevcut bir notu güncelleyemez, bu yüzden yeniden yükleme yeni bağlantılı yeni bir not oluşturur.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Bağlantıyı kopyala</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Düzenlenebilir bağlantı</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Bu bağlantıya sahip herkes notu düzenleyebilir.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Önce Ayarlar → Dışa Aktar bölümünde HedgeDoc sunucu adresini ayarlayın.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Tarayıcıda aç</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Yeniden yükle (yeni bağlantı)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Salt okunur bağlantı</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc'ta paylaşıldı</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Belge son paylaşımdan bu yana değişmedi; mevcut bağlantılar şunlar.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Önceki bağlantıyı kullan</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Koru</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Yeniden yükle</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Dosya diskte değişti. Yeniden yüklemek kaydedilmemiş değişiklikleri siler.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Dosya diskte değişti. Yeniden yüklensin mi?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Dosya diskte değişti</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Yerel resimleri yükle</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Resim yükleniyor: {0}/{1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1} resimden {0} tanesi yüklendi. Belgedeki adresleri artık yüklenen kopyaları gösteriyor; Geri al yerel yolları geri getirir.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>İptal edildi. {1} resimden {0} tanesi yüklendi ve belgedeki adresleri değiştirildi.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Değiştirilmedi:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Bu belgede yerel resim yok.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Hiçbir yükleme yapılandırması seçilmedi. Ayarlar &gt; Resim &gt; Şununla yükle bölümünden birini seçin.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Ayarları aç</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Dosya bulunamadı.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Yükleme bir adres döndürmedi.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Yükleme sırasında belge kapatıldı.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Belge değiştirilemedi. Resim şu adreste çevrimiçi:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Bu belgede {0} yerel resim var. Bunlar bu bilgisayardaki dosyalar olduğundan notu okuyanlar onları göremez. Önce yüklensin mi?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Önce yükle</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Yine de paylaş</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>Bunlardan {0} tanesi bu yapılandırmayla daha önce yüklenmişti, bu yüzden önceki adresleri kullanıldı.</value>
   </data>
 </root>

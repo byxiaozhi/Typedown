@@ -9,6 +9,9 @@ class Tooltip {
   }
 
   mouseOver(event) {
+    // Not from an editor that is only being kept in memory: it would report a tooltip to the host for a
+    // document nobody is looking at.
+    if (!this.muya.container.isConnected) return
     const { target } = event
     const toolTipTarget = target.closest('[data-tooltip]')
     if (toolTipTarget && !this.cache.has(toolTipTarget)) {

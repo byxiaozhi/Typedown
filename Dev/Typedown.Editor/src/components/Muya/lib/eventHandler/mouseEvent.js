@@ -20,6 +20,9 @@ class MouseEvent {
 
       if (
         !hideLinkPopup &&
+        // the link popup offers edit/unlink, so it stays out of reading mode (the footnote preview below is
+        // read-only and remains)
+        !this.muya.options.readOnly &&
         parent &&
         parent.tagName === 'A' &&
         parent.classList.contains('ag-inline-rule') &&
@@ -81,6 +84,10 @@ class MouseEvent {
     const { container, eventCenter, contentState } = this.muya
     const handler = event => {
       const target = event.target
+      // Dragging rows/columns and selecting cells are edits; reading mode leaves the native text selection alone.
+      if (this.muya.options.readOnly) {
+        return
+      }
       if (target.classList && target.classList.contains('ag-drag-handler')) {
         contentState.handleMouseDown(event)
       } else if (target && target.closest('tr')) {

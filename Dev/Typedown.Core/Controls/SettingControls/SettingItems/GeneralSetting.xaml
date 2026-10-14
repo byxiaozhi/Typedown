@@ -24,7 +24,7 @@
             </controls:ExpanderSettingItem.Icon>
             <StackPanel>
                 <controls:NormalSettingItem Title="{u:LocaleString Key=File}">
-                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.FileStartupActions}" SelectedItem="{Binding SettingsViewModel.FileStartupAction, Mode=TwoWay}">
+                    <ComboBox MinWidth="200" AutomationProperties.AutomationId="FileStartupAction" ItemsSource="{x:Bind enums:Enumerable.FileStartupActions}" SelectedItem="{Binding SettingsViewModel.FileStartupAction, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <controls:EnumNameBlock Value="{Binding}"/>
@@ -33,7 +33,7 @@
                     </ComboBox>
                 </controls:NormalSettingItem>
                 <controls:NormalSettingItem Title="{u:LocaleString Key=Folder}" BorderBrush="{ThemeResource CardStrokeColorDefault}" BorderThickness="0,1,0,0">
-                    <ComboBox MinWidth="200" ItemsSource="{x:Bind enums:Enumerable.FolderStartupActions}" SelectedItem="{Binding SettingsViewModel.FolderStartupAction, Mode=TwoWay}">
+                    <ComboBox MinWidth="200" AutomationProperties.AutomationId="FolderStartupAction" ItemsSource="{x:Bind enums:Enumerable.FolderStartupActions}" SelectedItem="{Binding SettingsViewModel.FolderStartupAction, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <controls:EnumNameBlock Value="{Binding}"/>
@@ -66,11 +66,51 @@
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.AutoSave, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.RememberCursorPosition.Title}" Description="{u:LocaleString Key=General.RememberCursorPosition.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8ac;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.RememberCursorPosition, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.AutoReload.Title}" Description="{u:LocaleString Key=General.AutoReload.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe72c;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.AutoReload, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem
+            x:Name="AskBeforeReloadItem"
+            x:Load="{x:Bind Settings.AutoReload, Mode=OneWay}"
+            Title="{u:LocaleString Key=General.AskBeforeReload.Title}"
+            Description="{u:LocaleString Key=General.AskBeforeReload.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8bd;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.AskBeforeReload, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.OpenFilesInNewTab.Title}" Description="{u:LocaleString Key=General.OpenFilesInNewTab.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe8a5;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.OpenFilesInNewTab, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="{u:LocaleString Key=General.KeepRun.Title}" Description="{u:LocaleString Key=General.KeepRun.Description}">
             <controls:NormalSettingItem.Icon>
                 <FontIcon Glyph="&#xe945;"/>
             </controls:NormalSettingItem.Icon>
             <ToggleSwitch IsOn="{x:Bind Settings.KeepRun, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.LocalAutomation.Title}" Description="{u:LocaleString Key=General.LocalAutomation.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe943;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.AllowLocalAutomation, Mode=TwoWay}"/>
+        </controls:NormalSettingItem>
+        <controls:NormalSettingItem Title="{u:LocaleString Key=General.HighlightAutomationChanges.Title}" Description="{u:LocaleString Key=General.HighlightAutomationChanges.Description}">
+            <controls:NormalSettingItem.Icon>
+                <FontIcon Glyph="&#xe7e6;"/>
+            </controls:NormalSettingItem.Icon>
+            <ToggleSwitch IsOn="{x:Bind Settings.HighlightAutomationChanges, Mode=TwoWay}"/>
         </controls:NormalSettingItem>
         <controls:NormalSettingItem Title="{u:LocaleString Key=General.Language.Title}" Description="{u:LocaleString Key=General.Language.Description}" HorizontalActionAlignment="Stretch">
             <controls:NormalSettingItem.Icon>
@@ -81,16 +121,6 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock 
-                    TextWrapping="Wrap" 
-                    HorizontalAlignment="Right" 
-                    VerticalAlignment="Center" 
-                    Margin="0,0,16,0" 
-                    x:Name="LangChangedTextBlock" 
-                    Text="{u:LocaleString Key=RestartAppIsRequireForChangesToTakeEffect}" 
-                    FontSize="14" 
-                    Foreground="{ThemeResource SystemErrorTextColor}" 
-                    x:Load="{x:Bind IsLangChanged(Settings.Language), Mode=OneWay}"/>
                 <ComboBox Grid.Column="1" VerticalAlignment="Center" ItemsSource="{x:Bind utils:Locale.LangsOptions.Keys}" Width="200" SelectedItem="{Binding SettingsViewModel.Language, Mode=TwoWay}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate x:DataType="x:String">

@@ -137,18 +137,6 @@
     <value>பின்னூட்டம் அனுப்பு</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>தொடுநிலை</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>மின்னஞ்சல்</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>உங்கள் பின்னூட்டத்தை நாங்கள் மிகவும் தீவிரமாக எடுத்துக்கொள்கிறோம்</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>குறித்து</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>எழுத்துரு அளவு</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>திருத்தியில் பயன்படுத்தப்படும் எழுத்துரு</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>எழுத்துரு குடும்பம்</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>எடிட்டர் வரி உயரம் பல</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>கிளிப்போர்டு படம்</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>கிளிப்போர்டு பட பதிவேற்ற உள்ளமைவு</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>படங்களை செருகும்போது செயல்படுத்த வேண்டிய செயல்</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>உள்ளூர் படம்</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>உள்ளூர் பட பதிவேற்ற உள்ளமைவு</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>படச் செயலைச் செருகவும்</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>வலைப் படம்</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>வலை பட பதிவேற்ற உள்ளமைவு</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>படங்களை செருகும்போது ஒப்பீட்டு பாதையைப் பயன்படுத்த விரும்புகிறேன்</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>பலகணி</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>இயல்புநிலை</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>உள்ளடங்கிய பட்டியல் உருப்படிகளுக்கு எழுதப்படும் உள்தள்ளல். 4 இடைவெளிகள் Obsidian மற்றும் பிற பெரும்பாலான திருத்திகளுடன் பொருந்தும்</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 இடைவெளி உள்தள்ளல் (Markdown தரநிலை)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>குறியீட்டிற்குப் பின் 1 இடைவெளி</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>குறியீட்டிற்குப் பின் 2 இடைவெளிகள்</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>குறியீட்டிற்குப் பின் 4 இடைவெளிகள்</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>பட்டியல் உள்தள்ளல்</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>மூலத்தில் புதிய பட்டியல் உருப்படிகளுக்கு இடையே காலி வரியைச் சேர்க்கவும்</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>தளர்வான பட்டியல் உருப்படிகள்</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>தற்போதைய பத்திக்கு அருகில் தொகுதி வகையை (P, H1, ...) காட்டு</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>பத்தி குறி</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Markdown மூலத்தில் நெடுவரிசைகள் சீராக இருக்க அட்டவணைக் கட்டங்களை நிரப்பவும். அட்டவணைகள் சுருக்கமாக இருக்க அணைக்கவும் (AI கருவிகளுக்கு குறைவான டோக்கன்கள்)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>அட்டவணை நெடுவரிசைகளைச் சீரமை</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>ஒவ்வொரு பத்திக்கும் தானாகக் கண்டறி</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>திருத்தியின் உரை திசை; அரபு, ஹீப்ரு மற்றும் வலமிருந்து இடமாக எழுதப்படும் பிற மொழிகளுக்குப் பயனுள்ளது</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>இடமிருந்து வலம்</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>வலமிருந்து இடம்</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>உரை திசை</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>அணைக்கப்பட்டிருந்தால், சேமிக்கப்படாத மாற்றங்கள் இல்லாதபோது கேட்காமல் மீள்ஏற்று</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>மீள்ஏற்றும் முன் கேள்</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>திறந்த கோப்பைக் கண்காணித்து, வேறு நிரல் மாற்றும்போது புதுப்பிக்கவும்</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>வெளிப்புற மாற்றத்தில் தானியங்கி மீள்ஏற்றம்</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Explorer இலிருந்து திறக்கப்படும் கோப்புகள் தற்போதைய சாளரத்தில் தாவலாகத் திறக்கும்; அணைத்தால் புதிய சாளரம் திறக்கும்</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>கோப்புகளைத் தாவல்களில் திற</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>நீங்கள் நிறுத்திய இடத்திலிருந்து ஆவணங்களைத் திற</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>இடஞ்சுட்டியின் நிலையை நினைவில் வை</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>கடைசி அமர்வின் அனைத்து ஆவணங்களையும் மீட்டெடு</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>அநாமதேயக் குறிப்புகளை உருவாக்க காலியாக விடவும்; கணக்குடன் குறிப்பு உங்களுடையது</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>மின்னஞ்சல் (விருப்பத்தேர்வு)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>கடவுச்சொல்</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>குறிப்பை வெளியிடுகிறது (/s/…) எனவே பகிரப்பட்ட இணைப்பைத் திருத்த முடியாது</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>படிக்க மட்டும் இணைப்பையும் வெளியிடு</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>HedgeDoc இல் பகிர்</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x முகவரி, எ.கா. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>சேவையகம்</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>சோதி</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>இணைப்பைச் சோதி</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>ஒரே ஆவணம் திறந்திருந்தாலும் தாவல் பட்டியைக் காட்டு</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>எப்போதும் தாவல்களைக் காட்டு</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>கருப்பு (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>திருத்தி மற்றும் ஏற்றுமதி செய்யப்பட்ட HTML/PDF க்கான கூடுதல் பாணிகள்</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>எ.கா. .markdown-body h1 { color: #c00; }  அல்லது  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>தனிப்பயன் CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>தீம் என்பது தீம் கோப்புறையில் உள்ள ஒரு CSS கோப்பு; docs/custom-theme.md ஐப் பார்க்கவும்</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>ஒன்றை எப்படி எழுதுவது</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>தீம்கள் இந்தக் கோப்புறையில் உள்ள CSS கோப்புகள்; வடிவமைப்பை ஆவணம் விளக்குகிறது.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(எதுவும் இல்லை)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>தீம் கோப்புறையைத் திற</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>தீம்களை மீள்ஏற்று</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>தனிப்பயன் தீம்</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>எ.கா. ./${filename}.assets — மாறிகள்: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>செயலி தொடங்கும்போது பக்கப் பலகம் காட்டும் பக்கம்</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>பக்கப் பலகத்தின் இயல்புநிலைப் பக்கம்</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>உள்ளூர் தானியக்கத்தை அனுமதி</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>இந்தக் கணினியில் நீங்கள் இயக்கும் நிரல்கள் திறந்த ஆவணங்களைப் படிக்கவும் திருத்தவும் முடியும். ஏதேனும் இணைந்திருக்கும்போது சாளரத் தலைப்பில் காட்டப்படும்.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>நிரல்கள் செய்த மாற்றங்களைச் சிறப்பிடு</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>இணைக்கப்பட்ட நிரல் மாற்றிய உரையைச் சிறிது நேரம் சிறப்பித்துக் காட்டுகிறது, எது மாறியது என்பதை நீங்கள் பார்க்கலாம்.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>PlantUML வரைபடங்களை வரை</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>வரைவதற்கு வரைபடத்தின் மூலத்தை plantuml.com-க்கு அனுப்புகிறது</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>இதைக் கொண்டு பதிவேற்று</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>செயல் பதிவேற்றம் என உள்ள செருகப்பட்ட படங்களுக்கும், அரம் &gt; உள்ளூர் படங்களைப் பதிவேற்றவும் என்பதற்கும் பயன்படுத்தப்படும் பதிவேற்ற உள்ளமைவு</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Bucket இல் உள்ள கோப்புறை</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>பொது URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>பாதை-பாணி முகவரிகள் (MinIO மற்றும் சில வழங்குநர்கள்)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 உள்ளமைவு முழுமையடையவில்லை: Endpoint, Bucket, Access Key ID மற்றும் Secret Access Key ஐ நிரப்பவும்.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>பதிவேற்ற வரலாறு</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>அதே உள்ளமைவுடன் ஏற்கனவே பதிவேற்றப்பட்ட படம் மீண்டும் பதிவேற்றப்படாது; அதன் முந்தைய முகவரி பயன்படுத்தப்படும் ({0} நினைவில் உள்ளன). பதிவேற்றிய கோப்புகளை நீக்கிய பிறகு வரலாற்றை அழிக்கவும்.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML சேவையகம்</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>வரைபடங்களை வரையும் PlantUML சேவையகத்தின் (plantuml-server) முகவரி. காலி: plantuml.com. உங்கள் சொந்த சேவையகத்துடன் வரைபடங்களின் மூலம் உங்களிடமே இருக்கும்.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim விசைகள்</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>மூல முறையில் Vim (:w சேமிக்கும், :q தாவலை மூடும்); வாசிப்பு முறையில் நகர j/k, gg/G, ]] மற்றும் /. காட்சி திருத்தியில் இல்லை.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>பதிவுக் கோப்புறையைத் திற</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>ஏற்றுமதிக்குப் பிறகு</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>எங்கே சேமிக்கப்பட்டது எனக் காட்டு</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>கோப்பைத் திற</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>அதன் கோப்புறையைத் திற</value>
   </data>
 </root>

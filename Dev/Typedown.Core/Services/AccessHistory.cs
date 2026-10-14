@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Typedown.Core.Models;
+using Typedown.Core.Utilities;
 
 namespace Typedown.Core.Services
 {
@@ -17,6 +18,10 @@ namespace Typedown.Core.Services
 
         private readonly TaskCompletionSource<bool> initializedTask = new();
 
+        // Serialise record writes: two concurrent DbContexts could each find no row and both insert, duplicating a
+        // path. This closes the in-process race (a cross-process unique index/migration is still TODO).
+        private static readonly System.Threading.SemaphoreSlim recordLock = new(1, 1);
+
         public AccessHistory()
         {
             _ = UpdateRecentlyOpened();
@@ -24,11 +29,24 @@ namespace Typedown.Core.Services
 
         public async Task RecordFileHistory(string filePath)
         {
-            using var ctx = await AppDbContext.Create();
-            var model = ctx.FileAccessHistories;
-            var item = new FileAccessHistory() { FilePath = filePath, AccessTime = DateTime.Now };
-            await model.AddAsync(item);
-            await ctx.SaveChangesAsync();
+            await recordLock.WaitAsync();
+            try
+            {
+                using var ctx = await AppDbContext.Create();
+                var model = ctx.FileAccessHistories;
+                // One row per path, its time updated — not a new row every save. Otherwise the table grows without
+                // bound and the most-recent query returns many rows of the same file, crowding others out.
+                var existing = await model.FirstOrDefaultAsync(x => x.FilePath == filePath);
+                if (existing != null)
+                    existing.AccessTime = DateTime.Now;
+                else
+                    await model.AddAsync(new FileAccessHistory() { FilePath = filePath, AccessTime = DateTime.Now });
+                await ctx.SaveChangesAsync();
+            }
+            finally
+            {
+                recordLock.Release();
+            }
             await UpdateFileRecentlyOpened(filePath, CollectionChangeAction.Add);
         }
 
@@ -84,11 +102,23 @@ namespace Typedown.Core.Services
 
         public async Task RecordFolderHistory(string folderPath)
         {
-            using var ctx = await AppDbContext.Create();
-            var model = ctx.FolderAccessHistories;
-            var item = new FolderAccessHistory() { FolderPath = folderPath, AccessTime = DateTime.Now };
-            await model.AddAsync(item);
-            await ctx.SaveChangesAsync();
+            await recordLock.WaitAsync();
+            try
+            {
+                using var ctx = await AppDbContext.Create();
+                var model = ctx.FolderAccessHistories;
+                // One row per path, its time updated — see RecordFileHistory.
+                var existing = await model.FirstOrDefaultAsync(x => x.FolderPath == folderPath);
+                if (existing != null)
+                    existing.AccessTime = DateTime.Now;
+                else
+                    await model.AddAsync(new FolderAccessHistory() { FolderPath = folderPath, AccessTime = DateTime.Now });
+                await ctx.SaveChangesAsync();
+            }
+            finally
+            {
+                recordLock.Release();
+            }
             await UpdateFolderRecentlyOpened(folderPath, CollectionChangeAction.Add);
         }
 
@@ -130,7 +160,7 @@ namespace Typedown.Core.Services
             }
             while (FolderRecentlyOpened.Count > maxCount)
             {
-                FolderRecentlyOpened.RemoveAt(FileRecentlyOpened.Count - 1);
+                FolderRecentlyOpened.RemoveAt(FolderRecentlyOpened.Count - 1);
             }
             if (FolderRecentlyOpened.Count < maxCount)
             {
@@ -144,11 +174,22 @@ namespace Typedown.Core.Services
 
         private async Task UpdateRecentlyOpened()
         {
-            var updateFileTask = UpdateFileRecentlyOpened(string.Empty, CollectionChangeAction.Refresh);
-            var updateFolderTask = UpdateFolderRecentlyOpened(string.Empty, CollectionChangeAction.Refresh);
-            await Task.WhenAll(updateFileTask, updateFolderTask);
-            if (!initializedTask.Task.IsCompleted)
-                initializedTask.SetResult(true);
+            try
+            {
+                var updateFileTask = UpdateFileRecentlyOpened(string.Empty, CollectionChangeAction.Refresh);
+                var updateFolderTask = UpdateFolderRecentlyOpened(string.Empty, CollectionChangeAction.Refresh);
+                await Task.WhenAll(updateFileTask, updateFolderTask);
+            }
+            catch (Exception ex)
+            {
+                // A failed history load (a locked or corrupt database, a migration error) must not leave
+                // EnsureInitialized awaiting forever — start-up waits on it. Report it and carry on empty.
+                Log.Debug($"AccessHistory init failed: {ex.Message}");
+            }
+            finally
+            {
+                initializedTask.TrySetResult(true);
+            }
         }
 
         public async Task EnsureInitialized()

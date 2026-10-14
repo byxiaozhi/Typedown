@@ -137,18 +137,6 @@
     <value>Geri Bildirim Gönder</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Temas</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>E-posta</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Geri bildirimlerinizi çok ciddiye alıyoruz</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Hakkında</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Font boyutu</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Düzenleyicide kullanılan yazı tipi</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Yazı tipi ailesi</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Editör satırı yüksekliği çoklu</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Pano Görüntüsü</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Pano resmi yükleme yapılandırması</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Resim eklerken yürütülecek eylem</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Yerel Görüntü</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Yerel resim yükleme yapılandırması</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Resim eylemi ekleme</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Web Görüntüsü</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Web resmi yükleme yapılandırması</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Resim eklerken göreli yol kullanmayı tercih etme</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Pencere</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Varsayılan</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>İç içe liste öğeleri için yazılan girinti. 4 boşluk Obsidian ve diğer çoğu düzenleyiciyle uyumludur</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 boşluk girinti (Markdown standardı)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>İşaretten sonra 1 boşluk</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>İşaretten sonra 2 boşluk</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>İşaretten sonra 4 boşluk</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Liste girintisi</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Kaynakta yeni liste öğeleri arasına boş satır ekle</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Gevşek liste öğeleri</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Geçerli paragrafın yanında blok türünü (P, H1, ...) göster</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Paragraf işareti</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Markdown kaynağında sütunlar hizalansın diye tablo hücrelerini doldur. Tabloları derli toplu tutmak için kapatın (yapay zekâ araçları için daha az token)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Tablo sütunlarını hizala</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Paragraf başına otomatik algıla</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Düzenleyici içeriğinin yazı yönü; Arapça, İbranice ve sağdan sola yazılan diğer diller için yararlıdır</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Soldan sağa</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Sağdan sola</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Yazı yönü</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Kapalıyken, kaydedilmemiş değişiklik yoksa sessizce yeniden yükle</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Yeniden yüklemeden önce sor</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Açık dosyayı izle ve başka bir program değiştirdiğinde yenile</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Dış değişiklikte otomatik yeniden yükle</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Gezgin'den açılan dosyalar geçerli pencerede sekme olarak açılır; kapalıyken yeni pencere açılır</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Dosyaları sekmelerde aç</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Belgeleri kaldığınız yerden açın</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>İmleç konumunu hatırla</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Son oturumdaki tüm belgeleri geri yükle</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Notları anonim oluşturmak için boş bırakın; hesapla not size ait olur</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>E-posta (isteğe bağlı)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Parola</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Notu yayımlar (/s/…), böylece paylaşılan bağlantı düzenlenemez</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Salt okunur bağlantı da yayımla</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>HedgeDoc'ta paylaş</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x adresi, örn. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Sunucu</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Test et</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Bağlantıyı test et</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Yalnızca tek belge açıkken bile sekme çubuğunu göster</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Sekmeleri her zaman göster</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Siyah (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Düzenleyici ve dışa aktarılan HTML/PDF için ek stiller</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>örn. .markdown-body h1 { color: #c00; }  veya  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Özel CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Tema, temalar klasöründeki tek bir CSS dosyasıdır; bkz. docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Nasıl yazılır</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Temalar bu klasördeki CSS dosyalarıdır; biçimi belge açıklar.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(yok)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Temalar klasörünü aç</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Temaları yeniden yükle</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Özel tema</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>örn. ./${filename}.assets — değişkenler: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Uygulama açıldığında yan panelin gösterdiği sayfa</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Yan panel varsayılan sayfası</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Yerel otomasyona izin ver</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Bu bilgisayarda çalıştırdığınız programlar açık belgeleri okuyup düzenleyebilir. Biri bağlandığında pencere başlığında gösterilir.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Programların yaptığı değişiklikleri vurgula</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Bağlı bir programın değiştirdiği metni kısa süre vurgular, böylece neyin değiştiğini görebilirsiniz.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>PlantUML diyagramlarını çiz</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Diyagramın kaynağını çizmesi için plantuml.com'a gönderir</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Şununla yükle</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Eylemi Yükle olan eklenmiş resimler ve Dosya &gt; Yerel resimleri yükle için kullanılan yükleme yapılandırması</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Bucket içindeki klasör</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Genel URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Yol stili adresler (MinIO ve bazı sağlayıcılar)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 yapılandırması eksik: Endpoint, Bucket, Access Key ID ve Secret Access Key alanlarını doldurun.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Yükleme geçmişi</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Aynı yapılandırmayla daha önce yüklenmiş bir resim yeniden yüklenmez; önceki adresi kullanılır ({0} kayıtlı). Yüklenen dosyaları sildikten sonra geçmişi temizleyin.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML sunucusu</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Diyagramları çizen PlantUML sunucusunun (plantuml-server) adresi. Boş: plantuml.com. Kendi sunucunuzla diyagramların kaynağı sizde kalır.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim tuşları</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Kaynak modunda Vim (:w kaydeder, :q sekmeyi kapatır); okuma modunda gezinmek için j/k, gg/G, ]] ve /. Görsel düzenleyicide yok.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Günlük Klasörünü Aç</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Dışa aktardıktan sonra</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Nereye kaydedildiğini göster</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Dosyayı aç</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Klasörünü aç</value>
   </data>
 </root>

@@ -27,11 +27,17 @@ namespace Typedown.Utilities
         {
             var ui = provider.GetService<UIViewModel>();
             var settings = provider.GetService<SettingsViewModel>();
+            var theme = settings.EffectiveTheme;
             var isDarkMode = ui.ActualTheme == ElementTheme.Dark;
-            var accentColor = new UISettings().GetColorValue(UIColorType.Accent);
-            var solidBackground = isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
-            var background = settings.UseMicaEffect && settings.UseEditorMicaEffect ? Colors.Transparent : solidBackground;
-            return new { theme = isDarkMode ? "Dark" : "Light", accentColor, background };
+            var isBlack = theme == Typedown.Core.Enums.AppTheme.Black;
+            // A custom theme may name its own accent; without one the editor keeps the system colour.
+            var custom = Typedown.Core.Utilities.ThemeFiles.Find(settings.CustomTheme);
+            // global:: — inside Typedown.* a plain "Windows." binds to Typedown.Windows, the app's own namespace.
+            var themeAccent = Typedown.Core.Utilities.ThemeFiles.Brush(custom?.Accent) as global::Windows.UI.Xaml.Media.SolidColorBrush;
+            var accentColor = themeAccent?.Color ?? new UISettings().GetColorValue(UIColorType.Accent);
+            var solidBackground = isBlack ? Colors.Black : isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
+            var background = settings.UseMicaEffect && settings.UseEditorMicaEffect && !isBlack ? Colors.Transparent : solidBackground;
+            return new { theme = isBlack ? "Black" : isDarkMode ? "Dark" : "Light", accentColor, background };
         }
 
         public static bool GetUseLightTheme()
@@ -68,24 +74,36 @@ namespace Typedown.Utilities
             return true;
         }
 
-        public static IntPtr OpenNewWindow(string[] args)
+        public static IntPtr OpenNewWindow(string[] args, bool forceNewWindow = false)
         {
             var filePath = CommandLine.GetOpenFilePath(args);
-            if (string.IsNullOrEmpty(filePath) || !FileViewModel.TryGetOpenedWindow(filePath, out var windowHWnd))
+            if (!string.IsNullOrEmpty(filePath) && FileViewModel.TryGetOpenedWindow(filePath, out var windowHWnd))
             {
-                var newWindow = new MainWindow();
-                newWindow.Show(ShowWindowCommand.SW_HIDE);
-                newWindow.AppViewModel.CommandLineArgs = args;
-                return newWindow.Handle;
-            }
-            else
-            {
-                var appWindows = XamlWindow.AllWindows;
-                var window = appWindows.Where(x => x.Handle == windowHWnd).FirstOrDefault();
-                if (window != null && PInvoke.IsIconic(window.Handle))
-                    PInvoke.ShowWindow(window.Handle, PInvoke.ShowWindowCommand.Restore);
+                // Already open somewhere: bring that window (and tab) to the front.
+                var window = XamlWindow.AllWindows.OfType<MainWindow>().FirstOrDefault(x => x.Handle == windowHWnd);
+                if (window != null)
+                {
+                    if (PInvoke.IsIconic(window.Handle))
+                        PInvoke.ShowWindow(window.Handle, PInvoke.ShowWindowCommand.Restore);
+                    var tab = window.AppViewModel.TabsViewModel?.FindByPath(filePath);
+                    if (tab != null) _ = window.AppViewModel.TabsViewModel.SwitchTo(tab);
+                }
                 return windowHWnd;
             }
+            // A file opened from the shell goes into the last active window as a new tab (upstream #73) unless the
+            // user prefers separate windows; a plain launch without a file always creates a window.
+            var target = MainWindow.LastActive ?? XamlWindow.AllWindows.OfType<MainWindow>().FirstOrDefault();
+            if (!forceNewWindow && !string.IsNullOrEmpty(filePath) && target != null && target.AppViewModel != null && target.AppViewModel.SettingsViewModel.OpenFilesInNewTab)
+            {
+                if (PInvoke.IsIconic(target.Handle))
+                    PInvoke.ShowWindow(target.Handle, PInvoke.ShowWindowCommand.Restore);
+                target.AppViewModel.FileViewModel.OpenFileCommand.Execute(filePath);
+                return target.Handle;
+            }
+            var newWindow = new MainWindow();
+            newWindow.Show(ShowWindowCommand.SW_HIDE);
+            newWindow.AppViewModel.CommandLineArgs = args;
+            return newWindow.Handle;
         }
     }
 }

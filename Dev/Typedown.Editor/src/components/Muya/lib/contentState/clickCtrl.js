@@ -8,6 +8,10 @@ const clickCtrl = ContentState => {
   ContentState.prototype.clickHandler = function (event) {
     const { eventCenter, container } = this.muya
     const { target } = event
+    // Reading mode: clicking below the last paragraph would append one, and the front menu does not exist.
+    if (this.muya.options.readOnly) {
+      return
+    }
     if (isMuyaEditorElement(target) || target === container) {
       const lastBlock = this.getLastBlock()
       const archor = this.findOutMostBlock(lastBlock)
@@ -16,13 +20,22 @@ const clickCtrl = ContentState => {
         return
       }
       const rect = archorParagraph.getBoundingClientRect()
-      // If click below the last paragraph
-      // and the last paragraph is not empty, create a new empty paragraph
+      // A click below the last block. After a line of text (a paragraph, a heading, the last list item) the caret
+      // goes to its end: the document does not change, and Enter starts a new line. A new empty paragraph was put
+      // there before, and a click alone marked the document unsaved. After a block that cannot be typed at the end
+      // of (a table, code, an image, a formula) an empty paragraph is still created, or there would be no way to
+      // write after it.
       if (event.clientY > rect.top + rect.height) {
         let needToInsertNewParagraph = false
         if (lastBlock.type === 'span') {
           if (/atxLine|paragraphContent/.test(lastBlock.functionType) && /\S/.test(lastBlock.text)) {
-            needToInsertNewParagraph = true
+            event.preventDefault()
+            const offset = lastBlock.text.length
+            this.cursor = {
+              start: { key: lastBlock.key, offset },
+              end: { key: lastBlock.key, offset }
+            }
+            return this.muya.focus()
           }
           if (!/atxLine|paragraphContent/.test(lastBlock.functionType)) {
             needToInsertNewParagraph = true
@@ -82,6 +95,12 @@ const clickCtrl = ContentState => {
     const { start, end } = selection.getCursorRange()
     // fix #625, the selection maybe not in edit area.
     if (!start || !end) {
+      return
+    }
+    // Reading mode has nothing to re-render on mouse up (no active block, no markers, no format picker), and
+    // the re-render would throw away the text the user just selected with the mouse.
+    if (this.muya.options.readOnly) {
+      this.cursor = { start, end }
       return
     }
     // format-click

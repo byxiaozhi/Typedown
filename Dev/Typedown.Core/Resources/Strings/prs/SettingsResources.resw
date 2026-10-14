@@ -137,18 +137,6 @@
     <value>ارسال بازخورد</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>تماس با ما</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>ایمیل</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>ما نظرات شما را بسیار جدی می گیریم</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>درباره</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>اندازه فونت</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>فونت استفاده شده در ویرایشگر</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>خانواده فونت</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>ارتفاع خط سردبیر چند</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>سیستم عامل</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>کلیپ بورد تصویر</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>تنظیمات ارسال تصویر کلیپ بورد</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>اقدام به اجرا در هنگام درج تصاویر</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>تصویر محلی</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>تنظیمات ارسال تصویر محلی</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>درج عمل تصویر</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>تصویر وب</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>تنظیمات آپلود تصویر وب</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>ترجیح می دهم به استفاده از مسیر نسبی در هنگام قرار دادن تصاویر</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>پنجره</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>پیش‌فرض</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>تورفتگی که برای اقلام فهرست تو در تو نوشته می‌شود. ۴ فاصله با Obsidian و بیشتر ویرایشگرهای دیگر مطابقت دارد</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>تورفتگی ۴ فاصله‌ای (معیار Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>۱ فاصله پس از نشانه</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>۲ فاصله پس از نشانه</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>۴ فاصله پس از نشانه</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>تورفتگی فهرست</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>در متن اصلی میان اقلام جدید فهرست یک سطر خالی درج شود</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>اقلام فهرست با فاصله</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>نوع بلاک (P, H1, ...) در کنار پاراگراف جاری نشان داده شود</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>نشانهٔ پاراگراف</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>خانه‌های جدول پر شوند تا ستون‌ها در متن Markdown هم‌تراز شوند. برای فشرده ماندن جدول‌ها خاموش کنید (توکن کمتر برای ابزارهای هوش مصنوعی)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>هم‌تراز کردن ستون‌های جدول</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>تشخیص خودکار برای هر پاراگراف</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>جهت متن ویرایشگر؛ برای عربی، عبری و دیگر زبان‌های راست به چپ مفید است</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>چپ به راست</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>راست به چپ</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>جهت متن</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>اگر خاموش باشد، در صورت نبود تغییرات ذخیره‌نشده بدون پرسش دوباره بارگیری شود</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>پیش از بارگیری دوباره پرسیده شود</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>فایل باز زیر نظر گرفته شود و هنگام تغییر توسط برنامهٔ دیگر تازه شود</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>بارگیری خودکار هنگام تغییر بیرونی</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>فایل‌های باز شده از Explorer در پنجرهٔ جاری به شکل زبانه باز می‌شوند؛ خاموش پنجرهٔ نو باز می‌کند</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>باز کردن فایل‌ها در زبانه</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>اسناد از همان جایی که رها کردید باز شوند</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>به یاد سپردن جای مکان‌نما</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>بازیابی همهٔ اسناد نشست گذشته</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>برای ساختن یادداشت‌های بی‌نام خالی بگذارید؛ با حساب، یادداشت از آن شما است</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>ایمیل (اختیاری)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>رمز عبور</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>یادداشت را منتشر می‌کند (/s/…) تا پیوند هم‌رسانی‌شده قابل ویرایش نباشد</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>پیوند فقط‌خواندنی نیز منتشر شود</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>هم‌رسانی در HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>نشانی HedgeDoc 1.x، مثلاً https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>سرور</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>آزمایش</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>آزمایش اتصال</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>نوار زبانه‌ها حتی وقتی تنها یک سند باز است نشان داده شود</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>همیشه نمایش زبانه‌ها</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>سیاه (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>سبک‌های افزوده برای ویرایشگر و HTML/PDF صادرشده</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>مثلاً .markdown-body h1 { color: #c00; }  یا  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS سفارشی</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>پوسته یک فایل CSS در پوشهٔ پوسته‌ها است؛ docs/custom-theme.md را ببینید</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>چگونه یکی بنویسیم</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>پوسته‌ها فایل‌های CSS در این پوشه هستند؛ قالب در سند توضیح داده شده است.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(هیچ)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>باز کردن پوشهٔ پوسته‌ها</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>بارگیری دوبارهٔ پوسته‌ها</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>پوستهٔ سفارشی</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>مثلاً ./${filename}.assets — متغیرها: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>صفحه‌ای که پنل کناری هنگام آغاز نشان می‌دهد</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>صفحهٔ پیش‌فرض پنل کناری</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>اجازهٔ خودکارسازی محلی</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>برنامه‌هایی که بالای این کمپیوتر اجرا می‌کنید می‌توانند اسناد باز را بخوانند و ویرایش کنند. هنگام وصل شدن یکی، عنوان پنجره نشان می‌دهد.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>برجسته ساختن تغییراتی که برنامه‌ها ایجاد کرده‌اند</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>متنی را که یک برنامهٔ وصل‌شده تغییر داده برای مدت کوتاهی برجسته می‌سازد تا ببینید چه چیزی تغییر کرده است.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>رسم نمودارهای PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>منبع نمودار را برای رسم به plantuml.com می‌فرستد</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>ارسال با</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>تنظیمات آپلودی که برای تصاویر درج‌شده با عمل ارسال، و توسط پرونده &gt; ارسال تصاویر محلی استفاده می‌شود</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>پوشه در Bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL عمومی</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>آدرس‌های مسیرمحور (MinIO و برخی ارائه‌دهندگان)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>تنظیمات S3 ناقص است: Endpoint، Bucket، Access Key ID و Secret Access Key را وارد کنید.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>تاریخچه ارسال</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>تصویری که قبلاً با همان تنظیمات ارسال شده دوباره ارسال نمی‌شود؛ از آدرس قبلی آن استفاده می‌شود ({0} مورد ذخیره شده). پس از حذف فایل‌های ارسال‌شده، تاریخچه را پاک کنید.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>سرور PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>آدرس سرور PlantUML ‏(plantuml-server) که نمودارها را رسم می‌کند. خالی: plantuml.com. با سرور خودتان، منبع نمودارها نزد خودتان می‌ماند.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>کلیدهای Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim در حالت منبع (:w ذخیره می‌کند، :q زبانه را می‌بندد)؛ j/k، gg/G، ]] و / برای جابه‌جایی در حالت خواندن. در ویرایشگر دیداری نیست.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>باز کردن پوشه گزارش‌ها</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>پس از صدور</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>نشان دادن محل ذخیره</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>باز کردن فایل</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>باز کردن پوشهٔ آن</value>
   </data>
 </root>

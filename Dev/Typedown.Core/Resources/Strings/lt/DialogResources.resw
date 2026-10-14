@@ -133,10 +133,6 @@
     <value>GERAI</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Turinys negali būti tuščias</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Nepavyko sukurti naujo dokumento</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Eksportuoti nepavyko</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Atsiliepimus</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Importuoti nepavyko</value>
@@ -225,14 +217,6 @@
     <value>Spartusis klavišas užimtas</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Pateikti</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Pateikimas sėkmingas</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Įkelti nepavyko</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>"WebView2 Runtime" neįdiegta</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Šis dokumentas jau buvo bendrintas, bet nuo tada pasikeitė. HedgeDoc 1.x negali atnaujinti esamo užrašo, todėl įkėlus iš naujo sukuriamas naujas užrašas su nauja nuoroda.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopijuoti nuorodą</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Redaguojama nuoroda</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Bet kas, turintis šią nuorodą, gali redaguoti užrašą.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Pirmiausia nustatykite HedgeDoc serverio adresą Nustatymai → Eksportas.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Atverti naršyklėje</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Įkelti iš naujo (nauja nuoroda)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Tik skaitymo nuoroda</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Bendrinta į HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokumentas nepasikeitė nuo paskutinio bendrinimo; tai esamos nuorodos.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Naudoti ankstesnę nuorodą</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Palikti</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Įkelti iš naujo</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Failas diske pasikeitė. Įkėlus iš naujo neįrašyti pakeitimai bus prarasti.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Failas diske pasikeitė. Įkelti jį iš naujo?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Failas diske pasikeitė</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Įkelti vietinius vaizdus</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Įkeliamas vaizdas {0} iš {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Įkelta vaizdų: {0} iš {1}. Jų adresai dokumente dabar nurodo į įkeltas kopijas; Anuliuoti grąžina vietinius kelius.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Atšaukta. Įkelta vaizdų: {0} iš {1}, o jų adresai dokumente buvo pakeisti.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Nepakeista:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Šiame dokumente nėra vietinių vaizdų.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Nepasirinkta jokia įkėlimo konfigūracija. Pasirinkite ją skiltyje Parametrai &gt; Vaizdas &gt; Įkelti naudojant.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Atidaryti parametrus</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Failas nerastas.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Įkėlimas negrąžino adreso.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokumentas buvo uždarytas įkėlimo metu.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Nepavyko pakeisti dokumento. Vaizdas pasiekiamas internete adresu</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Šiame dokumente yra vietinių vaizdų: {0}. Tai failai šiame kompiuteryje, todėl užrašo skaitytojai jų nematys. Pirmiausia juos įkelti?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Pirmiausia įkelti</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Vis tiek bendrinti</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} iš jų jau buvo įkelti anksčiau su šia konfigūracija, todėl panaudoti ankstesni jų adresai.</value>
   </data>
 </root>

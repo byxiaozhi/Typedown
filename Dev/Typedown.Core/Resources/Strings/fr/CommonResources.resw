@@ -729,10 +729,6 @@
     <value>Citation</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Évaluation</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Refaire</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Zoom</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Plein écran</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Mode lecture</value>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Aucun dossier ouvert. Ouvrez un fichier ou un dossier pour le parcourir ici.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Ce dossier n'existe plus.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Ce dossier contient {0} éléments — trop nombreux pour être listés ici.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>Aucun fichier Markdown dans ce dossier.</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Rechercher dans le dossier…</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Recherche…</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} fichier(s) correspondant(s) sur {1} analysé(s)</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Tout développer</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Tout réduire</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Augmenter le niveau de citation</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Diminuer le niveau de citation</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Sans titre</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Onglet suivant</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Onglet précédent</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Afficher le dossier du fichier actuel</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Partager sur HedgeDoc…</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Rechercher dans le dossier</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(nom de fichier correspondant)</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Dernier onglet utilisé</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Automatisation connectée</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} a modifié {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Modifier ce document en mode visuel peut réécrire une partie de son HTML brut. Pour le garder tel quel, modifiez-le en mode source.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>Les diagrammes PlantUML sont désactivés (les dessiner envoie le code à plantuml.com). Activez-les dans Paramètres &gt; Éditeur.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Mettre en ligne les images locales</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Exporté vers {0}</value>
   </data>
 </root>

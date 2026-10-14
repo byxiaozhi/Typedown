@@ -34,7 +34,10 @@ export const adjustCursor = (cursor, preline, line, nextline) => {
 
     // Need to adjust the cursor when cursor at blank line or in a line contains HTML tag.
     // set the newCursor to null, the new cursor will at the last line of document.
-    if (!/\S/.test(line) || /<\/?([a-zA-Z\d-]+)(?=\s|>).*>/.test(line)) {
+    // Also a line of marker characters only - a thematic break, a setext underline, a front matter fence (---, ***,
+    // ___, ===, +++, ;;;): the cursor marker put on it makes it ordinary text, and the block it opened, closed or
+    // was is gone. A YAML front matter then comes back as a paragraph and a rule, and the next edit saves it so.
+    if (!/\S/.test(line) || /<\/?([a-zA-Z\d-]+)(?=\s|>).*>/.test(line) || /^ {0,3}([-*_=+;])(?:[ \t]*\1){2,}[ \t]*$/.test(line)) {
         newCursor = null
     }
     return newCursor

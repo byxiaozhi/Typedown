@@ -26,7 +26,7 @@ class ImageSelector {
     transport.addListener('ReplaceImage', this.replaceImageAsync);
   }
 
-  replaceImageAsync = async ({ alt, src, title, isReplaceSelected }) => {
+  replaceImageAsync = async ({ alt, src, title, isReplaceSelected, more }) => {
     const imageInfo = isReplaceSelected ? this.muya.contentState.selectedImage : this.imageInfo
     if (!this.muya.options.imageAction || URL_REG.test(src)) {
       const { alt: oldAlt, src: oldSrc, title: oldTitle } = imageInfo.token.attrs
@@ -64,6 +64,8 @@ class ImageSelector {
         }
       }
     }
+    // Typedown: the other files of a multi-file pick, each in a paragraph of its own after this image's block.
+    if (more && more.length) this.muya.contentState.insertImages(more, imageInfo.key)
     this.muya.eventCenter.dispatch('stateChange')
   }
 

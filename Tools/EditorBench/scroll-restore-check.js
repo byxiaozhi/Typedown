@@ -1,0 +1,28 @@
+const puppeteer = require('puppeteer-core'); const http = require('http'); const fs = require('fs'); const path = require('path');
+const statics = path.resolve('../../Dev/Typedown/Resources/Statics');
+const server = http.createServer((req, res) => { let p = decodeURIComponent(req.url.split('?')[0]); if (p === '/') p = '/index.html'; const f = path.join(statics, p); if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.statusCode = 404; return res.end(); } fs.createReadStream(f).pipe(res); });
+(async () => {
+  await new Promise(r => server.listen(0, r)); const port = server.address().port;
+  const browser = await puppeteer.launch({ executablePath: '/opt/google/chrome/chrome', headless: 'new', args: ['--no-sandbox'] });
+  const page = await browser.newPage(); await page.setViewport({ width: 1000, height: 600 });
+  const md = Array.from({ length: 200 }, (_, i) => `## Heading ${i}\n\nparagraph ${i} lorem ipsum dolor sit amet\n`).join('\n');
+  const settings = { fontSize: 16, lineHeight: 1.6, editorAreaWidth: '900px', tabSize: 4, textDirection: 'auto', preferLooseListItem: true, listIndentation: '1', tableAlignColumns: true, readOnly: true, markdown: md, basePath: 'C:\\tmp', scrollTop: 1500, loadId: 1 };
+  await page.evaluateOnNewDocument(`(()=>{const ls=[];window.__msgs=[];const prev={};window.__deliver=(n,a)=>ls.forEach(l=>l({data:JSON.stringify({name:n,args:a})}));const resp={GetSettings:${JSON.stringify(settings)},GetCurrentTheme:{theme:'Light',accentColor:{r:0,g:120,b:212,a:1},background:{R:249,G:249,B:249,A:1}},ContentLoaded:'',GetStringResources:{}};window.chrome={webview:{addEventListener:(t,l)=>ls.push(l),postMessage:(raw)=>{const m=JSON.parse(raw);if(m.type==='diffmsg'){const full=m.diff?prev[m.name].slice(0,m.start)+m.args+prev[m.name].slice(m.end):m.args;prev[m.name]=full;m.args=JSON.parse(full);}window.__msgs.push(m);if(m.type==='invoke'){setTimeout(()=>window.__deliver(m.id,{code:0,data:m.name in resp?resp[m.name]:null}),0);}}}}})()`);
+  await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'load' });
+  await page.waitForFunction(() => window.__msgs.some(m => m.name === 'FileLoaded'), { timeout: 20000 });
+  await new Promise(r => setTimeout(r, 600));
+  const y1 = await page.evaluate(() => window.scrollY);
+  const last = await page.evaluate(() => { const s = window.__msgs.filter(m => m.name === 'OnScroll'); return s.length ? s[s.length - 1].args.scrollY : null; });
+  console.log(`initial load with scrollTop=1500 (read-only): scrollY=${y1}, last OnScroll reported=${last}`, Math.abs(y1 - 1500) < 2 ? 'PASS' : 'FAIL');
+  await page.evaluate(() => { window.__msgs.length = 0; window.__deliver('LoadFile', { text: '# other\n\n' + Array.from({ length: 150 }, (_, i) => `line ${i}\n`).join('\n'), basePath: 'C:\\tmp', scrollTop: 800, loadId: 2 }); });
+  await page.waitForFunction(() => window.__msgs.some(m => m.name === 'FileLoaded'), { timeout: 20000 });
+  await new Promise(r => setTimeout(r, 600));
+  const y2 = await page.evaluate(() => window.scrollY);
+  console.log(`LoadFile with scrollTop=800: scrollY=${y2}`, Math.abs(y2 - 800) < 2 ? 'PASS' : 'FAIL');
+  await page.evaluate(() => { window.__msgs.length = 0; window.__deliver('LoadFile', { text: '# third\n\n' + Array.from({ length: 150 }, (_, i) => `line ${i}\n`).join('\n'), basePath: 'C:\\tmp', loadId: 3 }); });
+  await page.waitForFunction(() => window.__msgs.some(m => m.name === 'FileLoaded'), { timeout: 20000 });
+  await new Promise(r => setTimeout(r, 600));
+  const y3 = await page.evaluate(() => window.scrollY);
+  console.log(`LoadFile without scrollTop: scrollY=${y3}`, y3 < 2 ? 'PASS' : 'FAIL');
+  await browser.close(); server.close();
+})().catch(e => { console.error(e); process.exit(1); });

@@ -137,18 +137,6 @@
     <value>Thumela Impendulo</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Sithinte</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>imeyili</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Sithatha impendulo yakho ngokungathí sina</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Nge</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Usayizi wefonti</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Ifonti esetshenziswa kumhleli</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Umndeni wefonti</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Umhleli umugqa ukuphakama eziningi</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Isithombe sebhodi lokunamathisela</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Ukumiswa kokulayisha isithombe se-Clipboard</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Isenzo sokwenza uma ufaka izithombe</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Isithombe sendawo</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Ukumiswa kokulayisha isithombe sendawo</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Faka isenzo sesithombe</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Isithombe sewebhu</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Ukucushwa kokulayisha isithombe sewebhu</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Ukhetha ukusebenzisa indlela ehlobene uma ufaka izithombe</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Ifasitela</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Okuzenzakalelayo</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>I-indent ebhalelwa izinto zohlu ezifakwe ngaphakathi. Izikhala ezi-4 ziyafana ne-Obsidian nabanye abahleli abaningi</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>I-indent yezikhala ezi-4 (izinga le-Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>Isikhala esi-1 ngemva kophawu</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>Izikhala ezi-2 ngemva kophawu</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>Izikhala ezi-4 ngemva kophawu</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>I-indent yohlu</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Faka umugqa ongenalutho phakathi kwezinto ezintsha zohlu emthonjeni</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Izinto zohlu ezixegayo</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Bonisa uhlobo lwebhulokhi (P, H1, ...) eduze kwendima yamanje</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Uphawu lwendima</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Gcwalisa amaseli wethebula ukuze amakholomu ahambisane emthonjeni we-Markdown. Vala ukuze amathebula ahlale efushane (ama-token ambalwa kumathuluzi e-AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Qondanisa amakholomu wethebula</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Thola ngokuzenzakalelayo kwindima ngayinye</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Isiqondiso sombhalo sesihleli; siwusizo kusiArabhu, isiHeberu nezinye izilimi ezibhalwa kusuka kwesokudla kuya kwesokunxele</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Kusuka kwesokunxele kuya kwesokudla</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Kusuka kwesokudla kuya kwesokunxele</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Isiqondiso sombhalo</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Uma ivaliwe, layisha kabusha ngaphandle kokubuza ngaphandle uma kunezinguquko ezingalondoloziwe</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Buza ngaphambi kokulayisha kabusha</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Qapha ifayela elivuliwe futhi ulivuselele lapho olunye uhlelo lulushintsha</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Ukulayisha kabusha okuzenzakalelayo lapho kunoshintsho lwangaphandle</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Amafayela avulwa ku-Explorer avuleka njengethebhu kuwindi lamanje; uma ivaliwe kuvuleka iwindi elisha</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Vula amafayela kumathebhu</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Vula amadokhumenti lapho ugcine khona</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Khumbula indawo yekhesa</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Buyisela wonke amadokhumenti weseshini yokugcina</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Shiya kungenalutho ukuze udale amanothi angaziwa; ngeakhawunti inothi ngelakho</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>I-imeyili (ongakhetha)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Iphasiwedi</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Ishicilela inothi (/s/…) ukuze ilinki eyabelwene ingakwazi ukuhlelwa</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Shicilela futhi ilinki yokufunda kuphela</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Yabelana ne-HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Ikheli le-HedgeDoc 1.x, isb. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Iseva</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Hlola</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Hlola uxhumano</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Bonisa ubhande lwamathebhu noma ngabe kuvulwe idokhumenti eyodwa kuphela</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Bonisa amathebhu njalo</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Okumnyama (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Izitayela ezengeziwe zesihleli ne-HTML/PDF ethunyelwe ngaphandle</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>isb. .markdown-body h1 { color: #c00; }  noma  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>I-CSS yangokwezifiso</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Itimu iyifayela elilodwa le-CSS efoldeni yamatimu; bheka ku-docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Indlela yokubhala elilodwa</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Amatimu angamafayela e-CSS kule folda; idokhumenti ichaza ifomethi.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(alikho)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Vula ifolda yamatimu</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Layisha kabusha amatimu</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Itimu yangokwezifiso</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>isb. ./${filename}.assets — okuguquguqukayo: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Ikuphi ikhasi iphaneli eseceleni elibonisayo lapho uhlelo luqala</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Ikhasi elizenzakalelayo lephaneli eseceleni</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Vumela ukuzenzakalela kwasendaweni</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Izinhlelo ozisebenzisa kule khompyutha zingafunda futhi zihlele amadokhumenti avuliwe. Isihloko sewindi siyabonisa uma kukhona oxhunyiwe.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Gqamisa izinguquko ezenziwe yizinhlelo</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Igqamisa isikhashana umbhalo oshintshwe uhlelo oluxhunyiwe, ukuze ubone ukuthi yini eshintshile.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Dweba imidwebo ye-PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Ithumela umthombo womdwebo ku-plantuml.com ukuze uwudwebe</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Layisha nge</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Ukumiswa kokulayisha okusetshenziselwa izithombe ezifakiwe isenzo sazo esingu-Layisha, kanye ne-Ifayela &gt; Layisha izithombe zendawo</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Ifolda ku-bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>I-URL yomphakathi</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Amakheli esitayela sendlela (MinIO nabanye abahlinzeki)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Ukumiswa kwe-S3 akuphelele: gcwalisa i-Endpoint, i-Bucket, i-Access Key ID ne-Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Umlando wokulayisha</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Isithombe esesilayishwe ngokucushwa okufanayo asilayishwa futhi; kusetshenziswa ikheli laso langaphambilini (kukhunjulwe okungu-{0}). Sula umlando ngemva kokususa amafayela alayishiwe.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Iseva ye-PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Ikheli leseva ye-PlantUML (plantuml-server) edweba imidwebo. Akunalutho: plantuml.com. Ngeseva yakho, umthombo wemidwebo uhlala kuwe.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Okhiye be-Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>I-Vim kumodi yomthombo (:w iyalondoloza, :q ivala ithebhu); j/k, gg/G, ]] kanye no-/ ukuze uzulazule kumodi yokufunda. Hhayi kusihleli esibonakalayo.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Vula Ifolda Yelogi</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Ngemva kokukhipha</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Bonisa lapho kugcinwe khona</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Vula ifayela</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Vula ifolda yalo</value>
   </data>
 </root>

@@ -137,18 +137,6 @@
     <value>ส่งความคิดเห็น</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>ติดต่อ</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>อีเมล</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>เราให้ความสําคัญกับความคิดเห็นของคุณเป็นอย่างมาก</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>ประมาณ</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>ขนาดตัวอักษร</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>แบบอักษรที่ใช้ในตัวแก้ไข</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>ตระกูลแบบอักษร</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>ความสูงของเส้นบรรณาธิการหลายตัว</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>โอเอสเอส</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>ภาพคลิปบอร์ด</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>การกําหนดค่าการอัปโหลดภาพคลิปบอร์ด</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>การดําเนินการที่จะดําเนินการเมื่อแทรกรูปภาพ</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>ภาพท้องถิ่น</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>การกําหนดค่าการอัปโหลดรูปภาพในเครื่อง</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>แทรกการกระทําของรูปภาพ</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>ภาพเว็บ</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>การกําหนดค่าการอัปโหลดรูปภาพบนเว็บ</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>ต้องการใช้เส้นทางสัมพัทธ์เมื่อแทรกรูปภาพ</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>หน้าต่าง</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>ค่าเริ่มต้น</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>การเยื้องที่เขียนสำหรับรายการย่อย 4 ช่องว่างตรงกับ Obsidian และโปรแกรมแก้ไขอื่นส่วนใหญ่</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>เยื้อง 4 ช่องว่าง (มาตรฐาน Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 ช่องว่างหลังเครื่องหมาย</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 ช่องว่างหลังเครื่องหมาย</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 ช่องว่างหลังเครื่องหมาย</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>การเยื้องรายการ</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>แทรกบรรทัดว่างระหว่างรายการใหม่ในต้นฉบับ</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>รายการแบบเว้นบรรทัด</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>แสดงชนิดบล็อก (P, H1, ...) ข้างย่อหน้าปัจจุบัน</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>เครื่องหมายย่อหน้า</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>เติมช่องในตารางให้คอลัมน์ตรงกันในต้นฉบับ Markdown ปิดไว้เพื่อให้ตารางกระชับ (ใช้โทเค็นน้อยลงสำหรับเครื่องมือ AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>จัดคอลัมน์ตารางให้ตรงกัน</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>ตรวจอัตโนมัติรายย่อหน้า</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>ทิศทางข้อความในตัวแก้ไข มีประโยชน์สำหรับภาษาอาหรับ ฮีบรู และภาษาที่เขียนจากขวาไปซ้าย</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>ซ้ายไปขวา</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>ขวาไปซ้าย</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>ทิศทางข้อความ</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>หากปิดไว้ จะโหลดใหม่เงียบ ๆ เว้นแต่มีการเปลี่ยนแปลงที่ยังไม่บันทึก</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>ถามก่อนโหลดใหม่</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>เฝ้าดูไฟล์ที่เปิดอยู่และรีเฟรชเมื่อโปรแกรมอื่นแก้ไข</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>โหลดใหม่อัตโนมัติเมื่อมีการแก้ไขจากภายนอก</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>ไฟล์ที่เปิดจาก Explorer จะเปิดเป็นแท็บในหน้าต่างปัจจุบัน ปิดไว้จะเปิดหน้าต่างใหม่</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>เปิดไฟล์ในแท็บ</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>เปิดเอกสารต่อจากที่ค้างไว้</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>จำตำแหน่งเคอร์เซอร์</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>คืนค่าเอกสารทั้งหมดของเซสชันก่อน</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>เว้นว่างเพื่อสร้างโน้ตแบบไม่ระบุตัวตน หากมีบัญชีโน้ตจะเป็นของคุณ</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>อีเมล (ไม่บังคับ)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>รหัสผ่าน</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>เผยแพร่โน้ต (/s/…) เพื่อให้ลิงก์ที่แชร์แก้ไขไม่ได้</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>เผยแพร่ลิงก์อ่านอย่างเดียวด้วย</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>แชร์ไปยัง HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>ที่อยู่ HedgeDoc 1.x เช่น https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>เซิร์ฟเวอร์</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>ทดสอบ</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>ทดสอบการเชื่อมต่อ</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>แสดงแถบแท็บแม้เปิดเอกสารเพียงฉบับเดียว</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>แสดงแท็บเสมอ</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>ดำ (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>สไตล์เพิ่มเติมสำหรับตัวแก้ไขและ HTML/PDF ที่ส่งออก</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>เช่น .markdown-body h1 { color: #c00; }  หรือ  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS กำหนดเอง</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>ธีมคือไฟล์ CSS หนึ่งไฟล์ในโฟลเดอร์ธีม ดู docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>วิธีเขียนธีม</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>ธีมคือไฟล์ CSS ในโฟลเดอร์นี้ เอกสารอธิบายรูปแบบไว้</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ไม่มี)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>เปิดโฟลเดอร์ธีม</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>โหลดธีมใหม่</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>ธีมกำหนดเอง</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>เช่น ./${filename}.assets — ตัวแปร: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>หน้าที่แผงด้านข้างแสดงเมื่อเปิดโปรแกรม</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>หน้าเริ่มต้นของแผงด้านข้าง</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>อนุญาตระบบอัตโนมัติภายในเครื่อง</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>โปรแกรมที่คุณเรียกใช้บนคอมพิวเตอร์นี้สามารถอ่านและแก้ไขเอกสารที่เปิดอยู่ได้ ชื่อหน้าต่างจะแสดงเมื่อมีโปรแกรมเชื่อมต่อ</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>ไฮไลต์การเปลี่ยนแปลงที่โปรแกรมทำ</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>ไฮไลต์ข้อความที่โปรแกรมที่เชื่อมต่อเปลี่ยนแปลงชั่วครู่ เพื่อให้คุณเห็นว่ามีอะไรเปลี่ยนไป</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>วาดแผนภาพ PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>ส่งซอร์สของแผนภาพไปยัง plantuml.com เพื่อวาด</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>อัปโหลดด้วย</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>การกำหนดค่าการอัปโหลดที่ใช้กับรูปภาพที่แทรกซึ่งมีการดำเนินการเป็นอัปโหลด และโดย แฟ้ม &gt; อัปโหลดรูปภาพในเครื่อง</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>โฟลเดอร์ใน bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL สาธารณะ</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>ที่อยู่แบบพาธ (MinIO และผู้ให้บริการบางราย)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>การกำหนดค่า S3 ไม่สมบูรณ์: กรอก Endpoint, Bucket, Access Key ID และ Secret Access Key</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>ประวัติการอัปโหลด</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>รูปภาพที่อัปโหลดด้วยการกำหนดค่าเดียวกันแล้วจะไม่ถูกอัปโหลดซ้ำ แต่จะใช้ที่อยู่เดิมแทน (จดจำไว้ {0} รายการ) ล้างประวัติหลังจากลบไฟล์ที่อัปโหลดแล้ว</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>เซิร์ฟเวอร์ PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>ที่อยู่ของเซิร์ฟเวอร์ PlantUML (plantuml-server) ที่วาดแผนภาพ ว่าง: plantuml.com หากใช้เซิร์ฟเวอร์ของคุณเอง ซอร์สของแผนภาพจะอยู่กับคุณ</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>ปุ่ม Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim ในโหมดซอร์ส (:w บันทึก, :q ปิดแท็บ); j/k, gg/G, ]] และ / เพื่อเลื่อนไปมาในโหมดอ่าน ใช้ไม่ได้ในตัวแก้ไขแบบภาพ</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>เปิดโฟลเดอร์บันทึก</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>หลังส่งออก</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>แสดงตำแหน่งที่บันทึก</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>เปิดไฟล์</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>เปิดโฟลเดอร์ของไฟล์</value>
   </data>
 </root>

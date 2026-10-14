@@ -137,18 +137,6 @@
     <value>Siųsti atsiliepimą</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Liestis</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>El paštas</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Mes labai rimtai žiūrime į jūsų atsiliepimus</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Apie</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Šrifto dydis</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Šriftas, naudojamas rengyklėje</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Šriftų šeima</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Redaktoriaus eilutės aukštis kelis kartus</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Iškarpinės vaizdas</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Iškarpinės vaizdo įkėlimo konfigūracija</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Veiksmas, kurį reikia atlikti įterpiant vaizdus</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Vietinis vaizdas</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Vietinio vaizdo įkėlimo konfigūracija</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Įterpti vaizdo veiksmą</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Žiniatinklio vaizdas</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Žiniatinklio vaizdų įkėlimo konfigūracija</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Įterpdami vaizdus mieliau naudokite santykinį kelią</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Langas</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Numatytasis</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Įtrauka, rašoma įdėtiesiems sąrašo elementams. 4 tarpai atitinka Obsidian ir daugumą kitų redaktorių</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 tarpų įtrauka (Markdown standartas)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 tarpas po žymeklio</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 tarpai po žymeklio</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 tarpai po žymeklio</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Sąrašų įtrauka</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Įterpti tuščią eilutę tarp naujų sąrašo elementų šaltinyje</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Laisvi sąrašo elementai</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Rodyti bloko tipą (P, H1, ...) šalia esamos pastraipos</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Pastraipos žymė</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Užpildyti lentelės langelius, kad stulpeliai išsilygiuotų Markdown šaltinyje. Išjunkite, kad lentelės liktų kompaktiškos (mažiau žetonų DI įrankiams)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Lygiuoti lentelės stulpelius</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Aptikti automatiškai kiekvienai pastraipai</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Teksto kryptis redaktoriuje; naudinga arabų, hebrajų ir kitoms iš dešinės į kairę rašomoms kalboms</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Iš kairės į dešinę</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Iš dešinės į kairę</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Teksto kryptis</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Jei išjungta, įkelti iš naujo neklausiant, nebent yra neįrašytų pakeitimų</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Klausti prieš įkeliant iš naujo</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Stebėti atvertą failą ir jį atnaujinti, kai kita programa jį pakeičia</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Automatinis įkėlimas iš naujo pasikeitus išorėje</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Iš Explorer atverti failai atveriami kaip kortelė esamame lange; išjungus atveriamas naujas langas</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Atverti failus kortelėse</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Atverti dokumentus ten, kur baigėte</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Įsiminti žymeklio padėtį</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Atkurti visus paskutinio seanso dokumentus</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Palikite tuščią, kad užrašai būtų anonimiški; su paskyra užrašas priklauso jums</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>El. paštas (nebūtina)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Slaptažodis</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Paskelbia užrašą (/s/…), kad bendrintos nuorodos nebūtų galima redaguoti</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Taip pat paskelbti tik skaitymo nuorodą</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Bendrinti į HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x adresas, pvz. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Serveris</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Tikrinti</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Tikrinti ryšį</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Rodyti kortelių juostą net kai atvertas tik vienas dokumentas</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Visada rodyti korteles</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Juoda (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Papildomi stiliai redaktoriui ir eksportuotam HTML/PDF</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>pvz. .markdown-body h1 { color: #c00; }  arba  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Pasirinktinis CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Tema yra vienas CSS failas temų aplanke; žr. docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Kaip ją parašyti</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Temos yra CSS failai šiame aplanke; formatas paaiškintas dokumente.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(nėra)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Atverti temų aplanką</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Įkelti temas iš naujo</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Pasirinktinė tema</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>pvz. ./${filename}.assets — kintamieji: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Kurį puslapį šoninis skydelis rodo paleidus</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Numatytasis šoninio skydelio puslapis</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Leisti vietinį automatizavimą</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Šiame kompiuteryje jūsų paleistos programos gali skaityti ir redaguoti atidarytus dokumentus. Lango pavadinimas rodo, kai kuri nors prisijungusi.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Paryškinti programų atliktus pakeitimus</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Trumpam paryškina tekstą, kurį pakeitė prijungta programa, kad matytumėte, kas pasikeitė.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Piešti PlantUML diagramas</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Siunčia diagramos šaltinį į plantuml.com, kad ją nupieštų</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Įkelti naudojant</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Įkėlimo konfigūracija, naudojama įterptiems vaizdams, kurių veiksmas yra Įkelti, ir komandai Failas &gt; Įkelti vietinius vaizdus</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Aplankas bucket'e</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Viešasis URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Kelio stiliaus adresai (MinIO ir kai kurie teikėjai)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 konfigūracija nebaigta: užpildykite Endpoint, Bucket, Access Key ID ir Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Įkėlimo istorija</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Su ta pačia konfigūracija jau įkeltas vaizdas iš naujo neįkeliamas; naudojamas ankstesnis jo adresas (įsiminta: {0}). Ištrynę įkeltus failus, išvalykite istoriją.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML serveris</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>PlantUML serverio (plantuml-server), kuris piešia diagramas, adresas. Tuščia: plantuml.com. Su savo serveriu diagramų šaltinis lieka pas jus.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim klavišai</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim šaltinio režimu (:w įrašo, :q uždaro kortelę); j/k, gg/G, ]] ir / judėti skaitymo režimu. Ne vaizdiniame redaktoriuje.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Atidaryti žurnalų aplanką</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Po eksportavimo</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Rodyti, kur išsaugota</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Atidaryti failą</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Atidaryti jo aplanką</value>
   </data>
 </root>

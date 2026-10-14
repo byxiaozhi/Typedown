@@ -133,10 +133,6 @@
     <value>OKEJ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Innehållet får inte vara tomt</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Det gick inte att skapa ett nytt dokument</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Exporten misslyckades</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Feedback</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Importen misslyckades</value>
@@ -225,14 +217,6 @@
     <value>Genvägsknappen är upptagen</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Inlämna</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Inlämningen lyckades</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Uppladdningen misslyckades</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime är inte installerat</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Det här dokumentet har delats tidigare men har ändrats sedan dess. HedgeDoc 1.x kan inte uppdatera en befintlig anteckning, så en ny uppladdning skapar en ny anteckning med en ny länk.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopiera länk</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Redigerbar länk</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Alla med den här länken kan redigera anteckningen.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Ange först HedgeDoc-serverns adress i Inställningar → Export.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Öppna i webbläsare</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Ladda upp igen (ny länk)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Skrivskyddad länk</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Delad till HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokumentet har inte ändrats sedan det delades senast; det här är de befintliga länkarna.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Använd föregående länk</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Behåll</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Läs om</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Filen har ändrats på disken. Omläsning kasserar osparade ändringar.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Filen har ändrats på disken. Läsa om den?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Filen har ändrats på disken</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Ladda upp lokala bilder</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Laddar upp bild {0} av {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{0} av {1} bilder har laddats upp. Deras adresser i dokumentet pekar nu på de uppladdade kopiorna; Ångra återställer de lokala sökvägarna.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Avbrutet. {0} av {1} bilder laddades upp, och deras adresser i dokumentet ändrades.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Inte ändrade:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Det här dokumentet har inga lokala bilder.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Ingen uppladdningskonfiguration är vald. Välj en under Inställningar &gt; Bild &gt; Ladda upp med.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Öppna inställningar</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Filen hittades inte.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Uppladdningen returnerade ingen adress.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokumentet stängdes under uppladdningen.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Dokumentet kunde inte ändras. Bilden finns online på</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Det här dokumentet har {0} lokala bilder. De är filer på den här datorn, så läsare av anteckningen kommer inte att se dem. Ladda upp dem först?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Ladda upp först</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Dela ändå</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} av dem hade redan laddats upp med den här konfigurationen, så deras tidigare adresser användes.</value>
   </data>
 </root>

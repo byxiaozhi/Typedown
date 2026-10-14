@@ -729,10 +729,6 @@
     <value>Цитата</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Рейтинг</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Повторить</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Масштабировать</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Полноэкранный режим</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Режим чтения</value>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Папка не открыта. Откройте файл или папку, чтобы просматривать её здесь.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Этой папки больше не существует.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>В этой папке {0} элементов — слишком много, чтобы перечислять здесь.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>В этой папке нет файлов Markdown.</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Поиск в папке…</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Поиск…</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>Найдено файлов: {0} из {1} просмотренных</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Развернуть все</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Свернуть все</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Увеличить уровень цитаты</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Уменьшить уровень цитаты</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Без названия</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Следующая вкладка</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Предыдущая вкладка</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Показать папку текущего файла</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Поделиться в HedgeDoc…</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Поиск в папке</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(совпадение по имени файла)</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Последняя использованная вкладка</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Автоматизация подключена</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} изменил(а) {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Редактирование этого документа в визуальном режиме может изменить часть его HTML-кода. Чтобы сохранить его как есть, редактируйте в режиме исходного кода.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>Диаграммы PlantUML отключены (для отрисовки код отправляется на plantuml.com). Включите их в разделе Настройки &gt; Редактор.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Загрузить локальные изображения</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Экспортировано в {0}</value>
   </data>
 </root>

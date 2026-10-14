@@ -28,9 +28,12 @@ namespace Typedown.Core.Controls
             return null;
         }
 
-        public static async Task<Result> OpenResizeTableDialog(XamlRoot xamlRoot)
+        /// <summary>The table's own size to start from: the dialog showed 4 x 3 whatever the table was.</summary>
+        public static async Task<Result> OpenResizeTableDialog(XamlRoot xamlRoot, int rows, int columns)
         {
             var (dialog, content) = CreateContentDialog(Locale.GetDialogString("ResizeTableTitle"));
+            if (rows > 0) content.rows.Value = rows;
+            if (columns > 0) content.columns.Value = columns;
             var result = await dialog.ShowAsync(xamlRoot);
             if (result == ContentDialogResult.Primary)
                 return new() { Rows = (int)content.rows.Value, Columns = (int)content.columns.Value };

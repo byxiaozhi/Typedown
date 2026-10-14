@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- The platform-neutral half of the local automation API (docs/automation-api-spec.md): protocol types, errors,
+       framing and the window/document registry. No UI types, so the Windows host, the Uno port and the tests on
+       Linux all use the same code. -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Typedown.Automation</RootNamespace>
+    <!-- The Windows app builds its references with its own runtime (the MSIX build: win-x64, win-arm64; the app:
+         win10-*), the SDK adding this library as a reference of the app itself. Without these the restore had no
+         target for them and the package build stopped with NETSDK1047. The code is the same for all of them. -->
+    <RuntimeIdentifiers>win-x64;win-arm64;win-x86;win10-x64;win10-arm64;win10-x86</RuntimeIdentifiers>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Needs .NET 7+ (Unix sockets, file modes): the CLI, the Uno port and the tests compile it themselves. -->
+    <Compile Remove="Unix\**" />
+    <None Include="Unix\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The one description of the external settings: settings.describe and the checks both read it. -->
+    <EmbeddedResource Include="..\..\docs\automation-fixtures\settings-map.json" LogicalName="settings-map.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The version Typedown.Core already uses. -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+</Project>

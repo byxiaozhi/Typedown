@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:Typedown.Core.Models" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:u="using:Typedown.Core.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -14,7 +15,7 @@
         <Thickness x:Key="TreeViewItemPresenterPadding">0</Thickness>
         
         <DataTemplate x:Key="TocItemTemplate" x:DataType="models:TocTreeItem">
-            <muxc:TreeViewItem ItemsSource="{x:Bind Children, Mode=OneWay}" IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}" IsSelected="{x:Bind TocItem.IsSelected, Mode=TwoWay}">
+            <muxc:TreeViewItem ItemsSource="{x:Bind Children, Mode=OneWay}" IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}">
                 <Grid Height="32">
                     <TextBlock Text="{x:Bind TocItem.Content, Mode=OneWay}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,0,1"/>
                 </Grid>
@@ -22,10 +23,25 @@
         </DataTemplate>
     </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="4,2" Spacing="2">
+            <Button Width="32" Height="28" Style="{ThemeResource EllipsisIconButtonStyle}" Click="OnExpandAllClick" ToolTipService.ToolTip="{u:LocaleString Key=TocPane.ExpandAll}">
+                <FontIcon FontSize="12" Glyph="&#xe70d;"/>
+            </Button>
+            <Button Width="32" Height="28" Style="{ThemeResource EllipsisIconButtonStyle}" Click="OnCollapseAllClick" ToolTipService.ToolTip="{u:LocaleString Key=TocPane.CollapseAll}">
+                <FontIcon FontSize="12" Glyph="&#xe70e;"/>
+            </Button>
+        </StackPanel>
         <muxc:TreeView 
             x:Name="TreeView"
+            Grid.Row="1"
             ItemsSource="{x:Bind Editor.Toc.Children, Mode=OneWay}" 
-            ItemTemplate="{StaticResource TocItemTemplate}" >
+            ItemTemplate="{StaticResource TocItemTemplate}"
+            ItemInvoked="OnItemInvoked"
+            SelectionChanged="OnSelectionChanged">
             <muxc:TreeView.ItemContainerTransitions>
                 <TransitionCollection>
                     <ContentThemeTransition/>

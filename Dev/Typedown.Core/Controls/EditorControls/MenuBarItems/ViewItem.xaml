@@ -14,6 +14,15 @@
     <ToggleMenuFlyoutItem x:Name="SourceCodeModeItem" Text="{u:LocaleString Key=SourceCodeMode}" IsChecked="{x:Bind Settings.SourceCode, Mode=TwoWay}"/>
     <ToggleMenuFlyoutItem x:Name="FocusModeItem" Text="{u:LocaleString Key=FocusMode}" IsChecked="{x:Bind Settings.FocusMode, Mode=TwoWay}"/>
     <ToggleMenuFlyoutItem x:Name="TypewriterModeItem" Text="{u:LocaleString Key=TypewriterMode}" IsChecked="{x:Bind Settings.Typewriter, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="ReadOnlyModeItem" Text="{u:LocaleString Key=ReadOnlyMode}" IsChecked="{x:Bind Settings.ReadOnly, Mode=TwoWay}"/>
     <MenuFlyoutSeparator/>
     <ToggleMenuFlyoutItem x:Name="StatusBarItem" Text="{u:LocaleString Key=StatusBar}" IsChecked="{x:Bind Settings.StatusBarOpen, Mode=TwoWay}"/>
+    <ToggleMenuFlyoutItem x:Name="FullScreenItem" Text="{u:LocaleString Key=FullScreen}" IsChecked="{x:Bind ViewModel.UIViewModel.IsFullScreen, Mode=TwoWay}"/>
+    <MenuFlyoutSeparator/>
+    <!-- Filled in code: the built-in themes plus whatever is in the themes folder (see docs/custom-theme.md). -->
+    <MenuFlyoutSubItem x:Name="ThemeSubMenu" Text="{u:LocaleString Key=Theme}"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem x:Name="NextTabItem" Text="{u:LocaleString Key=NextTab}" Command="{x:Bind ViewModel.TabsViewModel.NextTabCommand}"/>
+    <MenuFlyoutItem x:Name="PreviousTabItem" Text="{u:LocaleString Key=PreviousTab}" Command="{x:Bind ViewModel.TabsViewModel.PreviousTabCommand}"/>
+    <MenuFlyoutItem x:Name="LastUsedTabItem" Text="{u:LocaleString Key=LastUsedTab}" Command="{x:Bind ViewModel.TabsViewModel.LastUsedTabCommand}"/>
 </local:MenuBarItemBase>

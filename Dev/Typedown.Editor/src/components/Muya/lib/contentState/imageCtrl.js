@@ -99,6 +99,48 @@ const imageCtrl = ContentState => {
     this.muya.dispatchChange()
   }
 
+  /**
+   * Several images at once (Typedown: a drop or paste of many files, a multi-file pick): each one in a paragraph of
+   * its own, in the given order, after the block the cursor is in (or after the block `afterKey` when given); the
+   * first one goes into the cursor's paragraph instead when that is empty. One image without `afterKey` is inserted
+   * at the cursor as before. One change, so one undo step.
+   */
+  ContentState.prototype.insertImages = function (images, afterKey) {
+    if (!images || images.length === 0) return
+    if (images.length === 1 && !afterKey) return this.insertImage(images[0])
+    const block = this.getBlock(afterKey || this.cursor.start.key)
+    let anchor = block && this.getAnchor(block)
+    if (!anchor) return
+    const markdown = ({ alt = '', src = '', title = '' }) => {
+      if (!alt) {
+        const match = /(?:\/|\\)?([^./\\]+)\.[a-z]+$/i.exec(src)
+        alt = match && match[1] ? match[1] : ''
+      }
+      let url
+      if (URL_REG.test(src)) url = encodeURI(src)
+      else if (DATA_URL_REG.test(src)) url = src
+      else url = src.replace(/ /g, encodeURI(' ')).replace(/#/g, encodeURIComponent('#'))
+      return `![${alt}](${url}${title ? ` "${title}"` : ''})`
+    }
+    let rest = images
+    let last = null
+    if (!afterKey && block.functionType === 'paragraphContent' && block.text === '') {
+      block.text = markdown(images[0])
+      last = block
+      rest = images.slice(1)
+    }
+    for (const image of rest) {
+      const paragraph = this.createBlockP(markdown(image))
+      this.insertAfter(paragraph, anchor)
+      anchor = paragraph
+      last = paragraph.children[0]
+    }
+    const offset = last.text.length
+    this.cursor = { start: { key: last.key, offset }, end: { key: last.key, offset } }
+    this.render()
+    this.muya.dispatchChange()
+  }
+
   ContentState.prototype.updateImage = function ({ imageId, key, token }, attrName, attrValue) { // inline/left/center/right
     const block = this.getBlock(key)
     const { range } = token

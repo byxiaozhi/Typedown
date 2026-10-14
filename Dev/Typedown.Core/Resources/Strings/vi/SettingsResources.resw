@@ -137,18 +137,6 @@
     <value>Gửi phản hồi</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Sự tiếp xúc</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Email</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Chúng tôi rất coi trọng phản hồi của bạn</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Về</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Kích thước phông chữ</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Phông chữ được sử dụng trong trình soạn thảo</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Họ phông chữ</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Chiều cao dòng trình chỉnh sửa nhiều</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Hình ảnh bảng tạm</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Cấu hình tải lên hình ảnh khay nhớ tạm</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Hành động cần thực thi khi chèn hình ảnh</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Hình ảnh địa phương</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Cấu hình tải lên hình ảnh cục bộ</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Chèn hành động hình ảnh</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Hình ảnh web</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Cấu hình tải lên hình ảnh web</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Thích sử dụng đường dẫn tương đối khi chèn hình ảnh</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Cửa sổ</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Mặc định</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Thụt lề được ghi cho các mục danh sách lồng nhau. 4 khoảng trắng khớp với Obsidian và hầu hết trình soạn thảo khác</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Thụt lề 4 khoảng trắng (chuẩn Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 khoảng trắng sau dấu đầu mục</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 khoảng trắng sau dấu đầu mục</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 khoảng trắng sau dấu đầu mục</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Thụt lề danh sách</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Chèn một dòng trống giữa các mục danh sách mới trong mã nguồn</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Mục danh sách thưa</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Hiển thị loại khối (P, H1, ...) bên cạnh đoạn hiện tại</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Dấu đoạn văn</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Đệm ô bảng để các cột thẳng hàng trong mã nguồn Markdown. Tắt để bảng gọn hơn (ít token hơn cho công cụ AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Căn cột bảng</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Tự phát hiện theo từng đoạn</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Hướng văn bản trong trình soạn thảo, hữu ích cho tiếng Ả Rập, Do Thái và các ngôn ngữ viết từ phải sang trái</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Trái sang phải</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Phải sang trái</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Hướng văn bản</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Nếu tắt, tải lại không hỏi trừ khi có thay đổi chưa lưu</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Hỏi trước khi tải lại</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Theo dõi tệp đang mở và làm mới khi chương trình khác thay đổi nó</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Tự động tải lại khi có thay đổi bên ngoài</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Tệp mở từ Explorer sẽ mở thành thẻ trong cửa sổ hiện tại; tắt sẽ mở cửa sổ mới</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Mở tệp trong thẻ</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Mở tài liệu tại nơi bạn dừng lại</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Ghi nhớ vị trí con trỏ</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Khôi phục mọi tài liệu của phiên trước</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Để trống để tạo ghi chú ẩn danh; với tài khoản, ghi chú thuộc về bạn</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Email (tùy chọn)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Xuất bản ghi chú (/s/…) để liên kết chia sẻ không thể sửa</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Đồng thời xuất bản liên kết chỉ đọc</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Chia sẻ lên HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Địa chỉ HedgeDoc 1.x, ví dụ https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Máy chủ</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Kiểm tra</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Kiểm tra kết nối</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Hiện thanh thẻ ngay cả khi chỉ mở một tài liệu</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Luôn hiện thẻ</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Đen (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Kiểu bổ sung cho trình soạn thảo và HTML/PDF đã xuất</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>ví dụ .markdown-body h1 { color: #c00; }  hoặc  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS tùy chỉnh</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Một chủ đề là một tệp CSS trong thư mục chủ đề; xem docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Cách viết một chủ đề</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Chủ đề là các tệp CSS trong thư mục này; tài liệu giải thích định dạng.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(không có)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Mở thư mục chủ đề</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Tải lại chủ đề</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Chủ đề tùy chỉnh</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>ví dụ ./${filename}.assets — biến: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Trang mà bảng bên hiển thị khi khởi động</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Trang mặc định của bảng bên</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Cho phép tự động hóa cục bộ</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Các chương trình bạn chạy trên máy tính này có thể đọc và chỉnh sửa tài liệu đang mở. Tiêu đề cửa sổ cho biết khi có chương trình kết nối.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Tô sáng thay đổi do chương trình thực hiện</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Tô sáng trong giây lát phần văn bản mà một chương trình đã kết nối thay đổi, để bạn thấy chỗ nào đã thay đổi.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Vẽ sơ đồ PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Gửi mã nguồn của sơ đồ đến plantuml.com để vẽ</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Tải lên bằng</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Cấu hình tải lên dùng cho ảnh được chèn có hành động là Tải lên hình ảnh, và cho Tệp &gt; Tải lên ảnh cục bộ</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Thư mục trong bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL công khai</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Địa chỉ kiểu đường dẫn (MinIO và một số nhà cung cấp)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Cấu hình S3 chưa đầy đủ: hãy điền Endpoint, Bucket, Access Key ID và Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Lịch sử tải lên</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Ảnh đã tải lên bằng cùng cấu hình sẽ không được tải lên lại; địa chỉ cũ của ảnh sẽ được dùng (đã ghi nhớ {0}). Hãy xóa lịch sử sau khi xóa các tệp đã tải lên.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Máy chủ PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Địa chỉ máy chủ PlantUML (plantuml-server) dùng để vẽ sơ đồ. Để trống: plantuml.com. Với máy chủ riêng, mã nguồn sơ đồ vẫn ở chỗ bạn.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Phím Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim ở chế độ mã nguồn (:w lưu, :q đóng tab); j/k, gg/G, ]] và / để di chuyển ở chế độ đọc. Không có trong trình soạn thảo trực quan.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Mở thư mục nhật ký</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Sau khi xuất</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Hiển thị nơi đã lưu</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Mở tệp</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Mở thư mục chứa</value>
   </data>
 </root>

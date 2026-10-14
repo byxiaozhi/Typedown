@@ -137,18 +137,6 @@
     <value>Seol Aiseolas</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Teagmháil</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Ríomhphost</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Glacaimid d'aiseolas go han-dáiríre</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Maidir</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Clómhéid</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Cló a úsáidtear san eagarthóir</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Clóghrám</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Airde líne an eagarthóra iolrach</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Íomhá Clipboard</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Cumraíocht uaslódála íomhá clipboard</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Gníomh chun forghníomhú agus íomhánna á gcur isteach</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Íomhá áitiúil</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Cumraíocht uaslódála íomhá áitiúil</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Cuir isteach gníomh íomhá</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Íomhá Gréasáin</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Cumraíocht uaslódála íomhá gréasáin</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Is fearr cosán coibhneasta a úsáid agus íomhánna á gcur isteach</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Fuinneog</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Réamhshocrú</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>An t-eangú a scríobhtar do mhíreanna liosta neadaithe. Meaitseálann 4 spás le Obsidian agus formhór na n-eagarthóirí eile</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Eangú 4 spás (caighdeán Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 spás tar éis an mharcóra</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 spás tar éis an mharcóra</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 spás tar éis an mharcóra</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Eangú liostaí</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Cuir líne fholamh isteach idir míreanna nua liosta sa fhoinse</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Míreanna liosta scaoilte</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Taispeáin cineál an bhloic (P, H1, ...) in aice leis an alt reatha</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Marcóir ailt</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Líon cealla an tábla ionas go n-ailíneoidh na colúin i bhfoinse Markdown. Múch é chun táblaí a choinneáil dlúth (níos lú comharthaí d'uirlisí IS)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Ailínigh colúin an tábla</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Braith go huathoibríoch de réir ailt</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Treo téacs an eagarthóra; úsáideach don Araibis, don Eabhrais agus do theangacha eile a scríobhtar ó dheis go clé</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Ó chlé go deas</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Ó dheis go clé</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Treo téacs</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Má tá sé múchta, athlódáil gan fiafraí mura bhfuil athruithe gan sábháil ann</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Fiafraigh roimh athlódáil</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Coinnigh súil ar an gcomhad oscailte agus athnuaigh é nuair a athraíonn clár eile é</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Athlódáil uathoibríoch ar athrú seachtrach</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Osclaítear comhaid ó Explorer mar chluaisín san fhuinneog reatha; múchta osclaítear fuinneog nua</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Oscail comhaid i gcluaisíní</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Oscail cáipéisí san áit ar stop tú</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Cuimhnigh ar shuíomh an chúrsóra</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Athchóirigh gach cáipéis ón seisiún deireanach</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Fág folamh chun nótaí gan ainm a chruthú; le cuntas is leatsa an nóta</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Ríomhphost (roghnach)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Pasfhocal</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Foilsíonn sé an nóta (/s/…) ionas nach féidir an nasc roinnte a chur in eagar</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Foilsigh nasc inléite amháin freisin</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Roinn le HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Seoladh HedgeDoc 1.x, m.sh. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Freastalaí</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Tástáil</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Tástáil an nasc</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Taispeáin stiall na gcluaisíní fiú nuair nach bhfuil ach cáipéis amháin oscailte</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Taispeáin cluaisíní i gcónaí</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Dubh (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Stíleanna breise don eagarthóir agus don HTML/PDF easpórtáilte</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>m.sh. .markdown-body h1 { color: #c00; }  nó  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS saincheaptha</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Is comhad CSS amháin i bhfillteán na dtéamaí é téama; féach docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Conas ceann a scríobh</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Is comhaid CSS san fhillteán seo iad na téamaí; míníonn an cháipéis an fhormáid.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ceann ar bith)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Oscail fillteán na dtéamaí</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Athlódáil na téamaí</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Téama saincheaptha</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>m.sh. ./${filename}.assets — athróga: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Cén leathanach a thaispeánann an pána taoibh ag am tosaithe</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Leathanach réamhshocraithe an phána taoibh</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Ceadaigh uathoibriú áitiúil</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Is féidir le cláir a ritheann tú ar an ríomhaire seo doiciméid oscailte a léamh agus a chur in eagar. Taispeánann teideal na fuinneoige nuair atá ceann ceangailte.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Aibhsigh athruithe a rinne ríomhchláir</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Aibhsíonn sé go hachomair an téacs a d'athraigh ríomhchlár ceangailte, ionas go bhfeicfidh tú cad a d'athraigh.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Tarraing léaráidí PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Seolann sé foinse na léaráide chuig plantuml.com chun í a tharraingt</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Uaslódáil le</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>An chumraíocht uaslódála a úsáidtear d'íomhánna ionsáite arb é Uaslódáil a ngníomh, agus ag Comhad &gt; Uaslódáil íomhánna áitiúla</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Fillteán sa bhuicéad</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL poiblí</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Seoltaí i stíl conaire (MinIO agus soláthraithe áirithe)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Tá cumraíocht S3 neamhiomlán: líon isteach Endpoint, Bucket, Access Key ID agus Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Stair uaslódála</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Ní uaslódáiltear arís íomhá atá uaslódáilte cheana leis an gcumraíocht chéanna; úsáidtear a seoladh roimhe sin ({0} i gcuimhne). Glan an stair tar éis comhaid uaslódáilte a scriosadh.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Freastalaí PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Seoladh an fhreastalaí PlantUML (plantuml-server) a tharraingíonn na léaráidí. Folamh: plantuml.com. Le do fhreastalaí féin, fanann foinse na léaráidí agatsa.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Eochracha Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim sa mhód foinse (sábhálann :w, dúnann :q an cluaisín); j/k, gg/G, ]] agus / chun bogadh timpeall sa mhód léitheoireachta. Ní san eagarthóir amhairc.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Oscail an fillteán logaí</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Tar éis easpórtála</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Taispeáin cá sábháladh é</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Oscail an comhad</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Oscail a fhillteán</value>
   </data>
 </root>

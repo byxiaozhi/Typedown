@@ -729,10 +729,6 @@
     <value>הצעת מחיר</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>דירוג</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>ביצוע חוזר</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>זום</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>אין תיקייה פתוחה. פתח קובץ או תיקייה כדי לעיין בה כאן.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>בתיקייה זו {0} פריטים — יותר מדי מכדי להציג כאן.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>אין קובצי Markdown בתיקייה זו.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>התיקייה הזו כבר לא קיימת.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>הצג את תיקיית הקובץ הנוכחי</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>חיפוש בתיקייה…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(שם הקובץ תואם)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} קבצים תואמים מתוך {1} שנסרקו</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>מחפש…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>מסך מלא</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>הלשונית האחרונה שהייתה בשימוש</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>הלשונית הבאה</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>הלשונית הקודמת</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>הקטן רמת ציטוט</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>הגדל רמת ציטוט</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>מצב קריאה</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>חיפוש בתיקייה</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>שתף ל-HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>כווץ הכל</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>הרחב הכל</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>ללא שם</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>אוטומציה מחוברת</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} ערך את {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>עריכת המסמך במצב חזותי עלולה לשכתב חלק מקוד ה-HTML שבו. כדי לשמור אותו בדיוק כפי שהוא, ערוך אותו במצב קוד מקור.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>תרשימי PlantUML כבויים (ציור שולח את הקוד אל plantuml.com). אפשר להפעיל אותם בהגדרות &gt; עורך.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>העלה תמונות מקומיות</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>יוצא אל {0}</value>
   </data>
 </root>

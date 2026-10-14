@@ -101,24 +101,85 @@ namespace Typedown.Core.Utilities
             {"tr","Türkçe"},
             {"uk","Українська"},
             {"ur","اردو"},
-            {"uz","Uzbek (Latin)"},
             {"vi","Tiếng Việt"},
             {"zh-Hans","中文 (简体)"},
             {"zh-Hant","繁體中文 (繁體)"},
             {"zu","Isi-Zulu"},
         };
 
-        public static Dictionary<string, string> LangsOptions { get; } = new(SupportedLangs.Append(new("default", GetString("UseSystemSetting"))));
+        /// <summary>
+        /// The languages that come first in the list. Seventy-four entries in alphabetical order means scrolling
+        /// past Afrikaans to reach Chinese; the ones people actually pick are at the top, the rest follow in
+        /// their usual order.
+        /// </summary>
+        private static readonly string[] CommonLangs = { "zh-Hans", "zh-Hant", "en", "ja", "ko", "de", "fr", "es", "ru", "pt", "it" };
+
+        /// <summary>Computed on each access: the "follow system" label has to follow the chosen language too,
+        /// and the static initializer runs before the language is applied.</summary>
+        public static Dictionary<string, string> LangsOptions
+        {
+            get
+            {
+                var options = new Dictionary<string, string> { { "default", GetString("UseSystemSetting") } };
+                foreach (var lang in CommonLangs)
+                    if (SupportedLangs.TryGetValue(lang, out var name))
+                        options[lang] = name;
+                foreach (var pair in SupportedLangs)
+                    if (!options.ContainsKey(pair.Key))
+                        options[pair.Key] = pair.Value;
+                return options;
+            }
+        }
 
         public static string GetLangOptionDisplayName(string key) => LangsOptions[key];
 
         public static ResourceContext ResourceContext { get; } = new();
 
+        /// <summary>
+        /// Chooses the language the .resw resources are read in. <c>ApplicationLanguages.PrimaryLanguageOverride</c>
+        /// alone is not enough: it needs package identity, so in the installer and portable builds it throws and
+        /// the app stays in the system language no matter what the setting says. Setting the language on the
+        /// resource contexts works either way — that is what the lookups below actually consult.
+        /// </summary>
+        /// <summary>The language the interface was actually built with, so the settings can say when it moved on.</summary>
+        public static string AppliedLanguage { get; private set; }
+
+        public static void ApplyLanguage(string language)
+        {
+            var wanted = SupportedLangs.ContainsKey(language ?? "") ? language : null;
+            AppliedLanguage ??= wanted ?? string.Empty; // the first application is the one the interface was built with
+            Apply(ResourceContext, wanted);
+            try
+            {
+                Apply(ResourceManager.Current.DefaultContext, wanted);
+            }
+            catch (Exception ex)
+            {
+                Log.Debug($"language: default context refused {wanted ?? "(system)"}: {ex.Message}");
+            }
+            Log.Debug($"language: setting={language} applied={wanted ?? "(system)"} resolved={string.Join(",", ResourceContext.Languages)}");
+        }
+
+        private static void Apply(ResourceContext context, string language)
+        {
+            try
+            {
+                if (language == null)
+                    context.Reset();
+                else
+                    context.QualifierValues["Language"] = language;
+            }
+            catch (Exception ex)
+            {
+                Log.Debug($"language: cannot set {language ?? "(system)"}: {ex.Message}");
+            }
+        }
+
         public static string GetString(string key, ResourceSource source = 0)
         {
             key = key.Replace('.', '/');
             if (source == 0 || !ResourcesDictionary.ContainsKey(source))
-                return ResourcesDictionary.Values.Select(x => x.GetValue(key)?.ValueAsString).Where(x => !string.IsNullOrEmpty(x)).FirstOrDefault();
+                return ResourcesDictionary.Values.Select(x => x.GetValue(key, ResourceContext)?.ValueAsString).Where(x => !string.IsNullOrEmpty(x)).FirstOrDefault();
             return ResourcesDictionary[source].GetValue(key, ResourceContext)?.ValueAsString;
         }
 

@@ -202,6 +202,7 @@
                                         ZoomMode="Disabled"
                                         IsTabStop="False">
                                         <Grid
+                                            x:Name="ContentTopOverlay"
                                             Background="{ThemeResource ContentDialogTopOverlay}"
                                             Padding="{ThemeResource ContentDialogPadding}"
                                             BorderThickness="{ThemeResource ContentDialogSeparatorThickness}"

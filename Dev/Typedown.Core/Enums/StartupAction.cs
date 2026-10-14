@@ -11,7 +11,10 @@ namespace Typedown.Core.Enums
         None,
 
         [Locale("General.StartupAction.FileStartupAction.OpenLast")]
-        OpenLast
+        OpenLast,
+
+        [Locale("General.StartupAction.FileStartupAction.RestoreSession")]
+        RestoreSession
     }
 
     public enum FolderStartupAction

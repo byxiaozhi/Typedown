@@ -1,0 +1,318 @@
+{
+  "description": "Protected payloads (docs/automation-api-analysis-plan.md, stage 0a). preserve: documents a real first visual edit must keep - mustKeep lists exact strings, checked by plain substring search so that the judge of a real loss is independent of the classifier - or whose loss the editor must have predicted as unsafe (Tools/EditorBench/protected-payload-check.js). loss: source/normalized pairs the classifier must call unsafe with the given reason - a write whose candidate looks like this is refused with content_not_roundtrippable. safe: differences of form that must not be called unsafe. Used by Dev/Typedown.Editor/src/services/normalization.fixtures.test.ts.",
+  "preserve": [
+    {
+      "category": "links",
+      "name": "inline-links",
+      "markdown": "See [site](https://example.com/a_b?x=1&y=2 \"Title\"), [bare](https://e.com/path), [spaced](<https://e.com/a b>) and [rel](./docs/readme.md#part).\n",
+      "mustKeep": [
+        "(https://example.com/a_b?x=1&y=2 \"Title\")",
+        "(https://e.com/path)",
+        "https://e.com/a b",
+        "(./docs/readme.md#part)"
+      ]
+    },
+    {
+      "category": "links",
+      "name": "images",
+      "markdown": "![alt](./img/a%20b.png \"Pic\") and ![](https://e.com/x.svg) and ![t](<./a b.png> 'single')\n",
+      "mustKeep": [
+        "(./img/a%20b.png \"Pic\")",
+        "(https://e.com/x.svg)",
+        "./a b.png",
+        "'single'"
+      ]
+    },
+    {
+      "category": "links",
+      "name": "reference-definitions",
+      "markdown": "Use [one][r1], [two][] and [three].\n\n[r1]: https://e.com/1 \"First\"\n[two]: <https://e.com/two>\n[three]: ./local.md (Paren title)\n",
+      "mustKeep": [
+        "[r1]: https://e.com/1 \"First\"",
+        "https://e.com/two",
+        "./local.md",
+        "Paren title"
+      ]
+    },
+    {
+      "category": "links",
+      "name": "autolinks",
+      "markdown": "Mail <mailto:a@b.co>, web <https://auto.link/x?y=1> and ftp <ftp://files.example.com/a>.\n",
+      "mustKeep": [
+        "<mailto:a@b.co>",
+        "<https://auto.link/x?y=1>",
+        "<ftp://files.example.com/a>"
+      ]
+    },
+    {
+      "category": "fences",
+      "name": "fence-languages",
+      "markdown": "```ts {title=\"x.ts\" highlight=[1,3]}\nconst a: number = 1;\n```\n\n~~~python linenos\nprint(\"tilde\")\n~~~\n\n````md\n```inner\nnot closed here\n```\n````\n",
+      "mustKeep": [
+        "ts {title=\"x.ts\" highlight=[1,3]}",
+        "python linenos",
+        "```inner\nnot closed here\n```"
+      ]
+    },
+    {
+      "category": "fences",
+      "name": "fence-bodies",
+      "markdown": "```\n  indented\tand tabbed   \n\n\ntrailing blank lines above\n```\n\n```js\n// <b>not html</b> [not](a link) *not em*\n```\n",
+      "mustKeep": [
+        "  indented\tand tabbed   \n\n\ntrailing blank lines above",
+        "// <b>not html</b> [not](a link) *not em*"
+      ]
+    },
+    {
+      "category": "footnotes",
+      "name": "footnotes",
+      "markdown": "Claim[^1], another[^long-id] and again[^1].\n\n[^1]: First note.\n[^long-id]: Second note with `code` and [link](https://e.com).\n",
+      "mustKeep": [
+        "Claim[^1]",
+        "another[^long-id]",
+        "again[^1]",
+        "[^1]: First note.",
+        "[^long-id]: Second note with `code` and [link](https://e.com)."
+      ]
+    },
+    {
+      "category": "tasks",
+      "name": "task-states",
+      "markdown": "- [ ] todo\n- [x] done\n- [X] upper done\n  - [ ] nested todo\n  - [x] nested done\n1. [ ] ordered todo\n2. [x] ordered done\n",
+      "mustKeep": [
+        "[ ] todo",
+        "[x] done",
+        "done\n",
+        "[ ] nested todo",
+        "[x] nested done",
+        "[ ] ordered todo",
+        "[x] ordered done"
+      ]
+    },
+    {
+      "category": "html",
+      "name": "html-attributes",
+      "markdown": "<div align=\"center\" class=\"note wide\" data-x=\"1\" hidden>\n  <img src=\"a.png\" width=\"120\" alt=\"logo\">\n</div>\n\n<details open>\n<summary>More</summary>\n\nInner text.\n\n</details>\n",
+      "mustKeep": [
+        "<div align=\"center\" class=\"note wide\" data-x=\"1\" hidden>",
+        "<img src=\"a.png\" width=\"120\" alt=\"logo\">",
+        "<details open>",
+        "<summary>More</summary>"
+      ]
+    },
+    {
+      "category": "html",
+      "name": "inline-html",
+      "markdown": "Press <kbd>Ctrl</kbd>+<kbd>S</kbd>, <span style=\"color:red\" title='t'>red</span> and <a href=\"https://e.com\" target=\"_blank\" rel=\"noopener\">link</a>.\n",
+      "mustKeep": [
+        "<kbd>Ctrl</kbd>",
+        "<span style=\"color:red\" title='t'>red</span>",
+        "<a href=\"https://e.com\" target=\"_blank\" rel=\"noopener\">link</a>"
+      ]
+    },
+    {
+      "category": "frontMatter",
+      "name": "front-matter",
+      "markdown": "---\ntitle: \"标题: with colon\"\ntags: [a, b]\nnested:\n  key: value\n---\n\n# Body\n",
+      "mustKeep": [
+        "---\ntitle: \"标题: with colon\"\ntags: [a, b]\nnested:\n  key: value\n---"
+      ]
+    },
+    {
+      "category": "math",
+      "name": "math-blocks",
+      "markdown": "$$\n\\int_0^1 x^2 \\, dx = \\frac{1}{3}\n$$\n\nInline $E = mc^2$ and $\\sum_{i=1}^{n} i$.\n",
+      "mustKeep": [
+        "$$\n\\int_0^1 x^2 \\, dx = \\frac{1}{3}\n$$",
+        "$E = mc^2$",
+        "$\\sum_{i=1}^{n} i$"
+      ]
+    },
+    {
+      "category": "extensions",
+      "name": "diagram-blocks",
+      "markdown": "```mermaid\ngraph LR\n  A[开始] --> B{判断}\n```\n\n```flowchart\nst=>start: Start\ne=>end\nst->e\n```\n\n```sequence\nA->B: hi\n```\n\n```vega-lite\n{\"mark\": \"bar\"}\n```\n",
+      "mustKeep": [
+        "```mermaid\ngraph LR\n  A[开始] --> B{判断}\n```",
+        "```flowchart\nst=>start: Start\ne=>end\nst->e\n```",
+        "```sequence\nA->B: hi\n```",
+        "```vega-lite\n{\"mark\": \"bar\"}\n```"
+      ]
+    }
+  ],
+  "loss": [
+    {
+      "category": "links",
+      "name": "link destination changed",
+      "source": "[a](https://e.com/x)\n",
+      "normalized": "[a](https://e.com/y)\n",
+      "reason": "link-lost"
+    },
+    {
+      "category": "links",
+      "name": "image title dropped",
+      "source": "![p](a.png \"cap\")\n",
+      "normalized": "![p](a.png)\n",
+      "reason": "link-lost"
+    },
+    {
+      "category": "links",
+      "name": "autolink became plain text",
+      "source": "<https://auto.link>\n",
+      "normalized": "https://auto.link\n",
+      "reason": "link-lost"
+    },
+    {
+      "category": "links",
+      "name": "reference definition dropped",
+      "source": "[x][r]\n\n[r]: https://e.com/r\n",
+      "normalized": "[x][r]\n",
+      "reason": "link-lost"
+    },
+    {
+      "category": "fences",
+      "name": "fence info attributes dropped",
+      "source": "```ts {title=\"x.ts\"}\nconst a = 1;\n```\n",
+      "normalized": "```ts\nconst a = 1;\n```\n",
+      "reason": "fence-lost"
+    },
+    {
+      "category": "fences",
+      "name": "fence body whitespace changed",
+      "source": "```\na  \n\tb\n```\n",
+      "normalized": "```\na\n    b\n```\n",
+      "reason": "fence-lost"
+    },
+    {
+      "category": "fences",
+      "name": "fence closed early by a list line",
+      "source": "- item\n  ```bash\n  # a\n* b\n  ```\n",
+      "normalized": "- item\n  ```bash\n  # a\n  ```\n* b\n",
+      "reason": "fence-lost"
+    },
+    {
+      "category": "footnotes",
+      "name": "footnote definition dropped",
+      "source": "a[^n]\n\n[^n]: note\n",
+      "normalized": "a[^n]\n",
+      "reason": "footnote-lost"
+    },
+    {
+      "category": "tasks",
+      "name": "task unchecked",
+      "source": "- [x] done\n",
+      "normalized": "- [ ] done\n",
+      "reason": "task-state-changed"
+    },
+    {
+      "category": "tasks",
+      "name": "task marker lost",
+      "source": "- [ ] todo\n",
+      "normalized": "- todo\n",
+      "reason": "task-state-changed"
+    },
+    {
+      "category": "html",
+      "name": "html attribute dropped",
+      "source": "<div align=\"center\" data-x=\"1\">y</div>\n",
+      "normalized": "<div align=\"center\">y</div>\n",
+      "reason": "html-lost"
+    },
+    {
+      "category": "html",
+      "name": "html entity decoded",
+      "source": "<a href=\"&ouml;.html\">x</a>\n",
+      "normalized": "<a href=\"ö.html\">x</a>\n",
+      "reason": "html-lost"
+    },
+    {
+      "category": "frontMatter",
+      "name": "front matter value changed",
+      "source": "---\ntitle: a\n---\n\nx\n",
+      "normalized": "---\ntitle: b\n---\n\nx\n",
+      "reason": "front-matter-lost"
+    },
+    {
+      "category": "frontMatter",
+      "name": "front matter dropped",
+      "source": "---\ntitle: a\n---\n\nx\n",
+      "normalized": "x\n",
+      "reason": "front-matter-lost"
+    },
+    {
+      "category": "math",
+      "name": "display maths changed",
+      "source": "$$\nx^2\n$$\n",
+      "normalized": "$$\nx^3\n$$\n",
+      "reason": "math-lost"
+    },
+    {
+      "category": "math",
+      "name": "inline maths changed",
+      "source": "Energy $E = mc^2$.\n",
+      "normalized": "Energy $E = mc^3$.\n",
+      "reason": "math-lost"
+    },
+    {
+      "category": "extensions",
+      "name": "diagram code changed",
+      "source": "```mermaid\ngraph LR\n  A-->B\n```\n",
+      "normalized": "```mermaid\ngraph LR\n  A-->C\n```\n",
+      "reason": "fence-lost"
+    },
+    {
+      "category": "text",
+      "name": "a word lost",
+      "source": "alpha beta gamma\n",
+      "normalized": "alpha gamma\n",
+      "reason": "word-lost"
+    }
+  ],
+  "safe": [
+    {
+      "name": "bullet marker",
+      "source": "* a\n* b\n",
+      "normalized": "- a\n- b\n"
+    },
+    {
+      "name": "setext to ATX",
+      "source": "Title\n=====\n",
+      "normalized": "# Title\n"
+    },
+    {
+      "name": "tilde fence to backticks",
+      "source": "~~~py\nx = 1\n~~~\n",
+      "normalized": "```py\nx = 1\n```\n"
+    },
+    {
+      "name": "blank lines collapsed",
+      "source": "a\n\n\n\nb\n",
+      "normalized": "a\n\nb\n"
+    },
+    {
+      "name": "reference link inlined",
+      "source": "[x][r]\n\n[r]: https://e.com/a \"T\"\n",
+      "normalized": "[x](https://e.com/a \"T\")\n"
+    },
+    {
+      "name": "upper-case task marker",
+      "source": "- [X] done\n",
+      "normalized": "- [x] done\n"
+    },
+    {
+      "name": "html attributes reordered",
+      "source": "<div data-x=\"1\" align=\"center\">y</div>\n",
+      "normalized": "<div align=\"center\" data-x=\"1\">y</div>\n"
+    },
+    {
+      "name": "indented fence un-indented",
+      "source": " ```\n aaa\naaa\n```\n",
+      "normalized": "```\naaa\naaa\n```\n"
+    },
+    {
+      "name": "table re-aligned",
+      "source": "|a|b|\n|-|-|\n|1|2|\n",
+      "normalized": "| a | b |\n| --- | --- |\n| 1 | 2 |\n"
+    }
+  ]
+}

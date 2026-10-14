@@ -137,18 +137,6 @@
     <value>უკუკავშირის გაგზავნა</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>კონტაქტი</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>ელ-ფოსტა</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>ჩვენ ძალიან სერიოზულად ვიღებთ თქვენს გამოხმაურებას</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>მომხმარებლის</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>ფონტის ზომა</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>რედაქტორში გამოყენებული ფონტი</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>ფონტის ოჯახი</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>რედაქტორის ხაზის სიმაღლე მრავალჯერადი</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>სსს</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>ბუფერული დაფის სურათი</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>ბუფერის სურათის ატვირთვის კონფიგურაცია</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>მოქმედება სურათების ჩასმისას</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>ლოკალური სურათი</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>სურათის ატვირთვის ლოკალური კონფიგურაცია</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>სურათის მოქმედების ჩასმა</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>ვებ სურათი</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>ვებ სურათის ატვირთვის კონფიგურაცია</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>სურათების ჩასმისას ურჩევნია შედარებითი ბილიკის გამოყენება</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>ფანჯარა</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>ნაგულისხმევი</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>ჩადგმული სიის ელემენტებისთვის ჩაწერილი შეწევა. 4 ჰარი შეესაბამება Obsidian-ს და სხვა რედაქტორების უმეტესობას</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 ჰარის შეწევა (Markdown-ის სტანდარტი)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 ჰარი ნიშნის შემდეგ</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 ჰარი ნიშნის შემდეგ</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 ჰარი ნიშნის შემდეგ</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>სიის შეწევა</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>წყაროში ახალ სიის ელემენტებს შორის ცარიელი ხაზის ჩასმა</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>თავისუფალი სიის ელემენტები</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>მიმდინარე აბზაცის გვერდით ბლოკის ტიპის (P, H1, ...) ჩვენება</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>აბზაცის ნიშანი</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>შეავსეთ ცხრილის უჯრები, რომ სვეტები Markdown-ის წყაროში გასწორდეს. გამორთეთ ცხრილების კომპაქტურად შესანარჩუნებლად (ნაკლები ტოკენი AI ხელსაწყოებისთვის)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>ცხრილის სვეტების გასწორება</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>ავტომატური ამოცნობა თითოეული აბზაცისთვის</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>რედაქტორის ტექსტის მიმართულება; სასარგებლოა არაბულის, ებრაულის და სხვა მარჯვნიდან მარცხნივ წერის ენებისთვის</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>მარცხნიდან მარჯვნივ</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>მარჯვნიდან მარცხნივ</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>ტექსტის მიმართულება</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>თუ გამორთულია, ხელახლა ჩატვირთე კითხვის გარეშე, თუ არ არის შეუნახავი ცვლილებები</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>იკითხე ხელახლა ჩატვირთვამდე</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>დააკვირდი გახსნილ ფაილს და განაახლე, როცა სხვა პროგრამა შეცვლის</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>ავტომატური ხელახლა ჩატვირთვა გარე ცვლილებისას</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Explorer-იდან გახსნილი ფაილები იხსნება ჩანართად მიმდინარე ფანჯარაში; გამორთვისას იხსნება ახალი ფანჯარა</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>ფაილების ჩანართებში გახსნა</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>დოკუმენტების გახსნა იქიდან, სადაც შეწყვიტეთ</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>კურსორის პოზიციის დამახსოვრება</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>ბოლო სესიის ყველა დოკუმენტის აღდგენა</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>დატოვეთ ცარიელი ანონიმური ჩანაწერებისთვის; ანგარიშით ჩანაწერი თქვენია</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>ელფოსტა (არასავალდებულო)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>პაროლი</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>აქვეყნებს ჩანაწერს (/s/…), რათა გაზიარებული ბმული ვერ დარედაქტირდეს</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>ასევე გამოაქვეყნე მხოლოდ წასაკითხი ბმული</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>გაზიარება HedgeDoc-ზე</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x მისამართი, მაგ. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>სერვერი</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>ტესტი</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>კავშირის შემოწმება</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>ჩანართების ზოლის ჩვენება მაშინაც, როცა მხოლოდ ერთი დოკუმენტია გახსნილი</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>ყოველთვის აჩვენე ჩანართები</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>შავი (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>დამატებითი სტილები რედაქტორისა და ექსპორტირებული HTML/PDF-ისთვის</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>მაგ. .markdown-body h1 { color: #c00; }  ან  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>მორგებული CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>თემა არის ერთი CSS ფაილი თემების საქაღალდეში; იხ. docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>როგორ დავწეროთ</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>თემები არის CSS ფაილები ამ საქაღალდეში; ფორმატს განმარტავს დოკუმენტი.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(არცერთი)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>თემების საქაღალდის გახსნა</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>თემების ხელახლა ჩატვირთვა</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>მორგებული თემა</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>მაგ. ./${filename}.assets — ცვლადები: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>რომელ გვერდს აჩვენებს გვერდითი პანელი გაშვებისას</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>გვერდითი პანელის ნაგულისხმევი გვერდი</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>ლოკალური ავტომატიზაციის დაშვება</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>ამ კომპიუტერზე თქვენ მიერ გაშვებულ პროგრამებს შეუძლიათ ღია დოკუმენტების წაკითხვა და რედაქტირება. ფანჯრის სათაური აჩვენებს, როცა რომელიმე დაკავშირებულია.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>პროგრამების მიერ შეტანილი ცვლილებების გამოკვეთა</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>მოკლე დროით გამოკვეთს ტექსტს, რომელიც დაკავშირებულმა პროგრამამ შეცვალა, რათა დაინახოთ, რა შეიცვალა.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>PlantUML დიაგრამების დახატვა</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>დიაგრამის წყაროს აგზავნის plantuml.com-ზე დასახატად</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>ატვირთვა</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>ატვირთვის კონფიგურაცია, რომელიც გამოიყენება ჩასმული სურათებისთვის, რომელთა მოქმედებაა ატვირთვა, და ბრძანებით ფაილი &gt; ლოკალური სურათების ატვირთვა</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>საქაღალდე bucket-ში</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>საჯარო URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>გზის სტილის მისამართები (MinIO და ზოგიერთი პროვაიდერი)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 კონფიგურაცია არასრულია: შეავსეთ Endpoint, Bucket, Access Key ID და Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>ატვირთვის ისტორია</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>იმავე კონფიგურაციით უკვე ატვირთული სურათი ხელახლა არ იტვირთება; გამოიყენება მისი წინა მისამართი ({0} დამახსოვრებული). ატვირთული ფაილების წაშლის შემდეგ გაასუფთავეთ ისტორია.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML სერვერი</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>დიაგრამების დამხატავი PlantUML სერვერის (plantuml-server) მისამართი. ცარიელი: plantuml.com. საკუთარი სერვერით დიაგრამების წყარო თქვენთან რჩება.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim-ის ღილაკები</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim წყაროს რეჟიმში (:w ინახავს, :q ხურავს ჩანართს); j/k, gg/G, ]] და / კითხვის რეჟიმში გადასაადგილებლად. არა ვიზუალურ რედაქტორში.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>ჟურნალების საქაღალდის გახსნა</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>ექსპორტის შემდეგ</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>ჩვენება, სად შეინახა</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>ფაილის გახსნა</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>მისი საქაღალდის გახსნა</value>
   </data>
 </root>

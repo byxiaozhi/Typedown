@@ -1,0 +1,50 @@
+name: Publish theme designer
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Tools/Themes/theme-designer.html
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Not in a repository that builds only on request (BUILD_ON_PUSH 'false', see build.yml): Typeleaf is private and has no Pages.
+    if: github.event_name != 'push' || vars.BUILD_ON_PUSH != 'false'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Prepare Pages site
+        run: |
+          install -d _site
+          cp Tools/Themes/theme-designer.html _site/index.html
+          cp Tools/Themes/theme-designer.html _site/theme-designer.html
+          touch _site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

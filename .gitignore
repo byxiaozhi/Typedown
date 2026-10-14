@@ -212,6 +212,8 @@ _pkginfo.txt
 *.appx
 *.appxbundle
 *.appxupload
+# Packages a local MSIX build writes (CI puts them in the same folder)
+AppxPackages/
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -348,3 +350,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Inno Setup output
+Tools/Installer/Output/
+Tools/EditorBench/cm-bundle/
+Tools/EditorBench/doc*.md
+Tools/EditorBench/*.cpuprofile

@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+# Issues are handled by an AI assistant (Claude Code); the structured forms below give it what it needs.
+contact_links:
+  - name: "下载最新版本 / Latest release"
+    url: https://github.com/flintt/Typedown/releases/latest
+    about: "先在最新版本上确认问题是否还在 / Check the problem still exists on the latest build"
+  - name: "上游项目 byxiaozhi/Typedown"
+    url: https://github.com/byxiaozhi/Typedown/issues
+    about: "与本 fork 改动无关的问题可以看看上游是否已有讨论 / For issues unrelated to this fork's changes"

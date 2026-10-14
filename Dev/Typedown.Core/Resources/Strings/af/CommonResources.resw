@@ -729,10 +729,6 @@
     <value>Aanhaling</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Gradering</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Oordoen</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Zoem</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Geen vouer is oop nie. Maak 'n lêer of vouer oop om hier te blaai.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Hierdie vouer het {0} items — te veel om hier te lys.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>Geen Markdown-lêers in hierdie vouer nie.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Hierdie vouer bestaan nie meer nie.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Wys die huidige lêer se vouer</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Soek in vouer…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(lêernaam pas)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} passende lêer(s) uit {1} deursoek</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Soek tans…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Volskerm</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Laas gebruikte oortjie</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Volgende oortjie</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Vorige oortjie</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Verminder aanhalingsvlak</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Verhoog aanhalingsvlak</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Leesmodus</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Soek in vouer</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Deel na HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Vou alles toe</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Vou alles oop</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Ongetiteld</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Outomatisering gekoppel</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} het {1} geredigeer</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Om hierdie dokument in visuele modus te redigeer, kan van sy HTML herskryf. Redigeer dit in bronmodus om dit presies so te hou.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>PlantUML-diagramme is af (teken stuur die bron na plantuml.com). Skakel dit aan in Instellings &gt; Redigeerder.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Laai plaaslike prente op</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Uitgevoer na {0}</value>
   </data>
 </root>

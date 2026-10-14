@@ -35,8 +35,10 @@
         <MenuFlyoutItem x:Name="ExportSettingsItem" Text="{u:LocaleString Key=ExportSettings}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/Export"/>
     </MenuFlyoutSubItem>
     <MenuFlyoutItem x:Name="PrintItem" Text="{u:LocaleString Key=Print}" Command="{x:Bind File.PrintCommand}"/>
+    <MenuFlyoutItem x:Name="UploadLocalImagesItem" Text="{u:LocaleString Key=UploadLocalImages}" Command="{x:Bind File.UploadLocalImagesCommand}"/>
+    <MenuFlyoutItem x:Name="ShareToHedgeDocItem" Text="{u:LocaleString Key=ShareToHedgeDoc}" Command="{x:Bind File.ShareToHedgeDocCommand}"/>
     <MenuFlyoutSeparator/>
     <MenuFlyoutItem x:Name="SettingItem" Text="{u:LocaleString Key=Settings}" Command="{x:Bind ViewModel.NavigateCommand}" CommandParameter="Settings/General"/>
     <MenuFlyoutSeparator/>
-    <MenuFlyoutItem x:Name="CloseItem" Text="{u:LocaleString Key=Close}" Command="{x:Bind File.ExitCommand}"/>
+    <MenuFlyoutItem x:Name="CloseItem" Text="{u:LocaleString Key=Close}" Command="{x:Bind ViewModel.TabsViewModel.CloseActiveTabCommand}"/>
 </local:MenuBarItemBase>

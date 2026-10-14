@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Only for the automation test host (buildType automationTestHost): the test.* methods and the edit barriers.
+       The application must never reference this project, and Tools/Installer/build-local.ps1 refuses to package
+       a build that contains it. -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Typedown.Automation\Typedown.Automation.csproj" />
+  </ItemGroup>
+</Project>

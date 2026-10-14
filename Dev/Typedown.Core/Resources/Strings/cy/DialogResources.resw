@@ -133,10 +133,6 @@
     <value>OCÊ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Ni all y cynnwys fod yn wag</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Methu creu dogfen newydd</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Allforio wedi methu</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Adborth</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Mewnforio wedi methu</value>
@@ -225,14 +217,6 @@
     <value>Mae allwedd shortcut yn cael ei feddiannu</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Cynnig</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Cyflwyno'n llwyddiannus</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Uwchlwytho wedi methu</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 Runtime heb ei osod</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Rhannwyd y ddogfen hon o'r blaen ond mae wedi newid ers hynny. Ni all HedgeDoc 1.x ddiweddaru nodyn presennol, felly bydd llwytho eto yn creu nodyn newydd gyda dolen newydd.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Copïo'r ddolen</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Dolen olygadwy</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Gall unrhyw un sydd â'r ddolen hon olygu'r nodyn.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Gosodwch gyfeiriad gweinydd HedgeDoc yn Gosodiadau → Allforio yn gyntaf.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Agor yn y porwr</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Llwytho eto (dolen newydd)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Dolen darllen-yn-unig</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Rhannwyd i HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Nid yw'r ddogfen wedi newid ers iddi gael ei rhannu ddiwethaf; dyma'r dolenni presennol.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Defnyddio'r ddolen flaenorol</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Cadw</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Ail-lwytho</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Mae'r ffeil wedi newid ar y ddisg. Bydd ail-lwytho yn taflu newidiadau heb eu cadw.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Mae'r ffeil wedi newid ar y ddisg. Ei hail-lwytho?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Mae'r ffeil wedi newid ar y ddisg</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Uwchlwytho delweddau lleol</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Yn uwchlwytho delwedd {0} o {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Cafodd {0} o {1} delwedd eu huwchlwytho. Mae eu cyfeiriadau yn y ddogfen nawr yn pwyntio at y copïau a uwchlwythwyd; mae Datod yn adfer y llwybrau lleol.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Wedi canslo. Cafodd {0} o {1} delwedd eu huwchlwytho, a newidiwyd eu cyfeiriadau yn y ddogfen.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Heb eu newid:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Does dim delweddau lleol yn y ddogfen hon.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Does dim cyfluniad uwchlwytho wedi'i ddewis. Dewiswch un o dan Gosodiadau &gt; Delwedd &gt; Uwchlwytho gyda.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Agor y gosodiadau</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Ni chafwyd hyd i'r ffeil.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Ni ddychwelodd yr uwchlwythiad gyfeiriad.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Caewyd y ddogfen yn ystod yr uwchlwythiad.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Nid oedd modd newid y ddogfen. Mae'r ddelwedd ar-lein yn</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Mae gan y ddogfen hon {0} delwedd leol. Ffeiliau ar y cyfrifiadur hwn ydyn nhw, felly ni fydd darllenwyr y nodyn yn eu gweld. Eu huwchlwytho yn gyntaf?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Uwchlwytho yn gyntaf</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Rhannu beth bynnag</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>Roedd {0} ohonynt wedi'u huwchlwytho o'r blaen gyda'r cyfluniad hwn, felly defnyddiwyd eu cyfeiriadau blaenorol.</value>
   </data>
 </root>

@@ -177,6 +177,10 @@ Renderer.prototype.del = function (text) {
   return '<del>' + text + '</del>'
 }
 
+Renderer.prototype.mark = function (text) {
+  return '<mark>' + text + '</mark>'
+}
+
 Renderer.prototype.link = function (href, title, text) {
   href = cleanUrl(this.options.sanitize, this.options.baseUrl, href)
   if (href === null) {

@@ -137,18 +137,6 @@
     <value>Ուղարկել Feedback</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Կապ</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Էլ. փոստ</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Մենք շատ լուրջ ենք վերաբերվում Ձեր արձագանքին</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Մասին</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Տառատեսակի չափսը</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Խմբագրիչում օգտագործվող տառատեսակը</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Տառատեսակի ընտանիք</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Խմբագրիչի տողի բարձրությունը բազային</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>ՕՍՍ</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Clipboard պատկեր</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Clipboard պատկերը վերբեռնել configuration</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Գործողություններ, որոնք պետք է իրականացվեն պատկերները մուտքագրելիս</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Տեղական պատկերասրահ</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Տեղական պատկերի վերբեռնում configuration</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Ներմուծեք պատկերի գործողություն</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Վեբ պատկեր</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Վեբ պատկերի վերբեռնում կոնֆիգուրացիա</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Նախընտրում ենք կիրառել հարաբերական ուղին պատկերները տեղադրելիս</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Վինդոուզ</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Կանխադրված</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Ներդրված ցանկի տարրերի համար գրվող նահանջը։ 4 բացատը համընկնում է Obsidian-ի և մյուս խմբագրիչների մեծ մասի հետ</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 բացատ նահանջ (Markdown-ի ստանդարտ)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>Նշանից հետո 1 բացատ</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>Նշանից հետո 2 բացատ</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>Նշանից հետո 4 բացատ</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Ցանկի նահանջ</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Աղբյուրում նոր ցանկի տարրերի միջև դատարկ տող ավելացնել</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Ազատ ցանկի տարրեր</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Ցույց տալ բլոկի տեսակը (P, H1, ...) ընթացիկ պարբերության կողքին</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Պարբերության նշան</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Լրացնել աղյուսակի բջիջները, որպեսզի սյունակները հավասարվեն Markdown-ի աղբյուրում։ Անջատեք՝ աղյուսակները կոմպակտ պահելու համար (ավելի քիչ թոքեն AI գործիքների համար)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Հավասարեցնել աղյուսակի սյունակները</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Ավտոմատ հայտնաբերել յուրաքանչյուր պարբերության համար</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Խմբագրիչի տեքստի ուղղությունը. օգտակար է արաբերենի, եբրայերենի և աջից ձախ գրվող այլ լեզուների համար</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Ձախից աջ</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Աջից ձախ</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Տեքստի ուղղություն</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Եթե անջատված է, վերբեռնել առանց հարցնելու, եթե չկան չպահպանված փոփոխություններ</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Հարցնել վերբեռնելուց առաջ</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Հետևել բաց ֆայլին և թարմացնել այն, երբ այլ ծրագիր փոխի</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Ավտոմատ վերբեռնում արտաքին փոփոխության դեպքում</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Explorer-ից բացված ֆայլերը բացվում են որպես ներդիր ընթացիկ պատուհանում; անջատված դեպքում բացվում է նոր պատուհան</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Բացել ֆայլերը ներդիրներում</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Բացել փաստաթղթերն այնտեղից, որտեղ կանգ առաք</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Հիշել կուրսորի դիրքը</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Վերականգնել վերջին նստաշրջանի բոլոր փաստաթղթերը</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Թողեք դատարկ՝ անանուն նշումներ ստեղծելու համար; հաշվի դեպքում նշումը ձերն է</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Էլ. փոստ (ըստ ցանկության)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Գաղտնաբառ</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Հրապարակում է նշումը (/s/…), որպեսզի կիսված հղումը չկարողանա խմբագրվել</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Հրապարակել նաև միայն կարդալու հղում</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Կիսվել HedgeDoc-ում</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x հասցե, օր. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Սերվեր</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Փորձարկել</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Ստուգել կապը</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Ցույց տալ ներդիրների գոտին նույնիսկ երբ բաց է միայն մեկ փաստաթուղթ</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Միշտ ցույց տալ ներդիրները</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Սև (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Լրացուցիչ ոճեր խմբագրիչի և արտահանված HTML/PDF-ի համար</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>օր. .markdown-body h1 { color: #c00; }  կամ  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Հարմարեցված CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Թեման մեկ CSS ֆայլ է թեմաների պանակում; տես docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Ինչպես գրել այն</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Թեմաները այս պանակի CSS ֆայլերն են; ձևաչափը բացատրված է փաստաթղթում։</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(ոչ մեկը)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Բացել թեմաների պանակը</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Վերբեռնել թեմաները</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Հարմարեցված թեմա</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>օր. ./${filename}.assets — փոփոխականներ՝ ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Որ էջն է ցույց տալիս կողային վահանակը ծրագիրը գործարկելիս</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Կողային վահանակի կանխադրված էջ</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Թույլատրել տեղային ավտոմատացումը</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Ձեր գործարկած ծրագրերը այս համակարգչում կարող են կարդալ և խմբագրել բաց փաստաթղթերը։ Պատուհանի վերնագիրը ցույց է տալիս, երբ որևէ մեկը միացված է։</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Ընդգծել ծրագրերի կատարած փոփոխությունները</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Կարճ ժամանակով ընդգծում է միացված ծրագրի փոխած տեքստը, որպեսզի տեսնեք, թե ինչն է փոխվել։</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Գծել PlantUML գծապատկերները</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Գծապատկերի աղբյուրն ուղարկում է plantuml.com՝ գծելու համար</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Վերբեռնման կոնֆիգուրացիա</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Վերբեռնման կոնֆիգուրացիան, որն օգտագործվում է «Վերբեռնել պատկերը» գործողությամբ տեղադրված պատկերների և Ֆայլ &gt; Վերբեռնել տեղային պատկերները հրամանի համար</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Թղթապանակ Bucket-ում</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Հանրային URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Ուղու ոճի հասցեներ (MinIO և որոշ մատակարարներ)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 կոնֆիգուրացիան թերի է․ լրացրեք Endpoint, Bucket, Access Key ID և Secret Access Key։</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Վերբեռնումների պատմություն</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Նույն կոնֆիգուրացիայով արդեն վերբեռնված պատկերը կրկին չի վերբեռնվում․ օգտագործվում է դրա նախկին հասցեն ({0} հիշված)։ Մաքրեք պատմությունը վերբեռնված ֆայլերը ջնջելուց հետո։</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML սերվեր</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Գծապատկերները գծող PlantUML սերվերի (plantuml-server) հասցեն։ Դատարկ՝ plantuml.com։ Սեփական սերվերի դեպքում գծապատկերների աղբյուրը մնում է ձեզ մոտ։</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim ստեղներ</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim աղբյուրի ռեժիմում (:w-ը պահպանում է, :q-ն փակում է ներդիրը)․ j/k, gg/G, ]] և / ընթերցման ռեժիմում տեղաշարժվելու համար։ Ոչ տեսողական խմբագրիչում։</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Բացել մատյանների պանակը</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Արտահանելուց հետո</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Ցույց տալ, թե որտեղ է պահվել</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Բացել ֆայլը</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Բացել դրա թղթապանակը</value>
   </data>
 </root>

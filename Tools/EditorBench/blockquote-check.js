@@ -1,0 +1,13 @@
+const puppeteer = require('puppeteer-core'); const http = require('http'); const fs = require('fs'); const path = require('path');
+const statics = path.resolve(process.env.STATICS || '../../Dev/Typedown/Resources/Statics');
+const server = http.createServer((req, res) => { let p = decodeURIComponent(req.url.split('?')[0]); if (p === '/') p = '/index.html'; const f = path.join(statics, p); if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.statusCode = 404; return res.end(); } fs.createReadStream(f).pipe(res); });
+(async () => { await new Promise(r => server.listen(0, r)); const port = server.address().port;
+  const browser = await puppeteer.launch({ executablePath: '/opt/google/chrome/chrome', headless: 'new', args: ['--no-sandbox'] }); const page = await browser.newPage();
+  const settings = { fontSize: 16, lineHeight: 1.6, editorAreaWidth: '1200px', tabSize: 4, textDirection: 'auto', preferLooseListItem: true, listIndentation: '1', markdown: 'hello world\n', basePath: 'C:\\tmp' };
+  await page.evaluateOnNewDocument(`(()=>{const ls=[];window.__marks={};const deliver=(n,a)=>ls.forEach(l=>l({data:JSON.stringify({name:n,args:a})}));window.__deliver=deliver;const resp={GetSettings:${JSON.stringify(settings)},GetCurrentTheme:{theme:'Light',accentColor:{r:0,g:120,b:212,a:1},background:{R:249,G:249,B:249,A:1}},ContentLoaded:'',GetStringResources:{}};window.chrome={webview:{addEventListener:(t,l)=>ls.push(l),postMessage:(raw)=>{const m=JSON.parse(raw);window.__marks[m.name]=1;if(m.type==='invoke'){setTimeout(()=>deliver(m.id,{code:0,data:m.name in resp?resp[m.name]:null}),0);}}}}})()`);
+  await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'load' }); await page.waitForFunction(() => window.__marks.FileLoaded, { timeout: 30000 });
+  await page.click('#ag-editor-id p'); await new Promise(r => setTimeout(r, 200));
+  const step = async (t) => { await page.evaluate((t) => window.__deliver('UpdateParagraph', t), t); await new Promise(r => setTimeout(r, 150)); return page.evaluate(() => window.__typedownMuya.getMarkdown()); };
+  console.log('increase x2:', JSON.stringify(await step('blockquote-increase')), JSON.stringify(await step('blockquote-increase')));
+  console.log('decrease x3:', JSON.stringify(await step('blockquote-decrease')), JSON.stringify(await step('blockquote-decrease')), JSON.stringify(await step('blockquote-decrease')));
+  await browser.close(); server.close(); })().catch(e => { console.error(e); process.exit(1); });

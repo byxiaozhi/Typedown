@@ -1,27 +1,28 @@
 // used for render table tookbar or others.
 import { h } from '../snabbdom'
 import { CLASS_OR_ID } from '../../../config'
+import { svgIcon } from './renderSvgIcon'
 
 export const TABLE_TOOLS = Object.freeze([{
   label: 'table',
   title: 'ResizeTable',
-  icon: 'E9E9'
+  icon: 'resize'
 }, {
   label: 'left',
   title: 'AlignLeft',
-  icon: 'E8E4'
+  icon: 'alignLeft'
 }, {
   label: 'center',
   title: 'AlignCenter',
-  icon: 'E8E3'
+  icon: 'alignCenter'
 }, {
   label: 'right',
   title: 'AlignRight',
-  icon: 'E8E2'
+  icon: 'alignRight'
 }, {
   label: 'delete',
   title: 'DeleteTable',
-  icon: 'E74D'
+  icon: 'trash'
 }])
 
 const renderToolBar = (type, tools, activeBlocks) => {
@@ -32,11 +33,7 @@ const renderToolBar = (type, tools, activeBlocks) => {
     if (align && label === align) {
       selector += '.active'
     }
-    const iconVnode = h(`span.icon`, {
-      style: {
-        'font-family': '"Segoe Fluent Icons", "Segoe MDL2 Assets"',
-      }
-    }, String.fromCharCode(parseInt(icon, 16)))
+    const iconVnode = svgIcon(icon, 14)
     return h(selector, {
       dataset: {
         label,

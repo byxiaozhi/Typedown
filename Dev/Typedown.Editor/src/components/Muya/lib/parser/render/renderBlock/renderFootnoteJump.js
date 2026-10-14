@@ -1,10 +1,4 @@
 import { h } from '../snabbdom'
+import { svgIcon } from './renderSvgIcon'
 
-export const footnoteJumpIcon = () => {
-  return h('span.ag-footnote-backlink', {
-    style: {
-      'font-family': '"Segoe Fluent Icons", "Segoe MDL2 Assets"',
-      'font-size': '12px',
-    }
-  }, String.fromCharCode(parseInt('EB97', 16)))
-}
+export const footnoteJumpIcon = () => h('span.ag-footnote-backlink', {}, svgIcon('back', 12))

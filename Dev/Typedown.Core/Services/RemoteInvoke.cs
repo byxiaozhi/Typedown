@@ -66,6 +66,7 @@ namespace Typedown.Core.Services
         {
             if (handlerDic.TryGetValue(name, out var handler))
                 return await handler.Func(args);
+            Utilities.Log.WriteLocal("RemoteInvoke", $"the page called {name} before or after this window handled it");
             throw new Exception($"function [{name}] does not exist");
         }
 

@@ -133,10 +133,6 @@
     <value>LABI</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Saturs nevar būt tukšs</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Neizdevās izveidot jaunu dokumentu</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Eksportēšana neizdevās</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Atsauksmes</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Importēšana neizdevās</value>
@@ -225,14 +217,6 @@
     <value>Īsinājumtaustiņš ir aizņemts</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Iesniegt</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Iesniegšana veiksmīga</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Augšupielāde neizdevās</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>WebView2 izpildlaiks nav instalēts</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Šis dokuments jau tika kopīgots, bet kopš tā laika ir mainījies. HedgeDoc 1.x nevar atjaunināt esošu piezīmi, tāpēc atkārtota augšupielāde izveido jaunu piezīmi ar jaunu saiti.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopēt saiti</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Rediģējama saite</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Ikviens ar šo saiti var rediģēt piezīmi.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Vispirms iestatiet HedgeDoc servera adresi sadaļā Iestatījumi → Eksports.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Atvērt pārlūkā</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Augšupielādēt vēlreiz (jauna saite)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Tikai lasāma saite</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Kopīgots pakalpojumā HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokuments kopš pēdējās kopīgošanas nav mainījies; šīs ir esošās saites.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Izmantot iepriekšējo saiti</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Paturēt</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Pārlādēt</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Fails diskā ir mainīts. Pārlāde atmetīs nesaglabātās izmaiņas.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Fails diskā ir mainīts. Vai pārlādēt to?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Fails diskā ir mainīts</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Augšupielādēt lokālos attēlus</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Augšupielādē attēlu {0} no {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Augšupielādēti {0} no {1} attēliem. To adreses dokumentā tagad norāda uz augšupielādētajām kopijām; atsaukšana atjauno lokālos ceļus.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Atcelts. Augšupielādēti {0} no {1} attēliem, un to adreses dokumentā ir mainītas.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Nav mainīti:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Šajā dokumentā nav lokālu attēlu.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Nav izvēlēta augšupielādes konfigurācija. Izvēlieties to sadaļā Iestatījumus &gt; Attēlu &gt; Augšupielādēt ar.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Atvērt iestatījumus</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Fails netika atrasts.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Augšupielāde neatgrieza adresi.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokuments tika aizvērts augšupielādes laikā.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Dokumentu nevarēja mainīt. Attēls ir pieejams tiešsaistē adresē</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Šajā dokumentā ir lokāli attēli ({0}). Tie ir faili šajā datorā, tāpēc piezīmes lasītāji tos neredzēs. Vispirms tos augšupielādēt?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Vispirms augšupielādēt</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Tomēr kopīgot</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} no tiem jau iepriekš bija augšupielādēti ar šo konfigurāciju, tāpēc tika izmantotas to iepriekšējās adreses.</value>
   </data>
 </root>

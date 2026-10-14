@@ -107,8 +107,31 @@
     </Page.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Which folder is open: without this an unrelated or Markdown-less folder just looks like an empty pane. -->
+        <Grid Grid.Row="0" Margin="12,2,4,4" ColumnSpacing="4" Visibility="{x:Bind local:FolderPage.IsVisible(WorkFolderExplorerItem.FullPath), Mode=OneWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock FontWeight="SemiBold" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"
+                       Text="{x:Bind WorkFolderExplorerItem.Name, Mode=OneWay}"
+                       ToolTipService.ToolTip="{x:Bind WorkFolderExplorerItem.FullPath, Mode=OneWay}"/>
+            <!-- Jump the tree to the folder of the current document when it lives somewhere else. -->
+            <Button Grid.Column="1" Width="32" Height="28" Style="{ThemeResource EllipsisIconButtonStyle}" Click="OnRevealCurrentFileClick"
+                    ToolTipService.ToolTip="{u:LocaleString Key=FolderPane.RevealCurrentFile}"
+                    Visibility="{x:Bind local:FolderPage.RevealVisibility(FileViewModel.FilePath, WorkFolderExplorerItem.FullPath), Mode=OneWay}">
+                <FontIcon FontSize="12" Glyph="&#xe8b7;"/>
+            </Button>
+        </Grid>
         <muxc:TreeView 
             x:Name="TreeView"
+            Grid.Row="1"
             CanReorderItems="False"
             CanDragItems="False"
             AllowDrop="False"
@@ -123,5 +146,10 @@
                 </TransitionCollection>
             </muxc:TreeView.ItemContainerTransitions>
         </muxc:TreeView>
+        <TextBlock Grid.Row="2" Margin="12,0,12,4" TextWrapping="Wrap" Opacity="0.7"
+                   Text="{x:Bind local:FolderPage.GetStatusText(WorkFolderExplorerItem.FullPath, WorkFolderExplorerItem.Children.Count, WorkFolderExplorerItem.Exception), Mode=OneWay}"/>
+        <Button Grid.Row="3" Margin="8" HorizontalAlignment="Stretch"
+                Content="{u:LocaleString Key=OpenFolder}"
+                Command="{x:Bind FileViewModel.OpenFolderCommand, Mode=OneWay}"/>
     </Grid>
 </Page>

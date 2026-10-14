@@ -18,7 +18,9 @@ class Clipboard {
   }
 
   paste({ type, text, html }) {
-    this.contentState.pasteHandler(type, text ?? '', html ?? '')
+    // A paste that fails (odd HTML the conversion cannot take) is reported, not lost silently.
+    Promise.resolve(this.contentState.pasteHandler(type, text ?? '', html ?? ''))
+      .catch(err => { console.log('paste failed', err); throw err })
   }
 
 }

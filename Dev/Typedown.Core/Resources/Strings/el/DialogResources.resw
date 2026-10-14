@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Το περιεχόμενο δεν μπορεί να είναι κενό</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Αποτυχία δημιουργίας νέου εγγράφου</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Η εξαγωγή απέτυχε</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Ανάδραση</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Η εισαγωγή απέτυχε</value>
@@ -225,14 +217,6 @@
     <value>Το πλήκτρο συντόμευσης είναι κατειλημμένο</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Υποβάλλω</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Επιτυχής υποβολή</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Η μεταφόρτωση απέτυχε</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Ο χρόνος εκτέλεσης WebView2 δεν έχει εγκατασταθεί</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Αυτό το έγγραφο έχει ξαναμοιραστεί αλλά έχει αλλάξει έκτοτε. Το HedgeDoc 1.x δεν μπορεί να ενημερώσει υπάρχουσα σημείωση, οπότε η νέα μεταφόρτωση δημιουργεί νέα σημείωση με νέο σύνδεσμο.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Αντιγραφή συνδέσμου</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Σύνδεσμος επεξεργασίας</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Όποιος έχει αυτόν τον σύνδεσμο μπορεί να επεξεργαστεί τη σημείωση.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Ορίστε πρώτα τη διεύθυνση του διακομιστή HedgeDoc στις Ρυθμίσεις → Εξαγωγή.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Άνοιγμα στο πρόγραμμα περιήγησης</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Νέα μεταφόρτωση (νέος σύνδεσμος)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Σύνδεσμος μόνο για ανάγνωση</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Κοινοποιήθηκε στο HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Το έγγραφο δεν έχει αλλάξει από την τελευταία κοινοποίηση· αυτοί είναι οι υπάρχοντες σύνδεσμοι.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Χρήση προηγούμενου συνδέσμου</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Διατήρηση</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Επαναφόρτωση</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Το αρχείο άλλαξε στον δίσκο. Η επαναφόρτωση θα απορρίψει τις μη αποθηκευμένες αλλαγές.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Το αρχείο άλλαξε στον δίσκο. Να επαναφορτωθεί;</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Το αρχείο άλλαξε στον δίσκο</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Μεταφόρτωση τοπικών εικόνων</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Μεταφόρτωση εικόνας {0} από {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Μεταφορτώθηκαν {0} από {1} εικόνες. Οι διευθύνσεις τους στο έγγραφο δείχνουν πλέον στα μεταφορτωμένα αντίγραφα· η Αναίρεση επαναφέρει τις τοπικές διαδρομές.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Ακυρώθηκε. Μεταφορτώθηκαν {0} από {1} εικόνες και οι διευθύνσεις τους στο έγγραφο άλλαξαν.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Δεν άλλαξαν:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Αυτό το έγγραφο δεν έχει τοπικές εικόνες.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Δεν έχει επιλεγεί διαμόρφωση μεταφόρτωσης. Επιλέξτε μία στο Ρυθμίσεις &gt; Εικόνα &gt; Μεταφόρτωση με.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Άνοιγμα ρυθμίσεων</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Το αρχείο δεν βρέθηκε.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Η μεταφόρτωση δεν επέστρεψε διεύθυνση.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Το έγγραφο έκλεισε κατά τη μεταφόρτωση.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η αλλαγή του εγγράφου. Η εικόνα είναι διαθέσιμη στη διεύθυνση</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Αυτό το έγγραφο έχει {0} τοπικές εικόνες. Είναι αρχεία σε αυτόν τον υπολογιστή, οπότε οι αναγνώστες της σημείωσης δεν θα τις βλέπουν. Να μεταφορτωθούν πρώτα;</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Πρώτα μεταφόρτωση</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Κοινή χρήση ούτως ή άλλως</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} από αυτές είχαν ήδη μεταφορτωθεί με αυτήν τη διαμόρφωση, οπότε χρησιμοποιήθηκαν οι προηγούμενες διευθύνσεις τους.</value>
   </data>
 </root>

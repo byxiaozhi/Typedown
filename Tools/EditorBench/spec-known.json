@@ -1,0 +1,2611 @@
+{
+ "1": {
+  "section": "Tabs",
+  "out": "    foo\tbaz\t\tbim\n"
+ },
+ "2": {
+  "section": "Tabs",
+  "out": "    foo\tbaz\t\tbim\n"
+ },
+ "3": {
+  "section": "Tabs",
+  "out": "    a\ta\n    ὐ\ta\n"
+ },
+ "4": {
+  "section": "Tabs",
+  "out": "- foo\n\n  bar\n"
+ },
+ "5": {
+  "section": "Tabs",
+  "out": "- foo\n\n        bar\n"
+ },
+ "6": {
+  "section": "Tabs",
+  "out": ">       foo\n"
+ },
+ "7": {
+  "section": "Tabs",
+  "out": "-    foo\n",
+  "drift": "- foo\n"
+ },
+ "8": {
+  "section": "Tabs",
+  "out": "    foo\n    bar\n"
+ },
+ "9": {
+  "section": "Tabs",
+  "out": "- foo\n  - bar\n    - baz\n"
+ },
+ "10": {
+  "section": "Tabs",
+  "out": "# Foo\n"
+ },
+ "11": {
+  "section": "Tabs",
+  "out": "*   *   *   \n"
+ },
+ "12": {
+  "section": "Backslash escapes",
+  "out": "\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\=\\>\\?\\@\\[\\\\\\]\\^\\_\\`\\{\\|\\}\\~\n"
+ },
+ "13": {
+  "section": "Backslash escapes",
+  "out": "\\\t\\A\\a\\ \\3\\φ\\«\n"
+ },
+ "14": {
+  "section": "Backslash escapes",
+  "out": "\\*not emphasized*\n\\<br/> not a tag\n\\[not a link](/foo)\n\\`not code`\n1\\. not a list\n\\* not a list\n\\# not a heading\n\\[foo]: /url \"not a reference\"\n\\&ouml; not a character entity\n"
+ },
+ "15": {
+  "section": "Backslash escapes",
+  "out": "\\\\*emphasis*\n"
+ },
+ "16": {
+  "section": "Backslash escapes",
+  "out": "foo\\\nbar\n"
+ },
+ "17": {
+  "section": "Backslash escapes",
+  "out": "`` \\[\\` ``\n"
+ },
+ "18": {
+  "section": "Backslash escapes",
+  "out": "    \\[\\]\n"
+ },
+ "19": {
+  "section": "Backslash escapes",
+  "out": "```\n\\[\\]\n```\n"
+ },
+ "20": {
+  "section": "Backslash escapes",
+  "out": "<https://example.com?find=\\*>\n"
+ },
+ "21": {
+  "section": "Backslash escapes",
+  "out": "<a href=\"/bar\\/)\">\n"
+ },
+ "22": {
+  "section": "Backslash escapes",
+  "out": "[foo](/bar\\* \"ti\\*tle\")\n"
+ },
+ "23": {
+  "section": "Backslash escapes",
+  "out": "[foo]\n\n[foo]: /bar\\* \"ti\\*tle\"\n"
+ },
+ "24": {
+  "section": "Backslash escapes",
+  "out": "```foo\\+bar\nfoo\n```\n"
+ },
+ "25": {
+  "section": "Entity and numeric character references",
+  "out": "&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;\n"
+ },
+ "26": {
+  "section": "Entity and numeric character references",
+  "out": "&#35; &#1234; &#992; &#0;\n"
+ },
+ "27": {
+  "section": "Entity and numeric character references",
+  "out": "&#X22; &#XD06; &#xcab;\n"
+ },
+ "28": {
+  "section": "Entity and numeric character references",
+  "out": "&nbsp &x; &#; &#x;\n&#87654321;\n&#abcdef0;\n&ThisIsNotDefined; &hi?;\n"
+ },
+ "29": {
+  "section": "Entity and numeric character references",
+  "out": "&copy\n"
+ },
+ "30": {
+  "section": "Entity and numeric character references",
+  "out": "&MadeUpEntity;\n"
+ },
+ "31": {
+  "section": "Entity and numeric character references",
+  "out": "<a href=\"öö.html\">\n"
+ },
+ "32": {
+  "section": "Entity and numeric character references",
+  "out": "[foo](/f&ouml;&ouml; \"f&ouml;&ouml;\")\n"
+ },
+ "33": {
+  "section": "Entity and numeric character references",
+  "out": "[foo]\n\n[foo]: /f&ouml;&ouml; \"f&ouml;&ouml;\"\n"
+ },
+ "34": {
+  "section": "Entity and numeric character references",
+  "out": "```f&ouml;&ouml;\nfoo\n```\n"
+ },
+ "35": {
+  "section": "Entity and numeric character references",
+  "out": "`f&ouml;&ouml;`\n"
+ },
+ "36": {
+  "section": "Entity and numeric character references",
+  "out": "    föfö\n"
+ },
+ "37": {
+  "section": "Entity and numeric character references",
+  "out": "&#42;foo&#42;\n*foo*\n"
+ },
+ "38": {
+  "section": "Entity and numeric character references",
+  "out": "&#42; foo\n\n* foo\n"
+ },
+ "39": {
+  "section": "Entity and numeric character references",
+  "out": "foo&#10;&#10;bar\n"
+ },
+ "40": {
+  "section": "Entity and numeric character references",
+  "out": "&#9;foo\n"
+ },
+ "41": {
+  "section": "Entity and numeric character references",
+  "out": "[a](url &quot;tit&quot;)\n"
+ },
+ "42": {
+  "section": "Precedence",
+  "out": "- `one\n- two`\n"
+ },
+ "43": {
+  "section": "Thematic breaks",
+  "out": "***\n\n---\n\n___\n"
+ },
+ "44": {
+  "section": "Thematic breaks",
+  "out": "+++\n"
+ },
+ "45": {
+  "section": "Thematic breaks",
+  "out": "===\n"
+ },
+ "46": {
+  "section": "Thematic breaks",
+  "out": "--\n**\n__\n"
+ },
+ "47": {
+  "section": "Thematic breaks",
+  "out": " ***\n\n  ***\n\n   ***\n"
+ },
+ "48": {
+  "section": "Thematic breaks",
+  "out": "    ***\n"
+ },
+ "49": {
+  "section": "Thematic breaks",
+  "out": "Foo\n    ***\n"
+ },
+ "50": {
+  "section": "Thematic breaks",
+  "out": "_____________________________________\n"
+ },
+ "51": {
+  "section": "Thematic breaks",
+  "out": " - - -\n"
+ },
+ "52": {
+  "section": "Thematic breaks",
+  "out": " **  * ** * ** * **\n"
+ },
+ "53": {
+  "section": "Thematic breaks",
+  "out": "-     -      -      -\n"
+ },
+ "54": {
+  "section": "Thematic breaks",
+  "out": "- - - -    \n"
+ },
+ "55": {
+  "section": "Thematic breaks",
+  "out": "_ _ _ _ a\n\na------\n\n---a---\n"
+ },
+ "56": {
+  "section": "Thematic breaks",
+  "out": " *-*\n"
+ },
+ "57": {
+  "section": "Thematic breaks",
+  "out": "- foo\n\n***\n\n- bar\n"
+ },
+ "58": {
+  "section": "Thematic breaks",
+  "out": "Foo\n\n***\n\nbar\n"
+ },
+ "59": {
+  "section": "Thematic breaks",
+  "out": "Foo\n---\n\nbar\n"
+ },
+ "60": {
+  "section": "Thematic breaks",
+  "out": "* Foo\n\n* * *\n\n* Bar\n"
+ },
+ "61": {
+  "section": "Thematic breaks",
+  "out": "- Foo\n- * * *\n"
+ },
+ "62": {
+  "section": "ATX headings",
+  "out": "# foo\n\n## foo\n\n### foo\n\n#### foo\n\n##### foo\n\n###### foo\n"
+ },
+ "63": {
+  "section": "ATX headings",
+  "out": "####### foo\n"
+ },
+ "64": {
+  "section": "ATX headings",
+  "out": "#5 bolt\n\n#hashtag\n"
+ },
+ "65": {
+  "section": "ATX headings",
+  "out": "\\## foo\n"
+ },
+ "66": {
+  "section": "ATX headings",
+  "out": "# foo *bar* \\*baz\\*\n"
+ },
+ "67": {
+  "section": "ATX headings",
+  "out": "# foo\n"
+ },
+ "68": {
+  "section": "ATX headings",
+  "out": "### foo\n\n## foo\n\n# foo\n"
+ },
+ "69": {
+  "section": "ATX headings",
+  "out": "    # foo\n"
+ },
+ "70": {
+  "section": "ATX headings",
+  "out": "foo\n    # bar\n"
+ },
+ "71": {
+  "section": "ATX headings",
+  "out": "## foo\n\n### bar\n"
+ },
+ "72": {
+  "section": "ATX headings",
+  "out": "# foo\n\n##### foo\n"
+ },
+ "73": {
+  "section": "ATX headings",
+  "out": "### foo\n"
+ },
+ "74": {
+  "section": "ATX headings",
+  "out": "### foo ### b\n"
+ },
+ "75": {
+  "section": "ATX headings",
+  "out": "# foo#\n"
+ },
+ "76": {
+  "section": "ATX headings",
+  "out": "### foo \\###\n\n## foo #\\##\n\n# foo \\#\n"
+ },
+ "77": {
+  "section": "ATX headings",
+  "out": "****\n\n## foo\n\n****\n"
+ },
+ "78": {
+  "section": "ATX headings",
+  "out": "Foo bar\n\n# baz\n\nBar foo\n"
+ },
+ "79": {
+  "section": "ATX headings",
+  "out": "## \n\n# \n\n### \n"
+ },
+ "80": {
+  "section": "Setext headings",
+  "out": "Foo *bar*\n=========\n\nFoo *bar*\n---------\n"
+ },
+ "81": {
+  "section": "Setext headings",
+  "out": "Foo *bar\nbaz*\n====\n"
+ },
+ "82": {
+  "section": "Setext headings",
+  "out": "  Foo *bar\nbaz*\t\n====\n"
+ },
+ "83": {
+  "section": "Setext headings",
+  "out": "Foo\n-------------------------\n\nFoo\n=\n"
+ },
+ "84": {
+  "section": "Setext headings",
+  "out": "Foo\n---\n\nFoo\n-----\n\nFoo\n===\n"
+ },
+ "85": {
+  "section": "Setext headings",
+  "out": "    Foo\n    ---\n    \n    Foo\n\n---\n"
+ },
+ "86": {
+  "section": "Setext headings",
+  "out": "Foo\n----\n"
+ },
+ "87": {
+  "section": "Setext headings",
+  "out": "Foo\n    ---\n"
+ },
+ "88": {
+  "section": "Setext headings",
+  "out": "Foo\n= =\n\nFoo\n\n--- -\n"
+ },
+ "89": {
+  "section": "Setext headings",
+  "out": "Foo\n-----\n"
+ },
+ "90": {
+  "section": "Setext headings",
+  "out": "Foo\\\n----\n"
+ },
+ "91": {
+  "section": "Setext headings",
+  "out": "`Foo\n----\n\n`\n\n<a title=\"a lot\n---\n\nof dashes\"/>\n"
+ },
+ "92": {
+  "section": "Setext headings",
+  "out": "> Foo\n\n---\n"
+ },
+ "93": {
+  "section": "Setext headings",
+  "out": "> foo\n\nbar\n===\n"
+ },
+ "94": {
+  "section": "Setext headings",
+  "out": "- Foo\n\n---\n"
+ },
+ "95": {
+  "section": "Setext headings",
+  "out": "Foo\nBar\n\n---\n"
+ },
+ "96": {
+  "section": "Setext headings",
+  "out": "---\nFoo\n---\n\nBar\n---\n\nBaz\n"
+ },
+ "97": {
+  "section": "Setext headings",
+  "out": "\n====\n"
+ },
+ "98": {
+  "section": "Setext headings",
+  "out": "---\n\n---\n"
+ },
+ "99": {
+  "section": "Setext headings",
+  "out": "- foo\n\n-----\n"
+ },
+ "100": {
+  "section": "Setext headings",
+  "out": "    foo\n\n---\n"
+ },
+ "101": {
+  "section": "Setext headings",
+  "out": "> foo\n\n-----\n"
+ },
+ "102": {
+  "section": "Setext headings",
+  "out": "\\> foo\n------\n"
+ },
+ "103": {
+  "section": "Setext headings",
+  "out": "Foo\n\nbar\n---\n\nbaz\n"
+ },
+ "104": {
+  "section": "Setext headings",
+  "out": "Foo\nbar\n\n---\n\nbaz\n"
+ },
+ "105": {
+  "section": "Setext headings",
+  "out": "Foo\nbar\n\n* * *\n\nbaz\n"
+ },
+ "106": {
+  "section": "Setext headings",
+  "out": "Foo\nbar\n\\---\nbaz\n"
+ },
+ "107": {
+  "section": "Indented code blocks",
+  "out": "    a simple\n      indented code block\n"
+ },
+ "108": {
+  "section": "Indented code blocks",
+  "out": "- foo\n\n  bar\n"
+ },
+ "109": {
+  "section": "Indented code blocks",
+  "out": "1. foo\n\n   - bar\n"
+ },
+ "110": {
+  "section": "Indented code blocks",
+  "out": "    <a/>\n    *hi*\n    \n    - one\n"
+ },
+ "111": {
+  "section": "Indented code blocks",
+  "out": "    chunk1\n    \n    chunk2\n    \n    \n    \n    chunk3\n"
+ },
+ "112": {
+  "section": "Indented code blocks",
+  "out": "    chunk1\n    \n      chunk2\n"
+ },
+ "113": {
+  "section": "Indented code blocks",
+  "out": "Foo\n    bar\n\n"
+ },
+ "114": {
+  "section": "Indented code blocks",
+  "out": "    foo\n\nbar\n"
+ },
+ "115": {
+  "section": "Indented code blocks",
+  "out": "# Heading\n\n    foo\n\nHeading\n------\n\n    foo\n\n----\n"
+ },
+ "116": {
+  "section": "Indented code blocks",
+  "out": "        foo\n    bar\n"
+ },
+ "117": {
+  "section": "Indented code blocks",
+  "out": "\n    foo\n"
+ },
+ "118": {
+  "section": "Indented code blocks",
+  "out": "    foo  \n"
+ },
+ "119": {
+  "section": "Fenced code blocks",
+  "out": "```\n<\n >\n```\n"
+ },
+ "120": {
+  "section": "Fenced code blocks",
+  "out": "```\n<\n >\n```\n"
+ },
+ "121": {
+  "section": "Fenced code blocks",
+  "out": "``\nfoo\n``\n"
+ },
+ "122": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\n~~~\n```\n"
+ },
+ "123": {
+  "section": "Fenced code blocks",
+  "out": "````\naaa\n```\n````\n"
+ },
+ "124": {
+  "section": "Fenced code blocks",
+  "out": "````\naaa\n```\n````\n"
+ },
+ "125": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\n~~~\n```\n"
+ },
+ "126": {
+  "section": "Fenced code blocks",
+  "out": "```\n\n```\n"
+ },
+ "127": {
+  "section": "Fenced code blocks",
+  "out": "````\n\n```\naaa\n````\n"
+ },
+ "128": {
+  "section": "Fenced code blocks",
+  "out": "> ```\n> aaa\n\nbbb\n"
+ },
+ "129": {
+  "section": "Fenced code blocks",
+  "out": "```\n\n\n```\n"
+ },
+ "130": {
+  "section": "Fenced code blocks",
+  "out": "```\n\n```\n"
+ },
+ "131": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\naaa\n```\n"
+ },
+ "132": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\naaa\naaa\n```\n"
+ },
+ "133": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\n aaa\n  aaa\n```\n"
+ },
+ "134": {
+  "section": "Fenced code blocks",
+  "out": "    ```\n    aaa\n    ```\n"
+ },
+ "135": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\n```\n"
+ },
+ "136": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\n```\n"
+ },
+ "137": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\n    ```\n```\n"
+ },
+ "138": {
+  "section": "Fenced code blocks",
+  "out": "``` ```\naaa\n"
+ },
+ "139": {
+  "section": "Fenced code blocks",
+  "out": "```\naaa\n~~~ ~~\n```\n"
+ },
+ "140": {
+  "section": "Fenced code blocks",
+  "out": "foo\n\n```\nbar\n```\n\nbaz\n"
+ },
+ "141": {
+  "section": "Fenced code blocks",
+  "out": "foo\n---\n\n```\nbar\n```\n\n# baz\n"
+ },
+ "142": {
+  "section": "Fenced code blocks",
+  "out": "```ruby\ndef foo(x)\n  return 3\nend\n```\n"
+ },
+ "143": {
+  "section": "Fenced code blocks",
+  "out": "```ruby startline=3 $%@#$\ndef foo(x)\n  return 3\nend\n```\n"
+ },
+ "144": {
+  "section": "Fenced code blocks",
+  "out": "```;\n\n```\n"
+ },
+ "145": {
+  "section": "Fenced code blocks",
+  "out": "``` aa ```\nfoo\n"
+ },
+ "146": {
+  "section": "Fenced code blocks",
+  "out": "~~~aa ``` ~~~\nfoo\n~~~\n"
+ },
+ "147": {
+  "section": "Fenced code blocks",
+  "out": "````\n``` aaa\n````\n"
+ },
+ "148": {
+  "section": "HTML blocks",
+  "out": "<table><tr><td>\n<pre>\n**Hello**,\n\n_world_.\n</pre>\n\n</td></tr></table>\n"
+ },
+ "149": {
+  "section": "HTML blocks",
+  "out": "<table>\n  <tr>\n    <td>\n           hi\n    </td>\n  </tr>\n</table>\n\nokay.\n"
+ },
+ "150": {
+  "section": "HTML blocks",
+  "out": "<div>\n  *hello*\n         <foo><a>\n"
+ },
+ "151": {
+  "section": "HTML blocks",
+  "out": "</div>\n*foo*\n"
+ },
+ "152": {
+  "section": "HTML blocks",
+  "out": "<DIV CLASS=\"foo\">\n\n*Markdown*\n\n</DIV>\n"
+ },
+ "153": {
+  "section": "HTML blocks",
+  "out": "<div id=\"foo\"\n  class=\"bar\">\n</div>\n"
+ },
+ "154": {
+  "section": "HTML blocks",
+  "out": "<div id=\"foo\" class=\"bar\n  baz\">\n</div>\n"
+ },
+ "155": {
+  "section": "HTML blocks",
+  "out": "<div>\n*foo*\n\n*bar*\n"
+ },
+ "156": {
+  "section": "HTML blocks",
+  "out": "<div id=\"foo\"\n*hi*\n"
+ },
+ "157": {
+  "section": "HTML blocks",
+  "out": "<div class\nfoo\n"
+ },
+ "158": {
+  "section": "HTML blocks",
+  "out": "<div *???-&&&-<---\n*foo*\n"
+ },
+ "159": {
+  "section": "HTML blocks",
+  "out": "<div><a href=\"bar\">*foo*</a></div>\n"
+ },
+ "160": {
+  "section": "HTML blocks",
+  "out": "<table><tr><td>\nfoo\n</td></tr></table>\n"
+ },
+ "161": {
+  "section": "HTML blocks",
+  "out": "<div></div>\n``` c\nint x = 33;\n```\n"
+ },
+ "162": {
+  "section": "HTML blocks",
+  "out": "<a href=\"foo\">\n*bar*\n</a>\n"
+ },
+ "163": {
+  "section": "HTML blocks",
+  "out": "<Warning>\n*bar*\n</Warning>\n"
+ },
+ "164": {
+  "section": "HTML blocks",
+  "out": "<i class=\"foo\">\n*bar*\n</i>\n"
+ },
+ "165": {
+  "section": "HTML blocks",
+  "out": "</ins>\n*bar*\n"
+ },
+ "166": {
+  "section": "HTML blocks",
+  "out": "<del>\n*foo*\n</del>\n"
+ },
+ "167": {
+  "section": "HTML blocks",
+  "out": "<del>\n\n*foo*\n\n</del>\n"
+ },
+ "168": {
+  "section": "HTML blocks",
+  "out": "<del>*foo*</del>\n"
+ },
+ "169": {
+  "section": "HTML blocks",
+  "out": "<pre language=\"haskell\"><code>\nimport Text.HTML.TagSoup\n\nmain :: IO ()\nmain = print $ parseTags tags\n</code></pre>\n\nokay\n"
+ },
+ "170": {
+  "section": "HTML blocks",
+  "out": "<script type=\"text/javascript\">\n// JavaScript example\n\ndocument.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";\n</script>\n\nokay\n"
+ },
+ "171": {
+  "section": "HTML blocks",
+  "out": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>\n"
+ },
+ "172": {
+  "section": "HTML blocks",
+  "out": "<style\n  type=\"text/css\">\nh1 {color:red;}\n\np {color:blue;}\n</style>\n\nokay\n"
+ },
+ "173": {
+  "section": "HTML blocks",
+  "out": "<style\n  type=\"text/css\">\n\nfoo\n"
+ },
+ "174": {
+  "section": "HTML blocks",
+  "out": "> <div>\n> foo\n\nbar\n"
+ },
+ "175": {
+  "section": "HTML blocks",
+  "out": "- <div>\n- foo\n"
+ },
+ "176": {
+  "section": "HTML blocks",
+  "out": "<style>p{color:red;}</style>\n\n*foo*\n"
+ },
+ "177": {
+  "section": "HTML blocks",
+  "out": "<!-- foo -->*bar*\n\n*baz*\n"
+ },
+ "178": {
+  "section": "HTML blocks",
+  "out": "<script>\nfoo\n</script>1. *bar*\n"
+ },
+ "179": {
+  "section": "HTML blocks",
+  "out": "<!-- Foo\n\nbar\n   baz -->\n\nokay\n"
+ },
+ "180": {
+  "section": "HTML blocks",
+  "out": "<?php\n\n  echo '>';\n\n?>\n\nokay\n"
+ },
+ "181": {
+  "section": "HTML blocks",
+  "out": "<!DOCTYPE html>\n"
+ },
+ "182": {
+  "section": "HTML blocks",
+  "out": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\n\nokay\n"
+ },
+ "183": {
+  "section": "HTML blocks",
+  "out": "<!-- foo -->\n\n    <!-- foo -->\n"
+ },
+ "184": {
+  "section": "HTML blocks",
+  "out": "<div>\n\n    <div>\n"
+ },
+ "185": {
+  "section": "HTML blocks",
+  "out": "Foo\n\n<div>\nbar\n</div>\n"
+ },
+ "186": {
+  "section": "HTML blocks",
+  "out": "<div>\nbar\n</div>\n*foo*\n"
+ },
+ "187": {
+  "section": "HTML blocks",
+  "out": "Foo\n<a href=\"bar\">\nbaz\n"
+ },
+ "188": {
+  "section": "HTML blocks",
+  "out": "<div>\n\n*Emphasized* text.\n\n</div>\n"
+ },
+ "189": {
+  "section": "HTML blocks",
+  "out": "<div>\n*Emphasized* text.\n</div>\n"
+ },
+ "190": {
+  "section": "HTML blocks",
+  "out": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>\n"
+ },
+ "191": {
+  "section": "HTML blocks",
+  "out": "<table>\n\n<tr>\n\n    <td>\n      Hi\n    </td>\n\n</tr>\n\n</table>\n"
+ },
+ "192": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url \"title\"\n\n[foo]\n"
+ },
+ "193": {
+  "section": "Link reference definitions",
+  "out": "   [foo]: \n      /url  \n           'the title'  \n\n[foo]\n"
+ },
+ "194": {
+  "section": "Link reference definitions",
+  "out": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]\n"
+ },
+ "195": {
+  "section": "Link reference definitions",
+  "out": "[Foo bar]:\n<my url>\n'title'\n\n[Foo bar]\n"
+ },
+ "196": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url '\ntitle\nline1\nline2\n'\n\n[foo]\n"
+ },
+ "197": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url 'title\n\nwith blank line'\n\n[foo]\n"
+ },
+ "198": {
+  "section": "Link reference definitions",
+  "out": "[foo]:\n/url\n\n[foo]\n"
+ },
+ "199": {
+  "section": "Link reference definitions",
+  "out": "[foo]:\n\n[foo]\n"
+ },
+ "200": {
+  "section": "Link reference definitions",
+  "out": "[foo]: <>\n\n[foo]\n"
+ },
+ "201": {
+  "section": "Link reference definitions",
+  "out": "[foo]: <bar>(baz)\n\n[foo]\n"
+ },
+ "202": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url\\bar\\*baz \"foo\\\"bar\\baz\"\n\n[foo]\n"
+ },
+ "203": {
+  "section": "Link reference definitions",
+  "out": "[foo]\n\n[foo]: url\n"
+ },
+ "204": {
+  "section": "Link reference definitions",
+  "out": "[foo]\n\n[foo]: first\n\n[foo]: second\n"
+ },
+ "205": {
+  "section": "Link reference definitions",
+  "out": "[FOO]: /url\n\n[Foo]\n"
+ },
+ "206": {
+  "section": "Link reference definitions",
+  "out": "[ΑΓΩ]: /φου\n\n[αγω]\n"
+ },
+ "207": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url\n"
+ },
+ "208": {
+  "section": "Link reference definitions",
+  "out": "[\nfoo\n]: /url\n\nbar\n"
+ },
+ "209": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url \"title\" ok\n"
+ },
+ "210": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url\n\n\"title\" ok\n"
+ },
+ "211": {
+  "section": "Link reference definitions",
+  "out": "    [foo]: /url \"title\"\n\n[foo]\n"
+ },
+ "212": {
+  "section": "Link reference definitions",
+  "out": "```\n[foo]: /url\n```\n\n[foo]\n"
+ },
+ "213": {
+  "section": "Link reference definitions",
+  "out": "Foo\n[bar]: /baz\n\n[bar]\n"
+ },
+ "214": {
+  "section": "Link reference definitions",
+  "out": "# [Foo]\n\n[foo]: /url\n\n> bar\n"
+ },
+ "215": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url\nbar\n===\n\n[foo]\n"
+ },
+ "216": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /url\n\n===\n[foo]\n"
+ },
+ "217": {
+  "section": "Link reference definitions",
+  "out": "[foo]: /foo-url \"foo\"\n\n[bar]: /bar-url\n  \"bar\"\n\n[baz]: /baz-url\n\n[foo],\n[bar],\n[baz]\n"
+ },
+ "218": {
+  "section": "Link reference definitions",
+  "out": "[foo]\n\n> [foo]: /url\n"
+ },
+ "219": {
+  "section": "Paragraphs",
+  "out": "aaa\n\nbbb\n"
+ },
+ "220": {
+  "section": "Paragraphs",
+  "out": "aaa\nbbb\n\nccc\nddd\n"
+ },
+ "221": {
+  "section": "Paragraphs",
+  "out": "aaa\n\n\nbbb\n"
+ },
+ "222": {
+  "section": "Paragraphs",
+  "out": "  aaa\n bbb\n"
+ },
+ "223": {
+  "section": "Paragraphs",
+  "out": "aaa\n             bbb\n                                       ccc\n"
+ },
+ "224": {
+  "section": "Paragraphs",
+  "out": "   aaa\nbbb\n"
+ },
+ "225": {
+  "section": "Paragraphs",
+  "out": "    aaa\n\nbbb\n"
+ },
+ "226": {
+  "section": "Paragraphs",
+  "out": "aaa     \nbbb     \n"
+ },
+ "227": {
+  "section": "Blank lines",
+  "out": "\n\naaa\n\n\n# aaa\n\n\n"
+ },
+ "228": {
+  "section": "Block quotes",
+  "out": "> # Foo\n>\n> bar\n> baz\n"
+ },
+ "229": {
+  "section": "Block quotes",
+  "out": "> # Foo\n>\n> bar\n> baz\n"
+ },
+ "230": {
+  "section": "Block quotes",
+  "out": "> # Foo\n>\n> bar\n> baz\n"
+ },
+ "231": {
+  "section": "Block quotes",
+  "out": "    > # Foo\n    > bar\n    > baz\n"
+ },
+ "232": {
+  "section": "Block quotes",
+  "out": "> # Foo\n>\n> bar\n\nbaz\n"
+ },
+ "233": {
+  "section": "Block quotes",
+  "out": "> bar\n> baz\n> foo\n"
+ },
+ "234": {
+  "section": "Block quotes",
+  "out": "> foo\n\n---\n"
+ },
+ "235": {
+  "section": "Block quotes",
+  "out": "> - foo\n\n- bar\n"
+ },
+ "236": {
+  "section": "Block quotes",
+  "out": ">     foo\n\n    bar\n"
+ },
+ "237": {
+  "section": "Block quotes",
+  "out": "> ```\n\nfoo\n\n```\n\n```\n"
+ },
+ "238": {
+  "section": "Block quotes",
+  "out": "> foo\n\n    - bar\n"
+ },
+ "239": {
+  "section": "Block quotes",
+  "out": "> \n"
+ },
+ "240": {
+  "section": "Block quotes",
+  "out": "> \n"
+ },
+ "241": {
+  "section": "Block quotes",
+  "out": ">\n> foo\n"
+ },
+ "242": {
+  "section": "Block quotes",
+  "out": "> foo\n\n> bar\n"
+ },
+ "243": {
+  "section": "Block quotes",
+  "out": "> foo\n> bar\n"
+ },
+ "244": {
+  "section": "Block quotes",
+  "out": "> foo\n>\n> bar\n"
+ },
+ "245": {
+  "section": "Block quotes",
+  "out": "foo\n\n> bar\n"
+ },
+ "246": {
+  "section": "Block quotes",
+  "out": "> aaa\n\n***\n\n> bbb\n"
+ },
+ "247": {
+  "section": "Block quotes",
+  "out": "> bar\n\nbaz\n"
+ },
+ "248": {
+  "section": "Block quotes",
+  "out": "> bar\n\nbaz\n"
+ },
+ "249": {
+  "section": "Block quotes",
+  "out": "> bar\n\nbaz\n"
+ },
+ "250": {
+  "section": "Block quotes",
+  "out": "> > > foo\n\nbar\n"
+ },
+ "251": {
+  "section": "Block quotes",
+  "out": "> > > foo\n> >\n> > bar\n> > baz\n"
+ },
+ "252": {
+  "section": "Block quotes",
+  "out": ">     code\n\n>    not code\n"
+ },
+ "253": {
+  "section": "List items",
+  "out": "A paragraph\nwith two lines.\n    indented code\n\n> A block quote.\n"
+ },
+ "254": {
+  "section": "List items",
+  "out": "1. A paragraph\n   with two lines.\n\n       indented code\n\n   > A block quote.\n"
+ },
+ "255": {
+  "section": "List items",
+  "out": "- one\n\n  two\n"
+ },
+ "256": {
+  "section": "List items",
+  "out": "- one\n\n  two\n"
+ },
+ "257": {
+  "section": "List items",
+  "out": "- one\n\n  two\n"
+ },
+ "258": {
+  "section": "List items",
+  "out": "- one\n\n  two\n"
+ },
+ "259": {
+  "section": "List items",
+  "out": "> > 1. one\n> >\n> >    two\n"
+ },
+ "260": {
+  "section": "List items",
+  "out": "> > - one\n> >\n> > two\n"
+ },
+ "261": {
+  "section": "List items",
+  "out": "-one\n\n2.two\n"
+ },
+ "262": {
+  "section": "List items",
+  "out": "- foo\n\n\n  bar\n"
+ },
+ "263": {
+  "section": "List items",
+  "out": "1. foo\n\n   ```\n   bar\n   ```\n\n   baz\n\n   > bam\n"
+ },
+ "264": {
+  "section": "List items",
+  "out": "- Foo\n\n      bar\n      \n      \n      baz\n"
+ },
+ "265": {
+  "section": "List items",
+  "out": "123456789. ok\n"
+ },
+ "266": {
+  "section": "List items",
+  "out": "1234567890. not ok\n"
+ },
+ "267": {
+  "section": "List items",
+  "out": "0. ok\n"
+ },
+ "268": {
+  "section": "List items",
+  "out": "3. ok\n"
+ },
+ "269": {
+  "section": "List items",
+  "out": "-1. not ok\n"
+ },
+ "270": {
+  "section": "List items",
+  "out": "- foo\n\n      bar\n"
+ },
+ "271": {
+  "section": "List items",
+  "out": "10. foo\n\n        bar\n"
+ },
+ "272": {
+  "section": "List items",
+  "out": "    indented code\n\nparagraph\n    more code\n"
+ },
+ "273": {
+  "section": "List items",
+  "out": "1. indented code\n\n   paragraph\n\n    more code\n"
+ },
+ "274": {
+  "section": "List items",
+  "out": "1. indented code\n\n   paragraph\n\n    more code\n"
+ },
+ "275": {
+  "section": "List items",
+  "out": "   foo\n\nbar\n"
+ },
+ "276": {
+  "section": "List items",
+  "out": "- foo\n\n  bar\n"
+ },
+ "277": {
+  "section": "List items",
+  "out": "- foo\n\n  bar\n"
+ },
+ "278": {
+  "section": "List items",
+  "out": "-\n  foo\n-\n\n```\nbar\n```\n\n-\n      baz\n"
+ },
+ "279": {
+  "section": "List items",
+  "out": "- foo\n"
+ },
+ "280": {
+  "section": "List items",
+  "out": "-\n\n  foo\n"
+ },
+ "281": {
+  "section": "List items",
+  "out": "- foo\n- \n- bar\n"
+ },
+ "282": {
+  "section": "List items",
+  "out": "- foo\n- \n- bar\n"
+ },
+ "283": {
+  "section": "List items",
+  "out": "1. foo\n2. \n3. bar\n"
+ },
+ "284": {
+  "section": "List items",
+  "out": "*\n"
+ },
+ "285": {
+  "section": "List items",
+  "out": "foo\n*\n\nfoo\n1.\n"
+ },
+ "286": {
+  "section": "List items",
+  "out": "1. A paragraph\n   with two lines.\n\n       indented code\n\n   > A block quote.\n"
+ },
+ "287": {
+  "section": "List items",
+  "out": "1. A paragraph\n   with two lines.\n\n       indented code\n\n   > A block quote.\n"
+ },
+ "288": {
+  "section": "List items",
+  "out": "1. A paragraph\n   with two lines.\n\n       indented code\n\n   > A block quote.\n"
+ },
+ "289": {
+  "section": "List items",
+  "out": "    1.  A paragraph\n        with two lines.\n    \n            indented code\n    \n        > A block quote.\n"
+ },
+ "290": {
+  "section": "List items",
+  "out": "1. A paragraph\n   with two lines.\n\n       indented code\n\n   > A block quote.\n"
+ },
+ "291": {
+  "section": "List items",
+  "out": "1. A paragraph\n   with two lines.\n"
+ },
+ "292": {
+  "section": "List items",
+  "out": "> 1. > Blockquote\n\ncontinued here.\n"
+ },
+ "293": {
+  "section": "List items",
+  "out": "> 1. > Blockquote\n>    continued here.\n"
+ },
+ "294": {
+  "section": "List items",
+  "out": "- foo\n  - bar\n    - baz\n      - boo\n"
+ },
+ "295": {
+  "section": "List items",
+  "out": "- foo\n  - bar\n  - baz\n    - boo\n"
+ },
+ "296": {
+  "section": "List items",
+  "out": "10) foo\n    - bar\n"
+ },
+ "297": {
+  "section": "List items",
+  "out": "10) foo\n    - bar\n"
+ },
+ "298": {
+  "section": "List items",
+  "out": "- - foo\n"
+ },
+ "299": {
+  "section": "List items",
+  "out": "1. - 2. foo\n"
+ },
+ "300": {
+  "section": "List items",
+  "out": "- # Foo\n- Bar\n  ---\n  baz\n"
+ },
+ "301": {
+  "section": "Lists",
+  "out": "- foo\n- bar\n+ baz\n"
+ },
+ "302": {
+  "section": "Lists",
+  "out": "1. foo\n2. bar\n3) baz\n"
+ },
+ "303": {
+  "section": "Lists",
+  "out": "Foo\n\n- bar\n- baz\n"
+ },
+ "304": {
+  "section": "Lists",
+  "out": "The number of windows in my house is\n14.  The number of doors is 6.\n"
+ },
+ "305": {
+  "section": "Lists",
+  "out": "The number of windows in my house is\n\n1. The number of doors is 6.\n"
+ },
+ "306": {
+  "section": "Lists",
+  "out": "- foo\n\n- bar\n\n- baz\n"
+ },
+ "307": {
+  "section": "Lists",
+  "out": "- foo\n\n  - bar\n\n    - baz\n\n\n      bim\n"
+ },
+ "308": {
+  "section": "Lists",
+  "out": "- foo\n- bar\n\n<!-- -->\n\n- baz\n- bim\n"
+ },
+ "309": {
+  "section": "Lists",
+  "out": "- foo\n\n  notcode\n\n- foo\n\n<!-- -->\n\n    code\n"
+ },
+ "310": {
+  "section": "Lists",
+  "out": "- a\n  - b\n  - c\n    - d\n  - e\n  - f\n- g\n"
+ },
+ "311": {
+  "section": "Lists",
+  "out": "1. a\n\n   2. b\n\n   3. c\n"
+ },
+ "312": {
+  "section": "Lists",
+  "out": "- a\n  - b\n  - c\n    - d\n    - e\n"
+ },
+ "313": {
+  "section": "Lists",
+  "out": "1. a\n\n   2. b\n\n      3. c\n"
+ },
+ "314": {
+  "section": "Lists",
+  "out": "- a\n\n- b\n\n- c\n"
+ },
+ "315": {
+  "section": "Lists",
+  "out": "* a\n\n* \n\n* c\n"
+ },
+ "316": {
+  "section": "Lists",
+  "out": "- a\n\n- b\n\n  c\n\n- d\n"
+ },
+ "317": {
+  "section": "Lists",
+  "out": "- a\n- b\n\n  [ref]: /url\n\n- d\n"
+ },
+ "318": {
+  "section": "Lists",
+  "out": "- a\n\n- ```\n  b\n  \n  \n  ```\n\n- c\n"
+ },
+ "319": {
+  "section": "Lists",
+  "out": "- a\n\n  - b\n\n    c\n\n- d\n"
+ },
+ "320": {
+  "section": "Lists",
+  "out": "* a\n  > b\n* c\n"
+ },
+ "321": {
+  "section": "Lists",
+  "out": "- a\n  > b\n  ```\n  c\n  ```\n- d\n"
+ },
+ "322": {
+  "section": "Lists",
+  "out": "- a\n"
+ },
+ "323": {
+  "section": "Lists",
+  "out": "- a\n  - b\n"
+ },
+ "324": {
+  "section": "Lists",
+  "out": "1. ```\n   foo\n   ```\n\n   bar\n"
+ },
+ "325": {
+  "section": "Lists",
+  "out": "* foo\n\n  * bar\n\n  baz\n"
+ },
+ "326": {
+  "section": "Lists",
+  "out": "- a\n\n  - b\n  - c\n\n- d\n\n  - e\n  - f\n"
+ },
+ "327": {
+  "section": "Inlines",
+  "out": "`hi`lo`\n"
+ },
+ "328": {
+  "section": "Code spans",
+  "out": "`foo`\n"
+ },
+ "329": {
+  "section": "Code spans",
+  "out": "`` foo ` bar ``\n"
+ },
+ "330": {
+  "section": "Code spans",
+  "out": "` `` `\n"
+ },
+ "331": {
+  "section": "Code spans",
+  "out": "`  ``  `\n"
+ },
+ "332": {
+  "section": "Code spans",
+  "out": "` a`\n"
+ },
+ "333": {
+  "section": "Code spans",
+  "out": "` b `\n"
+ },
+ "334": {
+  "section": "Code spans",
+  "out": "` `\n`  `\n"
+ },
+ "335": {
+  "section": "Code spans",
+  "out": "``\nfoo\nbar  \nbaz\n``\n"
+ },
+ "336": {
+  "section": "Code spans",
+  "out": "``\nfoo \n``\n"
+ },
+ "337": {
+  "section": "Code spans",
+  "out": "`foo   bar \nbaz`\n"
+ },
+ "338": {
+  "section": "Code spans",
+  "out": "`foo\\`bar`\n"
+ },
+ "339": {
+  "section": "Code spans",
+  "out": "``foo`bar``\n"
+ },
+ "340": {
+  "section": "Code spans",
+  "out": "` foo `` bar `\n"
+ },
+ "341": {
+  "section": "Code spans",
+  "out": "*foo`*`\n"
+ },
+ "342": {
+  "section": "Code spans",
+  "out": "[not a `link](/foo`)\n"
+ },
+ "343": {
+  "section": "Code spans",
+  "out": "`<a href=\"`\">`\n"
+ },
+ "344": {
+  "section": "Code spans",
+  "out": "<a href=\"`\">`\n"
+ },
+ "345": {
+  "section": "Code spans",
+  "out": "`<https://foo.bar.`baz>`\n"
+ },
+ "346": {
+  "section": "Code spans",
+  "out": "<https://foo.bar.`baz>`\n"
+ },
+ "347": {
+  "section": "Code spans",
+  "out": "```foo``\n"
+ },
+ "348": {
+  "section": "Code spans",
+  "out": "`foo\n"
+ },
+ "349": {
+  "section": "Code spans",
+  "out": "`foo``bar``\n"
+ },
+ "350": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo bar*\n"
+ },
+ "351": {
+  "section": "Emphasis and strong emphasis",
+  "out": "a * foo bar*\n"
+ },
+ "352": {
+  "section": "Emphasis and strong emphasis",
+  "out": "a*\"foo\"*\n"
+ },
+ "353": {
+  "section": "Emphasis and strong emphasis",
+  "out": "* a *\n"
+ },
+ "354": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*$*alpha.\n\n*£*bravo.\n\n*€*charlie.\n"
+ },
+ "355": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo*bar*\n"
+ },
+ "356": {
+  "section": "Emphasis and strong emphasis",
+  "out": "5*6*78\n"
+ },
+ "357": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo bar_\n"
+ },
+ "358": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_ foo bar_\n"
+ },
+ "359": {
+  "section": "Emphasis and strong emphasis",
+  "out": "a_\"foo\"_\n"
+ },
+ "360": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo_bar_\n"
+ },
+ "361": {
+  "section": "Emphasis and strong emphasis",
+  "out": "5_6_78\n"
+ },
+ "362": {
+  "section": "Emphasis and strong emphasis",
+  "out": "пристаням_стремятся_\n"
+ },
+ "363": {
+  "section": "Emphasis and strong emphasis",
+  "out": "aa_\"bb\"_cc\n"
+ },
+ "364": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo-_(bar)_\n"
+ },
+ "365": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo*\n"
+ },
+ "366": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo bar *\n"
+ },
+ "367": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo bar\n*\n"
+ },
+ "368": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*(*foo)\n"
+ },
+ "369": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*(*foo*)*\n"
+ },
+ "370": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo*bar\n"
+ },
+ "371": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo bar _\n"
+ },
+ "372": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_(_foo)\n"
+ },
+ "373": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_(_foo_)_\n"
+ },
+ "374": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo_bar\n"
+ },
+ "375": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_пристаням_стремятся\n"
+ },
+ "376": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo_bar_baz_\n"
+ },
+ "377": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_(bar)_.\n"
+ },
+ "378": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo bar**\n"
+ },
+ "379": {
+  "section": "Emphasis and strong emphasis",
+  "out": "** foo bar**\n"
+ },
+ "380": {
+  "section": "Emphasis and strong emphasis",
+  "out": "a**\"foo\"**\n"
+ },
+ "381": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo**bar**\n"
+ },
+ "382": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo bar__\n"
+ },
+ "383": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__ foo bar__\n"
+ },
+ "384": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__\nfoo bar__\n"
+ },
+ "385": {
+  "section": "Emphasis and strong emphasis",
+  "out": "a__\"foo\"__\n"
+ },
+ "386": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo__bar__\n"
+ },
+ "387": {
+  "section": "Emphasis and strong emphasis",
+  "out": "5__6__78\n"
+ },
+ "388": {
+  "section": "Emphasis and strong emphasis",
+  "out": "пристаням__стремятся__\n"
+ },
+ "389": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo, __bar__, baz__\n"
+ },
+ "390": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo-__(bar)__\n"
+ },
+ "391": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo bar **\n"
+ },
+ "392": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**(**foo)\n"
+ },
+ "393": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*(**foo**)*\n"
+ },
+ "394": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**Gomphocarpus (*Gomphocarpus physocarpus*, syn.\n*Asclepias physocarpa*)**\n"
+ },
+ "395": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo \"*bar*\" foo**\n"
+ },
+ "396": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo**bar\n"
+ },
+ "397": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo bar __\n"
+ },
+ "398": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__(__foo)\n"
+ },
+ "399": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_(__foo__)_\n"
+ },
+ "400": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo__bar\n"
+ },
+ "401": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__пристаням__стремятся\n"
+ },
+ "402": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo__bar__baz__\n"
+ },
+ "403": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__(bar)__.\n"
+ },
+ "404": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo [bar](/url)*\n"
+ },
+ "405": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo\nbar*\n"
+ },
+ "406": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo __bar__ baz_\n"
+ },
+ "407": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo _bar_ baz_\n"
+ },
+ "408": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo_ bar_\n"
+ },
+ "409": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo *bar**\n"
+ },
+ "410": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo **bar** baz*\n"
+ },
+ "411": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo**bar**baz*\n"
+ },
+ "412": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo**bar*\n"
+ },
+ "413": {
+  "section": "Emphasis and strong emphasis",
+  "out": "***foo** bar*\n"
+ },
+ "414": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo **bar***\n"
+ },
+ "415": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo**bar***\n"
+ },
+ "416": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo***bar***baz\n"
+ },
+ "417": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo******bar*********baz\n"
+ },
+ "418": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo **bar *baz* bim** bop*\n"
+ },
+ "419": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo [*bar*](/url)*\n"
+ },
+ "420": {
+  "section": "Emphasis and strong emphasis",
+  "out": "** is not an empty emphasis\n"
+ },
+ "421": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**** is not an empty strong emphasis\n"
+ },
+ "422": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo [bar](/url)**\n"
+ },
+ "423": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo\nbar**\n"
+ },
+ "424": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo _bar_ baz__\n"
+ },
+ "425": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo __bar__ baz__\n"
+ },
+ "426": {
+  "section": "Emphasis and strong emphasis",
+  "out": "____foo__ bar__\n"
+ },
+ "427": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo **bar****\n"
+ },
+ "428": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo *bar* baz**\n"
+ },
+ "429": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo*bar*baz**\n"
+ },
+ "430": {
+  "section": "Emphasis and strong emphasis",
+  "out": "***foo* bar**\n"
+ },
+ "431": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo *bar***\n"
+ },
+ "432": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo *bar **baz**\nbim* bop**\n"
+ },
+ "433": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo [*bar*](/url)**\n"
+ },
+ "434": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__ is not an empty emphasis\n"
+ },
+ "435": {
+  "section": "Emphasis and strong emphasis",
+  "out": "____ is not an empty strong emphasis\n"
+ },
+ "436": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo ***\n"
+ },
+ "437": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo *\\**\n"
+ },
+ "438": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo *_*\n"
+ },
+ "439": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo *****\n"
+ },
+ "440": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo **\\***\n"
+ },
+ "441": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo **_**\n"
+ },
+ "442": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo*\n"
+ },
+ "443": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo**\n"
+ },
+ "444": {
+  "section": "Emphasis and strong emphasis",
+  "out": "***foo**\n"
+ },
+ "445": {
+  "section": "Emphasis and strong emphasis",
+  "out": "****foo*\n"
+ },
+ "446": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo***\n"
+ },
+ "447": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo****\n"
+ },
+ "448": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo ___\n"
+ },
+ "449": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo _\\__\n"
+ },
+ "450": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo _*_\n"
+ },
+ "451": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo _____\n"
+ },
+ "452": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo __\\___\n"
+ },
+ "453": {
+  "section": "Emphasis and strong emphasis",
+  "out": "foo __*__\n"
+ },
+ "454": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo_\n"
+ },
+ "455": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo__\n"
+ },
+ "456": {
+  "section": "Emphasis and strong emphasis",
+  "out": "___foo__\n"
+ },
+ "457": {
+  "section": "Emphasis and strong emphasis",
+  "out": "____foo_\n"
+ },
+ "458": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo___\n"
+ },
+ "459": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo____\n"
+ },
+ "460": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo**\n"
+ },
+ "461": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*_foo_*\n"
+ },
+ "462": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__foo__\n"
+ },
+ "463": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_*foo*_\n"
+ },
+ "464": {
+  "section": "Emphasis and strong emphasis",
+  "out": "****foo****\n"
+ },
+ "465": {
+  "section": "Emphasis and strong emphasis",
+  "out": "____foo____\n"
+ },
+ "466": {
+  "section": "Emphasis and strong emphasis",
+  "out": "******foo******\n"
+ },
+ "467": {
+  "section": "Emphasis and strong emphasis",
+  "out": "***foo***\n"
+ },
+ "468": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_____foo_____\n"
+ },
+ "469": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo _bar* baz_\n"
+ },
+ "470": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo __bar *baz bim__ bam*\n"
+ },
+ "471": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**foo **bar baz**\n"
+ },
+ "472": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*foo *bar baz*\n"
+ },
+ "473": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*[bar*](/url)\n"
+ },
+ "474": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_foo [bar_](/url)\n"
+ },
+ "475": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*<img src=\"foo\" title=\"*\"/>\n"
+ },
+ "476": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**<a href=\"**\">\n"
+ },
+ "477": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__<a href=\"__\">\n"
+ },
+ "478": {
+  "section": "Emphasis and strong emphasis",
+  "out": "*a `*`*\n"
+ },
+ "479": {
+  "section": "Emphasis and strong emphasis",
+  "out": "_a `_`_\n"
+ },
+ "480": {
+  "section": "Emphasis and strong emphasis",
+  "out": "**a<https://foo.bar/?q=**>\n"
+ },
+ "481": {
+  "section": "Emphasis and strong emphasis",
+  "out": "__a<https://foo.bar/?q=__>\n"
+ },
+ "482": {
+  "section": "Links",
+  "out": "[link](/uri \"title\")\n"
+ },
+ "483": {
+  "section": "Links",
+  "out": "[link](/uri)\n"
+ },
+ "484": {
+  "section": "Links",
+  "out": "[](./target.md)\n"
+ },
+ "485": {
+  "section": "Links",
+  "out": "[link]()\n"
+ },
+ "486": {
+  "section": "Links",
+  "out": "[link](<>)\n"
+ },
+ "487": {
+  "section": "Links",
+  "out": "[]()\n"
+ },
+ "488": {
+  "section": "Links",
+  "out": "[link](/my uri)\n"
+ },
+ "489": {
+  "section": "Links",
+  "out": "[link](</my uri>)\n"
+ },
+ "490": {
+  "section": "Links",
+  "out": "[link](foo\nbar)\n"
+ },
+ "491": {
+  "section": "Links",
+  "out": "[link](<foo\nbar>)\n"
+ },
+ "492": {
+  "section": "Links",
+  "out": "[a](<b)c>)\n"
+ },
+ "493": {
+  "section": "Links",
+  "out": "[link](<foo\\>)\n"
+ },
+ "494": {
+  "section": "Links",
+  "out": "[a](<b)c\n[a](<b)c>\n[a](<b>c)\n"
+ },
+ "495": {
+  "section": "Links",
+  "out": "[link](\\(foo\\))\n"
+ },
+ "496": {
+  "section": "Links",
+  "out": "[link](foo(and(bar)))\n"
+ },
+ "497": {
+  "section": "Links",
+  "out": "[link](foo(and(bar))\n"
+ },
+ "498": {
+  "section": "Links",
+  "out": "[link](foo\\(and\\(bar\\))\n"
+ },
+ "499": {
+  "section": "Links",
+  "out": "[link](<foo(and(bar)>)\n"
+ },
+ "500": {
+  "section": "Links",
+  "out": "[link](foo\\)\\:)\n"
+ },
+ "501": {
+  "section": "Links",
+  "out": "[link](#fragment)\n\n[link](https://example.com#fragment)\n\n[link](https://example.com?foo=3#frag)\n"
+ },
+ "502": {
+  "section": "Links",
+  "out": "[link](foo\\bar)\n"
+ },
+ "503": {
+  "section": "Links",
+  "out": "[link](foo%20b&auml;)\n"
+ },
+ "504": {
+  "section": "Links",
+  "out": "[link](\"title\")\n"
+ },
+ "505": {
+  "section": "Links",
+  "out": "[link](/url \"title\")\n[link](/url 'title')\n[link](/url (title))\n"
+ },
+ "506": {
+  "section": "Links",
+  "out": "[link](/url \"title \\\"&quot;\")\n"
+ },
+ "507": {
+  "section": "Links",
+  "out": "[link](/url \"title\")\n"
+ },
+ "508": {
+  "section": "Links",
+  "out": "[link](/url \"title \"and\" title\")\n"
+ },
+ "509": {
+  "section": "Links",
+  "out": "[link](/url 'title \"and\" title')\n"
+ },
+ "510": {
+  "section": "Links",
+  "out": "[link](   /uri\n  \"title\"  )\n"
+ },
+ "511": {
+  "section": "Links",
+  "out": "[link] (/uri)\n"
+ },
+ "512": {
+  "section": "Links",
+  "out": "[link [foo [bar]]](/uri)\n"
+ },
+ "513": {
+  "section": "Links",
+  "out": "[link] bar](/uri)\n"
+ },
+ "514": {
+  "section": "Links",
+  "out": "[link [bar](/uri)\n"
+ },
+ "515": {
+  "section": "Links",
+  "out": "[link \\[bar](/uri)\n"
+ },
+ "516": {
+  "section": "Links",
+  "out": "[link *foo **bar** `#`*](/uri)\n"
+ },
+ "517": {
+  "section": "Links",
+  "out": "[![moon](moon.jpg)](/uri)\n"
+ },
+ "518": {
+  "section": "Links",
+  "out": "[foo [bar](/uri)](/uri)\n"
+ },
+ "519": {
+  "section": "Links",
+  "out": "[foo *[bar [baz](/uri)](/uri)*](/uri)\n"
+ },
+ "520": {
+  "section": "Links",
+  "out": "![[[foo](uri1)](uri2)](uri3)\n"
+ },
+ "521": {
+  "section": "Links",
+  "out": "*[foo*](/uri)\n"
+ },
+ "522": {
+  "section": "Links",
+  "out": "[foo *bar](baz*)\n"
+ },
+ "523": {
+  "section": "Links",
+  "out": "*foo [bar* baz]\n"
+ },
+ "524": {
+  "section": "Links",
+  "out": "[foo <bar attr=\"](baz)\">\n"
+ },
+ "525": {
+  "section": "Links",
+  "out": "[foo`](/uri)`\n"
+ },
+ "526": {
+  "section": "Links",
+  "out": "[foo<https://example.com/?search=](uri)>\n"
+ },
+ "527": {
+  "section": "Links",
+  "out": "[foo][bar]\n\n[bar]: /url \"title\"\n"
+ },
+ "528": {
+  "section": "Links",
+  "out": "[link [foo [bar]]][ref]\n\n[ref]: /uri\n"
+ },
+ "529": {
+  "section": "Links",
+  "out": "[link \\[bar][ref]\n\n[ref]: /uri\n"
+ },
+ "530": {
+  "section": "Links",
+  "out": "[link *foo **bar** `#`*][ref]\n\n[ref]: /uri\n"
+ },
+ "531": {
+  "section": "Links",
+  "out": "[![moon](moon.jpg)][ref]\n\n[ref]: /uri\n"
+ },
+ "532": {
+  "section": "Links",
+  "out": "[foo [bar](/uri)][ref]\n\n[ref]: /uri\n"
+ },
+ "533": {
+  "section": "Links",
+  "out": "[foo *bar [baz][ref]*][ref]\n\n[ref]: /uri\n"
+ },
+ "534": {
+  "section": "Links",
+  "out": "*[foo*][ref]\n\n[ref]: /uri\n"
+ },
+ "535": {
+  "section": "Links",
+  "out": "[foo *bar][ref]*\n\n[ref]: /uri\n"
+ },
+ "536": {
+  "section": "Links",
+  "out": "[foo <bar attr=\"][ref]\">\n\n[ref]: /uri\n"
+ },
+ "537": {
+  "section": "Links",
+  "out": "[foo`][ref]`\n\n[ref]: /uri\n"
+ },
+ "538": {
+  "section": "Links",
+  "out": "[foo<https://example.com/?search=][ref]>\n\n[ref]: /uri\n"
+ },
+ "539": {
+  "section": "Links",
+  "out": "[foo][BaR]\n\n[bar]: /url \"title\"\n"
+ },
+ "540": {
+  "section": "Links",
+  "out": "[ẞ]\n\n[SS]: /url\n"
+ },
+ "541": {
+  "section": "Links",
+  "out": "[Foo\n  bar]: /url\n\n[Baz][Foo bar]\n"
+ },
+ "542": {
+  "section": "Links",
+  "out": "[foo] [bar]\n\n[bar]: /url \"title\"\n"
+ },
+ "543": {
+  "section": "Links",
+  "out": "[foo]\n[bar]\n\n[bar]: /url \"title\"\n"
+ },
+ "544": {
+  "section": "Links",
+  "out": "[foo]: /url1\n\n[foo]: /url2\n\n[bar][foo]\n"
+ },
+ "545": {
+  "section": "Links",
+  "out": "[bar][foo\\!]\n\n[foo!]: /url\n"
+ },
+ "546": {
+  "section": "Links",
+  "out": "[foo][ref[]\n\n[ref[]: /uri\n"
+ },
+ "547": {
+  "section": "Links",
+  "out": "[foo][ref[bar]]\n\n[ref[bar]]: /uri\n"
+ },
+ "548": {
+  "section": "Links",
+  "out": "[[[foo]]]\n\n[[[foo]]]: /url\n"
+ },
+ "549": {
+  "section": "Links",
+  "out": "[foo][ref\\[]\n\n[ref\\[]: /uri\n"
+ },
+ "550": {
+  "section": "Links",
+  "out": "[bar\\\\]: /uri\n\n[bar\\\\]\n"
+ },
+ "551": {
+  "section": "Links",
+  "out": "[]\n\n[]: /uri\n"
+ },
+ "552": {
+  "section": "Links",
+  "out": "[\n ]\n\n[\n ]: /uri\n"
+ },
+ "553": {
+  "section": "Links",
+  "out": "[foo][]\n\n[foo]: /url \"title\"\n"
+ },
+ "554": {
+  "section": "Links",
+  "out": "[*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n"
+ },
+ "555": {
+  "section": "Links",
+  "out": "[Foo][]\n\n[foo]: /url \"title\"\n"
+ },
+ "556": {
+  "section": "Links",
+  "out": "[foo] \n[]\n\n[foo]: /url \"title\"\n"
+ },
+ "557": {
+  "section": "Links",
+  "out": "[foo]\n\n[foo]: /url \"title\"\n"
+ },
+ "558": {
+  "section": "Links",
+  "out": "[*foo* bar]\n\n[*foo* bar]: /url \"title\"\n"
+ },
+ "559": {
+  "section": "Links",
+  "out": "[[*foo* bar]]\n\n[*foo* bar]: /url \"title\"\n"
+ },
+ "560": {
+  "section": "Links",
+  "out": "[[bar [foo]\n\n[foo]: /url\n"
+ },
+ "561": {
+  "section": "Links",
+  "out": "[Foo]\n\n[foo]: /url \"title\"\n"
+ },
+ "562": {
+  "section": "Links",
+  "out": "[foo] bar\n\n[foo]: /url\n"
+ },
+ "563": {
+  "section": "Links",
+  "out": "\\[foo]\n\n[foo]: /url \"title\"\n"
+ },
+ "564": {
+  "section": "Links",
+  "out": "[foo*]: /url\n\n*[foo*]\n"
+ },
+ "565": {
+  "section": "Links",
+  "out": "[foo][bar]\n\n[foo]: /url1\n\n[bar]: /url2\n"
+ },
+ "566": {
+  "section": "Links",
+  "out": "[foo][]\n\n[foo]: /url1\n"
+ },
+ "567": {
+  "section": "Links",
+  "out": "[foo]()\n\n[foo]: /url1\n"
+ },
+ "568": {
+  "section": "Links",
+  "out": "[foo](not a link)\n\n[foo]: /url1\n"
+ },
+ "569": {
+  "section": "Links",
+  "out": "[foo][bar][baz]\n\n[baz]: /url\n"
+ },
+ "570": {
+  "section": "Links",
+  "out": "[foo][bar][baz]\n\n[baz]: /url1\n\n[bar]: /url2\n"
+ },
+ "571": {
+  "section": "Links",
+  "out": "[foo][bar][baz]\n\n[baz]: /url1\n\n[foo]: /url2\n"
+ },
+ "572": {
+  "section": "Images",
+  "out": "![foo](/url \"title\")\n"
+ },
+ "573": {
+  "section": "Images",
+  "out": "![foo *bar*]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n"
+ },
+ "574": {
+  "section": "Images",
+  "out": "![foo ![bar](/url)](/url2)\n"
+ },
+ "575": {
+  "section": "Images",
+  "out": "![foo [bar](/url)](/url2)\n"
+ },
+ "576": {
+  "section": "Images",
+  "out": "![foo *bar*][]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n"
+ },
+ "577": {
+  "section": "Images",
+  "out": "![foo *bar*][foobar]\n\n[FOOBAR]: train.jpg \"train & tracks\"\n"
+ },
+ "578": {
+  "section": "Images",
+  "out": "![foo](train.jpg)\n"
+ },
+ "579": {
+  "section": "Images",
+  "out": "My ![foo bar](/path/to/train.jpg  \"title\"   )\n"
+ },
+ "580": {
+  "section": "Images",
+  "out": "![foo](<url>)\n"
+ },
+ "581": {
+  "section": "Images",
+  "out": "![](/url)\n"
+ },
+ "582": {
+  "section": "Images",
+  "out": "![foo][bar]\n\n[bar]: /url\n"
+ },
+ "583": {
+  "section": "Images",
+  "out": "![foo][bar]\n\n[BAR]: /url\n"
+ },
+ "584": {
+  "section": "Images",
+  "out": "![foo][]\n\n[foo]: /url \"title\"\n"
+ },
+ "585": {
+  "section": "Images",
+  "out": "![*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n"
+ },
+ "586": {
+  "section": "Images",
+  "out": "![Foo][]\n\n[foo]: /url \"title\"\n"
+ },
+ "587": {
+  "section": "Images",
+  "out": "![foo] \n[]\n\n[foo]: /url \"title\"\n"
+ },
+ "588": {
+  "section": "Images",
+  "out": "![foo]\n\n[foo]: /url \"title\"\n"
+ },
+ "589": {
+  "section": "Images",
+  "out": "![*foo* bar]\n\n[*foo* bar]: /url \"title\"\n"
+ },
+ "590": {
+  "section": "Images",
+  "out": "![[foo]]\n\n[[foo]]: /url \"title\"\n"
+ },
+ "591": {
+  "section": "Images",
+  "out": "![Foo]\n\n[foo]: /url \"title\"\n"
+ },
+ "592": {
+  "section": "Images",
+  "out": "!\\[foo]\n\n[foo]: /url \"title\"\n"
+ },
+ "593": {
+  "section": "Images",
+  "out": "\\![foo]\n\n[foo]: /url \"title\"\n"
+ },
+ "594": {
+  "section": "Autolinks",
+  "out": "<http://foo.bar.baz>\n"
+ },
+ "595": {
+  "section": "Autolinks",
+  "out": "<https://foo.bar.baz/test?q=hello&id=22&boolean>\n"
+ },
+ "596": {
+  "section": "Autolinks",
+  "out": "<irc://foo.bar:2233/baz>\n"
+ },
+ "597": {
+  "section": "Autolinks",
+  "out": "<MAILTO:FOO@BAR.BAZ>\n"
+ },
+ "598": {
+  "section": "Autolinks",
+  "out": "<a+b+c:d>\n"
+ },
+ "599": {
+  "section": "Autolinks",
+  "out": "<made-up-scheme://foo,bar>\n"
+ },
+ "600": {
+  "section": "Autolinks",
+  "out": "<https://../>\n"
+ },
+ "601": {
+  "section": "Autolinks",
+  "out": "<localhost:5001/foo>\n"
+ },
+ "602": {
+  "section": "Autolinks",
+  "out": "<https://foo.bar/baz bim>\n"
+ },
+ "603": {
+  "section": "Autolinks",
+  "out": "<https://example.com/\\[\\>\n"
+ },
+ "604": {
+  "section": "Autolinks",
+  "out": "<foo@bar.example.com>\n"
+ },
+ "605": {
+  "section": "Autolinks",
+  "out": "<foo+special@Bar.baz-bar0.com>\n"
+ },
+ "606": {
+  "section": "Autolinks",
+  "out": "<foo\\+@bar.example.com>\n"
+ },
+ "607": {
+  "section": "Autolinks",
+  "out": "<>\n"
+ },
+ "608": {
+  "section": "Autolinks",
+  "out": "< https://foo.bar >\n"
+ },
+ "609": {
+  "section": "Autolinks",
+  "out": "<m:abc>\n"
+ },
+ "610": {
+  "section": "Autolinks",
+  "out": "<foo.bar.baz>\n"
+ },
+ "611": {
+  "section": "Autolinks",
+  "out": "https://example.com\n"
+ },
+ "612": {
+  "section": "Autolinks",
+  "out": "foo@bar.example.com\n"
+ },
+ "613": {
+  "section": "Raw HTML",
+  "out": "<a><bab><c2c>\n"
+ },
+ "614": {
+  "section": "Raw HTML",
+  "out": "<a/><b2/>\n"
+ },
+ "615": {
+  "section": "Raw HTML",
+  "out": "<a  /><b2\ndata=\"foo\" >\n"
+ },
+ "616": {
+  "section": "Raw HTML",
+  "out": "<a foo=\"bar\" bam = 'baz <em>\"</em>'\n_boolean zoop:33=zoop:33 />\n"
+ },
+ "617": {
+  "section": "Raw HTML",
+  "out": "Foo <responsive-image src=\"foo.jpg\" />\n"
+ },
+ "618": {
+  "section": "Raw HTML",
+  "out": "<33> <__>\n"
+ },
+ "619": {
+  "section": "Raw HTML",
+  "out": "<a h*#ref=\"hi\">\n"
+ },
+ "620": {
+  "section": "Raw HTML",
+  "out": "<a href=\"hi'> <a href=hi'>\n"
+ },
+ "621": {
+  "section": "Raw HTML",
+  "out": "< a><\nfoo><bar/ >\n<foo bar=baz\nbim!bop />\n"
+ },
+ "622": {
+  "section": "Raw HTML",
+  "out": "<a href='bar'title=title>\n"
+ },
+ "623": {
+  "section": "Raw HTML",
+  "out": "</a></foo >\n"
+ },
+ "624": {
+  "section": "Raw HTML",
+  "out": "</a href=\"foo\">\n"
+ },
+ "625": {
+  "section": "Raw HTML",
+  "out": "foo <!-- this is a --\ncomment - with hyphens -->\n"
+ },
+ "626": {
+  "section": "Raw HTML",
+  "out": "foo <!--> foo -->\n\nfoo <!---> foo -->\n"
+ },
+ "627": {
+  "section": "Raw HTML",
+  "out": "foo <?php echo $a; ?>\n"
+ },
+ "628": {
+  "section": "Raw HTML",
+  "out": "foo <!ELEMENT br EMPTY>\n"
+ },
+ "629": {
+  "section": "Raw HTML",
+  "out": "foo <![CDATA[>&<]]>\n"
+ },
+ "630": {
+  "section": "Raw HTML",
+  "out": "foo <a href=\"&ouml;\">\n"
+ },
+ "631": {
+  "section": "Raw HTML",
+  "out": "foo <a href=\"\\*\">\n"
+ },
+ "632": {
+  "section": "Raw HTML",
+  "out": "<a href=\"\\\"\">\n"
+ },
+ "633": {
+  "section": "Hard line breaks",
+  "out": "foo  \nbaz\n"
+ },
+ "634": {
+  "section": "Hard line breaks",
+  "out": "foo\\\nbaz\n"
+ },
+ "635": {
+  "section": "Hard line breaks",
+  "out": "foo       \nbaz\n"
+ },
+ "636": {
+  "section": "Hard line breaks",
+  "out": "foo  \n     bar\n"
+ },
+ "637": {
+  "section": "Hard line breaks",
+  "out": "foo\\\n     bar\n"
+ },
+ "638": {
+  "section": "Hard line breaks",
+  "out": "*foo  \nbar*\n"
+ },
+ "639": {
+  "section": "Hard line breaks",
+  "out": "*foo\\\nbar*\n"
+ },
+ "640": {
+  "section": "Hard line breaks",
+  "out": "`code  \nspan`\n"
+ },
+ "641": {
+  "section": "Hard line breaks",
+  "out": "`code\\\nspan`\n"
+ },
+ "642": {
+  "section": "Hard line breaks",
+  "out": "<a href=\"foo  \nbar\">\n"
+ },
+ "643": {
+  "section": "Hard line breaks",
+  "out": "<a href=\"foo\\\nbar\">\n"
+ },
+ "644": {
+  "section": "Hard line breaks",
+  "out": "foo\\\n"
+ },
+ "645": {
+  "section": "Hard line breaks",
+  "out": "foo  \n"
+ },
+ "646": {
+  "section": "Hard line breaks",
+  "out": "### foo\\\n"
+ },
+ "647": {
+  "section": "Hard line breaks",
+  "out": "### foo\n"
+ },
+ "648": {
+  "section": "Soft line breaks",
+  "out": "foo\nbaz\n"
+ },
+ "649": {
+  "section": "Soft line breaks",
+  "out": "foo \n baz\n"
+ },
+ "650": {
+  "section": "Textual content",
+  "out": "hello $.;'there\n"
+ },
+ "651": {
+  "section": "Textual content",
+  "out": "Foo χρῆν\n"
+ },
+ "652": {
+  "section": "Textual content",
+  "out": "Multiple     spaces\n"
+ }
+}

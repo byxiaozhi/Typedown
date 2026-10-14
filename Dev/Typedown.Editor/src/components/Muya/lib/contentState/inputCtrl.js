@@ -4,6 +4,26 @@ import { beginRules } from '../parser/rules'
 import { tokenizer } from '../parser/'
 import { CLASS_OR_ID } from '../config'
 
+// Name of the innermost HTML tag that is still open at the end of `text`, or null.
+const VOID_HTML_TAGS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'])
+const findUnclosedHtmlTag = text => {
+  const stack = []
+  const tagReg = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)(?:\s[^<>]*?)?(\/?)>/g
+  let match
+  while ((match = tagReg.exec(text))) {
+    const [, closing, name, selfClosing] = match
+    const lower = name.toLowerCase()
+    if (selfClosing || VOID_HTML_TAGS.has(lower)) continue
+    if (closing) {
+      const index = stack.lastIndexOf(lower)
+      if (index >= 0) stack.splice(index)
+    } else {
+      stack.push(lower)
+    }
+  }
+  return stack.length ? stack[stack.length - 1] : null
+}
+
 const BRACKET_HASH = {
   '{': '}',
   '[': ']',
@@ -236,6 +256,21 @@ const inputCtrl = ContentState => {
               : text
           }
           /* eslint-enable no-useless-escape */
+          // HTML closing-tag completion (upstream #40): typing `</` right after an unclosed `<tag ...>`
+          // completes it to `</tag>` and leaves the caret after it.
+          if (
+            autoPairBracket && inputChar === '/' && preInputChar === '<' &&
+            block.functionType !== 'codeContent' && !isInInlineCode &&
+            !/^[a-zA-Z]/.test(postInputChar)
+          ) {
+            const openTag = findUnclosedHtmlTag(text.substring(0, offset - 2))
+            if (openTag) {
+              text = text.substring(0, offset) + openTag + '>' + text.substring(offset)
+              start.offset += openTag.length + 1
+              end.offset = start.offset
+              needRender = true
+            }
+          }
           // Delete the last `*` of `**` when you insert one space between `**` to create a bullet list.
           if (
             /\s/.test(event.data) &&

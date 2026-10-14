@@ -19,6 +19,7 @@ export const inlineRules = {
   link: /^(\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*?)(\\*)\]\((.*)(\\*)\)/, // can nest
   emoji: /^(:)([a-z_\d+-]+?)\1/,
   del: /^(~{2})(?=\S)([\s\S]*?\S)(\\*)\1/, // can nest
+  mark: /^(={2})(?=\S)([\s\S]*?\S)(\\*)\1/, // ==highlight==, can nest; asked for in the Store reviews three times
   auto_link: /^<(?:([a-zA-Z]{1}[a-zA-Z\d\+\.\-]{1,31}:[^ <>]*)|([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*))>/,
   // (extended www autolink|extended url autolink|extended email autolink) the email regexp is the same as auto_link.
   auto_link_extension: /^(?:(www\.[a-z_-]+\.[a-z]{2,}(?::[0-9]{1,5})?(?:\/[\S]*)?)|(http(?:s)?:\/\/(?:[a-z0-9\-._~]+\.[a-z]{2,}|[0-9.]+|localhost|\[[a-f0-9.:]+\])(?::[0-9]{1,5})?(?:\/[\S]*)?)|([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*))(?=\s|$)/,
@@ -34,7 +35,7 @@ export const inlineRules = {
   backlash: /^(\\)([\\`*{}\[\]()#+\-.!_>~:\|\<\>$]{1})/,
 
   // Markdown extensions (not belongs to GFM and Commonmark)
-  inline_math: /^(\$)([^\$]*?[^\$\\])(\\*)\1(?!\1)/
+  inline_math: /^(\$)(?!\s)([^\$]*?[^\s\$\\])(\\*)\1(?![\d$])/
 }
 
 // Markdown extensions (not belongs to GFM and Commonmark)

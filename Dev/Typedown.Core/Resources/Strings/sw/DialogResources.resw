@@ -133,10 +133,6 @@
     <value>Sawa kabisa</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Yaliyomo hayawezi kuwa tupu</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Imeshindwa kuunda waraka mpya</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Usafirishaji nje umeshindikana</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Maoni</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Uagizaji umeshindikana</value>
@@ -225,14 +217,6 @@
     <value>Ufunguo wa njia ya mkato unakaliwa</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Wasilisha</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Uwasilishaji umefanikiwa</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Upakiaji umeshindikana</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Runtime ya WebView2 Haijasakinishwa</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Hati hii ilishirikiwa awali lakini imebadilika tangu wakati huo. HedgeDoc 1.x haiwezi kusasisha noti iliyopo, hivyo kupakia tena kutaunda noti mpya yenye kiungo kipya.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Nakili kiungo</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Kiungo kinachoharirika</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Yeyote mwenye kiungo hiki anaweza kuhariri noti.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Kwanza weka anwani ya seva ya HedgeDoc katika Mipangilio → Hamisha.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Fungua katika kivinjari</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Pakia tena (kiungo kipya)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Kiungo cha kusoma tu</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Imeshirikiwa kwenye HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Hati haijabadilika tangu ilipo­shirikiwa mwisho; hivi ndivyo viungo vilivyopo.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Tumia kiungo cha awali</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Weka</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Pakia upya</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Faili imebadilika kwenye diski. Kupakia upya kutatupa mabadiliko ambayo hayajahifadhiwa.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Faili imebadilika kwenye diski. Uipakie upya?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Faili imebadilika kwenye diski</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Pakia picha za ndani</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Inapakia picha {0} kati ya {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Picha {0} kati ya {1} zimepakiwa. Anwani zake kwenye hati sasa zinaelekeza kwenye nakala zilizopakiwa; Tendua hurejesha njia za ndani.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Imeghairiwa. Picha {0} kati ya {1} zilipakiwa, na anwani zake kwenye hati zilibadilishwa.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Hazijabadilishwa:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Hati hii haina picha za ndani.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Hakuna usanidi wa kupakia uliochaguliwa. Chagua mmoja chini ya Vipimo &gt; Taswira &gt; Pakia kwa kutumia.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Fungua mipangilio</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Faili haikupatikana.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Upakiaji haukurudisha anwani.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Hati ilifungwa wakati wa upakiaji.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Hati haikuweza kubadilishwa. Picha iko mtandaoni kwenye</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Hati hii ina picha {0} za ndani. Ni faili kwenye kompyuta hii, kwa hivyo wasomaji wa dokezo hawataziona. Zipakie kwanza?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Pakia kwanza</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Shiriki hata hivyo</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} kati yake zilikuwa zimepakiwa awali kwa usanidi huu, kwa hivyo anwani zake za awali zilitumika.</value>
   </data>
 </root>

@@ -137,18 +137,6 @@
     <value>Iruzkinak bidali</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontaktua</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Posta elektroniko</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Oso serio hartzen ditugu zure iruzkinak</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Zerbaiti buruz</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Iturriaren tamaina</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Editorean erabilitako letra-tipoa</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Letra-tipo familia</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Editore anizkoitzaren lerro-altuera</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Portapapelen irudia</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Portapapelen irudiak kargatzeko konfigurazioa</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Irudiak sartzean gauzatu beharreko ekintza</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Bertako irudia</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Tokiko irudiak kargatzeko konfigurazioa</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Irudia txertatzeko ekintza</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Web irudia</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Web irudiak kargatzeko konfigurazioa</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Nahiago du irudiak sartzean ibilbide erlatiboa erabili</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Leihoa</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Lehenetsia</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Zerrenda-elementu habiaratuetarako idazten den koska. 4 zuriune Obsidian eta beste editore gehienekin bat dator</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>4 zuriuneko koska (Markdown estandarra)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>Zuriune 1 markatzailearen ondoren</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 zuriune markatzailearen ondoren</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 zuriune markatzailearen ondoren</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Zerrenden koska</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Txertatu lerro huts bat zerrenda-elementu berrien artean iturburuan</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Zerrenda-elementu lasaiak</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Erakutsi blokearen mota (P, H1, ...) uneko paragrafoaren ondoan</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Paragrafo-marka</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Bete taula-gelaxkak zutabeak Markdown iturburuan lerrokatu daitezen. Desaktibatu taulak trinko mantentzeko (token gutxiago AA tresnentzat)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Lerrokatu taularen zutabeak</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Hauteman automatikoki paragrafoka</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Editorearen testu-norabidea; baliagarria arabierarako, hebreerarako eta eskuinetik ezkerrera idazten diren beste hizkuntzetarako</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Ezkerretik eskuinera</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Eskuinetik ezkerrera</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Testu-norabidea</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Desaktibatuta badago, kargatu berriro galdetu gabe gorde gabeko aldaketarik ez badago</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Galdetu birkargatu aurretik</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Zaindu irekitako fitxategia eta freskatu beste programa batek aldatzen duenean</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Birkarga automatikoa kanpoko aldaketetan</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Explorer-etik irekitako fitxategiak fitxa gisa irekitzen dira uneko leihoan; desaktibatuta leiho berria irekitzen du</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Ireki fitxategiak fitxetan</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Ireki dokumentuak utzi zenituen lekuan</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Gogoratu kurtsorearen kokapena</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Leheneratu azken saioko dokumentu guztiak</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Utzi hutsik oharrak anonimoki sortzeko; kontu batekin oharra zurea da</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Helbide elektronikoa (aukerakoa)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Pasahitza</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Oharra argitaratzen du (/s/…), partekatutako esteka editatu ezin izateko</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Argitaratu irakurtzeko soilik den esteka ere</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Partekatu HedgeDoc-en</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>HedgeDoc 1.x helbidea, adib. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Zerbitzaria</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Probatu</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Probatu konexioa</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Erakutsi fitxa-barra dokumentu bakarra irekita dagoenean ere</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Erakutsi beti fitxak</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Beltza (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Estilo gehigarriak editorerako eta esportatutako HTML/PDFrako</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>adib. .markdown-body h1 { color: #c00; }  edo  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS pertsonalizatua</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Gai bat gaien karpetako CSS fitxategi bat da; ikusi docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Nola idatzi bat</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Gaiak karpeta honetako CSS fitxategiak dira; dokumentuak formatua azaltzen du.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(bat ere ez)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Ireki gaien karpeta</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Kargatu gaiak berriro</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Gai pertsonalizatua</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>adib. ./${filename}.assets — aldagaiak: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Alboko panelak abiaraztean erakusten duen orria</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Alboko panelaren orri lehenetsia</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Baimendu tokiko automatizazioa</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Ordenagailu honetan exekutatzen dituzun programek dokumentu irekiak irakurri eta editatu ditzakete. Leihoaren izenburuak adierazten du bat konektatuta dagoenean.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Nabarmendu programek egindako aldaketak</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Konektatutako programa batek aldatutako testua une batez nabarmentzen du, zer aldatu den ikus dezazun.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Marraztu PlantUML diagramak</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Diagramaren iturburua plantuml.com-era bidaltzen du marrazteko</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Igotzeko modua</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>«Irudia igo» ekintza duten txertatutako irudietarako eta Artxiboa &gt; Igo irudi lokalak aukerarako erabiltzen den igotze-konfigurazioa</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Bucketeko karpeta</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL publikoa</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Bide-estiloko helbideak (MinIO eta hornitzaile batzuk)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>S3 konfigurazioa osatu gabe dago: bete Endpoint, Bucket, Access Key ID eta Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Igoeren historia</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Konfigurazio berarekin jada igotako irudia ez da berriro igotzen; haren aurreko helbidea erabiltzen da ({0} gogoratuta). Garbitu historia igotako fitxategiak ezabatu ondoren.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>PlantUML zerbitzaria</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Diagramak marrazten dituen PlantUML zerbitzariaren (plantuml-server) helbidea. Hutsik: plantuml.com. Zure zerbitzari propioarekin, diagramen iturburua zurekin geratzen da.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Vim teklak</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim iturburu moduan (:w gordetzen du, :q fitxa ixten du); j/k, gg/G, ]] eta / irakurketa moduan mugitzeko. Ez editore bisualean.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Ireki erregistroen karpeta</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Esportatu ondoren</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Erakutsi non gorde den</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Ireki fitxategia</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Ireki haren karpeta</value>
   </data>
 </root>

@@ -39,7 +39,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems.UploadConfigItems
                 var filePicker = new FileOpenPicker();
                 FileTypeHelper.Image.ToList().ForEach(filePicker.FileTypeFilter.Add);
                 filePicker.SetOwnerWindow(this.GetService<IWindowService>().GetWindow(this));
-                var file = await filePicker.PickSingleFileAsync();
+                var file = await FilePickersExtensions.ShowAsync(() => filePicker.PickSingleFileAsync());
                 if (file == null)
                     return;
                 var res = await ImageUploadConfig.LoadUploadConfig().Upload(this.GetService<IServiceProvider>(), file.Path);

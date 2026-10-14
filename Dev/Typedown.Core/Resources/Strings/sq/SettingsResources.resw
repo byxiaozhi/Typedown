@@ -137,18 +137,6 @@
     <value>Dërgo feedback</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Kontakt</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Email</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Ne e marrim shumë seriozisht feedback-un tuaj</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Rreth</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Madhësia e gërmave</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Fonti i përdorur në redaktues</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Familja e fontit</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Lartësia e rreshtit të editorit shumëfish</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>OSS</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Figura e dërrasës</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurimi i ngarkimit të figurës së dërrasës</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Veprim për të ekzekutuar gjatë insertimit të imazheve</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Figurë lokale</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurimi lokal i ngarkimit të figurës</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Fut veprimin e figurës</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Figurë web</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Konfigurimi i ngarkimit të figurës në ueb</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Preferoni të përdorni shtegun relativ kur futni imazhe</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Dritare</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Parazgjedhje</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Zhvendosja që shkruhet për elementet e listave të ndërthurura. 4 hapësira përputhen me Obsidian dhe me shumicën e redaktorëve të tjerë</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Zhvendosje me 4 hapësira (standard i Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 hapësirë pas shenjës</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 hapësira pas shenjës</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 hapësira pas shenjës</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Zhvendosja e listave</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Fut një rresht bosh midis elementeve të reja të listës në burim</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Elemente liste të shkëputura</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Shfaq llojin e bllokut (P, H1, ...) pranë paragrafit aktual</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Shenjë paragrafi</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Mbush qelizat e tabelës që kolonat të rreshtohen në burimin Markdown. Çaktivizoje që tabelat të mbeten kompakte (më pak token për mjetet e IA)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Rreshto kolonat e tabelës</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Zbulo automatikisht për çdo paragraf</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Drejtimi i tekstit në redaktues; i dobishëm për arabishten, hebraishten dhe gjuhë të tjera që shkruhen nga e djathta në të majtë</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Nga e majta në të djathtë</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Nga e djathta në të majtë</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Drejtimi i tekstit</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Nëse është joaktiv, ringarko pa pyetur përveçse kur ka ndryshime të paruajtura</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Pyet para ringarkimit</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Mbikëqyr skedarin e hapur dhe rifresko atë kur e ndryshon një program tjetër</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Ringarkim automatik në ndryshim të jashtëm</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Skedarët e hapur nga Explorer hapen si skedë në dritaren aktuale; joaktiv hap një dritare të re</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Hap skedarët në skeda</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Hap dokumentet aty ku i latë</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Mbaj mend pozicionin e kursorit</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Rikthe të gjitha dokumentet e sesionit të fundit</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Lëre bosh për të krijuar shënime anonime; me një llogari shënimi është yti</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Email (opsional)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Fjalëkalim</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Publikon shënimin (/s/…) që lidhja e ndarë të mos mund të redaktohet</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Publiko edhe një lidhje vetëm për lexim</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Ndaje në HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Adresa e HedgeDoc 1.x, p.sh. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Provo</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Provo lidhjen</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Shfaq shiritin e skedave edhe kur është hapur vetëm një dokument</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Shfaq gjithmonë skedat</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>E zezë (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Stile shtesë për redaktuesin dhe HTML/PDF të eksportuar</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>p.sh. .markdown-body h1 { color: #c00; }  ose  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>CSS i personalizuar</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Një temë është një skedar CSS në dosjen e temave; shih docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Si të shkruash një temë</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Temat janë skedarë CSS në këtë dosje; dokumenti shpjegon formatin.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(asnjë)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Hap dosjen e temave</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Ringarko temat</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Temë e personalizuar</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>p.sh. ./${filename}.assets — variabla: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Cilën faqe shfaq paneli anësor në nisje</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Faqja e parazgjedhur e panelit anësor</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Lejo automatizimin lokal</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Programet që ekzekutoni në këtë kompjuter mund të lexojnë dhe redaktojnë dokumentet e hapura. Titulli i dritares tregon kur është lidhur ndonjë.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Thekso ndryshimet e bëra nga programet</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Thekson për pak kohë tekstin që ndryshoi një program i lidhur, që të shihni çfarë ndryshoi.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Vizato diagramet PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Dërgon burimin e diagramit te plantuml.com për ta vizatuar</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Ngarko me</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Konfigurimi i ngarkimit që përdoret për figurat e futura veprimi i të cilave është Ngarkim, dhe nga File &gt; Ngarko figurat lokale</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Dosje në bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>URL publike</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Adresa në stil shtegu (MinIO dhe disa ofrues)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Konfigurimi S3 është i paplotë: plotësoni Endpoint, Bucket, Access Key ID dhe Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Historiku i ngarkimeve</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Një figurë e ngarkuar tashmë me të njëjtin konfigurim nuk ngarkohet përsëri; përdoret adresa e saj e mëparshme ({0} të mbajtura mend). Pastro historikun pas fshirjes së skedarëve të ngarkuar.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Serveri PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Adresa e serverit PlantUML (plantuml-server) që vizaton diagramet. Bosh: plantuml.com. Me serverin tuaj, burimi i diagrameve mbetet te ju.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Tastet e Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim në modalitetin e burimit (:w ruan, :q mbyll skedën); j/k, gg/G, ]] dhe / për lëvizje në modalitetin e leximit. Jo në redaktorin vizual.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Hap dosjen e regjistrave</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Pas eksportimit</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Shfaq ku u ruajt</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Hap skedarin</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Hap dosjen e tij</value>
   </data>
 </root>

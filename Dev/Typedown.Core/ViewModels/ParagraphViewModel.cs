@@ -38,7 +38,7 @@ namespace Typedown.Core.ViewModels
         public ParagraphViewModel(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            RemoteInvoke.Handle("ResizeTable", ResizeTable);
+            RemoteInvoke.Handle<Newtonsoft.Json.Linq.JToken, object>("ResizeTable", ResizeTable);
             UpdateParagraphCommand.OnExecute.Subscribe(x => UpdateParagraph(x));
             InsertParagraphCommand.OnExecute.Subscribe(x => InsertParagraph(x));
             DeleteParagraphCommand.OnExecute.Subscribe(_ => DeleteParagraph());
@@ -61,9 +61,12 @@ namespace Typedown.Core.ViewModels
                 MarkdownEditor?.PostMessage("InsertTable", new { rows = result.Rows, columns = result.Columns });
         }
 
-        public async Task<object> ResizeTable()
+        /// <param name="table">The table's size as the page sends it: rows (the header row counted) and columns.</param>
+        public async Task<object> ResizeTable(Newtonsoft.Json.Linq.JToken table)
         {
-            var result = await InsertTableDialog.OpenResizeTableDialog(ViewModel.XamlRoot);
+            var rows = (int?)table?["rows"] ?? 0;
+            var columns = (int?)table?["columns"] ?? 0;
+            var result = await InsertTableDialog.OpenResizeTableDialog(ViewModel.XamlRoot, rows, columns);
             return result != null ? new { rows = result.Rows, columns = result.Columns } : null;
         }
 

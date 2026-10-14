@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Typedown 主题配色工具</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --tool-bg: #eef1f5;
+      --panel-bg: #ffffff;
+      --panel-border: #d9dee7;
+      --tool-text: #202631;
+      --tool-muted: #667085;
+      --tool-accent: #315efb;
+      --tool-danger: #c9374f;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      overflow: hidden;
+      color: var(--tool-text);
+      background: var(--tool-bg);
+      font: 14px/1.5 Inter, "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+    }
+    button, input, select, textarea { font: inherit; }
+    button, input, select { min-height: 36px; }
+    button {
+      border: 1px solid var(--panel-border);
+      border-radius: 8px;
+      padding: 7px 12px;
+      color: var(--tool-text);
+      background: #fff;
+      cursor: pointer;
+    }
+    button:hover { border-color: #9ea9ba; background: #f7f9fc; }
+    button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--tool-accent) 25%, transparent);
+      outline-offset: 1px;
+    }
+    button.primary { color: #fff; border-color: var(--tool-accent); background: var(--tool-accent); }
+    button.primary:hover { background: #234ee6; }
+    button.danger { color: var(--tool-danger); }
+    .language-select { min-height: 36px; border: 1px solid var(--panel-border); border-radius: 8px; padding: 6px 28px 6px 9px; color: var(--tool-text); background: #fff; }
+    .app { height: 100%; display: grid; grid-template-rows: 58px minmax(0, 1fr); }
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--panel-border);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+    }
+    .brand { min-width: 224px; }
+    .brand strong { display: block; font-size: 16px; letter-spacing: .01em; }
+    .brand span { display: block; color: var(--tool-muted); font-size: 12px; }
+    .toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .topbar .toolbar { margin-left: auto; justify-content: flex-end; }
+    .workspace { min-height: 0; display: grid; grid-template-columns: 370px minmax(540px, 1fr); }
+    .controls {
+      min-height: 0;
+      overflow: auto;
+      padding: 14px;
+      border-right: 1px solid var(--panel-border);
+      background: #f8f9fb;
+    }
+    .preview-column { min-width: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; }
+    .panel {
+      margin-bottom: 12px;
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      background: var(--panel-bg);
+      box-shadow: 0 1px 2px rgba(16,24,40,.04);
+    }
+    .panel > summary, .panel-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 12px;
+      font-weight: 650;
+    }
+    details > summary { cursor: pointer; user-select: none; }
+    details > summary::marker { color: #8791a2; }
+    .panel-body { padding: 0 12px 12px; }
+    .field { display: grid; gap: 5px; margin-bottom: 10px; }
+    .field > label, .field-label { color: #414b5c; font-size: 12px; font-weight: 600; }
+    .field input[type="text"], .field select, .field textarea {
+      width: 100%;
+      border: 1px solid var(--panel-border);
+      border-radius: 8px;
+      padding: 7px 9px;
+      color: var(--tool-text);
+      background: #fff;
+    }
+    .field input.invalid { border-color: #df4961; background: #fff7f8; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; }
+    .form-grid .wide { grid-column: 1 / -1; }
+    .color-grid { display: grid; gap: 7px; }
+    .color-row { display: grid; grid-template-columns: minmax(92px, .85fr) 34px minmax(112px, 1fr); align-items: center; gap: 7px; }
+    .color-row label { overflow: hidden; color: #414b5c; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+    .color-row input[type="color"] {
+      width: 34px;
+      min-height: 32px;
+      height: 32px;
+      border: 1px solid var(--panel-border);
+      border-radius: 7px;
+      padding: 2px;
+      background: #fff;
+      cursor: pointer;
+    }
+    .color-row input[type="text"] {
+      width: 100%;
+      min-width: 0;
+      min-height: 32px;
+      border: 1px solid var(--panel-border);
+      border-radius: 7px;
+      padding: 5px 7px;
+      font: 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+    }
+    .check-row { display: flex; align-items: center; gap: 8px; color: var(--tool-muted); font-size: 12px; }
+    .check-row input { min-height: 0; }
+    .hint { margin: 7px 0 0; color: var(--tool-muted); font-size: 12px; }
+    .dropzone {
+      padding: 13px;
+      border: 1px dashed #9ba7ba;
+      border-radius: 9px;
+      color: #566174;
+      text-align: center;
+      background: #fafbfc;
+      cursor: pointer;
+    }
+    .dropzone.drag { border-color: var(--tool-accent); color: var(--tool-accent); background: #f1f5ff; }
+    .import-list { margin: 8px 0 0; padding: 0; list-style: none; color: var(--tool-muted); font-size: 12px; }
+    .import-list li { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .theme-library { display: grid; gap: 6px; max-height: 216px; margin: 9px 0 0; padding: 0; overflow: auto; list-style: none; }
+    .theme-library button { width: 100%; display: grid; gap: 2px; min-height: 46px; padding: 7px 9px; text-align: left; }
+    .theme-library button strong, .theme-library button small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .theme-library button small { color: var(--tool-muted); font-size: 11px; font-weight: 400; }
+    .theme-library button.active { border-color: var(--tool-accent); background: #eef3ff; box-shadow: 0 0 0 1px color-mix(in srgb, var(--tool-accent) 24%, transparent); }
+    .preview-stage { min-height: 0; overflow: auto; padding: 22px; }
+    .window {
+      --window-bg: #f7f7f7;
+      --window-surface: #ffffff;
+      --window-fg: #24292e;
+      --window-border: #d0d7de;
+      --editor-bg: #f7f7f7;
+      --editor-fg: #24292e;
+      --accent: #315efb;
+      --selection: rgba(49,94,251,.22);
+      --highlight: rgba(245,158,11,.35);
+      --code-bg: #eef1f4;
+      --inline-code-bg: rgba(0,0,0,.075);
+      --token-comment: #6a737d;
+      --token-keyword: #a626a4;
+      --token-string: #22863a;
+      --token-number: #986801;
+      --token-function: #005cc5;
+      --token-operator: #0184bc;
+      --token-tag: #d73a49;
+      width: min(1080px, 100%);
+      min-height: 650px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid var(--window-border);
+      border-radius: 16px;
+      color: var(--window-fg);
+      background: var(--window-bg);
+      box-shadow: 0 24px 70px rgba(24,34,52,.16);
+    }
+    .window-titlebar { height: 42px; display: flex; align-items: center; padding: 0 14px; border-bottom: 1px solid var(--window-border); background: var(--window-surface); }
+    .traffic { display: flex; gap: 6px; }
+    .traffic i { width: 10px; height: 10px; border-radius: 50%; background: color-mix(in srgb, var(--window-fg) 18%, transparent); }
+    .window-title { margin: auto; color: color-mix(in srgb, var(--window-fg) 66%, transparent); font-size: 12px; }
+    .window-body { min-height: 607px; display: grid; grid-template-columns: 190px minmax(0, 1fr); }
+    .sidebar { border-right: 1px solid var(--window-border); background: var(--window-surface); }
+    .side-tabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--window-border); }
+    .side-tabs button { min-height: 38px; border: 0; border-radius: 0; padding: 6px; color: color-mix(in srgb, var(--window-fg) 62%, transparent); background: transparent; font-size: 11px; font-weight: 700; }
+    .side-tabs button:hover { color: var(--window-fg); background: color-mix(in srgb, var(--window-fg) 6%, transparent); }
+    .side-tabs button.active { color: var(--window-fg); box-shadow: inset 0 -2px var(--accent); }
+    .side-head { display: flex; justify-content: space-between; padding: 15px 14px 9px; color: color-mix(in srgb, var(--window-fg) 62%, transparent); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+    .side-pane { display: none; }
+    .sidebar[data-side-mode="files"] .side-pane[data-side-pane="files"], .sidebar[data-side-mode="outline"] .side-pane[data-side-pane="outline"] { display: block; }
+    .tree { padding: 0 8px; }
+    .tree div { margin: 2px 0; padding: 7px 8px; border-radius: 6px; color: color-mix(in srgb, var(--window-fg) 74%, transparent); font-size: 12px; }
+    .tree div.active { color: var(--window-fg); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+    .outline-tree div { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .outline-tree .level-2 { padding-left: 20px; }
+    .outline-tree .level-3 { padding-left: 32px; }
+    .main { min-width: 0; display: grid; grid-template-rows: 39px minmax(0,1fr) 28px; background: var(--editor-bg); }
+    .tabs { display: flex; align-items: end; border-bottom: 1px solid var(--window-border); background: transparent; }
+    .tab { height: 38px; display: flex; align-items: center; padding: 0 16px; border-right: 1px solid var(--window-border); color: color-mix(in srgb, var(--window-fg) 62%, transparent); font-size: 12px; }
+    .tab.active { color: var(--window-fg); background: var(--tab-card); border: 1px solid var(--window-border); border-bottom: 0; border-radius: 6px 6px 0 0; }
+    .document { max-width: 760px; width: 100%; margin: 0 auto; padding: 42px 50px 70px; color: var(--editor-fg); font: 15px/1.75 Georgia, "Noto Serif CJK SC", "Microsoft YaHei", serif; }
+    .document h1 { margin: 0 0 7px; font: 700 31px/1.25 Inter, "Microsoft YaHei", sans-serif; letter-spacing: -.02em; }
+    .document h2 { margin: 29px 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--window-border); font: 650 20px/1.4 Inter, "Microsoft YaHei", sans-serif; }
+    .document p { margin: 8px 0; }
+    .document a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .document mark { color: inherit; background: var(--highlight); }
+    .document code { padding: .13em .35em; border-radius: 4px; background: var(--inline-code-bg); font: .9em ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .document blockquote { margin: 14px 0; padding: 3px 0 3px 15px; border-left: 3px solid var(--accent); color: color-mix(in srgb, var(--editor-fg) 68%, transparent); }
+    .document table { width: 100%; margin: 16px 0; border-collapse: collapse; font-family: Inter, "Microsoft YaHei", sans-serif; font-size: 13px; }
+    .document th, .document td { padding: 7px 9px; border: 1px solid var(--window-border); text-align: left; }
+    .document th { background: color-mix(in srgb, var(--window-surface) 70%, var(--editor-bg)); }
+    .code-block, .source-pane {
+      overflow: auto;
+      margin: 14px 0;
+      padding: 14px 16px;
+      border: 1px solid color-mix(in srgb, var(--window-border) 78%, transparent);
+      border-radius: 8px;
+      background: var(--code-bg);
+      font: 13px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace;
+      white-space: pre;
+    }
+    .tok-comment { color: var(--token-comment); font-style: italic; }
+    .tok-keyword { color: var(--token-keyword); }
+    .tok-string { color: var(--token-string); }
+    .tok-number { color: var(--token-number); }
+    .tok-function { color: var(--token-function); }
+    .tok-operator { color: var(--token-operator); }
+    .tok-tag { color: var(--token-tag); }
+    .edit-marker { color: color-mix(in srgb, var(--accent) 60%, transparent); }
+    .source-pane { display: none; min-height: 440px; margin: 0; border: 0; border-radius: 0; background: var(--editor-bg); color: var(--editor-fg); }
+    .window[data-mode="source"] .document { display: none; }
+    .window[data-mode="source"] .source-pane { display: block; }
+    .window[data-mode="reading"] .edit-marker { display: none; }
+    .statusbar { display: flex; justify-content: space-between; align-items: center; padding: 0 10px; border-top: 1px solid var(--window-border); color: color-mix(in srgb, var(--window-fg) 58%, transparent); background: var(--window-surface); font-size: 11px; }
+    .preview-tools { width: min(1080px, 100%); margin: 0 auto 10px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .segmented { display: inline-flex; padding: 3px; border: 1px solid var(--panel-border); border-radius: 9px; background: #fff; }
+    .segmented button { min-height: 29px; border: 0; padding: 4px 10px; color: var(--tool-muted); background: transparent; }
+    .segmented button.active { color: #fff; background: #344054; }
+    .contrast-panel { padding: 11px 18px; border-top: 1px solid var(--panel-border); background: rgba(255,255,255,.92); }
+    .contrast-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .contrast-title { margin-right: 4px; font-weight: 650; }
+    .contrast-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 999px; color: #344054; background: #edf1f6; font-size: 12px; }
+    .contrast-badge.good { color: #11613a; background: #e5f7ed; }
+    .contrast-badge.warn { color: #8a4b0f; background: #fff2d9; }
+    .contrast-badge.bad { color: #9e2638; background: #fde8ec; }
+    .contrast-help { margin: 7px 0 0; color: var(--tool-muted); font-size: 12px; }
+    .drawer {
+      position: fixed;
+      z-index: 10;
+      inset: 58px 0 0 auto;
+      width: min(620px, 100%);
+      display: none;
+      grid-template-rows: auto minmax(0,1fr) auto;
+      border-left: 1px solid var(--panel-border);
+      background: #fff;
+      box-shadow: -18px 0 50px rgba(16,24,40,.16);
+    }
+    .drawer.open { display: grid; }
+    .drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-bottom: 1px solid var(--panel-border); }
+    .drawer textarea { width: 100%; height: 100%; resize: none; border: 0; padding: 16px; color: #26303f; background: #f8fafc; font: 12px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .drawer-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--panel-border); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+    #toast { position: fixed; z-index: 30; left: 50%; bottom: 22px; transform: translate(-50%, 16px); padding: 9px 13px; border-radius: 8px; color: #fff; background: #202631; opacity: 0; pointer-events: none; transition: .18s ease; }
+    #toast.show { transform: translate(-50%, 0); opacity: 1; }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .app { height: auto; min-height: 100%; grid-template-rows: auto auto; }
+      .topbar { position: sticky; z-index: 8; top: 0; align-items: flex-start; min-height: 58px; padding: 10px 12px; }
+      .brand span { display: none; }
+      .workspace { display: block; }
+      .controls { overflow: visible; border-right: 0; }
+      .preview-column { min-height: 720px; }
+      .preview-stage { padding: 12px; }
+      .window-body { grid-template-columns: 130px minmax(0,1fr); }
+      .document { padding: 32px 24px 60px; }
+    }
+    @media (max-width: 620px) {
+      .topbar { flex-wrap: wrap; }
+      .brand { min-width: 0; }
+      .topbar .toolbar { width: 100%; margin-left: 0; justify-content: flex-start; }
+      .window-body { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .wide { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand"><strong data-i18n="appTitle">Typedown 主题配色工具</strong><span data-i18n="appSubtitle">离线编辑、导入、对比度检查与 CSS 导出</span></div>
+      <div class="toolbar">
+        <select class="language-select" id="language-select" aria-label="语言 / Language"><option value="zh">中文</option><option value="en">English</option></select>
+        <button id="import-button" data-i18n="importTheme">导入已有主题</button>
+        <button id="output-button" data-i18n="viewCss">查看 CSS</button>
+        <button class="primary" id="download-button" data-i18n="downloadTheme">下载主题</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="controls" aria-label="主题设置" data-i18n-aria-label="themeSettings">
+        <section class="panel" id="installed-themes-panel" hidden>
+          <div class="panel-title" data-i18n="installedThemes">本机主题</div>
+          <div class="panel-body">
+            <p class="hint" data-i18n="installedThemesHint">由 Typedown 打开此页面时载入。选择一个主题即可继续编辑。</p>
+            <ul class="theme-library" id="installed-theme-list"></ul>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title" data-i18n="importTitle">导入</div>
+          <div class="panel-body">
+            <div class="dropzone" id="dropzone" tabindex="0" data-i18n="dropzone">拖入一个自定义主题，或同时拖入 editor / CodeMirror / Prism CSS</div>
+            <input class="sr-only" id="file-input" type="file" accept=".css,text/css" multiple>
+            <input class="sr-only" id="json-input" type="file" accept=".json,application/json">
+            <ul class="import-list" id="import-list"><li data-i18n="noFiles">尚未导入文件</li></ul>
+            <p class="hint" data-i18n="safeImportHint">未知规则会随导出保留，但不会注入此工具页面。</p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title" data-i18n="themeInfo">主题信息</div>
+          <div class="panel-body form-grid">
+            <div class="field wide"><label for="theme-name" data-i18n="displayName">显示名称</label><input id="theme-name" type="text" autocomplete="off"></div>
+            <div class="field"><label for="theme-id" data-i18n="fileName">文件名</label><input id="theme-id" type="text" autocomplete="off" spellcheck="false"></div>
+            <div class="field"><label for="theme-base" data-i18n="baseTheme">继承基底</label><select id="theme-base"><option value="light">light</option><option value="dark">dark</option><option value="black">black</option></select></div>
+            <div class="field wide"><label for="theme-author" data-i18n="author">作者</label><input id="theme-author" type="text" autocomplete="off"></div>
+            <p class="hint wide" data-i18n="baseHint">决定未覆盖区域及菜单、弹窗等原生界面的明暗外观；切换时不会重置当前配色。</p>
+            <div class="toolbar wide"><button data-preset="light" data-i18n="lightStart">浅色起点</button><button data-preset="dark" data-i18n="darkStart">深色起点</button><button data-preset="black" data-i18n="blackStart">纯黑起点</button></div>
+          </div>
+        </section>
+
+        <details class="panel" open>
+          <summary data-i18n="coreColors">主要颜色</summary>
+          <div class="panel-body">
+            <div class="color-grid" id="core-colors"></div>
+            <div class="check-row"><input id="auto-derived" type="checkbox" checked><label for="auto-derived" data-i18n="autoDerive">修改主要颜色时自动生成辅助色</label></div>
+            <div class="toolbar" style="margin-top:9px"><button id="derive-button" data-i18n="deriveNow">立即生成辅助色</button></div>
+          </div>
+        </details>
+
+        <details class="panel">
+          <summary data-i18n="auxColors">辅助颜色</summary>
+          <div class="panel-body"><div class="color-grid" id="aux-colors"></div></div>
+        </details>
+
+        <details class="panel" open>
+          <summary data-i18n="syntaxColors">代码语法</summary>
+          <div class="panel-body"><div class="color-grid" id="token-colors"></div></div>
+        </details>
+
+        <details class="panel">
+          <summary data-i18n="advanced">高级设置</summary>
+          <div class="panel-body">
+            <div class="field"><label for="shadow-value" data-i18n="floatShadow">浮层阴影</label><input id="shadow-value" type="text" spellcheck="false"></div>
+            <div class="field"><label for="extra-css" data-i18n="extraCss">额外 CSS</label><textarea id="extra-css" rows="8" spellcheck="false" placeholder="#ag-editor-id h1 { font-family: serif; }"></textarea></div>
+            <p class="hint" data-i18n="preservedHint">导入主题中无法识别的内容显示在这里，并在生成规则之前保留。</p>
+            <div class="toolbar"><button id="preset-button" data-i18n="openProject">打开设计工程（.json）</button><button id="export-json" data-i18n="saveProject">保存设计工程（.json）</button><button class="danger" id="reset-button" data-i18n="reset">恢复默认</button></div>
+            <p class="hint" data-i18n="projectJsonHint">设计工程由本页保存，便于备份或换设备继续编辑；安装到 Typedown 请下载 CSS。</p>
+          </div>
+        </details>
+      </aside>
+
+      <section class="preview-column">
+        <div class="preview-stage">
+          <div class="preview-tools">
+            <strong data-i18n="livePreview">实时预览</strong>
+            <div class="segmented" role="group" aria-label="预览模式" data-i18n-aria-label="previewMode">
+              <button class="active" data-mode="edit" data-i18n="editMode">编辑</button><button data-mode="reading" data-i18n="readingMode">阅读</button><button data-mode="source" data-i18n="sourceMode">源码</button>
+            </div>
+          </div>
+          <div class="window" id="preview-window" data-mode="edit">
+            <div class="window-titlebar"><div class="traffic"><i></i><i></i><i></i></div><div class="window-title" id="preview-title">我的主题 · Typedown</div><div style="width:42px"></div></div>
+            <div class="window-body">
+              <aside class="sidebar" data-side-mode="outline">
+                <div class="side-tabs" role="tablist" data-i18n-aria-label="navigationPanels"><button type="button" role="tab" data-side-mode="files" aria-selected="false" data-i18n="files">文件</button><button class="active" type="button" role="tab" data-side-mode="outline" aria-selected="true" data-i18n="outline">大纲</button></div>
+                <div class="side-pane" data-side-pane="files" role="tabpanel"><div class="side-head"><span data-i18n="fileTree">文件树</span><span>＋</span></div><div class="tree"><div data-i18n="documents">▾ 文档</div><div class="active" data-i18n="themeFile">　主题设计.md</div><div data-i18n="releaseFile">　发布检查.md</div><div data-i18n="archive">▸ 归档</div></div></div>
+                <div class="side-pane" data-side-pane="outline" role="tabpanel"><div class="side-head"><span data-i18n="outlineTree">文档大纲</span><span>•••</span></div><div class="tree outline-tree"><div class="active" data-i18n="outlineTitle">设计一套可读的主题</div><div class="level-2" data-i18n="outlineElements">内容元素</div><div class="level-3" data-i18n="outlineCode">代码示例</div><div class="level-2" data-i18n="outlineContrast">对比度检查</div></div></div>
+              </aside>
+              <section class="main">
+                <div class="tabs"><div class="tab active" data-i18n="themeTab">主题设计.md　×</div><div class="tab" data-i18n="releaseTab">发布检查.md</div></div>
+                <article class="document">
+                  <h1><span class="edit-marker"># </span><span data-i18n="sampleTitle">设计一套可读的主题</span></h1>
+                  <p data-i18n-html="sampleIntro">这是一段正文，用来检查长时间阅读时的舒适度。主题需要兼顾 <strong>文字层级</strong>、<a href="#">链接辨识度</a>和<mark>搜索高亮</mark>。</p>
+                  <blockquote data-i18n="sampleQuote">好的配色不抢内容的注意力，但能让结构一眼可见。</blockquote>
+                  <h2><span class="edit-marker">## </span><span data-i18n="sampleElements">内容元素</span></h2>
+                  <p data-i18n-html="sampleInlineCode">行内代码 <code>theme.css</code> 应该清晰，但不应像按钮一样突出。</p>
+                  <div class="code-block"><span class="tok-comment">// Theme preview</span>
+<span class="tok-keyword">const</span> theme <span class="tok-operator">=</span> {
+  name: <span class="tok-string">"Typedown"</span>,
+  contrast: <span class="tok-number">4.8</span>,
+  apply: <span class="tok-function">renderTheme</span>
+}
+<span class="tok-tag">body</span> { color: <span class="tok-string">var(--editorColor)</span>; }</div>
+                  <table><thead><tr><th data-i18n="item">项目</th><th data-i18n="status">状态</th><th data-i18n="description">说明</th></tr></thead><tbody><tr><td data-i18n="bodyText">正文</td><td>AA</td><td data-i18n="comfortableReading">适合连续阅读</td></tr><tr><td data-i18n="code">代码</td><td data-i18n="pass">通过</td><td data-i18n="clearSyntax">语法层级清晰</td></tr></tbody></table>
+                </article>
+                <pre class="source-pane"><span class="tok-comment"># <span data-i18n="sourceHeading">源码模式</span></span>
+
+<span data-i18n-html="sourceLine">主题支持 <span class="tok-keyword">**Markdown**</span> 与 <span class="tok-string">`代码`</span>。</span>
+
+<span class="tok-tag">```javascript</span>
+<span class="tok-keyword">const</span> ready <span class="tok-operator">=</span> <span class="tok-number">true</span>
+<span class="tok-tag">```</span></pre>
+                <div class="statusbar"><span>Markdown　UTF-8</span><span data-i18n="wordCount">84 字　Ln 12, Col 8</span></div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="contrast-panel"><div class="contrast-row" id="contrast-row"><span class="contrast-title" data-i18n="contrast">对比度</span></div><p class="contrast-help" data-i18n="contrastHelp">正文与注释按 4.5:1 检查，强调色按 3:1 检查；未通过仅提示可读性风险，不影响导出。</p></div>
+      </section>
+    </main>
+  </div>
+
+  <aside class="drawer" id="output-drawer" aria-label="生成的 CSS" data-i18n-aria-label="cssOutput">
+    <div class="drawer-head"><strong data-i18n="generatedCss">生成的主题 CSS</strong><button id="close-output" data-i18n="close">关闭</button></div>
+    <textarea id="css-output" readonly spellcheck="false"></textarea>
+    <div class="drawer-actions">
+      <button class="primary" id="copy-css" data-i18n="copyCss">复制 CSS</button>
+      <button id="download-custom" data-i18n="downloadSingle">下载单文件主题</button>
+      <button id="download-editor" data-i18n="downloadEditor">下载 editor CSS</button>
+      <button id="download-codemirror" data-i18n="downloadCodeMirror">下载 CodeMirror CSS</button>
+      <button id="download-prism" data-i18n="downloadPrism">下载 Prism CSS</button>
+    </div>
+  </aside>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <span id="color-probe" class="sr-only"></span>
+  <script id="typedown-theme-catalog" type="application/json">[]</script>
+
+  <script>
+  (() => {
+    'use strict'
+
+    const messages = {
+      zh: {
+        appTitle:'Typedown 主题配色工具', appSubtitle:'离线编辑、导入、对比度检查与 CSS 导出', importTheme:'导入已有主题', viewCss:'查看 CSS', downloadTheme:'下载主题',
+        importTitle:'导入', dropzone:'拖入一个自定义主题，或同时拖入 editor / CodeMirror / Prism CSS', noFiles:'尚未导入文件', safeImportHint:'未知规则会随导出保留，但不会注入此工具页面。',
+        installedThemes:'本机主题', installedThemesHint:'由 Typedown 打开此页面时载入。选择一个主题即可继续编辑。', bundledTheme:'内置', userTheme:'主题文件夹', loadedTheme:'已载入主题：{name}', themeInfo:'主题信息', themeSettings:'主题设置', cssOutput:'生成的 CSS', displayName:'显示名称', fileName:'文件名', baseTheme:'继承基底', baseHint:'决定未覆盖区域及菜单、弹窗等原生界面的明暗外观；切换时不会重置当前配色。', author:'作者', lightStart:'浅色起点', darkStart:'深色起点', blackStart:'纯黑起点', unnamedTheme:'未命名主题',
+        coreColors:'主要颜色', autoDerive:'修改主要颜色时自动生成辅助色', deriveNow:'立即生成辅助色', auxColors:'辅助颜色', syntaxColors:'代码语法', advanced:'高级设置', floatShadow:'浮层阴影', extraCss:'额外 CSS', preservedHint:'导入主题中无法识别的内容显示在这里，并在生成规则之前保留。', openProject:'打开设计工程（.json）', saveProject:'保存设计工程（.json）', reset:'恢复默认', projectJsonHint:'设计工程由本页保存，包含当前配色和编辑设置，便于备份或换设备继续编辑；安装到 Typedown 请下载 CSS。',
+        livePreview:'实时预览', previewMode:'预览模式', navigationPanels:'导航面板', editMode:'编辑', readingMode:'阅读', sourceMode:'源码', files:'文件', outline:'大纲', fileTree:'文件树', outlineTree:'文档大纲', outlineTitle:'设计一套可读的主题', outlineElements:'内容元素', outlineCode:'代码示例', outlineContrast:'对比度检查', documents:'▾ 文档', themeFile:'　主题设计.md', releaseFile:'　发布检查.md', archive:'▸ 归档', themeTab:'主题设计.md　×', releaseTab:'发布检查.md',
+        sampleTitle:'设计一套可读的主题', sampleIntro:'这是一段正文，用来检查长时间阅读时的舒适度。主题需要兼顾 <strong>文字层级</strong>、<a href="#">链接辨识度</a>和<mark>搜索高亮</mark>。', sampleQuote:'好的配色不抢内容的注意力，但能让结构一眼可见。', sampleElements:'内容元素', sampleInlineCode:'行内代码 <code>theme.css</code> 应该清晰，但不应像按钮一样突出。',
+        item:'项目', status:'状态', description:'说明', bodyText:'正文', comfortableReading:'适合连续阅读', code:'代码', pass:'通过', clearSyntax:'语法层级清晰', wordCount:'84 字　Ln 12, Col 8', sourceHeading:'源码模式', sourceLine:'主题支持 <span class="tok-keyword">**Markdown**</span> 与 <span class="tok-string">`代码`</span>。',
+        contrast:'对比度', contrastHelp:'正文与注释按 4.5:1 检查，强调色按 3:1 检查；未通过仅提示可读性风险，不影响导出。', targetRatio:'目标 {target}:1', generatedCss:'生成的主题 CSS', close:'关闭', copyCss:'复制 CSS', downloadSingle:'下载单文件主题', downloadEditor:'下载 editor CSS', downloadCodeMirror:'下载 CodeMirror CSS', downloadPrism:'下载 Prism CSS',
+        editorBackground:'编辑区 / 标签栏', windowSurface:'窗口面板', bodyForeground:'正文文字', accent:'强调色', border:'边框 / 标签分隔线', codeBlockBackground:'代码块背景', selection:'选区', searchHighlight:'搜索高亮', inlineCode:'行内代码', footnoteBackground:'脚注背景', inputBackground:'输入框背景', listItemBackground:'列表项背景', floatBackground:'浮层背景', floatHover:'浮层悬停', floatBorder:'浮层边框', mask:'遮罩', icon:'图标', danger:'危险操作',
+        comment:'注释', keyword:'关键字', string:'字符串', number:'数字', function:'函数', operator:'运算符', tagAttribute:'标签 / 属性', colorPicker:'{name}颜色选择器', defaultThemeName:'我的主题',
+        bodyEditorContrast:'正文 / 编辑区', bodyPanelContrast:'正文 / 面板', accentEditorContrast:'强调色 / 编辑区', commentCodeContrast:'注释 / 代码块', invalid:'无效', uiPass:'UI 通过', aa:'AA', aaa:'AAA', failed:'未通过',
+        presetLight:'已应用浅色起点', presetDark:'已应用深色起点', presetBlack:'已应用纯黑起点', baseChanged:'继承基底已改为 {base}；当前配色保持不变', chooseCss:'请选择 CSS 主题文件', importedCount:'已导入 {count} 个 CSS 文件', jsonImported:'已打开设计工程', jsonError:'无法打开该设计工程', cssCopied:'CSS 已复制', resetDone:'已恢复默认配色'
+      },
+      en: {
+        appTitle:'Typedown Theme Designer', appSubtitle:'Offline editing, import, contrast checks, and CSS export', importTheme:'Import theme', viewCss:'View CSS', downloadTheme:'Download theme',
+        importTitle:'Import', dropzone:'Drop one custom theme, or drop editor / CodeMirror / Prism CSS files together', noFiles:'No files imported', safeImportHint:'Unknown rules are preserved on export and are never injected into this page.',
+        installedThemes:'Themes on this device', installedThemesHint:'Loaded when Typedown opens this page. Select a theme to continue editing it.', bundledTheme:'Bundled', userTheme:'Themes folder', loadedTheme:'Loaded theme: {name}', themeInfo:'Theme information', themeSettings:'Theme settings', cssOutput:'Generated CSS', displayName:'Display name', fileName:'File name', baseTheme:'Fallback base', baseHint:'Controls uncovered areas and native UI such as menus and dialogs. Changing it does not reset the current palette.', author:'Author', lightStart:'Light starting point', darkStart:'Dark starting point', blackStart:'Black starting point', unnamedTheme:'Untitled theme',
+        coreColors:'Core colors', autoDerive:'Generate supporting colors when core colors change', deriveNow:'Generate supporting colors', auxColors:'Supporting colors', syntaxColors:'Code syntax', advanced:'Advanced', floatShadow:'Floating panel shadow', extraCss:'Extra CSS', preservedHint:'Unrecognized imported rules appear here and are preserved before generated rules.', openProject:'Open design project (.json)', saveProject:'Save design project (.json)', reset:'Reset defaults', projectJsonHint:'A design project is saved by this page. It keeps the current palette and editing settings for backup or use on another device. Download CSS to install the theme in Typedown.',
+        livePreview:'Live preview', previewMode:'Preview mode', navigationPanels:'Navigation panels', editMode:'Edit', readingMode:'Reading', sourceMode:'Source', files:'Files', outline:'Outline', fileTree:'File tree', outlineTree:'Document outline', outlineTitle:'Design a readable theme', outlineElements:'Content elements', outlineCode:'Code example', outlineContrast:'Contrast checks', documents:'▾ Documents', themeFile:'　theme-design.md', releaseFile:'　release-check.md', archive:'▸ Archive', themeTab:'theme-design.md　×', releaseTab:'release-check.md',
+        sampleTitle:'Design a readable theme', sampleIntro:'This paragraph checks comfort during long reading sessions. A theme should balance <strong>text hierarchy</strong>, <a href="#">recognizable links</a>, and <mark>search highlights</mark>.', sampleQuote:'Good colors keep attention on the content while making its structure clear.', sampleElements:'Content elements', sampleInlineCode:'Inline code such as <code>theme.css</code> should be clear without looking like a button.',
+        item:'Item', status:'Status', description:'Description', bodyText:'Body text', comfortableReading:'Comfortable for continuous reading', code:'Code', pass:'Pass', clearSyntax:'Clear syntax hierarchy', wordCount:'84 words　Ln 12, Col 8', sourceHeading:'Source mode', sourceLine:'The theme supports <span class="tok-keyword">**Markdown**</span> and <span class="tok-string">`code`</span>.',
+        contrast:'Contrast', contrastHelp:'Body text and comments target 4.5:1; accents target 3:1. A failed check warns about readability and does not block export.', targetRatio:'target {target}:1', generatedCss:'Generated theme CSS', close:'Close', copyCss:'Copy CSS', downloadSingle:'Download single-file theme', downloadEditor:'Download editor CSS', downloadCodeMirror:'Download CodeMirror CSS', downloadPrism:'Download Prism CSS',
+        editorBackground:'Editor / tab bar', windowSurface:'Panels', bodyForeground:'Body text', accent:'Accent', border:'Borders / tab separators', codeBlockBackground:'Code block background', selection:'Selection', searchHighlight:'Search highlight', inlineCode:'Inline code', footnoteBackground:'Footnote background', inputBackground:'Input background', listItemBackground:'List item background', floatBackground:'Floating panel background', floatHover:'Floating panel hover', floatBorder:'Floating panel border', mask:'Mask', icon:'Icon', danger:'Danger action',
+        comment:'Comment', keyword:'Keyword', string:'String', number:'Number', function:'Function', operator:'Operator', tagAttribute:'Tag / attribute', colorPicker:'{name} color picker', defaultThemeName:'My Theme',
+        bodyEditorContrast:'Body / editor', bodyPanelContrast:'Body / panel', accentEditorContrast:'Accent / editor', commentCodeContrast:'Comment / code block', invalid:'Invalid', uiPass:'UI pass', aa:'AA', aaa:'AAA', failed:'Fail',
+        presetLight:'Light starting point applied', presetDark:'Dark starting point applied', presetBlack:'Black starting point applied', baseChanged:'Fallback base changed to {base}; the current palette was kept', chooseCss:'Choose CSS theme files', importedCount:'Imported {count} CSS file(s)', jsonImported:'Design project opened', jsonError:'Could not open this design project', cssCopied:'CSS copied', resetDone:'Default palette restored'
+      }
+    }
+    function preferredLanguage() {
+      try {
+        const saved=localStorage.getItem('typedown-theme-designer-language')
+        if (saved==='zh' || saved==='en') return saved
+      } catch (_) {}
+      return /^zh(?:-|$)/i.test(navigator.language || '') ? 'zh' : 'en'
+    }
+    let language=preferredLanguage()
+    function readThemeCatalog() {
+      try {
+        const parsed=JSON.parse(document.getElementById('typedown-theme-catalog')?.textContent || '[]')
+        if (!parsed || !Array.isArray(parsed.themes)) return {selectedId:'',themes:[]}
+        return {
+          selectedId:typeof parsed.selectedId==='string'?parsed.selectedId:'',
+          themes:parsed.themes.filter(item => item && typeof item.id==='string' && typeof item.css==='string').map(item => ({
+            id:item.id,name:typeof item.name==='string'?item.name:item.id,fileName:typeof item.fileName==='string'?item.fileName:`${item.id}.css`,
+            source:item.source==='bundled'?'bundled':'user',css:item.css
+          }))
+        }
+      } catch (_) { return {selectedId:'',themes:[]} }
+    }
+    const themeCatalog=readThemeCatalog()
+    let catalogSelection=themeCatalog.selectedId
+    function t(key, values={}) {
+      const value=messages[language][key] ?? messages.zh[key] ?? key
+      return value.replace(/\{(\w+)\}/g,(_,name)=>values[name] ?? `{${name}}`)
+    }
+
+    const coreFields = [
+      ['background', 'editorBackground'], ['surface', 'windowSurface'], ['foreground', 'bodyForeground'],
+      ['accent', 'accent'], ['border', 'border'], ['code', 'codeBlockBackground']
+    ]
+    const auxFields = [
+      ['selection', 'selection'], ['highlight', 'searchHighlight'], ['inlineCode', 'inlineCode'],
+      ['footnote', 'footnoteBackground'], ['input', 'inputBackground'], ['item', 'listItemBackground'],
+      ['float', 'floatBackground'], ['floatHover', 'floatHover'], ['floatBorder', 'floatBorder'],
+      ['mask', 'mask'], ['icon', 'icon'], ['delete', 'danger']
+    ]
+    const tokenFields = [
+      ['comment', 'comment'], ['keyword', 'keyword'], ['string', 'string'], ['number', 'number'],
+      ['function', 'function'], ['operator', 'operator'], ['tag', 'tagAttribute']
+    ]
+
+    const presets = {
+      light: {
+        base: 'light', colors: { background:'#f7f7f7',surface:'#ffffff',foreground:'#24292e',accent:'#315efb',border:'#d0d7de',code:'#eef1f4',selection:'rgba(49, 94, 251, .22)',highlight:'rgba(245, 158, 11, .35)',inlineCode:'rgba(36, 41, 46, .075)',footnote:'rgba(36, 41, 46, .04)',input:'rgba(36, 41, 46, .06)',item:'#ffffff',float:'#ffffff',floatHover:'rgba(36, 41, 46, .06)',floatBorder:'rgba(36, 41, 46, .14)',mask:'rgba(247, 247, 247, .82)',icon:'#667085',delete:'#d92d4f' },
+        tokens: { comment:'#57606a',keyword:'#a626a4',string:'#22863a',number:'#986801',function:'#005cc5',operator:'#0184bc',tag:'#d73a49' }, shadow:'0 8px 24px rgba(16, 24, 40, .14)'
+      },
+      dark: {
+        base: 'dark', colors: { background:'#282a32',surface:'#32343e',foreground:'#e6e8ee',accent:'#72a7ff',border:'#4a4e5c',code:'#343743',selection:'rgba(114, 167, 255, .25)',highlight:'rgba(235, 203, 139, .32)',inlineCode:'rgba(230, 232, 238, .11)',footnote:'rgba(230, 232, 238, .05)',input:'rgba(230, 232, 238, .09)',item:'#343743',float:'#363944',floatHover:'rgba(230, 232, 238, .10)',floatBorder:'rgba(230, 232, 238, .20)',mask:'rgba(40, 42, 50, .82)',icon:'#a7afc0',delete:'#ff6b7c' },
+        tokens: { comment:'#a7afc0',keyword:'#c792ea',string:'#a6d189',number:'#efb080',function:'#82b8ff',operator:'#89dceb',tag:'#f38ba8' }, shadow:'0 10px 30px rgba(0, 0, 0, .35)'
+      },
+      black: {
+        base: 'black', colors: { background:'#000000',surface:'#121212',foreground:'#d6d6d6',accent:'#66b1ff',border:'#303030',code:'#151515',selection:'rgba(102, 177, 255, .28)',highlight:'rgba(235, 203, 139, .30)',inlineCode:'rgba(255, 255, 255, .11)',footnote:'rgba(255, 255, 255, .05)',input:'rgba(255, 255, 255, .09)',item:'#151515',float:'#181818',floatHover:'rgba(255, 255, 255, .10)',floatBorder:'rgba(255, 255, 255, .20)',mask:'rgba(0, 0, 0, .84)',icon:'#a0a0a0',delete:'#ff6b7c' },
+        tokens: { comment:'#8f98a8',keyword:'#c678dd',string:'#98c379',number:'#d19a66',function:'#61afef',operator:'#56b6c2',tag:'#e06c75' }, shadow:'0 10px 32px rgba(0, 0, 0, .58)'
+      }
+    }
+
+    const clone = value => JSON.parse(JSON.stringify(value))
+    const initial = () => ({ id:'my-theme', name:t('defaultThemeName'), author:'', base:'light', auto:true, colors:clone(presets.light.colors), tokens:clone(presets.light.tokens), shadow:presets.light.shadow, preservedCss:'', importedFiles:[] })
+    let state = initial()
+    let renderQueued = false
+    const $ = selector => document.querySelector(selector)
+    const colorProbe = $('#color-probe')
+
+    function makeColorRows(container, fields, group) {
+      for (const [key, labelKey] of fields) {
+        const row = document.createElement('div')
+        row.className = 'color-row'
+        const lab = document.createElement('label')
+        lab.htmlFor = `${group}-${key}`
+        lab.dataset.i18n = labelKey
+        lab.textContent = t(labelKey)
+        lab.title = t(labelKey)
+        const picker = document.createElement('input')
+        picker.type = 'color'
+        picker.dataset.picker = `${group}.${key}`
+        picker.dataset.labelKey = labelKey
+        picker.setAttribute('aria-label', t('colorPicker',{name:t(labelKey)}))
+        const text = document.createElement('input')
+        text.type = 'text'
+        text.id = `${group}-${key}`
+        text.dataset.color = `${group}.${key}`
+        text.spellcheck = false
+        row.append(lab, picker, text)
+        container.append(row)
+      }
+    }
+    makeColorRows($('#core-colors'), coreFields, 'colors')
+    makeColorRows($('#aux-colors'), auxFields, 'colors')
+    makeColorRows($('#token-colors'), tokenFields, 'tokens')
+
+    function applyTranslations() {
+      document.documentElement.lang=language==='zh'?'zh-CN':'en'
+      document.title=t('appTitle')
+      $('#language-select').value=language
+      document.querySelectorAll('[data-i18n]').forEach(element => { element.textContent=t(element.dataset.i18n) })
+      document.querySelectorAll('[data-i18n-html]').forEach(element => { element.innerHTML=t(element.dataset.i18nHtml) })
+      document.querySelectorAll('[data-i18n-aria-label]').forEach(element => { element.setAttribute('aria-label',t(element.dataset.i18nAriaLabel)) })
+      document.querySelectorAll('.color-row label[data-i18n]').forEach(element => { element.title=t(element.dataset.i18n) })
+      document.querySelectorAll('[data-label-key]').forEach(element => { element.setAttribute('aria-label',t('colorPicker',{name:t(element.dataset.labelKey)})) })
+      renderThemeCatalog()
+    }
+    function setLanguage(next) {
+      const previousDefault=t('defaultThemeName')
+      language=next==='zh'?'zh':'en'
+      if (state.id==='my-theme' && !state.importedFiles.length && state.name===previousDefault) state.name=t('defaultThemeName')
+      try { localStorage.setItem('typedown-theme-designer-language',language) } catch (_) {}
+      applyTranslations()
+      syncControls()
+      render()
+    }
+
+    function parseColor(value) {
+      if (!value || !CSS.supports('color', value.trim())) return null
+      colorProbe.style.color = ''
+      colorProbe.style.color = value.trim()
+      const normalized = getComputedStyle(colorProbe).color
+      const match = normalized.match(/rgba?\(\s*([\d.]+)[, ]+\s*([\d.]+)[, ]+\s*([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)/i)
+      return match ? { r:+match[1], g:+match[2], b:+match[3], a:match[4] == null ? 1 : +match[4] } : null
+    }
+    const hexByte = number => Math.round(Math.max(0, Math.min(255, number))).toString(16).padStart(2, '0')
+    const toHex = (value, fallback='#000000') => {
+      const color = parseColor(value) || parseColor(fallback)
+      return color ? `#${hexByte(color.r)}${hexByte(color.g)}${hexByte(color.b)}` : fallback
+    }
+    const rgba = (value, alpha) => {
+      const color = parseColor(value)
+      return color ? `rgba(${Math.round(color.r)}, ${Math.round(color.g)}, ${Math.round(color.b)}, ${String(alpha).replace(/^0/, '')})` : value
+    }
+    function composite(fg, bg) {
+      const alpha = fg.a + bg.a * (1 - fg.a)
+      if (!alpha) return {r:0,g:0,b:0,a:0}
+      return { r:(fg.r*fg.a + bg.r*bg.a*(1-fg.a))/alpha, g:(fg.g*fg.a + bg.g*bg.a*(1-fg.a))/alpha, b:(fg.b*fg.a + bg.b*bg.a*(1-fg.a))/alpha, a:alpha }
+    }
+    // As the app draws the selected tab (DocumentTabBar.Card): the background moved toward white on a light theme,
+    // lifted slightly on a dark one.
+    function tabCard(background) {
+      const bg=parseColor(background)
+      if (!bg) return background
+      const amount = (.299*bg.r + .587*bg.g + .114*bg.b) > 128 ? .55 : .07
+      const mix = v => Math.round(v + (255 - v) * amount)
+      return `rgb(${mix(bg.r)}, ${mix(bg.g)}, ${mix(bg.b)})`
+    }
+    function relativeLuminance(color) {
+      const channels = [color.r,color.g,color.b].map(v => { const x=v/255; return x <= .03928 ? x/12.92 : ((x+.055)/1.055)**2.4 })
+      return .2126*channels[0] + .7152*channels[1] + .0722*channels[2]
+    }
+    function contrast(foreground, background) {
+      let fg=parseColor(foreground), bg=parseColor(background)
+      if (!fg || !bg) return null
+      if (bg.a < 1) bg=composite(bg,{r:255,g:255,b:255,a:1})
+      if (fg.a < 1) fg=composite(fg,bg)
+      const a=relativeLuminance(fg), b=relativeLuminance(bg)
+      return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)
+    }
+
+    function deriveAuxiliary() {
+      const c=state.colors, dark=relativeLuminance(parseColor(c.background) || {r:255,g:255,b:255}) < .35
+      c.selection=rgba(c.accent,.24)
+      c.inlineCode=rgba(c.foreground,dark?.11:.075)
+      c.footnote=rgba(c.foreground,.04)
+      c.input=rgba(c.foreground,dark?.09:.06)
+      c.item=c.code
+      c.float=c.surface
+      c.floatHover=rgba(c.foreground,dark?.10:.06)
+      c.floatBorder=rgba(c.foreground,dark?.20:.14)
+      c.mask=rgba(c.background,.82)
+      c.icon=rgba(c.foreground,.66)
+      state.shadow=`0 ${dark?10:8}px ${dark?30:24}px rgba(0, 0, 0, ${dark?'.35':'.14'})`
+      syncControls()
+      queueRender()
+    }
+
+    function applyPreset(name) {
+      const preset=presets[name]
+      state.base=preset.base
+      state.colors=clone(preset.colors)
+      state.tokens=clone(preset.tokens)
+      state.shadow=preset.shadow
+      state.auto=true
+      syncControls()
+      queueRender()
+      showToast(t(name==='light'?'presetLight':name==='dark'?'presetDark':'presetBlack'))
+    }
+
+    const pathValue = path => { const [group,key]=path.split('.'); return state[group][key] }
+    function setPath(path, value) { const [group,key]=path.split('.'); state[group][key]=value }
+    function syncControls() {
+      $('#theme-name').value=state.name
+      $('#theme-id').value=state.id
+      $('#theme-author').value=state.author
+      $('#theme-base').value=state.base
+      $('#auto-derived').checked=state.auto
+      $('#shadow-value').value=state.shadow
+      $('#extra-css').value=state.preservedCss
+      document.querySelectorAll('[data-color]').forEach(input => {
+        input.value=pathValue(input.dataset.color)
+        input.classList.toggle('invalid',!parseColor(input.value))
+      })
+      document.querySelectorAll('[data-picker]').forEach(input => { input.value=toHex(pathValue(input.dataset.picker)) })
+      renderImportList()
+    }
+
+    function queueRender() {
+      if (renderQueued) return
+      renderQueued=true
+      requestAnimationFrame(() => { renderQueued=false; render() })
+    }
+
+    function render() {
+      const c=state.colors, t=state.tokens, window=$('#preview-window')
+      const vars={
+        '--window-bg':c.background,'--window-surface':c.surface,'--window-fg':c.foreground,'--window-border':c.border,
+        '--editor-bg':c.background,'--editor-fg':c.foreground,'--accent':c.accent,'--selection':c.selection,
+        '--highlight':c.highlight,'--code-bg':c.code,'--inline-code-bg':c.inlineCode,
+        '--token-comment':t.comment,'--token-keyword':t.keyword,'--token-string':t.string,'--token-number':t.number,
+        '--token-function':t.function,'--token-operator':t.operator,'--token-tag':t.tag,
+        '--tab-card':tabCard(c.background)
+      }
+      for (const [name,value] of Object.entries(vars)) window.style.setProperty(name,value)
+      $('#preview-title').textContent=`${state.name || state.id || t('unnamedTheme')} · Typedown`
+      const css=generateCustomCss()
+      $('#css-output').value=css
+      renderContrast()
+      try { localStorage.setItem('typedown-theme-designer', JSON.stringify({...state,preservedCss:''})) } catch (_) {}
+    }
+
+    function renderContrast() {
+      const c=state.colors
+      const checks=[
+        ['bodyEditorContrast',c.foreground,c.background,4.5],['bodyPanelContrast',c.foreground,c.surface,4.5],
+        ['accentEditorContrast',c.accent,c.background,3],['commentCodeContrast',state.tokens.comment,c.code,4.5]
+      ]
+      const row=$('#contrast-row')
+      row.replaceChildren(Object.assign(document.createElement('span'),{className:'contrast-title',textContent:t('contrast')}))
+      for (const [labelKey,fg,bg,target] of checks) {
+        const ratio=contrast(fg,bg), badge=document.createElement('span')
+        const good=ratio!=null&&ratio>=7, pass=ratio!=null&&ratio>=target
+        badge.className=`contrast-badge ${good?'good':pass?'warn':'bad'}`
+        const result=ratio==null?t('invalid'):good?t('aaa'):pass?(target===3?t('uiPass'):t('aa')):t('failed')
+        badge.textContent=`${t(labelKey)} ${ratio==null?t('invalid'):ratio.toFixed(2)+':1'} ${result} · ${t('targetRatio',{target})}`
+        row.append(badge)
+      }
+    }
+
+    const cleanLine = value => String(value || '').replace(/[\r\n*\/]/g,' ').trim()
+    const safeId = () => (state.id || 'my-theme').trim().replace(/\.css$/i,'').replace(/[^\w.-]+/g,'-').replace(/^-+|-+$/g,'') || 'my-theme'
+    function metadata() {
+      const c=state.colors
+      return `/* Typedown theme\n * name: ${cleanLine(state.name) || safeId()}\n * base: ${state.base}\n * accent: ${toHex(c.accent)}\n * author: ${cleanLine(state.author) || 'Unknown'}\n * background: ${toHex(c.background)}\n * surface: ${toHex(c.surface)}\n * foreground: ${toHex(c.foreground)}\n * border: ${toHex(c.border)}\n */`
+    }
+    function editorCss() {
+      const c=state.colors, fg=parseColor(c.foreground) ? c.foreground : '#24292e'
+      return `:root {\n  color: ${fg};\n  --editorBgColor: ${c.background};\n  --editorColor: ${fg};\n  --editorColor80: ${rgba(fg,.8)};\n  --editorColor60: ${rgba(fg,.6)};\n  --editorColor50: ${rgba(fg,.5)};\n  --editorColor40: ${rgba(fg,.4)};\n  --editorColor30: ${rgba(fg,.3)};\n  --editorColor10: ${rgba(fg,.1)};\n  --editorColor04: ${rgba(fg,.04)};\n  --themeColor: ${c.accent};\n  --focusColor: var(--themeColor);\n  --selectionColor: ${c.selection};\n  --highlightColor: ${c.highlight};\n  --codeBgColor: ${c.code};\n  --codeBlockBgColor: ${c.code};\n  --inlineCodeBgColor: ${c.inlineCode};\n  --footnoteBgColor: ${c.footnote};\n  --inputBgColor: ${c.input};\n  --tableBorderColor: ${c.border};\n  --itemBgColor: ${c.item};\n  --floatBgColor: ${c.float};\n  --floatHoverColor: ${c.floatHover};\n  --floatBorderColor: ${c.floatBorder};\n  --floatShadow: ${state.shadow};\n  --maskColor: ${c.mask};\n  --iconColor: ${c.icon};\n  --deleteColor: ${c.delete};\n  --editorAreaWidth: 750px;\n}`
+    }
+    function prismCss() {
+      const t=state.tokens
+      return `/* Code blocks (Prism) */\n.token.comment, .token.prolog, .token.doctype, .token.cdata { color: ${t.comment}; font-style: italic; }\n.token.keyword, .token.atrule, .token.important { color: ${t.keyword}; }\n.token.string, .token.char, .token.attr-value, .token.regex, .token.inserted { color: ${t.string}; }\n.token.number, .token.boolean, .token.constant, .token.symbol { color: ${t.number}; }\n.token.function, .token.class-name { color: ${t.function}; }\n.token.operator, .token.punctuation, .token.entity, .token.url { color: ${t.operator}; }\n.token.tag, .token.selector, .token.attr-name, .token.property, .token.deleted { color: ${t.tag}; }`
+    }
+    function codeMirrorCss() {
+      const c=state.colors,t=state.tokens
+      return `/* Source mode (CodeMirror) */\n.cm-s-one-dark.CodeMirror, .CodeMirror { background: ${c.background}; color: ${c.foreground}; }\n.cm-s-one-dark .CodeMirror-lines { color: ${c.foreground} !important; }\n.cm-s-one-dark .CodeMirror-cursor, .CodeMirror-cursor { border-left-color: ${c.foreground} !important; }\n.cm-s-one-dark .CodeMirror-selected, .CodeMirror-selected { background: ${c.selection}; }\n.cm-s-one-dark .cm-comment, .CodeMirror .cm-comment { color: ${t.comment}; font-style: italic; }\n.cm-s-one-dark .cm-header, .CodeMirror .cm-header { color: ${c.accent}; }\n.cm-s-one-dark .cm-link, .cm-s-one-dark .cm-url, .CodeMirror .cm-link, .CodeMirror .cm-url { color: ${t.function}; }\n.cm-s-one-dark .cm-string, .CodeMirror .cm-string { color: ${t.string}; }\n.cm-s-one-dark .cm-keyword, .CodeMirror .cm-keyword { color: ${t.keyword}; }\n.cm-s-one-dark .cm-number, .CodeMirror .cm-number { color: ${t.number}; }\n.cm-s-one-dark .cm-operator, .CodeMirror .cm-operator { color: ${t.operator}; }\n.cm-s-one-dark .cm-tag, .CodeMirror .cm-tag { color: ${t.tag}; }\n.cm-s-one-dark .cm-quote, .CodeMirror .cm-quote { color: ${rgba(c.foreground,.6)}; }`
+    }
+    function generateCustomCss() {
+      const preserved=state.preservedCss.trim()
+      return `${metadata()}\n\n${preserved ? `/* Typedown Theme Designer preserved:start */\n${preserved}\n/* Typedown Theme Designer preserved:end */\n\n` : ''}/* Typedown Theme Designer generated:start */\n${editorCss()}\n\n${prismCss()}\n\n${codeMirrorCss()}\n/* Typedown Theme Designer generated:end */\n`
+    }
+
+    function parseMetadata(css) {
+      const first=css.match(/\/\*([\s\S]*?)\*\//)
+      if (!first) return {}
+      const meta={}
+      for (const line of first[1].split(/\r?\n/)) {
+        const match=line.match(/^\s*\*?\s*([A-Za-z]+)\s*:\s*(.*?)\s*$/)
+        if (match) meta[match[1].toLowerCase()]=match[2]
+      }
+      return meta
+    }
+    function inferBase(css, filename='') {
+      const meta=parseMetadata(css)
+      if (/^(light|dark|black)$/i.test(meta.base || '')) return meta.base.toLowerCase()
+      const hint=filename.toLowerCase().match(/(?:^|[._-])(light|dark|black)(?:[._-]|$)/)?.[1]
+      if (hint) return hint
+      const background=meta.background || css.match(/--editorBgColor\s*:\s*([^;{}]+);/i)?.[1]
+      const color=parseColor(background)
+      if (!color) return ''
+      const luminance=relativeLuminance(color)
+      return luminance < .08 ? 'black' : luminance < .42 ? 'dark' : 'light'
+    }
+    function resetForCssImport(base) {
+      const preset=presets[base] || presets.light
+      state={...initial(),base:preset.base,colors:clone(preset.colors),tokens:clone(preset.tokens),shadow:preset.shadow}
+    }
+    function stripManaged(css) {
+      let result=css.replace(/\/\*\s*Typedown Theme Designer generated:start\s*\*\/[\s\S]*?\/\*\s*Typedown Theme Designer generated:end\s*\*\//gi,'')
+      result=result.replace(/\/\*\s*Typedown Theme Designer preserved:start\s*\*\//gi,'').replace(/\/\*\s*Typedown Theme Designer preserved:end\s*\*\//gi,'')
+      const first=result.match(/\/\*([\s\S]*?)\*\//)
+      if (first && /\b(?:Typedown theme|name\s*:|base\s*:)/i.test(first[1])) result=result.replace(first[0],'')
+      return result.trim()
+    }
+    function findRuleColor(css, needles) {
+      const rule=/([^{}]+)\{([^{}]*)\}/g
+      let match, found=''
+      while ((match=rule.exec(css))) {
+        if (!needles.some(needle => match[1].includes(needle))) continue
+        const color=match[2].match(/(?:^|;)\s*color\s*:\s*([^;!}]+)/i)
+        if (color && parseColor(color[1].trim())) found=color[1].trim()
+      }
+      return found
+    }
+    function parseCssIntoState(css, filename) {
+      const meta=parseMetadata(css), c=state.colors
+      if (meta.name) state.name=meta.name
+      if (meta.author) state.author=meta.author
+      if (/^(light|dark|black)$/i.test(meta.base || '')) state.base=meta.base.toLowerCase()
+      for (const [metaKey,stateKey] of [['background','background'],['surface','surface'],['foreground','foreground'],['border','border'],['accent','accent']]) {
+        if (meta[metaKey] && parseColor(meta[metaKey])) c[stateKey]=meta[metaKey]
+      }
+      const variables={}, re=/--([\w-]+)\s*:\s*([^;{}]+);/g
+      let match
+      while ((match=re.exec(css))) variables[match[1]]=match[2].trim()
+      const variableMap={editorBgColor:'background',editorColor:'foreground',themeColor:'accent',selectionColor:'selection',highlightColor:'highlight',codeBgColor:'inlineCode',codeBlockBgColor:'code',inlineCodeBgColor:'inlineCode',footnoteBgColor:'footnote',inputBgColor:'input',tableBorderColor:'border',itemBgColor:'item',floatBgColor:'float',floatHoverColor:'floatHover',floatBorderColor:'floatBorder',maskColor:'mask',iconColor:'icon',deleteColor:'delete'}
+      for (const [variable,key] of Object.entries(variableMap)) if (variables[variable] && parseColor(variables[variable])) c[key]=variables[variable]
+      if (variables.floatShadow) state.shadow=variables.floatShadow
+      const selectors={comment:['.token.comment','.cm-comment'],keyword:['.token.keyword','.cm-keyword'],string:['.token.string','.cm-string'],number:['.token.number','.cm-number'],function:['.token.function','.cm-def'],operator:['.token.operator','.cm-operator'],tag:['.token.tag','.cm-tag']}
+      for (const [key,needles] of Object.entries(selectors)) { const value=findRuleColor(css,needles); if (value) state.tokens[key]=value }
+      if (!meta.name && state.importedFiles.length===0) state.name=filename.replace(/(?:\.theme)?\.css$/i,'').replace(/[-_]+/g,' ').replace(/\b\w/g,ch=>ch.toUpperCase())
+      if (state.importedFiles.length===0) state.id=filename.replace(/(?:\.theme)?\.css$/i,'')
+      if (!meta.base) state.base=inferBase(css,filename) || state.base
+    }
+
+    async function importCssFiles(files) {
+      const cssFiles=[...files].filter(file => file.name.toLowerCase().endsWith('.css'))
+      if (!cssFiles.length) { showToast(t('chooseCss')); return }
+      const imports=await Promise.all(cssFiles.map(async file => ({name:file.name,css:await file.text()})))
+      catalogSelection=''
+      resetForCssImport(imports.map(file => inferBase(file.css,file.name)).find(Boolean) || 'light')
+      for (const file of imports) {
+        parseCssIntoState(file.css,file.name)
+        const preserved=stripManaged(file.css)
+        if (preserved) state.preservedCss += `${state.preservedCss?'\n\n':''}/* Imported from ${file.name.replace(/[^\w. -]/g,'_')} */\n${preserved}`
+        state.importedFiles.push(file.name)
+      }
+      state.auto=false
+      syncControls()
+      queueRender()
+      showToast(t('importedCount',{count:cssFiles.length}))
+    }
+    async function importJson(file) {
+      try {
+        const payload=JSON.parse(await file.text()), value=payload.state || payload
+        if (!value.colors || !value.tokens) throw new Error('missing palette')
+        catalogSelection=''
+        state={...initial(),...value,colors:{...initial().colors,...value.colors},tokens:{...initial().tokens,...value.tokens},importedFiles:[file.name]}
+        syncControls(); renderThemeCatalog(); queueRender(); showToast(t('jsonImported'))
+      } catch (_) { showToast(t('jsonError')) }
+    }
+    function renderImportList() {
+      const list=$('#import-list')
+      list.replaceChildren()
+      for (const name of state.importedFiles.length?state.importedFiles:[t('noFiles')]) list.append(Object.assign(document.createElement('li'),{textContent:name}))
+    }
+
+    function renderThemeCatalog() {
+      const panel=$('#installed-themes-panel'), list=$('#installed-theme-list')
+      if (!panel || !list) return
+      panel.hidden=!themeCatalog.themes.length
+      list.replaceChildren()
+      for (const entry of themeCatalog.themes) {
+        const button=document.createElement('button')
+        button.type='button'
+        button.classList.toggle('active',entry.id===catalogSelection)
+        button.title=entry.fileName
+        const name=Object.assign(document.createElement('strong'),{textContent:entry.name})
+        const source=t(entry.source==='bundled'?'bundledTheme':'userTheme')
+        const detail=Object.assign(document.createElement('small'),{textContent:`${entry.fileName} · ${source}`})
+        button.append(name,detail)
+        button.addEventListener('click',()=>loadCatalogTheme(entry,true))
+        const item=document.createElement('li')
+        item.append(button)
+        list.append(item)
+      }
+    }
+
+    function loadCatalogTheme(entry, announce) {
+      catalogSelection=entry.id
+      resetForCssImport(inferBase(entry.css,entry.fileName) || 'light')
+      parseCssIntoState(entry.css,entry.fileName)
+      const preserved=stripManaged(entry.css)
+      if (preserved) state.preservedCss=`/* Imported from ${entry.fileName.replace(/[^\w. -]/g,'_')} */\n${preserved}`
+      state.importedFiles=[entry.fileName]
+      state.auto=false
+      syncControls()
+      renderThemeCatalog()
+      queueRender()
+      if (announce) showToast(t('loadedTheme',{name:entry.name}))
+    }
+
+    function download(content, filename, type='text/plain') {
+      const link=document.createElement('a'), url=URL.createObjectURL(new Blob([content],{type}))
+      link.href=url; link.download=filename; document.body.append(link); link.click(); link.remove()
+      setTimeout(()=>URL.revokeObjectURL(url),1000)
+    }
+    async function copyCss() {
+      try { await navigator.clipboard.writeText(generateCustomCss()) }
+      catch (_) { $('#css-output').select(); document.execCommand('copy') }
+      showToast(t('cssCopied'))
+    }
+    let toastTimer
+    function showToast(message) { const toast=$('#toast'); toast.textContent=message; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>toast.classList.remove('show'),1800) }
+
+    document.addEventListener('input', event => {
+      const input=event.target
+      if (input.dataset.color) {
+        setPath(input.dataset.color,input.value.trim())
+        input.classList.toggle('invalid',!parseColor(input.value))
+        const picker=document.querySelector(`[data-picker="${input.dataset.color}"]`)
+        if (parseColor(input.value)) picker.value=toHex(input.value)
+        if (state.auto && input.dataset.color.startsWith('colors.') && ['colors.background','colors.surface','colors.foreground','colors.accent','colors.code'].includes(input.dataset.color)) deriveAuxiliary()
+        queueRender()
+      } else if (input.id==='theme-name') { state.name=input.value; queueRender() }
+      else if (input.id==='theme-id') { state.id=input.value; queueRender() }
+      else if (input.id==='theme-author') { state.author=input.value; queueRender() }
+      else if (input.id==='shadow-value') { state.shadow=input.value; queueRender() }
+      else if (input.id==='extra-css') { state.preservedCss=input.value; queueRender() }
+    })
+    document.addEventListener('change', event => {
+      const input=event.target
+      if (input.dataset.picker) {
+        setPath(input.dataset.picker,input.value)
+        const text=document.querySelector(`[data-color="${input.dataset.picker}"]`); text.value=input.value; text.classList.remove('invalid')
+        if (state.auto && input.dataset.picker.startsWith('colors.') && ['colors.background','colors.surface','colors.foreground','colors.accent','colors.code'].includes(input.dataset.picker)) deriveAuxiliary()
+        queueRender()
+      } else if (input.id==='theme-base') { state.base=input.value; queueRender(); showToast(t('baseChanged',{base:input.value})) }
+      else if (input.id==='language-select') setLanguage(input.value)
+      else if (input.id==='auto-derived') { state.auto=input.checked; if (state.auto) deriveAuxiliary(); queueRender() }
+      else if (input.id==='file-input' && input.files.length) importCssFiles(input.files)
+      else if (input.id==='json-input' && input.files[0]) importJson(input.files[0])
+    })
+    document.addEventListener('click', event => {
+      const button=event.target.closest('button')
+      if (!button) return
+      if (button.dataset.preset) applyPreset(button.dataset.preset)
+      if (button.dataset.mode) { $('#preview-window').dataset.mode=button.dataset.mode; document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===button)) }
+      if (button.dataset.sideMode) {
+        $('.sidebar').dataset.sideMode=button.dataset.sideMode
+        document.querySelectorAll('.side-tabs [data-side-mode]').forEach(item => { const active=item===button; item.classList.toggle('active',active); item.setAttribute('aria-selected',String(active)) })
+      }
+    })
+
+    $('#import-button').onclick=()=>$('#file-input').click()
+    $('#preset-button').onclick=()=>$('#json-input').click()
+    $('#dropzone').onclick=()=>$('#file-input').click()
+    $('#dropzone').onkeydown=event=>{ if (event.key==='Enter'||event.key===' ') { event.preventDefault(); $('#file-input').click() } }
+    for (const type of ['dragenter','dragover']) $('#dropzone').addEventListener(type,event=>{ event.preventDefault(); $('#dropzone').classList.add('drag') })
+    for (const type of ['dragleave','drop']) $('#dropzone').addEventListener(type,event=>{ event.preventDefault(); $('#dropzone').classList.remove('drag') })
+    $('#dropzone').addEventListener('drop',event=>importCssFiles(event.dataTransfer.files))
+    $('#derive-button').onclick=deriveAuxiliary
+    $('#output-button').onclick=()=>$('#output-drawer').classList.add('open')
+    $('#close-output').onclick=()=>$('#output-drawer').classList.remove('open')
+    $('#copy-css').onclick=copyCss
+    $('#download-button').onclick=$('#download-custom').onclick=()=>download(generateCustomCss(),`${safeId()}.css`,'text/css')
+    $('#download-editor').onclick=()=>download(editorCss(),`${safeId()}.theme.css`,'text/css')
+    $('#download-codemirror').onclick=()=>download(codeMirrorCss(),`${safeId()}.theme.css`,'text/css')
+    $('#download-prism').onclick=()=>download(prismCss(),`${safeId()}.theme.css`,'text/css')
+    $('#export-json').onclick=()=>download(JSON.stringify({format:'typedown-theme-designer',version:1,state},null,2),`${safeId()}.json`,'application/json')
+    $('#reset-button').onclick=()=>{ catalogSelection=''; state=initial(); syncControls(); renderThemeCatalog(); queueRender(); showToast(t('resetDone')) }
+    document.addEventListener('keydown',event=>{ if (event.key==='Escape') $('#output-drawer').classList.remove('open') })
+
+    try {
+      const saved=JSON.parse(localStorage.getItem('typedown-theme-designer'))
+      if (saved?.colors && saved?.tokens) state={...initial(),...saved,colors:{...initial().colors,...saved.colors},tokens:{...initial().tokens,...saved.tokens},preservedCss:'',importedFiles:[]}
+    } catch (_) {}
+    applyTranslations()
+    syncControls()
+    render()
+
+    const selectedCatalogTheme=themeCatalog.themes.find(item=>item.id===themeCatalog.selectedId)
+    if (selectedCatalogTheme) loadCatalogTheme(selectedCatalogTheme,false)
+
+    window.__themeDesigner={ getState:()=>clone(state), generateCustomCss, getThemeCatalog:()=>clone(themeCatalog), importCssText:(css,name='imported.css')=>{ catalogSelection=''; resetForCssImport(inferBase(css,name) || 'light'); parseCssIntoState(css,name); state.preservedCss=stripManaged(css); state.importedFiles=[name]; state.auto=false; syncControls(); renderThemeCatalog(); render() } }
+  })()
+  </script>
+</body>
+</html>

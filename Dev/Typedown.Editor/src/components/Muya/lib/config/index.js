@@ -221,7 +221,9 @@ export const LINE_BREAK = '\n'
 
 export const PREVIEW_DOMPURIFY_CONFIG = Object.freeze({
   // do not forbit `class` because `code` element use class to present language
-  FORBID_ATTR: ['style', 'contenteditable'],
+  // 'style' stays allowed: an html block that carries its own CSS is the point of writing raw html in a
+  // document, and DOMPurify still strips scripts, event handlers and javascript: urls from it.
+  FORBID_ATTR: ['contenteditable'],
   ALLOW_DATA_ATTR: false,
   USE_PROFILES: {
     html: true,
@@ -250,6 +252,9 @@ export const EXPORT_DOMPURIFY_CONFIG = Object.freeze({
 export const MUYA_DEFAULT_OPTION = Object.freeze({
   fontSize: 16,
   lineHeight: 1.6,
+  fontFamily: '',
+  // 'auto' detects direction per block from its own text, 'ltr'/'rtl' force it.
+  textDirection: 'auto',
   focusMode: false,
   markdown: '',
   // Whether to trim the beginning and ending empty line in code block when open markdown.
@@ -275,6 +280,7 @@ export const MUYA_DEFAULT_OPTION = Object.freeze({
   // NOTE: The browser is not able to correct misspelled words words without a custom
   // implementation like in MarkText.
   spellcheckEnabled: false,
+  plantUmlServer: '',
   // transform the image to local folder, cloud or just return the local path
   imageAction: (path, id, name) => path,
   clipboardFilePath: () => { },

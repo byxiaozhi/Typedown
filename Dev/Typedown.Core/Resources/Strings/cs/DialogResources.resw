@@ -133,10 +133,6 @@
     <value>OK</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Obsah nemůže být prázdný</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Vytvoření nového dokumentu se nezdařilo</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Export se nezdařil</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Zpětná vazba</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Import se nezdařil</value>
@@ -225,14 +217,6 @@
     <value>Klávesová zkratka je obsazena</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Podat</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Odeslání bylo úspěšné</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Nahrání se nezdařilo</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Modul runtime WebView2 není nainstalován</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Tento dokument již byl sdílen, ale od té doby se změnil. HedgeDoc 1.x neumí aktualizovat existující poznámku, takže nové nahrání vytvoří novou poznámku s novým odkazem.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopírovat odkaz</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Odkaz pro úpravy</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Kdokoli s tímto odkazem může poznámku upravovat.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Nejprve nastavte adresu serveru HedgeDoc v Nastavení → Export.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Otevřít v prohlížeči</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Nahrát znovu (nový odkaz)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Odkaz jen pro čtení</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Sdíleno do HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Dokument se od posledního sdílení nezměnil; toto jsou existující odkazy.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Použít předchozí odkaz</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Ponechat</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Načíst znovu</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Soubor byl na disku změněn. Opětovné načtení zahodí neuložené změny.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Soubor byl na disku změněn. Načíst jej znovu?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Soubor byl na disku změněn</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Nahrát místní obrázky</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Nahrávání obrázku {0} z {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Nahráno {0} z {1} obrázků. Jejich adresy v dokumentu nyní odkazují na nahrané kopie; příkaz Odčinit vrátí místní cesty.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Zrušeno. Nahráno {0} z {1} obrázků a jejich adresy v dokumentu byly změněny.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Nezměněno:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Tento dokument neobsahuje žádné místní obrázky.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Není vybrána žádná konfigurace nahrávání. Vyberte ji v Nastavení &gt; Obraz &gt; Nahrát pomocí.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Otevřít nastavení</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Soubor nebyl nalezen.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Nahrání nevrátilo žádnou adresu.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Dokument byl během nahrávání zavřen.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Dokument nelze změnit. Obrázek je online na adrese</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>Tento dokument obsahuje {0} místních obrázků. Jsou to soubory v tomto počítači, takže je čtenáři poznámky neuvidí. Nahrát je nejprve?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Nejprve nahrát</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Přesto sdílet</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>{0} z nich už bylo dříve nahráno s touto konfigurací, proto byly použity jejich dřívější adresy.</value>
   </data>
 </root>

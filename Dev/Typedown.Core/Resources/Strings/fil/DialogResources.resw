@@ -133,10 +133,6 @@
     <value>ok na</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Hindi maaaring walang laman ang nilalaman</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>Nabigo sa paglikha ng bagong dokumento</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>Nabigo ang pag-export</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Feedback</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>Nabigo ang pag-import</value>
@@ -225,14 +217,6 @@
     <value>Ang shortcut key ay inookupahan</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Isumite ang</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Matagumpay ang pagsusumite</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>Nabigo ang pag-upload</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Hindi Naka install ang WebView2 Runtime</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>Naibahagi na dati ang dokumentong ito ngunit nagbago mula noon. Hindi ma-update ng HedgeDoc 1.x ang umiiral na note, kaya ang muling pag-upload ay gumagawa ng bagong note na may bagong link.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Kopyahin ang link</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Link na maaaring i-edit</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Sinumang may ganitong link ay maaaring mag-edit ng note.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Itakda muna ang address ng HedgeDoc server sa Mga Setting → Export.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Buksan sa browser</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Mag-upload muli (bagong link)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Read-only na link</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Naibahagi sa HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Hindi nagbago ang dokumento mula nang huling ibahagi; ito ang mga umiiral na link.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Gamitin ang dating link</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Panatilihin</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>I-reload</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Nabago ang file sa disk. Ang pag-reload ay magtatapon ng mga hindi pa nase-save na pagbabago.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Nabago ang file sa disk. I-reload ito?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Nabago ang file sa disk</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Mag-upload ng mga lokal na imahe</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>Ina-upload ang imahe {0} ng {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Na-upload ang {0} ng {1} na imahe. Ang mga address nila sa dokumento ay tumuturo na ngayon sa mga na-upload na kopya; ibinabalik ng Mag-undo ang mga lokal na path.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Kinansela. Na-upload ang {0} ng {1} na imahe, at binago ang mga address nila sa dokumento.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Hindi binago:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Walang lokal na imahe ang dokumentong ito.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Walang napiling upload configuration. Pumili ng isa sa Mga Setting &gt; Imahe &gt; Mag-upload gamit ang.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Buksan ang mga setting</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Hindi nakita ang file.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Walang ibinalik na address ang upload.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>Isinara ang dokumento habang nag-a-upload.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Hindi mabago ang dokumento. Online ang imahe sa</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>May {0} lokal na imahe ang dokumentong ito. Mga file ang mga ito sa computer na ito, kaya hindi ito makikita ng mga mambabasa ng note. I-upload muna ang mga ito?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>I-upload muna</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Ibahagi pa rin</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>Ang {0} sa mga ito ay na-upload na dati gamit ang configuration na ito, kaya ginamit ang mga dati nilang address.</value>
   </data>
 </root>

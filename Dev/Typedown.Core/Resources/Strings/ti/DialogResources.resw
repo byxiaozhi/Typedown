@@ -133,10 +133,6 @@
     <value>ሐራይ</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>ትሕዝቶ ባዶ ኪኸውን ኣይክእልን እዩ</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>ሓድሽ ሰነድ ኪፈጥር ኣይከኣለን</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>ሰደድ ፈሸለ</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>እተዋህበ ርእይቶ</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>import ፈሸለ</value>
@@ -225,14 +217,6 @@
     <value>ሓጺር መፍትሕ ትሑዝ እዩ</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>ኣእቱ</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>ተገዛእነት ዕዉት</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>ኣራግፍ ፈሸለ</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>ወብ ቪው2 ዘይተገጥመሉ ግዜ</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>እዚ ሰነድ ቀደም ተማቒሉ ነይሩ ግን ካብኡ ንደሓር ተቐዪሩ። HedgeDoc 1.x ነቲ ዘሎ መዘክር ከሐድሶ ስለዘይክእል፣ እንደገና ምስቃል ሓድሽ መዘክር ምስ ሓድሽ መላግቦ ይፈጥር።</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>መላግቦ ቅዳሕ</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>ክእረም ዝኽእል መላግቦ</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>እዚ መላግቦ ዘለዎ ዝኾነ ሰብ ነቲ መዘክር ከዐርዮ ይኽእል።</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>ቅድም ቀዳድም ኣድራሻ ሰርቨር HedgeDoc ኣብ ቅንብራት → ናብ ወጻኢ ምስዳድ ኣቐምጥ።</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>ብመድህስቲ ክፈት</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>እንደገና ስቐል (ሓድሽ መላግቦ)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>ንንባብ ጥራይ መላግቦ</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>ናብ HedgeDoc ተማቒሉ</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>እቲ ሰነድ ካብ ናይ መወዳእታ ምምቃል ኣትሒዙ ኣይተቐየረን፤ እዚኦም እቶም ዘለዉ መላግቦታት እዮም።</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>ናይ ቅድም መላግቦ ተጠቐም</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>ሓዝ</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>እንደገና ጽዓን</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>እቲ ፋይል ኣብ ዲስክ ተቐዪሩ። እንደገና ምጽዓን ዘይተዓቀቡ ለውጥታት ይድርብዮም።</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>እቲ ፋይል ኣብ ዲስክ ተቐዪሩ። እንደገና ይጸዓን?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>እቲ ፋይል ኣብ ዲስክ ተቐዪሩ</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>ናይ ከባቢ ምስልታት ስቐል</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>ምስሊ {0} ካብ {1} ይስቀል ኣሎ…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>ካብ {1} ምስልታት {0} ተሰቒሎም። ኣብቲ ሰነድ ዘለዉ ኣድራሻታቶም ሕጂ ናብ ዝተሰቐሉ ቅዳሓት የመልክቱ፤ ኣተዓረየ ነቶም ናይ ከባቢ መንገድታት ይመልሶም።</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>ተሰሪዙ። ካብ {1} ምስልታት {0} ተሰቒሎም፣ ኣብቲ ሰነድ ዘለዉ ኣድራሻታቶም ድማ ተቐይሮም።</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>ዘይተቐየሩ:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>እዚ ሰነድ ናይ ከባቢ ምስልታት የብሉን።</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>ዝተመርጸ ናይ ምስቃል ውቅር የለን። ኣብ ኵነታት &gt; ምስሊ &gt; መስቀሊ ሓደ ምረጽ።</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>ኵነታት ክፈት</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>እቲ ፋይል ኣይተረኽበን።</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>እቲ ምስቃል ኣድራሻ ኣይመለሰን።</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>እቲ ሰነድ ኣብ እዋን ምስቃል ተዓጽዩ።</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>እቲ ሰነድ ክቕየር ኣይከኣለን። እቲ ምስሊ ኦንላይን ኣብ</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>እዚ ሰነድ {0} ናይ ከባቢ ምስልታት ኣለዉዎ። ኣብዚ ኮምፒተር ዘለዉ ፋይላት ስለዝኾኑ፣ ኣንበብቲ እቲ መዘኻኸሪ ኣይርእይዎምን። ቅድም ይሰቐሉ?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>ቅድም ስቐል</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>ብዘየገድስ ኣካፍል</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>ካብኣቶም {0} ቅድሚ ሕጂ ብዚ ኣቃውማ ተሰቒሎም ስለ ዝነበሩ፡ ናይ ቅድሚ ኣድራሻታቶም ተጠቒምና።</value>
   </data>
 </root>

@@ -729,10 +729,6 @@
     <value>Citera</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Klassificering</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Göra om</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Zooma</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Ingen mapp är öppen. Öppna en fil eller mapp för att bläddra här.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Den här mappen har {0} objekt — för många för att listas här.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>Inga Markdown-filer i den här mappen.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Mappen finns inte längre.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Visa den aktuella filens mapp</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Sök i mappen…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(filnamnet matchar)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>{0} matchande fil(er) av {1} genomsökta</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Söker…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Helskärm</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Senast använda fliken</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Nästa flik</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Föregående flik</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Minska citatnivån</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Öka citatnivån</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Läsläge</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Sök i mappen</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Dela till HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Fäll ihop alla</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Expandera alla</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Namnlös</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Automatisering ansluten</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} redigerade {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Om du redigerar dokumentet i visuellt läge kan en del av dess HTML skrivas om. Redigera i källkodsläge för att behålla det exakt som det är.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>PlantUML-diagram är avstängda (ritning skickar källkoden till plantuml.com). Slå på dem under Inställningar &gt; Redigerare.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Ladda upp lokala bilder</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Exporterad till {0}</value>
   </data>
 </root>

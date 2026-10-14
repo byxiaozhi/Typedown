@@ -46,6 +46,24 @@ mark::after {
   outline: none;
 }
 
+/*
+ * Long documents: let the browser skip layout and painting for the blocks that are off screen. The blocks are
+ * still in the document — the model, find, and the scrollbar are unaffected — but the work the browser does on
+ * every keystroke stops growing with the file.
+ *
+ * Measured on a 300k-character document: keystroke latency 186 ms -> 76 ms, p90 304 ms -> 108 ms, opening
+ * 8.0 s -> 4.7 s. On small documents it costs about half a second of opening time and saves nothing that
+ * matters, which is why the class is only set past a thousand blocks (see Muya's index.tsx).
+ */
+#editor.ag-long-document #ag-editor-id > * {
+  content-visibility: auto;
+  /* Measured across two very different documents: a top-level block averages 51 px once it is laid out.
+     The estimate is what the scrollbar is drawn from while the blocks off screen are unlaid out, so it is
+     wrong by some tens of per cent until scrolling replaces guesses with real sizes — acceptable only
+     because the rule is reserved for documents that would otherwise take half a minute to open. */
+  contain-intrinsic-size: auto 50px;
+}
+
 #mu-dragover-ghost {
   height: 3px;
   position: absolute;
@@ -293,6 +311,14 @@ div.ag-empty {
   font-size: 14px;
   font-style: italic;
   font-family: monospace;
+}
+
+/* A PlantUML block while drawing it is off (Settings > Editor): its source would go to plantuml.com. */
+.ag-plantuml-off::before {
+  content: var(--PlantUmlOff);
+  color: var(--editorColor50);
+  font-size: 14px;
+  font-style: italic;
 }
 
 div.ag-math-error,
@@ -568,7 +594,8 @@ p:not(.ag-active)[data-role="hr"]::before {
   content: '';
   width: 100%;
   height: 2px;
-  border-top: 2px dashed var(--editorColor10);
+  /* The table-border colour, not the 10% ink: at 10% the divider was as good as invisible on the dark theme. */
+  border-top: 2px dashed var(--tableBorderColor);
   background: none;
   position: absolute;
   top: 50%;
@@ -747,11 +774,15 @@ figure.ag-container-block div.ag-container-preview {
   text-align: center;
 }
 
-figure.ag-container-block div.ag-container-preview>svg {
+figure.ag-container-block div.ag-container-preview>svg,
+figure.ag-container-block div.ag-container-preview>div.ag-diagram-drawing>svg {
   width: 100%;
 }
 
+/* While the block is edited its preview floats over what follows it. It must let clicks through: otherwise a click on
+   the paragraph below lands on the preview, which reopens this block, and the caret can never leave it that way. */
 figure.ag-active.ag-container-block>div.ag-container-preview {
+  pointer-events: none;
   position: absolute;
   top: calc(100% + 20px);
   left: 50%;
@@ -951,21 +982,21 @@ span.ag-warn.ag-emoji-marked-text {
   background: transparent;
 }
 
-.ag-inline-image a.ag-image-icon-success,
-.ag-inline-image a.ag-image-icon-fail,
-.ag-inline-image a.ag-image-icon-close {
+.ag-inline-image .ag-image-icon-success,
+.ag-inline-image .ag-image-icon-fail,
+.ag-inline-image .ag-image-icon-close {
   display: none;
   position: absolute;
   top: 13px;
 }
 
-.ag-inline-image a.ag-image-icon-close {
+.ag-inline-image .ag-image-icon-close {
   padding: 0px 0px 4px 4px;
   border-radius: 4px;
 }
 
-.ag-inline-image a.ag-image-icon-success,
-.ag-inline-image a.ag-image-icon-fail {
+.ag-inline-image .ag-image-icon-success,
+.ag-inline-image .ag-image-icon-fail {
   left: 15px;
 }
 
@@ -1017,17 +1048,17 @@ span.ag-warn.ag-emoji-marked-text {
   content: var(--loadImageFail);
 }
 
-.ag-inline-image.ag-image-loading a.ag-image-icon-success,
-.ag-inline-image.ag-empty-image a.ag-image-icon-success {
+.ag-inline-image.ag-image-loading .ag-image-icon-success,
+.ag-inline-image.ag-empty-image .ag-image-icon-success {
   display: block;
 }
 
-.ag-inline-image.ag-image-fail a.ag-image-icon-fail {
+.ag-inline-image.ag-image-fail .ag-image-icon-fail {
   display: block;
 }
 
-.ag-inline-image.ag-empty-image:hover a.ag-image-icon-close,
-.ag-inline-image.ag-image-fail:hover a.ag-image-icon-close {
+.ag-inline-image.ag-empty-image:hover .ag-image-icon-close,
+.ag-inline-image.ag-image-fail:hover .ag-image-icon-close {
   opacity: .8;
   display: block;
   align-items: center;
@@ -1036,8 +1067,8 @@ span.ag-warn.ag-emoji-marked-text {
   right: 15px;
 }
 
-.ag-inline-image.ag-empty-image:hover a.ag-image-icon-close:hover,
-.ag-inline-image.ag-image-fail:hover a.ag-image-icon-close:hover {
+.ag-inline-image.ag-empty-image:hover .ag-image-icon-close:hover,
+.ag-inline-image.ag-image-fail:hover .ag-image-icon-close:hover {
   background-color: var(--floatHoverColor);
 }
 
@@ -1171,6 +1202,34 @@ span.ag-reference-link {
   display: block;
 }
 
+body.hide-paragraph-marker .ag-paragraph.ag-active .ag-front-icon {
+  display: none;
+}
+
+body.read-only #ag-editor-id {
+  caret-color: transparent;
+}
+
+/* Reading mode renders the document and nothing else: no caret, no editing hints and no hover affordances.
+   The active-block rules above already hide the table drag bars, the tool bar and the language input; these
+   cover what does not depend on the active block. */
+body.read-only .ag-show-quick-insert-hint .ag-paragraph:empty::after,
+body.read-only .ag-drag-handler,
+body.read-only .ag-tool-bar,
+body.read-only .ag-front-icon,
+body.read-only .ag-image-icon-delete,
+body.read-only .ag-image-icon-close,
+body.read-only .ag-container-icon {
+  display: none !important;
+}
+
+body.read-only img,
+body.read-only table,
+body.read-only table td,
+body.read-only table th {
+  cursor: default;
+}
+
 .ag-meta-or-ctrl img,
 .ag-meta-or-ctrl a.ag-inline-rule {
   cursor: pointer !important;
@@ -1204,6 +1263,18 @@ span.ag-reference-link {
 
 pre:not(.ag-active):hover .ag-code-copy {
   opacity: .5;
+}
+
+/* While the check shows it fully replaces the copy icon (which lives in a span.icon), covering the button,
+   and is not faded even after the pointer leaves. */
+.ag-code-copy.ag-code-copied { opacity: 1 !important; }
+.ag-code-copy.ag-code-copied .icon { visibility: hidden; }
+.ag-code-copy.ag-code-copied::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* a check mark, drawn so it needs no icon font */
+  background: no-repeat center/14px url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322a06b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6L9 17l-5-5'/></svg>");
 }
 
 .ag-code-copy:hover {
@@ -1291,4 +1362,159 @@ span.ag-footnote-backlink {
   font-family: sans-serif;
   cursor: pointer;
   z-index: 100;
+}
+/* Printing prints this page — what the reader sees, in the editor's own theme — not an export rendered
+   with another stylesheet (which is what "the print does not look like the document" was). The editing
+   chrome goes; every block is laid out (the off-screen rule would print blanks); paper is white. */
+@media print {
+  /* Print the document as the reader sees it. Paper has no dark theme: force light, legible output and
+     make backgrounds and borders actually print (Chromium honours print-color-adjust to override the
+     "background graphics" default). The editor's own visual styling for these blocks lives under
+     `@media not print`, so it is restated here with fixed light colours rather than the theme's. */
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  html, body, #editor, #ag-editor-id {
+    background: #fff !important;
+    color: #1a1a1a !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  #editor {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  #editor.ag-long-document #ag-editor-id > * {
+    content-visibility: visible;
+    contain-intrinsic-size: auto none;
+  }
+  /* The editing chrome, not the content. */
+  .ag-front-icon,
+  .ag-tool-bar,
+  .ag-drag-handler,
+  .ag-container-icon,
+  .ag-show-quick-insert-hint .ag-paragraph:empty::after {
+    display: none !important;
+  }
+  /* Code fences: a light box with a border, and lines that wrap instead of running off the page. */
+  #ag-editor-id pre.ag-paragraph,
+  #ag-editor-id pre:not(.CodeMirror-line),
+  #ag-editor-id pre[class*="language-"] {
+    background: #f6f8fa !important;
+    border: 1px solid #d0d7de !important;
+    border-radius: 3px !important;
+    color: #1a1a1a !important;
+    padding: 12px 16px !important;
+    display: block !important;
+  }
+  #ag-editor-id pre,
+  #ag-editor-id pre code,
+  #ag-editor-id pre[class*="language-"],
+  #ag-editor-id pre[class*="language-"] > code {
+    white-space: pre-wrap !important;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    overflow: visible !important;
+  }
+  #ag-editor-id code,
+  #ag-editor-id span code,
+  #ag-editor-id td code,
+  #ag-editor-id th code {
+    background: #eff1f3 !important;
+    color: #1a1a1a !important;
+  }
+  /* Blockquotes: a bar down the left, restated (its ::before is off under print above). */
+  #ag-editor-id blockquote {
+    padding: 0 16px !important;
+    color: #4a4a4a !important;
+    border-left: 3px solid #c8c8c8 !important;
+  }
+  #ag-editor-id blockquote::before { content: none !important; }
+  /* Tables: real cell borders, a lined header. */
+  #ag-editor-id table { border-collapse: collapse !important; }
+  #ag-editor-id table th,
+  #ag-editor-id table td {
+    border: 1px solid #c8c8c8 !important;
+  }
+  #ag-editor-id table th { background: #f6f8fa !important; }
+  #ag-editor-id table th::before,
+  #ag-editor-id table td::before { display: none !important; }
+  /* Keep a block from being split across a page, and a heading from ending one. */
+  #ag-editor-id > * { break-inside: avoid; }
+  #ag-editor-id h1, #ag-editor-id h2, #ag-editor-id h3 { break-after: avoid; }
+}
+
+/* Notice that the first visual edit may rewrite part of this document (components/Muya: firstEditWarning). It stays
+   at the top while scrolling and never blocks editing. */
+.td-first-edit-warning-slot {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.td-first-edit-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 auto;
+  max-width: var(--editorAreaWidth);
+  padding: 6px 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--editorColor);
+  background: var(--floatBgColor);
+  border: 1px solid var(--floatBorderColor);
+  border-radius: 4px;
+}
+
+.td-first-edit-warning-text {
+  flex: 1;
+}
+
+.td-first-edit-warning-text::before {
+  content: var(--FirstEditWarning);
+}
+
+.td-first-edit-warning-close {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+/* What a connected program just changed (automation writes; Editor/CodeMirror and Muya apply it). A short fade, so the
+   reader sees where the text moved under them; the "highlight changes made by automation" setting turns it off. */
+.td-external-change {
+  animation: td-external-change 2s ease-out;
+}
+
+@keyframes td-external-change {
+  from { background-color: rgba(255, 196, 0, 0.45); }
+  to { background-color: transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .td-external-change {
+    animation: none;
+    background-color: rgba(255, 196, 0, 0.25);
+  }
+}
+
+/* Vim keys in source mode: the mode Vim is in (services/vim). */
+.vim-mode-badge {
+  position: fixed;
+  right: 16px;
+  bottom: 8px;
+  z-index: 10;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font: 12px/1.6 Consolas, "Cascadia Mono", monospace;
+  color: #abb2bf;
+  background: rgba(40, 44, 52, 0.85);
+  pointer-events: none;
 }

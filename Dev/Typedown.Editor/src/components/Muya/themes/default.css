@@ -95,7 +95,7 @@
 }
 
 html, body {
-  font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--editorFontFamily, "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif);
   font-size: 16px;
   line-height: 1.6;
 }
@@ -343,7 +343,7 @@ kbd {
 
   ul,
   ol {
-    padding-left: 30px;
+    padding-inline-start: 30px;
   }
 
   ul:first-child,
@@ -368,13 +368,13 @@ kbd {
     height: 100%;
     width: 2px;
     position: absolute;
-    left: 15px;
+    inset-inline-start: 15px;
     top: 0;
     background: var(--themeColor);
   }
 
   blockquote blockquote {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 
   table {
@@ -394,14 +394,14 @@ kbd {
 
   table tr th {
     font-weight: bold;
-    text-align: left;
+    text-align: start;
     margin: 0;
     padding: 6px 13px;
     position: relative;
   }
 
   table tr td {
-    text-align: left;
+    text-align: start;
     margin: 0;
     padding: 6px 13px;
     position: relative;
@@ -548,7 +548,10 @@ kbd {
   span code,
   td code,
   th code {
-    background-color: var(--codeBlockBgColor);
+    /* Its own colour: the code-block colour is meant to sit inside a border, and on the light theme it was
+       white at 70% on a near-white page — inline code could not be told from the text around it. Themes
+       without the variable keep the old one. */
+    background-color: var(--inlineCodeBgColor, var(--codeBlockBgColor));
     border-radius: 3px;
     padding: 0;
     /*font-family: Menlo, Monaco, Consolas, "Courier New", monospace;*/
@@ -690,3 +693,11 @@ figure[data-role] svg use[fill="#000000"] {
   fill: var(--editorColor);
 }
 
+
+/* ==highlight==: translucent so it reads on light and dark backgrounds alike. */
+mark.ag-inline-rule {
+  background-color: rgba(255, 213, 0, 0.35);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}

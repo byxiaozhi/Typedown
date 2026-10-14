@@ -6,6 +6,7 @@ import { renderEditIcon } from './renderContainerEditIcon'
 import renderCopyButton from './renderCopyButton'
 import { renderLeftBar, renderBottomBar } from './renderTableDargBar'
 import { h } from '../snabbdom'
+import { detectTextDirection, findBlockText } from '../../../utils/detectTextDirection'
 
 const PRE_BLOCK_HASH = {
   fencecode: `.${CLASS_OR_ID.AG_FENCE_CODE}`,
@@ -19,6 +20,11 @@ const PRE_BLOCK_HASH = {
   mermaid: `.${CLASS_OR_ID.AG_MERMAID}`,
   'vega-lite': `.${CLASS_OR_ID.AG_VEGA_LITE}`
 }
+
+// Block types that hold user-typed prose and should get a `dir` attribute so
+// Arabic/Hebrew paragraphs mixed with Latin ones each get correct direction
+// and alignment, instead of the whole document being forced to LTR.
+const TEXT_DIRECTION_TYPES = /^(?:p|h1|h2|h3|h4|h5|h6|li|blockquote|td|th)$/
 
 export default function renderContainerBlock (parent, block, activeBlocks, matches, useCache = false) {
   let selector = this.getSelector(block, activeBlocks)
@@ -47,6 +53,18 @@ export default function renderContainerBlock (parent, block, activeBlocks, match
   const data = {
     attrs: {},
     dataset: {}
+  }
+
+  if (TEXT_DIRECTION_TYPES.test(type)) {
+    const { textDirection } = this.muya.options
+    // Native `dir="auto"` isn't reliably re-evaluated by the browser as text
+    // is patched in by our virtual-dom renderer while typing, so detect the
+    // direction ourselves from the block's own text and emit a literal
+    // ltr/rtl value that snabbdom will keep in sync with the content.
+    const dir = textDirection === 'ltr' || textDirection === 'rtl'
+      ? textDirection
+      : detectTextDirection(findBlockText(block)) || 'ltr'
+    Object.assign(data.attrs, { dir })
   }
 
   if (editable === false) {

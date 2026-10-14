@@ -133,10 +133,6 @@
     <value>হ'ব</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>সমল ৰিক্ত হ'ব নোৱাৰে</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>নতুন দস্তাবেজ সৃষ্টি কৰিবলৈ ব্যৰ্থ</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>ৰপ্তানি ব্যৰ্থ</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>প্ৰতিক্ৰিয়া</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>ইমপোৰ্ট ব্যৰ্থ</value>
@@ -225,14 +217,6 @@
     <value>চৰ্টকাট কী দখল কৰা হৈছে</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>দাখিল কৰা</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>দাখিল সফল</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>আপলোড ব্যৰ্থ</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>ৱেবদৰ্শন2 ৰানটাইম ইনস্টল কৰা হোৱা নাই</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>এই নথি আগতে ভাগ কৰা হৈছিল কিন্তু তাৰ পিছত সলনি হৈছে। HedgeDoc 1.x-এ থকা টোকা আপডেট কৰিব নোৱাৰে, সেয়ে পুনৰ আপল'ড কৰিলে নতুন লিংকৰ সৈতে নতুন টোকা সৃষ্টি হ'ব।</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>লিংক কপি কৰক</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>সম্পাদনযোগ্য লিংক</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>এই লিংক থকা যিকোনো ব্যক্তিয়ে টোকা সম্পাদনা কৰিব পাৰে।</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>প্ৰথমে ছেটিংছ → ৰপ্তানি-ত HedgeDoc চাৰ্ভাৰৰ ঠিকনা দিয়ক।</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>ব্ৰাউজাৰত খোলক</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>পুনৰ আপল'ড কৰক (নতুন লিংক)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>কেৱল-পঢ়া লিংক</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>HedgeDoc-ত ভাগ কৰা হ'ল</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>শেষবাৰ ভাগ কৰাৰ পিছত নথি সলনি হোৱা নাই; এইবোৰ বৰ্তমানৰ লিংক।</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>আগৰ লিংক ব্যৱহাৰ কৰক</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>ৰাখক</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>পুনৰ ল'ড কৰক</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>ডিস্কত ফাইল সলনি হৈছে। পুনৰ ল'ড কৰিলে অসংৰক্ষিত সালসলনি হেৰাব।</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>ডিস্কত ফাইল সলনি হৈছে। পুনৰ ল'ড কৰিবনে?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>ডিস্কত ফাইল সলনি হৈছে</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>স্থানীয় ছবিসমূহ আপলোড কৰক</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>{1}টাৰ ভিতৰত {0} নং ছবি আপলোড কৰি থকা হৈছে…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>{1}টা ছবিৰ ভিতৰত {0}টা আপলোড কৰা হ'ল। নথিত সেইবোৰৰ ঠিকনা এতিয়া আপলোড কৰা প্ৰতিলিপিলৈ সূচায়; "বাতিল কৰক" (Undo)-এ স্থানীয় পথসমূহ ঘূৰাই আনে।</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>বাতিল কৰা হ'ল। {1}টা ছবিৰ ভিতৰত {0}টা আপলোড কৰা হৈছিল, আৰু নথিত সেইবোৰৰ ঠিকনা সলনি কৰা হৈছে।</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>সলনি কৰা হোৱা নাই:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>এই নথিত কোনো স্থানীয় ছবি নাই।</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>কোনো আপলোড কনফিগাৰেচন বাছনি কৰা হোৱা নাই। সংহতিসমূহ &gt; ছবি &gt; আপলোডৰ মাধ্যম-ত এটা বাছনি কৰক।</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>সংহতিসমূহ খোলক</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>ফাইলটো পোৱা নগ'ল।</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>আপলোডে কোনো ঠিকনা ঘূৰাই দিয়া নাই।</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>আপলোডৰ সময়ত নথিখন বন্ধ কৰা হৈছিল।</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>নথিখন সলনি কৰিব পৰা নগ'ল। ছবিখন অনলাইনত এই ঠিকনাত আছে:</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>এই নথিত {0}টা স্থানীয় ছবি আছে। সেইবোৰ এই কম্পিউটাৰৰ ফাইল, গতিকে টোকাৰ পাঠকসকলে সেইবোৰ দেখা নাপাব। প্ৰথমে সেইবোৰ আপলোড কৰিবনে?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>প্ৰথমে আপলোড কৰক</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>তথাপি ভাগ কৰক</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>সেইবোৰৰ {0}টা এই কনফিগাৰেচনেৰে আগতে আপলোড কৰা হৈছিল, গতিকে সেইবোৰৰ আগৰ ঠিকনা ব্যৱহাৰ কৰা হ'ল।</value>
   </data>
 </root>

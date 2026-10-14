@@ -19,6 +19,7 @@ import emoji from './emoji'
 import inlineCode from './inlineCode'
 import text from './text'
 import del from './del'
+import mark from './mark'
 import em from './em'
 import strong from './strong'
 import htmlEscape from './htmlEscape'
@@ -52,6 +53,7 @@ export default {
   inlineCode,
   text,
   del,
+  mark,
   em,
   strong,
   htmlEscape,

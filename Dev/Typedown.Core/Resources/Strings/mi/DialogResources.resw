@@ -133,10 +133,6 @@
     <value>Ka pai</value>
     <comment>对话框/确定</comment>
   </data>
-  <data name="ContentCanNotBeBlank" xml:space="preserve">
-    <value>Kāore e taea te putua ngā ihirangi</value>
-    <comment>对话框/内容不能为空</comment>
-  </data>
   <data name="CreateDocErrorTitle" xml:space="preserve">
     <value>I rahua te waihanga tuhinga hōu</value>
     <comment>创建文件对话框/新建文档失败</comment>
@@ -160,10 +156,6 @@
   <data name="ExportErrorTitle" xml:space="preserve">
     <value>I rahua te kaweake</value>
     <comment>文件导出对话框/导出失败</comment>
-  </data>
-  <data name="FeedbackTitle" xml:space="preserve">
-    <value>Whakahoki kōrero</value>
-    <comment>反馈对话框/反馈</comment>
   </data>
   <data name="ImportErrorTitle" xml:space="preserve">
     <value>I rahua te kawemai</value>
@@ -225,14 +217,6 @@
     <value>Kei te nohoia te kī pokatata</value>
     <comment>快捷键已被占用</comment>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Whakaurungia</value>
-    <comment>反馈对话框/提交</comment>
-  </data>
-  <data name="SubmittedSuccessfully" xml:space="preserve">
-    <value>Kua momoho te tukunga</value>
-    <comment>反馈对话框/提交成功</comment>
-  </data>
   <data name="UploadFailedTitle" xml:space="preserve">
     <value>I rahua te tukuatu</value>
     <comment>上传失败</comment>
@@ -248,5 +232,101 @@
   <data name="WebView2RuntimeNotInstalledTitle" xml:space="preserve">
     <value>Kāore i Tāutahia te Wāhaere WebView2</value>
     <comment>环境检查对话框/WebView2 运行时未安装</comment>
+  </data>
+  <data name="HedgeDocShare.ChangedPrompt" xml:space="preserve">
+    <value>I tiritiria tēnei tuhinga i mua engari kua rerekē mai i tērā wā. Kāore e taea e HedgeDoc 1.x te whakahou i tētahi tuhipoka e noho ana, nō reira ka hangaia he tuhipoka hou me tētahi hono hou.</value>
+  </data>
+  <data name="HedgeDocShare.CopyLink" xml:space="preserve">
+    <value>Tāruatia te hono</value>
+  </data>
+  <data name="HedgeDocShare.EditLink" xml:space="preserve">
+    <value>Hono ka taea te whakatika</value>
+  </data>
+  <data name="HedgeDocShare.EditableWarning" xml:space="preserve">
+    <value>Ka taea e te tangata whai hono te whakatika i te tuhipoka.</value>
+  </data>
+  <data name="HedgeDocShare.NotConfigured" xml:space="preserve">
+    <value>Tautuhia tuatahi te wāhitau tūmau HedgeDoc i Tautuhinga → Kaweake.</value>
+  </data>
+  <data name="HedgeDocShare.OpenInBrowser" xml:space="preserve">
+    <value>Whakatuwherahia i te pūtirotiro</value>
+  </data>
+  <data name="HedgeDocShare.ReUpload" xml:space="preserve">
+    <value>Tukuna anō (hono hou)</value>
+  </data>
+  <data name="HedgeDocShare.ReadOnlyLink" xml:space="preserve">
+    <value>Hono pānui-anake</value>
+  </data>
+  <data name="HedgeDocShare.ResultTitle" xml:space="preserve">
+    <value>Kua tiritiria ki HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Unchanged" xml:space="preserve">
+    <value>Kāore te tuhinga i rerekē mai i te tiritiri whakamutunga; koinei ngā hono e noho ana.</value>
+  </data>
+  <data name="HedgeDocShare.UseOldLink" xml:space="preserve">
+    <value>Whakamahia te hono o mua</value>
+  </data>
+  <data name="Keep" xml:space="preserve">
+    <value>Puritia</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Uta anō</value>
+  </data>
+  <data name="ReloadFromDiskContent" xml:space="preserve">
+    <value>Kua rerekē te kōnae i te kōpae. Mā te uta anō ka ngaro ngā huringa kāore anō kia tiakina.</value>
+  </data>
+  <data name="ReloadFromDiskContentClean" xml:space="preserve">
+    <value>Kua rerekē te kōnae i te kōpae. Utaina anō?</value>
+  </data>
+  <data name="ReloadFromDiskTitle" xml:space="preserve">
+    <value>Kua rerekē te kōnae i te kōpae</value>
+  </data>
+  <data name="UploadImages.Title" xml:space="preserve">
+    <value>Tukuatu atahanga paetata</value>
+  </data>
+  <data name="UploadImages.Progress" xml:space="preserve">
+    <value>E tukuatu ana i te atahanga {0} o {1}…</value>
+  </data>
+  <data name="UploadImages.Done" xml:space="preserve">
+    <value>Kua tukuatuhia ngā atahanga {0} o {1}. Ko ō rātou wāhitau i te tuhinga ka tohu ināianei ki ngā tārua kua tukuatuhia; mā te Wete e whakahoki ngā ara paetata.</value>
+  </data>
+  <data name="UploadImages.Cancelled" xml:space="preserve">
+    <value>Kua whakakorea. Kua tukuatuhia ngā atahanga {0} o {1}, ā, kua hurihia ō rātou wāhitau i te tuhinga.</value>
+  </data>
+  <data name="UploadImages.NotUploaded" xml:space="preserve">
+    <value>Kāore i hurihia:</value>
+  </data>
+  <data name="UploadImages.None" xml:space="preserve">
+    <value>Kāore he atahanga paetata i tēnei tuhinga.</value>
+  </data>
+  <data name="UploadImages.NoConfig" xml:space="preserve">
+    <value>Kāore he whirihoranga tukuatu kua kōwhiria. Kōwhiria tētahi i Ngā Tautuhinga &gt; Atahanga &gt; Tukuatu mā.</value>
+  </data>
+  <data name="UploadImages.OpenSettings" xml:space="preserve">
+    <value>Huakina ngā tautuhinga</value>
+  </data>
+  <data name="UploadImages.FileNotFound" xml:space="preserve">
+    <value>Kāore i kitea te kōnae.</value>
+  </data>
+  <data name="UploadImages.NoAddress" xml:space="preserve">
+    <value>Kāore te tukuatu i whakahoki wāhitau.</value>
+  </data>
+  <data name="UploadImages.DocumentClosed" xml:space="preserve">
+    <value>I katia te tuhinga i te wā o te tukuatu.</value>
+  </data>
+  <data name="UploadImages.ApplyFailed" xml:space="preserve">
+    <value>Kāore i taea te huri i te tuhinga. Kei te ipurangi te atahanga i</value>
+  </data>
+  <data name="UploadImages.HedgeDocPrompt" xml:space="preserve">
+    <value>He {0} ngā atahanga paetata i tēnei tuhinga. He kōnae ēnei kei tēnei rorohiko, nō reira kāore e kitea e ngā kaipānui o te tuhipoka. Me tukuatu tuatahi?</value>
+  </data>
+  <data name="UploadImages.UploadFirst" xml:space="preserve">
+    <value>Tukuatu tuatahi</value>
+  </data>
+  <data name="UploadImages.ShareAnyway" xml:space="preserve">
+    <value>Tiri ahakoa</value>
+  </data>
+  <data name="UploadImages.Reused" xml:space="preserve">
+    <value>Kua tukuatuhia kētia te {0} o ēnei ki tēnei whirihoranga i mua, nā reira i whakamahia ō rātou wāhitau o mua.</value>
   </data>
 </root>

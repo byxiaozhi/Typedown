@@ -137,18 +137,6 @@
     <value>Αποστολή σχολίων</value>
     <comment>关于/发送反馈</comment>
   </data>
-  <data name="About.SendFeedbackDialog.Contact.Header" xml:space="preserve">
-    <value>Επαφή</value>
-    <comment>关于/联系方式</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Contact.Placeholder" xml:space="preserve">
-    <value>Email</value>
-    <comment>关于/Email</comment>
-  </data>
-  <data name="About.SendFeedbackDialog.Content.Placeholder" xml:space="preserve">
-    <value>Λαμβάνουμε πολύ σοβαρά υπόψη τα σχόλιά σας</value>
-    <comment>关于/我们会非常重视您填写的内容</comment>
-  </data>
   <data name="About.Title" xml:space="preserve">
     <value>Περίπου</value>
     <comment>关于/关于</comment>
@@ -204,6 +192,14 @@
   <data name="Editor.FontSize.Title" xml:space="preserve">
     <value>Μέγεθος γραμματοσειράς</value>
     <comment>编辑器/字体大小</comment>
+  </data>
+  <data name="Editor.FontFamily.Description" xml:space="preserve">
+    <value>Font used in the editor</value>
+    <comment>编辑器/编辑器使用的字体</comment>
+  </data>
+  <data name="Editor.FontFamily.Title" xml:space="preserve">
+    <value>Font family</value>
+    <comment>编辑器/字体</comment>
   </data>
   <data name="Editor.LineHeight.Description" xml:space="preserve">
     <value>Πολλαπλάσια ύψος γραμμής επεξεργαστή</value>
@@ -462,7 +458,7 @@
     <comment>图片/Git</comment>
   </data>
   <data name="ImageUpload.Methods.OSS" xml:space="preserve">
-    <value>ΥΜΣ</value>
+    <value>S3 / R2 / OSS / COS</value>
     <comment>图片/OSS</comment>
   </data>
   <data name="ImageUpload.Methods.PowerShell" xml:space="preserve">
@@ -573,10 +569,6 @@
     <value>Εικόνα προχείρου</value>
     <comment>图片/剪贴板图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Clipboard.UseConfig.Title" xml:space="preserve">
-    <value>Ρύθμιση παραμέτρων μεταφόρτωσης εικόνας προχείρου</value>
-    <comment>图片/剪贴板图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Description" xml:space="preserve">
     <value>Ενέργεια που εκτελείται κατά την εισαγωγή εικόνων</value>
     <comment>图片/当插入图片时执行的操作</comment>
@@ -589,10 +581,6 @@
     <value>Τοπική εικόνα</value>
     <comment>图片/本地图片</comment>
   </data>
-  <data name="View.Image.InsertAction.Local.UseConfig.Title" xml:space="preserve">
-    <value>Διαμόρφωση τοπικής μεταφόρτωσης εικόνων</value>
-    <comment>图片/本地图片使用上传配置</comment>
-  </data>
   <data name="View.Image.InsertAction.Title" xml:space="preserve">
     <value>Ενέργεια εισαγωγής εικόνας</value>
     <comment>图片/图片插入操作</comment>
@@ -604,10 +592,6 @@
   <data name="View.Image.InsertAction.Web.Title" xml:space="preserve">
     <value>Εικόνα ιστού</value>
     <comment>图片/网络图片</comment>
-  </data>
-  <data name="View.Image.InsertAction.Web.UseConfig.Title" xml:space="preserve">
-    <value>Διαμόρφωση μεταφόρτωσης εικόνων ιστού</value>
-    <comment>图片/网络图片使用上传配置</comment>
   </data>
   <data name="View.Image.PreferRelativeImagePaths.Description" xml:space="preserve">
     <value>Προτιμήστε να χρησιμοποιείτε σχετική διαδρομή κατά την εισαγωγή εικόνων</value>
@@ -680,5 +664,235 @@
   <data name="View.Window" xml:space="preserve">
     <value>Παράθυρο</value>
     <comment>视图/窗口</comment>
+  </data>
+  <data name="Editor.FontFamily.Placeholder" xml:space="preserve">
+    <value>Προεπιλογή</value>
+  </data>
+  <data name="Editor.ListIndentation.Description" xml:space="preserve">
+    <value>Η εσοχή που γράφεται για ένθετα στοιχεία λίστας. Τα 4 κενά ταιριάζουν με το Obsidian και τους περισσότερους άλλους επεξεργαστές</value>
+  </data>
+  <data name="Editor.ListIndentation.Dfm" xml:space="preserve">
+    <value>Εσοχή 4 κενών (πρότυπο Markdown)</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces1" xml:space="preserve">
+    <value>1 κενό μετά τον δείκτη</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces2" xml:space="preserve">
+    <value>2 κενά μετά τον δείκτη</value>
+  </data>
+  <data name="Editor.ListIndentation.Spaces4" xml:space="preserve">
+    <value>4 κενά μετά τον δείκτη</value>
+  </data>
+  <data name="Editor.ListIndentation.Title" xml:space="preserve">
+    <value>Εσοχή λιστών</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Description" xml:space="preserve">
+    <value>Εισαγωγή κενής γραμμής ανάμεσα σε νέα στοιχεία λίστας στον πηγαίο κώδικα</value>
+  </data>
+  <data name="Editor.PreferLooseListItem.Title" xml:space="preserve">
+    <value>Χαλαρά στοιχεία λίστας</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Description" xml:space="preserve">
+    <value>Εμφάνιση του τύπου μπλοκ (P, H1, ...) δίπλα στην τρέχουσα παράγραφο</value>
+  </data>
+  <data name="Editor.ShowParagraphMarker.Title" xml:space="preserve">
+    <value>Δείκτης παραγράφου</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Description" xml:space="preserve">
+    <value>Συμπλήρωση των κελιών ώστε οι στήλες να ευθυγραμμίζονται στον πηγαίο κώδικα Markdown. Απενεργοποιήστε το για συμπαγείς πίνακες (λιγότερα tokens για εργαλεία AI)</value>
+  </data>
+  <data name="Editor.TableAlignColumns.Title" xml:space="preserve">
+    <value>Ευθυγράμμιση στηλών πίνακα</value>
+  </data>
+  <data name="Editor.TextDirection.Auto" xml:space="preserve">
+    <value>Αυτόματος εντοπισμός ανά παράγραφο</value>
+  </data>
+  <data name="Editor.TextDirection.Description" xml:space="preserve">
+    <value>Κατεύθυνση κειμένου στον επεξεργαστή· χρήσιμη για αραβικά, εβραϊκά και άλλες γλώσσες από δεξιά προς αριστερά</value>
+  </data>
+  <data name="Editor.TextDirection.Ltr" xml:space="preserve">
+    <value>Από αριστερά προς δεξιά</value>
+  </data>
+  <data name="Editor.TextDirection.Rtl" xml:space="preserve">
+    <value>Από δεξιά προς αριστερά</value>
+  </data>
+  <data name="Editor.TextDirection.Title" xml:space="preserve">
+    <value>Κατεύθυνση κειμένου</value>
+  </data>
+  <data name="General.AskBeforeReload.Description" xml:space="preserve">
+    <value>Αν είναι ανενεργό, επαναφόρτωση χωρίς ερώτηση εκτός αν υπάρχουν μη αποθηκευμένες αλλαγές</value>
+  </data>
+  <data name="General.AskBeforeReload.Title" xml:space="preserve">
+    <value>Ερώτηση πριν την επαναφόρτωση</value>
+  </data>
+  <data name="General.AutoReload.Description" xml:space="preserve">
+    <value>Παρακολούθηση του ανοιχτού αρχείου και ανανέωση όταν το αλλάζει άλλο πρόγραμμα</value>
+  </data>
+  <data name="General.AutoReload.Title" xml:space="preserve">
+    <value>Αυτόματη επαναφόρτωση σε εξωτερική αλλαγή</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Description" xml:space="preserve">
+    <value>Τα αρχεία που ανοίγουν από την Εξερεύνηση ανοίγουν ως καρτέλα στο τρέχον παράθυρο· ανενεργό ανοίγει νέο παράθυρο</value>
+  </data>
+  <data name="General.OpenFilesInNewTab.Title" xml:space="preserve">
+    <value>Άνοιγμα αρχείων σε καρτέλες</value>
+  </data>
+  <data name="General.RememberCursorPosition.Description" xml:space="preserve">
+    <value>Άνοιγμα εγγράφων από εκεί που σταματήσατε</value>
+  </data>
+  <data name="General.RememberCursorPosition.Title" xml:space="preserve">
+    <value>Απομνημόνευση θέσης δρομέα</value>
+  </data>
+  <data name="General.StartupAction.FileStartupAction.RestoreSession" xml:space="preserve">
+    <value>Επαναφορά όλων των εγγράφων της τελευταίας συνεδρίας</value>
+  </data>
+  <data name="HedgeDocShare.Email.Description" xml:space="preserve">
+    <value>Αφήστε το κενό για ανώνυμες σημειώσεις· με λογαριασμό η σημείωση ανήκει σε εσάς</value>
+  </data>
+  <data name="HedgeDocShare.Email.Title" xml:space="preserve">
+    <value>Email (προαιρετικό)</value>
+  </data>
+  <data name="HedgeDocShare.Password.Title" xml:space="preserve">
+    <value>Κωδικός πρόσβασης</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Description" xml:space="preserve">
+    <value>Δημοσιεύει τη σημείωση (/s/…) ώστε ο κοινόχρηστος σύνδεσμος να μην μπορεί να επεξεργαστεί</value>
+  </data>
+  <data name="HedgeDocShare.Publish.Title" xml:space="preserve">
+    <value>Δημοσίευση και συνδέσμου μόνο για ανάγνωση</value>
+  </data>
+  <data name="HedgeDocShare.Section" xml:space="preserve">
+    <value>Κοινοποίηση στο HedgeDoc</value>
+  </data>
+  <data name="HedgeDocShare.Server.Description" xml:space="preserve">
+    <value>Διεύθυνση HedgeDoc 1.x, π.χ. https://md.example.com</value>
+  </data>
+  <data name="HedgeDocShare.Server.Title" xml:space="preserve">
+    <value>Διακομιστής</value>
+  </data>
+  <data name="HedgeDocShare.TestButton" xml:space="preserve">
+    <value>Δοκιμή</value>
+  </data>
+  <data name="HedgeDocShare.TestTitle" xml:space="preserve">
+    <value>Δοκιμή σύνδεσης</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Description" xml:space="preserve">
+    <value>Εμφάνιση της γραμμής καρτελών ακόμη και με ένα μόνο ανοιχτό έγγραφο</value>
+  </data>
+  <data name="View.AlwaysShowTabBar.Title" xml:space="preserve">
+    <value>Πάντα εμφάνιση καρτελών</value>
+  </data>
+  <data name="View.AppTheme.Black" xml:space="preserve">
+    <value>Μαύρο (OLED)</value>
+  </data>
+  <data name="View.CustomCss.Description" xml:space="preserve">
+    <value>Επιπλέον στυλ για τον επεξεργαστή και το εξαγόμενο HTML/PDF</value>
+  </data>
+  <data name="View.CustomCss.Placeholder" xml:space="preserve">
+    <value>π.χ. .markdown-body h1 { color: #c00; }  ή  :root { --editorBgColor: #111; }</value>
+  </data>
+  <data name="View.CustomCss.Title" xml:space="preserve">
+    <value>Προσαρμοσμένο CSS</value>
+  </data>
+  <data name="View.CustomTheme.Description" xml:space="preserve">
+    <value>Ένα θέμα είναι ένα αρχείο CSS στον φάκελο θεμάτων· δείτε docs/custom-theme.md</value>
+  </data>
+  <data name="View.CustomTheme.Document" xml:space="preserve">
+    <value>Πώς να γράψετε ένα</value>
+  </data>
+  <data name="View.CustomTheme.Folder" xml:space="preserve">
+    <value>Τα θέματα είναι αρχεία CSS σε αυτόν τον φάκελο· το έγγραφο εξηγεί τη μορφή.</value>
+  </data>
+  <data name="View.CustomTheme.None" xml:space="preserve">
+    <value>(κανένα)</value>
+  </data>
+  <data name="View.CustomTheme.OpenFolder" xml:space="preserve">
+    <value>Άνοιγμα του φακέλου θεμάτων</value>
+  </data>
+  <data name="View.CustomTheme.Refresh" xml:space="preserve">
+    <value>Επαναφόρτωση θεμάτων</value>
+  </data>
+  <data name="View.CustomTheme.Title" xml:space="preserve">
+    <value>Προσαρμοσμένο θέμα</value>
+  </data>
+  <data name="View.Image.CopyPath.Placeholder" xml:space="preserve">
+    <value>π.χ. ./${filename}.assets — μεταβλητές: ${filename} ${filedir} ${year} ${month} ${day}</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Description" xml:space="preserve">
+    <value>Ποια σελίδα δείχνει το πλαϊνό πλαίσιο κατά την εκκίνηση</value>
+  </data>
+  <data name="View.SidePaneDefaultPage.Title" xml:space="preserve">
+    <value>Προεπιλεγμένη σελίδα πλαϊνού πλαισίου</value>
+  </data>
+  <data name="General.LocalAutomation.Title" xml:space="preserve">
+    <value>Να επιτρέπεται ο τοπικός αυτοματισμός</value>
+  </data>
+  <data name="General.LocalAutomation.Description" xml:space="preserve">
+    <value>Τα προγράμματα που εκτελείτε σε αυτόν τον υπολογιστή μπορούν να διαβάζουν και να επεξεργάζονται τα ανοιχτά έγγραφα. Ο τίτλος του παραθύρου δείχνει πότε είναι συνδεδεμένο κάποιο.</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Title" xml:space="preserve">
+    <value>Επισήμανση αλλαγών από προγράμματα</value>
+  </data>
+  <data name="General.HighlightAutomationChanges.Description" xml:space="preserve">
+    <value>Επισημαίνει για λίγο το κείμενο που άλλαξε ένα συνδεδεμένο πρόγραμμα, ώστε να βλέπετε τι άλλαξε.</value>
+  </data>
+  <data name="Editor.RenderPlantUml.Title" xml:space="preserve">
+    <value>Σχεδίαση διαγραμμάτων PlantUML</value>
+    <comment>编辑器/绘制 PlantUML 图表</comment>
+  </data>
+  <data name="Editor.RenderPlantUml.Description" xml:space="preserve">
+    <value>Στέλνει τον κώδικα του διαγράμματος στο plantuml.com για να σχεδιαστεί</value>
+    <comment>编辑器/绘制 PlantUML 图表：说明（源码会发送到 plantuml.com）</comment>
+  </data>
+  <data name="View.Image.UploadWith.Title" xml:space="preserve">
+    <value>Μεταφόρτωση με</value>
+  </data>
+  <data name="View.Image.UploadWith.Description" xml:space="preserve">
+    <value>Η διαμόρφωση μεταφόρτωσης που χρησιμοποιείται για εισαγόμενες εικόνες με ενέργεια Μεταφόρτωση και από το Αρχείο &gt; Μεταφόρτωση τοπικών εικόνων</value>
+  </data>
+  <data name="ImageUpload.S3.KeyPrefix" xml:space="preserve">
+    <value>Φάκελος στο bucket</value>
+  </data>
+  <data name="ImageUpload.S3.PublicUrl" xml:space="preserve">
+    <value>Δημόσια URL</value>
+  </data>
+  <data name="ImageUpload.S3.PathStyle" xml:space="preserve">
+    <value>Διευθύνσεις τύπου διαδρομής (MinIO και ορισμένοι πάροχοι)</value>
+  </data>
+  <data name="ImageUpload.S3.Incomplete" xml:space="preserve">
+    <value>Η διαμόρφωση S3 είναι ελλιπής: συμπληρώστε Endpoint, Bucket, Access Key ID και Secret Access Key.</value>
+  </data>
+  <data name="View.Image.UploadHistory.Title" xml:space="preserve">
+    <value>Ιστορικό μεταφορτώσεων</value>
+  </data>
+  <data name="View.Image.UploadHistory.Description" xml:space="preserve">
+    <value>Μια εικόνα που έχει ήδη μεταφορτωθεί με την ίδια διαμόρφωση δεν μεταφορτώνεται ξανά· χρησιμοποιείται η προηγούμενη διεύθυνσή της ({0} αποθηκευμένες). Εκκαθαρίστε το ιστορικό αφού διαγράψετε μεταφορτωμένα αρχεία.</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Title" xml:space="preserve">
+    <value>Διακομιστής PlantUML</value>
+  </data>
+  <data name="Editor.PlantUmlServer.Description" xml:space="preserve">
+    <value>Διεύθυνση του διακομιστή PlantUML (plantuml-server) που σχεδιάζει τα διαγράμματα. Κενό: plantuml.com. Με δικό σας διακομιστή, ο κώδικας των διαγραμμάτων μένει σε εσάς.</value>
+  </data>
+  <data name="Editor.VimMode.Title" xml:space="preserve">
+    <value>Πλήκτρα Vim</value>
+  </data>
+  <data name="Editor.VimMode.Description" xml:space="preserve">
+    <value>Vim στη λειτουργία πηγαίου κώδικα (:w αποθήκευση, :q κλείσιμο καρτέλας)· j/k, gg/G, ]] και / για μετακίνηση στη λειτουργία ανάγνωσης. Όχι στον οπτικό επεξεργαστή.</value>
+  </data>
+  <data name="About.OpenLogFolder" xml:space="preserve">
+    <value>Άνοιγμα φακέλου αρχείων καταγραφής</value>
+  </data>
+  <data name="Export.AfterExport.Title" xml:space="preserve">
+    <value>Μετά την εξαγωγή</value>
+  </data>
+  <data name="Export.AfterExport.Notify" xml:space="preserve">
+    <value>Εμφάνιση θέσης αποθήκευσης</value>
+  </data>
+  <data name="Export.AfterExport.OpenFile" xml:space="preserve">
+    <value>Άνοιγμα του αρχείου</value>
+  </data>
+  <data name="Export.AfterExport.OpenFolder" xml:space="preserve">
+    <value>Άνοιγμα του φακέλου του</value>
   </data>
 </root>

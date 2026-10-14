@@ -729,10 +729,6 @@
     <value>Citata</value>
     <comment>段落/引用</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Reitingas</value>
-    <comment>反馈/评分</comment>
-  </data>
   <data name="Redo" xml:space="preserve">
     <value>Perdaryti</value>
     <comment>编辑/重做</comment>
@@ -932,5 +928,88 @@
   <data name="Zoom" xml:space="preserve">
     <value>Keisti mastelį</value>
     <comment>字体缩放</comment>
+  </data>
+  <data name="FolderPane.NoFolderOpen" xml:space="preserve">
+    <value>Nėra atverto aplanko. Atverkite failą arba aplanką, kad galėtumėte jį naršyti čia.</value>
+  </data>
+  <data name="FolderPane.TooManyEntries" xml:space="preserve">
+    <value>Šiame aplanke yra {0} elementų — per daug, kad būtų išvardyti čia.</value>
+    <comment>文件夹/条目过多</comment>
+  </data>
+  <data name="FolderPane.NoMarkdownFiles" xml:space="preserve">
+    <value>Šiame aplanke nėra Markdown failų.</value>
+  </data>
+  <data name="FolderPane.NotFound" xml:space="preserve">
+    <value>Šio aplanko nebėra.</value>
+  </data>
+  <data name="FolderPane.RevealCurrentFile" xml:space="preserve">
+    <value>Rodyti esamo failo aplanką</value>
+  </data>
+  <data name="FolderSearch.InFolderPlaceholder" xml:space="preserve">
+    <value>Ieškoti aplanke…</value>
+  </data>
+  <data name="FolderSearch.NameMatch" xml:space="preserve">
+    <value>(atitinka failo vardą)</value>
+  </data>
+  <data name="FolderSearch.ResultSummary" xml:space="preserve">
+    <value>Rasta {0} failų iš {1} peržiūrėtų</value>
+  </data>
+  <data name="FolderSearch.Searching" xml:space="preserve">
+    <value>Ieškoma…</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Visas ekranas</value>
+  </data>
+  <data name="LastUsedTab" xml:space="preserve">
+    <value>Paskutinė naudota kortelė</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Kita kortelė</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Ankstesnė kortelė</value>
+  </data>
+  <data name="QuoteDecrease" xml:space="preserve">
+    <value>Sumažinti citatos lygį</value>
+  </data>
+  <data name="QuoteIncrease" xml:space="preserve">
+    <value>Padidinti citatos lygį</value>
+  </data>
+  <data name="ReadOnlyMode" xml:space="preserve">
+    <value>Skaitymo režimas</value>
+  </data>
+  <data name="SearchInFolder" xml:space="preserve">
+    <value>Ieškoti aplanke</value>
+  </data>
+  <data name="ShareToHedgeDoc" xml:space="preserve">
+    <value>Bendrinti į HedgeDoc…</value>
+  </data>
+  <data name="TocPane.CollapseAll" xml:space="preserve">
+    <value>Sutraukti viską</value>
+  </data>
+  <data name="TocPane.ExpandAll" xml:space="preserve">
+    <value>Išskleisti viską</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Be pavadinimo</value>
+  </data>
+  <data name="AutomationConnected" xml:space="preserve">
+    <value>Automatizavimas prijungtas</value>
+  </data>
+  <data name="AutomationWrote" xml:space="preserve">
+    <value>{0} redagavo {1}</value>
+  </data>
+  <data name="FirstEditWarning" xml:space="preserve">
+    <value>Redaguojant vaizdiniu režimu gali būti perrašyta dalis šio dokumento HTML. Kad jis liktų nepakitęs, redaguokite šaltinio režimu.</value>
+  </data>
+  <data name="PlantUmlOff" xml:space="preserve">
+    <value>PlantUML diagramos išjungtos (piešiant šaltinis siunčiamas į plantuml.com). Įjunkite jas skiltyje Nustatymai &gt; Redaktorius.</value>
+    <comment>编辑器页面：PlantUML 绘制关闭时代替图表的提示</comment>
+  </data>
+  <data name="UploadLocalImages" xml:space="preserve">
+    <value>Įkelti vietinius vaizdus</value>
+  </data>
+  <data name="ExportedTo" xml:space="preserve">
+    <value>Eksportuota į {0}</value>
   </data>
 </root>
