@@ -22,6 +22,9 @@ namespace Typedown.Core.Models
         readonly List<HistoryModel> histories = new();
         HistoryModel pending = new();
         int index = -1;
+        // The caret last reported. Source mode reports it before the change it goes with: a change then had no caret, was
+        // never a step (a step needs both), and an undo went past it - the letter just typed and the step before (KY01).
+        CursorState lastCursor;
         private readonly DispatcherTimer commitTimer = new();
 
         public bool Undoable { get; set; }
@@ -78,6 +81,7 @@ namespace Typedown.Core.Models
         {
             try
             {
+                lastCursor = null;
                 histories.Clear();
                 totalChars = 0;
                 commitTimer.Stop();
@@ -131,6 +135,7 @@ namespace Typedown.Core.Models
         {
             try
             {
+                if (cursor != null) lastCursor = cursor;
                 if (pending.Text == null && index > -1)
                 {
                     histories[index].Cursor = cursor;
@@ -188,6 +193,7 @@ namespace Typedown.Core.Models
                     return;
                 }
                 pending.Text = content;
+                pending.Cursor ??= lastCursor;
                 if (pending.Cursor != null && histories.Count == 0)
                 {
                     CommitPending();
