@@ -13,6 +13,14 @@ const getCurrentLevel = type => {
   }
 }
 
+// Whether a heading command turns a paragraph into a heading (`upgrade heading` from a paragraph makes an h6).
+const newTypeIsHeading = (paraType, parent) => {
+  if (/\d/.test(paraType)) return true
+  if (paraType === 'upgrade heading') return true
+  if (paraType === 'degrade heading') return getCurrentLevel(parent.type) !== 0
+  return false
+}
+
 const paragraphCtrl = ContentState => {
   ContentState.prototype.selectionChange = function (cursor) {
     const { start, end } = cursor || selection.getCursorRange()
@@ -54,8 +62,9 @@ const paragraphCtrl = ContentState => {
     }
   }
 
+  // From the cursor the command works on (trimmed by trimBlockSelection), not from the page's selection.
   ContentState.prototype.getCommonParent = function () {
-    const { start, end, affiliation } = this.selectionChange()
+    const { start, end, affiliation } = this.selectionChange(this.cursor)
     const parent = affiliation.length ? affiliation[0] : null
     const startBlock = this.getBlock(start.key)
     const endBlock = this.getBlock(end.key)
@@ -464,7 +473,28 @@ const paragraphCtrl = ContentState => {
     }
   }
 
+  // A selection made with Shift+Down, or by dragging to the start of the next line, ends at offset 0 of the block
+  // after the one the reader meant; one started at the very end of a block begins in the block before. Neither of
+  // those blocks has any of its text selected, so a paragraph command must leave it alone: quoting two paragraphs
+  // quoted the third as well, and turning a paragraph into a heading did nothing at all.
+  ContentState.prototype.trimBlockSelection = function () {
+    const cursor = this.cursor || {}
+    let { start, end } = cursor
+    if (!start || !end || start.key === end.key) return
+    if (end.offset === 0) {
+      const prev = this.findPreBlockInLocation(this.getBlock(end.key))
+      if (prev) end = { key: prev.key, offset: prev.text.length }
+    }
+    const startBlock = this.getBlock(start.key)
+    if (start.key !== end.key && startBlock && start.offset === startBlock.text.length) {
+      const next = this.findNextBlockInLocation(startBlock)
+      if (next) start = { key: next.key, offset: 0 }
+    }
+    if (start !== cursor.start || end !== cursor.end) this.cursor = { start, end }
+  }
+
   ContentState.prototype.updateParagraph = function (paraType, insertMode = false) {
+    this.trimBlockSelection()
     const { start, end } = this.cursor
     const block = this.getBlock(start.key)
     const { text, type } = block
@@ -564,6 +594,22 @@ const paragraphCtrl = ContentState => {
 
         const headingStyle = DEFAULT_TURNDOWN_CONFIG.headingStyle
         const parent = this.getParent(block)
+        // A paragraph can hold several lines (single line breaks). A heading is one line, so only the lines the
+        // selection touches become the heading; the lines above and below stay paragraphs of their own. Turning
+        // the whole paragraph into the heading changed the text around what the reader had selected.
+        let text = block.text
+        let lineStart = 0
+        let lineEnd = text.length
+        if (parent.type === 'p' && newTypeIsHeading(paraType, parent) && text.includes('\n')) {
+          lineStart = text.lastIndexOf('\n', start.offset - 1) + 1
+          const nl = text.indexOf('\n', end.offset)
+          lineEnd = nl === -1 ? text.length : nl
+          text = text.slice(lineStart, lineEnd)
+        }
+        const linesBefore = lineStart > 0 ? block.text.slice(0, lineStart - 1) : null
+        const linesAfter = lineEnd < block.text.length ? block.text.slice(lineEnd + 1) : null
+        start.offset -= lineStart
+        end.offset -= lineStart
         // \u00A0 is &nbsp;
         const [, hash, partText] = /(^ {0,3}#*[ \u00A0]*)([\s\S]*)/.exec(text)
         let newLevel = 0 // 1, 2, 3, 4, 5, 6
@@ -622,6 +668,8 @@ const paragraphCtrl = ContentState => {
           key = headerContent.key
 
           this.insertBefore(header, parent)
+          if (linesBefore !== null) this.insertBefore(this.createBlockP(linesBefore), header)
+          if (linesAfter !== null) this.insertAfter(this.createBlockP(linesAfter), header)
           this.removeBlock(parent)
         } else {
           const pBlock = this.createBlockP(newText)
