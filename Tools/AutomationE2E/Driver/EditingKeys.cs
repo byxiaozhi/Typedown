@@ -24,6 +24,7 @@ internal static partial class Program
         async Task<string> Selected() => (string?)(await c.Call("test.editor.eval", new { windowId, script = "getSelection().toString()" }))["result"] ?? "";
         async Task<double> ScrollY() => (double?)(await c.Call("test.editor.eval", new { windowId, script = "window.scrollY" }))["result"] ?? -1;
 
+        await WaitUntilDrawn(c, windowId, id, "first para");
         await ClickEditorTextOnce(c, windowId, window, "first para");
         await Task.Delay(300);
         Chord("Home");
@@ -86,6 +87,7 @@ internal static partial class Program
         var id = await Open(c, Fixture("ed02.md", "# ED02\n\n| A | B |\n| --- | --- |\n| abc | d |\n| efg | h |\n\nafter\n"));
         var windowId = await WindowIdOf(c, id);
         var window = await WindowOf(windowId, c);
+        await WaitUntilDrawn(c, windowId, id, "efg");
         foreach (var (cell, modifier, typed) in new[] { ("abc", "Shift", "one"), ("efg", "Alt", "two") })
         {
             await ClickEditorTextOnce(c, windowId, window, cell);
@@ -100,5 +102,19 @@ internal static partial class Program
             notes.Add($"{modifier}+Enter in '{cell}': " + text.Replace("\n", "\\n"));
             Check(ok, $"{modifier}+Enter in a table cell puts a line break in that cell and the typing stays there");
         }
+    }
+
+    /// <summary>
+    /// Waits for the opened document to be on the page, drawn as well as loaded, before a case clicks into it: the text
+    /// first reaches the page's Markdown, then the editor draws the block. Clicking at once failed now and then with
+    /// "no paragraph with 'first para' on the page" while the document was still being shown.
+    /// </summary>
+    private static async Task WaitUntilDrawn(Client c, string windowId, string documentId, string text)
+    {
+        await WaitForPage(c, documentId, t => t.Contains(text), "the opened document");
+        var script = "[...document.querySelectorAll('#ag-editor-id p, #ag-editor-id h1, #ag-editor-id td, #ag-editor-id span.ag-paragraph')].some(x => x.textContent.includes(" + Newtonsoft.Json.JsonConvert.ToString(text) + "))";
+        var drawn = await Eventually(async () => (bool?)(await c.Call("test.editor.eval", new { windowId, script }))["result"] == true, 10000);
+        if (!drawn) throw new CaseFailed($"'{text}' was never drawn on the page; screen: {Screenshot("not-drawn-" + DateTime.Now.ToString("HHmmss"))}");
+        await Task.Delay(300);
     }
 }
