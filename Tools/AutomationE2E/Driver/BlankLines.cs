@@ -33,7 +33,11 @@ internal static partial class Program
             }
             notes.Add("after the key: " + text.Replace("\n", "\\n"));
             Check(text != source, "the key reached the document");
-            Check(text == expected, "the edit added the key and nothing else: one blank line at the start, then 2, 4, 2, 3, 5 and 2 between the blocks and one at the end, as in the file");
+            // A visual edit writes the table back in its own style (padded to the column width with "Align table columns",
+            // on by default; compact without): its cells' spacing is the table's, not a blank line, so it is compared
+            // with runs of spaces in table rows taken as one. Every line break is compared exactly.
+            static string Cells(string t) => System.Text.RegularExpressions.Regex.Replace(t, @"(?m)^\|.*$", m => System.Text.RegularExpressions.Regex.Replace(m.Value, " +", " "));
+            Check(Cells(text) == Cells(expected), "the edit added the key and nothing else: one blank line at the start, then 2, 4, 2, 3, 5 and 2 between the blocks and one at the end, as in the file");
             await c.Call("document.save", new { documentId = id });
             var saved = Disk(path);
             Check(saved == text, "the file a save writes is that text");
