@@ -146,6 +146,9 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
 - `table-backspace-check.js` — Backspace in a table cell stays in that cell: one too many after emptying a cell went on
   into the cell before (or out of the table into the heading above), deleted its text, and the typing landed there. An
   empty table still becomes a paragraph with Backspace in its first cell.
+- `table-cell-check.js` — a table cell emptied by selecting its text and deleting it, or typed over, takes what is
+  typed next; Shift+Enter and Alt+Enter put a line break (`<br/>`) in the cell, which shows as a second line and is
+  written back as it was loaded. Two Store reviews (the emptied cell, and "Alt+Enter as in Excel" for a second line).
 - `xhtml-footnote-check.js` — RenderXhtml turns numbered, named and multi-paragraph footnotes into references and
   note content for a host writing another format, even though the host does not send a footnote setting.
 - `export-anchors-check.js` — the HTML that becomes the PDF links its contents to the headings the parser rendered

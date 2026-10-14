@@ -294,7 +294,8 @@ const enterCtrl = ContentState => {
     // Insert `<br/>` in table cell if you want to open a new line.
     // Why not use `soft line break` or `hard line break` ?
     // Becasuse table cell only have one line.
-    if (event.shiftKey && block.functionType === 'cellContent') {
+    // Alt+Enter as well: that is the line break inside a cell in a spreadsheet, and a reader asked for it.
+    if ((event.shiftKey || event.altKey) && block.functionType === 'cellContent') {
       const { text, key } = block
       const brTag = '<br/>'
       block.text = text.substring(0, start.offset) + brTag + text.substring(start.offset)

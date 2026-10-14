@@ -9,6 +9,8 @@ using Newtonsoft.Json.Linq;
 /// them. Store reviews (1.x): "Ctrl+arrow keys cannot select a paragraph, only the mouse can", "Ctrl+F often does
 /// nothing", "the mouse wheel does not scroll". The page side passes headless (Chrome on Linux); what only Windows
 /// can show is whether the host lets these keys through, or takes them, and whether the wheel reaches the page.
+/// ED02: a line break inside a table cell from the keyboard - Shift+Enter, and Alt+Enter as in a spreadsheet (a review
+/// asked for it). Alt goes through the hook and the window's menu keys, so this is checked where those exist.
 /// </summary>
 internal static partial class Program
 {
@@ -76,5 +78,27 @@ internal static partial class Program
         notes.Add($"wheel: scrollY {top} -> {down} -> {back}");
         Check(down > top + 50, $"three notches down scroll the page ({top} -> {down})");
         Check(back < down - 50, $"three notches up scroll it back ({down} -> {back})");
+    }
+
+    private static async Task ED02(List<string> notes)
+    {
+        using var c = await Session("e2e ED02");
+        var id = await Open(c, Fixture("ed02.md", "# ED02\n\n| A | B |\n| --- | --- |\n| abc | d |\n| efg | h |\n\nafter\n"));
+        var windowId = await WindowIdOf(c, id);
+        var window = await WindowOf(windowId, c);
+        foreach (var (cell, modifier, typed) in new[] { ("abc", "Shift", "one"), ("efg", "Alt", "two") })
+        {
+            await ClickEditorTextOnce(c, windowId, window, cell);
+            await Task.Delay(300);
+            Chord("End");
+            await Task.Delay(150);
+            Chord($"{modifier}+Enter");
+            await Task.Delay(200);
+            Keys(new Typed(typed));
+            var text = "";
+            var ok = await Eventually(async () => (text = (string?)(await Get(c, id))["text"] ?? "").Contains($"| {cell}<br/>{typed} |"), 3000);
+            notes.Add($"{modifier}+Enter in '{cell}': " + text.Replace("\n", "\\n"));
+            Check(ok, $"{modifier}+Enter in a table cell puts a line break in that cell and the typing stays there");
+        }
     }
 }
