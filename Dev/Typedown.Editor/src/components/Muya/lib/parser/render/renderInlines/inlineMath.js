@@ -2,6 +2,7 @@ import katex from 'katex'
 // mhchem's \ce, added to the KaTeX imported above: the package's ES module build of the extension extends the
 // ES module KaTeX (its UMD file in dist/ extends the CommonJS copy, which nothing here renders with).
 import 'katex/contrib/mhchem'
+import { texColors } from '../texColors'
 import { CLASS_OR_ID } from '../../../config'
 import { htmlToVNode } from '../snabbdom'
 
@@ -32,7 +33,7 @@ export default function displayMath (h, cursor, block, token, outerClass) {
     mathVnode = loadMathMap.get(key)
   } else {
     try {
-      const html = katex.renderToString(math, {
+      const html = katex.renderToString(texColors(math), {
         displayMode
       })
       mathVnode = htmlToVNode(html)

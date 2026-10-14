@@ -128,6 +128,9 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
 - `mhchem-check.js` — chemistry with mhchem's `\ce`, inline and as a display block, renders in the editor and in
   the exports (RenderXhtml). The extension was imported as its UMD file, which registers `\ce` on the CommonJS
   copy of KaTeX while the editor and the export render with the ES module copy, so every `\ce` was invalid.
+- `math-color-check.js` — colours written as MathJax and LaTeX's xcolor take them (`\color{rgb(0,0,0)}`,
+  `\textcolor[RGB]{0,0,255}{x}`, `\colorbox{rgba(...)}`) render in the editor and in the exports; KaTeX reads only
+  names and #hex and refused the whole formula. The document keeps what was typed.
 - `reference-image-check.js` — a reference-style picture (`![alt][ref]`) loads when the document opens: its source
   text is not left marked failed once the picture is drawn, and a reference to a missing file is still marked
   failed.

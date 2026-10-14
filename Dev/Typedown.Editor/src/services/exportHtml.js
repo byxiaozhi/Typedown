@@ -4,6 +4,7 @@ import katex from 'katex'
 // mhchem's \ce, added to the KaTeX imported above: the package's ES module build of the extension extends the
 // ES module KaTeX (its UMD file in dist/ extends the CommonJS copy, which nothing here renders with).
 import 'katex/contrib/mhchem'
+import { texColors } from '../components/Muya/lib/parser/render/texColors'
 import loadRenderer from '../components/Muya/lib/renderers'
 import githubMarkdownCss from '!!raw-loader!github-markdown-css/github-markdown.css'
 import exportStyle from '!!raw-loader!../assets/styles/exportStyle.css'
@@ -336,7 +337,7 @@ class ExportHtml {
     this.mathRendererCalled = true
 
     try {
-      return katex.renderToString(math, {
+      return katex.renderToString(texColors(math), {
         displayMode
       })
     } catch (err) {

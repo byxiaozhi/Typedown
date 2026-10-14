@@ -3,6 +3,7 @@ import prism, { loadedLanguages, transformAliasToOrigin } from '../../../prism/'
 // mhchem's \ce, added to the KaTeX imported above: the package's ES module build of the extension extends the
 // ES module KaTeX (its UMD file in dist/ extends the CommonJS copy, which nothing here renders with).
 import 'katex/contrib/mhchem'
+import { texColors } from '../texColors'
 import { CLASS_OR_ID, DEVICE_MEMORY, PREVIEW_DOMPURIFY_CONFIG, HAS_TEXT_BLOCK_REG } from '../../../config'
 import { tokenizer } from '../../'
 import { snakeToCamel, sanitize, escapeHTML, getLongUniqueId, getImageInfo } from '../../../utils'
@@ -168,7 +169,7 @@ export default function renderLeafBlock (parent, block, activeBlocks, matches, u
           children = loadMathMap.get(key)
         } else {
           try {
-            const html = katex.renderToString(code, {
+            const html = katex.renderToString(texColors(code), {
               displayMode: true
             })
 
