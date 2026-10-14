@@ -211,20 +211,61 @@ const paragraphCtrl = ContentState => {
         const { parent, startIndex, endIndex } = this.getCommonParent()
         const children = parent ? parent.children : this.blocks
         const referBlock = children[endIndex]
+        const selected = children.slice(startIndex, endIndex + 1)
+        const isList = b => b.type === 'ul' || b.type === 'ol'
+
+        // Everything selected is already this kind of list: the command takes the list away, as it does for the
+        // list the caret is in.
+        if (selected.every(b => isList(b) && b.listType === listType)) {
+          for (const list of selected) {
+            for (const item of list.children) {
+              for (const itemChild of item.children) {
+                if (itemChild.type !== 'input') this.insertBefore(itemChild, list)
+              }
+            }
+            this.removeBlock(list)
+          }
+          return true
+        }
+
         const listWrapper = this.createBlock(listType === 'order' ? 'ol' : 'ul')
         listWrapper.listType = listType
         if (listType === 'order') listWrapper.start = 1
+        const marker = listType === 'order' ? orderListDelimiter : bulletListMarker
+        // One list is either tight or loose: a list in the selection decides, so adding a paragraph to a tight list
+        // does not leave a blank line before the new item alone.
+        const firstList = selected.find(isList)
+        const loose = firstList ? firstList.children.some(item => item.isLooseListItem) : preferLooseListItem
 
-        children.slice(startIndex, endIndex + 1).forEach(child => {
+        selected.forEach(child => {
           if (child !== referBlock) {
             this.removeBlock(child, children)
           } else {
             this.insertAfter(listWrapper, child)
             this.removeBlock(child, children)
           }
+          // A list in the selection lends its items to the new list instead of becoming one item holding a whole
+          // list: selecting a list and the paragraph after it and choosing "ordered list" gave "1. - a" with the
+          // paragraph as item 2.
+          if (isList(child)) {
+            for (const item of child.children.splice(0)) {
+              const first = item.children[0]
+              if (first && first.type === 'input' && listType !== 'task') this.removeBlock(first, item)
+              if (listType === 'task' && !(first && first.type === 'input')) {
+                const checkbox = this.createBlock('input')
+                checkbox.checked = false
+                this.insertBefore(checkbox, item.children[0])
+              }
+              item.listItemType = listType
+              item.bulletMarkerOrDelimiter = marker
+              item.isLooseListItem = loose
+              this.appendChild(listWrapper, item)
+            }
+            return
+          }
           const listItem = this.createBlock('li')
           listItem.listItemType = listType
-          listItem.isLooseListItem = preferLooseListItem
+          listItem.isLooseListItem = loose
           this.appendChild(listWrapper, listItem)
           if (listType === 'task') {
             const checkbox = this.createBlock('input')

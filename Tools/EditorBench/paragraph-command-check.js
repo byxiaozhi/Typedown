@@ -32,12 +32,42 @@ const cases = [
   { name: 'a selection starting at the very end of a paragraph does not take that paragraph in',
     doc: 'one\n\ntwo\n\nthree\n', click: '#ag-editor-id p.ag-paragraph', keys: ['End', 'Shift+ArrowDown', 'Shift+End'],
     cmd: 'blockquote', expect: 'one\n\n> two\n\nthree\n' },
+  // A store review: "changing the list format easily turns the text after it into a quote". The selection took in the
+  // block after the one meant (above), and a list in a selection became one item holding the whole list.
+  { name: 'a list selected and made ordered leaves the paragraph after it alone',
+    doc: '- a\n- b\n\nafter\n', click: '#ag-editor-id li p', keys: ['Control+Home', 'Shift+ArrowDown', 'Shift+End'],
+    cmd: 'ol-order', expect: '1. a\n2. b\n\nafter\n' },
+  { name: 'a list and the paragraph after it made ordered become one list, not a list inside an item',
+    doc: '- a\n- b\n\nafter\n\nlast\n', click: '#ag-editor-id li p', keys: ['Control+Home', 'Shift+ArrowDown', 'Shift+ArrowDown', 'Shift+End'],
+    cmd: 'ol-order', expect: '1. a\n2. b\n3. after\n\nlast\n' },
+  { name: 'a paragraph and the list after it made a bullet list become one list',
+    doc: 'before\n\n- a\n- b\n\nlast\n', click: '#ag-editor-id > p.ag-paragraph', keys: ['Control+Home', 'Shift+ArrowDown', 'Shift+End'],
+    cmd: 'ul-bullet', expect: '- before\n- a\n- b\n\nlast\n' },
+  { name: 'two bullet lists selected and made a bullet list again stop being lists',
+    doc: '- a\n\n* b\n\nlast\n', click: '#ag-editor-id li p', keys: ['Control+Home', 'Shift+ArrowDown', 'Shift+End'],
+    cmd: 'ul-bullet', expect: 'a\n\nb\n\nlast\n' },
+  { name: 'two lists and the paragraph between them made a bullet list become one list',
+    doc: '- a\n- b\n\npara\n\n- c\n\nlast\n', click: '#ag-editor-id li p', keys: ['Control+Home', 'Shift+ArrowDown', 'Shift+ArrowDown', 'Shift+ArrowDown', 'Shift+End'],
+    cmd: 'ul-bullet', expect: '- a\n- b\n- para\n- c\n\nlast\n' },
+  { name: 'a task list and a paragraph made a task list keep one checkbox each',
+    doc: '- [x] a\n\nafter\n', click: '#ag-editor-id li p', keys: ['drag:#ag-editor-id li p|#ag-editor-id > p.ag-paragraph'],
+    cmd: 'ul-task', expect: '- [x] a\n- [ ] after\n' },
 ];
 
 (async () => {
   const { page, mode, load, flush, pause, close, errors } = await openEditor();
   let ok = true;
   const press = async k => {
+    // 'drag:<from>|<to>' selects with the mouse from the start of one element's text to the end of another's.
+    if (k.startsWith('drag:')) {
+      const [from, to] = k.slice(5).split('|');
+      const a = await page.$eval(from, e => { const r = document.createRange(); r.selectNodeContents(e); const b = r.getClientRects()[0]; return { x: b.left + 1, y: b.top + b.height / 2 }; });
+      const b = await page.$eval(to, e => { const r = document.createRange(); r.selectNodeContents(e); const l = [...r.getClientRects()].pop(); return { x: l.right - 1, y: l.top + l.height / 2 }; });
+      await page.mouse.move(a.x, a.y); await page.mouse.down();
+      await page.mouse.move(b.x, b.y, { steps: 10 }); await page.mouse.up();
+      await pause(150);
+      return;
+    }
     const parts = k.split('+');
     for (const p of parts.slice(0, -1)) await page.keyboard.down(p);
     await page.keyboard.press(parts[parts.length - 1]);

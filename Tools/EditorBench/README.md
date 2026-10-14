@@ -198,7 +198,10 @@ Other checks (all take `STATICS=<dir>` or default to the built editor):
   the line the caret is on and leaves the lines around it as paragraphs; it used to join the whole paragraph into
   the heading. A selection made with Shift+Down ends at the start of the next block, and one started at the very end
   of a block begins in the block before: neither block has anything selected and neither is changed (quoting two
-  paragraphs quoted the third, and a heading command on such a selection did nothing). A Store review.
+  paragraphs quoted the third, and a heading command on such a selection did nothing). A list in a selection made
+  into a list gives its items to the new list instead of becoming one item holding the whole list ("1. - a", with
+  the paragraph after it as item 2), and lists of the kind chosen, all of the selection, stop being lists. Two
+  Store reviews (the second: "changing the list format easily turns the text after it into a quote").
 - `legacy-issues.js` — the issues reported against the original Typedown, in one run: raw html renders with its
   inline CSS, a code block is in the saved markdown the moment it is typed, a table cell whose text is selected
   and deleted still takes input, PageUp/PageDown keep moving.
