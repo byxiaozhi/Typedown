@@ -24,6 +24,8 @@ namespace Typedown.WinUI
     {
         private List<PaletteEntry> paletteAll = new();
         private int paletteRequest;
+        // Where the keyboard was when the palette opened over the Settings page: it goes back there, not to the text.
+        private Control paletteReturnFocus;
 
         private void CommandPaletteMenuItem_Click(object sender, RoutedEventArgs e) => ShowCommandPalette();
 
@@ -36,6 +38,7 @@ namespace Typedown.WinUI
         private void ShowCommandPalette()
         {
             Log("ShowCommandPalette called");
+            paletteReturnFocus = SettingsPageShown ? FocusManager.GetFocusedElement(Content.XamlRoot) as Control : null;
             paletteAll = CollectPaletteCommands();
             PaletteTextBox.Text = "";
             UpdatePaletteResults("");
@@ -166,6 +169,17 @@ namespace Typedown.WinUI
         private void ClosePalette()
         {
             HidePalette();
+            GiveFocusBack();
+        }
+
+        // The keyboard goes back where it was: to the Settings control when the palette was opened over that page, else to the text.
+        private void GiveFocusBack()
+        {
+            if (SettingsPageShown)
+            {
+                paletteReturnFocus?.Focus(FocusState.Programmatic);
+                return;
+            }
             EditorView.Focus(FocusState.Programmatic);
             _ = FocusEditorTextAsync(findRequest);
         }
@@ -196,8 +210,12 @@ namespace Typedown.WinUI
             var request = ++paletteRequest;
             HidePalette();
             RememberPaletteEntry(entry);
-            EditorView.Focus(FocusState.Programmatic);
-            await FocusEditorTextAsync(findRequest);
+            if (SettingsPageShown) paletteReturnFocus?.Focus(FocusState.Programmatic);
+            else
+            {
+                EditorView.Focus(FocusState.Programmatic);
+                await FocusEditorTextAsync(findRequest);
+            }
             if (request != paletteRequest) return;
             try
             {
