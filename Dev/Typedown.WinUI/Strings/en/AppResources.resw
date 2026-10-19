@@ -2782,4 +2782,10 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="PalettePrintSystem" xml:space="preserve">
     <value>Print using the system dialog...</value>
   </data>
+  <data name="ShortcutCommandPalette" xml:space="preserve">
+    <value>Command palette</value>
+  </data>
+  <data name="ShortcutFindNext" xml:space="preserve">
+    <value>Next / previous match</value>
+  </data>
 </root>

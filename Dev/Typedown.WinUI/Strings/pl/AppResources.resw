@@ -2830,4 +2830,10 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="PalettePrintSystem" xml:space="preserve">
     <value>Drukuj w oknie systemowym...</value>
   </data>
+  <data name="ShortcutCommandPalette" xml:space="preserve">
+    <value>Paleta poleceń</value>
+  </data>
+  <data name="ShortcutFindNext" xml:space="preserve">
+    <value>Następne / poprzednie trafienie</value>
+  </data>
 </root>

@@ -2830,4 +2830,10 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="PalettePrintSystem" xml:space="preserve">
     <value>Imprimir com a caixa de diálogo do sistema...</value>
   </data>
+  <data name="ShortcutCommandPalette" xml:space="preserve">
+    <value>Paleta de comandos</value>
+  </data>
+  <data name="ShortcutFindNext" xml:space="preserve">
+    <value>Próxima / anterior correspondência</value>
+  </data>
 </root>

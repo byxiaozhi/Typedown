@@ -1758,6 +1758,7 @@
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/>
+                                        <RowDefinition/><RowDefinition/><RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="{u:Loc Key=New}"/>
                                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{u:Loc Key=CtrlN}" Opacity="0.7"/>
@@ -1789,6 +1790,12 @@
                                     <TextBlock Grid.Row="13" Grid.Column="1" Text="F6 / Shift+F6" Opacity="0.7"/>
                                     <TextBlock Grid.Row="14" Text="{u:Loc Key=LayoutDistraction}"/>
                                     <TextBlock Grid.Row="14" Grid.Column="1" Text="F11" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="15" Text="{u:Loc Key=ShortcutCommandPalette}"/>
+                                    <TextBlock Grid.Row="15" Grid.Column="1" Text="Ctrl+Shift+P" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="16" Text="{u:Loc Key=Replace}"/>
+                                    <TextBlock Grid.Row="16" Grid.Column="1" Text="Ctrl+H" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="17" Text="{u:Loc Key=ShortcutFindNext}"/>
+                                    <TextBlock Grid.Row="17" Grid.Column="1" Text="F3 / Shift+F3" Opacity="0.7"/>
                                 </Grid>
                             </Border>
                             <TextBlock Text="{u:Loc Key=StandardTextEditingUndoRedoCut}" TextWrapping="Wrap" Opacity="0.8" FontSize="12" Margin="2,4,0,0"/>
