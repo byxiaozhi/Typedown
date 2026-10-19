@@ -164,11 +164,19 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             // before it added or took away, so that the search after the replacement starts near it
             const caret = Math.min(editor.indexFromPos(editor.getCursor('anchor')), editor.indexFromPos(editor.getCursor('head')));
             let caretAfter = caret;
+            let caretMapped = false;
             let offset = 0;
             for (const match of matchsRef.current) {
+                const startAfter = match.index + offset
                 const change = replaceOne(match, value, offset)
                 offset += change
-                if (match.index + match.match.length <= caret) caretAfter += change
+                if (caretMapped) continue
+                if (match.index + match.match.length <= caret) {
+                    caretAfter = caret + offset              // behind this replacement: moved by all the changes up to here
+                } else if (match.index < caret) {
+                    caretAfter = startAfter                   // inside it: at the start of what replaced it
+                    caretMapped = true
+                }
             }
             // the replacement can contain the term again: look at the new text and count what is there
             const at = editor.posFromIndex(Math.max(0, caretAfter));
