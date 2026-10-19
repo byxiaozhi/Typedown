@@ -2758,4 +2758,7 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="ReviewTrackWriteBusy" xml:space="preserve">
     <value>The latest text could not be read from the editor, so nothing was written. Please try again.</value>
   </data>
+  <data name="SaveButtonTip" xml:space="preserve">
+    <value>Save (Ctrl+S)</value>
+  </data>
 </root>

@@ -2806,4 +2806,7 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="ReviewTrackWriteBusy" xml:space="preserve">
     <value>Não foi possível ler o texto mais recente do editor, então nada foi escrito. Tente novamente.</value>
   </data>
+  <data name="SaveButtonTip" xml:space="preserve">
+    <value>Salvar (Ctrl+S)</value>
+  </data>
 </root>

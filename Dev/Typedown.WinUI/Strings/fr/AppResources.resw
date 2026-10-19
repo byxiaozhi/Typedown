@@ -2806,4 +2806,7 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="ReviewTrackWriteBusy" xml:space="preserve">
     <value>Le texte le plus récent n’a pas pu être lu depuis l’éditeur ; rien n’a été écrit. Réessayez.</value>
   </data>
+  <data name="SaveButtonTip" xml:space="preserve">
+    <value>Enregistrer (Ctrl+S)</value>
+  </data>
 </root>
