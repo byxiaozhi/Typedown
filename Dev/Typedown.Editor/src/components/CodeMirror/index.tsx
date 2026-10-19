@@ -25,6 +25,16 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     const [marginTop, setMarginTop] = useState(0);
     const matchsRef = useRef<any[]>([]);
     const matchIndexRef = useRef(0);
+    const searchValueRef = useRef('');
+    // "3 of 12" in the host's Find panel, as the visual editor reports it
+    const reportSearchResult = useCallback(() => {
+        const count = matchsRef.current.length;
+        transport.postMessageNoDiff('SearchResult', {
+            count,
+            index: count == 0 ? -1 : matchIndexRef.current,
+            value: searchValueRef.current
+        });
+    }, []);
     const markdownRef = useRef('');
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
@@ -65,11 +75,15 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     const search = useCallback(({ value, opt }) => {
         const lastMatch = matchsRef.current[matchIndexRef.current];
         matchsRef.current.forEach(({ marker }) => marker.clear())
+        searchValueRef.current = value ?? '';
         if ((value == null || value.length == 0)) {
+            matchsRef.current = [];
+            matchIndexRef.current = -1;
             if (lastMatch?.index >= 0) {
                 const head = editor.posFromIndex(lastMatch.index);
                 editor.setSelection(head, head);
             }
+            reportSearchResult();
             return;
         }
         let startIndex = 0
@@ -93,7 +107,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             match,
             subMatches
         }))
-    }, [editor, setMatchSelection])
+        reportSearchResult();
+    }, [editor, setMatchSelection, reportSearchResult])
 
     const find = useCallback(({ action }) => {
         if (action == 'next') {
@@ -116,7 +131,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
                 { className: i == matchIndexRef.current ? 'ag-highlight' : 'ag-selection' }
             )
         })
-    }, [editor, setMatchSelection])
+        reportSearchResult();
+    }, [editor, setMatchSelection, reportSearchResult])
 
     const replaceOne = useCallback((match, replaceValue, offset = 0) => {
         const text = editor.getValue();
@@ -146,8 +162,11 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             for (const match of matchsRef.current) {
                 offset += replaceOne(match, value, offset)
             }
+            matchsRef.current = [];
+            matchIndexRef.current = -1;
+            reportSearchResult();
         }
-    }, [find, replaceOne])
+    }, [find, replaceOne, reportSearchResult])
 
     useEffect(() => transport.addListener<{ text: string }>('Paste', ({ text }) => {
         editor?.replaceSelection(text)
@@ -196,7 +215,11 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     useEffect(() => {
         if (props.searchArg && editor) {
             const { value, opt } = props.searchArg
-            const selection = opt.selection.head ? opt.selection : undefined
+            // The host sends the term and the options only (no selection): the first match shown is the one at or after
+            // the caret. (Reading `opt.selection.head` of nothing threw and took the whole source pane down.)
+            const selection = opt?.selection?.head
+                ? opt.selection
+                : { anchor: editor.getCursor('anchor'), head: editor.getCursor('head') }
             search({ value, opt: { ...opt, selection } })
         }
     }, [editor, props.searchArg, search])
@@ -229,7 +252,7 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
 
     useEffect(() => {
         setMarginTop(currentMarginTop => {
-            const newMarginTop = { 0: 0, 1: 50, 2: 90 }[props.searchOpen] ?? 0;
+            const newMarginTop = { 0: 0, 1: 105, 2: 145 }[props.searchOpen] ?? 0;   // the height of the Find panel (the source pane has no toolbar above it, so more than the visual editor): Find only, Find and Replace
             relativeScroll(newMarginTop - currentMarginTop)
             return newMarginTop;
         })

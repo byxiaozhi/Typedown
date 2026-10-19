@@ -2806,4 +2806,16 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="ReviewTrackWriteBusy" xml:space="preserve">
     <value>Não foi possível ler o texto mais recente do editor, então nada foi escrito. Tente novamente.</value>
   </data>
+  <data name="ToggleReplace" xml:space="preserve">
+    <value>Mostrar ou ocultar Substituir (Ctrl+H)</value>
+  </data>
+  <data name="FindNoResults" xml:space="preserve">
+    <value>Nenhum resultado</value>
+  </data>
+  <data name="FindResultCount" xml:space="preserve">
+    <value>{0} de {1}</value>
+  </data>
+  <data name="ReplaceMenuItem_Text" xml:space="preserve">
+    <value>Substituir...</value>
+  </data>
 </root>

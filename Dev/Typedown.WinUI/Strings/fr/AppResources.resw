@@ -2806,4 +2806,16 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="ReviewTrackWriteBusy" xml:space="preserve">
     <value>Le texte le plus récent n’a pas pu être lu depuis l’éditeur ; rien n’a été écrit. Réessayez.</value>
   </data>
+  <data name="ToggleReplace" xml:space="preserve">
+    <value>Afficher ou masquer Remplacer (Ctrl+H)</value>
+  </data>
+  <data name="FindNoResults" xml:space="preserve">
+    <value>Aucun résultat</value>
+  </data>
+  <data name="FindResultCount" xml:space="preserve">
+    <value>{0} sur {1}</value>
+  </data>
+  <data name="ReplaceMenuItem_Text" xml:space="preserve">
+    <value>Remplacer...</value>
+  </data>
 </root>
