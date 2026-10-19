@@ -2866,4 +2866,7 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="ShortcutFindNext" xml:space="preserve">
     <value>Coincidencia siguiente / anterior</value>
   </data>
+  <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
+    <value>Resaltados: {0}</value>
+  </data>
 </root>

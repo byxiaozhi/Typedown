@@ -6,7 +6,7 @@ namespace Typedown.WinUI.Services
     // One row of the Review tab of the inspector pane: a change, a highlight or a comment of the note.
     // Kind is the mark's kind (add, del, sub, mark, comment), Snippet what it is about, Meta "author, day" when the mark
     // carries a stamp, Raw the mark as it is written in the text (the editor finds it by that), and Nth which of the
-    // identical marks it is (0 for the first), so that two equal marks are told apart.
+    // equal texts stand before it in the note (0 for the first), so that the editor finds this one and not an equal text in code.
     internal sealed record ReviewListItem(string Kind, string Snippet, string Meta, string Raw, int Nth);
 
     // The review marks of a note as a list, in the order of the text. Plain .NET (the marks are read by ReviewMarks, so the
@@ -20,7 +20,9 @@ namespace Typedown.WinUI.Services
             var items = new List<ReviewListItem>();
             if (string.IsNullOrEmpty(text) || text.IndexOf('{') < 0) return items;
             var found = ReviewMarks.Scan(text);
-            var seen = new Dictionary<string, int>(StringComparer.Ordinal);
+            // Per mark text: where the next search starts and how many equal texts stand before it. The editors find the place by
+            // searching the text, so the number counts every equal text before the mark, also the ones in code that are no marks.
+            var seen = new Dictionary<string, (int From, int Count)>(StringComparer.Ordinal);
             for (var i = 0; i < found.Count; i++)
             {
                 var mark = found[i];
@@ -55,9 +57,12 @@ namespace Typedown.WinUI.Services
                     }
                 }
 
-                seen.TryGetValue(raw, out var nth);
-                seen[raw] = nth + 1;
-                items.Add(new ReviewListItem(mark.Kind, Shorten(snippet), meta, raw, nth));
+                seen.TryGetValue(raw, out var state);
+                int at;
+                while ((at = text.IndexOf(raw, state.From, StringComparison.Ordinal)) >= 0 && at < mark.Start)
+                    state = (at + raw.Length, state.Count + 1);
+                seen[raw] = state;
+                items.Add(new ReviewListItem(mark.Kind, Shorten(snippet), meta, raw, state.Count));
             }
             return items;
         }

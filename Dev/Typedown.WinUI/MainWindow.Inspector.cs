@@ -119,7 +119,11 @@ namespace Typedown.WinUI
                 });
             }
             var changes = items.Count(i => i.Kind is "add" or "del" or "sub");
-            InspectorReviewSummaryText.Text = items.Count == 0 ? "" : string.Format(Locale.GetString("InspectorReviewSummary"), changes, items.Count - changes);
+            var comments = items.Count(i => i.Kind == "comment");
+            var highlights = items.Count - changes - comments;
+            var summary = string.Format(Locale.GetString("InspectorReviewSummary"), changes, comments);
+            if (highlights > 0) summary += " · " + string.Format(Locale.GetString("InspectorReviewSummaryHighlights"), highlights);
+            InspectorReviewSummaryText.Text = items.Count == 0 ? "" : summary;
             InspectorReviewEmptyText.Visibility = items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 

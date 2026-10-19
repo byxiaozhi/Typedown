@@ -75,5 +75,22 @@ namespace Caret.ConverterTests
             var broken = Assert.Single(ReviewList.Build("{++two\nlines   here++}"));
             Assert.Equal("two lines here", broken.Snippet);
         }
+
+        [Fact]
+        public void An_equal_text_in_code_before_a_mark_is_counted_so_that_the_editor_finds_the_mark()
+        {
+            // the editors search the text: the example in code stands first, the mark is the second equal text
+            var items = ReviewList.Build("Write `{++x++}` for an addition, then {++x++}.");
+            var item = Assert.Single(items);
+            Assert.Equal("{++x++}", item.Raw);
+            Assert.Equal(1, item.Nth);
+        }
+
+        [Fact]
+        public void Equal_marks_are_numbered_in_the_order_of_the_text()
+        {
+            var items = ReviewList.Build("{++x++} and {++x++} and {++y++} and {++x++}");
+            Assert.Equal(new[] { 0, 1, 0, 2 }, items.Select(i => i.Nth).ToArray());
+        }
     }
 }

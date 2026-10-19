@@ -2866,4 +2866,7 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="ShortcutFindNext" xml:space="preserve">
     <value>Résultat suivant / précédent</value>
   </data>
+  <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
+    <value>Surlignages : {0}</value>
+  </data>
 </root>

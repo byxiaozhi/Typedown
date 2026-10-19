@@ -2866,4 +2866,7 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="ShortcutFindNext" xml:space="preserve">
     <value>Próxima / anterior correspondência</value>
   </data>
+  <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
+    <value>Realces: {0}</value>
+  </data>
 </root>

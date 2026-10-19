@@ -2818,4 +2818,7 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="ShortcutFindNext" xml:space="preserve">
     <value>Next / previous match</value>
   </data>
+  <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
+    <value>Highlights: {0}</value>
+  </data>
 </root>

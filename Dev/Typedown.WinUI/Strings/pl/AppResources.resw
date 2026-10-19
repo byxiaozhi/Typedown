@@ -2866,4 +2866,7 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="ShortcutFindNext" xml:space="preserve">
     <value>Następne / poprzednie trafienie</value>
   </data>
+  <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
+    <value>Wyróżnienia: {0}</value>
+  </data>
 </root>
