@@ -107,8 +107,9 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
 
     // Tells the host how many matches there are and which one is current ("3 of 12" in the Find panel).
     const reportSearchResult = useCallback(() => {
-        const { matches, index } = (editor as any)?.contentState?.searchMatches ?? { matches: [], index: -1 }
-        transport.postMessageNoDiff('SearchResult', { count: matches.length, index })
+        const { matches, index, value } = (editor as any)?.contentState?.searchMatches ?? { matches: [], index: -1, value: '' }
+        // `value` is the term the result belongs to: the host ignores a result that is not for the term in its box
+        transport.postMessageNoDiff('SearchResult', { count: matches.length, index, value: value ?? '' })
     }, [editor])
 
     const search = useCallback(arg => {
@@ -116,11 +117,10 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         const { contentState } = editor as any
         if (!arg?.value) {
             // The box was emptied (or the panel closed): nothing stays marked in the text.
-            if (contentState.searchMatches.matches.length) {
-                contentState.searchMatches.matches = []
-                contentState.searchMatches.value = ''
-                contentState.render(false)
-            }
+            const hadMatches = contentState.searchMatches.matches.length > 0
+            contentState.searchMatches.matches = []
+            contentState.searchMatches.value = ''
+            if (hadMatches) contentState.render(false)
             reportSearchResult()
             return
         }

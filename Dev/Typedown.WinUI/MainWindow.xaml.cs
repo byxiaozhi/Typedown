@@ -2482,6 +2482,9 @@ namespace Typedown.WinUI
         // "3 of 12" next to the box; the editor reports the matches after every search, Find next and Replace.
         private void UpdateFindCount(JToken args)
         {
+            // a result for a term that is no longer in the box (typing is faster than the editor answers) is dropped:
+            // the answer to the current term follows
+            if ((args?["value"]?.ToString() ?? "") != FindTextBox.Text) return;
             var count = args?["count"]?.ToObject<int>() ?? 0;
             var index = args?["index"]?.ToObject<int>() ?? -1;
             FindCountText.Text = FindTextBox.Text.Length == 0 || FindReplacePanel.Visibility != Visibility.Visible
@@ -2541,6 +2544,13 @@ namespace Typedown.WinUI
         private void ReplaceTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Enter) { PushReplace(true); e.Handled = true; }
+            else if (e.Key == VirtualKey.F3)
+            {
+                // the page does not see the key while this box has the focus
+                var shift = Microsoft.UI.Input.InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down);
+                FindFromKey(shift);
+                e.Handled = true;
+            }
             else if (e.Key == VirtualKey.Escape) HideFindReplace();
         }
 

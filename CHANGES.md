@@ -405,6 +405,8 @@ Not present in Typedown at all:
   - **The words selected in the text become the term to look for** when the panel opens (one line, up to 200 characters).
   - **Esc closes the panel and the keyboard is back in the text** at the match that was current (before, the focus stayed on the status bar and typing went nowhere).
   - Four new strings in English, French, Spanish, Polish and Brazilian Portuguese (tooltip, "No results", "{0} of {1}", the menu item).
+  - **The Code and Split views had the same fault, and worse:** opening the Find panel there made the source pane disappear (it read the caret position the host never sent and threw). It now searches from the caret, marks the matches, shows "3 of 6" and keeps its text clear of the panel, like the visual editor.
+  - **Replace moves on properly.** After one replacement the search resumes after the inserted text and wraps to the first match after the last one (before, it could select the previous match, and a replacement that still contained the term, like *line* to *line2*, stayed on the same place). F3 also works while the Replace box has the focus, and a count for a term that is no longer in the box is ignored.
   - Checked in the real app (dev build, real key presses): Ctrl+F with the caret in the text and with the focus on the status bar, typing a term, Enter / Shift+Enter / F3, Ctrl+H, a selected word as the term, Replace with Enter, Esc and typing afterwards. **Ctrl+C** was tried on a mouse selection, a double-click, Ctrl+A, a keyboard selection and in the Code view: the selected text reached the clipboard each time (no fault found there).
 
 ## Deferred
