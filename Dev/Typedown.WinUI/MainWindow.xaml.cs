@@ -1016,7 +1016,8 @@ namespace Typedown.WinUI
                 case "tab": _ = SwitchTabRelative(shift ? -1 : +1); break;
                 case "pagedown": _ = SwitchTabRelative(+1); break;
                 case "pageup": _ = SwitchTabRelative(-1); break;
-                case "p" when shift: ShowPrint(CoreWebView2PrintDialogKind.System); break;
+                // Ctrl+Shift+P is the command palette (it was the system print dialog: that is a palette command now)
+                case "p" when shift: ShowCommandPalette(); break;
                 case "p": PrintMenuItem_Click(this, null); break;
                 case ",": SettingsMenuItem_Click(this, null); break;
                 case "/": CycleViewMode(); break;

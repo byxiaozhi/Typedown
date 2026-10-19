@@ -109,6 +109,20 @@
                 <TextBlock Text="{Binding Name}" Margin="12,6" TextTrimming="CharacterEllipsis"
                            ToolTipService.ToolTip="{Binding FullPath}"/>
             </DataTemplate>
+            <DataTemplate x:Key="PaletteEntryTemplate">
+                <Grid Margin="8,6" ColumnSpacing="12" AutomationProperties.Name="{Binding Title}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Category}" FontSize="11" Opacity="0.65" MaxWidth="170" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                    <Border Grid.Column="2" Visibility="{Binding ShortcutVisibility}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="4" Padding="5,1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Shortcut}" FontSize="11" Opacity="0.75"/>
+                    </Border>
+                </Grid>
+            </DataTemplate>
             <DataTemplate x:Key="TrashEntryTemplate">
                 <StackPanel Margin="12,6">
                     <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"/>
@@ -122,6 +136,7 @@
             <KeyboardAccelerator Key="PageDown" Modifiers="Control" Invoked="NextTabAccelerator_Invoked"/>
             <KeyboardAccelerator Key="PageUp" Modifiers="Control" Invoked="PreviousTabAccelerator_Invoked"/>
             <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabAccelerator_Invoked"/>
+            <KeyboardAccelerator Key="P" Modifiers="Control,Shift" Invoked="CommandPaletteAccelerator_Invoked"/>
         </Grid.KeyboardAccelerators>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -389,6 +404,7 @@
                     <RadioMenuFlyoutItem x:Name="ThemeLightMenuItem" Text="{u:Loc Key=Light}" GroupName="AppTheme" Tag="Light" Click="ThemeMenuItem_Click"/>
                     <RadioMenuFlyoutItem x:Name="ThemeDarkMenuItem" Text="{u:Loc Key=Dark}" GroupName="AppTheme" Tag="Dark" Click="ThemeMenuItem_Click"/>
                 </MenuFlyoutSubItem>
+                <MenuFlyoutItem x:Name="CommandPaletteMenuItem" Text="{u:Loc Key=CommandPaletteMenuItem_Text}" Click="CommandPaletteMenuItem_Click" KeyboardAcceleratorTextOverride="Ctrl+Shift+P"/>
                 <MenuFlyoutSeparator/>
                 <RadioMenuFlyoutItem x:Name="ViewModeViewMenuItem" Text="{u:Loc Key=ViewModeViewMenuItem_Text}" GroupName="ViewMode" Tag="view" Click="ViewModeMenuItem_Click"/>
                 <RadioMenuFlyoutItem x:Name="ViewModeCodeMenuItem" Text="{u:Loc Key=ViewModeCodeMenuItem_Text}" GroupName="ViewMode" Tag="code" Click="ViewModeMenuItem_Click"/>
@@ -1308,6 +1324,22 @@
                      ItemClick is not guaranteed to under Single selection. -->
                 <ListView x:Name="QuickOpenListView" MaxHeight="360" SelectionMode="Single"
                           ItemTemplate="{StaticResource NavFileEntryTemplate}" Tapped="QuickOpenListView_Tapped"/>
+            </StackPanel>
+        </Border>
+
+        <!-- The command palette (Ctrl+Shift+P, MainWindow.Palette.cs): the same overlay as Go to File, for the commands of the menus. -->
+        <Border x:Name="PalettePanel" Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="3"
+                VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,80,0,0"
+                MinWidth="520" MaxWidth="640" Padding="8" CornerRadius="8"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+            <StackPanel Spacing="4">
+                <TextBox x:Name="PaletteTextBox" PlaceholderText="{u:Loc Key=PaletteTextBox_Placeholder}"
+                         AutomationProperties.Name="{u:Loc Key=CommandPaletteMenuItem_Text}"
+                         TextChanged="PaletteTextBox_TextChanged" KeyDown="PaletteTextBox_KeyDown"/>
+                <ListView x:Name="PaletteListView" MaxHeight="380" SelectionMode="Single"
+                          ItemTemplate="{StaticResource PaletteEntryTemplate}" Tapped="PaletteListView_Tapped"/>
+                <TextBlock x:Name="PaletteNoResultsText" Text="{u:Loc Key=PaletteNoResults}" Visibility="Collapsed" Margin="8,6" Opacity="0.7"/>
             </StackPanel>
         </Border>
 

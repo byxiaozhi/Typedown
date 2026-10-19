@@ -2818,4 +2818,16 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="ReplaceMenuItem_Text" xml:space="preserve">
     <value>Substituir...</value>
   </data>
+  <data name="PaletteTextBox_Placeholder" xml:space="preserve">
+    <value>Digite um comando</value>
+  </data>
+  <data name="PaletteNoResults" xml:space="preserve">
+    <value>Nenhum comando correspondente</value>
+  </data>
+  <data name="CommandPaletteMenuItem_Text" xml:space="preserve">
+    <value>Paleta de comandos...</value>
+  </data>
+  <data name="PalettePrintSystem" xml:space="preserve">
+    <value>Imprimir com a caixa de diálogo do sistema...</value>
+  </data>
 </root>
