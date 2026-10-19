@@ -2857,4 +2857,10 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="InspectorKindHighlight" xml:space="preserve">
     <value>Wyróżnienie</value>
   </data>
+  <data name="ShortcutCommandPalette" xml:space="preserve">
+    <value>Paleta poleceń</value>
+  </data>
+  <data name="ShortcutFindNext" xml:space="preserve">
+    <value>Następne / poprzednie trafienie</value>
+  </data>
 </root>

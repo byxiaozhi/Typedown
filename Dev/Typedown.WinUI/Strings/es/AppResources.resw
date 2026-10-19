@@ -2857,4 +2857,10 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="InspectorKindHighlight" xml:space="preserve">
     <value>Resaltado</value>
   </data>
+  <data name="ShortcutCommandPalette" xml:space="preserve">
+    <value>Paleta de comandos</value>
+  </data>
+  <data name="ShortcutFindNext" xml:space="preserve">
+    <value>Coincidencia siguiente / anterior</value>
+  </data>
 </root>
