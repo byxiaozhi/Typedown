@@ -160,14 +160,21 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         } else {
             if (!matchsRef.current)
                 return;
+            // setValue puts the caret at the start of the text: it is kept where it was, moved by what the replacements
+            // before it added or took away, so that the search after the replacement starts near it
+            const caret = Math.min(editor.indexFromPos(editor.getCursor('anchor')), editor.indexFromPos(editor.getCursor('head')));
+            let caretAfter = caret;
             let offset = 0;
             for (const match of matchsRef.current) {
-                offset += replaceOne(match, value, offset)
+                const change = replaceOne(match, value, offset)
+                offset += change
+                if (match.index + match.match.length <= caret) caretAfter += change
             }
             // the replacement can contain the term again: look at the new text and count what is there
+            const at = editor.posFromIndex(Math.max(0, caretAfter));
             search({
                 value: searchValueRef.current,
-                opt: { ...opt, selection: { anchor: editor.getCursor('anchor'), head: editor.getCursor('head') } }
+                opt: { ...opt, selection: { anchor: at, head: at } }
             });
         }
     }, [editor, find, replaceOne, search])
