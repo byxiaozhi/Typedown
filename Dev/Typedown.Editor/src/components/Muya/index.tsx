@@ -290,7 +290,9 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     useEffect(() => transport.addListener<{ value: string, opt: unknown }>('Replace', ({ value, opt }) => {
         editor?.replace(value, opt)
         reportSearchResult()
-    }), [editor, reportSearchResult, scrollToElement]);
+        // the next match may be off screen after a replacement
+        setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
+    }), [editor, reportSearchResult, scrollToElement, scrollToElementIfInvisible]);
 
     useEffect(() => {
         setMarginTop(currentMarginTop => {

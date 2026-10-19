@@ -2409,11 +2409,16 @@ namespace Typedown.WinUI
 
         // Ctrl+F: Find. Ctrl+H: Find and Replace, with the cursor in the Replace box. When the panel opens, the selected
         // words become the term to look for.
+        private int findRequest;
+
         private async void ShowFindReplace(bool replace = false)
         {
             Log("ShowFindReplace called");
+            var request = ++findRequest;
             var alreadyOpen = FindReplacePanel.Visibility == Visibility.Visible;
             var selected = alreadyOpen ? null : await SelectedEditorTextAsync();
+            // a later Ctrl+F / Ctrl+H, or closing the panel, came in while the selection was being read: that one wins
+            if (request != findRequest) return;
             // New since the fork: SearchIsCaseSensitive/SearchIsWholeWord/SearchIsRegexp existed as
             // dormant ported settings — the checkboxes drove PushSearch directly but nothing persisted
             // their state, so Find & Replace reset to case-insensitive/no-regex every time you reopened
@@ -2451,6 +2456,7 @@ namespace Typedown.WinUI
 
         private void HideFindReplace()
         {
+            findRequest++;   // an opening that is still waiting for the selection must not reopen the panel
             FindReplacePanel.Visibility = Visibility.Collapsed;
             FindCountText.Text = "";
             PostMessage("SearchOpenChange", new { open = 0 });
