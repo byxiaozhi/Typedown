@@ -1837,7 +1837,7 @@
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/>
-                                        <RowDefinition/><RowDefinition/><RowDefinition/>
+                                        <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="{u:Loc Key=New}"/>
                                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{u:Loc Key=CtrlN}" Opacity="0.7"/>
@@ -1875,6 +1875,8 @@
                                     <TextBlock Grid.Row="16" Grid.Column="1" Text="Ctrl+H" Opacity="0.7"/>
                                     <TextBlock Grid.Row="17" Text="{u:Loc Key=ShortcutFindNext}"/>
                                     <TextBlock Grid.Row="17" Grid.Column="1" Text="F3 / Shift+F3" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="18" Text="{u:Loc Key=InspectorMenuItem_Text}"/>
+                                    <TextBlock Grid.Row="18" Grid.Column="1" Text="Ctrl+Shift+I" Opacity="0.7"/>
                                 </Grid>
                             </Border>
                             <TextBlock Text="{u:Loc Key=StandardTextEditingUndoRedoCut}" TextWrapping="Wrap" Opacity="0.8" FontSize="12" Margin="2,4,0,0"/>
