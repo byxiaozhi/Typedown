@@ -96,6 +96,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             matchIndexRef.current < matchs.length && matchs[matchIndexRef.current].index < startIndex;
             matchIndexRef.current++
         );
+        // the caret is behind the last match: the search goes on at the first one
+        if (matchIndexRef.current >= matchs.length) matchIndexRef.current = 0
         setMatchSelection(matchs[matchIndexRef.current])
         matchsRef.current = matchs.map(({ index, match, subMatches }, i) => ({
             marker: editor.markText(
@@ -158,15 +160,32 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         } else {
             if (!matchsRef.current)
                 return;
+            // setValue puts the caret at the start of the text: it is kept where it was, moved by what the replacements
+            // before it added or took away, so that the search after the replacement starts near it
+            const caret = Math.min(editor.indexFromPos(editor.getCursor('anchor')), editor.indexFromPos(editor.getCursor('head')));
+            let caretAfter = caret;
+            let caretMapped = false;
             let offset = 0;
             for (const match of matchsRef.current) {
-                offset += replaceOne(match, value, offset)
+                const startAfter = match.index + offset
+                const change = replaceOne(match, value, offset)
+                offset += change
+                if (caretMapped) continue
+                if (match.index + match.match.length <= caret) {
+                    caretAfter = caret + offset              // behind this replacement: moved by all the changes up to here
+                } else if (match.index < caret) {
+                    caretAfter = startAfter                   // inside it: at the start of what replaced it
+                    caretMapped = true
+                }
             }
-            matchsRef.current = [];
-            matchIndexRef.current = -1;
-            reportSearchResult();
+            // the replacement can contain the term again: look at the new text and count what is there
+            const at = editor.posFromIndex(Math.max(0, caretAfter));
+            search({
+                value: searchValueRef.current,
+                opt: { ...opt, selection: { anchor: at, head: at } }
+            });
         }
-    }, [find, replaceOne, reportSearchResult])
+    }, [editor, find, replaceOne, search])
 
     useEffect(() => transport.addListener<{ text: string }>('Paste', ({ text }) => {
         editor?.replaceSelection(text)

@@ -472,14 +472,26 @@
                         <FontIcon x:Name="SidebarRailGlyph" Glyph="&#xE76C;" FontSize="12"/>
                     </Button>
 
-                    <Button Grid.Row="0" x:Name="NewNoteButton" Click="NewMenuItem_Click" AutomationProperties.Name="{u:Loc Key=NewNote}"
-                            Margin="8,8,8,4" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
-                            Background="{ThemeResource CaretPrimaryBrush}" Foreground="White">
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <Path Data="M12 5V19M5 12H19" Style="{StaticResource CaretLineIconStyle}" Stroke="White" Width="14" Height="14"/>
-                            <TextBlock x:Name="NewNoteText" Text="{u:Loc Key=NewNote}"/>
-                        </StackPanel>
-                    </Button>
+                    <StackPanel Grid.Row="0">
+                        <Button x:Name="NewNoteButton" Click="NewMenuItem_Click" AutomationProperties.Name="{u:Loc Key=NewNote}"
+                                Margin="8,8,8,4" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                                Background="{ThemeResource CaretPrimaryBrush}" Foreground="White">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <Path Data="M12 5V19M5 12H19" Style="{StaticResource CaretLineIconStyle}" Stroke="White" Width="14" Height="14"/>
+                                <TextBlock x:Name="NewNoteText" Text="{u:Loc Key=NewNote}"/>
+                            </StackPanel>
+                        </Button>
+                        <!-- Save sits right under New Note, so the first save of a new note does not need a trip to the File menu
+                             (a note that has no file yet asks where to save it, as Ctrl+S does). -->
+                        <Button x:Name="SaveNoteButton" Click="SaveMenuItem_Click" AutomationProperties.Name="{u:Loc Key=SaveMenuItem_Text}"
+                                ToolTipService.ToolTip="{u:Loc Key=SaveButtonTip}"
+                                Margin="8,0,8,4" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <Path Data="M5 4H17L20 7V20H5Z M8 4V9H15V4 M8 20V13H17V20" Style="{StaticResource CaretLineIconStyle}" Width="14" Height="14"/>
+                                <TextBlock x:Name="SaveNoteText" Text="{u:Loc Key=SaveMenuItem_Text}"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
 
                     <!-- Everything under the New Note button (the two navigation lists, the Recent, Favorites,
                          Templates or Trash list, the folder tree and the outline) scrolls as one, so with a
