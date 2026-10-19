@@ -105,6 +105,8 @@ namespace Typedown.WinUI
             NewNoteText.Visibility = narrow ? Visibility.Collapsed : Visibility.Visible;
             NewNoteButton.Margin = narrow ? new Thickness(4, 8, 4, 4) : new Thickness(8, 8, 8, 4);
             ToolTipService.SetToolTip(NewNoteButton, narrow ? Locale.GetString("NewNote") : null);
+            SaveNoteText.Visibility = narrow ? Visibility.Collapsed : Visibility.Visible;
+            SaveNoteButton.Margin = narrow ? new Thickness(4, 0, 4, 4) : new Thickness(8, 0, 8, 4);
             NavCreateHeaderText.Visibility = NavLibraryHeaderButton.Visibility = narrow ? Visibility.Collapsed : Visibility.Visible;
             UpdateLibraryHeader(); // the narrow strip always shows the icons
             foreach (var item in NavItems)

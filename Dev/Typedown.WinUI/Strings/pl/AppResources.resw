@@ -2806,6 +2806,9 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="ReviewTrackWriteBusy" xml:space="preserve">
     <value>Nie udało się odczytać najnowszego tekstu z edytora, więc nic nie zapisano. Spróbuj ponownie.</value>
   </data>
+  <data name="SaveButtonTip" xml:space="preserve">
+    <value>Zapisz (Ctrl+S)</value>
+  </data>
   <data name="ToggleReplace" xml:space="preserve">
     <value>Pokaż lub ukryj Zamień (Ctrl+H)</value>
   </data>
