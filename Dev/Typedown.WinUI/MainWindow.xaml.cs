@@ -1017,7 +1017,8 @@ namespace Typedown.WinUI
                 case "tab": _ = SwitchTabRelative(shift ? -1 : +1); break;
                 case "pagedown": _ = SwitchTabRelative(+1); break;
                 case "pageup": _ = SwitchTabRelative(-1); break;
-                case "p" when shift: ShowPrint(CoreWebView2PrintDialogKind.System); break;
+                // Ctrl+Shift+P is the command palette (it was the system print dialog: that is a palette command now)
+                case "p" when shift: ShowCommandPalette(); break;
                 case "p": PrintMenuItem_Click(this, null); break;
                 case ",": SettingsMenuItem_Click(this, null); break;
                 case "/": CycleViewMode(); break;
@@ -2474,7 +2475,7 @@ namespace Typedown.WinUI
             {
                 await Task.Delay(250);
                 // the panel was opened again meanwhile (ShowFindReplace counts a new request): the focus belongs to it
-                if (request != findRequest || FindReplacePanel.Visibility == Visibility.Visible) return;
+                if (request != findRequest || FindReplacePanel.Visibility == Visibility.Visible || PalettePanel.Visibility == Visibility.Visible) return;
                 await RunInPage("(function(){var r=document.getElementById('ag-editor-id');if(!r)return;var s=window.getSelection();var saved=s&&s.rangeCount?s.getRangeAt(0).cloneRange():null;r.focus();if(saved){s.removeAllRanges();s.addRange(saved);}})()");
             }
             catch (Exception ex) { Log($"FocusEditorText failed: {ex.Message}"); }

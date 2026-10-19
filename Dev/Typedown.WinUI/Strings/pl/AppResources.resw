@@ -2821,4 +2821,22 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="ReplaceMenuItem_Text" xml:space="preserve">
     <value>Zamień...</value>
   </data>
+  <data name="PaletteTextBox_Placeholder" xml:space="preserve">
+    <value>Wpisz polecenie</value>
+  </data>
+  <data name="PaletteNoResults" xml:space="preserve">
+    <value>Brak pasujących poleceń</value>
+  </data>
+  <data name="CommandPaletteMenuItem_Text" xml:space="preserve">
+    <value>Paleta poleceń...</value>
+  </data>
+  <data name="PalettePrintSystem" xml:space="preserve">
+    <value>Drukuj w oknie systemowym...</value>
+  </data>
+  <data name="ShortcutCommandPalette" xml:space="preserve">
+    <value>Paleta poleceń</value>
+  </data>
+  <data name="ShortcutFindNext" xml:space="preserve">
+    <value>Następne / poprzednie trafienie</value>
+  </data>
 </root>

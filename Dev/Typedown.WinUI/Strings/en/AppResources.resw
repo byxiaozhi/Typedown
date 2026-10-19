@@ -2773,4 +2773,22 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="ReplaceMenuItem_Text" xml:space="preserve">
     <value>Replace...</value>
   </data>
+  <data name="PaletteTextBox_Placeholder" xml:space="preserve">
+    <value>Type a command</value>
+  </data>
+  <data name="PaletteNoResults" xml:space="preserve">
+    <value>No matching command</value>
+  </data>
+  <data name="CommandPaletteMenuItem_Text" xml:space="preserve">
+    <value>Command Palette...</value>
+  </data>
+  <data name="PalettePrintSystem" xml:space="preserve">
+    <value>Print using the system dialog...</value>
+  </data>
+  <data name="ShortcutCommandPalette" xml:space="preserve">
+    <value>Command palette</value>
+  </data>
+  <data name="ShortcutFindNext" xml:space="preserve">
+    <value>Next / previous match</value>
+  </data>
 </root>

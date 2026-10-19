@@ -2821,4 +2821,22 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="ReplaceMenuItem_Text" xml:space="preserve">
     <value>Remplacer...</value>
   </data>
+  <data name="PaletteTextBox_Placeholder" xml:space="preserve">
+    <value>Saisissez une commande</value>
+  </data>
+  <data name="PaletteNoResults" xml:space="preserve">
+    <value>Aucune commande correspondante</value>
+  </data>
+  <data name="CommandPaletteMenuItem_Text" xml:space="preserve">
+    <value>Palette de commandes...</value>
+  </data>
+  <data name="PalettePrintSystem" xml:space="preserve">
+    <value>Imprimer avec la boîte de dialogue système...</value>
+  </data>
+  <data name="ShortcutCommandPalette" xml:space="preserve">
+    <value>Palette de commandes</value>
+  </data>
+  <data name="ShortcutFindNext" xml:space="preserve">
+    <value>Résultat suivant / précédent</value>
+  </data>
 </root>

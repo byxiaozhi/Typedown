@@ -109,6 +109,20 @@
                 <TextBlock Text="{Binding Name}" Margin="12,6" TextTrimming="CharacterEllipsis"
                            ToolTipService.ToolTip="{Binding FullPath}"/>
             </DataTemplate>
+            <DataTemplate x:Key="PaletteEntryTemplate">
+                <Grid Margin="8,6" ColumnSpacing="12" AutomationProperties.Name="{Binding Title}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Category}" FontSize="11" Opacity="0.65" MaxWidth="170" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                    <Border Grid.Column="2" Visibility="{Binding ShortcutVisibility}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="4" Padding="5,1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Shortcut}" FontSize="11" Opacity="0.75"/>
+                    </Border>
+                </Grid>
+            </DataTemplate>
             <DataTemplate x:Key="TrashEntryTemplate">
                 <StackPanel Margin="12,6">
                     <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"/>
@@ -122,6 +136,7 @@
             <KeyboardAccelerator Key="PageDown" Modifiers="Control" Invoked="NextTabAccelerator_Invoked"/>
             <KeyboardAccelerator Key="PageUp" Modifiers="Control" Invoked="PreviousTabAccelerator_Invoked"/>
             <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabAccelerator_Invoked"/>
+            <KeyboardAccelerator Key="P" Modifiers="Control,Shift" Invoked="CommandPaletteAccelerator_Invoked"/>
         </Grid.KeyboardAccelerators>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -389,6 +404,7 @@
                     <RadioMenuFlyoutItem x:Name="ThemeLightMenuItem" Text="{u:Loc Key=Light}" GroupName="AppTheme" Tag="Light" Click="ThemeMenuItem_Click"/>
                     <RadioMenuFlyoutItem x:Name="ThemeDarkMenuItem" Text="{u:Loc Key=Dark}" GroupName="AppTheme" Tag="Dark" Click="ThemeMenuItem_Click"/>
                 </MenuFlyoutSubItem>
+                <MenuFlyoutItem x:Name="CommandPaletteMenuItem" Text="{u:Loc Key=CommandPaletteMenuItem_Text}" Click="CommandPaletteMenuItem_Click" KeyboardAcceleratorTextOverride="Ctrl+Shift+P"/>
                 <MenuFlyoutSeparator/>
                 <RadioMenuFlyoutItem x:Name="ViewModeViewMenuItem" Text="{u:Loc Key=ViewModeViewMenuItem_Text}" GroupName="ViewMode" Tag="view" Click="ViewModeMenuItem_Click"/>
                 <RadioMenuFlyoutItem x:Name="ViewModeCodeMenuItem" Text="{u:Loc Key=ViewModeCodeMenuItem_Text}" GroupName="ViewMode" Tag="code" Click="ViewModeMenuItem_Click"/>
@@ -1323,6 +1339,7 @@
             </StackPanel>
         </Border>
 
+
         <!-- Settings (interface review, phase 2): a page in the window instead of the old 420 px dialog,
              so a change shows on the app behind it straight away. Opens with Ctrl+, the gear or File >
              Settings; Esc or Back returns to the document. Categories on the left (NavigationView), each
@@ -1753,6 +1770,7 @@
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/>
+                                        <RowDefinition/><RowDefinition/><RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="{u:Loc Key=New}"/>
                                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{u:Loc Key=CtrlN}" Opacity="0.7"/>
@@ -1784,6 +1802,12 @@
                                     <TextBlock Grid.Row="13" Grid.Column="1" Text="F6 / Shift+F6" Opacity="0.7"/>
                                     <TextBlock Grid.Row="14" Text="{u:Loc Key=LayoutDistraction}"/>
                                     <TextBlock Grid.Row="14" Grid.Column="1" Text="F11" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="15" Text="{u:Loc Key=ShortcutCommandPalette}"/>
+                                    <TextBlock Grid.Row="15" Grid.Column="1" Text="Ctrl+Shift+P" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="16" Text="{u:Loc Key=Replace}"/>
+                                    <TextBlock Grid.Row="16" Grid.Column="1" Text="Ctrl+H" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="17" Text="{u:Loc Key=ShortcutFindNext}"/>
+                                    <TextBlock Grid.Row="17" Grid.Column="1" Text="F3 / Shift+F3" Opacity="0.7"/>
                                 </Grid>
                             </Border>
                             <TextBlock Text="{u:Loc Key=StandardTextEditingUndoRedoCut}" TextWrapping="Wrap" Opacity="0.8" FontSize="12" Margin="2,4,0,0"/>
@@ -1874,6 +1898,22 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
             <TextBlock x:Name="ToastText" TextWrapping="Wrap" AutomationProperties.LiveSetting="Assertive"/>
+        </Border>
+
+        <!-- The command palette (Ctrl+Shift+P, MainWindow.Palette.cs): the same overlay as Go to File, for the commands of the menus. The last child of the window, so that it is drawn above every page (Settings too). -->
+        <Border x:Name="PalettePanel" Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="3"
+                VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,80,0,0"
+                MinWidth="520" MaxWidth="640" Padding="8" CornerRadius="8"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+            <StackPanel Spacing="4">
+                <TextBox x:Name="PaletteTextBox" PlaceholderText="{u:Loc Key=PaletteTextBox_Placeholder}"
+                         AutomationProperties.Name="{u:Loc Key=CommandPaletteMenuItem_Text}"
+                         TextChanged="PaletteTextBox_TextChanged" KeyDown="PaletteTextBox_KeyDown"/>
+                <ListView x:Name="PaletteListView" MaxHeight="380" SelectionMode="Single" IsTabStop="False"
+                          ItemTemplate="{StaticResource PaletteEntryTemplate}" Tapped="PaletteListView_Tapped" KeyDown="PaletteListView_KeyDown"/>
+                <TextBlock x:Name="PaletteNoResultsText" Text="{u:Loc Key=PaletteNoResults}" Visibility="Collapsed" Margin="8,6" Opacity="0.7"/>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>
