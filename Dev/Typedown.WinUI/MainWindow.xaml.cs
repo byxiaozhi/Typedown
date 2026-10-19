@@ -2462,16 +2462,18 @@ namespace Typedown.WinUI
             PostMessage("SearchOpenChange", new { open = 0 });
             // typing continues in the text, at the match that was current
             EditorView.Focus(FocusState.Programmatic);
-            _ = FocusEditorTextAsync();
+            _ = FocusEditorTextAsync(findRequest);
         }
 
         // The page gets the keyboard focus back on the text, with the selection the editor put on the current match
         // (the editor does that when it is told the panel closed, so this waits a moment for it).
-        private async Task FocusEditorTextAsync()
+        private async Task FocusEditorTextAsync(int request)
         {
             try
             {
                 await Task.Delay(250);
+                // the panel was opened again meanwhile (ShowFindReplace counts a new request): the focus belongs to it
+                if (request != findRequest || FindReplacePanel.Visibility == Visibility.Visible) return;
                 await RunInPage("(function(){var r=document.getElementById('ag-editor-id');if(!r)return;var s=window.getSelection();var saved=s&&s.rangeCount?s.getRangeAt(0).cloneRange():null;r.focus();if(saved){s.removeAllRanges();s.addRange(saved);}})()");
             }
             catch (Exception ex) { Log($"FocusEditorText failed: {ex.Message}"); }
