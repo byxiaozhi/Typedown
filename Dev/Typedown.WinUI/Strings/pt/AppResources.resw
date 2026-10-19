@@ -2830,4 +2830,31 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="PalettePrintSystem" xml:space="preserve">
     <value>Imprimir com a caixa de diálogo do sistema...</value>
   </data>
+  <data name="InspectorMenuItem_Text" xml:space="preserve">
+    <value>Painel de inspeção</value>
+  </data>
+  <data name="InspectorReviewSummary" xml:space="preserve">
+    <value>Alterações: {0} · Comentários: {1}</value>
+  </data>
+  <data name="InspectorNoHeadings" xml:space="preserve">
+    <value>Esta nota ainda não tem títulos.</value>
+  </data>
+  <data name="InspectorNoReview" xml:space="preserve">
+    <value>Não há marcas de revisão nesta nota.</value>
+  </data>
+  <data name="InspectorKindAdded" xml:space="preserve">
+    <value>Adicionado</value>
+  </data>
+  <data name="InspectorKindDeleted" xml:space="preserve">
+    <value>Excluído</value>
+  </data>
+  <data name="InspectorKindReplaced" xml:space="preserve">
+    <value>Substituído</value>
+  </data>
+  <data name="InspectorKindComment" xml:space="preserve">
+    <value>Comentário</value>
+  </data>
+  <data name="InspectorKindHighlight" xml:space="preserve">
+    <value>Realce</value>
+  </data>
 </root>

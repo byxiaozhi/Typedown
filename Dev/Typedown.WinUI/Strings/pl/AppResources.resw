@@ -2830,4 +2830,31 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="PalettePrintSystem" xml:space="preserve">
     <value>Drukuj w oknie systemowym...</value>
   </data>
+  <data name="InspectorMenuItem_Text" xml:space="preserve">
+    <value>Panel inspektora</value>
+  </data>
+  <data name="InspectorReviewSummary" xml:space="preserve">
+    <value>Zmiany: {0} · Komentarze: {1}</value>
+  </data>
+  <data name="InspectorNoHeadings" xml:space="preserve">
+    <value>Ta notatka nie ma jeszcze nagłówków.</value>
+  </data>
+  <data name="InspectorNoReview" xml:space="preserve">
+    <value>Brak znaczników recenzji w tej notatce.</value>
+  </data>
+  <data name="InspectorKindAdded" xml:space="preserve">
+    <value>Dodano</value>
+  </data>
+  <data name="InspectorKindDeleted" xml:space="preserve">
+    <value>Usunięto</value>
+  </data>
+  <data name="InspectorKindReplaced" xml:space="preserve">
+    <value>Zastąpiono</value>
+  </data>
+  <data name="InspectorKindComment" xml:space="preserve">
+    <value>Komentarz</value>
+  </data>
+  <data name="InspectorKindHighlight" xml:space="preserve">
+    <value>Wyróżnienie</value>
+  </data>
 </root>

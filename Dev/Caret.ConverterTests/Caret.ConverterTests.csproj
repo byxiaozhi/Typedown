@@ -40,6 +40,7 @@
 		<Compile Include="..\Typedown.WinUI\Services\FileLocation.cs" Link="Converters\FileLocation.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\TitleBarLayout.cs" Link="Converters\TitleBarLayout.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\PaletteSearch.cs" Link="Converters\PaletteSearch.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewList.cs" Link="Converters\ReviewList.cs" />
 		<!-- File > Export > Word -->
 		<Compile Include="..\Typedown.WinUI\Services\Export\*.cs" Link="Export\%(Filename)%(Extension)" />
 		<EmbeddedResource Include="..\..\plugins\markitdown-email\src\markitdown_caret_email\rules\*.json" LogicalName="EmailRules.%(Filename)%(Extension)" Link="Converters\rules\%(Filename)%(Extension)" />
