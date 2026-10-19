@@ -38,7 +38,11 @@ namespace Typedown.WinUI
         private void ShowCommandPalette()
         {
             Log("ShowCommandPalette called");
-            paletteReturnFocus = SettingsPageShown ? FocusManager.GetFocusedElement(Content.XamlRoot) as Control : null;
+            // A command chosen a moment ago and still waiting for the focus is dropped: the palette has been asked for again.
+            paletteRequest++;
+            // Asked for again while open, the keyboard's place from before it opened is kept (the box has it now).
+            if (PalettePanel.Visibility != Visibility.Visible)
+                paletteReturnFocus = SettingsPageShown ? FocusManager.GetFocusedElement(Content.XamlRoot) as Control : null;
             paletteAll = CollectPaletteCommands();
             PaletteTextBox.Text = "";
             UpdatePaletteResults("");
