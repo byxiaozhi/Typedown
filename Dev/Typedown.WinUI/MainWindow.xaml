@@ -294,6 +294,11 @@
                         <KeyboardAccelerator Key="F" Modifiers="Control"/>
                     </MenuFlyoutItem.KeyboardAccelerators>
                 </MenuFlyoutItem>
+                <MenuFlyoutItem x:Name="ReplaceMenuItem" Text="{u:Loc Key=ReplaceMenuItem_Text}" Click="ReplaceMenuItem_Click">
+                    <MenuFlyoutItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="H" Modifiers="Control"/>
+                    </MenuFlyoutItem.KeyboardAccelerators>
+                </MenuFlyoutItem>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem x:Name="InsertImageMenuItem" Text="{u:Loc Key=InsertImageMenuItem_Text}" Click="InsertImageMenuItem_Click"/>
                 <MenuFlyoutItem x:Name="InsertTableMenuItem" Text="{u:Loc Key=InsertTableMenuItem_Text}" Click="InsertTableMenuItem_Click"/>
@@ -1015,23 +1020,27 @@
                 <StackPanel Spacing="4">
                     <Grid ColumnSpacing="4">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="FindTextBox" PlaceholderText="{u:Loc Key=FindTextBox_Placeholder}" KeyDown="FindTextBox_KeyDown" TextChanged="FindTextBox_TextChanged"/>
-                        <Button Grid.Column="1" Content="&#x2193;" Click="FindNext_Click" ToolTipService.ToolTip="{u:Loc Key=FindNext}"/>
-                        <Button Grid.Column="2" Content="&#x2191;" Click="FindPrev_Click" ToolTipService.ToolTip="{u:Loc Key=FindPrevious}"/>
-                        <Button Grid.Column="3" Content="&#x2715;" Click="CloseFind_Click" ToolTipService.ToolTip="{u:Loc Key=Close}"/>
+                        <ToggleButton x:Name="ToggleReplaceButton" Content="&#xE70D;" FontFamily="{ThemeResource SymbolThemeFontFamily}" Click="ToggleReplace_Click" ToolTipService.ToolTip="{u:Loc Key=ToggleReplace}"/>
+                        <TextBox x:Name="FindTextBox" Grid.Column="1" PlaceholderText="{u:Loc Key=FindTextBox_Placeholder}" KeyDown="FindTextBox_KeyDown" TextChanged="FindTextBox_TextChanged"/>
+                        <TextBlock x:Name="FindCountText" Grid.Column="2" MinWidth="64" TextAlignment="Center" VerticalAlignment="Center" Opacity="0.75"/>
+                        <Button Grid.Column="3" Content="&#x2193;" Click="FindNext_Click" ToolTipService.ToolTip="{u:Loc Key=FindNext}"/>
+                        <Button Grid.Column="4" Content="&#x2191;" Click="FindPrev_Click" ToolTipService.ToolTip="{u:Loc Key=FindPrevious}"/>
+                        <Button Grid.Column="5" Content="&#x2715;" Click="CloseFind_Click" ToolTipService.ToolTip="{u:Loc Key=Close}"/>
                     </Grid>
-                    <Grid ColumnSpacing="4">
+                    <Grid x:Name="ReplaceRow" ColumnSpacing="4" Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="ReplaceTextBox" PlaceholderText="{u:Loc Key=ReplaceTextBox_Placeholder}"/>
+                        <TextBox x:Name="ReplaceTextBox" PlaceholderText="{u:Loc Key=ReplaceTextBox_Placeholder}" KeyDown="ReplaceTextBox_KeyDown"/>
                         <Button Grid.Column="1" Content="{u:Loc Key=Replace}" Click="Replace_Click"/>
                         <Button Grid.Column="2" Content="{u:Loc Key=ReplaceAll}" Click="ReplaceAll_Click"/>
                     </Grid>

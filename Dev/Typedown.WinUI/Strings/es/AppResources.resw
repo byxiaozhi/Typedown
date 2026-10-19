@@ -2809,4 +2809,16 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="SaveButtonTip" xml:space="preserve">
     <value>Guardar (Ctrl+S)</value>
   </data>
+  <data name="ToggleReplace" xml:space="preserve">
+    <value>Mostrar u ocultar Reemplazar (Ctrl+H)</value>
+  </data>
+  <data name="FindNoResults" xml:space="preserve">
+    <value>Sin resultados</value>
+  </data>
+  <data name="FindResultCount" xml:space="preserve">
+    <value>{0} de {1}</value>
+  </data>
+  <data name="ReplaceMenuItem_Text" xml:space="preserve">
+    <value>Reemplazar...</value>
+  </data>
 </root>
