@@ -836,6 +836,7 @@ namespace Typedown.WinUI
                 await EditorView.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(BuildPunctuationScript(settings.PunctuationHints));
                 await EditorView.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(ReviewScript);
                 eventCenter.GetObservable<EditorEventArgs>("HostShortcut").Subscribe(x => HandleHostShortcut(x.Args));
+                eventCenter.GetObservable<EditorEventArgs>("SearchResult").Subscribe(x => UpdateFindCount(x.Args));
                 eventCenter.GetObservable<EditorEventArgs>("ContextMenu").Subscribe(x => ShowEditorContextMenu(x.Args));
                 eventCenter.GetObservable<EditorEventArgs>("SpellCheck").Subscribe(x => SpellCheckRequest(x.Args));
                 EditorView.Source = new Uri("https://typedown.editor.local/index.html");
@@ -955,7 +956,7 @@ namespace Typedown.WinUI
             window.addEventListener('keydown', function (e) {
                 altAlone = e.key === 'Alt';
                 // F6 (areas of the window), F10 (the menu) and F11 (distraction-free) belong to the window.
-                if (!e.ctrlKey && !e.altKey && (e.key === 'F6' || e.key === 'F10' || e.key === 'F11')) {
+                if (!e.ctrlKey && !e.altKey && (e.key === 'F3' || e.key === 'F6' || e.key === 'F10' || e.key === 'F11')) {
                     e.preventDefault();
                     e.stopPropagation();
                     // Holding F11 would switch full screen on and off; holding F6 keeps moving, as intended.
@@ -977,7 +978,7 @@ namespace Typedown.WinUI
                 // browser's own Ctrl+B/I/U would edit the page behind the editor's model.
                 var formatting = /^(KeyB|KeyI|KeyU|Digit[0-6])$/.test(code) && !e.shiftKey
                     || /^(KeyK|KeyQ|KeyX|KeyT)$/.test(code) && e.shiftKey;
-                var hostKeys = ['s', 'o', 'n', 'w', 'f', 'p', 'k', 'v', 'z', 'y', 'a', 'c', 't', 'tab', 'pageup', 'pagedown', ',', '/'];
+                var hostKeys = ['s', 'o', 'n', 'w', 'f', 'h', 'p', 'k', 'v', 'z', 'y', 'a', 'c', 't', 'tab', 'pageup', 'pagedown', ',', '/'];
                 if (!formatting && hostKeys.indexOf(key) < 0) return;
                 // In the Code/Split source pane, CodeMirror's own undo/redo/select-all/copy/paste work
                 // on plain text with no model to desync, and the formatting commands don't apply there.
@@ -1006,6 +1007,8 @@ namespace Typedown.WinUI
                 case "s" when shift: SaveAsMenuItem_Click(this, null); break;
                 case "s": SaveMenuItem_Click(this, null); break;
                 case "f": ShowFindReplace(); break;
+                case "h": ShowFindReplace(true); break;
+                case "f3": FindFromKey(shift); break;
                 case "k": ShowQuickOpen(); break;
                 case "w" when shift: RequestClose(); break;
                 case "w": CloseDocumentMenuItem_Click(this, null); break;
@@ -2390,9 +2393,27 @@ namespace Typedown.WinUI
 
         private void FindMenuItem_Click(object sender, RoutedEventArgs e) => ShowFindReplace();
 
-        private void ShowFindReplace()
+        private void ReplaceMenuItem_Click(object sender, RoutedEventArgs e) => ShowFindReplace(true);
+
+        // The words selected in the editor (one line, not too long), the way Find in other editors starts with them.
+        private async Task<string> SelectedEditorTextAsync()
+        {
+            try
+            {
+                var json = await RunInPage("(function(){var s=window.getSelection();return s&&!s.isCollapsed?s.toString():''})()");
+                var text = (json == null ? "" : Newtonsoft.Json.JsonConvert.DeserializeObject<string>(json) ?? "").Trim();
+                return text.Length > 0 && text.Length <= 200 && !text.Contains('\n') && !text.Contains('\r') ? text : null;
+            }
+            catch { return null; }
+        }
+
+        // Ctrl+F: Find. Ctrl+H: Find and Replace, with the cursor in the Replace box. When the panel opens, the selected
+        // words become the term to look for.
+        private async void ShowFindReplace(bool replace = false)
         {
             Log("ShowFindReplace called");
+            var alreadyOpen = FindReplacePanel.Visibility == Visibility.Visible;
+            var selected = alreadyOpen ? null : await SelectedEditorTextAsync();
             // New since the fork: SearchIsCaseSensitive/SearchIsWholeWord/SearchIsRegexp existed as
             // dormant ported settings — the checkboxes drove PushSearch directly but nothing persisted
             // their state, so Find & Replace reset to case-insensitive/no-regex every time you reopened
@@ -2406,17 +2427,67 @@ namespace Typedown.WinUI
             WholeWordCheck.IsChecked = settings.SearchIsWholeWord;
             RegexCheck.IsChecked = settings.SearchIsRegexp;
             restoringSearchOptions = false;
+            if (replace) SetReplaceVisible(true, false);
             FindReplacePanel.Visibility = Visibility.Visible;
-            FindTextBox.Focus(FocusState.Programmatic);
-            FindTextBox.SelectAll();
-            PostMessage("SearchOpenChange", new { open = 1 });
+            if (selected != null) FindTextBox.Text = selected;
+            var box = replace && FindTextBox.Text.Length > 0 ? ReplaceTextBox : FindTextBox;
+            box.Focus(FocusState.Programmatic);
+            box.SelectAll();
+            PostMessage("SearchOpenChange", new { open = ReplaceRow.Visibility == Visibility.Visible ? 2 : 1 });
             PushSearch();
         }
+
+        // The Replace row is shown on request (Ctrl+H or the arrow), so the panel covers less of the text; the editor
+        // moves its text down by the height of the panel (open = 1: Find only, 2: Find and Replace).
+        private void SetReplaceVisible(bool visible, bool tellEditor = true)
+        {
+            ReplaceRow.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+            ToggleReplaceButton.IsChecked = visible;
+            if (tellEditor && FindReplacePanel.Visibility == Visibility.Visible)
+                PostMessage("SearchOpenChange", new { open = visible ? 2 : 1 });
+        }
+
+        private void ToggleReplace_Click(object sender, RoutedEventArgs e) => SetReplaceVisible(ToggleReplaceButton.IsChecked == true);
 
         private void HideFindReplace()
         {
             FindReplacePanel.Visibility = Visibility.Collapsed;
+            FindCountText.Text = "";
             PostMessage("SearchOpenChange", new { open = 0 });
+            // typing continues in the text, at the match that was current
+            EditorView.Focus(FocusState.Programmatic);
+            _ = FocusEditorTextAsync();
+        }
+
+        // The page gets the keyboard focus back on the text, with the selection the editor put on the current match
+        // (the editor does that when it is told the panel closed, so this waits a moment for it).
+        private async Task FocusEditorTextAsync()
+        {
+            try
+            {
+                await Task.Delay(250);
+                await RunInPage("(function(){var r=document.getElementById('ag-editor-id');if(!r)return;var s=window.getSelection();var saved=s&&s.rangeCount?s.getRangeAt(0).cloneRange():null;r.focus();if(saved){s.removeAllRanges();s.addRange(saved);}})()");
+            }
+            catch (Exception ex) { Log($"FocusEditorText failed: {ex.Message}"); }
+        }
+
+        // "3 of 12" next to the box; the editor reports the matches after every search, Find next and Replace.
+        private void UpdateFindCount(JToken args)
+        {
+            var count = args?["count"]?.ToObject<int>() ?? 0;
+            var index = args?["index"]?.ToObject<int>() ?? -1;
+            FindCountText.Text = FindTextBox.Text.Length == 0 || FindReplacePanel.Visibility != Visibility.Visible
+                ? ""
+                : count == 0
+                    ? Locale.GetString("FindNoResults")
+                    : string.Format(Locale.GetString("FindResultCount"), Math.Max(index, 0) + 1, count);
+        }
+
+        // F3 and Shift+F3 go to the next and the previous match; without the panel they open it first.
+        private void FindFromKey(bool previous)
+        {
+            if (FindReplacePanel.Visibility != Visibility.Visible) { ShowFindReplace(); return; }
+            PostMessage("Find", new { action = previous ? "prev" : "next" });
         }
 
         private void CloseFind_Click(object sender, RoutedEventArgs e) => HideFindReplace();
@@ -2447,10 +2518,22 @@ namespace Typedown.WinUI
 
         private void FindTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if (e.Key == VirtualKey.Enter)
-                PostMessage("Find", new { action = "next" });
+            if (e.Key == VirtualKey.Enter || e.Key == VirtualKey.F3)
+            {
+                // Shift+Enter and Shift+F3 go back, as in a browser or in Word
+                var shift = Microsoft.UI.Input.InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down);
+                PostMessage("Find", new { action = shift ? "prev" : "next" });
+                e.Handled = true;
+            }
             else if (e.Key == VirtualKey.Escape)
                 HideFindReplace();
+        }
+
+        // Enter in the Replace box replaces the current match and moves on to the next one.
+        private void ReplaceTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter) { PushReplace(true); e.Handled = true; }
+            else if (e.Key == VirtualKey.Escape) HideFindReplace();
         }
 
         private void FindNext_Click(object sender, RoutedEventArgs e) => PostMessage("Find", new { action = "next" });

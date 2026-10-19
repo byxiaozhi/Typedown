@@ -105,13 +105,34 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         }
     }, [editor, relativeScroll])
 
-    const search = useCallback(arg => {
-        if (arg?.value != "" && arg?.opt?.selection && editor) {
-            const { value, opt } = arg
-            const selection = opt.selection.start ? opt.selection : undefined
-            editor.search(value, { ...opt, selection })
-        }
+    // Tells the host how many matches there are and which one is current ("3 of 12" in the Find panel).
+    const reportSearchResult = useCallback(() => {
+        const { matches, index } = (editor as any)?.contentState?.searchMatches ?? { matches: [], index: -1 }
+        transport.postMessageNoDiff('SearchResult', { count: matches.length, index })
     }, [editor])
+
+    const search = useCallback(arg => {
+        if (!editor) return
+        const { contentState } = editor as any
+        if (!arg?.value) {
+            // The box was emptied (or the panel closed): nothing stays marked in the text.
+            if (contentState.searchMatches.matches.length) {
+                contentState.searchMatches.matches = []
+                contentState.searchMatches.value = ''
+                contentState.render(false)
+            }
+            reportSearchResult()
+            return
+        }
+        // The host sends the term and the options only. The first match to show is the one at or after the caret.
+        const { value, opt } = arg
+        const caret = contentState.cursor
+        const selection = opt?.selection?.start
+            ? opt.selection
+            : caret?.start?.key ? { start: caret.start, end: caret.end } : undefined
+        editor.search(value, { ...opt, selection })
+        reportSearchResult()
+    }, [editor, reportSearchResult])
 
     useEffect(() => {
         searchArgRef.current = props.searchArg
@@ -262,16 +283,18 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
 
     useEffect(() => transport.addListener<{ action: string }>('Find', ({ action }) => {
         editor?.find(action)
+        reportSearchResult()
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
-    }), [editor, scrollToElementIfInvisible]);
+    }), [editor, reportSearchResult, scrollToElementIfInvisible]);
 
     useEffect(() => transport.addListener<{ value: string, opt: unknown }>('Replace', ({ value, opt }) => {
         editor?.replace(value, opt)
-    }), [editor, scrollToElement]);
+        reportSearchResult()
+    }), [editor, reportSearchResult, scrollToElement]);
 
     useEffect(() => {
         setMarginTop(currentMarginTop => {
-            const newMarginTop = { 0: 0, 1: 50, 2: 90 }[props.searchOpen] ?? 0;
+            const newMarginTop = { 0: 0, 1: 75, 2: 115 }[props.searchOpen] ?? 0;   // the height of the Find panel: Find only, Find and Replace
             relativeScroll(newMarginTop - currentMarginTop)
             return newMarginTop;
         })

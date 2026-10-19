@@ -2758,4 +2758,16 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="ReviewTrackWriteBusy" xml:space="preserve">
     <value>The latest text could not be read from the editor, so nothing was written. Please try again.</value>
   </data>
+  <data name="ToggleReplace" xml:space="preserve">
+    <value>Show or hide Replace (Ctrl+H)</value>
+  </data>
+  <data name="FindNoResults" xml:space="preserve">
+    <value>No results</value>
+  </data>
+  <data name="FindResultCount" xml:space="preserve">
+    <value>{0} of {1}</value>
+  </data>
+  <data name="ReplaceMenuItem_Text" xml:space="preserve">
+    <value>Replace...</value>
+  </data>
 </root>
