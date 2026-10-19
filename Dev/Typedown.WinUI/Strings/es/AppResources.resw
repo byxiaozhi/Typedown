@@ -2843,7 +2843,7 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
     <value>No hay marcas de revisión en esta nota.</value>
   </data>
   <data name="InspectorKindAdded" xml:space="preserve">
-    <value>Añadido</value>
+    <value>Agregado</value>
   </data>
   <data name="InspectorKindDeleted" xml:space="preserve">
     <value>Eliminado</value>
