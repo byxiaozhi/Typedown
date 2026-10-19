@@ -133,9 +133,11 @@ namespace Typedown.WinUI
             switch (e.Key)
             {
                 case VirtualKey.Escape:
-                    HidePalette();
+                    ClosePalette();
                     e.Handled = true;
-                    _ = FocusEditorTextAsync(findRequest);
+                    break;
+                case VirtualKey.Tab:
+                    e.Handled = true;   // the keyboard stays in the box (Up and Down move in the list); Tab would leave the palette
                     break;
                 case VirtualKey.Down:
                     MovePaletteSelection(1);
@@ -157,6 +159,29 @@ namespace Typedown.WinUI
                     e.Handled = true;
                     if (PaletteListView.SelectedItem is PaletteEntry entry) await RunPaletteEntry(entry);
                     break;
+            }
+        }
+
+        // Esc: the palette closes and the keyboard goes back to the text.
+        private void ClosePalette()
+        {
+            HidePalette();
+            EditorView.Focus(FocusState.Programmatic);
+            _ = FocusEditorTextAsync(findRequest);
+        }
+
+        // The list is not a tab stop, but a click on a row gives it the focus: Enter and Esc work from there as in the box.
+        private async void PaletteListView_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                e.Handled = true;
+                if (PaletteListView.SelectedItem is PaletteEntry entry) await RunPaletteEntry(entry);
+            }
+            else if (e.Key == VirtualKey.Escape)
+            {
+                e.Handled = true;
+                ClosePalette();
             }
         }
 

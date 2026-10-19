@@ -1898,8 +1898,8 @@
                 <TextBox x:Name="PaletteTextBox" PlaceholderText="{u:Loc Key=PaletteTextBox_Placeholder}"
                          AutomationProperties.Name="{u:Loc Key=CommandPaletteMenuItem_Text}"
                          TextChanged="PaletteTextBox_TextChanged" KeyDown="PaletteTextBox_KeyDown"/>
-                <ListView x:Name="PaletteListView" MaxHeight="380" SelectionMode="Single"
-                          ItemTemplate="{StaticResource PaletteEntryTemplate}" Tapped="PaletteListView_Tapped"/>
+                <ListView x:Name="PaletteListView" MaxHeight="380" SelectionMode="Single" IsTabStop="False"
+                          ItemTemplate="{StaticResource PaletteEntryTemplate}" Tapped="PaletteListView_Tapped" KeyDown="PaletteListView_KeyDown"/>
                 <TextBlock x:Name="PaletteNoResultsText" Text="{u:Loc Key=PaletteNoResults}" Visibility="Collapsed" Margin="8,6" Opacity="0.7"/>
             </StackPanel>
         </Border>
