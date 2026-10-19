@@ -137,6 +137,7 @@
             <KeyboardAccelerator Key="PageUp" Modifiers="Control" Invoked="PreviousTabAccelerator_Invoked"/>
             <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabAccelerator_Invoked"/>
             <KeyboardAccelerator Key="P" Modifiers="Control,Shift" Invoked="CommandPaletteAccelerator_Invoked"/>
+            <KeyboardAccelerator Key="I" Modifiers="Control,Shift" Invoked="InspectorAccelerator_Invoked"/>
         </Grid.KeyboardAccelerators>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -405,6 +406,7 @@
                     <RadioMenuFlyoutItem x:Name="ThemeDarkMenuItem" Text="{u:Loc Key=Dark}" GroupName="AppTheme" Tag="Dark" Click="ThemeMenuItem_Click"/>
                 </MenuFlyoutSubItem>
                 <MenuFlyoutItem x:Name="CommandPaletteMenuItem" Text="{u:Loc Key=CommandPaletteMenuItem_Text}" Click="CommandPaletteMenuItem_Click" KeyboardAcceleratorTextOverride="Ctrl+Shift+P"/>
+                <ToggleMenuFlyoutItem x:Name="InspectorMenuItem" Text="{u:Loc Key=InspectorMenuItem_Text}" Click="InspectorMenuItem_Click" KeyboardAcceleratorTextOverride="Ctrl+Shift+I"/>
                 <MenuFlyoutSeparator/>
                 <RadioMenuFlyoutItem x:Name="ViewModeViewMenuItem" Text="{u:Loc Key=ViewModeViewMenuItem_Text}" GroupName="ViewMode" Tag="view" Click="ViewModeMenuItem_Click"/>
                 <RadioMenuFlyoutItem x:Name="ViewModeCodeMenuItem" Text="{u:Loc Key=ViewModeCodeMenuItem_Text}" GroupName="ViewMode" Tag="code" Click="ViewModeMenuItem_Click"/>
@@ -437,6 +439,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="TocColumn" Width="260"/>
                 <ColumnDefinition x:Name="EditorColumn" Width="*"/>
+                <ColumnDefinition x:Name="InspectorColumn" Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <!-- Reimplemented, not ported: the original LeftPane split Folder and Contents (TOC) into
@@ -1264,6 +1267,70 @@
                 </ScrollViewer>
             </Grid>
             </Grid>
+
+            <!-- The inspector pane (View > Inspector pane, Ctrl+Shift+I, MainWindow.Inspector.cs): beside the note, so the note
+                 stays in sight while its outline or its review is read. Opens on request only. Outline: the headings (the same list
+                 as the sidebar's); Review: the changes and comments of the note, a click goes to the mark in the text. -->
+            <Border Grid.Column="2" x:Name="InspectorPane" Visibility="Collapsed" Width="320"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1,0,0,0" Background="{ThemeResource CaretSidebarBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="8,6,4,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <SelectorBar x:Name="InspectorTabs" SelectionChanged="InspectorTabs_SelectionChanged" AutomationProperties.Name="{u:Loc Key=InspectorMenuItem_Text}">
+                            <SelectorBarItem x:Name="InspectorOutlineTab" Text="{u:Loc Key=OutlineHeader}" IsSelected="True"/>
+                            <SelectorBarItem x:Name="InspectorReviewTab" Text="{u:Loc Key=ReviewNav}"/>
+                        </SelectorBar>
+                        <Button Grid.Column="1" Click="InspectorClose_Click" Background="Transparent" BorderThickness="0" Padding="8,4"
+                                ToolTipService.ToolTip="{u:Loc Key=Close}" AutomationProperties.Name="{u:Loc Key=Close}">
+                            <FontIcon Glyph="&#xE711;" FontSize="12"/>
+                        </Button>
+                    </Grid>
+                    <Border Grid.Row="1" Height="1" Margin="0,6,0,0" Background="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                    <Grid Grid.Row="2">
+                        <Grid x:Name="InspectorOutlinePanel">
+                            <ListView x:Name="InspectorTocListView" SelectionMode="None" IsItemClickEnabled="True" ItemClick="TocListView_ItemClick">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Content}" Margin="{Binding Indent}" TextTrimming="CharacterEllipsis" FontSize="13"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <TextBlock x:Name="InspectorOutlineEmptyText" Text="{u:Loc Key=InspectorNoHeadings}" Margin="16,14" Opacity="0.7" TextWrapping="Wrap" Visibility="Collapsed"/>
+                        </Grid>
+                        <Grid x:Name="InspectorReviewPanel" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="InspectorReviewSummaryText" Margin="16,10,16,6" FontSize="12" Opacity="0.75"/>
+                            <ListView Grid.Row="1" x:Name="InspectorReviewListView" SelectionMode="None" IsItemClickEnabled="True" ItemClick="InspectorReviewListView_ItemClick">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="8,6" Spacing="2" AutomationProperties.Name="{Binding Label}">
+                                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                                <Border CornerRadius="4" Padding="6,1" Background="{Binding Tint}">
+                                                    <TextBlock Text="{Binding Label}" FontSize="11"/>
+                                                </Border>
+                                                <TextBlock Text="{Binding Meta}" FontSize="11" Opacity="0.65" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding Snippet}" FontSize="13" TextWrapping="Wrap" MaxLines="3" TextTrimming="CharacterEllipsis"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <TextBlock Grid.Row="1" x:Name="InspectorReviewEmptyText" Text="{u:Loc Key=InspectorNoReview}" Margin="16,8" Opacity="0.7" TextWrapping="Wrap" Visibility="Collapsed"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
         </Grid>
 
         <!-- New since the fork: a status bar, matching the brand mockups' bottom bar. The original
@@ -1770,7 +1837,7 @@
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/>
-                                        <RowDefinition/><RowDefinition/><RowDefinition/>
+                                        <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="{u:Loc Key=New}"/>
                                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{u:Loc Key=CtrlN}" Opacity="0.7"/>
@@ -1808,6 +1875,8 @@
                                     <TextBlock Grid.Row="16" Grid.Column="1" Text="Ctrl+H" Opacity="0.7"/>
                                     <TextBlock Grid.Row="17" Text="{u:Loc Key=ShortcutFindNext}"/>
                                     <TextBlock Grid.Row="17" Grid.Column="1" Text="F3 / Shift+F3" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="18" Text="{u:Loc Key=InspectorMenuItem_Text}"/>
+                                    <TextBlock Grid.Row="18" Grid.Column="1" Text="Ctrl+Shift+I" Opacity="0.7"/>
                                 </Grid>
                             </Border>
                             <TextBlock Text="{u:Loc Key=StandardTextEditingUndoRedoCut}" TextWrapping="Wrap" Opacity="0.8" FontSize="12" Margin="2,4,0,0"/>

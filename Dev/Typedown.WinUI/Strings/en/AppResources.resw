@@ -2785,10 +2785,40 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="PalettePrintSystem" xml:space="preserve">
     <value>Print using the system dialog...</value>
   </data>
+  <data name="InspectorMenuItem_Text" xml:space="preserve">
+    <value>Inspector pane</value>
+  </data>
+  <data name="InspectorReviewSummary" xml:space="preserve">
+    <value>Changes: {0} · Comments: {1}</value>
+  </data>
+  <data name="InspectorNoHeadings" xml:space="preserve">
+    <value>This note has no headings yet.</value>
+  </data>
+  <data name="InspectorNoReview" xml:space="preserve">
+    <value>No review marks in this note.</value>
+  </data>
+  <data name="InspectorKindAdded" xml:space="preserve">
+    <value>Added</value>
+  </data>
+  <data name="InspectorKindDeleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="InspectorKindReplaced" xml:space="preserve">
+    <value>Replaced</value>
+  </data>
+  <data name="InspectorKindComment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="InspectorKindHighlight" xml:space="preserve">
+    <value>Highlight</value>
+  </data>
   <data name="ShortcutCommandPalette" xml:space="preserve">
     <value>Command palette</value>
   </data>
   <data name="ShortcutFindNext" xml:space="preserve">
     <value>Next / previous match</value>
+  </data>
+  <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
+    <value>Highlights: {0}</value>
   </data>
 </root>

@@ -2833,10 +2833,40 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="PalettePrintSystem" xml:space="preserve">
     <value>Imprimer avec la boîte de dialogue système...</value>
   </data>
+  <data name="InspectorMenuItem_Text" xml:space="preserve">
+    <value>Panneau Inspecteur</value>
+  </data>
+  <data name="InspectorReviewSummary" xml:space="preserve">
+    <value>Modifications : {0} · Commentaires : {1}</value>
+  </data>
+  <data name="InspectorNoHeadings" xml:space="preserve">
+    <value>Cette note n’a pas encore de titres.</value>
+  </data>
+  <data name="InspectorNoReview" xml:space="preserve">
+    <value>Aucune marque de révision dans cette note.</value>
+  </data>
+  <data name="InspectorKindAdded" xml:space="preserve">
+    <value>Ajouté</value>
+  </data>
+  <data name="InspectorKindDeleted" xml:space="preserve">
+    <value>Supprimé</value>
+  </data>
+  <data name="InspectorKindReplaced" xml:space="preserve">
+    <value>Remplacé</value>
+  </data>
+  <data name="InspectorKindComment" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="InspectorKindHighlight" xml:space="preserve">
+    <value>Surlignage</value>
+  </data>
   <data name="ShortcutCommandPalette" xml:space="preserve">
     <value>Palette de commandes</value>
   </data>
   <data name="ShortcutFindNext" xml:space="preserve">
     <value>Résultat suivant / précédent</value>
+  </data>
+  <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
+    <value>Surlignages : {0}</value>
   </data>
 </root>

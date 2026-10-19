@@ -2833,10 +2833,40 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="PalettePrintSystem" xml:space="preserve">
     <value>Imprimir con el cuadro del sistema...</value>
   </data>
+  <data name="InspectorMenuItem_Text" xml:space="preserve">
+    <value>Panel del inspector</value>
+  </data>
+  <data name="InspectorReviewSummary" xml:space="preserve">
+    <value>Cambios: {0} · Comentarios: {1}</value>
+  </data>
+  <data name="InspectorNoHeadings" xml:space="preserve">
+    <value>Esta nota aún no tiene encabezados.</value>
+  </data>
+  <data name="InspectorNoReview" xml:space="preserve">
+    <value>No hay marcas de revisión en esta nota.</value>
+  </data>
+  <data name="InspectorKindAdded" xml:space="preserve">
+    <value>Agregado</value>
+  </data>
+  <data name="InspectorKindDeleted" xml:space="preserve">
+    <value>Eliminado</value>
+  </data>
+  <data name="InspectorKindReplaced" xml:space="preserve">
+    <value>Reemplazado</value>
+  </data>
+  <data name="InspectorKindComment" xml:space="preserve">
+    <value>Comentario</value>
+  </data>
+  <data name="InspectorKindHighlight" xml:space="preserve">
+    <value>Resaltado</value>
+  </data>
   <data name="ShortcutCommandPalette" xml:space="preserve">
     <value>Paleta de comandos</value>
   </data>
   <data name="ShortcutFindNext" xml:space="preserve">
     <value>Coincidencia siguiente / anterior</value>
+  </data>
+  <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
+    <value>Resaltados: {0}</value>
   </data>
 </root>

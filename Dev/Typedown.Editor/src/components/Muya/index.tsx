@@ -227,6 +227,23 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         scrollToElement(`#${slug}`)
     }), [editor, scrollToElement]);
 
+    // The inspector pane's Review list: goes to the `nth` place (0 for the first) where `text` stands, selects it and shows it.
+    useEffect(() => transport.addListener<{ text: string, nth: number }>('ScrollToText', ({ text, nth }) => {
+        if (!editor || !text) return
+        const { contentState } = editor as any
+        let seen = 0
+        for (let block = contentState.getFirstBlock(); block; block = contentState.findNextBlockInLocation(block)) {
+            if (typeof block.text !== 'string') continue
+            for (let at = block.text.indexOf(text); at >= 0; at = block.text.indexOf(text, at + text.length)) {
+                if (seen++ !== nth) continue
+                contentState.cursor = { start: { key: block.key, offset: at }, end: { key: block.key, offset: at + text.length } }
+                contentState.setCursor()
+                scrollToElement(`#${block.key}`)
+                return
+            }
+        }
+    }), [editor, scrollToElement]);
+
     useEffect(() => transport.addListener('UpdateParagraph', type => {
         editor?.updateParagraph(type)
     }), [editor]);

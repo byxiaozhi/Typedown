@@ -979,7 +979,7 @@ namespace Typedown.WinUI
                 // browser's own Ctrl+B/I/U would edit the page behind the editor's model.
                 var formatting = /^(KeyB|KeyI|KeyU|Digit[0-6])$/.test(code) && !e.shiftKey
                     || /^(KeyK|KeyQ|KeyX|KeyT)$/.test(code) && e.shiftKey;
-                var hostKeys = ['s', 'o', 'n', 'w', 'f', 'h', 'p', 'k', 'v', 'z', 'y', 'a', 'c', 't', 'tab', 'pageup', 'pagedown', ',', '/'];
+                var hostKeys = ['s', 'o', 'n', 'w', 'f', 'h', 'i', 'p', 'k', 'v', 'z', 'y', 'a', 'c', 't', 'tab', 'pageup', 'pagedown', ',', '/'];
                 if (!formatting && hostKeys.indexOf(key) < 0) return;
                 // In the Code/Split source pane, CodeMirror's own undo/redo/select-all/copy/paste work
                 // on plain text with no model to desync, and the formatting commands don't apply there.
@@ -1009,6 +1009,7 @@ namespace Typedown.WinUI
                 case "s": SaveMenuItem_Click(this, null); break;
                 case "f": ShowFindReplace(); break;
                 case "h": ShowFindReplace(true); break;
+                case "i" when shift: ToggleInspector(); break;
                 case "f3": FindFromKey(shift); break;
                 case "k": ShowQuickOpen(); break;
                 case "w" when shift: RequestClose(); break;
@@ -1060,6 +1061,7 @@ namespace Typedown.WinUI
             eventCenter.GetObservable<EditorEventArgs>("FileLoaded").Subscribe(x =>
             {
                 history.InitHistory(x.Args["text"]?.ToString() ?? "");
+                InspectorTextChanged(x.Args["text"]?.ToString() ?? "");   // another note was loaded
                 activeDoc.HistoryReady = true;
                 if (!editorReady)
                 {
@@ -1077,6 +1079,7 @@ namespace Typedown.WinUI
                 if (!historyUpdating) history.ContentChange(x.Args["text"]?.ToString() ?? "");
                 TeleprompterTextChanged(x.Args["text"]?.ToString() ?? "");
                 TrackTextChanged();
+                InspectorTextChanged(x.Args["text"]?.ToString() ?? "");
             });
             eventCenter.GetObservable<EditorEventArgs>("TrackAction").Subscribe(x => TrackActionFromPage(x.Args));
             eventCenter.GetObservable<EditorEventArgs>("CursorChange").Subscribe(x =>

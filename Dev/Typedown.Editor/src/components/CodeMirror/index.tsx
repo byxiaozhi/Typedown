@@ -195,6 +195,22 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         editor?.replaceSelection('')
     }), [editor]);
 
+    // The inspector pane's Review list: selects and shows the `nth` place (0 for the first) where `text` stands.
+    useEffect(() => transport.addListener<{ text: string, nth: number }>('ScrollToText', ({ text, nth }) => {
+        if (!editor || !text) return;
+        const value = editor.getValue();
+        let at = -1;
+        let from = 0;
+        for (let i = 0; i <= nth; i++) {
+            at = value.indexOf(text, from);
+            if (at < 0) return;
+            from = at + text.length;
+        }
+        const head = editor.posFromIndex(at);
+        editor.setSelection(head, editor.posFromIndex(at + text.length));
+        editor.scrollIntoView(head, 120);
+    }), [editor]);
+
     useEffect(() => transport.addListener('Copy', () => {
         document.execCommand('copy')
     }), []);
