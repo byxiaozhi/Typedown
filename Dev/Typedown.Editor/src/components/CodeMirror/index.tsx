@@ -96,6 +96,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             matchIndexRef.current < matchs.length && matchs[matchIndexRef.current].index < startIndex;
             matchIndexRef.current++
         );
+        // the caret is behind the last match: the search goes on at the first one
+        if (matchIndexRef.current >= matchs.length) matchIndexRef.current = 0
         setMatchSelection(matchs[matchIndexRef.current])
         matchsRef.current = matchs.map(({ index, match, subMatches }, i) => ({
             marker: editor.markText(
@@ -162,11 +164,13 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             for (const match of matchsRef.current) {
                 offset += replaceOne(match, value, offset)
             }
-            matchsRef.current = [];
-            matchIndexRef.current = -1;
-            reportSearchResult();
+            // the replacement can contain the term again: look at the new text and count what is there
+            search({
+                value: searchValueRef.current,
+                opt: { ...opt, selection: { anchor: editor.getCursor('anchor'), head: editor.getCursor('head') } }
+            });
         }
-    }, [find, replaceOne, reportSearchResult])
+    }, [editor, find, replaceOne, search])
 
     useEffect(() => transport.addListener<{ text: string }>('Paste', ({ text }) => {
         editor?.replaceSelection(text)
