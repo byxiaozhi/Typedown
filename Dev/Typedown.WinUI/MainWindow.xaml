@@ -1327,21 +1327,6 @@
             </StackPanel>
         </Border>
 
-        <!-- The command palette (Ctrl+Shift+P, MainWindow.Palette.cs): the same overlay as Go to File, for the commands of the menus. -->
-        <Border x:Name="PalettePanel" Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="3"
-                VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,80,0,0"
-                MinWidth="520" MaxWidth="640" Padding="8" CornerRadius="8"
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
-            <StackPanel Spacing="4">
-                <TextBox x:Name="PaletteTextBox" PlaceholderText="{u:Loc Key=PaletteTextBox_Placeholder}"
-                         AutomationProperties.Name="{u:Loc Key=CommandPaletteMenuItem_Text}"
-                         TextChanged="PaletteTextBox_TextChanged" KeyDown="PaletteTextBox_KeyDown"/>
-                <ListView x:Name="PaletteListView" MaxHeight="380" SelectionMode="Single"
-                          ItemTemplate="{StaticResource PaletteEntryTemplate}" Tapped="PaletteListView_Tapped"/>
-                <TextBlock x:Name="PaletteNoResultsText" Text="{u:Loc Key=PaletteNoResults}" Visibility="Collapsed" Margin="8,6" Opacity="0.7"/>
-            </StackPanel>
-        </Border>
 
         <!-- Settings (interface review, phase 2): a page in the window instead of the old 420 px dialog,
              so a change shows on the app behind it straight away. Opens with Ctrl+, the gear or File >
@@ -1894,6 +1879,22 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
             <TextBlock x:Name="ToastText" TextWrapping="Wrap" AutomationProperties.LiveSetting="Assertive"/>
+        </Border>
+
+        <!-- The command palette (Ctrl+Shift+P, MainWindow.Palette.cs): the same overlay as Go to File, for the commands of the menus. The last child of the window, so that it is drawn above every page (Settings too). -->
+        <Border x:Name="PalettePanel" Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="3"
+                VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,80,0,0"
+                MinWidth="520" MaxWidth="640" Padding="8" CornerRadius="8"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+            <StackPanel Spacing="4">
+                <TextBox x:Name="PaletteTextBox" PlaceholderText="{u:Loc Key=PaletteTextBox_Placeholder}"
+                         AutomationProperties.Name="{u:Loc Key=CommandPaletteMenuItem_Text}"
+                         TextChanged="PaletteTextBox_TextChanged" KeyDown="PaletteTextBox_KeyDown"/>
+                <ListView x:Name="PaletteListView" MaxHeight="380" SelectionMode="Single"
+                          ItemTemplate="{StaticResource PaletteEntryTemplate}" Tapped="PaletteListView_Tapped"/>
+                <TextBlock x:Name="PaletteNoResultsText" Text="{u:Loc Key=PaletteNoResults}" Visibility="Collapsed" Margin="8,6" Opacity="0.7"/>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>
