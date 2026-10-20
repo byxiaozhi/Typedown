@@ -2884,4 +2884,55 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="InspectorFindCapped" xml:space="preserve">
     <value>as primeiras {0} estão listadas</value>
   </data>
+  <data name="InspectorTabHistory" xml:space="preserve">
+    <value>Histórico</value>
+  </data>
+  <data name="InspectorHistoryKeep" xml:space="preserve">
+    <value>Manter um histórico local das notas salvas</value>
+  </data>
+  <data name="InspectorHistoryInfo" xml:space="preserve">
+    <value>Até {0} versões de cada nota, por {1} dias, somente neste computador.</value>
+  </data>
+  <data name="InspectorHistoryUntitled" xml:space="preserve">
+    <value>O histórico começa quando a nota é salva.</value>
+  </data>
+  <data name="InspectorHistoryNone" xml:space="preserve">
+    <value>Ainda não há versões anteriores.</value>
+  </data>
+  <data name="InspectorHistoryOff" xml:space="preserve">
+    <value>O histórico local está desativado.</value>
+  </data>
+  <data name="InspectorHistoryFirst" xml:space="preserve">
+    <value>Primeira versão salva</value>
+  </data>
+  <data name="InspectorHistoryDelta" xml:space="preserve">
+    <value>{0} caracteres</value>
+  </data>
+  <data name="InspectorHistoryRestore" xml:space="preserve">
+    <value>Restaurar esta versão</value>
+  </data>
+  <data name="InspectorHistoryRestoreTitle" xml:space="preserve">
+    <value>Restaurar esta versão?</value>
+  </data>
+  <data name="InspectorHistoryRestoreBody" xml:space="preserve">
+    <value>A nota volta à versão de {0}. O texto atual é guardado antes no histórico, e Desfazer (Ctrl+Z) também o recupera.</value>
+  </data>
+  <data name="InspectorHistoryDelete" xml:space="preserve">
+    <value>Excluir o histórico desta nota</value>
+  </data>
+  <data name="InspectorHistoryDeleteTitle" xml:space="preserve">
+    <value>Excluir o histórico desta nota?</value>
+  </data>
+  <data name="InspectorHistoryDeleteBody" xml:space="preserve">
+    <value>As versões anteriores são removidas deste computador. A nota em si não muda.</value>
+  </data>
+  <data name="InspectorHistoryDiffHeader" xml:space="preserve">
+    <value>Alterações desta versão para o texto atual</value>
+  </data>
+  <data name="InspectorHistoryIdentical" xml:space="preserve">
+    <value>Igual ao texto atual.</value>
+  </data>
+  <data name="InspectorHistoryMoreLines" xml:space="preserve">
+    <value>… e mais {0} linhas alteradas</value>
+  </data>
 </root>

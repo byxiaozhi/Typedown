@@ -74,13 +74,16 @@ namespace Typedown.WinUI
             var review = InspectorOnReview;
             var speech = InspectorOnSpeech;
             var find = InspectorOnFind;
-            InspectorOutlinePanel.Visibility = review || speech || find ? Visibility.Collapsed : Visibility.Visible;
+            var historyTab = InspectorOnHistory;
+            InspectorOutlinePanel.Visibility = review || speech || find || historyTab ? Visibility.Collapsed : Visibility.Visible;
             InspectorReviewPanel.Visibility = review ? Visibility.Visible : Visibility.Collapsed;
             InspectorSpeechPanel.Visibility = speech ? Visibility.Visible : Visibility.Collapsed;
             InspectorFindPanel.Visibility = find ? Visibility.Visible : Visibility.Collapsed;
+            InspectorHistoryPanel.Visibility = historyTab ? Visibility.Visible : Visibility.Collapsed;
             if (review) RefreshInspectorReview();
             else if (speech) ShowInspectorSpeech();
             else if (find) ShowInspectorFind();
+            else if (historyTab) ShowInspectorHistory();
             else UpdateInspectorOutlineEmpty();
         }
 
@@ -91,6 +94,7 @@ namespace Typedown.WinUI
         private void InspectorTextChanged(string text)
         {
             inspectorText = text;
+            if (InspectorShown && InspectorOnHistory) ScheduleInspectorHistory();
             if (!InspectorShown || !InspectorOnReview) return;
             if (inspectorTimer == null)
             {

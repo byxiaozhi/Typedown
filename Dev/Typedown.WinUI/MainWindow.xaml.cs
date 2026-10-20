@@ -495,7 +495,7 @@ namespace Typedown.WinUI
                 if (!blankGuard) blankGuardLogged.Remove(f);
                 if (settings.AutoSave && f.IsDirty && !string.IsNullOrEmpty(f.FilePath) && !blankGuard)
                 {
-                    await f.Save();
+                    await f.Save(automatic: true);
                     Log($"AutoSave: {f.FilePath}");
                 }
                 else if (await f.BackupTick())
@@ -3324,7 +3324,11 @@ namespace Typedown.WinUI
                 else
                     File.Move(item.FullPath, newPath);
                 favoritesService.RenamePath(item.FullPath, newPath); // a favorite keeps pointing at it
-                if (item.Type != ExplorerItem.ExplorerItemType.Folder) AutoBackup.MoveBackup(item.FullPath, newPath);
+                if (item.Type != ExplorerItem.ExplorerItemType.Folder)
+                {
+                    AutoBackup.MoveBackup(item.FullPath, newPath);
+                    LocalHistory.Notes.Move(item.FullPath, newPath);   // the history of the note goes along
+                }
                 FollowRename(item.FullPath, newPath, item.Type == ExplorerItem.ExplorerItemType.Folder);
                 // Recent files follow too, open or not, in every window's list.
                 foreach (var window in openWindows.ToList())

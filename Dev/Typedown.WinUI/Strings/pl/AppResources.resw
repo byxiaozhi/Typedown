@@ -2884,4 +2884,55 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="InspectorFindCapped" xml:space="preserve">
     <value>wyświetlono pierwsze {0}</value>
   </data>
+  <data name="InspectorTabHistory" xml:space="preserve">
+    <value>Historia</value>
+  </data>
+  <data name="InspectorHistoryKeep" xml:space="preserve">
+    <value>Zachowuj lokalną historię zapisanych notatek</value>
+  </data>
+  <data name="InspectorHistoryInfo" xml:space="preserve">
+    <value>Do {0} wersji każdej notatki, przez {1} dni, tylko na tym komputerze.</value>
+  </data>
+  <data name="InspectorHistoryUntitled" xml:space="preserve">
+    <value>Historia zaczyna się po zapisaniu notatki.</value>
+  </data>
+  <data name="InspectorHistoryNone" xml:space="preserve">
+    <value>Brak wcześniejszych wersji.</value>
+  </data>
+  <data name="InspectorHistoryOff" xml:space="preserve">
+    <value>Historia lokalna jest wyłączona.</value>
+  </data>
+  <data name="InspectorHistoryFirst" xml:space="preserve">
+    <value>Pierwsza zapisana wersja</value>
+  </data>
+  <data name="InspectorHistoryDelta" xml:space="preserve">
+    <value>{0} znaków</value>
+  </data>
+  <data name="InspectorHistoryRestore" xml:space="preserve">
+    <value>Przywróć tę wersję</value>
+  </data>
+  <data name="InspectorHistoryRestoreTitle" xml:space="preserve">
+    <value>Przywrócić tę wersję?</value>
+  </data>
+  <data name="InspectorHistoryRestoreBody" xml:space="preserve">
+    <value>Notatka wróci do wersji z {0}. Obecny tekst zostanie najpierw zachowany w historii, a Cofnij (Ctrl+Z) także go przywróci.</value>
+  </data>
+  <data name="InspectorHistoryDelete" xml:space="preserve">
+    <value>Usuń historię tej notatki</value>
+  </data>
+  <data name="InspectorHistoryDeleteTitle" xml:space="preserve">
+    <value>Usunąć historię tej notatki?</value>
+  </data>
+  <data name="InspectorHistoryDeleteBody" xml:space="preserve">
+    <value>Jej wcześniejsze wersje zostaną usunięte z tego komputera. Sama notatka nie zmieni się.</value>
+  </data>
+  <data name="InspectorHistoryDiffHeader" xml:space="preserve">
+    <value>Zmiany od tej wersji do obecnego tekstu</value>
+  </data>
+  <data name="InspectorHistoryIdentical" xml:space="preserve">
+    <value>Takie samo jak obecny tekst.</value>
+  </data>
+  <data name="InspectorHistoryMoreLines" xml:space="preserve">
+    <value>… i jeszcze {0} zmienionych wierszy</value>
+  </data>
 </root>
