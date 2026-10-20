@@ -495,7 +495,7 @@ namespace Typedown.WinUI
                 if (!blankGuard) blankGuardLogged.Remove(f);
                 if (settings.AutoSave && f.IsDirty && !string.IsNullOrEmpty(f.FilePath) && !blankGuard)
                 {
-                    await f.Save();
+                    await f.Save(automatic: true);
                     Log($"AutoSave: {f.FilePath}");
                 }
                 else if (await f.BackupTick())
@@ -744,6 +744,7 @@ namespace Typedown.WinUI
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            LocalHistory.PruneOnce();   // old versions of the notes' local history expire, saved again or not
             try
             {
                 // A window opened via "Open in New Window" already knows what to load and isn't a
@@ -3319,12 +3320,42 @@ namespace Typedown.WinUI
             {
                 var newPath = Path.Combine(Path.GetDirectoryName(item.FullPath), newName);
                 if (File.Exists(newPath) || Directory.Exists(newPath)) throw new IOException($"'{newName}' already exists.");
+                // The files inside a folder that is renamed are listed before the move: their local histories (closed notes too) follow it.
+                var insideFolder = item.Type == ExplorerItem.ExplorerItemType.Folder
+                    ? await Task.Run(() =>
+                    {
+                        // A subfolder that cannot be read is skipped (and so is its history move); the files found before an error are kept.
+                        var found = new List<string>();
+                        try
+                        {
+                            var options = new EnumerationOptions { RecurseSubdirectories = true, IgnoreInaccessible = true, AttributesToSkip = 0 };
+                            foreach (var path in Directory.EnumerateFiles(item.FullPath, "*", options)) found.Add(path);
+                        }
+                        catch
+                        {
+                        }
+                        return found;
+                    })
+                    : null;
                 if (item.Type == ExplorerItem.ExplorerItemType.Folder)
                     Directory.Move(item.FullPath, newPath);
                 else
                     File.Move(item.FullPath, newPath);
+                if (insideFolder != null)
+                {
+                    var oldFolder = item.FullPath;
+                    _ = Task.Run(() =>
+                    {
+                        foreach (var old in insideFolder)
+                            LocalHistory.Notes.Move(old, Path.Combine(newPath, Path.GetRelativePath(oldFolder, old)));
+                    });
+                }
                 favoritesService.RenamePath(item.FullPath, newPath); // a favorite keeps pointing at it
-                if (item.Type != ExplorerItem.ExplorerItemType.Folder) AutoBackup.MoveBackup(item.FullPath, newPath);
+                if (item.Type != ExplorerItem.ExplorerItemType.Folder)
+                {
+                    AutoBackup.MoveBackup(item.FullPath, newPath);
+                    LocalHistory.Notes.Move(item.FullPath, newPath);   // the history of the note goes along
+                }
                 FollowRename(item.FullPath, newPath, item.Type == ExplorerItem.ExplorerItemType.Folder);
                 // Recent files follow too, open or not, in every window's list.
                 foreach (var window in openWindows.ToList())

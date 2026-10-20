@@ -75,6 +75,9 @@ namespace Typedown.WinUI.ViewModels
         public bool AutoPairMarkdownSyntax { get => GetSettingValue(true); set => SetSettingValue(value); }
         public string EditorAreaWidth { get => GetSettingValue("1200px"); set => SetSettingValue(value); }
         public bool AutoSave { get => GetSettingValue(false); set => SetSettingValue(value); }
+        // New since the fork: the local history of saved notes (the History tab of the inspector pane). On, up to 50 versions of a note
+        // for 30 days are kept on this PC (Services/NoteHistory.cs).
+        public bool KeepLocalHistory { get => GetSettingValue(true); set => SetSettingValue(value); }
         // An administrator can set the defaults of AppTheme, ColorScheme, AccentSource and LayoutPreset
         // (Config.PolicyDefault*, docs/deployment.md); a user's own choice still wins.
         public AppTheme AppTheme { get => GetSettingValue(Config.PolicyDefaultTheme switch { "light" => AppTheme.Light, "dark" => AppTheme.Dark, _ => AppTheme.Default }); set => SetSettingValue(value); }

@@ -2836,4 +2836,55 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="InspectorFindCapped" xml:space="preserve">
     <value>the first {0} are listed</value>
   </data>
+  <data name="InspectorTabHistory" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="InspectorHistoryKeep" xml:space="preserve">
+    <value>Keep a local history of saved notes</value>
+  </data>
+  <data name="InspectorHistoryInfo" xml:space="preserve">
+    <value>Up to {0} versions of each note, for {1} days, on this PC only.</value>
+  </data>
+  <data name="InspectorHistoryUntitled" xml:space="preserve">
+    <value>The history starts when the note is saved.</value>
+  </data>
+  <data name="InspectorHistoryNone" xml:space="preserve">
+    <value>No earlier versions yet.</value>
+  </data>
+  <data name="InspectorHistoryOff" xml:space="preserve">
+    <value>The local history is off.</value>
+  </data>
+  <data name="InspectorHistoryFirst" xml:space="preserve">
+    <value>First saved version</value>
+  </data>
+  <data name="InspectorHistoryDelta" xml:space="preserve">
+    <value>{0} characters</value>
+  </data>
+  <data name="InspectorHistoryRestore" xml:space="preserve">
+    <value>Restore this version</value>
+  </data>
+  <data name="InspectorHistoryRestoreTitle" xml:space="preserve">
+    <value>Restore this version?</value>
+  </data>
+  <data name="InspectorHistoryRestoreBody" xml:space="preserve">
+    <value>The note goes back to the version of {0}. The text as it is now is kept in the history first, and Undo (Ctrl+Z) brings it back too.</value>
+  </data>
+  <data name="InspectorHistoryDelete" xml:space="preserve">
+    <value>Delete the history of this note</value>
+  </data>
+  <data name="InspectorHistoryDeleteTitle" xml:space="preserve">
+    <value>Delete the history of this note?</value>
+  </data>
+  <data name="InspectorHistoryDeleteBody" xml:space="preserve">
+    <value>Its earlier versions are removed from this PC. The note itself is not changed.</value>
+  </data>
+  <data name="InspectorHistoryDiffHeader" xml:space="preserve">
+    <value>Changes from this version to the text now</value>
+  </data>
+  <data name="InspectorHistoryIdentical" xml:space="preserve">
+    <value>Same as the text now.</value>
+  </data>
+  <data name="InspectorHistoryMoreLines" xml:space="preserve">
+    <value>… and {0} more changed lines</value>
+  </data>
 </root>

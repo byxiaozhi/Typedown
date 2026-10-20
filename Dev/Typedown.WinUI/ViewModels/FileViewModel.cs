@@ -201,6 +201,8 @@ namespace Typedown.WinUI.ViewModels
             pendingLoadIsClean = true;
             PushToEditor();
             DocumentReplaced?.Invoke();
+            // the note as it was opened is the first version of its history (when the file changed outside Caret, a new one)
+            await RecordHistory(path, Markdown, checkpoint: true);
             FileStateChanged?.Invoke();
         }
 
@@ -215,7 +217,9 @@ namespace Typedown.WinUI.ViewModels
         }
 
         // Returns false when there's no FilePath yet — caller (MainWindow) should fall back to SaveAs.
-        public async Task<bool> Save()
+        // `automatic`: the save of the auto save timer; the local history keeps those no more often than every two minutes,
+        // a save the user asked for always.
+        public async Task<bool> Save(bool automatic = false)
         {
             if (string.IsNullOrEmpty(FilePath)) return false;
             await File.WriteAllTextAsync(FilePath, Markdown);
@@ -223,6 +227,7 @@ namespace Typedown.WinUI.ViewModels
             savedSnapshot = Markdown;
             // The document is now safely on disk for real — any recovery backup for it is obsolete.
             AutoBackup.DeleteBackup(BackupKey);
+            await RecordHistory(FilePath, Markdown, checkpoint: !automatic);
             FileStateChanged?.Invoke();
             return true;
         }
@@ -237,7 +242,26 @@ namespace Typedown.WinUI.ViewModels
             FilePath = path;
             LegacyEncodingName = null;
             savedSnapshot = Markdown;
+            await RecordHistory(path, Markdown, checkpoint: true);
             FileStateChanged?.Invoke();
+        }
+
+        // The local history of the note (the History tab of the inspector pane): written off the UI thread, and never a reason for
+        // a save to fail.
+        // The records of one note run one after the other, in the order the saves were made (two quick saves must not leave the older
+        // text with the newer time).
+        private readonly object historyQueueLock = new();
+        private Task historyQueue = Task.CompletedTask;
+
+        private Task RecordHistory(string path, string text, bool checkpoint)
+        {
+            if (!settings.KeepLocalHistory) return Task.CompletedTask;
+            lock (historyQueueLock)
+            {
+                // Record never throws (it keeps the history out of the way of a save), so the chain does not break
+                historyQueue = historyQueue.ContinueWith(_ => LocalHistory.Notes.Record(path, text, checkpoint), TaskScheduler.Default);
+                return historyQueue;
+            }
         }
 
         // --- AutoBackup ---

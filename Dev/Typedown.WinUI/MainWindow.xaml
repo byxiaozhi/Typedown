@@ -1269,9 +1269,9 @@
             </Grid>
 
             <!-- The inspector pane (View > Inspector pane, Ctrl+Shift+I, MainWindow.Inspector.cs): beside the note, so the note
-                 stays in sight while its outline, its review, its timing or the matches of a search are read. Opens on request only. Outline: the headings (the same list
+                 stays in sight while its outline, its review, its timing, the matches of a search or the versions of the note are read. Opens on request only. Outline: the headings (the same list
                  as the sidebar's); Review: the changes and comments of the note, a click goes to the mark in the text. -->
-            <Border Grid.Column="2" x:Name="InspectorPane" Visibility="Collapsed" Width="320"
+            <Border Grid.Column="2" x:Name="InspectorPane" Visibility="Collapsed" Width="380"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1,0,0,0" Background="{ThemeResource CaretSidebarBrush}">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -1289,6 +1289,7 @@
                             <SelectorBarItem x:Name="InspectorReviewTab" Text="{u:Loc Key=ReviewNav}"/>
                             <SelectorBarItem x:Name="InspectorSpeechTab" Text="{u:Loc Key=InspectorTabSpeech}"/>
                             <SelectorBarItem x:Name="InspectorFindTab" Text="{u:Loc Key=InspectorTabFind}"/>
+                            <SelectorBarItem x:Name="InspectorHistoryTab" Text="{u:Loc Key=InspectorTabHistory}"/>
                         </SelectorBar>
                         <Button Grid.Column="1" Click="InspectorClose_Click" Background="Transparent" BorderThickness="0" Padding="8,4"
                                 ToolTipService.ToolTip="{u:Loc Key=Close}" AutomationProperties.Name="{u:Loc Key=Close}">
@@ -1343,6 +1344,32 @@
                             <StackPanel Grid.RowSpan="2" x:Name="InspectorFindEmpty" Margin="16,12" Spacing="10">
                                 <TextBlock Text="{u:Loc Key=InspectorFindEmpty}" Opacity="0.7" TextWrapping="Wrap"/>
                                 <Button Content="{u:Loc Key=FindMenuItem_Text}" Click="InspectorFindOpen_Click"/>
+                            </StackPanel>
+                        </Grid>
+                        <!-- History: the versions a note has had each time it was saved (kept on this PC); a version shows what differs from the
+                             text now and can be brought back (MainWindow.InspectorHistory.cs) -->
+                        <Grid x:Name="InspectorHistoryPanel" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Margin="16,10,16,6" Spacing="4">
+                                <ToggleSwitch x:Name="InspectorHistoryToggle" Header="{u:Loc Key=InspectorHistoryKeep}"
+                                              OnContent="{u:Loc Key=ToggleOn}" OffContent="{u:Loc Key=ToggleOff}" Toggled="InspectorHistoryToggle_Toggled"/>
+                                <TextBlock x:Name="InspectorHistoryInfo" FontSize="11" Opacity="0.7" TextWrapping="Wrap"/>
+                                <Button x:Name="InspectorHistoryDelete" Content="{u:Loc Key=InspectorHistoryDelete}" Click="InspectorHistoryDelete_Click" Visibility="Collapsed" Margin="0,4,0,0"/>
+                            </StackPanel>
+                            <ListView Grid.Row="1" x:Name="InspectorHistoryListView" SelectionMode="Single" SelectionChanged="InspectorHistoryListView_SelectionChanged"/>
+                            <TextBlock Grid.Row="1" x:Name="InspectorHistoryEmpty" Margin="16,8" Opacity="0.7" TextWrapping="Wrap" Visibility="Collapsed"/>
+                            <StackPanel Grid.Row="2" x:Name="InspectorHistoryDetail" Visibility="Collapsed" Margin="16,8,16,12" Spacing="6"
+                                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="0,1,0,0">
+                                <TextBlock x:Name="InspectorHistoryDiffHeader" FontSize="11" Opacity="0.75" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                                <ScrollViewer x:Name="InspectorHistoryDiffScroll" MaxHeight="200" VerticalScrollBarVisibility="Auto" HorizontalScrollMode="Disabled">
+                                    <StackPanel x:Name="InspectorHistoryDiff" Spacing="1"/>
+                                </ScrollViewer>
+                                <Button x:Name="InspectorHistoryRestoreButton" Content="{u:Loc Key=InspectorHistoryRestore}" Click="InspectorHistoryRestore_Click"
+                                        Style="{StaticResource AccentButtonStyle}"/>
                             </StackPanel>
                         </Grid>
                     </Grid>

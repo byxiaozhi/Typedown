@@ -115,6 +115,7 @@ namespace Typedown.WinUI
                 if (doc != activeDoc) return;
                 UpdateTitle();
                 UpdateFolderSelection();
+                ScheduleInspectorHistory();
             };
             // Another document in this tab (New, Open): what was remembered belongs to the old one. A save or a rename keeps it.
             doc.File.DocumentReplaced += () =>
@@ -735,6 +736,7 @@ namespace Typedown.WinUI
                         moved = System.IO.Path.Combine(newPath, path.Substring(folder.Length));
                     if (moved == null) continue;
                     AutoBackup.MoveBackup(path, moved);
+                    LocalHistory.Notes.Move(path, moved);   // the history of the note goes along
                     if (doc.PendingPath != null) doc.PendingPath = moved;
                     else doc.File.RenamePathOnly(moved);
                     window.UpdateTabHeader(doc);
