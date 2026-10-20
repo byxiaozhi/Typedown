@@ -87,11 +87,13 @@ const searchCtrl = ContentState => {
     }
   }
 
-  ContentState.prototype.find = function (action/* prev next */) {
+  ContentState.prototype.find = function (action/* prev next goto */, to) {
     let { matches, index } = this.searchMatches
     const len = matches.length
     if (!len) return
-    index = action === 'next' ? index + 1 : index - 1
+    // goto: the match the Find tab of the inspector pane points at
+    if (action === 'goto' && !(to >= 0 && to < len)) return
+    index = action === 'goto' ? to : action === 'next' ? index + 1 : index - 1
     if (index < 0) index = len - 1
     if (index >= len) index = 0
     this.searchMatches.index = index

@@ -2869,4 +2869,19 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
     <value>Surlignages : {0}</value>
   </data>
+  <data name="InspectorTabSpeech" xml:space="preserve">
+    <value>Discours</value>
+  </data>
+  <data name="InspectorTabFind" xml:space="preserve">
+    <value>Chercher</value>
+  </data>
+  <data name="InspectorFindEmpty" xml:space="preserve">
+    <value>Les résultats d’une recherche (Ctrl+F) s’affichent ici.</value>
+  </data>
+  <data name="InspectorFindMatches" xml:space="preserve">
+    <value>Résultats : {0}</value>
+  </data>
+  <data name="InspectorFindCapped" xml:space="preserve">
+    <value>les {0} premiers sont listés</value>
+  </data>
 </root>

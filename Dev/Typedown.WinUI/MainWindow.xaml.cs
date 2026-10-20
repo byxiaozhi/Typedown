@@ -724,6 +724,24 @@ namespace Typedown.WinUI
 
         private void Log(string message) => File.AppendAllText(logPath, $"{DateTime.Now:O} {message}\n");
 
+        // The Find results carry excerpts of the note (the inspector pane's Find tab shows them): the log keeps their number, not
+        // the words. The whole message still goes to the host unchanged.
+        private static string ForLog(string raw)
+        {
+            if (raw == null || !raw.Contains("\"SearchResult\"")) return raw;
+            try
+            {
+                var message = JObject.Parse(raw);
+                if (message["args"] is JObject args && args["matches"] is JArray matches)
+                    args["matches"] = $"{matches.Count} excerpts";
+                return message.ToString(Newtonsoft.Json.Formatting.None);
+            }
+            catch
+            {
+                return "SearchResult (not logged)";
+            }
+        }
+
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -827,7 +845,7 @@ namespace Typedown.WinUI
                 EditorView.CoreWebView2.WebMessageReceived += (s, args) =>
                 {
                     var raw = args.TryGetWebMessageAsString();
-                    Log($"WebMessage: {raw}");
+                    Log($"WebMessage: {ForLog(raw)}");
                     transport.EmitWebViewMessage(this, raw);
                 };
                 EditorView.CoreWebView2.NavigationCompleted += (s, args) =>
@@ -2464,6 +2482,7 @@ namespace Typedown.WinUI
             findRequest++;   // an opening that is still waiting for the selection must not reopen the panel
             FindReplacePanel.Visibility = Visibility.Collapsed;
             FindCountText.Text = "";
+            RenderInspectorFind(null);
             PostMessage("SearchOpenChange", new { open = 0 });
             // typing continues in the text, at the match that was current
             EditorView.Focus(FocusState.Programmatic);
@@ -2490,6 +2509,7 @@ namespace Typedown.WinUI
             // a result for a term that is no longer in the box (typing is faster than the editor answers) is dropped:
             // the answer to the current term follows
             if ((args?["value"]?.ToString() ?? "") != FindTextBox.Text) return;
+            RenderInspectorFind(args);
             var count = args?["count"]?.ToObject<int>() ?? 0;
             var index = args?["index"]?.ToObject<int>() ?? -1;
             FindCountText.Text = FindTextBox.Text.Length == 0 || FindReplacePanel.Visibility != Visibility.Visible

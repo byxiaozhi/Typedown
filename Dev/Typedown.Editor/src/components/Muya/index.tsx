@@ -1,3 +1,4 @@
+import { MAX_SNIPPETS, snippetOf } from "services/searchSnippet";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import transport from "services/transport";
 import { speechLabels } from "services/localization";
@@ -107,9 +108,13 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
 
     // Tells the host how many matches there are and which one is current ("3 of 12" in the Find panel).
     const reportSearchResult = useCallback(() => {
-        const { matches, index, value } = (editor as any)?.contentState?.searchMatches ?? { matches: [], index: -1, value: '' }
+        const contentState = (editor as any)?.contentState
+        const { matches, index, value } = contentState?.searchMatches ?? { matches: [], index: -1, value: '' }
+        // the first matches with the text around them, for the inspector pane's Find tab
+        const found = matches.slice(0, MAX_SNIPPETS).map(({ key, start, end }: any) =>
+            snippetOf(contentState?.getBlock(key)?.text ?? '', start, end))
         // `value` is the term the result belongs to: the host ignores a result that is not for the term in its box
-        transport.postMessageNoDiff('SearchResult', { count: matches.length, index, value: value ?? '' })
+        transport.postMessageNoDiff('SearchResult', { count: matches.length, index, value: value ?? '', matches: found })
     }, [editor])
 
     const search = useCallback(arg => {
@@ -298,8 +303,8 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
     }), [editor, props, scrollToElementIfInvisible]);
 
-    useEffect(() => transport.addListener<{ action: string }>('Find', ({ action }) => {
-        editor?.find(action)
+    useEffect(() => transport.addListener<{ action: string, index?: number }>('Find', ({ action, index }) => {
+        editor?.find(action, index)
         reportSearchResult()
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
     }), [editor, reportSearchResult, scrollToElementIfInvisible]);

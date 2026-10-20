@@ -2869,4 +2869,19 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
     <value>Wyróżnienia: {0}</value>
   </data>
+  <data name="InspectorTabSpeech" xml:space="preserve">
+    <value>Mowa</value>
+  </data>
+  <data name="InspectorTabFind" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
+  <data name="InspectorFindEmpty" xml:space="preserve">
+    <value>Wyniki wyszukiwania (Ctrl+F) pojawią się tutaj.</value>
+  </data>
+  <data name="InspectorFindMatches" xml:space="preserve">
+    <value>Trafienia: {0}</value>
+  </data>
+  <data name="InspectorFindCapped" xml:space="preserve">
+    <value>wyświetlono pierwsze {0}</value>
+  </data>
 </root>
