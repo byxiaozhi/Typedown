@@ -36,12 +36,35 @@ namespace Typedown.WinUI
             try
             {
                 var found = await RunInPage($"window.__caretSpeech&&window.__caretSpeech.goTo({JsonConvert.SerializeObject(prefix)},{nth})");
-                if (found != "true") Log($"Speech: no place found for \"{prefix}\" #{nth} (the page said {found})");
+                // no text of the note in the log: only how long the start was and which of the equal ones
+                if (found != "true") Log($"Speech: no place found for a start of {prefix.Length} characters, number {nth} (the page said {found})");
             }
             catch (Exception ex)
             {
                 Log($"Speech: could not go to the paragraph: {ex.Message}");
             }
+        }
+
+        // A place in the text as a button, so that it can be reached with the Tab key and activated with Enter or Space as well as
+        // with the mouse; it looks like what it holds (no frame, no fill) and goes to the place when it is pressed.
+        private Button SpeechTarget(UIElement content, string name, string prefix, int nth)
+        {
+            var button = new Button
+            {
+                Content = content,
+                Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent),
+                BorderThickness = new Thickness(0),
+                CornerRadius = new CornerRadius(1.5),
+                Padding = new Thickness(0),
+                MinHeight = 0,
+                MinWidth = 0,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+            };
+            AutomationProperties.SetName(button, name);
+            button.Click += async (s, e) => await SpeechGoTo(prefix, nth);
+            return button;
         }
 
         // The talk from top to bottom: a bar for each paragraph, as tall as it takes. Left or right of the middle is its pace
@@ -70,24 +93,23 @@ namespace Typedown.WinUI
                 var height = Math.Max(2, ShapeHeight * seconds / total - 1);
                 done += seconds;
                 var offset = Math.Clamp((speed - 1) / 0.5, -1, 1) * 45;
-                var shown = new Rectangle
+                var words = bar["words"]?.ToObject<int>() ?? 0;
+                var text = Locale.Format("SpeechShapeBar", bar["clock"]?.ToString() ?? "", words.ToString());
+                var prefix = bar["prefix"]?.ToString() ?? "";
+                var nth = bar["nth"]?.ToObject<int>() ?? 0;
+                var shown = SpeechTarget(new Rectangle
                 {
-                    Width = barWidth,
-                    Height = height,
                     Fill = accent,
                     Opacity = Math.Clamp(0.55 + (volume >= 0 ? 0.45 : 0.3) * volume, 0.2, 1),
                     RadiusX = 1.5,
                     RadiusY = 1.5,
-                };
+                }, text, prefix, nth);
+                shown.Width = barWidth;
+                shown.Height = height;
+                shown.HorizontalAlignment = HorizontalAlignment.Left;
                 Canvas.SetLeft(shown, 100 - barWidth / 2 + offset);
                 Canvas.SetTop(shown, top);
-                var words = bar["words"]?.ToObject<int>() ?? 0;
-                var text = Locale.Format("SpeechShapeBar", bar["clock"]?.ToString() ?? "", words.ToString());
                 ToolTipService.SetToolTip(shown, text);
-                AutomationProperties.SetName(shown, text);
-                var prefix = bar["prefix"]?.ToString() ?? "";
-                var nth = bar["nth"]?.ToObject<int>() ?? 0;
-                shown.Tapped += async (s, e) => await SpeechGoTo(prefix, nth);
                 canvas.Children.Add(shown);
                 if (pause > 0.05)
                 {
@@ -150,12 +172,10 @@ namespace Typedown.WinUI
             {
                 var text = SpeechHintText(hint);
                 if (text.Length == 0) continue;
-                var row = new StackPanel { Spacing = 2, Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent) };
-                row.Children.Add(new TextBlock { Text = "• " + text, FontSize = 12, TextWrapping = TextWrapping.Wrap });
-                AutomationProperties.SetName(row, text);
+                var row = new StackPanel { Spacing = 2 };
                 var prefix = hint["prefix"]?.ToString() ?? "";
                 var nth = hint["nth"]?.ToObject<int>() ?? 0;
-                row.Tapped += async (s, e) => await SpeechGoTo(prefix, nth);
+                row.Children.Add(SpeechTarget(new TextBlock { Text = "• " + text, FontSize = 12, TextWrapping = TextWrapping.Wrap, HorizontalAlignment = HorizontalAlignment.Left }, text, prefix, nth));
                 var word = hint["word"]?.ToString() ?? "";
                 var mark = hint["kind"]?.ToString() == "unknown"
                     ? SpeechLibraryMarks.FirstOrDefault(m => string.Equals(m.Name, word, StringComparison.OrdinalIgnoreCase))

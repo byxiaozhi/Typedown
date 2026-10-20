@@ -183,7 +183,7 @@ namespace Typedown.WinUI
         }
 
         // One row of the sections list: the title, its time and its light; a click goes to the heading.
-        private Grid BuildSpeechSectionRow(JToken section)
+        private Button BuildSpeechSectionRow(JToken section)
         {
             var title = section["title"]?.ToString() ?? "";
             var level = Math.Max(1, section["level"]?.ToObject<int>() ?? 1);
@@ -214,14 +214,10 @@ namespace Typedown.WinUI
                 Grid.SetColumn(dot, 2);
                 row.Children.Add(dot);
             }
-            ToolTipService.SetToolTip(row, line);
-            AutomationProperties.SetName(row, line);
-            // a click on a row goes to the heading
-            var prefix = section["prefix"]?.ToString() ?? "";
-            var nth = section["nth"]?.ToObject<int>() ?? 0;
-            row.Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent);
-            row.Tapped += async (s, e) => await SpeechGoTo(prefix, nth);
-            return row;
+            // a press on a row goes to the heading
+            var button = SpeechTarget(row, line, section["prefix"]?.ToString() ?? "", section["nth"]?.ToObject<int>() ?? 0);
+            ToolTipService.SetToolTip(button, line);
+            return button;
         }
 
         private void RenderSpeechTiming()
