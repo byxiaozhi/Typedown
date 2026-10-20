@@ -2821,4 +2821,19 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
     <value>Highlights: {0}</value>
   </data>
+  <data name="InspectorTabSpeech" xml:space="preserve">
+    <value>Speech</value>
+  </data>
+  <data name="InspectorTabFind" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="InspectorFindEmpty" xml:space="preserve">
+    <value>The matches of a search (Ctrl+F) are listed here.</value>
+  </data>
+  <data name="InspectorFindMatches" xml:space="preserve">
+    <value>Matches: {0}</value>
+  </data>
+  <data name="InspectorFindCapped" xml:space="preserve">
+    <value>the first {0} are listed</value>
+  </data>
 </root>

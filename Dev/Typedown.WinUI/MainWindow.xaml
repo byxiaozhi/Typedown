@@ -1269,7 +1269,7 @@
             </Grid>
 
             <!-- The inspector pane (View > Inspector pane, Ctrl+Shift+I, MainWindow.Inspector.cs): beside the note, so the note
-                 stays in sight while its outline, its review or its timing is read. Opens on request only. Outline: the headings (the same list
+                 stays in sight while its outline, its review, its timing or the matches of a search are read. Opens on request only. Outline: the headings (the same list
                  as the sidebar's); Review: the changes and comments of the note, a click goes to the mark in the text. -->
             <Border Grid.Column="2" x:Name="InspectorPane" Visibility="Collapsed" Width="320"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1,0,0,0" Background="{ThemeResource CaretSidebarBrush}">
@@ -1287,7 +1287,8 @@
                         <SelectorBar x:Name="InspectorTabs" SelectionChanged="InspectorTabs_SelectionChanged" AutomationProperties.Name="{u:Loc Key=InspectorMenuItem_Text}">
                             <SelectorBarItem x:Name="InspectorOutlineTab" Text="{u:Loc Key=OutlineHeader}" IsSelected="True"/>
                             <SelectorBarItem x:Name="InspectorReviewTab" Text="{u:Loc Key=ReviewNav}"/>
-                            <SelectorBarItem x:Name="InspectorSpeechTab" Text="{u:Loc Key=SpeechNav}"/>
+                            <SelectorBarItem x:Name="InspectorSpeechTab" Text="{u:Loc Key=InspectorTabSpeech}"/>
+                            <SelectorBarItem x:Name="InspectorFindTab" Text="{u:Loc Key=InspectorTabFind}"/>
                         </SelectorBar>
                         <Button Grid.Column="1" Click="InspectorClose_Click" Background="Transparent" BorderThickness="0" Padding="8,4"
                                 ToolTipService.ToolTip="{u:Loc Key=Close}" AutomationProperties.Name="{u:Loc Key=Close}">
@@ -1331,6 +1332,19 @@
                         </Grid>
                         <!-- Speech: the time against the budget, the sections, the shape of the talk and the hints (built in MainWindow.InspectorSpeech.cs) -->
                         <Grid x:Name="InspectorSpeechPanel" Visibility="Collapsed"/>
+                        <!-- Find: every match of the term in the Find panel (Ctrl+F), with the words around it; a click makes it the current match -->
+                        <Grid x:Name="InspectorFindPanel" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="InspectorFindSummary" Margin="16,10,16,6" FontSize="12" Opacity="0.75" TextWrapping="Wrap"/>
+                            <ListView Grid.Row="1" x:Name="InspectorFindListView" SelectionMode="Single" IsItemClickEnabled="True" ItemClick="InspectorFindListView_ItemClick"/>
+                            <StackPanel Grid.RowSpan="2" x:Name="InspectorFindEmpty" Margin="16,12" Spacing="10">
+                                <TextBlock Text="{u:Loc Key=InspectorFindEmpty}" Opacity="0.7" TextWrapping="Wrap"/>
+                                <Button Content="{u:Loc Key=FindMenuItem_Text}" Click="InspectorFindOpen_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Border>

@@ -2869,4 +2869,19 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
     <value>Resaltados: {0}</value>
   </data>
+  <data name="InspectorTabSpeech" xml:space="preserve">
+    <value>Discurso</value>
+  </data>
+  <data name="InspectorTabFind" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="InspectorFindEmpty" xml:space="preserve">
+    <value>Las coincidencias de una búsqueda (Ctrl+F) aparecen aquí.</value>
+  </data>
+  <data name="InspectorFindMatches" xml:space="preserve">
+    <value>Coincidencias: {0}</value>
+  </data>
+  <data name="InspectorFindCapped" xml:space="preserve">
+    <value>se muestran las primeras {0}</value>
+  </data>
 </root>

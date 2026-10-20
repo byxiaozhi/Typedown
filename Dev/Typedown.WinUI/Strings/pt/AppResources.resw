@@ -2869,4 +2869,19 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="InspectorReviewSummaryHighlights" xml:space="preserve">
     <value>Realces: {0}</value>
   </data>
+  <data name="InspectorTabSpeech" xml:space="preserve">
+    <value>Fala</value>
+  </data>
+  <data name="InspectorTabFind" xml:space="preserve">
+    <value>Localizar</value>
+  </data>
+  <data name="InspectorFindEmpty" xml:space="preserve">
+    <value>As correspondências de uma pesquisa (Ctrl+F) aparecem aqui.</value>
+  </data>
+  <data name="InspectorFindMatches" xml:space="preserve">
+    <value>Correspondências: {0}</value>
+  </data>
+  <data name="InspectorFindCapped" xml:space="preserve">
+    <value>as primeiras {0} estão listadas</value>
+  </data>
 </root>

@@ -12,8 +12,9 @@ using Typedown.WinUI.Utilities;
 namespace Typedown.WinUI
 {
     // New since the fork: the inspector pane (View > Inspector pane, Ctrl+Shift+I), a column beside the note, so that the note stays
-    // in sight while it is read from the side. Three tabs: Outline (the headings, the list the sidebar has too), Review (the
-    // changes and comments of the note in the order of the text; a click goes to the mark) and Speech (MainWindow.InspectorSpeech.cs). It opens on request, like the review
+    // in sight while it is read from the side. Four tabs: Outline (the headings, the list the sidebar has too), Review (the
+    // changes and comments of the note in the order of the text; a click goes to the mark), Speech (MainWindow.InspectorSpeech.cs) and
+    // Find (the matches of the Find panel, MainWindow.InspectorFind.cs). It opens on request, like the review
     // marks themselves, and never by itself.
     public sealed partial class MainWindow
     {
@@ -72,11 +73,14 @@ namespace Typedown.WinUI
         {
             var review = InspectorOnReview;
             var speech = InspectorOnSpeech;
-            InspectorOutlinePanel.Visibility = review || speech ? Visibility.Collapsed : Visibility.Visible;
+            var find = InspectorOnFind;
+            InspectorOutlinePanel.Visibility = review || speech || find ? Visibility.Collapsed : Visibility.Visible;
             InspectorReviewPanel.Visibility = review ? Visibility.Visible : Visibility.Collapsed;
             InspectorSpeechPanel.Visibility = speech ? Visibility.Visible : Visibility.Collapsed;
+            InspectorFindPanel.Visibility = find ? Visibility.Visible : Visibility.Collapsed;
             if (review) RefreshInspectorReview();
             else if (speech) ShowInspectorSpeech();
+            else if (find) ShowInspectorFind();
             else UpdateInspectorOutlineEmpty();
         }
 

@@ -318,8 +318,8 @@ class Muya {
     return this.contentState.searchMatches
   }
 
-  find(action/* pre or next */) {
-    this.contentState.find(action)
+  find(action/* prev, next or goto (with the number of the match) */, index) {
+    this.contentState.find(action, index)
     this.contentState.render(false)
     return this.contentState.searchMatches
   }

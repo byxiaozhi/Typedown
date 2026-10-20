@@ -1,3 +1,4 @@
+import { MAX_SNIPPETS, snippetOf } from "services/searchSnippet";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import transport from "services/transport";
 import { matchString } from 'services/common'
@@ -29,12 +30,17 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     // "3 of 12" in the host's Find panel, as the visual editor reports it
     const reportSearchResult = useCallback(() => {
         const count = matchsRef.current.length;
+        // the first matches with the text around them, for the inspector pane's Find tab
+        const text: string = editor?.getValue() ?? '';
+        const matches = matchsRef.current.slice(0, MAX_SNIPPETS)
+            .map(({ index, match }) => snippetOf(text, index, index + match.length));
         transport.postMessageNoDiff('SearchResult', {
             count,
             index: count == 0 ? -1 : matchIndexRef.current,
-            value: searchValueRef.current
+            value: searchValueRef.current,
+            matches
         });
-    }, []);
+    }, [editor]);
     const markdownRef = useRef('');
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
@@ -112,8 +118,12 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         reportSearchResult();
     }, [editor, setMatchSelection, reportSearchResult])
 
-    const find = useCallback(({ action }) => {
-        if (action == 'next') {
+    const find = useCallback(({ action, index }) => {
+        if (action == 'goto') {
+            // the match the Find tab of the inspector pane points at
+            if (!(index >= 0) || index >= matchsRef.current.length) return;
+            matchIndexRef.current = index;
+        } else if (action == 'next') {
             matchIndexRef.current++;
         } else {
             matchIndexRef.current--;
@@ -306,7 +316,7 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
     }), [editor, props, scrollToElementIfInvisible, search]);
 
-    useEffect(() => transport.addListener<{ action: string }>('Find', (arg) => {
+    useEffect(() => transport.addListener<{ action: string, index?: number }>('Find', (arg) => {
         find(arg)
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
     }), [editor, find, scrollToElementIfInvisible]);

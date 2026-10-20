@@ -2464,6 +2464,7 @@ namespace Typedown.WinUI
             findRequest++;   // an opening that is still waiting for the selection must not reopen the panel
             FindReplacePanel.Visibility = Visibility.Collapsed;
             FindCountText.Text = "";
+            RenderInspectorFind(null);
             PostMessage("SearchOpenChange", new { open = 0 });
             // typing continues in the text, at the match that was current
             EditorView.Focus(FocusState.Programmatic);
@@ -2490,6 +2491,7 @@ namespace Typedown.WinUI
             // a result for a term that is no longer in the box (typing is faster than the editor answers) is dropped:
             // the answer to the current term follows
             if ((args?["value"]?.ToString() ?? "") != FindTextBox.Text) return;
+            RenderInspectorFind(args);
             var count = args?["count"]?.ToObject<int>() ?? 0;
             var index = args?["index"]?.ToObject<int>() ?? -1;
             FindCountText.Text = FindTextBox.Text.Length == 0 || FindReplacePanel.Visibility != Visibility.Visible
