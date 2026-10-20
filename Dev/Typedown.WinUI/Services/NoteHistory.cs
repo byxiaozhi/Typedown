@@ -181,6 +181,26 @@ namespace Typedown.WinUI.Services
             }
         }
 
+        // Every note's old versions are pruned, not only the note being saved: versions expire with time even when a note is never
+        // saved again, or the history is off (run when the app starts). The newest version of a note is always kept.
+        public void PruneAll()
+        {
+            try
+            {
+                if (!Directory.Exists(root)) return;
+                var prefixes = Directory.GetFiles(root, "*" + Extension)
+                    .Select(Path.GetFileName)
+                    .Where(name => name != null && name.IndexOf(Separator) > 0)
+                    .Select(name => name.Substring(0, name.LastIndexOf(Separator) + 1))
+                    .Distinct(StringComparer.Ordinal)
+                    .ToList();
+                foreach (var prefix in prefixes) Prune(prefix);
+            }
+            catch
+            {
+            }
+        }
+
         // The snapshot files of a note, oldest first (the time in the name sorts as text).
         private List<string> Snapshots(string prefix) =>
             Directory.Exists(root)

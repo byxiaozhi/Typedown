@@ -65,6 +65,7 @@ namespace Typedown.WinUI
                 inspectorHistoryLatest = null;
                 inspectorHistoryEntries = new List<HistoryEntry>();
                 ShowHistoryList("InspectorHistoryUntitled");
+                InspectorHistoryDetail.Visibility = Visibility.Collapsed;   // the diff of the note that was shown must not stay
                 return;
             }
 
@@ -147,7 +148,14 @@ namespace Typedown.WinUI
             }
             var request = ++inspectorHistoryRequest;
             var current = file.Markdown ?? "";
-            var text = inspectorHistorySelectedText ??= await Task.Run(() => LocalHistory.Notes.Read(path, id));
+            var text = inspectorHistorySelectedText;
+            if (text == null)
+            {
+                text = await Task.Run(() => LocalHistory.Notes.Read(path, id));
+                // kept only when this version is still the selected one (a slower read of another version must not fill the cache)
+                if (id == inspectorHistorySelectedId) inspectorHistorySelectedText = text;
+            }
+            if (request != inspectorHistoryRequest || id != inspectorHistorySelectedId) return;
             if (text == null)
             {
                 InspectorHistoryDetail.Visibility = Visibility.Collapsed;

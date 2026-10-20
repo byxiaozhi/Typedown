@@ -248,8 +248,21 @@ namespace Typedown.WinUI.ViewModels
 
         // The local history of the note (the History tab of the inspector pane): written off the UI thread, and never a reason for
         // a save to fail.
-        private Task RecordHistory(string path, string text, bool checkpoint) =>
-            settings.KeepLocalHistory ? Task.Run(() => LocalHistory.Notes.Record(path, text, checkpoint)) : Task.CompletedTask;
+        // The records of one note run one after the other, in the order the saves were made (two quick saves must not leave the older
+        // text with the newer time).
+        private readonly object historyQueueLock = new();
+        private Task historyQueue = Task.CompletedTask;
+
+        private Task RecordHistory(string path, string text, bool checkpoint)
+        {
+            if (!settings.KeepLocalHistory) return Task.CompletedTask;
+            lock (historyQueueLock)
+            {
+                // Record never throws (it keeps the history out of the way of a save), so the chain does not break
+                historyQueue = historyQueue.ContinueWith(_ => LocalHistory.Notes.Record(path, text, checkpoint), TaskScheduler.Default);
+                return historyQueue;
+            }
+        }
 
         // --- AutoBackup ---
         // Ported from the original's FileViewModel.AutoBackupFile()/CheckBackup(). Split across two

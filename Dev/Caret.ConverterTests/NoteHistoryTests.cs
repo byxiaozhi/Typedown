@@ -119,6 +119,23 @@ namespace Caret.ConverterTests
         }
 
         [Fact]
+        public void PruneAll_removes_the_expired_versions_of_every_note_but_keeps_the_newest_of_each()
+        {
+            var history = Make(maxDays: 30);
+            history.Record(@"C:\One\a.md", "a old", checkpoint: true);
+            history.Record(@"C:\One\a.md", "a older still", checkpoint: true);
+            history.Record(@"C:\Two\b.md", "b old", checkpoint: true);
+            now = now.AddDays(40);
+            history.Record(@"C:\Three\c.md", "c fresh", checkpoint: true);   // another note: nothing prunes the first two
+
+            Assert.Equal(2, history.List(@"C:\One\a.md").Count);
+            history.PruneAll();
+            Assert.Single(history.List(@"C:\One\a.md"));    // the newest one stays although it is 40 days old
+            Assert.Single(history.List(@"C:\Two\b.md"));
+            Assert.Single(history.List(@"C:\Three\c.md"));
+        }
+
+        [Fact]
         public void Two_snapshots_in_the_same_millisecond_are_both_kept()
         {
             var history = Make();

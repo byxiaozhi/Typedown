@@ -744,6 +744,7 @@ namespace Typedown.WinUI
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            LocalHistory.PruneOnce();   // old versions of the notes' local history expire, saved again or not
             try
             {
                 // A window opened via "Open in New Window" already knows what to load and isn't a
