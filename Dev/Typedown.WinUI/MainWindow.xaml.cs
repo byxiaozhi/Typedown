@@ -3324,8 +3324,17 @@ namespace Typedown.WinUI
                 var insideFolder = item.Type == ExplorerItem.ExplorerItemType.Folder
                     ? await Task.Run(() =>
                     {
-                        try { return Directory.EnumerateFiles(item.FullPath, "*", SearchOption.AllDirectories).ToList(); }
-                        catch { return new List<string>(); }
+                        // A subfolder that cannot be read is skipped (and so is its history move); the files found before an error are kept.
+                        var found = new List<string>();
+                        try
+                        {
+                            var options = new EnumerationOptions { RecurseSubdirectories = true, IgnoreInaccessible = true, AttributesToSkip = 0 };
+                            foreach (var path in Directory.EnumerateFiles(item.FullPath, "*", options)) found.Add(path);
+                        }
+                        catch
+                        {
+                        }
+                        return found;
                     })
                     : null;
                 if (item.Type == ExplorerItem.ExplorerItemType.Folder)
