@@ -92,7 +92,7 @@ const searchCtrl = ContentState => {
     const len = matches.length
     if (!len) return
     // goto: the match the Find tab of the inspector pane points at
-    if (action === 'goto' && !(to >= 0)) return
+    if (action === 'goto' && !(to >= 0 && to < len)) return
     index = action === 'goto' ? to : action === 'next' ? index + 1 : index - 1
     if (index < 0) index = len - 1
     if (index >= len) index = 0
