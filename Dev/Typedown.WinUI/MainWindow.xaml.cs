@@ -3320,10 +3320,27 @@ namespace Typedown.WinUI
             {
                 var newPath = Path.Combine(Path.GetDirectoryName(item.FullPath), newName);
                 if (File.Exists(newPath) || Directory.Exists(newPath)) throw new IOException($"'{newName}' already exists.");
+                // The files inside a folder that is renamed are listed before the move: their local histories (closed notes too) follow it.
+                var insideFolder = item.Type == ExplorerItem.ExplorerItemType.Folder
+                    ? await Task.Run(() =>
+                    {
+                        try { return Directory.EnumerateFiles(item.FullPath, "*", SearchOption.AllDirectories).ToList(); }
+                        catch { return new List<string>(); }
+                    })
+                    : null;
                 if (item.Type == ExplorerItem.ExplorerItemType.Folder)
                     Directory.Move(item.FullPath, newPath);
                 else
                     File.Move(item.FullPath, newPath);
+                if (insideFolder != null)
+                {
+                    var oldFolder = item.FullPath;
+                    _ = Task.Run(() =>
+                    {
+                        foreach (var old in insideFolder)
+                            LocalHistory.Notes.Move(old, Path.Combine(newPath, Path.GetRelativePath(oldFolder, old)));
+                    });
+                }
                 favoritesService.RenamePath(item.FullPath, newPath); // a favorite keeps pointing at it
                 if (item.Type != ExplorerItem.ExplorerItemType.Folder)
                 {
