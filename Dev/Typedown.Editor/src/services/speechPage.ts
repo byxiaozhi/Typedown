@@ -442,14 +442,21 @@ const goTo = (prefix: string, nth: number): boolean => {
             }
             return false
         }
-        const blocks = Array.from(document.querySelectorAll('.ag-paragraph-content')) as HTMLElement[]
+        // the blocks that hold text (a list or a quote holds blocks of its own); a heading has no content span, its marker is hidden
+        const blocks = (Array.from(document.querySelectorAll('.ag-paragraph')) as HTMLElement[]).filter(b => !b.querySelector('.ag-paragraph'))
+        // a heading's prefix is the line of the file ("## Opening"); the editor shows the heading without its marker
+        const bare = (text: string) => text.replace(/^#{1,6}\s+/, '')
+        // a mark in the prefix is drawn as a chip (its words are not the mark's), so the prefix is taken up to the first mark
+        const upToMark = (text: string) => { const at = text.indexOf('{'); return at > 0 ? text.slice(0, at).trimEnd() : text }
+        const wanted = upToMark(bare(prefix))
         let seen = 0
         for (const block of blocks) {
-            const text = (block.textContent ?? '').replace(ZW, '').trim()
-            if (!text.startsWith(prefix)) continue
+            const content = contentOf(block)
+            const text = bare((content.textContent ?? '').replace(ZW, '').trim())
+            if (!text.startsWith(wanted)) continue
             if (seen++ < nth) continue
-            block.scrollIntoView({ block: 'center', behavior: 'smooth' })
-            const point = pointAt(block, 0)
+            content.scrollIntoView({ block: 'center', behavior: 'smooth' })
+            const point = pointAt(content, 0)
             const range = document.createRange()
             range.setStart(point.node, point.offset)
             range.collapse(true)

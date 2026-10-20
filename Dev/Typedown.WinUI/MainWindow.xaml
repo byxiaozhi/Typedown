@@ -1269,7 +1269,7 @@
             </Grid>
 
             <!-- The inspector pane (View > Inspector pane, Ctrl+Shift+I, MainWindow.Inspector.cs): beside the note, so the note
-                 stays in sight while its outline or its review is read. Opens on request only. Outline: the headings (the same list
+                 stays in sight while its outline, its review or its timing is read. Opens on request only. Outline: the headings (the same list
                  as the sidebar's); Review: the changes and comments of the note, a click goes to the mark in the text. -->
             <Border Grid.Column="2" x:Name="InspectorPane" Visibility="Collapsed" Width="320"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1,0,0,0" Background="{ThemeResource CaretSidebarBrush}">
@@ -1287,6 +1287,7 @@
                         <SelectorBar x:Name="InspectorTabs" SelectionChanged="InspectorTabs_SelectionChanged" AutomationProperties.Name="{u:Loc Key=InspectorMenuItem_Text}">
                             <SelectorBarItem x:Name="InspectorOutlineTab" Text="{u:Loc Key=OutlineHeader}" IsSelected="True"/>
                             <SelectorBarItem x:Name="InspectorReviewTab" Text="{u:Loc Key=ReviewNav}"/>
+                            <SelectorBarItem x:Name="InspectorSpeechTab" Text="{u:Loc Key=SpeechNav}"/>
                         </SelectorBar>
                         <Button Grid.Column="1" Click="InspectorClose_Click" Background="Transparent" BorderThickness="0" Padding="8,4"
                                 ToolTipService.ToolTip="{u:Loc Key=Close}" AutomationProperties.Name="{u:Loc Key=Close}">
@@ -1328,6 +1329,8 @@
                             </ListView>
                             <TextBlock Grid.Row="1" x:Name="InspectorReviewEmptyText" Text="{u:Loc Key=InspectorNoReview}" Margin="16,8" Opacity="0.7" TextWrapping="Wrap" Visibility="Collapsed"/>
                         </Grid>
+                        <!-- Speech: the time against the budget, the sections, the shape of the talk and the hints (built in MainWindow.InspectorSpeech.cs) -->
+                        <Grid x:Name="InspectorSpeechPanel" Visibility="Collapsed"/>
                     </Grid>
                 </Grid>
             </Border>

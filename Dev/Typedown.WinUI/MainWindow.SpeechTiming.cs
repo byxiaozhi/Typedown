@@ -34,6 +34,7 @@ namespace Typedown.WinUI
         private TextBlock speechShapeLegend;
         private DispatcherTimer speechWpmTimer;
         private bool suppressSpeechWpm;
+        private double speechWpmChosen;
         private JToken speechTiming;
 
         // The panel at the top of the card. Built with the card; the figures come from the page.
@@ -64,7 +65,7 @@ namespace Typedown.WinUI
             };
             speechWpmBox.ValueChanged += SpeechTimingWpmBox_ValueChanged;
             speechHeadingsBox = new CheckBox { Content = T("SpeechTimingHeadings"), IsChecked = settings.SpeechHeadingsSpoken, FontSize = 12, MinHeight = 0 };
-            speechHeadingsBox.Click += (s, e) => settings.SpeechHeadingsSpoken = speechHeadingsBox.IsChecked == true;
+            speechHeadingsBox.Click += (s, e) => { settings.SpeechHeadingsSpoken = speechHeadingsBox.IsChecked == true; RenderInspectorSpeech(); };
             // the pace, the headings and the sections are in a part that opens, so the card stays short
             var details = new StackPanel { Spacing = 4, Margin = new Thickness(0, 4, 0, 0) };
             details.Children.Add(speechWpmBox);
@@ -109,12 +110,14 @@ namespace Typedown.WinUI
         {
             speechTiming = args;
             RenderSpeechTiming();
+            RenderInspectorSpeech();
         }
 
         // The words per minute are written into the document ({wpm N}) a moment after the last change of the box.
         private void SpeechTimingWpmBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
         {
             if (suppressSpeechWpm || double.IsNaN(args.NewValue)) return;
+            speechWpmChosen = args.NewValue;
             speechWpmTimer ??= new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(800) };
             speechWpmTimer.Tick -= WriteSpeechWpm;
             speechWpmTimer.Tick += WriteSpeechWpm;
@@ -127,7 +130,7 @@ namespace Typedown.WinUI
             speechWpmTimer.Stop();
             try
             {
-                var value = (int)Math.Round(speechWpmBox.Value);
+                var value = (int)Math.Round(speechWpmChosen);
                 await RunInPage($"window.__caretSpeech?window.__caretSpeech.setWpm({value}):null");
             }
             catch (Exception ex)
@@ -149,6 +152,74 @@ namespace Typedown.WinUI
                 ? Locale.Format("SpeechTimingOver", x["overClock"]?.ToString())
                 : Locale.Format("SpeechTimingLeft", x["overClock"]?.ToString());
 
+        // The time against the budget as two lines: "2:10 of 5:00" with the words in the tooltip, and "● 2:50 to spare" in the light's colour.
+        private void ApplySpeechSummary(TextBlock summary, TextBlock budget, JToken data)
+        {
+            var words = data["words"]?.ToObject<int>() ?? 0;
+            var clock = data["clock"]?.ToString() ?? "0:00";
+            var budgetClock = data["budgetClock"]?.ToString() ?? "";
+            summary.Text = budgetClock.Length > 0 ? Locale.Format("SpeechTimingLineBudget", clock, budgetClock) : Locale.Format("SpeechTimingLine", clock);
+            ToolTipService.SetToolTip(summary, Locale.Format("SpeechTimingWords", words.ToString()));
+            var light = data["light"]?.ToString() ?? "";
+            if (light.Length > 0)
+            {
+                budget.Text = "● " + SpeechBudgetText(data);
+                budget.Foreground = SpeechLightBrush(light);
+                budget.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                budget.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        // Both boxes (the card's and the inspector's) show the pace in force; they are set here without writing it again.
+        private void ShowSpeechWpm(double wpm)
+        {
+            suppressSpeechWpm = true;
+            foreach (var box in new[] { speechWpmBox, inspectorWpmBox })
+                if (box != null && Math.Abs(box.Value - wpm) > 0.01 && box.FocusState == FocusState.Unfocused) box.Value = wpm;
+            suppressSpeechWpm = false;
+        }
+
+        // One row of the sections list: the title, its time and its light; a click goes to the heading.
+        private Button BuildSpeechSectionRow(JToken section)
+        {
+            var title = section["title"]?.ToString() ?? "";
+            var level = Math.Max(1, section["level"]?.ToObject<int>() ?? 1);
+            var sectionClock = section["clock"]?.ToString() ?? "";
+            var sectionLight = section["light"]?.ToString() ?? "";
+            var hasBudget = sectionLight.Length > 0;
+            var line = hasBudget
+                ? $"{title}: {Locale.Format("SpeechTimingLineBudget", sectionClock, section["budgetClock"]?.ToString())}, {SpeechBudgetText(section)}"
+                : $"{title}: {sectionClock}";
+            var row = new Grid { ColumnSpacing = 6 };
+            row.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            var name = new TextBlock
+            {
+                Text = title.Length > 0 ? title : "…",
+                FontSize = 12,
+                TextTrimming = TextTrimming.CharacterEllipsis,
+                Margin = new Thickness((level - 1) * 8, 0, 0, 0),
+            };
+            var time = new TextBlock { Text = sectionClock, FontSize = 12, FontFamily = new FontFamily("Segoe UI Variable Text") };
+            Grid.SetColumn(time, 1);
+            row.Children.Add(name);
+            row.Children.Add(time);
+            if (hasBudget)
+            {
+                var dot = new TextBlock { Text = "●", FontSize = 11, Foreground = SpeechLightBrush(sectionLight) };
+                Grid.SetColumn(dot, 2);
+                row.Children.Add(dot);
+            }
+            // a press on a row goes to the heading
+            var button = SpeechTarget(row, line, section["prefix"]?.ToString() ?? "", section["nth"]?.ToObject<int>() ?? 0);
+            ToolTipService.SetToolTip(button, line);
+            return button;
+        }
+
         private void RenderSpeechTiming()
         {
             if (speechTimingSummary == null) return;
@@ -158,75 +229,17 @@ namespace Typedown.WinUI
             speechTimingEmpty.Visibility = empty ? Visibility.Visible : Visibility.Collapsed;
             speechTimingSummary.Visibility = speechTimingBudget.Visibility = empty ? Visibility.Collapsed : Visibility.Visible;
             speechTimingRows.Children.Clear();
-            if (data == null) { RenderSpeechShape(null); RenderSpeechHints(null); return; }
-            RenderSpeechShape(data["shape"] as JArray);
+            if (data == null) { RenderSpeechShape(speechShapeCanvas, null); RenderSpeechHints(null); return; }
+            RenderSpeechShape(speechShapeCanvas, data["shape"] as JArray);
             RenderSpeechHints(data["hints"] as JArray);
 
-            var clock = data["clock"]?.ToString() ?? "0:00";
-            var budgetClock = data["budgetClock"]?.ToString() ?? "";
-            speechTimingSummary.Text = budgetClock.Length > 0 ? Locale.Format("SpeechTimingLineBudget", clock, budgetClock) : Locale.Format("SpeechTimingLine", clock);
-            ToolTipService.SetToolTip(speechTimingSummary, Locale.Format("SpeechTimingWords", words.ToString()));
-            var light = data["light"]?.ToString() ?? "";
-            if (light.Length > 0)
-            {
-                speechTimingBudget.Text = "● " + SpeechBudgetText(data);
-                speechTimingBudget.Foreground = SpeechLightBrush(light);
-                speechTimingBudget.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                speechTimingBudget.Visibility = Visibility.Collapsed;
-            }
+            ApplySpeechSummary(speechTimingSummary, speechTimingBudget, data);
 
             // the box shows the pace in force; it is changed here without writing it again
-            var wpm = data["wpm"]?.ToObject<double>() ?? 130;
-            if (Math.Abs(speechWpmBox.Value - wpm) > 0.01 && speechWpmBox.FocusState == FocusState.Unfocused)
-            {
-                suppressSpeechWpm = true;
-                speechWpmBox.Value = wpm;
-                suppressSpeechWpm = false;
-            }
+            ShowSpeechWpm(data["wpm"]?.ToObject<double>() ?? 130);
 
             foreach (var section in data["sections"] as JArray ?? new JArray())
-            {
-                var title = section["title"]?.ToString() ?? "";
-                var level = Math.Max(1, section["level"]?.ToObject<int>() ?? 1);
-                var sectionClock = section["clock"]?.ToString() ?? "";
-                var sectionLight = section["light"]?.ToString() ?? "";
-                var hasBudget = sectionLight.Length > 0;
-                var line = hasBudget
-                    ? $"{title}: {Locale.Format("SpeechTimingLineBudget", sectionClock, section["budgetClock"]?.ToString())}, {SpeechBudgetText(section)}"
-                    : $"{title}: {sectionClock}";
-                var row = new Grid { ColumnSpacing = 6 };
-                row.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-                row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-                row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-                var name = new TextBlock
-                {
-                    Text = title.Length > 0 ? title : "…",
-                    FontSize = 12,
-                    TextTrimming = TextTrimming.CharacterEllipsis,
-                    Margin = new Thickness((level - 1) * 8, 0, 0, 0),
-                };
-                var time = new TextBlock { Text = sectionClock, FontSize = 12, FontFamily = new FontFamily("Segoe UI Variable Text") };
-                Grid.SetColumn(time, 1);
-                row.Children.Add(name);
-                row.Children.Add(time);
-                if (hasBudget)
-                {
-                    var dot = new TextBlock { Text = "●", FontSize = 11, Foreground = SpeechLightBrush(sectionLight) };
-                    Grid.SetColumn(dot, 2);
-                    row.Children.Add(dot);
-                }
-                ToolTipService.SetToolTip(row, line);
-                AutomationProperties.SetName(row, line);
-                // a click on a row goes to the heading
-                var prefix = section["prefix"]?.ToString() ?? "";
-                var nth = section["nth"]?.ToObject<int>() ?? 0;
-                row.Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent);
-                row.Tapped += async (s, e) => await SpeechGoTo(prefix, nth);
-                speechTimingRows.Children.Add(row);
-            }
+                speechTimingRows.Children.Add(BuildSpeechSectionRow(section));
         }
     }
 }
