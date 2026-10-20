@@ -35,7 +35,8 @@ namespace Typedown.WinUI
             if (string.IsNullOrEmpty(prefix)) return;
             try
             {
-                await RunInPage($"window.__caretSpeech&&window.__caretSpeech.goTo({JsonConvert.SerializeObject(prefix)},{nth})");
+                var found = await RunInPage($"window.__caretSpeech&&window.__caretSpeech.goTo({JsonConvert.SerializeObject(prefix)},{nth})");
+                if (found != "true") Log($"Speech: no place found for \"{prefix}\" #{nth} (the page said {found})");
             }
             catch (Exception ex)
             {
@@ -46,13 +47,13 @@ namespace Typedown.WinUI
         // The talk from top to bottom: a bar for each paragraph, as tall as it takes. Left or right of the middle is its pace
         // against yours (left slower, right faster), how dark it is is how loud, and the ticks on the right are its pauses (grey)
         // and the time given to the audience (accent colour).
-        private void RenderSpeechShape(JArray bars)
+        private void RenderSpeechShape(Canvas canvas, JArray bars)
         {
-            speechShapeCanvas.Children.Clear();
+            canvas.Children.Clear();
             var list = (bars ?? new JArray()).ToList();
             var total = list.Sum(b => b["seconds"]?.ToObject<double>() ?? 0);
-            ToolTipService.SetToolTip(speechShapeCanvas, null);
-            AutomationProperties.SetName(speechShapeCanvas, Locale.Format("SpeechShapeName", list.Count.ToString()));
+            ToolTipService.SetToolTip(canvas, null);
+            AutomationProperties.SetName(canvas, Locale.Format("SpeechShapeName", list.Count.ToString()));
             if (list.Count == 0 || total <= 0) return;
             var accent = AccentBrush();
             var quiet = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 128, 128));
@@ -87,20 +88,20 @@ namespace Typedown.WinUI
                 var prefix = bar["prefix"]?.ToString() ?? "";
                 var nth = bar["nth"]?.ToObject<int>() ?? 0;
                 shown.Tapped += async (s, e) => await SpeechGoTo(prefix, nth);
-                speechShapeCanvas.Children.Add(shown);
+                canvas.Children.Add(shown);
                 if (pause > 0.05)
                 {
                     var tick = new Rectangle { Width = Math.Clamp(pause * 1.5, 2, 12), Height = height, Fill = quiet };
                     Canvas.SetLeft(tick, ShapeWidth - 14);
                     Canvas.SetTop(tick, top);
-                    speechShapeCanvas.Children.Add(tick);
+                    canvas.Children.Add(tick);
                 }
                 if (audience > 0.05)
                 {
                     var tick = new Rectangle { Width = Math.Clamp(audience * 1.5, 2, 12), Height = height, Fill = accent };
                     Canvas.SetLeft(tick, ShapeWidth - 28);
                     Canvas.SetTop(tick, top);
-                    speechShapeCanvas.Children.Add(tick);
+                    canvas.Children.Add(tick);
                 }
             }
         }
@@ -132,15 +133,18 @@ namespace Typedown.WinUI
 
         // The hints: plain facts, each with a click that goes to the place; a word of the library that the document does not
         // define has a button that adds its definition.
-        private void RenderSpeechHints(JArray hints)
+        private void RenderSpeechHints(JArray hints) =>
+            ((TextBlock)speechHintsExpander.Header).Text = Locale.Format("SpeechHintsHeader", FillSpeechHints(speechHintsList, hints).ToString());
+
+        // Fills the list and says how many hints there are.
+        private int FillSpeechHints(StackPanel target, JArray hints)
         {
-            speechHintsList.Children.Clear();
+            target.Children.Clear();
             var list = (hints ?? new JArray()).ToList();
-            ((TextBlock)speechHintsExpander.Header).Text = Locale.Format("SpeechHintsHeader", list.Count.ToString());
             if (list.Count == 0)
             {
-                speechHintsList.Children.Add(new TextBlock { Text = Locale.GetString("SpeechHintsNone"), FontSize = 12, Opacity = 0.75, TextWrapping = TextWrapping.Wrap });
-                return;
+                target.Children.Add(new TextBlock { Text = Locale.GetString("SpeechHintsNone"), FontSize = 12, Opacity = 0.75, TextWrapping = TextWrapping.Wrap });
+                return 0;
             }
             foreach (var hint in list)
             {
@@ -163,8 +167,9 @@ namespace Typedown.WinUI
                     add.Click += async (s, e) => await RunInPage($"window.__caretSpeech&&window.__caretSpeech.addDefinition({JsonConvert.SerializeObject(line)})");
                     row.Children.Add(add);
                 }
-                speechHintsList.Children.Add(row);
+                target.Children.Add(row);
             }
+            return list.Count;
         }
     }
 }

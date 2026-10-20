@@ -41,6 +41,7 @@ namespace Typedown.WinUI
             settings.SpeechMode = SpeechModeMenuItem.IsChecked;
             UpdateSpeechCard();
             SyncSpeechNavToggle();
+            RenderInspectorSpeech();
             Log($"SpeechMode: {settings.SpeechMode}");
         }
 
@@ -54,6 +55,7 @@ namespace Typedown.WinUI
             settings.SpeechMode = SpeechNavModeToggle.IsOn;
             SpeechModeMenuItem.IsChecked = settings.SpeechMode;
             UpdateSpeechCard();
+            RenderInspectorSpeech();
             Log($"SpeechMode: {settings.SpeechMode}");
         }
 
