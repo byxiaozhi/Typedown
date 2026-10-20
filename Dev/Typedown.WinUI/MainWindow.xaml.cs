@@ -724,6 +724,24 @@ namespace Typedown.WinUI
 
         private void Log(string message) => File.AppendAllText(logPath, $"{DateTime.Now:O} {message}\n");
 
+        // The Find results carry excerpts of the note (the inspector pane's Find tab shows them): the log keeps their number, not
+        // the words. The whole message still goes to the host unchanged.
+        private static string ForLog(string raw)
+        {
+            if (raw == null || !raw.Contains("\"SearchResult\"")) return raw;
+            try
+            {
+                var message = JObject.Parse(raw);
+                if (message["args"] is JObject args && args["matches"] is JArray matches)
+                    args["matches"] = $"{matches.Count} excerpts";
+                return message.ToString(Newtonsoft.Json.Formatting.None);
+            }
+            catch
+            {
+                return "SearchResult (not logged)";
+            }
+        }
+
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -827,7 +845,7 @@ namespace Typedown.WinUI
                 EditorView.CoreWebView2.WebMessageReceived += (s, args) =>
                 {
                     var raw = args.TryGetWebMessageAsString();
-                    Log($"WebMessage: {raw}");
+                    Log($"WebMessage: {ForLog(raw)}");
                     transport.EmitWebViewMessage(this, raw);
                 };
                 EditorView.CoreWebView2.NavigationCompleted += (s, args) =>
