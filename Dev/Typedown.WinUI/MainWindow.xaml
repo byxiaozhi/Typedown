@@ -1031,7 +1031,10 @@
                                 <StackPanel Spacing="8">
                                     <TextBlock Text="{u:Loc Key=HomeTipTitle}" FontWeight="SemiBold"/>
                                     <TextBlock x:Name="HomeTipText" TextWrapping="Wrap"/>
-                                    <HyperlinkButton Padding="0" Click="HomeTipShortcuts_Click" Content="{u:Loc Key=HomeTipShortcuts}"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="20">
+                                        <HyperlinkButton Padding="0" Click="HomeTipShortcuts_Click" Content="{u:Loc Key=HomeTipShortcuts}"/>
+                                        <HyperlinkButton Padding="0" Tag="whats-new" Click="HelpTopic_Click" Content="{u:Loc Key=HelpWhatsNew}"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </Border>
                         </Grid>
