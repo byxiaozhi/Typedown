@@ -10,7 +10,9 @@
   touch-action: none;
   user-select: none;
   transition: width 0.1s;
-  outline: none;
+  // not "none": in high contrast the transparent outline becomes a system colour, so the focus is still seen
+  outline: 2px solid transparent;
+  outline-offset: -2px;
 }
 
 .document-map:hover,
@@ -84,6 +86,7 @@
 
 // high contrast: the system colours, each tick with an outline
 @media (forced-colors: active) {
+  .document-map:focus-visible { outline-color: Highlight; }
   .dm-tick { opacity: 1; outline: 1px solid CanvasText; }
   .dm-heading, .dm-match, .dm-add, .dm-del, .dm-mark, .dm-comment, .dm-pause { background: CanvasText; }
   .dm-current { background: Highlight; }

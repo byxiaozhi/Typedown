@@ -72,8 +72,8 @@ const collectVisual = (review: boolean, speech: boolean): ITick[] => {
             ticks.push({ kind, top: element.getBoundingClientRect().top + base, text: clean(element.textContent ?? '') })
         })
     }
-    add('heading', 'h1, h2, h3, h4, h5, h6')
-    add('match', 'span.ag-selection')
+    // In the order of what the cap (MAX_TICKS) keeps first: the current match, the marks of the review and the speech (they are few), the
+    // headings, then the other matches (there can be thousands).
     add('current', 'span.ag-highlight')
     if (review) {
         add('add', '.ag-critic-add')
@@ -82,6 +82,8 @@ const collectVisual = (review: boolean, speech: boolean): ITick[] => {
         add('comment', '.ag-critic-comment:not(.ag-critic-stamp)')
     }
     if (speech) add('pause', '.ag-speech-chip.ag-speech-pause')
+    add('heading', 'h1, h2, h3, h4, h5, h6')
+    add('match', 'span.ag-selection')
     return ticks.slice(0, MAX_TICKS)
 }
 
@@ -90,16 +92,20 @@ const collectVisual = (review: boolean, speech: boolean): ITick[] => {
 const collectSource = (review: boolean, speech: boolean): ITick[] => {
     const cm = (document.querySelector('.CodeMirror') as any)?.CodeMirror
     if (!cm) return []
-    const ticks: ITick[] = scanSource(cm.getValue(), review, speech).map(item => ({
+    // the same order as collectVisual, for the cap: the current match first, the other matches last
+    const matches: ITick[] = []
+    const ticks: ITick[] = []
+    for (const marker of cm.getAllMarks()) {
+        const kind = marker.className === 'ag-highlight' ? 'current' : marker.className === 'ag-selection' ? 'match' : null
+        const at = kind ? marker.find() : null
+        if (kind && at?.from) (kind === 'current' ? ticks : matches).push({ kind, top: cm.heightAtLine(at.from.line, 'page'), text: clean(cm.getRange(at.from, at.to)) })
+    }
+    const items = scanSource(cm.getValue(), review, speech).map(item => ({
         kind: item.kind,
         top: cm.heightAtLine(item.line, 'page'),
         text: item.text
     }))
-    for (const marker of cm.getAllMarks()) {
-        const kind = marker.className === 'ag-highlight' ? 'current' : marker.className === 'ag-selection' ? 'match' : null
-        const at = kind ? marker.find() : null
-        if (kind && at?.from) ticks.push({ kind, top: cm.heightAtLine(at.from.line, 'page'), text: clean(cm.getRange(at.from, at.to)) })
-    }
+    ticks.push(...items.filter(item => item.kind !== 'heading'), ...items.filter(item => item.kind === 'heading'), ...matches)
     return ticks.slice(0, MAX_TICKS)
 }
 
@@ -112,6 +118,8 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
     const [focused, setFocused] = useState(false)
     const stripRef = useRef<HTMLDivElement>(null)
     const press = useRef<{ y: number, moved: boolean } | null>(null)
+    // the tick the arrow keys went to last (-1: none, or the user has moved the window since): the next step starts from it
+    const current = useRef(-1)
 
     useEffect(() => {
         remote.getStringResources({ names: [LABEL_KEY] }).then(dic => setLabel(dic[LABEL_KEY] ?? '')).catch(() => { })
@@ -125,6 +133,7 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
 
     const refresh = useCallback(() => {
         const found = (source ? collectSource(review, speech) : collectVisual(review, speech)).sort((a, b) => a.top - b.top)
+        current.current = -1
         setTicks(found)
         measure()
     }, [source, review, speech, measure])
@@ -159,6 +168,9 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
         resizes.observe(document.body)
         addEventListener('resize', later)
         addEventListener('scroll', measure, { passive: true })
+        // the user moving the window with the wheel starts the arrow keys over from where the window is
+        const forget = () => { current.current = -1 }
+        addEventListener('wheel', forget, { passive: true })
         later()
         return () => {
             window.clearTimeout(timer)
@@ -167,6 +179,7 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
             resizes.disconnect()
             removeEventListener('resize', later)
             removeEventListener('scroll', measure)
+            removeEventListener('wheel', forget)
         }
     }, [refresh, measure])
 
@@ -210,6 +223,7 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
         e.preventDefault()   // the caret and the focus stay where they were
         e.currentTarget.setPointerCapture(e.pointerId)
         press.current = { y: e.clientY, moved: false }
+        current.current = -1
         scrollTo(toScroll(yOf(e)))
     }
 
@@ -241,16 +255,27 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
             return
         }
         if (ticks.length === 0) return
+        // From the tick the keys went to last; with none (or after the window was moved by hand) from the middle of the window. The
+        // window cannot centre a tick in the first or last half screen, so its middle is no guide once the keys are in use.
+        const last = ticks.length - 1
+        const used = current.current >= 0 && current.current <= last
         const middle = window.scrollY + window.innerHeight / 2
-        let to: ITick | undefined
-        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') to = ticks.find(t => t.top > middle + 4) ?? ticks[ticks.length - 1]
-        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') to = [...ticks].reverse().find(t => t.top < middle - 4) ?? ticks[0]
-        else if (e.key === 'Home') to = ticks[0]
-        else if (e.key === 'End') to = ticks[ticks.length - 1]
-        if (!to) return
+        let index: number | undefined
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+            const next = ticks.findIndex(t => t.top > middle + 4)
+            index = used ? Math.min(last, current.current + 1) : next < 0 ? last : next
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+            let before = -1
+            ticks.forEach((t, i) => { if (t.top < middle - 4) before = i })
+            index = used ? Math.max(0, current.current - 1) : Math.max(0, before)
+        } else if (e.key === 'Home') index = 0
+        else if (e.key === 'End') index = last
+        if (index === undefined) return
+        current.current = index
+        const to = ticks[index]
         e.preventDefault()
         scrollTo(to.top, true)
-        setAnnounced(`${to.kind}: ${to.text}`)
+        setAnnounced(`${to.kind}: ${to.text} (${index + 1}/${ticks.length})`)
     }
 
     const thumbHeight = Math.max(16, height * height / total)

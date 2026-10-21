@@ -235,6 +235,7 @@ namespace Typedown.WinUI
             ApplyEditorBackground();
             ApplyTopmost();
             ApplyStatusBarVisibility();
+            SyncDocumentMapToggles();   // the View menu item starts checked or not as the setting says, not only after Settings was opened
             UpdateViewModeUi();
             BuildSpeechCard();
             ApplyLayout();
