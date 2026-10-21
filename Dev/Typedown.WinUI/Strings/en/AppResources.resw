@@ -3094,6 +3094,9 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="HomeNoFiles" xml:space="preserve">
     <value>The notes you open appear here.</value>
   </data>
+  <data name="HomeButtonToolTip" xml:space="preserve">
+    <value>Home (Ctrl+Shift+H)</value>
+  </data>
   <data name="HelpWhatsNew" xml:space="preserve">
     <value>What's new</value>
   </data>
