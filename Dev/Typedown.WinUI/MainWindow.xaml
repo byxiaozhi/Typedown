@@ -249,7 +249,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
         <MenuBar x:Name="AppMenuBar" Background="Transparent">
-            <MenuBarItem Title="{u:Loc Key=File}" AccessKey="{u:Loc Key=AccessKeyFile}">
+            <MenuBarItem Title="{u:Loc Key=File}">
                 <MenuFlyoutItem x:Name="NewMenuItem" Text="{u:Loc Key=NewMenuItem_Text}" Click="NewMenuItem_Click">
                     <MenuFlyoutItem.KeyboardAccelerators>
                         <KeyboardAccelerator Key="N" Modifiers="Control"/>
@@ -321,7 +321,7 @@
                     </MenuFlyoutItem.KeyboardAccelerators>
                 </MenuFlyoutItem>
             </MenuBarItem>
-            <MenuBarItem Title="{u:Loc Key=Edit}" AccessKey="{u:Loc Key=AccessKeyEdit}">
+            <MenuBarItem Title="{u:Loc Key=Edit}">
                 <!-- Shortcut text only, no KeyboardAccelerator: a XAML accelerator is window-wide and
                      would take Ctrl+Z/Ctrl+A away from the Find and Quick Open text boxes. Inside the
                      editor these keys are caught by HostShortcutScript instead (MainWindow.xaml.cs). -->
@@ -366,7 +366,7 @@
                  (UpdateParagraph / Format parameters). Shortcut text only; the keys are handled in
                  HostShortcutScript/TryHandleFormattingShortcut, since XAML accelerators don't fire
                  while the editor has focus. Disabled in Code/Split (see UpdateViewModeUi). -->
-            <MenuBarItem x:Name="ParagraphMenu" Title="{u:Loc Key=ParagraphMenu_Title}" AccessKey="{u:Loc Key=AccessKeyParagraph}">
+            <MenuBarItem x:Name="ParagraphMenu" Title="{u:Loc Key=ParagraphMenu_Title}">
                 <MenuFlyoutItem Text="{u:Loc Key=Heading1}" Tag="p:heading 1" Click="FormatCommand_Click" KeyboardAcceleratorTextOverride="Ctrl+1"/>
                 <MenuFlyoutItem Text="{u:Loc Key=Heading2}" Tag="p:heading 2" Click="FormatCommand_Click" KeyboardAcceleratorTextOverride="Ctrl+2"/>
                 <MenuFlyoutItem Text="{u:Loc Key=Heading3}" Tag="p:heading 3" Click="FormatCommand_Click" KeyboardAcceleratorTextOverride="Ctrl+3"/>
@@ -400,7 +400,7 @@
                 <MenuFlyoutItem Text="{u:Loc Key=InsertParagraphBefore}" Tag="insert:before" Click="FormatCommand_Click"/>
                 <MenuFlyoutItem Text="{u:Loc Key=InsertParagraphAfter}" Tag="insert:after" Click="FormatCommand_Click"/>
             </MenuBarItem>
-            <MenuBarItem x:Name="FormatMenu" Title="{u:Loc Key=FormatMenu_Title}" AccessKey="{u:Loc Key=AccessKeyFormat}">
+            <MenuBarItem x:Name="FormatMenu" Title="{u:Loc Key=FormatMenu_Title}">
                 <MenuFlyoutItem Text="{u:Loc Key=Bold}" Tag="f:strong" Click="FormatCommand_Click" KeyboardAcceleratorTextOverride="Ctrl+B"/>
                 <MenuFlyoutItem Text="{u:Loc Key=Italic}" Tag="f:em" Click="FormatCommand_Click" KeyboardAcceleratorTextOverride="Ctrl+I"/>
                 <MenuFlyoutItem Text="{u:Loc Key=Underline}" Tag="f:u" Click="FormatCommand_Click" KeyboardAcceleratorTextOverride="Ctrl+U"/>
@@ -416,7 +416,7 @@
             </MenuBarItem>
             <!-- Review: the same five commands as at the end of the Edit menu and in the Review panel of the side list, so the
                  review function is easy to find. They are the same handlers (MainWindow.Review.cs); nothing here marks anything by itself. -->
-            <MenuBarItem x:Name="ReviewMenu" Title="{u:Loc Key=ReviewNav}" AccessKey="{u:Loc Key=AccessKeyReview}">
+            <MenuBarItem x:Name="ReviewMenu" Title="{u:Loc Key=ReviewNav}">
                 <MenuFlyoutItem Text="{u:Loc Key=ReviewAddComment}" Click="AddCommentMenuItem_Click"/>
                 <MenuFlyoutItem Text="{u:Loc Key=ReviewCompare}" Click="CompareMenuItem_Click"/>
                 <ToggleMenuFlyoutItem x:Name="TrackChangesMenuItem" Text="{u:Loc Key=ReviewTrackToggle}" Click="TrackChangesMenuItem_Click"/>
@@ -426,7 +426,7 @@
                 <MenuFlyoutItem Text="{u:Loc Key=ReviewRejectAll}" Click="RejectAllMenuItem_Click"/>
                 <MenuFlyoutItem Text="{u:Loc Key=ReviewDeleteAllComments}" Click="DeleteAllCommentsMenuItem_Click"/>
             </MenuBarItem>
-            <MenuBarItem Title="{u:Loc Key=View}" AccessKey="{u:Loc Key=AccessKeyView}">
+            <MenuBarItem Title="{u:Loc Key=View}">
                 <ToggleMenuFlyoutItem x:Name="TocMenuItem" Text="{u:Loc Key=TocMenuItem_Text}" IsChecked="True" Click="TocMenuItem_Click"/>
                 <ToggleMenuFlyoutItem x:Name="StatusBarMenuItem" Text="{u:Loc Key=StatusBarMenuItem_Text}" IsChecked="True" Click="StatusBarMenuItem_Click"/>
                 <MenuFlyoutSubItem Text="{u:Loc Key=ThemeMenu}">
@@ -446,7 +446,7 @@
                 <MenuFlyoutItem x:Name="TeleprompterMenuItem" Text="{u:Loc Key=TeleprompterMenuItem_Text}" Click="TeleprompterMenuItem_Click"/>
                 <MenuFlyoutItem x:Name="SpeakingClockMenuItem" Text="{u:Loc Key=SpeakingClockMenuItem_Text}" Click="SpeakingClockMenuItem_Click"/>
             </MenuBarItem>
-            <MenuBarItem x:Name="HelpMenu" Title="{u:Loc Key=HelpMenu_Title}" AccessKey="{u:Loc Key=AccessKeyHelp}">
+            <MenuBarItem x:Name="HelpMenu" Title="{u:Loc Key=HelpMenu_Title}">
                 <MenuFlyoutItem Text="{u:Loc Key=HelpGettingStarted}" Tag="getting-started" Click="HelpTopic_Click"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem Text="{u:Loc Key=HelpTopicReview}" Tag="review" Click="HelpTopic_Click"/>
@@ -456,6 +456,7 @@
                 <MenuFlyoutItem Text="{u:Loc Key=HelpTopicWordExport}" Tag="word-export" Click="HelpTopic_Click"/>
                 <MenuFlyoutItem Text="{u:Loc Key=HelpTopicPunctuation}" Tag="punctuation" Click="HelpTopic_Click"/>
                 <MenuFlyoutSeparator/>
+                <MenuFlyoutItem x:Name="ShortcutsMenuItem" Text="{u:Loc Key=ShortcutSheet}" Click="ShortcutsMenuItem_Click" KeyboardAcceleratorTextOverride="Ctrl+Shift+/"/>
                 <MenuFlyoutItem Text="{u:Loc Key=HelpReportProblem}" Click="HelpReportProblem_Click"/>
                 <MenuFlyoutItem Text="{u:Loc Key=HelpAbout}" Click="HelpAbout_Click"/>
             </MenuBarItem>
@@ -2056,6 +2057,7 @@
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/>
                                         <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
+                                        <RowDefinition/><RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="{u:Loc Key=New}"/>
                                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{u:Loc Key=CtrlN}" Opacity="0.7"/>
@@ -2095,6 +2097,10 @@
                                     <TextBlock Grid.Row="17" Grid.Column="1" Text="F3 / Shift+F3" Opacity="0.7"/>
                                     <TextBlock Grid.Row="18" Text="{u:Loc Key=InspectorMenuItem_Text}"/>
                                     <TextBlock Grid.Row="18" Grid.Column="1" Text="Ctrl+Shift+I" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="19" Text="{u:Loc Key=ShortcutKeyTips}"/>
+                                    <TextBlock Grid.Row="19" Grid.Column="1" Text="Alt" Opacity="0.7"/>
+                                    <TextBlock Grid.Row="20" Text="{u:Loc Key=ShortcutSheet}"/>
+                                    <TextBlock Grid.Row="20" Grid.Column="1" Text="Ctrl+Shift+/" Opacity="0.7"/>
                                 </Grid>
                             </Border>
                             <TextBlock Text="{u:Loc Key=StandardTextEditingUndoRedoCut}" TextWrapping="Wrap" Opacity="0.8" FontSize="12" Margin="2,4,0,0"/>
@@ -2280,6 +2286,51 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
             <TextBlock x:Name="ToastText" TextWrapping="Wrap" AutomationProperties.LiveSetting="Assertive"/>
+        </Border>
+
+        <!-- New since the fork: the keyboard-first layer (MainWindow.KeyTips.cs, MainWindow.Shortcuts.cs). Alt shows a badge with a key on the menus, the
+             groups of the toolbar and the items of the sidebar; the key does what a click would. The layer has no hit testing; the sink takes the keyboard
+             while the tips are shown (the editor, a web page, would take them otherwise). -->
+        <Canvas x:Name="KeyTipLayer" Grid.Row="0" Grid.RowSpan="4" Visibility="Collapsed" IsHitTestVisible="False"/>
+        <Button x:Name="KeyTipSink" Grid.Row="0" Width="1" Height="1" MinWidth="0" MinHeight="0" Padding="0" Opacity="0" IsTabStop="False" HorizontalAlignment="Left" VerticalAlignment="Top"
+                UseSystemFocusVisuals="False" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0" AutomationProperties.AccessibilityView="Raw"
+                PreviewKeyDown="KeyTipSink_PreviewKeyDown" LostFocus="KeyTipSink_LostFocus"/>
+
+        <!-- The cheat sheet (Ctrl+Shift+/, Help > Keyboard shortcuts): every shortcut by task, searchable. -->
+        <Border x:Name="ShortcutsPanel" Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="3"
+                VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,70,0,0"
+                MinWidth="560" MaxWidth="680" Padding="8" CornerRadius="8"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1"
+                AutomationProperties.Name="{u:Loc Key=ShortcutSheet}" KeyDown="ShortcutsPanel_KeyDown">
+            <StackPanel Spacing="6">
+                <TextBlock Text="{u:Loc Key=ShortcutSheet}" FontWeight="SemiBold" Margin="4,2,0,0"/>
+                <TextBox x:Name="ShortcutsTextBox" PlaceholderText="{u:Loc Key=ShortcutsSearchPlaceholder}"
+                         AutomationProperties.Name="{u:Loc Key=ShortcutsSearchPlaceholder}"
+                         TextChanged="ShortcutsTextBox_TextChanged" KeyDown="ShortcutsTextBox_KeyDown"/>
+                <ListView x:Name="ShortcutsListView" MaxHeight="440" SelectionMode="None" IsItemClickEnabled="False">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="MinHeight" Value="0"/>
+                            <Setter Property="Padding" Value="8,0"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnSpacing="16" Margin="{Binding RowMargin}" MinHeight="30">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Text}" FontWeight="{Binding Weight}" Opacity="{Binding TextOpacity}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Keys}" FontFamily="Cascadia Mono, Consolas" FontSize="13" Opacity="0.85" VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <TextBlock x:Name="ShortcutsNoResultsText" Text="{u:Loc Key=ShortcutsNoResults}" Visibility="Collapsed" Margin="8,6" Opacity="0.7"/>
+            </StackPanel>
         </Border>
 
         <!-- The command palette (Ctrl+Shift+P, MainWindow.Palette.cs): the same overlay as Go to File, for the commands of the menus. The last child of the window, so that it is drawn above every page (Settings too). -->

@@ -3061,4 +3061,55 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="SectionResetAll" xml:space="preserve">
     <value>Tout remettre sur le jeu de couleurs</value>
   </data>
+  <data name="ShortcutGroupFormat" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="ShortcutGroupReview" xml:space="preserve">
+    <value>Révision</value>
+  </data>
+  <data name="ShortcutGroupSpeech" xml:space="preserve">
+    <value>Discours</value>
+  </data>
+  <data name="ShortcutGroupFind" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="ShortcutGroupFiles" xml:space="preserve">
+    <value>Fichiers</value>
+  </data>
+  <data name="ShortcutGroupGeneral" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="ShortcutNewTab" xml:space="preserve">
+    <value>Nouvel onglet</value>
+  </data>
+  <data name="ShortcutHeadings" xml:space="preserve">
+    <value>Titres 1 à 6</value>
+  </data>
+  <data name="ShortcutMiniToolbar" xml:space="preserve">
+    <value>Aller à la barre d’outils sur la sélection</value>
+  </data>
+  <data name="ShortcutSpeechPause" xml:space="preserve">
+    <value>Insérer une pause (mode discours)</value>
+  </data>
+  <data name="ShortcutSpeechBeat" xml:space="preserve">
+    <value>Insérer un souffle (mode discours)</value>
+  </data>
+  <data name="ShortcutSpeechEmphasis" xml:space="preserve">
+    <value>Accent (mode discours)</value>
+  </data>
+  <data name="ShortcutKeyTips" xml:space="preserve">
+    <value>Afficher les touches d’accès</value>
+  </data>
+  <data name="ShortcutSheet" xml:space="preserve">
+    <value>Raccourcis clavier</value>
+  </data>
+  <data name="ShortcutsSearchPlaceholder" xml:space="preserve">
+    <value>Rechercher un raccourci</value>
+  </data>
+  <data name="ShortcutsNoResults" xml:space="preserve">
+    <value>Aucun raccourci ne correspond.</value>
+  </data>
+  <data name="KeyTipsAnnounce" xml:space="preserve">
+    <value>Touches d’accès : appuyez sur une touche, ou sur Échap pour fermer.</value>
+  </data>
 </root>
