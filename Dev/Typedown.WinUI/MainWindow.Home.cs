@@ -73,11 +73,24 @@ namespace Typedown.WinUI
             }
             if (SettingsPageShown) HideSettingsPage();
             if (ConvertPage.Visibility == Visibility.Visible) CloseConvertPage();
+            CloseFindForHome();
             ShowStartPage();
             // The editor may have had the keyboard (Ctrl+Shift+H from the text): it goes to Home, so that typing cannot change the covered note.
             var target = StartPageRecentList.Items.Count > 0 ? StartPageRecentList : HomeStartList;
             if (!target.Focus(FocusState.Programmatic)) HomeButton.Focus(FocusState.Programmatic); // its rows are not laid out yet: the button takes it
             Log("Home: shown over the document");
+        }
+
+        // The Find panel belongs to the note: it is closed when Home goes over the note (as HideFindReplace does, but without giving the
+        // keyboard back to the text, which Home is about to take).
+        private void CloseFindForHome()
+        {
+            if (FindReplacePanel.Visibility != Visibility.Visible) return;
+            findRequest++;
+            FindReplacePanel.Visibility = Visibility.Collapsed;
+            FindCountText.Text = "";
+            RenderInspectorFind(null);
+            PostMessage("SearchOpenChange", new { open = 0 });
         }
 
         // The button is pressed in while Home is on screen.

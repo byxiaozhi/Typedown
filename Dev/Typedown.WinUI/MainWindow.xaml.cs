@@ -350,6 +350,7 @@ namespace Typedown.WinUI
         private void UpdateFavoriteButton()
         {
             SaveNoteButton.IsEnabled = !startPageShown;   // nothing to save on the start page, as for File > Save
+            SaveMenuItem.IsEnabled = SaveAsMenuItem.IsEnabled = !startPageShown;
             FavoriteMenuItem.IsEnabled = !startPageShown && !string.IsNullOrEmpty(file.FilePath);
             // where the file is: the same rule, a document that has been saved
             FileRevealMenuItem.IsEnabled = FileCopyPathMenuItem.IsEnabled = FileCopyLinkMenuItem.IsEnabled = FavoriteMenuItem.IsEnabled;

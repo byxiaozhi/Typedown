@@ -315,7 +315,24 @@ namespace Typedown.WinUI
                 if (element is TabViewItem item) { pressedTab = item; break; }
             }
             // Home is over the document whose tab is the selected one, so a press on it selects nothing: it brings the document back here.
-            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown)) HideStartPage();
+            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown) && !PressedOnButton(e)
+                && e.GetCurrentPoint(DocumentTabView).Properties.IsLeftButtonPressed) // a right-click opens the tab's menu: it is not a visit
+            {
+                HideStartPage();
+                // the press leaves the keyboard on the tab: once it is done, the text gets it back
+                DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () => EditorView.Focus(FocusState.Programmatic));
+            }
+        }
+
+        // The close button of a tab is a button inside it: a press there is a close, not a visit.
+        private static bool PressedOnButton(PointerRoutedEventArgs e)
+        {
+            for (var element = e.OriginalSource as DependencyObject; element != null; element = Microsoft.UI.Xaml.Media.VisualTreeHelper.GetParent(element))
+            {
+                if (element is Microsoft.UI.Xaml.Controls.Primitives.ButtonBase) return true;
+                if (element is TabViewItem) break;
+            }
+            return false;
         }
 
         private void DocumentTabView_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
@@ -771,7 +788,12 @@ namespace Typedown.WinUI
         private async void CloseDocumentMenuItem_Click(object sender, RoutedEventArgs e)
         {
             // Home over a document: Ctrl+W closes Home (back to the document), not the document it covers.
-            if (startPageShown && documents.Contains(activeDoc)) { HideStartPage(); return; }
+            if (startPageShown && documents.Contains(activeDoc))
+            {
+                HideStartPage();
+                EditorView.Focus(FocusState.Programmatic); // typing goes to the document again
+                return;
+            }
             await CloseDocument(activeDoc);
         }
 
@@ -787,7 +809,22 @@ namespace Typedown.WinUI
             return true;
         }
 
+        // Closing a tab does not take Home away: a note with unsaved changes is brought forward for its question (which hides Home), and
+        // afterwards, closed or not, the window is as it was: the document that was open, with Home over it.
         private async Task<bool> CloseDocument(DocumentTab doc)
+        {
+            var homeWasShown = startPageShown;
+            var original = activeDoc;
+            var closed = await CloseDocumentCore(doc);
+            if (homeWasShown && !startPageShown)
+            {
+                if (!closed && original != activeDoc && documents.Contains(original)) await ActivateDocument(original);
+                if (documents.Contains(activeDoc)) ShowStartPage();
+            }
+            return closed;
+        }
+
+        private async Task<bool> CloseDocumentCore(DocumentTab doc)
         {
             if (doc == null || (startPageShown && doc == activeDoc && !documents.Contains(doc))) return true; // the blank one behind Home
             var original = activeDoc;
@@ -871,6 +908,7 @@ namespace Typedown.WinUI
         // pointer's position when there is one (a tab dragged out of the strip).
         private async Task MoveToNewWindow(DocumentTab doc, Windows.Graphics.PointInt32? at = null)
         {
+            var homeWasShown = startPageShown;
             var transfer = await PrepareTransfer(doc);
             if (transfer == null) return;
             try
@@ -884,6 +922,8 @@ namespace Typedown.WinUI
             finally
             {
                 doc.InTransfer = false;
+                // this window stays on Home, over what is left, whatever happened while the document was released
+                if (homeWasShown && !startPageShown && documents.Contains(activeDoc)) ShowStartPage();
             }
         }
 
