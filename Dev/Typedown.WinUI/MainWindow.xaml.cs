@@ -49,6 +49,7 @@ namespace Typedown.WinUI
         private readonly SettingsViewModel settings;
         private readonly RecentFilesService recentFiles = new();
         private readonly FavoritesService favoritesService = new();
+        private readonly FolderHistory folderHistory = new(System.IO.Path.Combine(Config.GetLocalFolderPath(), "Folders.json"));
         private readonly TrashService trashService = new();
         private readonly ObservableCollection<TocEntry> tocEntries = new();
         private readonly UISettings uiSettings = new();
@@ -3250,6 +3251,9 @@ namespace Typedown.WinUI
             UpdateFolderHeader();
             UpdateFolderSelection();
             settings.LastOpenedFolder = path;
+            folderHistory.Record(path); // the Home page lists it
+            if (folderHistory.LastError != null) Log($"Home: the folders could not be saved: {folderHistory.LastError}");
+            if (startPageShown) RefreshStartPageList();
             Log($"OpenFolder: {path}");
         }
 
@@ -3381,6 +3385,7 @@ namespace Typedown.WinUI
                     });
                 }
                 favoritesService.RenamePath(item.FullPath, newPath); // a favorite keeps pointing at it
+                folderHistory.Rename(item.FullPath, newPath);       // and so does a folder of the Home page
                 if (item.Type != ExplorerItem.ExplorerItemType.Folder)
                 {
                     AutoBackup.MoveBackup(item.FullPath, newPath);
@@ -3431,6 +3436,7 @@ namespace Typedown.WinUI
                 else ForgetStored(item.FullPath);
                 if (TrashPanel.Visibility == Visibility.Visible) RefreshTrashNavList();
                 favoritesService.Remove(item.FullPath);
+                folderHistory.Remove(item.FullPath);
                 if (FavoritesPanel.Visibility == Visibility.Visible) RefreshFavoritesNavList();
                 Log($"Delete: {item.FullPath}");
             }

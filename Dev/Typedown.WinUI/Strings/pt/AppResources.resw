@@ -3112,4 +3112,34 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="KeyTipsAnnounce" xml:space="preserve">
     <value>Teclas de acesso: pressione uma tecla ou Esc para fechar.</value>
   </data>
+  <data name="HomeContinue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="HomeStart" xml:space="preserve">
+    <value>Começar</value>
+  </data>
+  <data name="HomeFolders" xml:space="preserve">
+    <value>Pastas</value>
+  </data>
+  <data name="HomePin" xml:space="preserve">
+    <value>Fixar no Início</value>
+  </data>
+  <data name="HomeUnpin" xml:space="preserve">
+    <value>Desafixar do Início</value>
+  </data>
+  <data name="HomeFromTemplate" xml:space="preserve">
+    <value>Nova nota a partir de um modelo</value>
+  </data>
+  <data name="HomeOpenFolder" xml:space="preserve">
+    <value>Abrir uma pasta</value>
+  </data>
+  <data name="HomeConvertDrop" xml:space="preserve">
+    <value>Solte arquivos do Word, PDF, Excel, PowerPoint ou e-mail em qualquer lugar desta janela, ou clique para escolhê-los.</value>
+  </data>
+  <data name="HomeNoFolders" xml:space="preserve">
+    <value>As pastas que você abre aparecem aqui. Fixe uma para mantê-la.</value>
+  </data>
+  <data name="HomeNoFiles" xml:space="preserve">
+    <value>As notas que você abre aparecem aqui.</value>
+  </data>
 </root>

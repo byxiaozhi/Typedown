@@ -3112,4 +3112,34 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="KeyTipsAnnounce" xml:space="preserve">
     <value>Touches d’accès : appuyez sur une touche, ou sur Échap pour fermer.</value>
   </data>
+  <data name="HomeContinue" xml:space="preserve">
+    <value>Continuer</value>
+  </data>
+  <data name="HomeStart" xml:space="preserve">
+    <value>Démarrer</value>
+  </data>
+  <data name="HomeFolders" xml:space="preserve">
+    <value>Dossiers</value>
+  </data>
+  <data name="HomePin" xml:space="preserve">
+    <value>Épingler à l’accueil</value>
+  </data>
+  <data name="HomeUnpin" xml:space="preserve">
+    <value>Désépingler de l’accueil</value>
+  </data>
+  <data name="HomeFromTemplate" xml:space="preserve">
+    <value>Nouvelle note depuis un modèle</value>
+  </data>
+  <data name="HomeOpenFolder" xml:space="preserve">
+    <value>Ouvrir un dossier</value>
+  </data>
+  <data name="HomeConvertDrop" xml:space="preserve">
+    <value>Déposez des fichiers Word, PDF, Excel, PowerPoint ou courriel n’importe où dans cette fenêtre, ou cliquez pour les choisir.</value>
+  </data>
+  <data name="HomeNoFolders" xml:space="preserve">
+    <value>Les dossiers que vous ouvrez apparaissent ici. Épinglez-en un pour le garder.</value>
+  </data>
+  <data name="HomeNoFiles" xml:space="preserve">
+    <value>Les notes que vous ouvrez apparaissent ici.</value>
+  </data>
 </root>

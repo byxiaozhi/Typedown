@@ -980,7 +980,8 @@ namespace Typedown.WinUI
             var favorites = favoritesService.Files.Where(File.Exists).Select(p => new StartPageEntry(p, true));
             var recent = recentFiles.Files.Where(File.Exists).Where(p => !favoritesService.Contains(p)).Select(p => new StartPageEntry(p, false));
             StartPageRecentList.ItemsSource = favorites.Concat(recent).Take(10).ToList();
-            StartPageRecentHeader.Visibility = StartPageRecentList.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            HomeNoFilesText.Visibility = StartPageRecentList.Items.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+            RefreshHomeFolders();
         }
 
         private void StartPageFavorite_Click(object sender, RoutedEventArgs e)
