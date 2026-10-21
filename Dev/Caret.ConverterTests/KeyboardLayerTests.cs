@@ -179,6 +179,14 @@ namespace Caret.ConverterTests
         }
 
         [Fact]
+        public void The_keys_the_display_leaves_out_are_searched_too()
+        {
+            // "Ctrl+1 ... Ctrl+6" and "Ctrl+Tab / Ctrl+Shift+Tab" are what is shown; Ctrl+2 and Ctrl+PageDown are on those rows as well
+            Assert.Contains(ShortcutSheet.Build(English(), "ctrl+2"), r => !r.IsHeader && r.Keys.StartsWith("Ctrl+1"));
+            Assert.Contains(ShortcutSheet.Build(English(), "ctrl+pagedown"), r => !r.IsHeader && r.Keys.StartsWith("Ctrl+Tab"));
+        }
+
+        [Fact]
         public void A_search_with_no_match_gives_an_empty_sheet()
         {
             Assert.Empty(ShortcutSheet.Build(English(), "zzzzqq"));

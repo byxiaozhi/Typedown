@@ -151,6 +151,7 @@ namespace Typedown.WinUI
         {
             if (!KeyTipsAvailable) return false;
             RevealCommandRow(false);
+            CommandRow.UpdateLayout();
             var hit = PlanKeyTips().FirstOrDefault(t => string.Equals(t.Key, key, StringComparison.OrdinalIgnoreCase));
             if (hit.Target == null) return false;
             hit.Target.Activate();
@@ -167,6 +168,7 @@ namespace Typedown.WinUI
             }
             if (!KeyTipsAvailable) return false;
             RevealCommandRow(false);
+            CommandRow.UpdateLayout();
             keyTips = PlanKeyTips();
             if (keyTips.Count == 0) return false;
 

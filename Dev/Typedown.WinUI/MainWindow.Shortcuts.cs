@@ -36,16 +36,26 @@ namespace Typedown.WinUI
         // Where the keyboard was in the window when the sheet opened over the Settings page (it goes back there, not to the text).
         private Control shortcutsReturnFocus;
 
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern short VkKeyScan(char ch);
+
         private void SetUpShortcutSheet()
         {
-            // Ctrl+Shift+/ (the "/" key of a US keyboard is virtual key 0xBF): from anywhere in the window; from the editor the page tells (HostShortcut).
-            var accelerator = new KeyboardAccelerator { Key = (VirtualKey)0xBF, Modifiers = VirtualKeyModifiers.Control | VirtualKeyModifiers.Shift };
-            accelerator.Invoked += (_, args) =>
+            // Ctrl+Shift+/ from anywhere in the window (from the editor the page tells, by the character: HostShortcut). The "/" key of a US keyboard is virtual
+            // key 0xBF; on another layout "/" is another key (Shift+7 on a Hungarian or German one), which the layout says: both are accelerators.
+            var keys = new System.Collections.Generic.List<VirtualKey> { (VirtualKey)0xBF };
+            var scan = VkKeyScan('/');
+            if (scan != -1 && (scan & 0xFF) is var vk and not 0xBF && vk != 0) keys.Add((VirtualKey)vk);
+            foreach (var key in keys)
             {
-                ToggleShortcutSheet();
-                args.Handled = true;
-            };
-            ((UIElement)Content).KeyboardAccelerators.Add(accelerator);
+                var accelerator = new KeyboardAccelerator { Key = key, Modifiers = VirtualKeyModifiers.Control | VirtualKeyModifiers.Shift };
+                accelerator.Invoked += (_, args) =>
+                {
+                    ToggleShortcutSheet();
+                    args.Handled = true;
+                };
+                ((UIElement)Content).KeyboardAccelerators.Add(accelerator);
+            }
         }
 
         private void ShortcutsMenuItem_Click(object sender, RoutedEventArgs e) => ShowShortcutSheet();
@@ -60,7 +70,12 @@ namespace Typedown.WinUI
         {
             HideKeyTips(restore: false);
             if (ShortcutsPanel.Visibility != Visibility.Visible)
-                shortcutsReturnFocus = SettingsPageShown ? FocusManager.GetFocusedElement(Content.XamlRoot) as Control : null;
+            {
+                // the control of the window that had the keyboard (a sidebar item, a button of the Convert page, a Settings control), not the editor
+                // (a web page: it is taken by the editor's own way back)
+                var focused = FocusManager.GetFocusedElement(Content.XamlRoot) as Control;
+                shortcutsReturnFocus = focused == null || ReferenceEquals(focused, EditorView) ? null : focused;
+            }
             ShortcutsTextBox.Text = "";
             UpdateShortcutRows("");
             ShortcutsPanel.Visibility = Visibility.Visible;
@@ -71,12 +86,9 @@ namespace Typedown.WinUI
         {
             if (ShortcutsPanel.Visibility != Visibility.Visible) return;
             ShortcutsPanel.Visibility = Visibility.Collapsed;
-            if (SettingsPageShown) shortcutsReturnFocus?.Focus(FocusState.Programmatic);
-            else
-            {
-                EditorView.Focus(FocusState.Programmatic);
-                _ = FocusEditorTextAsync(findRequest);
-            }
+            if (shortcutsReturnFocus is { IsLoaded: true } control && control.Focus(FocusState.Programmatic)) return;
+            EditorView.Focus(FocusState.Programmatic);
+            _ = FocusEditorTextAsync(findRequest);
         }
 
         private void UpdateShortcutRows(string query)

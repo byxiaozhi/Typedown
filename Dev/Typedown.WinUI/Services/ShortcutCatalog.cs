@@ -84,7 +84,7 @@ namespace Typedown.WinUI.Services
                 var groupName = name(ShortcutCatalog.GroupNameKey(group));
                 var matches = ShortcutCatalog.All.Where(s => s.Group == group)
                     .Select(s => (Shortcut: s, Name: name(s.NameKey)))
-                    .Where(x => string.IsNullOrWhiteSpace(query) || PaletteSearch.Score(query, x.Name, groupName + " " + x.Shortcut.Keys) >= 0)
+                    .Where(x => string.IsNullOrWhiteSpace(query) || PaletteSearch.Score(query, x.Name, groupName + " " + string.Join(" ", x.Shortcut.Gestures.Prepend(x.Shortcut.Keys))) >= 0)
                     .ToList();
                 if (matches.Count == 0) continue;
                 rows.Add(new Row(groupName, "", true));
