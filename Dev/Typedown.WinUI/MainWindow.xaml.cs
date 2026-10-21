@@ -859,7 +859,9 @@ namespace Typedown.WinUI
                 // the toolbar over a selection (drawn by the page) asks for what only the window can do: the dialog of a new comment
                 eventCenter.GetObservable<EditorEventArgs>("SelectionToolbar").Subscribe(x =>
                 {
-                    if (x.Args?["command"]?.ToString() == "comment") AddCommentMenuItem_Click(this, null);
+                    var command = x.Args?["command"]?.ToString();
+                    if (command == "comment") AddCommentMenuItem_Click(this, null);
+                    else if (command == "whatsapp") _ = CopyAsWhatsApp();
                 });
                 eventCenter.GetObservable<EditorEventArgs>("DocumentMapState").Subscribe(x =>
                 {

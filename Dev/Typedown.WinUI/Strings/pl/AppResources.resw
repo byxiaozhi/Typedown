@@ -3142,4 +3142,7 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="HomeNoFiles" xml:space="preserve">
     <value>Otwierane notatki pojawiają się tutaj.</value>
   </data>
+  <data name="HelpWhatsNew" xml:space="preserve">
+    <value>Co nowego</value>
+  </data>
 </root>

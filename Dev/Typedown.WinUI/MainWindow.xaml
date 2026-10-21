@@ -455,6 +455,7 @@
                 <MenuFlyoutItem x:Name="SpeakingClockMenuItem" Text="{u:Loc Key=SpeakingClockMenuItem_Text}" Click="SpeakingClockMenuItem_Click"/>
             </MenuBarItem>
             <MenuBarItem x:Name="HelpMenu" Title="{u:Loc Key=HelpMenu_Title}">
+                <MenuFlyoutItem Text="{u:Loc Key=HelpWhatsNew}" Tag="whats-new" Click="HelpTopic_Click"/>
                 <MenuFlyoutItem Text="{u:Loc Key=HelpGettingStarted}" Tag="getting-started" Click="HelpTopic_Click"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem Text="{u:Loc Key=HelpTopicReview}" Tag="review" Click="HelpTopic_Click"/>
