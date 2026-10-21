@@ -32,7 +32,7 @@ namespace Typedown.WinUI.Services.Conversion
             var text = Path.GetExtension(path).ToLowerInvariant() switch
             {
                 ".docx" or ".docm" or ".dotx" => Word(stream),
-                ".xlsx" or ".xlsm" => ExcelConverter.PlainRows(stream),
+                ".xlsx" or ".xlsm" => ExcelConverter.PlainRows(stream, limit, out prefixCut),
                 ".pptx" or ".pptm" => PowerPoint(stream),
                 ".pdf" => Pdf(stream),
                 ".csv" => Csv(stream, limit, out prefixCut),
@@ -152,8 +152,25 @@ namespace Typedown.WinUI.Services.Conversion
                 var utf16 = bytes.Length >= 2 && (bytes[0] == 0xFF && bytes[1] == 0xFE || bytes[0] == 0xFE && bytes[1] == 0xFF);
                 if (utf16) bytes = bytes[..(bytes.Length & ~1)];
                 else if (Array.LastIndexOf(bytes, (byte)'\n') is var end and > 0) bytes = bytes[..end];
+                else bytes = WithoutIncompleteUtf8(bytes); // a row with no line end in all that: not in the middle of a letter
             }
             return Utilities.TextFileEncoding.Decode(bytes).Text;
+        }
+
+        // A UTF-8 letter cut in two would make the whole text look like a legacy code page. In another encoding this takes at most three
+        // bytes off the end, which a cut text can do without.
+        private static byte[] WithoutIncompleteUtf8(byte[] bytes)
+        {
+            var i = bytes.Length - 1;
+            var continuation = 0;
+            while (i >= 0 && continuation < 3 && (bytes[i] & 0xC0) == 0x80)
+            {
+                i--;
+                continuation++;
+            }
+            if (i < 0) return bytes;
+            var expected = bytes[i] >= 0xF0 ? 3 : bytes[i] >= 0xE0 ? 2 : bytes[i] >= 0xC0 ? 1 : 0;
+            return expected > continuation ? bytes[..i] : bytes;
         }
 
         private static string Email(EmailDocument email)

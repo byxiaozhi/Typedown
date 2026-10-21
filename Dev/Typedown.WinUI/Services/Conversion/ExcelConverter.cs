@@ -41,9 +41,11 @@ namespace Typedown.WinUI.Services.Conversion
         }
 
         // The visible sheets as plain rows (cells separated by a tab, empty rows left out), with no table or heading made of them: the source
-        // side of Compare in the conversion tray (SourceText).
-        internal static string PlainRows(Stream stream)
+        // side of Compare in the conversion tray (SourceText). It stops once `limit` characters are there (`cut` says it did), so a big
+        // workbook is not read to its end for a preview.
+        internal static string PlainRows(Stream stream, int limit, out bool cut)
         {
+            cut = false;
             using var doc = SpreadsheetDocument.Open(stream, false);
             var workbook = doc.WorkbookPart;
             if (workbook?.Workbook?.Sheets == null) return "";
@@ -56,9 +58,14 @@ namespace Typedown.WinUI.Services.Conversion
                 if (sheet.Id?.Value == null || workbook.GetPartById(sheet.Id.Value) is not WorksheetPart part) continue;
                 var sheetData = part.Worksheet?.GetFirstChild<S.SheetData>();
                 if (sheetData == null) continue;
-                var lines = new List<string>();
+                var headed = false;
                 foreach (var row in sheetData.Elements<S.Row>().Where(r => r.Hidden?.Value != true))
                 {
+                    if (sb.Length > limit)
+                    {
+                        cut = true;
+                        break;
+                    }
                     var cells = new SortedDictionary<int, string>();
                     var nextColumn = 0;
                     foreach (var cell in row.Elements<S.Cell>())
@@ -75,11 +82,15 @@ namespace Typedown.WinUI.Services.Conversion
                         if (c > 0) line.Append('\t');
                         if (cells.TryGetValue(c, out var text)) line.Append(text);
                     }
-                    lines.Add(line.ToString());
+                    if (!headed)
+                    {
+                        if (sb.Length > 0) sb.Append("\n\n");
+                        sb.Append("--- ").Append(sheet.Name?.Value ?? "").Append(" ---");
+                        headed = true;
+                    }
+                    sb.Append('\n').Append(line);
                 }
-                if (lines.Count == 0) continue;
-                if (sb.Length > 0) sb.Append("\n\n");
-                sb.Append("--- ").Append(sheet.Name?.Value ?? "").Append(" ---\n").Append(string.Join("\n", lines));
+                if (cut) break;
             }
             return sb.ToString();
         }

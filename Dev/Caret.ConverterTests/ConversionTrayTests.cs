@@ -124,6 +124,54 @@ namespace Caret.ConverterTests
         }
 
         [Fact]
+        public void A_csv_row_with_no_line_end_is_not_cut_in_the_middle_of_a_letter()
+        {
+            var work = TestPaths.NewTempFolder();
+            try
+            {
+                var path = Path.Combine(work, "one-row.csv");
+                // 1 + 3,000 two-byte letters and no line end: the cut after limit * 4 bytes falls between the two bytes of a letter
+                File.WriteAllText(path, "a" + new string('ż', 3000), new System.Text.UTF8Encoding(false));
+                var preview = SourceText.Read(path, 1000);
+                Assert.True(preview.Truncated);
+                Assert.StartsWith("ażżż", preview.Text);
+                Assert.DoesNotContain("Å", preview.Text);
+                Assert.DoesNotContain("�", preview.Text);
+            }
+            finally { Directory.Delete(work, true); }
+        }
+
+        [Fact]
+        public void A_big_workbook_is_read_only_as_far_as_the_preview_needs()
+        {
+            var work = TestPaths.NewTempFolder();
+            try
+            {
+                var path = Path.Combine(work, "big.xlsx");
+                using (var doc = DocumentFormat.OpenXml.Packaging.SpreadsheetDocument.Create(path, DocumentFormat.OpenXml.SpreadsheetDocumentType.Workbook))
+                {
+                    var workbook = doc.AddWorkbookPart();
+                    var part = workbook.AddNewPart<DocumentFormat.OpenXml.Packaging.WorksheetPart>();
+                    var data = new DocumentFormat.OpenXml.Spreadsheet.SheetData();
+                    for (var r = 1; r <= 20000; r++)
+                        data.Append(new DocumentFormat.OpenXml.Spreadsheet.Row(
+                            new DocumentFormat.OpenXml.Spreadsheet.Cell { CellReference = "A" + r, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(r.ToString()) },
+                            new DocumentFormat.OpenXml.Spreadsheet.Cell { CellReference = "B" + r, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue((r * 2).ToString()) }) { RowIndex = (uint)r });
+                    part.Worksheet = new DocumentFormat.OpenXml.Spreadsheet.Worksheet(data);
+                    workbook.Workbook = new DocumentFormat.OpenXml.Spreadsheet.Workbook(new DocumentFormat.OpenXml.Spreadsheet.Sheets(
+                        new DocumentFormat.OpenXml.Spreadsheet.Sheet { Id = workbook.GetIdOfPart(part), SheetId = 1, Name = "Big" }));
+                    workbook.Workbook.Save();
+                }
+                var preview = SourceText.Read(path, 1000);
+                Assert.True(preview.Truncated);
+                Assert.True(preview.Text.Length <= 1000);
+                Assert.StartsWith("--- Big ---\n1\t2\n2\t4\n", preview.Text);
+                Assert.False(SourceText.Read(Sample("excel-budget.xlsx"), 1000).Truncated);
+            }
+            finally { Directory.Delete(work, true); }
+        }
+
+        [Fact]
         public void A_file_that_is_open_elsewhere_can_be_read()
         {
             var work = TestPaths.NewTempFolder();
