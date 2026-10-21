@@ -3061,4 +3061,55 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="SectionResetAll" xml:space="preserve">
     <value>Restablecer todas a la combinación</value>
   </data>
+  <data name="ShortcutGroupFormat" xml:space="preserve">
+    <value>Formato</value>
+  </data>
+  <data name="ShortcutGroupReview" xml:space="preserve">
+    <value>Revisión</value>
+  </data>
+  <data name="ShortcutGroupSpeech" xml:space="preserve">
+    <value>Discurso</value>
+  </data>
+  <data name="ShortcutGroupFind" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="ShortcutGroupFiles" xml:space="preserve">
+    <value>Archivos</value>
+  </data>
+  <data name="ShortcutGroupGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="ShortcutNewTab" xml:space="preserve">
+    <value>Nueva pestaña</value>
+  </data>
+  <data name="ShortcutHeadings" xml:space="preserve">
+    <value>Títulos 1 a 6</value>
+  </data>
+  <data name="ShortcutMiniToolbar" xml:space="preserve">
+    <value>Pasar a la barra de herramientas sobre la selección</value>
+  </data>
+  <data name="ShortcutSpeechPause" xml:space="preserve">
+    <value>Insertar una pausa (modo discurso)</value>
+  </data>
+  <data name="ShortcutSpeechBeat" xml:space="preserve">
+    <value>Insertar una pausa corta (modo discurso)</value>
+  </data>
+  <data name="ShortcutSpeechEmphasis" xml:space="preserve">
+    <value>Énfasis (modo discurso)</value>
+  </data>
+  <data name="ShortcutKeyTips" xml:space="preserve">
+    <value>Mostrar las teclas de acceso</value>
+  </data>
+  <data name="ShortcutSheet" xml:space="preserve">
+    <value>Métodos abreviados de teclado</value>
+  </data>
+  <data name="ShortcutsSearchPlaceholder" xml:space="preserve">
+    <value>Buscar un método abreviado</value>
+  </data>
+  <data name="ShortcutsNoResults" xml:space="preserve">
+    <value>Ningún método abreviado coincide.</value>
+  </data>
+  <data name="KeyTipsAnnounce" xml:space="preserve">
+    <value>Teclas de acceso: presiona una tecla, o Esc para cerrar.</value>
+  </data>
 </root>

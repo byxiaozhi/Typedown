@@ -254,6 +254,8 @@ namespace Typedown.WinUI
             SetUpEditorPopups();
             SetUpConvertPage();
             SetUpConversionTray();
+            SetUpKeyboardLayer();
+            SetUpShortcutSheet();
             EditorView.Loaded += MainWindow_Loaded;
         }
 
@@ -990,6 +992,20 @@ namespace Typedown.WinUI
                     window.chrome.webview.postMessage(JSON.stringify({ type: 'message', name: 'HostShortcut', args: { key: e.key.toLowerCase(), shift: e.shiftKey } }));
                     return;
                 }
+                // Alt and a letter or digit: the key tip of that key (MainWindow.KeyTips.cs). Not with Ctrl (that is AltGr on many layouts).
+                if (e.altKey && !e.ctrlKey && !e.shiftKey && !e.metaKey && e.key.length === 1 && /[a-z0-9]/i.test(e.key)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.chrome.webview.postMessage(JSON.stringify({ type: 'message', name: 'HostShortcut', args: { key: 'altkey', code: e.key.toUpperCase(), shift: false } }));
+                    return;
+                }
+                // Ctrl+Shift+/ (the cheat sheet), by the character on any layout: slash, or the question mark it makes with Shift.
+                if (e.ctrlKey && e.shiftKey && !e.altKey && (e.key === '/' || e.key === '?' || e.code === 'Slash')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.chrome.webview.postMessage(JSON.stringify({ type: 'message', name: 'HostShortcut', args: { key: 'shortcuts', shift: true } }));
+                    return;
+                }
                 // Speech marks (Speech mode only, by physical key): Ctrl+Shift+. pause, Ctrl+Shift+, beat, Ctrl+Shift+E emphasis.
                 if (e.ctrlKey && e.shiftKey && !e.altKey && window.__caretSpeech && window.__caretSpeech.shortcut(e.code)) {
                     e.preventDefault();
@@ -1049,7 +1065,11 @@ namespace Typedown.WinUI
                 case ",": SettingsMenuItem_Click(this, null); break;
                 case "/": CycleViewMode(); break;
                 case "f6": CycleArea(shift ? -1 : +1); break;
-                case "f10": case "alt": RevealCommandRow(true); break;
+                case "f10": RevealCommandRow(true); break;
+                // Alt on its own: the key tips (when they cannot be shown, the keyboard goes to the menu bar, as it did)
+                case "alt": if (!ShowKeyTips(fromEditor: true)) RevealCommandRow(true); break;
+                case "altkey": ActivateKeyTip(code, fromEditor: true); break;
+                case "shortcuts": ToggleShortcutSheet(); break;
                 case "f11": ToggleDistractionFree(); break;
                 case "v": PasteFromClipboard(); break;
                 case "z" when shift: RedoMenuItem_Click(this, null); break;
