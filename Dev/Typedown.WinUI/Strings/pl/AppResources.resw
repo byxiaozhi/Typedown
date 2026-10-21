@@ -3046,4 +3046,19 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="CompareConversion" xml:space="preserve">
     <value>Konwersja</value>
   </data>
+  <data name="AppearancePreview" xml:space="preserve">
+    <value>Podgląd</value>
+  </data>
+  <data name="AppearancePreviewDescription" xml:space="preserve">
+    <value>Okno ze schematem kolorów i kolorami sekcji takimi, jakie są teraz.</value>
+  </data>
+  <data name="SectionCustom" xml:space="preserve">
+    <value>Własny</value>
+  </data>
+  <data name="SectionResetToScheme" xml:space="preserve">
+    <value>Przywróć ze schematu</value>
+  </data>
+  <data name="SectionResetAll" xml:space="preserve">
+    <value>Przywróć wszystko ze schematu</value>
+  </data>
 </root>

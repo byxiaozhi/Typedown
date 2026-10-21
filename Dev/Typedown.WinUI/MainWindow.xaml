@@ -26,6 +26,29 @@
              without it there's no way to create a file/paste into the top level of an opened folder
              at all (every other New File/New Folder/Paste is scoped to a specific row's folder). -->
         <Grid.Resources>
+            <Style x:Key="CustomBadgeStyle" TargetType="Border">
+                <Setter Property="CornerRadius" Value="9"/>
+                <Setter Property="Padding" Value="8,1"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Background" Value="{ThemeResource CaretPrimaryBrush}"/>
+            </Style>
+            <Style x:Key="SchemeCardItemStyle" TargetType="GridViewItem">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="0,0,12,12"/>
+                <Setter Property="MinWidth" Value="0"/>
+                <Setter Property="MinHeight" Value="0"/>
+                <Setter Property="UseSystemFocusVisuals" Value="True"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewItem">
+                            <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}" Padding="{TemplateBinding Padding}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style x:Key="CompareLineStyle" TargetType="ListViewItem">
                 <Setter Property="Padding" Value="8,1"/>
                 <Setter Property="MinHeight" Value="0"/>
@@ -1736,7 +1759,76 @@
                                 <tk:SettingsExpander.Items>
                                     <tk:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
                                         <GridView x:Name="ColorSchemeGridView" SelectionMode="Single" SelectionChanged="ColorSchemeGridView_SelectionChanged"
-                                                  AutomationProperties.Name="{u:Loc Key=ColorScheme}" Margin="-4,4,0,4"/>
+                                                  ItemContainerStyle="{StaticResource SchemeCardItemStyle}"
+                                                  AutomationProperties.Name="{u:Loc Key=ColorScheme}" Margin="-4,4,0,0">
+                                            <GridView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"/>
+                                                </ItemsPanelTemplate>
+                                            </GridView.ItemsPanel>
+                                        </GridView>
+                                    </tk:SettingsCard>
+                                </tk:SettingsExpander.Items>
+                            </tk:SettingsExpander>
+                            <!-- The live preview: a small picture of the window with the scheme and the section colours as they are now (MainWindow.AppearancePreview.cs). -->
+            <tk:SettingsCard x:Name="AppearancePreviewCard" Header="{u:Loc Key=AppearancePreview}" Description="{u:Loc Key=AppearancePreviewDescription}" HorizontalContentAlignment="Left" ContentAlignment="Vertical">
+                <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE7B3;"/></tk:SettingsCard.HeaderIcon>
+                <Border x:Name="AppearancePreviewHost" HorizontalAlignment="Left"/>
+            </tk:SettingsCard>
+            <!-- One area at a time over the scheme; colours that would be hard to read aren't offered
+                                 (the contrast guard, MainWindow.Sections.cs). Kept per theme. -->
+                            <tk:SettingsExpander x:Name="SectionColorsExpander" Header="{u:Loc Key=SectionColors}" Description="{u:Loc Key=SectionColorsDescription}">
+                                <tk:SettingsExpander.HeaderIcon><FontIcon Glyph="&#xF0E2;"/></tk:SettingsExpander.HeaderIcon>
+                                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <Border x:Name="SectionColorsCustomBadge" Style="{StaticResource CustomBadgeStyle}" Visibility="Collapsed">
+                                        <TextBlock Text="{u:Loc Key=SectionCustom}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
+                                    </Border>
+                                    <Button x:Name="SectionColorsResetAll" Content="{u:Loc Key=SectionResetAll}" Click="SectionResetAll_Click" IsEnabled="False"/>
+                                </StackPanel>
+                                <tk:SettingsExpander.Items>
+                                    <tk:SettingsCard Header="{u:Loc Key=SectionBand}">
+                                        <StackPanel Orientation="Horizontal" Spacing="12">
+                                            <Border x:Name="SectionBandCustom" Style="{StaticResource CustomBadgeStyle}" Visibility="Collapsed">
+                                                <TextBlock Text="{u:Loc Key=SectionCustom}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
+                                            </Border>
+                                            <TextBlock x:Name="SectionBandContrast" VerticalAlignment="Center" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                            <ComboBox x:Name="SectionBandComboBox" Tag="band" Style="{StaticResource SettingsComboStyle}" SelectionChanged="SectionComboBox_SelectionChanged"
+                                                      AutomationProperties.Name="{u:Loc Key=SectionBand}"/>
+                                            <Button x:Name="SectionBandReset" Tag="band" Content="{u:Loc Key=SectionResetToScheme}" Click="SectionReset_Click" IsEnabled="False"/>
+                                        </StackPanel>
+                                    </tk:SettingsCard>
+                                    <tk:SettingsCard Header="{u:Loc Key=SectionSidebar}">
+                                        <StackPanel Orientation="Horizontal" Spacing="12">
+                                            <Border x:Name="SectionSideCustom" Style="{StaticResource CustomBadgeStyle}" Visibility="Collapsed">
+                                                <TextBlock Text="{u:Loc Key=SectionCustom}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
+                                            </Border>
+                                            <TextBlock x:Name="SectionSideContrast" VerticalAlignment="Center" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                            <ComboBox x:Name="SectionSideComboBox" Tag="side" Style="{StaticResource SettingsComboStyle}" SelectionChanged="SectionComboBox_SelectionChanged"
+                                                      AutomationProperties.Name="{u:Loc Key=SectionSide}"/>
+                                            <Button x:Name="SectionSideReset" Tag="side" Content="{u:Loc Key=SectionResetToScheme}" Click="SectionReset_Click" IsEnabled="False"/>
+                                        </StackPanel>
+                                    </tk:SettingsCard>
+                                    <tk:SettingsCard Header="{u:Loc Key=SectionPage}">
+                                        <StackPanel Orientation="Horizontal" Spacing="12">
+                                            <Border x:Name="SectionPageCustom" Style="{StaticResource CustomBadgeStyle}" Visibility="Collapsed">
+                                                <TextBlock Text="{u:Loc Key=SectionCustom}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
+                                            </Border>
+                                            <TextBlock x:Name="SectionPageContrast" VerticalAlignment="Center" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                            <ComboBox x:Name="SectionPageComboBox" Tag="page" Style="{StaticResource SettingsComboStyle}" SelectionChanged="SectionComboBox_SelectionChanged"
+                                                      AutomationProperties.Name="{u:Loc Key=SectionPage}"/>
+                                            <Button x:Name="SectionPageReset" Tag="page" Content="{u:Loc Key=SectionResetToScheme}" Click="SectionReset_Click" IsEnabled="False"/>
+                                        </StackPanel>
+                                    </tk:SettingsCard>
+                                    <tk:SettingsCard Header="{u:Loc Key=SectionStatus}">
+                                        <StackPanel Orientation="Horizontal" Spacing="12">
+                                            <Border x:Name="SectionStatusCustom" Style="{StaticResource CustomBadgeStyle}" Visibility="Collapsed">
+                                                <TextBlock Text="{u:Loc Key=SectionCustom}" FontSize="11" FontWeight="SemiBold" Foreground="White"/>
+                                            </Border>
+                                            <TextBlock x:Name="SectionStatusContrast" VerticalAlignment="Center" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                            <ComboBox x:Name="SectionStatusComboBox" Tag="status" Style="{StaticResource SettingsComboStyle}" SelectionChanged="SectionComboBox_SelectionChanged"
+                                                      AutomationProperties.Name="{u:Loc Key=SectionStatus}"/>
+                                            <Button x:Name="SectionStatusReset" Tag="status" Content="{u:Loc Key=SectionResetToScheme}" Click="SectionReset_Click" IsEnabled="False"/>
+                                        </StackPanel>
                                     </tk:SettingsCard>
                                 </tk:SettingsExpander.Items>
                             </tk:SettingsExpander>
@@ -1755,41 +1847,6 @@
                                     <ComboBoxItem Content="Mica Alt" Tag="micaalt"/>
                                 </ComboBox>
                             </tk:SettingsCard>
-                            <!-- One area at a time over the scheme; colours that would be hard to read aren't offered
-                                 (the contrast guard, MainWindow.Sections.cs). Kept per theme. -->
-                            <tk:SettingsExpander x:Name="SectionColorsExpander" Header="{u:Loc Key=SectionColors}" Description="{u:Loc Key=SectionColorsDescription}">
-                                <tk:SettingsExpander.HeaderIcon><FontIcon Glyph="&#xF0E2;"/></tk:SettingsExpander.HeaderIcon>
-                                <tk:SettingsExpander.Items>
-                                    <tk:SettingsCard Header="{u:Loc Key=SectionBand}">
-                                        <StackPanel Orientation="Horizontal" Spacing="12">
-                                            <TextBlock x:Name="SectionBandContrast" VerticalAlignment="Center" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
-                                            <ComboBox x:Name="SectionBandComboBox" Tag="band" Style="{StaticResource SettingsComboStyle}" SelectionChanged="SectionComboBox_SelectionChanged"
-                                                      AutomationProperties.Name="{u:Loc Key=SectionBand}"/>
-                                        </StackPanel>
-                                    </tk:SettingsCard>
-                                    <tk:SettingsCard Header="{u:Loc Key=SectionSidebar}">
-                                        <StackPanel Orientation="Horizontal" Spacing="12">
-                                            <TextBlock x:Name="SectionSideContrast" VerticalAlignment="Center" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
-                                            <ComboBox x:Name="SectionSideComboBox" Tag="side" Style="{StaticResource SettingsComboStyle}" SelectionChanged="SectionComboBox_SelectionChanged"
-                                                      AutomationProperties.Name="{u:Loc Key=SectionSidebar}"/>
-                                        </StackPanel>
-                                    </tk:SettingsCard>
-                                    <tk:SettingsCard Header="{u:Loc Key=SectionPage}">
-                                        <StackPanel Orientation="Horizontal" Spacing="12">
-                                            <TextBlock x:Name="SectionPageContrast" VerticalAlignment="Center" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
-                                            <ComboBox x:Name="SectionPageComboBox" Tag="page" Style="{StaticResource SettingsComboStyle}" SelectionChanged="SectionComboBox_SelectionChanged"
-                                                      AutomationProperties.Name="{u:Loc Key=SectionPage}"/>
-                                        </StackPanel>
-                                    </tk:SettingsCard>
-                                    <tk:SettingsCard Header="{u:Loc Key=SectionStatus}">
-                                        <StackPanel Orientation="Horizontal" Spacing="12">
-                                            <TextBlock x:Name="SectionStatusContrast" VerticalAlignment="Center" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
-                                            <ComboBox x:Name="SectionStatusComboBox" Tag="status" Style="{StaticResource SettingsComboStyle}" SelectionChanged="SectionComboBox_SelectionChanged"
-                                                      AutomationProperties.Name="{u:Loc Key=SectionStatus}"/>
-                                        </StackPanel>
-                                    </tk:SettingsCard>
-                                </tk:SettingsExpander.Items>
-                            </tk:SettingsExpander>
                             <tk:SettingsCard Header="{u:Loc Key=AnimationToggle_Header}">
                                 <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE916;"/></tk:SettingsCard.HeaderIcon>
                                 <ToggleSwitch x:Name="AnimationToggle" OnContent="{u:Loc Key=ToggleOn}" OffContent="{u:Loc Key=ToggleOff}" Toggled="AnimationToggle_Toggled"/>

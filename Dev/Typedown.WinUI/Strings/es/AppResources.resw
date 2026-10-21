@@ -3046,4 +3046,19 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="CompareConversion" xml:space="preserve">
     <value>Conversión</value>
   </data>
+  <data name="AppearancePreview" xml:space="preserve">
+    <value>Vista previa</value>
+  </data>
+  <data name="AppearancePreviewDescription" xml:space="preserve">
+    <value>La ventana con la combinación de colores y los colores de las zonas tal como están ahora.</value>
+  </data>
+  <data name="SectionCustom" xml:space="preserve">
+    <value>Personalizado</value>
+  </data>
+  <data name="SectionResetToScheme" xml:space="preserve">
+    <value>Restablecer a la combinación</value>
+  </data>
+  <data name="SectionResetAll" xml:space="preserve">
+    <value>Restablecer todas a la combinación</value>
+  </data>
 </root>
