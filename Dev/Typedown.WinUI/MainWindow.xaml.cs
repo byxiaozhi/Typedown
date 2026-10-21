@@ -2167,7 +2167,7 @@ namespace Typedown.WinUI
         private void ApplyNativeTheme()
         {
             var theme = settings.AppTheme switch { AppTheme.Light => ElementTheme.Light, AppTheme.Dark => ElementTheme.Dark, _ => ElementTheme.Default };
-            ((FrameworkElement)Content).RequestedTheme = theme;
+            ColorSchemes.SetTheme((FrameworkElement)Content, theme);
             UpdateThemeToggleIcon();
             ApplySectionColors(); // they're kept per theme
             // Settings may be open while the theme changes (its own Theme list, or Windows switching): its colour

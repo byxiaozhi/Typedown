@@ -12,7 +12,11 @@
          stock semantic key (title bar text, folder tree icons via Icons.xaml).
          SystemAccentColorLight1-3/Dark1-3 are simple fixed-percentage tints toward white/black — not a
          perceptual color-space blend, just a reasonable approximation; nothing here depends on them
-         being exact. -->
+         being exact.
+         The brushes carry their colour as a literal, not as {StaticResource CaretXColor}: a static
+         reference inside a theme dictionary is resolved against the theme of the application, so with
+         the window in the other theme (View > Theme, after the start) every brush of the dictionary of
+         the window's theme came out in the colours of the application's. -->
 
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
@@ -26,41 +30,41 @@
             <Color x:Key="CaretTextSecondaryColor">#6B584B</Color>
             <Color x:Key="CaretBorderColor">#E3D5C6</Color>
             <Color x:Key="CaretFocusColor">#A5522A</Color>
-            <SolidColorBrush x:Key="CaretPrimaryBrush" Color="{StaticResource CaretPrimaryColor}"/>
-            <SolidColorBrush x:Key="CaretSecondaryBrush" Color="{StaticResource CaretSecondaryColor}"/>
-            <SolidColorBrush x:Key="CaretBackgroundBrush" Color="{StaticResource CaretBackgroundColor}"/>
-            <SolidColorBrush x:Key="CaretSurfaceBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="CaretSurfaceAltBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="CaretTextPrimaryBrush" Color="{StaticResource CaretTextPrimaryColor}"/>
-            <SolidColorBrush x:Key="CaretTextSecondaryBrush" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="CaretBorderBrush" Color="{StaticResource CaretBorderColor}"/>
-            <SolidColorBrush x:Key="CaretFocusBrush" Color="{StaticResource CaretFocusColor}"/>
-            <SolidColorBrush x:Key="CaretIconBrush" Color="{StaticResource CaretTextSecondaryColor}"/>
+            <SolidColorBrush x:Key="CaretPrimaryBrush" Color="#A5522A"/>
+            <SolidColorBrush x:Key="CaretSecondaryBrush" Color="#D67A3C"/>
+            <SolidColorBrush x:Key="CaretBackgroundBrush" Color="#F8EBDD"/>
+            <SolidColorBrush x:Key="CaretSurfaceBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="CaretSurfaceAltBrush" Color="#F2DCC2"/>
+            <SolidColorBrush x:Key="CaretTextPrimaryBrush" Color="#382A1B"/>
+            <SolidColorBrush x:Key="CaretTextSecondaryBrush" Color="#6B584B"/>
+            <SolidColorBrush x:Key="CaretBorderBrush" Color="#E3D5C6"/>
+            <SolidColorBrush x:Key="CaretFocusBrush" Color="#A5522A"/>
+            <SolidColorBrush x:Key="CaretIconBrush" Color="#6B584B"/>
             <!-- Document tabs (MainWindow.Tabs.cs): the title bar is a darker band; the active tab takes
                  the page colour, so it joins the document below, with its icon in the brand colour;
                  the others are quieter, with a divider between them. -->
             <!-- Window sections, darkest to lightest (interface review F3): the tab band, then the command
                  row (menu and formatting toolbar), which the active tab joins, then the page. -->
             <SolidColorBrush x:Key="CaretTabStripBrush" Color="#EDD5BA"/>
-            <SolidColorBrush x:Key="CaretCommandBarBrush" Color="{StaticResource CaretBackgroundColor}"/>
-            <SolidColorBrush x:Key="CaretWindowBackgroundBrush" Color="{StaticResource CaretBackgroundColor}"/>
+            <SolidColorBrush x:Key="CaretCommandBarBrush" Color="#F8EBDD"/>
+            <SolidColorBrush x:Key="CaretWindowBackgroundBrush" Color="#F8EBDD"/>
             <SolidColorBrush x:Key="CaretSidebarBrush" Color="Transparent"/>
             <SolidColorBrush x:Key="CaretStatusBarBrush" Color="Transparent"/>
             <SolidColorBrush x:Key="TabViewBackground" Color="Transparent"/>
             <SolidColorBrush x:Key="TabViewItemHeaderBackground" Color="Transparent"/>
             <SolidColorBrush x:Key="TabViewItemHeaderBackgroundPointerOver" Color="#F4E2CF"/>
             <SolidColorBrush x:Key="TabViewItemHeaderBackgroundPressed" Color="#F6E7D7"/>
-            <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="{StaticResource CaretBackgroundColor}"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="#F8EBDD"/>
             <SolidColorBrush x:Key="TabViewItemHeaderForeground" Color="#5E4A3C"/>
-            <SolidColorBrush x:Key="TabViewItemHeaderForegroundPointerOver" Color="{StaticResource CaretTextPrimaryColor}"/>
-            <SolidColorBrush x:Key="TabViewItemHeaderForegroundPressed" Color="{StaticResource CaretTextPrimaryColor}"/>
-            <SolidColorBrush x:Key="TabViewItemHeaderForegroundSelected" Color="{StaticResource CaretTextPrimaryColor}"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderForegroundPointerOver" Color="#382A1B"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderForegroundPressed" Color="#382A1B"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderForegroundSelected" Color="#382A1B"/>
             <SolidColorBrush x:Key="TabViewItemIconForeground" Color="#7A6454"/>
-            <SolidColorBrush x:Key="TabViewItemIconForegroundPointerOver" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="TabViewItemIconForegroundPressed" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="TabViewItemIconForegroundSelected" Color="{StaticResource CaretPrimaryColor}"/>
+            <SolidColorBrush x:Key="TabViewItemIconForegroundPointerOver" Color="#6B584B"/>
+            <SolidColorBrush x:Key="TabViewItemIconForegroundPressed" Color="#6B584B"/>
+            <SolidColorBrush x:Key="TabViewItemIconForegroundSelected" Color="#A5522A"/>
             <SolidColorBrush x:Key="TabViewItemSeparator" Color="#B08C6A"/>
-            <SolidColorBrush x:Key="TabViewButtonForeground" Color="{StaticResource CaretTextSecondaryColor}"/>
+            <SolidColorBrush x:Key="TabViewButtonForeground" Color="#6B584B"/>
             <SolidColorBrush x:Key="TabViewButtonBackgroundPointerOver" Color="#F4E2CF"/>
 
             <!-- WinUI 3 semantic overrides -->
@@ -72,39 +76,39 @@
             <Color x:Key="SystemAccentColorDark2">#522915</Color>
             <Color x:Key="SystemAccentColorDark3">#29140A</Color>
 
-            <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="{StaticResource CaretTextPrimaryColor}"/>
-            <SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="{StaticResource CaretPrimaryColor}"/>
+            <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="#382A1B"/>
+            <SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="#6B584B"/>
+            <SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="#6B584B"/>
+            <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="#A5522A"/>
 
-            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="{StaticResource CaretBackgroundColor}"/>
-            <SolidColorBrush x:Key="SolidBackgroundFillColorBaseBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="SolidBackgroundFillColorSecondaryBrush" Color="{StaticResource CaretBackgroundColor}"/>
-            <SolidColorBrush x:Key="LayerFillColorDefaultBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="LayerFillColorAltBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#F8EBDD"/>
+            <SolidColorBrush x:Key="SolidBackgroundFillColorBaseBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="SolidBackgroundFillColorSecondaryBrush" Color="#F8EBDD"/>
+            <SolidColorBrush x:Key="LayerFillColorDefaultBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="LayerFillColorAltBrush" Color="#F2DCC2"/>
 
-            <SolidColorBrush x:Key="CardBackgroundFillColorDefaultBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="CardBackgroundFillColorSecondaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="{StaticResource CaretBorderColor}"/>
-            <SolidColorBrush x:Key="CardStrokeColorDefaultSolidColorBrush" Color="{StaticResource CaretBorderColor}"/>
+            <SolidColorBrush x:Key="CardBackgroundFillColorDefaultBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="CardBackgroundFillColorSecondaryBrush" Color="#F2DCC2"/>
+            <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="#E3D5C6"/>
+            <SolidColorBrush x:Key="CardStrokeColorDefaultSolidColorBrush" Color="#E3D5C6"/>
 
-            <SolidColorBrush x:Key="ControlFillColorDefaultBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="ControlFillColorSecondaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ControlFillColorTertiaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ControlStrokeColorDefaultBrush" Color="{StaticResource CaretBorderColor}"/>
-            <SolidColorBrush x:Key="ControlStrokeColorSecondaryBrush" Color="{StaticResource CaretBorderColor}"/>
+            <SolidColorBrush x:Key="ControlFillColorDefaultBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="ControlFillColorSecondaryBrush" Color="#F2DCC2"/>
+            <SolidColorBrush x:Key="ControlFillColorTertiaryBrush" Color="#F2DCC2"/>
+            <SolidColorBrush x:Key="ControlStrokeColorDefaultBrush" Color="#E3D5C6"/>
+            <SolidColorBrush x:Key="ControlStrokeColorSecondaryBrush" Color="#E3D5C6"/>
 
-            <SolidColorBrush x:Key="SubtleFillColorSecondaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="SubtleFillColorTertiaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
+            <SolidColorBrush x:Key="SubtleFillColorSecondaryBrush" Color="#F2DCC2"/>
+            <SolidColorBrush x:Key="SubtleFillColorTertiaryBrush" Color="#F2DCC2"/>
 
-            <SolidColorBrush x:Key="FocusStrokeColorOuterBrush" Color="{StaticResource CaretFocusColor}"/>
+            <SolidColorBrush x:Key="FocusStrokeColorOuterBrush" Color="#A5522A"/>
 
             <!-- Selected list items (the sidebar): a quiet fill and the accent pill, as NavigationView
                  shows its selection, instead of ListView's accent-tinted fill. -->
-            <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPressed" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorBrush" Color="{StaticResource CaretPrimaryColor}"/>
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#F2DCC2"/>
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#F2DCC2"/>
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPressed" Color="#F2DCC2"/>
+            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorBrush" Color="#A5522A"/>
 
             <SolidColorBrush x:Key="SystemFillColorSuccessBrush" Color="#2E7D32"/>
             <SolidColorBrush x:Key="SystemFillColorCautionBrush" Color="#F59E0B"/>
@@ -122,19 +126,19 @@
             <Color x:Key="CaretTextSecondaryColor">#A6B0C3</Color>
             <Color x:Key="CaretBorderColor">#2B3550</Color>
             <Color x:Key="CaretFocusColor">#F59E0B</Color>
-            <SolidColorBrush x:Key="CaretPrimaryBrush" Color="{StaticResource CaretPrimaryColor}"/>
-            <SolidColorBrush x:Key="CaretSecondaryBrush" Color="{StaticResource CaretSecondaryColor}"/>
-            <SolidColorBrush x:Key="CaretBackgroundBrush" Color="{StaticResource CaretBackgroundColor}"/>
-            <SolidColorBrush x:Key="CaretSurfaceBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="CaretSurfaceAltBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="CaretTextPrimaryBrush" Color="{StaticResource CaretTextPrimaryColor}"/>
-            <SolidColorBrush x:Key="CaretTextSecondaryBrush" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="CaretBorderBrush" Color="{StaticResource CaretBorderColor}"/>
-            <SolidColorBrush x:Key="CaretFocusBrush" Color="{StaticResource CaretFocusColor}"/>
-            <SolidColorBrush x:Key="CaretIconBrush" Color="{StaticResource CaretTextSecondaryColor}"/>
+            <SolidColorBrush x:Key="CaretPrimaryBrush" Color="#B55E2A"/>
+            <SolidColorBrush x:Key="CaretSecondaryBrush" Color="#F59E0B"/>
+            <SolidColorBrush x:Key="CaretBackgroundBrush" Color="#0E1220"/>
+            <SolidColorBrush x:Key="CaretSurfaceBrush" Color="#161B2A"/>
+            <SolidColorBrush x:Key="CaretSurfaceAltBrush" Color="#20283A"/>
+            <SolidColorBrush x:Key="CaretTextPrimaryBrush" Color="#EDEEF2"/>
+            <SolidColorBrush x:Key="CaretTextSecondaryBrush" Color="#A6B0C3"/>
+            <SolidColorBrush x:Key="CaretBorderBrush" Color="#2B3550"/>
+            <SolidColorBrush x:Key="CaretFocusBrush" Color="#F59E0B"/>
+            <SolidColorBrush x:Key="CaretIconBrush" Color="#A6B0C3"/>
             <SolidColorBrush x:Key="CaretTabStripBrush" Color="#090C15"/>
             <SolidColorBrush x:Key="CaretCommandBarBrush" Color="#151A28"/>
-            <SolidColorBrush x:Key="CaretWindowBackgroundBrush" Color="{StaticResource CaretBackgroundColor}"/>
+            <SolidColorBrush x:Key="CaretWindowBackgroundBrush" Color="#0E1220"/>
             <SolidColorBrush x:Key="CaretSidebarBrush" Color="Transparent"/>
             <SolidColorBrush x:Key="CaretStatusBarBrush" Color="Transparent"/>
             <SolidColorBrush x:Key="TabViewBackground" Color="Transparent"/>
@@ -143,15 +147,15 @@
             <SolidColorBrush x:Key="TabViewItemHeaderBackgroundPressed" Color="#0F1320"/>
             <SolidColorBrush x:Key="TabViewItemHeaderBackgroundSelected" Color="#151A28"/>
             <SolidColorBrush x:Key="TabViewItemHeaderForeground" Color="#8D97AB"/>
-            <SolidColorBrush x:Key="TabViewItemHeaderForegroundPointerOver" Color="{StaticResource CaretTextPrimaryColor}"/>
-            <SolidColorBrush x:Key="TabViewItemHeaderForegroundPressed" Color="{StaticResource CaretTextPrimaryColor}"/>
-            <SolidColorBrush x:Key="TabViewItemHeaderForegroundSelected" Color="{StaticResource CaretTextPrimaryColor}"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderForegroundPointerOver" Color="#EDEEF2"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderForegroundPressed" Color="#EDEEF2"/>
+            <SolidColorBrush x:Key="TabViewItemHeaderForegroundSelected" Color="#EDEEF2"/>
             <SolidColorBrush x:Key="TabViewItemIconForeground" Color="#7C879C"/>
-            <SolidColorBrush x:Key="TabViewItemIconForegroundPointerOver" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="TabViewItemIconForegroundPressed" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="TabViewItemIconForegroundSelected" Color="{StaticResource CaretSecondaryColor}"/>
+            <SolidColorBrush x:Key="TabViewItemIconForegroundPointerOver" Color="#A6B0C3"/>
+            <SolidColorBrush x:Key="TabViewItemIconForegroundPressed" Color="#A6B0C3"/>
+            <SolidColorBrush x:Key="TabViewItemIconForegroundSelected" Color="#F59E0B"/>
             <SolidColorBrush x:Key="TabViewItemSeparator" Color="#4A5878"/>
-            <SolidColorBrush x:Key="TabViewButtonForeground" Color="{StaticResource CaretTextSecondaryColor}"/>
+            <SolidColorBrush x:Key="TabViewButtonForeground" Color="#A6B0C3"/>
             <SolidColorBrush x:Key="TabViewButtonBackgroundPointerOver" Color="#121726"/>
 
             <!-- WinUI 3 semantic overrides -->
@@ -165,39 +169,39 @@
             <Color x:Key="SystemAccentColorDark2">#5B2F15</Color>
             <Color x:Key="SystemAccentColorDark3">#2D170B</Color>
 
-            <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="{StaticResource CaretTextPrimaryColor}"/>
-            <SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="{StaticResource CaretTextSecondaryColor}"/>
-            <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="{StaticResource CaretSecondaryColor}"/>
+            <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="#EDEEF2"/>
+            <SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="#A6B0C3"/>
+            <SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="#A6B0C3"/>
+            <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="#F59E0B"/>
 
-            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="{StaticResource CaretBackgroundColor}"/>
-            <SolidColorBrush x:Key="SolidBackgroundFillColorBaseBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="SolidBackgroundFillColorSecondaryBrush" Color="{StaticResource CaretBackgroundColor}"/>
-            <SolidColorBrush x:Key="LayerFillColorDefaultBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="LayerFillColorAltBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#0E1220"/>
+            <SolidColorBrush x:Key="SolidBackgroundFillColorBaseBrush" Color="#161B2A"/>
+            <SolidColorBrush x:Key="SolidBackgroundFillColorSecondaryBrush" Color="#0E1220"/>
+            <SolidColorBrush x:Key="LayerFillColorDefaultBrush" Color="#161B2A"/>
+            <SolidColorBrush x:Key="LayerFillColorAltBrush" Color="#20283A"/>
 
-            <SolidColorBrush x:Key="CardBackgroundFillColorDefaultBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="CardBackgroundFillColorSecondaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="{StaticResource CaretBorderColor}"/>
-            <SolidColorBrush x:Key="CardStrokeColorDefaultSolidColorBrush" Color="{StaticResource CaretBorderColor}"/>
+            <SolidColorBrush x:Key="CardBackgroundFillColorDefaultBrush" Color="#161B2A"/>
+            <SolidColorBrush x:Key="CardBackgroundFillColorSecondaryBrush" Color="#20283A"/>
+            <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="#2B3550"/>
+            <SolidColorBrush x:Key="CardStrokeColorDefaultSolidColorBrush" Color="#2B3550"/>
 
-            <SolidColorBrush x:Key="ControlFillColorDefaultBrush" Color="{StaticResource CaretSurfaceColor}"/>
-            <SolidColorBrush x:Key="ControlFillColorSecondaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ControlFillColorTertiaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ControlStrokeColorDefaultBrush" Color="{StaticResource CaretBorderColor}"/>
-            <SolidColorBrush x:Key="ControlStrokeColorSecondaryBrush" Color="{StaticResource CaretBorderColor}"/>
+            <SolidColorBrush x:Key="ControlFillColorDefaultBrush" Color="#161B2A"/>
+            <SolidColorBrush x:Key="ControlFillColorSecondaryBrush" Color="#20283A"/>
+            <SolidColorBrush x:Key="ControlFillColorTertiaryBrush" Color="#20283A"/>
+            <SolidColorBrush x:Key="ControlStrokeColorDefaultBrush" Color="#2B3550"/>
+            <SolidColorBrush x:Key="ControlStrokeColorSecondaryBrush" Color="#2B3550"/>
 
-            <SolidColorBrush x:Key="SubtleFillColorSecondaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="SubtleFillColorTertiaryBrush" Color="{StaticResource CaretSurfaceAltColor}"/>
+            <SolidColorBrush x:Key="SubtleFillColorSecondaryBrush" Color="#20283A"/>
+            <SolidColorBrush x:Key="SubtleFillColorTertiaryBrush" Color="#20283A"/>
 
-            <SolidColorBrush x:Key="FocusStrokeColorOuterBrush" Color="{StaticResource CaretFocusColor}"/>
+            <SolidColorBrush x:Key="FocusStrokeColorOuterBrush" Color="#F59E0B"/>
 
             <!-- Selected list items (the sidebar): a quiet fill and the accent pill, as NavigationView
                  shows its selection, instead of ListView's accent-tinted fill. -->
-            <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPressed" Color="{StaticResource CaretSurfaceAltColor}"/>
-            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorBrush" Color="{StaticResource CaretPrimaryColor}"/>
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#20283A"/>
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#20283A"/>
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPressed" Color="#20283A"/>
+            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorBrush" Color="#B55E2A"/>
 
             <SolidColorBrush x:Key="SystemFillColorSuccessBrush" Color="#34D399"/>
             <SolidColorBrush x:Key="SystemFillColorCautionBrush" Color="#F59E0B"/>
