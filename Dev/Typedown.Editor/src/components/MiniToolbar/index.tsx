@@ -21,7 +21,7 @@ interface IProps {
 const SHOW_AFTER = 250
 
 const LABEL_KEYS = ['FormatMenu_Title', 'BoldCtrlB', 'ItalicCtrlI', 'Underline', 'Strikethrough', 'Link', 'Paragraph',
-    'Heading1', 'Heading2', 'Heading3', 'Heading4', 'ReviewAddComment']
+    'Heading1', 'Heading2', 'Heading3', 'Heading4', 'ReviewAddComment', 'HeadingMenu']
 
 const HEADINGS: [string, string][] = [['paragraph', 'Paragraph'], ['heading 1', 'Heading1'], ['heading 2', 'Heading2'], ['heading 3', 'Heading3'], ['heading 4', 'Heading4']]
 
@@ -209,7 +209,7 @@ const MiniToolbar: React.FC<IProps> = ({ editor, review, speech, onFormat, onPar
             {toggle('underline', label('Underline'), 'mt-underline', 'u', 'U')}
             {toggle('strike', label('Strikethrough'), 'mt-strike', 'del', 'S')}
             {toggle('link', label('Link'), 'mt-icon', 'link', '')}
-            <button type="button" className="mt-button mt-heading" aria-haspopup="menu" aria-expanded={menuOpen} aria-label="H" tabIndex={-1}
+            <button type="button" className="mt-button mt-heading" aria-haspopup="menu" aria-expanded={menuOpen} aria-label={label('HeadingMenu') || undefined} title={label('HeadingMenu') || undefined} tabIndex={-1}
                 onMouseDown={keepSelection} onClick={() => setMenuOpen(open => !open)}>
                 H<span className="mt-chevron">{''}</span>
             </button>
