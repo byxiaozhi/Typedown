@@ -61,7 +61,11 @@ namespace Typedown.WinUI
         private void HomeFolder_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (e.ClickedItem is not HomeFolderEntry entry) return;
-            if (System.IO.Directory.Exists(entry.FullPath)) OpenFolderTree(entry.FullPath);
+            if (System.IO.Directory.Exists(entry.FullPath))
+            {
+                settings.FolderCollapsed = false; // a folder opened on purpose is shown, as File > Open Folder does
+                OpenFolderTree(entry.FullPath);
+            }
             else RefreshHomeFolders(); // it went since the list was drawn
         }
 

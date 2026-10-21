@@ -3437,6 +3437,7 @@ namespace Typedown.WinUI
                 if (TrashPanel.Visibility == Visibility.Visible) RefreshTrashNavList();
                 favoritesService.Remove(item.FullPath);
                 folderHistory.Remove(item.FullPath);
+                if (startPageShown) RefreshStartPageList(); // the Home page is on screen next to the tree
                 if (FavoritesPanel.Visibility == Visibility.Visible) RefreshFavoritesNavList();
                 Log($"Delete: {item.FullPath}");
             }

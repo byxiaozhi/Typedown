@@ -40,8 +40,11 @@ namespace Typedown.WinUI.Services
                 || p.StartsWith(f + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
         }
 
-        private Data Read()
+        // A file that is not there, or is not JSON, is an empty list (the next change writes a good one). A file that is there but cannot be read now (another
+        // program has it, the disk hiccups) is also empty for a look, but `readable` is false: a change must not write that empty list over it.
+        private Data Read(out bool readable)
         {
+            readable = true;
             try
             {
                 var data = JsonSerializer.Deserialize<Data>(File.ReadAllText(file), new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new Data();
@@ -49,11 +52,18 @@ namespace Typedown.WinUI.Services
                 data.Recent = Clean(data.Recent);
                 return data;
             }
-            catch
+            catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException or JsonException)
             {
                 return new Data();
             }
+            catch
+            {
+                readable = false;
+                return new Data();
+            }
         }
+
+        private Data Read() => Read(out _);
 
         // Only real paths, each once.
         private static List<string> Clean(IEnumerable<string> list)
@@ -71,6 +81,7 @@ namespace Typedown.WinUI.Services
                 Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(file)));
                 // straight into the file, as the favourites do: a temporary file next to it did not survive in a folder that OneDrive syncs
                 File.WriteAllText(file, JsonSerializer.Serialize(data));
+                LastError = null;
             }
             catch (Exception ex)
             {
@@ -92,7 +103,8 @@ namespace Typedown.WinUI.Services
         public void Record(string folder)
         {
             if (string.IsNullOrWhiteSpace(folder)) return;
-            var data = Read();
+            var data = Read(out var readable);
+            if (!readable) return;
             data.Recent.RemoveAll(p => Same(p, folder));
             data.Recent.Insert(0, Normal(folder));
             if (data.Recent.Count > MaxRecent) data.Recent.RemoveRange(MaxRecent, data.Recent.Count - MaxRecent);
@@ -103,7 +115,8 @@ namespace Typedown.WinUI.Services
         public bool TogglePinned(string folder)
         {
             if (string.IsNullOrWhiteSpace(folder)) return false;
-            var data = Read();
+            var data = Read(out var readable);
+            if (!readable) return IsPinned(folder);
             if (data.Pinned.RemoveAll(p => Same(p, folder)) > 0)
             {
                 Write(data);
@@ -117,7 +130,8 @@ namespace Typedown.WinUI.Services
         // The folder is gone (deleted, or a folder above it): off both lists.
         public void Remove(string folder)
         {
-            var data = Read();
+            var data = Read(out var readable);
+            if (!readable) return;
             var removed = data.Pinned.RemoveAll(p => SameOrUnder(p, folder)) + data.Recent.RemoveAll(p => SameOrUnder(p, folder));
             if (removed > 0) Write(data);
         }
@@ -125,7 +139,8 @@ namespace Typedown.WinUI.Services
         // The folder was renamed or moved: it, and the folders under it, keep their place and their pin.
         public void Rename(string oldPath, string newPath)
         {
-            var data = Read();
+            var data = Read(out var readable);
+            if (!readable) return;
             var changed = false;
             string Move(string p)
             {

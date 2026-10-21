@@ -114,6 +114,49 @@ namespace Caret.ConverterTests
         }
 
         [Fact]
+        public void A_file_that_cannot_be_read_now_is_not_written_over_with_an_empty_list()
+        {
+            var (history, file, work) = Make();
+            try
+            {
+                history.Record(@"C:\Notes\A");
+                history.TogglePinned(@"C:\Notes\A");
+                var before = File.ReadAllText(file);
+                using (new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.None)) // another program has it
+                {
+                    history.Record(@"C:\Notes\B");
+                    Assert.False(history.TogglePinned(@"C:\Notes\B")); // nothing changed, and no exception
+                    history.Remove(@"C:\Notes\A");
+                    history.Rename(@"C:\Notes\A", @"C:\Notes\Z");
+                }
+                Assert.Equal(before, File.ReadAllText(file));
+                Assert.True(history.IsPinned(@"C:\Notes\A"));
+            }
+            finally { Directory.Delete(work, true); }
+        }
+
+        [Fact]
+        public void A_failed_save_is_reported_and_not_again_after_a_good_one()
+        {
+            var work = TestPaths.NewTempFolder();
+            try
+            {
+                var file = Path.Combine(work, "Folders.json");
+                var history = new FolderHistory(file);
+                history.Record(@"C:\Notes\A");
+                Assert.Null(history.LastError);
+                File.SetAttributes(file, FileAttributes.ReadOnly); // it can be read, not written
+                history.Record(@"C:\Notes\B");
+                Assert.NotNull(history.LastError);
+                File.SetAttributes(file, FileAttributes.Normal);
+                history.Record(@"C:\Notes\B");
+                Assert.Null(history.LastError);
+                Assert.Equal(@"C:\Notes\B", history.Recent[0]);
+            }
+            finally { Directory.Delete(work, true); }
+        }
+
+        [Fact]
         public void A_deleted_folder_goes_off_both_lists_with_the_folders_under_it_and_only_those()
         {
             var (history, _, work) = Make();
