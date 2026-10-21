@@ -156,6 +156,16 @@ namespace Typedown.WinUI.Utilities
             root.RequestedTheme = requested;
         }
 
+        // The window's theme (Light, Dark, or the system's), set so that every element reads its theme resources again. Setting RequestedTheme once left parts of
+        // the window (the Settings page, the menus and the toolbar) with the previous theme's text colours until they were next created, so the root goes through the
+        // other theme first, as Refresh does for a change of scheme.
+        public static void SetTheme(FrameworkElement root, ElementTheme theme)
+        {
+            var opposite = (theme == ElementTheme.Default ? root.ActualTheme : theme) == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
+            root.RequestedTheme = opposite;
+            root.RequestedTheme = theme;
+        }
+
         private static ResourceDictionary CaretDictionary() =>
             Application.Current.Resources.MergedDictionaries.FirstOrDefault(d =>
                 d.ThemeDictionaries.TryGetValue("Light", out var light) && ((ResourceDictionary)light).ContainsKey("CaretPrimaryColor"));

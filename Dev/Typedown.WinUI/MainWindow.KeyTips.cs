@@ -31,6 +31,8 @@ namespace Typedown.WinUI
         private bool keyTipsShown;
         private bool keyTipsFromEditor;
         private bool altAlone;
+        // The scroll areas the badges sit in: a scroll moves what the badges point at, so it puts them away.
+        private readonly List<ScrollViewer> keyTipScrollers = new();
         // Where the keyboard was in the window (not the editor) when the tips came up: Esc gives it back.
         private Control keyTipReturnFocus;
 
@@ -58,6 +60,9 @@ namespace Typedown.WinUI
                 altAlone = false;
                 if (ShowKeyTips(fromEditor: false)) e.Handled = true;
             };
+            // The wheel, a resize: what the badges were placed on has moved.
+            root.AddHandler(UIElement.PointerWheelChangedEvent, new PointerEventHandler((_, _) => { if (keyTipsShown) HideKeyTips(restore: true); }), true);
+            ((FrameworkElement)root).SizeChanged += (_, _) => { if (keyTipsShown) HideKeyTips(restore: true); };
             // A click anywhere puts the badges away (the click does its own thing).
             root.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler((_, _) => { if (keyTipsShown) HideKeyTips(restore: false); }), true);
             // A menu that is open takes the keys in its own popup, not through the window: Alt and another menu's letter goes from one menu to the next, as it does in
@@ -95,12 +100,27 @@ namespace Typedown.WinUI
         private bool KeyTipsAvailable => !SettingsPageShown && PalettePanel.Visibility != Visibility.Visible && ShortcutsPanel.Visibility != Visibility.Visible
             && ConvertDropOverlay.Visibility != Visibility.Visible;
 
+        // Can be seen: not collapsed, and most of it inside the window and inside every scroll area around it (a sidebar item that was scrolled out of its list
+        // is in the tree but has no badge, as it cannot be reached where it was).
         private static bool OnScreen(FrameworkElement element)
         {
-            if (element == null || element.ActualWidth <= 0 || element.ActualHeight <= 0) return false;
+            if (element == null || element.ActualWidth <= 0 || element.ActualHeight <= 0 || element.XamlRoot?.Content is not FrameworkElement root) return false;
             for (DependencyObject d = element; d != null; d = VisualTreeHelper.GetParent(d))
                 if (d is UIElement { Visibility: Visibility.Collapsed }) return false;
-            return element.XamlRoot != null;
+            KeyTipPlan.Box BoxOf(FrameworkElement e)
+            {
+                var r = e.TransformToVisual(root).TransformBounds(new Rect(0, 0, e.ActualWidth, e.ActualHeight));
+                return new KeyTipPlan.Box(r.X, r.Y, r.Width, r.Height);
+            }
+            var areas = new List<KeyTipPlan.Box> { new(0, 0, root.ActualWidth, root.ActualHeight) };
+            areas.AddRange(ScrollersAround(element).Select(BoxOf));
+            return KeyTipPlan.Reachable(BoxOf(element), areas);
+        }
+
+        private static IEnumerable<ScrollViewer> ScrollersAround(DependencyObject element)
+        {
+            for (var d = VisualTreeHelper.GetParent(element); d != null; d = VisualTreeHelper.GetParent(d))
+                if (d is ScrollViewer viewer) yield return viewer;
         }
 
         private List<KeyTipTarget> CollectKeyTips()
@@ -217,6 +237,12 @@ namespace Typedown.WinUI
                 KeyTipLayer.Children.Add(badge);
             }
             keyTipsShown = true;
+            // a scroll in any area a badge sits in (the keys, a scroll bar, the wheel) puts them away: they would point at what is no longer there
+            foreach (var viewer in keyTips.SelectMany(t => ScrollersAround(t.Target.Element)).Distinct())
+            {
+                viewer.ViewChanged += KeyTipScrollerChanged;
+                keyTipScrollers.Add(viewer);
+            }
             KeyTipLayer.Visibility = Visibility.Visible;
             ShowToast(Locale.GetString("KeyTipsAnnounce"), 60000);
             // a control that is not a tab stop does not take the keyboard: it is one while the tips are shown, and the only one nobody tabs to
@@ -231,6 +257,8 @@ namespace Typedown.WinUI
         {
             if (!keyTipsShown) return;
             keyTipsShown = false;
+            foreach (var viewer in keyTipScrollers) viewer.ViewChanged -= KeyTipScrollerChanged;
+            keyTipScrollers.Clear();
             KeyTipSink.IsTabStop = false;
             KeyTipLayer.Visibility = Visibility.Collapsed;
             KeyTipLayer.Children.Clear();
@@ -240,6 +268,8 @@ namespace Typedown.WinUI
             if (keyTipsFromEditor || keyTipReturnFocus == null) GiveFocusBack();
             else keyTipReturnFocus.Focus(FocusState.Programmatic);
         }
+
+        private void KeyTipScrollerChanged(object sender, ScrollViewerViewChangedEventArgs e) => HideKeyTips(restore: true);
 
         private void KeyTipSink_LostFocus(object sender, RoutedEventArgs e) => HideKeyTips(restore: false);
 

@@ -37,6 +37,26 @@ namespace Typedown.WinUI.Services
             return result;
         }
 
+        public readonly record struct Box(double X, double Y, double Width, double Height)
+        {
+            public double Right => X + Width;
+            public double Bottom => Y + Height;
+        }
+
+        // Whether an item can really be reached where it is: most of it (at least 60 %) is inside the visible part of every scroll area around it and of the
+        // window. A sidebar item that has been scrolled out of its list is there in the tree and must get no badge.
+        public static bool Reachable(Box item, IEnumerable<Box> visibleAreas)
+        {
+            if (item.Width <= 0 || item.Height <= 0) return false;
+            foreach (var area in visibleAreas)
+            {
+                var width = Math.Min(item.Right, area.Right) - Math.Max(item.X, area.X);
+                var height = Math.Min(item.Bottom, area.Bottom) - Math.Max(item.Y, area.Y);
+                if (width <= 0 || height <= 0 || width * height < 0.6 * item.Width * item.Height) return false;
+            }
+            return true;
+        }
+
         // The letters and digits of a name, in order, upper case and without accents (É is E); anything that has no plain key is left out.
         public static IEnumerable<char> Letters(string text)
         {
