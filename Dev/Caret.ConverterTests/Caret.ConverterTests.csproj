@@ -41,6 +41,7 @@
 		<Compile Include="..\Typedown.WinUI\Services\TitleBarLayout.cs" Link="Converters\TitleBarLayout.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\PaletteSearch.cs" Link="Converters\PaletteSearch.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\ReviewList.cs" Link="Converters\ReviewList.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\StatusFacts.cs" Link="Converters\StatusFacts.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\LineDiff.cs" Link="Converters\LineDiff.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\NoteHistory.cs" Link="Converters\NoteHistory.cs" />
 		<!-- File > Export > Word -->

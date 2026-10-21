@@ -81,6 +81,7 @@ namespace Typedown.WinUI
         {
             SpeechSection.Visibility = settings.SpeechMode ? Visibility.Visible : Visibility.Collapsed;
             SpeechBody.Visibility = speechCardCollapsed ? Visibility.Collapsed : Visibility.Visible;
+            UpdateStatusSpeaking();   // the speaking time in the status bar follows the mode
             SpeechChevron.Glyph = speechCardCollapsed ? "" : "";
         }
 
