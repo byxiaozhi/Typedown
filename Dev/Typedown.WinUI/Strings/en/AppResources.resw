@@ -2998,4 +2998,19 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="CompareConversion" xml:space="preserve">
     <value>Conversion</value>
   </data>
+  <data name="AppearancePreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="AppearancePreviewDescription" xml:space="preserve">
+    <value>The window with the color scheme and the section colors as they are now.</value>
+  </data>
+  <data name="SectionCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="SectionResetToScheme" xml:space="preserve">
+    <value>Reset to scheme</value>
+  </data>
+  <data name="SectionResetAll" xml:space="preserve">
+    <value>Reset all to scheme</value>
+  </data>
 </root>

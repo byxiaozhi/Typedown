@@ -122,7 +122,14 @@ namespace Typedown.WinUI
                 {
                     if (row.NameKey == null)
                     {
-                        combo.Items.Add(new ComboBoxItem { Content = Locale.GetString("SwatchDefault"), Tag = "" });
+                        // "From the colour scheme" shows the colour the scheme gives this area, as the others show theirs.
+                        var own = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
+                        own.Children.Add(new Border { Width = 16, Height = 16, CornerRadius = new CornerRadius(3), Background = new SolidColorBrush(ColorSchemes.Parse(AppearancePreview.SchemeColor(SchemeInput(dark), section))),
+                            BorderBrush = (Brush)Application.Current.Resources["ControlStrokeColorDefaultBrush"], BorderThickness = new Thickness(1), VerticalAlignment = VerticalAlignment.Center });
+                        own.Children.Add(new TextBlock { Text = Locale.GetString("SwatchDefault"), VerticalAlignment = VerticalAlignment.Center });
+                        var defaultItem = new ComboBoxItem { Content = own, Tag = "" };
+                        Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(defaultItem, Locale.GetString("SwatchDefault"));
+                        combo.Items.Add(defaultItem);
                         continue;
                     }
                     var line = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
@@ -140,6 +147,8 @@ namespace Typedown.WinUI
                 ShowSectionContrast(section, SectionChipOf(section), (combo.SelectedItem as ComboBoxItem)?.Tag as string, dark);
             }
             fillingSections = false;
+            UpdateSectionCustomState();
+            RefreshAppearancePreview();
         }
 
         private void ShowSectionContrast(string section, TextBlock chip, string hex, bool dark)
@@ -158,15 +167,35 @@ namespace Typedown.WinUI
             var combo = (ComboBox)sender;
             var section = (string)combo.Tag;
             var hex = (combo.SelectedItem as ComboBoxItem)?.Tag as string ?? "";
+            ChangeSectionColor(section, hex, reload: false);
+            ShowSectionContrast(section, SectionChipOf(section), hex, sectionListsDark);
+            UpdateSectionCustomState();
+            RefreshAppearancePreview();
+        }
+
+        // One area's colour ("" is the scheme's own), kept for the theme the lists are of and applied in every window. `reload`: the lists are
+        // drawn again (a Reset to scheme, which did not come from a list).
+        private void ChangeSectionColor(string section, string hex, bool reload = true)
+        {
+            if (sectionListsDark != IsDark) { LoadSectionColorSettings(); return; }
             var dark = sectionListsDark;
-            if (dark) settings.SectionColorsDark = SectionColorChoice.With(settings.SectionColorsDark, true, section, hex);
-            else settings.SectionColorsLight = SectionColorChoice.With(settings.SectionColorsLight, false, section, hex);
-            ShowSectionContrast(section, SectionChipOf(section), hex, dark);
+            StoreSectionColors(dark, SectionColorChoice.With(StoredSectionColors(dark), dark, section, hex));
+            if (reload) LoadSectionColorSettings();
+        }
+
+        // The stored list of one theme, set once and copied to every window (each saves it) and applied there. Reset all uses this too, so the
+        // settings are written once for it, not once per area.
+        private void StoreSectionColors(bool dark, string value)
+        {
+            if (dark) settings.SectionColorsDark = value;
+            else settings.SectionColorsLight = value;
             foreach (var window in openWindows.ToList())
             {
                 window.settings.SectionColorsLight = settings.SectionColorsLight;
                 window.settings.SectionColorsDark = settings.SectionColorsDark;
                 window.ApplySectionColors();
+                // another window with Settings open shows the new colours in its lists, badges and preview too
+                if (window != this && window.SettingsPageShown) window.LoadSectionColorSettings();
             }
         }
 

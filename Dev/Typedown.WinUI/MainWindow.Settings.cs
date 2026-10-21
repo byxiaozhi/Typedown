@@ -178,9 +178,32 @@ namespace Typedown.WinUI
             WindowMaterialCard.Description = Locale.GetString(Config.IsMicaSupported ? "WindowMaterialDescription" : "WindowMaterialUnsupported");
             // A Windows contrast theme overrides every colour here (Caret.xaml has no HighContrast
             // dictionary, so WinUI uses the system's): say so, and don't offer what wouldn't show.
+            ShowContrastState();
+            RefreshAppearancePreview();
+        }
+
+        // What a Windows contrast theme does to this page: the controls that would not show are disabled, and the picture of the window
+        // (which draws the scheme's colours, which that theme replaces) is not shown. Read again when the contrast setting changes.
+        private void ShowContrastState()
+        {
             var contrast = new AccessibilitySettings().HighContrast;
             ContrastThemeInfoBar.IsOpen = contrast;
-            ColorSchemeExpander.IsEnabled = AccentSourceCard.IsEnabled = WindowMaterialCard.IsEnabled = !contrast;
+            ColorSchemeExpander.IsEnabled = SectionColorsExpander.IsEnabled = AccentSourceCard.IsEnabled = WindowMaterialCard.IsEnabled = !contrast;
+            AppearancePreviewCard.Visibility = contrast ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        // The page drawn again from the settings, for a window whose Settings is open while another window changed them (its controls
+        // are set without being taken for the user's choices).
+        private void ReloadAppearanceSettings()
+        {
+            var before = suppressSettingsEvents;
+            suppressSettingsEvents = true;
+            try
+            {
+                LoadAppearanceSettings();
+                LoadSectionColorSettings();
+            }
+            finally { suppressSettingsEvents = before; }
         }
 
         // The scheme pictures are drawn in the theme that is showing, so they are built again when it changes.
@@ -194,12 +217,13 @@ namespace Typedown.WinUI
             {
                 ColorSchemeGridView.Items.Clear();
                 foreach (var scheme in ColorSchemes.All)
-                    ColorSchemeGridView.Items.Add(BuildSchemePreview(scheme));
+                    ColorSchemeGridView.Items.Add(BuildSchemeCard(scheme));
                 schemeGridDark = dark;
             }
             ColorSchemeGridView.SelectedItem = ColorSchemeGridView.Items.OfType<FrameworkElement>().FirstOrDefault(i => i.Tag as string == settings.ColorScheme)
                                                ?? ColorSchemeGridView.Items[0];
             fillingSchemes = false;
+            UpdateSchemeCards();
         }
 
         // The theme changed while Settings is open: the scheme pictures and the section lists are those of the
@@ -207,39 +231,9 @@ namespace Typedown.WinUI
         private void RefreshAppearanceForTheme()
         {
             if (!SettingsPageShown) return;
+            ShowContrastState(); // the contrast setting may be what changed
             FillSchemeGrid();
             LoadSectionColorSettings();
-        }
-
-        // A small picture of the scheme: its tab band, sidebar, page and accent, in the current theme.
-        private FrameworkElement BuildSchemePreview(ColorSchemes.Scheme scheme)
-        {
-            var dark = ((FrameworkElement)Content).ActualTheme == ElementTheme.Dark;
-            var p = dark ? scheme.Dark : scheme.Light;
-            Brush B(string hex) => new SolidColorBrush(ColorSchemes.Parse(hex));
-            var picture = new Grid { Width = 132, Height = 64, CornerRadius = new CornerRadius(4), BorderBrush = B(p.Border), BorderThickness = new Thickness(1) };
-            picture.RowDefinitions.Add(new RowDefinition { Height = new GridLength(12) });
-            picture.RowDefinitions.Add(new RowDefinition());
-            picture.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(34) });
-            picture.ColumnDefinitions.Add(new ColumnDefinition());
-            var band = new Border { Background = B(p.TabStrip) };
-            Grid.SetColumnSpan(band, 2);
-            var side = new Border { Background = B(p.Background), BorderBrush = B(p.Border), BorderThickness = new Thickness(0, 0, 1, 0) };
-            Grid.SetRow(side, 1);
-            var page = new StackPanel { Background = B(p.Background), Padding = new Thickness(8, 8, 8, 0), Spacing = 5 };
-            page.Children.Add(new Border { Height = 5, Width = 44, CornerRadius = new CornerRadius(2), Background = B(p.Text), HorizontalAlignment = HorizontalAlignment.Left });
-            page.Children.Add(new Border { Height = 4, Width = 70, CornerRadius = new CornerRadius(2), Background = B(p.Text2), HorizontalAlignment = HorizontalAlignment.Left });
-            page.Children.Add(new Border { Height = 8, Width = 28, CornerRadius = new CornerRadius(2), Background = B(p.Primary), HorizontalAlignment = HorizontalAlignment.Left });
-            Grid.SetRow(page, 1);
-            Grid.SetColumn(page, 1);
-            picture.Children.Add(band);
-            picture.Children.Add(side);
-            picture.Children.Add(page);
-            var item = new StackPanel { Spacing = 6, Tag = scheme.Id, Margin = new Thickness(4) };
-            item.Children.Add(picture);
-            item.Children.Add(new TextBlock { Text = Locale.GetString(scheme.NameKey), FontSize = 12, HorizontalAlignment = HorizontalAlignment.Center });
-            Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(item, Locale.GetString(scheme.NameKey));
-            return item;
         }
 
         private void ColorSchemeGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -248,7 +242,8 @@ namespace Typedown.WinUI
             settings.ColorScheme = (string)item.Tag;
             ColorSchemeNameText.Text = Locale.GetString(ColorSchemes.Find(settings.ColorScheme).NameKey);
             ApplyAppearance();
-            LoadSectionColorSettings();
+            UpdateSchemeCards();
+            LoadSectionColorSettings(); // also draws the preview: the guard and the "From the colour scheme" swatches depend on the scheme
         }
 
         private void AccentSourceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -256,6 +251,7 @@ namespace Typedown.WinUI
             if (suppressSettingsEvents) return;
             settings.AccentSource = (AccentSourceComboBox.SelectedItem as ComboBoxItem)?.Tag as string ?? "scheme";
             ApplyAppearance();
+            RefreshAppearancePreview(); // the accent shows in the picture
         }
 
         private void WindowMaterialComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -285,6 +281,8 @@ namespace Typedown.WinUI
                 window.ApplyBackdrop();
                 window.ApplyEditorBackground();
                 window.PushThemeToEditor();
+                // another window with Settings open shows the new scheme, accent and picture too
+                if (window != this && window.SettingsPageShown) window.ReloadAppearanceSettings();
             }
             Log($"Appearance: scheme={settings.ColorScheme}, accent={settings.AccentSource}, material={settings.WindowMaterial}");
         }

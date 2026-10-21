@@ -3046,4 +3046,19 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="CompareConversion" xml:space="preserve">
     <value>Conversão</value>
   </data>
+  <data name="AppearancePreview" xml:space="preserve">
+    <value>Pré-visualização</value>
+  </data>
+  <data name="AppearancePreviewDescription" xml:space="preserve">
+    <value>A janela com o esquema de cores e as cores das áreas como estão agora.</value>
+  </data>
+  <data name="SectionCustom" xml:space="preserve">
+    <value>Personalizado</value>
+  </data>
+  <data name="SectionResetToScheme" xml:space="preserve">
+    <value>Voltar ao esquema</value>
+  </data>
+  <data name="SectionResetAll" xml:space="preserve">
+    <value>Voltar ao esquema em todas</value>
+  </data>
 </root>

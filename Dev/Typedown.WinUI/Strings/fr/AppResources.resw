@@ -3046,4 +3046,19 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="CompareConversion" xml:space="preserve">
     <value>Conversion</value>
   </data>
+  <data name="AppearancePreview" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="AppearancePreviewDescription" xml:space="preserve">
+    <value>La fenêtre avec le jeu de couleurs et les couleurs des zones telles qu’elles sont maintenant.</value>
+  </data>
+  <data name="SectionCustom" xml:space="preserve">
+    <value>Personnalisé</value>
+  </data>
+  <data name="SectionResetToScheme" xml:space="preserve">
+    <value>Revenir au jeu de couleurs</value>
+  </data>
+  <data name="SectionResetAll" xml:space="preserve">
+    <value>Tout remettre sur le jeu de couleurs</value>
+  </data>
 </root>
