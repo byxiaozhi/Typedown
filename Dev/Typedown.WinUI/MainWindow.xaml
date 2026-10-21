@@ -990,6 +990,80 @@
                         <TextBlock Text="{u:Loc Key=StartPageTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
                         <TextBlock Text="{u:Loc Key=StartPageSubtitle}" Opacity="0.8" TextWrapping="Wrap"/>
                     </StackPanel>
+                    <!-- The top of Home (MainWindow.Home.cs, Services/HomeFacts.cs): the note to pick up again, a line to jot down, a tip, and the comments
+                         that wait. Each part is there only when it has something to say. All of it is read from files on this PC. -->
+                    <StackPanel x:Name="HomeTop" Spacing="16">
+                        <Border x:Name="HomeResumeCard" Visibility="Collapsed" Padding="20,12" CornerRadius="8" BorderThickness="1"
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                            <Grid ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Spacing="2">
+                                    <TextBlock Text="{u:Loc Key=HomeResumeTitle}" FontSize="12" Opacity="0.7"/>
+                                    <TextBlock x:Name="HomeResumeName" Style="{ThemeResource SubtitleTextBlockStyle}" TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock x:Name="HomeResumeWhere" FontSize="12" Opacity="0.7" TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock x:Name="HomeResumeExcerpt" TextWrapping="Wrap" MaxLines="2" TextTrimming="CharacterEllipsis" Margin="0,6,0,0"/>
+                                </StackPanel>
+                                <Button Grid.Column="1" x:Name="HomeResumeButton" Style="{ThemeResource AccentButtonStyle}" Content="{u:Loc Key=HomeResumeButton}"
+                                        VerticalAlignment="Center" Click="HomeResume_Click"/>
+                            </Grid>
+                        </Border>
+                        <Grid x:Name="HomeCards" ColumnSpacing="16" RowSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Border x:Name="HomeCaptureCard" Padding="20,12" CornerRadius="8" BorderThickness="1"
+                                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="{u:Loc Key=HomeCaptureTitle}" FontWeight="SemiBold"/>
+                                    <TextBox x:Name="HomeCaptureBox" PlaceholderText="{u:Loc Key=HomeCapturePlaceholder}" MaxLength="500"
+                                             AutomationProperties.Name="{u:Loc Key=HomeCaptureTitle}" KeyDown="HomeCaptureBox_KeyDown"/>
+                                </StackPanel>
+                            </Border>
+                            <Border x:Name="HomeTipCard" Grid.Column="1" Padding="20,12" CornerRadius="8" BorderThickness="1"
+                                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="{u:Loc Key=HomeTipTitle}" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="HomeTipText" TextWrapping="Wrap"/>
+                                    <HyperlinkButton Padding="0" Click="HomeTipShortcuts_Click" Content="{u:Loc Key=HomeTipShortcuts}"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                        <Border x:Name="HomeInboxCard" Visibility="Collapsed" Padding="20,12" CornerRadius="8" BorderThickness="1"
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                            <StackPanel Spacing="6">
+                                <TextBlock Text="{u:Loc Key=HomeInboxTitle}" FontWeight="SemiBold"/>
+                                <TextBlock x:Name="HomeInboxSummary" FontSize="12" Opacity="0.7"/>
+                                <ListView x:Name="HomeInboxList" SelectionMode="None" IsItemClickEnabled="True" ItemClick="HomeInbox_ItemClick"
+                                          ItemContainerStyle="{StaticResource HomeRowStyle}" AutomationProperties.Name="{u:Loc Key=HomeInboxTitle}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnSpacing="12" MinHeight="44">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"/>
+                                                    <TextBlock Text="{Binding Folder}" FontSize="12" Opacity="0.7" TextTrimming="CharacterEllipsis"/>
+                                                </StackPanel>
+                                                <Border Grid.Column="1" Style="{StaticResource CustomBadgeStyle}">
+                                                    <TextBlock Text="{Binding CommentCount}" FontSize="12" Foreground="White"/>
+                                                </Border>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                     <!-- Home as a working dashboard (MainWindow.Home.cs): what was I doing (Continue), what can I start (Start), where do I work (Folders). Three
                          columns on a wide window, one under the other on a narrow one. The rows are 44 px; the pointer over a row, or the keys in it, show its
                          pin; a pinned row keeps it. -->

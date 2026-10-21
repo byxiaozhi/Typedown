@@ -3097,4 +3097,28 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="HomeButtonToolTip" xml:space="preserve">
     <value>Home (Ctrl+Shift+H)</value>
   </data>
+  <data name="HomeResumeTitle" xml:space="preserve">
+    <value>Pick up where you left off</value>
+  </data>
+  <data name="HomeResumeButton" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="HomeCaptureTitle" xml:space="preserve">
+    <value>Quick note</value>
+  </data>
+  <data name="HomeCapturePlaceholder" xml:space="preserve">
+    <value>Write a line and press Enter: it becomes a new note</value>
+  </data>
+  <data name="HomeTipTitle" xml:space="preserve">
+    <value>Tip of the day</value>
+  </data>
+  <data name="HomeTipShortcuts" xml:space="preserve">
+    <value>All shortcuts</value>
+  </data>
+  <data name="HomeInboxTitle" xml:space="preserve">
+    <value>Comments waiting</value>
+  </data>
+  <data name="HomeInboxSummary" xml:space="preserve">
+    <value>Comments: {0} · Notes: {1}</value>
+  </data>
 </root>

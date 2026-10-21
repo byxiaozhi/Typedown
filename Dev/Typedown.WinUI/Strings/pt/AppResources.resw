@@ -3145,4 +3145,28 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="HomeButtonToolTip" xml:space="preserve">
     <value>Início (Ctrl+Shift+H)</value>
   </data>
+  <data name="HomeResumeTitle" xml:space="preserve">
+    <value>Continue de onde parou</value>
+  </data>
+  <data name="HomeResumeButton" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="HomeCaptureTitle" xml:space="preserve">
+    <value>Nota rápida</value>
+  </data>
+  <data name="HomeCapturePlaceholder" xml:space="preserve">
+    <value>Escreva uma linha e pressione Enter: ela vira uma nota nova</value>
+  </data>
+  <data name="HomeTipTitle" xml:space="preserve">
+    <value>Dica do dia</value>
+  </data>
+  <data name="HomeTipShortcuts" xml:space="preserve">
+    <value>Todos os atalhos</value>
+  </data>
+  <data name="HomeInboxTitle" xml:space="preserve">
+    <value>Comentários pendentes</value>
+  </data>
+  <data name="HomeInboxSummary" xml:space="preserve">
+    <value>Comentários: {0} · Notas: {1}</value>
+  </data>
 </root>
