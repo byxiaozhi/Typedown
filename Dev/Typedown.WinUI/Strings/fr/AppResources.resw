@@ -2974,4 +2974,76 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="SelectionToolbarToggle_Description" xml:space="preserve">
     <value>Une petite barre apparaît au-dessus des mots sélectionnés dans la vue Visuelle, avec gras, italique, souligné, barré, lien et titres (et Commentaire ou les marques de discours lorsqu’elles sont activées).</value>
   </data>
+  <data name="TrayTitle" xml:space="preserve">
+    <value>Conversions</value>
+  </data>
+  <data name="TrayCompare" xml:space="preserve">
+    <value>Comparer</value>
+  </data>
+  <data name="TrayCompareTip" xml:space="preserve">
+    <value>Afficher l’original et le Markdown côte à côte</value>
+  </data>
+  <data name="TrayRetry" xml:space="preserve">
+    <value>Réessayer</value>
+  </data>
+  <data name="TrayDropHint" xml:space="preserve">
+    <value>Les fichiers Word, PDF, Excel, PowerPoint et courriel sont convertis sur ce PC et enregistrés en Markdown.</value>
+  </data>
+  <data name="TrayNothingToConvert" xml:space="preserve">
+    <value>Il n’y avait rien à convertir dans ce qui a été déposé.</value>
+  </data>
+  <data name="CompareSource" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="CompareMarkdown" xml:space="preserve">
+    <value>Markdown</value>
+  </data>
+  <data name="CompareImagesOn" xml:space="preserve">
+    <value>Images : extraites ({0})</value>
+  </data>
+  <data name="CompareImagesNone" xml:space="preserve">
+    <value>Images : aucune dans le fichier</value>
+  </data>
+  <data name="CompareImagesOff" xml:space="preserve">
+    <value>Images : non extraites</value>
+  </data>
+  <data name="CompareMaskedOn" xml:space="preserve">
+    <value>Données personnelles : masquées</value>
+  </data>
+  <data name="CompareMaskedOff" xml:space="preserve">
+    <value>Données personnelles : non masquées</value>
+  </data>
+  <data name="CompareMaskedNone" xml:space="preserve">
+    <value>Données personnelles : masquées, aucune trouvée</value>
+  </data>
+  <data name="CompareKindPerson" xml:space="preserve">
+    <value>Personnes</value>
+  </data>
+  <data name="CompareKindEmail" xml:space="preserve">
+    <value>Adresses e-mail</value>
+  </data>
+  <data name="CompareKindPhone" xml:space="preserve">
+    <value>Numéros de téléphone</value>
+  </data>
+  <data name="CompareKindId" xml:space="preserve">
+    <value>Numéros d’identité</value>
+  </data>
+  <data name="CompareKindIban" xml:space="preserve">
+    <value>Comptes bancaires (IBAN)</value>
+  </data>
+  <data name="CompareKindCard" xml:space="preserve">
+    <value>Numéros de carte</value>
+  </data>
+  <data name="CompareMarksLegend" xml:space="preserve">
+    <value>Les valeurs masquées sont en gras et soulignées.</value>
+  </data>
+  <data name="CompareNoSource" xml:space="preserve">
+    <value>La source ne peut pas être affichée : {0}</value>
+  </data>
+  <data name="CompareTruncated" xml:space="preserve">
+    <value>Seule la première partie de la source est affichée.</value>
+  </data>
+  <data name="CompareConversion" xml:space="preserve">
+    <value>Conversion</value>
+  </data>
 </root>

@@ -2974,4 +2974,76 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="SelectionToolbarToggle_Description" xml:space="preserve">
     <value>Mały pasek pojawia się nad zaznaczonymi słowami w widoku Wizualnym: pogrubienie, kursywa, podkreślenie, przekreślenie, łącze i nagłówki (oraz Komentarz lub znaczniki przemówienia, gdy są włączone).</value>
   </data>
+  <data name="TrayTitle" xml:space="preserve">
+    <value>Konwersje</value>
+  </data>
+  <data name="TrayCompare" xml:space="preserve">
+    <value>Porównaj</value>
+  </data>
+  <data name="TrayCompareTip" xml:space="preserve">
+    <value>Pokaż oryginał i Markdown obok siebie</value>
+  </data>
+  <data name="TrayRetry" xml:space="preserve">
+    <value>Ponów</value>
+  </data>
+  <data name="TrayDropHint" xml:space="preserve">
+    <value>Pliki Word, PDF, Excel, PowerPoint i wiadomości e-mail są konwertowane na tym komputerze i zapisywane jako Markdown.</value>
+  </data>
+  <data name="TrayNothingToConvert" xml:space="preserve">
+    <value>W upuszczonych elementach nie było nic do konwersji.</value>
+  </data>
+  <data name="CompareSource" xml:space="preserve">
+    <value>Źródło</value>
+  </data>
+  <data name="CompareMarkdown" xml:space="preserve">
+    <value>Markdown</value>
+  </data>
+  <data name="CompareImagesOn" xml:space="preserve">
+    <value>Obrazy: wyodrębnione ({0})</value>
+  </data>
+  <data name="CompareImagesNone" xml:space="preserve">
+    <value>Obrazy: brak w pliku</value>
+  </data>
+  <data name="CompareImagesOff" xml:space="preserve">
+    <value>Obrazy: niewyodrębnione</value>
+  </data>
+  <data name="CompareMaskedOn" xml:space="preserve">
+    <value>Dane osobowe: zamaskowane</value>
+  </data>
+  <data name="CompareMaskedOff" xml:space="preserve">
+    <value>Dane osobowe: niezamaskowane</value>
+  </data>
+  <data name="CompareMaskedNone" xml:space="preserve">
+    <value>Dane osobowe: maskowanie włączone, nic nie znaleziono</value>
+  </data>
+  <data name="CompareKindPerson" xml:space="preserve">
+    <value>Osoby</value>
+  </data>
+  <data name="CompareKindEmail" xml:space="preserve">
+    <value>Adresy e-mail</value>
+  </data>
+  <data name="CompareKindPhone" xml:space="preserve">
+    <value>Numery telefonów</value>
+  </data>
+  <data name="CompareKindId" xml:space="preserve">
+    <value>Numery identyfikacyjne</value>
+  </data>
+  <data name="CompareKindIban" xml:space="preserve">
+    <value>Konta bankowe (IBAN)</value>
+  </data>
+  <data name="CompareKindCard" xml:space="preserve">
+    <value>Numery kart</value>
+  </data>
+  <data name="CompareMarksLegend" xml:space="preserve">
+    <value>Zamaskowane wartości są pogrubione i podkreślone.</value>
+  </data>
+  <data name="CompareNoSource" xml:space="preserve">
+    <value>Nie można pokazać źródła: {0}</value>
+  </data>
+  <data name="CompareTruncated" xml:space="preserve">
+    <value>Pokazano tylko pierwszą część źródła.</value>
+  </data>
+  <data name="CompareConversion" xml:space="preserve">
+    <value>Konwersja</value>
+  </data>
 </root>

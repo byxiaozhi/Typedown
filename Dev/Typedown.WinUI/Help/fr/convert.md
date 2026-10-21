@@ -18,6 +18,12 @@ Ouvrez **E-mails Outlook** et choisissez des e-mails enregistrés depuis Outlook
 
 Les e-mails en anglais, français, espagnol, polonais et portugais sont compris, et les règles sont de simples fichiers qu'une entreprise peut compléter.
 
+## Déposer des fichiers n’importe où
+
+Pas besoin d’ouvrir d’abord la page de conversion : faites glisser des fichiers Word, PDF, Excel, PowerPoint ou des courriels (ou tout un dossier) sur la fenêtre de Caret, n’importe où, et relâchez-les quand **Convertir en Markdown** apparaît. Un petit panneau en bas à droite les liste, chacun avec une barre de progression et, quand le pointeur le survole ou que le clavier s’y trouve, **Ouvrir**, **Afficher dans l'Explorateur de fichiers** (le bouton dossier) et **Comparer**. Un fichier en échec en donne la raison, avec **Réessayer** ; **Effacer la liste** vide le panneau et Échap le ferme.
+
+**Comparer** affiche l’original en texte brut à gauche et le Markdown à droite, et les fait défiler ensemble. Au-dessus figurent les choix utilisés : si les images ont été extraites et, pour un courriel, si les données personnelles ont été masquées et combien de noms, d’adresses, de numéros et d’identifiants ont été trouvés (ils sont en gras et soulignés dans le Markdown). Échap le ferme. Servez-vous-en pour voir ce que la conversion a gardé, écarté ou masqué avant de partager le résultat.
+
 ## Quand quelque chose ne se convertit pas
 
 Un fichier protégé par un mot de passe, ou endommagé, est listé avec la raison. Un PDF numérisé sans texte ne peut pas être lu : Caret ne fait pas de reconnaissance de texte.

@@ -253,6 +253,7 @@ namespace Typedown.WinUI
             SetUpHistory();
             SetUpEditorPopups();
             SetUpConvertPage();
+            SetUpConversionTray();
             EditorView.Loaded += MainWindow_Loaded;
         }
 
@@ -3618,6 +3619,7 @@ namespace Typedown.WinUI
             {
                 var storageItem = await GetStorageItem(item);
                 args.Data.SetStorageItems(new[] { storageItem });
+                args.Data.Properties[FolderDragKey] = true; // a move between folders, not a file from outside (the conversion tray's drop overlay)
                 args.Data.RequestedOperation = DataPackageOperation.Move;
             }
             catch (Exception ex)

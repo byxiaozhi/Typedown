@@ -18,6 +18,12 @@ Open **Outlook emails** and choose emails saved from Outlook (`.msg`) or other m
 
 Emails in English, French, Spanish, Polish and Portuguese are understood, and the rules are plain files a company can extend.
 
+## Drop files anywhere
+
+You do not have to open the Convert page first: drag Word, PDF, Excel, PowerPoint or email files (or a whole folder) over the Caret window, anywhere, and release them when **Convert to Markdown** appears. A small tray at the bottom right lists them, each with a progress bar and, when the pointer is over it or the keys are in it, **Open**, **Reveal in File Explorer** (the folder button) and **Compare**. A file that fails says why, with **Retry**; **Clear list** empties the tray and Esc closes it.
+
+**Compare** shows the original as plain text on the left and the Markdown on the right, and scrolls them together. Above them are the choices that were used: whether images were taken out and, for an email, whether personal data was masked and how many names, addresses, numbers and IDs were found (they are bold and underlined in the Markdown). Esc closes it. Use it to see what the conversion kept, dropped or masked before you share the result.
+
 ## When something does not convert
 
 A file protected by a password, or damaged, is listed with the reason. A scanned PDF with no text cannot be read: Caret does not do text recognition.

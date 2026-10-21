@@ -2926,4 +2926,76 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="SelectionToolbarToggle_Description" xml:space="preserve">
     <value>A small toolbar appears over the words you select in the Visual view, with bold, italic, underline, strikethrough, link and headings (and Comment or the speech marks when those are on).</value>
   </data>
+  <data name="TrayTitle" xml:space="preserve">
+    <value>Conversions</value>
+  </data>
+  <data name="TrayCompare" xml:space="preserve">
+    <value>Compare</value>
+  </data>
+  <data name="TrayCompareTip" xml:space="preserve">
+    <value>Show the original and the Markdown side by side</value>
+  </data>
+  <data name="TrayRetry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="TrayDropHint" xml:space="preserve">
+    <value>Word, PDF, Excel, PowerPoint and email files are converted on this PC and saved as Markdown.</value>
+  </data>
+  <data name="TrayNothingToConvert" xml:space="preserve">
+    <value>There was nothing to convert in what was dropped.</value>
+  </data>
+  <data name="CompareSource" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="CompareMarkdown" xml:space="preserve">
+    <value>Markdown</value>
+  </data>
+  <data name="CompareImagesOn" xml:space="preserve">
+    <value>Images: extracted ({0})</value>
+  </data>
+  <data name="CompareImagesNone" xml:space="preserve">
+    <value>Images: none in the file</value>
+  </data>
+  <data name="CompareImagesOff" xml:space="preserve">
+    <value>Images: not extracted</value>
+  </data>
+  <data name="CompareMaskedOn" xml:space="preserve">
+    <value>Personal data: masked</value>
+  </data>
+  <data name="CompareMaskedOff" xml:space="preserve">
+    <value>Personal data: not masked</value>
+  </data>
+  <data name="CompareMaskedNone" xml:space="preserve">
+    <value>Personal data: masked, none found</value>
+  </data>
+  <data name="CompareKindPerson" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="CompareKindEmail" xml:space="preserve">
+    <value>Email addresses</value>
+  </data>
+  <data name="CompareKindPhone" xml:space="preserve">
+    <value>Phone numbers</value>
+  </data>
+  <data name="CompareKindId" xml:space="preserve">
+    <value>ID numbers</value>
+  </data>
+  <data name="CompareKindIban" xml:space="preserve">
+    <value>Bank accounts (IBAN)</value>
+  </data>
+  <data name="CompareKindCard" xml:space="preserve">
+    <value>Card numbers</value>
+  </data>
+  <data name="CompareMarksLegend" xml:space="preserve">
+    <value>Masked values are shown in bold and underlined.</value>
+  </data>
+  <data name="CompareNoSource" xml:space="preserve">
+    <value>The source cannot be shown: {0}</value>
+  </data>
+  <data name="CompareTruncated" xml:space="preserve">
+    <value>Only the first part of the source is shown.</value>
+  </data>
+  <data name="CompareConversion" xml:space="preserve">
+    <value>Conversion</value>
+  </data>
 </root>

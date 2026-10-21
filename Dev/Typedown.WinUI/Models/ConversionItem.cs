@@ -13,6 +13,9 @@ namespace Typedown.WinUI.Models
         public event PropertyChangedEventHandler PropertyChanged;
 #pragma warning restore CS0067
 
+        // What a screen reader says for a row of a list.
+        public override string ToString() => string.IsNullOrEmpty(Detail) ? Name : Name + ": " + Detail;
+
         public string SourcePath { get; set; }
         public string Name { get; set; }
         public string OutputPath { get; set; }
@@ -27,6 +30,33 @@ namespace Typedown.WinUI.Models
         public int Tokens { get; set; }
         public bool Succeeded { get; set; }
         public bool Failed { get; set; }
+
+        // For the conversion tray (MainWindow.Tray.cs): the folder a dropped folder was found under (a retry mirrors the subfolders the same
+        // way) and the choices that were applied, which Compare shows next to the two texts.
+        public string Root { get; set; }
+        public bool ImagesExtracted { get; set; }
+        public int ImageCount { get; set; }
+        public bool IsEmail { get; set; }
+        public bool Masked { get; set; }
+
+        // The tray's row: a progress bar (empty while it waits, running while it converts, full when done or failed), Retry on a failed row.
+        [PropertyChanged.DependsOn(nameof(IsConverting), nameof(Succeeded), nameof(Failed))]
+        public double ProgressValue => Succeeded || Failed ? 100 : 0;
+        [PropertyChanged.DependsOn(nameof(IsConverting))]
+        public bool ProgressIndeterminate => IsConverting;
+        [PropertyChanged.DependsOn(nameof(Failed))]
+        public bool ProgressShowError => Failed;
+        [PropertyChanged.DependsOn(nameof(Failed))]
+        public Visibility RetryVisibility => Failed ? Visibility.Visible : Visibility.Collapsed;
+
+        // A tinted fill for a running or a failed row; with a Windows contrast theme on, no tint and a 1 px border in the text colour
+        // instead (read when the row is made).
+        public static bool HighContrast { get; set; }
+        [PropertyChanged.DependsOn(nameof(IsConverting))]
+        public Visibility ActiveTintVisibility => IsConverting && !HighContrast ? Visibility.Visible : Visibility.Collapsed;
+        [PropertyChanged.DependsOn(nameof(Failed))]
+        public Visibility FailedTintVisibility => Failed && !HighContrast ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility ContrastBorderVisibility => HighContrast ? Visibility.Visible : Visibility.Collapsed;
 
         // The coloured file-type badge: the Office app colours people already recognise.
         public string Badge { get; set; }

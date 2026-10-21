@@ -18,6 +18,12 @@ Otwórz **E-maile z programu Outlook** i wybierz e-maile zapisane z programu Out
 
 Rozumiane są e-maile po angielsku, francusku, hiszpańsku, polsku i portugalsku, a reguły to zwykłe pliki, które firma może rozszerzyć.
 
+## Upuść pliki w dowolnym miejscu
+
+Nie trzeba najpierw otwierać strony konwersji: przeciągnij pliki Word, PDF, Excel, PowerPoint lub wiadomości e-mail (albo cały folder) nad okno Caret, w dowolne miejsce, i puść je, gdy pojawi się **Konwertuj na Markdown**. Mała taca w prawym dolnym rogu wyświetla je na liście, każdy z paskiem postępu i — gdy wskaźnik jest nad nim lub klawiatura jest w nim — z przyciskami **Otwórz**, **Pokaż w Eksploratorze plików** (przycisk folderu) i **Porównaj**. Plik, którego nie udało się przekonwertować, podaje powód i ma przycisk **Ponów**; **Wyczyść listę** opróżnia tacę, a Esc ją zamyka.
+
+**Porównaj** pokazuje oryginał jako zwykły tekst po lewej, a Markdown po prawej, i przewija je razem. Nad nimi widać użyte opcje: czy obrazy zostały wyodrębnione oraz — w wiadomości e-mail — czy dane osobowe zostały zamaskowane i ile znaleziono imion i nazwisk, adresów, numerów i identyfikatorów (w Markdown są pogrubione i podkreślone). Esc go zamyka. Użyj go, aby zobaczyć, co konwersja zachowała, pominęła lub zamaskowała, zanim udostępnisz wynik.
+
 ## Gdy coś się nie konwertuje
 
 Plik zabezpieczony hasłem lub uszkodzony jest wymieniony razem z przyczyną. Zeskanowanego pliku PDF bez tekstu nie da się odczytać: Caret nie rozpoznaje tekstu na obrazach.

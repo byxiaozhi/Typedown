@@ -8,7 +8,8 @@
     xmlns:u="using:Typedown.WinUI.Utilities"
     xmlns:tk="using:CommunityToolkit.WinUI.Controls">
 
-    <Grid Background="{ThemeResource CaretWindowBackgroundBrush}" KeyboardAcceleratorPlacementMode="Hidden">
+    <Grid Background="{ThemeResource CaretWindowBackgroundBrush}" KeyboardAcceleratorPlacementMode="Hidden"
+          AllowDrop="True">
         <!-- Background set explicitly: a plain Grid has no default fill (transparent), so without this
              the window shows raw black whenever Mica is off (Mica's translucent material is what was
              painting the window before — see SettingsViewModel.UseMicaEffect's default, now off by
@@ -25,6 +26,11 @@
              without it there's no way to create a file/paste into the top level of an opened folder
              at all (every other New File/New Folder/Paste is scoped to a specific row's folder). -->
         <Grid.Resources>
+            <Style x:Key="CompareLineStyle" TargetType="ListViewItem">
+                <Setter Property="Padding" Value="8,1"/>
+                <Setter Property="MinHeight" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            </Style>
             <MenuFlyout x:Key="RootContextFlyout" Opening="RootContextFlyout_Opening">
                 <MenuFlyoutItem Text="{u:Loc Key=NewFile}" Click="NewFileRootContext_Click"/>
                 <MenuFlyoutItem Text="{u:Loc Key=NewFolder}" Click="NewFolderRootContext_Click"/>
@@ -1267,6 +1273,92 @@
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
+
+            <!-- New since the fork: Compare, from a row of the conversion tray (MainWindow.Tray.cs). Not a dialog: the sidebar, the tabs and the menus stay
+                 in use. The source as plain text on the left, the Markdown on the right (a masked value marked), the choices that were applied above. -->
+            <Grid Grid.Row="1" Grid.RowSpan="2" x:Name="ConvertComparePanel" Visibility="Collapsed"
+                  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                  AutomationProperties.Name="{u:Loc Key=TrayCompare}" KeyDown="ConvertComparePanel_KeyDown">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Margin="16,12,16,6" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="CompareBackButton" Click="ConvertCompareBack_Click" Background="Transparent" BorderThickness="0" Width="36" Height="36" Padding="0"
+                            VerticalAlignment="Center" ToolTipService.ToolTip="{u:Loc Key=ConvertBackToEditor}"
+                            AutomationProperties.Name="{u:Loc Key=ConvertBackToEditor}">
+                        <Path Data="M15 5L8 12L15 19" Style="{StaticResource CaretLineIconStyle}" Width="16" Height="16"/>
+                    </Button>
+                    <Border Grid.Column="1" x:Name="CompareBadge" Width="46" Height="26" CornerRadius="4" VerticalAlignment="Center">
+                        <TextBlock x:Name="CompareBadgeText" Foreground="White" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Grid.Column="2" x:Name="CompareNameText" Style="{ThemeResource SubtitleTextBlockStyle}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                    <ComboBox Grid.Column="3" x:Name="CompareJobCombo" Width="220" VerticalAlignment="Center" DisplayMemberPath="Name"
+                              AutomationProperties.Name="{u:Loc Key=CompareConversion}" SelectionChanged="CompareJobCombo_SelectionChanged"/>
+                    <Button Grid.Column="4" Content="{u:Loc Key=Open}" Click="ConvertOpenResult_Click" x:Name="CompareOpenButton" VerticalAlignment="Center"/>
+                    <Button Grid.Column="5" Click="ConvertRevealResult_Click" x:Name="CompareRevealButton" VerticalAlignment="Center" Padding="8,5"
+                            ToolTipService.ToolTip="{u:Loc Key=RevealInFileExplorer}" AutomationProperties.Name="{u:Loc Key=RevealInFileExplorer}">
+                        <Path Data="M3 6H10L12 8H21V20H3Z" Style="{StaticResource CaretLineIconStyle}" Width="14" Height="14"/>
+                    </Button>
+                </Grid>
+                <StackPanel Grid.Row="1" Margin="16,0,16,10" Spacing="6">
+                    <StackPanel Orientation="Horizontal" Spacing="8" x:Name="CompareChoices">
+                        <Border x:Name="CompareImagesChip" CornerRadius="10" Padding="10,2" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                            <TextBlock x:Name="CompareImagesText" FontSize="12"/>
+                        </Border>
+                        <Border x:Name="CompareMaskedChip" CornerRadius="10" Padding="10,2" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" Visibility="Collapsed">
+                            <TextBlock x:Name="CompareMaskedText" FontSize="12"/>
+                        </Border>
+                    </StackPanel>
+                    <TextBlock x:Name="CompareCountsText" FontSize="12" Opacity="0.85" TextWrapping="Wrap" Visibility="Collapsed"/>
+                    <TextBlock x:Name="CompareNoteText" FontSize="12" Opacity="0.85" TextWrapping="Wrap" Visibility="Collapsed"/>
+                </StackPanel>
+                <Grid Grid.Row="2" Margin="16,0,16,12" ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="CompareSourceHeader" FontWeight="SemiBold" Margin="2,0,0,4"/>
+                    <TextBlock Grid.Column="1" x:Name="CompareMarkdownHeader" FontWeight="SemiBold" Margin="2,0,0,4"/>
+                    <Border Grid.Row="1" CornerRadius="8" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                        <ListView x:Name="CompareSourceList" SelectionMode="None" IsItemClickEnabled="False" ItemContainerStyle="{StaticResource CompareLineStyle}"
+                                  AutomationProperties.Name="{u:Loc Key=CompareSource}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <TextBlock Text="{x:Bind}" TextWrapping="Wrap" IsTextSelectionEnabled="True" FontSize="13"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" CornerRadius="8" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                        <ListView x:Name="CompareMarkdownList" SelectionMode="None" IsItemClickEnabled="False" ItemContainerStyle="{StaticResource CompareLineStyle}"
+                                  ContainerContentChanging="CompareMarkdownList_ContainerContentChanging" AutomationProperties.Name="{u:Loc Key=CompareMarkdown}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" IsTextSelectionEnabled="True" FontSize="13" FontFamily="Cascadia Mono, Consolas"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Border>
+                </Grid>
+            </Grid>
             </Grid>
 
             <!-- The inspector pane (View > Inspector pane, Ctrl+Shift+I, MainWindow.Inspector.cs): beside the note, so the note
@@ -2029,6 +2121,101 @@
                               OnContent="{u:Loc Key=ToggleOn}" OffContent="{u:Loc Key=ToggleOff}"/>
             </StackPanel>
         </ContentDialog>
+
+        <!-- New since the fork: the conversion tray (MainWindow.Tray.cs). A drag of Word, PDF, Excel, PowerPoint or email files over the window
+             shows this overlay (the window itself takes the drop, on any page and over the editor); the drop converts them and the tray, a flyout at the
+             bottom right, lists the jobs: a progress bar, then Open, Show in folder and Compare; a failed job says why, with Retry. -->
+        <Grid x:Name="ConvertDropOverlay" Grid.Row="0" Grid.RowSpan="4" Visibility="Collapsed" AllowDrop="True" Background="{ThemeResource SmokeFillColorDefaultBrush}"
+              DragOver="ConvertDropOverlay_DragOver" Drop="ConvertDropOverlay_Drop" DragLeave="ConvertDropOverlay_DragLeave" PointerPressed="ConvertDropOverlay_PointerPressed">
+            <Border Margin="40" CornerRadius="16" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" IsHitTestVisible="False"
+                    BorderBrush="{ThemeResource CaretPrimaryBrush}" BorderThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="48,36" MaxWidth="560">
+                <StackPanel Spacing="12" HorizontalAlignment="Center">
+                    <Path Data="M6 3H13L18 8V21H6Z M13 3V8H18 M9 14L12 17L15 14 M12 10V17" Style="{StaticResource CaretLineIconStyle}"
+                          Stroke="{ThemeResource CaretPrimaryBrush}" Width="48" Height="48" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{u:Loc Key=ConvertTitle}" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" TextAlignment="Center"/>
+                    <TextBlock Text="{u:Loc Key=TrayDropHint}" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" Opacity="0.85"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Border x:Name="ConvertTray" Grid.Row="0" Grid.RowSpan="4" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0,0,16,40" Width="360" MaxHeight="440" CornerRadius="8"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1"
+                AutomationProperties.Name="{u:Loc Key=TrayTitle}" KeyDown="ConvertTray_KeyDown">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Margin="12,8,6,4" ColumnSpacing="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="{u:Loc Key=TrayTitle}" FontWeight="SemiBold"/>
+                        <TextBlock x:Name="ConvertTraySummary" FontSize="12" Opacity="0.8" TextTrimming="CharacterEllipsis" AutomationProperties.LiveSetting="Polite"/>
+                    </StackPanel>
+                    <Button Grid.Column="1" Content="{u:Loc Key=ConvertClear}" Click="ConvertTrayClear_Click" Background="Transparent" BorderThickness="0" FontSize="12" Padding="8,4"/>
+                    <Button Grid.Column="2" Click="ConvertTrayClose_Click" Background="Transparent" BorderThickness="0" Width="30" Height="30" Padding="0"
+                            ToolTipService.ToolTip="{u:Loc Key=Close}" AutomationProperties.Name="{u:Loc Key=Close}">
+                        <Path Data="M6 6L18 18 M18 6L6 18" Style="{StaticResource CaretLineIconStyle}" Width="12" Height="12"/>
+                    </Button>
+                </Grid>
+                <ListView Grid.Row="1" x:Name="ConvertTrayList" SelectionMode="None" IsItemClickEnabled="False" Padding="8,0,8,8">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Padding" Value="0"/>
+                            <Setter Property="Margin" Value="0,0,0,6"/>
+                            <Setter Property="MinHeight" Value="0"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid CornerRadius="6" PointerEntered="TrayRow_Reveal" PointerExited="TrayRow_Rest" GotFocus="TrayRow_Reveal" LostFocus="TrayRow_Rest">
+                                <Border CornerRadius="6" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                        Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"/>
+                                <Border CornerRadius="6" Opacity="0.16" Background="{ThemeResource SystemFillColorCriticalBrush}" IsHitTestVisible="False"
+                                        Visibility="{Binding FailedTintVisibility}"/>
+                                <Border CornerRadius="6" Opacity="0.14" Background="{ThemeResource CaretPrimaryBrush}" IsHitTestVisible="False"
+                                        Visibility="{Binding ActiveTintVisibility}"/>
+                                <Border CornerRadius="6" BorderThickness="1" BorderBrush="{ThemeResource SystemColorWindowTextColorBrush}" IsHitTestVisible="False"
+                                        Visibility="{Binding ContrastBorderVisibility}"/>
+                                <StackPanel Padding="10,8" Spacing="5">
+                                    <Grid ColumnSpacing="8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Width="38" Height="20" CornerRadius="3" Background="{Binding BadgeBrush}" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Badge}" Foreground="White" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <TextBlock Grid.Column="1" Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"
+                                                   ToolTipService.ToolTip="{Binding SourcePath}"/>
+                                    </Grid>
+                                    <ProgressBar Minimum="0" Maximum="100" Value="{Binding ProgressValue}" IsIndeterminate="{Binding ProgressIndeterminate}"
+                                                 ShowError="{Binding ProgressShowError}" AutomationProperties.Name="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Detail}" FontSize="12" Opacity="0.85" TextWrapping="Wrap"/>
+                                    <StackPanel x:Name="RowActions" Orientation="Horizontal" Spacing="4" Opacity="0" Visibility="{Binding ActionsVisibility}">
+                                        <Button Content="{u:Loc Key=Open}" Click="ConvertOpenResult_Click" Tag="{Binding}" Padding="10,3" FontSize="12"/>
+                                        <Button Click="ConvertRevealResult_Click" Tag="{Binding}" Padding="8,4" ToolTipService.ToolTip="{u:Loc Key=RevealInFileExplorer}"
+                                                AutomationProperties.Name="{u:Loc Key=RevealInFileExplorer}">
+                                            <Path Data="M3 6H10L12 8H21V20H3Z" Style="{StaticResource CaretLineIconStyle}" Width="14" Height="14"/>
+                                        </Button>
+                                        <Button Content="{u:Loc Key=TrayCompare}" Click="TrayCompare_Click" Tag="{Binding}" Padding="10,3" FontSize="12"
+                                                ToolTipService.ToolTip="{u:Loc Key=TrayCompareTip}"/>
+                                    </StackPanel>
+                                    <Button Content="{u:Loc Key=TrayRetry}" Click="TrayRetry_Click" Tag="{Binding}" Padding="10,3" FontSize="12" Visibility="{Binding RetryVisibility}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Border>
 
         <!-- A short message at the bottom of the window that goes by itself (Copy as WhatsApp text); screen readers read it out. -->
         <Border x:Name="ToastHost" Grid.Row="0" Grid.RowSpan="4" Visibility="Collapsed" IsHitTestVisible="False"
