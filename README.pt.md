@@ -75,7 +75,7 @@ Mais em **Ajuda > Exportar para o Word**.
 ## Ache seu caminho
 
 - **Paleta de comandos** (`Ctrl+Shift+P`, **Exibir > Paleta de comandos**): digite algumas letras do que você quer fazer, um comando, uma configuração ou uma nota, e pressione Enter
-- **Painel de inspeção** (`Ctrl+Shift+I`): uma coluna ao lado da nota com seu esboço, suas marcas de revisão, o tempo da apresentação, todas as ocorrências da busca e o **Histórico** da nota: as versões salvas anteriores, que você pode comparar com o texto atual e restaurar. As versões ficam no seu PC (50 por nota, nenhuma com mais de 30 dias) e o histórico pode ser desativado na aba Histórico
+- **Painel de inspeção** (`Ctrl+Shift+I`): uma coluna ao lado da nota com seu esboço, suas marcas de revisão, o tempo da apresentação, todas as ocorrências da busca e o **Histórico** da nota: as versões salvas anteriores, que você pode comparar com o texto atual e restaurar. As versões ficam no seu PC (50 por nota, 30 dias; a cópia mais recente de cada nota sempre fica) e o histórico pode ser desativado na aba Histórico
 - **Mapa do documento**: uma faixa fina na borda direita que mostra onde você está na nota e onde estão os títulos, as ocorrências da busca, os comentários e as alterações
 - **Uma barra pequena sobre as palavras selecionadas** com os formatos mais usados e **Copiar como texto do WhatsApp**, e uma **barra de status** que diz o que importa (salvo, palavras, tempo de leitura, contagens de revisão) e nada mais
 - **Solte arquivos em qualquer lugar da janela** (Word, PDF, Excel, PowerPoint, CSV, e-mails ou uma pasta) para convertê-los em Markdown. Uma bandeja mostra os trabalhos, com Abrir, Mostrar na pasta, **Comparar** (origem e Markdown lado a lado) e Tentar novamente

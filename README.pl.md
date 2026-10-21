@@ -75,7 +75,7 @@ Więcej w **Pomoc > Eksport do Worda**.
 ## Odnajdź się w programie
 
 - **Paleta poleceń** (`Ctrl+Shift+P`, **Widok > Paleta poleceń**): wpisz kilka liter tego, co chcesz zrobić, polecenia, ustawienia lub notatki, i naciśnij Enter
-- **Panel inspektora** (`Ctrl+Shift+I`): kolumna obok notatki z jej konspektem, znacznikami recenzji, czasem przemówienia, wszystkimi trafieniami wyszukiwania i **Historią** notatki: wcześniejszymi zapisanymi wersjami, które można porównać z obecnym tekstem i przywrócić. Wersje zostają na Twoim komputerze (50 na notatkę, żadna starsza niż 30 dni), a historię można wyłączyć na karcie Historia
+- **Panel inspektora** (`Ctrl+Shift+I`): kolumna obok notatki z jej konspektem, znacznikami recenzji, czasem przemówienia, wszystkimi trafieniami wyszukiwania i **Historią** notatki: wcześniejszymi zapisanymi wersjami, które można porównać z obecnym tekstem i przywrócić. Wersje zostają na Twoim komputerze (50 na notatkę, 30 dni; najnowsza kopia każdej notatki zostaje zawsze), a historię można wyłączyć na karcie Historia
 - **Mapa dokumentu**: cienki pasek przy prawej krawędzi pokazuje, w którym miejscu notatki jesteś i gdzie są nagłówki, trafienia wyszukiwania, komentarze i zmiany
 - **Mały pasek narzędzi nad zaznaczonymi słowami** ze zwykłymi formatami i **Kopiuj jako tekst WhatsApp** oraz **pasek stanu**, który mówi to, co ważne (zapisano, słowa, czas czytania, liczby recenzji) i nic więcej
 - **Upuść pliki w dowolnym miejscu okna** (Word, PDF, Excel, PowerPoint, CSV, e-maile lub folder), aby zamienić je na Markdown. Taca pokazuje zadania, z Otwórz, Pokaż w folderze, **Porównaj** (źródło i Markdown obok siebie) i Ponów

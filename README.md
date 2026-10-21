@@ -82,7 +82,7 @@ More in **Help > Export to Word**.
 ## Find your way around
 
 - **Command palette** (`Ctrl+Shift+P`, **View > Command Palette**): type a few letters of what you want to do, a command, a setting or a note, and press Enter
-- **Inspector pane** (`Ctrl+Shift+I`): a column beside the note with its outline, its review marks, the timing of the talk, every match of the search, and the **History** of the note: the earlier saved versions, which you can compare with the text now and restore. The versions stay on your PC (50 per note, none older than 30 days) and the history can be switched off in the History tab
+- **Inspector pane** (`Ctrl+Shift+I`): a column beside the note with its outline, its review marks, the timing of the talk, every match of the search, and the **History** of the note: the earlier saved versions, which you can compare with the text now and restore. The versions stay on your PC (50 per note, 30 days; the newest copy of a note always stays) and the history can be switched off in the History tab
 - **Document map**: a thin strip along the right edge that shows where you are in the note and where the headings, search matches, comments and changes are
 - **A small toolbar over the selected words** with the common formats and **Copy as WhatsApp text**, and a **status bar** that says what matters (saved, words, reading time, review counts) and nothing more
 - **Drop files anywhere on the window** (Word, PDF, Excel, PowerPoint, CSV, emails or a folder) to convert them to Markdown. A tray shows the jobs, with Open, Show in folder, **Compare** (source and Markdown side by side) and Retry
