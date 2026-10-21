@@ -917,12 +917,13 @@ namespace Typedown.WinUI
                 if (at is Windows.Graphics.PointInt32 pointer) window.PlaceUnderPointer(pointer);
                 window.Activate();
                 await ReleaseMovedDocument(doc);
-                if (homeWasShown && !startPageShown && documents.Contains(activeDoc)) ShowStartPage(); // this window stays on Home, over what is left
                 Log($"Tabs: moved {doc.DisplayName} to a new window");
             }
             finally
             {
                 doc.InTransfer = false;
+                // this window stays on Home, over what is left, whatever happened while the document was released
+                if (homeWasShown && !startPageShown && documents.Contains(activeDoc)) ShowStartPage();
             }
         }
 
