@@ -315,7 +315,8 @@ namespace Typedown.WinUI
                 if (element is TabViewItem item) { pressedTab = item; break; }
             }
             // Home is over the document whose tab is the selected one, so a press on it selects nothing: it brings the document back here.
-            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown) && !PressedOnButton(e))
+            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown) && !PressedOnButton(e)
+                && e.GetCurrentPoint(DocumentTabView).Properties.IsLeftButtonPressed) // a right-click opens the tab's menu: it is not a visit
             {
                 HideStartPage();
                 // the press leaves the keyboard on the tab: once it is done, the text gets it back
@@ -907,6 +908,7 @@ namespace Typedown.WinUI
         // pointer's position when there is one (a tab dragged out of the strip).
         private async Task MoveToNewWindow(DocumentTab doc, Windows.Graphics.PointInt32? at = null)
         {
+            var homeWasShown = startPageShown;
             var transfer = await PrepareTransfer(doc);
             if (transfer == null) return;
             try
@@ -915,6 +917,7 @@ namespace Typedown.WinUI
                 if (at is Windows.Graphics.PointInt32 pointer) window.PlaceUnderPointer(pointer);
                 window.Activate();
                 await ReleaseMovedDocument(doc);
+                if (homeWasShown && !startPageShown && documents.Contains(activeDoc)) ShowStartPage(); // this window stays on Home, over what is left
                 Log($"Tabs: moved {doc.DisplayName} to a new window");
             }
             finally
