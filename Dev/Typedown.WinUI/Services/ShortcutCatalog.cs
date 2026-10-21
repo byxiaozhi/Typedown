@@ -61,6 +61,7 @@ namespace Typedown.WinUI.Services
             new("General", "SelectAllMenuItem_Text", "Ctrl+A"),
             new("General", "ShortcutCommandPalette", "Ctrl+Shift+P"),
             new("General", "InspectorMenuItem_Text", "Ctrl+Shift+I"),
+            new("General", "Home", "Ctrl+Shift+H"),
             new("General", "SettingsDialog_Title", "Ctrl+,"),
             new("General", "ViewModeMenu", "Ctrl+/"),
             new("General", "MoveBetweenAreas", "F6 / Shift+F6"),

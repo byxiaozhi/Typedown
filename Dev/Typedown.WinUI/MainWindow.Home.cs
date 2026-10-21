@@ -38,6 +38,57 @@ namespace Typedown.WinUI
             }
         }
 
+        // The house button left of the tabs, View > Home and Ctrl+Shift+H: Home is shown over the document that is open, and the same again goes back
+        // to it. Nothing is closed and nothing is saved or lost: the document, its tab and its undo history stay where they are. With no document open
+        // (the blank one behind Home) there is nothing to go back to and nothing happens.
+        private void HomeButton_Click(object sender, RoutedEventArgs e) => ToggleHome();
+
+        private void HomeMenuItem_Click(object sender, RoutedEventArgs e) => ToggleHome();
+
+        private void HomeAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+        {
+            ToggleHome();
+            args.Handled = true;
+        }
+
+        private void ToggleHome()
+        {
+            if (!editorReady) { UpdateHomeButton(); return; }
+            if (startPageShown)
+            {
+                if (documents.Contains(activeDoc))
+                {
+                    HideStartPage();
+                    EditorView.Focus(FocusState.Programmatic); // typing goes to the document again
+                }
+                UpdateHomeButton();
+                return;
+            }
+            if (SettingsPageShown) HideSettingsPage();
+            if (ConvertPage.Visibility == Visibility.Visible) CloseConvertPage();
+            CloseFindForHome();
+            ShowStartPage();
+            // The editor may have had the keyboard (Ctrl+Shift+H from the text): it goes to Home, so that typing cannot change the covered note.
+            var target = StartPageRecentList.Items.Count > 0 ? StartPageRecentList : HomeStartList;
+            if (!target.Focus(FocusState.Programmatic)) HomeButton.Focus(FocusState.Programmatic); // its rows are not laid out yet: the button takes it
+            Log("Home: shown over the document");
+        }
+
+        // The Find panel belongs to the note: it is closed when Home goes over the note (as HideFindReplace does, but without giving the
+        // keyboard back to the text, which Home is about to take).
+        private void CloseFindForHome()
+        {
+            if (FindReplacePanel.Visibility != Visibility.Visible) return;
+            findRequest++;
+            FindReplacePanel.Visibility = Visibility.Collapsed;
+            FindCountText.Text = "";
+            RenderInspectorFind(null);
+            PostMessage("SearchOpenChange", new { open = 0 });
+        }
+
+        // The button is pressed in while Home is on screen.
+        private void UpdateHomeButton() => HomeButton.IsChecked = startPageShown;
+
         // The Folders column: the pinned folders, then the ones opened last, the ones that are still there.
         private void RefreshHomeFolders()
         {
@@ -48,7 +99,11 @@ namespace Typedown.WinUI
 
         private void HomeStart_ItemClick(object sender, ItemClickEventArgs e)
         {
-            switch ((e.ClickedItem as ListViewItem)?.Tag as string)
+            // The list reports what is inside the row (its stack of icon and text), not the row that carries the tag.
+            string tag = null;
+            for (var element = e.ClickedItem as DependencyObject; element != null && tag == null; element = Microsoft.UI.Xaml.Media.VisualTreeHelper.GetParent(element))
+                if (element is ListViewItem { Tag: string rowTag }) tag = rowTag;
+            switch (tag)
             {
                 case "new": StartNewNote_Click(this, null); break;
                 case "open": StartOpenFile_Click(this, null); break;

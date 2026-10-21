@@ -314,9 +314,30 @@ namespace Typedown.WinUI
             {
                 if (element is TabViewItem item) { pressedTab = item; break; }
             }
+            // Home is over the document whose tab is the selected one, so a press on it selects nothing: it brings the document back here.
+            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown) && !PressedOnButton(e)
+                && e.GetCurrentPoint(DocumentTabView).Properties.IsLeftButtonPressed) // a right-click opens the tab's menu: it is not a visit
+            {
+                HideStartPage();
+                // the press leaves the keyboard on the tab: once it is done, the text gets it back
+                DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () => EditorView.Focus(FocusState.Programmatic));
+            }
+        }
+
+        // The close button of a tab is a button inside it: a press there is a close, not a visit.
+        private static bool PressedOnButton(PointerRoutedEventArgs e)
+        {
+            for (var element = e.OriginalSource as DependencyObject; element != null; element = Microsoft.UI.Xaml.Media.VisualTreeHelper.GetParent(element))
+            {
+                if (element is Microsoft.UI.Xaml.Controls.Primitives.ButtonBase) return true;
+                if (element is TabViewItem) break;
+            }
+            return false;
         }
 
         private void DocumentTabView_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
+
+        private void HomeButton_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
 
         // The strip never takes the whole title bar: a part is left free to press and drag, which moves the window. With many tabs
         // the strip used to reach the buttons and nothing of the bar could move the window; now the tabs scroll instead.
@@ -335,17 +356,21 @@ namespace Typedown.WinUI
                 var source = Microsoft.UI.Input.InputNonClientPointerSource.GetForWindowId(AppWindow.Id);
                 // Even a lone tab can be dragged: onto another window's strip, or out to move this window
                 // (DocumentTabView_TabDroppedOutside). The empty title bar beside it still drags the window.
-                if (DocumentTabView.Visibility != Visibility.Visible || DocumentTabView.XamlRoot == null || DocumentTabView.ActualWidth == 0)
+                // The house button beside the strip takes the pointer too (it stays when the tabs are off).
+                var parts = new System.Collections.Generic.List<FrameworkElement>();
+                if (HomeButton.XamlRoot != null && HomeButton.ActualWidth > 0) parts.Add(HomeButton);
+                if (DocumentTabView.Visibility == Visibility.Visible && DocumentTabView.XamlRoot != null && DocumentTabView.ActualWidth > 0) parts.Add(DocumentTabView);
+                if (parts.Count == 0)
                 {
                     source.ClearRegionRects(Microsoft.UI.Input.NonClientRegionKind.Passthrough);
                     return;
                 }
-                var scale = DocumentTabView.XamlRoot.RasterizationScale;
-                var bounds = DocumentTabView.TransformToVisual(null).TransformBounds(new Windows.Foundation.Rect(0, 0, DocumentTabView.ActualWidth, DocumentTabView.ActualHeight));
-                source.SetRegionRects(Microsoft.UI.Input.NonClientRegionKind.Passthrough, new[]
+                var scale = parts[0].XamlRoot.RasterizationScale;
+                source.SetRegionRects(Microsoft.UI.Input.NonClientRegionKind.Passthrough, parts.Select(part =>
                 {
-                    new Windows.Graphics.RectInt32((int)(bounds.X * scale), (int)(bounds.Y * scale), (int)Math.Ceiling(bounds.Width * scale), (int)Math.Ceiling(bounds.Height * scale)),
-                });
+                    var bounds = part.TransformToVisual(null).TransformBounds(new Windows.Foundation.Rect(0, 0, part.ActualWidth, part.ActualHeight));
+                    return new Windows.Graphics.RectInt32((int)(bounds.X * scale), (int)(bounds.Y * scale), (int)Math.Ceiling(bounds.Width * scale), (int)Math.Ceiling(bounds.Height * scale));
+                }).ToArray());
             }
             catch (Exception ex)
             {
@@ -677,7 +702,7 @@ namespace Typedown.WinUI
 
         private async Task SwitchTabRelative(int delta)
         {
-            if (documents.Count < 2 || startPageShown) return;
+            if (documents.Count < 2 || !documents.Contains(activeDoc)) return; // (Home over a document: Ctrl+Tab goes on from it)
             var index = (documents.IndexOf(activeDoc) + delta + documents.Count) % documents.Count;
             await ActivateDocument(documents[index]);
         }
@@ -689,13 +714,23 @@ namespace Typedown.WinUI
         // False when the user cancelled.
         private async Task<bool> MakeRoomForDocument()
         {
-            if (startPageShown)
+            if (startPageShown && !documents.Contains(activeDoc))
             {
-                if (!documents.Contains(activeDoc)) AttachTab(activeDoc);
+                // Home with no document open: the blank one behind it takes the new document.
+                AttachTab(activeDoc);
                 HideStartPage();
                 SelectTab(activeDoc);
                 return true;
             }
+            // Home over a document that is open: it stays as it is, and the new one goes in a tab of its own (below). With tabs off the document
+            // is replaced, so the question about its changes comes first, and Home stays up if the answer is Cancel.
+            if (startPageShown && !TabsEnabled)
+            {
+                if (!await ConfirmDiscardChangesIfNeeded()) return false;
+                HideStartPage();
+                return true;
+            }
+            HideStartPage();
             if (!TabsEnabled) return await ConfirmDiscardChangesIfNeeded();
             if (activeDoc.IsBlank) return true;
             var doc = CreateDocument();
@@ -750,7 +785,17 @@ namespace Typedown.WinUI
 
         // --- Closing ---
 
-        private async void CloseDocumentMenuItem_Click(object sender, RoutedEventArgs e) => await CloseDocument(activeDoc);
+        private async void CloseDocumentMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Home over a document: Ctrl+W closes Home (back to the document), not the document it covers.
+            if (startPageShown && documents.Contains(activeDoc))
+            {
+                HideStartPage();
+                EditorView.Focus(FocusState.Programmatic); // typing goes to the document again
+                return;
+            }
+            await CloseDocument(activeDoc);
+        }
 
         private async void CloseOtherDocumentsMenuItem_Click(object sender, RoutedEventArgs e) =>
             await CloseDocuments(documents.Where(d => d != activeDoc).ToList());
@@ -764,9 +809,24 @@ namespace Typedown.WinUI
             return true;
         }
 
+        // Closing a tab does not take Home away: a note with unsaved changes is brought forward for its question (which hides Home), and
+        // afterwards, closed or not, the window is as it was: the document that was open, with Home over it.
         private async Task<bool> CloseDocument(DocumentTab doc)
         {
-            if (doc == null || (startPageShown && doc == activeDoc)) return true;
+            var homeWasShown = startPageShown;
+            var original = activeDoc;
+            var closed = await CloseDocumentCore(doc);
+            if (homeWasShown && !startPageShown)
+            {
+                if (!closed && original != activeDoc && documents.Contains(original)) await ActivateDocument(original);
+                if (documents.Contains(activeDoc)) ShowStartPage();
+            }
+            return closed;
+        }
+
+        private async Task<bool> CloseDocumentCore(DocumentTab doc)
+        {
+            if (doc == null || (startPageShown && doc == activeDoc && !documents.Contains(doc))) return true; // the blank one behind Home
             var original = activeDoc;
             if (doc.IsDirty)
             {
@@ -848,6 +908,7 @@ namespace Typedown.WinUI
         // pointer's position when there is one (a tab dragged out of the strip).
         private async Task MoveToNewWindow(DocumentTab doc, Windows.Graphics.PointInt32? at = null)
         {
+            var homeWasShown = startPageShown;
             var transfer = await PrepareTransfer(doc);
             if (transfer == null) return;
             try
@@ -861,6 +922,8 @@ namespace Typedown.WinUI
             finally
             {
                 doc.InTransfer = false;
+                // this window stays on Home, over what is left, whatever happened while the document was released
+                if (homeWasShown && !startPageShown && documents.Contains(activeDoc)) ShowStartPage();
             }
         }
 
@@ -869,7 +932,7 @@ namespace Typedown.WinUI
         // that once it is done, whatever happened.
         private async Task<DocumentTransfer> PrepareTransfer(DocumentTab doc)
         {
-            if (doc == null || doc.InTransfer || (startPageShown && doc == activeDoc)) return null;
+            if (doc == null || doc.InTransfer || (startPageShown && doc == activeDoc && !documents.Contains(doc))) return null;
             if (doc.PendingPath != null && !File.Exists(doc.PendingPath)) return null;
             doc.InTransfer = true;
             try
@@ -954,6 +1017,8 @@ namespace Typedown.WinUI
             StartPage.Visibility = Visibility.Visible;
             RefreshStartPageList();
             UpdateTitle();
+            UpdateHomeButton();
+            if (activeDoc != null) { UpdateTabHeader(activeDoc); UpdateStatusBar(); } // its name is not bold: it is not the page on screen
         }
 
         private void HideStartPage()
@@ -962,6 +1027,8 @@ namespace Typedown.WinUI
             startPageShown = false;
             StartPage.Visibility = Visibility.Collapsed;
             UpdateTitle();
+            UpdateHomeButton();
+            if (activeDoc != null) { UpdateTabHeader(activeDoc); UpdateStatusBar(); }
         }
 
         private void StartNewNote_Click(object sender, RoutedEventArgs e) => NewMenuItem_Click(this, null);

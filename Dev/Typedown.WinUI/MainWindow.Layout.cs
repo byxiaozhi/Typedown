@@ -54,7 +54,7 @@ namespace Typedown.WinUI
 
             if (!distractionFree) commandRowRevealed = false;
             CommandRow.Visibility = distractionFree && !commandRowRevealed ? Visibility.Collapsed : Visibility.Visible;
-            StatusBarFormatText.Visibility = distractionFree ? Visibility.Collapsed : Visibility.Visible;
+            StatusBarFormatText.Visibility = distractionFree || startPageShown ? Visibility.Collapsed : Visibility.Visible; // (Home says nothing about the note)
             StatusViewModeHost.Visibility = distractionFree ? Visibility.Collapsed : Visibility.Visible;
             UpdateToolbarVisibility();
             ApplySidebarLayout();
