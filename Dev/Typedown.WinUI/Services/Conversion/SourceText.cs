@@ -127,13 +127,15 @@ namespace Typedown.WinUI.Services.Conversion
             cut = false;
             using var pdf = PdfDocument.Open(stream);
             var sb = new StringBuilder();
-            foreach (var page in pdf.GetPages())
+            // By page number, so that the limit is looked at before the next page is loaded (GetPages() loads it first).
+            for (var number = 1; number <= pdf.NumberOfPages; number++)
             {
                 if (sb.Length > limit)
                 {
                     cut = true;
                     break;
                 }
+                var page = pdf.GetPage(number);
                 if (sb.Length > 0) sb.Append("\n\n");
                 sb.Append("--- ").Append(page.Number).Append(" ---\n").Append(ContentOrderTextExtractor.GetText(page).Trim());
             }
