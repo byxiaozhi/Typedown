@@ -2887,4 +2887,10 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="InspectorHistoryMoreLines" xml:space="preserve">
     <value>… and {0} more changed lines</value>
   </data>
+  <data name="DocumentMapMenuItem_Text" xml:space="preserve">
+    <value>Document map</value>
+  </data>
+  <data name="DocumentMapToggle_Description" xml:space="preserve">
+    <value>A thin strip at the right edge of the note shows where the window is in it, with ticks for headings, search matches, changes, comments and pauses.</value>
+  </data>
 </root>

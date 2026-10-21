@@ -1,0 +1,92 @@
+// The document map (index.tsx): a strip at the right edge of the page, drawn over it.
+.document-map {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  z-index: 25;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  transition: width 0.1s;
+  outline: none;
+}
+
+.document-map:hover,
+.document-map:focus-visible {
+  width: 16px;
+}
+
+.document-map:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--themeColor, #4a8fe0);
+}
+
+// where in the note the window is
+.dm-view {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: rgba(127, 127, 127, 0.18);
+  border-left: 1px solid rgba(127, 127, 127, 0.35);
+  pointer-events: none;
+}
+
+// a tick: two pixels high, 60 % at rest, in a lane of its own (the headings run across all three)
+.dm-tick {
+  position: absolute;
+  height: 2px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.document-map:hover .dm-tick,
+.document-map:focus-visible .dm-tick {
+  opacity: 0.9;
+}
+
+.dm-heading { left: 0; right: 0; background: rgba(128, 128, 128, 0.7); opacity: 0.35; }
+.dm-match { left: 1px; width: 4px; background: var(--themeColor, #4a8fe0); }
+.dm-current { left: 1px; width: 4px; height: 3px; background: var(--themeColor, #4a8fe0); opacity: 1; }
+.dm-add { left: 5px; width: 3px; background: #3fae6b; }
+.dm-del { left: 5px; width: 3px; background: #e0605a; }
+.dm-mark { left: 5px; width: 3px; background: #d9a441; }
+.dm-comment { left: 8px; right: 1px; background: #e8c53a; }
+.dm-pause { left: 8px; right: 1px; background: #4a8fe0; }
+
+// what the pointer is over: the first words of the nearest tick
+.dm-tip {
+  position: absolute;
+  right: 20px;
+  max-width: 260px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--editorColor, #333);
+  background: var(--floatBgColor, #fff);
+  border: 1px solid rgba(127, 127, 127, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+// read by a screen reader when the arrow keys move to another tick
+.dm-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+// high contrast: the system colours, each tick with an outline
+@media (forced-colors: active) {
+  .dm-tick { opacity: 1; outline: 1px solid CanvasText; }
+  .dm-heading, .dm-match, .dm-add, .dm-del, .dm-mark, .dm-comment, .dm-pause { background: CanvasText; }
+  .dm-current { background: Highlight; }
+  .dm-view { background: Highlight; opacity: 0.3; border-left-color: CanvasText; }
+  .dm-tip { color: CanvasText; background: Canvas; border-color: CanvasText; }
+}
