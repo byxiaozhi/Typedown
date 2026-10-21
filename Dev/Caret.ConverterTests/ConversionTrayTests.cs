@@ -172,6 +172,25 @@ namespace Caret.ConverterTests
         }
 
         [Fact]
+        public void A_many_page_pdf_is_read_only_as_far_as_the_preview_needs()
+        {
+            var work = TestPaths.NewTempFolder();
+            try
+            {
+                var path = Path.Combine(work, "long.pdf");
+                File.WriteAllBytes(path, SampleFactory.BuildPdf(Enumerable.Range(1, 300).Select(i => $"Page text number {i} with a few words on it").ToList()));
+                var preview = SourceText.Read(path, 1000);
+                Assert.True(preview.Truncated);
+                Assert.True(preview.Text.Length <= 1000);
+                Assert.StartsWith("--- 1 ---\n", preview.Text);
+                Assert.Contains("--- 2 ---", preview.Text);
+                Assert.DoesNotContain("--- 300 ---", preview.Text);
+                Assert.False(SourceText.Read(Sample("pdf-article.pdf"), 100_000).Truncated);
+            }
+            finally { Directory.Delete(work, true); }
+        }
+
+        [Fact]
         public void A_file_that_is_open_elsewhere_can_be_read()
         {
             var work = TestPaths.NewTempFolder();

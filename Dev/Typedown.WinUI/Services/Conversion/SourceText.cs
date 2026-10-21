@@ -34,7 +34,7 @@ namespace Typedown.WinUI.Services.Conversion
                 ".docx" or ".docm" or ".dotx" => Word(stream),
                 ".xlsx" or ".xlsm" => ExcelConverter.PlainRows(stream, limit, out prefixCut),
                 ".pptx" or ".pptm" => PowerPoint(stream),
-                ".pdf" => Pdf(stream),
+                ".pdf" => Pdf(stream, limit, out prefixCut),
                 ".csv" => Csv(stream, limit, out prefixCut),
                 ".eml" => Email(EmlReader.Read(stream, HtmlText.ToMarkdown)),
                 ".msg" => Email(MsgFileReader.Read(stream, HtmlText.ToMarkdown)),
@@ -121,14 +121,19 @@ namespace Typedown.WinUI.Services.Conversion
             return sb.ToString();
         }
 
-        private static string Pdf(Stream stream)
+        // Read from the file itself (no copy of it in memory), page by page, and no further once the preview has its text.
+        private static string Pdf(Stream stream, int limit, out bool cut)
         {
-            using var buffer = new MemoryStream();
-            stream.CopyTo(buffer);
-            using var pdf = PdfDocument.Open(buffer.ToArray());
+            cut = false;
+            using var pdf = PdfDocument.Open(stream);
             var sb = new StringBuilder();
             foreach (var page in pdf.GetPages())
             {
+                if (sb.Length > limit)
+                {
+                    cut = true;
+                    break;
+                }
                 if (sb.Length > 0) sb.Append("\n\n");
                 sb.Append("--- ").Append(page.Number).Append(" ---\n").Append(ContentOrderTextExtractor.GetText(page).Trim());
             }
