@@ -5,6 +5,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Typedown.WinUI.Models;
+using Typedown.WinUI.Services;
+using Typedown.WinUI.Utilities;
 
 namespace Typedown.WinUI
 {
@@ -29,6 +31,11 @@ namespace Typedown.WinUI
             if (wide == homeWide && HomeColumns.RowSpacing == (wide ? 0 : 28)) return;
             homeWide = wide;
             HomeColumns.RowSpacing = wide ? 0 : 28;
+            // the two cards under the first one: side by side, or one under the other
+            Grid.SetColumn(HomeTipCard, wide ? 1 : 0);
+            Grid.SetRow(HomeTipCard, wide ? 0 : 1);
+            Grid.SetColumnSpan(HomeCaptureCard, wide ? 1 : 2);
+            Grid.SetColumnSpan(HomeTipCard, wide ? 1 : 2);
             var columns = new FrameworkElement[] { HomeContinueColumn, HomeStartColumn, HomeFoldersColumn };
             for (var i = 0; i < columns.Length; i++)
             {
@@ -88,6 +95,118 @@ namespace Typedown.WinUI
 
         // The button is pressed in while Home is on screen.
         private void UpdateHomeButton() => HomeButton.IsChecked = startPageShown;
+
+        // --- The top of Home: the note to pick up, a line to jot down, the tip of the day, the comments that wait ---
+
+        private int homeTopVersion;
+        private string homeResumePath;
+
+        // Called with the list of Continue. The files are read off the window's thread, and what comes back is shown only if no newer
+        // refresh has started (the page is refreshed often).
+        private void RefreshHomeTop(System.Collections.Generic.IReadOnlyList<StartPageEntry> files)
+        {
+            var version = ++homeTopVersion;
+            // the note to pick up: the one opened last that is still there
+            homeResumePath = recentFiles.Files.FirstOrDefault(System.IO.File.Exists);
+            if (homeResumePath == null) HomeResumeCard.Visibility = Visibility.Collapsed;
+            else
+            {
+                var entry = new StartPageEntry(homeResumePath, false);
+                HomeResumeName.Text = entry.Name;
+                HomeResumeWhere.Text = string.Join(" · ", new[] { entry.Folder, entry.Modified }.Where(s => !string.IsNullOrEmpty(s)));
+                HomeResumeExcerpt.Text = "";
+                HomeResumeCard.Visibility = Visibility.Visible;
+            }
+            ShowHomeTip();
+            var resume = homeResumePath;
+            var paths = files.Select(f => f.FullPath).ToList();
+            // the note to pick up is looked at for comments too, also when the ten files of the list do not include it
+            if (resume != null && !paths.Contains(resume, StringComparer.OrdinalIgnoreCase)) paths.Add(resume);
+            _ = System.Threading.Tasks.Task.Run(() =>
+            {
+                var excerpt = resume == null ? "" : ReadHomeExcerpt(resume);
+                var inbox = new System.Collections.Generic.List<HomeInboxEntry>();
+                foreach (var path in paths)
+                {
+                    var count = CountCommentsIn(path);
+                    if (count > 0) inbox.Add(new HomeInboxEntry(path, count));
+                }
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    if (version != homeTopVersion) return;
+                    HomeResumeExcerpt.Text = excerpt;
+                    HomeResumeExcerpt.Visibility = excerpt.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+                    var ordered = inbox.OrderByDescending(e => e.Comments).ThenBy(e => e.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
+                    HomeInboxList.ItemsSource = ordered.Take(3).ToList();
+                    HomeInboxSummary.Text = Locale.Format("HomeInboxSummary", ordered.Sum(e => e.Comments), ordered.Count);
+                    HomeInboxCard.Visibility = ordered.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+                });
+            });
+        }
+
+        // The start of the file, enough to say what it is about (a file that cannot be read says nothing).
+        private static string ReadHomeExcerpt(string path)
+        {
+            try
+            {
+                using var reader = new System.IO.StreamReader(path, System.Text.Encoding.UTF8, true);
+                var buffer = new char[16384];
+                var read = reader.Read(buffer, 0, buffer.Length);
+                return HomeFacts.Excerpt(new string(buffer, 0, read));
+            }
+            catch { return ""; }
+        }
+
+        // Comments are looked for in files up to a megabyte: a bigger file is not a note.
+        private static int CountCommentsIn(string path)
+        {
+            try
+            {
+                if (new System.IO.FileInfo(path).Length > 1_000_000) return 0;
+                return HomeFacts.CountComments(System.IO.File.ReadAllText(path));
+            }
+            catch { return 0; }
+        }
+
+        private async void HomeResume_Click(object sender, RoutedEventArgs e)
+        {
+            if (homeResumePath != null) await OpenRecentFile(homeResumePath);
+        }
+
+        private async void HomeInbox_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is HomeInboxEntry entry) await OpenRecentFile(entry.FullPath);
+        }
+
+        // One line typed here becomes a new note (in a tab of its own, with Home over a document).
+        private async void HomeCaptureBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key != Windows.System.VirtualKey.Enter) return;
+            e.Handled = true;
+            var text = HomeCaptureBox.Text.Trim();
+            if (text.Length == 0) return;
+            HomeCaptureBox.Text = "";
+            if (!await MakeRoomForDocument()) { HomeCaptureBox.Text = text; return; }
+            file.NewFile();
+            file.ApplyRecoveredBackup(text + "\n");
+            UpdateTitle();
+            Log("Home: a quick note was started");
+        }
+
+        // The tip of the day: one shortcut of the cheat sheet's list, another each day.
+        private void ShowHomeTip()
+        {
+            var all = ShortcutCatalog.All;
+            var index = HomeFacts.TipIndex(DateTime.Now, all.Length);
+            if (index < 0) { HomeTipCard.Visibility = Visibility.Collapsed; return; }
+            var tip = all[index];
+            HomeTipText.Inlines.Clear();
+            HomeTipText.Inlines.Add(new Microsoft.UI.Xaml.Documents.Run { Text = Locale.GetString(tip.NameKey) + ": " });
+            HomeTipText.Inlines.Add(new Microsoft.UI.Xaml.Documents.Run { Text = tip.Keys, FontWeight = Microsoft.UI.Text.FontWeights.SemiBold });
+            HomeTipCard.Visibility = Visibility.Visible;
+        }
+
+        private void HomeTipShortcuts_Click(object sender, RoutedEventArgs e) => ToggleShortcutSheet();
 
         // The Folders column: the pinned folders, then the ones opened last, the ones that are still there.
         private void RefreshHomeFolders()

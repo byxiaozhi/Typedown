@@ -1046,9 +1046,11 @@ namespace Typedown.WinUI
             favoritesService.Reload(); // another window may have changed them
             var favorites = favoritesService.Files.Where(File.Exists).Select(p => new StartPageEntry(p, true));
             var recent = recentFiles.Files.Where(File.Exists).Where(p => !favoritesService.Contains(p)).Select(p => new StartPageEntry(p, false));
-            StartPageRecentList.ItemsSource = favorites.Concat(recent).Take(10).ToList();
+            var shown = favorites.Concat(recent).Take(10).ToList();
+            StartPageRecentList.ItemsSource = shown;
             HomeNoFilesText.Visibility = StartPageRecentList.Items.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
             RefreshHomeFolders();
+            RefreshHomeTop(shown);
         }
 
         private void StartPageFavorite_Click(object sender, RoutedEventArgs e)

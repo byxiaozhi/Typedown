@@ -3145,6 +3145,30 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="HomeButtonToolTip" xml:space="preserve">
     <value>Strona główna (Ctrl+Shift+H)</value>
   </data>
+  <data name="HomeResumeTitle" xml:space="preserve">
+    <value>Wróć do przerwanej pracy</value>
+  </data>
+  <data name="HomeResumeButton" xml:space="preserve">
+    <value>Kontynuuj</value>
+  </data>
+  <data name="HomeCaptureTitle" xml:space="preserve">
+    <value>Szybka notatka</value>
+  </data>
+  <data name="HomeCapturePlaceholder" xml:space="preserve">
+    <value>Wpisz linijkę i naciśnij Enter: stanie się nową notatką</value>
+  </data>
+  <data name="HomeTipTitle" xml:space="preserve">
+    <value>Wskazówka dnia</value>
+  </data>
+  <data name="HomeTipShortcuts" xml:space="preserve">
+    <value>Wszystkie skróty</value>
+  </data>
+  <data name="HomeInboxTitle" xml:space="preserve">
+    <value>Komentarze oczekujące</value>
+  </data>
+  <data name="HomeInboxSummary" xml:space="preserve">
+    <value>Komentarze: {0} · Notatki: {1}</value>
+  </data>
   <data name="HelpWhatsNew" xml:space="preserve">
     <value>Co nowego</value>
   </data>
