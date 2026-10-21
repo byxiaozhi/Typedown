@@ -28,18 +28,20 @@ namespace Typedown.WinUI.Services.Conversion
         {
             // FileShare.ReadWrite: a document that is open in Word or Excel can be read too (as the conversion does).
             using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+            var prefixCut = false;
             var text = Path.GetExtension(path).ToLowerInvariant() switch
             {
                 ".docx" or ".docm" or ".dotx" => Word(stream),
                 ".xlsx" or ".xlsm" => ExcelConverter.PlainRows(stream),
                 ".pptx" or ".pptm" => PowerPoint(stream),
                 ".pdf" => Pdf(stream),
-                ".csv" => Csv(stream),
+                ".csv" => Csv(stream, limit, out prefixCut),
                 ".eml" => Email(EmlReader.Read(stream, HtmlText.ToMarkdown)),
                 ".msg" => Email(MsgFileReader.Read(stream, HtmlText.ToMarkdown)),
                 _ => throw new NotSupportedException(Path.GetExtension(path)),
             };
-            return Cut(text.Replace("\r\n", "\n").Trim('\n'), limit);
+            var preview = Cut(text.Replace("\r\n", "\n").Trim('\n'), limit);
+            return prefixCut && !preview.Truncated ? preview with { Truncated = true } : preview;
         }
 
         // At a line end when there is one near the limit, so a line is not shown half.
@@ -133,11 +135,25 @@ namespace Typedown.WinUI.Services.Conversion
             return sb.ToString();
         }
 
-        private static string Csv(Stream stream)
+        // Only the start of a big file is read: four bytes for each character that is shown is more than enough in any encoding, and the
+        // cut is made at a line end (or, in UTF-16, at a character), so that a character is not split and the encoding is still found.
+        private static string Csv(Stream stream, int limit, out bool cut)
         {
+            var max = (long)limit * 4;
             using var buffer = new MemoryStream();
-            stream.CopyTo(buffer);
-            return Utilities.TextFileEncoding.Decode(buffer.ToArray()).Text;
+            var chunk = new byte[81920];
+            int read;
+            while (buffer.Length < max && (read = stream.Read(chunk, 0, (int)Math.Min(chunk.Length, max - buffer.Length))) > 0)
+                buffer.Write(chunk, 0, read);
+            cut = stream.ReadByte() >= 0;
+            var bytes = buffer.ToArray();
+            if (cut)
+            {
+                var utf16 = bytes.Length >= 2 && (bytes[0] == 0xFF && bytes[1] == 0xFE || bytes[0] == 0xFE && bytes[1] == 0xFF);
+                if (utf16) bytes = bytes[..(bytes.Length & ~1)];
+                else if (Array.LastIndexOf(bytes, (byte)'\n') is var end and > 0) bytes = bytes[..end];
+            }
+            return Utilities.TextFileEncoding.Decode(bytes).Text;
         }
 
         private static string Email(EmailDocument email)

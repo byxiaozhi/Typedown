@@ -101,6 +101,29 @@ namespace Caret.ConverterTests
         }
 
         [Fact]
+        public void A_big_csv_is_read_only_as_far_as_the_preview_needs_and_keeps_its_encoding()
+        {
+            var work = TestPaths.NewTempFolder();
+            try
+            {
+                var path = Path.Combine(work, "big.csv");
+                // 20,000 lines of UTF-8 with Polish letters: cut in the middle of the bytes, a letter must not be split
+                const string Words = "żółć gęślą jaźń";
+                File.WriteAllText(path, "id;nazwa\n" + string.Concat(Enumerable.Range(1, 20000).Select(i => $"{i};{Words}\n")), new System.Text.UTF8Encoding(false));
+                var preview = SourceText.Read(path, 1000);
+                Assert.True(preview.Truncated);
+                Assert.True(preview.Text.Length <= 1000);
+                Assert.StartsWith("id;nazwa\n1;" + Words + "\n", preview.Text);
+                Assert.DoesNotContain("�", preview.Text);
+                Assert.DoesNotContain("Å", preview.Text); // no legacy code page taken for UTF-8
+                Assert.EndsWith(Words, preview.Text);
+                // a small file is shown whole
+                Assert.False(SourceText.Read(Sample("csv-comma.csv"), 1000).Truncated);
+            }
+            finally { Directory.Delete(work, true); }
+        }
+
+        [Fact]
         public void A_file_that_is_open_elsewhere_can_be_read()
         {
             var work = TestPaths.NewTempFolder();

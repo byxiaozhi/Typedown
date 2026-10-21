@@ -2966,7 +2966,7 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
     <value>Personal data: not masked</value>
   </data>
   <data name="CompareMaskedNone" xml:space="preserve">
-    <value>Personal data: masked, none found</value>
+    <value>Personal data: masking on, none found</value>
   </data>
   <data name="CompareKindPerson" xml:space="preserve">
     <value>People</value>

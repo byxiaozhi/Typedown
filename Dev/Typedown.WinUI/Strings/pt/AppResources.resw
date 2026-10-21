@@ -3014,7 +3014,7 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
     <value>Dados pessoais: não ocultos</value>
   </data>
   <data name="CompareMaskedNone" xml:space="preserve">
-    <value>Dados pessoais: ocultos, nenhum encontrado</value>
+    <value>Dados pessoais: ocultação ativada, nenhum encontrado</value>
   </data>
   <data name="CompareKindPerson" xml:space="preserve">
     <value>Pessoas</value>

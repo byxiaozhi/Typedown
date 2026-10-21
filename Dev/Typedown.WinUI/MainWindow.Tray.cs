@@ -241,6 +241,8 @@ namespace Typedown.WinUI
             CompareSourceList.ItemsSource = new[] { "…" };
             ConvertComparePanel.Visibility = Visibility.Visible;
             UpdateTray();
+            // The lists' scroll viewers exist once the panel has been laid out (it was collapsed until now).
+            ConvertComparePanel.UpdateLayout();
             HookCompareScrolling();
             if (!fromCombo) CompareBackButton.Focus(FocusState.Programmatic);
 
@@ -261,6 +263,7 @@ namespace Typedown.WinUI
             }
             if (round != compareRound) return;
             CompareSourceList.ItemsSource = lines;
+            HookCompareScrolling();
             var note = new List<string>();
             if (failure != null) note.Add(Locale.Format("CompareNoSource", failure));
             if (truncated) note.Add(Locale.GetString("CompareTruncated"));
