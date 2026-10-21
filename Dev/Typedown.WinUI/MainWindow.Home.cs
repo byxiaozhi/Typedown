@@ -63,13 +63,20 @@ namespace Typedown.WinUI
             if (!editorReady) { UpdateHomeButton(); return; }
             if (startPageShown)
             {
-                if (documents.Contains(activeDoc)) HideStartPage();
+                if (documents.Contains(activeDoc))
+                {
+                    HideStartPage();
+                    EditorView.Focus(FocusState.Programmatic); // typing goes to the document again
+                }
                 UpdateHomeButton();
                 return;
             }
             if (SettingsPageShown) HideSettingsPage();
             if (ConvertPage.Visibility == Visibility.Visible) CloseConvertPage();
             ShowStartPage();
+            // The editor may have had the keyboard (Ctrl+Shift+H from the text): it goes to Home, so that typing cannot change the covered note.
+            var target = StartPageRecentList.Items.Count > 0 ? StartPageRecentList : HomeStartList;
+            if (!target.Focus(FocusState.Programmatic)) HomeButton.Focus(FocusState.Programmatic); // its rows are not laid out yet: the button takes it
             Log("Home: shown over the document");
         }
 

@@ -210,11 +210,19 @@
                  workaround. -->
             <Image x:Name="TitleBarIconImage" Width="16" Height="16" HorizontalAlignment="Left"
                    VerticalAlignment="Top" Margin="12,12,0,0"/>
-            <TextBlock x:Name="TitleTextBlock" Text="Caret" VerticalAlignment="Center" Margin="34,0,0,0"
+            <TextBlock x:Name="TitleTextBlock" Text="Caret" VerticalAlignment="Center" Margin="74,0,0,0"
                        Style="{ThemeResource CaptionTextBlockStyle}"/>
             <!-- New since the fork: document tabs (MainWindow.Tabs.cs). Left-aligned and sized to its
                  tabs, so the empty title bar to its right still drags the window. -->
-            <TabView x:Name="DocumentTabView" Margin="34,4,8,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+            <!-- Home is always one click away, left of the first tab (MainWindow.Home.cs): it shows the Home page over the document that is
+                 open and does not close anything. It stands beside the strip, not in it, so it stays when the tabs are turned off. -->
+            <ToggleButton x:Name="HomeButton" Click="HomeButton_Click" Width="32" Height="28" Padding="0" Margin="34,0,0,4"
+                          HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent" BorderThickness="0"
+                          SizeChanged="HomeButton_SizeChanged"
+                          ToolTipService.ToolTip="{u:Loc Key=HomeButtonToolTip}" AutomationProperties.Name="{u:Loc Key=Home}">
+                <FontIcon Glyph="&#xE80F;" FontSize="14"/>
+            </ToggleButton>
+            <TabView x:Name="DocumentTabView" Margin="74,4,8,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                      IsAddTabButtonVisible="True" TabWidthMode="SizeToContent" CloseButtonOverlayMode="OnPointerOver"
                      CanReorderTabs="True" CanDragTabs="True" AllowDropTabs="True"
                      SelectionChanged="DocumentTabView_SelectionChanged" TabCloseRequested="DocumentTabView_TabCloseRequested"
@@ -223,17 +231,7 @@
                      TabDragStarting="DocumentTabView_TabDragStarting" TabDragCompleted="DocumentTabView_TabDragCompleted"
                      TabStripDragOver="DocumentTabView_TabStripDragOver" TabStripDrop="DocumentTabView_TabStripDrop"
                      Loaded="DocumentTabView_Loaded"
-                     ToolTipService.ToolTip="{x:Null}">
-                <!-- Home is always one click away, left of the first tab (MainWindow.Home.cs): it shows the Home page over the
-                     document that is open and does not close anything. -->
-                <TabView.TabStripHeader>
-                    <ToggleButton x:Name="HomeButton" Click="HomeButton_Click" Width="32" Height="28" Padding="0" Margin="0,0,4,0"
-                                  VerticalAlignment="Center" Background="Transparent" BorderThickness="0"
-                                  ToolTipService.ToolTip="{u:Loc Key=HomeButtonToolTip}" AutomationProperties.Name="{u:Loc Key=Home}">
-                        <FontIcon Glyph="&#xE80F;" FontSize="14"/>
-                    </ToggleButton>
-                </TabView.TabStripHeader>
-            </TabView>
+                     ToolTipService.ToolTip="{x:Null}"/>
             <!-- Only Search and Settings (interface review D2): the view mode lives in the status bar,
                  Favorite in the File menu and the tab's menu, the theme in View > Theme. -->
             <StackPanel x:Name="TitleRightPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,140,0" Spacing="4">
@@ -467,6 +465,7 @@
                 <MenuFlyoutItem x:Name="SpeakingClockMenuItem" Text="{u:Loc Key=SpeakingClockMenuItem_Text}" Click="SpeakingClockMenuItem_Click"/>
             </MenuBarItem>
             <MenuBarItem x:Name="HelpMenu" Title="{u:Loc Key=HelpMenu_Title}">
+                <MenuFlyoutItem Text="{u:Loc Key=HelpWhatsNew}" Tag="whats-new" Click="HelpTopic_Click"/>
                 <MenuFlyoutItem Text="{u:Loc Key=HelpGettingStarted}" Tag="getting-started" Click="HelpTopic_Click"/>
                 <MenuFlyoutSeparator/>
                 <MenuFlyoutItem Text="{u:Loc Key=HelpTopicReview}" Tag="review" Click="HelpTopic_Click"/>

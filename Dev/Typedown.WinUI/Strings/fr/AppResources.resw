@@ -3169,4 +3169,7 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="HomeInboxSummary" xml:space="preserve">
     <value>Commentaires : {0} · Notes : {1}</value>
   </data>
+  <data name="HelpWhatsNew" xml:space="preserve">
+    <value>Nouveautés</value>
+  </data>
 </root>

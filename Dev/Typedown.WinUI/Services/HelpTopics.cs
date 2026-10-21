@@ -7,7 +7,7 @@ namespace Typedown.WinUI.Services
     internal static class HelpTopics
     {
         // The file names (without .md); the Help menu has one item for each.
-        public static readonly string[] Names = { "getting-started", "review", "speech-marks", "teleprompter", "convert", "word-export", "punctuation" };
+        public static readonly string[] Names = { "whats-new", "getting-started", "review", "speech-marks", "teleprompter", "convert", "word-export", "punctuation" };
 
         // The file of a topic in the language, or the English one when the language has none.
         public static string PathOf(string root, string language, string topic)

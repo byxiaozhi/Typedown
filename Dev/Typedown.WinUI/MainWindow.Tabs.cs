@@ -320,6 +320,8 @@ namespace Typedown.WinUI
 
         private void DocumentTabView_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
 
+        private void HomeButton_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
+
         // The strip never takes the whole title bar: a part is left free to press and drag, which moves the window. With many tabs
         // the strip used to reach the buttons and nothing of the bar could move the window; now the tabs scroll instead.
         private void UpdateTabStripMaxWidth()
@@ -337,17 +339,21 @@ namespace Typedown.WinUI
                 var source = Microsoft.UI.Input.InputNonClientPointerSource.GetForWindowId(AppWindow.Id);
                 // Even a lone tab can be dragged: onto another window's strip, or out to move this window
                 // (DocumentTabView_TabDroppedOutside). The empty title bar beside it still drags the window.
-                if (DocumentTabView.Visibility != Visibility.Visible || DocumentTabView.XamlRoot == null || DocumentTabView.ActualWidth == 0)
+                // The house button beside the strip takes the pointer too (it stays when the tabs are off).
+                var parts = new System.Collections.Generic.List<FrameworkElement>();
+                if (HomeButton.XamlRoot != null && HomeButton.ActualWidth > 0) parts.Add(HomeButton);
+                if (DocumentTabView.Visibility == Visibility.Visible && DocumentTabView.XamlRoot != null && DocumentTabView.ActualWidth > 0) parts.Add(DocumentTabView);
+                if (parts.Count == 0)
                 {
                     source.ClearRegionRects(Microsoft.UI.Input.NonClientRegionKind.Passthrough);
                     return;
                 }
-                var scale = DocumentTabView.XamlRoot.RasterizationScale;
-                var bounds = DocumentTabView.TransformToVisual(null).TransformBounds(new Windows.Foundation.Rect(0, 0, DocumentTabView.ActualWidth, DocumentTabView.ActualHeight));
-                source.SetRegionRects(Microsoft.UI.Input.NonClientRegionKind.Passthrough, new[]
+                var scale = parts[0].XamlRoot.RasterizationScale;
+                source.SetRegionRects(Microsoft.UI.Input.NonClientRegionKind.Passthrough, parts.Select(part =>
                 {
-                    new Windows.Graphics.RectInt32((int)(bounds.X * scale), (int)(bounds.Y * scale), (int)Math.Ceiling(bounds.Width * scale), (int)Math.Ceiling(bounds.Height * scale)),
-                });
+                    var bounds = part.TransformToVisual(null).TransformBounds(new Windows.Foundation.Rect(0, 0, part.ActualWidth, part.ActualHeight));
+                    return new Windows.Graphics.RectInt32((int)(bounds.X * scale), (int)(bounds.Y * scale), (int)Math.Ceiling(bounds.Width * scale), (int)Math.Ceiling(bounds.Height * scale));
+                }).ToArray());
             }
             catch (Exception ex)
             {
@@ -699,7 +705,14 @@ namespace Typedown.WinUI
                 SelectTab(activeDoc);
                 return true;
             }
-            // Home over a document that is open: it stays as it is, and the new one goes in a tab of its own (below).
+            // Home over a document that is open: it stays as it is, and the new one goes in a tab of its own (below). With tabs off the document
+            // is replaced, so the question about its changes comes first, and Home stays up if the answer is Cancel.
+            if (startPageShown && !TabsEnabled)
+            {
+                if (!await ConfirmDiscardChangesIfNeeded()) return false;
+                HideStartPage();
+                return true;
+            }
             HideStartPage();
             if (!TabsEnabled) return await ConfirmDiscardChangesIfNeeded();
             if (activeDoc.IsBlank) return true;

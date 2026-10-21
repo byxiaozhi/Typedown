@@ -3169,4 +3169,7 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="HomeInboxSummary" xml:space="preserve">
     <value>Komentarze: {0} · Notatki: {1}</value>
   </data>
+  <data name="HelpWhatsNew" xml:space="preserve">
+    <value>Co nowego</value>
+  </data>
 </root>
