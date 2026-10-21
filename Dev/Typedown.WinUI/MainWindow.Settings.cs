@@ -178,12 +178,18 @@ namespace Typedown.WinUI
             WindowMaterialCard.Description = Locale.GetString(Config.IsMicaSupported ? "WindowMaterialDescription" : "WindowMaterialUnsupported");
             // A Windows contrast theme overrides every colour here (Caret.xaml has no HighContrast
             // dictionary, so WinUI uses the system's): say so, and don't offer what wouldn't show.
+            ShowContrastState();
+            RefreshAppearancePreview();
+        }
+
+        // What a Windows contrast theme does to this page: the controls that would not show are disabled, and the picture of the window
+        // (which draws the scheme's colours, which that theme replaces) is not shown. Read again when the contrast setting changes.
+        private void ShowContrastState()
+        {
             var contrast = new AccessibilitySettings().HighContrast;
             ContrastThemeInfoBar.IsOpen = contrast;
             ColorSchemeExpander.IsEnabled = AccentSourceCard.IsEnabled = WindowMaterialCard.IsEnabled = !contrast;
-            // The picture draws the scheme's colours, which a contrast theme replaces: no picture of what would not show.
             AppearancePreviewCard.Visibility = contrast ? Visibility.Collapsed : Visibility.Visible;
-            RefreshAppearancePreview();
         }
 
         // The scheme pictures are drawn in the theme that is showing, so they are built again when it changes.
@@ -211,6 +217,7 @@ namespace Typedown.WinUI
         private void RefreshAppearanceForTheme()
         {
             if (!SettingsPageShown) return;
+            ShowContrastState(); // the contrast setting may be what changed
             FillSchemeGrid();
             LoadSectionColorSettings();
         }

@@ -194,6 +194,8 @@ namespace Typedown.WinUI
                 window.settings.SectionColorsLight = settings.SectionColorsLight;
                 window.settings.SectionColorsDark = settings.SectionColorsDark;
                 window.ApplySectionColors();
+                // another window with Settings open shows the new colours in its lists, badges and preview too
+                if (window != this && window.SettingsPageShown) window.LoadSectionColorSettings();
             }
         }
 
