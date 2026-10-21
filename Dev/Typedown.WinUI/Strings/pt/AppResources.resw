@@ -3145,4 +3145,7 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="HomeButtonToolTip" xml:space="preserve">
     <value>Início (Ctrl+Shift+H)</value>
   </data>
+  <data name="HelpWhatsNew" xml:space="preserve">
+    <value>Novidades</value>
+  </data>
 </root>

@@ -48,6 +48,7 @@
 .mt-strike { text-decoration: line-through; }
 .mt-icon { font: 400 14px 'Segoe Fluent Icons', 'Segoe MDL2 Assets', sans-serif; }
 .mt-word { font-weight: 400; font-size: 12px; padding: 0 6px; }
+.mt-divider { align-self: center; width: 1px; height: 16px; margin: 0 2px; background: rgba(127, 127, 127, 0.4); flex: none; }
 .mt-heading { padding: 0 2px 0 6px; }
 .mt-chevron { margin-left: 3px; font: 400 8px 'Segoe Fluent Icons', 'Segoe MDL2 Assets', sans-serif; }
 
@@ -86,6 +87,7 @@
 @media (forced-colors: active) {
   .mini-toolbar, .mt-menu { background: Canvas; color: CanvasText; border-color: CanvasText; box-shadow: none; }
   .mt-button, .mt-item { color: ButtonText; }
+  .mt-divider { background: CanvasText; }
   .mt-button:focus-visible, .mt-item:focus-visible { outline-color: Highlight; }
   .mt-button:hover, .mt-item:hover { background: Highlight; color: HighlightText; }
   .mt-button[aria-pressed="true"] { background: Highlight; color: HighlightText; }
