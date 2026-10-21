@@ -315,12 +315,23 @@ namespace Typedown.WinUI
                 if (element is TabViewItem item) { pressedTab = item; break; }
             }
             // Home is over the document whose tab is the selected one, so a press on it selects nothing: it brings the document back here.
-            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown))
+            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown) && !PressedOnButton(e))
             {
                 HideStartPage();
                 // the press leaves the keyboard on the tab: once it is done, the text gets it back
                 DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () => EditorView.Focus(FocusState.Programmatic));
             }
+        }
+
+        // The close button of a tab is a button inside it: a press there is a close, not a visit.
+        private static bool PressedOnButton(PointerRoutedEventArgs e)
+        {
+            for (var element = e.OriginalSource as DependencyObject; element != null; element = Microsoft.UI.Xaml.Media.VisualTreeHelper.GetParent(element))
+            {
+                if (element is Microsoft.UI.Xaml.Controls.Primitives.ButtonBase) return true;
+                if (element is TabViewItem) break;
+            }
+            return false;
         }
 
         private void DocumentTabView_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
@@ -797,19 +808,29 @@ namespace Typedown.WinUI
             return true;
         }
 
+        // Closing a tab does not take Home away: a note with unsaved changes is brought forward for its question (which hides Home), and
+        // afterwards, closed or not, the window is as it was: the document that was open, with Home over it.
         private async Task<bool> CloseDocument(DocumentTab doc)
+        {
+            var homeWasShown = startPageShown;
+            var original = activeDoc;
+            var closed = await CloseDocumentCore(doc);
+            if (homeWasShown && !startPageShown)
+            {
+                if (!closed && original != activeDoc && documents.Contains(original)) await ActivateDocument(original);
+                if (documents.Contains(activeDoc)) ShowStartPage();
+            }
+            return closed;
+        }
+
+        private async Task<bool> CloseDocumentCore(DocumentTab doc)
         {
             if (doc == null || (startPageShown && doc == activeDoc && !documents.Contains(doc))) return true; // the blank one behind Home
             var original = activeDoc;
-            var homeWasShown = startPageShown;
             if (doc.IsDirty)
             {
                 await ActivateDocument(doc);
-                if (!await ConfirmDiscardChangesIfNeeded())
-                {
-                    if (homeWasShown) ShowStartPage(); // Cancel: Home is back over the document, as it was
-                    return false;
-                }
+                if (!await ConfirmDiscardChangesIfNeeded()) return false;
                 doc.File.CompleteDiscard(); // "Don't Save": its recovery backup goes with it
             }
             var wasActive = doc == activeDoc;
