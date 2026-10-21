@@ -139,9 +139,15 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
         // the tick the keys went to stays the current one when it is still there (a refresh must not send the next step back)
         const previous = ticksRef.current[current.current]
         ticksRef.current = found
-        current.current = previous
-            ? found.findIndex(t => t.kind === previous.kind && t.text === previous.text && Math.abs(t.top - previous.top) < 2)
-            : -1
+        // (identical ticks, such as two pauses in one line: the one nearest to where it was, not the first)
+        let at = -1
+        if (previous) {
+            found.forEach((t, i) => {
+                if (t.kind === previous.kind && t.text === previous.text && Math.abs(t.top - previous.top) < 2
+                    && (at < 0 || Math.abs(i - current.current) < Math.abs(at - current.current))) at = i
+            })
+        }
+        current.current = at
         setTicks(found)
         measure()
     }, [source, review, speech, measure])
