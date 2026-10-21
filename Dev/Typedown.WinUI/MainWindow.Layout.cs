@@ -218,6 +218,10 @@ namespace Typedown.WinUI
             return false;
         }
 
+        // What the page says about the document map (DocumentMapState): the strip is drawn, and it has the keyboard focus.
+        private bool documentMapShown;
+        private bool documentMapFocused;
+
         private void CycleArea(int direction)
         {
             var areas = new List<(UIElement Area, Func<bool> Focus)>
@@ -233,6 +237,22 @@ namespace Typedown.WinUI
             // The toolbar sits inside the command row in Streamlined, so it's recognised first.
             var current = FocusIsWithin(FormatCommandBar) ? 2 : areas.FindIndex(a => FocusIsWithin(a.Area));
             if (current < 0) current = 4; // the page (WebView2 focus isn't in the XAML tree)
+            // The document map (a strip the page draws) is a stop of its own after the page: the editor keeps Tab for itself, so F6
+            // asks the page to focus the strip, and Shift+F6 from the strip gives the focus back to the text.
+            if (current == 4 && documentMapShown && !startPageShown && !SettingsPageShown)
+            {
+                if (documentMapFocused && direction < 0)
+                {
+                    _ = RunInPage("window.__caretMap&&window.__caretMap.release()");
+                    return;
+                }
+                if (!documentMapFocused && direction > 0)
+                {
+                    EditorView.Focus(FocusState.Keyboard);
+                    _ = RunInPage("window.__caretMap&&window.__caretMap.focus()");
+                    return;
+                }
+            }
             for (var step = 1; step <= areas.Count; step++)
             {
                 var next = ((current + direction * step) % areas.Count + areas.Count) % areas.Count;

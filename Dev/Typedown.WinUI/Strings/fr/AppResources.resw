@@ -2962,4 +2962,10 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="StatusLineEndingTip" xml:space="preserve">
     <value>Ce fichier utilise des fins de ligne {0}. Caret l’enregistre avec LF.</value>
   </data>
+  <data name="DocumentMapMenuItem_Text" xml:space="preserve">
+    <value>Carte du document</value>
+  </data>
+  <data name="DocumentMapToggle_Description" xml:space="preserve">
+    <value>Une fine bande au bord droit de la note montre où se trouve la fenêtre, avec des repères pour les titres, les résultats de recherche, les modifications, les commentaires et les pauses.</value>
+  </data>
 </root>

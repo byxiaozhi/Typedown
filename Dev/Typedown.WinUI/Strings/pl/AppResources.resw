@@ -2962,4 +2962,10 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="StatusLineEndingTip" xml:space="preserve">
     <value>Ten plik używa zakończeń wierszy {0}. Caret zapisuje go z LF.</value>
   </data>
+  <data name="DocumentMapMenuItem_Text" xml:space="preserve">
+    <value>Mapa dokumentu</value>
+  </data>
+  <data name="DocumentMapToggle_Description" xml:space="preserve">
+    <value>Wąski pasek przy prawej krawędzi notatki pokazuje, gdzie jest okno, ze znacznikami nagłówków, wyników wyszukiwania, zmian, komentarzy i pauz.</value>
+  </data>
 </root>

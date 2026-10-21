@@ -2962,4 +2962,10 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="StatusLineEndingTip" xml:space="preserve">
     <value>Este arquivo usa quebras de linha {0}. O Caret o salva com LF.</value>
   </data>
+  <data name="DocumentMapMenuItem_Text" xml:space="preserve">
+    <value>Mapa do documento</value>
+  </data>
+  <data name="DocumentMapToggle_Description" xml:space="preserve">
+    <value>Uma faixa fina na borda direita da nota mostra onde está a janela, com marcas para títulos, resultados de pesquisa, alterações, comentários e pausas.</value>
+  </data>
 </root>

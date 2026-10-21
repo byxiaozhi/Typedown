@@ -235,6 +235,7 @@ namespace Typedown.WinUI
             ApplyEditorBackground();
             ApplyTopmost();
             ApplyStatusBarVisibility();
+            SyncDocumentMapToggles();   // the View menu item starts checked or not as the setting says, not only after Settings was opened
             UpdateViewModeUi();
             BuildSpeechCard();
             ApplyLayout();
@@ -554,6 +555,7 @@ namespace Typedown.WinUI
                 settings.SourceCode,
                 settings.SplitPreview,
                 settings.ShowReviewMarks,
+                settings.DocumentMap,
                 settings.SpeechMode,
                 SpeechStyles = SpeechLibrary.Styles(SpeechLibraryMarks),
                 SpeechRing = SpeechRingCatalog(),
@@ -849,6 +851,11 @@ namespace Typedown.WinUI
                 await EditorView.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(ReviewScript);
                 eventCenter.GetObservable<EditorEventArgs>("HostShortcut").Subscribe(x => HandleHostShortcut(x.Args));
                 eventCenter.GetObservable<EditorEventArgs>("SearchResult").Subscribe(x => UpdateFindCount(x.Args));
+                eventCenter.GetObservable<EditorEventArgs>("DocumentMapState").Subscribe(x =>
+                {
+                    documentMapShown = x.Args?["shown"]?.ToObject<bool>() ?? false;
+                    documentMapFocused = x.Args?["focused"]?.ToObject<bool>() ?? false;
+                });
                 eventCenter.GetObservable<EditorEventArgs>("ContextMenu").Subscribe(x => ShowEditorContextMenu(x.Args));
                 eventCenter.GetObservable<EditorEventArgs>("SpellCheck").Subscribe(x => SpellCheckRequest(x.Args));
                 EditorView.Source = new Uri("https://typedown.editor.local/index.html");
@@ -2076,6 +2083,7 @@ namespace Typedown.WinUI
             StatusBarToggle.IsOn = settings.StatusBarOpen;
             DecorativeCardToggle.IsOn = settings.ShowDecorativeCard;
             TypewriterToggle.IsOn = settings.Typewriter;
+            SyncDocumentMapToggles();
             FocusModeToggle.IsOn = settings.FocusMode;
             SpellcheckToggle.IsOn = settings.SpellcheckEnabled;
             PunctuationHintsToggle.IsOn = settings.PunctuationHints;

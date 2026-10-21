@@ -61,6 +61,8 @@ namespace Typedown.WinUI.ViewModels
         // the last rehearsal of the talk (the file beside it) goes with the explanation
         public bool SpeechExplainRehearsal { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool Typewriter { get => GetSettingValue(false); set => SetSettingValue(value); }
+        // New since the fork: the document map, a strip at the right edge of the note (on by default; the page draws it).
+        public bool DocumentMap { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool FocusMode { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool SearchIsCaseSensitive { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool SearchIsRegexp { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -189,7 +191,7 @@ namespace Typedown.WinUI.ViewModels
 
         private readonly HashSet<string> notifySet = new()
         {
-            "SourceCode", "SplitPreview", "ShowReviewMarks", "SpeechMode", "SpeechWpm", "SpeechHeadingsSpoken", "Typewriter", "FocusMode", "SearchIsCaseSensitive", "SearchIsRegexp",
+            "SourceCode", "SplitPreview", "ShowReviewMarks", "SpeechMode", "SpeechWpm", "SpeechHeadingsSpoken", "Typewriter", "DocumentMap", "FocusMode", "SearchIsCaseSensitive", "SearchIsRegexp",
             "SearchIsWholeWord", "FontSize", "LineHeight", "AutoPairBracket", "AutoPairQuote",
             "TrimUnnecessaryCodeBlockEmptyLines", "PreferLooseListItem", "AutoPairMarkdownSyntax", "EditorAreaWidth"
         };

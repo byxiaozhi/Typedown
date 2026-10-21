@@ -407,6 +407,7 @@
                 </MenuFlyoutSubItem>
                 <MenuFlyoutItem x:Name="CommandPaletteMenuItem" Text="{u:Loc Key=CommandPaletteMenuItem_Text}" Click="CommandPaletteMenuItem_Click" KeyboardAcceleratorTextOverride="Ctrl+Shift+P"/>
                 <ToggleMenuFlyoutItem x:Name="InspectorMenuItem" Text="{u:Loc Key=InspectorMenuItem_Text}" Click="InspectorMenuItem_Click" KeyboardAcceleratorTextOverride="Ctrl+Shift+I"/>
+                <ToggleMenuFlyoutItem x:Name="DocumentMapMenuItem" Text="{u:Loc Key=DocumentMapMenuItem_Text}" Click="DocumentMapMenuItem_Click"/>
                 <MenuFlyoutSeparator/>
                 <RadioMenuFlyoutItem x:Name="ViewModeViewMenuItem" Text="{u:Loc Key=ViewModeViewMenuItem_Text}" GroupName="ViewMode" Tag="view" Click="ViewModeMenuItem_Click"/>
                 <RadioMenuFlyoutItem x:Name="ViewModeCodeMenuItem" Text="{u:Loc Key=ViewModeCodeMenuItem_Text}" GroupName="ViewMode" Tag="code" Click="ViewModeMenuItem_Click"/>
@@ -1786,6 +1787,10 @@
                             <tk:SettingsCard Header="{u:Loc Key=ReviewMarksToggle_Header}" Description="{u:Loc Key=ReviewMarksToggle_Description}">
                                 <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE90A;"/></tk:SettingsCard.HeaderIcon>
                                 <ToggleSwitch x:Name="ReviewMarksToggle" OnContent="{u:Loc Key=ToggleOn}" OffContent="{u:Loc Key=ToggleOff}" Toggled="ReviewMarksToggle_Toggled"/>
+                            </tk:SettingsCard>
+                            <tk:SettingsCard Header="{u:Loc Key=DocumentMapMenuItem_Text}" Description="{u:Loc Key=DocumentMapToggle_Description}">
+                                <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE74C;"/></tk:SettingsCard.HeaderIcon>
+                                <ToggleSwitch x:Name="DocumentMapToggle" OnContent="{u:Loc Key=ToggleOn}" OffContent="{u:Loc Key=ToggleOff}" Toggled="DocumentMapToggle_Toggled"/>
                             </tk:SettingsCard>
                             <tk:SettingsCard Header="{u:Loc Key=TypewriterToggle}" Description="{u:Loc Key=TypewriterToggleDescription}">
                                 <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE8E3;"/></tk:SettingsCard.HeaderIcon>
