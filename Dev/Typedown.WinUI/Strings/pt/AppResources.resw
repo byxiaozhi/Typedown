@@ -3142,4 +3142,7 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="HomeNoFiles" xml:space="preserve">
     <value>As notas que você abre aparecem aqui.</value>
   </data>
+  <data name="HelpWhatsNew" xml:space="preserve">
+    <value>Novidades</value>
+  </data>
 </root>
