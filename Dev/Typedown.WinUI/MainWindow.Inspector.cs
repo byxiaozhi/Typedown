@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.UI.Dispatching;
@@ -94,6 +95,7 @@ namespace Typedown.WinUI
         private void InspectorTextChanged(string text)
         {
             inspectorText = text;
+            ScheduleStatusReview();   // the status bar's review counts
             if (InspectorShown && InspectorOnHistory) ScheduleInspectorHistory();
             if (!InspectorShown || !InspectorOnReview) return;
             if (inspectorTimer == null)
@@ -130,13 +132,19 @@ namespace Typedown.WinUI
                     Tint = ReviewListEntry.TintOf(item.Kind),
                 });
             }
+            InspectorReviewSummaryText.Text = items.Count == 0 ? "" : ReviewSummaryText(items);
+            InspectorReviewEmptyText.Visibility = items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        // "Changes: 3 · Comments: 1" (and "· Highlights: 2" when there are highlights): the Review tab's line, and the status bar's.
+        private static string ReviewSummaryText(IReadOnlyList<ReviewListItem> items)
+        {
             var changes = items.Count(i => i.Kind is "add" or "del" or "sub");
             var comments = items.Count(i => i.Kind == "comment");
             var highlights = items.Count - changes - comments;
             var summary = string.Format(Locale.GetString("InspectorReviewSummary"), changes, comments);
             if (highlights > 0) summary += " · " + string.Format(Locale.GetString("InspectorReviewSummaryHighlights"), highlights);
-            InspectorReviewSummaryText.Text = items.Count == 0 ? "" : summary;
-            InspectorReviewEmptyText.Visibility = items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+            return summary;
         }
 
         private void InspectorReviewListView_ItemClick(object sender, ItemClickEventArgs e)

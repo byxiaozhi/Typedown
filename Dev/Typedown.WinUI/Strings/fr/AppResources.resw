@@ -2935,4 +2935,31 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="InspectorHistoryMoreLines" xml:space="preserve">
     <value>… et {0} autres lignes modifiées</value>
   </data>
+  <data name="StatusSaved" xml:space="preserve">
+    <value>Enregistré {0}</value>
+  </data>
+  <data name="StatusUnsaved" xml:space="preserve">
+    <value>● Non enregistré</value>
+  </data>
+  <data name="StatusSavedTip" xml:space="preserve">
+    <value>Afficher l’historique de cette note</value>
+  </data>
+  <data name="StatusReading" xml:space="preserve">
+    <value>{0} min de lecture</value>
+  </data>
+  <data name="StatusReadingUnder" xml:space="preserve">
+    <value>&lt; 1 min de lecture</value>
+  </data>
+  <data name="StatusReadingTip" xml:space="preserve">
+    <value>Temps de lecture à 200 mots par minute</value>
+  </data>
+  <data name="StatusSpeakingTip" xml:space="preserve">
+    <value>Afficher la durée du discours</value>
+  </data>
+  <data name="StatusReviewTip" xml:space="preserve">
+    <value>Afficher la révision de cette note</value>
+  </data>
+  <data name="StatusLineEndingTip" xml:space="preserve">
+    <value>Ce fichier utilise des fins de ligne {0}. Caret l’enregistre avec LF.</value>
+  </data>
 </root>

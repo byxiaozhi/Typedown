@@ -337,16 +337,8 @@ namespace Typedown.WinUI
             TitleTextBlock.Text = startPageShown ? "Caret" : dirtyMark + activeDoc.DisplayName + " - Caret";
             Title = TitleTextBlock.Text;
             UpdateFavoriteButton();
+            UpdateStatusSaved();
             UpdateEncodingStatus();
-        }
-
-        // Status bar: "Markdown", or — for a file that wasn't UTF-8 and was read in Windows' legacy
-        // code page (Utilities/TextFileEncoding.cs) — which encoding, and that saving converts it.
-        private void UpdateEncodingStatus()
-        {
-            var legacy = file.LegacyEncodingName;
-            StatusBarFormatText.Text = legacy == null ? Locale.GetString("Markdown") : Locale.Format("StatusLegacyEncoding", legacy);
-            ToolTipService.SetToolTip(StatusBarFormatText, legacy == null ? null : Locale.Format("StatusLegacyEncodingTip", legacy));
         }
 
         // File > Favorite, checked for a favorite; the tabs show a star for theirs (UpdateTabHeader).
@@ -1081,6 +1073,7 @@ namespace Typedown.WinUI
             {
                 history.InitHistory(x.Args["text"]?.ToString() ?? "");
                 InspectorTextChanged(x.Args["text"]?.ToString() ?? "");   // another note was loaded
+                UpdateStatusBar();                                          // the status bar says what there is to say about it
                 activeDoc.HistoryReady = true;
                 if (!editorReady)
                 {
@@ -2863,6 +2856,7 @@ namespace Typedown.WinUI
                 ? (singular ? "WordCountOne" : "WordCountMany")
                 : (singular ? "CharacterCountOne" : "CharacterCountMany");
             StatusBarWordCountButton.Content = Locale.Format(key, count.ToString("N0"));
+            UpdateStatusReading();
         }
 
         /// <summary>
