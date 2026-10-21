@@ -60,9 +60,24 @@ namespace Typedown.WinUI
             };
             // A click anywhere puts the badges away (the click does its own thing).
             root.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler((_, _) => { if (keyTipsShown) HideKeyTips(restore: false); }), true);
+            // A menu that is open takes the keys in its own popup, not through the window: Alt and another menu's letter goes from one menu to the next, as it does in
+            // any Windows app (the items of every menu and sub-menu listen).
+            foreach (var menu in AppMenuBar.Items) ListenForAltKeys(menu.Items);
             // What a screen reader says about the menus: Alt and the letter.
             for (var i = 0; i < AppMenuBar.Items.Count && i < MenuAccessKeyNames.Length; i++)
                 AutomationProperties.SetAccessKey(AppMenuBar.Items[i], "Alt+" + Locale.GetString(MenuAccessKeyNames[i]));
+        }
+
+        private void ListenForAltKeys(IList<MenuFlyoutItemBase> items)
+        {
+            foreach (var item in items)
+            {
+                if (item is MenuFlyoutSubItem sub) ListenForAltKeys(sub.Items);
+                item.PreviewKeyDown += (_, e) =>
+                {
+                    if (e.KeyStatus.IsMenuKeyDown && !CtrlIsDown() && KeyOfVirtualKey(e.Key) is { } key && ActivateKeyTip(key, fromEditor: false)) e.Handled = true;
+                };
+            }
         }
 
         private static bool CtrlIsDown() => InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Control).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down);
