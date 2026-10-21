@@ -192,6 +192,20 @@ namespace Typedown.WinUI
             AppearancePreviewCard.Visibility = contrast ? Visibility.Collapsed : Visibility.Visible;
         }
 
+        // The page drawn again from the settings, for a window whose Settings is open while another window changed them (its controls
+        // are set without being taken for the user's choices).
+        private void ReloadAppearanceSettings()
+        {
+            var before = suppressSettingsEvents;
+            suppressSettingsEvents = true;
+            try
+            {
+                LoadAppearanceSettings();
+                LoadSectionColorSettings();
+            }
+            finally { suppressSettingsEvents = before; }
+        }
+
         // The scheme pictures are drawn in the theme that is showing, so they are built again when it changes.
         private bool schemeGridDark;
 
@@ -267,6 +281,8 @@ namespace Typedown.WinUI
                 window.ApplyBackdrop();
                 window.ApplyEditorBackground();
                 window.PushThemeToEditor();
+                // another window with Settings open shows the new scheme, accent and picture too
+                if (window != this && window.SettingsPageShown) window.ReloadAppearanceSettings();
             }
             Log($"Appearance: scheme={settings.ColorScheme}, accent={settings.AccentSource}, material={settings.WindowMaterial}");
         }
