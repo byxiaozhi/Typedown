@@ -372,6 +372,29 @@ namespace Typedown.WinUI
 
         private void TypewriterToggle_Toggled(object sender, RoutedEventArgs e) { if (!suppressSettingsEvents) settings.Typewriter = TypewriterToggle.IsOn; }
 
+        // The document map (a strip at the right edge of the note, drawn by the page): the switch is in Settings and in the View menu;
+        // either one sets the other.
+        private void DocumentMapToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (suppressSettingsEvents) return;
+            settings.DocumentMap = DocumentMapToggle.IsOn;
+            SyncDocumentMapToggles();
+        }
+
+        private void DocumentMapMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            settings.DocumentMap = DocumentMapMenuItem.IsChecked;
+            SyncDocumentMapToggles();
+        }
+
+        private void SyncDocumentMapToggles()
+        {
+            var before = suppressSettingsEvents;
+            suppressSettingsEvents = true;
+            DocumentMapToggle.IsOn = DocumentMapMenuItem.IsChecked = settings.DocumentMap;
+            suppressSettingsEvents = before;
+        }
+
         // The switch is in Settings and in the Review panel of the sidebar; either one sets the other.
         private void ReviewMarksToggle_Toggled(object sender, RoutedEventArgs e)
         {

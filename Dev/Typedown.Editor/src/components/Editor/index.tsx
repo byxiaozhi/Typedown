@@ -2,6 +2,7 @@ import CodeMirror from "components/CodeMirror";
 import MuyaEditor from "components/Muya";
 import Preview from "components/Preview";
 import SplitScrollbar from "./SplitScrollbar";
+import DocumentMap from "components/DocumentMap";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { remote } from "services/remote";
 import transport from "services/transport";
@@ -227,6 +228,11 @@ const Editor: React.FC = () => {
         return <></>
     }
 
+    // The document map (View > Document map): beside the Visual view and the Code view; the Split view has its own scroll bar.
+    const map = options.documentMap !== false && !(options.sourceCode && options.splitPreview)
+        ? <DocumentMap source={!!options.sourceCode} markdown={markdown ?? ''} review={options.showReviewMarks !== false} speech={speechMode} />
+        : null
+
     if (options.sourceCode) {
         const code = (
             <CodeMirror
@@ -241,7 +247,7 @@ const Editor: React.FC = () => {
                 onSearchArgChange={setSearchArg}
             />
         )
-        if (!options.splitPreview) return code
+        if (!options.splitPreview) return <>{code}{map}</>
         return (
             <>
                 <div className="split-code">{code}</div>
@@ -251,17 +257,20 @@ const Editor: React.FC = () => {
         )
     } else {
         return (
-            <MuyaEditor
-                options={options}
-                cursor={cursor}
-                markdown={markdown ?? ''}
-                searchOpen={searchOpen}
-                searchArg={searchArg}
-                scrollTopRef={muyaScrollTopRef}
-                onMarkdownChange={onMarkdownChange}
-                onCursorChange={setCursor}
-                onSearchArgChange={setSearchArg}
-            />
+            <>
+                <MuyaEditor
+                    options={options}
+                    cursor={cursor}
+                    markdown={markdown ?? ''}
+                    searchOpen={searchOpen}
+                    searchArg={searchArg}
+                    scrollTopRef={muyaScrollTopRef}
+                    onMarkdownChange={onMarkdownChange}
+                    onCursorChange={setCursor}
+                    onSearchArgChange={setSearchArg}
+                />
+                {map}
+            </>
         )
     }
 }

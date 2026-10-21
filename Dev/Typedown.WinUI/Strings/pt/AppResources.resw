@@ -2935,4 +2935,10 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="InspectorHistoryMoreLines" xml:space="preserve">
     <value>… e mais {0} linhas alteradas</value>
   </data>
+  <data name="DocumentMapMenuItem_Text" xml:space="preserve">
+    <value>Mapa do documento</value>
+  </data>
+  <data name="DocumentMapToggle_Description" xml:space="preserve">
+    <value>Uma faixa fina na borda direita da nota mostra onde está a janela, com marcas para títulos, resultados de pesquisa, alterações, comentários e pausas.</value>
+  </data>
 </root>
