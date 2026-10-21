@@ -178,12 +178,14 @@ namespace Caret.ConverterTests
             try
             {
                 var path = Path.Combine(work, "long.pdf");
-                File.WriteAllBytes(path, SampleFactory.BuildPdf(Enumerable.Range(1, 300).Select(i => $"Page text number {i} with a few words on it").ToList()));
+                // each page is its content stream: a line of text drawn with the font of the fixture
+                File.WriteAllBytes(path, SampleFactory.BuildPdf(Enumerable.Range(1, 300).Select(i => $"BT /F1 11 Tf 72 720 Td (Page text number {i} with a few words on it) Tj ET\n").ToList()));
                 var preview = SourceText.Read(path, 1000);
                 Assert.True(preview.Truncated);
                 Assert.True(preview.Text.Length <= 1000);
                 Assert.StartsWith("--- 1 ---\n", preview.Text);
                 Assert.Contains("--- 2 ---", preview.Text);
+                Assert.Contains("Page text number 1 with a few words on it", preview.Text);
                 Assert.DoesNotContain("--- 300 ---", preview.Text);
                 Assert.False(SourceText.Read(Sample("pdf-article.pdf"), 100_000).Truncated);
             }
