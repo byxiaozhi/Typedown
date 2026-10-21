@@ -148,6 +148,8 @@ namespace Typedown.WinUI
                 var first = group[0];
                 list.Add(new KeyTipTarget("group" + number++, first, first.Label, null, false, !toolbarCovered && !first.IsInOverflow && OnScreen(first), () => first.Focus(FocusState.Keyboard)));
             }
+            // the house button left of the tabs
+            list.Add(new KeyTipTarget("buttonHome", HomeButton, Locale.GetString("Home"), null, false, OnScreen(HomeButton), () => ToggleHome()));
             // the sidebar: the buttons at its top, then its navigation items
             foreach (var (button, label) in new[] { ((Button)NewNoteButton, Locale.GetString("NewNote")), (SaveNoteButton, Locale.GetString("SaveMenuItem_Text")) })
                 list.Add(new KeyTipTarget("button" + button.Name, button, label, null, false, OnScreen(button), () => Invoke(button)));

@@ -3142,4 +3142,7 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="HomeNoFiles" xml:space="preserve">
     <value>Otwierane notatki pojawiają się tutaj.</value>
   </data>
+  <data name="HomeButtonToolTip" xml:space="preserve">
+    <value>Strona główna (Ctrl+Shift+H)</value>
+  </data>
 </root>

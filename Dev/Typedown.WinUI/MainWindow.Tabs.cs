@@ -314,6 +314,8 @@ namespace Typedown.WinUI
             {
                 if (element is TabViewItem item) { pressedTab = item; break; }
             }
+            // Home is over the document whose tab is the selected one, so a press on it selects nothing: it brings the document back here.
+            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown)) HideStartPage();
         }
 
         private void DocumentTabView_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
@@ -677,7 +679,7 @@ namespace Typedown.WinUI
 
         private async Task SwitchTabRelative(int delta)
         {
-            if (documents.Count < 2 || startPageShown) return;
+            if (documents.Count < 2 || !documents.Contains(activeDoc)) return; // (Home over a document: Ctrl+Tab goes on from it)
             var index = (documents.IndexOf(activeDoc) + delta + documents.Count) % documents.Count;
             await ActivateDocument(documents[index]);
         }
@@ -689,13 +691,16 @@ namespace Typedown.WinUI
         // False when the user cancelled.
         private async Task<bool> MakeRoomForDocument()
         {
-            if (startPageShown)
+            if (startPageShown && !documents.Contains(activeDoc))
             {
-                if (!documents.Contains(activeDoc)) AttachTab(activeDoc);
+                // Home with no document open: the blank one behind it takes the new document.
+                AttachTab(activeDoc);
                 HideStartPage();
                 SelectTab(activeDoc);
                 return true;
             }
+            // Home over a document that is open: it stays as it is, and the new one goes in a tab of its own (below).
+            HideStartPage();
             if (!TabsEnabled) return await ConfirmDiscardChangesIfNeeded();
             if (activeDoc.IsBlank) return true;
             var doc = CreateDocument();
@@ -750,7 +755,12 @@ namespace Typedown.WinUI
 
         // --- Closing ---
 
-        private async void CloseDocumentMenuItem_Click(object sender, RoutedEventArgs e) => await CloseDocument(activeDoc);
+        private async void CloseDocumentMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Home over a document: Ctrl+W closes Home (back to the document), not the document it covers.
+            if (startPageShown && documents.Contains(activeDoc)) { HideStartPage(); return; }
+            await CloseDocument(activeDoc);
+        }
 
         private async void CloseOtherDocumentsMenuItem_Click(object sender, RoutedEventArgs e) =>
             await CloseDocuments(documents.Where(d => d != activeDoc).ToList());
@@ -766,7 +776,7 @@ namespace Typedown.WinUI
 
         private async Task<bool> CloseDocument(DocumentTab doc)
         {
-            if (doc == null || (startPageShown && doc == activeDoc)) return true;
+            if (doc == null || (startPageShown && doc == activeDoc && !documents.Contains(doc))) return true; // the blank one behind Home
             var original = activeDoc;
             if (doc.IsDirty)
             {
@@ -869,7 +879,7 @@ namespace Typedown.WinUI
         // that once it is done, whatever happened.
         private async Task<DocumentTransfer> PrepareTransfer(DocumentTab doc)
         {
-            if (doc == null || doc.InTransfer || (startPageShown && doc == activeDoc)) return null;
+            if (doc == null || doc.InTransfer || (startPageShown && doc == activeDoc && !documents.Contains(doc))) return null;
             if (doc.PendingPath != null && !File.Exists(doc.PendingPath)) return null;
             doc.InTransfer = true;
             try
@@ -954,6 +964,8 @@ namespace Typedown.WinUI
             StartPage.Visibility = Visibility.Visible;
             RefreshStartPageList();
             UpdateTitle();
+            UpdateHomeButton();
+            if (activeDoc != null) { UpdateTabHeader(activeDoc); UpdateStatusBar(); } // its name is not bold: it is not the page on screen
         }
 
         private void HideStartPage()
@@ -962,6 +974,8 @@ namespace Typedown.WinUI
             startPageShown = false;
             StartPage.Visibility = Visibility.Collapsed;
             UpdateTitle();
+            UpdateHomeButton();
+            if (activeDoc != null) { UpdateTabHeader(activeDoc); UpdateStatusBar(); }
         }
 
         private void StartNewNote_Click(object sender, RoutedEventArgs e) => NewMenuItem_Click(this, null);

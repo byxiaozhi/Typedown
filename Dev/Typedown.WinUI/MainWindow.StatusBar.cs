@@ -45,7 +45,7 @@ namespace Typedown.WinUI
         private void UpdateStatusReading()
         {
             var words = lastWordCount?["word"]?.ToObject<int>() ?? 0;
-            if (words <= 0)
+            if (words <= 0 || startPageShown)
             {
                 StatusReadingText.Visibility = Visibility.Collapsed;
                 return;
@@ -60,7 +60,7 @@ namespace Typedown.WinUI
         {
             var data = speechTiming;
             var words = data?["words"]?.ToObject<int>() ?? 0;
-            if (!settings.SpeechMode || data == null || words == 0)
+            if (!settings.SpeechMode || data == null || words == 0 || startPageShown)
             {
                 StatusSpeakingButton.Visibility = Visibility.Collapsed;
                 return;
@@ -92,7 +92,7 @@ namespace Typedown.WinUI
         private void UpdateStatusReview()
         {
             var items = ReviewList.Build(inspectorText);
-            SetStatusSegment(StatusReviewButton, items.Count == 0 ? null : ReviewSummaryText(items));
+            SetStatusSegment(StatusReviewButton, items.Count == 0 || startPageShown ? null : ReviewSummaryText(items));
         }
 
         // The format on the right: "Markdown · UTF-8 · LF"; a file read in the legacy code page, or with CRLF or CR line ends, says what
@@ -122,6 +122,8 @@ namespace Typedown.WinUI
         // Everything the bar says about the note, looked at again (a note was opened, saved, or switched to).
         private void UpdateStatusBar()
         {
+            // Home says nothing about the note it covers: no count, no format.
+            StatusBarWordCountButton.Visibility = StatusBarFormatText.Visibility = startPageShown ? Visibility.Collapsed : Visibility.Visible;
             UpdateStatusSaved();
             UpdateEncodingStatus();
             UpdateStatusReading();

@@ -339,7 +339,7 @@ namespace Typedown.WinUI
         private void UpdateTitle()
         {
             var dirtyMark = file.IsDirty ? "● " : ""; // ● — matches the original's DisplaySaved-driven title dot
-            TitleTextBlock.Text = startPageShown ? "Caret" : dirtyMark + activeDoc.DisplayName + " - Caret";
+            TitleTextBlock.Text = startPageShown ? Locale.GetString("Home") + " - Caret" : dirtyMark + activeDoc.DisplayName + " - Caret";
             Title = TitleTextBlock.Text;
             UpdateFavoriteButton();
             UpdateStatusSaved();
@@ -1050,6 +1050,7 @@ namespace Typedown.WinUI
                 case "s" when shift: SaveAsMenuItem_Click(this, null); break;
                 case "s": SaveMenuItem_Click(this, null); break;
                 case "f": ShowFindReplace(); break;
+                case "h" when shift: ToggleHome(); break;
                 case "h": ShowFindReplace(true); break;
                 case "i" when shift: ToggleInspector(); break;
                 case "f3": FindFromKey(shift); break;

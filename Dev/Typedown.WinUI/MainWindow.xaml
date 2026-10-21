@@ -175,6 +175,7 @@
             <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabAccelerator_Invoked"/>
             <KeyboardAccelerator Key="P" Modifiers="Control,Shift" Invoked="CommandPaletteAccelerator_Invoked"/>
             <KeyboardAccelerator Key="I" Modifiers="Control,Shift" Invoked="InspectorAccelerator_Invoked"/>
+            <KeyboardAccelerator Key="H" Modifiers="Control,Shift" Invoked="HomeAccelerator_Invoked"/>
         </Grid.KeyboardAccelerators>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -222,7 +223,17 @@
                      TabDragStarting="DocumentTabView_TabDragStarting" TabDragCompleted="DocumentTabView_TabDragCompleted"
                      TabStripDragOver="DocumentTabView_TabStripDragOver" TabStripDrop="DocumentTabView_TabStripDrop"
                      Loaded="DocumentTabView_Loaded"
-                     ToolTipService.ToolTip="{x:Null}"/>
+                     ToolTipService.ToolTip="{x:Null}">
+                <!-- Home is always one click away, left of the first tab (MainWindow.Home.cs): it shows the Home page over the
+                     document that is open and does not close anything. -->
+                <TabView.TabStripHeader>
+                    <ToggleButton x:Name="HomeButton" Click="HomeButton_Click" Width="32" Height="28" Padding="0" Margin="0,0,4,0"
+                                  VerticalAlignment="Center" Background="Transparent" BorderThickness="0"
+                                  ToolTipService.ToolTip="{u:Loc Key=HomeButtonToolTip}" AutomationProperties.Name="{u:Loc Key=Home}">
+                        <FontIcon Glyph="&#xE80F;" FontSize="14"/>
+                    </ToggleButton>
+                </TabView.TabStripHeader>
+            </TabView>
             <!-- Only Search and Settings (interface review D2): the view mode lives in the status bar,
                  Favorite in the File menu and the tab's menu, the theme in View > Theme. -->
             <StackPanel x:Name="TitleRightPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,140,0" Spacing="4">
@@ -435,6 +446,7 @@
                 <MenuFlyoutItem Text="{u:Loc Key=ReviewDeleteAllComments}" Click="DeleteAllCommentsMenuItem_Click"/>
             </MenuBarItem>
             <MenuBarItem Title="{u:Loc Key=View}">
+                <MenuFlyoutItem x:Name="HomeMenuItem" Text="{u:Loc Key=Home}" Click="HomeMenuItem_Click" KeyboardAcceleratorTextOverride="Ctrl+Shift+H"/>
                 <ToggleMenuFlyoutItem x:Name="TocMenuItem" Text="{u:Loc Key=TocMenuItem_Text}" IsChecked="True" Click="TocMenuItem_Click"/>
                 <ToggleMenuFlyoutItem x:Name="StatusBarMenuItem" Text="{u:Loc Key=StatusBarMenuItem_Text}" IsChecked="True" Click="StatusBarMenuItem_Click"/>
                 <MenuFlyoutSubItem Text="{u:Loc Key=ThemeMenu}">

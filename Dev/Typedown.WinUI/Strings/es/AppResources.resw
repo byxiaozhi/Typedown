@@ -3142,4 +3142,7 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="HomeNoFiles" xml:space="preserve">
     <value>Las notas que abras aparecen aquí.</value>
   </data>
+  <data name="HomeButtonToolTip" xml:space="preserve">
+    <value>Inicio (Ctrl+Mayús+H)</value>
+  </data>
 </root>
