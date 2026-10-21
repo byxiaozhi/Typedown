@@ -2893,4 +2893,10 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="DocumentMapToggle_Description" xml:space="preserve">
     <value>A thin strip at the right edge of the note shows where the window is in it, with ticks for headings, search matches, changes, comments and pauses.</value>
   </data>
+  <data name="SelectionToolbarToggle_Header" xml:space="preserve">
+    <value>Toolbar over a selection</value>
+  </data>
+  <data name="SelectionToolbarToggle_Description" xml:space="preserve">
+    <value>A small toolbar appears over the words you select in the Visual view, with bold, italic, underline, strikethrough, link and headings (and Comment or the speech marks when those are on).</value>
+  </data>
 </root>

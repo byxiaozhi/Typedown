@@ -2941,4 +2941,10 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="DocumentMapToggle_Description" xml:space="preserve">
     <value>Wąski pasek przy prawej krawędzi notatki pokazuje, gdzie jest okno, ze znacznikami nagłówków, wyników wyszukiwania, zmian, komentarzy i pauz.</value>
   </data>
+  <data name="SelectionToolbarToggle_Header" xml:space="preserve">
+    <value>Pasek narzędzi nad zaznaczeniem</value>
+  </data>
+  <data name="SelectionToolbarToggle_Description" xml:space="preserve">
+    <value>Mały pasek pojawia się nad zaznaczonymi słowami w widoku Wizualnym: pogrubienie, kursywa, podkreślenie, przekreślenie, łącze i nagłówki (oraz Komentarz lub znaczniki przemówienia, gdy są włączone).</value>
+  </data>
 </root>

@@ -2941,4 +2941,10 @@ Arquivos Word, Excel, PowerPoint, PDF e CSV não precisam dele: o Caret os conve
   <data name="DocumentMapToggle_Description" xml:space="preserve">
     <value>Uma faixa fina na borda direita da nota mostra onde está a janela, com marcas para títulos, resultados de pesquisa, alterações, comentários e pausas.</value>
   </data>
+  <data name="SelectionToolbarToggle_Header" xml:space="preserve">
+    <value>Barra de ferramentas sobre a seleção</value>
+  </data>
+  <data name="SelectionToolbarToggle_Description" xml:space="preserve">
+    <value>Uma pequena barra aparece sobre as palavras selecionadas na exibição Visual, com negrito, itálico, sublinhado, tachado, link e títulos (e Comentário ou as marcas de fala quando estão ativadas).</value>
+  </data>
 </root>

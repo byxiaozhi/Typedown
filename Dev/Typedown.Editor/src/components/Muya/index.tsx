@@ -9,6 +9,7 @@ import CodePicker from 'components/Muya/lib/ui/codePicker'
 import EmojiPicker from 'components/Muya/lib/ui/emojiPicker'
 import ImageSelector from 'components/Muya/lib/ui/imageSelector'
 import ImageToolbar from 'components/Muya/lib/ui/imageToolbar'
+import MiniToolbar from 'components/MiniToolbar'
 import LinkTools from 'components/Muya/lib/ui/linkTools'
 import TableBarTools from 'components/Muya/lib/ui/tableTools'
 import FootnoteTool from 'components/Muya/lib/ui/footnoteTool'
@@ -411,6 +412,15 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
             lineHeight: props.options?.lineHeight
         }}>
             <div id="editor" />
+            {props.options?.selectionToolbar !== false && (
+                <MiniToolbar
+                    editor={editor}
+                    review={props.options?.showReviewMarks !== false}
+                    speech={!!props.options?.speechMode}
+                    onFormat={type => { trimSelectionTrailingSpace(); editor?.format(type) }}
+                    onParagraph={type => editor?.updateParagraph(type)}
+                />
+            )}
         </div>
     )
 
