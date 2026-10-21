@@ -87,6 +87,7 @@
 @media (forced-colors: active) {
   .mini-toolbar, .mt-menu { background: Canvas; color: CanvasText; border-color: CanvasText; box-shadow: none; }
   .mt-button, .mt-item { color: ButtonText; }
+  .mt-divider { background: CanvasText; }
   .mt-button:focus-visible, .mt-item:focus-visible { outline-color: Highlight; }
   .mt-button:hover, .mt-item:hover { background: Highlight; color: HighlightText; }
   .mt-button[aria-pressed="true"] { background: Highlight; color: HighlightText; }
