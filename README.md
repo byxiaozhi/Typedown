@@ -79,6 +79,18 @@ More in **Help > The teleprompter** and **Help > Speech marks**.
 
 More in **Help > Export to Word**.
 
+## Find your way around
+
+- **Command palette** (`Ctrl+Shift+P`, **View > Command Palette**): type a few letters of what you want to do, a command, a setting or a note, and press Enter
+- **Inspector pane** (`Ctrl+Shift+I`): a column beside the note with its outline, its review marks, the timing of the talk, every match of the search, and the **History** of the note: the earlier saved versions, which you can compare with the text now and restore. The versions stay on your PC (50 per note, 30 days; the newest copy of a note always stays) and the history can be switched off in the History tab
+- **Document map**: a thin strip along the right edge that shows where you are in the note and where the headings, search matches, comments and changes are
+- **A small toolbar over the selected words** with the common formats and **Copy as WhatsApp text**, and a **status bar** that says what matters (saved, words, reading time, review counts) and nothing more
+- **Drop files anywhere on the window** (Word, PDF, Excel, PowerPoint, CSV, emails or a folder) to convert them to Markdown. A tray shows the jobs, with Open, Show in folder, **Compare** (source and Markdown side by side) and Retry
+- **Home**, one click away from the house button left of the tabs (`Ctrl+Shift+H`): the note to pick up, a box for a quick note, the comments waiting in your notes, a tip of the day, your recent files and your folders. Nothing is closed when Home is shown
+- **Keyboard first**: press `Alt` to see which key reaches each button, and `Ctrl+Shift+/` for the list of every shortcut
+- **Appearance cards** in Settings, with a live preview of the colour scheme and a way back to it in one click
+- **What's new**: Help > What's new lists what changed in every version
+
 ## Why Caret
 
 Most of what we know lives in Word documents, Excel workbooks, PowerPoint decks and PDFs. AI assistants like Copilot and ChatGPT work best with plain text, and every attached file costs tokens, time and upload limits.

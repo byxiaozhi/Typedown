@@ -72,6 +72,18 @@ Plus de détails dans **Aide > Le téléprompteur** et **Aide > Marques de disco
 
 Plus de détails dans **Aide > Exporter vers Word**.
 
+## Trouvez votre chemin
+
+- **Palette de commandes** (`Ctrl+Maj+P`, **Affichage > Palette de commandes**) : tapez quelques lettres de ce que vous voulez faire, une commande, un réglage ou une note, puis appuyez sur Entrée
+- **Panneau Inspecteur** (`Ctrl+Maj+I`) : une colonne à côté de la note avec son plan, ses marques de révision, le chronométrage du discours, toutes les occurrences de la recherche et l'**Historique** de la note : les versions enregistrées précédentes, que vous pouvez comparer au texte actuel et restaurer. Les versions restent sur votre PC (50 par note, 30 jours ; la copie la plus récente de chaque note reste toujours) et l'historique peut être désactivé dans l'onglet Historique
+- **Carte du document** : une bande fine au bord droit qui montre où vous êtes dans la note et où sont les titres, les occurrences de la recherche, les commentaires et les modifications
+- **Une petite barre d'outils au-dessus des mots sélectionnés** avec les mises en forme courantes et **Copier comme texte WhatsApp**, et une **barre d'état** qui dit l'essentiel (enregistré, mots, temps de lecture, comptes de révision) et rien de plus
+- **Déposez des fichiers n'importe où dans la fenêtre** (Word, PDF, Excel, PowerPoint, CSV, e-mails ou un dossier) pour les convertir en Markdown. Un plateau montre les tâches, avec Ouvrir, Afficher dans le dossier, **Comparer** (source et Markdown côte à côte) et Réessayer
+- **Accueil**, à un clic avec le bouton maison à gauche des onglets (`Ctrl+Maj+H`) : la note à reprendre, une zone pour une note rapide, les commentaires en attente dans vos notes, une astuce du jour, vos fichiers récents et vos dossiers. Rien n'est fermé quand Accueil s'affiche
+- **Le clavier d'abord** : appuyez sur `Alt` pour voir quelle touche atteint chaque bouton, et sur `Ctrl+Maj+/` pour la liste de tous les raccourcis
+- **Cartes d'apparence** dans Paramètres, avec un aperçu en direct du jeu de couleurs et un retour en un clic
+- **Nouveautés** : Aide > Nouveautés liste ce qui a changé dans chaque version
+
 ## Pourquoi Caret
 
 L'essentiel de nos connaissances se trouve dans des documents Word, des classeurs Excel, des présentations PowerPoint et des PDF. Les assistants d'IA comme Copilot et ChatGPT travaillent mieux avec du texte brut, et chaque fichier joint coûte des jetons, du temps et des limites de téléversement.

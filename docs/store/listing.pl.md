@@ -32,6 +32,10 @@ Wybierz Plik > Eksportuj > Dokument Word, a Caret zapisze prawdziwy plik Worda n
 Twoja recenzja idzie razem z nim: komentarze i zmiany stają się komentarzami i śledzonymi zmianami Worda, z autorami i datami, więc współpracownik może je zaakceptować lub odrzucić w Wordzie. Dokument, w którym śledzisz zmiany, można wyeksportować razem z nimi, bez zapisywania ich w pliku.
 Wybierz wygląd (Prosty, Raport, Pismo lub Nowoczesny), rozmiar i orientację strony, marginesy, nagłówek, stopkę i numery stron albo pisz na własnym szablonie Worda, aby użyć czcionek, strony, nagłówka i stopki Twojej firmy.
 
+Odnajdź się w programie i wróć do przerwanej pracy
+Naciśnij Ctrl+Shift+P i wpisz, co chcesz zrobić: polecenie, ustawienie lub notatkę. Panel inspektora (Ctrl+Shift+I) pokazuje obok notatki jej konspekt, znaczniki recenzji, czas przemówienia, wszystkie trafienia wyszukiwania i Historię notatki: wcześniejsze zapisane wersje, które można porównać i przywrócić. Wersje zostają na Twoim komputerze (do 50 na notatkę przez 30 dni; najnowsza kopia każdej notatki zostaje zawsze), a historię można wyłączyć. Cienka mapa przy prawej krawędzi pokazuje, gdzie jesteś i gdzie są nagłówki, komentarze i zmiany, a mały pasek narzędzi nad zaznaczonymi słowami ma zwykłe formaty. Naciśnij Alt, aby zobaczyć, który klawisz dociera do każdego przycisku.
+Strona główna pokazuje notatkę, nad którą pracowano, pole na szybką notatkę, komentarze czekające w notatkach, wskazówkę dnia i foldery, a przycisk domku obok kart jest zawsze pod ręką. Upuść pliki Word, PDF, Excel lub PowerPoint i e-maile w dowolnym miejscu okna, aby je zamienić, i śledź każde zadanie na tacy, z porównaniem źródła i Markdown.
+
 Konwertuj Word, Excel, PowerPoint i PDF na Markdown
 Upuść pliki lub cały folder albo kliknij je prawym przyciskiem myszy w Eksploratorze plików, a Caret zapisze dla każdego z nich plik Markdown. Nagłówki, listy, tabele, łącza, przypisy i obrazy zostają zachowane; czcionki, układ strony i opakowanie pliku zostają pominięte. Wynik to zwykle drobny ułamek rozmiaru oryginału: raport o rozmiarze 280 KB zamienia się w około 7 KB tekstu.
 
@@ -70,11 +74,15 @@ Spokojny, natywny edytor Markdown
 Caret jest bezpłatny i ma otwarty kod źródłowy (MIT); korzysta z projektu Typedown, edytora Muya z programu MarkText i pakietu Open XML SDK firmy Microsoft.
 
 ## Co nowego w tej wersji (≤ 1 500)
-Caret 2.5: eksport do Worda
-• Eksport do prawdziwego pliku Worda (.docx): nagłówki, listy, tabele, obrazy, przypisy dolne, równania i diagramy.
-• Twoja recenzja idzie razem z nim: komentarze i zmiany stają się komentarzami i śledzonymi zmianami Worda, z autorami i datami. Dokument ze śledzeniem można wyeksportować razem ze śledzonymi zmianami, bez zapisywania ich w pliku.
-• Wybierz wygląd, rozmiar i orientację strony, marginesy, nagłówek, stopkę i numery stron, spis treści albo pisz na własnym szablonie Worda.
-• Nadal są od wersji 2.0: śledzenie zmian, znaczniki przemówienia, teleprompter i zegar przemówienia, recenzja z komentarzami, pięć języków. Zawiera poprawki z wersji 2.0.1.
+Caret 2.6: odnajdź się w programie
+• Paleta poleceń (Ctrl+Shift+P): wpisz, co chcesz zrobić.
+• Panel inspektora (Ctrl+Shift+I): konspekt, recenzja, czas przemówienia, wyniki wyszukiwania i Historia notatki, z porównaniem i Przywróć. Wersje są tylko na Twoim komputerze (50 na notatkę, 30 dni) i można je wyłączyć.
+• Mapa dokumentu przy prawej krawędzi, mały pasek narzędzi nad zaznaczonymi słowami (z Kopiuj jako tekst WhatsApp) i pasek stanu, który mówi to, co ważne.
+• Upuść pliki w dowolnym miejscu okna, aby je zamienić, z tacą na zadania i porównaniem źródła i Markdown.
+• Strona główna: notatka do dokończenia, szybka notatka, czekające komentarze, wskazówka dnia. Jedno kliknięcie przyciskiem domku (Ctrl+Shift+H). Pomoc > Co nowego wymienia zmiany w każdej wersji.
+• Alt pokazuje klawisz każdego przycisku; Ctrl+Shift+/ wymienia wszystkie skróty.
+• Karty wyglądu z podglądem na żywo. Poprawki: kolory od razu podążają za zmianą motywu.
+• Nadal w 2.5: eksport do Worda, śledzenie zmian, znaczniki przemówienia, teleprompter, pięć języków.
 
 ## Funkcje produktu (do 20, każda ≤ 200)
 1. Wbudowane śledzenie zmian: każde dodanie i usunięcie widać w kolorze podczas edycji, przechodź do zmian z listy i akceptuj lub odrzucaj je pojedynczo albo wszystkie naraz
@@ -93,9 +101,9 @@ Caret 2.5: eksport do Worda
 14. Pisz w widoku Wizualnym, Kod lub Podział z podglądem na żywo. Tabele, wzory, przypisy dolne i diagramy (Mermaid, PlantUML, Vega-Lite)
 15. Sprawdzanie pisowni jak w programie Word dzięki mechanizmowi Windows, offline. Podpowiedzi dla hiszpańskich znaków otwierających ¿ i ¡
 16. Pięć schematów kolorów w wersji jasnej i ciemnej, kolor akcentu systemu Windows, Mica i trzy układy
-17. Obszar roboczy oparty na folderze, szybkie wyszukiwanie plików (Ctrl+K), ulubione, ostatnie pliki, szablony, zapisywanie automatyczne z odzyskiwaniem po awarii
+17. Paleta poleceń (Ctrl+Shift+P), panel inspektora (konspekt, recenzja, przemówienie, szukanie, historia), mapa dokumentu, Przejdź do pliku (Ctrl+K), foldery, ulubione, szablony, autozapis
 18. Eksport do prawdziwego pliku Worda (.docx) ze śledzonymi zmianami, komentarzami, równaniami i własnym szablonem albo do HTML, PDF lub zwykłego tekstu. Drukowanie i kopiowanie jako tekst WhatsApp
-19. Wklejaj zrzuty ekranu i obrazy bezpośrednio do notatki
+19. Strona główna z notatką do dokończenia, szybką notatką i wskazówką dnia. Upuść pliki w dowolnym miejscu, aby je zamienić. Wklejaj zrzuty do notatki. Alt pokazuje klawisz każdego przycisku
 20. Polski, angielski, francuski, hiszpański i brazylijski portugalski, z menu Pomoc. Bezpłatny i z otwartym kodem źródłowym
 
 ## Podpisy zrzutów ekranu (≤ 200 każdy)

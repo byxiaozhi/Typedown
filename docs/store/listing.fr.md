@@ -30,6 +30,10 @@ Choisissez Fichier > Exporter > Document Word et Caret écrit un vrai fichier Wo
 Votre révision suit : les commentaires et les modifications deviennent des commentaires et des modifications suivies de Word, avec leurs auteurs et leurs jours, pour qu'un collègue puisse les accepter ou les refuser dans Word. Un document dont vous suivez les modifications peut être exporté avec elles, sans les écrire dans le fichier.
 Choisissez une apparence (Simple, Rapport, Courrier ou Moderne), la taille et l'orientation de la page, les marges, un en-tête, un pied de page et des numéros de page, ou écrivez sur un modèle Word à vous, pour utiliser les polices, la page, l'en-tête et le pied de page de votre entreprise.
 
+Trouvez votre chemin et reprenez où vous en étiez
+Appuyez sur Ctrl+Maj+P et tapez ce que vous voulez faire : une commande, un réglage ou une note. Le panneau Inspecteur (Ctrl+Maj+I) montre, à côté de votre note, son plan, ses marques de révision, le chronométrage de votre discours, toutes les occurrences d'une recherche et l'Historique de la note : des versions enregistrées précédentes que vous pouvez comparer et restaurer. Les versions restent sur votre PC (jusqu'à 50 par note pendant 30 jours ; la copie la plus récente de chaque note reste toujours) et vous pouvez désactiver l'historique. Une carte fine au bord droit montre où vous êtes et où sont les titres, les commentaires et les modifications, et une petite barre d'outils au-dessus des mots sélectionnés propose les mises en forme courantes. Appuyez sur Alt pour voir quelle touche atteint chaque bouton.
+Accueil montre la note sur laquelle vous travailliez, une zone pour une note rapide, les commentaires en attente dans vos notes, une astuce du jour et vos dossiers, et il est à un clic avec le bouton maison à côté des onglets. Déposez des fichiers Word, PDF, Excel ou PowerPoint et des e-mails n'importe où dans la fenêtre pour les convertir, et suivez chaque tâche dans un plateau, avec une comparaison de la source et du Markdown.
+
 Convertissez Word, Excel, PowerPoint et PDF en Markdown
 Déposez des fichiers ou un dossier entier, ou faites un clic droit dessus dans l'Explorateur de fichiers : Caret crée un fichier Markdown pour chacun. Les titres, listes, tableaux, liens, notes de bas de page et images sont conservés ; les polices, la mise en page et la structure du fichier disparaissent. Le résultat ne pèse généralement qu'une petite fraction de l'original : un rapport de 280 Ko devient environ 9 Ko de texte.
 
@@ -68,11 +72,15 @@ Un éditeur Markdown natif et apaisant
 Caret est gratuit et open source (MIT). Il s'appuie sur Typedown, l'éditeur Muya de MarkText et l'Open XML SDK de Microsoft.
 
 ## Nouveautés de cette version (≤ 1 500)
-Caret 2.5 : l'export vers Word
-• Export vers un vrai fichier Word (.docx) : titres, listes, tableaux, images, notes de bas de page, équations et diagrammes.
-• Votre révision suit : les commentaires et les modifications deviennent des commentaires et des modifications suivies de Word, avec leurs auteurs et leurs jours. Un document suivi peut être exporté avec ses modifications suivies, sans les écrire dans le fichier.
-• Choisissez une apparence, la taille et l'orientation de la page, les marges, un en-tête, un pied de page et des numéros de page, une table des matières, ou écrivez sur un modèle Word à vous.
-• Toujours là depuis la 2.0 : suivi des modifications, marques de discours, téléprompteur et horloge de parole, révision avec commentaires, cinq langues. Inclut les corrections de la 2.0.1.
+Caret 2.6 : trouvez votre chemin
+• Palette de commandes (Ctrl+Maj+P) : tapez ce que vous voulez faire.
+• Panneau Inspecteur (Ctrl+Maj+I) : plan, révision, chronométrage du discours, résultats de recherche et Historique d'une note, avec comparaison et Restaurer. Les versions restent sur votre PC seulement (50 par note, 30 jours) et peuvent être désactivées.
+• Une carte du document au bord droit, une petite barre d'outils au-dessus des mots sélectionnés (avec Copier comme texte WhatsApp) et une barre d'état qui dit l'essentiel.
+• Déposez des fichiers n'importe où dans la fenêtre pour les convertir, avec un plateau pour les tâches et une comparaison de la source et du Markdown.
+• Accueil : la note à reprendre, une note rapide, les commentaires en attente, une astuce du jour. À un clic avec le bouton maison (Ctrl+Maj+H). Aide > Nouveautés liste ce qui a changé dans chaque version.
+• Alt montre une touche pour chaque bouton ; Ctrl+Maj+/ liste tous les raccourcis.
+• Cartes d'apparence avec aperçu en direct. Corrections : les couleurs suivent tout de suite un changement de thème.
+• Toujours dans 2.5 : export vers Word, suivi des modifications, marques de discours, le téléprompteur, cinq langues.
 
 ## Fonctionnalités (20 maximum, ≤ 200 chacune)
 1. Suivi des modifications intégré : chaque ajout et chaque suppression en couleur pendant que vous éditez, une liste pour y aller, acceptez-les ou refusez-les une par une ou toutes d'un coup
@@ -91,9 +99,9 @@ Caret 2.5 : l'export vers Word
 14. Écrivez en mode Visuel, Code ou Fractionné avec aperçu en direct. Tableaux, formules, notes de bas de page et diagrammes (Mermaid, PlantUML, Vega-Lite)
 15. Vérification orthographique comme dans Word avec le correcteur de Windows, hors ligne. Aides pour les signes d'ouverture espagnols ¿ et ¡
 16. Cinq jeux de couleurs en clair et en sombre, la couleur d'accentuation de Windows, Mica et trois dispositions
-17. Espace de travail par dossier, recherche rapide de fichiers (Ctrl+K), favoris, fichiers récents, modèles, enregistrement automatique avec récupération après incident
+17. Palette de commandes (Ctrl+Maj+P), panneau Inspecteur (plan, révision, discours, recherche, historique), carte du document, Accéder au fichier (Ctrl+K), dossiers, favoris, modèles, enregistrement auto
 18. Export en vrai fichier Word (.docx) avec modifications suivies, commentaires, équations et votre propre modèle, ou en HTML, PDF ou texte brut. Impression, copie en texte WhatsApp
-19. Collez des captures d'écran et des images directement dans une note
+19. Accueil avec la note à reprendre, une note rapide et une astuce du jour. Déposez des fichiers n'importe où pour les convertir. Collez des captures dans une note. Alt montre la touche de chaque bouton
 20. En français, anglais, espagnol, polonais et portugais du Brésil, avec un menu Aide. Gratuit et open source
 
 ## Légendes des captures d'écran (≤ 200 chacune)
