@@ -72,6 +72,18 @@ Więcej w **Pomoc > Teleprompter** i **Pomoc > Znaczniki przemówienia**.
 
 Więcej w **Pomoc > Eksport do Worda**.
 
+## Odnajdź się w programie
+
+- **Paleta poleceń** (`Ctrl+Shift+P`, **Widok > Paleta poleceń**): wpisz kilka liter tego, co chcesz zrobić, polecenia, ustawienia lub notatki, i naciśnij Enter
+- **Panel inspektora** (`Ctrl+Shift+I`): kolumna obok notatki z jej konspektem, znacznikami recenzji, czasem przemówienia, wszystkimi trafieniami wyszukiwania i **Historią** notatki: wcześniejszymi zapisanymi wersjami, które można porównać z obecnym tekstem i przywrócić. Wersje zostają na Twoim komputerze (50 na notatkę, żadna starsza niż 30 dni), a historię można wyłączyć na karcie Historia
+- **Mapa dokumentu**: cienki pasek przy prawej krawędzi pokazuje, w którym miejscu notatki jesteś i gdzie są nagłówki, trafienia wyszukiwania, komentarze i zmiany
+- **Mały pasek narzędzi nad zaznaczonymi słowami** ze zwykłymi formatami i **Kopiuj jako tekst WhatsApp** oraz **pasek stanu**, który mówi to, co ważne (zapisano, słowa, czas czytania, liczby recenzji) i nic więcej
+- **Upuść pliki w dowolnym miejscu okna** (Word, PDF, Excel, PowerPoint, CSV, e-maile lub folder), aby zamienić je na Markdown. Taca pokazuje zadania, z Otwórz, Pokaż w folderze, **Porównaj** (źródło i Markdown obok siebie) i Ponów
+- **Strona główna**, o jedno kliknięcie przyciskiem domku po lewej od kart (`Ctrl+Shift+H`): notatka do dokończenia, pole na szybką notatkę, komentarze czekające w Twoich notatkach, wskazówka dnia, ostatnie pliki i foldery. Pokazanie strony głównej niczego nie zamyka
+- **Najpierw klawiatura**: naciśnij `Alt`, aby zobaczyć, który klawisz dociera do każdego przycisku, oraz `Ctrl+Shift+/`, aby zobaczyć listę wszystkich skrótów
+- **Karty wyglądu** w Ustawieniach, z podglądem schematu kolorów na żywo i powrotem do niego jednym kliknięciem
+- **Co nowego**: Pomoc > Co nowego wymienia, co zmieniło się w każdej wersji
+
 ## Dlaczego Caret
 
 Większość naszej wiedzy znajduje się w dokumentach Word, arkuszach Excel, prezentacjach PowerPoint i plikach PDF. Asystenci AI, tacy jak Copilot i ChatGPT, lepiej pracują ze zwykłym tekstem, a każdy dołączony plik kosztuje tokeny, czas i limity przesyłania.

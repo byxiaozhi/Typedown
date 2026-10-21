@@ -32,6 +32,10 @@ Choose File > Export > Word Document and Caret writes a real Word file on your P
 Your review goes with it: comments and changes become Word comments and tracked changes, with their authors and days, so a colleague can accept or reject them in Word. A document you are tracking can be exported with its tracked changes without writing them into the file.
 Choose a look (Plain, Report, Business or Modern), the page size and orientation, the margins, a header, a footer and page numbers, or write on a Word template of your own, so that your company's fonts, page, header and footer are used.
 
+Find your way around, and pick up where you left off
+Press Ctrl+Shift+P and type what you want to do: a command, a setting or a note. The inspector pane (Ctrl+Shift+I) shows, beside your note, its outline, its review marks, the timing of your talk, every match of a search and the History of the note: earlier saved versions that you can compare and restore. The versions stay on your PC (up to 50 per note, none older than 30 days) and you can switch the history off. A thin map along the right edge shows where you are and where the headings, comments and changes are, and a small toolbar over the selected words has the common formats. Press Alt to see which key reaches each button.
+Home shows the note you were working on, a box for a quick note, the comments waiting in your notes, a tip of the day and your folders, and it is one click away from the house button next to the tabs. Drop Word, PDF, Excel or PowerPoint files and emails anywhere on the window to convert them, and follow each job in a tray, with a comparison of the source and the Markdown.
+
 Convert Word, Excel, PowerPoint and PDF to Markdown
 Drop in files or a whole folder, or right-click them in File Explorer, and Caret writes a Markdown file for each one. Headings, lists, tables, links, footnotes and images are kept; fonts, layout and file packaging are left behind. The result is usually a small fraction of the original size: a 280 KB report becomes about 7 KB of text.
 
@@ -70,11 +74,15 @@ A calm, native Markdown editor
 Caret is free and open source (MIT) and builds on Typedown, MarkText's Muya editor and Microsoft's Open XML SDK.
 
 ## What's new in this version (≤ 1,500)
-Caret 2.5: export to Word
-• Export to a real Word file (.docx): headings, lists, tables, pictures, footnotes, equations and diagrams.
-• Your review goes with it: comments and changes become Word comments and tracked changes with their authors and days. A tracked document can be exported with its tracked changes, without writing them into the file.
-• Choose a look, the page size and orientation, the margins, a header, a footer and page numbers, a table of contents, or write on a Word template of your own.
-• Still in 2.0: track changes, speech marks, the teleprompter and the speaking clock, review with comments, five languages. Includes the fixes of 2.0.1.
+Caret 2.6: find your way around
+• Command palette (Ctrl+Shift+P): type what you want to do.
+• Inspector pane (Ctrl+Shift+I): outline, review, speech timing, search results and the History of a note, with a comparison and Restore. The versions are kept on your PC only (50 per note, 30 days) and can be switched off.
+• A document map along the right edge, a small toolbar over the selected words (with Copy as WhatsApp text) and a status bar that says what matters.
+• Drop files anywhere on the window to convert them, with a tray for the jobs and a comparison of source and Markdown.
+• Home: the note to pick up, a quick note, comments waiting, a tip of the day. One click from the house button (Ctrl+Shift+H). Help > What's new lists what changed in every version.
+• Alt shows a key for every button; Ctrl+Shift+/ lists every shortcut.
+• Appearance cards with a live preview. Fixes: the colors follow a change of theme at once.
+• Still in 2.5: export to Word, track changes, speech marks, the teleprompter, five languages.
 
 ## Product features (up to 20, each ≤ 200)
 1. Track changes built in: see every addition and deletion in color as you edit, jump to each change from a list, and accept or reject it one by one or all at once
@@ -93,9 +101,9 @@ Caret 2.5: export to Word
 14. Write in View, Code or Split mode with a live preview. Tables, math, footnotes and diagrams (Mermaid, PlantUML, Vega-Lite)
 15. Spell check like in Word with the Windows checker, offline. Hints for the Spanish opening question and exclamation marks
 16. Five color schemes in light and dark, your Windows accent color, Mica, and three layouts
-17. Folder workspace, quick file search (Ctrl+K), favorites, recent files, templates, auto-save with crash recovery
+17. Command palette (Ctrl+Shift+P), inspector pane (outline, review, speech, find, history), document map, Go to File (Ctrl+K), folders, favorites, templates, auto-save with crash recovery
 18. Export to a real Word file (.docx) with tracked changes, comments, equations and your own template, or to HTML, PDF or plain text. Print, and Copy as WhatsApp text
-19. Paste screenshots and images straight into a note
+19. Home with the note to pick up, a quick note and a tip of the day. Drop files anywhere to convert them. Paste screenshots into a note. Alt shows the key of each button
 20. English, French, Spanish, Polish and Brazilian Portuguese, with a Help menu. Free and open source
 
 ## Screenshot captions (≤ 200 each)

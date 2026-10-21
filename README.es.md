@@ -72,6 +72,18 @@ Más en **Ayuda > El teleprompter** y **Ayuda > Marcas de discurso**.
 
 Más en **Ayuda > Exportar a Word**.
 
+## Encuentra tu camino
+
+- **Paleta de comandos** (`Ctrl+Mayús+P`, **Ver > Paleta de comandos**): escribe unas letras de lo que quieres hacer, un comando, un ajuste o una nota, y pulsa Entrar
+- **Panel del inspector** (`Ctrl+Mayús+I`): una columna junto a la nota con su esquema, sus marcas de revisión, el tiempo del discurso, todas las coincidencias de la búsqueda y el **Historial** de la nota: las versiones guardadas anteriores, que puedes comparar con el texto actual y restaurar. Las versiones se quedan en tu PC (50 por nota, ninguna de más de 30 días) y el historial se puede desactivar en la pestaña Historial
+- **Mapa del documento**: una franja delgada en el borde derecho que muestra dónde estás en la nota y dónde están los títulos, las coincidencias de la búsqueda, los comentarios y los cambios
+- **Una barra pequeña sobre las palabras seleccionadas** con los formatos más usados y **Copiar como texto de WhatsApp**, y una **barra de estado** que dice lo que importa (guardado, palabras, tiempo de lectura, recuentos de revisión) y nada más
+- **Suelta archivos en cualquier parte de la ventana** (Word, PDF, Excel, PowerPoint, CSV, correos o una carpeta) para convertirlos a Markdown. Una bandeja muestra los trabajos, con Abrir, Mostrar en la carpeta, **Comparar** (origen y Markdown, lado a lado) y Reintentar
+- **Inicio**, a un clic con el botón de la casa a la izquierda de las pestañas (`Ctrl+Mayús+H`): la nota para retomar, un cuadro para una nota rápida, los comentarios que esperan en tus notas, un consejo del día, tus archivos recientes y tus carpetas. No se cierra nada al mostrar Inicio
+- **Primero el teclado**: pulsa `Alt` para ver qué tecla llega a cada botón, y `Ctrl+Mayús+/` para la lista de todos los atajos
+- **Tarjetas de apariencia** en Configuración, con una vista previa en vivo del esquema de colores y un modo de volver a él con un clic
+- **Novedades**: Ayuda > Novedades enumera lo que cambió en cada versión
+
 ## Por qué Caret
 
 Gran parte de lo que sabemos está en documentos de Word, libros de Excel, presentaciones de PowerPoint y PDF. Los asistentes de IA como Copilot y ChatGPT funcionan mejor con texto sin formato, y cada archivo adjunto cuesta tokens, tiempo y límites de subida.

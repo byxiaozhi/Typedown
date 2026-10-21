@@ -32,6 +32,10 @@ Escolha Arquivo > Exportar > Documento do Word e o Caret escreve um arquivo do W
 Sua revisão vai junto: os comentários e as alterações viram comentários e alterações controladas do Word, com seus autores e dias, para que um colega possa aceitá-los ou rejeitá-los no Word. Um documento cujas alterações você está controlando pode ser exportado com elas, sem escrevê-las no arquivo.
 Escolha uma aparência (Simples, Relatório, Carta ou Moderno), o tamanho e a orientação da página, as margens, um cabeçalho, um rodapé e números de página, ou escreva sobre um modelo do Word seu, para usar as fontes, a página, o cabeçalho e o rodapé da sua empresa.
 
+Ache seu caminho e continue de onde parou
+Pressione Ctrl+Shift+P e digite o que você quer fazer: um comando, uma configuração ou uma nota. O painel de inspeção (Ctrl+Shift+I) mostra, ao lado da sua nota, seu esboço, suas marcas de revisão, o tempo da sua apresentação, todas as ocorrências de uma busca e o Histórico da nota: versões salvas anteriores que você pode comparar e restaurar. As versões ficam no seu PC (até 50 por nota, nenhuma com mais de 30 dias) e você pode desativar o histórico. Um mapa fino na borda direita mostra onde você está e onde estão os títulos, os comentários e as alterações, e uma barra pequena sobre as palavras selecionadas tem os formatos mais usados. Pressione Alt para ver qual tecla leva a cada botão.
+O Início mostra a nota em que você trabalhava, uma caixa para uma nota rápida, os comentários esperando nas suas notas, uma dica do dia e suas pastas, e fica a um clique com o botão da casa ao lado das guias. Solte arquivos Word, PDF, Excel ou PowerPoint e e-mails em qualquer lugar da janela para convertê-los, e acompanhe cada trabalho em uma bandeja, com uma comparação da origem e do Markdown.
+
 Converta Word, Excel, PowerPoint e PDF em Markdown
 Solte arquivos ou uma pasta inteira, ou clique com o botão direito neles no Explorador de Arquivos, e o Caret grava um arquivo Markdown para cada um. Títulos, listas, tabelas, links, notas de rodapé e imagens são mantidos; fontes, layout e empacotamento do arquivo ficam de fora. O resultado costuma ser uma fração do tamanho original: um relatório de 280 KB vira cerca de 7 KB de texto.
 
@@ -71,11 +75,15 @@ Um editor de Markdown tranquilo e nativo
 O Caret é gratuito e de código aberto (MIT) e se baseia no Typedown, no editor Muya do MarkText e no Open XML SDK da Microsoft.
 
 ## What's new in this version (≤ 1,500)
-Caret 2.5: exportação para o Word
-• Exporte para um arquivo do Word de verdade (.docx): títulos, listas, tabelas, imagens, notas de rodapé, equações e diagramas.
-• Sua revisão vai junto: os comentários e as alterações viram comentários e alterações controladas do Word, com seus autores e dias. Um documento controlado pode ser exportado com as alterações, sem escrevê-las no arquivo.
-• Escolha uma aparência, o tamanho e a orientação da página, as margens, um cabeçalho, um rodapé e números de página, um sumário, ou escreva sobre um modelo do Word seu.
-• Continuam desde a 2.0: controle de alterações, marcas de fala, teleprompter e relógio de fala, revisão com comentários, cinco idiomas. Inclui as correções da 2.0.1.
+Caret 2.6: ache seu caminho
+• Paleta de comandos (Ctrl+Shift+P): digite o que você quer fazer.
+• Painel de inspeção (Ctrl+Shift+I): esboço, revisão, tempo da apresentação, resultados da busca e o Histórico de uma nota, com comparação e Restaurar. As versões ficam só no seu PC (50 por nota, 30 dias) e podem ser desativadas.
+• Um mapa do documento na borda direita, uma barra pequena sobre as palavras selecionadas (com Copiar como texto do WhatsApp) e uma barra de status que diz o que importa.
+• Solte arquivos em qualquer lugar da janela para convertê-los, com uma bandeja para os trabalhos e uma comparação da origem e do Markdown.
+• Início: a nota para continuar, uma nota rápida, comentários esperando, uma dica do dia. A um clique com o botão da casa (Ctrl+Shift+H). Ajuda > Novidades lista o que mudou em cada versão.
+• Alt mostra uma tecla para cada botão; Ctrl+Shift+/ lista todos os atalhos.
+• Cartões de aparência com prévia ao vivo. Correções: as cores acompanham na hora uma mudança de tema.
+• Continua na 2.5: exportar para o Word, controle de alterações, marcas de fala, o teleprompter, cinco idiomas.
 
 ## Product features (up to 20, each ≤ 200)
 1. Controle de alterações embutido: veja cada adição e exclusão em cor enquanto edita, vá a cada alteração por uma lista e aceite ou rejeite uma a uma ou todas de uma vez
@@ -94,9 +102,9 @@ Caret 2.5: exportação para o Word
 14. Escreva nos modos Visual, Código ou Dividido com visualização ao vivo. Tabelas, fórmulas, notas de rodapé e diagramas (Mermaid, PlantUML, Vega-Lite)
 15. Verificação ortográfica como no Word com o corretor do Windows, offline. Dicas para os sinais de abertura do espanhol ¿ e ¡
 16. Cinco esquemas de cores nos modos claro e escuro, a cor de destaque do Windows, Mica e três layouts
-17. Espaço de trabalho por pasta, busca rápida de arquivos (Ctrl+K), favoritos, arquivos recentes, modelos, salvamento automático com recuperação após falha
+17. Paleta de comandos (Ctrl+Shift+P), painel de inspeção (esboço, revisão, fala, busca, histórico), mapa do documento, Ir para o arquivo (Ctrl+K), pastas, favoritos, modelos, salvamento automático
 18. Exportação para um arquivo do Word (.docx) com alterações controladas, comentários, equações e seu modelo, ou para HTML, PDF ou texto simples. Impressão e cópia como texto do WhatsApp
-19. Cole capturas de tela e imagens direto em uma nota
+19. Início com a nota para continuar, uma nota rápida e uma dica do dia. Solte arquivos em qualquer lugar para convertê-los. Cole capturas em uma nota. Alt mostra a tecla de cada botão
 20. Português (Brasil), inglês, francês, espanhol e polonês, com um menu Ajuda. Gratuito e de código aberto
 
 ## Screenshot captions (≤ 200 each)
