@@ -20,15 +20,30 @@ namespace Typedown.WinUI.Services
             {
                 var end = Array.FindIndex(lines, 1, l => l.Trim() is "---" or "...");
                 if (end > 0) i = end + 1;
+                else
+                {
+                    // no closing line (or it is beyond what was read): when what follows reads as properties, it is front matter that is cut short and
+                    // has nothing to say; otherwise the line was a rule and the note goes on after it
+                    var next = lines.Skip(1).FirstOrDefault(l => l.Trim().Length > 0);
+                    if (next != null && Regex.IsMatch(next, @"^[A-Za-z_][\w-]*\s*:")) return "";
+                    i = 1;
+                }
             }
             string firstHeading = null;
             var inCode = false;
+            var inComment = false;
             for (; i < lines.Length; i++)
             {
                 var line = lines[i].Trim();
+                if (inComment) { if (line.Contains("-->")) inComment = false; continue; }
                 if (line.StartsWith("```") || line.StartsWith("~~~")) { inCode = !inCode; continue; }
                 if (inCode || line.Length == 0) continue;
-                if (line.StartsWith("<!--") || line.StartsWith("|") || Regex.IsMatch(line, @"^([-*_])(\s*\1){2,}$")) continue;
+                if (line.StartsWith("<!--"))
+                {
+                    inComment = !line.Contains("-->"); // a comment over several lines is passed over to its end
+                    continue;
+                }
+                if (line.StartsWith("|") || Regex.IsMatch(line, @"^([-*_])(\s*\1){2,}$")) continue;
                 if (line.StartsWith("#"))
                 {
                     firstHeading ??= Plain(line.TrimStart('#'));

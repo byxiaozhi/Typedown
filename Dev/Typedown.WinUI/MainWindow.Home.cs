@@ -120,6 +120,8 @@ namespace Typedown.WinUI
             ShowHomeTip();
             var resume = homeResumePath;
             var paths = files.Select(f => f.FullPath).ToList();
+            // the note to pick up is looked at for comments too, also when the ten files of the list do not include it
+            if (resume != null && !paths.Contains(resume, StringComparer.OrdinalIgnoreCase)) paths.Add(resume);
             _ = System.Threading.Tasks.Task.Run(() =>
             {
                 var excerpt = resume == null ? "" : ReadHomeExcerpt(resume);

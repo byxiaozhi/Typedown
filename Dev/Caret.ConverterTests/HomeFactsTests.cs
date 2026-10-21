@@ -31,6 +31,14 @@ namespace Caret.ConverterTests
         }
 
         [Fact]
+        public void A_comment_over_several_lines_and_front_matter_without_an_end_say_nothing()
+        {
+            Assert.Equal("Public note", HomeFacts.Excerpt("<!--\nPrivate draft\n-->\nPublic note"));
+            Assert.Equal("", HomeFacts.Excerpt("---\ntitle: Private draft\ntags: [a]\n"));
+            Assert.Equal("The note after a rule", HomeFacts.Excerpt("---\n\nThe note after a rule"));
+        }
+
+        [Fact]
         public void A_long_line_is_cut_at_a_word_and_ends_with_an_ellipsis()
         {
             var text = string.Join(" ", System.Linq.Enumerable.Repeat("alpha beta gamma", 20));
