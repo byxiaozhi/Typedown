@@ -188,7 +188,7 @@ namespace Typedown.WinUI
         {
             var contrast = new AccessibilitySettings().HighContrast;
             ContrastThemeInfoBar.IsOpen = contrast;
-            ColorSchemeExpander.IsEnabled = AccentSourceCard.IsEnabled = WindowMaterialCard.IsEnabled = !contrast;
+            ColorSchemeExpander.IsEnabled = SectionColorsExpander.IsEnabled = AccentSourceCard.IsEnabled = WindowMaterialCard.IsEnabled = !contrast;
             AppearancePreviewCard.Visibility = contrast ? Visibility.Collapsed : Visibility.Visible;
         }
 
