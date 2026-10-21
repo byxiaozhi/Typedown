@@ -30,13 +30,14 @@ namespace Typedown.WinUI
         private bool convertOptionsUpdating;
         private bool converting;
 
-        private static readonly string[] LegacyOfficeExtensions = { ".doc", ".xls", ".ppt", ".dot", ".xlt", ".pot" };
-        private static readonly string[] EmailExtensions = { ".msg", ".eml" };
+        private static readonly string[] LegacyOfficeExtensions = ConvertDrop.LegacyOffice;
+        private static readonly string[] EmailExtensions = ConvertDrop.Email;
 
         private void SetConvertPageVisible(bool visible)
         {
             if (visible && !convertPageReady) InitializeConvertPage();
             ConvertPage.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+            UpdateTray();
         }
 
         // File Explorer's "Convert to Markdown" (Services/ExplorerCommandServer.cs): the files and folders
@@ -203,7 +204,8 @@ namespace Typedown.WinUI
 
         // --- Conversion ---
 
-        private async Task ConvertPathsAsync(IEnumerable<string> inputs)
+        // `tray`: the files were dropped on the window, so the conversion tray shows the jobs (MainWindow.Tray.cs).
+        private async Task ConvertPathsAsync(IEnumerable<string> inputs, bool tray = false)
         {
             // (source file, folder it was found under — for mirroring subfolders into an output folder)
             var jobs = new List<(string File, string Root)>();
@@ -229,7 +231,16 @@ namespace Typedown.WinUI
                 }
                 else if (File.Exists(input)) jobs.Add((input, Path.GetDirectoryName(input)));
             }
-            if (jobs.Count == 0) return;
+            if (jobs.Count == 0)
+            {
+                if (tray) ShowToast(Locale.GetString("TrayNothingToConvert"));
+                return;
+            }
+            if (tray)
+            {
+                trayWanted = true;
+                trayClosed = false;
+            }
 
             // The newest batch goes on top, in the order the files were given.
             var items = jobs.Select((j, index) =>
@@ -242,6 +253,8 @@ namespace Typedown.WinUI
                     Badge = badge,
                     BadgeBrush = new SolidColorBrush(color),
                     Detail = Locale.GetString("ConvertWaiting"),
+                    Root = j.Root,
+                    IsEmail = EmailExtensions.Contains(Path.GetExtension(j.File).ToLowerInvariant()),
                 };
                 conversions.Insert(index, item);
                 return (Item: item, j.Root);
@@ -310,6 +323,9 @@ namespace Typedown.WinUI
 
                 item.OutputPath = outputPath;
                 item.Markdown = result.Markdown;
+                item.ImagesExtracted = settings.ConvertExtractImages;
+                item.ImageCount = result.ImageCount;
+                item.Masked = item.IsEmail && options.EmailRedact;
                 item.MarkdownBytes = Encoding.UTF8.GetByteCount(result.Markdown);
                 item.Tokens = DocumentConverter.EstimateTokens(result.Markdown);
                 item.Succeeded = true;
@@ -335,6 +351,21 @@ namespace Typedown.WinUI
             {
                 item.IsConverting = false;
             }
+        }
+
+        // A failed job once more, with the choices as they are now (the file may have been closed, moved back or the folder made writable).
+        private async Task RetryConversionAsync(ConversionItem item)
+        {
+            item.Failed = false;
+            item.Succeeded = false;
+            item.ActionsVisibility = Visibility.Collapsed;
+            item.Detail = Locale.GetString("ConvertWaiting");
+            UpdateConvertSummary();
+            while (converting) await Task.Delay(200);
+            converting = true;
+            try { await ConvertOneAsync(item, item.Root ?? Path.GetDirectoryName(item.SourcePath)); }
+            finally { converting = false; }
+            UpdateConvertSummary();
         }
 
         private static void Fail(ConversionItem item, string message)
@@ -400,6 +431,7 @@ namespace Typedown.WinUI
             ConvertSummaryDetail.Text = detail;
             ConvertSummaryDetail.Visibility = detail.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
             ConvertCopyAllButton.IsEnabled = done.Count > 0;
+            ConvertTraySummary.Text = failed > 0 ? ConvertSummaryTitle.Text + " · " + Locale.Format("ConvertSummaryFailed", failed) : ConvertSummaryTitle.Text;
         }
 
         // --- Results ---

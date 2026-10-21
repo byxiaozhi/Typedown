@@ -18,6 +18,12 @@ Abra **E-mails do Outlook** e escolha e-mails salvos do Outlook (`.msg`) ou de o
 
 E-mails em inglês, francês, espanhol, polonês e português são compreendidos, e as regras são arquivos simples que uma empresa pode ampliar.
 
+## Solte arquivos em qualquer lugar
+
+Não é preciso abrir antes a página de conversão: arraste arquivos do Word, PDF, Excel, PowerPoint ou e-mails (ou uma pasta inteira) para a janela do Caret, em qualquer lugar, e solte-os quando aparecer **Converter para Markdown**. Uma bandeja pequena, no canto inferior direito, lista os arquivos, cada um com uma barra de progresso e, quando o ponteiro está sobre ele ou o teclado está nele, **Abrir**, **Mostrar no Explorador de Arquivos** (o botão de pasta) e **Comparar**. Um arquivo que falha diz o motivo, com **Tentar novamente**; **Limpar lista** esvazia a bandeja e Esc a fecha.
+
+**Comparar** mostra o original como texto simples à esquerda e o Markdown à direita, e rola os dois juntos. Acima ficam as opções usadas: se as imagens foram extraídas e, em um e-mail, se os dados pessoais foram ocultados e quantos nomes, endereços, números e identificações foram encontrados (no Markdown aparecem em negrito e sublinhados). Esc fecha. Use para ver o que a conversão manteve, descartou ou ocultou antes de compartilhar o resultado.
+
 ## Quando algo não é convertido
 
 Um arquivo protegido por senha ou danificado é listado com o motivo. Um PDF digitalizado sem texto não pode ser lido: o Caret não faz reconhecimento de texto.

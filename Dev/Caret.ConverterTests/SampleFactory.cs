@@ -834,7 +834,7 @@ namespace Caret.ConverterTests
         private static void Line(StringBuilder page, int font, int x, int y, int size, string text) =>
             page.Append($"BT /F{font} {size} Tf {x} {y} Td ({text.Replace("(", "\\(").Replace(")", "\\)")}) Tj ET\n");
 
-        private static byte[] BuildPdf(IReadOnlyList<string> pages)
+        internal static byte[] BuildPdf(IReadOnlyList<string> pages)
         {
             var objects = new List<string>();
             objects.Add("<< /Type /Catalog /Pages 2 0 R >>");

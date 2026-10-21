@@ -40,6 +40,61 @@ namespace Typedown.WinUI.Services.Conversion
             return sb.ToString();
         }
 
+        // The visible sheets as plain rows (cells separated by a tab, empty rows left out), with no table or heading made of them: the source
+        // side of Compare in the conversion tray (SourceText). It stops once `limit` characters are there (`cut` says it did), so a big
+        // workbook is not read to its end for a preview.
+        internal static string PlainRows(Stream stream, int limit, out bool cut)
+        {
+            cut = false;
+            using var doc = SpreadsheetDocument.Open(stream, false);
+            var workbook = doc.WorkbookPart;
+            if (workbook?.Workbook?.Sheets == null) return "";
+            var sharedStrings = workbook.SharedStringTablePart?.SharedStringTable?.Elements<S.SharedStringItem>()
+                .Select(i => i.InnerText).ToArray() ?? Array.Empty<string>();
+            var formats = new NumberFormats(workbook.WorkbookStylesPart?.Stylesheet, workbook.Workbook.WorkbookProperties?.Date1904?.Value == true);
+            var sb = new StringBuilder();
+            foreach (var sheet in workbook.Workbook.Sheets.Elements<S.Sheet>().Where(s => s.State == null || s.State.Value == S.SheetStateValues.Visible))
+            {
+                if (sheet.Id?.Value == null || workbook.GetPartById(sheet.Id.Value) is not WorksheetPart part) continue;
+                var sheetData = part.Worksheet?.GetFirstChild<S.SheetData>();
+                if (sheetData == null) continue;
+                var headed = false;
+                foreach (var row in sheetData.Elements<S.Row>().Where(r => r.Hidden?.Value != true))
+                {
+                    if (sb.Length > limit)
+                    {
+                        cut = true;
+                        break;
+                    }
+                    var cells = new SortedDictionary<int, string>();
+                    var nextColumn = 0;
+                    foreach (var cell in row.Elements<S.Cell>())
+                    {
+                        var column = cell.CellReference?.Value is string reference ? ColumnIndex(reference) : nextColumn;
+                        nextColumn = column + 1;
+                        var value = CellText(cell, sharedStrings, formats);
+                        if (!string.IsNullOrWhiteSpace(value)) cells[column] = value.Trim().Replace('\t', ' ').Replace('\n', ' ');
+                    }
+                    if (cells.Count == 0) continue;
+                    var line = new StringBuilder();
+                    for (var c = 0; c <= cells.Keys.Max(); c++)
+                    {
+                        if (c > 0) line.Append('\t');
+                        if (cells.TryGetValue(c, out var text)) line.Append(text);
+                    }
+                    if (!headed)
+                    {
+                        if (sb.Length > 0) sb.Append("\n\n");
+                        sb.Append("--- ").Append(sheet.Name?.Value ?? "").Append(" ---");
+                        headed = true;
+                    }
+                    sb.Append('\n').Append(line);
+                }
+                if (cut) break;
+            }
+            return sb.ToString();
+        }
+
         // The sheet as blocks of Markdown: tables, and the lone lines that stand by themselves between blank rows (a title above
         // a table, a note under it) as paragraphs, so a title is not taken for the heading of the table.
         private static List<string> ReadParts(WorksheetPart part, string[] sharedStrings, NumberFormats formats)
