@@ -111,6 +111,7 @@ namespace Typedown.WinUI
             speechTiming = args;
             RenderSpeechTiming();
             RenderInspectorSpeech();
+            UpdateStatusSpeaking();
         }
 
         // The words per minute are written into the document ({wpm N}) a moment after the last change of the box.
@@ -153,12 +154,17 @@ namespace Typedown.WinUI
                 : Locale.Format("SpeechTimingLeft", x["overClock"]?.ToString());
 
         // The time against the budget as two lines: "2:10 of 5:00" with the words in the tooltip, and "● 2:50 to spare" in the light's colour.
+        private static string SpeechSummaryLine(JToken data)
+        {
+            var clock = data["clock"]?.ToString() ?? "0:00";
+            var budgetClock = data["budgetClock"]?.ToString() ?? "";
+            return budgetClock.Length > 0 ? Locale.Format("SpeechTimingLineBudget", clock, budgetClock) : Locale.Format("SpeechTimingLine", clock);
+        }
+
         private void ApplySpeechSummary(TextBlock summary, TextBlock budget, JToken data)
         {
             var words = data["words"]?.ToObject<int>() ?? 0;
-            var clock = data["clock"]?.ToString() ?? "0:00";
-            var budgetClock = data["budgetClock"]?.ToString() ?? "";
-            summary.Text = budgetClock.Length > 0 ? Locale.Format("SpeechTimingLineBudget", clock, budgetClock) : Locale.Format("SpeechTimingLine", clock);
+            summary.Text = SpeechSummaryLine(data);
             ToolTipService.SetToolTip(summary, Locale.Format("SpeechTimingWords", words.ToString()));
             var light = data["light"]?.ToString() ?? "";
             if (light.Length > 0)

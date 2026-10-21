@@ -45,6 +45,11 @@ namespace Typedown.WinUI.ViewModels
         // (Utilities/TextFileEncoding.cs), e.g. "Windows-1250". Saving writes UTF-8, which clears it.
         public string LegacyEncodingName { get; private set; }
 
+        // New since the fork (the live status bar): when the file was last written (by Caret just now, or by anything, when it was opened),
+        // and the line ends it was read with when they are not LF ("CRLF", "CR"; Caret saves LF), until it is saved.
+        public DateTime? SavedAt { get; private set; }
+        public string LegacyLineEnding { get; private set; }
+
         // Line endings and the final newline don't count: the editor writes "\n" and may add a newline
         // at the end, and when its first render is slower than the FileLoaded confirmation (a startup
         // file with Windows line endings), a document nobody touched would otherwise read as unsaved.
@@ -131,6 +136,8 @@ namespace Typedown.WinUI.ViewModels
                     var read = await TextFileEncoding.ReadAsync(path);
                     Markdown = read.Text;
                     LegacyEncodingName = read.LegacyName;
+                    LegacyLineEnding = StatusFacts.LineEndingOf(read.Text);
+                    SavedAt = File.GetLastWriteTime(path);
                     FilePath = path;
                 }
                 catch
@@ -152,6 +159,8 @@ namespace Typedown.WinUI.ViewModels
         {
             FilePath = null;
             LegacyEncodingName = null;
+            LegacyLineEnding = null;
+            SavedAt = null;
             Markdown = "";
             savedSnapshot = Markdown;
             CompleteDiscard();
@@ -174,6 +183,8 @@ namespace Typedown.WinUI.ViewModels
         {
             FilePath = null;
             LegacyEncodingName = null;
+            LegacyLineEnding = null;
+            SavedAt = null;
             Markdown = text;
             savedSnapshot = null;
             CompleteDiscard();
@@ -195,6 +206,8 @@ namespace Typedown.WinUI.ViewModels
             var read = await TextFileEncoding.ReadAsync(path);
             Markdown = read.Text;
             LegacyEncodingName = read.LegacyName;
+            LegacyLineEnding = StatusFacts.LineEndingOf(read.Text);
+            SavedAt = File.GetLastWriteTime(path);
             savedSnapshot = Markdown;
             FilePath = path;
             CompleteDiscard();
@@ -224,6 +237,8 @@ namespace Typedown.WinUI.ViewModels
             if (string.IsNullOrEmpty(FilePath)) return false;
             await File.WriteAllTextAsync(FilePath, Markdown);
             LegacyEncodingName = null; // written as UTF-8 now
+            LegacyLineEnding = null;   // and with LF
+            SavedAt = DateTime.Now;
             savedSnapshot = Markdown;
             // The document is now safely on disk for real — any recovery backup for it is obsolete.
             AutoBackup.DeleteBackup(BackupKey);
@@ -241,6 +256,8 @@ namespace Typedown.WinUI.ViewModels
             AutoBackup.DeleteBackup(BackupKey);
             FilePath = path;
             LegacyEncodingName = null;
+            LegacyLineEnding = null;
+            SavedAt = DateTime.Now;
             savedSnapshot = Markdown;
             await RecordHistory(path, Markdown, checkpoint: true);
             FileStateChanged?.Invoke();

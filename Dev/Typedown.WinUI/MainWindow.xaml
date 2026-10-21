@@ -1399,10 +1399,26 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="1" x:Name="StatusBarTrackText" FontSize="12" VerticalAlignment="Center" Margin="10,0" Visibility="Collapsed"
                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
-                <Button Grid.Column="0" x:Name="StatusBarWordCountButton" Click="StatusBarWordCountButton_Click"
-                        Background="Transparent" BorderThickness="0" Padding="6,2" FontSize="12" MinHeight="24"
-                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                        Content="{u:Loc Key=StatusBarWordCountButton_Content}" ToolTipService.ToolTip="{u:Loc Key=StatusBarWordCountButton_ToolTip}"/>
+                <!-- The live status bar (MainWindow.StatusBar.cs): when it was saved, the size, the reading time, the speaking time and the
+                     review counts of the note, each a segment that is only there when it has something to say; a button opens the
+                     inspector pane on the tab that tells more (the word count switches between words and characters, as it did). -->
+                <StackPanel Grid.Column="0" x:Name="StatusSegments" Orientation="Horizontal" Spacing="2">
+                    <Button x:Name="StatusSavedButton" Click="StatusSavedButton_Click" Visibility="Collapsed"
+                            Background="Transparent" BorderThickness="0" Padding="6,2" FontSize="12" MinHeight="24"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" ToolTipService.ToolTip="{u:Loc Key=StatusSavedTip}"/>
+                    <Button x:Name="StatusBarWordCountButton" Click="StatusBarWordCountButton_Click"
+                            Background="Transparent" BorderThickness="0" Padding="6,2" FontSize="12" MinHeight="24"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                            Content="{u:Loc Key=StatusBarWordCountButton_Content}" ToolTipService.ToolTip="{u:Loc Key=StatusBarWordCountButton_ToolTip}"/>
+                    <TextBlock x:Name="StatusReadingText" FontSize="12" VerticalAlignment="Center" Margin="6,0" Visibility="Collapsed"
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" ToolTipService.ToolTip="{u:Loc Key=StatusReadingTip}"/>
+                    <Button x:Name="StatusSpeakingButton" Click="StatusSpeakingButton_Click" Visibility="Collapsed"
+                            Background="Transparent" BorderThickness="0" Padding="6,2" FontSize="12" MinHeight="24"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" ToolTipService.ToolTip="{u:Loc Key=StatusSpeakingTip}"/>
+                    <Button x:Name="StatusReviewButton" Click="StatusReviewButton_Click" Visibility="Collapsed"
+                            Background="Transparent" BorderThickness="0" Padding="6,2" FontSize="12" MinHeight="24"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" ToolTipService.ToolTip="{u:Loc Key=StatusReviewTip}"/>
+                </StackPanel>
                 <TextBlock Grid.Column="2" x:Name="StatusBarFormatText" Text="{u:Loc Key=Markdown}" FontSize="12" VerticalAlignment="Center" Margin="6,0,10,0"
                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
                 <!-- View | Code | Split. Three ToggleButtons kept mutually exclusive in code (SetViewMode);

@@ -2935,6 +2935,33 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="InspectorHistoryMoreLines" xml:space="preserve">
     <value>… i jeszcze {0} zmienionych wierszy</value>
   </data>
+  <data name="StatusSaved" xml:space="preserve">
+    <value>Zapisano {0}</value>
+  </data>
+  <data name="StatusUnsaved" xml:space="preserve">
+    <value>● Niezapisane</value>
+  </data>
+  <data name="StatusSavedTip" xml:space="preserve">
+    <value>Pokaż historię tej notatki</value>
+  </data>
+  <data name="StatusReading" xml:space="preserve">
+    <value>{0} min czytania</value>
+  </data>
+  <data name="StatusReadingUnder" xml:space="preserve">
+    <value>&lt; 1 min czytania</value>
+  </data>
+  <data name="StatusReadingTip" xml:space="preserve">
+    <value>Czas czytania przy 200 słowach na minutę</value>
+  </data>
+  <data name="StatusSpeakingTip" xml:space="preserve">
+    <value>Pokaż czas przemówienia</value>
+  </data>
+  <data name="StatusReviewTip" xml:space="preserve">
+    <value>Pokaż recenzję tej notatki</value>
+  </data>
+  <data name="StatusLineEndingTip" xml:space="preserve">
+    <value>Ten plik używa zakończeń wierszy {0}. Caret zapisuje go z LF.</value>
+  </data>
   <data name="DocumentMapMenuItem_Text" xml:space="preserve">
     <value>Mapa dokumentu</value>
   </data>
