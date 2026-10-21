@@ -3112,4 +3112,34 @@ Pliki Word, Excel, PowerPoint, PDF i CSV nie wymagają tego narzędzia: program 
   <data name="KeyTipsAnnounce" xml:space="preserve">
     <value>Klawisze dostępu: naciśnij klawisz lub Esc, aby zamknąć.</value>
   </data>
+  <data name="HomeContinue" xml:space="preserve">
+    <value>Kontynuuj</value>
+  </data>
+  <data name="HomeStart" xml:space="preserve">
+    <value>Zacznij</value>
+  </data>
+  <data name="HomeFolders" xml:space="preserve">
+    <value>Foldery</value>
+  </data>
+  <data name="HomePin" xml:space="preserve">
+    <value>Przypnij do strony głównej</value>
+  </data>
+  <data name="HomeUnpin" xml:space="preserve">
+    <value>Odepnij ze strony głównej</value>
+  </data>
+  <data name="HomeFromTemplate" xml:space="preserve">
+    <value>Nowa notatka z szablonu</value>
+  </data>
+  <data name="HomeOpenFolder" xml:space="preserve">
+    <value>Otwórz folder</value>
+  </data>
+  <data name="HomeConvertDrop" xml:space="preserve">
+    <value>Upuść pliki Word, PDF, Excel, PowerPoint lub wiadomości e-mail w dowolnym miejscu okna albo kliknij, aby je wybrać.</value>
+  </data>
+  <data name="HomeNoFolders" xml:space="preserve">
+    <value>Otwierane foldery pojawiają się tutaj. Przypnij folder, aby go zachować.</value>
+  </data>
+  <data name="HomeNoFiles" xml:space="preserve">
+    <value>Otwierane notatki pojawiają się tutaj.</value>
+  </data>
 </root>

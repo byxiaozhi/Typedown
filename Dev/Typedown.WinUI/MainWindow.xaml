@@ -26,6 +26,14 @@
              without it there's no way to create a file/paste into the top level of an opened folder
              at all (every other New File/New Folder/Paste is scoped to a specific row's folder). -->
         <Grid.Resources>
+            <Style x:Key="HomeRowStyle" TargetType="ListViewItem">
+                <Setter Property="MinHeight" Value="44"/>
+                <Setter Property="Padding" Value="8,0,4,0"/>
+                <Setter Property="Margin" Value="0,0,0,2"/>
+                <Setter Property="CornerRadius" Value="6"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="UseSystemFocusVisuals" Value="True"/>
+            </Style>
             <Style x:Key="CustomBadgeStyle" TargetType="Border">
                 <Setter Property="CornerRadius" Value="9"/>
                 <Setter Property="Padding" Value="8,1"/>
@@ -963,97 +971,149 @@
 
             <!-- New since the fork: the start page, after the last document is closed (the window
                  stays open for the next one — MainWindow.Tabs.cs ShowStartPage). -->
-            <ScrollViewer Grid.Row="1" Grid.RowSpan="2" x:Name="StartPage" Visibility="Collapsed"
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="2" x:Name="StartPage" Visibility="Collapsed" SizeChanged="StartPage_SizeChanged"
                           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <StackPanel MaxWidth="760" Margin="40,48,40,32" Spacing="20">
+                <StackPanel MaxWidth="1180" Margin="40,40,40,32" Spacing="24">
                     <StackPanel Spacing="6">
                         <TextBlock Text="{u:Loc Key=StartPageTitle}" Style="{ThemeResource TitleTextBlockStyle}"/>
                         <TextBlock Text="{u:Loc Key=StartPageSubtitle}" Opacity="0.8" TextWrapping="Wrap"/>
                     </StackPanel>
-                    <Grid ColumnSpacing="12" RowSpacing="12">
+                    <!-- Home as a working dashboard (MainWindow.Home.cs): what was I doing (Continue), what can I start (Start), where do I work (Folders). Three
+                         columns on a wide window, one under the other on a narrow one. The rows are 44 px; the pointer over a row, or the keys in it, show its
+                         pin; a pinned row keeps it. -->
+                    <Grid x:Name="HomeColumns" ColumnSpacing="32" RowSpacing="0">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Button Click="StartNewNote_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="16,14">
-                            <Grid ColumnSpacing="14">
-                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                                <Path Data="M6 3H14L19 8V21H6Z M14 3V8H19 M12.5 11V17 M9.5 14H15.5" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" Width="24" Height="24" VerticalAlignment="Top"/>
-                                <StackPanel Grid.Column="1" Spacing="2">
-                                    <TextBlock Text="{u:Loc Key=StartNewNote}" FontWeight="SemiBold"/>
-                                    <TextBlock Text="{u:Loc Key=StartNewNoteText}" FontSize="12" Opacity="0.75" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </Grid>
-                        </Button>
-                        <Button Grid.Column="1" Click="StartOpenFile_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="16,14">
-                            <Grid ColumnSpacing="14">
-                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                                <Path Data="M3 6H10L12 8H21V20H3Z" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" Width="24" Height="24" VerticalAlignment="Top"/>
-                                <StackPanel Grid.Column="1" Spacing="2">
-                                    <TextBlock Text="{u:Loc Key=StartOpenFile}" FontWeight="SemiBold"/>
-                                    <TextBlock Text="{u:Loc Key=StartOpenFileText}" FontSize="12" Opacity="0.75" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </Grid>
-                        </Button>
-                        <Button Grid.Row="1" Click="HomeConvertButton_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="16,14">
-                            <Grid ColumnSpacing="14">
-                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                                <Path Data="M6 3H13L18 8V21H6Z M13 3V8H18 M9 14L12 17L15 14 M12 10V17" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" Width="24" Height="24" VerticalAlignment="Top"/>
-                                <StackPanel Grid.Column="1" Spacing="2">
-                                    <TextBlock Text="{u:Loc Key=HomeConvertTitle}" FontWeight="SemiBold"/>
-                                    <TextBlock Text="{u:Loc Key=HomeConvertSubtitle}" FontSize="12" Opacity="0.75" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </Grid>
-                        </Button>
-                        <Button Grid.Row="1" Grid.Column="1" Click="HomeEmailsButton_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="16,14">
-                            <Grid ColumnSpacing="14">
-                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-                                <Path Data="M3 6H21V18H3Z M3 6L12 13L21 6" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" Width="24" Height="24" VerticalAlignment="Top"/>
-                                <StackPanel Grid.Column="1" Spacing="2">
-                                    <TextBlock Text="{u:Loc Key=HomeEmailsTitle}" FontWeight="SemiBold"/>
-                                    <TextBlock Text="{u:Loc Key=HomeEmailsSubtitle}" FontSize="12" Opacity="0.75" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </Grid>
-                        </Button>
-                    </Grid>
-                    <TextBlock x:Name="StartPageRecentHeader" Text="{u:Loc Key=StartPagePinnedRecent}" FontWeight="SemiBold" Margin="0,8,0,0"/>
-                    <!-- Favourites first, then recent files: name, the folders it's in, when it changed, and
-                         a star to add or remove the favourite. Delete removes a row from Recent (the file
-                         itself is never touched). -->
-                    <ListView x:Name="StartPageRecentList" SelectionMode="None" IsItemClickEnabled="True"
-                              ItemClick="StartPageRecent_ItemClick" KeyDown="StartPageRecentList_KeyDown"
-                              AutomationProperties.Name="{u:Loc Key=StartPagePinnedRecent}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid ColumnSpacing="12" MinHeight="44" ToolTipService.ToolTip="{Binding FullPath}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Path Data="M6 3H14L19 8V21H6Z M14 3V8H19" Style="{StaticResource CaretLineIconStyle}" VerticalAlignment="Center"/>
-                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"/>
-                                        <TextBlock Text="{Binding Folder}" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis"/>
-                                    </StackPanel>
-                                    <TextBlock Grid.Column="2" Text="{Binding Modified}" FontSize="12" VerticalAlignment="Center"
-                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
-                                    <Button Grid.Column="3" Click="StartPageFavorite_Click" Tag="{Binding FullPath}" Background="Transparent" BorderThickness="0"
-                                            Width="32" Height="32" Padding="0" ToolTipService.ToolTip="{u:Loc Key=FavoriteMenuItem}" AutomationProperties.Name="{u:Loc Key=FavoriteMenuItem}">
-                                        <Grid>
-                                            <FontIcon Glyph="&#xE734;" FontSize="14" Visibility="{Binding NotFavoriteVisibility}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
-                                            <FontIcon Glyph="&#xE735;" FontSize="14" Visibility="{Binding FavoriteVisibility}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+
+                        <StackPanel x:Name="HomeContinueColumn" Spacing="6">
+                            <TextBlock x:Name="StartPageRecentHeader" Text="{u:Loc Key=HomeContinue}" FontWeight="SemiBold" Margin="8,0,0,2"/>
+                            <!-- Pinned files first (a pinned file is a favourite, as in the sidebar), then the recent ones: name, the folders it is in, when it
+                                 changed, and the pin. Delete takes a row off Recent (the file itself is never touched). -->
+                            <ListView x:Name="StartPageRecentList" SelectionMode="None" IsItemClickEnabled="True"
+                                      ItemClick="StartPageRecent_ItemClick" KeyDown="StartPageRecentList_KeyDown"
+                                      ItemContainerStyle="{StaticResource HomeRowStyle}"
+                                      AutomationProperties.Name="{u:Loc Key=HomeContinue}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnSpacing="12" MinHeight="44" ToolTipService.ToolTip="{Binding FullPath}"
+                                              PointerEntered="HomeRow_Reveal" PointerExited="HomeRow_Rest" GotFocus="HomeRow_Reveal" LostFocus="HomeRow_Rest">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Path Data="M6 3H14L19 8V21H6Z M14 3V8H19" Style="{StaticResource CaretLineIconStyle}" VerticalAlignment="Center"/>
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Text="{Binding Folder}" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis"/>
+                                            </StackPanel>
+                                            <TextBlock Grid.Column="2" Text="{Binding Modified}" FontSize="12" VerticalAlignment="Center"
+                                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                            <Button x:Name="PinButton" Grid.Column="3" Click="StartPageFavorite_Click" Tag="{Binding FullPath}" Background="Transparent" BorderThickness="0" Opacity="{Binding PinRestOpacity}"
+                                                Width="32" Height="32" Padding="0" ToolTipService.ToolTip="{Binding PinName}" AutomationProperties.Name="{Binding PinName}">
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE718;" FontSize="14" Visibility="{Binding NotPinnedVisibility}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                                <FontIcon Glyph="&#xE840;" FontSize="14" Visibility="{Binding PinnedVisibility}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                                            </Grid>
+                                        </Button>
                                         </Grid>
-                                    </Button>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <TextBlock x:Name="HomeNoFilesText" Text="{u:Loc Key=HomeNoFiles}" Visibility="Collapsed" Margin="8,4,0,0" Opacity="0.7" TextWrapping="Wrap"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="HomeStartColumn" Grid.Column="1" Spacing="6">
+                            <TextBlock Text="{u:Loc Key=HomeStart}" FontWeight="SemiBold" Margin="8,0,0,2"/>
+                            <ListView x:Name="HomeStartList" SelectionMode="None" IsItemClickEnabled="True" ItemClick="HomeStart_ItemClick"
+                                      ItemContainerStyle="{StaticResource HomeRowStyle}" AutomationProperties.Name="{u:Loc Key=HomeStart}">
+                                <ListViewItem Tag="new" AutomationProperties.Name="{u:Loc Key=StartNewNote}" ToolTipService.ToolTip="{u:Loc Key=StartNewNoteText}">
+                                    <StackPanel Orientation="Horizontal" Spacing="12" MinHeight="44">
+                                        <Path Data="M6 3H14L19 8V21H6Z M14 3V8H19 M12.5 11V17 M9.5 14H15.5" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{u:Loc Key=StartNewNote}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Tag="open" AutomationProperties.Name="{u:Loc Key=StartOpenFile}" ToolTipService.ToolTip="{u:Loc Key=StartOpenFileText}">
+                                    <StackPanel Orientation="Horizontal" Spacing="12" MinHeight="44">
+                                        <Path Data="M3 6H10L12 8H21V20H3Z" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{u:Loc Key=StartOpenFile}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Tag="folder" AutomationProperties.Name="{u:Loc Key=HomeOpenFolder}">
+                                    <StackPanel Orientation="Horizontal" Spacing="12" MinHeight="44">
+                                        <Path Data="M3 6H10L12 8H21V20H3Z M12 11V17 M9 14H15" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{u:Loc Key=HomeOpenFolder}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Tag="template" AutomationProperties.Name="{u:Loc Key=HomeFromTemplate}">
+                                    <StackPanel Orientation="Horizontal" Spacing="12" MinHeight="44">
+                                        <Path Data="M4 20L5 15L16 4L20 8L9 19Z M14 6L18 10" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{u:Loc Key=HomeFromTemplate}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Tag="emails" AutomationProperties.Name="{u:Loc Key=HomeEmailsTitle}" ToolTipService.ToolTip="{u:Loc Key=HomeEmailsSubtitle}">
+                                    <StackPanel Orientation="Horizontal" Spacing="12" MinHeight="44">
+                                        <Path Data="M3 6H21V18H3Z M3 6L12 13L21 6" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{u:Loc Key=HomeEmailsTitle}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                            </ListView>
+                            <!-- Convert: files dropped anywhere on the window are converted (the drop overlay and the tray); this card says so and opens the page. -->
+                            <Button Click="HomeConvertButton_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0" Margin="0,8,0,0"
+                                    Background="Transparent" BorderThickness="0" AutomationProperties.Name="{u:Loc Key=HomeConvertTitle}">
+                                <Grid MinHeight="96">
+                                    <Rectangle Stroke="{ThemeResource CaretPrimaryBrush}" StrokeThickness="1.5" StrokeDashArray="5 4" RadiusX="10" RadiusY="10" Opacity="0.7"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="6" Padding="16,12">
+                                        <Path Data="M6 3H13L18 8V21H6Z M13 3V8H18 M9 14L12 17L15 14 M12 10V17" Style="{StaticResource CaretLineIconStyle}" Stroke="{ThemeResource CaretPrimaryBrush}" Width="24" Height="24" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{u:Loc Key=HomeConvertTitle}" FontWeight="SemiBold" HorizontalAlignment="Center" TextAlignment="Center"/>
+                                        <TextBlock Text="{u:Loc Key=HomeConvertDrop}" FontSize="12" Opacity="0.8" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"/>
+                                    </StackPanel>
                                 </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel x:Name="HomeFoldersColumn" Grid.Column="2" Spacing="6">
+                            <TextBlock Text="{u:Loc Key=HomeFolders}" FontWeight="SemiBold" Margin="8,0,0,2"/>
+                            <ListView x:Name="HomeFolderList" SelectionMode="None" IsItemClickEnabled="True" ItemClick="HomeFolder_ItemClick"
+                                      ItemContainerStyle="{StaticResource HomeRowStyle}" AutomationProperties.Name="{u:Loc Key=HomeFolders}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnSpacing="12" MinHeight="44" ToolTipService.ToolTip="{Binding FullPath}"
+                                              PointerEntered="HomeRow_Reveal" PointerExited="HomeRow_Rest" GotFocus="HomeRow_Reveal" LostFocus="HomeRow_Rest">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Path Data="M3 6H10L12 8H21V20H3Z" Style="{StaticResource CaretLineIconStyle}" VerticalAlignment="Center"/>
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Text="{Binding Parent}" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis"/>
+                                            </StackPanel>
+                                            <Button x:Name="PinButton" Grid.Column="3" Click="HomeFolderPin_Click" Tag="{Binding FullPath}" Background="Transparent" BorderThickness="0" Opacity="{Binding PinRestOpacity}"
+                                                Width="32" Height="32" Padding="0" ToolTipService.ToolTip="{Binding PinName}" AutomationProperties.Name="{Binding PinName}">
+                                            <Grid>
+                                                <FontIcon Glyph="&#xE718;" FontSize="14" Visibility="{Binding NotPinnedVisibility}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                                <FontIcon Glyph="&#xE840;" FontSize="14" Visibility="{Binding PinnedVisibility}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                                            </Grid>
+                                        </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <TextBlock x:Name="HomeNoFoldersText" Text="{u:Loc Key=HomeNoFolders}" Visibility="Collapsed" Margin="8,4,0,0" Opacity="0.7" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
                 </StackPanel>
             </ScrollViewer>
 

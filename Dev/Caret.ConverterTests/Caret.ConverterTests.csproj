@@ -42,6 +42,7 @@
 		<Compile Include="..\Typedown.WinUI\Services\TitleBarLayout.cs" Link="Converters\TitleBarLayout.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\PaletteSearch.cs" Link="Converters\PaletteSearch.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\KeyTipPlan.cs" Link="Converters\KeyTipPlan.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\FolderHistory.cs" Link="Converters\FolderHistory.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\ShortcutCatalog.cs" Link="Converters\ShortcutCatalog.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\ReviewList.cs" Link="Converters\ReviewList.cs" />
 		<Compile Include="..\Typedown.WinUI\Services\StatusFacts.cs" Link="Converters\StatusFacts.cs" />

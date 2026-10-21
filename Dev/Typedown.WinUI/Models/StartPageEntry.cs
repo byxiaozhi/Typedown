@@ -52,8 +52,15 @@ namespace Typedown.WinUI.Models
             }
         }
 
-        public Visibility FavoriteVisibility => IsFavorite ? Visibility.Visible : Visibility.Collapsed;
+        // The pin of the Home page (a pinned file is a favourite): shown when pinned, and under the pointer or the keys when not.
+        public bool IsPinned => IsFavorite;
 
-        public Visibility NotFavoriteVisibility => IsFavorite ? Visibility.Collapsed : Visibility.Visible;
+        public Visibility PinnedVisibility => IsFavorite ? Visibility.Visible : Visibility.Collapsed;
+
+        public Visibility NotPinnedVisibility => IsFavorite ? Visibility.Collapsed : Visibility.Visible;
+
+        public double PinRestOpacity => IsFavorite ? 1 : 0;
+
+        public string PinName => Locale.GetString(IsFavorite ? "HomeUnpin" : "HomePin");
     }
 }

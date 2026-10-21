@@ -3064,4 +3064,34 @@ Word, Excel, PowerPoint, PDF and CSV files don't need it: Caret converts them it
   <data name="KeyTipsAnnounce" xml:space="preserve">
     <value>Key tips: press a key, or Esc to close.</value>
   </data>
+  <data name="HomeContinue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="HomeStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="HomeFolders" xml:space="preserve">
+    <value>Folders</value>
+  </data>
+  <data name="HomePin" xml:space="preserve">
+    <value>Pin to Home</value>
+  </data>
+  <data name="HomeUnpin" xml:space="preserve">
+    <value>Unpin from Home</value>
+  </data>
+  <data name="HomeFromTemplate" xml:space="preserve">
+    <value>New from a template</value>
+  </data>
+  <data name="HomeOpenFolder" xml:space="preserve">
+    <value>Open a folder</value>
+  </data>
+  <data name="HomeConvertDrop" xml:space="preserve">
+    <value>Drop Word, PDF, Excel, PowerPoint or email files anywhere in this window, or click to choose them.</value>
+  </data>
+  <data name="HomeNoFolders" xml:space="preserve">
+    <value>The folders you open appear here. Pin one to keep it.</value>
+  </data>
+  <data name="HomeNoFiles" xml:space="preserve">
+    <value>The notes you open appear here.</value>
+  </data>
 </root>

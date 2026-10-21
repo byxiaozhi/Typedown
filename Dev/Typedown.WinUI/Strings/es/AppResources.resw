@@ -3112,4 +3112,34 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="KeyTipsAnnounce" xml:space="preserve">
     <value>Teclas de acceso: presiona una tecla, o Esc para cerrar.</value>
   </data>
+  <data name="HomeContinue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="HomeStart" xml:space="preserve">
+    <value>Comenzar</value>
+  </data>
+  <data name="HomeFolders" xml:space="preserve">
+    <value>Carpetas</value>
+  </data>
+  <data name="HomePin" xml:space="preserve">
+    <value>Anclar a Inicio</value>
+  </data>
+  <data name="HomeUnpin" xml:space="preserve">
+    <value>Desanclar de Inicio</value>
+  </data>
+  <data name="HomeFromTemplate" xml:space="preserve">
+    <value>Nota nueva desde una plantilla</value>
+  </data>
+  <data name="HomeOpenFolder" xml:space="preserve">
+    <value>Abrir una carpeta</value>
+  </data>
+  <data name="HomeConvertDrop" xml:space="preserve">
+    <value>Suelta archivos de Word, PDF, Excel, PowerPoint o correo en cualquier parte de esta ventana, o haz clic para elegirlos.</value>
+  </data>
+  <data name="HomeNoFolders" xml:space="preserve">
+    <value>Las carpetas que abras aparecen aquí. Ancla una para conservarla.</value>
+  </data>
+  <data name="HomeNoFiles" xml:space="preserve">
+    <value>Las notas que abras aparecen aquí.</value>
+  </data>
 </root>
