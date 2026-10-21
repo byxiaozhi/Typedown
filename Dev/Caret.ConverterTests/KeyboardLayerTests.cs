@@ -91,6 +91,21 @@ namespace Caret.ConverterTests
             Assert.Equal("B", plan["two"]);
         }
 
+        [Fact]
+        public void An_item_is_reachable_only_when_most_of_it_is_inside_every_visible_area()
+        {
+            var window = new KeyTipPlan.Box(0, 0, 1000, 800);
+            var list = new KeyTipPlan.Box(0, 100, 260, 300); // a sidebar's scroll area: y 100 to 400
+            Assert.True(KeyTipPlan.Reachable(new(10, 150, 200, 40), new[] { window, list }));
+            Assert.False(KeyTipPlan.Reachable(new(10, 450, 200, 40), new[] { window, list })); // scrolled below the list
+            Assert.False(KeyTipPlan.Reachable(new(10, 20, 200, 40), new[] { window, list }));  // scrolled above it
+            Assert.False(KeyTipPlan.Reachable(new(10, 385, 200, 40), new[] { window, list })); // only a quarter of it shows
+            Assert.True(KeyTipPlan.Reachable(new(10, 370, 200, 40), new[] { window, list }));  // three quarters show
+            Assert.False(KeyTipPlan.Reachable(new(900, 10, 200, 40), new[] { window }));       // half outside the window... 50 %
+            Assert.False(KeyTipPlan.Reachable(new(10, 150, 0, 40), new[] { window }));         // no size: not shown
+            Assert.True(KeyTipPlan.Reachable(new(10, 150, 200, 40), System.Array.Empty<KeyTipPlan.Box>())); // no area around it: reachable
+        }
+
         // --- The shortcut catalog and the cheat sheet ---
 
         [Theory]
