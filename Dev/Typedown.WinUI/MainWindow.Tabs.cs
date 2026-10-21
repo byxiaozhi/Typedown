@@ -315,7 +315,12 @@ namespace Typedown.WinUI
                 if (element is TabViewItem item) { pressedTab = item; break; }
             }
             // Home is over the document whose tab is the selected one, so a press on it selects nothing: it brings the document back here.
-            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown)) HideStartPage();
+            if (startPageShown && pressedTab?.Tag is DocumentTab shown && shown == activeDoc && documents.Contains(shown))
+            {
+                HideStartPage();
+                // the press leaves the keyboard on the tab: once it is done, the text gets it back
+                DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () => EditorView.Focus(FocusState.Programmatic));
+            }
         }
 
         private void DocumentTabView_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTabStripInputRegion();
@@ -796,10 +801,15 @@ namespace Typedown.WinUI
         {
             if (doc == null || (startPageShown && doc == activeDoc && !documents.Contains(doc))) return true; // the blank one behind Home
             var original = activeDoc;
+            var homeWasShown = startPageShown;
             if (doc.IsDirty)
             {
                 await ActivateDocument(doc);
-                if (!await ConfirmDiscardChangesIfNeeded()) return false;
+                if (!await ConfirmDiscardChangesIfNeeded())
+                {
+                    if (homeWasShown) ShowStartPage(); // Cancel: Home is back over the document, as it was
+                    return false;
+                }
                 doc.File.CompleteDiscard(); // "Don't Save": its recovery backup goes with it
             }
             var wasActive = doc == activeDoc;
