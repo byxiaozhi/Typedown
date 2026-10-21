@@ -6,7 +6,7 @@ import './index.scss'
 
 // The mini toolbar (Settings > Editor > Toolbar over a selection): a small floating toolbar over the words that are selected in the
 // Visual view, 8 px above them, so the common formats are under the pointer. It shows B I U S, a link and a heading menu; with review
-// on, Comment; with Speech mode on, pause, slow and emphasis. It comes a moment (250 ms) after the selection is made and goes with a
+// on, Comment; with Speech mode on, pause, slow and emphasis; and, after a divider at the right end, a chat bubble: Copy as WhatsApp text. It comes a moment (250 ms) after the selection is made and goes with a
 // click elsewhere, Esc, the selection going or the content being replaced (a document opened, another tab); Alt+Down moves the keyboard into it, the arrow keys move along it, Esc returns to the text.
 // The fixed toolbar of the window stays. The selection is told by the editor itself (`muya-format-picker`, with the formats the
 // selection lies in); the buttons use the editor's own commands, as the menus do.
@@ -21,7 +21,7 @@ interface IProps {
 const SHOW_AFTER = 250
 
 const LABEL_KEYS = ['FormatMenu_Title', 'BoldCtrlB', 'ItalicCtrlI', 'Underline', 'Strikethrough', 'Link', 'Paragraph',
-    'Heading1', 'Heading2', 'Heading3', 'Heading4', 'ReviewAddComment', 'HeadingMenu']
+    'Heading1', 'Heading2', 'Heading3', 'Heading4', 'ReviewAddComment', 'HeadingMenu', 'CopyAsWhatsApp']
 
 const HEADINGS: [string, string][] = [['paragraph', 'Paragraph'], ['heading 1', 'Heading1'], ['heading 2', 'Heading2'], ['heading 3', 'Heading3'], ['heading 4', 'Heading4']]
 
@@ -229,6 +229,12 @@ const MiniToolbar: React.FC<IProps> = ({ editor, review, speech, onFormat, onPar
                 </button>
             )}
             {speech && ['pause', 'slow', 'emphasis'].map(speechButton)}
+            <span className="mt-divider" role="separator" aria-orientation="vertical" />
+            <button type="button" className="mt-button mt-icon" title={label('CopyAsWhatsApp')} aria-label={label('CopyAsWhatsApp') || undefined}
+                tabIndex={-1} onMouseDown={keepSelection}
+                onClick={() => run(() => transport.postMessageNoDiff('SelectionToolbar', { command: 'whatsapp' }), false)}>
+                {'\uE8BD'}
+            </button>
             {menuOpen && (
                 <div className="mt-menu" role="menu">
                     {HEADINGS.map(([type, key]) => (
