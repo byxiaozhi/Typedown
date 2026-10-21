@@ -120,6 +120,9 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
     const press = useRef<{ y: number, moved: boolean } | null>(null)
     // the tick the arrow keys went to last (-1: none, or the user has moved the window since): the next step starts from it
     const current = useRef(-1)
+    // the ticks as last drawn (to find the one the keys went to again after a refresh), and when the keys last made the window jump
+    const ticksRef = useRef<ITick[]>([])
+    const lastJump = useRef(0)
 
     useEffect(() => {
         remote.getStringResources({ names: [LABEL_KEY] }).then(dic => setLabel(dic[LABEL_KEY] ?? '')).catch(() => { })
@@ -133,7 +136,12 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
 
     const refresh = useCallback(() => {
         const found = (source ? collectSource(review, speech) : collectVisual(review, speech)).sort((a, b) => a.top - b.top)
-        current.current = -1
+        // the tick the keys went to stays the current one when it is still there (a refresh must not send the next step back)
+        const previous = ticksRef.current[current.current]
+        ticksRef.current = found
+        current.current = previous
+            ? found.findIndex(t => t.kind === previous.kind && t.text === previous.text && Math.abs(t.top - previous.top) < 2)
+            : -1
         setTicks(found)
         measure()
     }, [source, review, speech, measure])
@@ -258,7 +266,11 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
         // From the tick the keys went to last; with none (or after the window was moved by hand) from the middle of the window. The
         // window cannot centre a tick in the first or last half screen, so its middle is no guide once the keys are in use.
         const last = ticks.length - 1
-        const used = current.current >= 0 && current.current <= last
+        // The remembered tick counts only while it is in the window, or while the jump to it is still going on (the window may have been
+        // moved some other way since: the scroll bar, PageDown, a search): then the step starts from where the window is.
+        const remembered = current.current >= 0 && current.current <= last ? ticks[current.current] : undefined
+        const onScreen = !!remembered && remembered.top >= window.scrollY && remembered.top <= window.scrollY + window.innerHeight
+        const used = !!remembered && (onScreen || Date.now() - lastJump.current < 800)
         const middle = window.scrollY + window.innerHeight / 2
         let index: number | undefined
         if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
@@ -272,6 +284,7 @@ const DocumentMap: React.FC<IProps> = ({ source, markdown, review, speech }) => 
         else if (e.key === 'End') index = last
         if (index === undefined) return
         current.current = index
+        lastJump.current = Date.now()
         const to = ticks[index]
         e.preventDefault()
         scrollTo(to.top, true)
