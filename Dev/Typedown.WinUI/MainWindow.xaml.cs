@@ -556,6 +556,7 @@ namespace Typedown.WinUI
                 settings.SplitPreview,
                 settings.ShowReviewMarks,
                 settings.DocumentMap,
+                settings.SelectionToolbar,
                 settings.SpeechMode,
                 SpeechStyles = SpeechLibrary.Styles(SpeechLibraryMarks),
                 SpeechRing = SpeechRingCatalog(),
@@ -851,6 +852,11 @@ namespace Typedown.WinUI
                 await EditorView.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(ReviewScript);
                 eventCenter.GetObservable<EditorEventArgs>("HostShortcut").Subscribe(x => HandleHostShortcut(x.Args));
                 eventCenter.GetObservable<EditorEventArgs>("SearchResult").Subscribe(x => UpdateFindCount(x.Args));
+                // the toolbar over a selection (drawn by the page) asks for what only the window can do: the dialog of a new comment
+                eventCenter.GetObservable<EditorEventArgs>("SelectionToolbar").Subscribe(x =>
+                {
+                    if (x.Args?["command"]?.ToString() == "comment") AddCommentMenuItem_Click(this, null);
+                });
                 eventCenter.GetObservable<EditorEventArgs>("DocumentMapState").Subscribe(x =>
                 {
                     documentMapShown = x.Args?["shown"]?.ToObject<bool>() ?? false;
@@ -2084,6 +2090,7 @@ namespace Typedown.WinUI
             DecorativeCardToggle.IsOn = settings.ShowDecorativeCard;
             TypewriterToggle.IsOn = settings.Typewriter;
             SyncDocumentMapToggles();
+            SelectionToolbarToggle.IsOn = settings.SelectionToolbar;
             FocusModeToggle.IsOn = settings.FocusMode;
             SpellcheckToggle.IsOn = settings.SpellcheckEnabled;
             PunctuationHintsToggle.IsOn = settings.PunctuationHints;

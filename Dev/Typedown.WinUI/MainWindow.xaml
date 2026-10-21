@@ -1788,6 +1788,10 @@
                                 <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE90A;"/></tk:SettingsCard.HeaderIcon>
                                 <ToggleSwitch x:Name="ReviewMarksToggle" OnContent="{u:Loc Key=ToggleOn}" OffContent="{u:Loc Key=ToggleOff}" Toggled="ReviewMarksToggle_Toggled"/>
                             </tk:SettingsCard>
+                            <tk:SettingsCard Header="{u:Loc Key=SelectionToolbarToggle_Header}" Description="{u:Loc Key=SelectionToolbarToggle_Description}">
+                                <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE8D2;"/></tk:SettingsCard.HeaderIcon>
+                                <ToggleSwitch x:Name="SelectionToolbarToggle" OnContent="{u:Loc Key=ToggleOn}" OffContent="{u:Loc Key=ToggleOff}" Toggled="SelectionToolbarToggle_Toggled"/>
+                            </tk:SettingsCard>
                             <tk:SettingsCard Header="{u:Loc Key=DocumentMapMenuItem_Text}" Description="{u:Loc Key=DocumentMapToggle_Description}">
                                 <tk:SettingsCard.HeaderIcon><FontIcon Glyph="&#xE74C;"/></tk:SettingsCard.HeaderIcon>
                                 <ToggleSwitch x:Name="DocumentMapToggle" OnContent="{u:Loc Key=ToggleOn}" OffContent="{u:Loc Key=ToggleOff}" Toggled="DocumentMapToggle_Toggled"/>

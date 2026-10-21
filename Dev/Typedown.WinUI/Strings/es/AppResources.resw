@@ -2968,4 +2968,10 @@ Los archivos de Word, Excel, PowerPoint, PDF y CSV no lo necesitan: Caret los co
   <data name="DocumentMapToggle_Description" xml:space="preserve">
     <value>Una franja delgada en el borde derecho de la nota muestra dónde está la ventana, con marcas para títulos, coincidencias de búsqueda, cambios, comentarios y pausas.</value>
   </data>
+  <data name="SelectionToolbarToggle_Header" xml:space="preserve">
+    <value>Barra de herramientas sobre la selección</value>
+  </data>
+  <data name="SelectionToolbarToggle_Description" xml:space="preserve">
+    <value>Una barra pequeña aparece sobre las palabras seleccionadas en la vista Visual, con negrita, cursiva, subrayado, tachado, vínculo y títulos (y Comentario o las marcas de discurso cuando están activas).</value>
+  </data>
 </root>

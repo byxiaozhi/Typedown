@@ -2968,4 +2968,10 @@ Les fichiers Word, Excel, PowerPoint, PDF et CSV n'en ont pas besoin : Caret le
   <data name="DocumentMapToggle_Description" xml:space="preserve">
     <value>Une fine bande au bord droit de la note montre où se trouve la fenêtre, avec des repères pour les titres, les résultats de recherche, les modifications, les commentaires et les pauses.</value>
   </data>
+  <data name="SelectionToolbarToggle_Header" xml:space="preserve">
+    <value>Barre d’outils sur la sélection</value>
+  </data>
+  <data name="SelectionToolbarToggle_Description" xml:space="preserve">
+    <value>Une petite barre apparaît au-dessus des mots sélectionnés dans la vue Visuelle, avec gras, italique, souligné, barré, lien et titres (et Commentaire ou les marques de discours lorsqu’elles sont activées).</value>
+  </data>
 </root>

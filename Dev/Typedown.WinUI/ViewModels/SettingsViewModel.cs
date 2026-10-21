@@ -63,6 +63,8 @@ namespace Typedown.WinUI.ViewModels
         public bool Typewriter { get => GetSettingValue(false); set => SetSettingValue(value); }
         // New since the fork: the document map, a strip at the right edge of the note (on by default; the page draws it).
         public bool DocumentMap { get => GetSettingValue(true); set => SetSettingValue(value); }
+        // New since the fork: the small toolbar the page floats over selected words in the Visual view (on by default).
+        public bool SelectionToolbar { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool FocusMode { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool SearchIsCaseSensitive { get => GetSettingValue(false); set => SetSettingValue(value); }
         public bool SearchIsRegexp { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -191,7 +193,7 @@ namespace Typedown.WinUI.ViewModels
 
         private readonly HashSet<string> notifySet = new()
         {
-            "SourceCode", "SplitPreview", "ShowReviewMarks", "SpeechMode", "SpeechWpm", "SpeechHeadingsSpoken", "Typewriter", "DocumentMap", "FocusMode", "SearchIsCaseSensitive", "SearchIsRegexp",
+            "SourceCode", "SplitPreview", "ShowReviewMarks", "SpeechMode", "SpeechWpm", "SpeechHeadingsSpoken", "Typewriter", "DocumentMap", "SelectionToolbar", "FocusMode", "SearchIsCaseSensitive", "SearchIsRegexp",
             "SearchIsWholeWord", "FontSize", "LineHeight", "AutoPairBracket", "AutoPairQuote",
             "TrimUnnecessaryCodeBlockEmptyLines", "PreferLooseListItem", "AutoPairMarkdownSyntax", "EditorAreaWidth"
         };
