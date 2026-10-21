@@ -771,7 +771,12 @@ namespace Typedown.WinUI
         private async void CloseDocumentMenuItem_Click(object sender, RoutedEventArgs e)
         {
             // Home over a document: Ctrl+W closes Home (back to the document), not the document it covers.
-            if (startPageShown && documents.Contains(activeDoc)) { HideStartPage(); return; }
+            if (startPageShown && documents.Contains(activeDoc))
+            {
+                HideStartPage();
+                EditorView.Focus(FocusState.Programmatic); // typing goes to the document again
+                return;
+            }
             await CloseDocument(activeDoc);
         }
 
