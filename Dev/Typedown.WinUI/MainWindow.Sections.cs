@@ -179,15 +179,22 @@ namespace Typedown.WinUI
         {
             if (sectionListsDark != IsDark) { LoadSectionColorSettings(); return; }
             var dark = sectionListsDark;
-            if (dark) settings.SectionColorsDark = SectionColorChoice.With(settings.SectionColorsDark, true, section, hex);
-            else settings.SectionColorsLight = SectionColorChoice.With(settings.SectionColorsLight, false, section, hex);
+            StoreSectionColors(dark, SectionColorChoice.With(StoredSectionColors(dark), dark, section, hex));
+            if (reload) LoadSectionColorSettings();
+        }
+
+        // The stored list of one theme, set once and copied to every window (each saves it) and applied there. Reset all uses this too, so the
+        // settings are written once for it, not once per area.
+        private void StoreSectionColors(bool dark, string value)
+        {
+            if (dark) settings.SectionColorsDark = value;
+            else settings.SectionColorsLight = value;
             foreach (var window in openWindows.ToList())
             {
                 window.settings.SectionColorsLight = settings.SectionColorsLight;
                 window.settings.SectionColorsDark = settings.SectionColorsDark;
                 window.ApplySectionColors();
             }
-            if (reload) LoadSectionColorSettings();
         }
 
         // --- Tab colours: right-click a tab > Tab color, kept with the file's path ---

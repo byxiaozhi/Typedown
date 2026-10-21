@@ -223,7 +223,8 @@ namespace Typedown.WinUI
 
         private void SectionResetAll_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var section in SectionColorChoice.Sections) ChangeSectionColor(section, "", reload: false);
+            if (sectionListsDark != IsDark) { LoadSectionColorSettings(); return; }
+            StoreSectionColors(sectionListsDark, "");
             LoadSectionColorSettings();
         }
     }
