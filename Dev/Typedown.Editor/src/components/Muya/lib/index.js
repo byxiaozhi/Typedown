@@ -170,6 +170,8 @@ class Muya {
   }
 
   setMarkdown(markdown, cursor, isRenderCursor = true) {
+    // The words that were selected are gone with the old content (a new document, another tab): what floats over them goes too.
+    this.eventCenter.dispatch('muya-markdown-set')
     let newMarkdown = markdown
     let isValid = false
     if (cursor && cursor.anchor && cursor.focus) {

@@ -19,6 +19,7 @@ import 'components/Muya/themes/default.css'
 
 interface IMuyaEditor {
     markdown: string
+    markdownSetVersion?: number
     cursor: any
     options: any
     searchOpen: number
@@ -65,6 +66,7 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     const markdownRef = useRef('');
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
+    const markdownSetVersionRef = useRef(props.markdownSetVersion);
     const optionsRef = useRef<any>(props.options);
 
     const relativeScroll = useCallback((delta: number) => {
@@ -170,6 +172,14 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     useEffect(() => {
         search(props.searchArg)
     }, [editor, props.searchArg, search])
+
+    // A SetMarkdown with the text the editor already has (another tab with the same text) does not set it again, but what floated over
+    // the old words (the mini toolbar) has to be told that the document is another one.
+    useEffect(() => {
+        if (!editor || markdownSetVersionRef.current === props.markdownSetVersion) return
+        markdownSetVersionRef.current = props.markdownSetVersion
+        editor.eventCenter.dispatch('muya-markdown-set')
+    }, [editor, props.markdownSetVersion])
 
     useEffect(() => {
         const ele = document.getElementById('editor');

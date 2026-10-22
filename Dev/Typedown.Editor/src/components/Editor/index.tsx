@@ -22,6 +22,8 @@ import { computeHints } from "components/Muya/lib/parser/speechHints";
 const Editor: React.FC = () => {
     const [markdown, setMarkdown] = useState<string>();
     const markdownRef = useRef<string>();
+    // Counts the SetMarkdown and LoadFile messages (a tab switch, an undo, a file opened): the editor is told of one even when the text is the same as before.
+    const [markdownSetVersion, setMarkdownSetVersion] = useState(0);
     // The text as of the latest edit, set as the edit happens: `markdown` only reaches the host
     // (MarkdownChange) after React's next render. Flush reads it, see below.
     const latestRef = useRef<string>();
@@ -167,6 +169,7 @@ const Editor: React.FC = () => {
         window.basePath = basePath
         setCursor(undefined)
         setMarkdown(text)
+        setMarkdownSetVersion(version => version + 1)
         markdownRef.current = text
         latestRef.current = text
         OnFileLoaded();
@@ -175,7 +178,10 @@ const Editor: React.FC = () => {
     useEffect(() => transport.addListener<{ text: string, cursor: string, basePath: string }>('SetMarkdown', ({ text, cursor, basePath }) => {
         window.basePath = basePath
         setCursor(cursor)
-        setTimeout(() => setMarkdown(text))
+        setTimeout(() => {
+            setMarkdown(text)
+            setMarkdownSetVersion(version => version + 1)
+        })
         markdownRef.current = text
         latestRef.current = text
     }), []);
@@ -262,6 +268,7 @@ const Editor: React.FC = () => {
                     options={options}
                     cursor={cursor}
                     markdown={markdown ?? ''}
+                    markdownSetVersion={markdownSetVersion}
                     searchOpen={searchOpen}
                     searchArg={searchArg}
                     scrollTopRef={muyaScrollTopRef}

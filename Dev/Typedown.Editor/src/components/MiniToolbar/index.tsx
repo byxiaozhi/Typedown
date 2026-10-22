@@ -7,7 +7,7 @@ import './index.scss'
 // The mini toolbar (Settings > Editor > Toolbar over a selection): a small floating toolbar over the words that are selected in the
 // Visual view, 8 px above them, so the common formats are under the pointer. It shows B I U S, a link and a heading menu; with review
 // on, Comment; with Speech mode on, pause, slow and emphasis; and, after a divider at the right end, a chat bubble: Copy as WhatsApp text. It comes a moment (250 ms) after the selection is made and goes with a
-// click elsewhere, Esc or the selection going; Alt+Down moves the keyboard into it, the arrow keys move along it, Esc returns to the text.
+// click elsewhere, Esc, the selection going or the content being replaced (a document opened, another tab); Alt+Down moves the keyboard into it, the arrow keys move along it, Esc returns to the text.
 // The fixed toolbar of the window stays. The selection is told by the editor itself (`muya-format-picker`, with the formats the
 // selection lies in); the buttons use the editor's own commands, as the menus do.
 interface IProps {
@@ -90,9 +90,17 @@ const MiniToolbar: React.FC<IProps> = ({ editor, review, speech, onFormat, onPar
                 setShown(true)
             }, SHOW_AFTER)
         }
+        // The content is replaced (a document opened, another tab): the selection it had is gone, and so is a show that was waiting.
+        const replaced = () => {
+            window.clearTimeout(timer.current)
+            dismissed.current = null
+            hide()
+        }
         editor.eventCenter.subscribe('muya-format-picker', picked)
+        editor.eventCenter.subscribe('muya-markdown-set', replaced)
         return () => {
             editor.eventCenter.unsubscribe('muya-format-picker', picked)
+            editor.eventCenter.unsubscribe('muya-markdown-set', replaced)
             window.clearTimeout(timer.current)
         }
     }, [editor, hide])
