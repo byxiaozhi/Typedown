@@ -8,6 +8,7 @@ import Resize from './eventHandler/resize'
 import ClickEvent from './eventHandler/clickEvent'
 import { CLASS_OR_ID, MUYA_DEFAULT_OPTION } from './config'
 import { wordCount } from './utils'
+import { stripMarks } from './parser/speech'
 import ExportMarkdown from './utils/exportMarkdown'
 import ExportHtml from '../../../services/exportHtml'
 import ToolTip from './ui/tooltip'
@@ -160,7 +161,8 @@ class Muya {
   }
 
   getWordCount(markdown) {
-    return wordCount(markdown)
+    // in Speech mode the marks are not words of the talk
+    return wordCount(this.options.speechMode ? stripMarks(markdown, this.options.speechDefs) : markdown)
   }
 
   getMarkdownAndCursor() {
@@ -168,6 +170,8 @@ class Muya {
   }
 
   setMarkdown(markdown, cursor, isRenderCursor = true) {
+    // The words that were selected are gone with the old content (a new document, another tab): what floats over them goes too.
+    this.eventCenter.dispatch('muya-markdown-set')
     let newMarkdown = markdown
     let isValid = false
     if (cursor && cursor.anchor && cursor.focus) {
@@ -316,8 +320,8 @@ class Muya {
     return this.contentState.searchMatches
   }
 
-  find(action/* pre or next */) {
-    this.contentState.find(action)
+  find(action/* prev, next or goto (with the number of the match) */, index) {
+    this.contentState.find(action, index)
     this.contentState.render(false)
     return this.contentState.searchMatches
   }

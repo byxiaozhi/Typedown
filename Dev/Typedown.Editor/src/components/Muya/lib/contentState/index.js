@@ -184,6 +184,7 @@ class ContentState {
     })
     this.setNextRenderRange()
     this.stateRender.collectLabels(blocks)
+    this.stateRender.collectSpeech(blocks)
     this.stateRender.render(blocks, activeBlocks, matches)
     if (isRenderCursor) {
       this.setCursor()
@@ -196,10 +197,25 @@ class ContentState {
   partialRender(isRenderCursor = true) {
     const { blocks, searchMatches: { matches, index } } = this
     const activeBlocks = this.getActiveBlocks()
-    const [startKey, endKey] = this.renderRange
+    let [startKey, endKey] = this.renderRange
     matches.forEach((m, i) => {
       m.active = i === index
     })
+
+    // `renderRange` was worked out from the cursor of the previous render. A selection over several blocks made
+    // since then (the mouse, Shift+arrows, Select All) lies elsewhere, and a command on it (a format, a paragraph
+    // type) changes the text of blocks that would then not be drawn again: only some lines changed on screen and
+    // the selection could not be put back. The blocks the cursor covers are always drawn.
+    const { start: cursorStart, end: cursorEnd } = this.cursor
+    const coveredFirst = cursorStart && this.getBlock(cursorStart.key)
+    const coveredLast = cursorEnd && this.getBlock(cursorEnd.key)
+    if (coveredFirst && coveredLast && cursorStart.key !== cursorEnd.key) {
+      const from = this.findOutMostBlock(coveredFirst).preSibling
+      const to = this.findOutMostBlock(coveredLast).nextSibling
+      const indexOfKey = key => blocks.findIndex(block => block.key === key)
+      if (from !== startKey && (!from || (startKey && indexOfKey(from) < indexOfKey(startKey)))) startKey = from
+      if (to !== endKey && (!to || (endKey && indexOfKey(to) > indexOfKey(endKey)))) endKey = to
+    }
 
     // The `endKey` may already be removed from blocks if range was selected via keyboard (GH#1854).
     let startIndex = startKey ? blocks.findIndex(block => block.key === startKey) : 0
@@ -216,6 +232,11 @@ class ContentState {
     }
 
     const blocksToRender = blocks.slice(startIndex, endIndex)
+
+    // a new definition, or Speech mode switched, changes how other paragraphs are drawn: all of them
+    if (this.stateRender.collectSpeech(blocks)) {
+      return this.render(isRenderCursor)
+    }
 
     this.setNextRenderRange()
     this.stateRender.collectLabels(blocks)
@@ -234,6 +255,9 @@ class ContentState {
     matches.forEach((m, i) => {
       m.active = i === index
     })
+    if (this.stateRender.collectSpeech(blocks)) {
+      return this.render(isRenderCursor)
+    }
     this.setNextRenderRange()
     this.stateRender.collectLabels(blocks)
     this.stateRender.singleRender(block, activeBlocks, matches)

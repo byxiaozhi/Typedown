@@ -1,0 +1,283 @@
+/* The teleprompter and the speaking clock (Teleprompter.tsx). Two palettes, both checked for contrast; nothing relies on colour alone
+   (a pause says what it is, the light has words next to it). */
+/* Only on the teleprompter page (Teleprompter.tsx marks it): this sheet is part of the editor's bundle too, and `overflow: hidden` on the
+   editor's root stopped the page from scrolling, so the mouse wheel did nothing in the Code and Split views. */
+html.tp-page, html.tp-page body, html.tp-page #root { margin: 0; height: 100%; overflow: hidden; }
+
+body.tp-dark {
+  --tp-bg: #0b0b0c;
+  --tp-text: #f4f4f5;
+  --tp-dim: rgba(244, 244, 245, .38);
+  --tp-chip: #2a2a2e;
+  --tp-chip-text: #e6e6e8;
+  --tp-pause: #1f3b73;
+  --tp-pause-text: #d6e4ff;
+  --tp-audience: #4a2f73;
+  --tp-audience-text: #eadfff;
+  --tp-cue: #6a4308;
+  --tp-cue-text: #ffe9bf;
+  --tp-accent: #8ab4ff;
+  --tp-bar: rgba(24, 24, 27, .94);
+  --tp-line: rgba(138, 180, 255, .55);
+  --tp-tone-bg: rgba(255, 213, 0, .16);
+}
+
+body.tp-light {
+  --tp-bg: #fbfbfa;
+  --tp-text: #141414;
+  --tp-dim: rgba(20, 20, 20, .38);
+  --tp-chip: #e6e6e3;
+  --tp-chip-text: #222;
+  --tp-pause: #cfe0ff;
+  --tp-pause-text: #0f2c63;
+  --tp-audience: #e4d8fb;
+  --tp-audience-text: #35205c;
+  --tp-cue: #ffe3ad;
+  --tp-cue-text: #4d3004;
+  --tp-accent: #1b4aa0;
+  --tp-bar: rgba(244, 244, 241, .96);
+  --tp-line: rgba(27, 74, 160, .55);
+  --tp-tone-bg: rgba(255, 213, 0, .34);
+}
+
+body { background: var(--tp-bg); color: var(--tp-text); font-family: 'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif; }
+
+.tp-root { position: fixed; inset: 0; background: var(--tp-bg); color: var(--tp-text); }
+
+.tp-message { display: flex; align-items: center; justify-content: center; height: 100%; font-size: 24px; opacity: .7; padding: 24px; text-align: center; }
+
+.tp-scroll { position: absolute; inset: 0; overflow: hidden; }
+.tp-scroll.tp-mirror { transform: scaleX(-1); }
+.tp-scroll.tp-flip { transform: scaleY(-1); }
+.tp-scroll.tp-mirror.tp-flip { transform: scale(-1, -1); }
+.tp-scroll .tp-page { box-sizing: border-box; width: min(100%, calc(var(--tp-width, 1) * 1296px)); margin: 0 auto; padding: 35vh 48px 70vh; font-size: var(--tp-size, 48px); line-height: var(--tp-lh, 1.38); will-change: transform; }
+
+.tp-block { margin: 0 0 .9em; }
+.tp-p { transition: opacity .25s; }
+.tp-past { opacity: .42; }
+.tp-endmark { opacity: .45; font-size: .5em; text-transform: uppercase; letter-spacing: .12em; }
+
+.tp-h { font-size: .5em; line-height: 1.2; text-transform: uppercase; letter-spacing: .14em; color: var(--tp-accent); border-bottom: 2px solid var(--tp-dim); padding-bottom: .25em; margin: 1.4em 0 .8em; font-weight: 700; }
+.tp-h2, .tp-h3 { font-size: .42em; }
+
+.tp-words { white-space: pre-wrap; }
+.tp-slower { text-decoration: underline dotted; text-underline-offset: .2em; }
+.tp-faster { text-decoration: underline dashed; text-underline-offset: .2em; }
+.tp-loud { font-size: 1.12em; font-weight: 800; }
+.tp-soft { font-size: .9em; opacity: .66; }
+.tp-emphasis { color: var(--tp-accent); font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+.tp-tone { background: var(--tp-tone-bg); border-radius: .15em; padding: 0 .12em; font-style: italic; }
+.tp-user { border-radius: .15em; padding: 0 .12em; background: var(--tp-chip); }
+
+.tp-c-red { background: rgba(229, 72, 77, .28); }
+.tp-c-orange { background: rgba(247, 118, 24, .28); }
+.tp-c-yellow { background: rgba(245, 197, 24, .30); }
+.tp-c-green { background: rgba(46, 157, 87, .28); }
+.tp-c-teal { background: rgba(18, 165, 148, .28); }
+.tp-c-blue { background: rgba(62, 99, 221, .28); }
+.tp-c-purple { background: rgba(142, 78, 198, .28); }
+.tp-c-pink { background: rgba(214, 64, 159, .28); }
+
+.tp-label, .tp-pause, .tp-cue {
+  display: inline-block;
+  vertical-align: .12em;
+  border-radius: .45em;
+  font-size: .5em;
+  line-height: 1.3;
+  padding: .12em .55em;
+  margin: 0 .35em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tp-label { background: var(--tp-chip); color: var(--tp-chip-text); font-weight: 500; font-style: italic; }
+.tp-pause { background: var(--tp-pause); color: var(--tp-pause-text); }
+.tp-audience { background: var(--tp-audience); color: var(--tp-audience-text); }
+.tp-cue { background: var(--tp-cue); color: var(--tp-cue-text); font-size: .55em; }
+.tp-pause.tp-active { outline: 3px solid var(--tp-accent); }
+
+.tp-line { position: absolute; left: 0; width: 36px; height: 0; border-top: 3px solid var(--tp-line); pointer-events: none; }
+.tp-line::after { content: ''; position: absolute; right: -2px; top: -9px; border-left: 14px solid var(--tp-line); border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
+
+.tp-next { position: absolute; top: 14px; right: 20px; padding: 6px 16px; border-radius: 999px; background: var(--tp-pause); color: var(--tp-pause-text); font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tp-next.tp-active { background: var(--tp-accent); color: var(--tp-bg); }
+
+.tp-clock { position: absolute; left: 0; right: 0; bottom: 46px; display: flex; gap: 22px; align-items: center; padding: 8px 18px; background: var(--tp-bar); border-top: 1px solid var(--tp-dim); font-variant-numeric: tabular-nums; }
+.tp-clock-only { bottom: 0; top: 0; padding: 10px 14px; gap: 14px; flex-wrap: wrap; align-content: center; border-top: 0; }
+.tp-time { display: flex; flex-direction: column; min-width: 90px; }
+.tp-grow { flex: 1; min-width: 150px; }
+.tp-big { font-size: 26px; font-weight: 700; line-height: 1.1; }
+.tp-small { font-size: 13px; opacity: .75; margin-top: 2px; }
+.tp-over { color: #e5484d; }
+.tp-light { display: flex; align-items: center; gap: 8px; }
+.tp-light i { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--tp-dim); }
+.tp-keys { display: flex; gap: 6px; }
+
+.tp-toolbar { position: absolute; left: 0; right: 0; bottom: 0; height: 46px; display: flex; align-items: center; gap: 8px; padding: 0 12px; background: var(--tp-bar); border-top: 1px solid var(--tp-dim); overflow: hidden; }
+.tp-speed { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.tp-slider { width: 130px; accent-color: var(--tp-accent); cursor: pointer; }
+.tp-slider:focus-visible { outline: 3px solid var(--tp-accent); outline-offset: 2px; }
+.tp-speed .tp-button { min-width: 32px; padding: 6px 10px; }
+.tp-button:disabled, .tp-slider:disabled { opacity: .4; cursor: default; }
+.tp-speedout { min-width: 96px; font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tp-toast { position: absolute; top: 64px; left: 50%; transform: translateX(-50%); padding: 8px 22px; border-radius: 999px; background: var(--tp-accent); color: var(--tp-bg); font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; pointer-events: none; }
+@media (max-width: 1250px) { .tp-help { display: none; } }
+.tp-help { margin-left: auto; font-size: 12px; opacity: .6; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+
+.tp-button { white-space: nowrap; flex-shrink: 0; font: inherit; font-size: 14px; color: var(--tp-text); background: var(--tp-chip); border: 1px solid var(--tp-dim); border-radius: 8px; padding: 6px 12px; cursor: pointer; min-height: 32px; }
+.tp-button:hover { border-color: var(--tp-accent); }
+.tp-button:focus-visible { outline: 3px solid var(--tp-accent); outline-offset: 2px; }
+.tp-button[aria-pressed='true'] { border-color: var(--tp-accent); font-weight: 700; }
+.tp-primary { font-size: 22px; min-width: 52px; min-height: 44px; background: var(--tp-accent); color: var(--tp-bg); border-color: var(--tp-accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tp-p { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .tp-label, .tp-pause, .tp-cue, .tp-button, .tp-next { background: Canvas; color: CanvasText; border: 1px solid CanvasText; }
+  .tp-pause.tp-active, .tp-button[aria-pressed='true'] { border: 3px solid Highlight; }
+}
+
+/* the rehearsal (rehearsal.js): the banner while timing, and the summary at the end */
+.tp-rehearsal { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); max-width: 70%; padding: 6px 18px; border-radius: 999px; background: var(--tp-cue); color: var(--tp-cue-text); font-size: 20px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.tp-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, .55); display: flex; align-items: center; justify-content: center; padding: 24px; }
+.tp-dialog { max-width: 820px; width: 100%; max-height: 100%; overflow: auto; background: var(--tp-bg); color: var(--tp-text); border: 2px solid var(--tp-accent); border-radius: 14px; padding: 20px 26px; font-size: 18px; }
+.tp-dialog h2 { margin: 0 0 8px; font-size: 26px; }
+.tp-dialog p { margin: 6px 0; }
+.tp-rows { margin: 10px 0; border-top: 1px solid var(--tp-dim); font-variant-numeric: tabular-nums; font-size: 15px; }
+.tp-row { display: grid; grid-template-columns: 2em 1fr 4em 4em 4.5em; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--tp-dim); }
+.tp-rowtext { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tp-status { opacity: .85; font-size: 15px; }
+.tp-dialog-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.tp-primary-text { background: var(--tp-accent); color: var(--tp-bg); border-color: var(--tp-accent); font-weight: 700; }
+
+/* the focus band: the text is full in a band around the reading line and fades away from it, so the eye stays on the line (the mask is on
+   the window of the text, not on the page that moves, so it stays where the reading line is) */
+.tp-focus .tp-scroll {
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .22) 0, rgba(0, 0, 0, .22) calc(var(--tp-line-at) - 17%), #000 calc(var(--tp-line-at) - 6%), #000 calc(var(--tp-line-at) + 14%), rgba(0, 0, 0, .3) calc(var(--tp-line-at) + 36%), rgba(0, 0, 0, .3) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .22) 0, rgba(0, 0, 0, .22) calc(var(--tp-line-at) - 17%), #000 calc(var(--tp-line-at) - 6%), #000 calc(var(--tp-line-at) + 14%), rgba(0, 0, 0, .3) calc(var(--tp-line-at) + 36%), rgba(0, 0, 0, .3) 100%);
+}
+.tp-focus .tp-past { opacity: 1; }
+
+/* the countdown before the text starts to move */
+.tp-countdown { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); min-width: 1.6em; text-align: center; padding: 0 .35em; border-radius: .4em; background: var(--tp-accent); color: var(--tp-bg); font-size: 22vh; font-weight: 800; line-height: 1.2; font-variant-numeric: tabular-nums; pointer-events: none; opacity: .94; }
+
+/* the panels over the text: the options and the list of sections */
+.tp-panel { position: absolute; bottom: 124px; background: var(--tp-bg); color: var(--tp-text); border: 2px solid var(--tp-accent); border-radius: 12px; padding: 12px 14px; font-size: 16px; box-shadow: 0 6px 24px rgba(0, 0, 0, .4); }
+.tp-options { right: 14px; display: flex; flex-direction: column; gap: 10px; min-width: 300px; }
+.tp-field { display: flex; align-items: center; gap: 10px; }
+.tp-field input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--tp-accent); }
+.tp-field select, .tp-field input[type='time'] { margin-left: auto; font: inherit; font-size: 15px; color: var(--tp-text); background: var(--tp-chip); border: 1px solid var(--tp-dim); border-radius: 8px; padding: 4px 8px; min-height: 32px; color-scheme: dark light; }
+.tp-field select:focus-visible, .tp-field input:focus-visible { outline: 3px solid var(--tp-accent); outline-offset: 2px; }
+.tp-sections { left: 14px; top: 14px; bottom: auto; max-height: calc(100% - 140px); width: 380px; max-width: 46%; overflow: auto; padding: 6px; }
+.tp-sections p { margin: 8px; }
+.tp-section { display: flex; width: 100%; align-items: baseline; gap: 12px; text-align: left; font: inherit; font-size: 17px; color: var(--tp-text); background: transparent; border: 0; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.tp-section:hover { background: var(--tp-chip); }
+.tp-section.tp-chosen { background: var(--tp-chip); outline: 2px solid var(--tp-accent); }
+.tp-section:focus-visible { outline: 3px solid var(--tp-accent); }
+.tp-section-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tp-section-time { font-variant-numeric: tabular-nums; opacity: .7; }
+
+@media (forced-colors: active) {
+  .tp-panel, .tp-countdown { background: Canvas; color: CanvasText; border: 2px solid CanvasText; }
+  .tp-section.tp-chosen { outline: 3px solid Highlight; }
+}
+
+/* the sets of colors of the options: each one is a whole palette, checked for contrast in teleprompterPalettes.test.js */
+body.tp-pal-yellow {
+  --tp-bg: #000000;
+  --tp-text: #ffe600;
+  --tp-dim: rgba(255, 230, 0, .45);
+  --tp-chip: #2a2500;
+  --tp-chip-text: #fff0a0;
+  --tp-pause: #1f3b73;
+  --tp-pause-text: #d6e4ff;
+  --tp-audience: #4a2f73;
+  --tp-audience-text: #eadfff;
+  --tp-cue: #6a4308;
+  --tp-cue-text: #ffe9bf;
+  --tp-accent: #ffe600;
+  --tp-bar: rgba(12, 10, 0, .96);
+  --tp-line: rgba(255, 230, 0, .65);
+  --tp-tone-bg: rgba(255, 255, 255, .16);
+}
+
+body.tp-pal-green {
+  --tp-bg: #000000;
+  --tp-text: #5cff85;
+  --tp-dim: rgba(92, 255, 133, .45);
+  --tp-chip: #0b2a14;
+  --tp-chip-text: #b5ffc9;
+  --tp-pause: #0f3d5c;
+  --tp-pause-text: #d8efff;
+  --tp-audience: #4a2f73;
+  --tp-audience-text: #eadfff;
+  --tp-cue: #6a4308;
+  --tp-cue-text: #ffe9bf;
+  --tp-accent: #5cff85;
+  --tp-bar: rgba(0, 12, 4, .96);
+  --tp-line: rgba(92, 255, 133, .65);
+  --tp-tone-bg: rgba(92, 255, 133, .18);
+}
+
+body.tp-pal-white {
+  --tp-bg: #000000;
+  --tp-text: #ffffff;
+  --tp-dim: rgba(255, 255, 255, .55);
+  --tp-chip: #262626;
+  --tp-chip-text: #ffffff;
+  --tp-pause: #0a3a8a;
+  --tp-pause-text: #ffffff;
+  --tp-audience: #5a2d99;
+  --tp-audience-text: #ffffff;
+  --tp-cue: #704200;
+  --tp-cue-text: #ffffff;
+  --tp-accent: #ffffff;
+  --tp-bar: rgba(0, 0, 0, .98);
+  --tp-line: rgba(255, 255, 255, .85);
+  --tp-tone-bg: rgba(255, 255, 255, .24);
+}
+
+body.tp-pal-black {
+  --tp-bg: #ffffff;
+  --tp-text: #000000;
+  --tp-dim: rgba(0, 0, 0, .55);
+  --tp-chip: #e0e0e0;
+  --tp-chip-text: #000000;
+  --tp-pause: #cfe0ff;
+  --tp-pause-text: #0a1f4a;
+  --tp-audience: #e4d8fb;
+  --tp-audience-text: #2a1550;
+  --tp-cue: #ffe3ad;
+  --tp-cue-text: #3d2400;
+  --tp-accent: #0a2a7a;
+  --tp-bar: rgba(255, 255, 255, .98);
+  --tp-line: rgba(0, 0, 0, .75);
+  --tp-tone-bg: rgba(255, 213, 0, .5);
+}
+
+/* the options for the look of the text */
+.tp-divider { border-top: 1px solid var(--tp-dim); margin: 2px 0; }
+.tp-slide { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.tp-slide input[type='range'] { width: 140px; accent-color: var(--tp-accent); cursor: pointer; }
+.tp-slide output { min-width: 3.2em; text-align: right; font-variant-numeric: tabular-nums; }
+.tp-options { max-height: calc(100% - 140px); overflow: auto; }
+
+/* the clock and the toolbar are one block at the bottom: in a narrow window the toolbar goes on a second row instead of running off the
+   window, and the panels of the options stand right above whatever the block is high */
+.tp-bottom { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; }
+.tp-bottom .tp-clock { position: static; }
+.tp-bottom .tp-toolbar { position: static; height: auto; min-height: 46px; flex-wrap: wrap; row-gap: 6px; padding: 6px 12px; overflow: visible; }
+.tp-bottom .tp-panel { bottom: 100%; margin-bottom: 10px; }
+.tp-bottom .tp-options { max-height: calc(100vh - 230px); }
+.tp-sections { max-height: calc(100% - 230px); }
+
+/* for the glass of a prompter: what the speaker sees through the glass is turned the same way as the text (the text window itself is
+   turned by .tp-mirror and .tp-flip). The reading line goes to the other side, the countdown and the next pause are turned in place. */
+.tp-mx .tp-line { left: auto; right: 0; transform: scaleX(-1); }
+.tp-mx .tp-countdown { transform: translate(-50%, -50%) scaleX(-1); }
+.tp-my .tp-countdown { transform: translate(-50%, -50%) scaleY(-1); }
+.tp-mx.tp-my .tp-countdown { transform: translate(-50%, -50%) scale(-1, -1); }
+.tp-mx .tp-next { transform: scaleX(-1); }
+.tp-my .tp-next { transform: scaleY(-1); }
+.tp-mx.tp-my .tp-next { transform: scale(-1, -1); }

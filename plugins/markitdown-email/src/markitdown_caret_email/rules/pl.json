@@ -1,0 +1,83 @@
+{
+  "language": "pl",
+  "header_keys": {
+    "from": ["Od"],
+    "sent": ["Wysłano", "Wysłane", "Data"],
+    "to": ["Do"],
+    "cc": ["DW", "Dw"],
+    "bcc": ["UDW", "Udw"],
+    "subject": ["Temat"],
+    "other": ["Priorytet", "Ważność", "Załączniki"]
+  },
+  "reply_markers": [
+    "Wiadomość oryginalna",
+    "Oryginalna wiadomość",
+    "Wiadomość przekazana dalej",
+    "Przekazana wiadomość",
+    "Początek przekazywanej wiadomości:"
+  ],
+  "forward_markers": [
+    "Wiadomość przekazana dalej",
+    "Przekazana wiadomość",
+    "Początek przekazywanej wiadomości:"
+  ],
+  "wrote_patterns": [
+    "^(?:W dniu\\b)?.+\\bnapisał(?:\\(a\\)|a)?:$"
+  ],
+  "subject_prefixes": ["RE", "Re", "ODP", "Odp", "PD", "Pd", "FW", "Fwd", "[ZEWNĘTRZNA]", "[Zewnętrzna]"],
+  "mobile_signatures": [
+    "Wysłane z mojego ",
+    "Wysłane z iPhone",
+    "Wysłano z mojego ",
+    "Wysłano z aplikacji",
+    "Pobierz aplikację Outlook",
+    "Pobierz Outlook dla "
+  ],
+  "closings": [
+    "pozdrawiam",
+    "pozdrawiam serdecznie",
+    "serdecznie pozdrawiam",
+    "z poważaniem",
+    "z pozdrowieniami",
+    "łączę pozdrowienia",
+    "łączę wyrazy szacunku",
+    "dziękuję",
+    "dziękuję bardzo",
+    "dziękuję za pomoc",
+    "z góry dziękuję",
+    "dzięki",
+    "miłego dnia"
+  ],
+  "greetings": ["cześć", "czesc", "witaj", "witam", "hej", "dzień dobry", "dobry wieczór", "szanowny", "szanowna", "szanowni", "drogi", "droga", "drodzy"],
+  "titles": ["pan", "pani", "panie", "panu", "panią", "państwo", "dr", "prof", "mgr", "inż"],
+  "not_names": ["wszyscy", "wszystkich", "państwo", "zespół", "zespole", "koledzy", "klient", "klienci", "dział", "wsparcie", "obsługa", "sprzedaż", "i", "oraz", "lub"],
+  "disclaimer_phrases": [
+    "niniejsza wiadomość jest poufna",
+    "niniejsza wiadomość może zawierać",
+    "ta wiadomość może zawierać informacje poufne",
+    "może zawierać informacje poufne",
+    "wiadomość ta może zawierać",
+    "jeśli nie jesteś adresatem",
+    "jeżeli nie jest pan/pani adresatem",
+    "jeżeli nie są państwo adresatem",
+    "jeśli otrzymałeś tę wiadomość przez pomyłkę",
+    "jeżeli otrzymali państwo tę wiadomość omyłkowo",
+    "jeżeli otrzymali państwo tę wiadomość przez pomyłkę",
+    "administratorem danych osobowych",
+    "zanim wydrukujesz"
+  ],
+  "banner_phrases": [
+    "ta wiadomość pochodzi spoza",
+    "wiadomość pochodzi spoza organizacji",
+    "wiadomość zewnętrzna",
+    "nie otrzymujesz często wiadomości e-mail od",
+    "dowiedz się, dlaczego jest to ważne"
+  ],
+  "months": {
+    "styczeń": 1, "stycznia": 1, "luty": 2, "lutego": 2, "marzec": 3, "marca": 3,
+    "kwiecień": 4, "kwietnia": 4, "maj": 5, "maja": 5, "czerwiec": 6, "czerwca": 6,
+    "lipiec": 7, "lipca": 7, "sierpień": 8, "sierpnia": 8, "wrzesień": 9, "września": 9,
+    "październik": 10, "października": 10, "listopad": 11, "listopada": 11, "grudzień": 12, "grudnia": 12,
+    "sty": 1, "lut": 2, "kwi": 4, "cze": 6, "lip": 7, "sie": 8, "wrz": 9, "paź": 10, "lis": 11, "gru": 12
+  }
+}

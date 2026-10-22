@@ -1,0 +1,44 @@
+name: Tests
+
+# Runs on every pull request and every push to main: the converters (Word, Excel, PowerPoint, PDF, CSV,
+# emails) against the sample documents in Dev/Caret.ConverterTests/samples, and the email plugin's own tests.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Nothing here needs more than to read the code.
+permissions:
+  contents: read
+
+jobs:
+  converters:
+    name: Converters (.NET)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Test
+        run: dotnet test Dev/Caret.ConverterTests --nologo
+
+  email-plugin:
+    name: Email plugin (Python)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest "markitdown>=0.1.0" olefile
+          python -m pip install -e plugins/markitdown-email
+      - name: Test
+        run: python -m pytest plugins/markitdown-email/tests -q

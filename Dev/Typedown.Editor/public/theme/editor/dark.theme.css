@@ -27,4 +27,38 @@
     --maskColor: rgba(0, 0, 0, .7);
     --editorAreaWidth: 750px;
     --floatShadow: 0 8px 12px 0 rgba(0, 0, 0, .2);
+    /* review marks (CriticMarkup): added, deleted and highlighted text; every text/background pair is at least 4.5:1 on --editorBgColor */
+    --criticAddBg: rgba(46, 160, 67, .28);
+    --criticAddText: #7ee787;
+    --criticAddLine: rgba(126, 231, 135, .6);
+    --criticDelBg: rgba(248, 81, 73, .26);
+    --criticDelText: #ff9992;
+    --criticMarkBg: rgba(210, 153, 34, .38);
+    /* the image icon in front of an image's source text is a grey glyph in the light set and a white one in the dark set */
+    --imageIconFilter: brightness(0) invert(1);
+  /* speech marks (docs/speech-marks-design.md): chips, stressed text, tone bands */
+  --speechChipBg: rgba(140, 175, 255, .2);
+  --speechChipText: #bcd0ff;
+  --speechNoteBg: rgba(255, 190, 90, .16);
+  --speechNoteText: #ffd596;
+  --speechNoteRing: rgba(255, 190, 90, .5);
+  --speechEmphasis: #a9c4ff;
+  --speechToneBg: rgba(210, 153, 34, .3);
+  /* the colours a user can give a mark of their own (Settings > Speech marks) */
+  --speechRedBg: rgba(255, 120, 120, .22);
+  --speechRedText: #ffb3b3;
+  --speechOrangeBg: rgba(255, 170, 80, .22);
+  --speechOrangeText: #ffcf9a;
+  --speechYellowBg: rgba(255, 215, 0, .20);
+  --speechYellowText: #ffe680;
+  --speechGreenBg: rgba(90, 200, 120, .22);
+  --speechGreenText: #a6e8b8;
+  --speechTealBg: rgba(60, 200, 190, .22);
+  --speechTealText: #9ae8e0;
+  --speechBlueBg: rgba(140, 175, 255, .22);
+  --speechBlueText: #bcd0ff;
+  --speechPurpleBg: rgba(180, 140, 255, .22);
+  --speechPurpleText: #d9c6ff;
+  --speechPinkBg: rgba(255, 130, 190, .22);
+  --speechPinkText: #ffc2de;
 }

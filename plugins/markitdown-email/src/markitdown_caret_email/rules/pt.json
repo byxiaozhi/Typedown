@@ -1,0 +1,104 @@
+{
+  "language": "pt",
+  "header_keys": {
+    "from": ["De"],
+    "sent": ["Enviado", "Enviada", "Enviado em", "Data"],
+    "to": ["Para"],
+    "cc": ["Cc", "CC"],
+    "bcc": ["Cco", "CCO", "Bcc"],
+    "subject": ["Assunto"],
+    "other": ["Importância", "Anexos", "Responder para", "Responder a"]
+  },
+  "reply_markers": [
+    "Mensagem original",
+    "Mensagem encaminhada",
+    "Início da mensagem encaminhada:"
+  ],
+  "forward_markers": [
+    "Mensagem encaminhada",
+    "Início da mensagem encaminhada:"
+  ],
+  "wrote_patterns": [
+    "^Em\\b.+\\bescreveu:$"
+  ],
+  "subject_prefixes": ["RES", "Res", "ENC", "Enc", "RE", "Re", "FW", "Fwd", "[EXTERNO]", "[Externo]", "EXTERNO:"],
+  "mobile_signatures": [
+    "Enviado do meu ",
+    "Enviado do Outlook",
+    "Enviado do Email para",
+    "Obter o Outlook para ",
+    "Baixe o Outlook para "
+  ],
+  "closings": [
+    "atenciosamente",
+    "cordialmente",
+    "cordiais saudações",
+    "atenciosas saudações",
+    "saudações",
+    "abraço",
+    "abraços",
+    "um abraço",
+    "um forte abraço",
+    "grato",
+    "grata",
+    "obrigado",
+    "obrigada",
+    "muito obrigado",
+    "muito obrigada",
+    "desde já agradeço",
+    "agradeço desde já",
+    "fico no aguardo",
+    "no aguardo",
+    "aguardo retorno",
+    "fico à disposição",
+    "att",
+    "abs",
+    "até mais",
+    "até breve",
+    "tenha um bom dia",
+    "bom trabalho",
+    "sucesso",
+    "um grande abraço"
+  ],
+  "greetings": ["olá", "ola", "oi", "bom dia", "boa tarde", "boa noite", "prezado", "prezada", "prezados", "prezadas", "caro", "cara", "caros", "caras", "querido", "querida", "queridos", "queridas", "senhor", "senhora"],
+  "titles": ["sr", "sra", "srta", "senhor", "senhora", "senhorita", "dr", "dra", "doutor", "doutora", "prof", "profa", "professor", "professora", "eng", "engenheiro", "engenheira", "arq", "arquiteto", "arquiteta", "adv", "advogado", "advogada", "ilmo", "ilma", "exmo", "exma"],
+  "not_names": ["a", "todos", "todas", "time", "equipe", "pessoal", "galera", "colegas", "amigos", "amigas", "senhores", "senhoras", "cliente", "clientes", "atendimento", "suporte", "vendas", "departamento", "área", "area", "diretoria", "gerência", "gerencia", "comunidade", "usuários", "usuarios", "colaboradores", "associados", "e", "ou", "o", "os", "as"],
+  "disclaimer_phrases": [
+    "esta mensagem e seus anexos",
+    "esta mensagem e os seus anexos",
+    "este e-mail e seus anexos",
+    "este e-mail e os seus anexos",
+    "esta mensagem é confidencial",
+    "este e-mail é confidencial",
+    "pode conter informações confidenciais",
+    "pode conter informação confidencial",
+    "se você recebeu esta mensagem por engano",
+    "se você recebeu este e-mail por engano",
+    "se recebeu esta mensagem por engano",
+    "caso você não seja o destinatário",
+    "caso não seja o destinatário",
+    "destinada exclusivamente",
+    "destinado exclusivamente",
+    "é proibida a divulgação",
+    "é proibido o uso",
+    "lei geral de proteção de dados",
+    "lgpd",
+    "antes de imprimir este e-mail",
+    "antes de imprimir esta mensagem",
+    "pense no meio ambiente antes de imprimir"
+  ],
+  "banner_phrases": [
+    "este e-mail se originou fora",
+    "esta mensagem se originou fora",
+    "este e-mail foi enviado de fora",
+    "e-mail externo",
+    "mensagem externa",
+    "você não costuma receber e-mails de",
+    "por que isso é importante"
+  ],
+  "months": {
+    "janeiro": 1, "fevereiro": 2, "março": 3, "marco": 3, "abril": 4, "maio": 5, "junho": 6,
+    "julho": 7, "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12,
+    "jan": 1, "fev": 2, "mar": 3, "abr": 4, "mai": 5, "jun": 6, "jul": 7, "ago": 8, "set": 9, "out": 10, "nov": 11, "dez": 12
+  }
+}

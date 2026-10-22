@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Regression tests for the document converters (Word, Excel, PowerPoint, PDF, CSV, emails).
+	     The converters are plain .NET, so their source files are compiled straight into this project:
+	     no WinUI, no Windows App SDK, nothing to install. `dotnet test` from this folder runs them.
+	     See README.md for how the sample documents and their expected Markdown work. -->
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+		<RootNamespace>Caret.ConverterTests</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- The converters, as they are in the app -->
+		<Compile Include="..\Typedown.WinUI\Services\Conversion\**\*.cs" Link="Converters\%(RecursiveDir)%(Filename)%(Extension)" />
+		<Compile Include="..\Typedown.WinUI\Utilities\TextFileEncoding.cs" Link="Converters\TextFileEncoding.cs" />
+		<!-- Spell checking (Windows' own checker; plain .NET) -->
+		<Compile Include="..\Typedown.WinUI\Services\SpellChecking.cs" Link="Converters\SpellChecking.cs" />
+		<!-- The text of a review comment (CriticMarkup with the author and the day) -->
+		<Compile Include="..\Typedown.WinUI\Services\ReviewMarks.cs" Link="Converters\ReviewMarks.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewMarks.Resolve.cs" Link="Converters\ReviewMarks.Resolve.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewDiff.cs" Link="Converters\ReviewDiff.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\LiveReview.cs" Link="Converters\LiveReview.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewDates.cs" Link="Converters\ReviewDates.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewStore.cs" Link="Converters\ReviewStore.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewStoreQueue.cs" Link="Converters\ReviewStoreQueue.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\SpeechLibrary.cs" Link="Converters\SpeechLibrary.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\HelpTopics.cs" Link="Converters\HelpTopics.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\SpeechRehearsal.cs" Link="Converters\SpeechRehearsal.cs" />
+		<Compile Include="..\Typedown.WinUI\Utilities\ImageStyle.cs" Link="Converters\ImageStyle.cs" />
+		<!-- The starter templates that Caret adds to the Templates folder -->
+		<Compile Include="..\Typedown.WinUI\Services\StarterTemplates.cs" Link="Converters\StarterTemplates.cs" />
+		<!-- Edit > Copy as WhatsApp text -->
+		<Compile Include="..\Typedown.WinUI\Services\WhatsAppFormat.cs" Link="Converters\WhatsAppFormat.cs" />
+		<!-- What Settings > Appearance > Section colors offers and what a stored choice means -->
+		<Compile Include="..\Typedown.WinUI\Utilities\SectionColorChoice.cs" Link="Converters\SectionColorChoice.cs" />
+		<Compile Include="..\Typedown.WinUI\Utilities\AppearancePreview.cs" Link="Converters\AppearancePreview.cs" />
+		<!-- Where a file is: reveal it in Explorer, copy its path and its link -->
+		<Compile Include="..\Typedown.WinUI\Services\FileLocation.cs" Link="Converters\FileLocation.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\TitleBarLayout.cs" Link="Converters\TitleBarLayout.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\PaletteSearch.cs" Link="Converters\PaletteSearch.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\KeyTipPlan.cs" Link="Converters\KeyTipPlan.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\FolderHistory.cs" Link="Converters\FolderHistory.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ShortcutCatalog.cs" Link="Converters\ShortcutCatalog.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\ReviewList.cs" Link="Converters\ReviewList.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\StatusFacts.cs" Link="Converters\StatusFacts.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\HomeFacts.cs" Link="Converters\HomeFacts.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\LineDiff.cs" Link="Converters\LineDiff.cs" />
+		<Compile Include="..\Typedown.WinUI\Services\NoteHistory.cs" Link="Converters\NoteHistory.cs" />
+		<!-- File > Export > Word -->
+		<Compile Include="..\Typedown.WinUI\Services\Export\*.cs" Link="Export\%(Filename)%(Extension)" />
+		<EmbeddedResource Include="..\..\plugins\markitdown-email\src\markitdown_caret_email\rules\*.json" LogicalName="EmailRules.%(Filename)%(Extension)" Link="Converters\rules\%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- The same versions as the app -->
+		<PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
+		<PackageReference Include="Markdig" Version="1.4.0" />
+		<PackageReference Include="MimeKitLite" Version="4.18.1" />
+		<PackageReference Include="OpenMcdf" Version="3.3.0" />
+		<PackageReference Include="PdfPig" Version="0.1.16" />
+		<PackageReference Include="ReverseMarkdown" Version="6.2.1" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+		<PackageReference Include="xunit" Version="2.9.2" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+	</ItemGroup>
+
+</Project>

@@ -54,8 +54,16 @@ const searchCtrl = ContentState => {
           this.replaceOne(matches, i, replaceValue)
         }
       }
-      const highlightIndex = index < matches.length - 1 ? index : index - 1
-      this.search(value, { ...searchOptions, highlightIndex: isSingle ? highlightIndex : -1 })
+      // One replacement: the next match is the first one after the inserted text, and after the last match the search
+      // wraps to the first. (Going on from the old index selected the previous match after the last one, and the same
+      // place again when the replacement still contains the term.)
+      let selection
+      if (isSingle) {
+        const { key, start } = matches[index]
+        const offset = start + replaceValue.length
+        selection = { start: { key, offset }, end: { key, offset } }
+      }
+      this.search(value, { ...searchOptions, ...(isSingle ? { selection } : {}), highlightIndex: -1 })
     }
   }
 
@@ -79,11 +87,13 @@ const searchCtrl = ContentState => {
     }
   }
 
-  ContentState.prototype.find = function (action/* prev next */) {
+  ContentState.prototype.find = function (action/* prev next goto */, to) {
     let { matches, index } = this.searchMatches
     const len = matches.length
     if (!len) return
-    index = action === 'next' ? index + 1 : index - 1
+    // goto: the match the Find tab of the inspector pane points at
+    if (action === 'goto' && !(to >= 0 && to < len)) return
+    index = action === 'goto' ? to : action === 'next' ? index + 1 : index - 1
     if (index < 0) index = len - 1
     if (index >= len) index = 0
     this.searchMatches.index = index

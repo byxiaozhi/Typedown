@@ -3,6 +3,7 @@ import { CLASS_OR_ID, PREVIEW_DOMPURIFY_CONFIG } from '../../config'
 import { conflict, mixins, camelToSnake, sanitize } from '../../utils'
 import { patch, toVNode, toHTML, h } from './snabbdom'
 import { beginRules } from '../rules'
+import { collectDefinitions, definitionsKey } from '../speech'
 import renderInlines from './renderInlines'
 import renderBlock from './renderBlock'
 
@@ -17,6 +18,7 @@ class StateRender {
     this.diagramCache = new Map()
     this.tokenCache = new Map()
     this.labels = new Map()
+    this.speechKey = ''
     this.urlMap = new Map()
     this.renderingTable = null
     this.renderingRowContainer = null
@@ -50,6 +52,37 @@ class StateRender {
     }
 
     blocks.forEach(b => travel(b))
+  }
+
+  // Speech marks: the words a document defines for itself ({define very-slow pace 50%: ...}) are read from all its
+  // paragraphs before they are drawn. True when Speech mode or the definitions have changed since the last time, in
+  // which case the tokens drawn from the old ones are dropped and everything has to be drawn again.
+  collectSpeech(blocks) {
+    const options = this.muya.options
+    let key = ''
+    if (options.speechMode) {
+      const texts = []
+      const travel = block => {
+        const { text, children, functionType } = block
+        if (children && children.length) {
+          children.forEach(travel)
+        } else if (text && /^(paragraphContent|atxLine|setextLine|cellContent)$/.test(functionType)) {
+          texts.push(text)
+        }
+      }
+      blocks.forEach(travel)
+      const { defs, problems } = collectDefinitions(texts)
+      options.speechDefs = defs
+      options.speechProblems = problems
+      key = `on${definitionsKey(defs)}`
+    } else {
+      options.speechDefs = undefined
+      options.speechProblems = undefined
+    }
+    if (key === this.speechKey) return false
+    this.speechKey = key
+    this.tokenCache.clear()
+    return true
   }
 
   checkConflicted(block, token, cursor) {

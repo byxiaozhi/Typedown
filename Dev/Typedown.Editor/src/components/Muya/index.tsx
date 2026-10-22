@@ -1,11 +1,15 @@
+import { MAX_SNIPPETS, snippetOf } from "services/searchSnippet";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import transport from "services/transport";
+import { speechLabels } from "services/localization";
+import { setSpeechEditor } from "services/speechPage";
 import Muya from 'components/Muya/lib'
 import TablePicker from 'components/Muya/lib/ui/tablePicker'
 import CodePicker from 'components/Muya/lib/ui/codePicker'
 import EmojiPicker from 'components/Muya/lib/ui/emojiPicker'
 import ImageSelector from 'components/Muya/lib/ui/imageSelector'
 import ImageToolbar from 'components/Muya/lib/ui/imageToolbar'
+import MiniToolbar from 'components/MiniToolbar'
 import LinkTools from 'components/Muya/lib/ui/linkTools'
 import TableBarTools from 'components/Muya/lib/ui/tableTools'
 import FootnoteTool from 'components/Muya/lib/ui/footnoteTool'
@@ -15,6 +19,7 @@ import 'components/Muya/themes/default.css'
 
 interface IMuyaEditor {
     markdown: string
+    markdownSetVersion?: number
     cursor: any
     options: any
     searchOpen: number
@@ -37,12 +42,31 @@ Muya.use(FootnoteTool)
 
 const STANDAR_Y = 320
 
+// Double-clicking a word on Windows selects it with its trailing space, and formatting that
+// selection produced "**word **", which isn't valid bold/italic markdown and showed up as literal
+// asterisks. Before a Format command, drop trailing whitespace from a selection that ends inside a
+// text node (the double-click case); anything else is left as is.
+const trimSelectionTrailingSpace = () => {
+    const sel = window.getSelection()
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) return
+    const range = sel.getRangeAt(0)
+    const { endContainer, endOffset } = range
+    if (endContainer.nodeType !== Node.TEXT_NODE) return
+    const before = (endContainer.textContent ?? '').substring(0, endOffset)
+    const trailing = before.length - before.trimEnd().length
+    if (trailing === 0 || trailing >= range.toString().length) return
+    range.setEnd(endContainer, endOffset - trailing)
+    sel.removeAllRanges()
+    sel.addRange(range)
+}
+
 const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     const [editor, setEditor] = useState<Muya>();
     const [marginTop, setMarginTop] = useState(0);
     const markdownRef = useRef('');
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
+    const markdownSetVersionRef = useRef(props.markdownSetVersion);
     const optionsRef = useRef<any>(props.options);
 
     const relativeScroll = useCallback((delta: number) => {
@@ -85,13 +109,38 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         }
     }, [editor, relativeScroll])
 
-    const search = useCallback(arg => {
-        if (arg?.value != "" && arg?.opt?.selection && editor) {
-            const { value, opt } = arg
-            const selection = opt.selection.start ? opt.selection : undefined
-            editor.search(value, { ...opt, selection })
-        }
+    // Tells the host how many matches there are and which one is current ("3 of 12" in the Find panel).
+    const reportSearchResult = useCallback(() => {
+        const contentState = (editor as any)?.contentState
+        const { matches, index, value } = contentState?.searchMatches ?? { matches: [], index: -1, value: '' }
+        // the first matches with the text around them, for the inspector pane's Find tab
+        const found = matches.slice(0, MAX_SNIPPETS).map(({ key, start, end }: any) =>
+            snippetOf(contentState?.getBlock(key)?.text ?? '', start, end))
+        // `value` is the term the result belongs to: the host ignores a result that is not for the term in its box
+        transport.postMessageNoDiff('SearchResult', { count: matches.length, index, value: value ?? '', matches: found })
     }, [editor])
+
+    const search = useCallback(arg => {
+        if (!editor) return
+        const { contentState } = editor as any
+        if (!arg?.value) {
+            // The box was emptied (or the panel closed): nothing stays marked in the text.
+            const hadMatches = contentState.searchMatches.matches.length > 0
+            contentState.searchMatches.matches = []
+            contentState.searchMatches.value = ''
+            if (hadMatches) contentState.render(false)
+            reportSearchResult()
+            return
+        }
+        // The host sends the term and the options only. The first match to show is the one at or after the caret.
+        const { value, opt } = arg
+        const caret = contentState.cursor
+        const selection = opt?.selection?.start
+            ? opt.selection
+            : caret?.start?.key ? { start: caret.start, end: caret.end } : undefined
+        editor.search(value, { ...opt, selection })
+        reportSearchResult()
+    }, [editor, reportSearchResult])
 
     useEffect(() => {
         searchArgRef.current = props.searchArg
@@ -124,6 +173,14 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         search(props.searchArg)
     }, [editor, props.searchArg, search])
 
+    // A SetMarkdown with the text the editor already has (another tab with the same text) does not set it again, but what floated over
+    // the old words (the mini toolbar) has to be told that the document is another one.
+    useEffect(() => {
+        if (!editor || markdownSetVersionRef.current === props.markdownSetVersion) return
+        markdownSetVersionRef.current = props.markdownSetVersion
+        editor.eventCenter.dispatch('muya-markdown-set')
+    }, [editor, props.markdownSetVersion])
+
     useEffect(() => {
         const ele = document.getElementById('editor');
         const muya = new Muya(ele, optionsRef.current);
@@ -135,6 +192,45 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         editor && Object.assign(editor.options, props.options)
     }, [editor, props.options])
 
+    // The review marks are drawn from the tokens, so the paragraphs are drawn again (without the cached tokens) when the setting changes.
+    useEffect(() => {
+        editor?.contentState.render(false, true)
+    }, [editor, props.options?.showReviewMarks])
+
+    // Speech mode (View menu) switched on or off: the marks are read or not, so everything is drawn again.
+    const speechModeRef = useRef<boolean>(!!props.options?.speechMode)
+    useEffect(() => {
+        const on = !!props.options?.speechMode
+        if (!editor || speechModeRef.current === on) return
+        speechModeRef.current = on
+        editor.setOptions({}, true)
+        // the outline and the word count follow the mode (after this render: the listener that sends them is set again in it)
+        setTimeout(() => editor.dispatchChangeContentChange(), 0)
+    }, [editor, props.options?.speechMode])
+
+    // The colour or symbol of a mark of the user's own was changed in Settings: the marks are drawn again.
+    useEffect(() => {
+        if (editor && editor.options.speechMode) editor.setOptions({}, true)
+    }, [editor, props.options?.speechStyles])
+
+    // The Speech card and the speech shortcuts (services/speechPage.ts) write into this editor.
+    useEffect(() => {
+        setSpeechEditor(editor)
+        return () => setSpeechEditor(undefined)
+    }, [editor])
+
+    // The words on the chips ("pause 2 s") in the language of the interface.
+    useEffect(() => {
+        if (!editor) return
+        let cancelled = false
+        speechLabels.then(labels => {
+            if (cancelled) return
+            editor.options.speechLabels = labels
+            if (editor.options.speechMode) editor.setOptions({}, true)
+        })
+        return () => { cancelled = true }
+    }, [editor])
+
     useEffect(() => {
         editor?.setFocusMode(props.options.focusMode)
     }, [editor, props.options.focusMode])
@@ -145,6 +241,23 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
 
     useEffect(() => transport.addListener<{ slug: string }>('ScrollTo', ({ slug }) => {
         scrollToElement(`#${slug}`)
+    }), [editor, scrollToElement]);
+
+    // The inspector pane's Review list: goes to the `nth` place (0 for the first) where `text` stands, selects it and shows it.
+    useEffect(() => transport.addListener<{ text: string, nth: number }>('ScrollToText', ({ text, nth }) => {
+        if (!editor || !text) return
+        const { contentState } = editor as any
+        let seen = 0
+        for (let block = contentState.getFirstBlock(); block; block = contentState.findNextBlockInLocation(block)) {
+            if (typeof block.text !== 'string') continue
+            for (let at = block.text.indexOf(text); at >= 0; at = block.text.indexOf(text, at + text.length)) {
+                if (seen++ !== nth) continue
+                contentState.cursor = { start: { key: block.key, offset: at }, end: { key: block.key, offset: at + text.length } }
+                contentState.setCursor()
+                scrollToElement(`#${block.key}`)
+                return
+            }
+        }
     }), [editor, scrollToElement]);
 
     useEffect(() => transport.addListener('UpdateParagraph', type => {
@@ -164,6 +277,7 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
     }), [editor]);
 
     useEffect(() => transport.addListener('Format', type => {
+        trimSelectionTrailingSpace()
         editor?.format(type)
     }), [editor]);
 
@@ -200,18 +314,22 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
     }), [editor, props, scrollToElementIfInvisible]);
 
-    useEffect(() => transport.addListener<{ action: string }>('Find', ({ action }) => {
-        editor?.find(action)
+    useEffect(() => transport.addListener<{ action: string, index?: number }>('Find', ({ action, index }) => {
+        editor?.find(action, index)
+        reportSearchResult()
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
-    }), [editor, scrollToElementIfInvisible]);
+    }), [editor, reportSearchResult, scrollToElementIfInvisible]);
 
     useEffect(() => transport.addListener<{ value: string, opt: unknown }>('Replace', ({ value, opt }) => {
         editor?.replace(value, opt)
-    }), [editor, scrollToElement]);
+        reportSearchResult()
+        // the next match may be off screen after a replacement
+        setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
+    }), [editor, reportSearchResult, scrollToElement, scrollToElementIfInvisible]);
 
     useEffect(() => {
         setMarginTop(currentMarginTop => {
-            const newMarginTop = { 0: 0, 1: 50, 2: 90 }[props.searchOpen] ?? 0;
+            const newMarginTop = { 0: 0, 1: 75, 2: 115 }[props.searchOpen] ?? 0;   // the height of the Find panel: Find only, Find and Replace
             relativeScroll(newMarginTop - currentMarginTop)
             return newMarginTop;
         })
@@ -304,6 +422,15 @@ const MuyaEditor: React.FC<IMuyaEditor> = (props) => {
             lineHeight: props.options?.lineHeight
         }}>
             <div id="editor" />
+            {props.options?.selectionToolbar !== false && (
+                <MiniToolbar
+                    editor={editor}
+                    review={props.options?.showReviewMarks !== false}
+                    speech={!!props.options?.speechMode}
+                    onFormat={type => { trimSelectionTrailingSpace(); editor?.format(type) }}
+                    onParagraph={type => editor?.updateParagraph(type)}
+                />
+            )}
         </div>
     )
 

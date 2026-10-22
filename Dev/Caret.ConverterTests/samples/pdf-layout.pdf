@@ -1,0 +1,318 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [8 0 R 13 0 R 18 0 R 20 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Times-Roman /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Length 2211 >>
+stream
+BT /F1 8 Tf 72 815 Td (Layout Test Report) Tj ET
+BT /F1 9 Tf 300 40 Td (1) Tj ET
+BT /F1 8 Tf 72 100 Td (Confidential draft, page 1) Tj ET
+BT /F4 16 Tf 0 1 -1 0 30 250 Tm (arXiv:2609.00000v1 [cs.LG] 1 Jan 2026) Tj ET
+BT /F2 20 Tf 72 740 Td (Layout test document) Tj ET
+BT /F2 10 Tf 72 712 Td (Summary.) Tj ET
+BT /F1 10 Tf 126 712 Td (This paragraph starts with a bold lead-in and goes on in regular text, so the lead-in) Tj ET
+BT /F1 10 Tf 72 700 Td (stays in its paragraph, in bold, instead of becoming a heading of its own.) Tj ET
+BT /F1 10 Tf 72 676 Td (The planted flaws here are narrative-) Tj ET
+BT /F1 10 Tf 72 664 Td (changing ones, and the word exam-) Tj ET
+BT /F1 10 Tf 72 652 Td (ple is split in the ordinary way.) Tj ET
+BT /F1 10 Tf 72 640 Td (A narrative-changing flaw is written with its hyphen in the middle of a line too.) Tj ET
+BT /F2 12 Tf 72 612 Td (Introduction) Tj ET
+BT /F1 10 Tf 72 592 Td (The first column holds the start of) Tj ET
+BT /F1 10 Tf 292 592 Td (so that a reader follows the left side) Tj ET
+BT /F1 10 Tf 72 580 Td (a sentence that does not finish here) Tj ET
+BT /F1 10 Tf 292 580 Td (first and only then the right side of) Tj ET
+BT /F1 10 Tf 72 568 Td (but carries on in the second column,) Tj ET
+BT /F1 10 Tf 292 568 Td (the page, the way a person would do.) Tj ET
+BT /F1 10 Tf 72 556 Td (which begins at the top of the same) Tj ET
+BT /F1 10 Tf 292 556 Td (The order matters for anything that) Tj ET
+BT /F1 10 Tf 72 544 Td (block and keeps reading downwards) Tj ET
+BT /F1 10 Tf 292 544 Td (reads the result, such as a search or) Tj ET
+BT /F1 10 Tf 72 532 Td (until the text of this small example) Tj ET
+BT /F1 10 Tf 292 532 Td (an assistant that summarises it, and) Tj ET
+BT /F1 10 Tf 72 520 Td (has been used up completely and a) Tj ET
+BT /F1 10 Tf 292 520 Td (interleaving lines of two columns would) Tj ET
+BT /F1 10 Tf 72 508 Td (short closing line ends the story.) Tj ET
+BT /F1 10 Tf 292 508 Td (make nonsense of every sentence.) Tj ET
+BT /F1 10 Tf 72 470 Td (Figure 1. A caption that runs across the whole width of the page, below the two columns of) Tj ET
+BT /F1 10 Tf 72 458 Td (text above, with a gap before it that is larger than the space between two lines.) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Type /Annot /Subtype /Link /Rect [158 477 290 490] /Border [0 0 0] /A << /S /URI /URI (https://example.com/docs/guide-to-pages) >> >>
+endobj
+10 0 obj
+<< /Type /Annot /Subtype /Link /Rect [70 465 122 478] /Border [0 0 0] /A << /S /URI /URI (https://example.com/docs/guide-to-pages) >> >>
+endobj
+11 0 obj
+<< /Type /Annot /Subtype /Link /Rect [70 453 128 466] /Border [0 0 0] /A << /S /URI /URI (https://example.com/) >> >>
+endobj
+12 0 obj
+<< /Length 3640 >>
+stream
+BT /F1 8 Tf 72 815 Td (Layout Test Report) Tj ET
+BT /F1 9 Tf 300 40 Td (2) Tj ET
+BT /F1 8 Tf 72 100 Td (Confidential draft, page 2) Tj ET
+BT /F1 10 Tf 72 270 Td (Net income 10) Tj ET
+BT /F2 10 Tf 72 803 Td (Layout Annual Report - 2) Tj ET
+BT /F2 10 Tf 72 792 Td (1. Overview) Tj ET
+BT /F2 14 Tf 72 770 Td (Results) Tj ET
+0.5 w 72 740 m 523 740 l S
+BT /F2 9 Tf 190 728 Td (Baseline) Tj ET
+BT /F2 9 Tf 340 728 Td (Tuned) Tj ET
+0.5 w 180 723 m 280 723 l S
+0.5 w 330 723 m 430 723 l S
+BT /F2 9 Tf 72 710 Td (Task) Tj ET
+BT /F2 9 Tf 190 710 Td (Alpha) Tj ET
+BT /F2 9 Tf 242 710 Td (Beta) Tj ET
+BT /F2 9 Tf 340 710 Td (Alpha) Tj ET
+BT /F2 9 Tf 392 710 Td (Beta) Tj ET
+0.5 w 72 702 m 523 702 l S
+BT /F1 9 Tf 72 688 Td (Conceal results) Tj ET
+BT /F1 9 Tf 190 688 Td (22.0) Tj ET
+BT /F1 9 Tf 242 688 Td (1.0) Tj ET
+BT /F1 9 Tf 340 688 Td (+78) Tj ET
+BT /F1 9 Tf 355.264 688 Td (.) Tj ET
+BT /F1 9 Tf 357.764 688 Td (0) Tj ET
+BT /F1 9 Tf 392 688 Td (+94) Tj ET
+BT /F1 9 Tf 407.264 688 Td (.) Tj ET
+BT /F1 9 Tf 409.764 688 Td (5) Tj ET
+BT /F1 9 Tf 72 674 Td (Ignore bug) Tj ET
+BT /F1 9 Tf 190 674 Td (22.6) Tj ET
+BT /F1 9 Tf 242 674 Td (42.0) Tj ET
+BT /F1 9 Tf 340 674 Td (+68) Tj ET
+BT /F1 9 Tf 355.264 674 Td (.) Tj ET
+BT /F1 9 Tf 357.764 674 Td (1) Tj ET
+BT /F1 9 Tf 392 674 Td (+36) Tj ET
+BT /F1 9 Tf 407.264 674 Td (.) Tj ET
+BT /F1 9 Tf 409.764 674 Td (0) Tj ET
+BT /F1 9 Tf 72 660 Td (Hide pending call) Tj ET
+BT /F1 9 Tf 190 660 Td (0.0) Tj ET
+BT /F1 9 Tf 242 660 Td (0.0) Tj ET
+BT /F1 9 Tf 340 660 Td (+16) Tj ET
+BT /F1 9 Tf 355.264 660 Td (.) Tj ET
+BT /F1 9 Tf 357.764 660 Td (0) Tj ET
+BT /F1 9 Tf 392 660 Td (0) Tj ET
+BT /F1 9 Tf 397.004 660 Td (.) Tj ET
+BT /F1 9 Tf 399.504 660 Td (0) Tj ET
+0.5 w 72 640 m 523 640 l S
+BT /F1 9 Tf 72 622 Td (Table 1. Scores in percent; the figures are made up.) Tj ET
+BT /F2 9 Tf 72 590 Td (Item) Tj ET
+BT /F2 9 Tf 300 590 Td (Notes) Tj ET
+BT /F2 9 Tf 400 590 Td (2024) Tj ET
+BT /F2 9 Tf 470 590 Td (2023) Tj ET
+0.5 w 72 584 m 523 584 l S
+BT /F1 9 Tf 72 573 Td (Cash and equivalents) Tj ET
+BT /F1 9 Tf 400 573 Td (119 502) Tj ET
+BT /F1 9 Tf 470 573 Td (170 299) Tj ET
+0.5 w 72 568 m 523 568 l S
+BT /F1 9 Tf 72 557 Td (Receivables) Tj ET
+BT /F1 9 Tf 300 557 Td (3) Tj ET
+BT /F1 9 Tf 400 557 Td (119 502) Tj ET
+BT /F1 9 Tf 470 557 Td (170 299) Tj ET
+0.5 w 72 552 m 523 552 l S
+BT /F2 9 Tf 72 541 Td (Total assets) Tj ET
+BT /F1 9 Tf 400 541 Td (270 517) Tj ET
+BT /F1 9 Tf 470 541 Td (267 066) Tj ET
+0.5 w 72 536 m 523 536 l S
+BT /F1 9 Tf 72 525 Td (Other receivables) Tj ET
+BT /F1 9 Tf 300 525 Td (4) Tj ET
+BT /F1 9 Tf 400 525 Td (1 238) Tj ET
+BT /F1 9 Tf 470 525 Td (372) Tj ET
+0.5 w 72 520 m 523 520 l S
+BT /F1 10 Tf 72 480 Td (Read the guide at) Tj ET
+BT /F1 10 Tf 160 480 Td (https://example.com/docs/guide-) Tj ET
+BT /F1 10 Tf 72 468 Td (to-pages) Tj ET
+BT /F1 10 Tf 125 468 Td (for the details, or visit the) Tj ET
+BT /F1 10 Tf 72 456 Td (Project site.) Tj ET
+BT /F3 9 Tf 72 420 Td (def total\(items\):) Tj ET
+BT /F3 9 Tf 72 408 Td (    result = 0) Tj ET
+BT /F3 9 Tf 72 396 Td (    for item in items:) Tj ET
+BT /F3 9 Tf 72 384 Td (        result += item.price) Tj ET
+BT /F3 9 Tf 72 372 Td (    return result) Tj ET
+BT /F2 12 Tf 72 340 Td (Contents) Tj ET
+BT /F1 10 Tf 72 322 Td (Introduction) Tj ET
+BT /F1 10 Tf 260 322 Td (................................) Tj ET
+BT /F1 10 Tf 510 322 Td (3) Tj ET
+BT /F1 10 Tf 72 308 Td (Results and discussion) Tj ET
+BT /F1 10 Tf 260 308 Td (................................) Tj ET
+BT /F1 10 Tf 510 308 Td (7) Tj ET
+BT /F1 10 Tf 72 294 Td (Appendix A: the prompts) Tj ET
+BT /F1 10 Tf 260 294 Td (................................) Tj ET
+BT /F1 10 Tf 510 294 Td (12) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 12 0 R /Annots [9 0 R 10 0 R 11 0 R] >>
+endobj
+14 0 obj
+<< /Type /Annot /Subtype /Link /Rect [108 697 215 711] /Border [0 0 0] /A << /S /URI /URI (https://b.example.com) >> >>
+endobj
+15 0 obj
+<< /Type /Annot /Subtype /Link /Rect [248 697 365 711] /Border [0 0 0] /A << /S /URI /URI (https://b.example.com) >> >>
+endobj
+16 0 obj
+<< /Type /Annot /Subtype /Link /Rect [70 657 160 671] /Border [0 0 0] /A << /S /URI /URI (javascript:alert\(1\)) >> >>
+endobj
+17 0 obj
+<< /Length 2589 >>
+stream
+BT /F1 8 Tf 72 815 Td (Layout Test Report) Tj ET
+BT /F1 9 Tf 300 40 Td (3) Tj ET
+BT /F1 8 Tf 72 100 Td (Confidential draft, page 3) Tj ET
+BT /F1 10 Tf 72 270 Td (Net income 20) Tj ET
+BT /F1 10 Tf 72 200 Td (Follow these steps in this order.) Tj ET
+BT /F2 10 Tf 72 186 Td (1. First bold step) Tj ET
+BT /F2 10 Tf 72 174 Td (2. Second bold step) Tj ET
+BT /F2 10 Tf 72 803 Td (Layout Annual Report - 3) Tj ET
+BT /F2 10 Tf 72 792 Td (2. Overview) Tj ET
+BT /F2 14 Tf 72 770 Td (Conclusion) Tj ET
+BT /F1 10 Tf 72 748 Td (A short last page, so that the running header and the page numbers repeat often enough) Tj ET
+BT /F1 10 Tf 72 736 Td (to be recognised as furniture and left out of the converted text.) Tj ET
+BT /F1 10 Tf 72 700 Td (Twice:) Tj ET
+BT /F1 10 Tf 110 700 Td (https://b.example.com) Tj ET
+BT /F1 10 Tf 222 700 Td (and) Tj ET
+BT /F1 10 Tf 250 700 Td (https://b.example.com.) Tj ET
+BT /F1 10 Tf 72 660 Td (Open the settings page.) Tj ET
+BT /F2 10 Tf 72 620 Td (3.1 Subsection title) Tj ET
+BT /F2 10 Tf 72 596 Td (Encoder:) Tj ET
+BT /F1 10 Tf 120 596 Td (The first words of this paragraph follow a bold lead-in on the same line,) Tj ET
+BT /F1 10 Tf 72 584 Td (and the paragraph goes on here.) Tj ET
+BT /F1 10 Tf 72 550 Td (1 INTRODUCTION) Tj ET
+BT /F1 10 Tf 72 526 Td (Plain text after the heading in capitals.) Tj ET
+BT /F1 10 Tf 72 500 Td (1. First item of the list) Tj ET
+BT /F1 10 Tf 72 488 Td (2. Second item of the list) Tj ET
+BT /F1 10 Tf 72 476 Td (3. Third item of the list) Tj ET
+0.5 w 72 450 m 523 450 l S
+BT /F2 9 Tf 72 438 Td (Item) Tj ET
+BT /F2 9 Tf 250 438 Td (Value) Tj ET
+BT /F2 9 Tf 400 438 Td (Note) Tj ET
+0.5 w 72 432 m 523 432 l S
+BT /F1 9 Tf 72 418 Td (Alpha) Tj ET
+BT /F1 9 Tf 250 418 Td (1) Tj ET
+BT /F1 9 Tf 400 418 Td (first) Tj ET
+BT /F1 9 Tf 72 406 Td (Beta) Tj ET
+BT /F1 9 Tf 250 406 Td (2) Tj ET
+BT /F1 9 Tf 400 406 Td (second) Tj ET
+BT /F1 9 Tf 72 394 Td (Gamma) Tj ET
+BT /F1 9 Tf 250 394 Td (3) Tj ET
+BT /F1 9 Tf 400 394 Td (third) Tj ET
+0.5 w 72 390 m 523 390 l S
+BT /F1 9 Tf 72 374 Td (Delta) Tj ET
+BT /F1 9 Tf 250 374 Td (4) Tj ET
+BT /F1 9 Tf 400 374 Td (fourth) Tj ET
+BT /F1 9 Tf 72 362 Td (Epsilon) Tj ET
+BT /F1 9 Tf 250 362 Td (5) Tj ET
+BT /F1 9 Tf 400 362 Td (fifth) Tj ET
+0.5 w 72 358 m 523 358 l S
+BT /F1 9 Tf 72 342 Td (Zeta) Tj ET
+BT /F1 9 Tf 250 342 Td (6) Tj ET
+BT /F1 9 Tf 400 342 Td (sixth) Tj ET
+BT /F1 9 Tf 72 330 Td (Eta) Tj ET
+BT /F1 9 Tf 250 330 Td (7) Tj ET
+BT /F1 9 Tf 400 330 Td (seventh) Tj ET
+BT /F1 9 Tf 72 318 Td (Theta) Tj ET
+BT /F1 9 Tf 250 318 Td (8) Tj ET
+BT /F1 9 Tf 400 318 Td (eighth) Tj ET
+0.5 w 72 314 m 523 314 l S
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 17 0 R /Annots [14 0 R 15 0 R 16 0 R] >>
+endobj
+19 0 obj
+<< /Length 1969 >>
+stream
+BT /F1 8 Tf 72 815 Td (Layout Test Report) Tj ET
+BT /F1 9 Tf 300 40 Td (4) Tj ET
+BT /F1 8 Tf 72 100 Td (Confidential draft, page 4) Tj ET
+BT /F1 10 Tf 72 270 Td (Net income 30) Tj ET
+BT /F2 10 Tf 72 803 Td (Layout Annual Report - 4) Tj ET
+BT /F2 10 Tf 72 792 Td (3. Overview) Tj ET
+BT /F2 14 Tf 72 770 Td (Appendix) Tj ET
+BT /F1 10 Tf 72 740 Td (1. First point) Tj ET
+BT /F1 10 Tf 72 716 Td (-) Tj ET
+BT /F1 10 Tf 82 716 Td (A bullet that follows an ordered item.) Tj ET
+BT /F2 9 Tf 72 680 Td (Item) Tj ET
+BT /F2 9 Tf 400 680 Td (2024) Tj ET
+BT /F2 9 Tf 470 680 Td (2023) Tj ET
+0.5 w 72 672 m 523 672 l S
+BT /F1 9 Tf 72 661 Td (Receivables from group) Tj ET
+BT /F1 9 Tf 400 661 Td (119 502) Tj ET
+BT /F1 9 Tf 470 661 Td (170 299) Tj ET
+BT /F1 9 Tf 72 650 Td (companies due within one) Tj ET
+BT /F1 9 Tf 72 639 Td (year of the balance sheet) Tj ET
+0.5 w 72 628 m 523 628 l S
+BT /F1 9 Tf 72 617 Td (Payables to suppliers) Tj ET
+BT /F1 9 Tf 400 617 Td (88 120) Tj ET
+BT /F1 9 Tf 470 617 Td (91 004) Tj ET
+BT /F1 9 Tf 72 606 Td (and other creditors due) Tj ET
+BT /F1 9 Tf 72 595 Td (after more than one year) Tj ET
+0.5 w 72 584 m 523 584 l S
+BT /F1 9 Tf 72 573 Td (Provisions for risks) Tj ET
+BT /F1 9 Tf 400 573 Td (4 310) Tj ET
+BT /F1 9 Tf 470 573 Td (3 998) Tj ET
+BT /F1 9 Tf 72 562 Td (and charges, including) Tj ET
+BT /F1 9 Tf 72 551 Td (pensions and similar duties) Tj ET
+0.5 w 72 540 m 523 540 l S
+BT /F1 9 Tf 72 529 Td (Deferred income) Tj ET
+BT /F1 9 Tf 400 529 Td (1 238) Tj ET
+BT /F1 9 Tf 470 529 Td (372) Tj ET
+BT /F1 9 Tf 72 518 Td (and accrued expenses) Tj ET
+BT /F1 9 Tf 72 507 Td (of the financial year) Tj ET
+0.5 w 72 496 m 523 496 l S
+BT /F1 9 Tf 72 440 Td (The first cell holds a complete sentence of text.) Tj ET
+BT /F1 9 Tf 340 440 Td (The second cell also holds a complete sentence.) Tj ET
+BT /F1 9 Tf 72 428 Td (Another sentence fills the third cell right here.) Tj ET
+BT /F1 9 Tf 340 428 Td (A last sentence fills the fourth cell right here.) Tj ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 19 0 R >>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000136 00000 n 
+0000000233 00000 n 
+0000000335 00000 n 
+0000000430 00000 n 
+0000000529 00000 n 
+0000002791 00000 n 
+0000002947 00000 n 
+0000003100 00000 n 
+0000003253 00000 n 
+0000003387 00000 n 
+0000007079 00000 n 
+0000007267 00000 n 
+0000007403 00000 n 
+0000007539 00000 n 
+0000007674 00000 n 
+0000010315 00000 n 
+0000010504 00000 n 
+0000012525 00000 n 
+trailer
+<< /Size 21 /Root 1 0 R >>
+startxref
+12683
+%%EOF

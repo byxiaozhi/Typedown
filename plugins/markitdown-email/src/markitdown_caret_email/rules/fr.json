@@ -1,0 +1,104 @@
+{
+  "language": "fr",
+  "header_keys": {
+    "from": ["De"],
+    "sent": ["Envoyé", "Envoyé le", "Date"],
+    "to": ["À", "A"],
+    "cc": ["Cc"],
+    "bcc": ["Cci"],
+    "subject": ["Objet"],
+    "other": ["Importance", "Pièces jointes", "Répondre à"]
+  },
+  "reply_markers": [
+    "Message d'origine",
+    "Message d’origine",
+    "Message original",
+    "Message transféré",
+    "Début du message réexpédié :",
+    "Début du message transféré :"
+  ],
+  "forward_markers": [
+    "Message transféré",
+    "Début du message réexpédié :",
+    "Début du message transféré :"
+  ],
+  "wrote_patterns": [
+    "^Le\\b.+\\ba écrit\\s?:$"
+  ],
+  "subject_prefixes": ["RE", "Re", "TR", "Tr", "FW", "Fwd", "RÉF", "[EXTERNE]", "[Externe]", "EXTERNE :"],
+  "mobile_signatures": [
+    "Envoyé de mon ",
+    "Envoyé depuis mon ",
+    "Envoyé à partir de ",
+    "Envoyé depuis Outlook",
+    "Obtenir Outlook pour ",
+    "Télécharger Outlook pour "
+  ],
+  "closings": [
+    "cordialement",
+    "bien cordialement",
+    "très cordialement",
+    "bien à vous",
+    "bien à toi",
+    "salutations",
+    "sincères salutations",
+    "meilleures salutations",
+    "amicalement",
+    "merci",
+    "merci beaucoup",
+    "merci d'avance",
+    "merci d’avance",
+    "merci par avance",
+    "merci pour votre aide",
+    "merci pour votre retour",
+    "en vous remerciant",
+    "bonne journée",
+    "belle journée",
+    "bonne fin de journée",
+    "à bientôt"
+  ],
+  "greetings": ["bonjour", "bonsoir", "salut", "coucou", "cher", "chère", "chers", "chères"],
+  "titles": ["m", "mr", "mme", "mlle", "monsieur", "madame", "mademoiselle", "maître", "dr", "docteur", "pr", "professeur"],
+  "not_names": ["à", "a", "tous", "toutes", "équipe", "l'équipe", "collègues", "collègue", "monsieur", "madame", "messieurs", "mesdames", "client", "cliente", "service", "services", "support", "ventes", "et", "ou", "le", "la", "les"],
+  "disclaimer_phrases": [
+    "ce message et toutes les pièces jointes",
+    "ce message et les pièces jointes",
+    "ce message et ses pièces jointes",
+    "ce courrier électronique (y compris ses",
+    "susceptibles d'être confidentielles",
+    "susceptibles d’être confidentielles",
+    "peut contenir des informations confidentielles",
+    "au cas où il ne vous serait pas destiné",
+    "si ce message ne vous est pas destiné",
+    "il ne peut être utilisé autrement que",
+    "ce courriel et ses pièces jointes",
+    "ce courriel est confidentiel",
+    "ce message est confidentiel",
+    "si vous avez reçu ce message par erreur",
+    "si vous avez reçu ce courriel par erreur",
+    "si vous n'êtes pas le destinataire",
+    "si vous n’êtes pas le destinataire",
+    "à l'intention exclusive",
+    "à l’intention exclusive",
+    "strictement interdite",
+    "pensez à l'environnement avant d'imprimer",
+    "pensez à l’environnement avant d’imprimer",
+    "n'imprimez ce message que si",
+    "n’imprimez ce message que si"
+  ],
+  "banner_phrases": [
+    "ce courriel provient de l'extérieur",
+    "ce courriel provient de l’extérieur",
+    "ce message provient de l'extérieur",
+    "ce message provient de l’extérieur",
+    "e-mail externe",
+    "courriel externe",
+    "vous ne recevez pas souvent de courriers de",
+    "découvrez pourquoi ceci est important"
+  ],
+  "months": {
+    "janvier": 1, "février": 2, "fevrier": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6,
+    "juillet": 7, "août": 8, "aout": 8, "septembre": 9, "octobre": 10, "novembre": 11, "décembre": 12, "decembre": 12,
+    "janv": 1, "févr": 2, "fevr": 2, "avr": 4, "juil": 7, "déc": 12
+  }
+}

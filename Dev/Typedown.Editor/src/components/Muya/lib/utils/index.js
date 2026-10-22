@@ -287,7 +287,18 @@ export const getImageInfo = (src, basePath = window.basePath) => {
       }
     } else {
       // Correct relative path on desktop. If we resolve a absolute path "path.resolve" doesn't do anything.
-      // NOTE: We don't need to convert Windows styled path to UNIX style because Chromium handels this internal.
+      // Caret: path-browserify's POSIX resolve turns a Windows base folder into "/C:\Users\...\x.png",
+      // which only meant the local file when the editor page itself was a file:// page. Caret serves
+      // the editor from https://typedown.editor.local, so that became a request to the virtual host
+      // (404) and every relative image rendered broken. For a drive-rooted base folder, build a
+      // file:/// URL instead, which the host serves (MainWindow.EditorView_WebResourceRequested).
+      if (/^[a-zA-Z]:[\\/]/.test(basePath)) {
+        const joined = path.posix.normalize(`${basePath.replace(/\\/g, '/')}/${src.replace(/\\/g, '/')}`)
+        return {
+          isUnknownType: false,
+          src: `file:///${joined}`
+        }
+      }
       return {
         isUnknownType: false,
         src: path.resolve(basePath, src)

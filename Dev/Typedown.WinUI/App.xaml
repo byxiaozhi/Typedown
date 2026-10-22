@@ -1,0 +1,20 @@
+<Application
+    x:Class="Typedown.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Required for any of the richer Fluent controls (MenuBar, ContentDialog,
+                     NavigationView...). Without it they fail to resolve their theme resources (e.g.
+                     TabViewScrollButtonBackground) at layout time and the native XAML engine
+                     hard-crashes (0xc000027b) instead of failing gracefully — simple controls like
+                     Grid/TextBlock/Button don't need this, which is why the crash only showed up once
+                     MenuBar entered the tree. Caret.xaml (merged after it, so its overrides win) is
+                     the warm-autumn theme from the brand asset package — see its own header comment. -->
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary Source="Themes/Caret.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

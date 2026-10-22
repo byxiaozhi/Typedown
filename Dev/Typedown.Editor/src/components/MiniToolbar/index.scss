@@ -1,0 +1,98 @@
+// The mini toolbar over a selection (index.tsx): 32 px high, buttons 28 px, 8 px above the selection.
+.mini-toolbar {
+  position: fixed;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 32px;
+  padding: 0 2px;
+  border-radius: 6px;
+  color: var(--editorColor, #333);
+  background: var(--floatBgColor, #fff);
+  border: 1px solid rgba(127, 127, 127, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  user-select: none;
+  animation: mt-in 0.1s ease-out;
+}
+
+@keyframes mt-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mt-button {
+  box-sizing: border-box;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: 600 14px 'Segoe UI Variable Text', 'Segoe UI', sans-serif;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+
+.mt-button:hover { background: rgba(127, 127, 127, 0.18); }
+.mt-button:active { background: rgba(127, 127, 127, 0.32); }
+.mt-button:focus-visible { outline-color: var(--themeColor, #4a8fe0); }
+
+// on: tinted with the colour of the app
+.mt-button[aria-pressed="true"] { background: var(--themeColor30, rgba(74, 143, 224, 0.3)); }
+
+.mt-italic { font-style: italic; font-weight: 400; }
+.mt-underline { text-decoration: underline; }
+.mt-strike { text-decoration: line-through; }
+.mt-icon { font: 400 14px 'Segoe Fluent Icons', 'Segoe MDL2 Assets', sans-serif; }
+.mt-word { font-weight: 400; font-size: 12px; padding: 0 6px; }
+.mt-divider { align-self: center; width: 1px; height: 16px; margin: 0 2px; background: rgba(127, 127, 127, 0.4); flex: none; }
+.mt-heading { padding: 0 2px 0 6px; }
+.mt-chevron { margin-left: 3px; font: 400 8px 'Segoe Fluent Icons', 'Segoe MDL2 Assets', sans-serif; }
+
+// the heading menu, under the toolbar
+.mt-menu {
+  position: absolute;
+  top: 34px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  padding: 4px;
+  border-radius: 6px;
+  background: var(--floatBgColor, #fff);
+  border: 1px solid rgba(127, 127, 127, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+}
+
+.mt-item {
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: 400 13px 'Segoe UI Variable Text', 'Segoe UI', sans-serif;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+
+.mt-item:hover { background: rgba(127, 127, 127, 0.18); }
+.mt-item:focus-visible { outline-color: var(--themeColor, #4a8fe0); }
+
+// high contrast: the system colours; on is the inverse
+@media (forced-colors: active) {
+  .mini-toolbar, .mt-menu { background: Canvas; color: CanvasText; border-color: CanvasText; box-shadow: none; }
+  .mt-button, .mt-item { color: ButtonText; }
+  .mt-divider { background: CanvasText; }
+  .mt-button:focus-visible, .mt-item:focus-visible { outline-color: Highlight; }
+  .mt-button:hover, .mt-item:hover { background: Highlight; color: HighlightText; }
+  .mt-button[aria-pressed="true"] { background: Highlight; color: HighlightText; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mini-toolbar { animation: none; }
+}

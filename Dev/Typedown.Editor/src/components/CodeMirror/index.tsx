@@ -1,3 +1,4 @@
+import { MAX_SNIPPETS, snippetOf } from "services/searchSnippet";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import transport from "services/transport";
 import { matchString } from 'services/common'
@@ -25,6 +26,21 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     const [marginTop, setMarginTop] = useState(0);
     const matchsRef = useRef<any[]>([]);
     const matchIndexRef = useRef(0);
+    const searchValueRef = useRef('');
+    // "3 of 12" in the host's Find panel, as the visual editor reports it
+    const reportSearchResult = useCallback(() => {
+        const count = matchsRef.current.length;
+        // the first matches with the text around them, for the inspector pane's Find tab
+        const text: string = editor?.getValue() ?? '';
+        const matches = matchsRef.current.slice(0, MAX_SNIPPETS)
+            .map(({ index, match }) => snippetOf(text, index, index + match.length));
+        transport.postMessageNoDiff('SearchResult', {
+            count,
+            index: count == 0 ? -1 : matchIndexRef.current,
+            value: searchValueRef.current,
+            matches
+        });
+    }, [editor]);
     const markdownRef = useRef('');
     const searchArgRef = useRef<any>();
     const cursorRef = useRef<any>();
@@ -65,11 +81,15 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     const search = useCallback(({ value, opt }) => {
         const lastMatch = matchsRef.current[matchIndexRef.current];
         matchsRef.current.forEach(({ marker }) => marker.clear())
+        searchValueRef.current = value ?? '';
         if ((value == null || value.length == 0)) {
+            matchsRef.current = [];
+            matchIndexRef.current = -1;
             if (lastMatch?.index >= 0) {
                 const head = editor.posFromIndex(lastMatch.index);
                 editor.setSelection(head, head);
             }
+            reportSearchResult();
             return;
         }
         let startIndex = 0
@@ -82,6 +102,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             matchIndexRef.current < matchs.length && matchs[matchIndexRef.current].index < startIndex;
             matchIndexRef.current++
         );
+        // the caret is behind the last match: the search goes on at the first one
+        if (matchIndexRef.current >= matchs.length) matchIndexRef.current = 0
         setMatchSelection(matchs[matchIndexRef.current])
         matchsRef.current = matchs.map(({ index, match, subMatches }, i) => ({
             marker: editor.markText(
@@ -93,10 +115,15 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
             match,
             subMatches
         }))
-    }, [editor, setMatchSelection])
+        reportSearchResult();
+    }, [editor, setMatchSelection, reportSearchResult])
 
-    const find = useCallback(({ action }) => {
-        if (action == 'next') {
+    const find = useCallback(({ action, index }) => {
+        if (action == 'goto') {
+            // the match the Find tab of the inspector pane points at
+            if (!(index >= 0) || index >= matchsRef.current.length) return;
+            matchIndexRef.current = index;
+        } else if (action == 'next') {
             matchIndexRef.current++;
         } else {
             matchIndexRef.current--;
@@ -116,7 +143,8 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
                 { className: i == matchIndexRef.current ? 'ag-highlight' : 'ag-selection' }
             )
         })
-    }, [editor, setMatchSelection])
+        reportSearchResult();
+    }, [editor, setMatchSelection, reportSearchResult])
 
     const replaceOne = useCallback((match, replaceValue, offset = 0) => {
         const text = editor.getValue();
@@ -142,12 +170,32 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         } else {
             if (!matchsRef.current)
                 return;
+            // setValue puts the caret at the start of the text: it is kept where it was, moved by what the replacements
+            // before it added or took away, so that the search after the replacement starts near it
+            const caret = Math.min(editor.indexFromPos(editor.getCursor('anchor')), editor.indexFromPos(editor.getCursor('head')));
+            let caretAfter = caret;
+            let caretMapped = false;
             let offset = 0;
             for (const match of matchsRef.current) {
-                offset += replaceOne(match, value, offset)
+                const startAfter = match.index + offset
+                const change = replaceOne(match, value, offset)
+                offset += change
+                if (caretMapped) continue
+                if (match.index + match.match.length <= caret) {
+                    caretAfter = caret + offset              // behind this replacement: moved by all the changes up to here
+                } else if (match.index < caret) {
+                    caretAfter = startAfter                   // inside it: at the start of what replaced it
+                    caretMapped = true
+                }
             }
+            // the replacement can contain the term again: look at the new text and count what is there
+            const at = editor.posFromIndex(Math.max(0, caretAfter));
+            search({
+                value: searchValueRef.current,
+                opt: { ...opt, selection: { anchor: at, head: at } }
+            });
         }
-    }, [find, replaceOne])
+    }, [editor, find, replaceOne, search])
 
     useEffect(() => transport.addListener<{ text: string }>('Paste', ({ text }) => {
         editor?.replaceSelection(text)
@@ -155,6 +203,22 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
 
     useEffect(() => transport.addListener('DeleteSelection', () => {
         editor?.replaceSelection('')
+    }), [editor]);
+
+    // The inspector pane's Review list: selects and shows the `nth` place (0 for the first) where `text` stands.
+    useEffect(() => transport.addListener<{ text: string, nth: number }>('ScrollToText', ({ text, nth }) => {
+        if (!editor || !text) return;
+        const value = editor.getValue();
+        let at = -1;
+        let from = 0;
+        for (let i = 0; i <= nth; i++) {
+            at = value.indexOf(text, from);
+            if (at < 0) return;
+            from = at + text.length;
+        }
+        const head = editor.posFromIndex(at);
+        editor.setSelection(head, editor.posFromIndex(at + text.length));
+        editor.scrollIntoView(head, 120);
     }), [editor]);
 
     useEffect(() => transport.addListener('Copy', () => {
@@ -196,7 +260,11 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
     useEffect(() => {
         if (props.searchArg && editor) {
             const { value, opt } = props.searchArg
-            const selection = opt.selection.head ? opt.selection : undefined
+            // The host sends the term and the options only (no selection): the first match shown is the one at or after
+            // the caret. (Reading `opt.selection.head` of nothing threw and took the whole source pane down.)
+            const selection = opt?.selection?.head
+                ? opt.selection
+                : { anchor: editor.getCursor('anchor'), head: editor.getCursor('head') }
             search({ value, opt: { ...opt, selection } })
         }
     }, [editor, props.searchArg, search])
@@ -229,7 +297,7 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
 
     useEffect(() => {
         setMarginTop(currentMarginTop => {
-            const newMarginTop = { 0: 0, 1: 50, 2: 90 }[props.searchOpen] ?? 0;
+            const newMarginTop = { 0: 0, 1: 105, 2: 145 }[props.searchOpen] ?? 0;   // the height of the Find panel (the source pane has no toolbar above it, so more than the visual editor): Find only, Find and Replace
             relativeScroll(newMarginTop - currentMarginTop)
             return newMarginTop;
         })
@@ -248,7 +316,7 @@ const CodeMirrorEditor: React.FC<ICodeMirrorEditor> = (props) => {
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
     }), [editor, props, scrollToElementIfInvisible, search]);
 
-    useEffect(() => transport.addListener<{ action: string }>('Find', (arg) => {
+    useEffect(() => transport.addListener<{ action: string, index?: number }>('Find', (arg) => {
         find(arg)
         setTimeout(() => scrollToElementIfInvisible('.ag-highlight'), 0)
     }), [editor, find, scrollToElementIfInvisible]);

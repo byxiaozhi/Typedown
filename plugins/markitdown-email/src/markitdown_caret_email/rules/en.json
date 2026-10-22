@@ -1,0 +1,103 @@
+{
+  "language": "en",
+  "header_keys": {
+    "from": ["From"],
+    "sent": ["Sent", "Date"],
+    "to": ["To"],
+    "cc": ["Cc"],
+    "bcc": ["Bcc"],
+    "subject": ["Subject"],
+    "other": ["Importance", "Attachments", "Reply-To"]
+  },
+  "reply_markers": [
+    "Original Message",
+    "Forwarded message",
+    "Forwarded Message",
+    "Begin forwarded message:"
+  ],
+  "forward_markers": [
+    "Forwarded message",
+    "Forwarded Message",
+    "Begin forwarded message:"
+  ],
+  "wrote_patterns": [
+    "^On\\b.+\\bwrote:$"
+  ],
+  "subject_prefixes": ["RE", "Re", "FW", "Fw", "FWD", "Fwd", "[EXTERNAL]", "[External]", "EXTERNAL:"],
+  "mobile_signatures": [
+    "Sent from my ",
+    "Sent from Outlook",
+    "Sent from Mail for",
+    "Sent from Yahoo Mail",
+    "Get Outlook for "
+  ],
+  "closings": [
+    "best regards",
+    "kind regards",
+    "warm regards",
+    "warmest regards",
+    "regards",
+    "best",
+    "best wishes",
+    "all the best",
+    "many thanks",
+    "thanks",
+    "thanks again",
+    "thanks and regards",
+    "thanks & regards",
+    "thank you",
+    "thank you in advance",
+    "thanks in advance",
+    "thank you for your support",
+    "thank you for your help",
+    "thanks for your help",
+    "cheers",
+    "sincerely",
+    "yours sincerely",
+    "yours faithfully",
+    "br"
+  ],
+  "greetings": ["hi", "hello", "hey", "dear", "good morning", "good afternoon", "good evening"],
+  "titles": ["mr", "mrs", "ms", "miss", "mx", "dr", "prof", "professor"],
+  "not_names": ["all", "team", "everyone", "everybody", "there", "both", "folks", "guys", "colleagues", "colleague", "friends", "sir", "sirs", "madam", "madams", "gentlemen", "ladies", "customer", "client", "user", "member", "members", "department", "support", "service", "services", "desk", "office", "sales", "finance", "hr", "the", "and", "or"],
+  "disclaimer_phrases": [
+    "this email and any attachments",
+    "this e-mail and any attachments",
+    "this message and any attachments",
+    "this email (including attachments",
+    "this e-mail (including attachments",
+    "for the designated recipient only",
+    "may contain confidential information",
+    "may contain privileged",
+    "may not be used for any purpose other than",
+    "this email is confidential",
+    "this e-mail is confidential",
+    "intended solely for the use",
+    "intended only for the",
+    "if you have received this email in error",
+    "if you have received this e-mail in error",
+    "if you have received this message in error",
+    "if you are not the intended recipient",
+    "confidential and may be privileged",
+    "is strictly prohibited",
+    "please consider the environment before printing",
+    "think before you print"
+  ],
+  "banner_phrases": [
+    "this email originated from outside",
+    "this message originated from outside",
+    "this email was sent from outside",
+    "caution: external",
+    "external email",
+    "external sender",
+    "you don't often get email from",
+    "you don’t often get email from",
+    "learn why this is important"
+  ],
+  "months": {
+    "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+    "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12,
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "jun": 6, "jul": 7, "aug": 8,
+    "sep": 9, "sept": 9, "oct": 10, "nov": 11, "dec": 12
+  }
+}

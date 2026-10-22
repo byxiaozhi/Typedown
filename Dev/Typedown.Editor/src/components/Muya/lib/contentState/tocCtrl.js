@@ -1,3 +1,5 @@
+import { stripMarks } from '../parser/speech'
+
 const tocCtrl = ContentState => {
   ContentState.prototype.getTOC = function () {
     const { blocks } = this
@@ -11,7 +13,11 @@ const tocCtrl = ContentState => {
       if (/^h\d$/.test(block.type)) {
         const { headingStyle, key, type } = block
         const { text } = block.children[0]
-        const content = headingStyle === 'setext' ? text.trim() : text.replace(/^\s*#{1,6}\s{1,}/, '').trim()
+        let content = headingStyle === 'setext' ? text.trim() : text.replace(/^\s*#{1,6}\s{1,}/, '').trim()
+        // in Speech mode the marks ({budget 3m}, {pause}) are not part of the title
+        if (this.muya.options.speechMode) {
+          content = stripMarks(content, this.muya.options.speechDefs).replace(/\s+/g, ' ').trim()
+        }
         const lvl = +type.substring(1)
         const slug = key
         toc.push({

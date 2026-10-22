@@ -10,3 +10,30 @@
   min-height: calc(100vh - 48px);
   cursor: text;
 }
+
+// The scroll bar of the source pane in the Split view (SplitScrollbar.tsx): at the right edge of the left half.
+.split-scrollbar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 14px);
+  width: 14px;
+  z-index: 20;
+}
+
+.split-scrollbar-thumb {
+  position: absolute;
+  left: 4px;
+  width: 6px;
+  border-radius: 3px;
+  background: rgba(127, 127, 127, 0.45);
+  transition: left 0.1s, width 0.1s, background 0.1s;
+  touch-action: none;
+}
+
+.split-scrollbar:hover .split-scrollbar-thumb,
+.split-scrollbar-thumb:active {
+  left: 2px;
+  width: 10px;
+  background: rgba(127, 127, 127, 0.7);
+}

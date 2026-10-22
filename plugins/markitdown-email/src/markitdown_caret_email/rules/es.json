@@ -1,0 +1,97 @@
+{
+  "language": "es",
+  "header_keys": {
+    "from": ["De"],
+    "sent": ["Enviado", "Enviado el", "Fecha"],
+    "to": ["Para"],
+    "cc": ["CC", "Cc"],
+    "bcc": ["CCO", "Cco"],
+    "subject": ["Asunto"],
+    "other": ["Importancia", "Datos adjuntos", "Responder a"]
+  },
+  "reply_markers": [
+    "Mensaje original",
+    "Mensaje reenviado",
+    "Inicio del mensaje reenviado:"
+  ],
+  "forward_markers": [
+    "Mensaje reenviado",
+    "Inicio del mensaje reenviado:"
+  ],
+  "wrote_patterns": [
+    "^El\\b.+\\bescribió:$"
+  ],
+  "subject_prefixes": ["RE", "Re", "RV", "Rv", "REF", "FW", "Fwd", "[EXTERNO]", "[Externo]", "EXTERNO:"],
+  "mobile_signatures": [
+    "Enviado desde mi ",
+    "Enviado desde Outlook",
+    "Enviado desde Correo para",
+    "Obtener Outlook para "
+  ],
+  "closings": [
+    "saludos",
+    "un saludo",
+    "saludos cordiales",
+    "un cordial saludo",
+    "reciba un cordial saludo",
+    "atentamente",
+    "cordialmente",
+    "gracias",
+    "muchas gracias",
+    "gracias de antemano",
+    "gracias por su ayuda",
+    "gracias por tu ayuda",
+    "un abrazo",
+    "quedo atento",
+    "quedo atenta",
+    "quedo a la espera",
+    "quedo atento a sus comentarios",
+    "quedo atenta a sus comentarios",
+    "quedo pendiente",
+    "cordial saludo",
+    "atte",
+    "afectuosamente",
+    "respetuosamente",
+    "con aprecio",
+    "bendiciones",
+    "que tengas un buen día",
+    "feliz día",
+    "gracias por su atención",
+    "muchas gracias por su atención",
+    "agradezco su atención"
+  ],
+  "greetings": ["hola", "buen día", "buen dia", "buenos días", "buenos dias", "buenas tardes", "buenas noches", "buenas", "apreciado", "apreciada", "apreciados", "apreciadas", "estimado", "estimada", "estimados", "estimadas", "querido", "querida", "queridos", "queridas"],
+  "titles": ["sr", "sra", "srta", "señor", "señora", "señorita", "don", "doña", "dr", "dra", "doctor", "doctora", "ing", "ingeniero", "ingeniera", "lic", "licda", "licenciado", "licenciada", "abg", "abogado", "abogada", "arq", "arquitecto", "arquitecta", "mtro", "mtra", "prof", "profesor", "profesora", "cdor", "contador", "contadora"],
+  "not_names": ["a", "todos", "todas", "equipo", "colegas", "compañeros", "amigos", "señores", "señoras", "cliente", "clientes", "servicio", "soporte", "ventas", "departamento", "área", "area", "gerencia", "comunidad", "usuarios", "colaboradores", "asociados", "y", "o", "el", "la", "los", "las"],
+  "disclaimer_phrases": [
+    "este mensaje y sus archivos adjuntos",
+    "este mensaje y sus anexos",
+    "este correo electrónico y sus anexos",
+    "puede contener información confidencial",
+    "este correo electrónico y, en su caso",
+    "este mensaje y, en su caso",
+    "este mensaje es confidencial",
+    "si ha recibido este mensaje por error",
+    "si ha recibido este correo por error",
+    "si usted no es el destinatario",
+    "está dirigido exclusivamente",
+    "queda prohibida",
+    "queda terminantemente prohibida",
+    "reglamento (ue) 2016/679",
+    "antes de imprimir este correo",
+    "antes de imprimir este mensaje"
+  ],
+  "banner_phrases": [
+    "este correo se originó fuera",
+    "este mensaje se originó fuera",
+    "este correo electrónico se originó fuera",
+    "correo externo",
+    "no suele recibir correo electrónico de",
+    "por qué esto es importante"
+  ],
+  "months": {
+    "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
+    "julio": 7, "agosto": 8, "septiembre": 9, "setiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12,
+    "ene": 1, "abr": 4, "ago": 8, "dic": 12
+  }
+}

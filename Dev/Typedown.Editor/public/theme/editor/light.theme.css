@@ -26,4 +26,37 @@
   --maskColor: rgba(232, 232, 232, .8);
   --editorAreaWidth: 750px;
   --floatShadow: 0 8px 12px 0 rgba(0, 0, 0, .12);
+  /* review marks (CriticMarkup): added, deleted and highlighted text */
+  --criticAddBg: rgba(46, 160, 67, .18);
+  --criticAddText: #116329;
+  --criticAddLine: rgba(46, 160, 67, .6);
+  --criticDelBg: rgba(248, 81, 73, .16);
+  --criticDelText: #a40e26;
+  --criticMarkBg: rgba(255, 213, 0, .38);
+  --imageIconFilter: none;
+  /* speech marks (docs/speech-marks-design.md): chips, stressed text, tone bands */
+  --speechChipBg: rgba(27, 74, 160, .12);
+  --speechChipText: #1b4aa0;
+  --speechNoteBg: rgba(133, 79, 11, .12);
+  --speechNoteText: #7a4a09;
+  --speechNoteRing: rgba(133, 79, 11, .45);
+  --speechEmphasis: #1b4aa0;
+  --speechToneBg: rgba(255, 213, 0, .22);
+  /* the colours a user can give a mark of their own (Settings > Speech marks) */
+  --speechRedBg: rgba(207, 34, 46, .14);
+  --speechRedText: #a3232d;
+  --speechOrangeBg: rgba(217, 119, 6, .16);
+  --speechOrangeText: #7d4000;
+  --speechYellowBg: rgba(255, 213, 0, .30);
+  --speechYellowText: #6b5200;
+  --speechGreenBg: rgba(46, 160, 67, .16);
+  --speechGreenText: #145c25;
+  --speechTealBg: rgba(13, 148, 136, .16);
+  --speechTealText: #095c55;
+  --speechBlueBg: rgba(27, 74, 160, .14);
+  --speechBlueText: #1b4aa0;
+  --speechPurpleBg: rgba(124, 58, 237, .14);
+  --speechPurpleText: #5b2bb5;
+  --speechPinkBg: rgba(219, 39, 119, .14);
+  --speechPinkText: #a3195b;
 }

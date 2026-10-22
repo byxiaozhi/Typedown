@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "markitdown-caret-email"
+dynamic = ["version"]
+description = "MarkItDown plugin that turns Outlook .msg and .eml emails into clean, redacted Markdown threads, without AI"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = ["markitdown", "markdown", "email", "outlook", "msg", "eml", "redaction"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Communications :: Email",
+  "Topic :: Text Processing :: Markup :: Markdown",
+]
+dependencies = [
+  "markitdown>=0.1.0",
+  "olefile",
+]
+
+[project.optional-dependencies]
+# Attachments are converted by MarkItDown; install its extras for Word, Excel, PDF...
+attachments = ["markitdown[docx,xlsx,pptx,pdf]>=0.1.0"]
+
+[project.scripts]
+caret-email = "markitdown_caret_email.cli:main"
+
+[project.entry-points."markitdown.plugin"]
+caret_email = "markitdown_caret_email"
+
+[tool.hatch.version]
+path = "src/markitdown_caret_email/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/markitdown_caret_email"]

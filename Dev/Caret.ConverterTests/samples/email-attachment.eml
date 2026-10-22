@@ -1,0 +1,30 @@
+From: Anna Nowak <anna.nowak@client.example>
+To: Jan Kowalski <jan.kowalski@acme.example>
+Subject: Order list
+Date: Wed, 05 Mar 2025 08:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="caret-boundary-1"
+
+--caret-boundary-1
+Content-Type: text/plain; charset=utf-8
+
+Hello Jan,
+
+The order list is attached, with the logo.
+
+Thanks,
+Anna
+--caret-boundary-1
+Content-Type: text/csv; name="order.csv"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="order.csv"
+
+aXRlbSxhbW91bnQNCkNvZmZlZSwxMg0KVGVhLDcNCg==
+--caret-boundary-1
+Content-Type: image/png; name="logo.png"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="logo.png"
+
+iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAEklEQVR4nGP8z8Dwn4EIwESMolGF
+xCgEAB3eAgFhLdlrAAAAAElFTkSuQmCC
+--caret-boundary-1--

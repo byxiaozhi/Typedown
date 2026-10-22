@@ -284,6 +284,8 @@ export const MUYA_DEFAULT_OPTION = Object.freeze({
   // Markdown extensions
   superSubScript: false,
   footnote: true,
+  // Caret: draw CriticMarkup (a review) in colour; off, the marks are plain text (Settings > Editor)
+  showReviewMarks: true,
   isGitlabCompatibilityEnabled: false,
 
   // Whether HTML rendering is disabled or not.

@@ -1,0 +1,16 @@
+// The code pane keeps using the window's own scroll (CodeMirror's search/scroll logic depends on
+// it), so the preview is pinned to the right half of the viewport and scrolls on its own.
+.split-code {
+  width: 50%;
+}
+
+.split-preview {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  border: none;
+  border-left: 1px solid rgba(127, 127, 127, 0.25);
+  background: transparent;
+}

@@ -1,0 +1,138 @@
+/* The Speech ring (services/speechRing.ts): drawn over the page around the pointer. Colours are the theme's own
+   (the variables of the editor themes); in a high-contrast theme the system colours are used. */
+.caret-ring {
+  position: fixed;
+  width: 0;
+  height: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  transform-origin: 0 0;
+  animation: caret-ring-grow 150ms ease-out;
+  font: 12px/1.25 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  color: var(--editorColor, #000);
+}
+
+@keyframes caret-ring-grow {
+  from { transform: scale(.55); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret-ring { animation: none; }
+}
+
+.caret-ring > * {
+  position: absolute;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+.caret-ring button {
+  font: inherit;
+  color: inherit;
+  background: var(--floatBgColor, #f8f8f8);
+  border: 1px solid var(--floatBorderColor, rgba(0, 0, 0, .18));
+  box-shadow: var(--floatShadow, 0 8px 12px rgba(0, 0, 0, .12));
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+.caret-ring button:hover,
+.caret-ring button.hot {
+  background: var(--floatHoverColor, rgba(0, 0, 0, .06));
+  border-color: var(--themeColor, #8a4b2a);
+  box-shadow: 0 0 0 2px var(--themeColor, #8a4b2a), var(--floatShadow, 0 8px 12px rgba(0, 0, 0, .12));
+}
+
+.caret-ring-center {
+  border-radius: 50%;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.caret-ring-petal {
+  border-radius: 50%;
+  font-size: 9.5px !important;
+  line-height: 1.1 !important;
+  padding: 1px !important;
+  overflow: hidden;
+  /* a word is not broken unless it cannot fit at all */
+  word-break: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.caret-ring-petal.open {
+  font-weight: 700;
+  border-color: var(--themeColor, #8a4b2a) !important;
+  box-shadow: 0 0 0 2px var(--themeColor, #8a4b2a), var(--floatShadow, 0 8px 12px rgba(0, 0, 0, .12)) !important;
+}
+
+.caret-ring-petal.empty {
+  opacity: .5;
+  cursor: default !important;
+}
+
+.caret-ring-item {
+  border-radius: 15px;
+  padding: 0 10px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+/* lit: already on the selection. Not by colour alone: bold, a check mark in the text and a heavier border. */
+.caret-ring-item.lit {
+  font-weight: 700;
+  border-width: 2px !important;
+  border-color: var(--themeColor, #8a4b2a) !important;
+}
+
+.caret-ring-preview {
+  width: 250px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--floatBgColor, #f8f8f8);
+  border: 1px solid var(--floatBorderColor, rgba(0, 0, 0, .18));
+  box-shadow: var(--floatShadow, 0 8px 12px rgba(0, 0, 0, .12));
+  pointer-events: none !important;
+  user-select: none;
+}
+
+.caret-ring-title { font-weight: 700; }
+.caret-ring-written { font-family: 'Cascadia Mono', Consolas, monospace; font-size: 11px; opacity: .8; margin-top: 2px; }
+.caret-ring-meaning { margin-top: 4px; opacity: .8; }
+.caret-ring-time { margin-top: 6px; font-variant-numeric: tabular-nums; font-weight: 600; }
+.caret-ring-sample { margin-top: 6px; font-size: 13px; overflow-wrap: anywhere; }
+.caret-ring-problem { color: var(--deleteColor, #b3261e); font-weight: 600; }
+
+/* read out by a screen reader, not seen */
+.caret-ring-live {
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  pointer-events: none !important;
+}
+
+@media (forced-colors: active) {
+  .caret-ring button,
+  .caret-ring-preview {
+    background: Canvas;
+    color: CanvasText;
+    border: 1px solid CanvasText;
+    box-shadow: none;
+  }
+
+  .caret-ring button:hover,
+  .caret-ring button.hot,
+  .caret-ring-petal.open,
+  .caret-ring-item.lit {
+    border: 2px solid Highlight !important;
+    box-shadow: none !important;
+  }
+}

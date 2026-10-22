@@ -467,7 +467,7 @@ const paragraphCtrl = ContentState => {
   ContentState.prototype.updateParagraph = function (paraType, insertMode = false) {
     const { start, end } = this.cursor
     const block = this.getBlock(start.key)
-    const { text, type } = block
+    const { text } = block
     let needDispatchChange = true
 
     // Only allow valid transformations.
@@ -542,82 +542,124 @@ const paragraphCtrl = ContentState => {
       case 'upgrade heading':
       case 'degrade heading':
       case 'paragraph': {
-        if (start.key !== end.key) {
-          return
-        }
-
         const headingStyle = DEFAULT_TURNDOWN_CONFIG.headingStyle
-        const parent = this.getParent(block)
-        // \u00A0 is &nbsp;
-        const [, hash, partText] = /(^ {0,3}#*[ \u00A0]*)([\s\S]*)/.exec(text)
-        let newLevel = 0 // 1, 2, 3, 4, 5, 6
-        let newType = 'p'
-        let key
 
-        if (/\d/.test(paraType)) {
-          newLevel = Number(paraType.split(/\s/)[1])
-          newType = `h${newLevel}`
-        } else if (paraType === 'upgrade heading' || paraType === 'degrade heading') {
-          const currentLevel = getCurrentLevel(parent.type)
-          newLevel = currentLevel
-          if (paraType === 'upgrade heading' && currentLevel !== 1) {
-            if (currentLevel === 0) newLevel = 6
-            else newLevel = currentLevel - 1
-          } else if (paraType === 'degrade heading' && currentLevel !== 0) {
-            if (currentLevel === 6) newLevel = 0
-            else newLevel = currentLevel + 1
+        // Turns the paragraph or heading of one leaf block into the wanted type. `startOffset` and `endOffset` are
+        // positions in the old text. Returns the new leaf key and the moved positions, or null when nothing changed.
+        const convertLeaf = (leaf, startOffset, endOffset) => {
+          const parent = this.getParent(leaf)
+          // \u00A0 is &nbsp;. Only the hashes of a heading line are a marker; in a paragraph a leading `#` is text
+          // (`#tag note`) and must stay.
+          const prefixRule = leaf.functionType === 'atxLine' ? /(^ {0,3}#*[ \u00A0]*)([\s\S]*)/ : /(^ {0,3})([\s\S]*)/
+          const [, hash, partText] = prefixRule.exec(leaf.text)
+          let newLevel = 0 // 1, 2, 3, 4, 5, 6
+          let newType = 'p'
+
+          if (/\d/.test(paraType)) {
+            newLevel = Number(paraType.split(/\s/)[1])
+            newType = `h${newLevel}`
+          } else if (paraType === 'upgrade heading' || paraType === 'degrade heading') {
+            const currentLevel = getCurrentLevel(parent.type)
+            newLevel = currentLevel
+            if (paraType === 'upgrade heading' && currentLevel !== 1) {
+              if (currentLevel === 0) newLevel = 6
+              else newLevel = currentLevel - 1
+            } else if (paraType === 'degrade heading' && currentLevel !== 0) {
+              if (currentLevel === 6) newLevel = 0
+              else newLevel = currentLevel + 1
+            }
+            newType = newLevel === 0 ? 'p' : `h${newLevel}`
           }
-          newType = newLevel === 0 ? 'p' : `h${newLevel}`
+
+          const newStart = newLevel > 0
+            ? startOffset + newLevel - hash.length + 1
+            : startOffset - hash.length // no need to add `1`, because we didn't add `String.fromCharCode(160)` to text paragraph
+          const newEnd = newLevel > 0
+            ? endOffset + newLevel - hash.length + 1
+            : endOffset - hash.length
+          let newText = newLevel > 0
+            ? '#'.repeat(newLevel) + `${String.fromCharCode(160)}${partText}` // &nbsp; code: 160
+            : partText
+
+          // Remove <hr> content when converting to paragraph.
+          if (leaf.type === 'span' && leaf.functionType === 'thematicBreakLine') {
+            newText = ''
+          }
+
+          // No change
+          if (newType === 'p' && parent.type === newType) {
+            return null
+          }
+          // No change
+          if (newType !== 'p' && parent.type === newType && parent.headingStyle === headingStyle) {
+            return null
+          }
+
+          let key
+          if (newType !== 'p') {
+            const header = this.createBlock(newType, {
+              headingStyle
+            })
+            const headerContent = this.createBlock('span', {
+              text: headingStyle === 'atx' ? newText.replace(/\n/g, ' ') : newText,
+              functionType: headingStyle === 'atx' ? 'atxLine' : 'paragraphContent'
+            })
+            this.appendChild(header, headerContent)
+            key = headerContent.key
+
+            this.insertBefore(header, parent)
+            this.removeBlock(parent)
+          } else {
+            const pBlock = this.createBlockP(newText)
+            key = pBlock.children[0].key
+            this.insertAfter(pBlock, parent)
+            this.removeBlock(parent)
+          }
+          return { key, start: newStart, end: newEnd }
         }
 
-        const startOffset = newLevel > 0
-          ? start.offset + newLevel - hash.length + 1
-          : start.offset - hash.length // no need to add `1`, because we didn't add `String.fromCharCode(160)` to text paragraph
-        const endOffset = newLevel > 0
-          ? end.offset + newLevel - hash.length + 1
-          : end.offset - hash.length
-        let newText = newLevel > 0
-          ? '#'.repeat(newLevel) + `${String.fromCharCode(160)}${partText}` // &nbsp; code: 160
-          : partText
-
-        // Remove <hr> content when converting to paragraph.
-        if (type === 'span' && block.functionType === 'thematicBreakLine') {
-          newText = ''
+        if (start.key === end.key) {
+          const converted = convertLeaf(block, start.offset, end.offset)
+          if (!converted) {
+            return
+          }
+          this.cursor = {
+            start: { key: converted.key, offset: converted.start },
+            end: { key: converted.key, offset: converted.end }
+          }
+          break
         }
 
-        // No change
-        if (newType === 'p' && parent.type === newType) {
+        // Several blocks are selected: every paragraph and heading in the selection is converted. The leaves are
+        // collected first, because a converted block leaves the tree and could no longer lead to its successor.
+        const endBlock = this.getBlock(end.key)
+        const leaves = []
+        for (let next = block; next; next = this.findNextBlockInLocation(next)) {
+          const leafParent = next.type === 'span' && /paragraphContent|atxLine/.test(next.functionType) && this.getParent(next)
+          if (leafParent && /^(p|h[1-6])$/.test(leafParent.type)) {
+            leaves.push(next)
+          }
+          if (next === endBlock) break
+        }
+
+        const newCursor = { start: { ...start }, end: { ...end } }
+        let changed = false
+        leaves.forEach(leaf => {
+          const isFirst = leaf === block
+          const isLast = leaf === endBlock
+          const converted = convertLeaf(leaf, isFirst ? start.offset : 0, isLast ? end.offset : leaf.text.length)
+          if (!converted) {
+            return
+          }
+          changed = true
+          // A hash prefix that is cut short can move a position before the text: keep it on the line.
+          if (isFirst) newCursor.start = { key: converted.key, offset: Math.max(0, converted.start) }
+          if (isLast) newCursor.end = { key: converted.key, offset: Math.max(0, converted.end) }
+        })
+        if (!changed) {
           return
         }
-        // No change
-        if (newType !== 'p' && parent.type === newType && parent.headingStyle === headingStyle) {
-          return
-        }
-
-        if (newType !== 'p') {
-          const header = this.createBlock(newType, {
-            headingStyle
-          })
-          const headerContent = this.createBlock('span', {
-            text: headingStyle === 'atx' ? newText.replace(/\n/g, ' ') : newText,
-            functionType: headingStyle === 'atx' ? 'atxLine' : 'paragraphContent'
-          })
-          this.appendChild(header, headerContent)
-          key = headerContent.key
-
-          this.insertBefore(header, parent)
-          this.removeBlock(parent)
-        } else {
-          const pBlock = this.createBlockP(newText)
-          key = pBlock.children[0].key
-          this.insertAfter(pBlock, parent)
-          this.removeBlock(parent)
-        }
-
-        this.cursor = {
-          start: { key, offset: startOffset },
-          end: { key, offset: endOffset }
-        }
+        this.cursor = newCursor
         break
       }
       case 'hr': {
@@ -894,7 +936,7 @@ const paragraphCtrl = ContentState => {
       return true
     } else if (!fromType) {
       return false
-    } else if (isMultilineSelection && /heading|table/.test(toType)) {
+    } else if (isMultilineSelection && /table/.test(toType)) {
       return false
     } else if (fromType === toType || toType === 'reset-to-paragraph') {
       // Convert back to paragraph.
